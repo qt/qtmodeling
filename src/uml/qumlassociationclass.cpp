@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlassociationclass.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlAssociationClass
-
-    \inmodule QtUml
-
-    \brief A model element that has both association and class properties. An AssociationClass can be seen as an association that also has class properties, or as a class that also has association properties. It not only connects a set of classifiers but also defines a set of features that belong to the relationship itself and not to any of the classifiers.
- */
-
-QUmlAssociationClass::QUmlAssociationClass()
+QUmlAssociationClass::QUmlAssociationClass(QObject *parent) :
+    QObject(parent)
 {
 }
 

@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlmessageoccurrencespecification.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlMessageOccurrenceSpecification
-
-    \inmodule QtUml
-
-    \brief A message occurrence specification pecifies the occurrence of message events, such as sending and receiving of signals or invoking or receiving of operation calls. A message occurrence specification is a kind of message end. Messages are generated either by synchronous operation calls or asynchronous signal sends. They are received by the execution of corresponding accept event actions.
- */
-
-QUmlMessageOccurrenceSpecification::QUmlMessageOccurrenceSpecification()
+QUmlMessageOccurrenceSpecification::QUmlMessageOccurrenceSpecification(QObject *parent) :
+    QObject(parent)
 {
 }
 

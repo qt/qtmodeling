@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlreadselfaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlReadSelfAction : public QUmlAction
+class Q_UML_EXPORT QUmlReadSelfAction : public QObject, public UmlReadSelfAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOutputPin * result READ result)
+
 public:
-    QUmlReadSelfAction();
+    Q_INVOKABLE explicit QUmlReadSelfAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOutputPin *result() const;
-    void setResult(QUmlOutputPin *result);
-
-protected:
-    QUmlOutputPin *_result;
+    Q_INVOKABLE QUmlOutputPin *result() const;
+    Q_INVOKABLE void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

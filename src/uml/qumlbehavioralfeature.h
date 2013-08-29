@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlFeature>
+#include <QtCore/QObject>
+#include "private/umlbehavioralfeature_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -55,43 +55,44 @@ QT_MODULE(QtUml)
 
 class QUmlBehavior;
 class QUmlNamedElement;
+class QUmlNamespace;
 class QUmlParameter;
 class QUmlParameterSet;
 class QUmlType;
 
-class Q_UML_EXPORT QUmlBehavioralFeature : public QUmlNamespace, public QUmlFeature
+class Q_UML_EXPORT QUmlBehavioralFeature : public QObject, public UmlBehavioralFeature
 {
+    Q_OBJECT
+    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency)
+    Q_PROPERTY(bool isAbstract READ isAbstract)
+    Q_PROPERTY(QSet<QUmlBehavior *> method READ method)
+    Q_PROPERTY(QList<QUmlParameter *> ownedParameter READ ownedParameter)
+    Q_PROPERTY(QSet<QUmlParameterSet *> ownedParameterSet READ ownedParameterSet)
+    Q_PROPERTY(QSet<QUmlType *> raisedException READ raisedException)
+
 public:
-    Q_DECL_HIDDEN QUmlBehavioralFeature();
+    Q_DECL_HIDDEN explicit QUmlBehavioralFeature(QObject *parent = 0);
 
     // Owned attributes
-    QtUml::CallConcurrencyKind concurrency() const;
-    void setConcurrency(QtUml::CallConcurrencyKind concurrency);
-    bool isAbstract() const;
-    void setAbstract(bool isAbstract);
-    const QSet<QUmlBehavior *> method() const;
-    void addMethod(QUmlBehavior *method);
-    void removeMethod(QUmlBehavior *method);
-    const QList<QUmlParameter *> ownedParameter() const;
-    void addOwnedParameter(QUmlParameter *ownedParameter);
-    void removeOwnedParameter(QUmlParameter *ownedParameter);
-    const QSet<QUmlParameterSet *> ownedParameterSet() const;
-    void addOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
-    const QSet<QUmlType *> raisedException() const;
-    void addRaisedException(QUmlType *raisedException);
-    void removeRaisedException(QUmlType *raisedException);
+    Q_INVOKABLE QtUml::CallConcurrencyKind concurrency() const;
+    Q_INVOKABLE void setConcurrency(QtUml::CallConcurrencyKind concurrency);
+    Q_INVOKABLE bool isAbstract() const;
+    Q_INVOKABLE void setAbstract(bool isAbstract);
+    Q_INVOKABLE const QSet<QUmlBehavior *> method() const;
+    Q_INVOKABLE void addMethod(UmlBehavior *method);
+    Q_INVOKABLE void removeMethod(UmlBehavior *method);
+    Q_INVOKABLE const QList<QUmlParameter *> ownedParameter() const;
+    Q_INVOKABLE void addOwnedParameter(UmlParameter *ownedParameter);
+    Q_INVOKABLE void removeOwnedParameter(UmlParameter *ownedParameter);
+    Q_INVOKABLE const QSet<QUmlParameterSet *> ownedParameterSet() const;
+    Q_INVOKABLE void addOwnedParameterSet(UmlParameterSet *ownedParameterSet);
+    Q_INVOKABLE void removeOwnedParameterSet(UmlParameterSet *ownedParameterSet);
+    Q_INVOKABLE const QSet<QUmlType *> raisedException() const;
+    Q_INVOKABLE void addRaisedException(UmlType *raisedException);
+    Q_INVOKABLE void removeRaisedException(UmlType *raisedException);
 
     // Operations
-    bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-
-protected:
-    QtUml::CallConcurrencyKind _concurrency;
-    bool _isAbstract;
-    QSet<QUmlBehavior *> _method;
-    QList<QUmlParameter *> _ownedParameter;
-    QSet<QUmlParameterSet *> _ownedParameterSet;
-    QSet<QUmlType *> _raisedException;
+    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
 };
 
 QT_END_NAMESPACE

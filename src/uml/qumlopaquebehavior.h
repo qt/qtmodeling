@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlBehavior>
+#include <QtCore/QObject>
+#include "private/umlopaquebehavior_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,22 +52,22 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlOpaqueBehavior : public QUmlBehavior
+class Q_UML_EXPORT QUmlOpaqueBehavior : public QObject, public UmlOpaqueBehavior
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QString> body READ body)
+    Q_PROPERTY(QList<QString> language READ language)
+
 public:
-    QUmlOpaqueBehavior();
+    Q_INVOKABLE explicit QUmlOpaqueBehavior(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QString> body() const;
-    void addBody(QString body);
-    void removeBody(QString body);
-    const QList<QString> language() const;
-    void addLanguage(QString language);
-    void removeLanguage(QString language);
-
-protected:
-    QList<QString> _body;
-    QList<QString> _language;
+    Q_INVOKABLE const QList<QString> body() const;
+    Q_INVOKABLE void addBody(QString body);
+    Q_INVOKABLE void removeBody(QString body);
+    Q_INVOKABLE const QList<QString> language() const;
+    Q_INVOKABLE void addLanguage(QString language);
+    Q_INVOKABLE void removeLanguage(QString language);
 };
 
 QT_END_NAMESPACE

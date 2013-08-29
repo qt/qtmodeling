@@ -39,67 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlliteralunlimitednatural.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLiteralUnlimitedNatural
-
-    \inmodule QtUml
-
-    \brief A literal unlimited natural is a specification of an unlimited natural number.
- */
-
-QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural() :
-    _value(0)
+QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("value", QVariant::fromValue((int)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The specified UnlimitedNatural value.
- */
 int QUmlLiteralUnlimitedNatural::value() const
 {
-    // This is a read-write property
-
     return _value;
 }
 
 void QUmlLiteralUnlimitedNatural::setValue(int value)
 {
-    // This is a read-write property
-
-    if (_value != value) {
-        _value = value;
-    }
+    UmlLiteralUnlimitedNatural::setValue(value);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query isComputable() is redefined to be true.
- */
-bool QUmlLiteralUnlimitedNatural::isComputable(
-    ) const
+bool QUmlLiteralUnlimitedNatural::isComputable() const
 {
-    qWarning("QUmlLiteralUnlimitedNatural::isComputable(): to be implemented (operation)");
-
-    return bool ();
+    return UmlLiteralUnlimitedNatural::isComputable();
 }
 
-/*!
-    The query unlimitedValue() gives the value.
- */
-int QUmlLiteralUnlimitedNatural::unlimitedValue(
-    ) const
+int QUmlLiteralUnlimitedNatural::unlimitedValue() const
 {
-    qWarning("QUmlLiteralUnlimitedNatural::unlimitedValue(): to be implemented (operation)");
-
-    return int ();
+    return UmlLiteralUnlimitedNatural::unlimitedValue();
 }
 
 QT_END_NAMESPACE

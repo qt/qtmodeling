@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlinstancespecification.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlSlot>
@@ -47,121 +46,51 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInstanceSpecification
-
-    \inmodule QtUml
-
-    \brief An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact.An instance specification is a model element that represents an instance in a modeled system.
- */
-
-QUmlInstanceSpecification::QUmlInstanceSpecification() :
-    _specification(0)
+QUmlInstanceSpecification::QUmlInstanceSpecification(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("classifier", QVariant::fromValue(&_classifier));
-    d_ptr->object.setProperty("slot", QVariant::fromValue(&_slot_));
-    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
- */
 const QSet<QUmlClassifier *> QUmlInstanceSpecification::classifier() const
 {
-    // This is a read-write association end
-
-    return _classifier;
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_classifier));
 }
 
-void QUmlInstanceSpecification::addClassifier(QUmlClassifier *classifier)
+void QUmlInstanceSpecification::addClassifier(UmlClassifier *classifier)
 {
-    // This is a read-write association end
-
-    if (!_classifier.contains(classifier)) {
-        _classifier.insert(classifier);
-    }
+    UmlInstanceSpecification::addClassifier(classifier);
 }
 
-void QUmlInstanceSpecification::removeClassifier(QUmlClassifier *classifier)
+void QUmlInstanceSpecification::removeClassifier(UmlClassifier *classifier)
 {
-    // This is a read-write association end
-
-    if (_classifier.contains(classifier)) {
-        _classifier.remove(classifier);
-    }
+    UmlInstanceSpecification::removeClassifier(classifier);
 }
 
-/*!
-    A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
- */
 const QSet<QUmlSlot *> QUmlInstanceSpecification::slot_() const
 {
-    // This is a read-write association end
-
-    return _slot_;
+    return *(reinterpret_cast<const QSet<QUmlSlot *> *>(&_slot_));
 }
 
-void QUmlInstanceSpecification::addSlot(QUmlSlot *slot_)
+void QUmlInstanceSpecification::addSlot(UmlSlot *slot_)
 {
-    // This is a read-write association end
-
-    if (!_slot_.contains(slot_)) {
-        _slot_.insert(slot_);
-
-        // Adjust subsetted properties
-        addOwnedElement(slot_);
-
-        // Adjust opposite properties
-        if (slot_) {
-            slot_->setOwningInstance(this);
-        }
-    }
+    UmlInstanceSpecification::addSlot(slot_);
 }
 
-void QUmlInstanceSpecification::removeSlot(QUmlSlot *slot_)
+void QUmlInstanceSpecification::removeSlot(UmlSlot *slot_)
 {
-    // This is a read-write association end
-
-    if (_slot_.contains(slot_)) {
-        _slot_.remove(slot_);
-
-        // Adjust subsetted properties
-        removeOwnedElement(slot_);
-
-        // Adjust opposite properties
-        if (slot_) {
-            slot_->setOwningInstance(0);
-        }
-    }
+    UmlInstanceSpecification::removeSlot(slot_);
 }
 
-/*!
-    A specification of how to compute, derive, or construct the instance.
- */
 QUmlValueSpecification *QUmlInstanceSpecification::specification() const
 {
-    // This is a read-write association end
-
-    return _specification;
+    return reinterpret_cast<QUmlValueSpecification *>(_specification);
 }
 
 void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specification)
 {
-    // This is a read-write association end
-
-    if (_specification != specification) {
-        // Adjust subsetted properties
-        removeOwnedElement(_specification);
-
-        _specification = specification;
-
-        // Adjust subsetted properties
-        if (specification) {
-            addOwnedElement(specification);
-        }
-    }
+    UmlInstanceSpecification::setSpecification(specification);
 }
 
 QT_END_NAMESPACE

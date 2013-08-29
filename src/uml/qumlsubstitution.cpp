@@ -39,83 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlsubstitution.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlSubstitution
-
-    \inmodule QtUml
-
-    \brief A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
- */
-
-QUmlSubstitution::QUmlSubstitution() :
-    _contract(0),
-    _substitutingClassifier(0)
+QUmlSubstitution::QUmlSubstitution(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("contract", QVariant::fromValue((QUmlClassifier *)(0)));
-    d_ptr->object.setProperty("substitutingClassifier", QVariant::fromValue((QUmlClassifier *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The contract with which the substituting classifier complies.
- */
 QUmlClassifier *QUmlSubstitution::contract() const
 {
-    // This is a read-write association end
-
-    return _contract;
+    return reinterpret_cast<QUmlClassifier *>(_contract);
 }
 
 void QUmlSubstitution::setContract(QUmlClassifier *contract)
 {
-    // This is a read-write association end
-
-    if (_contract != contract) {
-        // Adjust subsetted properties
-        removeSupplier(_contract);
-
-        _contract = contract;
-
-        // Adjust subsetted properties
-        if (contract) {
-            addSupplier(contract);
-        }
-    }
+    UmlSubstitution::setContract(contract);
 }
 
-/*!
-    Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
- */
 QUmlClassifier *QUmlSubstitution::substitutingClassifier() const
 {
-    // This is a read-write association end
-
-    return _substitutingClassifier;
+    return reinterpret_cast<QUmlClassifier *>(_substitutingClassifier);
 }
 
 void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingClassifier)
 {
-    // This is a read-write association end
-
-    if (_substitutingClassifier != substitutingClassifier) {
-        // Adjust subsetted properties
-        removeClient(_substitutingClassifier);
-
-        _substitutingClassifier = substitutingClassifier;
-
-        // Adjust subsetted properties
-        setOwner(substitutingClassifier);
-        if (substitutingClassifier) {
-            addClient(substitutingClassifier);
-        }
-    }
+    UmlSubstitution::setSubstitutingClassifier(substitutingClassifier);
 }
 
 QT_END_NAMESPACE

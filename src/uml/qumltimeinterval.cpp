@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumltimeinterval.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTimeExpression>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTimeInterval
-
-    \inmodule QtUml
-
-    \brief A time interval defines the range between two time expressions.
- */
-
-QUmlTimeInterval::QUmlTimeInterval() :
-    _max(0),
-    _min(0)
+QUmlTimeInterval::QUmlTimeInterval(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("max", QVariant::fromValue((QUmlTimeExpression *)(0)));
-    d_ptr->object.setProperty("min", QVariant::fromValue((QUmlTimeExpression *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Refers to the TimeExpression denoting the maximum value of the range.
- */
 QUmlTimeExpression *QUmlTimeInterval::max() const
 {
-    // This is a read-write association end
-
-    return _max;
+    return reinterpret_cast<QUmlTimeExpression *>(_max);
 }
 
 void QUmlTimeInterval::setMax(QUmlTimeExpression *max)
 {
-    // This is a read-write association end
-
-    if (_max != max) {
-        _max = max;
-    }
+    UmlTimeInterval::setMax(max);
 }
 
-/*!
-    Refers to the TimeExpression denoting the minimum value of the range.
- */
 QUmlTimeExpression *QUmlTimeInterval::min() const
 {
-    // This is a read-write association end
-
-    return _min;
+    return reinterpret_cast<QUmlTimeExpression *>(_min);
 }
 
 void QUmlTimeInterval::setMin(QUmlTimeExpression *min)
 {
-    // This is a read-write association end
-
-    if (_min != min) {
-        _min = min;
-    }
+    UmlTimeInterval::setMin(min);
 }
 
 QT_END_NAMESPACE

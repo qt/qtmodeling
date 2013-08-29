@@ -39,123 +39,56 @@
 **
 ****************************************************************************/
 #include "qumlexpansionregion.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExpansionNode>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExpansionRegion
-
-    \inmodule QtUml
-
-    \brief An expansion region is a structured activity region that executes multiple times corresponding to elements of an input collection.
- */
-
-QUmlExpansionRegion::QUmlExpansionRegion() :
-    _mode(QtUml::ExpansionKindIterative)
+QUmlExpansionRegion::QUmlExpansionRegion(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("inputElement", QVariant::fromValue(&_inputElement));
-    d_ptr->object.setProperty("mode", QVariant::fromValue(QtUml::ExpansionKindIterative));
-    d_ptr->object.setProperty("outputElement", QVariant::fromValue(&_outputElement));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    An object node that holds a separate element of the input collection during each of the multiple executions of the region.
- */
 const QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElement() const
 {
-    // This is a read-write association end
-
-    return _inputElement;
+    return *(reinterpret_cast<const QSet<QUmlExpansionNode *> *>(&_inputElement));
 }
 
-void QUmlExpansionRegion::addInputElement(QUmlExpansionNode *inputElement)
+void QUmlExpansionRegion::addInputElement(UmlExpansionNode *inputElement)
 {
-    // This is a read-write association end
-
-    if (!_inputElement.contains(inputElement)) {
-        _inputElement.insert(inputElement);
-
-        // Adjust opposite properties
-        if (inputElement) {
-            inputElement->setRegionAsInput(this);
-        }
-    }
+    UmlExpansionRegion::addInputElement(inputElement);
 }
 
-void QUmlExpansionRegion::removeInputElement(QUmlExpansionNode *inputElement)
+void QUmlExpansionRegion::removeInputElement(UmlExpansionNode *inputElement)
 {
-    // This is a read-write association end
-
-    if (_inputElement.contains(inputElement)) {
-        _inputElement.remove(inputElement);
-
-        // Adjust opposite properties
-        if (inputElement) {
-            inputElement->setRegionAsInput(0);
-        }
-    }
+    UmlExpansionRegion::removeInputElement(inputElement);
 }
 
-/*!
-    The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution
- */
 QtUml::ExpansionKind QUmlExpansionRegion::mode() const
 {
-    // This is a read-write property
-
     return _mode;
 }
 
 void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
 {
-    // This is a read-write property
-
-    if (_mode != mode) {
-        _mode = mode;
-    }
+    UmlExpansionRegion::setMode(mode);
 }
 
-/*!
-    An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
- */
 const QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElement() const
 {
-    // This is a read-write association end
-
-    return _outputElement;
+    return *(reinterpret_cast<const QSet<QUmlExpansionNode *> *>(&_outputElement));
 }
 
-void QUmlExpansionRegion::addOutputElement(QUmlExpansionNode *outputElement)
+void QUmlExpansionRegion::addOutputElement(UmlExpansionNode *outputElement)
 {
-    // This is a read-write association end
-
-    if (!_outputElement.contains(outputElement)) {
-        _outputElement.insert(outputElement);
-
-        // Adjust opposite properties
-        if (outputElement) {
-            outputElement->setRegionAsOutput(this);
-        }
-    }
+    UmlExpansionRegion::addOutputElement(outputElement);
 }
 
-void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
+void QUmlExpansionRegion::removeOutputElement(UmlExpansionNode *outputElement)
 {
-    // This is a read-write association end
-
-    if (_outputElement.contains(outputElement)) {
-        _outputElement.remove(outputElement);
-
-        // Adjust opposite properties
-        if (outputElement) {
-            outputElement->setRegionAsOutput(0);
-        }
-    }
+    UmlExpansionRegion::removeOutputElement(outputElement);
 }
 
 QT_END_NAMESPACE

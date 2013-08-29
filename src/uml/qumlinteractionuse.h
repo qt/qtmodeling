@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInteractionFragment>
+#include <QtCore/QObject>
+#include "private/umlinteractionuse_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,31 +57,31 @@ class QUmlInteraction;
 class QUmlProperty;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlInteractionUse : public QUmlInteractionFragment
+class Q_UML_EXPORT QUmlInteractionUse : public QObject, public UmlInteractionUse
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlGate *> actualGate READ actualGate)
+    Q_PROPERTY(QList<QUmlValueSpecification *> argument READ argument)
+    Q_PROPERTY(QUmlInteraction * refersTo READ refersTo)
+    Q_PROPERTY(QUmlValueSpecification * returnValue READ returnValue)
+    Q_PROPERTY(QUmlProperty * returnValueRecipient READ returnValueRecipient)
+
 public:
-    QUmlInteractionUse();
+    Q_INVOKABLE explicit QUmlInteractionUse(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlGate *> actualGate() const;
-    void addActualGate(QUmlGate *actualGate);
-    void removeActualGate(QUmlGate *actualGate);
-    const QList<QUmlValueSpecification *> argument() const;
-    void addArgument(QUmlValueSpecification *argument);
-    void removeArgument(QUmlValueSpecification *argument);
-    QUmlInteraction *refersTo() const;
-    void setRefersTo(QUmlInteraction *refersTo);
-    QUmlValueSpecification *returnValue() const;
-    void setReturnValue(QUmlValueSpecification *returnValue);
-    QUmlProperty *returnValueRecipient() const;
-    void setReturnValueRecipient(QUmlProperty *returnValueRecipient);
-
-protected:
-    QSet<QUmlGate *> _actualGate;
-    QList<QUmlValueSpecification *> _argument;
-    QUmlInteraction *_refersTo;
-    QUmlValueSpecification *_returnValue;
-    QUmlProperty *_returnValueRecipient;
+    Q_INVOKABLE const QSet<QUmlGate *> actualGate() const;
+    Q_INVOKABLE void addActualGate(UmlGate *actualGate);
+    Q_INVOKABLE void removeActualGate(UmlGate *actualGate);
+    Q_INVOKABLE const QList<QUmlValueSpecification *> argument() const;
+    Q_INVOKABLE void addArgument(UmlValueSpecification *argument);
+    Q_INVOKABLE void removeArgument(UmlValueSpecification *argument);
+    Q_INVOKABLE QUmlInteraction *refersTo() const;
+    Q_INVOKABLE void setRefersTo(QUmlInteraction *refersTo);
+    Q_INVOKABLE QUmlValueSpecification *returnValue() const;
+    Q_INVOKABLE void setReturnValue(QUmlValueSpecification *returnValue);
+    Q_INVOKABLE QUmlProperty *returnValueRecipient() const;
+    Q_INVOKABLE void setReturnValueRecipient(QUmlProperty *returnValueRecipient);
 };
 
 QT_END_NAMESPACE

@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlcreatelinkobjectaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCreateLinkObjectAction
-
-    \inmodule QtUml
-
-    \brief A create link object action creates a link object.
- */
-
-QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction() :
-    _result(0)
+QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the output pin on which the result is put.
- */
 QUmlOutputPin *QUmlCreateLinkObjectAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlCreateLinkObjectAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlCreateLinkObjectAction::setResult(result);
 }
 
 QT_END_NAMESPACE

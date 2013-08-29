@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlinstancevalue.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInstanceSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInstanceValue
-
-    \inmodule QtUml
-
-    \brief An instance value is a value specification that identifies an instance.
- */
-
-QUmlInstanceValue::QUmlInstanceValue() :
-    _instance(0)
+QUmlInstanceValue::QUmlInstanceValue(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("instance", QVariant::fromValue((QUmlInstanceSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The instance that is the specified value.
- */
 QUmlInstanceSpecification *QUmlInstanceValue::instance() const
 {
-    // This is a read-write association end
-
-    return _instance;
+    return reinterpret_cast<QUmlInstanceSpecification *>(_instance);
 }
 
 void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 {
-    // This is a read-write association end
-
-    if (_instance != instance) {
-        _instance = instance;
-    }
+    UmlInstanceValue::setInstance(instance);
 }
 
 QT_END_NAMESPACE

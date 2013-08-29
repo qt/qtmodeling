@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlactivity.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityGroup>
@@ -50,322 +49,121 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlActivity
-
-    \inmodule QtUml
-
-    \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
- */
-
-QUmlActivity::QUmlActivity() :
-    _isReadOnly(false),
-    _isSingleExecution(false)
+QUmlActivity::QUmlActivity(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("edge", QVariant::fromValue(&_edge));
-    d_ptr->object.setProperty("group", QVariant::fromValue(&_group));
-    d_ptr->object.setProperty("isReadOnly", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isSingleExecution", QVariant::fromValue(false));
-    d_ptr->object.setProperty("node", QVariant::fromValue(&_node));
-    d_ptr->object.setProperty("partition", QVariant::fromValue(&_partition));
-    d_ptr->object.setProperty("structuredNode", QVariant::fromValue(&_structuredNode));
-    d_ptr->object.setProperty("variable", QVariant::fromValue(&_variable));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Edges expressing flow between nodes of the activity.
- */
 const QSet<QUmlActivityEdge *> QUmlActivity::edge() const
 {
-    // This is a read-write association end
-
-    return _edge;
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_edge));
 }
 
-void QUmlActivity::addEdge(QUmlActivityEdge *edge)
+void QUmlActivity::addEdge(UmlActivityEdge *edge)
 {
-    // This is a read-write association end
-
-    if (!_edge.contains(edge)) {
-        _edge.insert(edge);
-
-        // Adjust subsetted properties
-        addOwnedElement(edge);
-
-        // Adjust opposite properties
-        if (edge) {
-            edge->setActivity(this);
-        }
-    }
+    UmlActivity::addEdge(edge);
 }
 
-void QUmlActivity::removeEdge(QUmlActivityEdge *edge)
+void QUmlActivity::removeEdge(UmlActivityEdge *edge)
 {
-    // This is a read-write association end
-
-    if (_edge.contains(edge)) {
-        _edge.remove(edge);
-
-        // Adjust subsetted properties
-        removeOwnedElement(edge);
-
-        // Adjust opposite properties
-        if (edge) {
-            edge->setActivity(0);
-        }
-    }
+    UmlActivity::removeEdge(edge);
 }
 
-/*!
-    Top-level groups in the activity.
- */
 const QSet<QUmlActivityGroup *> QUmlActivity::group() const
 {
-    // This is a read-write association end
-
-    return _group;
+    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_group));
 }
 
-void QUmlActivity::addGroup(QUmlActivityGroup *group)
+void QUmlActivity::addGroup(UmlActivityGroup *group)
 {
-    // This is a read-write association end
-
-    if (!_group.contains(group)) {
-        _group.insert(group);
-
-        // Adjust subsetted properties
-        addOwnedElement(group);
-
-        // Adjust opposite properties
-        if (group) {
-            group->setInActivity(this);
-        }
-    }
+    UmlActivity::addGroup(group);
 }
 
-void QUmlActivity::removeGroup(QUmlActivityGroup *group)
+void QUmlActivity::removeGroup(UmlActivityGroup *group)
 {
-    // This is a read-write association end
-
-    if (_group.contains(group)) {
-        _group.remove(group);
-
-        // Adjust subsetted properties
-        removeOwnedElement(group);
-
-        // Adjust opposite properties
-        if (group) {
-            group->setInActivity(0);
-        }
-    }
+    UmlActivity::removeGroup(group);
 }
 
-/*!
-    If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).
- */
 bool QUmlActivity::isReadOnly() const
 {
-    // This is a read-write property
-
     return _isReadOnly;
 }
 
 void QUmlActivity::setReadOnly(bool isReadOnly)
 {
-    // This is a read-write property
-
-    if (_isReadOnly != isReadOnly) {
-        _isReadOnly = isReadOnly;
-    }
+    UmlActivity::setReadOnly(isReadOnly);
 }
 
-/*!
-    If true, all invocations of the activity are handled by the same execution.
- */
 bool QUmlActivity::isSingleExecution() const
 {
-    // This is a read-write property
-
     return _isSingleExecution;
 }
 
 void QUmlActivity::setSingleExecution(bool isSingleExecution)
 {
-    // This is a read-write property
-
-    if (_isSingleExecution != isSingleExecution) {
-        _isSingleExecution = isSingleExecution;
-    }
+    UmlActivity::setSingleExecution(isSingleExecution);
 }
 
-/*!
-    Nodes coordinated by the activity.
- */
 const QSet<QUmlActivityNode *> QUmlActivity::node() const
 {
-    // This is a read-write association end
-
-    return _node;
+    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_node));
 }
 
-void QUmlActivity::addNode(QUmlActivityNode *node)
+void QUmlActivity::addNode(UmlActivityNode *node)
 {
-    // This is a read-write association end
-
-    if (!_node.contains(node)) {
-        _node.insert(node);
-
-        // Adjust subsetted properties
-        addOwnedElement(node);
-
-        // Adjust opposite properties
-        if (node) {
-            node->setActivity(this);
-        }
-    }
+    UmlActivity::addNode(node);
 }
 
-void QUmlActivity::removeNode(QUmlActivityNode *node)
+void QUmlActivity::removeNode(UmlActivityNode *node)
 {
-    // This is a read-write association end
-
-    if (_node.contains(node)) {
-        _node.remove(node);
-
-        // Adjust subsetted properties
-        removeOwnedElement(node);
-
-        // Adjust opposite properties
-        if (node) {
-            node->setActivity(0);
-        }
-    }
+    UmlActivity::removeNode(node);
 }
 
-/*!
-    Top-level partitions in the activity.
- */
 const QSet<QUmlActivityPartition *> QUmlActivity::partition() const
 {
-    // This is a read-write association end
-
-    return _partition;
+    return *(reinterpret_cast<const QSet<QUmlActivityPartition *> *>(&_partition));
 }
 
-void QUmlActivity::addPartition(QUmlActivityPartition *partition)
+void QUmlActivity::addPartition(UmlActivityPartition *partition)
 {
-    // This is a read-write association end
-
-    if (!_partition.contains(partition)) {
-        _partition.insert(partition);
-
-        // Adjust subsetted properties
-        addGroup(partition);
-    }
+    UmlActivity::addPartition(partition);
 }
 
-void QUmlActivity::removePartition(QUmlActivityPartition *partition)
+void QUmlActivity::removePartition(UmlActivityPartition *partition)
 {
-    // This is a read-write association end
-
-    if (_partition.contains(partition)) {
-        _partition.remove(partition);
-
-        // Adjust subsetted properties
-        removeGroup(partition);
-    }
+    UmlActivity::removePartition(partition);
 }
 
-/*!
-    Top-level structured nodes in the activity.
- */
 const QSet<QUmlStructuredActivityNode *> QUmlActivity::structuredNode() const
 {
-    // This is a read-write association end
-
-    return _structuredNode;
+    return *(reinterpret_cast<const QSet<QUmlStructuredActivityNode *> *>(&_structuredNode));
 }
 
-void QUmlActivity::addStructuredNode(QUmlStructuredActivityNode *structuredNode)
+void QUmlActivity::addStructuredNode(UmlStructuredActivityNode *structuredNode)
 {
-    // This is a read-write association end
-
-    if (!_structuredNode.contains(structuredNode)) {
-        _structuredNode.insert(structuredNode);
-
-        // Adjust subsetted properties
-        addGroup(structuredNode);
-        addNode(structuredNode);
-
-        // Adjust opposite properties
-        if (structuredNode) {
-            structuredNode->setActivity(this);
-        }
-    }
+    UmlActivity::addStructuredNode(structuredNode);
 }
 
-void QUmlActivity::removeStructuredNode(QUmlStructuredActivityNode *structuredNode)
+void QUmlActivity::removeStructuredNode(UmlStructuredActivityNode *structuredNode)
 {
-    // This is a read-write association end
-
-    if (_structuredNode.contains(structuredNode)) {
-        _structuredNode.remove(structuredNode);
-
-        // Adjust subsetted properties
-        removeGroup(structuredNode);
-        removeNode(structuredNode);
-
-        // Adjust opposite properties
-        if (structuredNode) {
-            structuredNode->setActivity(0);
-        }
-    }
+    UmlActivity::removeStructuredNode(structuredNode);
 }
 
-/*!
-    Top-level variables in the activity.
- */
 const QSet<QUmlVariable *> QUmlActivity::variable() const
 {
-    // This is a read-write association end
-
-    return _variable;
+    return *(reinterpret_cast<const QSet<QUmlVariable *> *>(&_variable));
 }
 
-void QUmlActivity::addVariable(QUmlVariable *variable)
+void QUmlActivity::addVariable(UmlVariable *variable)
 {
-    // This is a read-write association end
-
-    if (!_variable.contains(variable)) {
-        _variable.insert(variable);
-
-        // Adjust subsetted properties
-        addOwnedMember(variable);
-
-        // Adjust opposite properties
-        if (variable) {
-            variable->setActivityScope(this);
-        }
-    }
+    UmlActivity::addVariable(variable);
 }
 
-void QUmlActivity::removeVariable(QUmlVariable *variable)
+void QUmlActivity::removeVariable(UmlVariable *variable)
 {
-    // This is a read-write association end
-
-    if (_variable.contains(variable)) {
-        _variable.remove(variable);
-
-        // Adjust subsetted properties
-        removeOwnedMember(variable);
-
-        // Adjust opposite properties
-        if (variable) {
-            variable->setActivityScope(0);
-        }
-    }
+    UmlActivity::removeVariable(variable);
 }
 
 QT_END_NAMESPACE

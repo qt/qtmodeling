@@ -43,9 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlActivityGroup>
+#include <QtCore/QObject>
+#include "private/umlstructuredactivitynode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -60,40 +59,40 @@ class QUmlInputPin;
 class QUmlOutputPin;
 class QUmlVariable;
 
-class Q_UML_EXPORT QUmlStructuredActivityNode : public QUmlAction, public QUmlNamespace, public QUmlActivityGroup
+class Q_UML_EXPORT QUmlStructuredActivityNode : public QObject, public UmlStructuredActivityNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlActivity * activity READ activity)
+    Q_PROPERTY(QSet<QUmlActivityEdge *> edge READ edge)
+    Q_PROPERTY(bool mustIsolate READ mustIsolate)
+    Q_PROPERTY(QSet<QUmlActivityNode *> node READ node)
+    Q_PROPERTY(QSet<QUmlInputPin *> structuredNodeInput READ structuredNodeInput)
+    Q_PROPERTY(QSet<QUmlOutputPin *> structuredNodeOutput READ structuredNodeOutput)
+    Q_PROPERTY(QSet<QUmlVariable *> variable READ variable)
+
 public:
-    QUmlStructuredActivityNode();
+    Q_INVOKABLE explicit QUmlStructuredActivityNode(QObject *parent = 0);
 
     // Owned attributes
-    QUmlActivity *activity() const;
-    void setActivity(QUmlActivity *activity);
-    const QSet<QUmlActivityEdge *> edge() const;
-    void addEdge(QUmlActivityEdge *edge);
-    void removeEdge(QUmlActivityEdge *edge);
-    bool mustIsolate() const;
-    void setMustIsolate(bool mustIsolate);
-    const QSet<QUmlActivityNode *> node() const;
-    void addNode(QUmlActivityNode *node);
-    void removeNode(QUmlActivityNode *node);
-    const QSet<QUmlInputPin *> structuredNodeInput() const;
-    void addStructuredNodeInput(QUmlInputPin *structuredNodeInput);
-    void removeStructuredNodeInput(QUmlInputPin *structuredNodeInput);
-    const QSet<QUmlOutputPin *> structuredNodeOutput() const;
-    void addStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput);
-    void removeStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput);
-    const QSet<QUmlVariable *> variable() const;
-    void addVariable(QUmlVariable *variable);
-    void removeVariable(QUmlVariable *variable);
-
-protected:
-    QUmlActivity *_activity;
-    QSet<QUmlActivityEdge *> _edge;
-    bool _mustIsolate;
-    QSet<QUmlActivityNode *> _node;
-    QSet<QUmlInputPin *> _structuredNodeInput;
-    QSet<QUmlOutputPin *> _structuredNodeOutput;
-    QSet<QUmlVariable *> _variable;
+    Q_INVOKABLE QUmlActivity *activity() const;
+    Q_INVOKABLE void setActivity(QUmlActivity *activity);
+    Q_INVOKABLE const QSet<QUmlActivityEdge *> edge() const;
+    Q_INVOKABLE void addEdge(UmlActivityEdge *edge);
+    Q_INVOKABLE void removeEdge(UmlActivityEdge *edge);
+    Q_INVOKABLE bool mustIsolate() const;
+    Q_INVOKABLE void setMustIsolate(bool mustIsolate);
+    Q_INVOKABLE const QSet<QUmlActivityNode *> node() const;
+    Q_INVOKABLE void addNode(UmlActivityNode *node);
+    Q_INVOKABLE void removeNode(UmlActivityNode *node);
+    Q_INVOKABLE const QSet<QUmlInputPin *> structuredNodeInput() const;
+    Q_INVOKABLE void addStructuredNodeInput(UmlInputPin *structuredNodeInput);
+    Q_INVOKABLE void removeStructuredNodeInput(UmlInputPin *structuredNodeInput);
+    Q_INVOKABLE const QSet<QUmlOutputPin *> structuredNodeOutput() const;
+    Q_INVOKABLE void addStructuredNodeOutput(UmlOutputPin *structuredNodeOutput);
+    Q_INVOKABLE void removeStructuredNodeOutput(UmlOutputPin *structuredNodeOutput);
+    Q_INVOKABLE const QSet<QUmlVariable *> variable() const;
+    Q_INVOKABLE void addVariable(UmlVariable *variable);
+    Q_INVOKABLE void removeVariable(UmlVariable *variable);
 };
 
 QT_END_NAMESPACE

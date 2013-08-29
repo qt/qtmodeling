@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlTypedElement>
-#include <QtUml/QUmlPackageableElement>
+#include <QtCore/QObject>
+#include "private/umlvaluespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,22 +54,22 @@ QT_MODULE(QtUml)
 
 class QUmlParameterableElement;
 
-class Q_UML_EXPORT QUmlValueSpecification : public QUmlTypedElement, public QUmlPackageableElement
+class Q_UML_EXPORT QUmlValueSpecification : public QObject, public UmlValueSpecification
 {
+    Q_OBJECT
+
 public:
-    Q_DECL_HIDDEN QUmlValueSpecification();
+    Q_DECL_HIDDEN explicit QUmlValueSpecification(QObject *parent = 0);
 
     // Operations
-    bool booleanValue() const;
-    int integerValue() const;
-    bool isCompatibleWith(QUmlParameterableElement *p) const;
-    bool isComputable() const;
-    bool isNull() const;
-    double realValue() const;
-    QString stringValue() const;
-    int unlimitedValue() const;
-
-protected:
+    Q_INVOKABLE bool booleanValue() const;
+    Q_INVOKABLE int integerValue() const;
+    Q_INVOKABLE bool isCompatibleWith(QUmlParameterableElement *p) const;
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE bool isNull() const;
+    Q_INVOKABLE double realValue() const;
+    Q_INVOKABLE QString stringValue() const;
+    Q_INVOKABLE int unlimitedValue() const;
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umldeployedartifact_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlDeployedArtifact : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlDeployedArtifact : public QObject, public UmlDeployedArtifact
 {
-public:
-    Q_DECL_HIDDEN QUmlDeployedArtifact();
+    Q_OBJECT
 
-protected:
+public:
+    Q_DECL_HIDDEN explicit QUmlDeployedArtifact(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

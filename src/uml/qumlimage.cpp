@@ -39,82 +39,44 @@
 **
 ****************************************************************************/
 #include "qumlimage.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlImage
-
-    \inmodule QtUml
-
-    \brief Physical definition of a graphical image.
- */
-
-QUmlImage::QUmlImage()
+QUmlImage::QUmlImage(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("content", QVariant::fromValue(QString()));
-    d_ptr->object.setProperty("format", QVariant::fromValue(QString()));
-    d_ptr->object.setProperty("location", QVariant::fromValue(QString()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).
- */
 QString QUmlImage::content() const
 {
-    // This is a read-write property
-
     return _content;
 }
 
 void QUmlImage::setContent(QString content)
 {
-    // This is a read-write property
-
-    if (_content != content) {
-        _content = content;
-    }
+    UmlImage::setContent(content);
 }
 
-/*!
-    This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example "SVG" could instead be expressed as "MIME: image/svg+xml".
- */
 QString QUmlImage::format() const
 {
-    // This is a read-write property
-
     return _format;
 }
 
 void QUmlImage::setFormat(QString format)
 {
-    // This is a read-write property
-
-    if (_format != format) {
-        _format = format;
-    }
+    UmlImage::setFormat(format);
 }
 
-/*!
-    This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.
- */
 QString QUmlImage::location() const
 {
-    // This is a read-write property
-
     return _location;
 }
 
 void QUmlImage::setLocation(QString location)
 {
-    // This is a read-write property
-
-    if (_location != location) {
-        _location = location;
-    }
+    UmlImage::setLocation(location);
 }
 
 QT_END_NAMESPACE

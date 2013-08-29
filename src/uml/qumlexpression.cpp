@@ -39,77 +39,41 @@
 **
 ****************************************************************************/
 #include "qumlexpression.h"
-#include "private/qmodelingobject_p.h"
+
+#include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExpression
-
-    \inmodule QtUml
-
-    \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
- */
-
-QUmlExpression::QUmlExpression()
+QUmlExpression::QUmlExpression(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("operand", QVariant::fromValue(&_operand));
-    d_ptr->object.setProperty("symbol", QVariant::fromValue(QString()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies a sequence of operands.
- */
 const QList<QUmlValueSpecification *> QUmlExpression::operand() const
 {
-    // This is a read-write association end
-
-    return _operand;
+    return *(reinterpret_cast<const QList<QUmlValueSpecification *> *>(&_operand));
 }
 
-void QUmlExpression::addOperand(QUmlValueSpecification *operand)
+void QUmlExpression::addOperand(UmlValueSpecification *operand)
 {
-    // This is a read-write association end
-
-    if (!_operand.contains(operand)) {
-        _operand.append(operand);
-
-        // Adjust subsetted properties
-        addOwnedElement(operand);
-    }
+    UmlExpression::addOperand(operand);
 }
 
-void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
+void QUmlExpression::removeOperand(UmlValueSpecification *operand)
 {
-    // This is a read-write association end
-
-    if (_operand.contains(operand)) {
-        _operand.removeAll(operand);
-
-        // Adjust subsetted properties
-        removeOwnedElement(operand);
-    }
+    UmlExpression::removeOperand(operand);
 }
 
-/*!
-    The symbol associated with the node in the expression tree.
- */
 QString QUmlExpression::symbol() const
 {
-    // This is a read-write property
-
     return _symbol;
 }
 
 void QUmlExpression::setSymbol(QString symbol)
 {
-    // This is a read-write property
-
-    if (_symbol != symbol) {
-        _symbol = symbol;
-    }
+    UmlExpression::setSymbol(symbol);
 }
 
 QT_END_NAMESPACE

@@ -39,131 +39,67 @@
 **
 ****************************************************************************/
 #include "qumlconditionalnode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClause>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlConditionalNode
-
-    \inmodule QtUml
-
-    \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
- */
-
-QUmlConditionalNode::QUmlConditionalNode() :
-    _isAssured(false),
-    _isDeterminate(false)
+QUmlConditionalNode::QUmlConditionalNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("clause", QVariant::fromValue(&_clause));
-    d_ptr->object.setProperty("isAssured", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isDeterminate", QVariant::fromValue(false));
-    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Set of clauses composing the conditional.
- */
 const QSet<QUmlClause *> QUmlConditionalNode::clause() const
 {
-    // This is a read-write association end
-
-    return _clause;
+    return *(reinterpret_cast<const QSet<QUmlClause *> *>(&_clause));
 }
 
-void QUmlConditionalNode::addClause(QUmlClause *clause)
+void QUmlConditionalNode::addClause(UmlClause *clause)
 {
-    // This is a read-write association end
-
-    if (!_clause.contains(clause)) {
-        _clause.insert(clause);
-
-        // Adjust subsetted properties
-        addOwnedElement(clause);
-    }
+    UmlConditionalNode::addClause(clause);
 }
 
-void QUmlConditionalNode::removeClause(QUmlClause *clause)
+void QUmlConditionalNode::removeClause(UmlClause *clause)
 {
-    // This is a read-write association end
-
-    if (_clause.contains(clause)) {
-        _clause.remove(clause);
-
-        // Adjust subsetted properties
-        removeOwnedElement(clause);
-    }
+    UmlConditionalNode::removeClause(clause);
 }
 
-/*!
-    If true, the modeler asserts that at least one test will succeed.
- */
 bool QUmlConditionalNode::isAssured() const
 {
-    // This is a read-write property
-
     return _isAssured;
 }
 
 void QUmlConditionalNode::setAssured(bool isAssured)
 {
-    // This is a read-write property
-
-    if (_isAssured != isAssured) {
-        _isAssured = isAssured;
-    }
+    UmlConditionalNode::setAssured(isAssured);
 }
 
-/*!
-    If true, the modeler asserts that at most one test will succeed.
- */
 bool QUmlConditionalNode::isDeterminate() const
 {
-    // This is a read-write property
-
     return _isDeterminate;
 }
 
 void QUmlConditionalNode::setDeterminate(bool isDeterminate)
 {
-    // This is a read-write property
-
-    if (_isDeterminate != isDeterminate) {
-        _isDeterminate = isDeterminate;
-    }
+    UmlConditionalNode::setDeterminate(isDeterminate);
 }
 
-/*!
-    A list of output pins that constitute the data flow outputs of the conditional.
- */
 const QList<QUmlOutputPin *> QUmlConditionalNode::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_result));
 }
 
-void QUmlConditionalNode::addResult(QUmlOutputPin *result)
+void QUmlConditionalNode::addResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (!_result.contains(result)) {
-        _result.append(result);
-    }
+    UmlConditionalNode::addResult(result);
 }
 
-void QUmlConditionalNode::removeResult(QUmlOutputPin *result)
+void QUmlConditionalNode::removeResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result.contains(result)) {
-        _result.removeAll(result);
-    }
+    UmlConditionalNode::removeResult(result);
 }
 
 QT_END_NAMESPACE

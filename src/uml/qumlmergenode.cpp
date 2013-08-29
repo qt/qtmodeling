@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlmergenode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlMergeNode
-
-    \inmodule QtUml
-
-    \brief A merge node is a control node that brings together multiple alternate flows. It is not used to synchronize concurrent flows but to accept one among several alternate flows.
- */
-
-QUmlMergeNode::QUmlMergeNode()
+QUmlMergeNode::QUmlMergeNode(QObject *parent) :
+    QObject(parent)
 {
 }
 

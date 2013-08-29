@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlstartclassifierbehavioraction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlStartClassifierBehaviorAction
-
-    \inmodule QtUml
-
-    \brief A start classifier behavior action is an action that starts the classifier behavior of the input.
- */
-
-QUmlStartClassifierBehaviorAction::QUmlStartClassifierBehaviorAction() :
-    _object(0)
+QUmlStartClassifierBehaviorAction::QUmlStartClassifierBehaviorAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Holds the object on which to start the owned behavior.
- */
 QUmlInputPin *QUmlStartClassifierBehaviorAction::object() const
 {
-    // This is a read-write association end
-
-    return _object;
+    return reinterpret_cast<QUmlInputPin *>(_object);
 }
 
 void QUmlStartClassifierBehaviorAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    if (_object != object) {
-        // Adjust subsetted properties
-        removeInput(_object);
-
-        _object = object;
-
-        // Adjust subsetted properties
-        if (object) {
-            addInput(object);
-        }
-    }
+    UmlStartClassifierBehaviorAction::setObject(object);
 }
 
 QT_END_NAMESPACE

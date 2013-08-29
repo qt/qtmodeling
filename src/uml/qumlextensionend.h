@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlProperty>
+#include <QtCore/QObject>
+#include "private/umlextensionend_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,22 +54,23 @@ QT_MODULE(QtUml)
 
 class QUmlStereotype;
 
-class Q_UML_EXPORT QUmlExtensionEnd : public QUmlProperty
+class Q_UML_EXPORT QUmlExtensionEnd : public QObject, public UmlExtensionEnd
 {
+    Q_OBJECT
+    Q_PROPERTY(int lower READ lower)
+    Q_PROPERTY(QUmlStereotype * type READ type)
+
 public:
-    QUmlExtensionEnd();
+    Q_INVOKABLE explicit QUmlExtensionEnd(QObject *parent = 0);
 
     // Owned attributes
-    int lower() const;
-    void setLower(int lower);
-    QUmlStereotype *type() const;
-    void setType(QUmlStereotype *type);
+    Q_INVOKABLE int lower() const;
+    Q_INVOKABLE void setLower(int lower);
+    Q_INVOKABLE QUmlStereotype *type() const;
+    Q_INVOKABLE void setType(QUmlStereotype *type);
 
     // Operations
-    int lowerBound() const;
-
-protected:
-    QUmlStereotype *_type;
+    Q_INVOKABLE int lowerBound() const;
 };
 
 QT_END_NAMESPACE

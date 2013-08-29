@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlTemplateParameter>
+#include <QtCore/QObject>
+#include "private/umloperationtemplateparameter_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlOperation;
 
-class Q_UML_EXPORT QUmlOperationTemplateParameter : public QUmlTemplateParameter
+class Q_UML_EXPORT QUmlOperationTemplateParameter : public QObject, public UmlOperationTemplateParameter
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOperation * parameteredElement READ parameteredElement)
+
 public:
-    QUmlOperationTemplateParameter();
+    Q_INVOKABLE explicit QUmlOperationTemplateParameter(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOperation *parameteredElement() const;
-    void setParameteredElement(QUmlOperation *parameteredElement);
-
-protected:
-    QUmlOperation *_parameteredElement;
+    Q_INVOKABLE QUmlOperation *parameteredElement() const;
+    Q_INVOKABLE void setParameteredElement(QUmlOperation *parameteredElement);
 };
 
 QT_END_NAMESPACE

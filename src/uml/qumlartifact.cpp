@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlartifact.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlManifestation>
 #include <QtUml/QUmlOperation>
@@ -47,184 +46,81 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlArtifact
-
-    \inmodule QtUml
-
-    \brief An artifact is the source of a deployment to a node.An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
- */
-
-QUmlArtifact::QUmlArtifact()
+QUmlArtifact::QUmlArtifact(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("fileName", QVariant::fromValue(QString()));
-    d_ptr->object.setProperty("manifestation", QVariant::fromValue(&_manifestation));
-    d_ptr->object.setProperty("nestedArtifact", QVariant::fromValue(&_nestedArtifact));
-    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
-    d_ptr->object.setProperty("ownedOperation", QVariant::fromValue(&_ownedOperation));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.
- */
 QString QUmlArtifact::fileName() const
 {
-    // This is a read-write property
-
     return _fileName;
 }
 
 void QUmlArtifact::setFileName(QString fileName)
 {
-    // This is a read-write property
-
-    if (_fileName != fileName) {
-        _fileName = fileName;
-    }
+    UmlArtifact::setFileName(fileName);
 }
 
-/*!
-    The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
- */
 const QSet<QUmlManifestation *> QUmlArtifact::manifestation() const
 {
-    // This is a read-write association end
-
-    return _manifestation;
+    return *(reinterpret_cast<const QSet<QUmlManifestation *> *>(&_manifestation));
 }
 
-void QUmlArtifact::addManifestation(QUmlManifestation *manifestation)
+void QUmlArtifact::addManifestation(UmlManifestation *manifestation)
 {
-    // This is a read-write association end
-
-    if (!_manifestation.contains(manifestation)) {
-        _manifestation.insert(manifestation);
-
-        // Adjust subsetted properties
-        addOwnedElement(manifestation);
-        addClientDependency(manifestation);
-    }
+    UmlArtifact::addManifestation(manifestation);
 }
 
-void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
+void QUmlArtifact::removeManifestation(UmlManifestation *manifestation)
 {
-    // This is a read-write association end
-
-    if (_manifestation.contains(manifestation)) {
-        _manifestation.remove(manifestation);
-
-        // Adjust subsetted properties
-        removeOwnedElement(manifestation);
-        removeClientDependency(manifestation);
-    }
+    UmlArtifact::removeManifestation(manifestation);
 }
 
-/*!
-    The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
- */
 const QSet<QUmlArtifact *> QUmlArtifact::nestedArtifact() const
 {
-    // This is a read-write association end
-
-    return _nestedArtifact;
+    return *(reinterpret_cast<const QSet<QUmlArtifact *> *>(&_nestedArtifact));
 }
 
-void QUmlArtifact::addNestedArtifact(QUmlArtifact *nestedArtifact)
+void QUmlArtifact::addNestedArtifact(UmlArtifact *nestedArtifact)
 {
-    // This is a read-write association end
-
-    if (!_nestedArtifact.contains(nestedArtifact)) {
-        _nestedArtifact.insert(nestedArtifact);
-
-        // Adjust subsetted properties
-        addOwnedMember(nestedArtifact);
-    }
+    UmlArtifact::addNestedArtifact(nestedArtifact);
 }
 
-void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
+void QUmlArtifact::removeNestedArtifact(UmlArtifact *nestedArtifact)
 {
-    // This is a read-write association end
-
-    if (_nestedArtifact.contains(nestedArtifact)) {
-        _nestedArtifact.remove(nestedArtifact);
-
-        // Adjust subsetted properties
-        removeOwnedMember(nestedArtifact);
-    }
+    UmlArtifact::removeNestedArtifact(nestedArtifact);
 }
 
-/*!
-    The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.
- */
 const QList<QUmlProperty *> QUmlArtifact::ownedAttribute() const
 {
-    // This is a read-write association end
-
-    return _ownedAttribute;
+    return *(reinterpret_cast<const QList<QUmlProperty *> *>(&_ownedAttribute));
 }
 
-void QUmlArtifact::addOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlArtifact::addOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedAttribute);
-        addAttribute(ownedAttribute);
-    }
+    UmlArtifact::addOwnedAttribute(ownedAttribute);
 }
 
-void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlArtifact::removeOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedAttribute);
-        removeAttribute(ownedAttribute);
-    }
+    UmlArtifact::removeOwnedAttribute(ownedAttribute);
 }
 
-/*!
-    The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
- */
 const QList<QUmlOperation *> QUmlArtifact::ownedOperation() const
 {
-    // This is a read-write association end
-
-    return _ownedOperation;
+    return *(reinterpret_cast<const QList<QUmlOperation *> *>(&_ownedOperation));
 }
 
-void QUmlArtifact::addOwnedOperation(QUmlOperation *ownedOperation)
+void QUmlArtifact::addOwnedOperation(UmlOperation *ownedOperation)
 {
-    // This is a read-write association end
-
-    if (!_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.append(ownedOperation);
-
-        // Adjust subsetted properties
-        addFeature(ownedOperation);
-        addOwnedMember(ownedOperation);
-    }
+    UmlArtifact::addOwnedOperation(ownedOperation);
 }
 
-void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
+void QUmlArtifact::removeOwnedOperation(UmlOperation *ownedOperation)
 {
-    // This is a read-write association end
-
-    if (_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.removeAll(ownedOperation);
-
-        // Adjust subsetted properties
-        removeFeature(ownedOperation);
-        removeOwnedMember(ownedOperation);
-    }
+    UmlArtifact::removeOwnedOperation(ownedOperation);
 }
 
 QT_END_NAMESPACE

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlinteractionuse.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlGate>
 #include <QtUml/QUmlInteraction>
@@ -48,159 +47,71 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInteractionUse
-
-    \inmodule QtUml
-
-    \brief An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
- */
-
-QUmlInteractionUse::QUmlInteractionUse() :
-    _refersTo(0),
-    _returnValue(0),
-    _returnValueRecipient(0)
+QUmlInteractionUse::QUmlInteractionUse(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("actualGate", QVariant::fromValue(&_actualGate));
-    d_ptr->object.setProperty("argument", QVariant::fromValue(&_argument));
-    d_ptr->object.setProperty("refersTo", QVariant::fromValue((QUmlInteraction *)(0)));
-    d_ptr->object.setProperty("returnValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
-    d_ptr->object.setProperty("returnValueRecipient", QVariant::fromValue((QUmlProperty *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The actual gates of the InteractionUse
- */
 const QSet<QUmlGate *> QUmlInteractionUse::actualGate() const
 {
-    // This is a read-write association end
-
-    return _actualGate;
+    return *(reinterpret_cast<const QSet<QUmlGate *> *>(&_actualGate));
 }
 
-void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
+void QUmlInteractionUse::addActualGate(UmlGate *actualGate)
 {
-    // This is a read-write association end
-
-    if (!_actualGate.contains(actualGate)) {
-        _actualGate.insert(actualGate);
-
-        // Adjust subsetted properties
-        addOwnedElement(actualGate);
-    }
+    UmlInteractionUse::addActualGate(actualGate);
 }
 
-void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
+void QUmlInteractionUse::removeActualGate(UmlGate *actualGate)
 {
-    // This is a read-write association end
-
-    if (_actualGate.contains(actualGate)) {
-        _actualGate.remove(actualGate);
-
-        // Adjust subsetted properties
-        removeOwnedElement(actualGate);
-    }
+    UmlInteractionUse::removeActualGate(actualGate);
 }
 
-/*!
-    The actual arguments of the Interaction
- */
 const QList<QUmlValueSpecification *> QUmlInteractionUse::argument() const
 {
-    // This is a read-write association end
-
-    return _argument;
+    return *(reinterpret_cast<const QList<QUmlValueSpecification *> *>(&_argument));
 }
 
-void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
+void QUmlInteractionUse::addArgument(UmlValueSpecification *argument)
 {
-    // This is a read-write association end
-
-    if (!_argument.contains(argument)) {
-        _argument.append(argument);
-
-        // Adjust subsetted properties
-        addOwnedElement(argument);
-    }
+    UmlInteractionUse::addArgument(argument);
 }
 
-void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
+void QUmlInteractionUse::removeArgument(UmlValueSpecification *argument)
 {
-    // This is a read-write association end
-
-    if (_argument.contains(argument)) {
-        _argument.removeAll(argument);
-
-        // Adjust subsetted properties
-        removeOwnedElement(argument);
-    }
+    UmlInteractionUse::removeArgument(argument);
 }
 
-/*!
-    Refers to the Interaction that defines its meaning
- */
 QUmlInteraction *QUmlInteractionUse::refersTo() const
 {
-    // This is a read-write association end
-
-    return _refersTo;
+    return reinterpret_cast<QUmlInteraction *>(_refersTo);
 }
 
 void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
 {
-    // This is a read-write association end
-
-    if (_refersTo != refersTo) {
-        _refersTo = refersTo;
-    }
+    UmlInteractionUse::setRefersTo(refersTo);
 }
 
-/*!
-    The value of the executed Interaction.
- */
 QUmlValueSpecification *QUmlInteractionUse::returnValue() const
 {
-    // This is a read-write association end
-
-    return _returnValue;
+    return reinterpret_cast<QUmlValueSpecification *>(_returnValue);
 }
 
 void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
 {
-    // This is a read-write association end
-
-    if (_returnValue != returnValue) {
-        // Adjust subsetted properties
-        removeOwnedElement(_returnValue);
-
-        _returnValue = returnValue;
-
-        // Adjust subsetted properties
-        if (returnValue) {
-            addOwnedElement(returnValue);
-        }
-    }
+    UmlInteractionUse::setReturnValue(returnValue);
 }
 
-/*!
-    The recipient of the return value.
- */
 QUmlProperty *QUmlInteractionUse::returnValueRecipient() const
 {
-    // This is a read-write association end
-
-    return _returnValueRecipient;
+    return reinterpret_cast<QUmlProperty *>(_returnValueRecipient);
 }
 
 void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipient)
 {
-    // This is a read-write association end
-
-    if (_returnValueRecipient != returnValueRecipient) {
-        _returnValueRecipient = returnValueRecipient;
-    }
+    UmlInteractionUse::setReturnValueRecipient(returnValueRecipient);
 }
 
 QT_END_NAMESPACE

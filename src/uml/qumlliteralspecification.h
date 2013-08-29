@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlValueSpecification>
+#include <QtCore/QObject>
+#include "private/umlliteralspecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlLiteralSpecification : public QUmlValueSpecification
+class Q_UML_EXPORT QUmlLiteralSpecification : public QObject, public UmlLiteralSpecification
 {
-public:
-    Q_DECL_HIDDEN QUmlLiteralSpecification();
+    Q_OBJECT
 
-protected:
+public:
+    Q_DECL_HIDDEN explicit QUmlLiteralSpecification(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

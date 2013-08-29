@@ -39,75 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlcreateobjectaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCreateObjectAction
-
-    \inmodule QtUml
-
-    \brief A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
- */
-
-QUmlCreateObjectAction::QUmlCreateObjectAction() :
-    _classifier(0),
-    _result(0)
+QUmlCreateObjectAction::QUmlCreateObjectAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("classifier", QVariant::fromValue((QUmlClassifier *)(0)));
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Classifier to be instantiated.
- */
 QUmlClassifier *QUmlCreateObjectAction::classifier() const
 {
-    // This is a read-write association end
-
-    return _classifier;
+    return reinterpret_cast<QUmlClassifier *>(_classifier);
 }
 
 void QUmlCreateObjectAction::setClassifier(QUmlClassifier *classifier)
 {
-    // This is a read-write association end
-
-    if (_classifier != classifier) {
-        _classifier = classifier;
-    }
+    UmlCreateObjectAction::setClassifier(classifier);
 }
 
-/*!
-    Gives the output pin on which the result is put.
- */
 QUmlOutputPin *QUmlCreateObjectAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlCreateObjectAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlCreateObjectAction::setResult(result);
 }
 
 QT_END_NAMESPACE

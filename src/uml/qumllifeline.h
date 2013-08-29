@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umllifeline_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,30 +58,30 @@ class QUmlInteractionFragment;
 class QUmlPartDecomposition;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlLifeline : public QUmlNamedElement
+class Q_UML_EXPORT QUmlLifeline : public QObject, public UmlLifeline
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlInteractionFragment *> coveredBy READ coveredBy)
+    Q_PROPERTY(QUmlPartDecomposition * decomposedAs READ decomposedAs)
+    Q_PROPERTY(QUmlInteraction * interaction READ interaction)
+    Q_PROPERTY(QUmlConnectableElement * represents READ represents)
+    Q_PROPERTY(QUmlValueSpecification * selector READ selector)
+
 public:
-    QUmlLifeline();
+    Q_INVOKABLE explicit QUmlLifeline(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlInteractionFragment *> coveredBy() const;
-    void addCoveredBy(QUmlInteractionFragment *coveredBy);
-    void removeCoveredBy(QUmlInteractionFragment *coveredBy);
-    QUmlPartDecomposition *decomposedAs() const;
-    void setDecomposedAs(QUmlPartDecomposition *decomposedAs);
-    QUmlInteraction *interaction() const;
-    void setInteraction(QUmlInteraction *interaction);
-    QUmlConnectableElement *represents() const;
-    void setRepresents(QUmlConnectableElement *represents);
-    QUmlValueSpecification *selector() const;
-    void setSelector(QUmlValueSpecification *selector);
-
-protected:
-    QSet<QUmlInteractionFragment *> _coveredBy;
-    QUmlPartDecomposition *_decomposedAs;
-    QUmlInteraction *_interaction;
-    QUmlConnectableElement *_represents;
-    QUmlValueSpecification *_selector;
+    Q_INVOKABLE const QSet<QUmlInteractionFragment *> coveredBy() const;
+    Q_INVOKABLE void addCoveredBy(UmlInteractionFragment *coveredBy);
+    Q_INVOKABLE void removeCoveredBy(UmlInteractionFragment *coveredBy);
+    Q_INVOKABLE QUmlPartDecomposition *decomposedAs() const;
+    Q_INVOKABLE void setDecomposedAs(QUmlPartDecomposition *decomposedAs);
+    Q_INVOKABLE QUmlInteraction *interaction() const;
+    Q_INVOKABLE void setInteraction(QUmlInteraction *interaction);
+    Q_INVOKABLE QUmlConnectableElement *represents() const;
+    Q_INVOKABLE void setRepresents(QUmlConnectableElement *represents);
+    Q_INVOKABLE QUmlValueSpecification *selector() const;
+    Q_INVOKABLE void setSelector(QUmlValueSpecification *selector);
 };
 
 QT_END_NAMESPACE

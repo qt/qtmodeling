@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlLiteralSpecification>
+#include <QtCore/QObject>
+#include "private/umlliteralboolean_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,21 +52,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlLiteralBoolean : public QUmlLiteralSpecification
+class Q_UML_EXPORT QUmlLiteralBoolean : public QObject, public UmlLiteralBoolean
 {
+    Q_OBJECT
+    Q_PROPERTY(bool value READ value)
+
 public:
-    QUmlLiteralBoolean();
+    Q_INVOKABLE explicit QUmlLiteralBoolean(QObject *parent = 0);
 
     // Owned attributes
-    bool value() const;
-    void setValue(bool value);
+    Q_INVOKABLE bool value() const;
+    Q_INVOKABLE void setValue(bool value);
 
     // Operations
-    bool booleanValue() const;
-    bool isComputable() const;
-
-protected:
-    bool _value;
+    Q_INVOKABLE bool booleanValue() const;
+    Q_INVOKABLE bool isComputable() const;
 };
 
 QT_END_NAMESPACE

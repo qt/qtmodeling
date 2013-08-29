@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInteractionFragment>
+#include <QtCore/QObject>
+#include "private/umlexecutionspecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlOccurrenceSpecification;
 
-class Q_UML_EXPORT QUmlExecutionSpecification : public QUmlInteractionFragment
+class Q_UML_EXPORT QUmlExecutionSpecification : public QObject, public UmlExecutionSpecification
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOccurrenceSpecification * finish READ finish)
+    Q_PROPERTY(QUmlOccurrenceSpecification * start READ start)
+
 public:
-    Q_DECL_HIDDEN QUmlExecutionSpecification();
+    Q_DECL_HIDDEN explicit QUmlExecutionSpecification(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOccurrenceSpecification *finish() const;
-    void setFinish(QUmlOccurrenceSpecification *finish);
-    QUmlOccurrenceSpecification *start() const;
-    void setStart(QUmlOccurrenceSpecification *start);
-
-protected:
-    QUmlOccurrenceSpecification *_finish;
-    QUmlOccurrenceSpecification *_start;
+    Q_INVOKABLE QUmlOccurrenceSpecification *finish() const;
+    Q_INVOKABLE void setFinish(QUmlOccurrenceSpecification *finish);
+    Q_INVOKABLE QUmlOccurrenceSpecification *start() const;
+    Q_INVOKABLE void setStart(QUmlOccurrenceSpecification *start);
 };
 
 QT_END_NAMESPACE

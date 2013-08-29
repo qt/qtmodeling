@@ -43,9 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlStructuralFeature>
-#include <QtUml/QUmlConnectableElement>
-#include <QtUml/QUmlDeploymentTarget>
+#include <QtCore/QObject>
+#include "private/umlproperty_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -63,75 +62,78 @@ class QUmlRedefinableElement;
 class QUmlType;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlProperty : public QUmlStructuralFeature, public QUmlConnectableElement, public QUmlDeploymentTarget
+class Q_UML_EXPORT QUmlProperty : public QObject, public UmlProperty
 {
+    Q_OBJECT
+    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation)
+    Q_PROPERTY(QUmlAssociation * association READ association)
+    Q_PROPERTY(QUmlProperty * associationEnd READ associationEnd)
+    Q_PROPERTY(QUmlClass * class_ READ class_)
+    Q_PROPERTY(QUmlDataType * datatype READ datatype)
+    Q_PROPERTY(QString default_ READ default_)
+    Q_PROPERTY(QUmlValueSpecification * defaultValue READ defaultValue)
+    Q_PROPERTY(QUmlInterface * interface_ READ interface_)
+    Q_PROPERTY(bool isComposite READ isComposite)
+    Q_PROPERTY(bool isDerived READ isDerived)
+    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion)
+    Q_PROPERTY(bool isID READ isID)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly)
+    Q_PROPERTY(QUmlProperty * opposite READ opposite)
+    Q_PROPERTY(QUmlAssociation * owningAssociation READ owningAssociation)
+    Q_PROPERTY(QList<QUmlProperty *> qualifier READ qualifier)
+    Q_PROPERTY(QSet<QUmlProperty *> redefinedProperty READ redefinedProperty)
+    Q_PROPERTY(QSet<QUmlProperty *> subsettedProperty READ subsettedProperty)
+
 public:
-    QUmlProperty();
+    Q_INVOKABLE explicit QUmlProperty(QObject *parent = 0);
 
     // Owned attributes
-    QtUml::AggregationKind aggregation() const;
-    void setAggregation(QtUml::AggregationKind aggregation);
-    QUmlAssociation *association() const;
-    void setAssociation(QUmlAssociation *association);
-    QUmlProperty *associationEnd() const;
-    void setAssociationEnd(QUmlProperty *associationEnd);
-    QUmlClass *class_() const;
-    void setClass(QUmlClass *class_);
-    QUmlDataType *datatype() const;
-    void setDatatype(QUmlDataType *datatype);
-    QString default_() const;
-    void setDefault(QString default_);
-    QUmlValueSpecification *defaultValue() const;
-    void setDefaultValue(QUmlValueSpecification *defaultValue);
-    QUmlInterface *interface_() const;
-    void setInterface(QUmlInterface *interface_);
-    bool isComposite() const;
-    void setComposite(bool isComposite);
-    bool isDerived() const;
-    void setDerived(bool isDerived);
-    bool isDerivedUnion() const;
-    void setDerivedUnion(bool isDerivedUnion);
-    bool isID() const;
-    void setID(bool isID);
-    bool isReadOnly() const;
-    void setReadOnly(bool isReadOnly);
-    QUmlProperty *opposite() const;
-    void setOpposite(QUmlProperty *opposite);
-    QUmlAssociation *owningAssociation() const;
-    void setOwningAssociation(QUmlAssociation *owningAssociation);
-    const QList<QUmlProperty *> qualifier() const;
-    void addQualifier(QUmlProperty *qualifier);
-    void removeQualifier(QUmlProperty *qualifier);
-    const QSet<QUmlProperty *> redefinedProperty() const;
-    void addRedefinedProperty(QUmlProperty *redefinedProperty);
-    void removeRedefinedProperty(QUmlProperty *redefinedProperty);
-    const QSet<QUmlProperty *> subsettedProperty() const;
-    void addSubsettedProperty(QUmlProperty *subsettedProperty);
-    void removeSubsettedProperty(QUmlProperty *subsettedProperty);
+    Q_INVOKABLE QtUml::AggregationKind aggregation() const;
+    Q_INVOKABLE void setAggregation(QtUml::AggregationKind aggregation);
+    Q_INVOKABLE QUmlAssociation *association() const;
+    Q_INVOKABLE void setAssociation(QUmlAssociation *association);
+    Q_INVOKABLE QUmlProperty *associationEnd() const;
+    Q_INVOKABLE void setAssociationEnd(QUmlProperty *associationEnd);
+    Q_INVOKABLE QUmlClass *class_() const;
+    Q_INVOKABLE void setClass(QUmlClass *class_);
+    Q_INVOKABLE QUmlDataType *datatype() const;
+    Q_INVOKABLE void setDatatype(QUmlDataType *datatype);
+    Q_INVOKABLE QString default_() const;
+    Q_INVOKABLE void setDefault(QString default_);
+    Q_INVOKABLE QUmlValueSpecification *defaultValue() const;
+    Q_INVOKABLE void setDefaultValue(QUmlValueSpecification *defaultValue);
+    Q_INVOKABLE QUmlInterface *interface_() const;
+    Q_INVOKABLE void setInterface(QUmlInterface *interface_);
+    Q_INVOKABLE bool isComposite() const;
+    Q_INVOKABLE void setComposite(bool isComposite);
+    Q_INVOKABLE bool isDerived() const;
+    Q_INVOKABLE void setDerived(bool isDerived);
+    Q_INVOKABLE bool isDerivedUnion() const;
+    Q_INVOKABLE void setDerivedUnion(bool isDerivedUnion);
+    Q_INVOKABLE bool isID() const;
+    Q_INVOKABLE void setID(bool isID);
+    Q_INVOKABLE bool isReadOnly() const;
+    Q_INVOKABLE void setReadOnly(bool isReadOnly);
+    Q_INVOKABLE QUmlProperty *opposite() const;
+    Q_INVOKABLE void setOpposite(QUmlProperty *opposite);
+    Q_INVOKABLE QUmlAssociation *owningAssociation() const;
+    Q_INVOKABLE void setOwningAssociation(QUmlAssociation *owningAssociation);
+    Q_INVOKABLE const QList<QUmlProperty *> qualifier() const;
+    Q_INVOKABLE void addQualifier(UmlProperty *qualifier);
+    Q_INVOKABLE void removeQualifier(UmlProperty *qualifier);
+    Q_INVOKABLE const QSet<QUmlProperty *> redefinedProperty() const;
+    Q_INVOKABLE void addRedefinedProperty(UmlProperty *redefinedProperty);
+    Q_INVOKABLE void removeRedefinedProperty(UmlProperty *redefinedProperty);
+    Q_INVOKABLE const QSet<QUmlProperty *> subsettedProperty() const;
+    Q_INVOKABLE void addSubsettedProperty(UmlProperty *subsettedProperty);
+    Q_INVOKABLE void removeSubsettedProperty(UmlProperty *subsettedProperty);
 
     // Operations
-    bool isAttribute(QUmlProperty *p) const;
-    bool isCompatibleWith(QUmlParameterableElement *p) const;
-    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-    bool isNavigable() const;
-    QSet<QUmlType *> subsettingContext() const;
-
-protected:
-    QtUml::AggregationKind _aggregation;
-    QUmlAssociation *_association;
-    QUmlProperty *_associationEnd;
-    QUmlClass *_class_;
-    QUmlDataType *_datatype;
-    QUmlValueSpecification *_defaultValue;
-    QUmlInterface *_interface_;
-    bool _isDerived;
-    bool _isDerivedUnion;
-    bool _isID;
-    bool _isReadOnly;
-    QUmlAssociation *_owningAssociation;
-    QList<QUmlProperty *> _qualifier;
-    QSet<QUmlProperty *> _redefinedProperty;
-    QSet<QUmlProperty *> _subsettedProperty;
+    Q_INVOKABLE bool isAttribute(QUmlProperty *p) const;
+    Q_INVOKABLE bool isCompatibleWith(QUmlParameterableElement *p) const;
+    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+    Q_INVOKABLE bool isNavigable() const;
+    Q_INVOKABLE QSet<QUmlType *> subsettingContext() const;
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umlrelationship_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,18 +52,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlRelationship : public virtual QUmlElement
+class QUmlElement;
+
+class Q_UML_EXPORT QUmlRelationship : public QObject, public UmlRelationship
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlElement *> relatedElement READ relatedElement)
+
 public:
-    Q_DECL_HIDDEN QUmlRelationship();
+    Q_DECL_HIDDEN explicit QUmlRelationship(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlElement *> relatedElement() const;
-    Q_DECL_HIDDEN void addRelatedElement(QUmlElement *relatedElement);
-    Q_DECL_HIDDEN void removeRelatedElement(QUmlElement *relatedElement);
-
-protected:
-    QSet<QUmlElement *> _relatedElement;
+    Q_INVOKABLE const QSet<QUmlElement *> relatedElement() const;
 };
 
 QT_END_NAMESPACE

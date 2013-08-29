@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umldestroyobjectaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,23 +54,23 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class Q_UML_EXPORT QUmlDestroyObjectAction : public QUmlAction
+class Q_UML_EXPORT QUmlDestroyObjectAction : public QObject, public UmlDestroyObjectAction
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isDestroyLinks READ isDestroyLinks)
+    Q_PROPERTY(bool isDestroyOwnedObjects READ isDestroyOwnedObjects)
+    Q_PROPERTY(QUmlInputPin * target READ target)
+
 public:
-    QUmlDestroyObjectAction();
+    Q_INVOKABLE explicit QUmlDestroyObjectAction(QObject *parent = 0);
 
     // Owned attributes
-    bool isDestroyLinks() const;
-    void setDestroyLinks(bool isDestroyLinks);
-    bool isDestroyOwnedObjects() const;
-    void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
-    QUmlInputPin *target() const;
-    void setTarget(QUmlInputPin *target);
-
-protected:
-    bool _isDestroyLinks;
-    bool _isDestroyOwnedObjects;
-    QUmlInputPin *_target;
+    Q_INVOKABLE bool isDestroyLinks() const;
+    Q_INVOKABLE void setDestroyLinks(bool isDestroyLinks);
+    Q_INVOKABLE bool isDestroyOwnedObjects() const;
+    Q_INVOKABLE void setDestroyOwnedObjects(bool isDestroyOwnedObjects);
+    Q_INVOKABLE QUmlInputPin *target() const;
+    Q_INVOKABLE void setTarget(QUmlInputPin *target);
 };
 
 QT_END_NAMESPACE

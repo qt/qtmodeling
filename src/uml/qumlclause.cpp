@@ -39,191 +39,102 @@
 **
 ****************************************************************************/
 #include "qumlclause.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlClause
-
-    \inmodule QtUml
-
-    \brief A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
- */
-
-QUmlClause::QUmlClause() :
-    _decider(0)
+QUmlClause::QUmlClause(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("body", QVariant::fromValue(&_body));
-    d_ptr->object.setProperty("bodyOutput", QVariant::fromValue(&_bodyOutput));
-    d_ptr->object.setProperty("decider", QVariant::fromValue((QUmlOutputPin *)(0)));
-    d_ptr->object.setProperty("predecessorClause", QVariant::fromValue(&_predecessorClause));
-    d_ptr->object.setProperty("successorClause", QVariant::fromValue(&_successorClause));
-    d_ptr->object.setProperty("test", QVariant::fromValue(&_test));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
- */
 const QSet<QUmlExecutableNode *> QUmlClause::body() const
 {
-    // This is a read-write association end
-
-    return _body;
+    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_body));
 }
 
-void QUmlClause::addBody(QUmlExecutableNode *body)
+void QUmlClause::addBody(UmlExecutableNode *body)
 {
-    // This is a read-write association end
-
-    if (!_body.contains(body)) {
-        _body.insert(body);
-    }
+    UmlClause::addBody(body);
 }
 
-void QUmlClause::removeBody(QUmlExecutableNode *body)
+void QUmlClause::removeBody(UmlExecutableNode *body)
 {
-    // This is a read-write association end
-
-    if (_body.contains(body)) {
-        _body.remove(body);
-    }
+    UmlClause::removeBody(body);
 }
 
-/*!
-    A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
- */
 const QList<QUmlOutputPin *> QUmlClause::bodyOutput() const
 {
-    // This is a read-write association end
-
-    return _bodyOutput;
+    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_bodyOutput));
 }
 
-void QUmlClause::addBodyOutput(QUmlOutputPin *bodyOutput)
+void QUmlClause::addBodyOutput(UmlOutputPin *bodyOutput)
 {
-    // This is a read-write association end
-
-    if (!_bodyOutput.contains(bodyOutput)) {
-        _bodyOutput.append(bodyOutput);
-    }
+    UmlClause::addBodyOutput(bodyOutput);
 }
 
-void QUmlClause::removeBodyOutput(QUmlOutputPin *bodyOutput)
+void QUmlClause::removeBodyOutput(UmlOutputPin *bodyOutput)
 {
-    // This is a read-write association end
-
-    if (_bodyOutput.contains(bodyOutput)) {
-        _bodyOutput.removeAll(bodyOutput);
-    }
+    UmlClause::removeBodyOutput(bodyOutput);
 }
 
-/*!
-    An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.
- */
 QUmlOutputPin *QUmlClause::decider() const
 {
-    // This is a read-write association end
-
-    return _decider;
+    return reinterpret_cast<QUmlOutputPin *>(_decider);
 }
 
 void QUmlClause::setDecider(QUmlOutputPin *decider)
 {
-    // This is a read-write association end
-
-    if (_decider != decider) {
-        _decider = decider;
-    }
+    UmlClause::setDecider(decider);
 }
 
-/*!
-    A set of clauses whose tests must all evaluate false before the current clause can be tested.
- */
 const QSet<QUmlClause *> QUmlClause::predecessorClause() const
 {
-    // This is a read-write association end
-
-    return _predecessorClause;
+    return *(reinterpret_cast<const QSet<QUmlClause *> *>(&_predecessorClause));
 }
 
-void QUmlClause::addPredecessorClause(QUmlClause *predecessorClause)
+void QUmlClause::addPredecessorClause(UmlClause *predecessorClause)
 {
-    // This is a read-write association end
-
-    if (!_predecessorClause.contains(predecessorClause)) {
-        _predecessorClause.insert(predecessorClause);
-    }
+    UmlClause::addPredecessorClause(predecessorClause);
 }
 
-void QUmlClause::removePredecessorClause(QUmlClause *predecessorClause)
+void QUmlClause::removePredecessorClause(UmlClause *predecessorClause)
 {
-    // This is a read-write association end
-
-    if (_predecessorClause.contains(predecessorClause)) {
-        _predecessorClause.remove(predecessorClause);
-    }
+    UmlClause::removePredecessorClause(predecessorClause);
 }
 
-/*!
-    A set of clauses which may not be tested unless the current clause tests false.
- */
 const QSet<QUmlClause *> QUmlClause::successorClause() const
 {
-    // This is a read-write association end
-
-    return _successorClause;
+    return *(reinterpret_cast<const QSet<QUmlClause *> *>(&_successorClause));
 }
 
-void QUmlClause::addSuccessorClause(QUmlClause *successorClause)
+void QUmlClause::addSuccessorClause(UmlClause *successorClause)
 {
-    // This is a read-write association end
-
-    if (!_successorClause.contains(successorClause)) {
-        _successorClause.insert(successorClause);
-    }
+    UmlClause::addSuccessorClause(successorClause);
 }
 
-void QUmlClause::removeSuccessorClause(QUmlClause *successorClause)
+void QUmlClause::removeSuccessorClause(UmlClause *successorClause)
 {
-    // This is a read-write association end
-
-    if (_successorClause.contains(successorClause)) {
-        _successorClause.remove(successorClause);
-    }
+    UmlClause::removeSuccessorClause(successorClause);
 }
 
-/*!
-    A nested activity fragment with a designated output pin that specifies the result of the test.
- */
 const QSet<QUmlExecutableNode *> QUmlClause::test() const
 {
-    // This is a read-write association end
-
-    return _test;
+    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_test));
 }
 
-void QUmlClause::addTest(QUmlExecutableNode *test)
+void QUmlClause::addTest(UmlExecutableNode *test)
 {
-    // This is a read-write association end
-
-    if (!_test.contains(test)) {
-        _test.insert(test);
-    }
+    UmlClause::addTest(test);
 }
 
-void QUmlClause::removeTest(QUmlExecutableNode *test)
+void QUmlClause::removeTest(UmlExecutableNode *test)
 {
-    // This is a read-write association end
-
-    if (_test.contains(test)) {
-        _test.remove(test);
-    }
+    UmlClause::removeTest(test);
 }
 
 QT_END_NAMESPACE

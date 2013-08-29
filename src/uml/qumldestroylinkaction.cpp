@@ -39,53 +39,31 @@
 **
 ****************************************************************************/
 #include "qumldestroylinkaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlLinkEndDestructionData>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDestroyLinkAction
-
-    \inmodule QtUml
-
-    \brief A destroy link action is a write link action that destroys links and link objects.
- */
-
-QUmlDestroyLinkAction::QUmlDestroyLinkAction()
+QUmlDestroyLinkAction::QUmlDestroyLinkAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("endData", QVariant::fromValue(&_endData));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies ends of association and inputs.
- */
 const QSet<QUmlLinkEndDestructionData *> QUmlDestroyLinkAction::endData() const
 {
-    // This is a read-write association end
-
-    return _endData;
+    return *(reinterpret_cast<const QSet<QUmlLinkEndDestructionData *> *>(&_endData));
 }
 
-void QUmlDestroyLinkAction::addEndData(QUmlLinkEndDestructionData *endData)
+void QUmlDestroyLinkAction::addEndData(UmlLinkEndDestructionData *endData)
 {
-    // This is a read-write association end
-
-    if (!_endData.contains(endData)) {
-        _endData.insert(endData);
-    }
+    UmlDestroyLinkAction::addEndData(endData);
 }
 
-void QUmlDestroyLinkAction::removeEndData(QUmlLinkEndDestructionData *endData)
+void QUmlDestroyLinkAction::removeEndData(UmlLinkEndDestructionData *endData)
 {
-    // This is a read-write association end
-
-    if (_endData.contains(endData)) {
-        _endData.remove(endData);
-    }
+    UmlDestroyLinkAction::removeEndData(endData);
 }
 
 QT_END_NAMESPACE

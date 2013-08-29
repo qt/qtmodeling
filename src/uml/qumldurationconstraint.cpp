@@ -39,65 +39,36 @@
 **
 ****************************************************************************/
 #include "qumldurationconstraint.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDurationInterval>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDurationConstraint
-
-    \inmodule QtUml
-
-    \brief A duration constraint is a constraint that refers to a duration interval.
- */
-
-QUmlDurationConstraint::QUmlDurationConstraint() :
-    _specification(0)
+QUmlDurationConstraint::QUmlDurationConstraint(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(false));
-    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlDurationInterval *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.
- */
 bool QUmlDurationConstraint::firstEvent() const
 {
-    // This is a read-write property
-
     return _firstEvent;
 }
 
 void QUmlDurationConstraint::setFirstEvent(bool firstEvent)
 {
-    // This is a read-write property
-
-    if (_firstEvent != firstEvent) {
-        _firstEvent = firstEvent;
-    }
+    UmlDurationConstraint::setFirstEvent(firstEvent);
 }
 
-/*!
-    The interval constraining the duration.
- */
 QUmlDurationInterval *QUmlDurationConstraint::specification() const
 {
-    // This is a read-write association end
-
-    return _specification;
+    return reinterpret_cast<QUmlDurationInterval *>(_specification);
 }
 
 void QUmlDurationConstraint::setSpecification(QUmlDurationInterval *specification)
 {
-    // This is a read-write association end
-
-    if (_specification != specification) {
-        _specification = specification;
-    }
+    UmlDurationConstraint::setSpecification(specification);
 }
 
 QT_END_NAMESPACE

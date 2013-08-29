@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umllinkenddata_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,24 +56,24 @@ class QUmlInputPin;
 class QUmlProperty;
 class QUmlQualifierValue;
 
-class Q_UML_EXPORT QUmlLinkEndData : public QUmlElement
+class Q_UML_EXPORT QUmlLinkEndData : public QObject, public UmlLinkEndData
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlProperty * end READ end)
+    Q_PROPERTY(QSet<QUmlQualifierValue *> qualifier READ qualifier)
+    Q_PROPERTY(QUmlInputPin * value READ value)
+
 public:
-    QUmlLinkEndData();
+    Q_INVOKABLE explicit QUmlLinkEndData(QObject *parent = 0);
 
     // Owned attributes
-    QUmlProperty *end() const;
-    void setEnd(QUmlProperty *end);
-    const QSet<QUmlQualifierValue *> qualifier() const;
-    void addQualifier(QUmlQualifierValue *qualifier);
-    void removeQualifier(QUmlQualifierValue *qualifier);
-    QUmlInputPin *value() const;
-    void setValue(QUmlInputPin *value);
-
-protected:
-    QUmlProperty *_end;
-    QSet<QUmlQualifierValue *> _qualifier;
-    QUmlInputPin *_value;
+    Q_INVOKABLE QUmlProperty *end() const;
+    Q_INVOKABLE void setEnd(QUmlProperty *end);
+    Q_INVOKABLE const QSet<QUmlQualifierValue *> qualifier() const;
+    Q_INVOKABLE void addQualifier(UmlQualifierValue *qualifier);
+    Q_INVOKABLE void removeQualifier(UmlQualifierValue *qualifier);
+    Q_INVOKABLE QUmlInputPin *value() const;
+    Q_INVOKABLE void setValue(QUmlInputPin *value);
 };
 
 QT_END_NAMESPACE

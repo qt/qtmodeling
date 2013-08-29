@@ -39,117 +39,45 @@
 **
 ****************************************************************************/
 #include "qumlprotocoltransition.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlOperation>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlProtocolTransition
-
-    \inmodule QtUml
-
-    \brief A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
- */
-
-QUmlProtocolTransition::QUmlProtocolTransition() :
-    _postCondition(0),
-    _preCondition(0)
+QUmlProtocolTransition::QUmlProtocolTransition(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("postCondition", QVariant::fromValue((QUmlConstraint *)(0)));
-    d_ptr->object.setProperty("preCondition", QVariant::fromValue((QUmlConstraint *)(0)));
-    d_ptr->object.setProperty("referred", QVariant::fromValue(QSet<QUmlOperation *>()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.
- */
 QUmlConstraint *QUmlProtocolTransition::postCondition() const
 {
-    // This is a read-write association end
-
-    return _postCondition;
+    return reinterpret_cast<QUmlConstraint *>(_postCondition);
 }
 
 void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
 {
-    // This is a read-write association end
-
-    if (_postCondition != postCondition) {
-        // Adjust subsetted properties
-        removeOwnedRule(_postCondition);
-
-        _postCondition = postCondition;
-
-        // Adjust subsetted properties
-        if (postCondition) {
-            addOwnedRule(postCondition);
-        }
-    }
+    UmlProtocolTransition::setPostCondition(postCondition);
 }
 
-/*!
-    Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.
- */
 QUmlConstraint *QUmlProtocolTransition::preCondition() const
 {
-    // This is a read-write association end
-
-    return _preCondition;
+    return reinterpret_cast<QUmlConstraint *>(_preCondition);
 }
 
 void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
 {
-    // This is a read-write association end
-
-    if (_preCondition != preCondition) {
-        // Adjust subsetted properties
-
-        _preCondition = preCondition;
-
-        // Adjust subsetted properties
-        setGuard(preCondition);
-    }
+    UmlProtocolTransition::setPreCondition(preCondition);
 }
 
-/*!
-    This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
- */
 const QSet<QUmlOperation *> QUmlProtocolTransition::referred() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlOperation *>();
-}
-
-void QUmlProtocolTransition::addReferred(QUmlOperation *referred)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
-    Q_UNUSED(referred);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-void QUmlProtocolTransition::removeReferred(QUmlOperation *referred)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
-    Q_UNUSED(referred);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
+    QSet<QUmlOperation *> r;
+    foreach (UmlOperation *element, UmlProtocolTransition::referred())
+        r.insert(reinterpret_cast<QUmlOperation *>(element));
+    return r;
 }
 
 QT_END_NAMESPACE

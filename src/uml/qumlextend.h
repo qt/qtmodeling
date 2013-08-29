@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlextend_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,27 +56,27 @@ class QUmlConstraint;
 class QUmlExtensionPoint;
 class QUmlUseCase;
 
-class Q_UML_EXPORT QUmlExtend : public QUmlDirectedRelationship, public QUmlNamedElement
+class Q_UML_EXPORT QUmlExtend : public QObject, public UmlExtend
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlConstraint * condition READ condition)
+    Q_PROPERTY(QUmlUseCase * extendedCase READ extendedCase)
+    Q_PROPERTY(QUmlUseCase * extension READ extension)
+    Q_PROPERTY(QList<QUmlExtensionPoint *> extensionLocation READ extensionLocation)
+
 public:
-    QUmlExtend();
+    Q_INVOKABLE explicit QUmlExtend(QObject *parent = 0);
 
     // Owned attributes
-    QUmlConstraint *condition() const;
-    void setCondition(QUmlConstraint *condition);
-    QUmlUseCase *extendedCase() const;
-    void setExtendedCase(QUmlUseCase *extendedCase);
-    QUmlUseCase *extension() const;
-    void setExtension(QUmlUseCase *extension);
-    const QList<QUmlExtensionPoint *> extensionLocation() const;
-    void addExtensionLocation(QUmlExtensionPoint *extensionLocation);
-    void removeExtensionLocation(QUmlExtensionPoint *extensionLocation);
-
-protected:
-    QUmlConstraint *_condition;
-    QUmlUseCase *_extendedCase;
-    QUmlUseCase *_extension;
-    QList<QUmlExtensionPoint *> _extensionLocation;
+    Q_INVOKABLE QUmlConstraint *condition() const;
+    Q_INVOKABLE void setCondition(QUmlConstraint *condition);
+    Q_INVOKABLE QUmlUseCase *extendedCase() const;
+    Q_INVOKABLE void setExtendedCase(QUmlUseCase *extendedCase);
+    Q_INVOKABLE QUmlUseCase *extension() const;
+    Q_INVOKABLE void setExtension(QUmlUseCase *extension);
+    Q_INVOKABLE const QList<QUmlExtensionPoint *> extensionLocation() const;
+    Q_INVOKABLE void addExtensionLocation(UmlExtensionPoint *extensionLocation);
+    Q_INVOKABLE void removeExtensionLocation(UmlExtensionPoint *extensionLocation);
 };
 
 QT_END_NAMESPACE

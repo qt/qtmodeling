@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlObjectNode>
+#include <QtCore/QObject>
+#include "private/umlexpansionnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlExpansionRegion;
 
-class Q_UML_EXPORT QUmlExpansionNode : public QUmlObjectNode
+class Q_UML_EXPORT QUmlExpansionNode : public QObject, public UmlExpansionNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlExpansionRegion * regionAsInput READ regionAsInput)
+    Q_PROPERTY(QUmlExpansionRegion * regionAsOutput READ regionAsOutput)
+
 public:
-    QUmlExpansionNode();
+    Q_INVOKABLE explicit QUmlExpansionNode(QObject *parent = 0);
 
     // Owned attributes
-    QUmlExpansionRegion *regionAsInput() const;
-    void setRegionAsInput(QUmlExpansionRegion *regionAsInput);
-    QUmlExpansionRegion *regionAsOutput() const;
-    void setRegionAsOutput(QUmlExpansionRegion *regionAsOutput);
-
-protected:
-    QUmlExpansionRegion *_regionAsInput;
-    QUmlExpansionRegion *_regionAsOutput;
+    Q_INVOKABLE QUmlExpansionRegion *regionAsInput() const;
+    Q_INVOKABLE void setRegionAsInput(QUmlExpansionRegion *regionAsInput);
+    Q_INVOKABLE QUmlExpansionRegion *regionAsOutput() const;
+    Q_INVOKABLE void setRegionAsOutput(QUmlExpansionRegion *regionAsOutput);
 };
 
 QT_END_NAMESPACE

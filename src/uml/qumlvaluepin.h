@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInputPin>
+#include <QtCore/QObject>
+#include "private/umlvaluepin_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlValuePin : public QUmlInputPin
+class Q_UML_EXPORT QUmlValuePin : public QObject, public UmlValuePin
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlValueSpecification * value READ value)
+
 public:
-    QUmlValuePin();
+    Q_INVOKABLE explicit QUmlValuePin(QObject *parent = 0);
 
     // Owned attributes
-    QUmlValueSpecification *value() const;
-    void setValue(QUmlValueSpecification *value);
-
-protected:
-    QUmlValueSpecification *_value;
+    Q_INVOKABLE QUmlValueSpecification *value() const;
+    Q_INVOKABLE void setValue(QUmlValueSpecification *value);
 };
 
 QT_END_NAMESPACE

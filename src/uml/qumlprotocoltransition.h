@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlTransition>
+#include <QtCore/QObject>
+#include "private/umlprotocoltransition_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,23 +55,22 @@ QT_MODULE(QtUml)
 class QUmlConstraint;
 class QUmlOperation;
 
-class Q_UML_EXPORT QUmlProtocolTransition : public QUmlTransition
+class Q_UML_EXPORT QUmlProtocolTransition : public QObject, public UmlProtocolTransition
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlConstraint * postCondition READ postCondition)
+    Q_PROPERTY(QUmlConstraint * preCondition READ preCondition)
+    Q_PROPERTY(QSet<QUmlOperation *> referred READ referred)
+
 public:
-    QUmlProtocolTransition();
+    Q_INVOKABLE explicit QUmlProtocolTransition(QObject *parent = 0);
 
     // Owned attributes
-    QUmlConstraint *postCondition() const;
-    void setPostCondition(QUmlConstraint *postCondition);
-    QUmlConstraint *preCondition() const;
-    void setPreCondition(QUmlConstraint *preCondition);
-    const QSet<QUmlOperation *> referred() const;
-    Q_DECL_HIDDEN void addReferred(QUmlOperation *referred);
-    Q_DECL_HIDDEN void removeReferred(QUmlOperation *referred);
-
-protected:
-    QUmlConstraint *_postCondition;
-    QUmlConstraint *_preCondition;
+    Q_INVOKABLE QUmlConstraint *postCondition() const;
+    Q_INVOKABLE void setPostCondition(QUmlConstraint *postCondition);
+    Q_INVOKABLE QUmlConstraint *preCondition() const;
+    Q_INVOKABLE void setPreCondition(QUmlConstraint *preCondition);
+    Q_INVOKABLE const QSet<QUmlOperation *> referred() const;
 };
 
 QT_END_NAMESPACE

@@ -39,75 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlreadextentaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReadExtentAction
-
-    \inmodule QtUml
-
-    \brief A read extent action is an action that retrieves the current instances of a classifier.
- */
-
-QUmlReadExtentAction::QUmlReadExtentAction() :
-    _classifier(0),
-    _result(0)
+QUmlReadExtentAction::QUmlReadExtentAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("classifier", QVariant::fromValue((QUmlClassifier *)(0)));
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The classifier whose instances are to be retrieved.
- */
 QUmlClassifier *QUmlReadExtentAction::classifier() const
 {
-    // This is a read-write association end
-
-    return _classifier;
+    return reinterpret_cast<QUmlClassifier *>(_classifier);
 }
 
 void QUmlReadExtentAction::setClassifier(QUmlClassifier *classifier)
 {
-    // This is a read-write association end
-
-    if (_classifier != classifier) {
-        _classifier = classifier;
-    }
+    UmlReadExtentAction::setClassifier(classifier);
 }
 
-/*!
-    The runtime instances of the classifier.
- */
 QUmlOutputPin *QUmlReadExtentAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlReadExtentAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlReadExtentAction::setResult(result);
 }
 
 QT_END_NAMESPACE

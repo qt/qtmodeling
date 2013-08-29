@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlPackageableElement>
-#include <QtUml/QUmlDirectedRelationship>
+#include <QtCore/QObject>
+#include "private/umldependency_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,22 +54,22 @@ QT_MODULE(QtUml)
 
 class QUmlNamedElement;
 
-class Q_UML_EXPORT QUmlDependency : public QUmlPackageableElement, public QUmlDirectedRelationship
+class Q_UML_EXPORT QUmlDependency : public QObject, public UmlDependency
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlNamedElement *> client READ client)
+    Q_PROPERTY(QSet<QUmlNamedElement *> supplier READ supplier)
+
 public:
-    QUmlDependency();
+    Q_INVOKABLE explicit QUmlDependency(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlNamedElement *> client() const;
-    void addClient(QUmlNamedElement *client);
-    void removeClient(QUmlNamedElement *client);
-    const QSet<QUmlNamedElement *> supplier() const;
-    void addSupplier(QUmlNamedElement *supplier);
-    void removeSupplier(QUmlNamedElement *supplier);
-
-protected:
-    QSet<QUmlNamedElement *> _client;
-    QSet<QUmlNamedElement *> _supplier;
+    Q_INVOKABLE const QSet<QUmlNamedElement *> client() const;
+    Q_INVOKABLE void addClient(UmlNamedElement *client);
+    Q_INVOKABLE void removeClient(UmlNamedElement *client);
+    Q_INVOKABLE const QSet<QUmlNamedElement *> supplier() const;
+    Q_INVOKABLE void addSupplier(UmlNamedElement *supplier);
+    Q_INVOKABLE void removeSupplier(UmlNamedElement *supplier);
 };
 
 QT_END_NAMESPACE

@@ -39,80 +39,44 @@
 **
 ****************************************************************************/
 #include "qumlopaquebehavior.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlOpaqueBehavior
-
-    \inmodule QtUml
-
-    \brief An behavior with implementation-specific semantics.
- */
-
-QUmlOpaqueBehavior::QUmlOpaqueBehavior()
+QUmlOpaqueBehavior::QUmlOpaqueBehavior(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("body", QVariant::fromValue(&_body));
-    d_ptr->object.setProperty("language", QVariant::fromValue(&_language));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the behavior in one or more languages.
- */
 const QList<QString> QUmlOpaqueBehavior::body() const
 {
-    // This is a read-write property
-
-    return _body;
+    return *(reinterpret_cast<const QList<QString> *>(&_body));
 }
 
 void QUmlOpaqueBehavior::addBody(QString body)
 {
-    // This is a read-write property
-
-    if (!_body.contains(body)) {
-        _body.append(body);
-    }
+    UmlOpaqueBehavior::addBody(body);
 }
 
 void QUmlOpaqueBehavior::removeBody(QString body)
 {
-    // This is a read-write property
-
-    if (_body.contains(body)) {
-        _body.removeAll(body);
-    }
+    UmlOpaqueBehavior::removeBody(body);
 }
 
-/*!
-    Languages the body strings use in the same order as the body strings.
- */
 const QList<QString> QUmlOpaqueBehavior::language() const
 {
-    // This is a read-write property
-
-    return _language;
+    return *(reinterpret_cast<const QList<QString> *>(&_language));
 }
 
 void QUmlOpaqueBehavior::addLanguage(QString language)
 {
-    // This is a read-write property
-
-    if (!_language.contains(language)) {
-        _language.append(language);
-    }
+    UmlOpaqueBehavior::addLanguage(language);
 }
 
 void QUmlOpaqueBehavior::removeLanguage(QString language)
 {
-    // This is a read-write property
-
-    if (_language.contains(language)) {
-        _language.removeAll(language);
-    }
+    UmlOpaqueBehavior::removeLanguage(language);
 }
 
 QT_END_NAMESPACE

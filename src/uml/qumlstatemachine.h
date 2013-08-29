@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlBehavior>
+#include <QtCore/QObject>
+#include "private/umlstatemachine_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,36 +58,36 @@ class QUmlRedefinableElement;
 class QUmlRegion;
 class QUmlState;
 
-class Q_UML_EXPORT QUmlStateMachine : public QUmlBehavior
+class Q_UML_EXPORT QUmlStateMachine : public QObject, public UmlStateMachine
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlPseudostate *> connectionPoint READ connectionPoint)
+    Q_PROPERTY(QSet<QUmlStateMachine *> extendedStateMachine READ extendedStateMachine)
+    Q_PROPERTY(QSet<QUmlRegion *> region READ region)
+    Q_PROPERTY(QSet<QUmlState *> submachineState READ submachineState)
+
 public:
-    QUmlStateMachine();
+    Q_INVOKABLE explicit QUmlStateMachine(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlPseudostate *> connectionPoint() const;
-    void addConnectionPoint(QUmlPseudostate *connectionPoint);
-    void removeConnectionPoint(QUmlPseudostate *connectionPoint);
-    const QSet<QUmlStateMachine *> extendedStateMachine() const;
-    void addExtendedStateMachine(QUmlStateMachine *extendedStateMachine);
-    void removeExtendedStateMachine(QUmlStateMachine *extendedStateMachine);
-    const QSet<QUmlRegion *> region() const;
-    void addRegion(QUmlRegion *region);
-    void removeRegion(QUmlRegion *region);
-    const QSet<QUmlState *> submachineState() const;
-    void addSubmachineState(QUmlState *submachineState);
-    void removeSubmachineState(QUmlState *submachineState);
+    Q_INVOKABLE const QSet<QUmlPseudostate *> connectionPoint() const;
+    Q_INVOKABLE void addConnectionPoint(UmlPseudostate *connectionPoint);
+    Q_INVOKABLE void removeConnectionPoint(UmlPseudostate *connectionPoint);
+    Q_INVOKABLE const QSet<QUmlStateMachine *> extendedStateMachine() const;
+    Q_INVOKABLE void addExtendedStateMachine(UmlStateMachine *extendedStateMachine);
+    Q_INVOKABLE void removeExtendedStateMachine(UmlStateMachine *extendedStateMachine);
+    Q_INVOKABLE const QSet<QUmlRegion *> region() const;
+    Q_INVOKABLE void addRegion(UmlRegion *region);
+    Q_INVOKABLE void removeRegion(UmlRegion *region);
+    Q_INVOKABLE const QSet<QUmlState *> submachineState() const;
+    Q_INVOKABLE void addSubmachineState(UmlState *submachineState);
+    Q_INVOKABLE void removeSubmachineState(UmlState *submachineState);
 
     // Operations
-    QUmlNamespace *LCA(QUmlState *s1, QUmlState *s2) const;
-    bool ancestor(QUmlState *s1, QUmlState *s2) const;
-    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-    bool isRedefinitionContextValid(QUmlStateMachine *redefined) const;
-
-protected:
-    QSet<QUmlPseudostate *> _connectionPoint;
-    QSet<QUmlStateMachine *> _extendedStateMachine;
-    QSet<QUmlRegion *> _region;
-    QSet<QUmlState *> _submachineState;
+    Q_INVOKABLE QUmlNamespace *LCA(QUmlState *s1, QUmlState *s2) const;
+    Q_INVOKABLE bool ancestor(QUmlState *s1, QUmlState *s2) const;
+    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+    Q_INVOKABLE bool isRedefinitionContextValid(QUmlStateMachine *redefined) const;
 };
 
 QT_END_NAMESPACE

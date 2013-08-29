@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlflowfinalnode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlFlowFinalNode
-
-    \inmodule QtUml
-
-    \brief A flow final node is a final node that terminates a flow.
- */
-
-QUmlFlowFinalNode::QUmlFlowFinalNode()
+QUmlFlowFinalNode::QUmlFlowFinalNode(QObject *parent) :
+    QObject(parent)
 {
 }
 

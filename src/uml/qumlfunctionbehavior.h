@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlOpaqueBehavior>
+#include <QtCore/QObject>
+#include "private/umlfunctionbehavior_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlFunctionBehavior : public QUmlOpaqueBehavior
+class Q_UML_EXPORT QUmlFunctionBehavior : public QObject, public UmlFunctionBehavior
 {
-public:
-    QUmlFunctionBehavior();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlFunctionBehavior(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

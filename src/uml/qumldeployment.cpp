@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumldeployment.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDeployedArtifact>
 #include <QtUml/QUmlDeploymentSpecification>
@@ -47,128 +46,51 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDeployment
-
-    \inmodule QtUml
-
-    \brief A deployment is the allocation of an artifact or artifact instance to a deployment target.A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
- */
-
-QUmlDeployment::QUmlDeployment() :
-    _location(0)
+QUmlDeployment::QUmlDeployment(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("configuration", QVariant::fromValue(&_configuration));
-    d_ptr->object.setProperty("deployedArtifact", QVariant::fromValue(&_deployedArtifact));
-    d_ptr->object.setProperty("location", QVariant::fromValue((QUmlDeploymentTarget *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The specification of properties that parameterize the deployment and execution of one or more Artifacts.
- */
 const QSet<QUmlDeploymentSpecification *> QUmlDeployment::configuration() const
 {
-    // This is a read-write association end
-
-    return _configuration;
+    return *(reinterpret_cast<const QSet<QUmlDeploymentSpecification *> *>(&_configuration));
 }
 
-void QUmlDeployment::addConfiguration(QUmlDeploymentSpecification *configuration)
+void QUmlDeployment::addConfiguration(UmlDeploymentSpecification *configuration)
 {
-    // This is a read-write association end
-
-    if (!_configuration.contains(configuration)) {
-        _configuration.insert(configuration);
-
-        // Adjust subsetted properties
-        addOwnedElement(configuration);
-
-        // Adjust opposite properties
-        if (configuration) {
-            configuration->setDeployment(this);
-        }
-    }
+    UmlDeployment::addConfiguration(configuration);
 }
 
-void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configuration)
+void QUmlDeployment::removeConfiguration(UmlDeploymentSpecification *configuration)
 {
-    // This is a read-write association end
-
-    if (_configuration.contains(configuration)) {
-        _configuration.remove(configuration);
-
-        // Adjust subsetted properties
-        removeOwnedElement(configuration);
-
-        // Adjust opposite properties
-        if (configuration) {
-            configuration->setDeployment(0);
-        }
-    }
+    UmlDeployment::removeConfiguration(configuration);
 }
 
-/*!
-    The Artifacts that are deployed onto a Node. This association specializes the supplier association.
- */
 const QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifact() const
 {
-    // This is a read-write association end
-
-    return _deployedArtifact;
+    return *(reinterpret_cast<const QSet<QUmlDeployedArtifact *> *>(&_deployedArtifact));
 }
 
-void QUmlDeployment::addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
+void QUmlDeployment::addDeployedArtifact(UmlDeployedArtifact *deployedArtifact)
 {
-    // This is a read-write association end
-
-    if (!_deployedArtifact.contains(deployedArtifact)) {
-        _deployedArtifact.insert(deployedArtifact);
-
-        // Adjust subsetted properties
-        addSupplier(deployedArtifact);
-    }
+    UmlDeployment::addDeployedArtifact(deployedArtifact);
 }
 
-void QUmlDeployment::removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
+void QUmlDeployment::removeDeployedArtifact(UmlDeployedArtifact *deployedArtifact)
 {
-    // This is a read-write association end
-
-    if (_deployedArtifact.contains(deployedArtifact)) {
-        _deployedArtifact.remove(deployedArtifact);
-
-        // Adjust subsetted properties
-        removeSupplier(deployedArtifact);
-    }
+    UmlDeployment::removeDeployedArtifact(deployedArtifact);
 }
 
-/*!
-    The DeployedTarget which is the target of a Deployment.
- */
 QUmlDeploymentTarget *QUmlDeployment::location() const
 {
-    // This is a read-write association end
-
-    return _location;
+    return reinterpret_cast<QUmlDeploymentTarget *>(_location);
 }
 
 void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
 {
-    // This is a read-write association end
-
-    if (_location != location) {
-        // Adjust subsetted properties
-        removeClient(_location);
-
-        _location = location;
-
-        // Adjust subsetted properties
-        setOwner(location);
-        if (location) {
-            addClient(location);
-        }
-    }
+    UmlDeployment::setLocation(location);
 }
 
 QT_END_NAMESPACE

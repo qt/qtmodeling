@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAcceptEventAction>
+#include <QtCore/QObject>
+#include "private/umlacceptcallaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlAcceptCallAction : public QUmlAcceptEventAction
+class Q_UML_EXPORT QUmlAcceptCallAction : public QObject, public UmlAcceptCallAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOutputPin * returnInformation READ returnInformation)
+
 public:
-    QUmlAcceptCallAction();
+    Q_INVOKABLE explicit QUmlAcceptCallAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOutputPin *returnInformation() const;
-    void setReturnInformation(QUmlOutputPin *returnInformation);
-
-protected:
-    QUmlOutputPin *_returnInformation;
+    Q_INVOKABLE QUmlOutputPin *returnInformation() const;
+    Q_INVOKABLE void setReturnInformation(QUmlOutputPin *returnInformation);
 };
 
 QT_END_NAMESPACE

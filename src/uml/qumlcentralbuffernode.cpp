@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlcentralbuffernode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCentralBufferNode
-
-    \inmodule QtUml
-
-    \brief A central buffer node is an object node for managing flows from multiple sources and destinations.
- */
-
-QUmlCentralBufferNode::QUmlCentralBufferNode()
+QUmlCentralBufferNode::QUmlCentralBufferNode(QObject *parent) :
+    QObject(parent)
 {
 }
 

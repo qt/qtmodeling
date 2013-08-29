@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
+#include <QtCore/QObject>
+#include "private/umltemplatebinding_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,24 +56,24 @@ class QUmlTemplateableElement;
 class QUmlTemplateParameterSubstitution;
 class QUmlTemplateSignature;
 
-class Q_UML_EXPORT QUmlTemplateBinding : public QUmlDirectedRelationship
+class Q_UML_EXPORT QUmlTemplateBinding : public QObject, public UmlTemplateBinding
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlTemplateableElement * boundElement READ boundElement)
+    Q_PROPERTY(QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution READ parameterSubstitution)
+    Q_PROPERTY(QUmlTemplateSignature * signature READ signature)
+
 public:
-    QUmlTemplateBinding();
+    Q_INVOKABLE explicit QUmlTemplateBinding(QObject *parent = 0);
 
     // Owned attributes
-    QUmlTemplateableElement *boundElement() const;
-    void setBoundElement(QUmlTemplateableElement *boundElement);
-    const QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution() const;
-    void addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution);
-    void removeParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution);
-    QUmlTemplateSignature *signature() const;
-    void setSignature(QUmlTemplateSignature *signature);
-
-protected:
-    QUmlTemplateableElement *_boundElement;
-    QSet<QUmlTemplateParameterSubstitution *> _parameterSubstitution;
-    QUmlTemplateSignature *_signature;
+    Q_INVOKABLE QUmlTemplateableElement *boundElement() const;
+    Q_INVOKABLE void setBoundElement(QUmlTemplateableElement *boundElement);
+    Q_INVOKABLE const QSet<QUmlTemplateParameterSubstitution *> parameterSubstitution() const;
+    Q_INVOKABLE void addParameterSubstitution(UmlTemplateParameterSubstitution *parameterSubstitution);
+    Q_INVOKABLE void removeParameterSubstitution(UmlTemplateParameterSubstitution *parameterSubstitution);
+    Q_INVOKABLE QUmlTemplateSignature *signature() const;
+    Q_INVOKABLE void setSignature(QUmlTemplateSignature *signature);
 };
 
 QT_END_NAMESPACE

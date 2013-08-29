@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAssociation>
+#include <QtCore/QObject>
+#include "private/umlcommunicationpath_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlCommunicationPath : public QUmlAssociation
+class Q_UML_EXPORT QUmlCommunicationPath : public QObject, public UmlCommunicationPath
 {
-public:
-    QUmlCommunicationPath();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlCommunicationPath(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

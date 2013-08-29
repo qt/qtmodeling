@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlraiseexceptionaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlRaiseExceptionAction
-
-    \inmodule QtUml
-
-    \brief A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
- */
-
-QUmlRaiseExceptionAction::QUmlRaiseExceptionAction() :
-    _exception(0)
+QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("exception", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    An input pin whose value becomes an exception object.
- */
 QUmlInputPin *QUmlRaiseExceptionAction::exception() const
 {
-    // This is a read-write association end
-
-    return _exception;
+    return reinterpret_cast<QUmlInputPin *>(_exception);
 }
 
 void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
 {
-    // This is a read-write association end
-
-    if (_exception != exception) {
-        // Adjust subsetted properties
-        removeInput(_exception);
-
-        _exception = exception;
-
-        // Adjust subsetted properties
-        if (exception) {
-            addInput(exception);
-        }
-    }
+    UmlRaiseExceptionAction::setException(exception);
 }
 
 QT_END_NAMESPACE

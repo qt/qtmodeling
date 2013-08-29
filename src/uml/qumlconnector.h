@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlFeature>
+#include <QtCore/QObject>
+#include "private/umlconnector_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -56,31 +57,31 @@ class QUmlAssociation;
 class QUmlBehavior;
 class QUmlConnectorEnd;
 
-class Q_UML_EXPORT QUmlConnector : public QUmlFeature
+class Q_UML_EXPORT QUmlConnector : public QObject, public UmlConnector
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlBehavior *> contract READ contract)
+    Q_PROPERTY(QList<QUmlConnectorEnd *> end READ end)
+    Q_PROPERTY(QtUml::ConnectorKind kind READ kind)
+    Q_PROPERTY(QSet<QUmlConnector *> redefinedConnector READ redefinedConnector)
+    Q_PROPERTY(QUmlAssociation * type READ type)
+
 public:
-    QUmlConnector();
+    Q_INVOKABLE explicit QUmlConnector(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlBehavior *> contract() const;
-    void addContract(QUmlBehavior *contract);
-    void removeContract(QUmlBehavior *contract);
-    const QList<QUmlConnectorEnd *> end() const;
-    void addEnd(QUmlConnectorEnd *end);
-    void removeEnd(QUmlConnectorEnd *end);
-    QtUml::ConnectorKind kind() const;
-    Q_DECL_HIDDEN void setKind(QtUml::ConnectorKind kind);
-    const QSet<QUmlConnector *> redefinedConnector() const;
-    void addRedefinedConnector(QUmlConnector *redefinedConnector);
-    void removeRedefinedConnector(QUmlConnector *redefinedConnector);
-    QUmlAssociation *type() const;
-    void setType(QUmlAssociation *type);
-
-protected:
-    QSet<QUmlBehavior *> _contract;
-    QList<QUmlConnectorEnd *> _end;
-    QSet<QUmlConnector *> _redefinedConnector;
-    QUmlAssociation *_type;
+    Q_INVOKABLE const QSet<QUmlBehavior *> contract() const;
+    Q_INVOKABLE void addContract(UmlBehavior *contract);
+    Q_INVOKABLE void removeContract(UmlBehavior *contract);
+    Q_INVOKABLE const QList<QUmlConnectorEnd *> end() const;
+    Q_INVOKABLE void addEnd(UmlConnectorEnd *end);
+    Q_INVOKABLE void removeEnd(UmlConnectorEnd *end);
+    Q_INVOKABLE QtUml::ConnectorKind kind() const;
+    Q_INVOKABLE const QSet<QUmlConnector *> redefinedConnector() const;
+    Q_INVOKABLE void addRedefinedConnector(UmlConnector *redefinedConnector);
+    Q_INVOKABLE void removeRedefinedConnector(UmlConnector *redefinedConnector);
+    Q_INVOKABLE QUmlAssociation *type() const;
+    Q_INVOKABLE void setType(QUmlAssociation *type);
 };
 
 QT_END_NAMESPACE

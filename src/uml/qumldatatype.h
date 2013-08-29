@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClassifier>
+#include <QtCore/QObject>
+#include "private/umldatatype_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,25 +56,25 @@ class QUmlNamedElement;
 class QUmlOperation;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlDataType : public QUmlClassifier
+class Q_UML_EXPORT QUmlDataType : public QObject, public UmlDataType
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlProperty *> ownedAttribute READ ownedAttribute)
+    Q_PROPERTY(QList<QUmlOperation *> ownedOperation READ ownedOperation)
+
 public:
-    QUmlDataType();
+    Q_INVOKABLE explicit QUmlDataType(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QList<QUmlOperation *> ownedOperation() const;
-    void addOwnedOperation(QUmlOperation *ownedOperation);
-    void removeOwnedOperation(QUmlOperation *ownedOperation);
+    Q_INVOKABLE const QList<QUmlProperty *> ownedAttribute() const;
+    Q_INVOKABLE void addOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE const QList<QUmlOperation *> ownedOperation() const;
+    Q_INVOKABLE void addOwnedOperation(UmlOperation *ownedOperation);
+    Q_INVOKABLE void removeOwnedOperation(UmlOperation *ownedOperation);
 
     // Operations
-    QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
-
-protected:
-    QList<QUmlProperty *> _ownedAttribute;
-    QList<QUmlOperation *> _ownedOperation;
+    Q_INVOKABLE QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
 };
 
 QT_END_NAMESPACE

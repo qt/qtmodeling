@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRedefinableElement>
+#include <QtCore/QObject>
+#include "private/umlactivitynode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -58,44 +59,42 @@ class QUmlActivityPartition;
 class QUmlInterruptibleActivityRegion;
 class QUmlStructuredActivityNode;
 
-class Q_UML_EXPORT QUmlActivityNode : public QUmlRedefinableElement
+class Q_UML_EXPORT QUmlActivityNode : public QObject, public UmlActivityNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlActivity * activity READ activity)
+    Q_PROPERTY(QSet<QUmlActivityGroup *> inGroup READ inGroup)
+    Q_PROPERTY(QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion READ inInterruptibleRegion)
+    Q_PROPERTY(QSet<QUmlActivityPartition *> inPartition READ inPartition)
+    Q_PROPERTY(QUmlStructuredActivityNode * inStructuredNode READ inStructuredNode)
+    Q_PROPERTY(QSet<QUmlActivityEdge *> incoming READ incoming)
+    Q_PROPERTY(QSet<QUmlActivityEdge *> outgoing READ outgoing)
+    Q_PROPERTY(QSet<QUmlActivityNode *> redefinedNode READ redefinedNode)
+
 public:
-    Q_DECL_HIDDEN QUmlActivityNode();
+    Q_DECL_HIDDEN explicit QUmlActivityNode(QObject *parent = 0);
 
     // Owned attributes
-    QUmlActivity *activity() const;
-    void setActivity(QUmlActivity *activity);
-    const QSet<QUmlActivityGroup *> inGroup() const;
-    Q_DECL_HIDDEN void addInGroup(QUmlActivityGroup *inGroup);
-    Q_DECL_HIDDEN void removeInGroup(QUmlActivityGroup *inGroup);
-    const QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion() const;
-    void addInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion);
-    void removeInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion);
-    const QSet<QUmlActivityPartition *> inPartition() const;
-    void addInPartition(QUmlActivityPartition *inPartition);
-    void removeInPartition(QUmlActivityPartition *inPartition);
-    QUmlStructuredActivityNode *inStructuredNode() const;
-    void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
-    const QSet<QUmlActivityEdge *> incoming() const;
-    void addIncoming(QUmlActivityEdge *incoming);
-    void removeIncoming(QUmlActivityEdge *incoming);
-    const QSet<QUmlActivityEdge *> outgoing() const;
-    void addOutgoing(QUmlActivityEdge *outgoing);
-    void removeOutgoing(QUmlActivityEdge *outgoing);
-    const QSet<QUmlActivityNode *> redefinedNode() const;
-    void addRedefinedNode(QUmlActivityNode *redefinedNode);
-    void removeRedefinedNode(QUmlActivityNode *redefinedNode);
-
-protected:
-    QUmlActivity *_activity;
-    QSet<QUmlActivityGroup *> _inGroup;
-    QSet<QUmlInterruptibleActivityRegion *> _inInterruptibleRegion;
-    QSet<QUmlActivityPartition *> _inPartition;
-    QUmlStructuredActivityNode *_inStructuredNode;
-    QSet<QUmlActivityEdge *> _incoming;
-    QSet<QUmlActivityEdge *> _outgoing;
-    QSet<QUmlActivityNode *> _redefinedNode;
+    Q_INVOKABLE QUmlActivity *activity() const;
+    Q_INVOKABLE void setActivity(QUmlActivity *activity);
+    Q_INVOKABLE const QSet<QUmlActivityGroup *> inGroup() const;
+    Q_INVOKABLE const QSet<QUmlInterruptibleActivityRegion *> inInterruptibleRegion() const;
+    Q_INVOKABLE void addInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion);
+    Q_INVOKABLE void removeInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion);
+    Q_INVOKABLE const QSet<QUmlActivityPartition *> inPartition() const;
+    Q_INVOKABLE void addInPartition(UmlActivityPartition *inPartition);
+    Q_INVOKABLE void removeInPartition(UmlActivityPartition *inPartition);
+    Q_INVOKABLE QUmlStructuredActivityNode *inStructuredNode() const;
+    Q_INVOKABLE void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
+    Q_INVOKABLE const QSet<QUmlActivityEdge *> incoming() const;
+    Q_INVOKABLE void addIncoming(UmlActivityEdge *incoming);
+    Q_INVOKABLE void removeIncoming(UmlActivityEdge *incoming);
+    Q_INVOKABLE const QSet<QUmlActivityEdge *> outgoing() const;
+    Q_INVOKABLE void addOutgoing(UmlActivityEdge *outgoing);
+    Q_INVOKABLE void removeOutgoing(UmlActivityEdge *outgoing);
+    Q_INVOKABLE const QSet<QUmlActivityNode *> redefinedNode() const;
+    Q_INVOKABLE void addRedefinedNode(UmlActivityNode *redefinedNode);
+    Q_INVOKABLE void removeRedefinedNode(UmlActivityNode *redefinedNode);
 };
 
 QT_END_NAMESPACE

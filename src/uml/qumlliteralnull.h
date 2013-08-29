@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlLiteralSpecification>
+#include <QtCore/QObject>
+#include "private/umlliteralnull_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,16 +52,16 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlLiteralNull : public QUmlLiteralSpecification
+class Q_UML_EXPORT QUmlLiteralNull : public QObject, public UmlLiteralNull
 {
+    Q_OBJECT
+
 public:
-    QUmlLiteralNull();
+    Q_INVOKABLE explicit QUmlLiteralNull(QObject *parent = 0);
 
     // Operations
-    bool isComputable() const;
-    bool isNull() const;
-
-protected:
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE bool isNull() const;
 };
 
 QT_END_NAMESPACE

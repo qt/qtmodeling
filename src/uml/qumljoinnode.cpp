@@ -39,74 +39,36 @@
 **
 ****************************************************************************/
 #include "qumljoinnode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlJoinNode
-
-    \inmodule QtUml
-
-    \brief A join node is a control node that synchronizes multiple flows.Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
- */
-
-QUmlJoinNode::QUmlJoinNode() :
-    _isCombineDuplicate(true),
-    _joinSpec(0)
+QUmlJoinNode::QUmlJoinNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isCombineDuplicate", QVariant::fromValue(true));
-    d_ptr->object.setProperty("joinSpec", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Tells whether tokens having objects with the same identity are combined into one by the join.
- */
 bool QUmlJoinNode::isCombineDuplicate() const
 {
-    // This is a read-write property
-
     return _isCombineDuplicate;
 }
 
 void QUmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 {
-    // This is a read-write property
-
-    if (_isCombineDuplicate != isCombineDuplicate) {
-        _isCombineDuplicate = isCombineDuplicate;
-    }
+    UmlJoinNode::setCombineDuplicate(isCombineDuplicate);
 }
 
-/*!
-    A specification giving the conditions under which the join with emit a token. Default is "and".
- */
 QUmlValueSpecification *QUmlJoinNode::joinSpec() const
 {
-    // This is a read-write association end
-
-    return _joinSpec;
+    return reinterpret_cast<QUmlValueSpecification *>(_joinSpec);
 }
 
 void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
 {
-    // This is a read-write association end
-
-    if (_joinSpec != joinSpec) {
-        // Adjust subsetted properties
-        removeOwnedElement(_joinSpec);
-
-        _joinSpec = joinSpec;
-
-        // Adjust subsetted properties
-        if (joinSpec) {
-            addOwnedElement(joinSpec);
-        }
-    }
+    UmlJoinNode::setJoinSpec(joinSpec);
 }
 
 QT_END_NAMESPACE

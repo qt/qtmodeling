@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlvaluepin.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlValuePin
-
-    \inmodule QtUml
-
-    \brief A value pin is an input pin that provides a value by evaluating a value specification.
- */
-
-QUmlValuePin::QUmlValuePin() :
-    _value(0)
+QUmlValuePin::QUmlValuePin(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("value", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Value that the pin will provide.
- */
 QUmlValueSpecification *QUmlValuePin::value() const
 {
-    // This is a read-write association end
-
-    return _value;
+    return reinterpret_cast<QUmlValueSpecification *>(_value);
 }
 
 void QUmlValuePin::setValue(QUmlValueSpecification *value)
 {
-    // This is a read-write association end
-
-    if (_value != value) {
-        // Adjust subsetted properties
-        removeOwnedElement(_value);
-
-        _value = value;
-
-        // Adjust subsetted properties
-        if (value) {
-            addOwnedElement(value);
-        }
-    }
+    UmlValuePin::setValue(value);
 }
 
 QT_END_NAMESPACE

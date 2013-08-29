@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumltemplateableelement.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
@@ -47,116 +46,51 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTemplateableElement
-
-    \inmodule QtUml
-
-    \brief A templateable element is an element that can optionally be defined as a template and bound to other templates.
- */
-
-QUmlTemplateableElement::QUmlTemplateableElement() :
-    _ownedTemplateSignature(0)
+QUmlTemplateableElement::QUmlTemplateableElement(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("ownedTemplateSignature", QVariant::fromValue((QUmlTemplateSignature *)(0)));
-    d_ptr->object.setProperty("templateBinding", QVariant::fromValue(&_templateBinding));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The optional template signature specifying the formal template parameters.
- */
 QUmlTemplateSignature *QUmlTemplateableElement::ownedTemplateSignature() const
 {
-    // This is a read-write association end
-
-    return _ownedTemplateSignature;
+    return reinterpret_cast<QUmlTemplateSignature *>(_ownedTemplateSignature);
 }
 
 void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature)
 {
-    // This is a read-write association end
-
-    if (_ownedTemplateSignature != ownedTemplateSignature) {
-        // Adjust subsetted properties
-        removeOwnedElement(_ownedTemplateSignature);
-
-        _ownedTemplateSignature = ownedTemplateSignature;
-
-        // Adjust subsetted properties
-        if (ownedTemplateSignature) {
-            addOwnedElement(ownedTemplateSignature);
-        }
-    }
+    UmlTemplateableElement::setOwnedTemplateSignature(ownedTemplateSignature);
 }
 
-/*!
-    The optional bindings from this element to templates.
- */
 const QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBinding() const
 {
-    // This is a read-write association end
-
-    return _templateBinding;
+    return *(reinterpret_cast<const QSet<QUmlTemplateBinding *> *>(&_templateBinding));
 }
 
-void QUmlTemplateableElement::addTemplateBinding(QUmlTemplateBinding *templateBinding)
+void QUmlTemplateableElement::addTemplateBinding(UmlTemplateBinding *templateBinding)
 {
-    // This is a read-write association end
-
-    if (!_templateBinding.contains(templateBinding)) {
-        _templateBinding.insert(templateBinding);
-
-        // Adjust subsetted properties
-        addOwnedElement(templateBinding);
-
-        // Adjust opposite properties
-        if (templateBinding) {
-            templateBinding->setBoundElement(this);
-        }
-    }
+    UmlTemplateableElement::addTemplateBinding(templateBinding);
 }
 
-void QUmlTemplateableElement::removeTemplateBinding(QUmlTemplateBinding *templateBinding)
+void QUmlTemplateableElement::removeTemplateBinding(UmlTemplateBinding *templateBinding)
 {
-    // This is a read-write association end
-
-    if (_templateBinding.contains(templateBinding)) {
-        _templateBinding.remove(templateBinding);
-
-        // Adjust subsetted properties
-        removeOwnedElement(templateBinding);
-
-        // Adjust opposite properties
-        if (templateBinding) {
-            templateBinding->setBoundElement(0);
-        }
-    }
+    UmlTemplateableElement::removeTemplateBinding(templateBinding);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query isTemplate() returns whether this templateable element is actually a template.
- */
-bool QUmlTemplateableElement::isTemplate(
-    ) const
+bool QUmlTemplateableElement::isTemplate() const
 {
-    qWarning("QUmlTemplateableElement::isTemplate(): to be implemented (operation)");
-
-    return bool ();
+    return UmlTemplateableElement::isTemplate();
 }
 
-/*!
-    The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
- */
-QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements(
-    ) const
+QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements() const
 {
-    qWarning("QUmlTemplateableElement::parameterableElements(): to be implemented (operation)");
-
-    return QSet<QUmlParameterableElement *> ();
+    QSet<QUmlParameterableElement *> r;
+    foreach (UmlParameterableElement *element, UmlTemplateableElement::parameterableElements())
+        r.insert(reinterpret_cast<QUmlParameterableElement *>(element));
+    return r;
 }
 
 QT_END_NAMESPACE

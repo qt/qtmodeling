@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlpartdecomposition.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlPartDecomposition
-
-    \inmodule QtUml
-
-    \brief A part decomposition is a description of the internal interactions of one lifeline relative to an interaction.
- */
-
-QUmlPartDecomposition::QUmlPartDecomposition()
+QUmlPartDecomposition::QUmlPartDecomposition(QObject *parent) :
+    QObject(parent)
 {
 }
 

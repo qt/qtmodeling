@@ -39,83 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlpackagemerge.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPackage>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlPackageMerge
-
-    \inmodule QtUml
-
-    \brief A package merge defines how the contents of one package are extended by the contents of another package.
- */
-
-QUmlPackageMerge::QUmlPackageMerge() :
-    _mergedPackage(0),
-    _receivingPackage(0)
+QUmlPackageMerge::QUmlPackageMerge(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("mergedPackage", QVariant::fromValue((QUmlPackage *)(0)));
-    d_ptr->object.setProperty("receivingPackage", QVariant::fromValue((QUmlPackage *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the Package that is to be merged with the receiving package of the PackageMerge.
- */
 QUmlPackage *QUmlPackageMerge::mergedPackage() const
 {
-    // This is a read-write association end
-
-    return _mergedPackage;
+    return reinterpret_cast<QUmlPackage *>(_mergedPackage);
 }
 
 void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
 {
-    // This is a read-write association end
-
-    if (_mergedPackage != mergedPackage) {
-        // Adjust subsetted properties
-        removeTarget(_mergedPackage);
-
-        _mergedPackage = mergedPackage;
-
-        // Adjust subsetted properties
-        if (mergedPackage) {
-            addTarget(mergedPackage);
-        }
-    }
+    UmlPackageMerge::setMergedPackage(mergedPackage);
 }
 
-/*!
-    References the Package that is being extended with the contents of the merged package of the PackageMerge.
- */
 QUmlPackage *QUmlPackageMerge::receivingPackage() const
 {
-    // This is a read-write association end
-
-    return _receivingPackage;
+    return reinterpret_cast<QUmlPackage *>(_receivingPackage);
 }
 
 void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
 {
-    // This is a read-write association end
-
-    if (_receivingPackage != receivingPackage) {
-        // Adjust subsetted properties
-        removeSource(_receivingPackage);
-
-        _receivingPackage = receivingPackage;
-
-        // Adjust subsetted properties
-        setOwner(receivingPackage);
-        if (receivingPackage) {
-            addSource(receivingPackage);
-        }
-    }
+    UmlPackageMerge::setReceivingPackage(receivingPackage);
 }
 
 QT_END_NAMESPACE

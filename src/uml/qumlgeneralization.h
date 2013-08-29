@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
+#include <QtCore/QObject>
+#include "private/umlgeneralization_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,27 +55,27 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlGeneralizationSet;
 
-class Q_UML_EXPORT QUmlGeneralization : public QUmlDirectedRelationship
+class Q_UML_EXPORT QUmlGeneralization : public QObject, public UmlGeneralization
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlClassifier * general READ general)
+    Q_PROPERTY(QSet<QUmlGeneralizationSet *> generalizationSet READ generalizationSet)
+    Q_PROPERTY(bool isSubstitutable READ isSubstitutable)
+    Q_PROPERTY(QUmlClassifier * specific READ specific)
+
 public:
-    QUmlGeneralization();
+    Q_INVOKABLE explicit QUmlGeneralization(QObject *parent = 0);
 
     // Owned attributes
-    QUmlClassifier *general() const;
-    void setGeneral(QUmlClassifier *general);
-    const QSet<QUmlGeneralizationSet *> generalizationSet() const;
-    void addGeneralizationSet(QUmlGeneralizationSet *generalizationSet);
-    void removeGeneralizationSet(QUmlGeneralizationSet *generalizationSet);
-    bool isSubstitutable() const;
-    void setSubstitutable(bool isSubstitutable);
-    QUmlClassifier *specific() const;
-    void setSpecific(QUmlClassifier *specific);
-
-protected:
-    QUmlClassifier *_general;
-    QSet<QUmlGeneralizationSet *> _generalizationSet;
-    bool _isSubstitutable;
-    QUmlClassifier *_specific;
+    Q_INVOKABLE QUmlClassifier *general() const;
+    Q_INVOKABLE void setGeneral(QUmlClassifier *general);
+    Q_INVOKABLE const QSet<QUmlGeneralizationSet *> generalizationSet() const;
+    Q_INVOKABLE void addGeneralizationSet(UmlGeneralizationSet *generalizationSet);
+    Q_INVOKABLE void removeGeneralizationSet(UmlGeneralizationSet *generalizationSet);
+    Q_INVOKABLE bool isSubstitutable() const;
+    Q_INVOKABLE void setSubstitutable(bool isSubstitutable);
+    Q_INVOKABLE QUmlClassifier *specific() const;
+    Q_INVOKABLE void setSpecific(QUmlClassifier *specific);
 };
 
 QT_END_NAMESPACE

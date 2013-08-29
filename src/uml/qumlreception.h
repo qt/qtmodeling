@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlBehavioralFeature>
+#include <QtCore/QObject>
+#include "private/umlreception_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlSignal;
 
-class Q_UML_EXPORT QUmlReception : public QUmlBehavioralFeature
+class Q_UML_EXPORT QUmlReception : public QObject, public UmlReception
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlSignal * signal READ signal)
+
 public:
-    QUmlReception();
+    Q_INVOKABLE explicit QUmlReception(QObject *parent = 0);
 
     // Owned attributes
-    QUmlSignal *signal() const;
-    void setSignal(QUmlSignal *signal);
-
-protected:
-    QUmlSignal *_signal;
+    Q_INVOKABLE QUmlSignal *signal() const;
+    Q_INVOKABLE void setSignal(QUmlSignal *signal);
 };
 
 QT_END_NAMESPACE

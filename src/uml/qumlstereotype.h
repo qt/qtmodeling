@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClass>
+#include <QtCore/QObject>
+#include "private/umlstereotype_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,23 +55,23 @@ QT_MODULE(QtUml)
 class QUmlImage;
 class QUmlProfile;
 
-class Q_UML_EXPORT QUmlStereotype : public QUmlClass
+class Q_UML_EXPORT QUmlStereotype : public QObject, public UmlStereotype
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlImage *> icon READ icon)
+    Q_PROPERTY(QUmlProfile * profile READ profile)
+
 public:
-    QUmlStereotype();
+    Q_INVOKABLE explicit QUmlStereotype(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlImage *> icon() const;
-    void addIcon(QUmlImage *icon);
-    void removeIcon(QUmlImage *icon);
-    QUmlProfile *profile() const;
-    Q_DECL_HIDDEN void setProfile(QUmlProfile *profile);
+    Q_INVOKABLE const QSet<QUmlImage *> icon() const;
+    Q_INVOKABLE void addIcon(UmlImage *icon);
+    Q_INVOKABLE void removeIcon(UmlImage *icon);
+    Q_INVOKABLE QUmlProfile *profile() const;
 
     // Operations
-    QUmlProfile *containingProfile() const;
-
-protected:
-    QSet<QUmlImage *> _icon;
+    Q_INVOKABLE QUmlProfile *containingProfile() const;
 };
 
 QT_END_NAMESPACE

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlstatemachine.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPseudostate>
@@ -49,228 +48,93 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlStateMachine
-
-    \inmodule QtUml
-
-    \brief State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
- */
-
-QUmlStateMachine::QUmlStateMachine()
+QUmlStateMachine::QUmlStateMachine(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("connectionPoint", QVariant::fromValue(&_connectionPoint));
-    d_ptr->object.setProperty("extendedStateMachine", QVariant::fromValue(&_extendedStateMachine));
-    d_ptr->object.setProperty("region", QVariant::fromValue(&_region));
-    d_ptr->object.setProperty("submachineState", QVariant::fromValue(&_submachineState));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
- */
 const QSet<QUmlPseudostate *> QUmlStateMachine::connectionPoint() const
 {
-    // This is a read-write association end
-
-    return _connectionPoint;
+    return *(reinterpret_cast<const QSet<QUmlPseudostate *> *>(&_connectionPoint));
 }
 
-void QUmlStateMachine::addConnectionPoint(QUmlPseudostate *connectionPoint)
+void QUmlStateMachine::addConnectionPoint(UmlPseudostate *connectionPoint)
 {
-    // This is a read-write association end
-
-    if (!_connectionPoint.contains(connectionPoint)) {
-        _connectionPoint.insert(connectionPoint);
-
-        // Adjust subsetted properties
-        addOwnedMember(connectionPoint);
-
-        // Adjust opposite properties
-        if (connectionPoint) {
-            connectionPoint->setStateMachine(this);
-        }
-    }
+    UmlStateMachine::addConnectionPoint(connectionPoint);
 }
 
-void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
+void QUmlStateMachine::removeConnectionPoint(UmlPseudostate *connectionPoint)
 {
-    // This is a read-write association end
-
-    if (_connectionPoint.contains(connectionPoint)) {
-        _connectionPoint.remove(connectionPoint);
-
-        // Adjust subsetted properties
-        removeOwnedMember(connectionPoint);
-
-        // Adjust opposite properties
-        if (connectionPoint) {
-            connectionPoint->setStateMachine(0);
-        }
-    }
+    UmlStateMachine::removeConnectionPoint(connectionPoint);
 }
 
-/*!
-    The state machines of which this is an extension.
- */
 const QSet<QUmlStateMachine *> QUmlStateMachine::extendedStateMachine() const
 {
-    // This is a read-write association end
-
-    return _extendedStateMachine;
+    return *(reinterpret_cast<const QSet<QUmlStateMachine *> *>(&_extendedStateMachine));
 }
 
-void QUmlStateMachine::addExtendedStateMachine(QUmlStateMachine *extendedStateMachine)
+void QUmlStateMachine::addExtendedStateMachine(UmlStateMachine *extendedStateMachine)
 {
-    // This is a read-write association end
-
-    if (!_extendedStateMachine.contains(extendedStateMachine)) {
-        _extendedStateMachine.insert(extendedStateMachine);
-    }
+    UmlStateMachine::addExtendedStateMachine(extendedStateMachine);
 }
 
-void QUmlStateMachine::removeExtendedStateMachine(QUmlStateMachine *extendedStateMachine)
+void QUmlStateMachine::removeExtendedStateMachine(UmlStateMachine *extendedStateMachine)
 {
-    // This is a read-write association end
-
-    if (_extendedStateMachine.contains(extendedStateMachine)) {
-        _extendedStateMachine.remove(extendedStateMachine);
-    }
+    UmlStateMachine::removeExtendedStateMachine(extendedStateMachine);
 }
 
-/*!
-    The regions owned directly by the state machine.
- */
 const QSet<QUmlRegion *> QUmlStateMachine::region() const
 {
-    // This is a read-write association end
-
-    return _region;
+    return *(reinterpret_cast<const QSet<QUmlRegion *> *>(&_region));
 }
 
-void QUmlStateMachine::addRegion(QUmlRegion *region)
+void QUmlStateMachine::addRegion(UmlRegion *region)
 {
-    // This is a read-write association end
-
-    if (!_region.contains(region)) {
-        _region.insert(region);
-
-        // Adjust subsetted properties
-        addOwnedMember(region);
-
-        // Adjust opposite properties
-        if (region) {
-            region->setStateMachine(this);
-        }
-    }
+    UmlStateMachine::addRegion(region);
 }
 
-void QUmlStateMachine::removeRegion(QUmlRegion *region)
+void QUmlStateMachine::removeRegion(UmlRegion *region)
 {
-    // This is a read-write association end
-
-    if (_region.contains(region)) {
-        _region.remove(region);
-
-        // Adjust subsetted properties
-        removeOwnedMember(region);
-
-        // Adjust opposite properties
-        if (region) {
-            region->setStateMachine(0);
-        }
-    }
+    UmlStateMachine::removeRegion(region);
 }
 
-/*!
-    References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
- */
 const QSet<QUmlState *> QUmlStateMachine::submachineState() const
 {
-    // This is a read-write association end
-
-    return _submachineState;
+    return *(reinterpret_cast<const QSet<QUmlState *> *>(&_submachineState));
 }
 
-void QUmlStateMachine::addSubmachineState(QUmlState *submachineState)
+void QUmlStateMachine::addSubmachineState(UmlState *submachineState)
 {
-    // This is a read-write association end
-
-    if (!_submachineState.contains(submachineState)) {
-        _submachineState.insert(submachineState);
-
-        // Adjust opposite properties
-        if (submachineState) {
-            submachineState->setSubmachine(this);
-        }
-    }
+    UmlStateMachine::addSubmachineState(submachineState);
 }
 
-void QUmlStateMachine::removeSubmachineState(QUmlState *submachineState)
+void QUmlStateMachine::removeSubmachineState(UmlState *submachineState)
 {
-    // This is a read-write association end
-
-    if (_submachineState.contains(submachineState)) {
-        _submachineState.remove(submachineState);
-
-        // Adjust opposite properties
-        if (submachineState) {
-            submachineState->setSubmachine(0);
-        }
-    }
+    UmlStateMachine::removeSubmachineState(submachineState);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.
- */
-QUmlNamespace *QUmlStateMachine::LCA(
-    QUmlState *s1, QUmlState *s2) const
+QUmlNamespace *QUmlStateMachine::LCA(QUmlState *s1, QUmlState *s2) const
 {
-    qWarning("QUmlStateMachine::LCA(): to be implemented (operation)");
-
-    Q_UNUSED(s1);
-    Q_UNUSED(s2);
-    return 0;
+    return reinterpret_cast<QUmlNamespace *>(UmlStateMachine::LCA(s1, s2));
 }
 
-/*!
-    The query ancestor(s1, s2) checks whether s1 is an ancestor state of state s2.
- */
-bool QUmlStateMachine::ancestor(
-    QUmlState *s1, QUmlState *s2) const
+bool QUmlStateMachine::ancestor(QUmlState *s1, QUmlState *s2) const
 {
-    qWarning("QUmlStateMachine::ancestor(): to be implemented (operation)");
-
-    Q_UNUSED(s1);
-    Q_UNUSED(s2);
-    return bool ();
+    return UmlStateMachine::ancestor(s1, s2);
 }
 
-/*!
-    The query isConsistentWith() specifies that a redefining state machine is consistent with a redefined state machine provided that the redefining state machine is an extension of the redefined state machine: Regions are inherited and regions can be added, inherited regions can be redefined. In case of multiple redefining state machines, extension implies that the redefining state machine gets orthogonal regions for each of the redefined state machines.
- */
-bool QUmlStateMachine::isConsistentWith(
-    QUmlRedefinableElement *redefinee) const
+bool QUmlStateMachine::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("QUmlStateMachine::isConsistentWith(): to be implemented (operation)");
-
-    Q_UNUSED(redefinee);
-    return bool ();
+    return UmlStateMachine::isConsistentWith(redefinee);
 }
 
-/*!
-    The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
- */
-bool QUmlStateMachine::isRedefinitionContextValid(
-    QUmlStateMachine *redefined) const
+bool QUmlStateMachine::isRedefinitionContextValid(QUmlStateMachine *redefined) const
 {
-    qWarning("QUmlStateMachine::isRedefinitionContextValid(): to be implemented (operation)");
-
-    Q_UNUSED(redefined);
-    return bool ();
+    return UmlStateMachine::isRedefinitionContextValid(redefined);
 }
 
 QT_END_NAMESPACE

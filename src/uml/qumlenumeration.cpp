@@ -39,69 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlenumeration.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlEnumerationLiteral>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlEnumeration
-
-    \inmodule QtUml
-
-    \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
- */
-
-QUmlEnumeration::QUmlEnumeration()
+QUmlEnumeration::QUmlEnumeration(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("ownedLiteral", QVariant::fromValue(&_ownedLiteral));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The ordered set of literals for this Enumeration.
- */
 const QList<QUmlEnumerationLiteral *> QUmlEnumeration::ownedLiteral() const
 {
-    // This is a read-write association end
-
-    return _ownedLiteral;
+    return *(reinterpret_cast<const QList<QUmlEnumerationLiteral *> *>(&_ownedLiteral));
 }
 
-void QUmlEnumeration::addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
+void QUmlEnumeration::addOwnedLiteral(UmlEnumerationLiteral *ownedLiteral)
 {
-    // This is a read-write association end
-
-    if (!_ownedLiteral.contains(ownedLiteral)) {
-        _ownedLiteral.append(ownedLiteral);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedLiteral);
-
-        // Adjust opposite properties
-        if (ownedLiteral) {
-            ownedLiteral->setEnumeration(this);
-        }
-    }
+    UmlEnumeration::addOwnedLiteral(ownedLiteral);
 }
 
-void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
+void QUmlEnumeration::removeOwnedLiteral(UmlEnumerationLiteral *ownedLiteral)
 {
-    // This is a read-write association end
-
-    if (_ownedLiteral.contains(ownedLiteral)) {
-        _ownedLiteral.removeAll(ownedLiteral);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedLiteral);
-
-        // Adjust opposite properties
-        if (ownedLiteral) {
-            ownedLiteral->setEnumeration(0);
-        }
-    }
+    UmlEnumeration::removeOwnedLiteral(ownedLiteral);
 }
 
 QT_END_NAMESPACE

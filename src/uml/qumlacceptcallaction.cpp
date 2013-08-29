@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlacceptcallaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlAcceptCallAction
-
-    \inmodule QtUml
-
-    \brief An accept call action is an accept event action representing the receipt of a synchronous call request. In addition to the normal operation parameters, the action produces an output that is needed later to supply the information to the reply action necessary to return control to the caller. This action is for synchronous calls. If it is used to handle an asynchronous call, execution of the subsequent reply action will complete immediately with no effects.
- */
-
-QUmlAcceptCallAction::QUmlAcceptCallAction() :
-    _returnInformation(0)
+QUmlAcceptCallAction::QUmlAcceptCallAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("returnInformation", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.
- */
 QUmlOutputPin *QUmlAcceptCallAction::returnInformation() const
 {
-    // This is a read-write association end
-
-    return _returnInformation;
+    return reinterpret_cast<QUmlOutputPin *>(_returnInformation);
 }
 
 void QUmlAcceptCallAction::setReturnInformation(QUmlOutputPin *returnInformation)
 {
-    // This is a read-write association end
-
-    if (_returnInformation != returnInformation) {
-        // Adjust subsetted properties
-        removeOutput(_returnInformation);
-
-        _returnInformation = returnInformation;
-
-        // Adjust subsetted properties
-        if (returnInformation) {
-            addOutput(returnInformation);
-        }
-    }
+    UmlAcceptCallAction::setReturnInformation(returnInformation);
 }
 
 QT_END_NAMESPACE

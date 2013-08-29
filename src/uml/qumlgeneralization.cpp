@@ -39,144 +39,62 @@
 **
 ****************************************************************************/
 #include "qumlgeneralization.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlGeneralizationSet>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlGeneralization
-
-    \inmodule QtUml
-
-    \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
- */
-
-QUmlGeneralization::QUmlGeneralization() :
-    _general(0),
-    _isSubstitutable(true),
-    _specific(0)
+QUmlGeneralization::QUmlGeneralization(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("general", QVariant::fromValue((QUmlClassifier *)(0)));
-    d_ptr->object.setProperty("generalizationSet", QVariant::fromValue(&_generalizationSet));
-    d_ptr->object.setProperty("isSubstitutable", QVariant::fromValue(true));
-    d_ptr->object.setProperty("specific", QVariant::fromValue((QUmlClassifier *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the general classifier in the Generalization relationship.
- */
 QUmlClassifier *QUmlGeneralization::general() const
 {
-    // This is a read-write association end
-
-    return _general;
+    return reinterpret_cast<QUmlClassifier *>(_general);
 }
 
 void QUmlGeneralization::setGeneral(QUmlClassifier *general)
 {
-    // This is a read-write association end
-
-    if (_general != general) {
-        // Adjust subsetted properties
-        removeTarget(_general);
-
-        _general = general;
-
-        // Adjust subsetted properties
-        if (general) {
-            addTarget(general);
-        }
-    }
+    UmlGeneralization::setGeneral(general);
 }
 
-/*!
-    Designates a set in which instances of Generalization is considered members.
- */
 const QSet<QUmlGeneralizationSet *> QUmlGeneralization::generalizationSet() const
 {
-    // This is a read-write association end
-
-    return _generalizationSet;
+    return *(reinterpret_cast<const QSet<QUmlGeneralizationSet *> *>(&_generalizationSet));
 }
 
-void QUmlGeneralization::addGeneralizationSet(QUmlGeneralizationSet *generalizationSet)
+void QUmlGeneralization::addGeneralizationSet(UmlGeneralizationSet *generalizationSet)
 {
-    // This is a read-write association end
-
-    if (!_generalizationSet.contains(generalizationSet)) {
-        _generalizationSet.insert(generalizationSet);
-
-        // Adjust opposite properties
-        if (generalizationSet) {
-            generalizationSet->addGeneralization(this);
-        }
-    }
+    UmlGeneralization::addGeneralizationSet(generalizationSet);
 }
 
-void QUmlGeneralization::removeGeneralizationSet(QUmlGeneralizationSet *generalizationSet)
+void QUmlGeneralization::removeGeneralizationSet(UmlGeneralizationSet *generalizationSet)
 {
-    // This is a read-write association end
-
-    if (_generalizationSet.contains(generalizationSet)) {
-        _generalizationSet.remove(generalizationSet);
-
-        // Adjust opposite properties
-        if (generalizationSet) {
-            generalizationSet->removeGeneralization(this);
-        }
-    }
+    UmlGeneralization::removeGeneralizationSet(generalizationSet);
 }
 
-/*!
-    Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
- */
 bool QUmlGeneralization::isSubstitutable() const
 {
-    // This is a read-write property
-
     return _isSubstitutable;
 }
 
 void QUmlGeneralization::setSubstitutable(bool isSubstitutable)
 {
-    // This is a read-write property
-
-    if (_isSubstitutable != isSubstitutable) {
-        _isSubstitutable = isSubstitutable;
-    }
+    UmlGeneralization::setSubstitutable(isSubstitutable);
 }
 
-/*!
-    References the specializing classifier in the Generalization relationship.
- */
 QUmlClassifier *QUmlGeneralization::specific() const
 {
-    // This is a read-write association end
-
-    return _specific;
+    return reinterpret_cast<QUmlClassifier *>(_specific);
 }
 
 void QUmlGeneralization::setSpecific(QUmlClassifier *specific)
 {
-    // This is a read-write association end
-
-    if (_specific != specific) {
-        // Adjust subsetted properties
-        removeSource(_specific);
-
-        _specific = specific;
-
-        // Adjust subsetted properties
-        setOwner(specific);
-        if (specific) {
-            addSource(specific);
-        }
-    }
+    UmlGeneralization::setSpecific(specific);
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
+#include <QtCore/QObject>
+#include "private/umlpackagemerge_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlPackage;
 
-class Q_UML_EXPORT QUmlPackageMerge : public QUmlDirectedRelationship
+class Q_UML_EXPORT QUmlPackageMerge : public QObject, public UmlPackageMerge
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlPackage * mergedPackage READ mergedPackage)
+    Q_PROPERTY(QUmlPackage * receivingPackage READ receivingPackage)
+
 public:
-    QUmlPackageMerge();
+    Q_INVOKABLE explicit QUmlPackageMerge(QObject *parent = 0);
 
     // Owned attributes
-    QUmlPackage *mergedPackage() const;
-    void setMergedPackage(QUmlPackage *mergedPackage);
-    QUmlPackage *receivingPackage() const;
-    void setReceivingPackage(QUmlPackage *receivingPackage);
-
-protected:
-    QUmlPackage *_mergedPackage;
-    QUmlPackage *_receivingPackage;
+    Q_INVOKABLE QUmlPackage *mergedPackage() const;
+    Q_INVOKABLE void setMergedPackage(QUmlPackage *mergedPackage);
+    Q_INVOKABLE QUmlPackage *receivingPackage() const;
+    Q_INVOKABLE void setReceivingPackage(QUmlPackage *receivingPackage);
 };
 
 QT_END_NAMESPACE

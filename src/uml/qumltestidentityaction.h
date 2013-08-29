@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umltestidentityaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,23 +55,23 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlTestIdentityAction : public QUmlAction
+class Q_UML_EXPORT QUmlTestIdentityAction : public QObject, public UmlTestIdentityAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInputPin * first READ first)
+    Q_PROPERTY(QUmlOutputPin * result READ result)
+    Q_PROPERTY(QUmlInputPin * second READ second)
+
 public:
-    QUmlTestIdentityAction();
+    Q_INVOKABLE explicit QUmlTestIdentityAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInputPin *first() const;
-    void setFirst(QUmlInputPin *first);
-    QUmlOutputPin *result() const;
-    void setResult(QUmlOutputPin *result);
-    QUmlInputPin *second() const;
-    void setSecond(QUmlInputPin *second);
-
-protected:
-    QUmlInputPin *_first;
-    QUmlOutputPin *_result;
-    QUmlInputPin *_second;
+    Q_INVOKABLE QUmlInputPin *first() const;
+    Q_INVOKABLE void setFirst(QUmlInputPin *first);
+    Q_INVOKABLE QUmlOutputPin *result() const;
+    Q_INVOKABLE void setResult(QUmlOutputPin *result);
+    Q_INVOKABLE QUmlInputPin *second() const;
+    Q_INVOKABLE void setSecond(QUmlInputPin *second);
 };
 
 QT_END_NAMESPACE

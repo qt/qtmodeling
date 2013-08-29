@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlactivitygroup.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
@@ -47,183 +46,41 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlActivityGroup
-
-    \inmodule QtUml
-
-    \brief ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
- */
-
-QUmlActivityGroup::QUmlActivityGroup() :
-    _inActivity(0),
-    _superGroup(0)
+QUmlActivityGroup::QUmlActivityGroup(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("containedEdge", QVariant::fromValue(&_containedEdge));
-    d_ptr->object.setProperty("containedNode", QVariant::fromValue(&_containedNode));
-    d_ptr->object.setProperty("inActivity", QVariant::fromValue((QUmlActivity *)(0)));
-    d_ptr->object.setProperty("subgroup", QVariant::fromValue(&_subgroup));
-    d_ptr->object.setProperty("superGroup", QVariant::fromValue((QUmlActivityGroup *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Edges immediately contained in the group.
- */
 const QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdge() const
 {
-    // This is a read-only derived union association end
-
-    return _containedEdge;
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_containedEdge));
 }
 
-void QUmlActivityGroup::addContainedEdge(QUmlActivityEdge *containedEdge)
-{
-    // This is a read-only derived union association end
-
-    if (!_containedEdge.contains(containedEdge)) {
-        _containedEdge.insert(containedEdge);
-
-        // Adjust opposite properties
-        if (containedEdge) {
-            containedEdge->addInGroup(this);
-        }
-    }
-}
-
-void QUmlActivityGroup::removeContainedEdge(QUmlActivityEdge *containedEdge)
-{
-    // This is a read-only derived union association end
-
-    if (_containedEdge.contains(containedEdge)) {
-        _containedEdge.remove(containedEdge);
-
-        // Adjust opposite properties
-        if (containedEdge) {
-            containedEdge->removeInGroup(this);
-        }
-    }
-}
-
-/*!
-    Nodes immediately contained in the group.
- */
 const QSet<QUmlActivityNode *> QUmlActivityGroup::containedNode() const
 {
-    // This is a read-only derived union association end
-
-    return _containedNode;
+    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_containedNode));
 }
 
-void QUmlActivityGroup::addContainedNode(QUmlActivityNode *containedNode)
-{
-    // This is a read-only derived union association end
-
-    if (!_containedNode.contains(containedNode)) {
-        _containedNode.insert(containedNode);
-
-        // Adjust opposite properties
-        if (containedNode) {
-            containedNode->addInGroup(this);
-        }
-    }
-}
-
-void QUmlActivityGroup::removeContainedNode(QUmlActivityNode *containedNode)
-{
-    // This is a read-only derived union association end
-
-    if (_containedNode.contains(containedNode)) {
-        _containedNode.remove(containedNode);
-
-        // Adjust opposite properties
-        if (containedNode) {
-            containedNode->removeInGroup(this);
-        }
-    }
-}
-
-/*!
-    Activity containing the group.
- */
 QUmlActivity *QUmlActivityGroup::inActivity() const
 {
-    // This is a read-write association end
-
-    return _inActivity;
+    return reinterpret_cast<QUmlActivity *>(_inActivity);
 }
 
 void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
 {
-    // This is a read-write association end
-
-    if (_inActivity != inActivity) {
-        // Adjust subsetted properties
-
-        _inActivity = inActivity;
-
-        // Adjust subsetted properties
-        setOwner(inActivity);
-    }
+    UmlActivityGroup::setInActivity(inActivity);
 }
 
-/*!
-    Groups immediately contained in the group.
- */
 const QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroup() const
 {
-    // This is a read-only derived union association end
-
-    return _subgroup;
+    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_subgroup));
 }
 
-void QUmlActivityGroup::addSubgroup(QUmlActivityGroup *subgroup)
-{
-    // This is a read-only derived union association end
-
-    if (!_subgroup.contains(subgroup)) {
-        _subgroup.insert(subgroup);
-
-        // Adjust subsetted properties
-        addOwnedElement(subgroup);
-    }
-}
-
-void QUmlActivityGroup::removeSubgroup(QUmlActivityGroup *subgroup)
-{
-    // This is a read-only derived union association end
-
-    if (_subgroup.contains(subgroup)) {
-        _subgroup.remove(subgroup);
-
-        // Adjust subsetted properties
-        removeOwnedElement(subgroup);
-    }
-}
-
-/*!
-    Group immediately containing the group.
- */
 QUmlActivityGroup *QUmlActivityGroup::superGroup() const
 {
-    // This is a read-only derived union association end
-
-    return _superGroup;
-}
-
-void QUmlActivityGroup::setSuperGroup(QUmlActivityGroup *superGroup)
-{
-    // This is a read-only derived union association end
-
-    if (_superGroup != superGroup) {
-        // Adjust subsetted properties
-
-        _superGroup = superGroup;
-
-        // Adjust subsetted properties
-        setOwner(superGroup);
-    }
+    return reinterpret_cast<QUmlActivityGroup *>(_superGroup);
 }
 
 QT_END_NAMESPACE

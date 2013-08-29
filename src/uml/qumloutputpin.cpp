@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumloutputpin.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlOutputPin
-
-    \inmodule QtUml
-
-    \brief An output pin is a pin that holds output values produced by an action.
- */
-
-QUmlOutputPin::QUmlOutputPin()
+QUmlOutputPin::QUmlOutputPin(QObject *parent) :
+    QObject(parent)
 {
 }
 

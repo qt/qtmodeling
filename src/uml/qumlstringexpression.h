@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlExpression>
-#include <QtUml/QUmlTemplateableElement>
+#include <QtCore/QObject>
+#include "private/umlstringexpression_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,24 +52,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlStringExpression : public QUmlExpression, public QUmlTemplateableElement
+class Q_UML_EXPORT QUmlStringExpression : public QObject, public UmlStringExpression
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlStringExpression * owningExpression READ owningExpression)
+    Q_PROPERTY(QSet<QUmlStringExpression *> subExpression READ subExpression)
+
 public:
-    QUmlStringExpression();
+    Q_INVOKABLE explicit QUmlStringExpression(QObject *parent = 0);
 
     // Owned attributes
-    QUmlStringExpression *owningExpression() const;
-    void setOwningExpression(QUmlStringExpression *owningExpression);
-    const QSet<QUmlStringExpression *> subExpression() const;
-    void addSubExpression(QUmlStringExpression *subExpression);
-    void removeSubExpression(QUmlStringExpression *subExpression);
+    Q_INVOKABLE QUmlStringExpression *owningExpression() const;
+    Q_INVOKABLE void setOwningExpression(QUmlStringExpression *owningExpression);
+    Q_INVOKABLE const QSet<QUmlStringExpression *> subExpression() const;
+    Q_INVOKABLE void addSubExpression(UmlStringExpression *subExpression);
+    Q_INVOKABLE void removeSubExpression(UmlStringExpression *subExpression);
 
     // Operations
-    QString stringValue() const;
-
-protected:
-    QUmlStringExpression *_owningExpression;
-    QSet<QUmlStringExpression *> _subExpression;
+    Q_INVOKABLE QString stringValue() const;
 };
 
 QT_END_NAMESPACE

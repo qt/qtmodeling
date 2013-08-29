@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlLiteralSpecification>
+#include <QtCore/QObject>
+#include "private/umlliteralreal_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,21 +52,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlLiteralReal : public QUmlLiteralSpecification
+class Q_UML_EXPORT QUmlLiteralReal : public QObject, public UmlLiteralReal
 {
+    Q_OBJECT
+    Q_PROPERTY(double value READ value)
+
 public:
-    QUmlLiteralReal();
+    Q_INVOKABLE explicit QUmlLiteralReal(QObject *parent = 0);
 
     // Owned attributes
-    double value() const;
-    void setValue(double value);
+    Q_INVOKABLE double value() const;
+    Q_INVOKABLE void setValue(double value);
 
     // Operations
-    bool isComputable() const;
-    double realValue() const;
-
-protected:
-    double _value;
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE double realValue() const;
 };
 
 QT_END_NAMESPACE

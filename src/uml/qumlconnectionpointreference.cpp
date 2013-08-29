@@ -39,109 +39,57 @@
 **
 ****************************************************************************/
 #include "qumlconnectionpointreference.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPseudostate>
 #include <QtUml/QUmlState>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlConnectionPointReference
-
-    \inmodule QtUml
-
-    \brief A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
- */
-
-QUmlConnectionPointReference::QUmlConnectionPointReference() :
-    _state(0)
+QUmlConnectionPointReference::QUmlConnectionPointReference(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("entry", QVariant::fromValue(&_entry));
-    d_ptr->object.setProperty("exit", QVariant::fromValue(&_exit));
-    d_ptr->object.setProperty("state", QVariant::fromValue((QUmlState *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The entryPoint kind pseudo states corresponding to this connection point.
- */
 const QSet<QUmlPseudostate *> QUmlConnectionPointReference::entry() const
 {
-    // This is a read-write association end
-
-    return _entry;
+    return *(reinterpret_cast<const QSet<QUmlPseudostate *> *>(&_entry));
 }
 
-void QUmlConnectionPointReference::addEntry(QUmlPseudostate *entry)
+void QUmlConnectionPointReference::addEntry(UmlPseudostate *entry)
 {
-    // This is a read-write association end
-
-    if (!_entry.contains(entry)) {
-        _entry.insert(entry);
-    }
+    UmlConnectionPointReference::addEntry(entry);
 }
 
-void QUmlConnectionPointReference::removeEntry(QUmlPseudostate *entry)
+void QUmlConnectionPointReference::removeEntry(UmlPseudostate *entry)
 {
-    // This is a read-write association end
-
-    if (_entry.contains(entry)) {
-        _entry.remove(entry);
-    }
+    UmlConnectionPointReference::removeEntry(entry);
 }
 
-/*!
-    The exitPoints kind pseudo states corresponding to this connection point.
- */
 const QSet<QUmlPseudostate *> QUmlConnectionPointReference::exit() const
 {
-    // This is a read-write association end
-
-    return _exit;
+    return *(reinterpret_cast<const QSet<QUmlPseudostate *> *>(&_exit));
 }
 
-void QUmlConnectionPointReference::addExit(QUmlPseudostate *exit)
+void QUmlConnectionPointReference::addExit(UmlPseudostate *exit)
 {
-    // This is a read-write association end
-
-    if (!_exit.contains(exit)) {
-        _exit.insert(exit);
-    }
+    UmlConnectionPointReference::addExit(exit);
 }
 
-void QUmlConnectionPointReference::removeExit(QUmlPseudostate *exit)
+void QUmlConnectionPointReference::removeExit(UmlPseudostate *exit)
 {
-    // This is a read-write association end
-
-    if (_exit.contains(exit)) {
-        _exit.remove(exit);
-    }
+    UmlConnectionPointReference::removeExit(exit);
 }
 
-/*!
-    The State in which the connection point refreshens are defined.
- */
 QUmlState *QUmlConnectionPointReference::state() const
 {
-    // This is a read-write association end
-
-    return _state;
+    return reinterpret_cast<QUmlState *>(_state);
 }
 
 void QUmlConnectionPointReference::setState(QUmlState *state)
 {
-    // This is a read-write association end
-
-    if (_state != state) {
-        // Adjust subsetted properties
-
-        _state = state;
-
-        // Adjust subsetted properties
-        setNamespace(state);
-    }
+    UmlConnectionPointReference::setState(state);
 }
 
 QT_END_NAMESPACE

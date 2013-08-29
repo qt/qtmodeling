@@ -39,99 +39,47 @@
 **
 ****************************************************************************/
 #include "qumlparameterset.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlParameter>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlParameterSet
-
-    \inmodule QtUml
-
-    \brief A parameter set is an element that provides alternative sets of inputs or outputs that a behavior may use.
- */
-
-QUmlParameterSet::QUmlParameterSet()
+QUmlParameterSet::QUmlParameterSet(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("condition", QVariant::fromValue(&_condition));
-    d_ptr->object.setProperty("parameter", QVariant::fromValue(&_parameter));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
- */
 const QSet<QUmlConstraint *> QUmlParameterSet::condition() const
 {
-    // This is a read-write association end
-
-    return _condition;
+    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_condition));
 }
 
-void QUmlParameterSet::addCondition(QUmlConstraint *condition)
+void QUmlParameterSet::addCondition(UmlConstraint *condition)
 {
-    // This is a read-write association end
-
-    if (!_condition.contains(condition)) {
-        _condition.insert(condition);
-
-        // Adjust subsetted properties
-        addOwnedElement(condition);
-    }
+    UmlParameterSet::addCondition(condition);
 }
 
-void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
+void QUmlParameterSet::removeCondition(UmlConstraint *condition)
 {
-    // This is a read-write association end
-
-    if (_condition.contains(condition)) {
-        _condition.remove(condition);
-
-        // Adjust subsetted properties
-        removeOwnedElement(condition);
-    }
+    UmlParameterSet::removeCondition(condition);
 }
 
-/*!
-    Parameters in the parameter set.
- */
 const QSet<QUmlParameter *> QUmlParameterSet::parameter() const
 {
-    // This is a read-write association end
-
-    return _parameter;
+    return *(reinterpret_cast<const QSet<QUmlParameter *> *>(&_parameter));
 }
 
-void QUmlParameterSet::addParameter(QUmlParameter *parameter)
+void QUmlParameterSet::addParameter(UmlParameter *parameter)
 {
-    // This is a read-write association end
-
-    if (!_parameter.contains(parameter)) {
-        _parameter.insert(parameter);
-
-        // Adjust opposite properties
-        if (parameter) {
-            parameter->addParameterSet(this);
-        }
-    }
+    UmlParameterSet::addParameter(parameter);
 }
 
-void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
+void QUmlParameterSet::removeParameter(UmlParameter *parameter)
 {
-    // This is a read-write association end
-
-    if (_parameter.contains(parameter)) {
-        _parameter.remove(parameter);
-
-        // Adjust opposite properties
-        if (parameter) {
-            parameter->removeParameterSet(this);
-        }
-    }
+    UmlParameterSet::removeParameter(parameter);
 }
 
 QT_END_NAMESPACE

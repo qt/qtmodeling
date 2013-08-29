@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umltrigger_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,21 +55,21 @@ QT_MODULE(QtUml)
 class QUmlEvent;
 class QUmlPort;
 
-class Q_UML_EXPORT QUmlTrigger : public QUmlNamedElement
+class Q_UML_EXPORT QUmlTrigger : public QObject, public UmlTrigger
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlEvent * event READ event)
+    Q_PROPERTY(QSet<QUmlPort *> port READ port)
+
 public:
-    QUmlTrigger();
+    Q_INVOKABLE explicit QUmlTrigger(QObject *parent = 0);
 
     // Owned attributes
-    QUmlEvent *event() const;
-    void setEvent(QUmlEvent *event);
-    const QSet<QUmlPort *> port() const;
-    void addPort(QUmlPort *port);
-    void removePort(QUmlPort *port);
-
-protected:
-    QUmlEvent *_event;
-    QSet<QUmlPort *> _port;
+    Q_INVOKABLE QUmlEvent *event() const;
+    Q_INVOKABLE void setEvent(QUmlEvent *event);
+    Q_INVOKABLE const QSet<QUmlPort *> port() const;
+    Q_INVOKABLE void addPort(UmlPort *port);
+    Q_INVOKABLE void removePort(UmlPort *port);
 };
 
 QT_END_NAMESPACE

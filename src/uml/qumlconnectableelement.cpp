@@ -39,93 +39,35 @@
 **
 ****************************************************************************/
 #include "qumlconnectableelement.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElementTemplateParameter>
 #include <QtUml/QUmlConnectorEnd>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlConnectableElement
-
-    \inmodule QtUml
-
-    \brief ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.A connectable element may be exposed as a connectable element template parameter.
- */
-
-QUmlConnectableElement::QUmlConnectableElement() :
-    _templateParameter(0)
+QUmlConnectableElement::QUmlConnectableElement(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("end", QVariant::fromValue(QList<QUmlConnectorEnd *>()));
-    d_ptr->object.setProperty("templateParameter", QVariant::fromValue((QUmlConnectableElementTemplateParameter *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Denotes a set of connector ends that attaches to this connectable element.
- */
 const QList<QUmlConnectorEnd *> QUmlConnectableElement::end() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlConnectableElement::end(): to be implemented (this is a derived association end)");
-
-    return QList<QUmlConnectorEnd *>();
+    QList<QUmlConnectorEnd *> r;
+    foreach (UmlConnectorEnd *element, UmlConnectableElement::end())
+        r.append(reinterpret_cast<QUmlConnectorEnd *>(element));
+    return r;
 }
 
-void QUmlConnectableElement::addEnd(QUmlConnectorEnd *end)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlConnectableElement::end(): to be implemented (this is a derived association end)");
-    Q_UNUSED(end);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust opposite properties
-        if (end) {
-            end->setRole(this);
-        }
-    }
-}
-
-void QUmlConnectableElement::removeEnd(QUmlConnectorEnd *end)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlConnectableElement::end(): to be implemented (this is a derived association end)");
-    Q_UNUSED(end);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust opposite properties
-        if (end) {
-            end->setRole(0);
-        }
-    }
-}
-
-/*!
-    The ConnectableElementTemplateParameter for this ConnectableElement parameter.
- */
 QUmlConnectableElementTemplateParameter *QUmlConnectableElement::templateParameter() const
 {
-    // This is a read-write association end
-
-    return _templateParameter;
+    return reinterpret_cast<QUmlConnectableElementTemplateParameter *>(_templateParameter);
 }
 
 void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplateParameter *templateParameter)
 {
-    // This is a read-write association end
-
-    if (_templateParameter != templateParameter) {
-        _templateParameter = templateParameter;
-    }
+    UmlConnectableElement::setTemplateParameter(templateParameter);
 }
 
 QT_END_NAMESPACE

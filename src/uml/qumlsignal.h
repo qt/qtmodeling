@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClassifier>
+#include <QtCore/QObject>
+#include "private/umlsignal_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,18 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlSignal : public QUmlClassifier
+class Q_UML_EXPORT QUmlSignal : public QObject, public UmlSignal
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlProperty *> ownedAttribute READ ownedAttribute)
+
 public:
-    QUmlSignal();
+    Q_INVOKABLE explicit QUmlSignal(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-
-protected:
-    QList<QUmlProperty *> _ownedAttribute;
+    Q_INVOKABLE const QList<QUmlProperty *> ownedAttribute() const;
+    Q_INVOKABLE void addOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(UmlProperty *ownedAttribute);
 };
 
 QT_END_NAMESPACE

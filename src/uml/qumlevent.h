@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlPackageableElement>
+#include <QtCore/QObject>
+#include "private/umlevent_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlEvent : public QUmlPackageableElement
+class Q_UML_EXPORT QUmlEvent : public QObject, public UmlEvent
 {
-public:
-    Q_DECL_HIDDEN QUmlEvent();
+    Q_OBJECT
 
-protected:
+public:
+    Q_DECL_HIDDEN explicit QUmlEvent(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

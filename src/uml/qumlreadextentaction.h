@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlreadextentaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlReadExtentAction : public QUmlAction
+class Q_UML_EXPORT QUmlReadExtentAction : public QObject, public UmlReadExtentAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlClassifier * classifier READ classifier)
+    Q_PROPERTY(QUmlOutputPin * result READ result)
+
 public:
-    QUmlReadExtentAction();
+    Q_INVOKABLE explicit QUmlReadExtentAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlClassifier *classifier() const;
-    void setClassifier(QUmlClassifier *classifier);
-    QUmlOutputPin *result() const;
-    void setResult(QUmlOutputPin *result);
-
-protected:
-    QUmlClassifier *_classifier;
-    QUmlOutputPin *_result;
+    Q_INVOKABLE QUmlClassifier *classifier() const;
+    Q_INVOKABLE void setClassifier(QUmlClassifier *classifier);
+    Q_INVOKABLE QUmlOutputPin *result() const;
+    Q_INVOKABLE void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

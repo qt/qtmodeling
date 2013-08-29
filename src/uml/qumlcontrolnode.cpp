@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlcontrolnode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlControlNode
-
-    \inmodule QtUml
-
-    \brief A control node is an abstract activity node that coordinates flows in an activity.
- */
-
-QUmlControlNode::QUmlControlNode()
+QUmlControlNode::QUmlControlNode(QObject *parent) :
+    QObject(parent)
 {
 }
 

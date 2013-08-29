@@ -42,7 +42,9 @@
 #define QUMLELEMENT_H
 
 #include <QtUml/QtUmlGlobal>
-#include <QtModeling/QModelingObject>
+
+#include <QtCore/QObject>
+#include "private/umlelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,29 +54,26 @@ QT_MODULE(QtUml)
 
 class QUmlComment;
 
-class Q_UML_EXPORT QUmlElement : public QModelingObject
+class Q_UML_EXPORT QUmlElement : public QObject, public UmlElement
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
 public:
-    Q_DECL_HIDDEN QUmlElement();
+    Q_DECL_HIDDEN explicit QUmlElement(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlComment *> ownedComment() const;
-    void addOwnedComment(QUmlComment *ownedComment);
-    void removeOwnedComment(QUmlComment *ownedComment);
-    const QSet<QUmlElement *> ownedElement() const;
-    Q_DECL_HIDDEN void addOwnedElement(QUmlElement *ownedElement);
-    Q_DECL_HIDDEN void removeOwnedElement(QUmlElement *ownedElement);
-    QUmlElement *owner() const;
-    Q_DECL_HIDDEN void setOwner(QUmlElement *owner);
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE void addOwnedComment(UmlComment *ownedComment);
+    Q_INVOKABLE void removeOwnedComment(UmlComment *ownedComment);
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
 
     // Operations
-    QSet<QUmlElement *> allOwnedElements() const;
-    bool mustBeOwned() const;
-
-protected:
-    QSet<QUmlComment *> _ownedComment;
-    QSet<QUmlElement *> _ownedElement;
-    QUmlElement *_owner;
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
 };
 
 QT_END_NAMESPACE

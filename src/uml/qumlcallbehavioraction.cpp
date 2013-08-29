@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlcallbehavioraction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCallBehaviorAction
-
-    \inmodule QtUml
-
-    \brief A call behavior action is a call action that invokes a behavior directly rather than invoking a behavioral feature that, in turn, results in the invocation of that behavior. The argument values of the action are available to the execution of the invoked behavior. For synchronous calls the execution of the call behavior action waits until the execution of the invoked behavior completes and a result is returned on its output pin. The action completes immediately without a result, if the call is asynchronous. In particular, the invoked behavior may be an activity.
- */
-
-QUmlCallBehaviorAction::QUmlCallBehaviorAction() :
-    _behavior(0)
+QUmlCallBehaviorAction::QUmlCallBehaviorAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("behavior", QVariant::fromValue((QUmlBehavior *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The invoked behavior. It must be capable of accepting and returning control.
- */
 QUmlBehavior *QUmlCallBehaviorAction::behavior() const
 {
-    // This is a read-write association end
-
-    return _behavior;
+    return reinterpret_cast<QUmlBehavior *>(_behavior);
 }
 
 void QUmlCallBehaviorAction::setBehavior(QUmlBehavior *behavior)
 {
-    // This is a read-write association end
-
-    if (_behavior != behavior) {
-        _behavior = behavior;
-    }
+    UmlCallBehaviorAction::setBehavior(behavior);
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDependency>
+#include <QtCore/QObject>
+#include "private/umlabstraction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlOpaqueExpression;
 
-class Q_UML_EXPORT QUmlAbstraction : public QUmlDependency
+class Q_UML_EXPORT QUmlAbstraction : public QObject, public UmlAbstraction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOpaqueExpression * mapping READ mapping)
+
 public:
-    QUmlAbstraction();
+    Q_INVOKABLE explicit QUmlAbstraction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOpaqueExpression *mapping() const;
-    void setMapping(QUmlOpaqueExpression *mapping);
-
-protected:
-    QUmlOpaqueExpression *_mapping;
+    Q_INVOKABLE QUmlOpaqueExpression *mapping() const;
+    Q_INVOKABLE void setMapping(QUmlOpaqueExpression *mapping);
 };
 
 QT_END_NAMESPACE

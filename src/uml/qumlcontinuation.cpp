@@ -39,43 +39,24 @@
 **
 ****************************************************************************/
 #include "qumlcontinuation.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlContinuation
-
-    \inmodule QtUml
-
-    \brief A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
- */
-
-QUmlContinuation::QUmlContinuation() :
-    _setting(true)
+QUmlContinuation::QUmlContinuation(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("setting", QVariant::fromValue(true));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.
- */
 bool QUmlContinuation::setting() const
 {
-    // This is a read-write property
-
     return _setting;
 }
 
 void QUmlContinuation::setSetting(bool setting)
 {
-    // This is a read-write property
-
-    if (_setting != setting) {
-        _setting = setting;
-    }
+    UmlContinuation::setSetting(setting);
 }
 
 QT_END_NAMESPACE

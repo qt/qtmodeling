@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlCallAction>
+#include <QtCore/QObject>
+#include "private/umlcalloperationaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlOperation;
 
-class Q_UML_EXPORT QUmlCallOperationAction : public QUmlCallAction
+class Q_UML_EXPORT QUmlCallOperationAction : public QObject, public UmlCallOperationAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOperation * operation READ operation)
+    Q_PROPERTY(QUmlInputPin * target READ target)
+
 public:
-    QUmlCallOperationAction();
+    Q_INVOKABLE explicit QUmlCallOperationAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOperation *operation() const;
-    void setOperation(QUmlOperation *operation);
-    QUmlInputPin *target() const;
-    void setTarget(QUmlInputPin *target);
-
-protected:
-    QUmlOperation *_operation;
-    QUmlInputPin *_target;
+    Q_INVOKABLE QUmlOperation *operation() const;
+    Q_INVOKABLE void setOperation(QUmlOperation *operation);
+    Q_INVOKABLE QUmlInputPin *target() const;
+    Q_INVOKABLE void setTarget(QUmlInputPin *target);
 };
 
 QT_END_NAMESPACE

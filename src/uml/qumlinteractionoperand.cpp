@@ -39,98 +39,42 @@
 **
 ****************************************************************************/
 #include "qumlinteractionoperand.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInteractionConstraint>
+#include <QtUml/QUmlInteractionFragment>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInteractionOperand
-
-    \inmodule QtUml
-
-    \brief An interaction operand is contained in a combined fragment. An interaction operand represents one operand of the expression given by the enclosing combined fragment.
- */
-
-QUmlInteractionOperand::QUmlInteractionOperand() :
-    _guard(0)
+QUmlInteractionOperand::QUmlInteractionOperand(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("fragment", QVariant::fromValue(&_fragment));
-    d_ptr->object.setProperty("guard", QVariant::fromValue((QUmlInteractionConstraint *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The fragments of the operand.
- */
 const QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragment() const
 {
-    // This is a read-write association end
-
-    return _fragment;
+    return *(reinterpret_cast<const QList<QUmlInteractionFragment *> *>(&_fragment));
 }
 
-void QUmlInteractionOperand::addFragment(QUmlInteractionFragment *fragment)
+void QUmlInteractionOperand::addFragment(UmlInteractionFragment *fragment)
 {
-    // This is a read-write association end
-
-    if (!_fragment.contains(fragment)) {
-        _fragment.append(fragment);
-
-        // Adjust subsetted properties
-        addOwnedMember(fragment);
-
-        // Adjust opposite properties
-        if (fragment) {
-            fragment->setEnclosingOperand(this);
-        }
-    }
+    UmlInteractionOperand::addFragment(fragment);
 }
 
-void QUmlInteractionOperand::removeFragment(QUmlInteractionFragment *fragment)
+void QUmlInteractionOperand::removeFragment(UmlInteractionFragment *fragment)
 {
-    // This is a read-write association end
-
-    if (_fragment.contains(fragment)) {
-        _fragment.removeAll(fragment);
-
-        // Adjust subsetted properties
-        removeOwnedMember(fragment);
-
-        // Adjust opposite properties
-        if (fragment) {
-            fragment->setEnclosingOperand(0);
-        }
-    }
+    UmlInteractionOperand::removeFragment(fragment);
 }
 
-/*!
-    Constraint of the operand.
- */
 QUmlInteractionConstraint *QUmlInteractionOperand::guard() const
 {
-    // This is a read-write association end
-
-    return _guard;
+    return reinterpret_cast<QUmlInteractionConstraint *>(_guard);
 }
 
 void QUmlInteractionOperand::setGuard(QUmlInteractionConstraint *guard)
 {
-    // This is a read-write association end
-
-    if (_guard != guard) {
-        // Adjust subsetted properties
-        removeOwnedElement(_guard);
-
-        _guard = guard;
-
-        // Adjust subsetted properties
-        if (guard) {
-            addOwnedElement(guard);
-        }
-    }
+    UmlInteractionOperand::setGuard(guard);
 }
 
 QT_END_NAMESPACE

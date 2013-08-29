@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAssociation>
+#include <QtCore/QObject>
+#include "private/umlextension_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,24 +56,24 @@ class QUmlClass;
 class QUmlExtensionEnd;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlExtension : public QUmlAssociation
+class Q_UML_EXPORT QUmlExtension : public QObject, public UmlExtension
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isRequired READ isRequired)
+    Q_PROPERTY(QUmlClass * metaclass READ metaclass)
+    Q_PROPERTY(QUmlExtensionEnd * ownedEnd READ ownedEnd)
+
 public:
-    QUmlExtension();
+    Q_INVOKABLE explicit QUmlExtension(QObject *parent = 0);
 
     // Owned attributes
-    bool isRequired() const;
-    Q_DECL_HIDDEN void setRequired(bool isRequired);
-    QUmlClass *metaclass() const;
-    Q_DECL_HIDDEN void setMetaclass(QUmlClass *metaclass);
-    QUmlExtensionEnd *ownedEnd() const;
-    void setOwnedEnd(QUmlExtensionEnd *ownedEnd);
+    Q_INVOKABLE bool isRequired() const;
+    Q_INVOKABLE QUmlClass *metaclass() const;
+    Q_INVOKABLE QUmlExtensionEnd *ownedEnd() const;
+    Q_INVOKABLE void setOwnedEnd(QUmlExtensionEnd *ownedEnd);
 
     // Operations
-    QUmlProperty *metaclassEnd() const;
-
-protected:
-    QUmlExtensionEnd *_ownedEnd;
+    Q_INVOKABLE QUmlProperty *metaclassEnd() const;
 };
 
 QT_END_NAMESPACE

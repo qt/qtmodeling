@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlreduceaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlInputPin>
@@ -47,118 +46,51 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReduceAction
-
-    \inmodule QtUml
-
-    \brief A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
- */
-
-QUmlReduceAction::QUmlReduceAction() :
-    _collection(0),
-    _isOrdered(false),
-    _reducer(0),
-    _result(0)
+QUmlReduceAction::QUmlReduceAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("collection", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("isOrdered", QVariant::fromValue(false));
-    d_ptr->object.setProperty("reducer", QVariant::fromValue((QUmlBehavior *)(0)));
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The collection to be reduced.
- */
 QUmlInputPin *QUmlReduceAction::collection() const
 {
-    // This is a read-write association end
-
-    return _collection;
+    return reinterpret_cast<QUmlInputPin *>(_collection);
 }
 
 void QUmlReduceAction::setCollection(QUmlInputPin *collection)
 {
-    // This is a read-write association end
-
-    if (_collection != collection) {
-        // Adjust subsetted properties
-        removeInput(_collection);
-
-        _collection = collection;
-
-        // Adjust subsetted properties
-        if (collection) {
-            addInput(collection);
-        }
-    }
+    UmlReduceAction::setCollection(collection);
 }
 
-/*!
-    Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.
- */
 bool QUmlReduceAction::isOrdered() const
 {
-    // This is a read-write property
-
     return _isOrdered;
 }
 
 void QUmlReduceAction::setOrdered(bool isOrdered)
 {
-    // This is a read-write property
-
-    if (_isOrdered != isOrdered) {
-        _isOrdered = isOrdered;
-    }
+    UmlReduceAction::setOrdered(isOrdered);
 }
 
-/*!
-    Behavior that is applied to two elements of the input collection to produce a value that is the same type as elements of the collection.
- */
 QUmlBehavior *QUmlReduceAction::reducer() const
 {
-    // This is a read-write association end
-
-    return _reducer;
+    return reinterpret_cast<QUmlBehavior *>(_reducer);
 }
 
 void QUmlReduceAction::setReducer(QUmlBehavior *reducer)
 {
-    // This is a read-write association end
-
-    if (_reducer != reducer) {
-        _reducer = reducer;
-    }
+    UmlReduceAction::setReducer(reducer);
 }
 
-/*!
-    Gives the output pin on which the result is put.
- */
 QUmlOutputPin *QUmlReduceAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlReduceAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlReduceAction::setResult(result);
 }
 
 QT_END_NAMESPACE

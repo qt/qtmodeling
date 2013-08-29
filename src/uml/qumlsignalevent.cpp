@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlsignalevent.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlSignal>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlSignalEvent
-
-    \inmodule QtUml
-
-    \brief A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.
- */
-
-QUmlSignalEvent::QUmlSignalEvent() :
-    _signal(0)
+QUmlSignalEvent::QUmlSignalEvent(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("signal", QVariant::fromValue((QUmlSignal *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The specific signal that is associated with this event.
- */
 QUmlSignal *QUmlSignalEvent::signal() const
 {
-    // This is a read-write association end
-
-    return _signal;
+    return reinterpret_cast<QUmlSignal *>(_signal);
 }
 
 void QUmlSignalEvent::setSignal(QUmlSignal *signal)
 {
-    // This is a read-write association end
-
-    if (_signal != signal) {
-        _signal = signal;
-    }
+    UmlSignalEvent::setSignal(signal);
 }
 
 QT_END_NAMESPACE

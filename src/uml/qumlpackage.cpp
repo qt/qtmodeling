@@ -39,9 +39,9 @@
 **
 ****************************************************************************/
 #include "qumlpackage.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageMerge>
 #include <QtUml/QUmlProfile>
 #include <QtUml/QUmlProfileApplication>
@@ -50,381 +50,153 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlPackage
-
-    \inmodule QtUml
-
-    \brief A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.A package is used to group elements, and provides a namespace for the grouped elements.
- */
-
-QUmlPackage::QUmlPackage() :
-    _nestingPackage(0)
+QUmlPackage::QUmlPackage(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("uRI", QVariant::fromValue(QString()));
-    d_ptr->object.setProperty("nestedPackage", QVariant::fromValue(QSet<QUmlPackage *>()));
-    d_ptr->object.setProperty("nestingPackage", QVariant::fromValue((QUmlPackage *)(0)));
-    d_ptr->object.setProperty("ownedStereotype", QVariant::fromValue(QSet<QUmlStereotype *>()));
-    d_ptr->object.setProperty("ownedType", QVariant::fromValue(QSet<QUmlType *>()));
-    d_ptr->object.setProperty("packageMerge", QVariant::fromValue(&_packageMerge));
-    d_ptr->object.setProperty("packagedElement", QVariant::fromValue(&_packagedElement));
-    d_ptr->object.setProperty("profileApplication", QVariant::fromValue(&_profileApplication));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.
- */
 QString QUmlPackage::URI() const
 {
-    // This is a read-write property
-
     return _URI;
 }
 
 void QUmlPackage::setURI(QString URI)
 {
-    // This is a read-write property
-
-    if (_URI != URI) {
-        _URI = URI;
-    }
+    UmlPackage::setURI(URI);
 }
 
-/*!
-    References the packaged elements that are Packages.
- */
 const QSet<QUmlPackage *> QUmlPackage::nestedPackage() const
 {
-    // This is a read-write derived association end
-
-    qWarning("QUmlPackage::nestedPackage(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlPackage *>();
+    QSet<QUmlPackage *> r;
+    foreach (UmlPackage *element, UmlPackage::nestedPackage())
+        r.insert(reinterpret_cast<QUmlPackage *>(element));
+    return r;
 }
 
-void QUmlPackage::addNestedPackage(QUmlPackage *nestedPackage)
+void QUmlPackage::addNestedPackage(UmlPackage *nestedPackage)
 {
-    // This is a read-write derived association end
-
-    qWarning("QUmlPackage::nestedPackage(): to be implemented (this is a derived association end)");
-    Q_UNUSED(nestedPackage);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        addPackagedElement(nestedPackage);
-    }
+    UmlPackage::addNestedPackage(nestedPackage);
 }
 
-void QUmlPackage::removeNestedPackage(QUmlPackage *nestedPackage)
+void QUmlPackage::removeNestedPackage(UmlPackage *nestedPackage)
 {
-    // This is a read-write derived association end
-
-    qWarning("QUmlPackage::nestedPackage(): to be implemented (this is a derived association end)");
-    Q_UNUSED(nestedPackage);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        removePackagedElement(nestedPackage);
-    }
+    UmlPackage::removeNestedPackage(nestedPackage);
 }
 
-/*!
-    References the Package that owns this Package.
- */
 QUmlPackage *QUmlPackage::nestingPackage() const
 {
-    // This is a read-write association end
-
-    return _nestingPackage;
+    return reinterpret_cast<QUmlPackage *>(_nestingPackage);
 }
 
 void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
 {
-    // This is a read-write association end
-
-    if (_nestingPackage != nestingPackage) {
-        _nestingPackage = nestingPackage;
-    }
+    UmlPackage::setNestingPackage(nestingPackage);
 }
 
-/*!
-    References the Stereotypes that are owned by the Package
- */
 const QSet<QUmlStereotype *> QUmlPackage::ownedStereotype() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlPackage::ownedStereotype(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlStereotype *>();
+    QSet<QUmlStereotype *> r;
+    foreach (UmlStereotype *element, UmlPackage::ownedStereotype())
+        r.insert(reinterpret_cast<QUmlStereotype *>(element));
+    return r;
 }
 
-void QUmlPackage::addOwnedStereotype(QUmlStereotype *ownedStereotype)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlPackage::ownedStereotype(): to be implemented (this is a derived association end)");
-    Q_UNUSED(ownedStereotype);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        addPackagedElement(ownedStereotype);
-    }
-}
-
-void QUmlPackage::removeOwnedStereotype(QUmlStereotype *ownedStereotype)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlPackage::ownedStereotype(): to be implemented (this is a derived association end)");
-    Q_UNUSED(ownedStereotype);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        removePackagedElement(ownedStereotype);
-    }
-}
-
-/*!
-    References the packaged elements that are Types.
- */
 const QSet<QUmlType *> QUmlPackage::ownedType() const
 {
-    // This is a read-write derived association end
-
-    qWarning("QUmlPackage::ownedType(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlType *>();
+    QSet<QUmlType *> r;
+    foreach (UmlType *element, UmlPackage::ownedType())
+        r.insert(reinterpret_cast<QUmlType *>(element));
+    return r;
 }
 
-void QUmlPackage::addOwnedType(QUmlType *ownedType)
+void QUmlPackage::addOwnedType(UmlType *ownedType)
 {
-    // This is a read-write derived association end
-
-    qWarning("QUmlPackage::ownedType(): to be implemented (this is a derived association end)");
-    Q_UNUSED(ownedType);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        addPackagedElement(ownedType);
-
-        // Adjust opposite properties
-        if (ownedType) {
-            ownedType->setPackage(this);
-        }
-    }
+    UmlPackage::addOwnedType(ownedType);
 }
 
-void QUmlPackage::removeOwnedType(QUmlType *ownedType)
+void QUmlPackage::removeOwnedType(UmlType *ownedType)
 {
-    // This is a read-write derived association end
-
-    qWarning("QUmlPackage::ownedType(): to be implemented (this is a derived association end)");
-    Q_UNUSED(ownedType);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        removePackagedElement(ownedType);
-
-        // Adjust opposite properties
-        if (ownedType) {
-            ownedType->setPackage(0);
-        }
-    }
+    UmlPackage::removeOwnedType(ownedType);
 }
 
-/*!
-    References the PackageMerges that are owned by this Package.
- */
 const QSet<QUmlPackageMerge *> QUmlPackage::packageMerge() const
 {
-    // This is a read-write association end
-
-    return _packageMerge;
+    return *(reinterpret_cast<const QSet<QUmlPackageMerge *> *>(&_packageMerge));
 }
 
-void QUmlPackage::addPackageMerge(QUmlPackageMerge *packageMerge)
+void QUmlPackage::addPackageMerge(UmlPackageMerge *packageMerge)
 {
-    // This is a read-write association end
-
-    if (!_packageMerge.contains(packageMerge)) {
-        _packageMerge.insert(packageMerge);
-
-        // Adjust subsetted properties
-        addOwnedElement(packageMerge);
-
-        // Adjust opposite properties
-        if (packageMerge) {
-            packageMerge->setReceivingPackage(this);
-        }
-    }
+    UmlPackage::addPackageMerge(packageMerge);
 }
 
-void QUmlPackage::removePackageMerge(QUmlPackageMerge *packageMerge)
+void QUmlPackage::removePackageMerge(UmlPackageMerge *packageMerge)
 {
-    // This is a read-write association end
-
-    if (_packageMerge.contains(packageMerge)) {
-        _packageMerge.remove(packageMerge);
-
-        // Adjust subsetted properties
-        removeOwnedElement(packageMerge);
-
-        // Adjust opposite properties
-        if (packageMerge) {
-            packageMerge->setReceivingPackage(0);
-        }
-    }
+    UmlPackage::removePackageMerge(packageMerge);
 }
 
-/*!
-    Specifies the packageable elements that are owned by this Package.
- */
 const QSet<QUmlPackageableElement *> QUmlPackage::packagedElement() const
 {
-    // This is a read-write association end
-
-    return _packagedElement;
+    return *(reinterpret_cast<const QSet<QUmlPackageableElement *> *>(&_packagedElement));
 }
 
-void QUmlPackage::addPackagedElement(QUmlPackageableElement *packagedElement)
+void QUmlPackage::addPackagedElement(UmlPackageableElement *packagedElement)
 {
-    // This is a read-write association end
-
-    if (!_packagedElement.contains(packagedElement)) {
-        _packagedElement.insert(packagedElement);
-
-        // Adjust subsetted properties
-        addOwnedMember(packagedElement);
-    }
+    UmlPackage::addPackagedElement(packagedElement);
 }
 
-void QUmlPackage::removePackagedElement(QUmlPackageableElement *packagedElement)
+void QUmlPackage::removePackagedElement(UmlPackageableElement *packagedElement)
 {
-    // This is a read-write association end
-
-    if (_packagedElement.contains(packagedElement)) {
-        _packagedElement.remove(packagedElement);
-
-        // Adjust subsetted properties
-        removeOwnedMember(packagedElement);
-    }
+    UmlPackage::removePackagedElement(packagedElement);
 }
 
-/*!
-    References the ProfileApplications that indicate which profiles have been applied to the Package.
- */
 const QSet<QUmlProfileApplication *> QUmlPackage::profileApplication() const
 {
-    // This is a read-write association end
-
-    return _profileApplication;
+    return *(reinterpret_cast<const QSet<QUmlProfileApplication *> *>(&_profileApplication));
 }
 
-void QUmlPackage::addProfileApplication(QUmlProfileApplication *profileApplication)
+void QUmlPackage::addProfileApplication(UmlProfileApplication *profileApplication)
 {
-    // This is a read-write association end
-
-    if (!_profileApplication.contains(profileApplication)) {
-        _profileApplication.insert(profileApplication);
-
-        // Adjust subsetted properties
-        addOwnedElement(profileApplication);
-
-        // Adjust opposite properties
-        if (profileApplication) {
-            profileApplication->setApplyingPackage(this);
-        }
-    }
+    UmlPackage::addProfileApplication(profileApplication);
 }
 
-void QUmlPackage::removeProfileApplication(QUmlProfileApplication *profileApplication)
+void QUmlPackage::removeProfileApplication(UmlProfileApplication *profileApplication)
 {
-    // This is a read-write association end
-
-    if (_profileApplication.contains(profileApplication)) {
-        _profileApplication.remove(profileApplication);
-
-        // Adjust subsetted properties
-        removeOwnedElement(profileApplication);
-
-        // Adjust opposite properties
-        if (profileApplication) {
-            profileApplication->setApplyingPackage(0);
-        }
-    }
+    UmlPackage::removeProfileApplication(profileApplication);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.
- */
-QSet<QUmlStereotype *> QUmlPackage::allApplicableStereotypes(
-    ) const
+QSet<QUmlStereotype *> QUmlPackage::allApplicableStereotypes() const
 {
-    qWarning("QUmlPackage::allApplicableStereotypes(): to be implemented (operation)");
-
-    return QSet<QUmlStereotype *> ();
+    QSet<QUmlStereotype *> r;
+    foreach (UmlStereotype *element, UmlPackage::allApplicableStereotypes())
+        r.insert(reinterpret_cast<QUmlStereotype *>(element));
+    return r;
 }
 
-/*!
-    The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).
- */
-QUmlProfile *QUmlPackage::containingProfile(
-    ) const
+QUmlProfile *QUmlPackage::containingProfile() const
 {
-    qWarning("QUmlPackage::containingProfile(): to be implemented (operation)");
-
-    return 0;
+    return reinterpret_cast<QUmlProfile *>(UmlPackage::containingProfile());
 }
 
-/*!
-    The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.
- */
-bool QUmlPackage::makesVisible(
-    QUmlNamedElement *el) const
+bool QUmlPackage::makesVisible(QUmlNamedElement *el) const
 {
-    qWarning("QUmlPackage::makesVisible(): to be implemented (operation)");
-
-    Q_UNUSED(el);
-    return bool ();
+    return UmlPackage::makesVisible(el);
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner.
- */
-bool QUmlPackage::mustBeOwned(
-    ) const
+bool QUmlPackage::mustBeOwned() const
 {
-    qWarning("QUmlPackage::mustBeOwned(): to be implemented (operation)");
-
-    return bool ();
+    return UmlPackage::mustBeOwned();
 }
 
-/*!
-    The query visibleMembers() defines which members of a Package can be accessed outside it.
- */
-QSet<QUmlPackageableElement *> QUmlPackage::visibleMembers(
-    ) const
+QSet<QUmlPackageableElement *> QUmlPackage::visibleMembers() const
 {
-    qWarning("QUmlPackage::visibleMembers(): to be implemented (operation)");
-
-    return QSet<QUmlPackageableElement *> ();
+    QSet<QUmlPackageableElement *> r;
+    foreach (UmlPackageableElement *element, UmlPackage::visibleMembers())
+        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
+    return r;
 }
 
 QT_END_NAMESPACE

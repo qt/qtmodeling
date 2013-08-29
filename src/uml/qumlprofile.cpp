@@ -39,95 +39,47 @@
 **
 ****************************************************************************/
 #include "qumlprofile.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlPackageImport>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlProfile
-
-    \inmodule QtUml
-
-    \brief A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
- */
-
-QUmlProfile::QUmlProfile()
+QUmlProfile::QUmlProfile(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("metaclassReference", QVariant::fromValue(&_metaclassReference));
-    d_ptr->object.setProperty("metamodelReference", QVariant::fromValue(&_metamodelReference));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References a metaclass that may be extended.
- */
 const QSet<QUmlElementImport *> QUmlProfile::metaclassReference() const
 {
-    // This is a read-write association end
-
-    return _metaclassReference;
+    return *(reinterpret_cast<const QSet<QUmlElementImport *> *>(&_metaclassReference));
 }
 
-void QUmlProfile::addMetaclassReference(QUmlElementImport *metaclassReference)
+void QUmlProfile::addMetaclassReference(UmlElementImport *metaclassReference)
 {
-    // This is a read-write association end
-
-    if (!_metaclassReference.contains(metaclassReference)) {
-        _metaclassReference.insert(metaclassReference);
-
-        // Adjust subsetted properties
-        addElementImport(metaclassReference);
-    }
+    UmlProfile::addMetaclassReference(metaclassReference);
 }
 
-void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference)
+void QUmlProfile::removeMetaclassReference(UmlElementImport *metaclassReference)
 {
-    // This is a read-write association end
-
-    if (_metaclassReference.contains(metaclassReference)) {
-        _metaclassReference.remove(metaclassReference);
-
-        // Adjust subsetted properties
-        removeElementImport(metaclassReference);
-    }
+    UmlProfile::removeMetaclassReference(metaclassReference);
 }
 
-/*!
-    References a package containing (directly or indirectly) metaclasses that may be extended.
- */
 const QSet<QUmlPackageImport *> QUmlProfile::metamodelReference() const
 {
-    // This is a read-write association end
-
-    return _metamodelReference;
+    return *(reinterpret_cast<const QSet<QUmlPackageImport *> *>(&_metamodelReference));
 }
 
-void QUmlProfile::addMetamodelReference(QUmlPackageImport *metamodelReference)
+void QUmlProfile::addMetamodelReference(UmlPackageImport *metamodelReference)
 {
-    // This is a read-write association end
-
-    if (!_metamodelReference.contains(metamodelReference)) {
-        _metamodelReference.insert(metamodelReference);
-
-        // Adjust subsetted properties
-        addPackageImport(metamodelReference);
-    }
+    UmlProfile::addMetamodelReference(metamodelReference);
 }
 
-void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference)
+void QUmlProfile::removeMetamodelReference(UmlPackageImport *metamodelReference)
 {
-    // This is a read-write association end
-
-    if (_metamodelReference.contains(metamodelReference)) {
-        _metamodelReference.remove(metamodelReference);
-
-        // Adjust subsetted properties
-        removePackageImport(metamodelReference);
-    }
+    UmlProfile::removeMetamodelReference(metamodelReference);
 }
 
 QT_END_NAMESPACE

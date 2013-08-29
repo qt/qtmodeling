@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umltemplateableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,25 +56,25 @@ class QUmlParameterableElement;
 class QUmlTemplateBinding;
 class QUmlTemplateSignature;
 
-class Q_UML_EXPORT QUmlTemplateableElement : public virtual QUmlElement
+class Q_UML_EXPORT QUmlTemplateableElement : public QObject, public UmlTemplateableElement
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature)
+    Q_PROPERTY(QSet<QUmlTemplateBinding *> templateBinding READ templateBinding)
+
 public:
-    Q_DECL_HIDDEN QUmlTemplateableElement();
+    Q_DECL_HIDDEN explicit QUmlTemplateableElement(QObject *parent = 0);
 
     // Owned attributes
-    QUmlTemplateSignature *ownedTemplateSignature() const;
-    void setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature);
-    const QSet<QUmlTemplateBinding *> templateBinding() const;
-    void addTemplateBinding(QUmlTemplateBinding *templateBinding);
-    void removeTemplateBinding(QUmlTemplateBinding *templateBinding);
+    Q_INVOKABLE QUmlTemplateSignature *ownedTemplateSignature() const;
+    Q_INVOKABLE void setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature);
+    Q_INVOKABLE const QSet<QUmlTemplateBinding *> templateBinding() const;
+    Q_INVOKABLE void addTemplateBinding(UmlTemplateBinding *templateBinding);
+    Q_INVOKABLE void removeTemplateBinding(UmlTemplateBinding *templateBinding);
 
     // Operations
-    bool isTemplate() const;
-    QSet<QUmlParameterableElement *> parameterableElements() const;
-
-protected:
-    QUmlTemplateSignature *_ownedTemplateSignature;
-    QSet<QUmlTemplateBinding *> _templateBinding;
+    Q_INVOKABLE bool isTemplate() const;
+    Q_INVOKABLE QSet<QUmlParameterableElement *> parameterableElements() const;
 };
 
 QT_END_NAMESPACE

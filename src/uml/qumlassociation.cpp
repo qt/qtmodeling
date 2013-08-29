@@ -39,218 +39,80 @@
 **
 ****************************************************************************/
 #include "qumlassociation.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlType>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlAssociation
-
-    \inmodule QtUml
-
-    \brief An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
- */
-
-QUmlAssociation::QUmlAssociation() :
-    _isDerived(false)
+QUmlAssociation::QUmlAssociation(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("endType", QVariant::fromValue(QList<QUmlType *>()));
-    d_ptr->object.setProperty("isDerived", QVariant::fromValue(false));
-    d_ptr->object.setProperty("memberEnd", QVariant::fromValue(&_memberEnd));
-    d_ptr->object.setProperty("navigableOwnedEnd", QVariant::fromValue(&_navigableOwnedEnd));
-    d_ptr->object.setProperty("ownedEnd", QVariant::fromValue(&_ownedEnd));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the classifiers that are used as types of the ends of the association.
- */
 const QList<QUmlType *> QUmlAssociation::endType() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlAssociation::endType(): to be implemented (this is a derived association end)");
-
-    return QList<QUmlType *>();
+    QList<QUmlType *> r;
+    foreach (UmlType *element, UmlAssociation::endType())
+        r.append(reinterpret_cast<QUmlType *>(element));
+    return r;
 }
 
-void QUmlAssociation::addEndType(QUmlType *endType)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlAssociation::endType(): to be implemented (this is a derived association end)");
-    Q_UNUSED(endType);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        addRelatedElement(endType);
-    }
-}
-
-void QUmlAssociation::removeEndType(QUmlType *endType)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlAssociation::endType(): to be implemented (this is a derived association end)");
-    Q_UNUSED(endType);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        removeRelatedElement(endType);
-    }
-}
-
-/*!
-    Specifies whether the association is derived from other model elements such as other associations or constraints.
- */
 bool QUmlAssociation::isDerived() const
 {
-    // This is a read-write property
-
     return _isDerived;
 }
 
 void QUmlAssociation::setDerived(bool isDerived)
 {
-    // This is a read-write property
-
-    if (_isDerived != isDerived) {
-        _isDerived = isDerived;
-    }
+    UmlAssociation::setDerived(isDerived);
 }
 
-/*!
-    Each end represents participation of instances of the classifier connected to the end in links of the association.
- */
 const QList<QUmlProperty *> QUmlAssociation::memberEnd() const
 {
-    // This is a read-write association end
-
-    return _memberEnd;
+    return *(reinterpret_cast<const QList<QUmlProperty *> *>(&_memberEnd));
 }
 
-void QUmlAssociation::addMemberEnd(QUmlProperty *memberEnd)
+void QUmlAssociation::addMemberEnd(UmlProperty *memberEnd)
 {
-    // This is a read-write association end
-
-    if (!_memberEnd.contains(memberEnd)) {
-        _memberEnd.append(memberEnd);
-
-        // Adjust subsetted properties
-        addMember(memberEnd);
-
-        // Adjust opposite properties
-        if (memberEnd) {
-            memberEnd->setAssociation(this);
-        }
-    }
+    UmlAssociation::addMemberEnd(memberEnd);
 }
 
-void QUmlAssociation::removeMemberEnd(QUmlProperty *memberEnd)
+void QUmlAssociation::removeMemberEnd(UmlProperty *memberEnd)
 {
-    // This is a read-write association end
-
-    if (_memberEnd.contains(memberEnd)) {
-        _memberEnd.removeAll(memberEnd);
-
-        // Adjust subsetted properties
-        removeMember(memberEnd);
-
-        // Adjust opposite properties
-        if (memberEnd) {
-            memberEnd->setAssociation(0);
-        }
-    }
+    UmlAssociation::removeMemberEnd(memberEnd);
 }
 
-/*!
-    The navigable ends that are owned by the association itself.
- */
 const QSet<QUmlProperty *> QUmlAssociation::navigableOwnedEnd() const
 {
-    // This is a read-write association end
-
-    return _navigableOwnedEnd;
+    return *(reinterpret_cast<const QSet<QUmlProperty *> *>(&_navigableOwnedEnd));
 }
 
-void QUmlAssociation::addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
+void QUmlAssociation::addNavigableOwnedEnd(UmlProperty *navigableOwnedEnd)
 {
-    // This is a read-write association end
-
-    if (!_navigableOwnedEnd.contains(navigableOwnedEnd)) {
-        _navigableOwnedEnd.insert(navigableOwnedEnd);
-
-        // Adjust subsetted properties
-        addOwnedEnd(navigableOwnedEnd);
-    }
+    UmlAssociation::addNavigableOwnedEnd(navigableOwnedEnd);
 }
 
-void QUmlAssociation::removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
+void QUmlAssociation::removeNavigableOwnedEnd(UmlProperty *navigableOwnedEnd)
 {
-    // This is a read-write association end
-
-    if (_navigableOwnedEnd.contains(navigableOwnedEnd)) {
-        _navigableOwnedEnd.remove(navigableOwnedEnd);
-
-        // Adjust subsetted properties
-        removeOwnedEnd(navigableOwnedEnd);
-    }
+    UmlAssociation::removeNavigableOwnedEnd(navigableOwnedEnd);
 }
 
-/*!
-    The ends that are owned by the association itself.
- */
 const QList<QUmlProperty *> QUmlAssociation::ownedEnd() const
 {
-    // This is a read-write association end
-
-    return _ownedEnd;
+    return *(reinterpret_cast<const QList<QUmlProperty *> *>(&_ownedEnd));
 }
 
-void QUmlAssociation::addOwnedEnd(QUmlProperty *ownedEnd)
+void QUmlAssociation::addOwnedEnd(UmlProperty *ownedEnd)
 {
-    // This is a read-write association end
-
-    if (!_ownedEnd.contains(ownedEnd)) {
-        _ownedEnd.append(ownedEnd);
-
-        // Adjust subsetted properties
-        addMemberEnd(ownedEnd);
-        addFeature(ownedEnd);
-        addOwnedMember(ownedEnd);
-
-        // Adjust opposite properties
-        if (ownedEnd) {
-            ownedEnd->setOwningAssociation(this);
-        }
-    }
+    UmlAssociation::addOwnedEnd(ownedEnd);
 }
 
-void QUmlAssociation::removeOwnedEnd(QUmlProperty *ownedEnd)
+void QUmlAssociation::removeOwnedEnd(UmlProperty *ownedEnd)
 {
-    // This is a read-write association end
-
-    if (_ownedEnd.contains(ownedEnd)) {
-        _ownedEnd.removeAll(ownedEnd);
-
-        // Adjust subsetted properties
-        removeMemberEnd(ownedEnd);
-        removeFeature(ownedEnd);
-        removeOwnedMember(ownedEnd);
-
-        // Adjust opposite properties
-        if (ownedEnd) {
-            ownedEnd->setOwningAssociation(0);
-        }
-    }
+    UmlAssociation::removeOwnedEnd(ownedEnd);
 }
 
 QT_END_NAMESPACE

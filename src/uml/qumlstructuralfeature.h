@@ -43,9 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlTypedElement>
-#include <QtUml/QUmlMultiplicityElement>
-#include <QtUml/QUmlFeature>
+#include <QtCore/QObject>
+#include "private/umlstructuralfeature_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +52,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlStructuralFeature : public virtual QUmlTypedElement, public QUmlMultiplicityElement, public QUmlFeature
+class Q_UML_EXPORT QUmlStructuralFeature : public QObject, public UmlStructuralFeature
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isReadOnly READ isReadOnly)
+
 public:
-    Q_DECL_HIDDEN QUmlStructuralFeature();
+    Q_DECL_HIDDEN explicit QUmlStructuralFeature(QObject *parent = 0);
 
     // Owned attributes
-    bool isReadOnly() const;
-    void setReadOnly(bool isReadOnly);
-
-protected:
-    bool _isReadOnly;
+    Q_INVOKABLE bool isReadOnly() const;
+    Q_INVOKABLE void setReadOnly(bool isReadOnly);
 };
 
 QT_END_NAMESPACE

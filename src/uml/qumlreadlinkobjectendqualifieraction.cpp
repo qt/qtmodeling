@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlreadlinkobjectendqualifieraction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
@@ -47,97 +46,41 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReadLinkObjectEndQualifierAction
-
-    \inmodule QtUml
-
-    \brief A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
- */
-
-QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction() :
-    _object(0),
-    _qualifier(0),
-    _result(0)
+QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("qualifier", QVariant::fromValue((QUmlProperty *)(0)));
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the input pin from which the link object is obtained.
- */
 QUmlInputPin *QUmlReadLinkObjectEndQualifierAction::object() const
 {
-    // This is a read-write association end
-
-    return _object;
+    return reinterpret_cast<QUmlInputPin *>(_object);
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    if (_object != object) {
-        // Adjust subsetted properties
-        removeInput(_object);
-
-        _object = object;
-
-        // Adjust subsetted properties
-        if (object) {
-            addInput(object);
-        }
-    }
+    UmlReadLinkObjectEndQualifierAction::setObject(object);
 }
 
-/*!
-    The attribute representing the qualifier to be read.
- */
 QUmlProperty *QUmlReadLinkObjectEndQualifierAction::qualifier() const
 {
-    // This is a read-write association end
-
-    return _qualifier;
+    return reinterpret_cast<QUmlProperty *>(_qualifier);
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setQualifier(QUmlProperty *qualifier)
 {
-    // This is a read-write association end
-
-    if (_qualifier != qualifier) {
-        _qualifier = qualifier;
-    }
+    UmlReadLinkObjectEndQualifierAction::setQualifier(qualifier);
 }
 
-/*!
-    Pin where the result value is placed.
- */
 QUmlOutputPin *QUmlReadLinkObjectEndQualifierAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlReadLinkObjectEndQualifierAction::setResult(result);
 }
 
 QT_END_NAMESPACE

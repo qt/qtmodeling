@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRedefinableElement>
+#include <QtCore/QObject>
+#include "private/umlactivityedge_p.h"
 
 QT_BEGIN_HEADER
 
@@ -59,47 +60,45 @@ class QUmlInterruptibleActivityRegion;
 class QUmlStructuredActivityNode;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlActivityEdge : public QUmlRedefinableElement
+class Q_UML_EXPORT QUmlActivityEdge : public QObject, public UmlActivityEdge
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlActivity * activity READ activity)
+    Q_PROPERTY(QUmlValueSpecification * guard READ guard)
+    Q_PROPERTY(QSet<QUmlActivityGroup *> inGroup READ inGroup)
+    Q_PROPERTY(QSet<QUmlActivityPartition *> inPartition READ inPartition)
+    Q_PROPERTY(QUmlStructuredActivityNode * inStructuredNode READ inStructuredNode)
+    Q_PROPERTY(QUmlInterruptibleActivityRegion * interrupts READ interrupts)
+    Q_PROPERTY(QSet<QUmlActivityEdge *> redefinedEdge READ redefinedEdge)
+    Q_PROPERTY(QUmlActivityNode * source READ source)
+    Q_PROPERTY(QUmlActivityNode * target READ target)
+    Q_PROPERTY(QUmlValueSpecification * weight READ weight)
+
 public:
-    Q_DECL_HIDDEN QUmlActivityEdge();
+    Q_DECL_HIDDEN explicit QUmlActivityEdge(QObject *parent = 0);
 
     // Owned attributes
-    QUmlActivity *activity() const;
-    void setActivity(QUmlActivity *activity);
-    QUmlValueSpecification *guard() const;
-    void setGuard(QUmlValueSpecification *guard);
-    const QSet<QUmlActivityGroup *> inGroup() const;
-    Q_DECL_HIDDEN void addInGroup(QUmlActivityGroup *inGroup);
-    Q_DECL_HIDDEN void removeInGroup(QUmlActivityGroup *inGroup);
-    const QSet<QUmlActivityPartition *> inPartition() const;
-    void addInPartition(QUmlActivityPartition *inPartition);
-    void removeInPartition(QUmlActivityPartition *inPartition);
-    QUmlStructuredActivityNode *inStructuredNode() const;
-    void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
-    QUmlInterruptibleActivityRegion *interrupts() const;
-    void setInterrupts(QUmlInterruptibleActivityRegion *interrupts);
-    const QSet<QUmlActivityEdge *> redefinedEdge() const;
-    void addRedefinedEdge(QUmlActivityEdge *redefinedEdge);
-    void removeRedefinedEdge(QUmlActivityEdge *redefinedEdge);
-    QUmlActivityNode *source() const;
-    void setSource(QUmlActivityNode *source);
-    QUmlActivityNode *target() const;
-    void setTarget(QUmlActivityNode *target);
-    QUmlValueSpecification *weight() const;
-    void setWeight(QUmlValueSpecification *weight);
-
-protected:
-    QUmlActivity *_activity;
-    QUmlValueSpecification *_guard;
-    QSet<QUmlActivityGroup *> _inGroup;
-    QSet<QUmlActivityPartition *> _inPartition;
-    QUmlStructuredActivityNode *_inStructuredNode;
-    QUmlInterruptibleActivityRegion *_interrupts;
-    QSet<QUmlActivityEdge *> _redefinedEdge;
-    QUmlActivityNode *_source;
-    QUmlActivityNode *_target;
-    QUmlValueSpecification *_weight;
+    Q_INVOKABLE QUmlActivity *activity() const;
+    Q_INVOKABLE void setActivity(QUmlActivity *activity);
+    Q_INVOKABLE QUmlValueSpecification *guard() const;
+    Q_INVOKABLE void setGuard(QUmlValueSpecification *guard);
+    Q_INVOKABLE const QSet<QUmlActivityGroup *> inGroup() const;
+    Q_INVOKABLE const QSet<QUmlActivityPartition *> inPartition() const;
+    Q_INVOKABLE void addInPartition(UmlActivityPartition *inPartition);
+    Q_INVOKABLE void removeInPartition(UmlActivityPartition *inPartition);
+    Q_INVOKABLE QUmlStructuredActivityNode *inStructuredNode() const;
+    Q_INVOKABLE void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
+    Q_INVOKABLE QUmlInterruptibleActivityRegion *interrupts() const;
+    Q_INVOKABLE void setInterrupts(QUmlInterruptibleActivityRegion *interrupts);
+    Q_INVOKABLE const QSet<QUmlActivityEdge *> redefinedEdge() const;
+    Q_INVOKABLE void addRedefinedEdge(UmlActivityEdge *redefinedEdge);
+    Q_INVOKABLE void removeRedefinedEdge(UmlActivityEdge *redefinedEdge);
+    Q_INVOKABLE QUmlActivityNode *source() const;
+    Q_INVOKABLE void setSource(QUmlActivityNode *source);
+    Q_INVOKABLE QUmlActivityNode *target() const;
+    Q_INVOKABLE void setTarget(QUmlActivityNode *target);
+    Q_INVOKABLE QUmlValueSpecification *weight() const;
+    Q_INVOKABLE void setWeight(QUmlValueSpecification *weight);
 };
 
 QT_END_NAMESPACE

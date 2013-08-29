@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDeployedArtifact>
-#include <QtUml/QUmlClassifier>
+#include <QtCore/QObject>
+#include "private/umlartifact_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,33 +56,33 @@ class QUmlManifestation;
 class QUmlOperation;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlArtifact : public QUmlDeployedArtifact, public QUmlClassifier
+class Q_UML_EXPORT QUmlArtifact : public QObject, public UmlArtifact
 {
+    Q_OBJECT
+    Q_PROPERTY(QString fileName READ fileName)
+    Q_PROPERTY(QSet<QUmlManifestation *> manifestation READ manifestation)
+    Q_PROPERTY(QSet<QUmlArtifact *> nestedArtifact READ nestedArtifact)
+    Q_PROPERTY(QList<QUmlProperty *> ownedAttribute READ ownedAttribute)
+    Q_PROPERTY(QList<QUmlOperation *> ownedOperation READ ownedOperation)
+
 public:
-    QUmlArtifact();
+    Q_INVOKABLE explicit QUmlArtifact(QObject *parent = 0);
 
     // Owned attributes
-    QString fileName() const;
-    void setFileName(QString fileName);
-    const QSet<QUmlManifestation *> manifestation() const;
-    void addManifestation(QUmlManifestation *manifestation);
-    void removeManifestation(QUmlManifestation *manifestation);
-    const QSet<QUmlArtifact *> nestedArtifact() const;
-    void addNestedArtifact(QUmlArtifact *nestedArtifact);
-    void removeNestedArtifact(QUmlArtifact *nestedArtifact);
-    const QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QList<QUmlOperation *> ownedOperation() const;
-    void addOwnedOperation(QUmlOperation *ownedOperation);
-    void removeOwnedOperation(QUmlOperation *ownedOperation);
-
-protected:
-    QString _fileName;
-    QSet<QUmlManifestation *> _manifestation;
-    QSet<QUmlArtifact *> _nestedArtifact;
-    QList<QUmlProperty *> _ownedAttribute;
-    QList<QUmlOperation *> _ownedOperation;
+    Q_INVOKABLE QString fileName() const;
+    Q_INVOKABLE void setFileName(QString fileName);
+    Q_INVOKABLE const QSet<QUmlManifestation *> manifestation() const;
+    Q_INVOKABLE void addManifestation(UmlManifestation *manifestation);
+    Q_INVOKABLE void removeManifestation(UmlManifestation *manifestation);
+    Q_INVOKABLE const QSet<QUmlArtifact *> nestedArtifact() const;
+    Q_INVOKABLE void addNestedArtifact(UmlArtifact *nestedArtifact);
+    Q_INVOKABLE void removeNestedArtifact(UmlArtifact *nestedArtifact);
+    Q_INVOKABLE const QList<QUmlProperty *> ownedAttribute() const;
+    Q_INVOKABLE void addOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE const QList<QUmlOperation *> ownedOperation() const;
+    Q_INVOKABLE void addOwnedOperation(UmlOperation *ownedOperation);
+    Q_INVOKABLE void removeOwnedOperation(UmlOperation *ownedOperation);
 };
 
 QT_END_NAMESPACE

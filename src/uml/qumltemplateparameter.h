@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umltemplateparameter_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,29 +55,29 @@ QT_MODULE(QtUml)
 class QUmlParameterableElement;
 class QUmlTemplateSignature;
 
-class Q_UML_EXPORT QUmlTemplateParameter : public QUmlElement
+class Q_UML_EXPORT QUmlTemplateParameter : public QObject, public UmlTemplateParameter
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlParameterableElement * default_ READ default_)
+    Q_PROPERTY(QUmlParameterableElement * ownedDefault READ ownedDefault)
+    Q_PROPERTY(QUmlParameterableElement * ownedParameteredElement READ ownedParameteredElement)
+    Q_PROPERTY(QUmlParameterableElement * parameteredElement READ parameteredElement)
+    Q_PROPERTY(QUmlTemplateSignature * signature READ signature)
+
 public:
-    QUmlTemplateParameter();
+    Q_INVOKABLE explicit QUmlTemplateParameter(QObject *parent = 0);
 
     // Owned attributes
-    QUmlParameterableElement *default_() const;
-    void setDefault(QUmlParameterableElement *default_);
-    QUmlParameterableElement *ownedDefault() const;
-    void setOwnedDefault(QUmlParameterableElement *ownedDefault);
-    QUmlParameterableElement *ownedParameteredElement() const;
-    void setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement);
-    QUmlParameterableElement *parameteredElement() const;
-    void setParameteredElement(QUmlParameterableElement *parameteredElement);
-    QUmlTemplateSignature *signature() const;
-    void setSignature(QUmlTemplateSignature *signature);
-
-protected:
-    QUmlParameterableElement *_default_;
-    QUmlParameterableElement *_ownedDefault;
-    QUmlParameterableElement *_ownedParameteredElement;
-    QUmlParameterableElement *_parameteredElement;
-    QUmlTemplateSignature *_signature;
+    Q_INVOKABLE QUmlParameterableElement *default_() const;
+    Q_INVOKABLE void setDefault(QUmlParameterableElement *default_);
+    Q_INVOKABLE QUmlParameterableElement *ownedDefault() const;
+    Q_INVOKABLE void setOwnedDefault(QUmlParameterableElement *ownedDefault);
+    Q_INVOKABLE QUmlParameterableElement *ownedParameteredElement() const;
+    Q_INVOKABLE void setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement);
+    Q_INVOKABLE QUmlParameterableElement *parameteredElement() const;
+    Q_INVOKABLE void setParameteredElement(QUmlParameterableElement *parameteredElement);
+    Q_INVOKABLE QUmlTemplateSignature *signature() const;
+    Q_INVOKABLE void setSignature(QUmlTemplateSignature *signature);
 };
 
 QT_END_NAMESPACE

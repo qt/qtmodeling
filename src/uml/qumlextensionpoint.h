@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRedefinableElement>
+#include <QtCore/QObject>
+#include "private/umlextensionpoint_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlUseCase;
 
-class Q_UML_EXPORT QUmlExtensionPoint : public QUmlRedefinableElement
+class Q_UML_EXPORT QUmlExtensionPoint : public QObject, public UmlExtensionPoint
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlUseCase * useCase READ useCase)
+
 public:
-    QUmlExtensionPoint();
+    Q_INVOKABLE explicit QUmlExtensionPoint(QObject *parent = 0);
 
     // Owned attributes
-    QUmlUseCase *useCase() const;
-    void setUseCase(QUmlUseCase *useCase);
-
-protected:
-    QUmlUseCase *_useCase;
+    Q_INVOKABLE QUmlUseCase *useCase() const;
+    Q_INVOKABLE void setUseCase(QUmlUseCase *useCase);
 };
 
 QT_END_NAMESPACE

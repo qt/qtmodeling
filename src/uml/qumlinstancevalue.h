@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlValueSpecification>
+#include <QtCore/QObject>
+#include "private/umlinstancevalue_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlInstanceSpecification;
 
-class Q_UML_EXPORT QUmlInstanceValue : public QUmlValueSpecification
+class Q_UML_EXPORT QUmlInstanceValue : public QObject, public UmlInstanceValue
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInstanceSpecification * instance READ instance)
+
 public:
-    QUmlInstanceValue();
+    Q_INVOKABLE explicit QUmlInstanceValue(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInstanceSpecification *instance() const;
-    void setInstance(QUmlInstanceSpecification *instance);
-
-protected:
-    QUmlInstanceSpecification *_instance;
+    Q_INVOKABLE QUmlInstanceSpecification *instance() const;
+    Q_INVOKABLE void setInstance(QUmlInstanceSpecification *instance);
 };
 
 QT_END_NAMESPACE

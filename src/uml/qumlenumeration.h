@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDataType>
+#include <QtCore/QObject>
+#include "private/umlenumeration_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,18 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlEnumerationLiteral;
 
-class Q_UML_EXPORT QUmlEnumeration : public QUmlDataType
+class Q_UML_EXPORT QUmlEnumeration : public QObject, public UmlEnumeration
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlEnumerationLiteral *> ownedLiteral READ ownedLiteral)
+
 public:
-    QUmlEnumeration();
+    Q_INVOKABLE explicit QUmlEnumeration(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlEnumerationLiteral *> ownedLiteral() const;
-    void addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral);
-    void removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral);
-
-protected:
-    QList<QUmlEnumerationLiteral *> _ownedLiteral;
+    Q_INVOKABLE const QList<QUmlEnumerationLiteral *> ownedLiteral() const;
+    Q_INVOKABLE void addOwnedLiteral(UmlEnumerationLiteral *ownedLiteral);
+    Q_INVOKABLE void removeOwnedLiteral(UmlEnumerationLiteral *ownedLiteral);
 };
 
 QT_END_NAMESPACE

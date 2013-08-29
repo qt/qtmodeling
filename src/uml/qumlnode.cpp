@@ -39,57 +39,29 @@
 **
 ****************************************************************************/
 #include "qumlnode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlNode
-
-    \inmodule QtUml
-
-    \brief A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.
- */
-
-QUmlNode::QUmlNode()
+QUmlNode::QUmlNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("nestedNode", QVariant::fromValue(&_nestedNode));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The Nodes that are defined (nested) within the Node.
- */
 const QSet<QUmlNode *> QUmlNode::nestedNode() const
 {
-    // This is a read-write association end
-
-    return _nestedNode;
+    return *(reinterpret_cast<const QSet<QUmlNode *> *>(&_nestedNode));
 }
 
-void QUmlNode::addNestedNode(QUmlNode *nestedNode)
+void QUmlNode::addNestedNode(UmlNode *nestedNode)
 {
-    // This is a read-write association end
-
-    if (!_nestedNode.contains(nestedNode)) {
-        _nestedNode.insert(nestedNode);
-
-        // Adjust subsetted properties
-        addOwnedMember(nestedNode);
-    }
+    UmlNode::addNestedNode(nestedNode);
 }
 
-void QUmlNode::removeNestedNode(QUmlNode *nestedNode)
+void QUmlNode::removeNestedNode(UmlNode *nestedNode)
 {
-    // This is a read-write association end
-
-    if (_nestedNode.contains(nestedNode)) {
-        _nestedNode.remove(nestedNode);
-
-        // Adjust subsetted properties
-        removeOwnedMember(nestedNode);
-    }
+    UmlNode::removeNestedNode(nestedNode);
 }
 
 QT_END_NAMESPACE

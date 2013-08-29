@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlredefinableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,29 +54,25 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class Q_UML_EXPORT QUmlRedefinableElement : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlRedefinableElement : public QObject, public UmlRedefinableElement
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(QSet<QUmlRedefinableElement *> redefinedElement READ redefinedElement)
+    Q_PROPERTY(QSet<QUmlClassifier *> redefinitionContext READ redefinitionContext)
+
 public:
-    Q_DECL_HIDDEN QUmlRedefinableElement();
+    Q_DECL_HIDDEN explicit QUmlRedefinableElement(QObject *parent = 0);
 
     // Owned attributes
-    bool isLeaf() const;
-    void setLeaf(bool isLeaf);
-    const QSet<QUmlRedefinableElement *> redefinedElement() const;
-    Q_DECL_HIDDEN void addRedefinedElement(QUmlRedefinableElement *redefinedElement);
-    Q_DECL_HIDDEN void removeRedefinedElement(QUmlRedefinableElement *redefinedElement);
-    const QSet<QUmlClassifier *> redefinitionContext() const;
-    Q_DECL_HIDDEN void addRedefinitionContext(QUmlClassifier *redefinitionContext);
-    Q_DECL_HIDDEN void removeRedefinitionContext(QUmlClassifier *redefinitionContext);
+    Q_INVOKABLE bool isLeaf() const;
+    Q_INVOKABLE void setLeaf(bool isLeaf);
+    Q_INVOKABLE const QSet<QUmlRedefinableElement *> redefinedElement() const;
+    Q_INVOKABLE const QSet<QUmlClassifier *> redefinitionContext() const;
 
     // Operations
-    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-    bool isRedefinitionContextValid(QUmlRedefinableElement *redefined) const;
-
-protected:
-    bool _isLeaf;
-    QSet<QUmlRedefinableElement *> _redefinedElement;
-    QSet<QUmlClassifier *> _redefinitionContext;
+    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+    Q_INVOKABLE bool isRedefinitionContextValid(QUmlRedefinableElement *redefined) const;
 };
 
 QT_END_NAMESPACE

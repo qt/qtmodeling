@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlValueSpecification>
+#include <QtCore/QObject>
+#include "private/umlopaqueexpression_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,33 +55,33 @@ QT_MODULE(QtUml)
 class QUmlBehavior;
 class QUmlParameter;
 
-class Q_UML_EXPORT QUmlOpaqueExpression : public QUmlValueSpecification
+class Q_UML_EXPORT QUmlOpaqueExpression : public QObject, public UmlOpaqueExpression
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlBehavior * behavior READ behavior)
+    Q_PROPERTY(QList<QString> body READ body)
+    Q_PROPERTY(QList<QString> language READ language)
+    Q_PROPERTY(QUmlParameter * result READ result)
+
 public:
-    QUmlOpaqueExpression();
+    Q_INVOKABLE explicit QUmlOpaqueExpression(QObject *parent = 0);
 
     // Owned attributes
-    QUmlBehavior *behavior() const;
-    void setBehavior(QUmlBehavior *behavior);
-    const QList<QString> body() const;
-    void addBody(QString body);
-    void removeBody(QString body);
-    const QList<QString> language() const;
-    void addLanguage(QString language);
-    void removeLanguage(QString language);
-    QUmlParameter *result() const;
-    Q_DECL_HIDDEN void setResult(QUmlParameter *result);
+    Q_INVOKABLE QUmlBehavior *behavior() const;
+    Q_INVOKABLE void setBehavior(QUmlBehavior *behavior);
+    Q_INVOKABLE const QList<QString> body() const;
+    Q_INVOKABLE void addBody(QString body);
+    Q_INVOKABLE void removeBody(QString body);
+    Q_INVOKABLE const QList<QString> language() const;
+    Q_INVOKABLE void addLanguage(QString language);
+    Q_INVOKABLE void removeLanguage(QString language);
+    Q_INVOKABLE QUmlParameter *result() const;
 
     // Operations
-    bool isIntegral() const;
-    bool isNonNegative() const;
-    bool isPositive() const;
-    int value() const;
-
-protected:
-    QUmlBehavior *_behavior;
-    QList<QString> _body;
-    QList<QString> _language;
+    Q_INVOKABLE bool isIntegral() const;
+    Q_INVOKABLE bool isNonNegative() const;
+    Q_INVOKABLE bool isPositive() const;
+    Q_INVOKABLE int value() const;
 };
 
 QT_END_NAMESPACE

@@ -39,109 +39,47 @@
 **
 ****************************************************************************/
 #include "qumlinterruptibleactivityregion.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInterruptibleActivityRegion
-
-    \inmodule QtUml
-
-    \brief An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.
- */
-
-QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion()
+QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("interruptingEdge", QVariant::fromValue(&_interruptingEdge));
-    d_ptr->object.setProperty("node", QVariant::fromValue(&_node));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The edges leaving the region that will abort other tokens flowing in the region.
- */
 const QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdge() const
 {
-    // This is a read-write association end
-
-    return _interruptingEdge;
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_interruptingEdge));
 }
 
-void QUmlInterruptibleActivityRegion::addInterruptingEdge(QUmlActivityEdge *interruptingEdge)
+void QUmlInterruptibleActivityRegion::addInterruptingEdge(UmlActivityEdge *interruptingEdge)
 {
-    // This is a read-write association end
-
-    if (!_interruptingEdge.contains(interruptingEdge)) {
-        _interruptingEdge.insert(interruptingEdge);
-
-        // Adjust opposite properties
-        if (interruptingEdge) {
-            interruptingEdge->setInterrupts(this);
-        }
-    }
+    UmlInterruptibleActivityRegion::addInterruptingEdge(interruptingEdge);
 }
 
-void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *interruptingEdge)
+void QUmlInterruptibleActivityRegion::removeInterruptingEdge(UmlActivityEdge *interruptingEdge)
 {
-    // This is a read-write association end
-
-    if (_interruptingEdge.contains(interruptingEdge)) {
-        _interruptingEdge.remove(interruptingEdge);
-
-        // Adjust opposite properties
-        if (interruptingEdge) {
-            interruptingEdge->setInterrupts(0);
-        }
-    }
+    UmlInterruptibleActivityRegion::removeInterruptingEdge(interruptingEdge);
 }
 
-/*!
-    Nodes immediately contained in the group.
- */
 const QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::node() const
 {
-    // This is a read-write association end
-
-    return _node;
+    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_node));
 }
 
-void QUmlInterruptibleActivityRegion::addNode(QUmlActivityNode *node)
+void QUmlInterruptibleActivityRegion::addNode(UmlActivityNode *node)
 {
-    // This is a read-write association end
-
-    if (!_node.contains(node)) {
-        _node.insert(node);
-
-        // Adjust subsetted properties
-        addContainedNode(node);
-
-        // Adjust opposite properties
-        if (node) {
-            node->addInInterruptibleRegion(this);
-        }
-    }
+    UmlInterruptibleActivityRegion::addNode(node);
 }
 
-void QUmlInterruptibleActivityRegion::removeNode(QUmlActivityNode *node)
+void QUmlInterruptibleActivityRegion::removeNode(UmlActivityNode *node)
 {
-    // This is a read-write association end
-
-    if (_node.contains(node)) {
-        _node.remove(node);
-
-        // Adjust subsetted properties
-        removeContainedNode(node);
-
-        // Adjust opposite properties
-        if (node) {
-            node->removeInInterruptibleRegion(this);
-        }
-    }
+    UmlInterruptibleActivityRegion::removeNode(node);
 }
 
 QT_END_NAMESPACE

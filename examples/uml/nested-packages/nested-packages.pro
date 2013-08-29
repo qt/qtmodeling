@@ -3,7 +3,7 @@ TARGET = nested-packages
 DEPENDPATH += .
 INCLUDEPATH += .
 
-QT += uml core-private
+QT += uml uml-private
 QT -= gui
 
 # Input

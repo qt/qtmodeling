@@ -39,59 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlcollaboration.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCollaboration
-
-    \inmodule QtUml
-
-    \brief A collaboration use represents the application of the pattern described by a collaboration to a specific situation involving specific classes or instances playing the roles of the collaboration.
- */
-
-QUmlCollaboration::QUmlCollaboration()
+QUmlCollaboration::QUmlCollaboration(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("collaborationRole", QVariant::fromValue(&_collaborationRole));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
- */
 const QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRole() const
 {
-    // This is a read-write association end
-
-    return _collaborationRole;
+    return *(reinterpret_cast<const QSet<QUmlConnectableElement *> *>(&_collaborationRole));
 }
 
-void QUmlCollaboration::addCollaborationRole(QUmlConnectableElement *collaborationRole)
+void QUmlCollaboration::addCollaborationRole(UmlConnectableElement *collaborationRole)
 {
-    // This is a read-write association end
-
-    if (!_collaborationRole.contains(collaborationRole)) {
-        _collaborationRole.insert(collaborationRole);
-
-        // Adjust subsetted properties
-        addRole(collaborationRole);
-    }
+    UmlCollaboration::addCollaborationRole(collaborationRole);
 }
 
-void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collaborationRole)
+void QUmlCollaboration::removeCollaborationRole(UmlConnectableElement *collaborationRole)
 {
-    // This is a read-write association end
-
-    if (_collaborationRole.contains(collaborationRole)) {
-        _collaborationRole.remove(collaborationRole);
-
-        // Adjust subsetted properties
-        removeRole(collaborationRole);
-    }
+    UmlCollaboration::removeCollaborationRole(collaborationRole);
 }
 
 QT_END_NAMESPACE

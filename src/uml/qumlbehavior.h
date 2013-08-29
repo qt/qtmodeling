@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClass>
+#include <QtCore/QObject>
+#include "private/umlbehavior_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,42 +58,42 @@ class QUmlConstraint;
 class QUmlParameter;
 class QUmlParameterSet;
 
-class Q_UML_EXPORT QUmlBehavior : public QUmlClass
+class Q_UML_EXPORT QUmlBehavior : public QObject, public UmlBehavior
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlBehavioredClassifier * context READ context)
+    Q_PROPERTY(bool isReentrant READ isReentrant)
+    Q_PROPERTY(QList<QUmlParameter *> ownedParameter READ ownedParameter)
+    Q_PROPERTY(QSet<QUmlParameterSet *> ownedParameterSet READ ownedParameterSet)
+    Q_PROPERTY(QSet<QUmlConstraint *> postcondition READ postcondition)
+    Q_PROPERTY(QSet<QUmlConstraint *> precondition READ precondition)
+    Q_PROPERTY(QSet<QUmlBehavior *> redefinedBehavior READ redefinedBehavior)
+    Q_PROPERTY(QUmlBehavioralFeature * specification READ specification)
+
 public:
-    Q_DECL_HIDDEN QUmlBehavior();
+    Q_DECL_HIDDEN explicit QUmlBehavior(QObject *parent = 0);
 
     // Owned attributes
-    QUmlBehavioredClassifier *context() const;
-    Q_DECL_HIDDEN void setContext(QUmlBehavioredClassifier *context);
-    bool isReentrant() const;
-    void setReentrant(bool isReentrant);
-    const QList<QUmlParameter *> ownedParameter() const;
-    void addOwnedParameter(QUmlParameter *ownedParameter);
-    void removeOwnedParameter(QUmlParameter *ownedParameter);
-    const QSet<QUmlParameterSet *> ownedParameterSet() const;
-    void addOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
-    void removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
-    const QSet<QUmlConstraint *> postcondition() const;
-    void addPostcondition(QUmlConstraint *postcondition);
-    void removePostcondition(QUmlConstraint *postcondition);
-    const QSet<QUmlConstraint *> precondition() const;
-    void addPrecondition(QUmlConstraint *precondition);
-    void removePrecondition(QUmlConstraint *precondition);
-    const QSet<QUmlBehavior *> redefinedBehavior() const;
-    void addRedefinedBehavior(QUmlBehavior *redefinedBehavior);
-    void removeRedefinedBehavior(QUmlBehavior *redefinedBehavior);
-    QUmlBehavioralFeature *specification() const;
-    void setSpecification(QUmlBehavioralFeature *specification);
-
-protected:
-    bool _isReentrant;
-    QList<QUmlParameter *> _ownedParameter;
-    QSet<QUmlParameterSet *> _ownedParameterSet;
-    QSet<QUmlConstraint *> _postcondition;
-    QSet<QUmlConstraint *> _precondition;
-    QSet<QUmlBehavior *> _redefinedBehavior;
-    QUmlBehavioralFeature *_specification;
+    Q_INVOKABLE QUmlBehavioredClassifier *context() const;
+    Q_INVOKABLE bool isReentrant() const;
+    Q_INVOKABLE void setReentrant(bool isReentrant);
+    Q_INVOKABLE const QList<QUmlParameter *> ownedParameter() const;
+    Q_INVOKABLE void addOwnedParameter(UmlParameter *ownedParameter);
+    Q_INVOKABLE void removeOwnedParameter(UmlParameter *ownedParameter);
+    Q_INVOKABLE const QSet<QUmlParameterSet *> ownedParameterSet() const;
+    Q_INVOKABLE void addOwnedParameterSet(UmlParameterSet *ownedParameterSet);
+    Q_INVOKABLE void removeOwnedParameterSet(UmlParameterSet *ownedParameterSet);
+    Q_INVOKABLE const QSet<QUmlConstraint *> postcondition() const;
+    Q_INVOKABLE void addPostcondition(UmlConstraint *postcondition);
+    Q_INVOKABLE void removePostcondition(UmlConstraint *postcondition);
+    Q_INVOKABLE const QSet<QUmlConstraint *> precondition() const;
+    Q_INVOKABLE void addPrecondition(UmlConstraint *precondition);
+    Q_INVOKABLE void removePrecondition(UmlConstraint *precondition);
+    Q_INVOKABLE const QSet<QUmlBehavior *> redefinedBehavior() const;
+    Q_INVOKABLE void addRedefinedBehavior(UmlBehavior *redefinedBehavior);
+    Q_INVOKABLE void removeRedefinedBehavior(UmlBehavior *redefinedBehavior);
+    Q_INVOKABLE QUmlBehavioralFeature *specification() const;
+    Q_INVOKABLE void setSpecification(QUmlBehavioralFeature *specification);
 };
 
 QT_END_NAMESPACE

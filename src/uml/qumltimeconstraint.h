@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlIntervalConstraint>
+#include <QtCore/QObject>
+#include "private/umltimeconstraint_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlTimeInterval;
 
-class Q_UML_EXPORT QUmlTimeConstraint : public QUmlIntervalConstraint
+class Q_UML_EXPORT QUmlTimeConstraint : public QObject, public UmlTimeConstraint
 {
+    Q_OBJECT
+    Q_PROPERTY(bool firstEvent READ firstEvent)
+    Q_PROPERTY(QUmlTimeInterval * specification READ specification)
+
 public:
-    QUmlTimeConstraint();
+    Q_INVOKABLE explicit QUmlTimeConstraint(QObject *parent = 0);
 
     // Owned attributes
-    bool firstEvent() const;
-    void setFirstEvent(bool firstEvent);
-    QUmlTimeInterval *specification() const;
-    void setSpecification(QUmlTimeInterval *specification);
-
-protected:
-    bool _firstEvent;
-    QUmlTimeInterval *_specification;
+    Q_INVOKABLE bool firstEvent() const;
+    Q_INVOKABLE void setFirstEvent(bool firstEvent);
+    Q_INVOKABLE QUmlTimeInterval *specification() const;
+    Q_INVOKABLE void setSpecification(QUmlTimeInterval *specification);
 };
 
 QT_END_NAMESPACE

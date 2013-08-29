@@ -39,153 +39,67 @@
 **
 ****************************************************************************/
 #include "qumltemplateparameter.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTemplateParameter
-
-    \inmodule QtUml
-
-    \brief A template parameter exposes a parameterable element as a formal template parameter of a template.
- */
-
-QUmlTemplateParameter::QUmlTemplateParameter() :
-    _default_(0),
-    _ownedDefault(0),
-    _ownedParameteredElement(0),
-    _parameteredElement(0),
-    _signature(0)
+QUmlTemplateParameter::QUmlTemplateParameter(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("default", QVariant::fromValue((QUmlParameterableElement *)(0)));
-    d_ptr->object.setProperty("ownedDefault", QVariant::fromValue((QUmlParameterableElement *)(0)));
-    d_ptr->object.setProperty("ownedParameteredElement", QVariant::fromValue((QUmlParameterableElement *)(0)));
-    d_ptr->object.setProperty("parameteredElement", QVariant::fromValue((QUmlParameterableElement *)(0)));
-    d_ptr->object.setProperty("signature", QVariant::fromValue((QUmlTemplateSignature *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The element that is the default for this formal template parameter.
- */
 QUmlParameterableElement *QUmlTemplateParameter::default_() const
 {
-    // This is a read-write association end
-
-    return _default_;
+    return reinterpret_cast<QUmlParameterableElement *>(_default_);
 }
 
 void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
 {
-    // This is a read-write association end
-
-    if (_default_ != default_) {
-        _default_ = default_;
-    }
+    UmlTemplateParameter::setDefault(default_);
 }
 
-/*!
-    The element that is owned by this template parameter for the purpose of providing a default.
- */
 QUmlParameterableElement *QUmlTemplateParameter::ownedDefault() const
 {
-    // This is a read-write association end
-
-    return _ownedDefault;
+    return reinterpret_cast<QUmlParameterableElement *>(_ownedDefault);
 }
 
 void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
 {
-    // This is a read-write association end
-
-    if (_ownedDefault != ownedDefault) {
-        // Adjust subsetted properties
-        removeOwnedElement(_ownedDefault);
-
-        _ownedDefault = ownedDefault;
-
-        // Adjust subsetted properties
-        if (ownedDefault) {
-            addOwnedElement(ownedDefault);
-        }
-        setDefault(ownedDefault);
-    }
+    UmlTemplateParameter::setOwnedDefault(ownedDefault);
 }
 
-/*!
-    The element that is owned by this template parameter.
- */
 QUmlParameterableElement *QUmlTemplateParameter::ownedParameteredElement() const
 {
-    // This is a read-write association end
-
-    return _ownedParameteredElement;
+    return reinterpret_cast<QUmlParameterableElement *>(_ownedParameteredElement);
 }
 
 void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
 {
-    // This is a read-write association end
-
-    if (_ownedParameteredElement != ownedParameteredElement) {
-        // Adjust subsetted properties
-        removeOwnedElement(_ownedParameteredElement);
-
-        _ownedParameteredElement = ownedParameteredElement;
-
-        // Adjust subsetted properties
-        setParameteredElement(ownedParameteredElement);
-        if (ownedParameteredElement) {
-            addOwnedElement(ownedParameteredElement);
-        }
-    }
+    UmlTemplateParameter::setOwnedParameteredElement(ownedParameteredElement);
 }
 
-/*!
-    The element exposed by this template parameter.
- */
 QUmlParameterableElement *QUmlTemplateParameter::parameteredElement() const
 {
-    // This is a read-write association end
-
-    return _parameteredElement;
+    return reinterpret_cast<QUmlParameterableElement *>(_parameteredElement);
 }
 
 void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *parameteredElement)
 {
-    // This is a read-write association end
-
-    if (_parameteredElement != parameteredElement) {
-        _parameteredElement = parameteredElement;
-    }
+    UmlTemplateParameter::setParameteredElement(parameteredElement);
 }
 
-/*!
-    The template signature that owns this template parameter.
- */
 QUmlTemplateSignature *QUmlTemplateParameter::signature() const
 {
-    // This is a read-write association end
-
-    return _signature;
+    return reinterpret_cast<QUmlTemplateSignature *>(_signature);
 }
 
 void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)
 {
-    // This is a read-write association end
-
-    if (_signature != signature) {
-        // Adjust subsetted properties
-
-        _signature = signature;
-
-        // Adjust subsetted properties
-        setOwner(signature);
-    }
+    UmlTemplateParameter::setSignature(signature);
 }
 
 QT_END_NAMESPACE

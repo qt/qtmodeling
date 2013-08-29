@@ -43,9 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackageableElement>
-#include <QtUml/QUmlTemplateableElement>
+#include <QtCore/QObject>
+#include "private/umlpackage_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,54 +53,56 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlNamedElement;
+class QUmlPackageableElement;
 class QUmlPackageMerge;
 class QUmlProfile;
 class QUmlProfileApplication;
 class QUmlStereotype;
 class QUmlType;
 
-class Q_UML_EXPORT QUmlPackage : public QUmlNamespace, public QUmlPackageableElement, public QUmlTemplateableElement
+class Q_UML_EXPORT QUmlPackage : public QObject, public UmlPackage
 {
+    Q_OBJECT
+    Q_PROPERTY(QString URI READ URI)
+    Q_PROPERTY(QSet<QUmlPackage *> nestedPackage READ nestedPackage)
+    Q_PROPERTY(QUmlPackage * nestingPackage READ nestingPackage)
+    Q_PROPERTY(QSet<QUmlStereotype *> ownedStereotype READ ownedStereotype)
+    Q_PROPERTY(QSet<QUmlType *> ownedType READ ownedType)
+    Q_PROPERTY(QSet<QUmlPackageMerge *> packageMerge READ packageMerge)
+    Q_PROPERTY(QSet<QUmlPackageableElement *> packagedElement READ packagedElement)
+    Q_PROPERTY(QSet<QUmlProfileApplication *> profileApplication READ profileApplication)
+
 public:
-    QUmlPackage();
+    Q_INVOKABLE explicit QUmlPackage(QObject *parent = 0);
 
     // Owned attributes
-    QString URI() const;
-    void setURI(QString URI);
-    const QSet<QUmlPackage *> nestedPackage() const;
-    void addNestedPackage(QUmlPackage *nestedPackage);
-    void removeNestedPackage(QUmlPackage *nestedPackage);
-    QUmlPackage *nestingPackage() const;
-    void setNestingPackage(QUmlPackage *nestingPackage);
-    const QSet<QUmlStereotype *> ownedStereotype() const;
-    Q_DECL_HIDDEN void addOwnedStereotype(QUmlStereotype *ownedStereotype);
-    Q_DECL_HIDDEN void removeOwnedStereotype(QUmlStereotype *ownedStereotype);
-    const QSet<QUmlType *> ownedType() const;
-    void addOwnedType(QUmlType *ownedType);
-    void removeOwnedType(QUmlType *ownedType);
-    const QSet<QUmlPackageMerge *> packageMerge() const;
-    void addPackageMerge(QUmlPackageMerge *packageMerge);
-    void removePackageMerge(QUmlPackageMerge *packageMerge);
-    const QSet<QUmlPackageableElement *> packagedElement() const;
-    void addPackagedElement(QUmlPackageableElement *packagedElement);
-    void removePackagedElement(QUmlPackageableElement *packagedElement);
-    const QSet<QUmlProfileApplication *> profileApplication() const;
-    void addProfileApplication(QUmlProfileApplication *profileApplication);
-    void removeProfileApplication(QUmlProfileApplication *profileApplication);
+    Q_INVOKABLE QString URI() const;
+    Q_INVOKABLE void setURI(QString URI);
+    Q_INVOKABLE const QSet<QUmlPackage *> nestedPackage() const;
+    Q_INVOKABLE void addNestedPackage(UmlPackage *nestedPackage);
+    Q_INVOKABLE void removeNestedPackage(UmlPackage *nestedPackage);
+    Q_INVOKABLE QUmlPackage *nestingPackage() const;
+    Q_INVOKABLE void setNestingPackage(QUmlPackage *nestingPackage);
+    Q_INVOKABLE const QSet<QUmlStereotype *> ownedStereotype() const;
+    Q_INVOKABLE const QSet<QUmlType *> ownedType() const;
+    Q_INVOKABLE void addOwnedType(UmlType *ownedType);
+    Q_INVOKABLE void removeOwnedType(UmlType *ownedType);
+    Q_INVOKABLE const QSet<QUmlPackageMerge *> packageMerge() const;
+    Q_INVOKABLE void addPackageMerge(UmlPackageMerge *packageMerge);
+    Q_INVOKABLE void removePackageMerge(UmlPackageMerge *packageMerge);
+    Q_INVOKABLE const QSet<QUmlPackageableElement *> packagedElement() const;
+    Q_INVOKABLE void addPackagedElement(UmlPackageableElement *packagedElement);
+    Q_INVOKABLE void removePackagedElement(UmlPackageableElement *packagedElement);
+    Q_INVOKABLE const QSet<QUmlProfileApplication *> profileApplication() const;
+    Q_INVOKABLE void addProfileApplication(UmlProfileApplication *profileApplication);
+    Q_INVOKABLE void removeProfileApplication(UmlProfileApplication *profileApplication);
 
     // Operations
-    QSet<QUmlStereotype *> allApplicableStereotypes() const;
-    QUmlProfile *containingProfile() const;
-    bool makesVisible(QUmlNamedElement *el) const;
-    bool mustBeOwned() const;
-    QSet<QUmlPackageableElement *> visibleMembers() const;
-
-protected:
-    QString _URI;
-    QUmlPackage *_nestingPackage;
-    QSet<QUmlPackageMerge *> _packageMerge;
-    QSet<QUmlPackageableElement *> _packagedElement;
-    QSet<QUmlProfileApplication *> _profileApplication;
+    Q_INVOKABLE QSet<QUmlStereotype *> allApplicableStereotypes() const;
+    Q_INVOKABLE QUmlProfile *containingProfile() const;
+    Q_INVOKABLE bool makesVisible(QUmlNamedElement *el) const;
+    Q_INVOKABLE bool mustBeOwned() const;
+    Q_INVOKABLE QSet<QUmlPackageableElement *> visibleMembers() const;
 };
 
 QT_END_NAMESPACE

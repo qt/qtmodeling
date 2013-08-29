@@ -39,50 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlextensionpoint.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlUseCase>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExtensionPoint
-
-    \inmodule QtUml
-
-    \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
- */
-
-QUmlExtensionPoint::QUmlExtensionPoint() :
-    _useCase(0)
+QUmlExtensionPoint::QUmlExtensionPoint(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("useCase", QVariant::fromValue((QUmlUseCase *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the use case that owns this extension point.
- */
 QUmlUseCase *QUmlExtensionPoint::useCase() const
 {
-    // This is a read-write association end
-
-    return _useCase;
+    return reinterpret_cast<QUmlUseCase *>(_useCase);
 }
 
 void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
 {
-    // This is a read-write association end
-
-    if (_useCase != useCase) {
-        // Adjust subsetted properties
-
-        _useCase = useCase;
-
-        // Adjust subsetted properties
-        setNamespace(useCase);
-    }
+    UmlExtensionPoint::setUseCase(useCase);
 }
 
 QT_END_NAMESPACE

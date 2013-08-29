@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlBehavioredClassifier>
+#include <QtCore/QObject>
+#include "private/umlactor_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlActor : public QUmlBehavioredClassifier
+class Q_UML_EXPORT QUmlActor : public QObject, public UmlActor
 {
-public:
-    QUmlActor();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlActor(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

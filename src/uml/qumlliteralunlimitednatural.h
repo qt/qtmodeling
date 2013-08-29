@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlLiteralSpecification>
+#include <QtCore/QObject>
+#include "private/umlliteralunlimitednatural_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,21 +52,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlLiteralUnlimitedNatural : public QUmlLiteralSpecification
+class Q_UML_EXPORT QUmlLiteralUnlimitedNatural : public QObject, public UmlLiteralUnlimitedNatural
 {
+    Q_OBJECT
+    Q_PROPERTY(int value READ value)
+
 public:
-    QUmlLiteralUnlimitedNatural();
+    Q_INVOKABLE explicit QUmlLiteralUnlimitedNatural(QObject *parent = 0);
 
     // Owned attributes
-    int value() const;
-    void setValue(int value);
+    Q_INVOKABLE int value() const;
+    Q_INVOKABLE void setValue(int value);
 
     // Operations
-    bool isComputable() const;
-    int unlimitedValue() const;
-
-protected:
-    int _value;
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE int unlimitedValue() const;
 };
 
 QT_END_NAMESPACE

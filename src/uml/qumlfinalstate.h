@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlState>
+#include <QtCore/QObject>
+#include "private/umlfinalstate_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlFinalState : public QUmlState
+class Q_UML_EXPORT QUmlFinalState : public QObject, public UmlFinalState
 {
-public:
-    QUmlFinalState();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlFinalState(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

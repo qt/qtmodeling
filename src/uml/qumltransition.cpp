@@ -39,11 +39,11 @@
 **
 ****************************************************************************/
 #include "qumltransition.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlTrigger>
@@ -51,279 +51,113 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTransition
-
-    \inmodule QtUml
-
-    \brief A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.
- */
-
-QUmlTransition::QUmlTransition() :
-    _container(0),
-    _effect(0),
-    _guard(0),
-    _kind(QtUml::TransitionKindExternal),
-    _redefinedTransition(0),
-    _source(0),
-    _target(0)
+QUmlTransition::QUmlTransition(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("container", QVariant::fromValue((QUmlRegion *)(0)));
-    d_ptr->object.setProperty("effect", QVariant::fromValue((QUmlBehavior *)(0)));
-    d_ptr->object.setProperty("guard", QVariant::fromValue((QUmlConstraint *)(0)));
-    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::TransitionKindExternal));
-    d_ptr->object.setProperty("redefinedTransition", QVariant::fromValue((QUmlTransition *)(0)));
-    d_ptr->object.setProperty("redefinitionContext", QVariant::fromValue((QUmlClassifier *)(0)));
-    d_ptr->object.setProperty("source", QVariant::fromValue((QUmlVertex *)(0)));
-    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlVertex *)(0)));
-    d_ptr->object.setProperty("trigger", QVariant::fromValue(&_trigger));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Designates the region that owns this transition.
- */
 QUmlRegion *QUmlTransition::container() const
 {
-    // This is a read-write association end
-
-    return _container;
+    return reinterpret_cast<QUmlRegion *>(_container);
 }
 
 void QUmlTransition::setContainer(QUmlRegion *container)
 {
-    // This is a read-write association end
-
-    if (_container != container) {
-        // Adjust subsetted properties
-
-        _container = container;
-
-        // Adjust subsetted properties
-        setNamespace(container);
-    }
+    UmlTransition::setContainer(container);
 }
 
-/*!
-    Specifies an optional behavior to be performed when the transition fires.
- */
 QUmlBehavior *QUmlTransition::effect() const
 {
-    // This is a read-write association end
-
-    return _effect;
+    return reinterpret_cast<QUmlBehavior *>(_effect);
 }
 
 void QUmlTransition::setEffect(QUmlBehavior *effect)
 {
-    // This is a read-write association end
-
-    if (_effect != effect) {
-        // Adjust subsetted properties
-        removeOwnedElement(_effect);
-
-        _effect = effect;
-
-        // Adjust subsetted properties
-        if (effect) {
-            addOwnedElement(effect);
-        }
-    }
+    UmlTransition::setEffect(effect);
 }
 
-/*!
-    A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
- */
 QUmlConstraint *QUmlTransition::guard() const
 {
-    // This is a read-write association end
-
-    return _guard;
+    return reinterpret_cast<QUmlConstraint *>(_guard);
 }
 
 void QUmlTransition::setGuard(QUmlConstraint *guard)
 {
-    // This is a read-write association end
-
-    if (_guard != guard) {
-        // Adjust subsetted properties
-        removeOwnedRule(_guard);
-
-        _guard = guard;
-
-        // Adjust subsetted properties
-        if (guard) {
-            addOwnedRule(guard);
-        }
-    }
+    UmlTransition::setGuard(guard);
 }
 
-/*!
-    Indicates the precise type of the transition.
- */
 QtUml::TransitionKind QUmlTransition::kind() const
 {
-    // This is a read-write property
-
     return _kind;
 }
 
 void QUmlTransition::setKind(QtUml::TransitionKind kind)
 {
-    // This is a read-write property
-
-    if (_kind != kind) {
-        _kind = kind;
-    }
+    UmlTransition::setKind(kind);
 }
 
-/*!
-    The transition that is redefined by this transition.
- */
 QUmlTransition *QUmlTransition::redefinedTransition() const
 {
-    // This is a read-write association end
-
-    return _redefinedTransition;
+    return reinterpret_cast<QUmlTransition *>(_redefinedTransition);
 }
 
 void QUmlTransition::setRedefinedTransition(QUmlTransition *redefinedTransition)
 {
-    // This is a read-write association end
-
-    if (_redefinedTransition != redefinedTransition) {
-        // Adjust subsetted properties
-        removeRedefinedElement(_redefinedTransition);
-
-        _redefinedTransition = redefinedTransition;
-
-        // Adjust subsetted properties
-        if (redefinedTransition) {
-            addRedefinedElement(redefinedTransition);
-        }
-    }
+    UmlTransition::setRedefinedTransition(redefinedTransition);
 }
 
-/*!
-    References the classifier in which context this element may be redefined.
- */
 QUmlClassifier *QUmlTransition::redefinitionContext() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlTransition::redefinitionContext(): to be implemented (this is a derived association end)");
-
-    return 0;
+    return reinterpret_cast<QUmlClassifier *>(UmlTransition::redefinitionContext());
 }
 
-void QUmlTransition::setRedefinitionContext(QUmlClassifier *redefinitionContext)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlTransition::redefinitionContext(): to be implemented (this is a derived association end)");
-    Q_UNUSED(redefinitionContext);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    Designates the originating vertex (state or pseudostate) of the transition.
- */
 QUmlVertex *QUmlTransition::source() const
 {
-    // This is a read-write association end
-
-    return _source;
+    return reinterpret_cast<QUmlVertex *>(_source);
 }
 
 void QUmlTransition::setSource(QUmlVertex *source)
 {
-    // This is a read-write association end
-
-    if (_source != source) {
-        _source = source;
-    }
+    UmlTransition::setSource(source);
 }
 
-/*!
-    Designates the target vertex that is reached when the transition is taken.
- */
 QUmlVertex *QUmlTransition::target() const
 {
-    // This is a read-write association end
-
-    return _target;
+    return reinterpret_cast<QUmlVertex *>(_target);
 }
 
 void QUmlTransition::setTarget(QUmlVertex *target)
 {
-    // This is a read-write association end
-
-    if (_target != target) {
-        _target = target;
-    }
+    UmlTransition::setTarget(target);
 }
 
-/*!
-    Specifies the triggers that may fire the transition.
- */
 const QSet<QUmlTrigger *> QUmlTransition::trigger() const
 {
-    // This is a read-write association end
-
-    return _trigger;
+    return *(reinterpret_cast<const QSet<QUmlTrigger *> *>(&_trigger));
 }
 
-void QUmlTransition::addTrigger(QUmlTrigger *trigger)
+void QUmlTransition::addTrigger(UmlTrigger *trigger)
 {
-    // This is a read-write association end
-
-    if (!_trigger.contains(trigger)) {
-        _trigger.insert(trigger);
-
-        // Adjust subsetted properties
-        addOwnedElement(trigger);
-    }
+    UmlTransition::addTrigger(trigger);
 }
 
-void QUmlTransition::removeTrigger(QUmlTrigger *trigger)
+void QUmlTransition::removeTrigger(UmlTrigger *trigger)
 {
-    // This is a read-write association end
-
-    if (_trigger.contains(trigger)) {
-        _trigger.remove(trigger);
-
-        // Adjust subsetted properties
-        removeOwnedElement(trigger);
-    }
+    UmlTransition::removeTrigger(trigger);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.
- */
-QUmlStateMachine *QUmlTransition::containingStateMachine(
-    ) const
+QUmlStateMachine *QUmlTransition::containingStateMachine() const
 {
-    qWarning("QUmlTransition::containingStateMachine(): to be implemented (operation)");
-
-    return 0;
+    return reinterpret_cast<QUmlStateMachine *>(UmlTransition::containingStateMachine());
 }
 
-/*!
-    The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.
- */
-bool QUmlTransition::isConsistentWith(
-    QUmlRedefinableElement *redefinee) const
+bool QUmlTransition::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("QUmlTransition::isConsistentWith(): to be implemented (operation)");
-
-    Q_UNUSED(redefinee);
-    return bool ();
+    return UmlTransition::isConsistentWith(redefinee);
 }
 
 QT_END_NAMESPACE

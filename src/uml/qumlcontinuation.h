@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInteractionFragment>
+#include <QtCore/QObject>
+#include "private/umlcontinuation_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,17 +52,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlContinuation : public QUmlInteractionFragment
+class Q_UML_EXPORT QUmlContinuation : public QObject, public UmlContinuation
 {
+    Q_OBJECT
+    Q_PROPERTY(bool setting READ setting)
+
 public:
-    QUmlContinuation();
+    Q_INVOKABLE explicit QUmlContinuation(QObject *parent = 0);
 
     // Owned attributes
-    bool setting() const;
-    void setSetting(bool setting);
-
-protected:
-    bool _setting;
+    Q_INVOKABLE bool setting() const;
+    Q_INVOKABLE void setSetting(bool setting);
 };
 
 QT_END_NAMESPACE

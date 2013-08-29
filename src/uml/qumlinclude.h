@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlinclude_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlUseCase;
 
-class Q_UML_EXPORT QUmlInclude : public QUmlDirectedRelationship, public QUmlNamedElement
+class Q_UML_EXPORT QUmlInclude : public QObject, public UmlInclude
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlUseCase * addition READ addition)
+    Q_PROPERTY(QUmlUseCase * includingCase READ includingCase)
+
 public:
-    QUmlInclude();
+    Q_INVOKABLE explicit QUmlInclude(QObject *parent = 0);
 
     // Owned attributes
-    QUmlUseCase *addition() const;
-    void setAddition(QUmlUseCase *addition);
-    QUmlUseCase *includingCase() const;
-    void setIncludingCase(QUmlUseCase *includingCase);
-
-protected:
-    QUmlUseCase *_addition;
-    QUmlUseCase *_includingCase;
+    Q_INVOKABLE QUmlUseCase *addition() const;
+    Q_INVOKABLE void setAddition(QUmlUseCase *addition);
+    Q_INVOKABLE QUmlUseCase *includingCase() const;
+    Q_INVOKABLE void setIncludingCase(QUmlUseCase *includingCase);
 };
 
 QT_END_NAMESPACE

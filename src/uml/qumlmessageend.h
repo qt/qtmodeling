@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlmessageend_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlMessage;
 
-class Q_UML_EXPORT QUmlMessageEnd : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlMessageEnd : public QObject, public UmlMessageEnd
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlMessage * message READ message)
+
 public:
-    Q_DECL_HIDDEN QUmlMessageEnd();
+    Q_DECL_HIDDEN explicit QUmlMessageEnd(QObject *parent = 0);
 
     // Owned attributes
-    QUmlMessage *message() const;
-    void setMessage(QUmlMessage *message);
-
-protected:
-    QUmlMessage *_message;
+    Q_INVOKABLE QUmlMessage *message() const;
+    Q_INVOKABLE void setMessage(QUmlMessage *message);
 };
 
 QT_END_NAMESPACE

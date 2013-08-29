@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumldevice.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDevice
-
-    \inmodule QtUml
-
-    \brief A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices).
- */
-
-QUmlDevice::QUmlDevice()
+QUmlDevice::QUmlDevice(QObject *parent) :
+    QObject(parent)
 {
 }
 

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlLinkEndData>
+#include <QtCore/QObject>
+#include "private/umllinkenddestructiondata_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class Q_UML_EXPORT QUmlLinkEndDestructionData : public QUmlLinkEndData
+class Q_UML_EXPORT QUmlLinkEndDestructionData : public QObject, public UmlLinkEndDestructionData
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInputPin * destroyAt READ destroyAt)
+    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates)
+
 public:
-    QUmlLinkEndDestructionData();
+    Q_INVOKABLE explicit QUmlLinkEndDestructionData(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInputPin *destroyAt() const;
-    void setDestroyAt(QUmlInputPin *destroyAt);
-    bool isDestroyDuplicates() const;
-    void setDestroyDuplicates(bool isDestroyDuplicates);
-
-protected:
-    QUmlInputPin *_destroyAt;
-    bool _isDestroyDuplicates;
+    Q_INVOKABLE QUmlInputPin *destroyAt() const;
+    Q_INVOKABLE void setDestroyAt(QUmlInputPin *destroyAt);
+    Q_INVOKABLE bool isDestroyDuplicates() const;
+    Q_INVOKABLE void setDestroyDuplicates(bool isDestroyDuplicates);
 };
 
 QT_END_NAMESPACE

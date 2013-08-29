@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlConstraint>
+#include <QtCore/QObject>
+#include "private/umlintervalconstraint_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlInterval;
 
-class Q_UML_EXPORT QUmlIntervalConstraint : public QUmlConstraint
+class Q_UML_EXPORT QUmlIntervalConstraint : public QObject, public UmlIntervalConstraint
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInterval * specification READ specification)
+
 public:
-    QUmlIntervalConstraint();
+    Q_INVOKABLE explicit QUmlIntervalConstraint(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInterval *specification() const;
-    void setSpecification(QUmlInterval *specification);
-
-protected:
-    QUmlInterval *_specification;
+    Q_INVOKABLE QUmlInterval *specification() const;
+    Q_INVOKABLE void setSpecification(QUmlInterval *specification);
 };
 
 QT_END_NAMESPACE

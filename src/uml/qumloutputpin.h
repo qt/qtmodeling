@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlPin>
+#include <QtCore/QObject>
+#include "private/umloutputpin_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlOutputPin : public QUmlPin
+class Q_UML_EXPORT QUmlOutputPin : public QObject, public UmlOutputPin
 {
-public:
-    QUmlOutputPin();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlOutputPin(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

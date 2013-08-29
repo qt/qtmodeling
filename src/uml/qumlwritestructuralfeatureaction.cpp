@@ -39,83 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlwritestructuralfeatureaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlWriteStructuralFeatureAction
-
-    \inmodule QtUml
-
-    \brief WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
- */
-
-QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction() :
-    _result(0),
-    _value(0)
+QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
-    d_ptr->object.setProperty("value", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the output pin on which the result is put.
- */
 QUmlOutputPin *QUmlWriteStructuralFeatureAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlWriteStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlWriteStructuralFeatureAction::setResult(result);
 }
 
-/*!
-    Value to be added or removed from the structural feature.
- */
 QUmlInputPin *QUmlWriteStructuralFeatureAction::value() const
 {
-    // This is a read-write association end
-
-    return _value;
+    return reinterpret_cast<QUmlInputPin *>(_value);
 }
 
 void QUmlWriteStructuralFeatureAction::setValue(QUmlInputPin *value)
 {
-    // This is a read-write association end
-
-    if (_value != value) {
-        // Adjust subsetted properties
-        removeInput(_value);
-
-        _value = value;
-
-        // Adjust subsetted properties
-        if (value) {
-            addInput(value);
-        }
-    }
+    UmlWriteStructuralFeatureAction::setValue(value);
 }
 
 QT_END_NAMESPACE

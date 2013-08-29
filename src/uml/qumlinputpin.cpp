@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlinputpin.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInputPin
-
-    \inmodule QtUml
-
-    \brief An input pin is a pin that holds input values to be consumed by an action.
- */
-
-QUmlInputPin::QUmlInputPin()
+QUmlInputPin::QUmlInputPin(QObject *parent) :
+    QObject(parent)
 {
 }
 

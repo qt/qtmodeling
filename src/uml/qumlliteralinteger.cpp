@@ -39,67 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlliteralinteger.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLiteralInteger
-
-    \inmodule QtUml
-
-    \brief A literal integer is a specification of an integer value.
- */
-
-QUmlLiteralInteger::QUmlLiteralInteger() :
-    _value(0)
+QUmlLiteralInteger::QUmlLiteralInteger(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("value", QVariant::fromValue((int)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The specified Integer value.
- */
 int QUmlLiteralInteger::value() const
 {
-    // This is a read-write property
-
     return _value;
 }
 
 void QUmlLiteralInteger::setValue(int value)
 {
-    // This is a read-write property
-
-    if (_value != value) {
-        _value = value;
-    }
+    UmlLiteralInteger::setValue(value);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query integerValue() gives the value.
- */
-int QUmlLiteralInteger::integerValue(
-    ) const
+int QUmlLiteralInteger::integerValue() const
 {
-    qWarning("QUmlLiteralInteger::integerValue(): to be implemented (operation)");
-
-    return int ();
+    return UmlLiteralInteger::integerValue();
 }
 
-/*!
-    The query isComputable() is redefined to be true.
- */
-bool QUmlLiteralInteger::isComputable(
-    ) const
+bool QUmlLiteralInteger::isComputable() const
 {
-    qWarning("QUmlLiteralInteger::isComputable(): to be implemented (operation)");
-
-    return bool ();
+    return UmlLiteralInteger::isComputable();
 }
 
 QT_END_NAMESPACE

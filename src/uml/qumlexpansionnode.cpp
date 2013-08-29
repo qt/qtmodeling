@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlexpansionnode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExpansionRegion>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExpansionNode
-
-    \inmodule QtUml
-
-    \brief An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
- */
-
-QUmlExpansionNode::QUmlExpansionNode() :
-    _regionAsInput(0),
-    _regionAsOutput(0)
+QUmlExpansionNode::QUmlExpansionNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("regionAsInput", QVariant::fromValue((QUmlExpansionRegion *)(0)));
-    d_ptr->object.setProperty("regionAsOutput", QVariant::fromValue((QUmlExpansionRegion *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The expansion region for which the node is an input.
- */
 QUmlExpansionRegion *QUmlExpansionNode::regionAsInput() const
 {
-    // This is a read-write association end
-
-    return _regionAsInput;
+    return reinterpret_cast<QUmlExpansionRegion *>(_regionAsInput);
 }
 
 void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
 {
-    // This is a read-write association end
-
-    if (_regionAsInput != regionAsInput) {
-        _regionAsInput = regionAsInput;
-    }
+    UmlExpansionNode::setRegionAsInput(regionAsInput);
 }
 
-/*!
-    The expansion region for which the node is an output.
- */
 QUmlExpansionRegion *QUmlExpansionNode::regionAsOutput() const
 {
-    // This is a read-write association end
-
-    return _regionAsOutput;
+    return reinterpret_cast<QUmlExpansionRegion *>(_regionAsOutput);
 }
 
 void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
 {
-    // This is a read-write association end
-
-    if (_regionAsOutput != regionAsOutput) {
-        _regionAsOutput = regionAsOutput;
-    }
+    UmlExpansionNode::setRegionAsOutput(regionAsOutput);
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlreplyaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,24 +55,24 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlTrigger;
 
-class Q_UML_EXPORT QUmlReplyAction : public QUmlAction
+class Q_UML_EXPORT QUmlReplyAction : public QObject, public UmlReplyAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlTrigger * replyToCall READ replyToCall)
+    Q_PROPERTY(QSet<QUmlInputPin *> replyValue READ replyValue)
+    Q_PROPERTY(QUmlInputPin * returnInformation READ returnInformation)
+
 public:
-    QUmlReplyAction();
+    Q_INVOKABLE explicit QUmlReplyAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlTrigger *replyToCall() const;
-    void setReplyToCall(QUmlTrigger *replyToCall);
-    const QSet<QUmlInputPin *> replyValue() const;
-    void addReplyValue(QUmlInputPin *replyValue);
-    void removeReplyValue(QUmlInputPin *replyValue);
-    QUmlInputPin *returnInformation() const;
-    void setReturnInformation(QUmlInputPin *returnInformation);
-
-protected:
-    QUmlTrigger *_replyToCall;
-    QSet<QUmlInputPin *> _replyValue;
-    QUmlInputPin *_returnInformation;
+    Q_INVOKABLE QUmlTrigger *replyToCall() const;
+    Q_INVOKABLE void setReplyToCall(QUmlTrigger *replyToCall);
+    Q_INVOKABLE const QSet<QUmlInputPin *> replyValue() const;
+    Q_INVOKABLE void addReplyValue(UmlInputPin *replyValue);
+    Q_INVOKABLE void removeReplyValue(UmlInputPin *replyValue);
+    Q_INVOKABLE QUmlInputPin *returnInformation() const;
+    Q_INVOKABLE void setReturnInformation(QUmlInputPin *returnInformation);
 };
 
 QT_END_NAMESPACE

@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlTemplateSignature>
-#include <QtUml/QUmlRedefinableElement>
+#include <QtCore/QObject>
+#include "private/umlredefinabletemplatesignature_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,29 +53,29 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlClassifier;
+class QUmlRedefinableElement;
 class QUmlTemplateParameter;
 
-class Q_UML_EXPORT QUmlRedefinableTemplateSignature : public QUmlTemplateSignature, public QUmlRedefinableElement
+class Q_UML_EXPORT QUmlRedefinableTemplateSignature : public QObject, public UmlRedefinableTemplateSignature
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlClassifier * classifier READ classifier)
+    Q_PROPERTY(QSet<QUmlRedefinableTemplateSignature *> extendedSignature READ extendedSignature)
+    Q_PROPERTY(QSet<QUmlTemplateParameter *> inheritedParameter READ inheritedParameter)
+
 public:
-    QUmlRedefinableTemplateSignature();
+    Q_INVOKABLE explicit QUmlRedefinableTemplateSignature(QObject *parent = 0);
 
     // Owned attributes
-    QUmlClassifier *classifier() const;
-    void setClassifier(QUmlClassifier *classifier);
-    const QSet<QUmlRedefinableTemplateSignature *> extendedSignature() const;
-    void addExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
-    void removeExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
-    const QSet<QUmlTemplateParameter *> inheritedParameter() const;
-    Q_DECL_HIDDEN void addInheritedParameter(QUmlTemplateParameter *inheritedParameter);
-    Q_DECL_HIDDEN void removeInheritedParameter(QUmlTemplateParameter *inheritedParameter);
+    Q_INVOKABLE QUmlClassifier *classifier() const;
+    Q_INVOKABLE void setClassifier(QUmlClassifier *classifier);
+    Q_INVOKABLE const QSet<QUmlRedefinableTemplateSignature *> extendedSignature() const;
+    Q_INVOKABLE void addExtendedSignature(UmlRedefinableTemplateSignature *extendedSignature);
+    Q_INVOKABLE void removeExtendedSignature(UmlRedefinableTemplateSignature *extendedSignature);
+    Q_INVOKABLE const QSet<QUmlTemplateParameter *> inheritedParameter() const;
 
     // Operations
-    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-
-protected:
-    QUmlClassifier *_classifier;
-    QSet<QUmlRedefinableTemplateSignature *> _extendedSignature;
+    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
 };
 
 QT_END_NAMESPACE

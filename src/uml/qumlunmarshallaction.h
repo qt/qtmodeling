@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlunmarshallaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,24 +56,24 @@ class QUmlClassifier;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlUnmarshallAction : public QUmlAction
+class Q_UML_EXPORT QUmlUnmarshallAction : public QObject, public UmlUnmarshallAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInputPin * object READ object)
+    Q_PROPERTY(QSet<QUmlOutputPin *> result READ result)
+    Q_PROPERTY(QUmlClassifier * unmarshallType READ unmarshallType)
+
 public:
-    QUmlUnmarshallAction();
+    Q_INVOKABLE explicit QUmlUnmarshallAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInputPin *object() const;
-    void setObject(QUmlInputPin *object);
-    const QSet<QUmlOutputPin *> result() const;
-    void addResult(QUmlOutputPin *result);
-    void removeResult(QUmlOutputPin *result);
-    QUmlClassifier *unmarshallType() const;
-    void setUnmarshallType(QUmlClassifier *unmarshallType);
-
-protected:
-    QUmlInputPin *_object;
-    QSet<QUmlOutputPin *> _result;
-    QUmlClassifier *_unmarshallType;
+    Q_INVOKABLE QUmlInputPin *object() const;
+    Q_INVOKABLE void setObject(QUmlInputPin *object);
+    Q_INVOKABLE const QSet<QUmlOutputPin *> result() const;
+    Q_INVOKABLE void addResult(UmlOutputPin *result);
+    Q_INVOKABLE void removeResult(UmlOutputPin *result);
+    Q_INVOKABLE QUmlClassifier *unmarshallType() const;
+    Q_INVOKABLE void setUnmarshallType(QUmlClassifier *unmarshallType);
 };
 
 QT_END_NAMESPACE

@@ -39,69 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlprotocolstatemachine.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProtocolConformance>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlProtocolStateMachine
-
-    \inmodule QtUml
-
-    \brief A protocol state machine is always defined in the context of a classifier. It specifies which operations of the classifier can be called in which state and under which condition, thus specifying the allowed call sequences on the classifier's operations. A protocol state machine presents the possible and permitted transitions on the instances of its context classifier, together with the operations which carry the transitions. In this manner, an instance lifecycle can be created for a classifier, by specifying the order in which the operations can be activated and the states through which an instance progresses during its existence.
- */
-
-QUmlProtocolStateMachine::QUmlProtocolStateMachine()
+QUmlProtocolStateMachine::QUmlProtocolStateMachine(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("conformance", QVariant::fromValue(&_conformance));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Conformance between protocol state machines.
- */
 const QSet<QUmlProtocolConformance *> QUmlProtocolStateMachine::conformance() const
 {
-    // This is a read-write association end
-
-    return _conformance;
+    return *(reinterpret_cast<const QSet<QUmlProtocolConformance *> *>(&_conformance));
 }
 
-void QUmlProtocolStateMachine::addConformance(QUmlProtocolConformance *conformance)
+void QUmlProtocolStateMachine::addConformance(UmlProtocolConformance *conformance)
 {
-    // This is a read-write association end
-
-    if (!_conformance.contains(conformance)) {
-        _conformance.insert(conformance);
-
-        // Adjust subsetted properties
-        addOwnedElement(conformance);
-
-        // Adjust opposite properties
-        if (conformance) {
-            conformance->setSpecificMachine(this);
-        }
-    }
+    UmlProtocolStateMachine::addConformance(conformance);
 }
 
-void QUmlProtocolStateMachine::removeConformance(QUmlProtocolConformance *conformance)
+void QUmlProtocolStateMachine::removeConformance(UmlProtocolConformance *conformance)
 {
-    // This is a read-write association end
-
-    if (_conformance.contains(conformance)) {
-        _conformance.remove(conformance);
-
-        // Adjust subsetted properties
-        removeOwnedElement(conformance);
-
-        // Adjust opposite properties
-        if (conformance) {
-            conformance->setSpecificMachine(0);
-        }
-    }
+    UmlProtocolStateMachine::removeConformance(conformance);
 }
 
 QT_END_NAMESPACE

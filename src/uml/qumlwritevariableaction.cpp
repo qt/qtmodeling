@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlwritevariableaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlWriteVariableAction
-
-    \inmodule QtUml
-
-    \brief WriteVariableAction is an abstract class for variable actions that change variable values.
- */
-
-QUmlWriteVariableAction::QUmlWriteVariableAction() :
-    _value(0)
+QUmlWriteVariableAction::QUmlWriteVariableAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("value", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Value to be added or removed from the variable.
- */
 QUmlInputPin *QUmlWriteVariableAction::value() const
 {
-    // This is a read-write association end
-
-    return _value;
+    return reinterpret_cast<QUmlInputPin *>(_value);
 }
 
 void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
 {
-    // This is a read-write association end
-
-    if (_value != value) {
-        // Adjust subsetted properties
-        removeInput(_value);
-
-        _value = value;
-
-        // Adjust subsetted properties
-        if (value) {
-            addInput(value);
-        }
-    }
+    UmlWriteVariableAction::setValue(value);
 }
 
 QT_END_NAMESPACE

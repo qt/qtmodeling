@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRealization>
+#include <QtCore/QObject>
+#include "private/umlsubstitution_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class Q_UML_EXPORT QUmlSubstitution : public QUmlRealization
+class Q_UML_EXPORT QUmlSubstitution : public QObject, public UmlSubstitution
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlClassifier * contract READ contract)
+    Q_PROPERTY(QUmlClassifier * substitutingClassifier READ substitutingClassifier)
+
 public:
-    QUmlSubstitution();
+    Q_INVOKABLE explicit QUmlSubstitution(QObject *parent = 0);
 
     // Owned attributes
-    QUmlClassifier *contract() const;
-    void setContract(QUmlClassifier *contract);
-    QUmlClassifier *substitutingClassifier() const;
-    void setSubstitutingClassifier(QUmlClassifier *substitutingClassifier);
-
-protected:
-    QUmlClassifier *_contract;
-    QUmlClassifier *_substitutingClassifier;
+    Q_INVOKABLE QUmlClassifier *contract() const;
+    Q_INVOKABLE void setContract(QUmlClassifier *contract);
+    Q_INVOKABLE QUmlClassifier *substitutingClassifier() const;
+    Q_INVOKABLE void setSubstitutingClassifier(QUmlClassifier *substitutingClassifier);
 };
 
 QT_END_NAMESPACE

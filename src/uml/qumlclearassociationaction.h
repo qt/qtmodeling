@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlclearassociationaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlAssociation;
 class QUmlInputPin;
 
-class Q_UML_EXPORT QUmlClearAssociationAction : public QUmlAction
+class Q_UML_EXPORT QUmlClearAssociationAction : public QObject, public UmlClearAssociationAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlAssociation * association READ association)
+    Q_PROPERTY(QUmlInputPin * object READ object)
+
 public:
-    QUmlClearAssociationAction();
+    Q_INVOKABLE explicit QUmlClearAssociationAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlAssociation *association() const;
-    void setAssociation(QUmlAssociation *association);
-    QUmlInputPin *object() const;
-    void setObject(QUmlInputPin *object);
-
-protected:
-    QUmlAssociation *_association;
-    QUmlInputPin *_object;
+    Q_INVOKABLE QUmlAssociation *association() const;
+    Q_INVOKABLE void setAssociation(QUmlAssociation *association);
+    Q_INVOKABLE QUmlInputPin *object() const;
+    Q_INVOKABLE void setObject(QUmlInputPin *object);
 };
 
 QT_END_NAMESPACE

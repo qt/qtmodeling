@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlValueSpecification>
+#include <QtCore/QObject>
+#include "private/umltimeexpression_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,22 +53,23 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlObservation;
+class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlTimeExpression : public QUmlValueSpecification
+class Q_UML_EXPORT QUmlTimeExpression : public QObject, public UmlTimeExpression
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlValueSpecification * expr READ expr)
+    Q_PROPERTY(QSet<QUmlObservation *> observation READ observation)
+
 public:
-    QUmlTimeExpression();
+    Q_INVOKABLE explicit QUmlTimeExpression(QObject *parent = 0);
 
     // Owned attributes
-    QUmlValueSpecification *expr() const;
-    void setExpr(QUmlValueSpecification *expr);
-    const QSet<QUmlObservation *> observation() const;
-    void addObservation(QUmlObservation *observation);
-    void removeObservation(QUmlObservation *observation);
-
-protected:
-    QUmlValueSpecification *_expr;
-    QSet<QUmlObservation *> _observation;
+    Q_INVOKABLE QUmlValueSpecification *expr() const;
+    Q_INVOKABLE void setExpr(QUmlValueSpecification *expr);
+    Q_INVOKABLE const QSet<QUmlObservation *> observation() const;
+    Q_INVOKABLE void addObservation(UmlObservation *observation);
+    Q_INVOKABLE void removeObservation(UmlObservation *observation);
 };
 
 QT_END_NAMESPACE

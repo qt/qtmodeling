@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlControlNode>
+#include <QtCore/QObject>
+#include "private/umldecisionnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlBehavior;
 class QUmlObjectFlow;
 
-class Q_UML_EXPORT QUmlDecisionNode : public QUmlControlNode
+class Q_UML_EXPORT QUmlDecisionNode : public QObject, public UmlDecisionNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlBehavior * decisionInput READ decisionInput)
+    Q_PROPERTY(QUmlObjectFlow * decisionInputFlow READ decisionInputFlow)
+
 public:
-    QUmlDecisionNode();
+    Q_INVOKABLE explicit QUmlDecisionNode(QObject *parent = 0);
 
     // Owned attributes
-    QUmlBehavior *decisionInput() const;
-    void setDecisionInput(QUmlBehavior *decisionInput);
-    QUmlObjectFlow *decisionInputFlow() const;
-    void setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow);
-
-protected:
-    QUmlBehavior *_decisionInput;
-    QUmlObjectFlow *_decisionInputFlow;
+    Q_INVOKABLE QUmlBehavior *decisionInput() const;
+    Q_INVOKABLE void setDecisionInput(QUmlBehavior *decisionInput);
+    Q_INVOKABLE QUmlObjectFlow *decisionInputFlow() const;
+    Q_INVOKABLE void setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow);
 };
 
 QT_END_NAMESPACE

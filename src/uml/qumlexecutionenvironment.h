@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNode>
+#include <QtCore/QObject>
+#include "private/umlexecutionenvironment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlExecutionEnvironment : public QUmlNode
+class Q_UML_EXPORT QUmlExecutionEnvironment : public QObject, public UmlExecutionEnvironment
 {
-public:
-    QUmlExecutionEnvironment();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlExecutionEnvironment(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

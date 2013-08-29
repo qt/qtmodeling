@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlmessageend.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlMessage>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlMessageEnd
-
-    \inmodule QtUml
-
-    \brief MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
- */
-
-QUmlMessageEnd::QUmlMessageEnd() :
-    _message(0)
+QUmlMessageEnd::QUmlMessageEnd(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("message", QVariant::fromValue((QUmlMessage *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References a Message.
- */
 QUmlMessage *QUmlMessageEnd::message() const
 {
-    // This is a read-write association end
-
-    return _message;
+    return reinterpret_cast<QUmlMessage *>(_message);
 }
 
 void QUmlMessageEnd::setMessage(QUmlMessage *message)
 {
-    // This is a read-write association end
-
-    if (_message != message) {
-        _message = message;
-    }
+    UmlMessageEnd::setMessage(message);
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
+#include <QtCore/QObject>
+#include "private/umlpackageimport_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -55,23 +56,23 @@ QT_MODULE(QtUml)
 class QUmlNamespace;
 class QUmlPackage;
 
-class Q_UML_EXPORT QUmlPackageImport : public QUmlDirectedRelationship
+class Q_UML_EXPORT QUmlPackageImport : public QObject, public UmlPackageImport
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlPackage * importedPackage READ importedPackage)
+    Q_PROPERTY(QUmlNamespace * importingNamespace READ importingNamespace)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+
 public:
-    QUmlPackageImport();
+    Q_INVOKABLE explicit QUmlPackageImport(QObject *parent = 0);
 
     // Owned attributes
-    QUmlPackage *importedPackage() const;
-    void setImportedPackage(QUmlPackage *importedPackage);
-    QUmlNamespace *importingNamespace() const;
-    void setImportingNamespace(QUmlNamespace *importingNamespace);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-protected:
-    QUmlPackage *_importedPackage;
-    QUmlNamespace *_importingNamespace;
-    QtUml::VisibilityKind _visibility;
+    Q_INVOKABLE QUmlPackage *importedPackage() const;
+    Q_INVOKABLE void setImportedPackage(QUmlPackage *importedPackage);
+    Q_INVOKABLE QUmlNamespace *importingNamespace() const;
+    Q_INVOKABLE void setImportingNamespace(QUmlNamespace *importingNamespace);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 };
 
 QT_END_NAMESPACE

@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlanyreceiveevent.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlAnyReceiveEvent
-
-    \inmodule QtUml
-
-    \brief A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.
- */
-
-QUmlAnyReceiveEvent::QUmlAnyReceiveEvent()
+QUmlAnyReceiveEvent::QUmlAnyReceiveEvent(QObject *parent) :
+    QObject(parent)
 {
 }
 

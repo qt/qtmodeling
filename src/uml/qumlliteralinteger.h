@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlLiteralSpecification>
+#include <QtCore/QObject>
+#include "private/umlliteralinteger_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,21 +52,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlLiteralInteger : public QUmlLiteralSpecification
+class Q_UML_EXPORT QUmlLiteralInteger : public QObject, public UmlLiteralInteger
 {
+    Q_OBJECT
+    Q_PROPERTY(int value READ value)
+
 public:
-    QUmlLiteralInteger();
+    Q_INVOKABLE explicit QUmlLiteralInteger(QObject *parent = 0);
 
     // Owned attributes
-    int value() const;
-    void setValue(int value);
+    Q_INVOKABLE int value() const;
+    Q_INVOKABLE void setValue(int value);
 
     // Operations
-    int integerValue() const;
-    bool isComputable() const;
-
-protected:
-    int _value;
+    Q_INVOKABLE int integerValue() const;
+    Q_INVOKABLE bool isComputable() const;
 };
 
 QT_END_NAMESPACE

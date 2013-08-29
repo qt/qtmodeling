@@ -39,90 +39,46 @@
 **
 ****************************************************************************/
 #include "qumldeploymentspecification.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDeployment>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDeploymentSpecification
-
-    \inmodule QtUml
-
-    \brief A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
- */
-
-QUmlDeploymentSpecification::QUmlDeploymentSpecification() :
-    _deployment(0)
+QUmlDeploymentSpecification::QUmlDeploymentSpecification(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("deployment", QVariant::fromValue((QUmlDeployment *)(0)));
-    d_ptr->object.setProperty("deploymentLocation", QVariant::fromValue(QString()));
-    d_ptr->object.setProperty("executionLocation", QVariant::fromValue(QString()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The deployment with which the DeploymentSpecification is associated.
- */
 QUmlDeployment *QUmlDeploymentSpecification::deployment() const
 {
-    // This is a read-write association end
-
-    return _deployment;
+    return reinterpret_cast<QUmlDeployment *>(_deployment);
 }
 
 void QUmlDeploymentSpecification::setDeployment(QUmlDeployment *deployment)
 {
-    // This is a read-write association end
-
-    if (_deployment != deployment) {
-        // Adjust subsetted properties
-
-        _deployment = deployment;
-
-        // Adjust subsetted properties
-        setOwner(deployment);
-    }
+    UmlDeploymentSpecification::setDeployment(deployment);
 }
 
-/*!
-    The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.
- */
 QString QUmlDeploymentSpecification::deploymentLocation() const
 {
-    // This is a read-write property
-
     return _deploymentLocation;
 }
 
 void QUmlDeploymentSpecification::setDeploymentLocation(QString deploymentLocation)
 {
-    // This is a read-write property
-
-    if (_deploymentLocation != deploymentLocation) {
-        _deploymentLocation = deploymentLocation;
-    }
+    UmlDeploymentSpecification::setDeploymentLocation(deploymentLocation);
 }
 
-/*!
-    The location where a component Artifact executes. This may be a local or remote location.
- */
 QString QUmlDeploymentSpecification::executionLocation() const
 {
-    // This is a read-write property
-
     return _executionLocation;
 }
 
 void QUmlDeploymentSpecification::setExecutionLocation(QString executionLocation)
 {
-    // This is a read-write property
-
-    if (_executionLocation != executionLocation) {
-        _executionLocation = executionLocation;
-    }
+    UmlDeploymentSpecification::setExecutionLocation(executionLocation);
 }
 
 QT_END_NAMESPACE

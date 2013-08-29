@@ -39,43 +39,24 @@
 **
 ****************************************************************************/
 #include "qumlpin.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlPin
-
-    \inmodule QtUml
-
-    \brief A pin is a typed element and multiplicity element that provides values to actions and accept result values from them.A pin is an object node for inputs and outputs to actions.
- */
-
-QUmlPin::QUmlPin() :
-    _isControl(false)
+QUmlPin::QUmlPin(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isControl", QVariant::fromValue(false));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Tells whether the pins provide data to the actions, or just controls when it executes it.
- */
 bool QUmlPin::isControl() const
 {
-    // This is a read-write property
-
     return _isControl;
 }
 
 void QUmlPin::setControl(bool isControl)
 {
-    // This is a read-write property
-
-    if (_isControl != isControl) {
-        _isControl = isControl;
-    }
+    UmlPin::setControl(isControl);
 }
 
 QT_END_NAMESPACE

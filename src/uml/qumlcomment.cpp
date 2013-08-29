@@ -39,71 +39,41 @@
 **
 ****************************************************************************/
 #include "qumlcomment.h"
-#include "private/qmodelingobject_p.h"
+
+#include <QtUml/QUmlElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlComment
-
-    \inmodule QtUml
-
-    \brief A comment is a textual annotation that can be attached to a set of elements.
- */
-
-QUmlComment::QUmlComment()
+QUmlComment::QUmlComment(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("annotatedElement", QVariant::fromValue(&_annotatedElement));
-    d_ptr->object.setProperty("body", QVariant::fromValue(QString()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the Element(s) being commented.
- */
 const QSet<QUmlElement *> QUmlComment::annotatedElement() const
 {
-    // This is a read-write association end
-
-    return _annotatedElement;
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_annotatedElement));
 }
 
-void QUmlComment::addAnnotatedElement(QUmlElement *annotatedElement)
+void QUmlComment::addAnnotatedElement(UmlElement *annotatedElement)
 {
-    // This is a read-write association end
-
-    if (!_annotatedElement.contains(annotatedElement)) {
-        _annotatedElement.insert(annotatedElement);
-    }
+    UmlComment::addAnnotatedElement(annotatedElement);
 }
 
-void QUmlComment::removeAnnotatedElement(QUmlElement *annotatedElement)
+void QUmlComment::removeAnnotatedElement(UmlElement *annotatedElement)
 {
-    // This is a read-write association end
-
-    if (_annotatedElement.contains(annotatedElement)) {
-        _annotatedElement.remove(annotatedElement);
-    }
+    UmlComment::removeAnnotatedElement(annotatedElement);
 }
 
-/*!
-    Specifies a string that is the comment.
- */
 QString QUmlComment::body() const
 {
-    // This is a read-write property
-
     return _body;
 }
 
 void QUmlComment::setBody(QString body)
 {
-    // This is a read-write property
-
-    if (_body != body) {
-        _body = body;
-    }
+    UmlComment::setBody(body);
 }
 
 QT_END_NAMESPACE

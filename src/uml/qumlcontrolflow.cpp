@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlcontrolflow.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlControlFlow
-
-    \inmodule QtUml
-
-    \brief A control flow is an edge that starts an activity node after the previous one is finished.
- */
-
-QUmlControlFlow::QUmlControlFlow()
+QUmlControlFlow::QUmlControlFlow(QObject *parent) :
+    QObject(parent)
 {
 }
 

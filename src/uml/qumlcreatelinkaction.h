@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlWriteLinkAction>
+#include <QtCore/QObject>
+#include "private/umlcreatelinkaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,18 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlLinkEndCreationData;
 
-class Q_UML_EXPORT QUmlCreateLinkAction : public QUmlWriteLinkAction
+class Q_UML_EXPORT QUmlCreateLinkAction : public QObject, public UmlCreateLinkAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlLinkEndCreationData *> endData READ endData)
+
 public:
-    QUmlCreateLinkAction();
+    Q_INVOKABLE explicit QUmlCreateLinkAction(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlLinkEndCreationData *> endData() const;
-    void addEndData(QUmlLinkEndCreationData *endData);
-    void removeEndData(QUmlLinkEndCreationData *endData);
-
-protected:
-    QSet<QUmlLinkEndCreationData *> _endData;
+    Q_INVOKABLE const QSet<QUmlLinkEndCreationData *> endData() const;
+    Q_INVOKABLE void addEndData(UmlLinkEndCreationData *endData);
+    Q_INVOKABLE void removeEndData(UmlLinkEndCreationData *endData);
 };
 
 QT_END_NAMESPACE

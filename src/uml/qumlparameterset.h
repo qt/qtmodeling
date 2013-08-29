@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlparameterset_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,22 +55,22 @@ QT_MODULE(QtUml)
 class QUmlConstraint;
 class QUmlParameter;
 
-class Q_UML_EXPORT QUmlParameterSet : public QUmlNamedElement
+class Q_UML_EXPORT QUmlParameterSet : public QObject, public UmlParameterSet
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlConstraint *> condition READ condition)
+    Q_PROPERTY(QSet<QUmlParameter *> parameter READ parameter)
+
 public:
-    QUmlParameterSet();
+    Q_INVOKABLE explicit QUmlParameterSet(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlConstraint *> condition() const;
-    void addCondition(QUmlConstraint *condition);
-    void removeCondition(QUmlConstraint *condition);
-    const QSet<QUmlParameter *> parameter() const;
-    void addParameter(QUmlParameter *parameter);
-    void removeParameter(QUmlParameter *parameter);
-
-protected:
-    QSet<QUmlConstraint *> _condition;
-    QSet<QUmlParameter *> _parameter;
+    Q_INVOKABLE const QSet<QUmlConstraint *> condition() const;
+    Q_INVOKABLE void addCondition(UmlConstraint *condition);
+    Q_INVOKABLE void removeCondition(UmlConstraint *condition);
+    Q_INVOKABLE const QSet<QUmlParameter *> parameter() const;
+    Q_INVOKABLE void addParameter(UmlParameter *parameter);
+    Q_INVOKABLE void removeParameter(UmlParameter *parameter);
 };
 
 QT_END_NAMESPACE

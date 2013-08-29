@@ -39,67 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlliteralboolean.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLiteralBoolean
-
-    \inmodule QtUml
-
-    \brief A literal Boolean is a specification of a Boolean value.
- */
-
-QUmlLiteralBoolean::QUmlLiteralBoolean() :
-    _value(false)
+QUmlLiteralBoolean::QUmlLiteralBoolean(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("value", QVariant::fromValue(false));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The specified Boolean value.
- */
 bool QUmlLiteralBoolean::value() const
 {
-    // This is a read-write property
-
     return _value;
 }
 
 void QUmlLiteralBoolean::setValue(bool value)
 {
-    // This is a read-write property
-
-    if (_value != value) {
-        _value = value;
-    }
+    UmlLiteralBoolean::setValue(value);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query booleanValue() gives the value.
- */
-bool QUmlLiteralBoolean::booleanValue(
-    ) const
+bool QUmlLiteralBoolean::booleanValue() const
 {
-    qWarning("QUmlLiteralBoolean::booleanValue(): to be implemented (operation)");
-
-    return bool ();
+    return UmlLiteralBoolean::booleanValue();
 }
 
-/*!
-    The query isComputable() is redefined to be true.
- */
-bool QUmlLiteralBoolean::isComputable(
-    ) const
+bool QUmlLiteralBoolean::isComputable() const
 {
-    qWarning("QUmlLiteralBoolean::isComputable(): to be implemented (operation)");
-
-    return bool ();
+    return UmlLiteralBoolean::isComputable();
 }
 
 QT_END_NAMESPACE

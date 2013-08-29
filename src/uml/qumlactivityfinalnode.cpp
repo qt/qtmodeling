@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlactivityfinalnode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlActivityFinalNode
-
-    \inmodule QtUml
-
-    \brief An activity final node is a final node that stops all flows in an activity.
- */
-
-QUmlActivityFinalNode::QUmlActivityFinalNode()
+QUmlActivityFinalNode::QUmlActivityFinalNode(QObject *parent) :
+    QObject(parent)
 {
 }
 

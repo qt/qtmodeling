@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlprimitivetype.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlPrimitiveType
-
-    \inmodule QtUml
-
-    \brief A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.
- */
-
-QUmlPrimitiveType::QUmlPrimitiveType()
+QUmlPrimitiveType::QUmlPrimitiveType(QObject *parent) :
+    QObject(parent)
 {
 }
 

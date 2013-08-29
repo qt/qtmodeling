@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlMultiplicityElement>
+#include <QtCore/QObject>
+#include "private/umlconnectorend_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,22 +55,22 @@ QT_MODULE(QtUml)
 class QUmlConnectableElement;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlConnectorEnd : public QUmlMultiplicityElement
+class Q_UML_EXPORT QUmlConnectorEnd : public QObject, public UmlConnectorEnd
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlProperty * definingEnd READ definingEnd)
+    Q_PROPERTY(QUmlProperty * partWithPort READ partWithPort)
+    Q_PROPERTY(QUmlConnectableElement * role READ role)
+
 public:
-    QUmlConnectorEnd();
+    Q_INVOKABLE explicit QUmlConnectorEnd(QObject *parent = 0);
 
     // Owned attributes
-    QUmlProperty *definingEnd() const;
-    Q_DECL_HIDDEN void setDefiningEnd(QUmlProperty *definingEnd);
-    QUmlProperty *partWithPort() const;
-    void setPartWithPort(QUmlProperty *partWithPort);
-    QUmlConnectableElement *role() const;
-    void setRole(QUmlConnectableElement *role);
-
-protected:
-    QUmlProperty *_partWithPort;
-    QUmlConnectableElement *_role;
+    Q_INVOKABLE QUmlProperty *definingEnd() const;
+    Q_INVOKABLE QUmlProperty *partWithPort() const;
+    Q_INVOKABLE void setPartWithPort(QUmlProperty *partWithPort);
+    Q_INVOKABLE QUmlConnectableElement *role() const;
+    Q_INVOKABLE void setRole(QUmlConnectableElement *role);
 };
 
 QT_END_NAMESPACE

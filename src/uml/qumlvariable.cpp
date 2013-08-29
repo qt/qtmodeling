@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlvariable.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAction>
 #include <QtUml/QUmlActivity>
@@ -47,84 +46,38 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlVariable
-
-    \inmodule QtUml
-
-    \brief A variable is considered a connectable element.Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.
- */
-
-QUmlVariable::QUmlVariable() :
-    _activityScope(0),
-    _scope(0)
+QUmlVariable::QUmlVariable(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("activityScope", QVariant::fromValue((QUmlActivity *)(0)));
-    d_ptr->object.setProperty("scope", QVariant::fromValue((QUmlStructuredActivityNode *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    An activity that owns the variable.
- */
 QUmlActivity *QUmlVariable::activityScope() const
 {
-    // This is a read-write association end
-
-    return _activityScope;
+    return reinterpret_cast<QUmlActivity *>(_activityScope);
 }
 
 void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
 {
-    // This is a read-write association end
-
-    if (_activityScope != activityScope) {
-        // Adjust subsetted properties
-
-        _activityScope = activityScope;
-
-        // Adjust subsetted properties
-        setNamespace(activityScope);
-    }
+    UmlVariable::setActivityScope(activityScope);
 }
 
-/*!
-    A structured activity node that owns the variable.
- */
 QUmlStructuredActivityNode *QUmlVariable::scope() const
 {
-    // This is a read-write association end
-
-    return _scope;
+    return reinterpret_cast<QUmlStructuredActivityNode *>(_scope);
 }
 
 void QUmlVariable::setScope(QUmlStructuredActivityNode *scope)
 {
-    // This is a read-write association end
-
-    if (_scope != scope) {
-        // Adjust subsetted properties
-
-        _scope = scope;
-
-        // Adjust subsetted properties
-        setNamespace(scope);
-    }
+    UmlVariable::setScope(scope);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The isAccessibleBy() operation is not defined in standard UML. Implementations should define it to specify which actions can access a variable.
- */
-bool QUmlVariable::isAccessibleBy(
-    QUmlAction *a) const
+bool QUmlVariable::isAccessibleBy(QUmlAction *a) const
 {
-    qWarning("QUmlVariable::isAccessibleBy(): to be implemented (operation)");
-
-    Q_UNUSED(a);
-    return bool ();
+    return UmlVariable::isAccessibleBy(a);
 }
 
 QT_END_NAMESPACE

@@ -39,74 +39,36 @@
 **
 ****************************************************************************/
 #include "qumltimeevent.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTimeExpression>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTimeEvent
-
-    \inmodule QtUml
-
-    \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
- */
-
-QUmlTimeEvent::QUmlTimeEvent() :
-    _isRelative(false),
-    _when(0)
+QUmlTimeEvent::QUmlTimeEvent(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isRelative", QVariant::fromValue(false));
-    d_ptr->object.setProperty("when", QVariant::fromValue((QUmlTimeExpression *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies whether it is relative or absolute time.
- */
 bool QUmlTimeEvent::isRelative() const
 {
-    // This is a read-write property
-
     return _isRelative;
 }
 
 void QUmlTimeEvent::setRelative(bool isRelative)
 {
-    // This is a read-write property
-
-    if (_isRelative != isRelative) {
-        _isRelative = isRelative;
-    }
+    UmlTimeEvent::setRelative(isRelative);
 }
 
-/*!
-    Specifies the corresponding time deadline.
- */
 QUmlTimeExpression *QUmlTimeEvent::when() const
 {
-    // This is a read-write association end
-
-    return _when;
+    return reinterpret_cast<QUmlTimeExpression *>(_when);
 }
 
 void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
 {
-    // This is a read-write association end
-
-    if (_when != when) {
-        // Adjust subsetted properties
-        removeOwnedElement(_when);
-
-        _when = when;
-
-        // Adjust subsetted properties
-        if (when) {
-            addOwnedElement(when);
-        }
-    }
+    UmlTimeEvent::setWhen(when);
 }
 
 QT_END_NAMESPACE

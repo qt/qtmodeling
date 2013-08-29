@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlconnector.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlBehavior>
@@ -47,163 +46,71 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlConnector
-
-    \inmodule QtUml
-
-    \brief A delegation connector is a connector that links the external contract of a component (as specified by its ports) to the realization of that behavior. It represents the forwarding of events (operation requests and events): a signal that arrives at a port that has a delegation connector to one or more parts or ports on parts will be passed on to those targets for handling. An assembly connector is a connector between two or more parts or ports on parts that defines that one or more parts provide the services that other parts use.Specifies a link that enables communication between two or more instances. This link may be an instance of an association, or it may represent the possibility of the instances being able to communicate because their identities are known by virtue of being passed in as parameters, held in variables or slots, or because the communicating instances are the same instance. The link may be realized by something as simple as a pointer or by something as complex as a network connection. In contrast to associations, which specify links between any instance of the associated classifiers, connectors specify links between instances playing the connected parts only.
- */
-
-QUmlConnector::QUmlConnector() :
-    _type(0)
+QUmlConnector::QUmlConnector(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("contract", QVariant::fromValue(&_contract));
-    d_ptr->object.setProperty("end", QVariant::fromValue(&_end));
-    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::ConnectorKindNone));
-    d_ptr->object.setProperty("redefinedConnector", QVariant::fromValue(&_redefinedConnector));
-    d_ptr->object.setProperty("type", QVariant::fromValue((QUmlAssociation *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The set of Behaviors that specify the valid interaction patterns across the connector.
- */
 const QSet<QUmlBehavior *> QUmlConnector::contract() const
 {
-    // This is a read-write association end
-
-    return _contract;
+    return *(reinterpret_cast<const QSet<QUmlBehavior *> *>(&_contract));
 }
 
-void QUmlConnector::addContract(QUmlBehavior *contract)
+void QUmlConnector::addContract(UmlBehavior *contract)
 {
-    // This is a read-write association end
-
-    if (!_contract.contains(contract)) {
-        _contract.insert(contract);
-    }
+    UmlConnector::addContract(contract);
 }
 
-void QUmlConnector::removeContract(QUmlBehavior *contract)
+void QUmlConnector::removeContract(UmlBehavior *contract)
 {
-    // This is a read-write association end
-
-    if (_contract.contains(contract)) {
-        _contract.remove(contract);
-    }
+    UmlConnector::removeContract(contract);
 }
 
-/*!
-    A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
- */
 const QList<QUmlConnectorEnd *> QUmlConnector::end() const
 {
-    // This is a read-write association end
-
-    return _end;
+    return *(reinterpret_cast<const QList<QUmlConnectorEnd *> *>(&_end));
 }
 
-void QUmlConnector::addEnd(QUmlConnectorEnd *end)
+void QUmlConnector::addEnd(UmlConnectorEnd *end)
 {
-    // This is a read-write association end
-
-    if (!_end.contains(end)) {
-        _end.append(end);
-
-        // Adjust subsetted properties
-        addOwnedElement(end);
-    }
+    UmlConnector::addEnd(end);
 }
 
-void QUmlConnector::removeEnd(QUmlConnectorEnd *end)
+void QUmlConnector::removeEnd(UmlConnectorEnd *end)
 {
-    // This is a read-write association end
-
-    if (_end.contains(end)) {
-        _end.removeAll(end);
-
-        // Adjust subsetted properties
-        removeOwnedElement(end);
-    }
+    UmlConnector::removeEnd(end);
 }
 
-/*!
-    Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.
- */
 QtUml::ConnectorKind QUmlConnector::kind() const
 {
-    // This is a read-only derived property
-
-    qWarning("QUmlConnector::kind(): to be implemented (this is a derived property)");
-
-    return QtUml::ConnectorKind();
+    return UmlConnector::kind();
 }
 
-void QUmlConnector::setKind(QtUml::ConnectorKind kind)
-{
-    // This is a read-only derived property
-
-    qWarning("QUmlConnector::kind(): to be implemented (this is a derived property)");
-    Q_UNUSED(kind);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
- */
 const QSet<QUmlConnector *> QUmlConnector::redefinedConnector() const
 {
-    // This is a read-write association end
-
-    return _redefinedConnector;
+    return *(reinterpret_cast<const QSet<QUmlConnector *> *>(&_redefinedConnector));
 }
 
-void QUmlConnector::addRedefinedConnector(QUmlConnector *redefinedConnector)
+void QUmlConnector::addRedefinedConnector(UmlConnector *redefinedConnector)
 {
-    // This is a read-write association end
-
-    if (!_redefinedConnector.contains(redefinedConnector)) {
-        _redefinedConnector.insert(redefinedConnector);
-
-        // Adjust subsetted properties
-        addRedefinedElement(redefinedConnector);
-    }
+    UmlConnector::addRedefinedConnector(redefinedConnector);
 }
 
-void QUmlConnector::removeRedefinedConnector(QUmlConnector *redefinedConnector)
+void QUmlConnector::removeRedefinedConnector(UmlConnector *redefinedConnector)
 {
-    // This is a read-write association end
-
-    if (_redefinedConnector.contains(redefinedConnector)) {
-        _redefinedConnector.remove(redefinedConnector);
-
-        // Adjust subsetted properties
-        removeRedefinedElement(redefinedConnector);
-    }
+    UmlConnector::removeRedefinedConnector(redefinedConnector);
 }
 
-/*!
-    An optional association that specifies the link corresponding to this connector.
- */
 QUmlAssociation *QUmlConnector::type() const
 {
-    // This is a read-write association end
-
-    return _type;
+    return reinterpret_cast<QUmlAssociation *>(_type);
 }
 
 void QUmlConnector::setType(QUmlAssociation *type)
 {
-    // This is a read-write association end
-
-    if (_type != type) {
-        _type = type;
-    }
+    UmlConnector::setType(type);
 }
 
 QT_END_NAMESPACE

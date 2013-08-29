@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumloperationtemplateparameter.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOperation>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlOperationTemplateParameter
-
-    \inmodule QtUml
-
-    \brief An operation template parameter exposes an operation as a formal parameter for a template.
- */
-
-QUmlOperationTemplateParameter::QUmlOperationTemplateParameter() :
-    _parameteredElement(0)
+QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("parameteredElement", QVariant::fromValue((QUmlOperation *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The operation for this template parameter.
- */
 QUmlOperation *QUmlOperationTemplateParameter::parameteredElement() const
 {
-    // This is a read-write association end
-
-    return _parameteredElement;
+    return reinterpret_cast<QUmlOperation *>(_parameteredElement);
 }
 
 void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parameteredElement)
 {
-    // This is a read-write association end
-
-    if (_parameteredElement != parameteredElement) {
-        _parameteredElement = parameteredElement;
-    }
+    UmlOperationTemplateParameter::setParameteredElement(parameteredElement);
 }
 
 QT_END_NAMESPACE

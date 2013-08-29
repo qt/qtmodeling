@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlStructuredActivityNode>
+#include <QtCore/QObject>
+#include "private/umlsequencenode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,18 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlExecutableNode;
 
-class Q_UML_EXPORT QUmlSequenceNode : public QUmlStructuredActivityNode
+class Q_UML_EXPORT QUmlSequenceNode : public QObject, public UmlSequenceNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlExecutableNode *> executableNode READ executableNode)
+
 public:
-    QUmlSequenceNode();
+    Q_INVOKABLE explicit QUmlSequenceNode(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlExecutableNode *> executableNode() const;
-    void addExecutableNode(QUmlExecutableNode *executableNode);
-    void removeExecutableNode(QUmlExecutableNode *executableNode);
-
-protected:
-    QList<QUmlExecutableNode *> _executableNode;
+    Q_INVOKABLE const QList<QUmlExecutableNode *> executableNode() const;
+    Q_INVOKABLE void addExecutableNode(UmlExecutableNode *executableNode);
+    Q_INVOKABLE void removeExecutableNode(UmlExecutableNode *executableNode);
 };
 
 QT_END_NAMESPACE

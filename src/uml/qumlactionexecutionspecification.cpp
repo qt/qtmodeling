@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlactionexecutionspecification.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlActionExecutionSpecification
-
-    \inmodule QtUml
-
-    \brief An action execution specification is a kind of execution specification representing the execution of an action.
- */
-
-QUmlActionExecutionSpecification::QUmlActionExecutionSpecification() :
-    _action(0)
+QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("action", QVariant::fromValue((QUmlAction *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Action whose execution is occurring.
- */
 QUmlAction *QUmlActionExecutionSpecification::action() const
 {
-    // This is a read-write association end
-
-    return _action;
+    return reinterpret_cast<QUmlAction *>(_action);
 }
 
 void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
 {
-    // This is a read-write association end
-
-    if (_action != action) {
-        _action = action;
-    }
+    UmlActionExecutionSpecification::setAction(action);
 }
 
 QT_END_NAMESPACE

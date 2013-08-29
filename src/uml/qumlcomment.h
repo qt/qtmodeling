@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umlcomment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,21 +52,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlComment : public QUmlElement
+class QUmlElement;
+
+class Q_UML_EXPORT QUmlComment : public QObject, public UmlComment
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlElement *> annotatedElement READ annotatedElement)
+    Q_PROPERTY(QString body READ body)
+
 public:
-    QUmlComment();
+    Q_INVOKABLE explicit QUmlComment(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlElement *> annotatedElement() const;
-    void addAnnotatedElement(QUmlElement *annotatedElement);
-    void removeAnnotatedElement(QUmlElement *annotatedElement);
-    QString body() const;
-    void setBody(QString body);
-
-protected:
-    QSet<QUmlElement *> _annotatedElement;
-    QString _body;
+    Q_INVOKABLE const QSet<QUmlElement *> annotatedElement() const;
+    Q_INVOKABLE void addAnnotatedElement(UmlElement *annotatedElement);
+    Q_INVOKABLE void removeAnnotatedElement(UmlElement *annotatedElement);
+    Q_INVOKABLE QString body() const;
+    Q_INVOKABLE void setBody(QString body);
 };
 
 QT_END_NAMESPACE

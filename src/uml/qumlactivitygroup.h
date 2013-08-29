@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlactivitygroup_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,32 +56,25 @@ class QUmlActivity;
 class QUmlActivityEdge;
 class QUmlActivityNode;
 
-class Q_UML_EXPORT QUmlActivityGroup : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlActivityGroup : public QObject, public UmlActivityGroup
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlActivityEdge *> containedEdge READ containedEdge)
+    Q_PROPERTY(QSet<QUmlActivityNode *> containedNode READ containedNode)
+    Q_PROPERTY(QUmlActivity * inActivity READ inActivity)
+    Q_PROPERTY(QSet<QUmlActivityGroup *> subgroup READ subgroup)
+    Q_PROPERTY(QUmlActivityGroup * superGroup READ superGroup)
+
 public:
-    Q_DECL_HIDDEN QUmlActivityGroup();
+    Q_DECL_HIDDEN explicit QUmlActivityGroup(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlActivityEdge *> containedEdge() const;
-    Q_DECL_HIDDEN void addContainedEdge(QUmlActivityEdge *containedEdge);
-    Q_DECL_HIDDEN void removeContainedEdge(QUmlActivityEdge *containedEdge);
-    const QSet<QUmlActivityNode *> containedNode() const;
-    Q_DECL_HIDDEN void addContainedNode(QUmlActivityNode *containedNode);
-    Q_DECL_HIDDEN void removeContainedNode(QUmlActivityNode *containedNode);
-    QUmlActivity *inActivity() const;
-    void setInActivity(QUmlActivity *inActivity);
-    const QSet<QUmlActivityGroup *> subgroup() const;
-    Q_DECL_HIDDEN void addSubgroup(QUmlActivityGroup *subgroup);
-    Q_DECL_HIDDEN void removeSubgroup(QUmlActivityGroup *subgroup);
-    QUmlActivityGroup *superGroup() const;
-    Q_DECL_HIDDEN void setSuperGroup(QUmlActivityGroup *superGroup);
-
-protected:
-    QSet<QUmlActivityEdge *> _containedEdge;
-    QSet<QUmlActivityNode *> _containedNode;
-    QUmlActivity *_inActivity;
-    QSet<QUmlActivityGroup *> _subgroup;
-    QUmlActivityGroup *_superGroup;
+    Q_INVOKABLE const QSet<QUmlActivityEdge *> containedEdge() const;
+    Q_INVOKABLE const QSet<QUmlActivityNode *> containedNode() const;
+    Q_INVOKABLE QUmlActivity *inActivity() const;
+    Q_INVOKABLE void setInActivity(QUmlActivity *inActivity);
+    Q_INVOKABLE const QSet<QUmlActivityGroup *> subgroup() const;
+    Q_INVOKABLE QUmlActivityGroup *superGroup() const;
 };
 
 QT_END_NAMESPACE

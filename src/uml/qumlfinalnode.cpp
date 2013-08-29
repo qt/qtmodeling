@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlfinalnode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlFinalNode
-
-    \inmodule QtUml
-
-    \brief A final node is an abstract control node at which a flow in an activity stops.
- */
-
-QUmlFinalNode::QUmlFinalNode()
+QUmlFinalNode::QUmlFinalNode(QObject *parent) :
+    QObject(parent)
 {
 }
 

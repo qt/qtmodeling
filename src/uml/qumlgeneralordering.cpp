@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlgeneralordering.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOccurrenceSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlGeneralOrdering
-
-    \inmodule QtUml
-
-    \brief A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
- */
-
-QUmlGeneralOrdering::QUmlGeneralOrdering() :
-    _after(0),
-    _before(0)
+QUmlGeneralOrdering::QUmlGeneralOrdering(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("after", QVariant::fromValue((QUmlOccurrenceSpecification *)(0)));
-    d_ptr->object.setProperty("before", QVariant::fromValue((QUmlOccurrenceSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
- */
 QUmlOccurrenceSpecification *QUmlGeneralOrdering::after() const
 {
-    // This is a read-write association end
-
-    return _after;
+    return reinterpret_cast<QUmlOccurrenceSpecification *>(_after);
 }
 
 void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
 {
-    // This is a read-write association end
-
-    if (_after != after) {
-        _after = after;
-    }
+    UmlGeneralOrdering::setAfter(after);
 }
 
-/*!
-    The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
- */
 QUmlOccurrenceSpecification *QUmlGeneralOrdering::before() const
 {
-    // This is a read-write association end
-
-    return _before;
+    return reinterpret_cast<QUmlOccurrenceSpecification *>(_before);
 }
 
 void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
 {
-    // This is a read-write association end
-
-    if (_before != before) {
-        _before = before;
-    }
+    UmlGeneralOrdering::setBefore(before);
 }
 
 QT_END_NAMESPACE

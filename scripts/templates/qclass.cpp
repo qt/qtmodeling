@@ -63,7 +63,7 @@ Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
 [%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- IF loop.first %]
 // Owned attributes
-    [% END -%]
+[% END -%]
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
     [%- SET derived = attribute.findvalue("@isDerived") -%]
@@ -79,13 +79,13 @@ Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
     [%- ELSE %]
     return *(reinterpret_cast<const ${qtType.trim.remove(' \*$')} *>(&_${qtAttribute}));
     [%- END -%]
-    [% ELSIF qtType.match('\*$') %]
+    [%- ELSIF qtType.match('\*$') %]
     [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
     return reinterpret_cast<${qtType.trim}>(${namespace}${className}::${qtAttribute}());
     [%- ELSE %]
     return reinterpret_cast<${qtType.trim}>(_${qtAttribute});
     [%- END -%]
-    [% ELSE %]
+    [%- ELSE %]
     [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
     return ${namespace}${className}::${qtAttribute}();
     [%- ELSE %]
@@ -122,11 +122,13 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType.remov
 {
     ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
 }
+
     [%- ELSIF qtType.match('\*$') %]
 void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
 {
     ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
 }
+
     [%- ELSE %]
 void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
 {
@@ -159,7 +161,7 @@ ${parameter.findvalue("@name")}
 ${parameter.findvalue("@name")}
         [%- IF !loop.last %], [% END -%]
     [%- END -%])[% IF return.match('\*$') %])[% END %];
-    [%- ELSE %]
+    [%- ELSIF return.match('\*') %]
     ${return}r;
     foreach (${return.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, ${namespace}${className}::${operationName}(
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
@@ -173,6 +175,12 @@ ${parameter.findvalue("@name")}
     [%- END -%]))
         r.[% IF return.match("QList") %]append[% ELSE %]insert[% END %](reinterpret_cast<${return.remove("QList<").remove("QSet<").remove(">").trim}>(element));
     return r;
+    [%- ELSE %]
+    return ${namespace}${className}::${operationName}(
+    [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+${parameter.findvalue("@name")}
+        [%- IF !loop.last %], [% END -%]
+    [%- END -%]);
     [%- END %]
 }
 

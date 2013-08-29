@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlexecutionoccurrencespecification.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExecutionSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExecutionOccurrenceSpecification
-
-    \inmodule QtUml
-
-    \brief An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
- */
-
-QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification() :
-    _execution(0)
+QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("execution", QVariant::fromValue((QUmlExecutionSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the execution specification describing the execution that is started or finished at this execution event.
- */
 QUmlExecutionSpecification *QUmlExecutionOccurrenceSpecification::execution() const
 {
-    // This is a read-write association end
-
-    return _execution;
+    return reinterpret_cast<QUmlExecutionSpecification *>(_execution);
 }
 
 void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecification *execution)
 {
-    // This is a read-write association end
-
-    if (_execution != execution) {
-        _execution = execution;
-    }
+    UmlExecutionOccurrenceSpecification::setExecution(execution);
 }
 
 QT_END_NAMESPACE

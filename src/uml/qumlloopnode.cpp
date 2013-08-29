@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlloopnode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlInputPin>
@@ -47,263 +46,136 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLoopNode
-
-    \inmodule QtUml
-
-    \brief A loop node is a structured activity node that represents a loop with setup, test, and body sections.
- */
-
-QUmlLoopNode::QUmlLoopNode() :
-    _decider(0),
-    _isTestedFirst(false)
+QUmlLoopNode::QUmlLoopNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("bodyOutput", QVariant::fromValue(&_bodyOutput));
-    d_ptr->object.setProperty("bodyPart", QVariant::fromValue(&_bodyPart));
-    d_ptr->object.setProperty("decider", QVariant::fromValue((QUmlOutputPin *)(0)));
-    d_ptr->object.setProperty("isTestedFirst", QVariant::fromValue(false));
-    d_ptr->object.setProperty("loopVariable", QVariant::fromValue(&_loopVariable));
-    d_ptr->object.setProperty("loopVariableInput", QVariant::fromValue(&_loopVariableInput));
-    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
-    d_ptr->object.setProperty("setupPart", QVariant::fromValue(&_setupPart));
-    d_ptr->object.setProperty("test", QVariant::fromValue(&_test));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
- */
 const QList<QUmlOutputPin *> QUmlLoopNode::bodyOutput() const
 {
-    // This is a read-write association end
-
-    return _bodyOutput;
+    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_bodyOutput));
 }
 
-void QUmlLoopNode::addBodyOutput(QUmlOutputPin *bodyOutput)
+void QUmlLoopNode::addBodyOutput(UmlOutputPin *bodyOutput)
 {
-    // This is a read-write association end
-
-    if (!_bodyOutput.contains(bodyOutput)) {
-        _bodyOutput.append(bodyOutput);
-    }
+    UmlLoopNode::addBodyOutput(bodyOutput);
 }
 
-void QUmlLoopNode::removeBodyOutput(QUmlOutputPin *bodyOutput)
+void QUmlLoopNode::removeBodyOutput(UmlOutputPin *bodyOutput)
 {
-    // This is a read-write association end
-
-    if (_bodyOutput.contains(bodyOutput)) {
-        _bodyOutput.removeAll(bodyOutput);
-    }
+    UmlLoopNode::removeBodyOutput(bodyOutput);
 }
 
-/*!
-    The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
- */
 const QSet<QUmlExecutableNode *> QUmlLoopNode::bodyPart() const
 {
-    // This is a read-write association end
-
-    return _bodyPart;
+    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_bodyPart));
 }
 
-void QUmlLoopNode::addBodyPart(QUmlExecutableNode *bodyPart)
+void QUmlLoopNode::addBodyPart(UmlExecutableNode *bodyPart)
 {
-    // This is a read-write association end
-
-    if (!_bodyPart.contains(bodyPart)) {
-        _bodyPart.insert(bodyPart);
-    }
+    UmlLoopNode::addBodyPart(bodyPart);
 }
 
-void QUmlLoopNode::removeBodyPart(QUmlExecutableNode *bodyPart)
+void QUmlLoopNode::removeBodyPart(UmlExecutableNode *bodyPart)
 {
-    // This is a read-write association end
-
-    if (_bodyPart.contains(bodyPart)) {
-        _bodyPart.remove(bodyPart);
-    }
+    UmlLoopNode::removeBodyPart(bodyPart);
 }
 
-/*!
-    An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.
- */
 QUmlOutputPin *QUmlLoopNode::decider() const
 {
-    // This is a read-write association end
-
-    return _decider;
+    return reinterpret_cast<QUmlOutputPin *>(_decider);
 }
 
 void QUmlLoopNode::setDecider(QUmlOutputPin *decider)
 {
-    // This is a read-write association end
-
-    if (_decider != decider) {
-        _decider = decider;
-    }
+    UmlLoopNode::setDecider(decider);
 }
 
-/*!
-    If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.
- */
 bool QUmlLoopNode::isTestedFirst() const
 {
-    // This is a read-write property
-
     return _isTestedFirst;
 }
 
 void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
 {
-    // This is a read-write property
-
-    if (_isTestedFirst != isTestedFirst) {
-        _isTestedFirst = isTestedFirst;
-    }
+    UmlLoopNode::setTestedFirst(isTestedFirst);
 }
 
-/*!
-    A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
- */
 const QList<QUmlOutputPin *> QUmlLoopNode::loopVariable() const
 {
-    // This is a read-write association end
-
-    return _loopVariable;
+    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_loopVariable));
 }
 
-void QUmlLoopNode::addLoopVariable(QUmlOutputPin *loopVariable)
+void QUmlLoopNode::addLoopVariable(UmlOutputPin *loopVariable)
 {
-    // This is a read-write association end
-
-    if (!_loopVariable.contains(loopVariable)) {
-        _loopVariable.append(loopVariable);
-    }
+    UmlLoopNode::addLoopVariable(loopVariable);
 }
 
-void QUmlLoopNode::removeLoopVariable(QUmlOutputPin *loopVariable)
+void QUmlLoopNode::removeLoopVariable(UmlOutputPin *loopVariable)
 {
-    // This is a read-write association end
-
-    if (_loopVariable.contains(loopVariable)) {
-        _loopVariable.removeAll(loopVariable);
-    }
+    UmlLoopNode::removeLoopVariable(loopVariable);
 }
 
-/*!
-    A list of values that are moved into the loop variable pins before the first iteration of the loop.
- */
 const QList<QUmlInputPin *> QUmlLoopNode::loopVariableInput() const
 {
-    // This is a read-write association end
-
-    return _loopVariableInput;
+    return *(reinterpret_cast<const QList<QUmlInputPin *> *>(&_loopVariableInput));
 }
 
-void QUmlLoopNode::addLoopVariableInput(QUmlInputPin *loopVariableInput)
+void QUmlLoopNode::addLoopVariableInput(UmlInputPin *loopVariableInput)
 {
-    // This is a read-write association end
-
-    if (!_loopVariableInput.contains(loopVariableInput)) {
-        _loopVariableInput.append(loopVariableInput);
-    }
+    UmlLoopNode::addLoopVariableInput(loopVariableInput);
 }
 
-void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
+void QUmlLoopNode::removeLoopVariableInput(UmlInputPin *loopVariableInput)
 {
-    // This is a read-write association end
-
-    if (_loopVariableInput.contains(loopVariableInput)) {
-        _loopVariableInput.removeAll(loopVariableInput);
-    }
+    UmlLoopNode::removeLoopVariableInput(loopVariableInput);
 }
 
-/*!
-    A list of output pins that constitute the data flow output of the entire loop.
- */
 const QList<QUmlOutputPin *> QUmlLoopNode::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_result));
 }
 
-void QUmlLoopNode::addResult(QUmlOutputPin *result)
+void QUmlLoopNode::addResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (!_result.contains(result)) {
-        _result.append(result);
-    }
+    UmlLoopNode::addResult(result);
 }
 
-void QUmlLoopNode::removeResult(QUmlOutputPin *result)
+void QUmlLoopNode::removeResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result.contains(result)) {
-        _result.removeAll(result);
-    }
+    UmlLoopNode::removeResult(result);
 }
 
-/*!
-    The set of nodes and edges that initialize values or perform other setup computations for the loop.
- */
 const QSet<QUmlExecutableNode *> QUmlLoopNode::setupPart() const
 {
-    // This is a read-write association end
-
-    return _setupPart;
+    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_setupPart));
 }
 
-void QUmlLoopNode::addSetupPart(QUmlExecutableNode *setupPart)
+void QUmlLoopNode::addSetupPart(UmlExecutableNode *setupPart)
 {
-    // This is a read-write association end
-
-    if (!_setupPart.contains(setupPart)) {
-        _setupPart.insert(setupPart);
-    }
+    UmlLoopNode::addSetupPart(setupPart);
 }
 
-void QUmlLoopNode::removeSetupPart(QUmlExecutableNode *setupPart)
+void QUmlLoopNode::removeSetupPart(UmlExecutableNode *setupPart)
 {
-    // This is a read-write association end
-
-    if (_setupPart.contains(setupPart)) {
-        _setupPart.remove(setupPart);
-    }
+    UmlLoopNode::removeSetupPart(setupPart);
 }
 
-/*!
-    The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
- */
 const QSet<QUmlExecutableNode *> QUmlLoopNode::test() const
 {
-    // This is a read-write association end
-
-    return _test;
+    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_test));
 }
 
-void QUmlLoopNode::addTest(QUmlExecutableNode *test)
+void QUmlLoopNode::addTest(UmlExecutableNode *test)
 {
-    // This is a read-write association end
-
-    if (!_test.contains(test)) {
-        _test.insert(test);
-    }
+    UmlLoopNode::addTest(test);
 }
 
-void QUmlLoopNode::removeTest(QUmlExecutableNode *test)
+void QUmlLoopNode::removeTest(UmlExecutableNode *test)
 {
-    // This is a read-write association end
-
-    if (_test.contains(test)) {
-        _test.remove(test);
-    }
+    UmlLoopNode::removeTest(test);
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRealization>
+#include <QtCore/QObject>
+#include "private/umlinterfacerealization_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlBehavioredClassifier;
 class QUmlInterface;
 
-class Q_UML_EXPORT QUmlInterfaceRealization : public QUmlRealization
+class Q_UML_EXPORT QUmlInterfaceRealization : public QObject, public UmlInterfaceRealization
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInterface * contract READ contract)
+    Q_PROPERTY(QUmlBehavioredClassifier * implementingClassifier READ implementingClassifier)
+
 public:
-    QUmlInterfaceRealization();
+    Q_INVOKABLE explicit QUmlInterfaceRealization(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInterface *contract() const;
-    void setContract(QUmlInterface *contract);
-    QUmlBehavioredClassifier *implementingClassifier() const;
-    void setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier);
-
-protected:
-    QUmlInterface *_contract;
-    QUmlBehavioredClassifier *_implementingClassifier;
+    Q_INVOKABLE QUmlInterface *contract() const;
+    Q_INVOKABLE void setContract(QUmlInterface *contract);
+    Q_INVOKABLE QUmlBehavioredClassifier *implementingClassifier() const;
+    Q_INVOKABLE void setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier);
 };
 
 QT_END_NAMESPACE

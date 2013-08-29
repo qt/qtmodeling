@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlvariableaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlVariable;
 
-class Q_UML_EXPORT QUmlVariableAction : public QUmlAction
+class Q_UML_EXPORT QUmlVariableAction : public QObject, public UmlVariableAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlVariable * variable READ variable)
+
 public:
-    Q_DECL_HIDDEN QUmlVariableAction();
+    Q_DECL_HIDDEN explicit QUmlVariableAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlVariable *variable() const;
-    void setVariable(QUmlVariable *variable);
-
-protected:
-    QUmlVariable *_variable;
+    Q_INVOKABLE QUmlVariable *variable() const;
+    Q_INVOKABLE void setVariable(QUmlVariable *variable);
 };
 
 QT_END_NAMESPACE

@@ -39,108 +39,56 @@
 **
 ****************************************************************************/
 #include "qumlobjectflow.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlObjectFlow
-
-    \inmodule QtUml
-
-    \brief An object flow is an activity edge that can have objects or data passing along it.Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.
- */
-
-QUmlObjectFlow::QUmlObjectFlow() :
-    _isMulticast(false),
-    _isMultireceive(false),
-    _selection(0),
-    _transformation(0)
+QUmlObjectFlow::QUmlObjectFlow(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isMulticast", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isMultireceive", QVariant::fromValue(false));
-    d_ptr->object.setProperty("selection", QVariant::fromValue((QUmlBehavior *)(0)));
-    d_ptr->object.setProperty("transformation", QVariant::fromValue((QUmlBehavior *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Tells whether the objects in the flow are passed by multicasting.
- */
 bool QUmlObjectFlow::isMulticast() const
 {
-    // This is a read-write property
-
     return _isMulticast;
 }
 
 void QUmlObjectFlow::setMulticast(bool isMulticast)
 {
-    // This is a read-write property
-
-    if (_isMulticast != isMulticast) {
-        _isMulticast = isMulticast;
-    }
+    UmlObjectFlow::setMulticast(isMulticast);
 }
 
-/*!
-    Tells whether the objects in the flow are gathered from respondents to multicasting.
- */
 bool QUmlObjectFlow::isMultireceive() const
 {
-    // This is a read-write property
-
     return _isMultireceive;
 }
 
 void QUmlObjectFlow::setMultireceive(bool isMultireceive)
 {
-    // This is a read-write property
-
-    if (_isMultireceive != isMultireceive) {
-        _isMultireceive = isMultireceive;
-    }
+    UmlObjectFlow::setMultireceive(isMultireceive);
 }
 
-/*!
-    Selects tokens from a source object node.
- */
 QUmlBehavior *QUmlObjectFlow::selection() const
 {
-    // This is a read-write association end
-
-    return _selection;
+    return reinterpret_cast<QUmlBehavior *>(_selection);
 }
 
 void QUmlObjectFlow::setSelection(QUmlBehavior *selection)
 {
-    // This is a read-write association end
-
-    if (_selection != selection) {
-        _selection = selection;
-    }
+    UmlObjectFlow::setSelection(selection);
 }
 
-/*!
-    Changes or replaces data tokens flowing along edge.
- */
 QUmlBehavior *QUmlObjectFlow::transformation() const
 {
-    // This is a read-write association end
-
-    return _transformation;
+    return reinterpret_cast<QUmlBehavior *>(_transformation);
 }
 
 void QUmlObjectFlow::setTransformation(QUmlBehavior *transformation)
 {
-    // This is a read-write association end
-
-    if (_transformation != transformation) {
-        _transformation = transformation;
-    }
+    UmlObjectFlow::setTransformation(transformation);
 }
 
 QT_END_NAMESPACE

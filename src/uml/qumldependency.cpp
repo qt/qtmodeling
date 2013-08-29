@@ -39,104 +39,46 @@
 **
 ****************************************************************************/
 #include "qumldependency.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDependency
-
-    \inmodule QtUml
-
-    \brief A dependency is a relationship that signifies that a single or a set of model elements requires other model elements for their specification or implementation. This means that the complete semantics of the depending elements is either semantically or structurally dependent on the definition of the supplier element(s).
- */
-
-QUmlDependency::QUmlDependency()
+QUmlDependency::QUmlDependency(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("client", QVariant::fromValue(&_client));
-    d_ptr->object.setProperty("supplier", QVariant::fromValue(&_supplier));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.
- */
 const QSet<QUmlNamedElement *> QUmlDependency::client() const
 {
-    // This is a read-write association end
-
-    return _client;
+    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_client));
 }
 
-void QUmlDependency::addClient(QUmlNamedElement *client)
+void QUmlDependency::addClient(UmlNamedElement *client)
 {
-    // This is a read-write association end
-
-    if (!_client.contains(client)) {
-        _client.insert(client);
-
-        // Adjust subsetted properties
-        addSource(client);
-
-        // Adjust opposite properties
-        if (client) {
-            client->addClientDependency(this);
-        }
-    }
+    UmlDependency::addClient(client);
 }
 
-void QUmlDependency::removeClient(QUmlNamedElement *client)
+void QUmlDependency::removeClient(UmlNamedElement *client)
 {
-    // This is a read-write association end
-
-    if (_client.contains(client)) {
-        _client.remove(client);
-
-        // Adjust subsetted properties
-        removeSource(client);
-
-        // Adjust opposite properties
-        if (client) {
-            client->removeClientDependency(this);
-        }
-    }
+    UmlDependency::removeClient(client);
 }
 
-/*!
-    The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.
- */
 const QSet<QUmlNamedElement *> QUmlDependency::supplier() const
 {
-    // This is a read-write association end
-
-    return _supplier;
+    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_supplier));
 }
 
-void QUmlDependency::addSupplier(QUmlNamedElement *supplier)
+void QUmlDependency::addSupplier(UmlNamedElement *supplier)
 {
-    // This is a read-write association end
-
-    if (!_supplier.contains(supplier)) {
-        _supplier.insert(supplier);
-
-        // Adjust subsetted properties
-        addTarget(supplier);
-    }
+    UmlDependency::addSupplier(supplier);
 }
 
-void QUmlDependency::removeSupplier(QUmlNamedElement *supplier)
+void QUmlDependency::removeSupplier(UmlNamedElement *supplier)
 {
-    // This is a read-write association end
-
-    if (_supplier.contains(supplier)) {
-        _supplier.remove(supplier);
-
-        // Adjust subsetted properties
-        removeTarget(supplier);
-    }
+    UmlDependency::removeSupplier(supplier);
 }
 
 QT_END_NAMESPACE

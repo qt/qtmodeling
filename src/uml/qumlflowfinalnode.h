@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlFinalNode>
+#include <QtCore/QObject>
+#include "private/umlflowfinalnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlFlowFinalNode : public QUmlFinalNode
+class Q_UML_EXPORT QUmlFlowFinalNode : public QObject, public UmlFlowFinalNode
 {
-public:
-    QUmlFlowFinalNode();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlFlowFinalNode(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

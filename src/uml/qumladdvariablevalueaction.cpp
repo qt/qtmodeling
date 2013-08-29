@@ -39,74 +39,36 @@
 **
 ****************************************************************************/
 #include "qumladdvariablevalueaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlAddVariableValueAction
-
-    \inmodule QtUml
-
-    \brief An add variable value action is a write variable action for adding values to a variable.
- */
-
-QUmlAddVariableValueAction::QUmlAddVariableValueAction() :
-    _insertAt(0),
-    _isReplaceAll(false)
+QUmlAddVariableValueAction::QUmlAddVariableValueAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("insertAt", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("isReplaceAll", QVariant::fromValue(false));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the position at which to insert a new value or move an existing value in ordered variables. The types is UnlimitedINatural, but the value cannot be zero. This pin is omitted for unordered variables.
- */
 QUmlInputPin *QUmlAddVariableValueAction::insertAt() const
 {
-    // This is a read-write association end
-
-    return _insertAt;
+    return reinterpret_cast<QUmlInputPin *>(_insertAt);
 }
 
 void QUmlAddVariableValueAction::setInsertAt(QUmlInputPin *insertAt)
 {
-    // This is a read-write association end
-
-    if (_insertAt != insertAt) {
-        // Adjust subsetted properties
-        removeInput(_insertAt);
-
-        _insertAt = insertAt;
-
-        // Adjust subsetted properties
-        if (insertAt) {
-            addInput(insertAt);
-        }
-    }
+    UmlAddVariableValueAction::setInsertAt(insertAt);
 }
 
-/*!
-    Specifies whether existing values of the variable should be removed before adding the new value.
- */
 bool QUmlAddVariableValueAction::isReplaceAll() const
 {
-    // This is a read-write property
-
     return _isReplaceAll;
 }
 
 void QUmlAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 {
-    // This is a read-write property
-
-    if (_isReplaceAll != isReplaceAll) {
-        _isReplaceAll = isReplaceAll;
-    }
+    UmlAddVariableValueAction::setReplaceAll(isReplaceAll);
 }
 
 QT_END_NAMESPACE

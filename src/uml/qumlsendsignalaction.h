@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInvocationAction>
+#include <QtCore/QObject>
+#include "private/umlsendsignalaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlSignal;
 
-class Q_UML_EXPORT QUmlSendSignalAction : public QUmlInvocationAction
+class Q_UML_EXPORT QUmlSendSignalAction : public QObject, public UmlSendSignalAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlSignal * signal READ signal)
+    Q_PROPERTY(QUmlInputPin * target READ target)
+
 public:
-    QUmlSendSignalAction();
+    Q_INVOKABLE explicit QUmlSendSignalAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlSignal *signal() const;
-    void setSignal(QUmlSignal *signal);
-    QUmlInputPin *target() const;
-    void setTarget(QUmlInputPin *target);
-
-protected:
-    QUmlSignal *_signal;
-    QUmlInputPin *_target;
+    Q_INVOKABLE QUmlSignal *signal() const;
+    Q_INVOKABLE void setSignal(QUmlSignal *signal);
+    Q_INVOKABLE QUmlInputPin *target() const;
+    Q_INVOKABLE void setTarget(QUmlInputPin *target);
 };
 
 QT_END_NAMESPACE

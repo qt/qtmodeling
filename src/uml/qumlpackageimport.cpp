@@ -39,105 +39,47 @@
 **
 ****************************************************************************/
 #include "qumlpackageimport.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlPackageImport
-
-    \inmodule QtUml
-
-    \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
- */
-
-QUmlPackageImport::QUmlPackageImport() :
-    _importedPackage(0),
-    _importingNamespace(0),
-    _visibility(QtUml::VisibilityKindPublic)
+QUmlPackageImport::QUmlPackageImport(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("importedPackage", QVariant::fromValue((QUmlPackage *)(0)));
-    d_ptr->object.setProperty("importingNamespace", QVariant::fromValue((QUmlNamespace *)(0)));
-    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindPublic));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the Package whose members are imported into a Namespace.
- */
 QUmlPackage *QUmlPackageImport::importedPackage() const
 {
-    // This is a read-write association end
-
-    return _importedPackage;
+    return reinterpret_cast<QUmlPackage *>(_importedPackage);
 }
 
 void QUmlPackageImport::setImportedPackage(QUmlPackage *importedPackage)
 {
-    // This is a read-write association end
-
-    if (_importedPackage != importedPackage) {
-        // Adjust subsetted properties
-        removeTarget(_importedPackage);
-
-        _importedPackage = importedPackage;
-
-        // Adjust subsetted properties
-        if (importedPackage) {
-            addTarget(importedPackage);
-        }
-    }
+    UmlPackageImport::setImportedPackage(importedPackage);
 }
 
-/*!
-    Specifies the Namespace that imports the members from a Package.
- */
 QUmlNamespace *QUmlPackageImport::importingNamespace() const
 {
-    // This is a read-write association end
-
-    return _importingNamespace;
+    return reinterpret_cast<QUmlNamespace *>(_importingNamespace);
 }
 
 void QUmlPackageImport::setImportingNamespace(QUmlNamespace *importingNamespace)
 {
-    // This is a read-write association end
-
-    if (_importingNamespace != importingNamespace) {
-        // Adjust subsetted properties
-        removeSource(_importingNamespace);
-
-        _importingNamespace = importingNamespace;
-
-        // Adjust subsetted properties
-        setOwner(importingNamespace);
-        if (importingNamespace) {
-            addSource(importingNamespace);
-        }
-    }
+    UmlPackageImport::setImportingNamespace(importingNamespace);
 }
 
-/*!
-    Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.
- */
 QtUml::VisibilityKind QUmlPackageImport::visibility() const
 {
-    // This is a read-write property
-
     return _visibility;
 }
 
 void QUmlPackageImport::setVisibility(QtUml::VisibilityKind visibility)
 {
-    // This is a read-write property
-
-    if (_visibility != visibility) {
-        _visibility = visibility;
-    }
+    UmlPackageImport::setVisibility(visibility);
 }
 
 QT_END_NAMESPACE

@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlreadstructuralfeatureaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReadStructuralFeatureAction
-
-    \inmodule QtUml
-
-    \brief A read structural feature action is a structural feature action that retrieves the values of a structural feature.
- */
-
-QUmlReadStructuralFeatureAction::QUmlReadStructuralFeatureAction() :
-    _result(0)
+QUmlReadStructuralFeatureAction::QUmlReadStructuralFeatureAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the output pin on which the result is put.
- */
 QUmlOutputPin *QUmlReadStructuralFeatureAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlReadStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlReadStructuralFeatureAction::setResult(result);
 }
 
 QT_END_NAMESPACE

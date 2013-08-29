@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlreclassifyobjectaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,28 +55,28 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlInputPin;
 
-class Q_UML_EXPORT QUmlReclassifyObjectAction : public QUmlAction
+class Q_UML_EXPORT QUmlReclassifyObjectAction : public QObject, public UmlReclassifyObjectAction
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isReplaceAll READ isReplaceAll)
+    Q_PROPERTY(QSet<QUmlClassifier *> newClassifier READ newClassifier)
+    Q_PROPERTY(QUmlInputPin * object READ object)
+    Q_PROPERTY(QSet<QUmlClassifier *> oldClassifier READ oldClassifier)
+
 public:
-    QUmlReclassifyObjectAction();
+    Q_INVOKABLE explicit QUmlReclassifyObjectAction(QObject *parent = 0);
 
     // Owned attributes
-    bool isReplaceAll() const;
-    void setReplaceAll(bool isReplaceAll);
-    const QSet<QUmlClassifier *> newClassifier() const;
-    void addNewClassifier(QUmlClassifier *newClassifier);
-    void removeNewClassifier(QUmlClassifier *newClassifier);
-    QUmlInputPin *object() const;
-    void setObject(QUmlInputPin *object);
-    const QSet<QUmlClassifier *> oldClassifier() const;
-    void addOldClassifier(QUmlClassifier *oldClassifier);
-    void removeOldClassifier(QUmlClassifier *oldClassifier);
-
-protected:
-    bool _isReplaceAll;
-    QSet<QUmlClassifier *> _newClassifier;
-    QUmlInputPin *_object;
-    QSet<QUmlClassifier *> _oldClassifier;
+    Q_INVOKABLE bool isReplaceAll() const;
+    Q_INVOKABLE void setReplaceAll(bool isReplaceAll);
+    Q_INVOKABLE const QSet<QUmlClassifier *> newClassifier() const;
+    Q_INVOKABLE void addNewClassifier(UmlClassifier *newClassifier);
+    Q_INVOKABLE void removeNewClassifier(UmlClassifier *newClassifier);
+    Q_INVOKABLE QUmlInputPin *object() const;
+    Q_INVOKABLE void setObject(QUmlInputPin *object);
+    Q_INVOKABLE const QSet<QUmlClassifier *> oldClassifier() const;
+    Q_INVOKABLE void addOldClassifier(UmlClassifier *oldClassifier);
+    Q_INVOKABLE void removeOldClassifier(UmlClassifier *oldClassifier);
 };
 
 QT_END_NAMESPACE

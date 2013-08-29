@@ -39,97 +39,48 @@
 **
 ****************************************************************************/
 #include "qumlparameterableelement.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTemplateParameter>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlParameterableElement
-
-    \inmodule QtUml
-
-    \brief A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
- */
-
-QUmlParameterableElement::QUmlParameterableElement() :
-    _owningTemplateParameter(0),
-    _templateParameter(0)
+QUmlParameterableElement::QUmlParameterableElement(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("owningTemplateParameter", QVariant::fromValue((QUmlTemplateParameter *)(0)));
-    d_ptr->object.setProperty("templateParameter", QVariant::fromValue((QUmlTemplateParameter *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The formal template parameter that owns this element.
- */
 QUmlTemplateParameter *QUmlParameterableElement::owningTemplateParameter() const
 {
-    // This is a read-write association end
-
-    return _owningTemplateParameter;
+    return reinterpret_cast<QUmlTemplateParameter *>(_owningTemplateParameter);
 }
 
 void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
 {
-    // This is a read-write association end
-
-    if (_owningTemplateParameter != owningTemplateParameter) {
-        // Adjust subsetted properties
-
-        _owningTemplateParameter = owningTemplateParameter;
-
-        // Adjust subsetted properties
-        setTemplateParameter(owningTemplateParameter);
-        setOwner(owningTemplateParameter);
-    }
+    UmlParameterableElement::setOwningTemplateParameter(owningTemplateParameter);
 }
 
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
 QUmlTemplateParameter *QUmlParameterableElement::templateParameter() const
 {
-    // This is a read-write association end
-
-    return _templateParameter;
+    return reinterpret_cast<QUmlTemplateParameter *>(_templateParameter);
 }
 
 void QUmlParameterableElement::setTemplateParameter(QUmlTemplateParameter *templateParameter)
 {
-    // This is a read-write association end
-
-    if (_templateParameter != templateParameter) {
-        _templateParameter = templateParameter;
-    }
+    UmlParameterableElement::setTemplateParameter(templateParameter);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
- */
-bool QUmlParameterableElement::isCompatibleWith(
-    QUmlParameterableElement *p) const
+bool QUmlParameterableElement::isCompatibleWith(QUmlParameterableElement *p) const
 {
-    qWarning("QUmlParameterableElement::isCompatibleWith(): to be implemented (operation)");
-
-    Q_UNUSED(p);
-    return bool ();
+    return UmlParameterableElement::isCompatibleWith(p);
 }
 
-/*!
-    The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
- */
-bool QUmlParameterableElement::isTemplateParameter(
-    ) const
+bool QUmlParameterableElement::isTemplateParameter() const
 {
-    qWarning("QUmlParameterableElement::isTemplateParameter(): to be implemented (operation)");
-
-    return bool ();
+    return UmlParameterableElement::isTemplateParameter();
 }
 
 QT_END_NAMESPACE

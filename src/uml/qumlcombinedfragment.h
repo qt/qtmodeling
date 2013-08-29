@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInteractionFragment>
+#include <QtCore/QObject>
+#include "private/umlcombinedfragment_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -55,25 +56,25 @@ QT_MODULE(QtUml)
 class QUmlGate;
 class QUmlInteractionOperand;
 
-class Q_UML_EXPORT QUmlCombinedFragment : public QUmlInteractionFragment
+class Q_UML_EXPORT QUmlCombinedFragment : public QObject, public UmlCombinedFragment
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlGate *> cfragmentGate READ cfragmentGate)
+    Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator)
+    Q_PROPERTY(QList<QUmlInteractionOperand *> operand READ operand)
+
 public:
-    QUmlCombinedFragment();
+    Q_INVOKABLE explicit QUmlCombinedFragment(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlGate *> cfragmentGate() const;
-    void addCfragmentGate(QUmlGate *cfragmentGate);
-    void removeCfragmentGate(QUmlGate *cfragmentGate);
-    QtUml::InteractionOperatorKind interactionOperator() const;
-    void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
-    const QList<QUmlInteractionOperand *> operand() const;
-    void addOperand(QUmlInteractionOperand *operand);
-    void removeOperand(QUmlInteractionOperand *operand);
-
-protected:
-    QSet<QUmlGate *> _cfragmentGate;
-    QtUml::InteractionOperatorKind _interactionOperator;
-    QList<QUmlInteractionOperand *> _operand;
+    Q_INVOKABLE const QSet<QUmlGate *> cfragmentGate() const;
+    Q_INVOKABLE void addCfragmentGate(UmlGate *cfragmentGate);
+    Q_INVOKABLE void removeCfragmentGate(UmlGate *cfragmentGate);
+    Q_INVOKABLE QtUml::InteractionOperatorKind interactionOperator() const;
+    Q_INVOKABLE void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
+    Q_INVOKABLE const QList<QUmlInteractionOperand *> operand() const;
+    Q_INVOKABLE void addOperand(UmlInteractionOperand *operand);
+    Q_INVOKABLE void removeOperand(UmlInteractionOperand *operand);
 };
 
 QT_END_NAMESPACE

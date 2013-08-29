@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlpackageableelement_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -53,17 +53,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlPackageableElement : public QUmlParameterableElement, public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlPackageableElement : public QObject, public UmlPackageableElement
 {
+    Q_OBJECT
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+
 public:
-    Q_DECL_HIDDEN QUmlPackageableElement();
+    Q_DECL_HIDDEN explicit QUmlPackageableElement(QObject *parent = 0);
 
     // Owned attributes
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-protected:
-    QtUml::VisibilityKind _visibility;
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 };
 
 QT_END_NAMESPACE

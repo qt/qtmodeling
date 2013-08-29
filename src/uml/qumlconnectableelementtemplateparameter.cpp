@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlconnectableelementtemplateparameter.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlConnectableElementTemplateParameter
-
-    \inmodule QtUml
-
-    \brief A connectable element template parameter exposes a connectable element as a formal parameter for a template.
- */
-
-QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter() :
-    _parameteredElement(0)
+QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("parameteredElement", QVariant::fromValue((QUmlConnectableElement *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The ConnectableElement for this template parameter.
- */
 QUmlConnectableElement *QUmlConnectableElementTemplateParameter::parameteredElement() const
 {
-    // This is a read-write association end
-
-    return _parameteredElement;
+    return reinterpret_cast<QUmlConnectableElement *>(_parameteredElement);
 }
 
 void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnectableElement *parameteredElement)
 {
-    // This is a read-write association end
-
-    if (_parameteredElement != parameteredElement) {
-        _parameteredElement = parameteredElement;
-    }
+    UmlConnectableElementTemplateParameter::setParameteredElement(parameteredElement);
 }
 
 QT_END_NAMESPACE

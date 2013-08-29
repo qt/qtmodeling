@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInteractionFragment>
-#include <QtUml/QUmlNamespace>
+#include <QtCore/QObject>
+#include "private/umlinteractionoperand_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,22 +53,23 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlInteractionConstraint;
+class QUmlInteractionFragment;
 
-class Q_UML_EXPORT QUmlInteractionOperand : public QUmlInteractionFragment, public QUmlNamespace
+class Q_UML_EXPORT QUmlInteractionOperand : public QObject, public UmlInteractionOperand
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlInteractionFragment *> fragment READ fragment)
+    Q_PROPERTY(QUmlInteractionConstraint * guard READ guard)
+
 public:
-    QUmlInteractionOperand();
+    Q_INVOKABLE explicit QUmlInteractionOperand(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlInteractionFragment *> fragment() const;
-    void addFragment(QUmlInteractionFragment *fragment);
-    void removeFragment(QUmlInteractionFragment *fragment);
-    QUmlInteractionConstraint *guard() const;
-    void setGuard(QUmlInteractionConstraint *guard);
-
-protected:
-    QList<QUmlInteractionFragment *> _fragment;
-    QUmlInteractionConstraint *_guard;
+    Q_INVOKABLE const QList<QUmlInteractionFragment *> fragment() const;
+    Q_INVOKABLE void addFragment(UmlInteractionFragment *fragment);
+    Q_INVOKABLE void removeFragment(UmlInteractionFragment *fragment);
+    Q_INVOKABLE QUmlInteractionConstraint *guard() const;
+    Q_INVOKABLE void setGuard(QUmlInteractionConstraint *guard);
 };
 
 QT_END_NAMESPACE

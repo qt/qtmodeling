@@ -39,42 +39,24 @@
 **
 ****************************************************************************/
 #include "qumlmodel.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlModel
-
-    \inmodule QtUml
-
-    \brief A model captures a view of a physical system. It is an abstraction of the physical system, with a certain purpose. This purpose determines what is to be included in the model and what is irrelevant. Thus the model completely describes those aspects of the physical system that are relevant to the purpose of the model, at the appropriate level of detail.
- */
-
-QUmlModel::QUmlModel()
+QUmlModel::QUmlModel(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("viewpoint", QVariant::fromValue(QString()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).
- */
 QString QUmlModel::viewpoint() const
 {
-    // This is a read-write property
-
     return _viewpoint;
 }
 
 void QUmlModel::setViewpoint(QString viewpoint)
 {
-    // This is a read-write property
-
-    if (_viewpoint != viewpoint) {
-        _viewpoint = viewpoint;
-    }
+    UmlModel::setViewpoint(viewpoint);
 }
 
 QT_END_NAMESPACE

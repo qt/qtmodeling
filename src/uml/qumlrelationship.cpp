@@ -39,51 +39,21 @@
 **
 ****************************************************************************/
 #include "qumlrelationship.h"
-#include "private/qmodelingobject_p.h"
+
+#include <QtUml/QUmlElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlRelationship
-
-    \inmodule QtUml
-
-    \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
- */
-
-QUmlRelationship::QUmlRelationship()
+QUmlRelationship::QUmlRelationship(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("relatedElement", QVariant::fromValue(&_relatedElement));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the elements related by the Relationship.
- */
 const QSet<QUmlElement *> QUmlRelationship::relatedElement() const
 {
-    // This is a read-only derived union association end
-
-    return _relatedElement;
-}
-
-void QUmlRelationship::addRelatedElement(QUmlElement *relatedElement)
-{
-    // This is a read-only derived union association end
-
-    if (!_relatedElement.contains(relatedElement)) {
-        _relatedElement.insert(relatedElement);
-    }
-}
-
-void QUmlRelationship::removeRelatedElement(QUmlElement *relatedElement)
-{
-    // This is a read-only derived union association end
-
-    if (_relatedElement.contains(relatedElement)) {
-        _relatedElement.remove(relatedElement);
-    }
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_relatedElement));
 }
 
 QT_END_NAMESPACE

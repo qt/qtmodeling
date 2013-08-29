@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlStructuredActivityNode>
+#include <QtCore/QObject>
+#include "private/umlconditionalnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,28 +55,28 @@ QT_MODULE(QtUml)
 class QUmlClause;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlConditionalNode : public QUmlStructuredActivityNode
+class Q_UML_EXPORT QUmlConditionalNode : public QObject, public UmlConditionalNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlClause *> clause READ clause)
+    Q_PROPERTY(bool isAssured READ isAssured)
+    Q_PROPERTY(bool isDeterminate READ isDeterminate)
+    Q_PROPERTY(QList<QUmlOutputPin *> result READ result)
+
 public:
-    QUmlConditionalNode();
+    Q_INVOKABLE explicit QUmlConditionalNode(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlClause *> clause() const;
-    void addClause(QUmlClause *clause);
-    void removeClause(QUmlClause *clause);
-    bool isAssured() const;
-    void setAssured(bool isAssured);
-    bool isDeterminate() const;
-    void setDeterminate(bool isDeterminate);
-    const QList<QUmlOutputPin *> result() const;
-    void addResult(QUmlOutputPin *result);
-    void removeResult(QUmlOutputPin *result);
-
-protected:
-    QSet<QUmlClause *> _clause;
-    bool _isAssured;
-    bool _isDeterminate;
-    QList<QUmlOutputPin *> _result;
+    Q_INVOKABLE const QSet<QUmlClause *> clause() const;
+    Q_INVOKABLE void addClause(UmlClause *clause);
+    Q_INVOKABLE void removeClause(UmlClause *clause);
+    Q_INVOKABLE bool isAssured() const;
+    Q_INVOKABLE void setAssured(bool isAssured);
+    Q_INVOKABLE bool isDeterminate() const;
+    Q_INVOKABLE void setDeterminate(bool isDeterminate);
+    Q_INVOKABLE const QList<QUmlOutputPin *> result() const;
+    Q_INVOKABLE void addResult(UmlOutputPin *result);
+    Q_INVOKABLE void removeResult(UmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

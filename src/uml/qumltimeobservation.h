@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlObservation>
+#include <QtCore/QObject>
+#include "private/umltimeobservation_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlNamedElement;
 
-class Q_UML_EXPORT QUmlTimeObservation : public QUmlObservation
+class Q_UML_EXPORT QUmlTimeObservation : public QObject, public UmlTimeObservation
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlNamedElement * event READ event)
+    Q_PROPERTY(bool firstEvent READ firstEvent)
+
 public:
-    QUmlTimeObservation();
+    Q_INVOKABLE explicit QUmlTimeObservation(QObject *parent = 0);
 
     // Owned attributes
-    QUmlNamedElement *event() const;
-    void setEvent(QUmlNamedElement *event);
-    bool firstEvent() const;
-    void setFirstEvent(bool firstEvent);
-
-protected:
-    QUmlNamedElement *_event;
-    bool _firstEvent;
+    Q_INVOKABLE QUmlNamedElement *event() const;
+    Q_INVOKABLE void setEvent(QUmlNamedElement *event);
+    Q_INVOKABLE bool firstEvent() const;
+    Q_INVOKABLE void setFirstEvent(bool firstEvent);
 };
 
 QT_END_NAMESPACE

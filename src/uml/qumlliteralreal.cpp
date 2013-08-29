@@ -39,63 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlliteralreal.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLiteralReal
-
-    \inmodule QtUml
-
-    \brief A literal real is a specification of a real value.
- */
-
-QUmlLiteralReal::QUmlLiteralReal()
+QUmlLiteralReal::QUmlLiteralReal(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("value", QVariant::fromValue((double)(0.0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
 double QUmlLiteralReal::value() const
 {
-    // This is a read-write property
-
     return _value;
 }
 
 void QUmlLiteralReal::setValue(double value)
 {
-    // This is a read-write property
-
-    if (_value != value) {
-        _value = value;
-    }
+    UmlLiteralReal::setValue(value);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query isComputable() is redefined to be true.
- */
-bool QUmlLiteralReal::isComputable(
-    ) const
+bool QUmlLiteralReal::isComputable() const
 {
-    qWarning("QUmlLiteralReal::isComputable(): to be implemented (operation)");
-
-    return bool ();
+    return UmlLiteralReal::isComputable();
 }
 
-/*!
-    The query realValue() gives the value.
- */
-double QUmlLiteralReal::realValue(
-    ) const
+double QUmlLiteralReal::realValue() const
 {
-    qWarning("QUmlLiteralReal::realValue(): to be implemented (operation)");
-
-    return double ();
+    return UmlLiteralReal::realValue();
 }
 
 QT_END_NAMESPACE

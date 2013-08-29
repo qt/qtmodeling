@@ -39,74 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlremovestructuralfeaturevalueaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlRemoveStructuralFeatureValueAction
-
-    \inmodule QtUml
-
-    \brief A remove structural feature value action is a write structural feature action that removes values from structural features.
- */
-
-QUmlRemoveStructuralFeatureValueAction::QUmlRemoveStructuralFeatureValueAction() :
-    _isRemoveDuplicates(false),
-    _removeAt(0)
+QUmlRemoveStructuralFeatureValueAction::QUmlRemoveStructuralFeatureValueAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isRemoveDuplicates", QVariant::fromValue(false));
-    d_ptr->object.setProperty("removeAt", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies whether to remove duplicates of the value in nonunique structural features.
- */
 bool QUmlRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
 {
-    // This is a read-write property
-
     return _isRemoveDuplicates;
 }
 
 void QUmlRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
 {
-    // This is a read-write property
-
-    if (_isRemoveDuplicates != isRemoveDuplicates) {
-        _isRemoveDuplicates = isRemoveDuplicates;
-    }
+    UmlRemoveStructuralFeatureValueAction::setRemoveDuplicates(isRemoveDuplicates);
 }
 
-/*!
-    Specifies the position of an existing value to remove in ordered nonunique structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
- */
 QUmlInputPin *QUmlRemoveStructuralFeatureValueAction::removeAt() const
 {
-    // This is a read-write association end
-
-    return _removeAt;
+    return reinterpret_cast<QUmlInputPin *>(_removeAt);
 }
 
 void QUmlRemoveStructuralFeatureValueAction::setRemoveAt(QUmlInputPin *removeAt)
 {
-    // This is a read-write association end
-
-    if (_removeAt != removeAt) {
-        // Adjust subsetted properties
-        removeInput(_removeAt);
-
-        _removeAt = removeAt;
-
-        // Adjust subsetted properties
-        if (removeAt) {
-            addInput(removeAt);
-        }
-    }
+    UmlRemoveStructuralFeatureValueAction::setRemoveAt(removeAt);
 }
 
 QT_END_NAMESPACE

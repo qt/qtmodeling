@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlinformationflow.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlClassifier>
@@ -50,233 +49,116 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInformationFlow
-
-    \inmodule QtUml
-
-    \brief An information flow specifies that one or more information items circulates from its sources to its targets. Information flows require some kind of information channel for transmitting information items from the source to the destination. An information channel is represented in various ways depending on the nature of its sources and targets. It may be represented by connectors, links, associations, or even dependencies. For example, if the source and destination are parts in some composite structure such as a collaboration, then the information channel is likely to be represented by a connector between them. Or, if the source and target are objects (which are a kind of instance specification), they may be represented by a link that joins the two, and so on.
- */
-
-QUmlInformationFlow::QUmlInformationFlow()
+QUmlInformationFlow::QUmlInformationFlow(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("conveyed", QVariant::fromValue(&_conveyed));
-    d_ptr->object.setProperty("informationSource", QVariant::fromValue(&_informationSource));
-    d_ptr->object.setProperty("informationTarget", QVariant::fromValue(&_informationTarget));
-    d_ptr->object.setProperty("realization", QVariant::fromValue(&_realization));
-    d_ptr->object.setProperty("realizingActivityEdge", QVariant::fromValue(&_realizingActivityEdge));
-    d_ptr->object.setProperty("realizingConnector", QVariant::fromValue(&_realizingConnector));
-    d_ptr->object.setProperty("realizingMessage", QVariant::fromValue(&_realizingMessage));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the information items that may circulate on this information flow.
- */
 const QSet<QUmlClassifier *> QUmlInformationFlow::conveyed() const
 {
-    // This is a read-write association end
-
-    return _conveyed;
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_conveyed));
 }
 
-void QUmlInformationFlow::addConveyed(QUmlClassifier *conveyed)
+void QUmlInformationFlow::addConveyed(UmlClassifier *conveyed)
 {
-    // This is a read-write association end
-
-    if (!_conveyed.contains(conveyed)) {
-        _conveyed.insert(conveyed);
-    }
+    UmlInformationFlow::addConveyed(conveyed);
 }
 
-void QUmlInformationFlow::removeConveyed(QUmlClassifier *conveyed)
+void QUmlInformationFlow::removeConveyed(UmlClassifier *conveyed)
 {
-    // This is a read-write association end
-
-    if (_conveyed.contains(conveyed)) {
-        _conveyed.remove(conveyed);
-    }
+    UmlInformationFlow::removeConveyed(conveyed);
 }
 
-/*!
-    Defines from which source the conveyed InformationItems are initiated.
- */
 const QSet<QUmlNamedElement *> QUmlInformationFlow::informationSource() const
 {
-    // This is a read-write association end
-
-    return _informationSource;
+    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_informationSource));
 }
 
-void QUmlInformationFlow::addInformationSource(QUmlNamedElement *informationSource)
+void QUmlInformationFlow::addInformationSource(UmlNamedElement *informationSource)
 {
-    // This is a read-write association end
-
-    if (!_informationSource.contains(informationSource)) {
-        _informationSource.insert(informationSource);
-
-        // Adjust subsetted properties
-        addSource(informationSource);
-    }
+    UmlInformationFlow::addInformationSource(informationSource);
 }
 
-void QUmlInformationFlow::removeInformationSource(QUmlNamedElement *informationSource)
+void QUmlInformationFlow::removeInformationSource(UmlNamedElement *informationSource)
 {
-    // This is a read-write association end
-
-    if (_informationSource.contains(informationSource)) {
-        _informationSource.remove(informationSource);
-
-        // Adjust subsetted properties
-        removeSource(informationSource);
-    }
+    UmlInformationFlow::removeInformationSource(informationSource);
 }
 
-/*!
-    Defines to which target the conveyed InformationItems are directed.
- */
 const QSet<QUmlNamedElement *> QUmlInformationFlow::informationTarget() const
 {
-    // This is a read-write association end
-
-    return _informationTarget;
+    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_informationTarget));
 }
 
-void QUmlInformationFlow::addInformationTarget(QUmlNamedElement *informationTarget)
+void QUmlInformationFlow::addInformationTarget(UmlNamedElement *informationTarget)
 {
-    // This is a read-write association end
-
-    if (!_informationTarget.contains(informationTarget)) {
-        _informationTarget.insert(informationTarget);
-
-        // Adjust subsetted properties
-        addTarget(informationTarget);
-    }
+    UmlInformationFlow::addInformationTarget(informationTarget);
 }
 
-void QUmlInformationFlow::removeInformationTarget(QUmlNamedElement *informationTarget)
+void QUmlInformationFlow::removeInformationTarget(UmlNamedElement *informationTarget)
 {
-    // This is a read-write association end
-
-    if (_informationTarget.contains(informationTarget)) {
-        _informationTarget.remove(informationTarget);
-
-        // Adjust subsetted properties
-        removeTarget(informationTarget);
-    }
+    UmlInformationFlow::removeInformationTarget(informationTarget);
 }
 
-/*!
-    Determines which Relationship will realize the specified flow
- */
 const QSet<QUmlRelationship *> QUmlInformationFlow::realization() const
 {
-    // This is a read-write association end
-
-    return _realization;
+    return *(reinterpret_cast<const QSet<QUmlRelationship *> *>(&_realization));
 }
 
-void QUmlInformationFlow::addRealization(QUmlRelationship *realization)
+void QUmlInformationFlow::addRealization(UmlRelationship *realization)
 {
-    // This is a read-write association end
-
-    if (!_realization.contains(realization)) {
-        _realization.insert(realization);
-    }
+    UmlInformationFlow::addRealization(realization);
 }
 
-void QUmlInformationFlow::removeRealization(QUmlRelationship *realization)
+void QUmlInformationFlow::removeRealization(UmlRelationship *realization)
 {
-    // This is a read-write association end
-
-    if (_realization.contains(realization)) {
-        _realization.remove(realization);
-    }
+    UmlInformationFlow::removeRealization(realization);
 }
 
-/*!
-    Determines which ActivityEdges will realize the specified flow.
- */
 const QSet<QUmlActivityEdge *> QUmlInformationFlow::realizingActivityEdge() const
 {
-    // This is a read-write association end
-
-    return _realizingActivityEdge;
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_realizingActivityEdge));
 }
 
-void QUmlInformationFlow::addRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge)
+void QUmlInformationFlow::addRealizingActivityEdge(UmlActivityEdge *realizingActivityEdge)
 {
-    // This is a read-write association end
-
-    if (!_realizingActivityEdge.contains(realizingActivityEdge)) {
-        _realizingActivityEdge.insert(realizingActivityEdge);
-    }
+    UmlInformationFlow::addRealizingActivityEdge(realizingActivityEdge);
 }
 
-void QUmlInformationFlow::removeRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge)
+void QUmlInformationFlow::removeRealizingActivityEdge(UmlActivityEdge *realizingActivityEdge)
 {
-    // This is a read-write association end
-
-    if (_realizingActivityEdge.contains(realizingActivityEdge)) {
-        _realizingActivityEdge.remove(realizingActivityEdge);
-    }
+    UmlInformationFlow::removeRealizingActivityEdge(realizingActivityEdge);
 }
 
-/*!
-    Determines which Connectors will realize the specified flow.
- */
 const QSet<QUmlConnector *> QUmlInformationFlow::realizingConnector() const
 {
-    // This is a read-write association end
-
-    return _realizingConnector;
+    return *(reinterpret_cast<const QSet<QUmlConnector *> *>(&_realizingConnector));
 }
 
-void QUmlInformationFlow::addRealizingConnector(QUmlConnector *realizingConnector)
+void QUmlInformationFlow::addRealizingConnector(UmlConnector *realizingConnector)
 {
-    // This is a read-write association end
-
-    if (!_realizingConnector.contains(realizingConnector)) {
-        _realizingConnector.insert(realizingConnector);
-    }
+    UmlInformationFlow::addRealizingConnector(realizingConnector);
 }
 
-void QUmlInformationFlow::removeRealizingConnector(QUmlConnector *realizingConnector)
+void QUmlInformationFlow::removeRealizingConnector(UmlConnector *realizingConnector)
 {
-    // This is a read-write association end
-
-    if (_realizingConnector.contains(realizingConnector)) {
-        _realizingConnector.remove(realizingConnector);
-    }
+    UmlInformationFlow::removeRealizingConnector(realizingConnector);
 }
 
-/*!
-    Determines which Messages will realize the specified flow.
- */
 const QSet<QUmlMessage *> QUmlInformationFlow::realizingMessage() const
 {
-    // This is a read-write association end
-
-    return _realizingMessage;
+    return *(reinterpret_cast<const QSet<QUmlMessage *> *>(&_realizingMessage));
 }
 
-void QUmlInformationFlow::addRealizingMessage(QUmlMessage *realizingMessage)
+void QUmlInformationFlow::addRealizingMessage(UmlMessage *realizingMessage)
 {
-    // This is a read-write association end
-
-    if (!_realizingMessage.contains(realizingMessage)) {
-        _realizingMessage.insert(realizingMessage);
-    }
+    UmlInformationFlow::addRealizingMessage(realizingMessage);
 }
 
-void QUmlInformationFlow::removeRealizingMessage(QUmlMessage *realizingMessage)
+void QUmlInformationFlow::removeRealizingMessage(UmlMessage *realizingMessage)
 {
-    // This is a read-write association end
-
-    if (_realizingMessage.contains(realizingMessage)) {
-        _realizingMessage.remove(realizingMessage);
-    }
+    UmlInformationFlow::removeRealizingMessage(realizingMessage);
 }
 
 QT_END_NAMESPACE

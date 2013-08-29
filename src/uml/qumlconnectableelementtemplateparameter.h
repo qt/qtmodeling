@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlTemplateParameter>
+#include <QtCore/QObject>
+#include "private/umlconnectableelementtemplateparameter_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlConnectableElement;
 
-class Q_UML_EXPORT QUmlConnectableElementTemplateParameter : public QUmlTemplateParameter
+class Q_UML_EXPORT QUmlConnectableElementTemplateParameter : public QObject, public UmlConnectableElementTemplateParameter
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlConnectableElement * parameteredElement READ parameteredElement)
+
 public:
-    QUmlConnectableElementTemplateParameter();
+    Q_INVOKABLE explicit QUmlConnectableElementTemplateParameter(QObject *parent = 0);
 
     // Owned attributes
-    QUmlConnectableElement *parameteredElement() const;
-    void setParameteredElement(QUmlConnectableElement *parameteredElement);
-
-protected:
-    QUmlConnectableElement *_parameteredElement;
+    Q_INVOKABLE QUmlConnectableElement *parameteredElement() const;
+    Q_INVOKABLE void setParameteredElement(QUmlConnectableElement *parameteredElement);
 };
 
 QT_END_NAMESPACE

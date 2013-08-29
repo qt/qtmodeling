@@ -39,175 +39,84 @@
 **
 ****************************************************************************/
 #include "qumlopaqueexpression.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlParameter>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlOpaqueExpression
-
-    \inmodule QtUml
-
-    \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
- */
-
-QUmlOpaqueExpression::QUmlOpaqueExpression() :
-    _behavior(0)
+QUmlOpaqueExpression::QUmlOpaqueExpression(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("behavior", QVariant::fromValue((QUmlBehavior *)(0)));
-    d_ptr->object.setProperty("body", QVariant::fromValue(&_body));
-    d_ptr->object.setProperty("language", QVariant::fromValue(&_language));
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlParameter *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the behavior of the opaque expression.
- */
 QUmlBehavior *QUmlOpaqueExpression::behavior() const
 {
-    // This is a read-write association end
-
-    return _behavior;
+    return reinterpret_cast<QUmlBehavior *>(_behavior);
 }
 
 void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 {
-    // This is a read-write association end
-
-    if (_behavior != behavior) {
-        _behavior = behavior;
-    }
+    UmlOpaqueExpression::setBehavior(behavior);
 }
 
-/*!
-    The text of the expression, possibly in multiple languages.
- */
 const QList<QString> QUmlOpaqueExpression::body() const
 {
-    // This is a read-write property
-
-    return _body;
+    return *(reinterpret_cast<const QList<QString> *>(&_body));
 }
 
 void QUmlOpaqueExpression::addBody(QString body)
 {
-    // This is a read-write property
-
-    if (!_body.contains(body)) {
-        _body.append(body);
-    }
+    UmlOpaqueExpression::addBody(body);
 }
 
 void QUmlOpaqueExpression::removeBody(QString body)
 {
-    // This is a read-write property
-
-    if (_body.contains(body)) {
-        _body.removeAll(body);
-    }
+    UmlOpaqueExpression::removeBody(body);
 }
 
-/*!
-    Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
- */
 const QList<QString> QUmlOpaqueExpression::language() const
 {
-    // This is a read-write property
-
-    return _language;
+    return *(reinterpret_cast<const QList<QString> *>(&_language));
 }
 
 void QUmlOpaqueExpression::addLanguage(QString language)
 {
-    // This is a read-write property
-
-    if (!_language.contains(language)) {
-        _language.append(language);
-    }
+    UmlOpaqueExpression::addLanguage(language);
 }
 
 void QUmlOpaqueExpression::removeLanguage(QString language)
 {
-    // This is a read-write property
-
-    if (_language.contains(language)) {
-        _language.removeAll(language);
-    }
+    UmlOpaqueExpression::removeLanguage(language);
 }
 
-/*!
-    Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.
- */
 QUmlParameter *QUmlOpaqueExpression::result() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlOpaqueExpression::result(): to be implemented (this is a derived association end)");
-
-    return 0;
+    return reinterpret_cast<QUmlParameter *>(UmlOpaqueExpression::result());
 }
 
-void QUmlOpaqueExpression::setResult(QUmlParameter *result)
+// Operations
+
+bool QUmlOpaqueExpression::isIntegral() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlOpaqueExpression::result(): to be implemented (this is a derived association end)");
-    Q_UNUSED(result);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
+    return UmlOpaqueExpression::isIntegral();
 }
 
-// OPERATIONS
-
-/*!
-    The query isIntegral() tells whether an expression is intended to produce an integer.
- */
-bool QUmlOpaqueExpression::isIntegral(
-    ) const
+bool QUmlOpaqueExpression::isNonNegative() const
 {
-    qWarning("QUmlOpaqueExpression::isIntegral(): to be implemented (operation)");
-
-    return bool ();
+    return UmlOpaqueExpression::isNonNegative();
 }
 
-/*!
-    The query isNonNegative() tells whether an integer expression has a non-negative value.
- */
-bool QUmlOpaqueExpression::isNonNegative(
-    ) const
+bool QUmlOpaqueExpression::isPositive() const
 {
-    qWarning("QUmlOpaqueExpression::isNonNegative(): to be implemented (operation)");
-
-    return bool ();
+    return UmlOpaqueExpression::isPositive();
 }
 
-/*!
-    The query isPositive() tells whether an integer expression has a positive value.
- */
-bool QUmlOpaqueExpression::isPositive(
-    ) const
+int QUmlOpaqueExpression::value() const
 {
-    qWarning("QUmlOpaqueExpression::isPositive(): to be implemented (operation)");
-
-    return bool ();
-}
-
-/*!
-    The query value() gives an integer value for an expression intended to produce one.
- */
-int QUmlOpaqueExpression::value(
-    ) const
-{
-    qWarning("QUmlOpaqueExpression::value(): to be implemented (operation)");
-
-    return int ();
+    return UmlOpaqueExpression::value();
 }
 
 QT_END_NAMESPACE

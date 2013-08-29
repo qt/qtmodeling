@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlProperty>
+#include <QtCore/QObject>
+#include "private/umlport_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,36 +55,34 @@ QT_MODULE(QtUml)
 class QUmlInterface;
 class QUmlProtocolStateMachine;
 
-class Q_UML_EXPORT QUmlPort : public QUmlProperty
+class Q_UML_EXPORT QUmlPort : public QObject, public UmlPort
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isBehavior READ isBehavior)
+    Q_PROPERTY(bool isConjugated READ isConjugated)
+    Q_PROPERTY(bool isService READ isService)
+    Q_PROPERTY(QUmlProtocolStateMachine * protocol READ protocol)
+    Q_PROPERTY(QSet<QUmlInterface *> provided READ provided)
+    Q_PROPERTY(QSet<QUmlPort *> redefinedPort READ redefinedPort)
+    Q_PROPERTY(QSet<QUmlInterface *> required READ required)
+
 public:
-    QUmlPort();
+    Q_INVOKABLE explicit QUmlPort(QObject *parent = 0);
 
     // Owned attributes
-    bool isBehavior() const;
-    void setBehavior(bool isBehavior);
-    bool isConjugated() const;
-    void setConjugated(bool isConjugated);
-    bool isService() const;
-    void setService(bool isService);
-    QUmlProtocolStateMachine *protocol() const;
-    void setProtocol(QUmlProtocolStateMachine *protocol);
-    const QSet<QUmlInterface *> provided() const;
-    Q_DECL_HIDDEN void addProvided(QUmlInterface *provided);
-    Q_DECL_HIDDEN void removeProvided(QUmlInterface *provided);
-    const QSet<QUmlPort *> redefinedPort() const;
-    void addRedefinedPort(QUmlPort *redefinedPort);
-    void removeRedefinedPort(QUmlPort *redefinedPort);
-    const QSet<QUmlInterface *> required() const;
-    Q_DECL_HIDDEN void addRequired(QUmlInterface *required);
-    Q_DECL_HIDDEN void removeRequired(QUmlInterface *required);
-
-protected:
-    bool _isBehavior;
-    bool _isConjugated;
-    bool _isService;
-    QUmlProtocolStateMachine *_protocol;
-    QSet<QUmlPort *> _redefinedPort;
+    Q_INVOKABLE bool isBehavior() const;
+    Q_INVOKABLE void setBehavior(bool isBehavior);
+    Q_INVOKABLE bool isConjugated() const;
+    Q_INVOKABLE void setConjugated(bool isConjugated);
+    Q_INVOKABLE bool isService() const;
+    Q_INVOKABLE void setService(bool isService);
+    Q_INVOKABLE QUmlProtocolStateMachine *protocol() const;
+    Q_INVOKABLE void setProtocol(QUmlProtocolStateMachine *protocol);
+    Q_INVOKABLE const QSet<QUmlInterface *> provided() const;
+    Q_INVOKABLE const QSet<QUmlPort *> redefinedPort() const;
+    Q_INVOKABLE void addRedefinedPort(UmlPort *redefinedPort);
+    Q_INVOKABLE void removeRedefinedPort(UmlPort *redefinedPort);
+    Q_INVOKABLE const QSet<QUmlInterface *> required() const;
 };
 
 QT_END_NAMESPACE

@@ -39,59 +39,33 @@
 **
 ****************************************************************************/
 #include "qumltype.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPackage>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlType
-
-    \inmodule QtUml
-
-    \brief A type is a named element that is used as the type for a typed element. A type can be contained in a package.A type constrains the values represented by a typed element.
- */
-
-QUmlType::QUmlType() :
-    _package(0)
+QUmlType::QUmlType(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("package", QVariant::fromValue((QUmlPackage *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the owning package of this classifier, if any.
- */
 QUmlPackage *QUmlType::package() const
 {
-    // This is a read-write association end
-
-    return _package;
+    return reinterpret_cast<QUmlPackage *>(_package);
 }
 
 void QUmlType::setPackage(QUmlPackage *package)
 {
-    // This is a read-write association end
-
-    if (_package != package) {
-        _package = package;
-    }
+    UmlType::setPackage(package);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
- */
-bool QUmlType::conformsTo(
-    QUmlType *other) const
+bool QUmlType::conformsTo(QUmlType *other) const
 {
-    qWarning("QUmlType::conformsTo(): to be implemented (operation)");
-
-    Q_UNUSED(other);
-    return bool ();
+    return UmlType::conformsTo(other);
 }
 
 QT_END_NAMESPACE

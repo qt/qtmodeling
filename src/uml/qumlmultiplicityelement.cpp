@@ -39,258 +39,113 @@
 **
 ****************************************************************************/
 #include "qumlmultiplicityelement.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlMultiplicityElement
-
-    \inmodule QtUml
-
-    \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
- */
-
-QUmlMultiplicityElement::QUmlMultiplicityElement() :
-    _isOrdered(false),
-    _isUnique(true),
-    _lowerValue(0),
-    _upperValue(0)
+QUmlMultiplicityElement::QUmlMultiplicityElement(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isOrdered", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isUnique", QVariant::fromValue(true));
-    d_ptr->object.setProperty("lower", QVariant::fromValue((int)(1)));
-    d_ptr->object.setProperty("lowerValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
-    d_ptr->object.setProperty("upper", QVariant::fromValue((int)(1)));
-    d_ptr->object.setProperty("upperValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
- */
 bool QUmlMultiplicityElement::isOrdered() const
 {
-    // This is a read-write property
-
     return _isOrdered;
 }
 
 void QUmlMultiplicityElement::setOrdered(bool isOrdered)
 {
-    // This is a read-write property
-
-    if (_isOrdered != isOrdered) {
-        _isOrdered = isOrdered;
-    }
+    UmlMultiplicityElement::setOrdered(isOrdered);
 }
 
-/*!
-    For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
- */
 bool QUmlMultiplicityElement::isUnique() const
 {
-    // This is a read-write property
-
     return _isUnique;
 }
 
 void QUmlMultiplicityElement::setUnique(bool isUnique)
 {
-    // This is a read-write property
-
-    if (_isUnique != isUnique) {
-        _isUnique = isUnique;
-    }
+    UmlMultiplicityElement::setUnique(isUnique);
 }
 
-/*!
-    Specifies the lower bound of the multiplicity interval.
- */
 int QUmlMultiplicityElement::lower() const
 {
-    // This is a read-write derived property
-
-    qWarning("QUmlMultiplicityElement::lower(): to be implemented (this is a derived property)");
-
-    return int();
+    return UmlMultiplicityElement::lower();
 }
 
 void QUmlMultiplicityElement::setLower(int lower)
 {
-    // This is a read-write derived property
-
-    qWarning("QUmlMultiplicityElement::lower(): to be implemented (this is a derived property)");
-    Q_UNUSED(lower);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
+    UmlMultiplicityElement::setLower(lower);
 }
 
-/*!
-    The specification of the lower bound for this multiplicity.
- */
 QUmlValueSpecification *QUmlMultiplicityElement::lowerValue() const
 {
-    // This is a read-write association end
-
-    return _lowerValue;
+    return reinterpret_cast<QUmlValueSpecification *>(_lowerValue);
 }
 
 void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
 {
-    // This is a read-write association end
-
-    if (_lowerValue != lowerValue) {
-        // Adjust subsetted properties
-        removeOwnedElement(_lowerValue);
-
-        _lowerValue = lowerValue;
-
-        // Adjust subsetted properties
-        if (lowerValue) {
-            addOwnedElement(lowerValue);
-        }
-    }
+    UmlMultiplicityElement::setLowerValue(lowerValue);
 }
 
-/*!
-    Specifies the upper bound of the multiplicity interval.
- */
 int QUmlMultiplicityElement::upper() const
 {
-    // This is a read-write derived property
-
-    qWarning("QUmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
-
-    return int();
+    return UmlMultiplicityElement::upper();
 }
 
 void QUmlMultiplicityElement::setUpper(int upper)
 {
-    // This is a read-write derived property
-
-    qWarning("QUmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
-    Q_UNUSED(upper);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
+    UmlMultiplicityElement::setUpper(upper);
 }
 
-/*!
-    The specification of the upper bound for this multiplicity.
- */
 QUmlValueSpecification *QUmlMultiplicityElement::upperValue() const
 {
-    // This is a read-write association end
-
-    return _upperValue;
+    return reinterpret_cast<QUmlValueSpecification *>(_upperValue);
 }
 
 void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
 {
-    // This is a read-write association end
-
-    if (_upperValue != upperValue) {
-        // Adjust subsetted properties
-        removeOwnedElement(_upperValue);
-
-        _upperValue = upperValue;
-
-        // Adjust subsetted properties
-        if (upperValue) {
-            addOwnedElement(upperValue);
-        }
-    }
+    UmlMultiplicityElement::setUpperValue(upperValue);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
- */
-bool QUmlMultiplicityElement::compatibleWith(
-    QUmlMultiplicityElement *other) const
+bool QUmlMultiplicityElement::compatibleWith(QUmlMultiplicityElement *other) const
 {
-    qWarning("QUmlMultiplicityElement::compatibleWith(): to be implemented (operation)");
-
-    Q_UNUSED(other);
-    return bool ();
+    return UmlMultiplicityElement::compatibleWith(other);
 }
 
-/*!
-    The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.
- */
-bool QUmlMultiplicityElement::includesCardinality(
-    int C) const
+bool QUmlMultiplicityElement::includesCardinality(int C) const
 {
-    qWarning("QUmlMultiplicityElement::includesCardinality(): to be implemented (operation)");
-
-    Q_UNUSED(C);
-    return bool ();
+    return UmlMultiplicityElement::includesCardinality(C);
 }
 
-/*!
-    The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
- */
-bool QUmlMultiplicityElement::includesMultiplicity(
-    QUmlMultiplicityElement *M) const
+bool QUmlMultiplicityElement::includesMultiplicity(QUmlMultiplicityElement *M) const
 {
-    qWarning("QUmlMultiplicityElement::includesMultiplicity(): to be implemented (operation)");
-
-    Q_UNUSED(M);
-    return bool ();
+    return UmlMultiplicityElement::includesMultiplicity(M);
 }
 
-/*!
-    The operation is determines if the upper and lower bound of the ranges are the ones given.
- */
-bool QUmlMultiplicityElement::is(
-    int lowerbound, int upperbound) const
+bool QUmlMultiplicityElement::is(int lowerbound, int upperbound) const
 {
-    qWarning("QUmlMultiplicityElement::is(): to be implemented (operation)");
-
-    Q_UNUSED(lowerbound);
-    Q_UNUSED(upperbound);
-    return bool ();
+    return UmlMultiplicityElement::is(lowerbound, upperbound);
 }
 
-/*!
-    The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.
- */
-bool QUmlMultiplicityElement::isMultivalued(
-    ) const
+bool QUmlMultiplicityElement::isMultivalued() const
 {
-    qWarning("QUmlMultiplicityElement::isMultivalued(): to be implemented (operation)");
-
-    return bool ();
+    return UmlMultiplicityElement::isMultivalued();
 }
 
-/*!
-    The query lowerBound() returns the lower bound of the multiplicity as an integer.
- */
-int QUmlMultiplicityElement::lowerBound(
-    ) const
+int QUmlMultiplicityElement::lowerBound() const
 {
-    qWarning("QUmlMultiplicityElement::lowerBound(): to be implemented (operation)");
-
-    return int ();
+    return UmlMultiplicityElement::lowerBound();
 }
 
-/*!
-    The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
- */
-int QUmlMultiplicityElement::upperBound(
-    ) const
+int QUmlMultiplicityElement::upperBound() const
 {
-    qWarning("QUmlMultiplicityElement::upperBound(): to be implemented (operation)");
-
-    return int ();
+    return UmlMultiplicityElement::upperBound();
 }
 
 QT_END_NAMESPACE

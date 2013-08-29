@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umlmultiplicityelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,39 +54,41 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlMultiplicityElement : public virtual QUmlElement
+class Q_UML_EXPORT QUmlMultiplicityElement : public QObject, public UmlMultiplicityElement
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isOrdered READ isOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique)
+    Q_PROPERTY(int lower READ lower)
+    Q_PROPERTY(QUmlValueSpecification * lowerValue READ lowerValue)
+    Q_PROPERTY(int upper READ upper)
+    Q_PROPERTY(QUmlValueSpecification * upperValue READ upperValue)
+
 public:
-    Q_DECL_HIDDEN QUmlMultiplicityElement();
+    Q_DECL_HIDDEN explicit QUmlMultiplicityElement(QObject *parent = 0);
 
     // Owned attributes
-    bool isOrdered() const;
-    void setOrdered(bool isOrdered);
-    bool isUnique() const;
-    void setUnique(bool isUnique);
-    int lower() const;
-    void setLower(int lower);
-    QUmlValueSpecification *lowerValue() const;
-    void setLowerValue(QUmlValueSpecification *lowerValue);
-    int upper() const;
-    void setUpper(int upper);
-    QUmlValueSpecification *upperValue() const;
-    void setUpperValue(QUmlValueSpecification *upperValue);
+    Q_INVOKABLE bool isOrdered() const;
+    Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE bool isUnique() const;
+    Q_INVOKABLE void setUnique(bool isUnique);
+    Q_INVOKABLE int lower() const;
+    Q_INVOKABLE void setLower(int lower);
+    Q_INVOKABLE QUmlValueSpecification *lowerValue() const;
+    Q_INVOKABLE void setLowerValue(QUmlValueSpecification *lowerValue);
+    Q_INVOKABLE int upper() const;
+    Q_INVOKABLE void setUpper(int upper);
+    Q_INVOKABLE QUmlValueSpecification *upperValue() const;
+    Q_INVOKABLE void setUpperValue(QUmlValueSpecification *upperValue);
 
     // Operations
-    bool compatibleWith(QUmlMultiplicityElement *other) const;
-    bool includesCardinality(int C) const;
-    bool includesMultiplicity(QUmlMultiplicityElement *M) const;
-    bool is(int lowerbound, int upperbound) const;
-    bool isMultivalued() const;
-    int lowerBound() const;
-    int upperBound() const;
-
-protected:
-    bool _isOrdered;
-    bool _isUnique;
-    QUmlValueSpecification *_lowerValue;
-    QUmlValueSpecification *_upperValue;
+    Q_INVOKABLE bool compatibleWith(QUmlMultiplicityElement *other) const;
+    Q_INVOKABLE bool includesCardinality(int C) const;
+    Q_INVOKABLE bool includesMultiplicity(QUmlMultiplicityElement *M) const;
+    Q_INVOKABLE bool is(int lowerbound, int upperbound) const;
+    Q_INVOKABLE bool isMultivalued() const;
+    Q_INVOKABLE int lowerBound() const;
+    Q_INVOKABLE int upperBound() const;
 };
 
 QT_END_NAMESPACE

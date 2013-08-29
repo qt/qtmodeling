@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlEvent>
+#include <QtCore/QObject>
+#include "private/umlchangeevent_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlChangeEvent : public QUmlEvent
+class Q_UML_EXPORT QUmlChangeEvent : public QObject, public UmlChangeEvent
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlValueSpecification * changeExpression READ changeExpression)
+
 public:
-    QUmlChangeEvent();
+    Q_INVOKABLE explicit QUmlChangeEvent(QObject *parent = 0);
 
     // Owned attributes
-    QUmlValueSpecification *changeExpression() const;
-    void setChangeExpression(QUmlValueSpecification *changeExpression);
-
-protected:
-    QUmlValueSpecification *_changeExpression;
+    Q_INVOKABLE QUmlValueSpecification *changeExpression() const;
+    Q_INVOKABLE void setChangeExpression(QUmlValueSpecification *changeExpression);
 };
 
 QT_END_NAMESPACE

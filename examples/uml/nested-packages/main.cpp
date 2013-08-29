@@ -431,6 +431,7 @@ int main ()
     QUmlVariable Variable;
 
     Package.setName("Package");
+    //Package.addOwnedMember(0);
     Package.addPackagedElement(&Class);
     qDebug() << "PackagedElement added !";
     qDebug() << Package.packagedElement().size();

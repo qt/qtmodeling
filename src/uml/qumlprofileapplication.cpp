@@ -39,105 +39,47 @@
 **
 ****************************************************************************/
 #include "qumlprofileapplication.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlProfile>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlProfileApplication
-
-    \inmodule QtUml
-
-    \brief A profile application is used to show which profiles have been applied to a package.
- */
-
-QUmlProfileApplication::QUmlProfileApplication() :
-    _appliedProfile(0),
-    _applyingPackage(0),
-    _isStrict(false)
+QUmlProfileApplication::QUmlProfileApplication(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("appliedProfile", QVariant::fromValue((QUmlProfile *)(0)));
-    d_ptr->object.setProperty("applyingPackage", QVariant::fromValue((QUmlPackage *)(0)));
-    d_ptr->object.setProperty("isStrict", QVariant::fromValue(false));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the Profiles that are applied to a Package through this ProfileApplication.
- */
 QUmlProfile *QUmlProfileApplication::appliedProfile() const
 {
-    // This is a read-write association end
-
-    return _appliedProfile;
+    return reinterpret_cast<QUmlProfile *>(_appliedProfile);
 }
 
 void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
 {
-    // This is a read-write association end
-
-    if (_appliedProfile != appliedProfile) {
-        // Adjust subsetted properties
-        removeTarget(_appliedProfile);
-
-        _appliedProfile = appliedProfile;
-
-        // Adjust subsetted properties
-        if (appliedProfile) {
-            addTarget(appliedProfile);
-        }
-    }
+    UmlProfileApplication::setAppliedProfile(appliedProfile);
 }
 
-/*!
-    The package that owns the profile application.
- */
 QUmlPackage *QUmlProfileApplication::applyingPackage() const
 {
-    // This is a read-write association end
-
-    return _applyingPackage;
+    return reinterpret_cast<QUmlPackage *>(_applyingPackage);
 }
 
 void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
 {
-    // This is a read-write association end
-
-    if (_applyingPackage != applyingPackage) {
-        // Adjust subsetted properties
-        removeSource(_applyingPackage);
-
-        _applyingPackage = applyingPackage;
-
-        // Adjust subsetted properties
-        setOwner(applyingPackage);
-        if (applyingPackage) {
-            addSource(applyingPackage);
-        }
-    }
+    UmlProfileApplication::setApplyingPackage(applyingPackage);
 }
 
-/*!
-    Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.
- */
 bool QUmlProfileApplication::isStrict() const
 {
-    // This is a read-write property
-
     return _isStrict;
 }
 
 void QUmlProfileApplication::setStrict(bool isStrict)
 {
-    // This is a read-write property
-
-    if (_isStrict != isStrict) {
-        _isStrict = isStrict;
-    }
+    UmlProfileApplication::setStrict(isStrict);
 }
 
 QT_END_NAMESPACE

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlparameter.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOperation>
 #include <QtUml/QUmlParameterSet>
@@ -47,215 +46,96 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlParameter
-
-    \inmodule QtUml
-
-    \brief Parameters are allowed to be treated as connectable elements.A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.Parameters have support for streaming, exceptions, and parameter sets.
- */
-
-QUmlParameter::QUmlParameter() :
-    _defaultValue(0),
-    _direction(QtUml::ParameterDirectionKindIn),
-    _isException(false),
-    _isStream(false),
-    _operation(0)
+QUmlParameter::QUmlParameter(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("default", QVariant::fromValue(QString()));
-    d_ptr->object.setProperty("defaultValue", QVariant::fromValue((QUmlValueSpecification *)(0)));
-    d_ptr->object.setProperty("direction", QVariant::fromValue(QtUml::ParameterDirectionKindIn));
-    d_ptr->object.setProperty("effect", QVariant::fromValue(QtUml::ParameterEffectKindNone));
-    d_ptr->object.setProperty("isException", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isStream", QVariant::fromValue(false));
-    d_ptr->object.setProperty("operation", QVariant::fromValue((QUmlOperation *)(0)));
-    d_ptr->object.setProperty("parameterSet", QVariant::fromValue(&_parameterSet));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
- */
 QString QUmlParameter::default_() const
 {
-    // This is a read-write derived property
-
-    qWarning("QUmlParameter::default_(): to be implemented (this is a derived property)");
-
-    return QString();
+    return UmlParameter::default_();
 }
 
 void QUmlParameter::setDefault(QString default_)
 {
-    // This is a read-write derived property
-
-    qWarning("QUmlParameter::default_(): to be implemented (this is a derived property)");
-    Q_UNUSED(default_);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
+    UmlParameter::setDefault(default_);
 }
 
-/*!
-    Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
- */
 QUmlValueSpecification *QUmlParameter::defaultValue() const
 {
-    // This is a read-write association end
-
-    return _defaultValue;
+    return reinterpret_cast<QUmlValueSpecification *>(_defaultValue);
 }
 
 void QUmlParameter::setDefaultValue(QUmlValueSpecification *defaultValue)
 {
-    // This is a read-write association end
-
-    if (_defaultValue != defaultValue) {
-        // Adjust subsetted properties
-        removeOwnedElement(_defaultValue);
-
-        _defaultValue = defaultValue;
-
-        // Adjust subsetted properties
-        if (defaultValue) {
-            addOwnedElement(defaultValue);
-        }
-    }
+    UmlParameter::setDefaultValue(defaultValue);
 }
 
-/*!
-    Indicates whether a parameter is being sent into or out of a behavioral element.
- */
 QtUml::ParameterDirectionKind QUmlParameter::direction() const
 {
-    // This is a read-write property
-
     return _direction;
 }
 
 void QUmlParameter::setDirection(QtUml::ParameterDirectionKind direction)
 {
-    // This is a read-write property
-
-    if (_direction != direction) {
-        _direction = direction;
-    }
+    UmlParameter::setDirection(direction);
 }
 
-/*!
-    Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.
- */
 QtUml::ParameterEffectKind QUmlParameter::effect() const
 {
-    // This is a read-write property
-
     return _effect;
 }
 
 void QUmlParameter::setEffect(QtUml::ParameterEffectKind effect)
 {
-    // This is a read-write property
-
-    if (_effect != effect) {
-        _effect = effect;
-    }
+    UmlParameter::setEffect(effect);
 }
 
-/*!
-    Tells whether an output parameter may emit a value to the exclusion of the other outputs.
- */
 bool QUmlParameter::isException() const
 {
-    // This is a read-write property
-
     return _isException;
 }
 
 void QUmlParameter::setException(bool isException)
 {
-    // This is a read-write property
-
-    if (_isException != isException) {
-        _isException = isException;
-    }
+    UmlParameter::setException(isException);
 }
 
-/*!
-    Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.
- */
 bool QUmlParameter::isStream() const
 {
-    // This is a read-write property
-
     return _isStream;
 }
 
 void QUmlParameter::setStream(bool isStream)
 {
-    // This is a read-write property
-
-    if (_isStream != isStream) {
-        _isStream = isStream;
-    }
+    UmlParameter::setStream(isStream);
 }
 
-/*!
-    References the Operation owning this parameter.
- */
 QUmlOperation *QUmlParameter::operation() const
 {
-    // This is a read-write association end
-
-    return _operation;
+    return reinterpret_cast<QUmlOperation *>(_operation);
 }
 
 void QUmlParameter::setOperation(QUmlOperation *operation)
 {
-    // This is a read-write association end
-
-    if (_operation != operation) {
-        _operation = operation;
-    }
+    UmlParameter::setOperation(operation);
 }
 
-/*!
-    The parameter sets containing the parameter. See ParameterSet.
- */
 const QSet<QUmlParameterSet *> QUmlParameter::parameterSet() const
 {
-    // This is a read-write association end
-
-    return _parameterSet;
+    return *(reinterpret_cast<const QSet<QUmlParameterSet *> *>(&_parameterSet));
 }
 
-void QUmlParameter::addParameterSet(QUmlParameterSet *parameterSet)
+void QUmlParameter::addParameterSet(UmlParameterSet *parameterSet)
 {
-    // This is a read-write association end
-
-    if (!_parameterSet.contains(parameterSet)) {
-        _parameterSet.insert(parameterSet);
-
-        // Adjust opposite properties
-        if (parameterSet) {
-            parameterSet->addParameter(this);
-        }
-    }
+    UmlParameter::addParameterSet(parameterSet);
 }
 
-void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
+void QUmlParameter::removeParameterSet(UmlParameterSet *parameterSet)
 {
-    // This is a read-write association end
-
-    if (_parameterSet.contains(parameterSet)) {
-        _parameterSet.remove(parameterSet);
-
-        // Adjust opposite properties
-        if (parameterSet) {
-            parameterSet->removeParameter(this);
-        }
-    }
+    UmlParameter::removeParameterSet(parameterSet);
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umlclause_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,37 +55,37 @@ QT_MODULE(QtUml)
 class QUmlExecutableNode;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlClause : public QUmlElement
+class Q_UML_EXPORT QUmlClause : public QObject, public UmlClause
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlExecutableNode *> body READ body)
+    Q_PROPERTY(QList<QUmlOutputPin *> bodyOutput READ bodyOutput)
+    Q_PROPERTY(QUmlOutputPin * decider READ decider)
+    Q_PROPERTY(QSet<QUmlClause *> predecessorClause READ predecessorClause)
+    Q_PROPERTY(QSet<QUmlClause *> successorClause READ successorClause)
+    Q_PROPERTY(QSet<QUmlExecutableNode *> test READ test)
+
 public:
-    QUmlClause();
+    Q_INVOKABLE explicit QUmlClause(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlExecutableNode *> body() const;
-    void addBody(QUmlExecutableNode *body);
-    void removeBody(QUmlExecutableNode *body);
-    const QList<QUmlOutputPin *> bodyOutput() const;
-    void addBodyOutput(QUmlOutputPin *bodyOutput);
-    void removeBodyOutput(QUmlOutputPin *bodyOutput);
-    QUmlOutputPin *decider() const;
-    void setDecider(QUmlOutputPin *decider);
-    const QSet<QUmlClause *> predecessorClause() const;
-    void addPredecessorClause(QUmlClause *predecessorClause);
-    void removePredecessorClause(QUmlClause *predecessorClause);
-    const QSet<QUmlClause *> successorClause() const;
-    void addSuccessorClause(QUmlClause *successorClause);
-    void removeSuccessorClause(QUmlClause *successorClause);
-    const QSet<QUmlExecutableNode *> test() const;
-    void addTest(QUmlExecutableNode *test);
-    void removeTest(QUmlExecutableNode *test);
-
-protected:
-    QSet<QUmlExecutableNode *> _body;
-    QList<QUmlOutputPin *> _bodyOutput;
-    QUmlOutputPin *_decider;
-    QSet<QUmlClause *> _predecessorClause;
-    QSet<QUmlClause *> _successorClause;
-    QSet<QUmlExecutableNode *> _test;
+    Q_INVOKABLE const QSet<QUmlExecutableNode *> body() const;
+    Q_INVOKABLE void addBody(UmlExecutableNode *body);
+    Q_INVOKABLE void removeBody(UmlExecutableNode *body);
+    Q_INVOKABLE const QList<QUmlOutputPin *> bodyOutput() const;
+    Q_INVOKABLE void addBodyOutput(UmlOutputPin *bodyOutput);
+    Q_INVOKABLE void removeBodyOutput(UmlOutputPin *bodyOutput);
+    Q_INVOKABLE QUmlOutputPin *decider() const;
+    Q_INVOKABLE void setDecider(QUmlOutputPin *decider);
+    Q_INVOKABLE const QSet<QUmlClause *> predecessorClause() const;
+    Q_INVOKABLE void addPredecessorClause(UmlClause *predecessorClause);
+    Q_INVOKABLE void removePredecessorClause(UmlClause *predecessorClause);
+    Q_INVOKABLE const QSet<QUmlClause *> successorClause() const;
+    Q_INVOKABLE void addSuccessorClause(UmlClause *successorClause);
+    Q_INVOKABLE void removeSuccessorClause(UmlClause *successorClause);
+    Q_INVOKABLE const QSet<QUmlExecutableNode *> test() const;
+    Q_INVOKABLE void addTest(UmlExecutableNode *test);
+    Q_INVOKABLE void removeTest(UmlExecutableNode *test);
 };
 
 QT_END_NAMESPACE

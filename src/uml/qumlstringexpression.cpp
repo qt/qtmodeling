@@ -39,96 +39,46 @@
 **
 ****************************************************************************/
 #include "qumlstringexpression.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlStringExpression
-
-    \inmodule QtUml
-
-    \brief An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
- */
-
-QUmlStringExpression::QUmlStringExpression() :
-    _owningExpression(0)
+QUmlStringExpression::QUmlStringExpression(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("owningExpression", QVariant::fromValue((QUmlStringExpression *)(0)));
-    d_ptr->object.setProperty("subExpression", QVariant::fromValue(&_subExpression));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The string expression of which this expression is a substring.
- */
 QUmlStringExpression *QUmlStringExpression::owningExpression() const
 {
-    // This is a read-write association end
-
-    return _owningExpression;
+    return reinterpret_cast<QUmlStringExpression *>(_owningExpression);
 }
 
 void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpression)
 {
-    // This is a read-write association end
-
-    if (_owningExpression != owningExpression) {
-        // Adjust subsetted properties
-
-        _owningExpression = owningExpression;
-
-        // Adjust subsetted properties
-        setOwner(owningExpression);
-    }
+    UmlStringExpression::setOwningExpression(owningExpression);
 }
 
-/*!
-    The StringExpressions that constitute this StringExpression.
- */
 const QSet<QUmlStringExpression *> QUmlStringExpression::subExpression() const
 {
-    // This is a read-write association end
-
-    return _subExpression;
+    return *(reinterpret_cast<const QSet<QUmlStringExpression *> *>(&_subExpression));
 }
 
-void QUmlStringExpression::addSubExpression(QUmlStringExpression *subExpression)
+void QUmlStringExpression::addSubExpression(UmlStringExpression *subExpression)
 {
-    // This is a read-write association end
-
-    if (!_subExpression.contains(subExpression)) {
-        _subExpression.insert(subExpression);
-
-        // Adjust subsetted properties
-        addOwnedElement(subExpression);
-    }
+    UmlStringExpression::addSubExpression(subExpression);
 }
 
-void QUmlStringExpression::removeSubExpression(QUmlStringExpression *subExpression)
+void QUmlStringExpression::removeSubExpression(UmlStringExpression *subExpression)
 {
-    // This is a read-write association end
-
-    if (_subExpression.contains(subExpression)) {
-        _subExpression.remove(subExpression);
-
-        // Adjust subsetted properties
-        removeOwnedElement(subExpression);
-    }
+    UmlStringExpression::removeSubExpression(subExpression);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query stringValue() returns the string that concatenates, in order, all the component string literals of all the subexpressions that are part of the StringExpression.
- */
-QString QUmlStringExpression::stringValue(
-    ) const
+QString QUmlStringExpression::stringValue() const
 {
-    qWarning("QUmlStringExpression::stringValue(): to be implemented (operation)");
-
-    return QString ();
+    return UmlStringExpression::stringValue();
 }
 
 QT_END_NAMESPACE

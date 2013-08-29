@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDependency>
+#include <QtCore/QObject>
+#include "private/umldeployment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,25 +56,25 @@ class QUmlDeployedArtifact;
 class QUmlDeploymentSpecification;
 class QUmlDeploymentTarget;
 
-class Q_UML_EXPORT QUmlDeployment : public QUmlDependency
+class Q_UML_EXPORT QUmlDeployment : public QObject, public UmlDeployment
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlDeploymentSpecification *> configuration READ configuration)
+    Q_PROPERTY(QSet<QUmlDeployedArtifact *> deployedArtifact READ deployedArtifact)
+    Q_PROPERTY(QUmlDeploymentTarget * location READ location)
+
 public:
-    QUmlDeployment();
+    Q_INVOKABLE explicit QUmlDeployment(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlDeploymentSpecification *> configuration() const;
-    void addConfiguration(QUmlDeploymentSpecification *configuration);
-    void removeConfiguration(QUmlDeploymentSpecification *configuration);
-    const QSet<QUmlDeployedArtifact *> deployedArtifact() const;
-    void addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact);
-    void removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifact);
-    QUmlDeploymentTarget *location() const;
-    void setLocation(QUmlDeploymentTarget *location);
-
-protected:
-    QSet<QUmlDeploymentSpecification *> _configuration;
-    QSet<QUmlDeployedArtifact *> _deployedArtifact;
-    QUmlDeploymentTarget *_location;
+    Q_INVOKABLE const QSet<QUmlDeploymentSpecification *> configuration() const;
+    Q_INVOKABLE void addConfiguration(UmlDeploymentSpecification *configuration);
+    Q_INVOKABLE void removeConfiguration(UmlDeploymentSpecification *configuration);
+    Q_INVOKABLE const QSet<QUmlDeployedArtifact *> deployedArtifact() const;
+    Q_INVOKABLE void addDeployedArtifact(UmlDeployedArtifact *deployedArtifact);
+    Q_INVOKABLE void removeDeployedArtifact(UmlDeployedArtifact *deployedArtifact);
+    Q_INVOKABLE QUmlDeploymentTarget *location() const;
+    Q_INVOKABLE void setLocation(QUmlDeploymentTarget *location);
 };
 
 QT_END_NAMESPACE

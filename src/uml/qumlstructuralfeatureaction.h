@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlstructuralfeatureaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlStructuralFeature;
 
-class Q_UML_EXPORT QUmlStructuralFeatureAction : public QUmlAction
+class Q_UML_EXPORT QUmlStructuralFeatureAction : public QObject, public UmlStructuralFeatureAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInputPin * object READ object)
+    Q_PROPERTY(QUmlStructuralFeature * structuralFeature READ structuralFeature)
+
 public:
-    Q_DECL_HIDDEN QUmlStructuralFeatureAction();
+    Q_DECL_HIDDEN explicit QUmlStructuralFeatureAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInputPin *object() const;
-    void setObject(QUmlInputPin *object);
-    QUmlStructuralFeature *structuralFeature() const;
-    void setStructuralFeature(QUmlStructuralFeature *structuralFeature);
-
-protected:
-    QUmlInputPin *_object;
-    QUmlStructuralFeature *_structuralFeature;
+    Q_INVOKABLE QUmlInputPin *object() const;
+    Q_INVOKABLE void setObject(QUmlInputPin *object);
+    Q_INVOKABLE QUmlStructuralFeature *structuralFeature() const;
+    Q_INVOKABLE void setStructuralFeature(QUmlStructuralFeature *structuralFeature);
 };
 
 QT_END_NAMESPACE

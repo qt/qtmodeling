@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umlexceptionhandler_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,27 +56,27 @@ class QUmlClassifier;
 class QUmlExecutableNode;
 class QUmlObjectNode;
 
-class Q_UML_EXPORT QUmlExceptionHandler : public QUmlElement
+class Q_UML_EXPORT QUmlExceptionHandler : public QObject, public UmlExceptionHandler
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlObjectNode * exceptionInput READ exceptionInput)
+    Q_PROPERTY(QSet<QUmlClassifier *> exceptionType READ exceptionType)
+    Q_PROPERTY(QUmlExecutableNode * handlerBody READ handlerBody)
+    Q_PROPERTY(QUmlExecutableNode * protectedNode READ protectedNode)
+
 public:
-    QUmlExceptionHandler();
+    Q_INVOKABLE explicit QUmlExceptionHandler(QObject *parent = 0);
 
     // Owned attributes
-    QUmlObjectNode *exceptionInput() const;
-    void setExceptionInput(QUmlObjectNode *exceptionInput);
-    const QSet<QUmlClassifier *> exceptionType() const;
-    void addExceptionType(QUmlClassifier *exceptionType);
-    void removeExceptionType(QUmlClassifier *exceptionType);
-    QUmlExecutableNode *handlerBody() const;
-    void setHandlerBody(QUmlExecutableNode *handlerBody);
-    QUmlExecutableNode *protectedNode() const;
-    void setProtectedNode(QUmlExecutableNode *protectedNode);
-
-protected:
-    QUmlObjectNode *_exceptionInput;
-    QSet<QUmlClassifier *> _exceptionType;
-    QUmlExecutableNode *_handlerBody;
-    QUmlExecutableNode *_protectedNode;
+    Q_INVOKABLE QUmlObjectNode *exceptionInput() const;
+    Q_INVOKABLE void setExceptionInput(QUmlObjectNode *exceptionInput);
+    Q_INVOKABLE const QSet<QUmlClassifier *> exceptionType() const;
+    Q_INVOKABLE void addExceptionType(UmlClassifier *exceptionType);
+    Q_INVOKABLE void removeExceptionType(UmlClassifier *exceptionType);
+    Q_INVOKABLE QUmlExecutableNode *handlerBody() const;
+    Q_INVOKABLE void setHandlerBody(QUmlExecutableNode *handlerBody);
+    Q_INVOKABLE QUmlExecutableNode *protectedNode() const;
+    Q_INVOKABLE void setProtectedNode(QUmlExecutableNode *protectedNode);
 };
 
 QT_END_NAMESPACE

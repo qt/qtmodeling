@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlactor.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlActor
-
-    \inmodule QtUml
-
-    \brief An actor specifies a role played by a user or any other system that interacts with the subject.
- */
-
-QUmlActor::QUmlActor()
+QUmlActor::QUmlActor(QObject *parent) :
+    QObject(parent)
 {
 }
 

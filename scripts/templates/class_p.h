@@ -41,6 +41,8 @@
 ****************************************************************************/
 #ifndef ${namespace.upper}${className.upper}_H
 #define ${namespace.upper}${className.upper}_H
+
+#include <Qt${namespace}/Qt${namespace}Global>
 [% superclasses = [] -%]
 [%- SET generalization = class.findnodes("generalization") -%]
 [%- FOREACH superclass IN generalization -%]
@@ -74,7 +76,7 @@ class ${forward};
 [% END %]
 [%- END -%]
 
-class ${namespace}${className}
+class Q_${namespace.upper}_EXPORT ${namespace}${className}
 [%- FOREACH superclass IN generalization -%]
 [%- IF loop.first -%] : [%- END -%]
 public ${namespace}${superclass.findvalue("@general")}
@@ -82,21 +84,22 @@ public ${namespace}${superclass.findvalue("@general")}
 [%- END %]
 {
 public:
-    explicit ${namespace}${className}();
+    Q_DECL_HIDDEN explicit ${namespace}${className}();
 [%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- IF loop.first %]
 
     // Owned attributes
     [%- END -%]
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- SET readOnly = attribute.findvalue("@isReadOnly") -%]
     [%- SET qtType = QT_TYPE(namespace, attribute) %]
     [% IF qtType.match("QList|QSet") %]const [% END %]${qtType}${qtAttribute}() const;
     [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
     [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
-    void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %]${qtAttribute});
-    void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %]${qtAttribute});
+    [% IF readOnly == "true" %]Q_DECL_HIDDEN [% END %]void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %]${qtAttribute});
+    [% IF readOnly == "true" %]Q_DECL_HIDDEN [% END %]void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %]${qtAttribute});
     [%- ELSE %]
-    void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
+    [% IF readOnly == "true" %]Q_DECL_HIDDEN [% END %]void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
     [%- END %]
     [%- IF loop.last %]
     [%- END %]

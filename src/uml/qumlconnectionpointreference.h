@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlVertex>
+#include <QtCore/QObject>
+#include "private/umlconnectionpointreference_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,25 +55,25 @@ QT_MODULE(QtUml)
 class QUmlPseudostate;
 class QUmlState;
 
-class Q_UML_EXPORT QUmlConnectionPointReference : public QUmlVertex
+class Q_UML_EXPORT QUmlConnectionPointReference : public QObject, public UmlConnectionPointReference
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlPseudostate *> entry READ entry)
+    Q_PROPERTY(QSet<QUmlPseudostate *> exit READ exit)
+    Q_PROPERTY(QUmlState * state READ state)
+
 public:
-    QUmlConnectionPointReference();
+    Q_INVOKABLE explicit QUmlConnectionPointReference(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlPseudostate *> entry() const;
-    void addEntry(QUmlPseudostate *entry);
-    void removeEntry(QUmlPseudostate *entry);
-    const QSet<QUmlPseudostate *> exit() const;
-    void addExit(QUmlPseudostate *exit);
-    void removeExit(QUmlPseudostate *exit);
-    QUmlState *state() const;
-    void setState(QUmlState *state);
-
-protected:
-    QSet<QUmlPseudostate *> _entry;
-    QSet<QUmlPseudostate *> _exit;
-    QUmlState *_state;
+    Q_INVOKABLE const QSet<QUmlPseudostate *> entry() const;
+    Q_INVOKABLE void addEntry(UmlPseudostate *entry);
+    Q_INVOKABLE void removeEntry(UmlPseudostate *entry);
+    Q_INVOKABLE const QSet<QUmlPseudostate *> exit() const;
+    Q_INVOKABLE void addExit(UmlPseudostate *exit);
+    Q_INVOKABLE void removeExit(UmlPseudostate *exit);
+    Q_INVOKABLE QUmlState *state() const;
+    Q_INVOKABLE void setState(QUmlState *state);
 };
 
 QT_END_NAMESPACE

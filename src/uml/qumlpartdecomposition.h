@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInteractionUse>
+#include <QtCore/QObject>
+#include "private/umlpartdecomposition_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlPartDecomposition : public QUmlInteractionUse
+class Q_UML_EXPORT QUmlPartDecomposition : public QObject, public UmlPartDecomposition
 {
-public:
-    QUmlPartDecomposition();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlPartDecomposition(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

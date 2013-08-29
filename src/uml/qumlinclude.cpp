@@ -39,83 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlinclude.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlUseCase>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInclude
-
-    \inmodule QtUml
-
-    \brief An include relationship defines that a use case contains the behavior defined in another use case.
- */
-
-QUmlInclude::QUmlInclude() :
-    _addition(0),
-    _includingCase(0)
+QUmlInclude::QUmlInclude(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("addition", QVariant::fromValue((QUmlUseCase *)(0)));
-    d_ptr->object.setProperty("includingCase", QVariant::fromValue((QUmlUseCase *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the use case that is to be included.
- */
 QUmlUseCase *QUmlInclude::addition() const
 {
-    // This is a read-write association end
-
-    return _addition;
+    return reinterpret_cast<QUmlUseCase *>(_addition);
 }
 
 void QUmlInclude::setAddition(QUmlUseCase *addition)
 {
-    // This is a read-write association end
-
-    if (_addition != addition) {
-        // Adjust subsetted properties
-        removeTarget(_addition);
-
-        _addition = addition;
-
-        // Adjust subsetted properties
-        if (addition) {
-            addTarget(addition);
-        }
-    }
+    UmlInclude::setAddition(addition);
 }
 
-/*!
-    References the use case which will include the addition and owns the include relationship.
- */
 QUmlUseCase *QUmlInclude::includingCase() const
 {
-    // This is a read-write association end
-
-    return _includingCase;
+    return reinterpret_cast<QUmlUseCase *>(_includingCase);
 }
 
 void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
 {
-    // This is a read-write association end
-
-    if (_includingCase != includingCase) {
-        // Adjust subsetted properties
-        removeSource(_includingCase);
-
-        _includingCase = includingCase;
-
-        // Adjust subsetted properties
-        if (includingCase) {
-            addSource(includingCase);
-        }
-        setNamespace(includingCase);
-    }
+    UmlInclude::setIncludingCase(includingCase);
 }
 
 QT_END_NAMESPACE

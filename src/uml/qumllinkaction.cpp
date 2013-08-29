@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumllinkaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlInputPin>
@@ -47,101 +46,48 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLinkAction
-
-    \inmodule QtUml
-
-    \brief LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
- */
-
-QUmlLinkAction::QUmlLinkAction()
+QUmlLinkAction::QUmlLinkAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("endData", QVariant::fromValue(&_endData));
-    d_ptr->object.setProperty("inputValue", QVariant::fromValue(&_inputValue));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Data identifying one end of a link by the objects on its ends and qualifiers.
- */
 const QSet<QUmlLinkEndData *> QUmlLinkAction::endData() const
 {
-    // This is a read-write association end
-
-    return _endData;
+    return *(reinterpret_cast<const QSet<QUmlLinkEndData *> *>(&_endData));
 }
 
-void QUmlLinkAction::addEndData(QUmlLinkEndData *endData)
+void QUmlLinkAction::addEndData(UmlLinkEndData *endData)
 {
-    // This is a read-write association end
-
-    if (!_endData.contains(endData)) {
-        _endData.insert(endData);
-
-        // Adjust subsetted properties
-        addOwnedElement(endData);
-    }
+    UmlLinkAction::addEndData(endData);
 }
 
-void QUmlLinkAction::removeEndData(QUmlLinkEndData *endData)
+void QUmlLinkAction::removeEndData(UmlLinkEndData *endData)
 {
-    // This is a read-write association end
-
-    if (_endData.contains(endData)) {
-        _endData.remove(endData);
-
-        // Adjust subsetted properties
-        removeOwnedElement(endData);
-    }
+    UmlLinkAction::removeEndData(endData);
 }
 
-/*!
-    Pins taking end objects and qualifier values as input.
- */
 const QSet<QUmlInputPin *> QUmlLinkAction::inputValue() const
 {
-    // This is a read-write association end
-
-    return _inputValue;
+    return *(reinterpret_cast<const QSet<QUmlInputPin *> *>(&_inputValue));
 }
 
-void QUmlLinkAction::addInputValue(QUmlInputPin *inputValue)
+void QUmlLinkAction::addInputValue(UmlInputPin *inputValue)
 {
-    // This is a read-write association end
-
-    if (!_inputValue.contains(inputValue)) {
-        _inputValue.insert(inputValue);
-
-        // Adjust subsetted properties
-        addInput(inputValue);
-    }
+    UmlLinkAction::addInputValue(inputValue);
 }
 
-void QUmlLinkAction::removeInputValue(QUmlInputPin *inputValue)
+void QUmlLinkAction::removeInputValue(UmlInputPin *inputValue)
 {
-    // This is a read-write association end
-
-    if (_inputValue.contains(inputValue)) {
-        _inputValue.remove(inputValue);
-
-        // Adjust subsetted properties
-        removeInput(inputValue);
-    }
+    UmlLinkAction::removeInputValue(inputValue);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The association operates on LinkAction. It returns the association of the action.
- */
-QUmlAssociation *QUmlLinkAction::association(
-    ) const
+QUmlAssociation *QUmlLinkAction::association() const
 {
-    qWarning("QUmlLinkAction::association(): to be implemented (operation)");
-
-    return 0;
+    return reinterpret_cast<QUmlAssociation *>(UmlLinkAction::association());
 }
 
 QT_END_NAMESPACE

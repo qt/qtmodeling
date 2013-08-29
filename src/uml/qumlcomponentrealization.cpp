@@ -39,90 +39,42 @@
 **
 ****************************************************************************/
 #include "qumlcomponentrealization.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlComponent>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlComponentRealization
-
-    \inmodule QtUml
-
-    \brief The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
- */
-
-QUmlComponentRealization::QUmlComponentRealization() :
-    _abstraction(0)
+QUmlComponentRealization::QUmlComponentRealization(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("abstraction", QVariant::fromValue((QUmlComponent *)(0)));
-    d_ptr->object.setProperty("realizingClassifier", QVariant::fromValue(&_realizingClassifier));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
- */
 QUmlComponent *QUmlComponentRealization::abstraction() const
 {
-    // This is a read-write association end
-
-    return _abstraction;
+    return reinterpret_cast<QUmlComponent *>(_abstraction);
 }
 
 void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
 {
-    // This is a read-write association end
-
-    if (_abstraction != abstraction) {
-        // Adjust subsetted properties
-        removeSupplier(_abstraction);
-
-        _abstraction = abstraction;
-
-        // Adjust subsetted properties
-        if (abstraction) {
-            addSupplier(abstraction);
-        }
-        setOwner(abstraction);
-    }
+    UmlComponentRealization::setAbstraction(abstraction);
 }
 
-/*!
-    The classifiers that are involved in the implementation of the Component that owns this Realization.
- */
 const QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifier() const
 {
-    // This is a read-write association end
-
-    return _realizingClassifier;
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_realizingClassifier));
 }
 
-void QUmlComponentRealization::addRealizingClassifier(QUmlClassifier *realizingClassifier)
+void QUmlComponentRealization::addRealizingClassifier(UmlClassifier *realizingClassifier)
 {
-    // This is a read-write association end
-
-    if (!_realizingClassifier.contains(realizingClassifier)) {
-        _realizingClassifier.insert(realizingClassifier);
-
-        // Adjust subsetted properties
-        addClient(realizingClassifier);
-    }
+    UmlComponentRealization::addRealizingClassifier(realizingClassifier);
 }
 
-void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizingClassifier)
+void QUmlComponentRealization::removeRealizingClassifier(UmlClassifier *realizingClassifier)
 {
-    // This is a read-write association end
-
-    if (_realizingClassifier.contains(realizingClassifier)) {
-        _realizingClassifier.remove(realizingClassifier);
-
-        // Adjust subsetted properties
-        removeClient(realizingClassifier);
-    }
+    UmlComponentRealization::removeRealizingClassifier(realizingClassifier);
 }
 
 QT_END_NAMESPACE

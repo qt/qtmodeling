@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlextend.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlExtensionPoint>
@@ -47,135 +46,56 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExtend
-
-    \inmodule QtUml
-
-    \brief A relationship from an extending use case to an extended use case that specifies how and when the behavior defined in the extending use case can be inserted into the behavior defined in the extended use case.
- */
-
-QUmlExtend::QUmlExtend() :
-    _condition(0),
-    _extendedCase(0),
-    _extension(0)
+QUmlExtend::QUmlExtend(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("condition", QVariant::fromValue((QUmlConstraint *)(0)));
-    d_ptr->object.setProperty("extendedCase", QVariant::fromValue((QUmlUseCase *)(0)));
-    d_ptr->object.setProperty("extension", QVariant::fromValue((QUmlUseCase *)(0)));
-    d_ptr->object.setProperty("extensionLocation", QVariant::fromValue(&_extensionLocation));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
- */
 QUmlConstraint *QUmlExtend::condition() const
 {
-    // This is a read-write association end
-
-    return _condition;
+    return reinterpret_cast<QUmlConstraint *>(_condition);
 }
 
 void QUmlExtend::setCondition(QUmlConstraint *condition)
 {
-    // This is a read-write association end
-
-    if (_condition != condition) {
-        // Adjust subsetted properties
-        removeOwnedElement(_condition);
-
-        _condition = condition;
-
-        // Adjust subsetted properties
-        if (condition) {
-            addOwnedElement(condition);
-        }
-    }
+    UmlExtend::setCondition(condition);
 }
 
-/*!
-    References the use case that is being extended.
- */
 QUmlUseCase *QUmlExtend::extendedCase() const
 {
-    // This is a read-write association end
-
-    return _extendedCase;
+    return reinterpret_cast<QUmlUseCase *>(_extendedCase);
 }
 
 void QUmlExtend::setExtendedCase(QUmlUseCase *extendedCase)
 {
-    // This is a read-write association end
-
-    if (_extendedCase != extendedCase) {
-        // Adjust subsetted properties
-        removeTarget(_extendedCase);
-
-        _extendedCase = extendedCase;
-
-        // Adjust subsetted properties
-        if (extendedCase) {
-            addTarget(extendedCase);
-        }
-    }
+    UmlExtend::setExtendedCase(extendedCase);
 }
 
-/*!
-    References the use case that represents the extension and owns the extend relationship.
- */
 QUmlUseCase *QUmlExtend::extension() const
 {
-    // This is a read-write association end
-
-    return _extension;
+    return reinterpret_cast<QUmlUseCase *>(_extension);
 }
 
 void QUmlExtend::setExtension(QUmlUseCase *extension)
 {
-    // This is a read-write association end
-
-    if (_extension != extension) {
-        // Adjust subsetted properties
-        removeSource(_extension);
-
-        _extension = extension;
-
-        // Adjust subsetted properties
-        if (extension) {
-            addSource(extension);
-        }
-        setNamespace(extension);
-    }
+    UmlExtend::setExtension(extension);
 }
 
-/*!
-    An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
- */
 const QList<QUmlExtensionPoint *> QUmlExtend::extensionLocation() const
 {
-    // This is a read-write association end
-
-    return _extensionLocation;
+    return *(reinterpret_cast<const QList<QUmlExtensionPoint *> *>(&_extensionLocation));
 }
 
-void QUmlExtend::addExtensionLocation(QUmlExtensionPoint *extensionLocation)
+void QUmlExtend::addExtensionLocation(UmlExtensionPoint *extensionLocation)
 {
-    // This is a read-write association end
-
-    if (!_extensionLocation.contains(extensionLocation)) {
-        _extensionLocation.append(extensionLocation);
-    }
+    UmlExtend::addExtensionLocation(extensionLocation);
 }
 
-void QUmlExtend::removeExtensionLocation(QUmlExtensionPoint *extensionLocation)
+void QUmlExtend::removeExtensionLocation(UmlExtensionPoint *extensionLocation)
 {
-    // This is a read-write association end
-
-    if (_extensionLocation.contains(extensionLocation)) {
-        _extensionLocation.removeAll(extensionLocation);
-    }
+    UmlExtend::removeExtensionLocation(extensionLocation);
 }
 
 QT_END_NAMESPACE

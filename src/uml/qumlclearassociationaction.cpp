@@ -39,75 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlclearassociationaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlClearAssociationAction
-
-    \inmodule QtUml
-
-    \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
- */
-
-QUmlClearAssociationAction::QUmlClearAssociationAction() :
-    _association(0),
-    _object(0)
+QUmlClearAssociationAction::QUmlClearAssociationAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("association", QVariant::fromValue((QUmlAssociation *)(0)));
-    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Association to be cleared.
- */
 QUmlAssociation *QUmlClearAssociationAction::association() const
 {
-    // This is a read-write association end
-
-    return _association;
+    return reinterpret_cast<QUmlAssociation *>(_association);
 }
 
 void QUmlClearAssociationAction::setAssociation(QUmlAssociation *association)
 {
-    // This is a read-write association end
-
-    if (_association != association) {
-        _association = association;
-    }
+    UmlClearAssociationAction::setAssociation(association);
 }
 
-/*!
-    Gives the input pin from which is obtained the object whose participation in the association is to be cleared.
- */
 QUmlInputPin *QUmlClearAssociationAction::object() const
 {
-    // This is a read-write association end
-
-    return _object;
+    return reinterpret_cast<QUmlInputPin *>(_object);
 }
 
 void QUmlClearAssociationAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    if (_object != object) {
-        // Adjust subsetted properties
-        removeInput(_object);
-
-        _object = object;
-
-        // Adjust subsetted properties
-        if (object) {
-            addInput(object);
-        }
-    }
+    UmlClearAssociationAction::setObject(object);
 }
 
 QT_END_NAMESPACE

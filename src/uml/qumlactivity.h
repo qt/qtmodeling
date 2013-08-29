@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlBehavior>
+#include <QtCore/QObject>
+#include "private/umlactivity_p.h"
 
 QT_BEGIN_HEADER
 
@@ -58,44 +59,44 @@ class QUmlActivityPartition;
 class QUmlStructuredActivityNode;
 class QUmlVariable;
 
-class Q_UML_EXPORT QUmlActivity : public QUmlBehavior
+class Q_UML_EXPORT QUmlActivity : public QObject, public UmlActivity
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlActivityEdge *> edge READ edge)
+    Q_PROPERTY(QSet<QUmlActivityGroup *> group READ group)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly)
+    Q_PROPERTY(bool isSingleExecution READ isSingleExecution)
+    Q_PROPERTY(QSet<QUmlActivityNode *> node READ node)
+    Q_PROPERTY(QSet<QUmlActivityPartition *> partition READ partition)
+    Q_PROPERTY(QSet<QUmlStructuredActivityNode *> structuredNode READ structuredNode)
+    Q_PROPERTY(QSet<QUmlVariable *> variable READ variable)
+
 public:
-    QUmlActivity();
+    Q_INVOKABLE explicit QUmlActivity(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlActivityEdge *> edge() const;
-    void addEdge(QUmlActivityEdge *edge);
-    void removeEdge(QUmlActivityEdge *edge);
-    const QSet<QUmlActivityGroup *> group() const;
-    void addGroup(QUmlActivityGroup *group);
-    void removeGroup(QUmlActivityGroup *group);
-    bool isReadOnly() const;
-    void setReadOnly(bool isReadOnly);
-    bool isSingleExecution() const;
-    void setSingleExecution(bool isSingleExecution);
-    const QSet<QUmlActivityNode *> node() const;
-    void addNode(QUmlActivityNode *node);
-    void removeNode(QUmlActivityNode *node);
-    const QSet<QUmlActivityPartition *> partition() const;
-    void addPartition(QUmlActivityPartition *partition);
-    void removePartition(QUmlActivityPartition *partition);
-    const QSet<QUmlStructuredActivityNode *> structuredNode() const;
-    void addStructuredNode(QUmlStructuredActivityNode *structuredNode);
-    void removeStructuredNode(QUmlStructuredActivityNode *structuredNode);
-    const QSet<QUmlVariable *> variable() const;
-    void addVariable(QUmlVariable *variable);
-    void removeVariable(QUmlVariable *variable);
-
-protected:
-    QSet<QUmlActivityEdge *> _edge;
-    QSet<QUmlActivityGroup *> _group;
-    bool _isReadOnly;
-    bool _isSingleExecution;
-    QSet<QUmlActivityNode *> _node;
-    QSet<QUmlActivityPartition *> _partition;
-    QSet<QUmlStructuredActivityNode *> _structuredNode;
-    QSet<QUmlVariable *> _variable;
+    Q_INVOKABLE const QSet<QUmlActivityEdge *> edge() const;
+    Q_INVOKABLE void addEdge(UmlActivityEdge *edge);
+    Q_INVOKABLE void removeEdge(UmlActivityEdge *edge);
+    Q_INVOKABLE const QSet<QUmlActivityGroup *> group() const;
+    Q_INVOKABLE void addGroup(UmlActivityGroup *group);
+    Q_INVOKABLE void removeGroup(UmlActivityGroup *group);
+    Q_INVOKABLE bool isReadOnly() const;
+    Q_INVOKABLE void setReadOnly(bool isReadOnly);
+    Q_INVOKABLE bool isSingleExecution() const;
+    Q_INVOKABLE void setSingleExecution(bool isSingleExecution);
+    Q_INVOKABLE const QSet<QUmlActivityNode *> node() const;
+    Q_INVOKABLE void addNode(UmlActivityNode *node);
+    Q_INVOKABLE void removeNode(UmlActivityNode *node);
+    Q_INVOKABLE const QSet<QUmlActivityPartition *> partition() const;
+    Q_INVOKABLE void addPartition(UmlActivityPartition *partition);
+    Q_INVOKABLE void removePartition(UmlActivityPartition *partition);
+    Q_INVOKABLE const QSet<QUmlStructuredActivityNode *> structuredNode() const;
+    Q_INVOKABLE void addStructuredNode(UmlStructuredActivityNode *structuredNode);
+    Q_INVOKABLE void removeStructuredNode(UmlStructuredActivityNode *structuredNode);
+    Q_INVOKABLE const QSet<QUmlVariable *> variable() const;
+    Q_INVOKABLE void addVariable(UmlVariable *variable);
+    Q_INVOKABLE void removeVariable(UmlVariable *variable);
 };
 
 QT_END_NAMESPACE

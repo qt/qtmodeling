@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlforknode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlForkNode
-
-    \inmodule QtUml
-
-    \brief A fork node is a control node that splits a flow into multiple concurrent flows.
- */
-
-QUmlForkNode::QUmlForkNode()
+QUmlForkNode::QUmlForkNode(QObject *parent) :
+    QObject(parent)
 {
 }
 

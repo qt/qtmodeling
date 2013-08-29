@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlValueSpecification>
+#include <QtCore/QObject>
+#include "private/umlinterval_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,20 +52,22 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlInterval : public QUmlValueSpecification
+class QUmlValueSpecification;
+
+class Q_UML_EXPORT QUmlInterval : public QObject, public UmlInterval
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlValueSpecification * max READ max)
+    Q_PROPERTY(QUmlValueSpecification * min READ min)
+
 public:
-    QUmlInterval();
+    Q_INVOKABLE explicit QUmlInterval(QObject *parent = 0);
 
     // Owned attributes
-    QUmlValueSpecification *max() const;
-    void setMax(QUmlValueSpecification *max);
-    QUmlValueSpecification *min() const;
-    void setMin(QUmlValueSpecification *min);
-
-protected:
-    QUmlValueSpecification *_max;
-    QUmlValueSpecification *_min;
+    Q_INVOKABLE QUmlValueSpecification *max() const;
+    Q_INVOKABLE void setMax(QUmlValueSpecification *max);
+    Q_INVOKABLE QUmlValueSpecification *min() const;
+    Q_INVOKABLE void setMin(QUmlValueSpecification *min);
 };
 
 QT_END_NAMESPACE

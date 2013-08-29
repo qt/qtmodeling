@@ -39,43 +39,24 @@
 **
 ****************************************************************************/
 #include "qumlpackageableelement.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlPackageableElement
-
-    \inmodule QtUml
-
-    \brief Packageable elements are able to serve as a template parameter.A packageable element indicates a named element that may be owned directly by a package.
- */
-
-QUmlPackageableElement::QUmlPackageableElement() :
-    _visibility(QtUml::VisibilityKindPublic)
+QUmlPackageableElement::QUmlPackageableElement(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("visibility", QVariant::fromValue(QtUml::VisibilityKindPublic));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
- */
 QtUml::VisibilityKind QUmlPackageableElement::visibility() const
 {
-    // This is a read-write property
-
     return _visibility;
 }
 
 void QUmlPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
 {
-    // This is a read-write property
-
-    if (_visibility != visibility) {
-        _visibility = visibility;
-    }
+    UmlPackageableElement::setVisibility(visibility);
 }
 
 QT_END_NAMESPACE

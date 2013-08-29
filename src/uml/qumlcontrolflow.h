@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlActivityEdge>
+#include <QtCore/QObject>
+#include "private/umlcontrolflow_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlControlFlow : public QUmlActivityEdge
+class Q_UML_EXPORT QUmlControlFlow : public QObject, public UmlControlFlow
 {
-public:
-    QUmlControlFlow();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlControlFlow(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

@@ -39,43 +39,24 @@
 **
 ****************************************************************************/
 #include "qumlstructuralfeature.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlStructuralFeature
-
-    \inmodule QtUml
-
-    \brief A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier.By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
- */
-
-QUmlStructuralFeature::QUmlStructuralFeature() :
-    _isReadOnly(false)
+QUmlStructuralFeature::QUmlStructuralFeature(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isReadOnly", QVariant::fromValue(false));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    States whether the feature's value may be modified by a client.
- */
 bool QUmlStructuralFeature::isReadOnly() const
 {
-    // This is a read-write property
-
     return _isReadOnly;
 }
 
 void QUmlStructuralFeature::setReadOnly(bool isReadOnly)
 {
-    // This is a read-write property
-
-    if (_isReadOnly != isReadOnly) {
-        _isReadOnly = isReadOnly;
-    }
+    UmlStructuralFeature::setReadOnly(isReadOnly);
 }
 
 QT_END_NAMESPACE

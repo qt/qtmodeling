@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umltypedelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlType;
 
-class Q_UML_EXPORT QUmlTypedElement : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlTypedElement : public QObject, public UmlTypedElement
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlType * type READ type)
+
 public:
-    Q_DECL_HIDDEN QUmlTypedElement();
+    Q_DECL_HIDDEN explicit QUmlTypedElement(QObject *parent = 0);
 
     // Owned attributes
-    QUmlType *type() const;
-    void setType(QUmlType *type);
-
-protected:
-    QUmlType *_type;
+    Q_INVOKABLE QUmlType *type() const;
+    Q_INVOKABLE void setType(QUmlType *type);
 };
 
 QT_END_NAMESPACE

@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlmessageevent.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlMessageEvent
-
-    \inmodule QtUml
-
-    \brief A message event specifies the receipt by an object of either a call or a signal.
- */
-
-QUmlMessageEvent::QUmlMessageEvent()
+QUmlMessageEvent::QUmlMessageEvent(QObject *parent) :
+    QObject(parent)
 {
 }
 

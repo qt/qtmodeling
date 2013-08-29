@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlreduceaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,26 +56,26 @@ class QUmlBehavior;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlReduceAction : public QUmlAction
+class Q_UML_EXPORT QUmlReduceAction : public QObject, public UmlReduceAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInputPin * collection READ collection)
+    Q_PROPERTY(bool isOrdered READ isOrdered)
+    Q_PROPERTY(QUmlBehavior * reducer READ reducer)
+    Q_PROPERTY(QUmlOutputPin * result READ result)
+
 public:
-    QUmlReduceAction();
+    Q_INVOKABLE explicit QUmlReduceAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInputPin *collection() const;
-    void setCollection(QUmlInputPin *collection);
-    bool isOrdered() const;
-    void setOrdered(bool isOrdered);
-    QUmlBehavior *reducer() const;
-    void setReducer(QUmlBehavior *reducer);
-    QUmlOutputPin *result() const;
-    void setResult(QUmlOutputPin *result);
-
-protected:
-    QUmlInputPin *_collection;
-    bool _isOrdered;
-    QUmlBehavior *_reducer;
-    QUmlOutputPin *_result;
+    Q_INVOKABLE QUmlInputPin *collection() const;
+    Q_INVOKABLE void setCollection(QUmlInputPin *collection);
+    Q_INVOKABLE bool isOrdered() const;
+    Q_INVOKABLE void setOrdered(bool isOrdered);
+    Q_INVOKABLE QUmlBehavior *reducer() const;
+    Q_INVOKABLE void setReducer(QUmlBehavior *reducer);
+    Q_INVOKABLE QUmlOutputPin *result() const;
+    Q_INVOKABLE void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

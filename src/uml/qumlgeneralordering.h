@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlgeneralordering_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlOccurrenceSpecification;
 
-class Q_UML_EXPORT QUmlGeneralOrdering : public QUmlNamedElement
+class Q_UML_EXPORT QUmlGeneralOrdering : public QObject, public UmlGeneralOrdering
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOccurrenceSpecification * after READ after)
+    Q_PROPERTY(QUmlOccurrenceSpecification * before READ before)
+
 public:
-    QUmlGeneralOrdering();
+    Q_INVOKABLE explicit QUmlGeneralOrdering(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOccurrenceSpecification *after() const;
-    void setAfter(QUmlOccurrenceSpecification *after);
-    QUmlOccurrenceSpecification *before() const;
-    void setBefore(QUmlOccurrenceSpecification *before);
-
-protected:
-    QUmlOccurrenceSpecification *_after;
-    QUmlOccurrenceSpecification *_before;
+    Q_INVOKABLE QUmlOccurrenceSpecification *after() const;
+    Q_INVOKABLE void setAfter(QUmlOccurrenceSpecification *after);
+    Q_INVOKABLE QUmlOccurrenceSpecification *before() const;
+    Q_INVOKABLE void setBefore(QUmlOccurrenceSpecification *before);
 };
 
 QT_END_NAMESPACE

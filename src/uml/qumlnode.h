@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClass>
-#include <QtUml/QUmlDeploymentTarget>
+#include <QtCore/QObject>
+#include "private/umlnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,18 +52,18 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlNode : public QUmlClass, public QUmlDeploymentTarget
+class Q_UML_EXPORT QUmlNode : public QObject, public UmlNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlNode *> nestedNode READ nestedNode)
+
 public:
-    QUmlNode();
+    Q_INVOKABLE explicit QUmlNode(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlNode *> nestedNode() const;
-    void addNestedNode(QUmlNode *nestedNode);
-    void removeNestedNode(QUmlNode *nestedNode);
-
-protected:
-    QSet<QUmlNode *> _nestedNode;
+    Q_INVOKABLE const QSet<QUmlNode *> nestedNode() const;
+    Q_INVOKABLE void addNestedNode(UmlNode *nestedNode);
+    Q_INVOKABLE void removeNestedNode(UmlNode *nestedNode);
 };
 
 QT_END_NAMESPACE

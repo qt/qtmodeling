@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlTemplateParameter>
+#include <QtCore/QObject>
+#include "private/umlclassifiertemplateparameter_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,24 +54,24 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class Q_UML_EXPORT QUmlClassifierTemplateParameter : public QUmlTemplateParameter
+class Q_UML_EXPORT QUmlClassifierTemplateParameter : public QObject, public UmlClassifierTemplateParameter
 {
+    Q_OBJECT
+    Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable)
+    Q_PROPERTY(QSet<QUmlClassifier *> constrainingClassifier READ constrainingClassifier)
+    Q_PROPERTY(QUmlClassifier * parameteredElement READ parameteredElement)
+
 public:
-    QUmlClassifierTemplateParameter();
+    Q_INVOKABLE explicit QUmlClassifierTemplateParameter(QObject *parent = 0);
 
     // Owned attributes
-    bool allowSubstitutable() const;
-    void setAllowSubstitutable(bool allowSubstitutable);
-    const QSet<QUmlClassifier *> constrainingClassifier() const;
-    void addConstrainingClassifier(QUmlClassifier *constrainingClassifier);
-    void removeConstrainingClassifier(QUmlClassifier *constrainingClassifier);
-    QUmlClassifier *parameteredElement() const;
-    void setParameteredElement(QUmlClassifier *parameteredElement);
-
-protected:
-    bool _allowSubstitutable;
-    QSet<QUmlClassifier *> _constrainingClassifier;
-    QUmlClassifier *_parameteredElement;
+    Q_INVOKABLE bool allowSubstitutable() const;
+    Q_INVOKABLE void setAllowSubstitutable(bool allowSubstitutable);
+    Q_INVOKABLE const QSet<QUmlClassifier *> constrainingClassifier() const;
+    Q_INVOKABLE void addConstrainingClassifier(UmlClassifier *constrainingClassifier);
+    Q_INVOKABLE void removeConstrainingClassifier(UmlClassifier *constrainingClassifier);
+    Q_INVOKABLE QUmlClassifier *parameteredElement() const;
+    Q_INVOKABLE void setParameteredElement(QUmlClassifier *parameteredElement);
 };
 
 QT_END_NAMESPACE

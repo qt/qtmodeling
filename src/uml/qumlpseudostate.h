@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlVertex>
+#include <QtCore/QObject>
+#include "private/umlpseudostate_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -55,23 +56,23 @@ QT_MODULE(QtUml)
 class QUmlState;
 class QUmlStateMachine;
 
-class Q_UML_EXPORT QUmlPseudostate : public QUmlVertex
+class Q_UML_EXPORT QUmlPseudostate : public QObject, public UmlPseudostate
 {
+    Q_OBJECT
+    Q_PROPERTY(QtUml::PseudostateKind kind READ kind)
+    Q_PROPERTY(QUmlState * state READ state)
+    Q_PROPERTY(QUmlStateMachine * stateMachine READ stateMachine)
+
 public:
-    QUmlPseudostate();
+    Q_INVOKABLE explicit QUmlPseudostate(QObject *parent = 0);
 
     // Owned attributes
-    QtUml::PseudostateKind kind() const;
-    void setKind(QtUml::PseudostateKind kind);
-    QUmlState *state() const;
-    void setState(QUmlState *state);
-    QUmlStateMachine *stateMachine() const;
-    void setStateMachine(QUmlStateMachine *stateMachine);
-
-protected:
-    QtUml::PseudostateKind _kind;
-    QUmlState *_state;
-    QUmlStateMachine *_stateMachine;
+    Q_INVOKABLE QtUml::PseudostateKind kind() const;
+    Q_INVOKABLE void setKind(QtUml::PseudostateKind kind);
+    Q_INVOKABLE QUmlState *state() const;
+    Q_INVOKABLE void setState(QUmlState *state);
+    Q_INVOKABLE QUmlStateMachine *stateMachine() const;
+    Q_INVOKABLE void setStateMachine(QUmlStateMachine *stateMachine);
 };
 
 QT_END_NAMESPACE

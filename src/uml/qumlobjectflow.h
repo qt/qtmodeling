@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlActivityEdge>
+#include <QtCore/QObject>
+#include "private/umlobjectflow_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,26 +54,26 @@ QT_MODULE(QtUml)
 
 class QUmlBehavior;
 
-class Q_UML_EXPORT QUmlObjectFlow : public QUmlActivityEdge
+class Q_UML_EXPORT QUmlObjectFlow : public QObject, public UmlObjectFlow
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isMulticast READ isMulticast)
+    Q_PROPERTY(bool isMultireceive READ isMultireceive)
+    Q_PROPERTY(QUmlBehavior * selection READ selection)
+    Q_PROPERTY(QUmlBehavior * transformation READ transformation)
+
 public:
-    QUmlObjectFlow();
+    Q_INVOKABLE explicit QUmlObjectFlow(QObject *parent = 0);
 
     // Owned attributes
-    bool isMulticast() const;
-    void setMulticast(bool isMulticast);
-    bool isMultireceive() const;
-    void setMultireceive(bool isMultireceive);
-    QUmlBehavior *selection() const;
-    void setSelection(QUmlBehavior *selection);
-    QUmlBehavior *transformation() const;
-    void setTransformation(QUmlBehavior *transformation);
-
-protected:
-    bool _isMulticast;
-    bool _isMultireceive;
-    QUmlBehavior *_selection;
-    QUmlBehavior *_transformation;
+    Q_INVOKABLE bool isMulticast() const;
+    Q_INVOKABLE void setMulticast(bool isMulticast);
+    Q_INVOKABLE bool isMultireceive() const;
+    Q_INVOKABLE void setMultireceive(bool isMultireceive);
+    Q_INVOKABLE QUmlBehavior *selection() const;
+    Q_INVOKABLE void setSelection(QUmlBehavior *selection);
+    Q_INVOKABLE QUmlBehavior *transformation() const;
+    Q_INVOKABLE void setTransformation(QUmlBehavior *transformation);
 };
 
 QT_END_NAMESPACE

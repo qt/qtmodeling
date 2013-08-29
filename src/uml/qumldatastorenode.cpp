@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumldatastorenode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDataStoreNode
-
-    \inmodule QtUml
-
-    \brief A data store node is a central buffer node for non-transient information.
- */
-
-QUmlDataStoreNode::QUmlDataStoreNode()
+QUmlDataStoreNode::QUmlDataStoreNode(QObject *parent) :
+    QObject(parent)
 {
 }
 

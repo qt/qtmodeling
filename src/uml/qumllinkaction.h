@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umllinkaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,25 +56,25 @@ class QUmlAssociation;
 class QUmlInputPin;
 class QUmlLinkEndData;
 
-class Q_UML_EXPORT QUmlLinkAction : public QUmlAction
+class Q_UML_EXPORT QUmlLinkAction : public QObject, public UmlLinkAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlLinkEndData *> endData READ endData)
+    Q_PROPERTY(QSet<QUmlInputPin *> inputValue READ inputValue)
+
 public:
-    Q_DECL_HIDDEN QUmlLinkAction();
+    Q_DECL_HIDDEN explicit QUmlLinkAction(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlLinkEndData *> endData() const;
-    void addEndData(QUmlLinkEndData *endData);
-    void removeEndData(QUmlLinkEndData *endData);
-    const QSet<QUmlInputPin *> inputValue() const;
-    void addInputValue(QUmlInputPin *inputValue);
-    void removeInputValue(QUmlInputPin *inputValue);
+    Q_INVOKABLE const QSet<QUmlLinkEndData *> endData() const;
+    Q_INVOKABLE void addEndData(UmlLinkEndData *endData);
+    Q_INVOKABLE void removeEndData(UmlLinkEndData *endData);
+    Q_INVOKABLE const QSet<QUmlInputPin *> inputValue() const;
+    Q_INVOKABLE void addInputValue(UmlInputPin *inputValue);
+    Q_INVOKABLE void removeInputValue(UmlInputPin *inputValue);
 
     // Operations
-    QUmlAssociation *association() const;
-
-protected:
-    QSet<QUmlLinkEndData *> _endData;
-    QSet<QUmlInputPin *> _inputValue;
+    Q_INVOKABLE QUmlAssociation *association() const;
 };
 
 QT_END_NAMESPACE

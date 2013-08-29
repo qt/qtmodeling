@@ -39,84 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlfeature.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlFeature
-
-    \inmodule QtUml
-
-    \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
- */
-
-QUmlFeature::QUmlFeature() :
-    _isStatic(false)
+QUmlFeature::QUmlFeature(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("featuringClassifier", QVariant::fromValue(&_featuringClassifier));
-    d_ptr->object.setProperty("isStatic", QVariant::fromValue(false));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The Classifiers that have this Feature as a feature.
- */
 const QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
 {
-    // This is a read-only derived union association end
-
-    return _featuringClassifier;
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_featuringClassifier));
 }
 
-void QUmlFeature::addFeaturingClassifier(QUmlClassifier *featuringClassifier)
-{
-    // This is a read-only derived union association end
-
-    if (!_featuringClassifier.contains(featuringClassifier)) {
-        _featuringClassifier.insert(featuringClassifier);
-
-        // Adjust opposite properties
-        if (featuringClassifier) {
-            featuringClassifier->addFeature(this);
-        }
-    }
-}
-
-void QUmlFeature::removeFeaturingClassifier(QUmlClassifier *featuringClassifier)
-{
-    // This is a read-only derived union association end
-
-    if (_featuringClassifier.contains(featuringClassifier)) {
-        _featuringClassifier.remove(featuringClassifier);
-
-        // Adjust opposite properties
-        if (featuringClassifier) {
-            featuringClassifier->removeFeature(this);
-        }
-    }
-}
-
-/*!
-    Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
- */
 bool QUmlFeature::isStatic() const
 {
-    // This is a read-write property
-
     return _isStatic;
 }
 
 void QUmlFeature::setStatic(bool isStatic)
 {
-    // This is a read-write property
-
-    if (_isStatic != isStatic) {
-        _isStatic = isStatic;
-    }
+    UmlFeature::setStatic(isStatic);
 }
 
 QT_END_NAMESPACE

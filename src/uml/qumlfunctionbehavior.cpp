@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlfunctionbehavior.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlFunctionBehavior
-
-    \inmodule QtUml
-
-    \brief A function behavior is an opaque behavior that does not access or modify any objects or other external data.
- */
-
-QUmlFunctionBehavior::QUmlFunctionBehavior()
+QUmlFunctionBehavior::QUmlFunctionBehavior(QObject *parent) :
+    QObject(parent)
 {
 }
 

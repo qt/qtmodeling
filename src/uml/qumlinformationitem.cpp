@@ -39,51 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlinformationitem.h"
-#include "private/qmodelingobject_p.h"
+
+#include <QtUml/QUmlClassifier>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInformationItem
-
-    \inmodule QtUml
-
-    \brief An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated.
- */
-
-QUmlInformationItem::QUmlInformationItem()
+QUmlInformationItem::QUmlInformationItem(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("represented", QVariant::fromValue(&_represented));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
- */
 const QSet<QUmlClassifier *> QUmlInformationItem::represented() const
 {
-    // This is a read-write association end
-
-    return _represented;
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_represented));
 }
 
-void QUmlInformationItem::addRepresented(QUmlClassifier *represented)
+void QUmlInformationItem::addRepresented(UmlClassifier *represented)
 {
-    // This is a read-write association end
-
-    if (!_represented.contains(represented)) {
-        _represented.insert(represented);
-    }
+    UmlInformationItem::addRepresented(represented);
 }
 
-void QUmlInformationItem::removeRepresented(QUmlClassifier *represented)
+void QUmlInformationItem::removeRepresented(UmlClassifier *represented)
 {
-    // This is a read-write association end
-
-    if (_represented.contains(represented)) {
-        _represented.remove(represented);
-    }
+    UmlInformationItem::removeRepresented(represented);
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umltemplatesignature_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,25 +55,25 @@ QT_MODULE(QtUml)
 class QUmlTemplateableElement;
 class QUmlTemplateParameter;
 
-class Q_UML_EXPORT QUmlTemplateSignature : public virtual QUmlElement
+class Q_UML_EXPORT QUmlTemplateSignature : public QObject, public UmlTemplateSignature
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlTemplateParameter *> ownedParameter READ ownedParameter)
+    Q_PROPERTY(QList<QUmlTemplateParameter *> parameter READ parameter)
+    Q_PROPERTY(QUmlTemplateableElement * template_ READ template_)
+
 public:
-    QUmlTemplateSignature();
+    Q_INVOKABLE explicit QUmlTemplateSignature(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlTemplateParameter *> ownedParameter() const;
-    void addOwnedParameter(QUmlTemplateParameter *ownedParameter);
-    void removeOwnedParameter(QUmlTemplateParameter *ownedParameter);
-    const QList<QUmlTemplateParameter *> parameter() const;
-    void addParameter(QUmlTemplateParameter *parameter);
-    void removeParameter(QUmlTemplateParameter *parameter);
-    QUmlTemplateableElement *template_() const;
-    void setTemplate(QUmlTemplateableElement *template_);
-
-protected:
-    QList<QUmlTemplateParameter *> _ownedParameter;
-    QList<QUmlTemplateParameter *> _parameter;
-    QUmlTemplateableElement *_template_;
+    Q_INVOKABLE const QList<QUmlTemplateParameter *> ownedParameter() const;
+    Q_INVOKABLE void addOwnedParameter(UmlTemplateParameter *ownedParameter);
+    Q_INVOKABLE void removeOwnedParameter(UmlTemplateParameter *ownedParameter);
+    Q_INVOKABLE const QList<QUmlTemplateParameter *> parameter() const;
+    Q_INVOKABLE void addParameter(UmlTemplateParameter *parameter);
+    Q_INVOKABLE void removeParameter(UmlTemplateParameter *parameter);
+    Q_INVOKABLE QUmlTemplateableElement *template_() const;
+    Q_INVOKABLE void setTemplate(QUmlTemplateableElement *template_);
 };
 
 QT_END_NAMESPACE

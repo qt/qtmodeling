@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInvocationAction>
+#include <QtCore/QObject>
+#include "private/umlbroadcastsignalaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlSignal;
 
-class Q_UML_EXPORT QUmlBroadcastSignalAction : public QUmlInvocationAction
+class Q_UML_EXPORT QUmlBroadcastSignalAction : public QObject, public UmlBroadcastSignalAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlSignal * signal READ signal)
+
 public:
-    QUmlBroadcastSignalAction();
+    Q_INVOKABLE explicit QUmlBroadcastSignalAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlSignal *signal() const;
-    void setSignal(QUmlSignal *signal);
-
-protected:
-    QUmlSignal *_signal;
+    Q_INVOKABLE QUmlSignal *signal() const;
+    Q_INVOKABLE void setSignal(QUmlSignal *signal);
 };
 
 QT_END_NAMESPACE

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlcomponent.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlComponentRealization>
@@ -48,219 +47,85 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlComponent
-
-    \inmodule QtUml
-
-    \brief In the namespace of a component, all model elements that are involved in or related to its definition are either owned or imported explicitly. This may include, for example, use cases and dependencies (e.g. mappings), packages, components, and artifacts.A component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
- */
-
-QUmlComponent::QUmlComponent() :
-    _isIndirectlyInstantiated(true)
+QUmlComponent::QUmlComponent(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isIndirectlyInstantiated", QVariant::fromValue(true));
-    d_ptr->object.setProperty("packagedElement", QVariant::fromValue(&_packagedElement));
-    d_ptr->object.setProperty("provided", QVariant::fromValue(QSet<QUmlInterface *>()));
-    d_ptr->object.setProperty("realization", QVariant::fromValue(&_realization));
-    d_ptr->object.setProperty("required", QVariant::fromValue(QSet<QUmlInterface *>()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., «specification», «focus», «subsystem»).
- */
 bool QUmlComponent::isIndirectlyInstantiated() const
 {
-    // This is a read-write property
-
     return _isIndirectlyInstantiated;
 }
 
 void QUmlComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
-    // This is a read-write property
-
-    if (_isIndirectlyInstantiated != isIndirectlyInstantiated) {
-        _isIndirectlyInstantiated = isIndirectlyInstantiated;
-    }
+    UmlComponent::setIndirectlyInstantiated(isIndirectlyInstantiated);
 }
 
-/*!
-    The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.
- */
 const QSet<QUmlPackageableElement *> QUmlComponent::packagedElement() const
 {
-    // This is a read-write association end
-
-    return _packagedElement;
+    return *(reinterpret_cast<const QSet<QUmlPackageableElement *> *>(&_packagedElement));
 }
 
-void QUmlComponent::addPackagedElement(QUmlPackageableElement *packagedElement)
+void QUmlComponent::addPackagedElement(UmlPackageableElement *packagedElement)
 {
-    // This is a read-write association end
-
-    if (!_packagedElement.contains(packagedElement)) {
-        _packagedElement.insert(packagedElement);
-
-        // Adjust subsetted properties
-        addOwnedMember(packagedElement);
-    }
+    UmlComponent::addPackagedElement(packagedElement);
 }
 
-void QUmlComponent::removePackagedElement(QUmlPackageableElement *packagedElement)
+void QUmlComponent::removePackagedElement(UmlPackageableElement *packagedElement)
 {
-    // This is a read-write association end
-
-    if (_packagedElement.contains(packagedElement)) {
-        _packagedElement.remove(packagedElement);
-
-        // Adjust subsetted properties
-        removeOwnedMember(packagedElement);
-    }
+    UmlComponent::removePackagedElement(packagedElement);
 }
 
-/*!
-    The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.
- */
 const QSet<QUmlInterface *> QUmlComponent::provided() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlComponent::provided(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlInterface *>();
+    QSet<QUmlInterface *> r;
+    foreach (UmlInterface *element, UmlComponent::provided())
+        r.insert(reinterpret_cast<QUmlInterface *>(element));
+    return r;
 }
 
-void QUmlComponent::addProvided(QUmlInterface *provided)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlComponent::provided(): to be implemented (this is a derived association end)");
-    Q_UNUSED(provided);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-void QUmlComponent::removeProvided(QUmlInterface *provided)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlComponent::provided(): to be implemented (this is a derived association end)");
-    Q_UNUSED(provided);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
- */
 const QSet<QUmlComponentRealization *> QUmlComponent::realization() const
 {
-    // This is a read-write association end
-
-    return _realization;
+    return *(reinterpret_cast<const QSet<QUmlComponentRealization *> *>(&_realization));
 }
 
-void QUmlComponent::addRealization(QUmlComponentRealization *realization)
+void QUmlComponent::addRealization(UmlComponentRealization *realization)
 {
-    // This is a read-write association end
-
-    if (!_realization.contains(realization)) {
-        _realization.insert(realization);
-
-        // Adjust subsetted properties
-        addOwnedElement(realization);
-
-        // Adjust opposite properties
-        if (realization) {
-            realization->setAbstraction(this);
-        }
-    }
+    UmlComponent::addRealization(realization);
 }
 
-void QUmlComponent::removeRealization(QUmlComponentRealization *realization)
+void QUmlComponent::removeRealization(UmlComponentRealization *realization)
 {
-    // This is a read-write association end
-
-    if (_realization.contains(realization)) {
-        _realization.remove(realization);
-
-        // Adjust subsetted properties
-        removeOwnedElement(realization);
-
-        // Adjust opposite properties
-        if (realization) {
-            realization->setAbstraction(0);
-        }
-    }
+    UmlComponent::removeRealization(realization);
 }
 
-/*!
-    The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.
- */
 const QSet<QUmlInterface *> QUmlComponent::required() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlComponent::required(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlInterface *>();
+    QSet<QUmlInterface *> r;
+    foreach (UmlInterface *element, UmlComponent::required())
+        r.insert(reinterpret_cast<QUmlInterface *>(element));
+    return r;
 }
 
-void QUmlComponent::addRequired(QUmlInterface *required)
+// Operations
+
+QSet<QUmlInterface *> QUmlComponent::realizedInterfaces(QUmlClassifier *classifier) const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlComponent::required(): to be implemented (this is a derived association end)");
-    Q_UNUSED(required);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
+    QSet<QUmlInterface *> r;
+    foreach (UmlInterface *element, UmlComponent::realizedInterfaces(classifier))
+        r.insert(reinterpret_cast<QUmlInterface *>(element));
+    return r;
 }
 
-void QUmlComponent::removeRequired(QUmlInterface *required)
+QSet<QUmlInterface *> QUmlComponent::usedInterfaces(QUmlClassifier *classifier) const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlComponent::required(): to be implemented (this is a derived association end)");
-    Q_UNUSED(required);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-// OPERATIONS
-
-/*!
-    Utility returning the set of realized interfaces of a component.
- */
-QSet<QUmlInterface *> QUmlComponent::realizedInterfaces(
-    QUmlClassifier *classifier) const
-{
-    qWarning("QUmlComponent::realizedInterfaces(): to be implemented (operation)");
-
-    Q_UNUSED(classifier);
-    return QSet<QUmlInterface *> ();
-}
-
-/*!
-    Utility returning the set of used interfaces of a component.
- */
-QSet<QUmlInterface *> QUmlComponent::usedInterfaces(
-    QUmlClassifier *classifier) const
-{
-    qWarning("QUmlComponent::usedInterfaces(): to be implemented (operation)");
-
-    Q_UNUSED(classifier);
-    return QSet<QUmlInterface *> ();
+    QSet<QUmlInterface *> r;
+    foreach (UmlInterface *element, UmlComponent::usedInterfaces(classifier))
+        r.insert(reinterpret_cast<QUmlInterface *>(element));
+    return r;
 }
 
 QT_END_NAMESPACE

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlstructuredclassifier.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlConnector>
@@ -47,166 +46,54 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlStructuredClassifier
-
-    \inmodule QtUml
-
-    \brief A structured classifier is an abstract metaclass that represents any classifier whose behavior can be fully or partly described by the collaboration of owned or referenced instances.
- */
-
-QUmlStructuredClassifier::QUmlStructuredClassifier()
+QUmlStructuredClassifier::QUmlStructuredClassifier(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
-    d_ptr->object.setProperty("ownedConnector", QVariant::fromValue(&_ownedConnector));
-    d_ptr->object.setProperty("part", QVariant::fromValue(QSet<QUmlProperty *>()));
-    d_ptr->object.setProperty("role", QVariant::fromValue(&_role));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the properties owned by the classifier.
- */
 const QList<QUmlProperty *> QUmlStructuredClassifier::ownedAttribute() const
 {
-    // This is a read-write association end
-
-    return _ownedAttribute;
+    return *(reinterpret_cast<const QList<QUmlProperty *> *>(&_ownedAttribute));
 }
 
-void QUmlStructuredClassifier::addOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlStructuredClassifier::addOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
-
-        // Adjust subsetted properties
-        addAttribute(ownedAttribute);
-        addOwnedMember(ownedAttribute);
-        addRole(ownedAttribute);
-    }
+    UmlStructuredClassifier::addOwnedAttribute(ownedAttribute);
 }
 
-void QUmlStructuredClassifier::removeOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlStructuredClassifier::removeOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
-
-        // Adjust subsetted properties
-        removeAttribute(ownedAttribute);
-        removeOwnedMember(ownedAttribute);
-        removeRole(ownedAttribute);
-    }
+    UmlStructuredClassifier::removeOwnedAttribute(ownedAttribute);
 }
 
-/*!
-    References the connectors owned by the classifier.
- */
 const QSet<QUmlConnector *> QUmlStructuredClassifier::ownedConnector() const
 {
-    // This is a read-write association end
-
-    return _ownedConnector;
+    return *(reinterpret_cast<const QSet<QUmlConnector *> *>(&_ownedConnector));
 }
 
-void QUmlStructuredClassifier::addOwnedConnector(QUmlConnector *ownedConnector)
+void QUmlStructuredClassifier::addOwnedConnector(UmlConnector *ownedConnector)
 {
-    // This is a read-write association end
-
-    if (!_ownedConnector.contains(ownedConnector)) {
-        _ownedConnector.insert(ownedConnector);
-
-        // Adjust subsetted properties
-        addFeature(ownedConnector);
-        addOwnedMember(ownedConnector);
-    }
+    UmlStructuredClassifier::addOwnedConnector(ownedConnector);
 }
 
-void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnector)
+void QUmlStructuredClassifier::removeOwnedConnector(UmlConnector *ownedConnector)
 {
-    // This is a read-write association end
-
-    if (_ownedConnector.contains(ownedConnector)) {
-        _ownedConnector.remove(ownedConnector);
-
-        // Adjust subsetted properties
-        removeFeature(ownedConnector);
-        removeOwnedMember(ownedConnector);
-    }
+    UmlStructuredClassifier::removeOwnedConnector(ownedConnector);
 }
 
-/*!
-    References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
- */
 const QSet<QUmlProperty *> QUmlStructuredClassifier::part() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlStructuredClassifier::part(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlProperty *>();
+    QSet<QUmlProperty *> r;
+    foreach (UmlProperty *element, UmlStructuredClassifier::part())
+        r.insert(reinterpret_cast<QUmlProperty *>(element));
+    return r;
 }
 
-void QUmlStructuredClassifier::addPart(QUmlProperty *part)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlStructuredClassifier::part(): to be implemented (this is a derived association end)");
-    Q_UNUSED(part);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-void QUmlStructuredClassifier::removePart(QUmlProperty *part)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlStructuredClassifier::part(): to be implemented (this is a derived association end)");
-    Q_UNUSED(part);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    References the roles that instances may play in this classifier.
- */
 const QSet<QUmlConnectableElement *> QUmlStructuredClassifier::role() const
 {
-    // This is a read-only derived union association end
-
-    return _role;
-}
-
-void QUmlStructuredClassifier::addRole(QUmlConnectableElement *role)
-{
-    // This is a read-only derived union association end
-
-    if (!_role.contains(role)) {
-        _role.insert(role);
-
-        // Adjust subsetted properties
-        addMember(role);
-    }
-}
-
-void QUmlStructuredClassifier::removeRole(QUmlConnectableElement *role)
-{
-    // This is a read-only derived union association end
-
-    if (_role.contains(role)) {
-        _role.remove(role);
-
-        // Adjust subsetted properties
-        removeMember(role);
-    }
+    return *(reinterpret_cast<const QSet<QUmlConnectableElement *> *>(&_role));
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlPackage>
+#include <QtCore/QObject>
+#include "private/umlmodel_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,17 +52,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlModel : public QUmlPackage
+class Q_UML_EXPORT QUmlModel : public QObject, public UmlModel
 {
+    Q_OBJECT
+    Q_PROPERTY(QString viewpoint READ viewpoint)
+
 public:
-    QUmlModel();
+    Q_INVOKABLE explicit QUmlModel(QObject *parent = 0);
 
     // Owned attributes
-    QString viewpoint() const;
-    void setViewpoint(QString viewpoint);
-
-protected:
-    QString _viewpoint;
+    Q_INVOKABLE QString viewpoint() const;
+    Q_INVOKABLE void setViewpoint(QString viewpoint);
 };
 
 QT_END_NAMESPACE

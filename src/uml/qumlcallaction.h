@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInvocationAction>
+#include <QtCore/QObject>
+#include "private/umlcallaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,21 +54,21 @@ QT_MODULE(QtUml)
 
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlCallAction : public QUmlInvocationAction
+class Q_UML_EXPORT QUmlCallAction : public QObject, public UmlCallAction
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isSynchronous READ isSynchronous)
+    Q_PROPERTY(QList<QUmlOutputPin *> result READ result)
+
 public:
-    Q_DECL_HIDDEN QUmlCallAction();
+    Q_DECL_HIDDEN explicit QUmlCallAction(QObject *parent = 0);
 
     // Owned attributes
-    bool isSynchronous() const;
-    void setSynchronous(bool isSynchronous);
-    const QList<QUmlOutputPin *> result() const;
-    void addResult(QUmlOutputPin *result);
-    void removeResult(QUmlOutputPin *result);
-
-protected:
-    bool _isSynchronous;
-    QList<QUmlOutputPin *> _result;
+    Q_INVOKABLE bool isSynchronous() const;
+    Q_INVOKABLE void setSynchronous(bool isSynchronous);
+    Q_INVOKABLE const QList<QUmlOutputPin *> result() const;
+    Q_INVOKABLE void addResult(UmlOutputPin *result);
+    Q_INVOKABLE void removeResult(UmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

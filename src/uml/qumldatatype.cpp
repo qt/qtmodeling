@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumldatatype.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlOperation>
@@ -47,126 +46,51 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDataType
-
-    \inmodule QtUml
-
-    \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
- */
-
-QUmlDataType::QUmlDataType()
+QUmlDataType::QUmlDataType(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
-    d_ptr->object.setProperty("ownedOperation", QVariant::fromValue(&_ownedOperation));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The Attributes owned by the DataType.
- */
 const QList<QUmlProperty *> QUmlDataType::ownedAttribute() const
 {
-    // This is a read-write association end
-
-    return _ownedAttribute;
+    return *(reinterpret_cast<const QList<QUmlProperty *> *>(&_ownedAttribute));
 }
 
-void QUmlDataType::addOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlDataType::addOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedAttribute);
-        addAttribute(ownedAttribute);
-
-        // Adjust opposite properties
-        if (ownedAttribute) {
-            ownedAttribute->setDatatype(this);
-        }
-    }
+    UmlDataType::addOwnedAttribute(ownedAttribute);
 }
 
-void QUmlDataType::removeOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlDataType::removeOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedAttribute);
-        removeAttribute(ownedAttribute);
-
-        // Adjust opposite properties
-        if (ownedAttribute) {
-            ownedAttribute->setDatatype(0);
-        }
-    }
+    UmlDataType::removeOwnedAttribute(ownedAttribute);
 }
 
-/*!
-    The Operations owned by the DataType.
- */
 const QList<QUmlOperation *> QUmlDataType::ownedOperation() const
 {
-    // This is a read-write association end
-
-    return _ownedOperation;
+    return *(reinterpret_cast<const QList<QUmlOperation *> *>(&_ownedOperation));
 }
 
-void QUmlDataType::addOwnedOperation(QUmlOperation *ownedOperation)
+void QUmlDataType::addOwnedOperation(UmlOperation *ownedOperation)
 {
-    // This is a read-write association end
-
-    if (!_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.append(ownedOperation);
-
-        // Adjust subsetted properties
-        addFeature(ownedOperation);
-        addOwnedMember(ownedOperation);
-
-        // Adjust opposite properties
-        if (ownedOperation) {
-            ownedOperation->setDatatype(this);
-        }
-    }
+    UmlDataType::addOwnedOperation(ownedOperation);
 }
 
-void QUmlDataType::removeOwnedOperation(QUmlOperation *ownedOperation)
+void QUmlDataType::removeOwnedOperation(UmlOperation *ownedOperation)
 {
-    // This is a read-write association end
-
-    if (_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.removeAll(ownedOperation);
-
-        // Adjust subsetted properties
-        removeFeature(ownedOperation);
-        removeOwnedMember(ownedOperation);
-
-        // Adjust opposite properties
-        if (ownedOperation) {
-            ownedOperation->setDatatype(0);
-        }
-    }
+    UmlDataType::removeOwnedOperation(ownedOperation);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The inherit operation is overridden to exclude redefined properties.
- */
-QSet<QUmlNamedElement *> QUmlDataType::inherit(
-    QSet<QUmlNamedElement *> inhs) const
+QSet<QUmlNamedElement *> QUmlDataType::inherit(QSet<QUmlNamedElement *> inhs) const
 {
-    qWarning("QUmlDataType::inherit(): to be implemented (operation)");
-
-    Q_UNUSED(inhs);
-    return QSet<QUmlNamedElement *> ();
+    QSet<QUmlNamedElement *> r;
+    foreach (UmlNamedElement *element, UmlDataType::inherit(*(reinterpret_cast<QSet<UmlNamedElement *> *>(&inhs))))
+        r.insert(reinterpret_cast<QUmlNamedElement *>(element));
+    return r;
 }
 
 QT_END_NAMESPACE

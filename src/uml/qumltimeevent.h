@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlEvent>
+#include <QtCore/QObject>
+#include "private/umltimeevent_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlTimeExpression;
 
-class Q_UML_EXPORT QUmlTimeEvent : public QUmlEvent
+class Q_UML_EXPORT QUmlTimeEvent : public QObject, public UmlTimeEvent
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isRelative READ isRelative)
+    Q_PROPERTY(QUmlTimeExpression * when READ when)
+
 public:
-    QUmlTimeEvent();
+    Q_INVOKABLE explicit QUmlTimeEvent(QObject *parent = 0);
 
     // Owned attributes
-    bool isRelative() const;
-    void setRelative(bool isRelative);
-    QUmlTimeExpression *when() const;
-    void setWhen(QUmlTimeExpression *when);
-
-protected:
-    bool _isRelative;
-    QUmlTimeExpression *_when;
+    Q_INVOKABLE bool isRelative() const;
+    Q_INVOKABLE void setRelative(bool isRelative);
+    Q_INVOKABLE QUmlTimeExpression *when() const;
+    Q_INVOKABLE void setWhen(QUmlTimeExpression *when);
 };
 
 QT_END_NAMESPACE

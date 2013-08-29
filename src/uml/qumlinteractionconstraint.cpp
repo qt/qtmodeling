@@ -39,82 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlinteractionconstraint.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInteractionConstraint
-
-    \inmodule QtUml
-
-    \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
- */
-
-QUmlInteractionConstraint::QUmlInteractionConstraint() :
-    _maxint(0),
-    _minint(0)
+QUmlInteractionConstraint::QUmlInteractionConstraint(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("maxint", QVariant::fromValue((QUmlValueSpecification *)(0)));
-    d_ptr->object.setProperty("minint", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The maximum number of iterations of a loop
- */
 QUmlValueSpecification *QUmlInteractionConstraint::maxint() const
 {
-    // This is a read-write association end
-
-    return _maxint;
+    return reinterpret_cast<QUmlValueSpecification *>(_maxint);
 }
 
 void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
 {
-    // This is a read-write association end
-
-    if (_maxint != maxint) {
-        // Adjust subsetted properties
-        removeOwnedElement(_maxint);
-
-        _maxint = maxint;
-
-        // Adjust subsetted properties
-        if (maxint) {
-            addOwnedElement(maxint);
-        }
-    }
+    UmlInteractionConstraint::setMaxint(maxint);
 }
 
-/*!
-    The minimum number of iterations of a loop
- */
 QUmlValueSpecification *QUmlInteractionConstraint::minint() const
 {
-    // This is a read-write association end
-
-    return _minint;
+    return reinterpret_cast<QUmlValueSpecification *>(_minint);
 }
 
 void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
 {
-    // This is a read-write association end
-
-    if (_minint != minint) {
-        // Adjust subsetted properties
-        removeOwnedElement(_minint);
-
-        _minint = minint;
-
-        // Adjust subsetted properties
-        if (minint) {
-            addOwnedElement(minint);
-        }
-    }
+    UmlInteractionConstraint::setMinint(minint);
 }
 
 QT_END_NAMESPACE

@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlbehaviorexecutionspecification.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlBehaviorExecutionSpecification
-
-    \inmodule QtUml
-
-    \brief A behavior execution specification is a kind of execution specification representing the execution of a behavior.
- */
-
-QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification() :
-    _behavior(0)
+QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("behavior", QVariant::fromValue((QUmlBehavior *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Behavior whose execution is occurring.
- */
 QUmlBehavior *QUmlBehaviorExecutionSpecification::behavior() const
 {
-    // This is a read-write association end
-
-    return _behavior;
+    return reinterpret_cast<QUmlBehavior *>(_behavior);
 }
 
 void QUmlBehaviorExecutionSpecification::setBehavior(QUmlBehavior *behavior)
 {
-    // This is a read-write association end
-
-    if (_behavior != behavior) {
-        _behavior = behavior;
-    }
+    UmlBehaviorExecutionSpecification::setBehavior(behavior);
 }
 
 QT_END_NAMESPACE

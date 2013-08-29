@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlEvent>
+#include <QtCore/QObject>
+#include "private/umlmessageevent_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlMessageEvent : public QUmlEvent
+class Q_UML_EXPORT QUmlMessageEvent : public QObject, public UmlMessageEvent
 {
-public:
-    Q_DECL_HIDDEN QUmlMessageEvent();
+    Q_OBJECT
 
-protected:
+public:
+    Q_DECL_HIDDEN explicit QUmlMessageEvent(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

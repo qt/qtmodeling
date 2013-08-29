@@ -39,75 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlstructuralfeatureaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlStructuralFeature>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlStructuralFeatureAction
-
-    \inmodule QtUml
-
-    \brief StructuralFeatureAction is an abstract class for all structural feature actions.
- */
-
-QUmlStructuralFeatureAction::QUmlStructuralFeatureAction() :
-    _object(0),
-    _structuralFeature(0)
+QUmlStructuralFeatureAction::QUmlStructuralFeatureAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("structuralFeature", QVariant::fromValue((QUmlStructuralFeature *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the input pin from which the object whose structural feature is to be read or written is obtained.
- */
 QUmlInputPin *QUmlStructuralFeatureAction::object() const
 {
-    // This is a read-write association end
-
-    return _object;
+    return reinterpret_cast<QUmlInputPin *>(_object);
 }
 
 void QUmlStructuralFeatureAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    if (_object != object) {
-        // Adjust subsetted properties
-        removeInput(_object);
-
-        _object = object;
-
-        // Adjust subsetted properties
-        if (object) {
-            addInput(object);
-        }
-    }
+    UmlStructuralFeatureAction::setObject(object);
 }
 
-/*!
-    Structural feature to be read.
- */
 QUmlStructuralFeature *QUmlStructuralFeatureAction::structuralFeature() const
 {
-    // This is a read-write association end
-
-    return _structuralFeature;
+    return reinterpret_cast<QUmlStructuralFeature *>(_structuralFeature);
 }
 
 void QUmlStructuralFeatureAction::setStructuralFeature(QUmlStructuralFeature *structuralFeature)
 {
-    // This is a read-write association end
-
-    if (_structuralFeature != structuralFeature) {
-        _structuralFeature = structuralFeature;
-    }
+    UmlStructuralFeatureAction::setStructuralFeature(structuralFeature);
 }
 
 QT_END_NAMESPACE

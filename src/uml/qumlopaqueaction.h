@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlopaqueaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,30 +55,30 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlOpaqueAction : public QUmlAction
+class Q_UML_EXPORT QUmlOpaqueAction : public QObject, public UmlOpaqueAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QString> body READ body)
+    Q_PROPERTY(QSet<QUmlInputPin *> inputValue READ inputValue)
+    Q_PROPERTY(QList<QString> language READ language)
+    Q_PROPERTY(QSet<QUmlOutputPin *> outputValue READ outputValue)
+
 public:
-    QUmlOpaqueAction();
+    Q_INVOKABLE explicit QUmlOpaqueAction(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QString> body() const;
-    void addBody(QString body);
-    void removeBody(QString body);
-    const QSet<QUmlInputPin *> inputValue() const;
-    void addInputValue(QUmlInputPin *inputValue);
-    void removeInputValue(QUmlInputPin *inputValue);
-    const QList<QString> language() const;
-    void addLanguage(QString language);
-    void removeLanguage(QString language);
-    const QSet<QUmlOutputPin *> outputValue() const;
-    void addOutputValue(QUmlOutputPin *outputValue);
-    void removeOutputValue(QUmlOutputPin *outputValue);
-
-protected:
-    QList<QString> _body;
-    QSet<QUmlInputPin *> _inputValue;
-    QList<QString> _language;
-    QSet<QUmlOutputPin *> _outputValue;
+    Q_INVOKABLE const QList<QString> body() const;
+    Q_INVOKABLE void addBody(QString body);
+    Q_INVOKABLE void removeBody(QString body);
+    Q_INVOKABLE const QSet<QUmlInputPin *> inputValue() const;
+    Q_INVOKABLE void addInputValue(UmlInputPin *inputValue);
+    Q_INVOKABLE void removeInputValue(UmlInputPin *inputValue);
+    Q_INVOKABLE const QList<QString> language() const;
+    Q_INVOKABLE void addLanguage(QString language);
+    Q_INVOKABLE void removeLanguage(QString language);
+    Q_INVOKABLE const QSet<QUmlOutputPin *> outputValue() const;
+    Q_INVOKABLE void addOutputValue(UmlOutputPin *outputValue);
+    Q_INVOKABLE void removeOutputValue(UmlOutputPin *outputValue);
 };
 
 QT_END_NAMESPACE

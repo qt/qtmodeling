@@ -39,98 +39,47 @@
 **
 ****************************************************************************/
 #include "qumlpseudostate.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlStateMachine>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlPseudostate
-
-    \inmodule QtUml
-
-    \brief A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
- */
-
-QUmlPseudostate::QUmlPseudostate() :
-    _kind(QtUml::PseudostateKindInitial),
-    _state(0),
-    _stateMachine(0)
+QUmlPseudostate::QUmlPseudostate(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("kind", QVariant::fromValue(QtUml::PseudostateKindInitial));
-    d_ptr->object.setProperty("state", QVariant::fromValue((QUmlState *)(0)));
-    d_ptr->object.setProperty("stateMachine", QVariant::fromValue((QUmlStateMachine *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.
- */
 QtUml::PseudostateKind QUmlPseudostate::kind() const
 {
-    // This is a read-write property
-
     return _kind;
 }
 
 void QUmlPseudostate::setKind(QtUml::PseudostateKind kind)
 {
-    // This is a read-write property
-
-    if (_kind != kind) {
-        _kind = kind;
-    }
+    UmlPseudostate::setKind(kind);
 }
 
-/*!
-    The State that owns this pseudostate and in which it appears.
- */
 QUmlState *QUmlPseudostate::state() const
 {
-    // This is a read-write association end
-
-    return _state;
+    return reinterpret_cast<QUmlState *>(_state);
 }
 
 void QUmlPseudostate::setState(QUmlState *state)
 {
-    // This is a read-write association end
-
-    if (_state != state) {
-        // Adjust subsetted properties
-
-        _state = state;
-
-        // Adjust subsetted properties
-        setNamespace(state);
-    }
+    UmlPseudostate::setState(state);
 }
 
-/*!
-    The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.
- */
 QUmlStateMachine *QUmlPseudostate::stateMachine() const
 {
-    // This is a read-write association end
-
-    return _stateMachine;
+    return reinterpret_cast<QUmlStateMachine *>(_stateMachine);
 }
 
 void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
 {
-    // This is a read-write association end
-
-    if (_stateMachine != stateMachine) {
-        // Adjust subsetted properties
-
-        _stateMachine = stateMachine;
-
-        // Adjust subsetted properties
-        setNamespace(stateMachine);
-    }
+    UmlPseudostate::setStateMachine(stateMachine);
 }
 
 QT_END_NAMESPACE

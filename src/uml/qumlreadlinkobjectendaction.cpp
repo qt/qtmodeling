@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlreadlinkobjectendaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
@@ -47,97 +46,41 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReadLinkObjectEndAction
-
-    \inmodule QtUml
-
-    \brief A read link object end action is an action that retrieves an end object from a link object.
- */
-
-QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction() :
-    _end(0),
-    _object(0),
-    _result(0)
+QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("end", QVariant::fromValue((QUmlProperty *)(0)));
-    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Link end to be read.
- */
 QUmlProperty *QUmlReadLinkObjectEndAction::end() const
 {
-    // This is a read-write association end
-
-    return _end;
+    return reinterpret_cast<QUmlProperty *>(_end);
 }
 
 void QUmlReadLinkObjectEndAction::setEnd(QUmlProperty *end)
 {
-    // This is a read-write association end
-
-    if (_end != end) {
-        _end = end;
-    }
+    UmlReadLinkObjectEndAction::setEnd(end);
 }
 
-/*!
-    Gives the input pin from which the link object is obtained.
- */
 QUmlInputPin *QUmlReadLinkObjectEndAction::object() const
 {
-    // This is a read-write association end
-
-    return _object;
+    return reinterpret_cast<QUmlInputPin *>(_object);
 }
 
 void QUmlReadLinkObjectEndAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    if (_object != object) {
-        // Adjust subsetted properties
-        removeInput(_object);
-
-        _object = object;
-
-        // Adjust subsetted properties
-        if (object) {
-            addInput(object);
-        }
-    }
+    UmlReadLinkObjectEndAction::setObject(object);
 }
 
-/*!
-    Pin where the result value is placed.
- */
 QUmlOutputPin *QUmlReadLinkObjectEndAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlReadLinkObjectEndAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlReadLinkObjectEndAction::setResult(result);
 }
 
 QT_END_NAMESPACE

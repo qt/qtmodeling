@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAbstraction>
+#include <QtCore/QObject>
+#include "private/umlmanifestation_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlPackageableElement;
 
-class Q_UML_EXPORT QUmlManifestation : public QUmlAbstraction
+class Q_UML_EXPORT QUmlManifestation : public QObject, public UmlManifestation
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlPackageableElement * utilizedElement READ utilizedElement)
+
 public:
-    QUmlManifestation();
+    Q_INVOKABLE explicit QUmlManifestation(QObject *parent = 0);
 
     // Owned attributes
-    QUmlPackageableElement *utilizedElement() const;
-    void setUtilizedElement(QUmlPackageableElement *utilizedElement);
-
-protected:
-    QUmlPackageableElement *_utilizedElement;
+    Q_INVOKABLE QUmlPackageableElement *utilizedElement() const;
+    Q_INVOKABLE void setUtilizedElement(QUmlPackageableElement *utilizedElement);
 };
 
 QT_END_NAMESPACE

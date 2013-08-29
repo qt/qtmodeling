@@ -39,116 +39,57 @@
 **
 ****************************************************************************/
 #include "qumlcombinedfragment.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlGate>
 #include <QtUml/QUmlInteractionOperand>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCombinedFragment
-
-    \inmodule QtUml
-
-    \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
- */
-
-QUmlCombinedFragment::QUmlCombinedFragment() :
-    _interactionOperator(QtUml::InteractionOperatorKindSeq)
+QUmlCombinedFragment::QUmlCombinedFragment(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("cfragmentGate", QVariant::fromValue(&_cfragmentGate));
-    d_ptr->object.setProperty("interactionOperator", QVariant::fromValue(QtUml::InteractionOperatorKindSeq));
-    d_ptr->object.setProperty("operand", QVariant::fromValue(&_operand));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the gates that form the interface between this CombinedFragment and its surroundings
- */
 const QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGate() const
 {
-    // This is a read-write association end
-
-    return _cfragmentGate;
+    return *(reinterpret_cast<const QSet<QUmlGate *> *>(&_cfragmentGate));
 }
 
-void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
+void QUmlCombinedFragment::addCfragmentGate(UmlGate *cfragmentGate)
 {
-    // This is a read-write association end
-
-    if (!_cfragmentGate.contains(cfragmentGate)) {
-        _cfragmentGate.insert(cfragmentGate);
-
-        // Adjust subsetted properties
-        addOwnedElement(cfragmentGate);
-    }
+    UmlCombinedFragment::addCfragmentGate(cfragmentGate);
 }
 
-void QUmlCombinedFragment::removeCfragmentGate(QUmlGate *cfragmentGate)
+void QUmlCombinedFragment::removeCfragmentGate(UmlGate *cfragmentGate)
 {
-    // This is a read-write association end
-
-    if (_cfragmentGate.contains(cfragmentGate)) {
-        _cfragmentGate.remove(cfragmentGate);
-
-        // Adjust subsetted properties
-        removeOwnedElement(cfragmentGate);
-    }
+    UmlCombinedFragment::removeCfragmentGate(cfragmentGate);
 }
 
-/*!
-    Specifies the operation which defines the semantics of this combination of InteractionFragments.
- */
 QtUml::InteractionOperatorKind QUmlCombinedFragment::interactionOperator() const
 {
-    // This is a read-write property
-
     return _interactionOperator;
 }
 
 void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
-    // This is a read-write property
-
-    if (_interactionOperator != interactionOperator) {
-        _interactionOperator = interactionOperator;
-    }
+    UmlCombinedFragment::setInteractionOperator(interactionOperator);
 }
 
-/*!
-    The set of operands of the combined fragment.
- */
 const QList<QUmlInteractionOperand *> QUmlCombinedFragment::operand() const
 {
-    // This is a read-write association end
-
-    return _operand;
+    return *(reinterpret_cast<const QList<QUmlInteractionOperand *> *>(&_operand));
 }
 
-void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
+void QUmlCombinedFragment::addOperand(UmlInteractionOperand *operand)
 {
-    // This is a read-write association end
-
-    if (!_operand.contains(operand)) {
-        _operand.append(operand);
-
-        // Adjust subsetted properties
-        addOwnedElement(operand);
-    }
+    UmlCombinedFragment::addOperand(operand);
 }
 
-void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
+void QUmlCombinedFragment::removeOperand(UmlInteractionOperand *operand)
 {
-    // This is a read-write association end
-
-    if (_operand.contains(operand)) {
-        _operand.removeAll(operand);
-
-        // Adjust subsetted properties
-        removeOwnedElement(operand);
-    }
+    UmlCombinedFragment::removeOperand(operand);
 }
 
 QT_END_NAMESPACE

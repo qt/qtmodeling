@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umldeploymenttarget_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,21 +55,20 @@ QT_MODULE(QtUml)
 class QUmlDeployment;
 class QUmlPackageableElement;
 
-class Q_UML_EXPORT QUmlDeploymentTarget : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlDeploymentTarget : public QObject, public UmlDeploymentTarget
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlPackageableElement *> deployedElement READ deployedElement)
+    Q_PROPERTY(QSet<QUmlDeployment *> deployment READ deployment)
+
 public:
-    Q_DECL_HIDDEN QUmlDeploymentTarget();
+    Q_DECL_HIDDEN explicit QUmlDeploymentTarget(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlPackageableElement *> deployedElement() const;
-    Q_DECL_HIDDEN void addDeployedElement(QUmlPackageableElement *deployedElement);
-    Q_DECL_HIDDEN void removeDeployedElement(QUmlPackageableElement *deployedElement);
-    const QSet<QUmlDeployment *> deployment() const;
-    void addDeployment(QUmlDeployment *deployment);
-    void removeDeployment(QUmlDeployment *deployment);
-
-protected:
-    QSet<QUmlDeployment *> _deployment;
+    Q_INVOKABLE const QSet<QUmlPackageableElement *> deployedElement() const;
+    Q_INVOKABLE const QSet<QUmlDeployment *> deployment() const;
+    Q_INVOKABLE void addDeployment(UmlDeployment *deployment);
+    Q_INVOKABLE void removeDeployment(UmlDeployment *deployment);
 };
 
 QT_END_NAMESPACE

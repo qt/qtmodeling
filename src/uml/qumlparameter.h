@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlMultiplicityElement>
-#include <QtUml/QUmlConnectableElement>
+#include <QtCore/QObject>
+#include "private/umlparameter_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -57,38 +57,39 @@ class QUmlOperation;
 class QUmlParameterSet;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlParameter : public QUmlMultiplicityElement, public QUmlConnectableElement
+class Q_UML_EXPORT QUmlParameter : public QObject, public UmlParameter
 {
+    Q_OBJECT
+    Q_PROPERTY(QString default_ READ default_)
+    Q_PROPERTY(QUmlValueSpecification * defaultValue READ defaultValue)
+    Q_PROPERTY(QtUml::ParameterDirectionKind direction READ direction)
+    Q_PROPERTY(QtUml::ParameterEffectKind effect READ effect)
+    Q_PROPERTY(bool isException READ isException)
+    Q_PROPERTY(bool isStream READ isStream)
+    Q_PROPERTY(QUmlOperation * operation READ operation)
+    Q_PROPERTY(QSet<QUmlParameterSet *> parameterSet READ parameterSet)
+
 public:
-    QUmlParameter();
+    Q_INVOKABLE explicit QUmlParameter(QObject *parent = 0);
 
     // Owned attributes
-    QString default_() const;
-    void setDefault(QString default_);
-    QUmlValueSpecification *defaultValue() const;
-    void setDefaultValue(QUmlValueSpecification *defaultValue);
-    QtUml::ParameterDirectionKind direction() const;
-    void setDirection(QtUml::ParameterDirectionKind direction);
-    QtUml::ParameterEffectKind effect() const;
-    void setEffect(QtUml::ParameterEffectKind effect);
-    bool isException() const;
-    void setException(bool isException);
-    bool isStream() const;
-    void setStream(bool isStream);
-    QUmlOperation *operation() const;
-    void setOperation(QUmlOperation *operation);
-    const QSet<QUmlParameterSet *> parameterSet() const;
-    void addParameterSet(QUmlParameterSet *parameterSet);
-    void removeParameterSet(QUmlParameterSet *parameterSet);
-
-protected:
-    QUmlValueSpecification *_defaultValue;
-    QtUml::ParameterDirectionKind _direction;
-    QtUml::ParameterEffectKind _effect;
-    bool _isException;
-    bool _isStream;
-    QUmlOperation *_operation;
-    QSet<QUmlParameterSet *> _parameterSet;
+    Q_INVOKABLE QString default_() const;
+    Q_INVOKABLE void setDefault(QString default_);
+    Q_INVOKABLE QUmlValueSpecification *defaultValue() const;
+    Q_INVOKABLE void setDefaultValue(QUmlValueSpecification *defaultValue);
+    Q_INVOKABLE QtUml::ParameterDirectionKind direction() const;
+    Q_INVOKABLE void setDirection(QtUml::ParameterDirectionKind direction);
+    Q_INVOKABLE QtUml::ParameterEffectKind effect() const;
+    Q_INVOKABLE void setEffect(QtUml::ParameterEffectKind effect);
+    Q_INVOKABLE bool isException() const;
+    Q_INVOKABLE void setException(bool isException);
+    Q_INVOKABLE bool isStream() const;
+    Q_INVOKABLE void setStream(bool isStream);
+    Q_INVOKABLE QUmlOperation *operation() const;
+    Q_INVOKABLE void setOperation(QUmlOperation *operation);
+    Q_INVOKABLE const QSet<QUmlParameterSet *> parameterSet() const;
+    Q_INVOKABLE void addParameterSet(UmlParameterSet *parameterSet);
+    Q_INVOKABLE void removeParameterSet(UmlParameterSet *parameterSet);
 };
 
 QT_END_NAMESPACE

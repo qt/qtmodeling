@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClassifier>
+#include <QtCore/QObject>
+#include "private/umlbehavioredclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,25 +55,25 @@ QT_MODULE(QtUml)
 class QUmlBehavior;
 class QUmlInterfaceRealization;
 
-class Q_UML_EXPORT QUmlBehavioredClassifier : public virtual QUmlClassifier
+class Q_UML_EXPORT QUmlBehavioredClassifier : public QObject, public UmlBehavioredClassifier
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlBehavior * classifierBehavior READ classifierBehavior)
+    Q_PROPERTY(QSet<QUmlInterfaceRealization *> interfaceRealization READ interfaceRealization)
+    Q_PROPERTY(QSet<QUmlBehavior *> ownedBehavior READ ownedBehavior)
+
 public:
-    Q_DECL_HIDDEN QUmlBehavioredClassifier();
+    Q_DECL_HIDDEN explicit QUmlBehavioredClassifier(QObject *parent = 0);
 
     // Owned attributes
-    QUmlBehavior *classifierBehavior() const;
-    void setClassifierBehavior(QUmlBehavior *classifierBehavior);
-    const QSet<QUmlInterfaceRealization *> interfaceRealization() const;
-    void addInterfaceRealization(QUmlInterfaceRealization *interfaceRealization);
-    void removeInterfaceRealization(QUmlInterfaceRealization *interfaceRealization);
-    const QSet<QUmlBehavior *> ownedBehavior() const;
-    void addOwnedBehavior(QUmlBehavior *ownedBehavior);
-    void removeOwnedBehavior(QUmlBehavior *ownedBehavior);
-
-protected:
-    QUmlBehavior *_classifierBehavior;
-    QSet<QUmlInterfaceRealization *> _interfaceRealization;
-    QSet<QUmlBehavior *> _ownedBehavior;
+    Q_INVOKABLE QUmlBehavior *classifierBehavior() const;
+    Q_INVOKABLE void setClassifierBehavior(QUmlBehavior *classifierBehavior);
+    Q_INVOKABLE const QSet<QUmlInterfaceRealization *> interfaceRealization() const;
+    Q_INVOKABLE void addInterfaceRealization(UmlInterfaceRealization *interfaceRealization);
+    Q_INVOKABLE void removeInterfaceRealization(UmlInterfaceRealization *interfaceRealization);
+    Q_INVOKABLE const QSet<QUmlBehavior *> ownedBehavior() const;
+    Q_INVOKABLE void addOwnedBehavior(UmlBehavior *ownedBehavior);
+    Q_INVOKABLE void removeOwnedBehavior(UmlBehavior *ownedBehavior);
 };
 
 QT_END_NAMESPACE

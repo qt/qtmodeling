@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlclearstructuralfeatureaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlClearStructuralFeatureAction
-
-    \inmodule QtUml
-
-    \brief A clear structural feature action is a structural feature action that removes all values of a structural feature.
- */
-
-QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction() :
-    _result(0)
+QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the output pin on which the result is put.
- */
 QUmlOutputPin *QUmlClearStructuralFeatureAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlClearStructuralFeatureAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlClearStructuralFeatureAction::setResult(result);
 }
 
 QT_END_NAMESPACE

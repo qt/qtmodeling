@@ -43,9 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlTemplateableElement>
-#include <QtUml/QUmlBehavioralFeature>
-#include <QtUml/QUmlParameterableElement>
+#include <QtCore/QObject>
+#include "private/umloperation_p.h"
 
 QT_BEGIN_HEADER
 
@@ -62,66 +61,66 @@ class QUmlParameter;
 class QUmlRedefinableElement;
 class QUmlType;
 
-class Q_UML_EXPORT QUmlOperation : public QUmlTemplateableElement, public QUmlBehavioralFeature, public QUmlParameterableElement
+class Q_UML_EXPORT QUmlOperation : public QObject, public UmlOperation
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlConstraint * bodyCondition READ bodyCondition)
+    Q_PROPERTY(QUmlClass * class_ READ class_)
+    Q_PROPERTY(QUmlDataType * datatype READ datatype)
+    Q_PROPERTY(QUmlInterface * interface_ READ interface_)
+    Q_PROPERTY(bool isOrdered READ isOrdered)
+    Q_PROPERTY(bool isQuery READ isQuery)
+    Q_PROPERTY(bool isUnique READ isUnique)
+    Q_PROPERTY(int lower READ lower)
+    Q_PROPERTY(QList<QUmlParameter *> ownedParameter READ ownedParameter)
+    Q_PROPERTY(QSet<QUmlConstraint *> postcondition READ postcondition)
+    Q_PROPERTY(QSet<QUmlConstraint *> precondition READ precondition)
+    Q_PROPERTY(QSet<QUmlType *> raisedException READ raisedException)
+    Q_PROPERTY(QSet<QUmlOperation *> redefinedOperation READ redefinedOperation)
+    Q_PROPERTY(QUmlOperationTemplateParameter * templateParameter READ templateParameter)
+    Q_PROPERTY(QUmlType * type READ type)
+    Q_PROPERTY(int upper READ upper)
+
 public:
-    QUmlOperation();
+    Q_INVOKABLE explicit QUmlOperation(QObject *parent = 0);
 
     // Owned attributes
-    QUmlConstraint *bodyCondition() const;
-    void setBodyCondition(QUmlConstraint *bodyCondition);
-    QUmlClass *class_() const;
-    void setClass(QUmlClass *class_);
-    QUmlDataType *datatype() const;
-    void setDatatype(QUmlDataType *datatype);
-    QUmlInterface *interface_() const;
-    void setInterface(QUmlInterface *interface_);
-    bool isOrdered() const;
-    Q_DECL_HIDDEN void setOrdered(bool isOrdered);
-    bool isQuery() const;
-    void setQuery(bool isQuery);
-    bool isUnique() const;
-    Q_DECL_HIDDEN void setUnique(bool isUnique);
-    int lower() const;
-    Q_DECL_HIDDEN void setLower(int lower);
-    const QList<QUmlParameter *> ownedParameter() const;
-    void addOwnedParameter(QUmlParameter *ownedParameter);
-    void removeOwnedParameter(QUmlParameter *ownedParameter);
-    const QSet<QUmlConstraint *> postcondition() const;
-    void addPostcondition(QUmlConstraint *postcondition);
-    void removePostcondition(QUmlConstraint *postcondition);
-    const QSet<QUmlConstraint *> precondition() const;
-    void addPrecondition(QUmlConstraint *precondition);
-    void removePrecondition(QUmlConstraint *precondition);
-    const QSet<QUmlType *> raisedException() const;
-    void addRaisedException(QUmlType *raisedException);
-    void removeRaisedException(QUmlType *raisedException);
-    const QSet<QUmlOperation *> redefinedOperation() const;
-    void addRedefinedOperation(QUmlOperation *redefinedOperation);
-    void removeRedefinedOperation(QUmlOperation *redefinedOperation);
-    QUmlOperationTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QUmlOperationTemplateParameter *templateParameter);
-    QUmlType *type() const;
-    Q_DECL_HIDDEN void setType(QUmlType *type);
-    int upper() const;
-    Q_DECL_HIDDEN void setUpper(int upper);
+    Q_INVOKABLE QUmlConstraint *bodyCondition() const;
+    Q_INVOKABLE void setBodyCondition(QUmlConstraint *bodyCondition);
+    Q_INVOKABLE QUmlClass *class_() const;
+    Q_INVOKABLE void setClass(QUmlClass *class_);
+    Q_INVOKABLE QUmlDataType *datatype() const;
+    Q_INVOKABLE void setDatatype(QUmlDataType *datatype);
+    Q_INVOKABLE QUmlInterface *interface_() const;
+    Q_INVOKABLE void setInterface(QUmlInterface *interface_);
+    Q_INVOKABLE bool isOrdered() const;
+    Q_INVOKABLE bool isQuery() const;
+    Q_INVOKABLE void setQuery(bool isQuery);
+    Q_INVOKABLE bool isUnique() const;
+    Q_INVOKABLE int lower() const;
+    Q_INVOKABLE const QList<QUmlParameter *> ownedParameter() const;
+    Q_INVOKABLE void addOwnedParameter(UmlParameter *ownedParameter);
+    Q_INVOKABLE void removeOwnedParameter(UmlParameter *ownedParameter);
+    Q_INVOKABLE const QSet<QUmlConstraint *> postcondition() const;
+    Q_INVOKABLE void addPostcondition(UmlConstraint *postcondition);
+    Q_INVOKABLE void removePostcondition(UmlConstraint *postcondition);
+    Q_INVOKABLE const QSet<QUmlConstraint *> precondition() const;
+    Q_INVOKABLE void addPrecondition(UmlConstraint *precondition);
+    Q_INVOKABLE void removePrecondition(UmlConstraint *precondition);
+    Q_INVOKABLE const QSet<QUmlType *> raisedException() const;
+    Q_INVOKABLE void addRaisedException(UmlType *raisedException);
+    Q_INVOKABLE void removeRaisedException(UmlType *raisedException);
+    Q_INVOKABLE const QSet<QUmlOperation *> redefinedOperation() const;
+    Q_INVOKABLE void addRedefinedOperation(UmlOperation *redefinedOperation);
+    Q_INVOKABLE void removeRedefinedOperation(UmlOperation *redefinedOperation);
+    Q_INVOKABLE QUmlOperationTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QUmlOperationTemplateParameter *templateParameter);
+    Q_INVOKABLE QUmlType *type() const;
+    Q_INVOKABLE int upper() const;
 
     // Operations
-    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-    QSet<QUmlParameter *> returnResult() const;
-
-protected:
-    QUmlConstraint *_bodyCondition;
-    QUmlClass *_class_;
-    QUmlDataType *_datatype;
-    QUmlInterface *_interface_;
-    bool _isQuery;
-    QList<QUmlParameter *> _ownedParameter;
-    QSet<QUmlConstraint *> _postcondition;
-    QSet<QUmlConstraint *> _precondition;
-    QSet<QUmlType *> _raisedException;
-    QSet<QUmlOperation *> _redefinedOperation;
-    QUmlOperationTemplateParameter *_templateParameter;
+    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+    Q_INVOKABLE QSet<QUmlParameter *> returnResult() const;
 };
 
 QT_END_NAMESPACE

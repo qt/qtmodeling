@@ -43,9 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlRedefinableElement>
-#include <QtUml/QUmlVertex>
+#include <QtCore/QObject>
+#include "private/umlstate_p.h"
 
 QT_BEGIN_HEADER
 
@@ -58,67 +57,68 @@ class QUmlClassifier;
 class QUmlConnectionPointReference;
 class QUmlConstraint;
 class QUmlPseudostate;
+class QUmlRedefinableElement;
 class QUmlRegion;
 class QUmlStateMachine;
 class QUmlTrigger;
 
-class Q_UML_EXPORT QUmlState : public QUmlNamespace, public QUmlRedefinableElement, public QUmlVertex
+class Q_UML_EXPORT QUmlState : public QObject, public UmlState
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlConnectionPointReference *> connection READ connection)
+    Q_PROPERTY(QSet<QUmlPseudostate *> connectionPoint READ connectionPoint)
+    Q_PROPERTY(QSet<QUmlTrigger *> deferrableTrigger READ deferrableTrigger)
+    Q_PROPERTY(QUmlBehavior * doActivity READ doActivity)
+    Q_PROPERTY(QUmlBehavior * entry READ entry)
+    Q_PROPERTY(QUmlBehavior * exit READ exit)
+    Q_PROPERTY(bool isComposite READ isComposite)
+    Q_PROPERTY(bool isOrthogonal READ isOrthogonal)
+    Q_PROPERTY(bool isSimple READ isSimple)
+    Q_PROPERTY(bool isSubmachineState READ isSubmachineState)
+    Q_PROPERTY(QUmlState * redefinedState READ redefinedState)
+    Q_PROPERTY(QUmlClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QSet<QUmlRegion *> region READ region)
+    Q_PROPERTY(QUmlConstraint * stateInvariant READ stateInvariant)
+    Q_PROPERTY(QUmlStateMachine * submachine READ submachine)
+
 public:
-    QUmlState();
+    Q_INVOKABLE explicit QUmlState(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlConnectionPointReference *> connection() const;
-    void addConnection(QUmlConnectionPointReference *connection);
-    void removeConnection(QUmlConnectionPointReference *connection);
-    const QSet<QUmlPseudostate *> connectionPoint() const;
-    void addConnectionPoint(QUmlPseudostate *connectionPoint);
-    void removeConnectionPoint(QUmlPseudostate *connectionPoint);
-    const QSet<QUmlTrigger *> deferrableTrigger() const;
-    void addDeferrableTrigger(QUmlTrigger *deferrableTrigger);
-    void removeDeferrableTrigger(QUmlTrigger *deferrableTrigger);
-    QUmlBehavior *doActivity() const;
-    void setDoActivity(QUmlBehavior *doActivity);
-    QUmlBehavior *entry() const;
-    void setEntry(QUmlBehavior *entry);
-    QUmlBehavior *exit() const;
-    void setExit(QUmlBehavior *exit);
-    bool isComposite() const;
-    Q_DECL_HIDDEN void setComposite(bool isComposite);
-    bool isOrthogonal() const;
-    Q_DECL_HIDDEN void setOrthogonal(bool isOrthogonal);
-    bool isSimple() const;
-    Q_DECL_HIDDEN void setSimple(bool isSimple);
-    bool isSubmachineState() const;
-    Q_DECL_HIDDEN void setSubmachineState(bool isSubmachineState);
-    QUmlState *redefinedState() const;
-    void setRedefinedState(QUmlState *redefinedState);
-    QUmlClassifier *redefinitionContext() const;
-    Q_DECL_HIDDEN void setRedefinitionContext(QUmlClassifier *redefinitionContext);
-    const QSet<QUmlRegion *> region() const;
-    void addRegion(QUmlRegion *region);
-    void removeRegion(QUmlRegion *region);
-    QUmlConstraint *stateInvariant() const;
-    void setStateInvariant(QUmlConstraint *stateInvariant);
-    QUmlStateMachine *submachine() const;
-    void setSubmachine(QUmlStateMachine *submachine);
+    Q_INVOKABLE const QSet<QUmlConnectionPointReference *> connection() const;
+    Q_INVOKABLE void addConnection(UmlConnectionPointReference *connection);
+    Q_INVOKABLE void removeConnection(UmlConnectionPointReference *connection);
+    Q_INVOKABLE const QSet<QUmlPseudostate *> connectionPoint() const;
+    Q_INVOKABLE void addConnectionPoint(UmlPseudostate *connectionPoint);
+    Q_INVOKABLE void removeConnectionPoint(UmlPseudostate *connectionPoint);
+    Q_INVOKABLE const QSet<QUmlTrigger *> deferrableTrigger() const;
+    Q_INVOKABLE void addDeferrableTrigger(UmlTrigger *deferrableTrigger);
+    Q_INVOKABLE void removeDeferrableTrigger(UmlTrigger *deferrableTrigger);
+    Q_INVOKABLE QUmlBehavior *doActivity() const;
+    Q_INVOKABLE void setDoActivity(QUmlBehavior *doActivity);
+    Q_INVOKABLE QUmlBehavior *entry() const;
+    Q_INVOKABLE void setEntry(QUmlBehavior *entry);
+    Q_INVOKABLE QUmlBehavior *exit() const;
+    Q_INVOKABLE void setExit(QUmlBehavior *exit);
+    Q_INVOKABLE bool isComposite() const;
+    Q_INVOKABLE bool isOrthogonal() const;
+    Q_INVOKABLE bool isSimple() const;
+    Q_INVOKABLE bool isSubmachineState() const;
+    Q_INVOKABLE QUmlState *redefinedState() const;
+    Q_INVOKABLE void setRedefinedState(QUmlState *redefinedState);
+    Q_INVOKABLE QUmlClassifier *redefinitionContext() const;
+    Q_INVOKABLE const QSet<QUmlRegion *> region() const;
+    Q_INVOKABLE void addRegion(UmlRegion *region);
+    Q_INVOKABLE void removeRegion(UmlRegion *region);
+    Q_INVOKABLE QUmlConstraint *stateInvariant() const;
+    Q_INVOKABLE void setStateInvariant(QUmlConstraint *stateInvariant);
+    Q_INVOKABLE QUmlStateMachine *submachine() const;
+    Q_INVOKABLE void setSubmachine(QUmlStateMachine *submachine);
 
     // Operations
-    QUmlStateMachine *containingStateMachine() const;
-    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-    bool isRedefinitionContextValid(QUmlState *redefined) const;
-
-protected:
-    QSet<QUmlConnectionPointReference *> _connection;
-    QSet<QUmlPseudostate *> _connectionPoint;
-    QSet<QUmlTrigger *> _deferrableTrigger;
-    QUmlBehavior *_doActivity;
-    QUmlBehavior *_entry;
-    QUmlBehavior *_exit;
-    QUmlState *_redefinedState;
-    QSet<QUmlRegion *> _region;
-    QUmlConstraint *_stateInvariant;
-    QUmlStateMachine *_submachine;
+    Q_INVOKABLE QUmlStateMachine *containingStateMachine() const;
+    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+    Q_INVOKABLE bool isRedefinitionContextValid(QUmlState *redefined) const;
 };
 
 QT_END_NAMESPACE

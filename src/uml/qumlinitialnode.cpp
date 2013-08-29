@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlinitialnode.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInitialNode
-
-    \inmodule QtUml
-
-    \brief An initial node is a control node at which flow starts when the activity is invoked.
- */
-
-QUmlInitialNode::QUmlInitialNode()
+QUmlInitialNode::QUmlInitialNode(QObject *parent) :
+    QObject(parent)
 {
 }
 

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDependency>
+#include <QtCore/QObject>
+#include "private/umlusage_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlUsage : public QUmlDependency
+class Q_UML_EXPORT QUmlUsage : public QObject, public UmlUsage
 {
-public:
-    QUmlUsage();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlUsage(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlPackageableElement>
+#include <QtCore/QObject>
+#include "private/umlgeneralizationset_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,27 +55,27 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlGeneralization;
 
-class Q_UML_EXPORT QUmlGeneralizationSet : public QUmlPackageableElement
+class Q_UML_EXPORT QUmlGeneralizationSet : public QObject, public UmlGeneralizationSet
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlGeneralization *> generalization READ generalization)
+    Q_PROPERTY(bool isCovering READ isCovering)
+    Q_PROPERTY(bool isDisjoint READ isDisjoint)
+    Q_PROPERTY(QUmlClassifier * powertype READ powertype)
+
 public:
-    QUmlGeneralizationSet();
+    Q_INVOKABLE explicit QUmlGeneralizationSet(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlGeneralization *> generalization() const;
-    void addGeneralization(QUmlGeneralization *generalization);
-    void removeGeneralization(QUmlGeneralization *generalization);
-    bool isCovering() const;
-    void setCovering(bool isCovering);
-    bool isDisjoint() const;
-    void setDisjoint(bool isDisjoint);
-    QUmlClassifier *powertype() const;
-    void setPowertype(QUmlClassifier *powertype);
-
-protected:
-    QSet<QUmlGeneralization *> _generalization;
-    bool _isCovering;
-    bool _isDisjoint;
-    QUmlClassifier *_powertype;
+    Q_INVOKABLE const QSet<QUmlGeneralization *> generalization() const;
+    Q_INVOKABLE void addGeneralization(UmlGeneralization *generalization);
+    Q_INVOKABLE void removeGeneralization(UmlGeneralization *generalization);
+    Q_INVOKABLE bool isCovering() const;
+    Q_INVOKABLE void setCovering(bool isCovering);
+    Q_INVOKABLE bool isDisjoint() const;
+    Q_INVOKABLE void setDisjoint(bool isDisjoint);
+    Q_INVOKABLE QUmlClassifier *powertype() const;
+    Q_INVOKABLE void setPowertype(QUmlClassifier *powertype);
 };
 
 QT_END_NAMESPACE

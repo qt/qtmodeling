@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlactivityedge.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityGroup>
@@ -51,314 +50,116 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlActivityEdge
-
-    \inmodule QtUml
-
-    \brief Activity edges can be contained in interruptible regions.An activity edge is an abstract class for directed connections between two activity nodes.
- */
-
-QUmlActivityEdge::QUmlActivityEdge() :
-    _activity(0),
-    _guard(0),
-    _inStructuredNode(0),
-    _interrupts(0),
-    _source(0),
-    _target(0),
-    _weight(0)
+QUmlActivityEdge::QUmlActivityEdge(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("activity", QVariant::fromValue((QUmlActivity *)(0)));
-    d_ptr->object.setProperty("guard", QVariant::fromValue((QUmlValueSpecification *)(0)));
-    d_ptr->object.setProperty("inGroup", QVariant::fromValue(&_inGroup));
-    d_ptr->object.setProperty("inPartition", QVariant::fromValue(&_inPartition));
-    d_ptr->object.setProperty("inStructuredNode", QVariant::fromValue((QUmlStructuredActivityNode *)(0)));
-    d_ptr->object.setProperty("interrupts", QVariant::fromValue((QUmlInterruptibleActivityRegion *)(0)));
-    d_ptr->object.setProperty("redefinedEdge", QVariant::fromValue(&_redefinedEdge));
-    d_ptr->object.setProperty("source", QVariant::fromValue((QUmlActivityNode *)(0)));
-    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlActivityNode *)(0)));
-    d_ptr->object.setProperty("weight", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Activity containing the edge.
- */
 QUmlActivity *QUmlActivityEdge::activity() const
 {
-    // This is a read-write association end
-
-    return _activity;
+    return reinterpret_cast<QUmlActivity *>(_activity);
 }
 
 void QUmlActivityEdge::setActivity(QUmlActivity *activity)
 {
-    // This is a read-write association end
-
-    if (_activity != activity) {
-        // Adjust subsetted properties
-
-        _activity = activity;
-
-        // Adjust subsetted properties
-        setOwner(activity);
-    }
+    UmlActivityEdge::setActivity(activity);
 }
 
-/*!
-    Specification evaluated at runtime to determine if the edge can be traversed.
- */
 QUmlValueSpecification *QUmlActivityEdge::guard() const
 {
-    // This is a read-write association end
-
-    return _guard;
+    return reinterpret_cast<QUmlValueSpecification *>(_guard);
 }
 
 void QUmlActivityEdge::setGuard(QUmlValueSpecification *guard)
 {
-    // This is a read-write association end
-
-    if (_guard != guard) {
-        // Adjust subsetted properties
-        removeOwnedElement(_guard);
-
-        _guard = guard;
-
-        // Adjust subsetted properties
-        if (guard) {
-            addOwnedElement(guard);
-        }
-    }
+    UmlActivityEdge::setGuard(guard);
 }
 
-/*!
-    Groups containing the edge.
- */
 const QSet<QUmlActivityGroup *> QUmlActivityEdge::inGroup() const
 {
-    // This is a read-only derived union association end
-
-    return _inGroup;
+    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_inGroup));
 }
 
-void QUmlActivityEdge::addInGroup(QUmlActivityGroup *inGroup)
-{
-    // This is a read-only derived union association end
-
-    if (!_inGroup.contains(inGroup)) {
-        _inGroup.insert(inGroup);
-
-        // Adjust opposite properties
-        if (inGroup) {
-            inGroup->addContainedEdge(this);
-        }
-    }
-}
-
-void QUmlActivityEdge::removeInGroup(QUmlActivityGroup *inGroup)
-{
-    // This is a read-only derived union association end
-
-    if (_inGroup.contains(inGroup)) {
-        _inGroup.remove(inGroup);
-
-        // Adjust opposite properties
-        if (inGroup) {
-            inGroup->removeContainedEdge(this);
-        }
-    }
-}
-
-/*!
-    Partitions containing the edge.
- */
 const QSet<QUmlActivityPartition *> QUmlActivityEdge::inPartition() const
 {
-    // This is a read-write association end
-
-    return _inPartition;
+    return *(reinterpret_cast<const QSet<QUmlActivityPartition *> *>(&_inPartition));
 }
 
-void QUmlActivityEdge::addInPartition(QUmlActivityPartition *inPartition)
+void QUmlActivityEdge::addInPartition(UmlActivityPartition *inPartition)
 {
-    // This is a read-write association end
-
-    if (!_inPartition.contains(inPartition)) {
-        _inPartition.insert(inPartition);
-
-        // Adjust subsetted properties
-        addInGroup(inPartition);
-
-        // Adjust opposite properties
-        if (inPartition) {
-            inPartition->addEdge(this);
-        }
-    }
+    UmlActivityEdge::addInPartition(inPartition);
 }
 
-void QUmlActivityEdge::removeInPartition(QUmlActivityPartition *inPartition)
+void QUmlActivityEdge::removeInPartition(UmlActivityPartition *inPartition)
 {
-    // This is a read-write association end
-
-    if (_inPartition.contains(inPartition)) {
-        _inPartition.remove(inPartition);
-
-        // Adjust subsetted properties
-        removeInGroup(inPartition);
-
-        // Adjust opposite properties
-        if (inPartition) {
-            inPartition->removeEdge(this);
-        }
-    }
+    UmlActivityEdge::removeInPartition(inPartition);
 }
 
-/*!
-    Structured activity node containing the edge.
- */
 QUmlStructuredActivityNode *QUmlActivityEdge::inStructuredNode() const
 {
-    // This is a read-write association end
-
-    return _inStructuredNode;
+    return reinterpret_cast<QUmlStructuredActivityNode *>(_inStructuredNode);
 }
 
 void QUmlActivityEdge::setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode)
 {
-    // This is a read-write association end
-
-    if (_inStructuredNode != inStructuredNode) {
-        // Adjust subsetted properties
-        removeInGroup(_inStructuredNode);
-
-        _inStructuredNode = inStructuredNode;
-
-        // Adjust subsetted properties
-        if (inStructuredNode) {
-            addInGroup(inStructuredNode);
-        }
-        setOwner(inStructuredNode);
-    }
+    UmlActivityEdge::setInStructuredNode(inStructuredNode);
 }
 
-/*!
-    Region that the edge can interrupt.
- */
 QUmlInterruptibleActivityRegion *QUmlActivityEdge::interrupts() const
 {
-    // This is a read-write association end
-
-    return _interrupts;
+    return reinterpret_cast<QUmlInterruptibleActivityRegion *>(_interrupts);
 }
 
 void QUmlActivityEdge::setInterrupts(QUmlInterruptibleActivityRegion *interrupts)
 {
-    // This is a read-write association end
-
-    if (_interrupts != interrupts) {
-        _interrupts = interrupts;
-    }
+    UmlActivityEdge::setInterrupts(interrupts);
 }
 
-/*!
-    Inherited edges replaced by this edge in a specialization of the activity.
- */
 const QSet<QUmlActivityEdge *> QUmlActivityEdge::redefinedEdge() const
 {
-    // This is a read-write association end
-
-    return _redefinedEdge;
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_redefinedEdge));
 }
 
-void QUmlActivityEdge::addRedefinedEdge(QUmlActivityEdge *redefinedEdge)
+void QUmlActivityEdge::addRedefinedEdge(UmlActivityEdge *redefinedEdge)
 {
-    // This is a read-write association end
-
-    if (!_redefinedEdge.contains(redefinedEdge)) {
-        _redefinedEdge.insert(redefinedEdge);
-
-        // Adjust subsetted properties
-        addRedefinedElement(redefinedEdge);
-    }
+    UmlActivityEdge::addRedefinedEdge(redefinedEdge);
 }
 
-void QUmlActivityEdge::removeRedefinedEdge(QUmlActivityEdge *redefinedEdge)
+void QUmlActivityEdge::removeRedefinedEdge(UmlActivityEdge *redefinedEdge)
 {
-    // This is a read-write association end
-
-    if (_redefinedEdge.contains(redefinedEdge)) {
-        _redefinedEdge.remove(redefinedEdge);
-
-        // Adjust subsetted properties
-        removeRedefinedElement(redefinedEdge);
-    }
+    UmlActivityEdge::removeRedefinedEdge(redefinedEdge);
 }
 
-/*!
-    Node from which tokens are taken when they traverse the edge.
- */
 QUmlActivityNode *QUmlActivityEdge::source() const
 {
-    // This is a read-write association end
-
-    return _source;
+    return reinterpret_cast<QUmlActivityNode *>(_source);
 }
 
 void QUmlActivityEdge::setSource(QUmlActivityNode *source)
 {
-    // This is a read-write association end
-
-    if (_source != source) {
-        _source = source;
-    }
+    UmlActivityEdge::setSource(source);
 }
 
-/*!
-    Node to which tokens are put when they traverse the edge.
- */
 QUmlActivityNode *QUmlActivityEdge::target() const
 {
-    // This is a read-write association end
-
-    return _target;
+    return reinterpret_cast<QUmlActivityNode *>(_target);
 }
 
 void QUmlActivityEdge::setTarget(QUmlActivityNode *target)
 {
-    // This is a read-write association end
-
-    if (_target != target) {
-        _target = target;
-    }
+    UmlActivityEdge::setTarget(target);
 }
 
-/*!
-    The minimum number of tokens that must traverse the edge at the same time.
- */
 QUmlValueSpecification *QUmlActivityEdge::weight() const
 {
-    // This is a read-write association end
-
-    return _weight;
+    return reinterpret_cast<QUmlValueSpecification *>(_weight);
 }
 
 void QUmlActivityEdge::setWeight(QUmlValueSpecification *weight)
 {
-    // This is a read-write association end
-
-    if (_weight != weight) {
-        // Adjust subsetted properties
-        removeOwnedElement(_weight);
-
-        _weight = weight;
-
-        // Adjust subsetted properties
-        if (weight) {
-            addOwnedElement(weight);
-        }
-    }
+    UmlActivityEdge::setWeight(weight);
 }
 
 QT_END_NAMESPACE

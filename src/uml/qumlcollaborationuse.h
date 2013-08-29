@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlcollaborationuse_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,21 +55,21 @@ QT_MODULE(QtUml)
 class QUmlCollaboration;
 class QUmlDependency;
 
-class Q_UML_EXPORT QUmlCollaborationUse : public QUmlNamedElement
+class Q_UML_EXPORT QUmlCollaborationUse : public QObject, public UmlCollaborationUse
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlDependency *> roleBinding READ roleBinding)
+    Q_PROPERTY(QUmlCollaboration * type READ type)
+
 public:
-    QUmlCollaborationUse();
+    Q_INVOKABLE explicit QUmlCollaborationUse(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlDependency *> roleBinding() const;
-    void addRoleBinding(QUmlDependency *roleBinding);
-    void removeRoleBinding(QUmlDependency *roleBinding);
-    QUmlCollaboration *type() const;
-    void setType(QUmlCollaboration *type);
-
-protected:
-    QSet<QUmlDependency *> _roleBinding;
-    QUmlCollaboration *_type;
+    Q_INVOKABLE const QSet<QUmlDependency *> roleBinding() const;
+    Q_INVOKABLE void addRoleBinding(UmlDependency *roleBinding);
+    Q_INVOKABLE void removeRoleBinding(UmlDependency *roleBinding);
+    Q_INVOKABLE QUmlCollaboration *type() const;
+    Q_INVOKABLE void setType(QUmlCollaboration *type);
 };
 
 QT_END_NAMESPACE

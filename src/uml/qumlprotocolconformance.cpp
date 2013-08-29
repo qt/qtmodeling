@@ -39,83 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlprotocolconformance.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProtocolStateMachine>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlProtocolConformance
-
-    \inmodule QtUml
-
-    \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
- */
-
-QUmlProtocolConformance::QUmlProtocolConformance() :
-    _generalMachine(0),
-    _specificMachine(0)
+QUmlProtocolConformance::QUmlProtocolConformance(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("generalMachine", QVariant::fromValue((QUmlProtocolStateMachine *)(0)));
-    d_ptr->object.setProperty("specificMachine", QVariant::fromValue((QUmlProtocolStateMachine *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the protocol state machine to which the specific state machine conforms.
- */
 QUmlProtocolStateMachine *QUmlProtocolConformance::generalMachine() const
 {
-    // This is a read-write association end
-
-    return _generalMachine;
+    return reinterpret_cast<QUmlProtocolStateMachine *>(_generalMachine);
 }
 
 void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *generalMachine)
 {
-    // This is a read-write association end
-
-    if (_generalMachine != generalMachine) {
-        // Adjust subsetted properties
-        removeTarget(_generalMachine);
-
-        _generalMachine = generalMachine;
-
-        // Adjust subsetted properties
-        if (generalMachine) {
-            addTarget(generalMachine);
-        }
-    }
+    UmlProtocolConformance::setGeneralMachine(generalMachine);
 }
 
-/*!
-    Specifies the state machine which conforms to the general state machine.
- */
 QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
 {
-    // This is a read-write association end
-
-    return _specificMachine;
+    return reinterpret_cast<QUmlProtocolStateMachine *>(_specificMachine);
 }
 
 void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *specificMachine)
 {
-    // This is a read-write association end
-
-    if (_specificMachine != specificMachine) {
-        // Adjust subsetted properties
-        removeSource(_specificMachine);
-
-        _specificMachine = specificMachine;
-
-        // Adjust subsetted properties
-        setOwner(specificMachine);
-        if (specificMachine) {
-            addSource(specificMachine);
-        }
-    }
+    UmlProtocolConformance::setSpecificMachine(specificMachine);
 }
 
 QT_END_NAMESPACE

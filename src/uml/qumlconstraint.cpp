@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlconstraint.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamespace>
@@ -47,102 +46,46 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlConstraint
-
-    \inmodule QtUml
-
-    \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
- */
-
-QUmlConstraint::QUmlConstraint() :
-    _context(0),
-    _specification(0)
+QUmlConstraint::QUmlConstraint(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("constrainedElement", QVariant::fromValue(&_constrainedElement));
-    d_ptr->object.setProperty("context", QVariant::fromValue((QUmlNamespace *)(0)));
-    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The ordered set of Elements referenced by this Constraint.
- */
 const QList<QUmlElement *> QUmlConstraint::constrainedElement() const
 {
-    // This is a read-write association end
-
-    return _constrainedElement;
+    return *(reinterpret_cast<const QList<QUmlElement *> *>(&_constrainedElement));
 }
 
-void QUmlConstraint::addConstrainedElement(QUmlElement *constrainedElement)
+void QUmlConstraint::addConstrainedElement(UmlElement *constrainedElement)
 {
-    // This is a read-write association end
-
-    if (!_constrainedElement.contains(constrainedElement)) {
-        _constrainedElement.append(constrainedElement);
-    }
+    UmlConstraint::addConstrainedElement(constrainedElement);
 }
 
-void QUmlConstraint::removeConstrainedElement(QUmlElement *constrainedElement)
+void QUmlConstraint::removeConstrainedElement(UmlElement *constrainedElement)
 {
-    // This is a read-write association end
-
-    if (_constrainedElement.contains(constrainedElement)) {
-        _constrainedElement.removeAll(constrainedElement);
-    }
+    UmlConstraint::removeConstrainedElement(constrainedElement);
 }
 
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
 QUmlNamespace *QUmlConstraint::context() const
 {
-    // This is a read-write association end
-
-    return _context;
+    return reinterpret_cast<QUmlNamespace *>(_context);
 }
 
 void QUmlConstraint::setContext(QUmlNamespace *context)
 {
-    // This is a read-write association end
-
-    if (_context != context) {
-        // Adjust subsetted properties
-
-        _context = context;
-
-        // Adjust subsetted properties
-        setNamespace(context);
-    }
+    UmlConstraint::setContext(context);
 }
 
-/*!
-    A condition that must be true when evaluated in order for the constraint to be satisfied.
- */
 QUmlValueSpecification *QUmlConstraint::specification() const
 {
-    // This is a read-write association end
-
-    return _specification;
+    return reinterpret_cast<QUmlValueSpecification *>(_specification);
 }
 
 void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
 {
-    // This is a read-write association end
-
-    if (_specification != specification) {
-        // Adjust subsetted properties
-        removeOwnedElement(_specification);
-
-        _specification = specification;
-
-        // Adjust subsetted properties
-        if (specification) {
-            addOwnedElement(specification);
-        }
-    }
+    UmlConstraint::setSpecification(specification);
 }
 
 QT_END_NAMESPACE

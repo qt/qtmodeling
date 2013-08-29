@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlliteralstring.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLiteralString
-
-    \inmodule QtUml
-
-    \brief A literal string is a specification of a string value.
- */
-
-QUmlLiteralString::QUmlLiteralString()
+QUmlLiteralString::QUmlLiteralString(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("value", QVariant::fromValue(QString()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The specified String value.
- */
 QString QUmlLiteralString::value() const
 {
-    // This is a read-write property
-
     return _value;
 }
 
 void QUmlLiteralString::setValue(QString value)
 {
-    // This is a read-write property
-
-    if (_value != value) {
-        _value = value;
-    }
+    UmlLiteralString::setValue(value);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query isComputable() is redefined to be true.
- */
-bool QUmlLiteralString::isComputable(
-    ) const
+bool QUmlLiteralString::isComputable() const
 {
-    qWarning("QUmlLiteralString::isComputable(): to be implemented (operation)");
-
-    return bool ();
+    return UmlLiteralString::isComputable();
 }
 
-/*!
-    The query stringValue() gives the value.
- */
-QString QUmlLiteralString::stringValue(
-    ) const
+QString QUmlLiteralString::stringValue() const
 {
-    qWarning("QUmlLiteralString::stringValue(): to be implemented (operation)");
-
-    return QString ();
+    return UmlLiteralString::stringValue();
 }
 
 QT_END_NAMESPACE

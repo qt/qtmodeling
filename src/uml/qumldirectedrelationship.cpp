@@ -39,94 +39,26 @@
 **
 ****************************************************************************/
 #include "qumldirectedrelationship.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDirectedRelationship
-
-    \inmodule QtUml
-
-    \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
- */
-
-QUmlDirectedRelationship::QUmlDirectedRelationship()
+QUmlDirectedRelationship::QUmlDirectedRelationship(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("source", QVariant::fromValue(&_source));
-    d_ptr->object.setProperty("target", QVariant::fromValue(&_target));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the sources of the DirectedRelationship.
- */
 const QSet<QUmlElement *> QUmlDirectedRelationship::source() const
 {
-    // This is a read-only derived union association end
-
-    return _source;
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_source));
 }
 
-void QUmlDirectedRelationship::addSource(QUmlElement *source)
-{
-    // This is a read-only derived union association end
-
-    if (!_source.contains(source)) {
-        _source.insert(source);
-
-        // Adjust subsetted properties
-        addRelatedElement(source);
-    }
-}
-
-void QUmlDirectedRelationship::removeSource(QUmlElement *source)
-{
-    // This is a read-only derived union association end
-
-    if (_source.contains(source)) {
-        _source.remove(source);
-
-        // Adjust subsetted properties
-        removeRelatedElement(source);
-    }
-}
-
-/*!
-    Specifies the targets of the DirectedRelationship.
- */
 const QSet<QUmlElement *> QUmlDirectedRelationship::target() const
 {
-    // This is a read-only derived union association end
-
-    return _target;
-}
-
-void QUmlDirectedRelationship::addTarget(QUmlElement *target)
-{
-    // This is a read-only derived union association end
-
-    if (!_target.contains(target)) {
-        _target.insert(target);
-
-        // Adjust subsetted properties
-        addRelatedElement(target);
-    }
-}
-
-void QUmlDirectedRelationship::removeTarget(QUmlElement *target)
-{
-    // This is a read-only derived union association end
-
-    if (_target.contains(target)) {
-        _target.remove(target);
-
-        // Adjust subsetted properties
-        removeRelatedElement(target);
-    }
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_target));
 }
 
 QT_END_NAMESPACE

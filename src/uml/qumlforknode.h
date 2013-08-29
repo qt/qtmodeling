@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlControlNode>
+#include <QtCore/QObject>
+#include "private/umlforknode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlForkNode : public QUmlControlNode
+class Q_UML_EXPORT QUmlForkNode : public QObject, public UmlForkNode
 {
-public:
-    QUmlForkNode();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlForkNode(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

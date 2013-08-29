@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
+#include <QtCore/QObject>
+#include "private/umlprotocolconformance_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlProtocolStateMachine;
 
-class Q_UML_EXPORT QUmlProtocolConformance : public QUmlDirectedRelationship
+class Q_UML_EXPORT QUmlProtocolConformance : public QObject, public UmlProtocolConformance
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlProtocolStateMachine * generalMachine READ generalMachine)
+    Q_PROPERTY(QUmlProtocolStateMachine * specificMachine READ specificMachine)
+
 public:
-    QUmlProtocolConformance();
+    Q_INVOKABLE explicit QUmlProtocolConformance(QObject *parent = 0);
 
     // Owned attributes
-    QUmlProtocolStateMachine *generalMachine() const;
-    void setGeneralMachine(QUmlProtocolStateMachine *generalMachine);
-    QUmlProtocolStateMachine *specificMachine() const;
-    void setSpecificMachine(QUmlProtocolStateMachine *specificMachine);
-
-protected:
-    QUmlProtocolStateMachine *_generalMachine;
-    QUmlProtocolStateMachine *_specificMachine;
+    Q_INVOKABLE QUmlProtocolStateMachine *generalMachine() const;
+    Q_INVOKABLE void setGeneralMachine(QUmlProtocolStateMachine *generalMachine);
+    Q_INVOKABLE QUmlProtocolStateMachine *specificMachine() const;
+    Q_INVOKABLE void setSpecificMachine(QUmlProtocolStateMachine *specificMachine);
 };
 
 QT_END_NAMESPACE

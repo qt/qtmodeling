@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlValueSpecification>
+#include <QtCore/QObject>
+#include "private/umlexpression_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,21 +52,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlExpression : public QUmlValueSpecification
+class QUmlValueSpecification;
+
+class Q_UML_EXPORT QUmlExpression : public QObject, public UmlExpression
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlValueSpecification *> operand READ operand)
+    Q_PROPERTY(QString symbol READ symbol)
+
 public:
-    QUmlExpression();
+    Q_INVOKABLE explicit QUmlExpression(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlValueSpecification *> operand() const;
-    void addOperand(QUmlValueSpecification *operand);
-    void removeOperand(QUmlValueSpecification *operand);
-    QString symbol() const;
-    void setSymbol(QString symbol);
-
-protected:
-    QList<QUmlValueSpecification *> _operand;
-    QString _symbol;
+    Q_INVOKABLE const QList<QUmlValueSpecification *> operand() const;
+    Q_INVOKABLE void addOperand(UmlValueSpecification *operand);
+    Q_INVOKABLE void removeOperand(UmlValueSpecification *operand);
+    Q_INVOKABLE QString symbol() const;
+    Q_INVOKABLE void setSymbol(QString symbol);
 };
 
 QT_END_NAMESPACE

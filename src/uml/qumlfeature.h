@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRedefinableElement>
+#include <QtCore/QObject>
+#include "private/umlfeature_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,21 +54,19 @@ QT_MODULE(QtUml)
 
 class QUmlClassifier;
 
-class Q_UML_EXPORT QUmlFeature : public QUmlRedefinableElement
+class Q_UML_EXPORT QUmlFeature : public QObject, public UmlFeature
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlClassifier *> featuringClassifier READ featuringClassifier)
+    Q_PROPERTY(bool isStatic READ isStatic)
+
 public:
-    Q_DECL_HIDDEN QUmlFeature();
+    Q_DECL_HIDDEN explicit QUmlFeature(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlClassifier *> featuringClassifier() const;
-    Q_DECL_HIDDEN void addFeaturingClassifier(QUmlClassifier *featuringClassifier);
-    Q_DECL_HIDDEN void removeFeaturingClassifier(QUmlClassifier *featuringClassifier);
-    bool isStatic() const;
-    void setStatic(bool isStatic);
-
-protected:
-    QSet<QUmlClassifier *> _featuringClassifier;
-    bool _isStatic;
+    Q_INVOKABLE const QSet<QUmlClassifier *> featuringClassifier() const;
+    Q_INVOKABLE bool isStatic() const;
+    Q_INVOKABLE void setStatic(bool isStatic);
 };
 
 QT_END_NAMESPACE

@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRedefinableElement>
-#include <QtUml/QUmlNamespace>
+#include <QtCore/QObject>
+#include "private/umlregion_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,44 +53,45 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlClassifier;
+class QUmlRedefinableElement;
 class QUmlState;
 class QUmlStateMachine;
 class QUmlTransition;
 class QUmlVertex;
 
-class Q_UML_EXPORT QUmlRegion : public QUmlRedefinableElement, public QUmlNamespace
+class Q_UML_EXPORT QUmlRegion : public QObject, public UmlRegion
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlRegion * extendedRegion READ extendedRegion)
+    Q_PROPERTY(QUmlClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QUmlState * state READ state)
+    Q_PROPERTY(QUmlStateMachine * stateMachine READ stateMachine)
+    Q_PROPERTY(QSet<QUmlVertex *> subvertex READ subvertex)
+    Q_PROPERTY(QSet<QUmlTransition *> transition READ transition)
+
 public:
-    QUmlRegion();
+    Q_INVOKABLE explicit QUmlRegion(QObject *parent = 0);
 
     // Owned attributes
-    QUmlRegion *extendedRegion() const;
-    void setExtendedRegion(QUmlRegion *extendedRegion);
-    QUmlClassifier *redefinitionContext() const;
-    Q_DECL_HIDDEN void setRedefinitionContext(QUmlClassifier *redefinitionContext);
-    QUmlState *state() const;
-    void setState(QUmlState *state);
-    QUmlStateMachine *stateMachine() const;
-    void setStateMachine(QUmlStateMachine *stateMachine);
-    const QSet<QUmlVertex *> subvertex() const;
-    void addSubvertex(QUmlVertex *subvertex);
-    void removeSubvertex(QUmlVertex *subvertex);
-    const QSet<QUmlTransition *> transition() const;
-    void addTransition(QUmlTransition *transition);
-    void removeTransition(QUmlTransition *transition);
+    Q_INVOKABLE QUmlRegion *extendedRegion() const;
+    Q_INVOKABLE void setExtendedRegion(QUmlRegion *extendedRegion);
+    Q_INVOKABLE QUmlClassifier *redefinitionContext() const;
+    Q_INVOKABLE QUmlState *state() const;
+    Q_INVOKABLE void setState(QUmlState *state);
+    Q_INVOKABLE QUmlStateMachine *stateMachine() const;
+    Q_INVOKABLE void setStateMachine(QUmlStateMachine *stateMachine);
+    Q_INVOKABLE const QSet<QUmlVertex *> subvertex() const;
+    Q_INVOKABLE void addSubvertex(UmlVertex *subvertex);
+    Q_INVOKABLE void removeSubvertex(UmlVertex *subvertex);
+    Q_INVOKABLE const QSet<QUmlTransition *> transition() const;
+    Q_INVOKABLE void addTransition(UmlTransition *transition);
+    Q_INVOKABLE void removeTransition(UmlTransition *transition);
 
     // Operations
-    bool belongsToPSM() const;
-    QUmlStateMachine *containingStateMachine() const;
-    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-    bool isRedefinitionContextValid(QUmlRegion *redefined) const;
-
-protected:
-    QUmlRegion *_extendedRegion;
-    QUmlState *_state;
-    QUmlStateMachine *_stateMachine;
-    QSet<QUmlVertex *> _subvertex;
-    QSet<QUmlTransition *> _transition;
+    Q_INVOKABLE bool belongsToPSM() const;
+    Q_INVOKABLE QUmlStateMachine *containingStateMachine() const;
+    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+    Q_INVOKABLE bool isRedefinitionContextValid(QUmlRegion *redefined) const;
 };
 
 QT_END_NAMESPACE

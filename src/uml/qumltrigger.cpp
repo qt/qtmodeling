@@ -39,75 +39,42 @@
 **
 ****************************************************************************/
 #include "qumltrigger.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlEvent>
 #include <QtUml/QUmlPort>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTrigger
-
-    \inmodule QtUml
-
-    \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
- */
-
-QUmlTrigger::QUmlTrigger() :
-    _event(0)
+QUmlTrigger::QUmlTrigger(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("event", QVariant::fromValue((QUmlEvent *)(0)));
-    d_ptr->object.setProperty("port", QVariant::fromValue(&_port));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The event that causes the trigger.
- */
 QUmlEvent *QUmlTrigger::event() const
 {
-    // This is a read-write association end
-
-    return _event;
+    return reinterpret_cast<QUmlEvent *>(_event);
 }
 
 void QUmlTrigger::setEvent(QUmlEvent *event)
 {
-    // This is a read-write association end
-
-    if (_event != event) {
-        _event = event;
-    }
+    UmlTrigger::setEvent(event);
 }
 
-/*!
-    A optional port of the receiver object on which the behavioral feature is invoked.
- */
 const QSet<QUmlPort *> QUmlTrigger::port() const
 {
-    // This is a read-write association end
-
-    return _port;
+    return *(reinterpret_cast<const QSet<QUmlPort *> *>(&_port));
 }
 
-void QUmlTrigger::addPort(QUmlPort *port)
+void QUmlTrigger::addPort(UmlPort *port)
 {
-    // This is a read-write association end
-
-    if (!_port.contains(port)) {
-        _port.insert(port);
-    }
+    UmlTrigger::addPort(port);
 }
 
-void QUmlTrigger::removePort(QUmlPort *port)
+void QUmlTrigger::removePort(UmlPort *port)
 {
-    // This is a read-write association end
-
-    if (_port.contains(port)) {
-        _port.remove(port);
-    }
+    UmlTrigger::removePort(port);
 }
 
 QT_END_NAMESPACE

@@ -39,83 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlvaluespecificationaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlValueSpecificationAction
-
-    \inmodule QtUml
-
-    \brief A value specification action is an action that evaluates a value specification.
- */
-
-QUmlValueSpecificationAction::QUmlValueSpecificationAction() :
-    _result(0),
-    _value(0)
+QUmlValueSpecificationAction::QUmlValueSpecificationAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
-    d_ptr->object.setProperty("value", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the output pin on which the result is put.
- */
 QUmlOutputPin *QUmlValueSpecificationAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlValueSpecificationAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlValueSpecificationAction::setResult(result);
 }
 
-/*!
-    Value specification to be evaluated.
- */
 QUmlValueSpecification *QUmlValueSpecificationAction::value() const
 {
-    // This is a read-write association end
-
-    return _value;
+    return reinterpret_cast<QUmlValueSpecification *>(_value);
 }
 
 void QUmlValueSpecificationAction::setValue(QUmlValueSpecification *value)
 {
-    // This is a read-write association end
-
-    if (_value != value) {
-        // Adjust subsetted properties
-        removeOwnedElement(_value);
-
-        _value = value;
-
-        // Adjust subsetted properties
-        if (value) {
-            addOwnedElement(value);
-        }
-    }
+    UmlValueSpecificationAction::setValue(value);
 }
 
 QT_END_NAMESPACE

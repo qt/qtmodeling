@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlmanifestation.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlManifestation
-
-    \inmodule QtUml
-
-    \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
- */
-
-QUmlManifestation::QUmlManifestation() :
-    _utilizedElement(0)
+QUmlManifestation::QUmlManifestation(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("utilizedElement", QVariant::fromValue((QUmlPackageableElement *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The model element that is utilized in the manifestation in an Artifact.
- */
 QUmlPackageableElement *QUmlManifestation::utilizedElement() const
 {
-    // This is a read-write association end
-
-    return _utilizedElement;
+    return reinterpret_cast<QUmlPackageableElement *>(_utilizedElement);
 }
 
 void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedElement)
 {
-    // This is a read-write association end
-
-    if (_utilizedElement != utilizedElement) {
-        // Adjust subsetted properties
-        removeSupplier(_utilizedElement);
-
-        _utilizedElement = utilizedElement;
-
-        // Adjust subsetted properties
-        if (utilizedElement) {
-            addSupplier(utilizedElement);
-        }
-    }
+    UmlManifestation::setUtilizedElement(utilizedElement);
 }
 
 QT_END_NAMESPACE

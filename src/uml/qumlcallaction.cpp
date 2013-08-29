@@ -39,80 +39,41 @@
 **
 ****************************************************************************/
 #include "qumlcallaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCallAction
-
-    \inmodule QtUml
-
-    \brief CallAction is an abstract class for actions that invoke behavior and receive return values.
- */
-
-QUmlCallAction::QUmlCallAction() :
-    _isSynchronous(true)
+QUmlCallAction::QUmlCallAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isSynchronous", QVariant::fromValue(true));
-    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.
- */
 bool QUmlCallAction::isSynchronous() const
 {
-    // This is a read-write property
-
     return _isSynchronous;
 }
 
 void QUmlCallAction::setSynchronous(bool isSynchronous)
 {
-    // This is a read-write property
-
-    if (_isSynchronous != isSynchronous) {
-        _isSynchronous = isSynchronous;
-    }
+    UmlCallAction::setSynchronous(isSynchronous);
 }
 
-/*!
-    A list of output pins where the results of performing the invocation are placed.
- */
 const QList<QUmlOutputPin *> QUmlCallAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_result));
 }
 
-void QUmlCallAction::addResult(QUmlOutputPin *result)
+void QUmlCallAction::addResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (!_result.contains(result)) {
-        _result.append(result);
-
-        // Adjust subsetted properties
-        addOutput(result);
-    }
+    UmlCallAction::addResult(result);
 }
 
-void QUmlCallAction::removeResult(QUmlOutputPin *result)
+void QUmlCallAction::removeResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result.contains(result)) {
-        _result.removeAll(result);
-
-        // Adjust subsetted properties
-        removeOutput(result);
-    }
+    UmlCallAction::removeResult(result);
 }
 
 QT_END_NAMESPACE

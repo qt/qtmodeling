@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlOccurrenceSpecification>
+#include <QtCore/QObject>
+#include "private/umlexecutionoccurrencespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlExecutionSpecification;
 
-class Q_UML_EXPORT QUmlExecutionOccurrenceSpecification : public QUmlOccurrenceSpecification
+class Q_UML_EXPORT QUmlExecutionOccurrenceSpecification : public QObject, public UmlExecutionOccurrenceSpecification
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlExecutionSpecification * execution READ execution)
+
 public:
-    QUmlExecutionOccurrenceSpecification();
+    Q_INVOKABLE explicit QUmlExecutionOccurrenceSpecification(QObject *parent = 0);
 
     // Owned attributes
-    QUmlExecutionSpecification *execution() const;
-    void setExecution(QUmlExecutionSpecification *execution);
-
-protected:
-    QUmlExecutionSpecification *_execution;
+    Q_INVOKABLE QUmlExecutionSpecification *execution() const;
+    Q_INVOKABLE void setExecution(QUmlExecutionSpecification *execution);
 };
 
 QT_END_NAMESPACE

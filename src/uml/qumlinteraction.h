@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlBehavior>
-#include <QtUml/QUmlInteractionFragment>
+#include <QtCore/QObject>
+#include "private/umlinteraction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,37 +54,38 @@ QT_MODULE(QtUml)
 
 class QUmlAction;
 class QUmlGate;
+class QUmlInteractionFragment;
 class QUmlLifeline;
 class QUmlMessage;
 
-class Q_UML_EXPORT QUmlInteraction : public QUmlBehavior, public QUmlInteractionFragment
+class Q_UML_EXPORT QUmlInteraction : public QObject, public UmlInteraction
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlAction *> action READ action)
+    Q_PROPERTY(QSet<QUmlGate *> formalGate READ formalGate)
+    Q_PROPERTY(QList<QUmlInteractionFragment *> fragment READ fragment)
+    Q_PROPERTY(QSet<QUmlLifeline *> lifeline READ lifeline)
+    Q_PROPERTY(QSet<QUmlMessage *> message READ message)
+
 public:
-    QUmlInteraction();
+    Q_INVOKABLE explicit QUmlInteraction(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlAction *> action() const;
-    void addAction(QUmlAction *action);
-    void removeAction(QUmlAction *action);
-    const QSet<QUmlGate *> formalGate() const;
-    void addFormalGate(QUmlGate *formalGate);
-    void removeFormalGate(QUmlGate *formalGate);
-    const QList<QUmlInteractionFragment *> fragment() const;
-    void addFragment(QUmlInteractionFragment *fragment);
-    void removeFragment(QUmlInteractionFragment *fragment);
-    const QSet<QUmlLifeline *> lifeline() const;
-    void addLifeline(QUmlLifeline *lifeline);
-    void removeLifeline(QUmlLifeline *lifeline);
-    const QSet<QUmlMessage *> message() const;
-    void addMessage(QUmlMessage *message);
-    void removeMessage(QUmlMessage *message);
-
-protected:
-    QSet<QUmlAction *> _action;
-    QSet<QUmlGate *> _formalGate;
-    QList<QUmlInteractionFragment *> _fragment;
-    QSet<QUmlLifeline *> _lifeline;
-    QSet<QUmlMessage *> _message;
+    Q_INVOKABLE const QSet<QUmlAction *> action() const;
+    Q_INVOKABLE void addAction(UmlAction *action);
+    Q_INVOKABLE void removeAction(UmlAction *action);
+    Q_INVOKABLE const QSet<QUmlGate *> formalGate() const;
+    Q_INVOKABLE void addFormalGate(UmlGate *formalGate);
+    Q_INVOKABLE void removeFormalGate(UmlGate *formalGate);
+    Q_INVOKABLE const QList<QUmlInteractionFragment *> fragment() const;
+    Q_INVOKABLE void addFragment(UmlInteractionFragment *fragment);
+    Q_INVOKABLE void removeFragment(UmlInteractionFragment *fragment);
+    Q_INVOKABLE const QSet<QUmlLifeline *> lifeline() const;
+    Q_INVOKABLE void addLifeline(UmlLifeline *lifeline);
+    Q_INVOKABLE void removeLifeline(UmlLifeline *lifeline);
+    Q_INVOKABLE const QSet<QUmlMessage *> message() const;
+    Q_INVOKABLE void addMessage(UmlMessage *message);
+    Q_INVOKABLE void removeMessage(UmlMessage *message);
 };
 
 QT_END_NAMESPACE

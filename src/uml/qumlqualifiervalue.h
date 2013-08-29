@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umlqualifiervalue_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlQualifierValue : public QUmlElement
+class Q_UML_EXPORT QUmlQualifierValue : public QObject, public UmlQualifierValue
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlProperty * qualifier READ qualifier)
+    Q_PROPERTY(QUmlInputPin * value READ value)
+
 public:
-    QUmlQualifierValue();
+    Q_INVOKABLE explicit QUmlQualifierValue(QObject *parent = 0);
 
     // Owned attributes
-    QUmlProperty *qualifier() const;
-    void setQualifier(QUmlProperty *qualifier);
-    QUmlInputPin *value() const;
-    void setValue(QUmlInputPin *value);
-
-protected:
-    QUmlProperty *_qualifier;
-    QUmlInputPin *_value;
+    Q_INVOKABLE QUmlProperty *qualifier() const;
+    Q_INVOKABLE void setQualifier(QUmlProperty *qualifier);
+    Q_INVOKABLE QUmlInputPin *value() const;
+    Q_INVOKABLE void setValue(QUmlInputPin *value);
 };
 
 QT_END_NAMESPACE

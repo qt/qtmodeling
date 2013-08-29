@@ -39,133 +39,67 @@
 **
 ****************************************************************************/
 #include "qumlreclassifyobjectaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReclassifyObjectAction
-
-    \inmodule QtUml
-
-    \brief A reclassify object action is an action that changes which classifiers classify an object.
- */
-
-QUmlReclassifyObjectAction::QUmlReclassifyObjectAction() :
-    _isReplaceAll(false),
-    _object(0)
+QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isReplaceAll", QVariant::fromValue(false));
-    d_ptr->object.setProperty("newClassifier", QVariant::fromValue(&_newClassifier));
-    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("oldClassifier", QVariant::fromValue(&_oldClassifier));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies whether existing classifiers should be removed before adding the new classifiers.
- */
 bool QUmlReclassifyObjectAction::isReplaceAll() const
 {
-    // This is a read-write property
-
     return _isReplaceAll;
 }
 
 void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 {
-    // This is a read-write property
-
-    if (_isReplaceAll != isReplaceAll) {
-        _isReplaceAll = isReplaceAll;
-    }
+    UmlReclassifyObjectAction::setReplaceAll(isReplaceAll);
 }
 
-/*!
-    A set of classifiers to be added to the classifiers of the object.
- */
 const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifier() const
 {
-    // This is a read-write association end
-
-    return _newClassifier;
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_newClassifier));
 }
 
-void QUmlReclassifyObjectAction::addNewClassifier(QUmlClassifier *newClassifier)
+void QUmlReclassifyObjectAction::addNewClassifier(UmlClassifier *newClassifier)
 {
-    // This is a read-write association end
-
-    if (!_newClassifier.contains(newClassifier)) {
-        _newClassifier.insert(newClassifier);
-    }
+    UmlReclassifyObjectAction::addNewClassifier(newClassifier);
 }
 
-void QUmlReclassifyObjectAction::removeNewClassifier(QUmlClassifier *newClassifier)
+void QUmlReclassifyObjectAction::removeNewClassifier(UmlClassifier *newClassifier)
 {
-    // This is a read-write association end
-
-    if (_newClassifier.contains(newClassifier)) {
-        _newClassifier.remove(newClassifier);
-    }
+    UmlReclassifyObjectAction::removeNewClassifier(newClassifier);
 }
 
-/*!
-    Holds the object to be reclassified.
- */
 QUmlInputPin *QUmlReclassifyObjectAction::object() const
 {
-    // This is a read-write association end
-
-    return _object;
+    return reinterpret_cast<QUmlInputPin *>(_object);
 }
 
 void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    if (_object != object) {
-        // Adjust subsetted properties
-        removeInput(_object);
-
-        _object = object;
-
-        // Adjust subsetted properties
-        if (object) {
-            addInput(object);
-        }
-    }
+    UmlReclassifyObjectAction::setObject(object);
 }
 
-/*!
-    A set of classifiers to be removed from the classifiers of the object.
- */
 const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifier() const
 {
-    // This is a read-write association end
-
-    return _oldClassifier;
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_oldClassifier));
 }
 
-void QUmlReclassifyObjectAction::addOldClassifier(QUmlClassifier *oldClassifier)
+void QUmlReclassifyObjectAction::addOldClassifier(UmlClassifier *oldClassifier)
 {
-    // This is a read-write association end
-
-    if (!_oldClassifier.contains(oldClassifier)) {
-        _oldClassifier.insert(oldClassifier);
-    }
+    UmlReclassifyObjectAction::addOldClassifier(oldClassifier);
 }
 
-void QUmlReclassifyObjectAction::removeOldClassifier(QUmlClassifier *oldClassifier)
+void QUmlReclassifyObjectAction::removeOldClassifier(UmlClassifier *oldClassifier)
 {
-    // This is a read-write association end
-
-    if (_oldClassifier.contains(oldClassifier)) {
-        _oldClassifier.remove(oldClassifier);
-    }
+    UmlReclassifyObjectAction::removeOldClassifier(oldClassifier);
 }
 
 QT_END_NAMESPACE

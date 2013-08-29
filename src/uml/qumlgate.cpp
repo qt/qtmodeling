@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlgate.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlGate
-
-    \inmodule QtUml
-
-    \brief A gate is a connection point for relating a message outside an interaction fragment with a message inside the interaction fragment.
- */
-
-QUmlGate::QUmlGate()
+QUmlGate::QUmlGate(QObject *parent) :
+    QObject(parent)
 {
 }
 

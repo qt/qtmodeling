@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umlimage_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,23 +52,23 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlImage : public QUmlElement
+class Q_UML_EXPORT QUmlImage : public QObject, public UmlImage
 {
+    Q_OBJECT
+    Q_PROPERTY(QString content READ content)
+    Q_PROPERTY(QString format READ format)
+    Q_PROPERTY(QString location READ location)
+
 public:
-    QUmlImage();
+    Q_INVOKABLE explicit QUmlImage(QObject *parent = 0);
 
     // Owned attributes
-    QString content() const;
-    void setContent(QString content);
-    QString format() const;
-    void setFormat(QString format);
-    QString location() const;
-    void setLocation(QString location);
-
-protected:
-    QString _content;
-    QString _format;
-    QString _location;
+    Q_INVOKABLE QString content() const;
+    Q_INVOKABLE void setContent(QString content);
+    Q_INVOKABLE QString format() const;
+    Q_INVOKABLE void setFormat(QString format);
+    Q_INVOKABLE QString location() const;
+    Q_INVOKABLE void setLocation(QString location);
 };
 
 QT_END_NAMESPACE

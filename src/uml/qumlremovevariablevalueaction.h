@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlWriteVariableAction>
+#include <QtCore/QObject>
+#include "private/umlremovevariablevalueaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class Q_UML_EXPORT QUmlRemoveVariableValueAction : public QUmlWriteVariableAction
+class Q_UML_EXPORT QUmlRemoveVariableValueAction : public QObject, public UmlRemoveVariableValueAction
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isRemoveDuplicates READ isRemoveDuplicates)
+    Q_PROPERTY(QUmlInputPin * removeAt READ removeAt)
+
 public:
-    QUmlRemoveVariableValueAction();
+    Q_INVOKABLE explicit QUmlRemoveVariableValueAction(QObject *parent = 0);
 
     // Owned attributes
-    bool isRemoveDuplicates() const;
-    void setRemoveDuplicates(bool isRemoveDuplicates);
-    QUmlInputPin *removeAt() const;
-    void setRemoveAt(QUmlInputPin *removeAt);
-
-protected:
-    bool _isRemoveDuplicates;
-    QUmlInputPin *_removeAt;
+    Q_INVOKABLE bool isRemoveDuplicates() const;
+    Q_INVOKABLE void setRemoveDuplicates(bool isRemoveDuplicates);
+    Q_INVOKABLE QUmlInputPin *removeAt() const;
+    Q_INVOKABLE void setRemoveAt(QUmlInputPin *removeAt);
 };
 
 QT_END_NAMESPACE

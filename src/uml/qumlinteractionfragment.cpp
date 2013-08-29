@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlinteractionfragment.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlGeneralOrdering>
 #include <QtUml/QUmlInteraction>
@@ -48,144 +47,61 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInteractionFragment
-
-    \inmodule QtUml
-
-    \brief InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
- */
-
-QUmlInteractionFragment::QUmlInteractionFragment() :
-    _enclosingInteraction(0),
-    _enclosingOperand(0)
+QUmlInteractionFragment::QUmlInteractionFragment(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("covered", QVariant::fromValue(&_covered));
-    d_ptr->object.setProperty("enclosingInteraction", QVariant::fromValue((QUmlInteraction *)(0)));
-    d_ptr->object.setProperty("enclosingOperand", QVariant::fromValue((QUmlInteractionOperand *)(0)));
-    d_ptr->object.setProperty("generalOrdering", QVariant::fromValue(&_generalOrdering));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the Lifelines that the InteractionFragment involves.
- */
 const QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
 {
-    // This is a read-write association end
-
-    return _covered;
+    return *(reinterpret_cast<const QSet<QUmlLifeline *> *>(&_covered));
 }
 
-void QUmlInteractionFragment::addCovered(QUmlLifeline *covered)
+void QUmlInteractionFragment::addCovered(UmlLifeline *covered)
 {
-    // This is a read-write association end
-
-    if (!_covered.contains(covered)) {
-        _covered.insert(covered);
-
-        // Adjust opposite properties
-        if (covered) {
-            covered->addCoveredBy(this);
-        }
-    }
+    UmlInteractionFragment::addCovered(covered);
 }
 
-void QUmlInteractionFragment::removeCovered(QUmlLifeline *covered)
+void QUmlInteractionFragment::removeCovered(UmlLifeline *covered)
 {
-    // This is a read-write association end
-
-    if (_covered.contains(covered)) {
-        _covered.remove(covered);
-
-        // Adjust opposite properties
-        if (covered) {
-            covered->removeCoveredBy(this);
-        }
-    }
+    UmlInteractionFragment::removeCovered(covered);
 }
 
-/*!
-    The Interaction enclosing this InteractionFragment.
- */
 QUmlInteraction *QUmlInteractionFragment::enclosingInteraction() const
 {
-    // This is a read-write association end
-
-    return _enclosingInteraction;
+    return reinterpret_cast<QUmlInteraction *>(_enclosingInteraction);
 }
 
 void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosingInteraction)
 {
-    // This is a read-write association end
-
-    if (_enclosingInteraction != enclosingInteraction) {
-        // Adjust subsetted properties
-
-        _enclosingInteraction = enclosingInteraction;
-
-        // Adjust subsetted properties
-        setNamespace(enclosingInteraction);
-    }
+    UmlInteractionFragment::setEnclosingInteraction(enclosingInteraction);
 }
 
-/*!
-    The operand enclosing this InteractionFragment (they may nest recursively)
- */
 QUmlInteractionOperand *QUmlInteractionFragment::enclosingOperand() const
 {
-    // This is a read-write association end
-
-    return _enclosingOperand;
+    return reinterpret_cast<QUmlInteractionOperand *>(_enclosingOperand);
 }
 
 void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclosingOperand)
 {
-    // This is a read-write association end
-
-    if (_enclosingOperand != enclosingOperand) {
-        // Adjust subsetted properties
-
-        _enclosingOperand = enclosingOperand;
-
-        // Adjust subsetted properties
-        setNamespace(enclosingOperand);
-    }
+    UmlInteractionFragment::setEnclosingOperand(enclosingOperand);
 }
 
-/*!
-    The general ordering relationships contained in this fragment.
- */
 const QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrdering() const
 {
-    // This is a read-write association end
-
-    return _generalOrdering;
+    return *(reinterpret_cast<const QSet<QUmlGeneralOrdering *> *>(&_generalOrdering));
 }
 
-void QUmlInteractionFragment::addGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
+void QUmlInteractionFragment::addGeneralOrdering(UmlGeneralOrdering *generalOrdering)
 {
-    // This is a read-write association end
-
-    if (!_generalOrdering.contains(generalOrdering)) {
-        _generalOrdering.insert(generalOrdering);
-
-        // Adjust subsetted properties
-        addOwnedElement(generalOrdering);
-    }
+    UmlInteractionFragment::addGeneralOrdering(generalOrdering);
 }
 
-void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
+void QUmlInteractionFragment::removeGeneralOrdering(UmlGeneralOrdering *generalOrdering)
 {
-    // This is a read-write association end
-
-    if (_generalOrdering.contains(generalOrdering)) {
-        _generalOrdering.remove(generalOrdering);
-
-        // Adjust subsetted properties
-        removeOwnedElement(generalOrdering);
-    }
+    UmlInteractionFragment::removeGeneralOrdering(generalOrdering);
 }
 
 QT_END_NAMESPACE

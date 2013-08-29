@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNode>
+#include <QtCore/QObject>
+#include "private/umldevice_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlDevice : public QUmlNode
+class Q_UML_EXPORT QUmlDevice : public QObject, public UmlDevice
 {
-public:
-    QUmlDevice();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlDevice(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

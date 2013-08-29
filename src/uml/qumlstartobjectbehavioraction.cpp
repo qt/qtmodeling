@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlstartobjectbehavioraction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlStartObjectBehaviorAction
-
-    \inmodule QtUml
-
-    \brief StartObjectBehaviorAction is an action that starts the execution either of a directly instantiated behavior or of the classifier behavior of an object. Argument values may be supplied for the input parameters of the behavior. If the behavior is invoked synchronously, then output values may be obtained for output parameters.
- */
-
-QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction() :
-    _object(0)
+QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Holds the object which is either a behavior to be started or has a classifier behavior to be started.
- */
 QUmlInputPin *QUmlStartObjectBehaviorAction::object() const
 {
-    // This is a read-write association end
-
-    return _object;
+    return reinterpret_cast<QUmlInputPin *>(_object);
 }
 
 void QUmlStartObjectBehaviorAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    if (_object != object) {
-        // Adjust subsetted properties
-        removeInput(_object);
-
-        _object = object;
-
-        // Adjust subsetted properties
-        if (object) {
-            addInput(object);
-        }
-    }
+    UmlStartObjectBehaviorAction::setObject(object);
 }
 
 QT_END_NAMESPACE

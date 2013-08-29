@@ -39,218 +39,100 @@
 **
 ****************************************************************************/
 #include "qumlmessage.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnector>
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlMessageEnd>
+#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlMessage
-
-    \inmodule QtUml
-
-    \brief A message defines a particular communication between lifelines of an interaction.
- */
-
-QUmlMessage::QUmlMessage() :
-    _connector(0),
-    _interaction(0),
-    _messageSort(QtUml::MessageSortSynchCall),
-    _receiveEvent(0),
-    _sendEvent(0),
-    _signature(0)
+QUmlMessage::QUmlMessage(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("argument", QVariant::fromValue(&_argument));
-    d_ptr->object.setProperty("connector", QVariant::fromValue((QUmlConnector *)(0)));
-    d_ptr->object.setProperty("interaction", QVariant::fromValue((QUmlInteraction *)(0)));
-    d_ptr->object.setProperty("messageKind", QVariant::fromValue(QtUml::MessageKindUnknown));
-    d_ptr->object.setProperty("messageSort", QVariant::fromValue(QtUml::MessageSortSynchCall));
-    d_ptr->object.setProperty("receiveEvent", QVariant::fromValue((QUmlMessageEnd *)(0)));
-    d_ptr->object.setProperty("sendEvent", QVariant::fromValue((QUmlMessageEnd *)(0)));
-    d_ptr->object.setProperty("signature", QVariant::fromValue((QUmlNamedElement *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The arguments of the Message
- */
 const QList<QUmlValueSpecification *> QUmlMessage::argument() const
 {
-    // This is a read-write association end
-
-    return _argument;
+    return *(reinterpret_cast<const QList<QUmlValueSpecification *> *>(&_argument));
 }
 
-void QUmlMessage::addArgument(QUmlValueSpecification *argument)
+void QUmlMessage::addArgument(UmlValueSpecification *argument)
 {
-    // This is a read-write association end
-
-    if (!_argument.contains(argument)) {
-        _argument.append(argument);
-
-        // Adjust subsetted properties
-        addOwnedElement(argument);
-    }
+    UmlMessage::addArgument(argument);
 }
 
-void QUmlMessage::removeArgument(QUmlValueSpecification *argument)
+void QUmlMessage::removeArgument(UmlValueSpecification *argument)
 {
-    // This is a read-write association end
-
-    if (_argument.contains(argument)) {
-        _argument.removeAll(argument);
-
-        // Adjust subsetted properties
-        removeOwnedElement(argument);
-    }
+    UmlMessage::removeArgument(argument);
 }
 
-/*!
-    The Connector on which this Message is sent.
- */
 QUmlConnector *QUmlMessage::connector() const
 {
-    // This is a read-write association end
-
-    return _connector;
+    return reinterpret_cast<QUmlConnector *>(_connector);
 }
 
 void QUmlMessage::setConnector(QUmlConnector *connector)
 {
-    // This is a read-write association end
-
-    if (_connector != connector) {
-        _connector = connector;
-    }
+    UmlMessage::setConnector(connector);
 }
 
-/*!
-    The enclosing Interaction owning the Message
- */
 QUmlInteraction *QUmlMessage::interaction() const
 {
-    // This is a read-write association end
-
-    return _interaction;
+    return reinterpret_cast<QUmlInteraction *>(_interaction);
 }
 
 void QUmlMessage::setInteraction(QUmlInteraction *interaction)
 {
-    // This is a read-write association end
-
-    if (_interaction != interaction) {
-        // Adjust subsetted properties
-
-        _interaction = interaction;
-
-        // Adjust subsetted properties
-        setNamespace(interaction);
-    }
+    UmlMessage::setInteraction(interaction);
 }
 
-/*!
-    The derived kind of the Message (complete, lost, found or unknown)
- */
 QtUml::MessageKind QUmlMessage::messageKind() const
 {
-    // This is a read-only derived property
-
-    qWarning("QUmlMessage::messageKind(): to be implemented (this is a derived property)");
-
-    return QtUml::MessageKind();
+    return UmlMessage::messageKind();
 }
 
-void QUmlMessage::setMessageKind(QtUml::MessageKind messageKind)
-{
-    // This is a read-only derived property
-
-    qWarning("QUmlMessage::messageKind(): to be implemented (this is a derived property)");
-    Q_UNUSED(messageKind);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    The sort of communication reflected by the Message
- */
 QtUml::MessageSort QUmlMessage::messageSort() const
 {
-    // This is a read-write property
-
     return _messageSort;
 }
 
 void QUmlMessage::setMessageSort(QtUml::MessageSort messageSort)
 {
-    // This is a read-write property
-
-    if (_messageSort != messageSort) {
-        _messageSort = messageSort;
-    }
+    UmlMessage::setMessageSort(messageSort);
 }
 
-/*!
-    References the Receiving of the Message
- */
 QUmlMessageEnd *QUmlMessage::receiveEvent() const
 {
-    // This is a read-write association end
-
-    return _receiveEvent;
+    return reinterpret_cast<QUmlMessageEnd *>(_receiveEvent);
 }
 
 void QUmlMessage::setReceiveEvent(QUmlMessageEnd *receiveEvent)
 {
-    // This is a read-write association end
-
-    if (_receiveEvent != receiveEvent) {
-        _receiveEvent = receiveEvent;
-    }
+    UmlMessage::setReceiveEvent(receiveEvent);
 }
 
-/*!
-    References the Sending of the Message.
- */
 QUmlMessageEnd *QUmlMessage::sendEvent() const
 {
-    // This is a read-write association end
-
-    return _sendEvent;
+    return reinterpret_cast<QUmlMessageEnd *>(_sendEvent);
 }
 
 void QUmlMessage::setSendEvent(QUmlMessageEnd *sendEvent)
 {
-    // This is a read-write association end
-
-    if (_sendEvent != sendEvent) {
-        _sendEvent = sendEvent;
-    }
+    UmlMessage::setSendEvent(sendEvent);
 }
 
-/*!
-    The signature of the Message is the specification of its content. It refers either an Operation or a Signal.
- */
 QUmlNamedElement *QUmlMessage::signature() const
 {
-    // This is a read-write association end
-
-    return _signature;
+    return reinterpret_cast<QUmlNamedElement *>(_signature);
 }
 
 void QUmlMessage::setSignature(QUmlNamedElement *signature)
 {
-    // This is a read-write association end
-
-    if (_signature != signature) {
-        _signature = signature;
-    }
+    UmlMessage::setSignature(signature);
 }
 
 QT_END_NAMESPACE

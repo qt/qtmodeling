@@ -39,61 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlsignal.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlSignal
-
-    \inmodule QtUml
-
-    \brief A signal is a specification of send request instances communicated between objects. The receiving object handles the received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined independently of the classifiers handling the signal occurrence.
- */
-
-QUmlSignal::QUmlSignal()
+QUmlSignal::QUmlSignal(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The attributes owned by the signal.
- */
 const QList<QUmlProperty *> QUmlSignal::ownedAttribute() const
 {
-    // This is a read-write association end
-
-    return _ownedAttribute;
+    return *(reinterpret_cast<const QList<QUmlProperty *> *>(&_ownedAttribute));
 }
 
-void QUmlSignal::addOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlSignal::addOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedAttribute);
-        addAttribute(ownedAttribute);
-    }
+    UmlSignal::addOwnedAttribute(ownedAttribute);
 }
 
-void QUmlSignal::removeOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlSignal::removeOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedAttribute);
-        removeAttribute(ownedAttribute);
-    }
+    UmlSignal::removeOwnedAttribute(ownedAttribute);
 }
 
 QT_END_NAMESPACE

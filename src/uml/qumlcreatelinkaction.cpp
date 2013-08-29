@@ -39,53 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlcreatelinkaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlLinkEndCreationData>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCreateLinkAction
-
-    \inmodule QtUml
-
-    \brief A create link action is a write link action for creating links.
- */
-
-QUmlCreateLinkAction::QUmlCreateLinkAction()
+QUmlCreateLinkAction::QUmlCreateLinkAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("endData", QVariant::fromValue(&_endData));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies ends of association and inputs.
- */
 const QSet<QUmlLinkEndCreationData *> QUmlCreateLinkAction::endData() const
 {
-    // This is a read-write association end
-
-    return _endData;
+    return *(reinterpret_cast<const QSet<QUmlLinkEndCreationData *> *>(&_endData));
 }
 
-void QUmlCreateLinkAction::addEndData(QUmlLinkEndCreationData *endData)
+void QUmlCreateLinkAction::addEndData(UmlLinkEndCreationData *endData)
 {
-    // This is a read-write association end
-
-    if (!_endData.contains(endData)) {
-        _endData.insert(endData);
-    }
+    UmlCreateLinkAction::addEndData(endData);
 }
 
-void QUmlCreateLinkAction::removeEndData(QUmlLinkEndCreationData *endData)
+void QUmlCreateLinkAction::removeEndData(UmlLinkEndCreationData *endData)
 {
-    // This is a read-write association end
-
-    if (_endData.contains(endData)) {
-        _endData.remove(endData);
-    }
+    UmlCreateLinkAction::removeEndData(endData);
 }
 
 QT_END_NAMESPACE

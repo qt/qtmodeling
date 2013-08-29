@@ -39,232 +39,95 @@
 **
 ****************************************************************************/
 #include "qumlinteraction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAction>
 #include <QtUml/QUmlGate>
+#include <QtUml/QUmlInteractionFragment>
 #include <QtUml/QUmlLifeline>
 #include <QtUml/QUmlMessage>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInteraction
-
-    \inmodule QtUml
-
-    \brief An interaction is a unit of behavior that focuses on the observable exchange of information between connectable elements.
- */
-
-QUmlInteraction::QUmlInteraction()
+QUmlInteraction::QUmlInteraction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("action", QVariant::fromValue(&_action));
-    d_ptr->object.setProperty("formalGate", QVariant::fromValue(&_formalGate));
-    d_ptr->object.setProperty("fragment", QVariant::fromValue(&_fragment));
-    d_ptr->object.setProperty("lifeline", QVariant::fromValue(&_lifeline));
-    d_ptr->object.setProperty("message", QVariant::fromValue(&_message));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Actions owned by the Interaction.
- */
 const QSet<QUmlAction *> QUmlInteraction::action() const
 {
-    // This is a read-write association end
-
-    return _action;
+    return *(reinterpret_cast<const QSet<QUmlAction *> *>(&_action));
 }
 
-void QUmlInteraction::addAction(QUmlAction *action)
+void QUmlInteraction::addAction(UmlAction *action)
 {
-    // This is a read-write association end
-
-    if (!_action.contains(action)) {
-        _action.insert(action);
-
-        // Adjust subsetted properties
-        addOwnedElement(action);
-    }
+    UmlInteraction::addAction(action);
 }
 
-void QUmlInteraction::removeAction(QUmlAction *action)
+void QUmlInteraction::removeAction(UmlAction *action)
 {
-    // This is a read-write association end
-
-    if (_action.contains(action)) {
-        _action.remove(action);
-
-        // Adjust subsetted properties
-        removeOwnedElement(action);
-    }
+    UmlInteraction::removeAction(action);
 }
 
-/*!
-    Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
- */
 const QSet<QUmlGate *> QUmlInteraction::formalGate() const
 {
-    // This is a read-write association end
-
-    return _formalGate;
+    return *(reinterpret_cast<const QSet<QUmlGate *> *>(&_formalGate));
 }
 
-void QUmlInteraction::addFormalGate(QUmlGate *formalGate)
+void QUmlInteraction::addFormalGate(UmlGate *formalGate)
 {
-    // This is a read-write association end
-
-    if (!_formalGate.contains(formalGate)) {
-        _formalGate.insert(formalGate);
-
-        // Adjust subsetted properties
-        addOwnedMember(formalGate);
-    }
+    UmlInteraction::addFormalGate(formalGate);
 }
 
-void QUmlInteraction::removeFormalGate(QUmlGate *formalGate)
+void QUmlInteraction::removeFormalGate(UmlGate *formalGate)
 {
-    // This is a read-write association end
-
-    if (_formalGate.contains(formalGate)) {
-        _formalGate.remove(formalGate);
-
-        // Adjust subsetted properties
-        removeOwnedMember(formalGate);
-    }
+    UmlInteraction::removeFormalGate(formalGate);
 }
 
-/*!
-    The ordered set of fragments in the Interaction.
- */
 const QList<QUmlInteractionFragment *> QUmlInteraction::fragment() const
 {
-    // This is a read-write association end
-
-    return _fragment;
+    return *(reinterpret_cast<const QList<QUmlInteractionFragment *> *>(&_fragment));
 }
 
-void QUmlInteraction::addFragment(QUmlInteractionFragment *fragment)
+void QUmlInteraction::addFragment(UmlInteractionFragment *fragment)
 {
-    // This is a read-write association end
-
-    if (!_fragment.contains(fragment)) {
-        _fragment.append(fragment);
-
-        // Adjust subsetted properties
-        addOwnedMember(fragment);
-
-        // Adjust opposite properties
-        if (fragment) {
-            fragment->setEnclosingInteraction(this);
-        }
-    }
+    UmlInteraction::addFragment(fragment);
 }
 
-void QUmlInteraction::removeFragment(QUmlInteractionFragment *fragment)
+void QUmlInteraction::removeFragment(UmlInteractionFragment *fragment)
 {
-    // This is a read-write association end
-
-    if (_fragment.contains(fragment)) {
-        _fragment.removeAll(fragment);
-
-        // Adjust subsetted properties
-        removeOwnedMember(fragment);
-
-        // Adjust opposite properties
-        if (fragment) {
-            fragment->setEnclosingInteraction(0);
-        }
-    }
+    UmlInteraction::removeFragment(fragment);
 }
 
-/*!
-    Specifies the participants in this Interaction.
- */
 const QSet<QUmlLifeline *> QUmlInteraction::lifeline() const
 {
-    // This is a read-write association end
-
-    return _lifeline;
+    return *(reinterpret_cast<const QSet<QUmlLifeline *> *>(&_lifeline));
 }
 
-void QUmlInteraction::addLifeline(QUmlLifeline *lifeline)
+void QUmlInteraction::addLifeline(UmlLifeline *lifeline)
 {
-    // This is a read-write association end
-
-    if (!_lifeline.contains(lifeline)) {
-        _lifeline.insert(lifeline);
-
-        // Adjust subsetted properties
-        addOwnedMember(lifeline);
-
-        // Adjust opposite properties
-        if (lifeline) {
-            lifeline->setInteraction(this);
-        }
-    }
+    UmlInteraction::addLifeline(lifeline);
 }
 
-void QUmlInteraction::removeLifeline(QUmlLifeline *lifeline)
+void QUmlInteraction::removeLifeline(UmlLifeline *lifeline)
 {
-    // This is a read-write association end
-
-    if (_lifeline.contains(lifeline)) {
-        _lifeline.remove(lifeline);
-
-        // Adjust subsetted properties
-        removeOwnedMember(lifeline);
-
-        // Adjust opposite properties
-        if (lifeline) {
-            lifeline->setInteraction(0);
-        }
-    }
+    UmlInteraction::removeLifeline(lifeline);
 }
 
-/*!
-    The Messages contained in this Interaction.
- */
 const QSet<QUmlMessage *> QUmlInteraction::message() const
 {
-    // This is a read-write association end
-
-    return _message;
+    return *(reinterpret_cast<const QSet<QUmlMessage *> *>(&_message));
 }
 
-void QUmlInteraction::addMessage(QUmlMessage *message)
+void QUmlInteraction::addMessage(UmlMessage *message)
 {
-    // This is a read-write association end
-
-    if (!_message.contains(message)) {
-        _message.insert(message);
-
-        // Adjust subsetted properties
-        addOwnedMember(message);
-
-        // Adjust opposite properties
-        if (message) {
-            message->setInteraction(this);
-        }
-    }
+    UmlInteraction::addMessage(message);
 }
 
-void QUmlInteraction::removeMessage(QUmlMessage *message)
+void QUmlInteraction::removeMessage(UmlMessage *message)
 {
-    // This is a read-write association end
-
-    if (_message.contains(message)) {
-        _message.remove(message);
-
-        // Adjust subsetted properties
-        removeOwnedMember(message);
-
-        // Adjust opposite properties
-        if (message) {
-            message->setInteraction(0);
-        }
-    }
+    UmlInteraction::removeMessage(message);
 }
 
 QT_END_NAMESPACE

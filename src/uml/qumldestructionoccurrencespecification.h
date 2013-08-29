@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlMessageOccurrenceSpecification>
+#include <QtCore/QObject>
+#include "private/umldestructionoccurrencespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlDestructionOccurrenceSpecification : public QUmlMessageOccurrenceSpecification
+class Q_UML_EXPORT QUmlDestructionOccurrenceSpecification : public QObject, public UmlDestructionOccurrenceSpecification
 {
-public:
-    QUmlDestructionOccurrenceSpecification();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlDestructionOccurrenceSpecification(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

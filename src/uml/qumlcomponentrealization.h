@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRealization>
+#include <QtCore/QObject>
+#include "private/umlcomponentrealization_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,21 +55,21 @@ QT_MODULE(QtUml)
 class QUmlClassifier;
 class QUmlComponent;
 
-class Q_UML_EXPORT QUmlComponentRealization : public QUmlRealization
+class Q_UML_EXPORT QUmlComponentRealization : public QObject, public UmlComponentRealization
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlComponent * abstraction READ abstraction)
+    Q_PROPERTY(QSet<QUmlClassifier *> realizingClassifier READ realizingClassifier)
+
 public:
-    QUmlComponentRealization();
+    Q_INVOKABLE explicit QUmlComponentRealization(QObject *parent = 0);
 
     // Owned attributes
-    QUmlComponent *abstraction() const;
-    void setAbstraction(QUmlComponent *abstraction);
-    const QSet<QUmlClassifier *> realizingClassifier() const;
-    void addRealizingClassifier(QUmlClassifier *realizingClassifier);
-    void removeRealizingClassifier(QUmlClassifier *realizingClassifier);
-
-protected:
-    QUmlComponent *_abstraction;
-    QSet<QUmlClassifier *> _realizingClassifier;
+    Q_INVOKABLE QUmlComponent *abstraction() const;
+    Q_INVOKABLE void setAbstraction(QUmlComponent *abstraction);
+    Q_INVOKABLE const QSet<QUmlClassifier *> realizingClassifier() const;
+    Q_INVOKABLE void addRealizingClassifier(UmlClassifier *realizingClassifier);
+    Q_INVOKABLE void removeRealizingClassifier(UmlClassifier *realizingClassifier);
 };
 
 QT_END_NAMESPACE

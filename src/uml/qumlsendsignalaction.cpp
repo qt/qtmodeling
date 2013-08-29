@@ -39,75 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlsendsignalaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlSignal>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlSendSignalAction
-
-    \inmodule QtUml
-
-    \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
- */
-
-QUmlSendSignalAction::QUmlSendSignalAction() :
-    _signal(0),
-    _target(0)
+QUmlSendSignalAction::QUmlSendSignalAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("signal", QVariant::fromValue((QUmlSignal *)(0)));
-    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The type of signal transmitted to the target object.
- */
 QUmlSignal *QUmlSendSignalAction::signal() const
 {
-    // This is a read-write association end
-
-    return _signal;
+    return reinterpret_cast<QUmlSignal *>(_signal);
 }
 
 void QUmlSendSignalAction::setSignal(QUmlSignal *signal)
 {
-    // This is a read-write association end
-
-    if (_signal != signal) {
-        _signal = signal;
-    }
+    UmlSendSignalAction::setSignal(signal);
 }
 
-/*!
-    The target object to which the signal is sent.
- */
 QUmlInputPin *QUmlSendSignalAction::target() const
 {
-    // This is a read-write association end
-
-    return _target;
+    return reinterpret_cast<QUmlInputPin *>(_target);
 }
 
 void QUmlSendSignalAction::setTarget(QUmlInputPin *target)
 {
-    // This is a read-write association end
-
-    if (_target != target) {
-        // Adjust subsetted properties
-        removeInput(_target);
-
-        _target = target;
-
-        // Adjust subsetted properties
-        if (target) {
-            addInput(target);
-        }
-    }
+    UmlSendSignalAction::setTarget(target);
 }
 
 QT_END_NAMESPACE

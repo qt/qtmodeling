@@ -39,67 +39,24 @@
 **
 ****************************************************************************/
 #include "qumlencapsulatedclassifier.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlPort>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlEncapsulatedClassifier
-
-    \inmodule QtUml
-
-    \brief A classifier has the ability to own ports as specific and type checked interaction points.
- */
-
-QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier()
+QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("ownedPort", QVariant::fromValue(QSet<QUmlPort *>()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References a set of ports that an encapsulated classifier owns.
- */
 const QSet<QUmlPort *> QUmlEncapsulatedClassifier::ownedPort() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlEncapsulatedClassifier::ownedPort(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlPort *>();
-}
-
-void QUmlEncapsulatedClassifier::addOwnedPort(QUmlPort *ownedPort)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlEncapsulatedClassifier::ownedPort(): to be implemented (this is a derived association end)");
-    Q_UNUSED(ownedPort);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        addOwnedAttribute(ownedPort);
-    }
-}
-
-void QUmlEncapsulatedClassifier::removeOwnedPort(QUmlPort *ownedPort)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlEncapsulatedClassifier::ownedPort(): to be implemented (this is a derived association end)");
-    Q_UNUSED(ownedPort);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        removeOwnedAttribute(ownedPort);
-    }
+    QSet<QUmlPort *> r;
+    foreach (UmlPort *element, UmlEncapsulatedClassifier::ownedPort())
+        r.insert(reinterpret_cast<QUmlPort *>(element));
+    return r;
 }
 
 QT_END_NAMESPACE

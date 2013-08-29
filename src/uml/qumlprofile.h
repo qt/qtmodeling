@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlPackage>
+#include <QtCore/QObject>
+#include "private/umlprofile_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,22 +55,22 @@ QT_MODULE(QtUml)
 class QUmlElementImport;
 class QUmlPackageImport;
 
-class Q_UML_EXPORT QUmlProfile : public QUmlPackage
+class Q_UML_EXPORT QUmlProfile : public QObject, public UmlProfile
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlElementImport *> metaclassReference READ metaclassReference)
+    Q_PROPERTY(QSet<QUmlPackageImport *> metamodelReference READ metamodelReference)
+
 public:
-    QUmlProfile();
+    Q_INVOKABLE explicit QUmlProfile(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlElementImport *> metaclassReference() const;
-    void addMetaclassReference(QUmlElementImport *metaclassReference);
-    void removeMetaclassReference(QUmlElementImport *metaclassReference);
-    const QSet<QUmlPackageImport *> metamodelReference() const;
-    void addMetamodelReference(QUmlPackageImport *metamodelReference);
-    void removeMetamodelReference(QUmlPackageImport *metamodelReference);
-
-protected:
-    QSet<QUmlElementImport *> _metaclassReference;
-    QSet<QUmlPackageImport *> _metamodelReference;
+    Q_INVOKABLE const QSet<QUmlElementImport *> metaclassReference() const;
+    Q_INVOKABLE void addMetaclassReference(UmlElementImport *metaclassReference);
+    Q_INVOKABLE void removeMetaclassReference(UmlElementImport *metaclassReference);
+    Q_INVOKABLE const QSet<QUmlPackageImport *> metamodelReference() const;
+    Q_INVOKABLE void addMetamodelReference(UmlPackageImport *metamodelReference);
+    Q_INVOKABLE void removeMetamodelReference(UmlPackageImport *metamodelReference);
 };
 
 QT_END_NAMESPACE

@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlMultiplicityElement>
-#include <QtUml/QUmlConnectableElement>
+#include <QtCore/QObject>
+#include "private/umlvariable_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,23 +56,23 @@ class QUmlAction;
 class QUmlActivity;
 class QUmlStructuredActivityNode;
 
-class Q_UML_EXPORT QUmlVariable : public QUmlMultiplicityElement, public QUmlConnectableElement
+class Q_UML_EXPORT QUmlVariable : public QObject, public UmlVariable
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlActivity * activityScope READ activityScope)
+    Q_PROPERTY(QUmlStructuredActivityNode * scope READ scope)
+
 public:
-    QUmlVariable();
+    Q_INVOKABLE explicit QUmlVariable(QObject *parent = 0);
 
     // Owned attributes
-    QUmlActivity *activityScope() const;
-    void setActivityScope(QUmlActivity *activityScope);
-    QUmlStructuredActivityNode *scope() const;
-    void setScope(QUmlStructuredActivityNode *scope);
+    Q_INVOKABLE QUmlActivity *activityScope() const;
+    Q_INVOKABLE void setActivityScope(QUmlActivity *activityScope);
+    Q_INVOKABLE QUmlStructuredActivityNode *scope() const;
+    Q_INVOKABLE void setScope(QUmlStructuredActivityNode *scope);
 
     // Operations
-    bool isAccessibleBy(QUmlAction *a) const;
-
-protected:
-    QUmlActivity *_activityScope;
-    QUmlStructuredActivityNode *_scope;
+    Q_INVOKABLE bool isAccessibleBy(QUmlAction *a) const;
 };
 
 QT_END_NAMESPACE

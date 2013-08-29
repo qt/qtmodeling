@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlStructuredActivityNode>
+#include <QtCore/QObject>
+#include "private/umlloopnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,48 +56,48 @@ class QUmlExecutableNode;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlLoopNode : public QUmlStructuredActivityNode
+class Q_UML_EXPORT QUmlLoopNode : public QObject, public UmlLoopNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlOutputPin *> bodyOutput READ bodyOutput)
+    Q_PROPERTY(QSet<QUmlExecutableNode *> bodyPart READ bodyPart)
+    Q_PROPERTY(QUmlOutputPin * decider READ decider)
+    Q_PROPERTY(bool isTestedFirst READ isTestedFirst)
+    Q_PROPERTY(QList<QUmlOutputPin *> loopVariable READ loopVariable)
+    Q_PROPERTY(QList<QUmlInputPin *> loopVariableInput READ loopVariableInput)
+    Q_PROPERTY(QList<QUmlOutputPin *> result READ result)
+    Q_PROPERTY(QSet<QUmlExecutableNode *> setupPart READ setupPart)
+    Q_PROPERTY(QSet<QUmlExecutableNode *> test READ test)
+
 public:
-    QUmlLoopNode();
+    Q_INVOKABLE explicit QUmlLoopNode(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlOutputPin *> bodyOutput() const;
-    void addBodyOutput(QUmlOutputPin *bodyOutput);
-    void removeBodyOutput(QUmlOutputPin *bodyOutput);
-    const QSet<QUmlExecutableNode *> bodyPart() const;
-    void addBodyPart(QUmlExecutableNode *bodyPart);
-    void removeBodyPart(QUmlExecutableNode *bodyPart);
-    QUmlOutputPin *decider() const;
-    void setDecider(QUmlOutputPin *decider);
-    bool isTestedFirst() const;
-    void setTestedFirst(bool isTestedFirst);
-    const QList<QUmlOutputPin *> loopVariable() const;
-    void addLoopVariable(QUmlOutputPin *loopVariable);
-    void removeLoopVariable(QUmlOutputPin *loopVariable);
-    const QList<QUmlInputPin *> loopVariableInput() const;
-    void addLoopVariableInput(QUmlInputPin *loopVariableInput);
-    void removeLoopVariableInput(QUmlInputPin *loopVariableInput);
-    const QList<QUmlOutputPin *> result() const;
-    void addResult(QUmlOutputPin *result);
-    void removeResult(QUmlOutputPin *result);
-    const QSet<QUmlExecutableNode *> setupPart() const;
-    void addSetupPart(QUmlExecutableNode *setupPart);
-    void removeSetupPart(QUmlExecutableNode *setupPart);
-    const QSet<QUmlExecutableNode *> test() const;
-    void addTest(QUmlExecutableNode *test);
-    void removeTest(QUmlExecutableNode *test);
-
-protected:
-    QList<QUmlOutputPin *> _bodyOutput;
-    QSet<QUmlExecutableNode *> _bodyPart;
-    QUmlOutputPin *_decider;
-    bool _isTestedFirst;
-    QList<QUmlOutputPin *> _loopVariable;
-    QList<QUmlInputPin *> _loopVariableInput;
-    QList<QUmlOutputPin *> _result;
-    QSet<QUmlExecutableNode *> _setupPart;
-    QSet<QUmlExecutableNode *> _test;
+    Q_INVOKABLE const QList<QUmlOutputPin *> bodyOutput() const;
+    Q_INVOKABLE void addBodyOutput(UmlOutputPin *bodyOutput);
+    Q_INVOKABLE void removeBodyOutput(UmlOutputPin *bodyOutput);
+    Q_INVOKABLE const QSet<QUmlExecutableNode *> bodyPart() const;
+    Q_INVOKABLE void addBodyPart(UmlExecutableNode *bodyPart);
+    Q_INVOKABLE void removeBodyPart(UmlExecutableNode *bodyPart);
+    Q_INVOKABLE QUmlOutputPin *decider() const;
+    Q_INVOKABLE void setDecider(QUmlOutputPin *decider);
+    Q_INVOKABLE bool isTestedFirst() const;
+    Q_INVOKABLE void setTestedFirst(bool isTestedFirst);
+    Q_INVOKABLE const QList<QUmlOutputPin *> loopVariable() const;
+    Q_INVOKABLE void addLoopVariable(UmlOutputPin *loopVariable);
+    Q_INVOKABLE void removeLoopVariable(UmlOutputPin *loopVariable);
+    Q_INVOKABLE const QList<QUmlInputPin *> loopVariableInput() const;
+    Q_INVOKABLE void addLoopVariableInput(UmlInputPin *loopVariableInput);
+    Q_INVOKABLE void removeLoopVariableInput(UmlInputPin *loopVariableInput);
+    Q_INVOKABLE const QList<QUmlOutputPin *> result() const;
+    Q_INVOKABLE void addResult(UmlOutputPin *result);
+    Q_INVOKABLE void removeResult(UmlOutputPin *result);
+    Q_INVOKABLE const QSet<QUmlExecutableNode *> setupPart() const;
+    Q_INVOKABLE void addSetupPart(UmlExecutableNode *setupPart);
+    Q_INVOKABLE void removeSetupPart(UmlExecutableNode *setupPart);
+    Q_INVOKABLE const QSet<QUmlExecutableNode *> test() const;
+    Q_INVOKABLE void addTest(UmlExecutableNode *test);
+    Q_INVOKABLE void removeTest(UmlExecutableNode *test);
 };
 
 QT_END_NAMESPACE

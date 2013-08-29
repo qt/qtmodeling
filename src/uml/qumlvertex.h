@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlvertex_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,26 +56,24 @@ class QUmlRegion;
 class QUmlStateMachine;
 class QUmlTransition;
 
-class Q_UML_EXPORT QUmlVertex : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlVertex : public QObject, public UmlVertex
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlRegion * container READ container)
+    Q_PROPERTY(QSet<QUmlTransition *> incoming READ incoming)
+    Q_PROPERTY(QSet<QUmlTransition *> outgoing READ outgoing)
+
 public:
-    Q_DECL_HIDDEN QUmlVertex();
+    Q_DECL_HIDDEN explicit QUmlVertex(QObject *parent = 0);
 
     // Owned attributes
-    QUmlRegion *container() const;
-    void setContainer(QUmlRegion *container);
-    const QSet<QUmlTransition *> incoming() const;
-    Q_DECL_HIDDEN void addIncoming(QUmlTransition *incoming);
-    Q_DECL_HIDDEN void removeIncoming(QUmlTransition *incoming);
-    const QSet<QUmlTransition *> outgoing() const;
-    Q_DECL_HIDDEN void addOutgoing(QUmlTransition *outgoing);
-    Q_DECL_HIDDEN void removeOutgoing(QUmlTransition *outgoing);
+    Q_INVOKABLE QUmlRegion *container() const;
+    Q_INVOKABLE void setContainer(QUmlRegion *container);
+    Q_INVOKABLE const QSet<QUmlTransition *> incoming() const;
+    Q_INVOKABLE const QSet<QUmlTransition *> outgoing() const;
 
     // Operations
-    QUmlStateMachine *containingStateMachine() const;
-
-protected:
-    QUmlRegion *_container;
+    Q_INVOKABLE QUmlStateMachine *containingStateMachine() const;
 };
 
 QT_END_NAMESPACE

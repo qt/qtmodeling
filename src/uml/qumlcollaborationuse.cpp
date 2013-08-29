@@ -39,81 +39,42 @@
 **
 ****************************************************************************/
 #include "qumlcollaborationuse.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlCollaboration>
 #include <QtUml/QUmlDependency>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCollaborationUse
-
-    \inmodule QtUml
-
-    \brief A collaboration use represents one particular use of a collaboration to explain the relationships between the properties of a classifier. A collaboration use shows how the pattern described by a collaboration is applied in a given context, by binding specific entities from that context to the roles of the collaboration. Depending on the context, these entities could be structural features of a classifier, instance specifications, or even roles in some containing collaboration. There may be multiple occurrences of a given collaboration within a classifier, each involving a different set of roles and connectors. A given role or connector may be involved in multiple occurrences of the same or different collaborations. Associated dependencies map features of the collaboration type to features in the classifier. These dependencies indicate which role in the classifier plays which role in the collaboration.
- */
-
-QUmlCollaborationUse::QUmlCollaborationUse() :
-    _type(0)
+QUmlCollaborationUse::QUmlCollaborationUse(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("roleBinding", QVariant::fromValue(&_roleBinding));
-    d_ptr->object.setProperty("type", QVariant::fromValue((QUmlCollaboration *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
- */
 const QSet<QUmlDependency *> QUmlCollaborationUse::roleBinding() const
 {
-    // This is a read-write association end
-
-    return _roleBinding;
+    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_roleBinding));
 }
 
-void QUmlCollaborationUse::addRoleBinding(QUmlDependency *roleBinding)
+void QUmlCollaborationUse::addRoleBinding(UmlDependency *roleBinding)
 {
-    // This is a read-write association end
-
-    if (!_roleBinding.contains(roleBinding)) {
-        _roleBinding.insert(roleBinding);
-
-        // Adjust subsetted properties
-        addOwnedElement(roleBinding);
-    }
+    UmlCollaborationUse::addRoleBinding(roleBinding);
 }
 
-void QUmlCollaborationUse::removeRoleBinding(QUmlDependency *roleBinding)
+void QUmlCollaborationUse::removeRoleBinding(UmlDependency *roleBinding)
 {
-    // This is a read-write association end
-
-    if (_roleBinding.contains(roleBinding)) {
-        _roleBinding.remove(roleBinding);
-
-        // Adjust subsetted properties
-        removeOwnedElement(roleBinding);
-    }
+    UmlCollaborationUse::removeRoleBinding(roleBinding);
 }
 
-/*!
-    The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.
- */
 QUmlCollaboration *QUmlCollaborationUse::type() const
 {
-    // This is a read-write association end
-
-    return _type;
+    return reinterpret_cast<QUmlCollaboration *>(_type);
 }
 
 void QUmlCollaborationUse::setType(QUmlCollaboration *type)
 {
-    // This is a read-write association end
-
-    if (_type != type) {
-        _type = type;
-    }
+    UmlCollaborationUse::setType(type);
 }
 
 QT_END_NAMESPACE

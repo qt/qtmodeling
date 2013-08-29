@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumldeployedartifact.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDeployedArtifact
-
-    \inmodule QtUml
-
-    \brief A deployed artifact is an artifact or artifact instance that has been deployed to a deployment target.
- */
-
-QUmlDeployedArtifact::QUmlDeployedArtifact()
+QUmlDeployedArtifact::QUmlDeployedArtifact(QObject *parent) :
+    QObject(parent)
 {
 }
 

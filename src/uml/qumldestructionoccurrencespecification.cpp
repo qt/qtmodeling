@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumldestructionoccurrencespecification.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDestructionOccurrenceSpecification
-
-    \inmodule QtUml
-
-    \brief A destruction event models the destruction of an object.
- */
-
-QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification()
+QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(QObject *parent) :
+    QObject(parent)
 {
 }
 

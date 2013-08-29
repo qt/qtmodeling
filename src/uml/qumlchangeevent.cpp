@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlchangeevent.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlChangeEvent
-
-    \inmodule QtUml
-
-    \brief A change event models a change in the system configuration that makes a condition true.
- */
-
-QUmlChangeEvent::QUmlChangeEvent() :
-    _changeExpression(0)
+QUmlChangeEvent::QUmlChangeEvent(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("changeExpression", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
- */
 QUmlValueSpecification *QUmlChangeEvent::changeExpression() const
 {
-    // This is a read-write association end
-
-    return _changeExpression;
+    return reinterpret_cast<QUmlValueSpecification *>(_changeExpression);
 }
 
 void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpression)
 {
-    // This is a read-write association end
-
-    if (_changeExpression != changeExpression) {
-        // Adjust subsetted properties
-        removeOwnedElement(_changeExpression);
-
-        _changeExpression = changeExpression;
-
-        // Adjust subsetted properties
-        if (changeExpression) {
-            addOwnedElement(changeExpression);
-        }
-    }
+    UmlChangeEvent::setChangeExpression(changeExpression);
 }
 
 QT_END_NAMESPACE

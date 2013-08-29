@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlActivityNode>
-#include <QtUml/QUmlTypedElement>
+#include <QtCore/QObject>
+#include "private/umlobjectnode_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -57,30 +57,30 @@ class QUmlBehavior;
 class QUmlState;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlObjectNode : public QUmlActivityNode, public QUmlTypedElement
+class Q_UML_EXPORT QUmlObjectNode : public QObject, public UmlObjectNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlState *> inState READ inState)
+    Q_PROPERTY(bool isControlType READ isControlType)
+    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering)
+    Q_PROPERTY(QUmlBehavior * selection READ selection)
+    Q_PROPERTY(QUmlValueSpecification * upperBound READ upperBound)
+
 public:
-    Q_DECL_HIDDEN QUmlObjectNode();
+    Q_DECL_HIDDEN explicit QUmlObjectNode(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlState *> inState() const;
-    void addInState(QUmlState *inState);
-    void removeInState(QUmlState *inState);
-    bool isControlType() const;
-    void setControlType(bool isControlType);
-    QtUml::ObjectNodeOrderingKind ordering() const;
-    void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
-    QUmlBehavior *selection() const;
-    void setSelection(QUmlBehavior *selection);
-    QUmlValueSpecification *upperBound() const;
-    void setUpperBound(QUmlValueSpecification *upperBound);
-
-protected:
-    QSet<QUmlState *> _inState;
-    bool _isControlType;
-    QtUml::ObjectNodeOrderingKind _ordering;
-    QUmlBehavior *_selection;
-    QUmlValueSpecification *_upperBound;
+    Q_INVOKABLE const QSet<QUmlState *> inState() const;
+    Q_INVOKABLE void addInState(UmlState *inState);
+    Q_INVOKABLE void removeInState(UmlState *inState);
+    Q_INVOKABLE bool isControlType() const;
+    Q_INVOKABLE void setControlType(bool isControlType);
+    Q_INVOKABLE QtUml::ObjectNodeOrderingKind ordering() const;
+    Q_INVOKABLE void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
+    Q_INVOKABLE QUmlBehavior *selection() const;
+    Q_INVOKABLE void setSelection(QUmlBehavior *selection);
+    Q_INVOKABLE QUmlValueSpecification *upperBound() const;
+    Q_INVOKABLE void setUpperBound(QUmlValueSpecification *upperBound);
 };
 
 QT_END_NAMESPACE

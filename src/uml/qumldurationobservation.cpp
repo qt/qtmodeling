@@ -39,65 +39,36 @@
 **
 ****************************************************************************/
 #include "qumldurationobservation.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDurationObservation
-
-    \inmodule QtUml
-
-    \brief A duration observation is a reference to a duration during an execution. It points out the element(s) in the model to observe and whether the observations are when this model element is entered or when it is exited.
- */
-
-QUmlDurationObservation::QUmlDurationObservation() :
-    _event(0)
+QUmlDurationObservation::QUmlDurationObservation(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("event", QVariant::fromValue((QUmlNamedElement *)(0)));
-    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(false));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The observation is determined by the entering or exiting of the event element during execution.
- */
 QUmlNamedElement *QUmlDurationObservation::event() const
 {
-    // This is a read-write association end
-
-    return _event;
+    return reinterpret_cast<QUmlNamedElement *>(_event);
 }
 
 void QUmlDurationObservation::setEvent(QUmlNamedElement *event)
 {
-    // This is a read-write association end
-
-    if (_event != event) {
-        _event = event;
-    }
+    UmlDurationObservation::setEvent(event);
 }
 
-/*!
-    The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i]. Default value is true applied when event[i] refers an element that represents only one time instant.
- */
 bool QUmlDurationObservation::firstEvent() const
 {
-    // This is a read-write property
-
     return _firstEvent;
 }
 
 void QUmlDurationObservation::setFirstEvent(bool firstEvent)
 {
-    // This is a read-write property
-
-    if (_firstEvent != firstEvent) {
-        _firstEvent = firstEvent;
-    }
+    UmlDurationObservation::setFirstEvent(firstEvent);
 }
 
 QT_END_NAMESPACE

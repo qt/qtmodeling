@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlVariableAction>
+#include <QtCore/QObject>
+#include "private/umlwritevariableaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class Q_UML_EXPORT QUmlWriteVariableAction : public QUmlVariableAction
+class Q_UML_EXPORT QUmlWriteVariableAction : public QObject, public UmlWriteVariableAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInputPin * value READ value)
+
 public:
-    Q_DECL_HIDDEN QUmlWriteVariableAction();
+    Q_DECL_HIDDEN explicit QUmlWriteVariableAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInputPin *value() const;
-    void setValue(QUmlInputPin *value);
-
-protected:
-    QUmlInputPin *_value;
+    Q_INVOKABLE QUmlInputPin *value() const;
+    Q_INVOKABLE void setValue(QUmlInputPin *value);
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlraiseexceptionaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class Q_UML_EXPORT QUmlRaiseExceptionAction : public QUmlAction
+class Q_UML_EXPORT QUmlRaiseExceptionAction : public QObject, public UmlRaiseExceptionAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInputPin * exception READ exception)
+
 public:
-    QUmlRaiseExceptionAction();
+    Q_INVOKABLE explicit QUmlRaiseExceptionAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInputPin *exception() const;
-    void setException(QUmlInputPin *exception);
-
-protected:
-    QUmlInputPin *_exception;
+    Q_INVOKABLE QUmlInputPin *exception() const;
+    Q_INVOKABLE void setException(QUmlInputPin *exception);
 };
 
 QT_END_NAMESPACE

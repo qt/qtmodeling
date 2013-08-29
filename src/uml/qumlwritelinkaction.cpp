@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlwritelinkaction.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlWriteLinkAction
-
-    \inmodule QtUml
-
-    \brief WriteLinkAction is an abstract class for link actions that create and destroy links.
- */
-
-QUmlWriteLinkAction::QUmlWriteLinkAction()
+QUmlWriteLinkAction::QUmlWriteLinkAction(QObject *parent) :
+    QObject(parent)
 {
 }
 

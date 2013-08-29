@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlinvocationaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,21 +55,21 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlPort;
 
-class Q_UML_EXPORT QUmlInvocationAction : public QUmlAction
+class Q_UML_EXPORT QUmlInvocationAction : public QObject, public UmlInvocationAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlInputPin *> argument READ argument)
+    Q_PROPERTY(QUmlPort * onPort READ onPort)
+
 public:
-    Q_DECL_HIDDEN QUmlInvocationAction();
+    Q_DECL_HIDDEN explicit QUmlInvocationAction(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlInputPin *> argument() const;
-    void addArgument(QUmlInputPin *argument);
-    void removeArgument(QUmlInputPin *argument);
-    QUmlPort *onPort() const;
-    void setOnPort(QUmlPort *onPort);
-
-protected:
-    QList<QUmlInputPin *> _argument;
-    QUmlPort *_onPort;
+    Q_INVOKABLE const QList<QUmlInputPin *> argument() const;
+    Q_INVOKABLE void addArgument(UmlInputPin *argument);
+    Q_INVOKABLE void removeArgument(UmlInputPin *argument);
+    Q_INVOKABLE QUmlPort *onPort() const;
+    Q_INVOKABLE void setOnPort(QUmlPort *onPort);
 };
 
 QT_END_NAMESPACE

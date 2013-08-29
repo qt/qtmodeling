@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlreadisclassifiedobjectaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,26 +56,26 @@ class QUmlClassifier;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlReadIsClassifiedObjectAction : public QUmlAction
+class Q_UML_EXPORT QUmlReadIsClassifiedObjectAction : public QObject, public UmlReadIsClassifiedObjectAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlClassifier * classifier READ classifier)
+    Q_PROPERTY(bool isDirect READ isDirect)
+    Q_PROPERTY(QUmlInputPin * object READ object)
+    Q_PROPERTY(QUmlOutputPin * result READ result)
+
 public:
-    QUmlReadIsClassifiedObjectAction();
+    Q_INVOKABLE explicit QUmlReadIsClassifiedObjectAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlClassifier *classifier() const;
-    void setClassifier(QUmlClassifier *classifier);
-    bool isDirect() const;
-    void setDirect(bool isDirect);
-    QUmlInputPin *object() const;
-    void setObject(QUmlInputPin *object);
-    QUmlOutputPin *result() const;
-    void setResult(QUmlOutputPin *result);
-
-protected:
-    QUmlClassifier *_classifier;
-    bool _isDirect;
-    QUmlInputPin *_object;
-    QUmlOutputPin *_result;
+    Q_INVOKABLE QUmlClassifier *classifier() const;
+    Q_INVOKABLE void setClassifier(QUmlClassifier *classifier);
+    Q_INVOKABLE bool isDirect() const;
+    Q_INVOKABLE void setDirect(bool isDirect);
+    Q_INVOKABLE QUmlInputPin *object() const;
+    Q_INVOKABLE void setObject(QUmlInputPin *object);
+    Q_INVOKABLE QUmlOutputPin *result() const;
+    Q_INVOKABLE void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

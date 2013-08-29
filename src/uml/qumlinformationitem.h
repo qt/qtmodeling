@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClassifier>
+#include <QtCore/QObject>
+#include "private/umlinformationitem_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,18 +52,20 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlInformationItem : public QUmlClassifier
+class QUmlClassifier;
+
+class Q_UML_EXPORT QUmlInformationItem : public QObject, public UmlInformationItem
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlClassifier *> represented READ represented)
+
 public:
-    QUmlInformationItem();
+    Q_INVOKABLE explicit QUmlInformationItem(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlClassifier *> represented() const;
-    void addRepresented(QUmlClassifier *represented);
-    void removeRepresented(QUmlClassifier *represented);
-
-protected:
-    QSet<QUmlClassifier *> _represented;
+    Q_INVOKABLE const QSet<QUmlClassifier *> represented() const;
+    Q_INVOKABLE void addRepresented(UmlClassifier *represented);
+    Q_INVOKABLE void removeRepresented(UmlClassifier *represented);
 };
 
 QT_END_NAMESPACE

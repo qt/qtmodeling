@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
+#include <QtCore/QObject>
+#include "private/umlelementimport_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -55,29 +56,29 @@ QT_MODULE(QtUml)
 class QUmlNamespace;
 class QUmlPackageableElement;
 
-class Q_UML_EXPORT QUmlElementImport : public QUmlDirectedRelationship
+class Q_UML_EXPORT QUmlElementImport : public QObject, public UmlElementImport
 {
+    Q_OBJECT
+    Q_PROPERTY(QString alias READ alias)
+    Q_PROPERTY(QUmlPackageableElement * importedElement READ importedElement)
+    Q_PROPERTY(QUmlNamespace * importingNamespace READ importingNamespace)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+
 public:
-    QUmlElementImport();
+    Q_INVOKABLE explicit QUmlElementImport(QObject *parent = 0);
 
     // Owned attributes
-    QString alias() const;
-    void setAlias(QString alias);
-    QUmlPackageableElement *importedElement() const;
-    void setImportedElement(QUmlPackageableElement *importedElement);
-    QUmlNamespace *importingNamespace() const;
-    void setImportingNamespace(QUmlNamespace *importingNamespace);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE QString alias() const;
+    Q_INVOKABLE void setAlias(QString alias);
+    Q_INVOKABLE QUmlPackageableElement *importedElement() const;
+    Q_INVOKABLE void setImportedElement(QUmlPackageableElement *importedElement);
+    Q_INVOKABLE QUmlNamespace *importingNamespace() const;
+    Q_INVOKABLE void setImportingNamespace(QUmlNamespace *importingNamespace);
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
     // Operations
-    QString getName() const;
-
-protected:
-    QString _alias;
-    QUmlPackageableElement *_importedElement;
-    QUmlNamespace *_importingNamespace;
-    QtUml::VisibilityKind _visibility;
+    Q_INVOKABLE QString getName() const;
 };
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClassifier>
+#include <QtCore/QObject>
+#include "private/umlinterface_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,42 +52,43 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlClassifier;
 class QUmlOperation;
 class QUmlProperty;
 class QUmlProtocolStateMachine;
 class QUmlReception;
 
-class Q_UML_EXPORT QUmlInterface : public QUmlClassifier
+class Q_UML_EXPORT QUmlInterface : public QObject, public UmlInterface
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlClassifier *> nestedClassifier READ nestedClassifier)
+    Q_PROPERTY(QList<QUmlProperty *> ownedAttribute READ ownedAttribute)
+    Q_PROPERTY(QList<QUmlOperation *> ownedOperation READ ownedOperation)
+    Q_PROPERTY(QSet<QUmlReception *> ownedReception READ ownedReception)
+    Q_PROPERTY(QUmlProtocolStateMachine * protocol READ protocol)
+    Q_PROPERTY(QSet<QUmlInterface *> redefinedInterface READ redefinedInterface)
+
 public:
-    QUmlInterface();
+    Q_INVOKABLE explicit QUmlInterface(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlClassifier *> nestedClassifier() const;
-    void addNestedClassifier(QUmlClassifier *nestedClassifier);
-    void removeNestedClassifier(QUmlClassifier *nestedClassifier);
-    const QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QList<QUmlOperation *> ownedOperation() const;
-    void addOwnedOperation(QUmlOperation *ownedOperation);
-    void removeOwnedOperation(QUmlOperation *ownedOperation);
-    const QSet<QUmlReception *> ownedReception() const;
-    void addOwnedReception(QUmlReception *ownedReception);
-    void removeOwnedReception(QUmlReception *ownedReception);
-    QUmlProtocolStateMachine *protocol() const;
-    void setProtocol(QUmlProtocolStateMachine *protocol);
-    const QSet<QUmlInterface *> redefinedInterface() const;
-    void addRedefinedInterface(QUmlInterface *redefinedInterface);
-    void removeRedefinedInterface(QUmlInterface *redefinedInterface);
-
-protected:
-    QList<QUmlClassifier *> _nestedClassifier;
-    QList<QUmlProperty *> _ownedAttribute;
-    QList<QUmlOperation *> _ownedOperation;
-    QSet<QUmlReception *> _ownedReception;
-    QUmlProtocolStateMachine *_protocol;
-    QSet<QUmlInterface *> _redefinedInterface;
+    Q_INVOKABLE const QList<QUmlClassifier *> nestedClassifier() const;
+    Q_INVOKABLE void addNestedClassifier(UmlClassifier *nestedClassifier);
+    Q_INVOKABLE void removeNestedClassifier(UmlClassifier *nestedClassifier);
+    Q_INVOKABLE const QList<QUmlProperty *> ownedAttribute() const;
+    Q_INVOKABLE void addOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE const QList<QUmlOperation *> ownedOperation() const;
+    Q_INVOKABLE void addOwnedOperation(UmlOperation *ownedOperation);
+    Q_INVOKABLE void removeOwnedOperation(UmlOperation *ownedOperation);
+    Q_INVOKABLE const QSet<QUmlReception *> ownedReception() const;
+    Q_INVOKABLE void addOwnedReception(UmlReception *ownedReception);
+    Q_INVOKABLE void removeOwnedReception(UmlReception *ownedReception);
+    Q_INVOKABLE QUmlProtocolStateMachine *protocol() const;
+    Q_INVOKABLE void setProtocol(QUmlProtocolStateMachine *protocol);
+    Q_INVOKABLE const QSet<QUmlInterface *> redefinedInterface() const;
+    Q_INVOKABLE void addRedefinedInterface(UmlInterface *redefinedInterface);
+    Q_INVOKABLE void removeRedefinedInterface(UmlInterface *redefinedInterface);
 };
 
 QT_END_NAMESPACE

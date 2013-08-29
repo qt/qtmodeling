@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlstartclassifierbehavioraction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class Q_UML_EXPORT QUmlStartClassifierBehaviorAction : public QUmlAction
+class Q_UML_EXPORT QUmlStartClassifierBehaviorAction : public QObject, public UmlStartClassifierBehaviorAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInputPin * object READ object)
+
 public:
-    QUmlStartClassifierBehaviorAction();
+    Q_INVOKABLE explicit QUmlStartClassifierBehaviorAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInputPin *object() const;
-    void setObject(QUmlInputPin *object);
-
-protected:
-    QUmlInputPin *_object;
+    Q_INVOKABLE QUmlInputPin *object() const;
+    Q_INVOKABLE void setObject(QUmlInputPin *object);
 };
 
 QT_END_NAMESPACE

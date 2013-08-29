@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlArtifact>
+#include <QtCore/QObject>
+#include "private/umldeploymentspecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,23 +54,23 @@ QT_MODULE(QtUml)
 
 class QUmlDeployment;
 
-class Q_UML_EXPORT QUmlDeploymentSpecification : public QUmlArtifact
+class Q_UML_EXPORT QUmlDeploymentSpecification : public QObject, public UmlDeploymentSpecification
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlDeployment * deployment READ deployment)
+    Q_PROPERTY(QString deploymentLocation READ deploymentLocation)
+    Q_PROPERTY(QString executionLocation READ executionLocation)
+
 public:
-    QUmlDeploymentSpecification();
+    Q_INVOKABLE explicit QUmlDeploymentSpecification(QObject *parent = 0);
 
     // Owned attributes
-    QUmlDeployment *deployment() const;
-    void setDeployment(QUmlDeployment *deployment);
-    QString deploymentLocation() const;
-    void setDeploymentLocation(QString deploymentLocation);
-    QString executionLocation() const;
-    void setExecutionLocation(QString executionLocation);
-
-protected:
-    QUmlDeployment *_deployment;
-    QString _deploymentLocation;
-    QString _executionLocation;
+    Q_INVOKABLE QUmlDeployment *deployment() const;
+    Q_INVOKABLE void setDeployment(QUmlDeployment *deployment);
+    Q_INVOKABLE QString deploymentLocation() const;
+    Q_INVOKABLE void setDeploymentLocation(QString deploymentLocation);
+    Q_INVOKABLE QString executionLocation() const;
+    Q_INVOKABLE void setExecutionLocation(QString executionLocation);
 };
 
 QT_END_NAMESPACE

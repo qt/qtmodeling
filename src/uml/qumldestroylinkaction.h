@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlWriteLinkAction>
+#include <QtCore/QObject>
+#include "private/umldestroylinkaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,18 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlLinkEndDestructionData;
 
-class Q_UML_EXPORT QUmlDestroyLinkAction : public QUmlWriteLinkAction
+class Q_UML_EXPORT QUmlDestroyLinkAction : public QObject, public UmlDestroyLinkAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlLinkEndDestructionData *> endData READ endData)
+
 public:
-    QUmlDestroyLinkAction();
+    Q_INVOKABLE explicit QUmlDestroyLinkAction(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlLinkEndDestructionData *> endData() const;
-    void addEndData(QUmlLinkEndDestructionData *endData);
-    void removeEndData(QUmlLinkEndDestructionData *endData);
-
-protected:
-    QSet<QUmlLinkEndDestructionData *> _endData;
+    Q_INVOKABLE const QSet<QUmlLinkEndDestructionData *> endData() const;
+    Q_INVOKABLE void addEndData(UmlLinkEndDestructionData *endData);
+    Q_INVOKABLE void removeEndData(UmlLinkEndDestructionData *endData);
 };
 
 QT_END_NAMESPACE

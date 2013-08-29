@@ -39,44 +39,24 @@
 **
 ****************************************************************************/
 #include "qumlliteralnull.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLiteralNull
-
-    \inmodule QtUml
-
-    \brief A literal null specifies the lack of a value.
- */
-
-QUmlLiteralNull::QUmlLiteralNull()
+QUmlLiteralNull::QUmlLiteralNull(QObject *parent) :
+    QObject(parent)
 {
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query isComputable() is redefined to be true.
- */
-bool QUmlLiteralNull::isComputable(
-    ) const
+bool QUmlLiteralNull::isComputable() const
 {
-    qWarning("QUmlLiteralNull::isComputable(): to be implemented (operation)");
-
-    return bool ();
+    return UmlLiteralNull::isComputable();
 }
 
-/*!
-    The query isNull() returns true.
- */
-bool QUmlLiteralNull::isNull(
-    ) const
+bool QUmlLiteralNull::isNull() const
 {
-    qWarning("QUmlLiteralNull::isNull(): to be implemented (operation)");
-
-    return bool ();
+    return UmlLiteralNull::isNull();
 }
 
 QT_END_NAMESPACE

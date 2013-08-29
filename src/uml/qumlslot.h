@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umlslot_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,24 +56,24 @@ class QUmlInstanceSpecification;
 class QUmlStructuralFeature;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlSlot : public QUmlElement
+class Q_UML_EXPORT QUmlSlot : public QObject, public UmlSlot
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlStructuralFeature * definingFeature READ definingFeature)
+    Q_PROPERTY(QUmlInstanceSpecification * owningInstance READ owningInstance)
+    Q_PROPERTY(QList<QUmlValueSpecification *> value READ value)
+
 public:
-    QUmlSlot();
+    Q_INVOKABLE explicit QUmlSlot(QObject *parent = 0);
 
     // Owned attributes
-    QUmlStructuralFeature *definingFeature() const;
-    void setDefiningFeature(QUmlStructuralFeature *definingFeature);
-    QUmlInstanceSpecification *owningInstance() const;
-    void setOwningInstance(QUmlInstanceSpecification *owningInstance);
-    const QList<QUmlValueSpecification *> value() const;
-    void addValue(QUmlValueSpecification *value);
-    void removeValue(QUmlValueSpecification *value);
-
-protected:
-    QUmlStructuralFeature *_definingFeature;
-    QUmlInstanceSpecification *_owningInstance;
-    QList<QUmlValueSpecification *> _value;
+    Q_INVOKABLE QUmlStructuralFeature *definingFeature() const;
+    Q_INVOKABLE void setDefiningFeature(QUmlStructuralFeature *definingFeature);
+    Q_INVOKABLE QUmlInstanceSpecification *owningInstance() const;
+    Q_INVOKABLE void setOwningInstance(QUmlInstanceSpecification *owningInstance);
+    Q_INVOKABLE const QList<QUmlValueSpecification *> value() const;
+    Q_INVOKABLE void addValue(UmlValueSpecification *value);
+    Q_INVOKABLE void removeValue(UmlValueSpecification *value);
 };
 
 QT_END_NAMESPACE

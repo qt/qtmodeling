@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlexceptionhandler.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExecutableNode>
@@ -47,115 +46,56 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExceptionHandler
-
-    \inmodule QtUml
-
-    \brief An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
- */
-
-QUmlExceptionHandler::QUmlExceptionHandler() :
-    _exceptionInput(0),
-    _handlerBody(0),
-    _protectedNode(0)
+QUmlExceptionHandler::QUmlExceptionHandler(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("exceptionInput", QVariant::fromValue((QUmlObjectNode *)(0)));
-    d_ptr->object.setProperty("exceptionType", QVariant::fromValue(&_exceptionType));
-    d_ptr->object.setProperty("handlerBody", QVariant::fromValue((QUmlExecutableNode *)(0)));
-    d_ptr->object.setProperty("protectedNode", QVariant::fromValue((QUmlExecutableNode *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
- */
 QUmlObjectNode *QUmlExceptionHandler::exceptionInput() const
 {
-    // This is a read-write association end
-
-    return _exceptionInput;
+    return reinterpret_cast<QUmlObjectNode *>(_exceptionInput);
 }
 
 void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 {
-    // This is a read-write association end
-
-    if (_exceptionInput != exceptionInput) {
-        _exceptionInput = exceptionInput;
-    }
+    UmlExceptionHandler::setExceptionInput(exceptionInput);
 }
 
-/*!
-    The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
- */
 const QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionType() const
 {
-    // This is a read-write association end
-
-    return _exceptionType;
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_exceptionType));
 }
 
-void QUmlExceptionHandler::addExceptionType(QUmlClassifier *exceptionType)
+void QUmlExceptionHandler::addExceptionType(UmlClassifier *exceptionType)
 {
-    // This is a read-write association end
-
-    if (!_exceptionType.contains(exceptionType)) {
-        _exceptionType.insert(exceptionType);
-    }
+    UmlExceptionHandler::addExceptionType(exceptionType);
 }
 
-void QUmlExceptionHandler::removeExceptionType(QUmlClassifier *exceptionType)
+void QUmlExceptionHandler::removeExceptionType(UmlClassifier *exceptionType)
 {
-    // This is a read-write association end
-
-    if (_exceptionType.contains(exceptionType)) {
-        _exceptionType.remove(exceptionType);
-    }
+    UmlExceptionHandler::removeExceptionType(exceptionType);
 }
 
-/*!
-    A node that is executed if the handler satisfies an uncaught exception.
- */
 QUmlExecutableNode *QUmlExceptionHandler::handlerBody() const
 {
-    // This is a read-write association end
-
-    return _handlerBody;
+    return reinterpret_cast<QUmlExecutableNode *>(_handlerBody);
 }
 
 void QUmlExceptionHandler::setHandlerBody(QUmlExecutableNode *handlerBody)
 {
-    // This is a read-write association end
-
-    if (_handlerBody != handlerBody) {
-        _handlerBody = handlerBody;
-    }
+    UmlExceptionHandler::setHandlerBody(handlerBody);
 }
 
-/*!
-    The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.
- */
 QUmlExecutableNode *QUmlExceptionHandler::protectedNode() const
 {
-    // This is a read-write association end
-
-    return _protectedNode;
+    return reinterpret_cast<QUmlExecutableNode *>(_protectedNode);
 }
 
 void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
 {
-    // This is a read-write association end
-
-    if (_protectedNode != protectedNode) {
-        // Adjust subsetted properties
-
-        _protectedNode = protectedNode;
-
-        // Adjust subsetted properties
-        setOwner(protectedNode);
-    }
+    UmlExceptionHandler::setProtectedNode(protectedNode);
 }
 
 QT_END_NAMESPACE

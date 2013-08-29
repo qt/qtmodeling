@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlCombinedFragment>
+#include <QtCore/QObject>
+#include "private/umlconsiderignorefragment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,18 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlNamedElement;
 
-class Q_UML_EXPORT QUmlConsiderIgnoreFragment : public QUmlCombinedFragment
+class Q_UML_EXPORT QUmlConsiderIgnoreFragment : public QObject, public UmlConsiderIgnoreFragment
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlNamedElement *> message READ message)
+
 public:
-    QUmlConsiderIgnoreFragment();
+    Q_INVOKABLE explicit QUmlConsiderIgnoreFragment(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlNamedElement *> message() const;
-    void addMessage(QUmlNamedElement *message);
-    void removeMessage(QUmlNamedElement *message);
-
-protected:
-    QSet<QUmlNamedElement *> _message;
+    Q_INVOKABLE const QSet<QUmlNamedElement *> message() const;
+    Q_INVOKABLE void addMessage(UmlNamedElement *message);
+    Q_INVOKABLE void removeMessage(UmlNamedElement *message);
 };
 
 QT_END_NAMESPACE

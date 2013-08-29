@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlreception.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlSignal>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReception
-
-    \inmodule QtUml
-
-    \brief A reception is a declaration stating that a classifier is prepared to react to the receipt of a signal. A reception designates a signal and specifies the expected behavioral response. The details of handling a signal are specified by the behavior associated with the reception or the classifier itself.
- */
-
-QUmlReception::QUmlReception() :
-    _signal(0)
+QUmlReception::QUmlReception(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("signal", QVariant::fromValue((QUmlSignal *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The signal that this reception handles.
- */
 QUmlSignal *QUmlReception::signal() const
 {
-    // This is a read-write association end
-
-    return _signal;
+    return reinterpret_cast<QUmlSignal *>(_signal);
 }
 
 void QUmlReception::setSignal(QUmlSignal *signal)
 {
-    // This is a read-write association end
-
-    if (_signal != signal) {
-        _signal = signal;
-    }
+    UmlReception::setSignal(signal);
 }
 
 QT_END_NAMESPACE

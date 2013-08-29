@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumllinkenddestructiondata.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLinkEndDestructionData
-
-    \inmodule QtUml
-
-    \brief A link end destruction data is not an action. It is an element that identifies links. It identifies one end of a link to be destroyed by destroy link action.
- */
-
-QUmlLinkEndDestructionData::QUmlLinkEndDestructionData() :
-    _destroyAt(0),
-    _isDestroyDuplicates(false)
+QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("destroyAt", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("isDestroyDuplicates", QVariant::fromValue(false));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
- */
 QUmlInputPin *QUmlLinkEndDestructionData::destroyAt() const
 {
-    // This is a read-write association end
-
-    return _destroyAt;
+    return reinterpret_cast<QUmlInputPin *>(_destroyAt);
 }
 
 void QUmlLinkEndDestructionData::setDestroyAt(QUmlInputPin *destroyAt)
 {
-    // This is a read-write association end
-
-    if (_destroyAt != destroyAt) {
-        _destroyAt = destroyAt;
-    }
+    UmlLinkEndDestructionData::setDestroyAt(destroyAt);
 }
 
-/*!
-    Specifies whether to destroy duplicates of the value in nonunique association ends.
- */
 bool QUmlLinkEndDestructionData::isDestroyDuplicates() const
 {
-    // This is a read-write property
-
     return _isDestroyDuplicates;
 }
 
 void QUmlLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
-    // This is a read-write property
-
-    if (_isDestroyDuplicates != isDestroyDuplicates) {
-        _isDestroyDuplicates = isDestroyDuplicates;
-    }
+    UmlLinkEndDestructionData::setDestroyDuplicates(isDestroyDuplicates);
 }
 
 QT_END_NAMESPACE

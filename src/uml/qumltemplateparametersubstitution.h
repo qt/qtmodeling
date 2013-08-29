@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umltemplateparametersubstitution_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,26 +56,26 @@ class QUmlParameterableElement;
 class QUmlTemplateBinding;
 class QUmlTemplateParameter;
 
-class Q_UML_EXPORT QUmlTemplateParameterSubstitution : public QUmlElement
+class Q_UML_EXPORT QUmlTemplateParameterSubstitution : public QObject, public UmlTemplateParameterSubstitution
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlParameterableElement * actual READ actual)
+    Q_PROPERTY(QUmlTemplateParameter * formal READ formal)
+    Q_PROPERTY(QUmlParameterableElement * ownedActual READ ownedActual)
+    Q_PROPERTY(QUmlTemplateBinding * templateBinding READ templateBinding)
+
 public:
-    QUmlTemplateParameterSubstitution();
+    Q_INVOKABLE explicit QUmlTemplateParameterSubstitution(QObject *parent = 0);
 
     // Owned attributes
-    QUmlParameterableElement *actual() const;
-    void setActual(QUmlParameterableElement *actual);
-    QUmlTemplateParameter *formal() const;
-    void setFormal(QUmlTemplateParameter *formal);
-    QUmlParameterableElement *ownedActual() const;
-    void setOwnedActual(QUmlParameterableElement *ownedActual);
-    QUmlTemplateBinding *templateBinding() const;
-    void setTemplateBinding(QUmlTemplateBinding *templateBinding);
-
-protected:
-    QUmlParameterableElement *_actual;
-    QUmlTemplateParameter *_formal;
-    QUmlParameterableElement *_ownedActual;
-    QUmlTemplateBinding *_templateBinding;
+    Q_INVOKABLE QUmlParameterableElement *actual() const;
+    Q_INVOKABLE void setActual(QUmlParameterableElement *actual);
+    Q_INVOKABLE QUmlTemplateParameter *formal() const;
+    Q_INVOKABLE void setFormal(QUmlTemplateParameter *formal);
+    Q_INVOKABLE QUmlParameterableElement *ownedActual() const;
+    Q_INVOKABLE void setOwnedActual(QUmlParameterableElement *ownedActual);
+    Q_INVOKABLE QUmlTemplateBinding *templateBinding() const;
+    Q_INVOKABLE void setTemplateBinding(QUmlTemplateBinding *templateBinding);
 };
 
 QT_END_NAMESPACE

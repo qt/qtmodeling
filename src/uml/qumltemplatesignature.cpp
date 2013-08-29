@@ -39,127 +39,57 @@
 **
 ****************************************************************************/
 #include "qumltemplatesignature.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTemplateSignature
-
-    \inmodule QtUml
-
-    \brief A template signature bundles the set of formal template parameters for a templated element.
- */
-
-QUmlTemplateSignature::QUmlTemplateSignature() :
-    _template_(0)
+QUmlTemplateSignature::QUmlTemplateSignature(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
-    d_ptr->object.setProperty("parameter", QVariant::fromValue(&_parameter));
-    d_ptr->object.setProperty("template", QVariant::fromValue((QUmlTemplateableElement *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The formal template parameters that are owned by this template signature.
- */
 const QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameter() const
 {
-    // This is a read-write association end
-
-    return _ownedParameter;
+    return *(reinterpret_cast<const QList<QUmlTemplateParameter *> *>(&_ownedParameter));
 }
 
-void QUmlTemplateSignature::addOwnedParameter(QUmlTemplateParameter *ownedParameter)
+void QUmlTemplateSignature::addOwnedParameter(UmlTemplateParameter *ownedParameter)
 {
-    // This is a read-write association end
-
-    if (!_ownedParameter.contains(ownedParameter)) {
-        _ownedParameter.append(ownedParameter);
-
-        // Adjust subsetted properties
-        addParameter(ownedParameter);
-        addOwnedElement(ownedParameter);
-
-        // Adjust opposite properties
-        if (ownedParameter) {
-            ownedParameter->setSignature(this);
-        }
-    }
+    UmlTemplateSignature::addOwnedParameter(ownedParameter);
 }
 
-void QUmlTemplateSignature::removeOwnedParameter(QUmlTemplateParameter *ownedParameter)
+void QUmlTemplateSignature::removeOwnedParameter(UmlTemplateParameter *ownedParameter)
 {
-    // This is a read-write association end
-
-    if (_ownedParameter.contains(ownedParameter)) {
-        _ownedParameter.removeAll(ownedParameter);
-
-        // Adjust subsetted properties
-        removeParameter(ownedParameter);
-        removeOwnedElement(ownedParameter);
-
-        // Adjust opposite properties
-        if (ownedParameter) {
-            ownedParameter->setSignature(0);
-        }
-    }
+    UmlTemplateSignature::removeOwnedParameter(ownedParameter);
 }
 
-/*!
-    The ordered set of all formal template parameters for this template signature.
- */
 const QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameter() const
 {
-    // This is a read-write association end
-
-    return _parameter;
+    return *(reinterpret_cast<const QList<QUmlTemplateParameter *> *>(&_parameter));
 }
 
-void QUmlTemplateSignature::addParameter(QUmlTemplateParameter *parameter)
+void QUmlTemplateSignature::addParameter(UmlTemplateParameter *parameter)
 {
-    // This is a read-write association end
-
-    if (!_parameter.contains(parameter)) {
-        _parameter.append(parameter);
-    }
+    UmlTemplateSignature::addParameter(parameter);
 }
 
-void QUmlTemplateSignature::removeParameter(QUmlTemplateParameter *parameter)
+void QUmlTemplateSignature::removeParameter(UmlTemplateParameter *parameter)
 {
-    // This is a read-write association end
-
-    if (_parameter.contains(parameter)) {
-        _parameter.removeAll(parameter);
-    }
+    UmlTemplateSignature::removeParameter(parameter);
 }
 
-/*!
-    The element that owns this template signature.
- */
 QUmlTemplateableElement *QUmlTemplateSignature::template_() const
 {
-    // This is a read-write association end
-
-    return _template_;
+    return reinterpret_cast<QUmlTemplateableElement *>(_template_);
 }
 
 void QUmlTemplateSignature::setTemplate(QUmlTemplateableElement *template_)
 {
-    // This is a read-write association end
-
-    if (_template_ != template_) {
-        // Adjust subsetted properties
-
-        _template_ = template_;
-
-        // Adjust subsetted properties
-        setOwner(template_);
-    }
+    UmlTemplateSignature::setTemplate(template_);
 }
 
 QT_END_NAMESPACE

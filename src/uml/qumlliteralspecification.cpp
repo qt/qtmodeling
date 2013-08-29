@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlliteralspecification.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLiteralSpecification
-
-    \inmodule QtUml
-
-    \brief A literal specification identifies a literal constant being modeled.
- */
-
-QUmlLiteralSpecification::QUmlLiteralSpecification()
+QUmlLiteralSpecification::QUmlLiteralSpecification(QObject *parent) :
+    QObject(parent)
 {
 }
 

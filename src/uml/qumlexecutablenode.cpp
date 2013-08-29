@@ -39,69 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlexecutablenode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExceptionHandler>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExecutableNode
-
-    \inmodule QtUml
-
-    \brief An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
- */
-
-QUmlExecutableNode::QUmlExecutableNode()
+QUmlExecutableNode::QUmlExecutableNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("handler", QVariant::fromValue(&_handler));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
- */
 const QSet<QUmlExceptionHandler *> QUmlExecutableNode::handler() const
 {
-    // This is a read-write association end
-
-    return _handler;
+    return *(reinterpret_cast<const QSet<QUmlExceptionHandler *> *>(&_handler));
 }
 
-void QUmlExecutableNode::addHandler(QUmlExceptionHandler *handler)
+void QUmlExecutableNode::addHandler(UmlExceptionHandler *handler)
 {
-    // This is a read-write association end
-
-    if (!_handler.contains(handler)) {
-        _handler.insert(handler);
-
-        // Adjust subsetted properties
-        addOwnedElement(handler);
-
-        // Adjust opposite properties
-        if (handler) {
-            handler->setProtectedNode(this);
-        }
-    }
+    UmlExecutableNode::addHandler(handler);
 }
 
-void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
+void QUmlExecutableNode::removeHandler(UmlExceptionHandler *handler)
 {
-    // This is a read-write association end
-
-    if (_handler.contains(handler)) {
-        _handler.remove(handler);
-
-        // Adjust subsetted properties
-        removeOwnedElement(handler);
-
-        // Adjust opposite properties
-        if (handler) {
-            handler->setProtectedNode(0);
-        }
-    }
+    UmlExecutableNode::removeHandler(handler);
 }
 
 QT_END_NAMESPACE

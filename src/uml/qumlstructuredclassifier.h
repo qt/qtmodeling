@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClassifier>
+#include <QtCore/QObject>
+#include "private/umlstructuredclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,29 +56,26 @@ class QUmlConnectableElement;
 class QUmlConnector;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlStructuredClassifier : public virtual QUmlClassifier
+class Q_UML_EXPORT QUmlStructuredClassifier : public QObject, public UmlStructuredClassifier
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlProperty *> ownedAttribute READ ownedAttribute)
+    Q_PROPERTY(QSet<QUmlConnector *> ownedConnector READ ownedConnector)
+    Q_PROPERTY(QSet<QUmlProperty *> part READ part)
+    Q_PROPERTY(QSet<QUmlConnectableElement *> role READ role)
+
 public:
-    Q_DECL_HIDDEN QUmlStructuredClassifier();
+    Q_DECL_HIDDEN explicit QUmlStructuredClassifier(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QSet<QUmlConnector *> ownedConnector() const;
-    void addOwnedConnector(QUmlConnector *ownedConnector);
-    void removeOwnedConnector(QUmlConnector *ownedConnector);
-    const QSet<QUmlProperty *> part() const;
-    Q_DECL_HIDDEN void addPart(QUmlProperty *part);
-    Q_DECL_HIDDEN void removePart(QUmlProperty *part);
-    const QSet<QUmlConnectableElement *> role() const;
-    Q_DECL_HIDDEN void addRole(QUmlConnectableElement *role);
-    Q_DECL_HIDDEN void removeRole(QUmlConnectableElement *role);
-
-protected:
-    QList<QUmlProperty *> _ownedAttribute;
-    QSet<QUmlConnector *> _ownedConnector;
-    QSet<QUmlConnectableElement *> _role;
+    Q_INVOKABLE const QList<QUmlProperty *> ownedAttribute() const;
+    Q_INVOKABLE void addOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE const QSet<QUmlConnector *> ownedConnector() const;
+    Q_INVOKABLE void addOwnedConnector(UmlConnector *ownedConnector);
+    Q_INVOKABLE void removeOwnedConnector(UmlConnector *ownedConnector);
+    Q_INVOKABLE const QSet<QUmlProperty *> part() const;
+    Q_INVOKABLE const QSet<QUmlConnectableElement *> role() const;
 };
 
 QT_END_NAMESPACE

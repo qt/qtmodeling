@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlclass.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExtension>
@@ -50,324 +49,127 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlClass
-
-    \inmodule QtUml
-
-    \brief A class may be designated as active (i.e., each of its instances having its own thread of control) or passive (i.e., each of its instances executing within the context of some other object). A class may also specify which signals the instances of this class handle.A class describes a set of objects that share the same specifications of features, constraints, and semantics.A class has the capability to have an internal structure and ports.Class has derived association that indicates how it may be extended through one or more stereotypes. Stereotype is the only kind of metaclass that cannot be extended by stereotypes.
- */
-
-QUmlClass::QUmlClass() :
-    _isAbstract(false),
-    _isActive(false)
+QUmlClass::QUmlClass(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("extension", QVariant::fromValue(QSet<QUmlExtension *>()));
-    d_ptr->object.setProperty("isAbstract", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isActive", QVariant::fromValue(false));
-    d_ptr->object.setProperty("nestedClassifier", QVariant::fromValue(&_nestedClassifier));
-    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
-    d_ptr->object.setProperty("ownedOperation", QVariant::fromValue(&_ownedOperation));
-    d_ptr->object.setProperty("ownedReception", QVariant::fromValue(&_ownedReception));
-    d_ptr->object.setProperty("superClass", QVariant::fromValue(QSet<QUmlClass *>()));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
- */
 const QSet<QUmlExtension *> QUmlClass::extension() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlClass::extension(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlExtension *>();
+    QSet<QUmlExtension *> r;
+    foreach (UmlExtension *element, UmlClass::extension())
+        r.insert(reinterpret_cast<QUmlExtension *>(element));
+    return r;
 }
 
-void QUmlClass::addExtension(QUmlExtension *extension)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlClass::extension(): to be implemented (this is a derived association end)");
-    Q_UNUSED(extension);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust opposite properties
-        if (extension) {
-            extension->setMetaclass(this);
-        }
-    }
-}
-
-void QUmlClass::removeExtension(QUmlExtension *extension)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlClass::extension(): to be implemented (this is a derived association end)");
-    Q_UNUSED(extension);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust opposite properties
-        if (extension) {
-            extension->setMetaclass(0);
-        }
-    }
-}
-
-/*!
-    If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.True when a class is abstract.
- */
 bool QUmlClass::isAbstract() const
 {
-    // This is a read-write property
-
     return _isAbstract;
 }
 
 void QUmlClass::setAbstract(bool isAbstract)
 {
-    // This is a read-write property
-
-    if (_isAbstract != isAbstract) {
-        _isAbstract = isAbstract;
-    }
+    UmlClass::setAbstract(isAbstract);
 }
 
-/*!
-    Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class.
- */
 bool QUmlClass::isActive() const
 {
-    // This is a read-write property
-
     return _isActive;
 }
 
 void QUmlClass::setActive(bool isActive)
 {
-    // This is a read-write property
-
-    if (_isActive != isActive) {
-        _isActive = isActive;
-    }
+    UmlClass::setActive(isActive);
 }
 
-/*!
-    References all the Classifiers that are defined (nested) within the Class.
- */
 const QList<QUmlClassifier *> QUmlClass::nestedClassifier() const
 {
-    // This is a read-write association end
-
-    return _nestedClassifier;
+    return *(reinterpret_cast<const QList<QUmlClassifier *> *>(&_nestedClassifier));
 }
 
-void QUmlClass::addNestedClassifier(QUmlClassifier *nestedClassifier)
+void QUmlClass::addNestedClassifier(UmlClassifier *nestedClassifier)
 {
-    // This is a read-write association end
-
-    if (!_nestedClassifier.contains(nestedClassifier)) {
-        _nestedClassifier.append(nestedClassifier);
-
-        // Adjust subsetted properties
-        addOwnedMember(nestedClassifier);
-    }
+    UmlClass::addNestedClassifier(nestedClassifier);
 }
 
-void QUmlClass::removeNestedClassifier(QUmlClassifier *nestedClassifier)
+void QUmlClass::removeNestedClassifier(UmlClassifier *nestedClassifier)
 {
-    // This is a read-write association end
-
-    if (_nestedClassifier.contains(nestedClassifier)) {
-        _nestedClassifier.removeAll(nestedClassifier);
-
-        // Adjust subsetted properties
-        removeOwnedMember(nestedClassifier);
-    }
+    UmlClass::removeNestedClassifier(nestedClassifier);
 }
 
-/*!
-    The attributes (i.e. the properties) owned by the class.
- */
 const QList<QUmlProperty *> QUmlClass::ownedAttribute() const
 {
-    // This is a read-write association end
-
-    return _ownedAttribute;
+    return *(reinterpret_cast<const QList<QUmlProperty *> *>(&_ownedAttribute));
 }
 
-void QUmlClass::addOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlClass::addOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedAttribute);
-        addAttribute(ownedAttribute);
-
-        // Adjust opposite properties
-        if (ownedAttribute) {
-            ownedAttribute->setClass(this);
-        }
-    }
+    UmlClass::addOwnedAttribute(ownedAttribute);
 }
 
-void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlClass::removeOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedAttribute);
-        removeAttribute(ownedAttribute);
-
-        // Adjust opposite properties
-        if (ownedAttribute) {
-            ownedAttribute->setClass(0);
-        }
-    }
+    UmlClass::removeOwnedAttribute(ownedAttribute);
 }
 
-/*!
-    The operations owned by the class.
- */
 const QList<QUmlOperation *> QUmlClass::ownedOperation() const
 {
-    // This is a read-write association end
-
-    return _ownedOperation;
+    return *(reinterpret_cast<const QList<QUmlOperation *> *>(&_ownedOperation));
 }
 
-void QUmlClass::addOwnedOperation(QUmlOperation *ownedOperation)
+void QUmlClass::addOwnedOperation(UmlOperation *ownedOperation)
 {
-    // This is a read-write association end
-
-    if (!_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.append(ownedOperation);
-
-        // Adjust subsetted properties
-        addFeature(ownedOperation);
-        addOwnedMember(ownedOperation);
-
-        // Adjust opposite properties
-        if (ownedOperation) {
-            ownedOperation->setClass(this);
-        }
-    }
+    UmlClass::addOwnedOperation(ownedOperation);
 }
 
-void QUmlClass::removeOwnedOperation(QUmlOperation *ownedOperation)
+void QUmlClass::removeOwnedOperation(UmlOperation *ownedOperation)
 {
-    // This is a read-write association end
-
-    if (_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.removeAll(ownedOperation);
-
-        // Adjust subsetted properties
-        removeFeature(ownedOperation);
-        removeOwnedMember(ownedOperation);
-
-        // Adjust opposite properties
-        if (ownedOperation) {
-            ownedOperation->setClass(0);
-        }
-    }
+    UmlClass::removeOwnedOperation(ownedOperation);
 }
 
-/*!
-    Receptions that objects of this class are willing to accept.
- */
 const QSet<QUmlReception *> QUmlClass::ownedReception() const
 {
-    // This is a read-write association end
-
-    return _ownedReception;
+    return *(reinterpret_cast<const QSet<QUmlReception *> *>(&_ownedReception));
 }
 
-void QUmlClass::addOwnedReception(QUmlReception *ownedReception)
+void QUmlClass::addOwnedReception(UmlReception *ownedReception)
 {
-    // This is a read-write association end
-
-    if (!_ownedReception.contains(ownedReception)) {
-        _ownedReception.insert(ownedReception);
-
-        // Adjust subsetted properties
-        addFeature(ownedReception);
-        addOwnedMember(ownedReception);
-    }
+    UmlClass::addOwnedReception(ownedReception);
 }
 
-void QUmlClass::removeOwnedReception(QUmlReception *ownedReception)
+void QUmlClass::removeOwnedReception(UmlReception *ownedReception)
 {
-    // This is a read-write association end
-
-    if (_ownedReception.contains(ownedReception)) {
-        _ownedReception.remove(ownedReception);
-
-        // Adjust subsetted properties
-        removeFeature(ownedReception);
-        removeOwnedMember(ownedReception);
-    }
+    UmlClass::removeOwnedReception(ownedReception);
 }
 
-/*!
-    This gives the superclasses of a class.
- */
 const QSet<QUmlClass *> QUmlClass::superClass() const
 {
-    // This is a read-write derived association end
-
-    qWarning("QUmlClass::superClass(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlClass *>();
+    QSet<QUmlClass *> r;
+    foreach (UmlClass *element, UmlClass::superClass())
+        r.insert(reinterpret_cast<QUmlClass *>(element));
+    return r;
 }
 
-void QUmlClass::addSuperClass(QUmlClass *superClass)
+void QUmlClass::addSuperClass(UmlClass *superClass)
 {
-    // This is a read-write derived association end
-
-    qWarning("QUmlClass::superClass(): to be implemented (this is a derived association end)");
-    Q_UNUSED(superClass);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
+    UmlClass::addSuperClass(superClass);
 }
 
-void QUmlClass::removeSuperClass(QUmlClass *superClass)
+void QUmlClass::removeSuperClass(UmlClass *superClass)
 {
-    // This is a read-write derived association end
-
-    qWarning("QUmlClass::superClass(): to be implemented (this is a derived association end)");
-    Q_UNUSED(superClass);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
+    UmlClass::removeSuperClass(superClass);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The inherit operation is overridden to exclude redefined properties.
- */
-QSet<QUmlNamedElement *> QUmlClass::inherit(
-    QSet<QUmlNamedElement *> inhs) const
+QSet<QUmlNamedElement *> QUmlClass::inherit(QSet<QUmlNamedElement *> inhs) const
 {
-    qWarning("QUmlClass::inherit(): to be implemented (operation)");
-
-    Q_UNUSED(inhs);
-    return QSet<QUmlNamedElement *> ();
+    QSet<QUmlNamedElement *> r;
+    foreach (UmlNamedElement *element, UmlClass::inherit(*(reinterpret_cast<QSet<UmlNamedElement *> *>(&inhs))))
+        r.insert(reinterpret_cast<QUmlNamedElement *>(element));
+    return r;
 }
 
 QT_END_NAMESPACE

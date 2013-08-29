@@ -39,116 +39,57 @@
 **
 ****************************************************************************/
 #include "qumlaccepteventaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 #include <QtUml/QUmlTrigger>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlAcceptEventAction
-
-    \inmodule QtUml
-
-    \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
- */
-
-QUmlAcceptEventAction::QUmlAcceptEventAction() :
-    _isUnmarshall(false)
+QUmlAcceptEventAction::QUmlAcceptEventAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isUnmarshall", QVariant::fromValue(false));
-    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
-    d_ptr->object.setProperty("trigger", QVariant::fromValue(&_trigger));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.
- */
 bool QUmlAcceptEventAction::isUnmarshall() const
 {
-    // This is a read-write property
-
     return _isUnmarshall;
 }
 
 void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 {
-    // This is a read-write property
-
-    if (_isUnmarshall != isUnmarshall) {
-        _isUnmarshall = isUnmarshall;
-    }
+    UmlAcceptEventAction::setUnmarshall(isUnmarshall);
 }
 
-/*!
-    Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
- */
 const QSet<QUmlOutputPin *> QUmlAcceptEventAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return *(reinterpret_cast<const QSet<QUmlOutputPin *> *>(&_result));
 }
 
-void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
+void QUmlAcceptEventAction::addResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (!_result.contains(result)) {
-        _result.insert(result);
-
-        // Adjust subsetted properties
-        addOutput(result);
-    }
+    UmlAcceptEventAction::addResult(result);
 }
 
-void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
+void QUmlAcceptEventAction::removeResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result.contains(result)) {
-        _result.remove(result);
-
-        // Adjust subsetted properties
-        removeOutput(result);
-    }
+    UmlAcceptEventAction::removeResult(result);
 }
 
-/*!
-    The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
- */
 const QSet<QUmlTrigger *> QUmlAcceptEventAction::trigger() const
 {
-    // This is a read-write association end
-
-    return _trigger;
+    return *(reinterpret_cast<const QSet<QUmlTrigger *> *>(&_trigger));
 }
 
-void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
+void QUmlAcceptEventAction::addTrigger(UmlTrigger *trigger)
 {
-    // This is a read-write association end
-
-    if (!_trigger.contains(trigger)) {
-        _trigger.insert(trigger);
-
-        // Adjust subsetted properties
-        addOwnedElement(trigger);
-    }
+    UmlAcceptEventAction::addTrigger(trigger);
 }
 
-void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
+void QUmlAcceptEventAction::removeTrigger(UmlTrigger *trigger)
 {
-    // This is a read-write association end
-
-    if (_trigger.contains(trigger)) {
-        _trigger.remove(trigger);
-
-        // Adjust subsetted properties
-        removeOwnedElement(trigger);
-    }
+    UmlAcceptEventAction::removeTrigger(trigger);
 }
 
 QT_END_NAMESPACE

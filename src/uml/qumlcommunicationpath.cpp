@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlcommunicationpath.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCommunicationPath
-
-    \inmodule QtUml
-
-    \brief A communication path is an association between two deployment targets, through which they are able to exchange signals and messages.
- */
-
-QUmlCommunicationPath::QUmlCommunicationPath()
+QUmlCommunicationPath::QUmlCommunicationPath(QObject *parent) :
+    QObject(parent)
 {
 }
 

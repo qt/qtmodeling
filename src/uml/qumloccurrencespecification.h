@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInteractionFragment>
+#include <QtCore/QObject>
+#include "private/umloccurrencespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,25 +55,25 @@ QT_MODULE(QtUml)
 class QUmlGeneralOrdering;
 class QUmlLifeline;
 
-class Q_UML_EXPORT QUmlOccurrenceSpecification : public QUmlInteractionFragment
+class Q_UML_EXPORT QUmlOccurrenceSpecification : public QObject, public UmlOccurrenceSpecification
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlLifeline * covered READ covered)
+    Q_PROPERTY(QSet<QUmlGeneralOrdering *> toAfter READ toAfter)
+    Q_PROPERTY(QSet<QUmlGeneralOrdering *> toBefore READ toBefore)
+
 public:
-    QUmlOccurrenceSpecification();
+    Q_INVOKABLE explicit QUmlOccurrenceSpecification(QObject *parent = 0);
 
     // Owned attributes
-    QUmlLifeline *covered() const;
-    void setCovered(QUmlLifeline *covered);
-    const QSet<QUmlGeneralOrdering *> toAfter() const;
-    void addToAfter(QUmlGeneralOrdering *toAfter);
-    void removeToAfter(QUmlGeneralOrdering *toAfter);
-    const QSet<QUmlGeneralOrdering *> toBefore() const;
-    void addToBefore(QUmlGeneralOrdering *toBefore);
-    void removeToBefore(QUmlGeneralOrdering *toBefore);
-
-protected:
-    QUmlLifeline *_covered;
-    QSet<QUmlGeneralOrdering *> _toAfter;
-    QSet<QUmlGeneralOrdering *> _toBefore;
+    Q_INVOKABLE QUmlLifeline *covered() const;
+    Q_INVOKABLE void setCovered(QUmlLifeline *covered);
+    Q_INVOKABLE const QSet<QUmlGeneralOrdering *> toAfter() const;
+    Q_INVOKABLE void addToAfter(UmlGeneralOrdering *toAfter);
+    Q_INVOKABLE void removeToAfter(UmlGeneralOrdering *toAfter);
+    Q_INVOKABLE const QSet<QUmlGeneralOrdering *> toBefore() const;
+    Q_INVOKABLE void addToBefore(UmlGeneralOrdering *toBefore);
+    Q_INVOKABLE void removeToBefore(UmlGeneralOrdering *toBefore);
 };
 
 QT_END_NAMESPACE

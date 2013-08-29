@@ -39,75 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlenumerationliteral.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlEnumeration>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlEnumerationLiteral
-
-    \inmodule QtUml
-
-    \brief An enumeration literal is a user-defined data value for an enumeration.
- */
-
-QUmlEnumerationLiteral::QUmlEnumerationLiteral() :
-    _enumeration(0)
+QUmlEnumerationLiteral::QUmlEnumerationLiteral(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("classifier", QVariant::fromValue((QUmlEnumeration *)(0)));
-    d_ptr->object.setProperty("enumeration", QVariant::fromValue((QUmlEnumeration *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The classifier of this EnumerationLiteral derived to be equal to its enumeration.
- */
 QUmlEnumeration *QUmlEnumerationLiteral::classifier() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlEnumerationLiteral::classifier(): to be implemented (this is a derived association end)");
-
-    return 0;
+    return reinterpret_cast<QUmlEnumeration *>(UmlEnumerationLiteral::classifier());
 }
 
-void QUmlEnumerationLiteral::setClassifier(QUmlEnumeration *classifier)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlEnumerationLiteral::classifier(): to be implemented (this is a derived association end)");
-    Q_UNUSED(classifier);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    The Enumeration that this EnumerationLiteral is a member of.
- */
 QUmlEnumeration *QUmlEnumerationLiteral::enumeration() const
 {
-    // This is a read-write association end
-
-    return _enumeration;
+    return reinterpret_cast<QUmlEnumeration *>(_enumeration);
 }
 
 void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
 {
-    // This is a read-write association end
-
-    if (_enumeration != enumeration) {
-        // Adjust subsetted properties
-
-        _enumeration = enumeration;
-
-        // Adjust subsetted properties
-        setNamespace(enumeration);
-    }
+    UmlEnumerationLiteral::setEnumeration(enumeration);
 }
 
 QT_END_NAMESPACE

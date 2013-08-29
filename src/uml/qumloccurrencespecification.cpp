@@ -39,124 +39,57 @@
 **
 ****************************************************************************/
 #include "qumloccurrencespecification.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlGeneralOrdering>
 #include <QtUml/QUmlLifeline>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlOccurrenceSpecification
-
-    \inmodule QtUml
-
-    \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
- */
-
-QUmlOccurrenceSpecification::QUmlOccurrenceSpecification() :
-    _covered(0)
+QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("covered", QVariant::fromValue((QUmlLifeline *)(0)));
-    d_ptr->object.setProperty("toAfter", QVariant::fromValue(&_toAfter));
-    d_ptr->object.setProperty("toBefore", QVariant::fromValue(&_toBefore));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the Lifeline on which the OccurrenceSpecification appears.
- */
 QUmlLifeline *QUmlOccurrenceSpecification::covered() const
 {
-    // This is a read-write association end
-
-    return _covered;
+    return reinterpret_cast<QUmlLifeline *>(_covered);
 }
 
 void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 {
-    // This is a read-write association end
-
-    if (_covered != covered) {
-        _covered = covered;
-    }
+    UmlOccurrenceSpecification::setCovered(covered);
 }
 
-/*!
-    References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
- */
 const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfter() const
 {
-    // This is a read-write association end
-
-    return _toAfter;
+    return *(reinterpret_cast<const QSet<QUmlGeneralOrdering *> *>(&_toAfter));
 }
 
-void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
+void QUmlOccurrenceSpecification::addToAfter(UmlGeneralOrdering *toAfter)
 {
-    // This is a read-write association end
-
-    if (!_toAfter.contains(toAfter)) {
-        _toAfter.insert(toAfter);
-
-        // Adjust opposite properties
-        if (toAfter) {
-            toAfter->setBefore(this);
-        }
-    }
+    UmlOccurrenceSpecification::addToAfter(toAfter);
 }
 
-void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
+void QUmlOccurrenceSpecification::removeToAfter(UmlGeneralOrdering *toAfter)
 {
-    // This is a read-write association end
-
-    if (_toAfter.contains(toAfter)) {
-        _toAfter.remove(toAfter);
-
-        // Adjust opposite properties
-        if (toAfter) {
-            toAfter->setBefore(0);
-        }
-    }
+    UmlOccurrenceSpecification::removeToAfter(toAfter);
 }
 
-/*!
-    References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
- */
 const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefore() const
 {
-    // This is a read-write association end
-
-    return _toBefore;
+    return *(reinterpret_cast<const QSet<QUmlGeneralOrdering *> *>(&_toBefore));
 }
 
-void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
+void QUmlOccurrenceSpecification::addToBefore(UmlGeneralOrdering *toBefore)
 {
-    // This is a read-write association end
-
-    if (!_toBefore.contains(toBefore)) {
-        _toBefore.insert(toBefore);
-
-        // Adjust opposite properties
-        if (toBefore) {
-            toBefore->setAfter(this);
-        }
-    }
+    UmlOccurrenceSpecification::addToBefore(toBefore);
 }
 
-void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
+void QUmlOccurrenceSpecification::removeToBefore(UmlGeneralOrdering *toBefore)
 {
-    // This is a read-write association end
-
-    if (_toBefore.contains(toBefore)) {
-        _toBefore.remove(toBefore);
-
-        // Adjust opposite properties
-        if (toBefore) {
-            toBefore->setAfter(0);
-        }
-    }
+    UmlOccurrenceSpecification::removeToBefore(toBefore);
 }
 
 QT_END_NAMESPACE

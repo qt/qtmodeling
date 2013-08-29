@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlActivityGroup>
+#include <QtCore/QObject>
+#include "private/umlactivitypartition_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,38 +56,38 @@ class QUmlActivityEdge;
 class QUmlActivityNode;
 class QUmlElement;
 
-class Q_UML_EXPORT QUmlActivityPartition : public QUmlActivityGroup
+class Q_UML_EXPORT QUmlActivityPartition : public QObject, public UmlActivityPartition
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlActivityEdge *> edge READ edge)
+    Q_PROPERTY(bool isDimension READ isDimension)
+    Q_PROPERTY(bool isExternal READ isExternal)
+    Q_PROPERTY(QSet<QUmlActivityNode *> node READ node)
+    Q_PROPERTY(QUmlElement * represents READ represents)
+    Q_PROPERTY(QSet<QUmlActivityPartition *> subpartition READ subpartition)
+    Q_PROPERTY(QUmlActivityPartition * superPartition READ superPartition)
+
 public:
-    QUmlActivityPartition();
+    Q_INVOKABLE explicit QUmlActivityPartition(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlActivityEdge *> edge() const;
-    void addEdge(QUmlActivityEdge *edge);
-    void removeEdge(QUmlActivityEdge *edge);
-    bool isDimension() const;
-    void setDimension(bool isDimension);
-    bool isExternal() const;
-    void setExternal(bool isExternal);
-    const QSet<QUmlActivityNode *> node() const;
-    void addNode(QUmlActivityNode *node);
-    void removeNode(QUmlActivityNode *node);
-    QUmlElement *represents() const;
-    void setRepresents(QUmlElement *represents);
-    const QSet<QUmlActivityPartition *> subpartition() const;
-    void addSubpartition(QUmlActivityPartition *subpartition);
-    void removeSubpartition(QUmlActivityPartition *subpartition);
-    QUmlActivityPartition *superPartition() const;
-    void setSuperPartition(QUmlActivityPartition *superPartition);
-
-protected:
-    QSet<QUmlActivityEdge *> _edge;
-    bool _isDimension;
-    bool _isExternal;
-    QSet<QUmlActivityNode *> _node;
-    QUmlElement *_represents;
-    QSet<QUmlActivityPartition *> _subpartition;
-    QUmlActivityPartition *_superPartition;
+    Q_INVOKABLE const QSet<QUmlActivityEdge *> edge() const;
+    Q_INVOKABLE void addEdge(UmlActivityEdge *edge);
+    Q_INVOKABLE void removeEdge(UmlActivityEdge *edge);
+    Q_INVOKABLE bool isDimension() const;
+    Q_INVOKABLE void setDimension(bool isDimension);
+    Q_INVOKABLE bool isExternal() const;
+    Q_INVOKABLE void setExternal(bool isExternal);
+    Q_INVOKABLE const QSet<QUmlActivityNode *> node() const;
+    Q_INVOKABLE void addNode(UmlActivityNode *node);
+    Q_INVOKABLE void removeNode(UmlActivityNode *node);
+    Q_INVOKABLE QUmlElement *represents() const;
+    Q_INVOKABLE void setRepresents(QUmlElement *represents);
+    Q_INVOKABLE const QSet<QUmlActivityPartition *> subpartition() const;
+    Q_INVOKABLE void addSubpartition(UmlActivityPartition *subpartition);
+    Q_INVOKABLE void removeSubpartition(UmlActivityPartition *subpartition);
+    Q_INVOKABLE QUmlActivityPartition *superPartition() const;
+    Q_INVOKABLE void setSuperPartition(QUmlActivityPartition *superPartition);
 };
 
 QT_END_NAMESPACE

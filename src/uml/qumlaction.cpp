@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlConstraint>
@@ -48,204 +47,66 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlAction
-
-    \inmodule QtUml
-
-    \brief An action has pre- and post-conditions.An action represents a single step within an activity, that is, one that is not further decomposed within the activity.An action is a named element that is the fundamental unit of executable functionality. The execution of an action represents some transformation or processing in the modeled system, be it a computer system or otherwise.
- */
-
-QUmlAction::QUmlAction() :
-    _isLocallyReentrant(false)
+QUmlAction::QUmlAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("context", QVariant::fromValue((QUmlClassifier *)(0)));
-    d_ptr->object.setProperty("input", QVariant::fromValue(&_input));
-    d_ptr->object.setProperty("isLocallyReentrant", QVariant::fromValue(false));
-    d_ptr->object.setProperty("localPostcondition", QVariant::fromValue(&_localPostcondition));
-    d_ptr->object.setProperty("localPrecondition", QVariant::fromValue(&_localPrecondition));
-    d_ptr->object.setProperty("output", QVariant::fromValue(&_output));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The classifier that owns the behavior of which this action is a part.
- */
 QUmlClassifier *QUmlAction::context() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlAction::context(): to be implemented (this is a derived association end)");
-
-    return 0;
+    return reinterpret_cast<QUmlClassifier *>(UmlAction::context());
 }
 
-void QUmlAction::setContext(QUmlClassifier *context)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlAction::context(): to be implemented (this is a derived association end)");
-    Q_UNUSED(context);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    The ordered set of input pins connected to the Action. These are among the total set of inputs.
- */
 const QList<QUmlInputPin *> QUmlAction::input() const
 {
-    // This is a read-only derived union association end
-
-    return _input;
+    return *(reinterpret_cast<const QList<QUmlInputPin *> *>(&_input));
 }
 
-void QUmlAction::addInput(QUmlInputPin *input)
-{
-    // This is a read-only derived union association end
-
-    if (!_input.contains(input)) {
-        _input.append(input);
-
-        // Adjust subsetted properties
-        addOwnedElement(input);
-    }
-}
-
-void QUmlAction::removeInput(QUmlInputPin *input)
-{
-    // This is a read-only derived union association end
-
-    if (_input.contains(input)) {
-        _input.removeAll(input);
-
-        // Adjust subsetted properties
-        removeOwnedElement(input);
-    }
-}
-
-/*!
-    If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.
- */
 bool QUmlAction::isLocallyReentrant() const
 {
-    // This is a read-write property
-
     return _isLocallyReentrant;
 }
 
 void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
 {
-    // This is a read-write property
-
-    if (_isLocallyReentrant != isLocallyReentrant) {
-        _isLocallyReentrant = isLocallyReentrant;
-    }
+    UmlAction::setLocallyReentrant(isLocallyReentrant);
 }
 
-/*!
-    Constraint that must be satisfied when executed is completed.
- */
 const QSet<QUmlConstraint *> QUmlAction::localPostcondition() const
 {
-    // This is a read-write association end
-
-    return _localPostcondition;
+    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_localPostcondition));
 }
 
-void QUmlAction::addLocalPostcondition(QUmlConstraint *localPostcondition)
+void QUmlAction::addLocalPostcondition(UmlConstraint *localPostcondition)
 {
-    // This is a read-write association end
-
-    if (!_localPostcondition.contains(localPostcondition)) {
-        _localPostcondition.insert(localPostcondition);
-
-        // Adjust subsetted properties
-        addOwnedElement(localPostcondition);
-    }
+    UmlAction::addLocalPostcondition(localPostcondition);
 }
 
-void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
+void QUmlAction::removeLocalPostcondition(UmlConstraint *localPostcondition)
 {
-    // This is a read-write association end
-
-    if (_localPostcondition.contains(localPostcondition)) {
-        _localPostcondition.remove(localPostcondition);
-
-        // Adjust subsetted properties
-        removeOwnedElement(localPostcondition);
-    }
+    UmlAction::removeLocalPostcondition(localPostcondition);
 }
 
-/*!
-    Constraint that must be satisfied when execution is started.
- */
 const QSet<QUmlConstraint *> QUmlAction::localPrecondition() const
 {
-    // This is a read-write association end
-
-    return _localPrecondition;
+    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_localPrecondition));
 }
 
-void QUmlAction::addLocalPrecondition(QUmlConstraint *localPrecondition)
+void QUmlAction::addLocalPrecondition(UmlConstraint *localPrecondition)
 {
-    // This is a read-write association end
-
-    if (!_localPrecondition.contains(localPrecondition)) {
-        _localPrecondition.insert(localPrecondition);
-
-        // Adjust subsetted properties
-        addOwnedElement(localPrecondition);
-    }
+    UmlAction::addLocalPrecondition(localPrecondition);
 }
 
-void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
+void QUmlAction::removeLocalPrecondition(UmlConstraint *localPrecondition)
 {
-    // This is a read-write association end
-
-    if (_localPrecondition.contains(localPrecondition)) {
-        _localPrecondition.remove(localPrecondition);
-
-        // Adjust subsetted properties
-        removeOwnedElement(localPrecondition);
-    }
+    UmlAction::removeLocalPrecondition(localPrecondition);
 }
 
-/*!
-    The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
- */
 const QList<QUmlOutputPin *> QUmlAction::output() const
 {
-    // This is a read-only derived union association end
-
-    return _output;
-}
-
-void QUmlAction::addOutput(QUmlOutputPin *output)
-{
-    // This is a read-only derived union association end
-
-    if (!_output.contains(output)) {
-        _output.append(output);
-
-        // Adjust subsetted properties
-        addOwnedElement(output);
-    }
-}
-
-void QUmlAction::removeOutput(QUmlOutputPin *output)
-{
-    // This is a read-only derived union association end
-
-    if (_output.contains(output)) {
-        _output.removeAll(output);
-
-        // Adjust subsetted properties
-        removeOwnedElement(output);
-    }
+    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_output));
 }
 
 QT_END_NAMESPACE

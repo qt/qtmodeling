@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlobjectnode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlState>
@@ -47,139 +46,66 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlObjectNode
-
-    \inmodule QtUml
-
-    \brief An object node is an abstract activity node that is part of defining object flow in an activity.Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
- */
-
-QUmlObjectNode::QUmlObjectNode() :
-    _isControlType(false),
-    _ordering(QtUml::ObjectNodeOrderingKindFIFO),
-    _selection(0),
-    _upperBound(0)
+QUmlObjectNode::QUmlObjectNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("inState", QVariant::fromValue(&_inState));
-    d_ptr->object.setProperty("isControlType", QVariant::fromValue(false));
-    d_ptr->object.setProperty("ordering", QVariant::fromValue(QtUml::ObjectNodeOrderingKindFIFO));
-    d_ptr->object.setProperty("selection", QVariant::fromValue((QUmlBehavior *)(0)));
-    d_ptr->object.setProperty("upperBound", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The required states of the object available at this point in the activity.
- */
 const QSet<QUmlState *> QUmlObjectNode::inState() const
 {
-    // This is a read-write association end
-
-    return _inState;
+    return *(reinterpret_cast<const QSet<QUmlState *> *>(&_inState));
 }
 
-void QUmlObjectNode::addInState(QUmlState *inState)
+void QUmlObjectNode::addInState(UmlState *inState)
 {
-    // This is a read-write association end
-
-    if (!_inState.contains(inState)) {
-        _inState.insert(inState);
-    }
+    UmlObjectNode::addInState(inState);
 }
 
-void QUmlObjectNode::removeInState(QUmlState *inState)
+void QUmlObjectNode::removeInState(UmlState *inState)
 {
-    // This is a read-write association end
-
-    if (_inState.contains(inState)) {
-        _inState.remove(inState);
-    }
+    UmlObjectNode::removeInState(inState);
 }
 
-/*!
-    Tells whether the type of the object node is to be treated as control.
- */
 bool QUmlObjectNode::isControlType() const
 {
-    // This is a read-write property
-
     return _isControlType;
 }
 
 void QUmlObjectNode::setControlType(bool isControlType)
 {
-    // This is a read-write property
-
-    if (_isControlType != isControlType) {
-        _isControlType = isControlType;
-    }
+    UmlObjectNode::setControlType(isControlType);
 }
 
-/*!
-    Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
- */
 QtUml::ObjectNodeOrderingKind QUmlObjectNode::ordering() const
 {
-    // This is a read-write property
-
     return _ordering;
 }
 
 void QUmlObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
-    // This is a read-write property
-
-    if (_ordering != ordering) {
-        _ordering = ordering;
-    }
+    UmlObjectNode::setOrdering(ordering);
 }
 
-/*!
-    Selects tokens for outgoing edges.
- */
 QUmlBehavior *QUmlObjectNode::selection() const
 {
-    // This is a read-write association end
-
-    return _selection;
+    return reinterpret_cast<QUmlBehavior *>(_selection);
 }
 
 void QUmlObjectNode::setSelection(QUmlBehavior *selection)
 {
-    // This is a read-write association end
-
-    if (_selection != selection) {
-        _selection = selection;
-    }
+    UmlObjectNode::setSelection(selection);
 }
 
-/*!
-    The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.
- */
 QUmlValueSpecification *QUmlObjectNode::upperBound() const
 {
-    // This is a read-write association end
-
-    return _upperBound;
+    return reinterpret_cast<QUmlValueSpecification *>(_upperBound);
 }
 
 void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
 {
-    // This is a read-write association end
-
-    if (_upperBound != upperBound) {
-        // Adjust subsetted properties
-        removeOwnedElement(_upperBound);
-
-        _upperBound = upperBound;
-
-        // Adjust subsetted properties
-        if (upperBound) {
-            addOwnedElement(upperBound);
-        }
-    }
+    UmlObjectNode::setUpperBound(upperBound);
 }
 
 QT_END_NAMESPACE

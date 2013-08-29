@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInputPin>
+#include <QtCore/QObject>
+#include "private/umlactioninputpin_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlAction;
 
-class Q_UML_EXPORT QUmlActionInputPin : public QUmlInputPin
+class Q_UML_EXPORT QUmlActionInputPin : public QObject, public UmlActionInputPin
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlAction * fromAction READ fromAction)
+
 public:
-    QUmlActionInputPin();
+    Q_INVOKABLE explicit QUmlActionInputPin(QObject *parent = 0);
 
     // Owned attributes
-    QUmlAction *fromAction() const;
-    void setFromAction(QUmlAction *fromAction);
-
-protected:
-    QUmlAction *_fromAction;
+    Q_INVOKABLE QUmlAction *fromAction() const;
+    Q_INVOKABLE void setFromAction(QUmlAction *fromAction);
 };
 
 QT_END_NAMESPACE

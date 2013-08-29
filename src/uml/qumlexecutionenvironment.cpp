@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlexecutionenvironment.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExecutionEnvironment
-
-    \inmodule QtUml
-
-    \brief An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts.
- */
-
-QUmlExecutionEnvironment::QUmlExecutionEnvironment()
+QUmlExecutionEnvironment::QUmlExecutionEnvironment(QObject *parent) :
+    QObject(parent)
 {
 }
 

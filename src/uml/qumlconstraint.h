@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlPackageableElement>
+#include <QtCore/QObject>
+#include "private/umlconstraint_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,24 +56,24 @@ class QUmlElement;
 class QUmlNamespace;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlConstraint : public QUmlPackageableElement
+class Q_UML_EXPORT QUmlConstraint : public QObject, public UmlConstraint
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlElement *> constrainedElement READ constrainedElement)
+    Q_PROPERTY(QUmlNamespace * context READ context)
+    Q_PROPERTY(QUmlValueSpecification * specification READ specification)
+
 public:
-    QUmlConstraint();
+    Q_INVOKABLE explicit QUmlConstraint(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlElement *> constrainedElement() const;
-    void addConstrainedElement(QUmlElement *constrainedElement);
-    void removeConstrainedElement(QUmlElement *constrainedElement);
-    QUmlNamespace *context() const;
-    void setContext(QUmlNamespace *context);
-    QUmlValueSpecification *specification() const;
-    void setSpecification(QUmlValueSpecification *specification);
-
-protected:
-    QList<QUmlElement *> _constrainedElement;
-    QUmlNamespace *_context;
-    QUmlValueSpecification *_specification;
+    Q_INVOKABLE const QList<QUmlElement *> constrainedElement() const;
+    Q_INVOKABLE void addConstrainedElement(UmlElement *constrainedElement);
+    Q_INVOKABLE void removeConstrainedElement(UmlElement *constrainedElement);
+    Q_INVOKABLE QUmlNamespace *context() const;
+    Q_INVOKABLE void setContext(QUmlNamespace *context);
+    Q_INVOKABLE QUmlValueSpecification *specification() const;
+    Q_INVOKABLE void setSpecification(QUmlValueSpecification *specification);
 };
 
 QT_END_NAMESPACE

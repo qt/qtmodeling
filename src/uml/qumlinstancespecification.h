@@ -43,9 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDeployedArtifact>
-#include <QtUml/QUmlPackageableElement>
-#include <QtUml/QUmlDeploymentTarget>
+#include <QtCore/QObject>
+#include "private/umlinstancespecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -57,25 +56,25 @@ class QUmlClassifier;
 class QUmlSlot;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlInstanceSpecification : public QUmlDeployedArtifact, public QUmlPackageableElement, public QUmlDeploymentTarget
+class Q_UML_EXPORT QUmlInstanceSpecification : public QObject, public UmlInstanceSpecification
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlClassifier *> classifier READ classifier)
+    Q_PROPERTY(QSet<QUmlSlot *> slot_ READ slot_)
+    Q_PROPERTY(QUmlValueSpecification * specification READ specification)
+
 public:
-    QUmlInstanceSpecification();
+    Q_INVOKABLE explicit QUmlInstanceSpecification(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlClassifier *> classifier() const;
-    void addClassifier(QUmlClassifier *classifier);
-    void removeClassifier(QUmlClassifier *classifier);
-    const QSet<QUmlSlot *> slot_() const;
-    void addSlot(QUmlSlot *slot_);
-    void removeSlot(QUmlSlot *slot_);
-    QUmlValueSpecification *specification() const;
-    void setSpecification(QUmlValueSpecification *specification);
-
-protected:
-    QSet<QUmlClassifier *> _classifier;
-    QSet<QUmlSlot *> _slot_;
-    QUmlValueSpecification *_specification;
+    Q_INVOKABLE const QSet<QUmlClassifier *> classifier() const;
+    Q_INVOKABLE void addClassifier(UmlClassifier *classifier);
+    Q_INVOKABLE void removeClassifier(UmlClassifier *classifier);
+    Q_INVOKABLE const QSet<QUmlSlot *> slot_() const;
+    Q_INVOKABLE void addSlot(UmlSlot *slot_);
+    Q_INVOKABLE void removeSlot(UmlSlot *slot_);
+    Q_INVOKABLE QUmlValueSpecification *specification() const;
+    Q_INVOKABLE void setSpecification(QUmlValueSpecification *specification);
 };
 
 QT_END_NAMESPACE

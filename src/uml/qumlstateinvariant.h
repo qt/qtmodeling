@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInteractionFragment>
+#include <QtCore/QObject>
+#include "private/umlstateinvariant_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlConstraint;
 class QUmlLifeline;
 
-class Q_UML_EXPORT QUmlStateInvariant : public QUmlInteractionFragment
+class Q_UML_EXPORT QUmlStateInvariant : public QObject, public UmlStateInvariant
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlLifeline * covered READ covered)
+    Q_PROPERTY(QUmlConstraint * invariant READ invariant)
+
 public:
-    QUmlStateInvariant();
+    Q_INVOKABLE explicit QUmlStateInvariant(QObject *parent = 0);
 
     // Owned attributes
-    QUmlLifeline *covered() const;
-    void setCovered(QUmlLifeline *covered);
-    QUmlConstraint *invariant() const;
-    void setInvariant(QUmlConstraint *invariant);
-
-protected:
-    QUmlLifeline *_covered;
-    QUmlConstraint *_invariant;
+    Q_INVOKABLE QUmlLifeline *covered() const;
+    Q_INVOKABLE void setCovered(QUmlLifeline *covered);
+    Q_INVOKABLE QUmlConstraint *invariant() const;
+    Q_INVOKABLE void setInvariant(QUmlConstraint *invariant);
 };
 
 QT_END_NAMESPACE

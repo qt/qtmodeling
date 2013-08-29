@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlobservation.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlObservation
-
-    \inmodule QtUml
-
-    \brief Observation is a superclass of TimeObservation and DurationObservation in order for TimeExpression and Duration to refer to either in a simple way.
- */
-
-QUmlObservation::QUmlObservation()
+QUmlObservation::QUmlObservation(QObject *parent) :
+    QObject(parent)
 {
 }
 

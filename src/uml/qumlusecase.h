@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlBehavioredClassifier>
+#include <QtCore/QObject>
+#include "private/umlusecase_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,33 +57,33 @@ class QUmlExtend;
 class QUmlExtensionPoint;
 class QUmlInclude;
 
-class Q_UML_EXPORT QUmlUseCase : public QUmlBehavioredClassifier
+class Q_UML_EXPORT QUmlUseCase : public QObject, public UmlUseCase
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlExtend *> extend READ extend)
+    Q_PROPERTY(QSet<QUmlExtensionPoint *> extensionPoint READ extensionPoint)
+    Q_PROPERTY(QSet<QUmlInclude *> include READ include)
+    Q_PROPERTY(QSet<QUmlClassifier *> subject READ subject)
+
 public:
-    QUmlUseCase();
+    Q_INVOKABLE explicit QUmlUseCase(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlExtend *> extend() const;
-    void addExtend(QUmlExtend *extend);
-    void removeExtend(QUmlExtend *extend);
-    const QSet<QUmlExtensionPoint *> extensionPoint() const;
-    void addExtensionPoint(QUmlExtensionPoint *extensionPoint);
-    void removeExtensionPoint(QUmlExtensionPoint *extensionPoint);
-    const QSet<QUmlInclude *> include() const;
-    void addInclude(QUmlInclude *include);
-    void removeInclude(QUmlInclude *include);
-    const QSet<QUmlClassifier *> subject() const;
-    void addSubject(QUmlClassifier *subject);
-    void removeSubject(QUmlClassifier *subject);
+    Q_INVOKABLE const QSet<QUmlExtend *> extend() const;
+    Q_INVOKABLE void addExtend(UmlExtend *extend);
+    Q_INVOKABLE void removeExtend(UmlExtend *extend);
+    Q_INVOKABLE const QSet<QUmlExtensionPoint *> extensionPoint() const;
+    Q_INVOKABLE void addExtensionPoint(UmlExtensionPoint *extensionPoint);
+    Q_INVOKABLE void removeExtensionPoint(UmlExtensionPoint *extensionPoint);
+    Q_INVOKABLE const QSet<QUmlInclude *> include() const;
+    Q_INVOKABLE void addInclude(UmlInclude *include);
+    Q_INVOKABLE void removeInclude(UmlInclude *include);
+    Q_INVOKABLE const QSet<QUmlClassifier *> subject() const;
+    Q_INVOKABLE void addSubject(UmlClassifier *subject);
+    Q_INVOKABLE void removeSubject(UmlClassifier *subject);
 
     // Operations
-    QSet<QUmlUseCase *> allIncludedUseCases() const;
-
-protected:
-    QSet<QUmlExtend *> _extend;
-    QSet<QUmlExtensionPoint *> _extensionPoint;
-    QSet<QUmlInclude *> _include;
-    QSet<QUmlClassifier *> _subject;
+    Q_INVOKABLE QSet<QUmlUseCase *> allIncludedUseCases() const;
 };
 
 QT_END_NAMESPACE

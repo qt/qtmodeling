@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlMessageEnd>
+#include <QtCore/QObject>
+#include "private/umlgate_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlGate : public QUmlMessageEnd
+class Q_UML_EXPORT QUmlGate : public QObject, public UmlGate
 {
-public:
-    QUmlGate();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlGate(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

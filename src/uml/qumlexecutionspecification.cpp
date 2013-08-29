@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlexecutionspecification.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOccurrenceSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExecutionSpecification
-
-    \inmodule QtUml
-
-    \brief An execution specification is a specification of the execution of a unit of behavior or action within the lifeline. The duration of an execution specification is represented by two cccurrence specifications, the start occurrence specification and the finish occurrence specification.
- */
-
-QUmlExecutionSpecification::QUmlExecutionSpecification() :
-    _finish(0),
-    _start(0)
+QUmlExecutionSpecification::QUmlExecutionSpecification(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("finish", QVariant::fromValue((QUmlOccurrenceSpecification *)(0)));
-    d_ptr->object.setProperty("start", QVariant::fromValue((QUmlOccurrenceSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the OccurrenceSpecification that designates the finish of the Action or Behavior.
- */
 QUmlOccurrenceSpecification *QUmlExecutionSpecification::finish() const
 {
-    // This is a read-write association end
-
-    return _finish;
+    return reinterpret_cast<QUmlOccurrenceSpecification *>(_finish);
 }
 
 void QUmlExecutionSpecification::setFinish(QUmlOccurrenceSpecification *finish)
 {
-    // This is a read-write association end
-
-    if (_finish != finish) {
-        _finish = finish;
-    }
+    UmlExecutionSpecification::setFinish(finish);
 }
 
-/*!
-    References the OccurrenceSpecification that designates the start of the Action or Behavior
- */
 QUmlOccurrenceSpecification *QUmlExecutionSpecification::start() const
 {
-    // This is a read-write association end
-
-    return _start;
+    return reinterpret_cast<QUmlOccurrenceSpecification *>(_start);
 }
 
 void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
 {
-    // This is a read-write association end
-
-    if (_start != start) {
-        _start = start;
-    }
+    UmlExecutionSpecification::setStart(start);
 }
 
 QT_END_NAMESPACE

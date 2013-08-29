@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlStructuralFeatureAction>
+#include <QtCore/QObject>
+#include "private/umlwritestructuralfeatureaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlWriteStructuralFeatureAction : public QUmlStructuralFeatureAction
+class Q_UML_EXPORT QUmlWriteStructuralFeatureAction : public QObject, public UmlWriteStructuralFeatureAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOutputPin * result READ result)
+    Q_PROPERTY(QUmlInputPin * value READ value)
+
 public:
-    Q_DECL_HIDDEN QUmlWriteStructuralFeatureAction();
+    Q_DECL_HIDDEN explicit QUmlWriteStructuralFeatureAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOutputPin *result() const;
-    void setResult(QUmlOutputPin *result);
-    QUmlInputPin *value() const;
-    void setValue(QUmlInputPin *value);
-
-protected:
-    QUmlOutputPin *_result;
-    QUmlInputPin *_value;
+    Q_INVOKABLE QUmlOutputPin *result() const;
+    Q_INVOKABLE void setResult(QUmlOutputPin *result);
+    Q_INVOKABLE QUmlInputPin *value() const;
+    Q_INVOKABLE void setValue(QUmlInputPin *value);
 };
 
 QT_END_NAMESPACE

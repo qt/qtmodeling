@@ -39,95 +39,46 @@
 **
 ****************************************************************************/
 #include "qumldestroyobjectaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDestroyObjectAction
-
-    \inmodule QtUml
-
-    \brief A destroy object action is an action that destroys objects.
- */
-
-QUmlDestroyObjectAction::QUmlDestroyObjectAction() :
-    _isDestroyLinks(false),
-    _isDestroyOwnedObjects(false),
-    _target(0)
+QUmlDestroyObjectAction::QUmlDestroyObjectAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isDestroyLinks", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isDestroyOwnedObjects", QVariant::fromValue(false));
-    d_ptr->object.setProperty("target", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies whether links in which the object participates are destroyed along with the object.
- */
 bool QUmlDestroyObjectAction::isDestroyLinks() const
 {
-    // This is a read-write property
-
     return _isDestroyLinks;
 }
 
 void QUmlDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 {
-    // This is a read-write property
-
-    if (_isDestroyLinks != isDestroyLinks) {
-        _isDestroyLinks = isDestroyLinks;
-    }
+    UmlDestroyObjectAction::setDestroyLinks(isDestroyLinks);
 }
 
-/*!
-    Specifies whether objects owned by the object are destroyed along with the object.
- */
 bool QUmlDestroyObjectAction::isDestroyOwnedObjects() const
 {
-    // This is a read-write property
-
     return _isDestroyOwnedObjects;
 }
 
 void QUmlDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
-    // This is a read-write property
-
-    if (_isDestroyOwnedObjects != isDestroyOwnedObjects) {
-        _isDestroyOwnedObjects = isDestroyOwnedObjects;
-    }
+    UmlDestroyObjectAction::setDestroyOwnedObjects(isDestroyOwnedObjects);
 }
 
-/*!
-    The input pin providing the object to be destroyed.
- */
 QUmlInputPin *QUmlDestroyObjectAction::target() const
 {
-    // This is a read-write association end
-
-    return _target;
+    return reinterpret_cast<QUmlInputPin *>(_target);
 }
 
 void QUmlDestroyObjectAction::setTarget(QUmlInputPin *target)
 {
-    // This is a read-write association end
-
-    if (_target != target) {
-        // Adjust subsetted properties
-        removeInput(_target);
-
-        _target = target;
-
-        // Adjust subsetted properties
-        if (target) {
-            addInput(target);
-        }
-    }
+    UmlDestroyObjectAction::setTarget(target);
 }
 
 QT_END_NAMESPACE

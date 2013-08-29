@@ -39,110 +39,52 @@
 **
 ****************************************************************************/
 #include "qumlreplyaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlTrigger>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReplyAction
-
-    \inmodule QtUml
-
-    \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
- */
-
-QUmlReplyAction::QUmlReplyAction() :
-    _replyToCall(0),
-    _returnInformation(0)
+QUmlReplyAction::QUmlReplyAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("replyToCall", QVariant::fromValue((QUmlTrigger *)(0)));
-    d_ptr->object.setProperty("replyValue", QVariant::fromValue(&_replyValue));
-    d_ptr->object.setProperty("returnInformation", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The trigger specifying the operation whose call is being replied to.
- */
 QUmlTrigger *QUmlReplyAction::replyToCall() const
 {
-    // This is a read-write association end
-
-    return _replyToCall;
+    return reinterpret_cast<QUmlTrigger *>(_replyToCall);
 }
 
 void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 {
-    // This is a read-write association end
-
-    if (_replyToCall != replyToCall) {
-        _replyToCall = replyToCall;
-    }
+    UmlReplyAction::setReplyToCall(replyToCall);
 }
 
-/*!
-    A list of pins containing the reply values of the operation. These values are returned to the caller.
- */
 const QSet<QUmlInputPin *> QUmlReplyAction::replyValue() const
 {
-    // This is a read-write association end
-
-    return _replyValue;
+    return *(reinterpret_cast<const QSet<QUmlInputPin *> *>(&_replyValue));
 }
 
-void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
+void QUmlReplyAction::addReplyValue(UmlInputPin *replyValue)
 {
-    // This is a read-write association end
-
-    if (!_replyValue.contains(replyValue)) {
-        _replyValue.insert(replyValue);
-
-        // Adjust subsetted properties
-        addInput(replyValue);
-    }
+    UmlReplyAction::addReplyValue(replyValue);
 }
 
-void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
+void QUmlReplyAction::removeReplyValue(UmlInputPin *replyValue)
 {
-    // This is a read-write association end
-
-    if (_replyValue.contains(replyValue)) {
-        _replyValue.remove(replyValue);
-
-        // Adjust subsetted properties
-        removeInput(replyValue);
-    }
+    UmlReplyAction::removeReplyValue(replyValue);
 }
 
-/*!
-    A pin containing the return information value produced by an earlier AcceptCallAction.
- */
 QUmlInputPin *QUmlReplyAction::returnInformation() const
 {
-    // This is a read-write association end
-
-    return _returnInformation;
+    return reinterpret_cast<QUmlInputPin *>(_returnInformation);
 }
 
 void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
 {
-    // This is a read-write association end
-
-    if (_returnInformation != returnInformation) {
-        // Adjust subsetted properties
-        removeInput(_returnInformation);
-
-        _returnInformation = returnInformation;
-
-        // Adjust subsetted properties
-        if (returnInformation) {
-            addInput(returnInformation);
-        }
-    }
+    UmlReplyAction::setReturnInformation(returnInformation);
 }
 
 QT_END_NAMESPACE

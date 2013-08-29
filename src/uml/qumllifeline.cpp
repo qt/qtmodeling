@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumllifeline.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConnectableElement>
 #include <QtUml/QUmlInteraction>
@@ -49,154 +48,66 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLifeline
-
-    \inmodule QtUml
-
-    \brief A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
- */
-
-QUmlLifeline::QUmlLifeline() :
-    _decomposedAs(0),
-    _interaction(0),
-    _represents(0),
-    _selector(0)
+QUmlLifeline::QUmlLifeline(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("coveredBy", QVariant::fromValue(&_coveredBy));
-    d_ptr->object.setProperty("decomposedAs", QVariant::fromValue((QUmlPartDecomposition *)(0)));
-    d_ptr->object.setProperty("interaction", QVariant::fromValue((QUmlInteraction *)(0)));
-    d_ptr->object.setProperty("represents", QVariant::fromValue((QUmlConnectableElement *)(0)));
-    d_ptr->object.setProperty("selector", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the InteractionFragments in which this Lifeline takes part.
- */
 const QSet<QUmlInteractionFragment *> QUmlLifeline::coveredBy() const
 {
-    // This is a read-write association end
-
-    return _coveredBy;
+    return *(reinterpret_cast<const QSet<QUmlInteractionFragment *> *>(&_coveredBy));
 }
 
-void QUmlLifeline::addCoveredBy(QUmlInteractionFragment *coveredBy)
+void QUmlLifeline::addCoveredBy(UmlInteractionFragment *coveredBy)
 {
-    // This is a read-write association end
-
-    if (!_coveredBy.contains(coveredBy)) {
-        _coveredBy.insert(coveredBy);
-
-        // Adjust opposite properties
-        if (coveredBy) {
-            coveredBy->addCovered(this);
-        }
-    }
+    UmlLifeline::addCoveredBy(coveredBy);
 }
 
-void QUmlLifeline::removeCoveredBy(QUmlInteractionFragment *coveredBy)
+void QUmlLifeline::removeCoveredBy(UmlInteractionFragment *coveredBy)
 {
-    // This is a read-write association end
-
-    if (_coveredBy.contains(coveredBy)) {
-        _coveredBy.remove(coveredBy);
-
-        // Adjust opposite properties
-        if (coveredBy) {
-            coveredBy->removeCovered(this);
-        }
-    }
+    UmlLifeline::removeCoveredBy(coveredBy);
 }
 
-/*!
-    References the Interaction that represents the decomposition.
- */
 QUmlPartDecomposition *QUmlLifeline::decomposedAs() const
 {
-    // This is a read-write association end
-
-    return _decomposedAs;
+    return reinterpret_cast<QUmlPartDecomposition *>(_decomposedAs);
 }
 
 void QUmlLifeline::setDecomposedAs(QUmlPartDecomposition *decomposedAs)
 {
-    // This is a read-write association end
-
-    if (_decomposedAs != decomposedAs) {
-        _decomposedAs = decomposedAs;
-    }
+    UmlLifeline::setDecomposedAs(decomposedAs);
 }
 
-/*!
-    References the Interaction enclosing this Lifeline.
- */
 QUmlInteraction *QUmlLifeline::interaction() const
 {
-    // This is a read-write association end
-
-    return _interaction;
+    return reinterpret_cast<QUmlInteraction *>(_interaction);
 }
 
 void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
 {
-    // This is a read-write association end
-
-    if (_interaction != interaction) {
-        // Adjust subsetted properties
-
-        _interaction = interaction;
-
-        // Adjust subsetted properties
-        setNamespace(interaction);
-    }
+    UmlLifeline::setInteraction(interaction);
 }
 
-/*!
-    References the ConnectableElement within the classifier that contains the enclosing interaction.
- */
 QUmlConnectableElement *QUmlLifeline::represents() const
 {
-    // This is a read-write association end
-
-    return _represents;
+    return reinterpret_cast<QUmlConnectableElement *>(_represents);
 }
 
 void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
 {
-    // This is a read-write association end
-
-    if (_represents != represents) {
-        _represents = represents;
-    }
+    UmlLifeline::setRepresents(represents);
 }
 
-/*!
-    If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.
- */
 QUmlValueSpecification *QUmlLifeline::selector() const
 {
-    // This is a read-write association end
-
-    return _selector;
+    return reinterpret_cast<QUmlValueSpecification *>(_selector);
 }
 
 void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
 {
-    // This is a read-write association end
-
-    if (_selector != selector) {
-        // Adjust subsetted properties
-        removeOwnedElement(_selector);
-
-        _selector = selector;
-
-        // Adjust subsetted properties
-        if (selector) {
-            addOwnedElement(selector);
-        }
-    }
+    UmlLifeline::setSelector(selector);
 }
 
 QT_END_NAMESPACE

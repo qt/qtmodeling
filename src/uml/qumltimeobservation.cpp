@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumltimeobservation.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTimeObservation
-
-    \inmodule QtUml
-
-    \brief A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.
- */
-
-QUmlTimeObservation::QUmlTimeObservation() :
-    _event(0),
-    _firstEvent(true)
+QUmlTimeObservation::QUmlTimeObservation(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("event", QVariant::fromValue((QUmlNamedElement *)(0)));
-    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(true));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The observation is determined by the entering or exiting of the event element during execution.
- */
 QUmlNamedElement *QUmlTimeObservation::event() const
 {
-    // This is a read-write association end
-
-    return _event;
+    return reinterpret_cast<QUmlNamedElement *>(_event);
 }
 
 void QUmlTimeObservation::setEvent(QUmlNamedElement *event)
 {
-    // This is a read-write association end
-
-    if (_event != event) {
-        _event = event;
-    }
+    UmlTimeObservation::setEvent(event);
 }
 
-/*!
-    The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.
- */
 bool QUmlTimeObservation::firstEvent() const
 {
-    // This is a read-write property
-
     return _firstEvent;
 }
 
 void QUmlTimeObservation::setFirstEvent(bool firstEvent)
 {
-    // This is a read-write property
-
-    if (_firstEvent != firstEvent) {
-        _firstEvent = firstEvent;
-    }
+    UmlTimeObservation::setFirstEvent(firstEvent);
 }
 
 QT_END_NAMESPACE

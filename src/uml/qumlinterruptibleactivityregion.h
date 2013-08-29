@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlActivityGroup>
+#include <QtCore/QObject>
+#include "private/umlinterruptibleactivityregion_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,22 +55,22 @@ QT_MODULE(QtUml)
 class QUmlActivityEdge;
 class QUmlActivityNode;
 
-class Q_UML_EXPORT QUmlInterruptibleActivityRegion : public QUmlActivityGroup
+class Q_UML_EXPORT QUmlInterruptibleActivityRegion : public QObject, public UmlInterruptibleActivityRegion
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlActivityEdge *> interruptingEdge READ interruptingEdge)
+    Q_PROPERTY(QSet<QUmlActivityNode *> node READ node)
+
 public:
-    QUmlInterruptibleActivityRegion();
+    Q_INVOKABLE explicit QUmlInterruptibleActivityRegion(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlActivityEdge *> interruptingEdge() const;
-    void addInterruptingEdge(QUmlActivityEdge *interruptingEdge);
-    void removeInterruptingEdge(QUmlActivityEdge *interruptingEdge);
-    const QSet<QUmlActivityNode *> node() const;
-    void addNode(QUmlActivityNode *node);
-    void removeNode(QUmlActivityNode *node);
-
-protected:
-    QSet<QUmlActivityEdge *> _interruptingEdge;
-    QSet<QUmlActivityNode *> _node;
+    Q_INVOKABLE const QSet<QUmlActivityEdge *> interruptingEdge() const;
+    Q_INVOKABLE void addInterruptingEdge(UmlActivityEdge *interruptingEdge);
+    Q_INVOKABLE void removeInterruptingEdge(UmlActivityEdge *interruptingEdge);
+    Q_INVOKABLE const QSet<QUmlActivityNode *> node() const;
+    Q_INVOKABLE void addNode(UmlActivityNode *node);
+    Q_INVOKABLE void removeNode(UmlActivityNode *node);
 };
 
 QT_END_NAMESPACE

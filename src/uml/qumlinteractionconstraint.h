@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlConstraint>
+#include <QtCore/QObject>
+#include "private/umlinteractionconstraint_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlInteractionConstraint : public QUmlConstraint
+class Q_UML_EXPORT QUmlInteractionConstraint : public QObject, public UmlInteractionConstraint
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlValueSpecification * maxint READ maxint)
+    Q_PROPERTY(QUmlValueSpecification * minint READ minint)
+
 public:
-    QUmlInteractionConstraint();
+    Q_INVOKABLE explicit QUmlInteractionConstraint(QObject *parent = 0);
 
     // Owned attributes
-    QUmlValueSpecification *maxint() const;
-    void setMaxint(QUmlValueSpecification *maxint);
-    QUmlValueSpecification *minint() const;
-    void setMinint(QUmlValueSpecification *minint);
-
-protected:
-    QUmlValueSpecification *_maxint;
-    QUmlValueSpecification *_minint;
+    Q_INVOKABLE QUmlValueSpecification *maxint() const;
+    Q_INVOKABLE void setMaxint(QUmlValueSpecification *maxint);
+    Q_INVOKABLE QUmlValueSpecification *minint() const;
+    Q_INVOKABLE void setMinint(QUmlValueSpecification *minint);
 };
 
 QT_END_NAMESPACE

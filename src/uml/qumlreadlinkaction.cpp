@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlreadlinkaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReadLinkAction
-
-    \inmodule QtUml
-
-    \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
- */
-
-QUmlReadLinkAction::QUmlReadLinkAction() :
-    _result(0)
+QUmlReadLinkAction::QUmlReadLinkAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The pin on which are put the objects participating in the association at the end not specified by the inputs.
- */
 QUmlOutputPin *QUmlReadLinkAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlReadLinkAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlReadLinkAction::setResult(result);
 }
 
 QT_END_NAMESPACE

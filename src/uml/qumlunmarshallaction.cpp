@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlunmarshallaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlInputPin>
@@ -47,103 +46,46 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlUnmarshallAction
-
-    \inmodule QtUml
-
-    \brief An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
- */
-
-QUmlUnmarshallAction::QUmlUnmarshallAction() :
-    _object(0),
-    _unmarshallType(0)
+QUmlUnmarshallAction::QUmlUnmarshallAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("object", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("result", QVariant::fromValue(&_result));
-    d_ptr->object.setProperty("unmarshallType", QVariant::fromValue((QUmlClassifier *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The object to be unmarshalled.
- */
 QUmlInputPin *QUmlUnmarshallAction::object() const
 {
-    // This is a read-write association end
-
-    return _object;
+    return reinterpret_cast<QUmlInputPin *>(_object);
 }
 
 void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
 {
-    // This is a read-write association end
-
-    if (_object != object) {
-        // Adjust subsetted properties
-        removeInput(_object);
-
-        _object = object;
-
-        // Adjust subsetted properties
-        if (object) {
-            addInput(object);
-        }
-    }
+    UmlUnmarshallAction::setObject(object);
 }
 
-/*!
-    The values of the structural features of the input object.
- */
 const QSet<QUmlOutputPin *> QUmlUnmarshallAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return *(reinterpret_cast<const QSet<QUmlOutputPin *> *>(&_result));
 }
 
-void QUmlUnmarshallAction::addResult(QUmlOutputPin *result)
+void QUmlUnmarshallAction::addResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (!_result.contains(result)) {
-        _result.insert(result);
-
-        // Adjust subsetted properties
-        addOutput(result);
-    }
+    UmlUnmarshallAction::addResult(result);
 }
 
-void QUmlUnmarshallAction::removeResult(QUmlOutputPin *result)
+void QUmlUnmarshallAction::removeResult(UmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result.contains(result)) {
-        _result.remove(result);
-
-        // Adjust subsetted properties
-        removeOutput(result);
-    }
+    UmlUnmarshallAction::removeResult(result);
 }
 
-/*!
-    The type of the object to be unmarshalled.
- */
 QUmlClassifier *QUmlUnmarshallAction::unmarshallType() const
 {
-    // This is a read-write association end
-
-    return _unmarshallType;
+    return reinterpret_cast<QUmlClassifier *>(_unmarshallType);
 }
 
 void QUmlUnmarshallAction::setUnmarshallType(QUmlClassifier *unmarshallType)
 {
-    // This is a read-write association end
-
-    if (_unmarshallType != unmarshallType) {
-        _unmarshallType = unmarshallType;
-    }
+    UmlUnmarshallAction::setUnmarshallType(unmarshallType);
 }
 
 QT_END_NAMESPACE

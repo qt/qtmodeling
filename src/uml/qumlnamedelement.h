@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlElement>
+#include <QtCore/QObject>
+#include "private/umlnamedelement_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -57,38 +58,37 @@ class QUmlNamespace;
 class QUmlPackage;
 class QUmlStringExpression;
 
-class Q_UML_EXPORT QUmlNamedElement : public virtual QUmlElement
+class Q_UML_EXPORT QUmlNamedElement : public QObject, public UmlNamedElement
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
+    Q_PROPERTY(QString name READ name)
+    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
+    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+
 public:
-    Q_DECL_HIDDEN QUmlNamedElement();
+    Q_DECL_HIDDEN explicit QUmlNamedElement(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlDependency *> clientDependency() const;
-    void addClientDependency(QUmlDependency *clientDependency);
-    void removeClientDependency(QUmlDependency *clientDependency);
-    QString name() const;
-    void setName(QString name);
-    QUmlStringExpression *nameExpression() const;
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    QUmlNamespace *namespace_() const;
-    Q_DECL_HIDDEN void setNamespace(QUmlNamespace *namespace_);
-    QString qualifiedName() const;
-    Q_DECL_HIDDEN void setQualifiedName(QString qualifiedName);
-    QtUml::VisibilityKind visibility() const;
-    void setVisibility(QtUml::VisibilityKind visibility);
+    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
+    Q_INVOKABLE void addClientDependency(UmlDependency *clientDependency);
+    Q_INVOKABLE void removeClientDependency(UmlDependency *clientDependency);
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE void setName(QString name);
+    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
+    Q_INVOKABLE void setNameExpression(QUmlStringExpression *nameExpression);
+    Q_INVOKABLE QUmlNamespace *namespace_() const;
+    Q_INVOKABLE QString qualifiedName() const;
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
     // Operations
-    QList<QUmlNamespace *> allNamespaces() const;
-    QSet<QUmlPackage *> allOwningPackages() const;
-    bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    QString separator() const;
-
-protected:
-    QSet<QUmlDependency *> _clientDependency;
-    QString _name;
-    QUmlStringExpression *_nameExpression;
-    QUmlNamespace *_namespace_;
-    QtUml::VisibilityKind _visibility;
+    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
+    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
+    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
+    Q_INVOKABLE QString separator() const;
 };
 
 QT_END_NAMESPACE

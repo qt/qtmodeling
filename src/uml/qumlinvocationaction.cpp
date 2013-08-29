@@ -39,81 +39,42 @@
 **
 ****************************************************************************/
 #include "qumlinvocationaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlPort>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInvocationAction
-
-    \inmodule QtUml
-
-    \brief InvocationAction is an abstract class for the various actions that invoke behavior.In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
- */
-
-QUmlInvocationAction::QUmlInvocationAction() :
-    _onPort(0)
+QUmlInvocationAction::QUmlInvocationAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("argument", QVariant::fromValue(&_argument));
-    d_ptr->object.setProperty("onPort", QVariant::fromValue((QUmlPort *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specification of the ordered set of argument values that appears during execution.
- */
 const QList<QUmlInputPin *> QUmlInvocationAction::argument() const
 {
-    // This is a read-write association end
-
-    return _argument;
+    return *(reinterpret_cast<const QList<QUmlInputPin *> *>(&_argument));
 }
 
-void QUmlInvocationAction::addArgument(QUmlInputPin *argument)
+void QUmlInvocationAction::addArgument(UmlInputPin *argument)
 {
-    // This is a read-write association end
-
-    if (!_argument.contains(argument)) {
-        _argument.append(argument);
-
-        // Adjust subsetted properties
-        addInput(argument);
-    }
+    UmlInvocationAction::addArgument(argument);
 }
 
-void QUmlInvocationAction::removeArgument(QUmlInputPin *argument)
+void QUmlInvocationAction::removeArgument(UmlInputPin *argument)
 {
-    // This is a read-write association end
-
-    if (_argument.contains(argument)) {
-        _argument.removeAll(argument);
-
-        // Adjust subsetted properties
-        removeInput(argument);
-    }
+    UmlInvocationAction::removeArgument(argument);
 }
 
-/*!
-    A optional port of the receiver object on which the behavioral feature is invoked.
- */
 QUmlPort *QUmlInvocationAction::onPort() const
 {
-    // This is a read-write association end
-
-    return _onPort;
+    return reinterpret_cast<QUmlPort *>(_onPort);
 }
 
 void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
 {
-    // This is a read-write association end
-
-    if (_onPort != onPort) {
-        _onPort = onPort;
-    }
+    UmlInvocationAction::setOnPort(onPort);
 }
 
 QT_END_NAMESPACE

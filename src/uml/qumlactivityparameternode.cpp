@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlactivityparameternode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlParameter>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlActivityParameterNode
-
-    \inmodule QtUml
-
-    \brief An activity parameter node is an object node for inputs and outputs to activities.
- */
-
-QUmlActivityParameterNode::QUmlActivityParameterNode() :
-    _parameter(0)
+QUmlActivityParameterNode::QUmlActivityParameterNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("parameter", QVariant::fromValue((QUmlParameter *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The parameter the object node will be accepting or providing values for.
- */
 QUmlParameter *QUmlActivityParameterNode::parameter() const
 {
-    // This is a read-write association end
-
-    return _parameter;
+    return reinterpret_cast<QUmlParameter *>(_parameter);
 }
 
 void QUmlActivityParameterNode::setParameter(QUmlParameter *parameter)
 {
-    // This is a read-write association end
-
-    if (_parameter != parameter) {
-        _parameter = parameter;
-    }
+    UmlActivityParameterNode::setParameter(parameter);
 }
 
 QT_END_NAMESPACE

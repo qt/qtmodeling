@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlnamespace_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,46 +54,42 @@ QT_MODULE(QtUml)
 
 class QUmlConstraint;
 class QUmlElementImport;
+class QUmlNamedElement;
 class QUmlPackageableElement;
 class QUmlPackageImport;
 
-class Q_UML_EXPORT QUmlNamespace : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlNamespace : public QObject, public UmlNamespace
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlElementImport *> elementImport READ elementImport)
+    Q_PROPERTY(QSet<QUmlPackageableElement *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QUmlNamedElement *> member READ member)
+    Q_PROPERTY(QSet<QUmlNamedElement *> ownedMember READ ownedMember)
+    Q_PROPERTY(QSet<QUmlConstraint *> ownedRule READ ownedRule)
+    Q_PROPERTY(QSet<QUmlPackageImport *> packageImport READ packageImport)
+
 public:
-    Q_DECL_HIDDEN QUmlNamespace();
+    Q_DECL_HIDDEN explicit QUmlNamespace(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlElementImport *> elementImport() const;
-    void addElementImport(QUmlElementImport *elementImport);
-    void removeElementImport(QUmlElementImport *elementImport);
-    const QSet<QUmlPackageableElement *> importedMember() const;
-    Q_DECL_HIDDEN void addImportedMember(QUmlPackageableElement *importedMember);
-    Q_DECL_HIDDEN void removeImportedMember(QUmlPackageableElement *importedMember);
-    const QSet<QUmlNamedElement *> member() const;
-    Q_DECL_HIDDEN void addMember(QUmlNamedElement *member);
-    Q_DECL_HIDDEN void removeMember(QUmlNamedElement *member);
-    const QSet<QUmlNamedElement *> ownedMember() const;
-    Q_DECL_HIDDEN void addOwnedMember(QUmlNamedElement *ownedMember);
-    Q_DECL_HIDDEN void removeOwnedMember(QUmlNamedElement *ownedMember);
-    const QSet<QUmlConstraint *> ownedRule() const;
-    void addOwnedRule(QUmlConstraint *ownedRule);
-    void removeOwnedRule(QUmlConstraint *ownedRule);
-    const QSet<QUmlPackageImport *> packageImport() const;
-    void addPackageImport(QUmlPackageImport *packageImport);
-    void removePackageImport(QUmlPackageImport *packageImport);
+    Q_INVOKABLE const QSet<QUmlElementImport *> elementImport() const;
+    Q_INVOKABLE void addElementImport(UmlElementImport *elementImport);
+    Q_INVOKABLE void removeElementImport(UmlElementImport *elementImport);
+    Q_INVOKABLE const QSet<QUmlPackageableElement *> importedMember() const;
+    Q_INVOKABLE const QSet<QUmlNamedElement *> member() const;
+    Q_INVOKABLE const QSet<QUmlNamedElement *> ownedMember() const;
+    Q_INVOKABLE const QSet<QUmlConstraint *> ownedRule() const;
+    Q_INVOKABLE void addOwnedRule(UmlConstraint *ownedRule);
+    Q_INVOKABLE void removeOwnedRule(UmlConstraint *ownedRule);
+    Q_INVOKABLE const QSet<QUmlPackageImport *> packageImport() const;
+    Q_INVOKABLE void addPackageImport(UmlPackageImport *packageImport);
+    Q_INVOKABLE void removePackageImport(UmlPackageImport *packageImport);
 
     // Operations
-    QSet<QUmlPackageableElement *> excludeCollisions(QSet<QUmlPackageableElement *> imps) const;
-    QSet<QString> getNamesOfMember(QUmlNamedElement *element) const;
-    QSet<QUmlPackageableElement *> importMembers(QSet<QUmlPackageableElement *> imps) const;
-    bool membersAreDistinguishable() const;
-
-protected:
-    QSet<QUmlElementImport *> _elementImport;
-    QSet<QUmlNamedElement *> _member;
-    QSet<QUmlNamedElement *> _ownedMember;
-    QSet<QUmlConstraint *> _ownedRule;
-    QSet<QUmlPackageImport *> _packageImport;
+    Q_INVOKABLE QSet<QUmlPackageableElement *> excludeCollisions(QSet<QUmlPackageableElement *> imps) const;
+    Q_INVOKABLE QSet<QString> getNamesOfMember(QUmlNamedElement *element) const;
+    Q_INVOKABLE QSet<QUmlPackageableElement *> importMembers(QSet<QUmlPackageableElement *> imps) const;
+    Q_INVOKABLE bool membersAreDistinguishable() const;
 };
 
 QT_END_NAMESPACE

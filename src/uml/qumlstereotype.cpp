@@ -39,98 +39,44 @@
 **
 ****************************************************************************/
 #include "qumlstereotype.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlImage>
 #include <QtUml/QUmlProfile>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlStereotype
-
-    \inmodule QtUml
-
-    \brief A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
- */
-
-QUmlStereotype::QUmlStereotype()
+QUmlStereotype::QUmlStereotype(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("icon", QVariant::fromValue(&_icon));
-    d_ptr->object.setProperty("profile", QVariant::fromValue((QUmlProfile *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
- */
 const QSet<QUmlImage *> QUmlStereotype::icon() const
 {
-    // This is a read-write association end
-
-    return _icon;
+    return *(reinterpret_cast<const QSet<QUmlImage *> *>(&_icon));
 }
 
-void QUmlStereotype::addIcon(QUmlImage *icon)
+void QUmlStereotype::addIcon(UmlImage *icon)
 {
-    // This is a read-write association end
-
-    if (!_icon.contains(icon)) {
-        _icon.insert(icon);
-
-        // Adjust subsetted properties
-        addOwnedElement(icon);
-    }
+    UmlStereotype::addIcon(icon);
 }
 
-void QUmlStereotype::removeIcon(QUmlImage *icon)
+void QUmlStereotype::removeIcon(UmlImage *icon)
 {
-    // This is a read-write association end
-
-    if (_icon.contains(icon)) {
-        _icon.remove(icon);
-
-        // Adjust subsetted properties
-        removeOwnedElement(icon);
-    }
+    UmlStereotype::removeIcon(icon);
 }
 
-/*!
-    The profile that directly or indirectly contains this stereotype.
- */
 QUmlProfile *QUmlStereotype::profile() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlStereotype::profile(): to be implemented (this is a derived association end)");
-
-    return 0;
+    return reinterpret_cast<QUmlProfile *>(UmlStereotype::profile());
 }
 
-void QUmlStereotype::setProfile(QUmlProfile *profile)
+// Operations
+
+QUmlProfile *QUmlStereotype::containingProfile() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlStereotype::profile(): to be implemented (this is a derived association end)");
-    Q_UNUSED(profile);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-// OPERATIONS
-
-/*!
-    The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
- */
-QUmlProfile *QUmlStereotype::containingProfile(
-    ) const
-{
-    qWarning("QUmlStereotype::containingProfile(): to be implemented (operation)");
-
-    return 0;
+    return reinterpret_cast<QUmlProfile *>(UmlStereotype::containingProfile());
 }
 
 QT_END_NAMESPACE

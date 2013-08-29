@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlclearvariableaction.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlClearVariableAction
-
-    \inmodule QtUml
-
-    \brief A clear variable action is a variable action that removes all values of a variable.
- */
-
-QUmlClearVariableAction::QUmlClearVariableAction()
+QUmlClearVariableAction::QUmlClearVariableAction(QObject *parent) :
+    QObject(parent)
 {
 }
 

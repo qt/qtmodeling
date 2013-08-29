@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumllinkendcreationdata.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlLinkEndCreationData
-
-    \inmodule QtUml
-
-    \brief A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
- */
-
-QUmlLinkEndCreationData::QUmlLinkEndCreationData() :
-    _insertAt(0),
-    _isReplaceAll(false)
+QUmlLinkEndCreationData::QUmlLinkEndCreationData(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("insertAt", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("isReplaceAll", QVariant::fromValue(false));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.
- */
 QUmlInputPin *QUmlLinkEndCreationData::insertAt() const
 {
-    // This is a read-write association end
-
-    return _insertAt;
+    return reinterpret_cast<QUmlInputPin *>(_insertAt);
 }
 
 void QUmlLinkEndCreationData::setInsertAt(QUmlInputPin *insertAt)
 {
-    // This is a read-write association end
-
-    if (_insertAt != insertAt) {
-        _insertAt = insertAt;
-    }
+    UmlLinkEndCreationData::setInsertAt(insertAt);
 }
 
-/*!
-    Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.
- */
 bool QUmlLinkEndCreationData::isReplaceAll() const
 {
-    // This is a read-write property
-
     return _isReplaceAll;
 }
 
 void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 {
-    // This is a read-write property
-
-    if (_isReplaceAll != isReplaceAll) {
-        _isReplaceAll = isReplaceAll;
-    }
+    UmlLinkEndCreationData::setReplaceAll(isReplaceAll);
 }
 
 QT_END_NAMESPACE

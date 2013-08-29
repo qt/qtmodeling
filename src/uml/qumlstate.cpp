@@ -39,529 +39,186 @@
 **
 ****************************************************************************/
 #include "qumlstate.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlConnectionPointReference>
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlPseudostate>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlTrigger>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlState
-
-    \inmodule QtUml
-
-    \brief A state models a situation during which some (usually implicit) invariant condition holds.The states of protocol state machines are exposed to the users of their context classifiers. A protocol state represents an exposed stable situation of its context classifier: when an instance of the classifier is not processing any operation, users of this instance can always know its state configuration.
- */
-
-QUmlState::QUmlState() :
-    _doActivity(0),
-    _entry(0),
-    _exit(0),
-    _redefinedState(0),
-    _stateInvariant(0),
-    _submachine(0)
+QUmlState::QUmlState(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("connection", QVariant::fromValue(&_connection));
-    d_ptr->object.setProperty("connectionPoint", QVariant::fromValue(&_connectionPoint));
-    d_ptr->object.setProperty("deferrableTrigger", QVariant::fromValue(&_deferrableTrigger));
-    d_ptr->object.setProperty("doActivity", QVariant::fromValue((QUmlBehavior *)(0)));
-    d_ptr->object.setProperty("entry", QVariant::fromValue((QUmlBehavior *)(0)));
-    d_ptr->object.setProperty("exit", QVariant::fromValue((QUmlBehavior *)(0)));
-    d_ptr->object.setProperty("isComposite", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isOrthogonal", QVariant::fromValue(false));
-    d_ptr->object.setProperty("isSimple", QVariant::fromValue(true));
-    d_ptr->object.setProperty("isSubmachineState", QVariant::fromValue(false));
-    d_ptr->object.setProperty("redefinedState", QVariant::fromValue((QUmlState *)(0)));
-    d_ptr->object.setProperty("redefinitionContext", QVariant::fromValue((QUmlClassifier *)(0)));
-    d_ptr->object.setProperty("region", QVariant::fromValue(&_region));
-    d_ptr->object.setProperty("stateInvariant", QVariant::fromValue((QUmlConstraint *)(0)));
-    d_ptr->object.setProperty("submachine", QVariant::fromValue((QUmlStateMachine *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
- */
 const QSet<QUmlConnectionPointReference *> QUmlState::connection() const
 {
-    // This is a read-write association end
-
-    return _connection;
+    return *(reinterpret_cast<const QSet<QUmlConnectionPointReference *> *>(&_connection));
 }
 
-void QUmlState::addConnection(QUmlConnectionPointReference *connection)
+void QUmlState::addConnection(UmlConnectionPointReference *connection)
 {
-    // This is a read-write association end
-
-    if (!_connection.contains(connection)) {
-        _connection.insert(connection);
-
-        // Adjust subsetted properties
-        addOwnedMember(connection);
-
-        // Adjust opposite properties
-        if (connection) {
-            connection->setState(this);
-        }
-    }
+    UmlState::addConnection(connection);
 }
 
-void QUmlState::removeConnection(QUmlConnectionPointReference *connection)
+void QUmlState::removeConnection(UmlConnectionPointReference *connection)
 {
-    // This is a read-write association end
-
-    if (_connection.contains(connection)) {
-        _connection.remove(connection);
-
-        // Adjust subsetted properties
-        removeOwnedMember(connection);
-
-        // Adjust opposite properties
-        if (connection) {
-            connection->setState(0);
-        }
-    }
+    UmlState::removeConnection(connection);
 }
 
-/*!
-    The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
- */
 const QSet<QUmlPseudostate *> QUmlState::connectionPoint() const
 {
-    // This is a read-write association end
-
-    return _connectionPoint;
+    return *(reinterpret_cast<const QSet<QUmlPseudostate *> *>(&_connectionPoint));
 }
 
-void QUmlState::addConnectionPoint(QUmlPseudostate *connectionPoint)
+void QUmlState::addConnectionPoint(UmlPseudostate *connectionPoint)
 {
-    // This is a read-write association end
-
-    if (!_connectionPoint.contains(connectionPoint)) {
-        _connectionPoint.insert(connectionPoint);
-
-        // Adjust subsetted properties
-        addOwnedMember(connectionPoint);
-
-        // Adjust opposite properties
-        if (connectionPoint) {
-            connectionPoint->setState(this);
-        }
-    }
+    UmlState::addConnectionPoint(connectionPoint);
 }
 
-void QUmlState::removeConnectionPoint(QUmlPseudostate *connectionPoint)
+void QUmlState::removeConnectionPoint(UmlPseudostate *connectionPoint)
 {
-    // This is a read-write association end
-
-    if (_connectionPoint.contains(connectionPoint)) {
-        _connectionPoint.remove(connectionPoint);
-
-        // Adjust subsetted properties
-        removeOwnedMember(connectionPoint);
-
-        // Adjust opposite properties
-        if (connectionPoint) {
-            connectionPoint->setState(0);
-        }
-    }
+    UmlState::removeConnectionPoint(connectionPoint);
 }
 
-/*!
-    A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
- */
 const QSet<QUmlTrigger *> QUmlState::deferrableTrigger() const
 {
-    // This is a read-write association end
-
-    return _deferrableTrigger;
+    return *(reinterpret_cast<const QSet<QUmlTrigger *> *>(&_deferrableTrigger));
 }
 
-void QUmlState::addDeferrableTrigger(QUmlTrigger *deferrableTrigger)
+void QUmlState::addDeferrableTrigger(UmlTrigger *deferrableTrigger)
 {
-    // This is a read-write association end
-
-    if (!_deferrableTrigger.contains(deferrableTrigger)) {
-        _deferrableTrigger.insert(deferrableTrigger);
-
-        // Adjust subsetted properties
-        addOwnedElement(deferrableTrigger);
-    }
+    UmlState::addDeferrableTrigger(deferrableTrigger);
 }
 
-void QUmlState::removeDeferrableTrigger(QUmlTrigger *deferrableTrigger)
+void QUmlState::removeDeferrableTrigger(UmlTrigger *deferrableTrigger)
 {
-    // This is a read-write association end
-
-    if (_deferrableTrigger.contains(deferrableTrigger)) {
-        _deferrableTrigger.remove(deferrableTrigger);
-
-        // Adjust subsetted properties
-        removeOwnedElement(deferrableTrigger);
-    }
+    UmlState::removeDeferrableTrigger(deferrableTrigger);
 }
 
-/*!
-    An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first.
- */
 QUmlBehavior *QUmlState::doActivity() const
 {
-    // This is a read-write association end
-
-    return _doActivity;
+    return reinterpret_cast<QUmlBehavior *>(_doActivity);
 }
 
 void QUmlState::setDoActivity(QUmlBehavior *doActivity)
 {
-    // This is a read-write association end
-
-    if (_doActivity != doActivity) {
-        // Adjust subsetted properties
-        removeOwnedElement(_doActivity);
-
-        _doActivity = doActivity;
-
-        // Adjust subsetted properties
-        if (doActivity) {
-            addOwnedElement(doActivity);
-        }
-    }
+    UmlState::setDoActivity(doActivity);
 }
 
-/*!
-    An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.
- */
 QUmlBehavior *QUmlState::entry() const
 {
-    // This is a read-write association end
-
-    return _entry;
+    return reinterpret_cast<QUmlBehavior *>(_entry);
 }
 
 void QUmlState::setEntry(QUmlBehavior *entry)
 {
-    // This is a read-write association end
-
-    if (_entry != entry) {
-        // Adjust subsetted properties
-        removeOwnedElement(_entry);
-
-        _entry = entry;
-
-        // Adjust subsetted properties
-        if (entry) {
-            addOwnedElement(entry);
-        }
-    }
+    UmlState::setEntry(entry);
 }
 
-/*!
-    An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution.
- */
 QUmlBehavior *QUmlState::exit() const
 {
-    // This is a read-write association end
-
-    return _exit;
+    return reinterpret_cast<QUmlBehavior *>(_exit);
 }
 
 void QUmlState::setExit(QUmlBehavior *exit)
 {
-    // This is a read-write association end
-
-    if (_exit != exit) {
-        // Adjust subsetted properties
-        removeOwnedElement(_exit);
-
-        _exit = exit;
-
-        // Adjust subsetted properties
-        if (exit) {
-            addOwnedElement(exit);
-        }
-    }
+    UmlState::setExit(exit);
 }
 
-/*!
-    A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.
- */
 bool QUmlState::isComposite() const
 {
-    // This is a read-only derived property
-
-    qWarning("QUmlState::isComposite(): to be implemented (this is a derived property)");
-
-    return bool();
+    return UmlState::isComposite();
 }
 
-void QUmlState::setComposite(bool isComposite)
-{
-    // This is a read-only derived property
-
-    qWarning("QUmlState::isComposite(): to be implemented (this is a derived property)");
-    Q_UNUSED(isComposite);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.
- */
 bool QUmlState::isOrthogonal() const
 {
-    // This is a read-only derived property
-
-    qWarning("QUmlState::isOrthogonal(): to be implemented (this is a derived property)");
-
-    return bool();
+    return UmlState::isOrthogonal();
 }
 
-void QUmlState::setOrthogonal(bool isOrthogonal)
-{
-    // This is a read-only derived property
-
-    qWarning("QUmlState::isOrthogonal(): to be implemented (this is a derived property)");
-    Q_UNUSED(isOrthogonal);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.
- */
 bool QUmlState::isSimple() const
 {
-    // This is a read-only derived property
-
-    qWarning("QUmlState::isSimple(): to be implemented (this is a derived property)");
-
-    return bool();
+    return UmlState::isSimple();
 }
 
-void QUmlState::setSimple(bool isSimple)
-{
-    // This is a read-only derived property
-
-    qWarning("QUmlState::isSimple(): to be implemented (this is a derived property)");
-    Q_UNUSED(isSimple);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).
- */
 bool QUmlState::isSubmachineState() const
 {
-    // This is a read-only derived property
-
-    qWarning("QUmlState::isSubmachineState(): to be implemented (this is a derived property)");
-
-    return bool();
+    return UmlState::isSubmachineState();
 }
 
-void QUmlState::setSubmachineState(bool isSubmachineState)
-{
-    // This is a read-only derived property
-
-    qWarning("QUmlState::isSubmachineState(): to be implemented (this is a derived property)");
-    Q_UNUSED(isSubmachineState);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    The state of which this state is a redefinition.
- */
 QUmlState *QUmlState::redefinedState() const
 {
-    // This is a read-write association end
-
-    return _redefinedState;
+    return reinterpret_cast<QUmlState *>(_redefinedState);
 }
 
 void QUmlState::setRedefinedState(QUmlState *redefinedState)
 {
-    // This is a read-write association end
-
-    if (_redefinedState != redefinedState) {
-        // Adjust subsetted properties
-        removeRedefinedElement(_redefinedState);
-
-        _redefinedState = redefinedState;
-
-        // Adjust subsetted properties
-        if (redefinedState) {
-            addRedefinedElement(redefinedState);
-        }
-    }
+    UmlState::setRedefinedState(redefinedState);
 }
 
-/*!
-    References the classifier in which context this element may be redefined.
- */
 QUmlClassifier *QUmlState::redefinitionContext() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlState::redefinitionContext(): to be implemented (this is a derived association end)");
-
-    return 0;
+    return reinterpret_cast<QUmlClassifier *>(UmlState::redefinitionContext());
 }
 
-void QUmlState::setRedefinitionContext(QUmlClassifier *redefinitionContext)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlState::redefinitionContext(): to be implemented (this is a derived association end)");
-    Q_UNUSED(redefinitionContext);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    The regions owned directly by the state.
- */
 const QSet<QUmlRegion *> QUmlState::region() const
 {
-    // This is a read-write association end
-
-    return _region;
+    return *(reinterpret_cast<const QSet<QUmlRegion *> *>(&_region));
 }
 
-void QUmlState::addRegion(QUmlRegion *region)
+void QUmlState::addRegion(UmlRegion *region)
 {
-    // This is a read-write association end
-
-    if (!_region.contains(region)) {
-        _region.insert(region);
-
-        // Adjust subsetted properties
-        addOwnedMember(region);
-
-        // Adjust opposite properties
-        if (region) {
-            region->setState(this);
-        }
-    }
+    UmlState::addRegion(region);
 }
 
-void QUmlState::removeRegion(QUmlRegion *region)
+void QUmlState::removeRegion(UmlRegion *region)
 {
-    // This is a read-write association end
-
-    if (_region.contains(region)) {
-        _region.remove(region);
-
-        // Adjust subsetted properties
-        removeOwnedMember(region);
-
-        // Adjust opposite properties
-        if (region) {
-            region->setState(0);
-        }
-    }
+    UmlState::removeRegion(region);
 }
 
-/*!
-    Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.
- */
 QUmlConstraint *QUmlState::stateInvariant() const
 {
-    // This is a read-write association end
-
-    return _stateInvariant;
+    return reinterpret_cast<QUmlConstraint *>(_stateInvariant);
 }
 
 void QUmlState::setStateInvariant(QUmlConstraint *stateInvariant)
 {
-    // This is a read-write association end
-
-    if (_stateInvariant != stateInvariant) {
-        // Adjust subsetted properties
-        removeOwnedRule(_stateInvariant);
-
-        _stateInvariant = stateInvariant;
-
-        // Adjust subsetted properties
-        if (stateInvariant) {
-            addOwnedRule(stateInvariant);
-        }
-    }
+    UmlState::setStateInvariant(stateInvariant);
 }
 
-/*!
-    The state machine that is to be inserted in place of the (submachine) state.
- */
 QUmlStateMachine *QUmlState::submachine() const
 {
-    // This is a read-write association end
-
-    return _submachine;
+    return reinterpret_cast<QUmlStateMachine *>(_submachine);
 }
 
 void QUmlState::setSubmachine(QUmlStateMachine *submachine)
 {
-    // This is a read-write association end
-
-    if (_submachine != submachine) {
-        _submachine = submachine;
-    }
+    UmlState::setSubmachine(submachine);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query containingStateMachine() returns the state machine that contains the state either directly or transitively.
- */
-QUmlStateMachine *QUmlState::containingStateMachine(
-    ) const
+QUmlStateMachine *QUmlState::containingStateMachine() const
 {
-    qWarning("QUmlState::containingStateMachine(): to be implemented (operation)");
-
-    return 0;
+    return reinterpret_cast<QUmlStateMachine *>(UmlState::containingStateMachine());
 }
 
-/*!
-    The query isConsistentWith() specifies that a redefining state is consistent with a redefined state provided that the redefining state is an extension of the redefined state: A simple state can be redefined (extended) to become a composite state (by adding a region) and a composite state can be redefined (extended) by adding regions and by adding vertices, states, and transitions to inherited regions. All states may add or replace entry, exit, and 'doActivity' actions.
- */
-bool QUmlState::isConsistentWith(
-    QUmlRedefinableElement *redefinee) const
+bool QUmlState::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("QUmlState::isConsistentWith(): to be implemented (operation)");
-
-    Q_UNUSED(redefinee);
-    return bool ();
+    return UmlState::isConsistentWith(redefinee);
 }
 
-/*!
-    The query isRedefinitionContextValid() specifies whether the redefinition contexts of a state are properly related to the redefinition contexts of the specified state to allow this element to redefine the other. The containing region of a redefining state must redefine the containing region of the redefined state.
- */
-bool QUmlState::isRedefinitionContextValid(
-    QUmlState *redefined) const
+bool QUmlState::isRedefinitionContextValid(QUmlState *redefined) const
 {
-    qWarning("QUmlState::isRedefinitionContextValid(): to be implemented (operation)");
-
-    Q_UNUSED(redefined);
-    return bool ();
+    return UmlState::isRedefinitionContextValid(redefined);
 }
 
 QT_END_NAMESPACE

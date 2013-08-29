@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlControlNode>
+#include <QtCore/QObject>
+#include "private/umljoinnode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlJoinNode : public QUmlControlNode
+class Q_UML_EXPORT QUmlJoinNode : public QObject, public UmlJoinNode
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isCombineDuplicate READ isCombineDuplicate)
+    Q_PROPERTY(QUmlValueSpecification * joinSpec READ joinSpec)
+
 public:
-    QUmlJoinNode();
+    Q_INVOKABLE explicit QUmlJoinNode(QObject *parent = 0);
 
     // Owned attributes
-    bool isCombineDuplicate() const;
-    void setCombineDuplicate(bool isCombineDuplicate);
-    QUmlValueSpecification *joinSpec() const;
-    void setJoinSpec(QUmlValueSpecification *joinSpec);
-
-protected:
-    bool _isCombineDuplicate;
-    QUmlValueSpecification *_joinSpec;
+    Q_INVOKABLE bool isCombineDuplicate() const;
+    Q_INVOKABLE void setCombineDuplicate(bool isCombineDuplicate);
+    Q_INVOKABLE QUmlValueSpecification *joinSpec() const;
+    Q_INVOKABLE void setJoinSpec(QUmlValueSpecification *joinSpec);
 };
 
 QT_END_NAMESPACE

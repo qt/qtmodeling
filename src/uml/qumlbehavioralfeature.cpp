@@ -39,223 +39,108 @@
 **
 ****************************************************************************/
 #include "qumlbehavioralfeature.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlParameter>
 #include <QtUml/QUmlParameterSet>
 #include <QtUml/QUmlType>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlBehavioralFeature
-
-    \inmodule QtUml
-
-    \brief A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.A behavioral feature owns zero or more parameter sets.
- */
-
-QUmlBehavioralFeature::QUmlBehavioralFeature() :
-    _concurrency(QtUml::CallConcurrencyKindSequential),
-    _isAbstract(false)
+QUmlBehavioralFeature::QUmlBehavioralFeature(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("concurrency", QVariant::fromValue(QtUml::CallConcurrencyKindSequential));
-    d_ptr->object.setProperty("isAbstract", QVariant::fromValue(false));
-    d_ptr->object.setProperty("method", QVariant::fromValue(&_method));
-    d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
-    d_ptr->object.setProperty("ownedParameterSet", QVariant::fromValue(&_ownedParameterSet));
-    d_ptr->object.setProperty("raisedException", QVariant::fromValue(&_raisedException));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features.
- */
 QtUml::CallConcurrencyKind QUmlBehavioralFeature::concurrency() const
 {
-    // This is a read-write property
-
     return _concurrency;
 }
 
 void QUmlBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
-    // This is a read-write property
-
-    if (_concurrency != concurrency) {
-        _concurrency = concurrency;
-    }
+    UmlBehavioralFeature::setConcurrency(concurrency);
 }
 
-/*!
-    If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.
- */
 bool QUmlBehavioralFeature::isAbstract() const
 {
-    // This is a read-write property
-
     return _isAbstract;
 }
 
 void QUmlBehavioralFeature::setAbstract(bool isAbstract)
 {
-    // This is a read-write property
-
-    if (_isAbstract != isAbstract) {
-        _isAbstract = isAbstract;
-    }
+    UmlBehavioralFeature::setAbstract(isAbstract);
 }
 
-/*!
-    A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
- */
 const QSet<QUmlBehavior *> QUmlBehavioralFeature::method() const
 {
-    // This is a read-write association end
-
-    return _method;
+    return *(reinterpret_cast<const QSet<QUmlBehavior *> *>(&_method));
 }
 
-void QUmlBehavioralFeature::addMethod(QUmlBehavior *method)
+void QUmlBehavioralFeature::addMethod(UmlBehavior *method)
 {
-    // This is a read-write association end
-
-    if (!_method.contains(method)) {
-        _method.insert(method);
-
-        // Adjust opposite properties
-        if (method) {
-            method->setSpecification(this);
-        }
-    }
+    UmlBehavioralFeature::addMethod(method);
 }
 
-void QUmlBehavioralFeature::removeMethod(QUmlBehavior *method)
+void QUmlBehavioralFeature::removeMethod(UmlBehavior *method)
 {
-    // This is a read-write association end
-
-    if (_method.contains(method)) {
-        _method.remove(method);
-
-        // Adjust opposite properties
-        if (method) {
-            method->setSpecification(0);
-        }
-    }
+    UmlBehavioralFeature::removeMethod(method);
 }
 
-/*!
-    Specifies the ordered set of formal parameters of this BehavioralFeature.
- */
 const QList<QUmlParameter *> QUmlBehavioralFeature::ownedParameter() const
 {
-    // This is a read-write association end
-
-    return _ownedParameter;
+    return *(reinterpret_cast<const QList<QUmlParameter *> *>(&_ownedParameter));
 }
 
-void QUmlBehavioralFeature::addOwnedParameter(QUmlParameter *ownedParameter)
+void QUmlBehavioralFeature::addOwnedParameter(UmlParameter *ownedParameter)
 {
-    // This is a read-write association end
-
-    if (!_ownedParameter.contains(ownedParameter)) {
-        _ownedParameter.append(ownedParameter);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedParameter);
-    }
+    UmlBehavioralFeature::addOwnedParameter(ownedParameter);
 }
 
-void QUmlBehavioralFeature::removeOwnedParameter(QUmlParameter *ownedParameter)
+void QUmlBehavioralFeature::removeOwnedParameter(UmlParameter *ownedParameter)
 {
-    // This is a read-write association end
-
-    if (_ownedParameter.contains(ownedParameter)) {
-        _ownedParameter.removeAll(ownedParameter);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedParameter);
-    }
+    UmlBehavioralFeature::removeOwnedParameter(ownedParameter);
 }
 
-/*!
-    The ParameterSets owned by this BehavioralFeature.
- */
 const QSet<QUmlParameterSet *> QUmlBehavioralFeature::ownedParameterSet() const
 {
-    // This is a read-write association end
-
-    return _ownedParameterSet;
+    return *(reinterpret_cast<const QSet<QUmlParameterSet *> *>(&_ownedParameterSet));
 }
 
-void QUmlBehavioralFeature::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
+void QUmlBehavioralFeature::addOwnedParameterSet(UmlParameterSet *ownedParameterSet)
 {
-    // This is a read-write association end
-
-    if (!_ownedParameterSet.contains(ownedParameterSet)) {
-        _ownedParameterSet.insert(ownedParameterSet);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedParameterSet);
-    }
+    UmlBehavioralFeature::addOwnedParameterSet(ownedParameterSet);
 }
 
-void QUmlBehavioralFeature::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
+void QUmlBehavioralFeature::removeOwnedParameterSet(UmlParameterSet *ownedParameterSet)
 {
-    // This is a read-write association end
-
-    if (_ownedParameterSet.contains(ownedParameterSet)) {
-        _ownedParameterSet.remove(ownedParameterSet);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedParameterSet);
-    }
+    UmlBehavioralFeature::removeOwnedParameterSet(ownedParameterSet);
 }
 
-/*!
-    References the Types representing exceptions that may be raised during an invocation of this feature.
- */
 const QSet<QUmlType *> QUmlBehavioralFeature::raisedException() const
 {
-    // This is a read-write association end
-
-    return _raisedException;
+    return *(reinterpret_cast<const QSet<QUmlType *> *>(&_raisedException));
 }
 
-void QUmlBehavioralFeature::addRaisedException(QUmlType *raisedException)
+void QUmlBehavioralFeature::addRaisedException(UmlType *raisedException)
 {
-    // This is a read-write association end
-
-    if (!_raisedException.contains(raisedException)) {
-        _raisedException.insert(raisedException);
-    }
+    UmlBehavioralFeature::addRaisedException(raisedException);
 }
 
-void QUmlBehavioralFeature::removeRaisedException(QUmlType *raisedException)
+void QUmlBehavioralFeature::removeRaisedException(UmlType *raisedException)
 {
-    // This is a read-write association end
-
-    if (_raisedException.contains(raisedException)) {
-        _raisedException.remove(raisedException);
-    }
+    UmlBehavioralFeature::removeRaisedException(raisedException);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.
- */
-bool QUmlBehavioralFeature::isDistinguishableFrom(
-    QUmlNamedElement *n, QUmlNamespace *ns) const
+bool QUmlBehavioralFeature::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
 {
-    qWarning("QUmlBehavioralFeature::isDistinguishableFrom(): to be implemented (operation)");
-
-    Q_UNUSED(n);
-    Q_UNUSED(ns);
-    return bool ();
+    return UmlBehavioralFeature::isDistinguishableFrom(n, ns);
 }
 
 QT_END_NAMESPACE

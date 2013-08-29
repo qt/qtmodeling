@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlintervalconstraint.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInterval>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlIntervalConstraint
-
-    \inmodule QtUml
-
-    \brief An interval constraint is a constraint that refers to an interval.
- */
-
-QUmlIntervalConstraint::QUmlIntervalConstraint() :
-    _specification(0)
+QUmlIntervalConstraint::QUmlIntervalConstraint(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlInterval *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    A condition that must be true when evaluated in order for the constraint to be satisfied.
- */
 QUmlInterval *QUmlIntervalConstraint::specification() const
 {
-    // This is a read-write association end
-
-    return _specification;
+    return reinterpret_cast<QUmlInterval *>(_specification);
 }
 
 void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
 {
-    // This is a read-write association end
-
-    if (_specification != specification) {
-        _specification = specification;
-    }
+    UmlIntervalConstraint::setSpecification(specification);
 }
 
 QT_END_NAMESPACE

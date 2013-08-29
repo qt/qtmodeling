@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlActivityNode>
+#include <QtCore/QObject>
+#include "private/umlexecutablenode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,18 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlExceptionHandler;
 
-class Q_UML_EXPORT QUmlExecutableNode : public QUmlActivityNode
+class Q_UML_EXPORT QUmlExecutableNode : public QObject, public UmlExecutableNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlExceptionHandler *> handler READ handler)
+
 public:
-    Q_DECL_HIDDEN QUmlExecutableNode();
+    Q_DECL_HIDDEN explicit QUmlExecutableNode(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlExceptionHandler *> handler() const;
-    void addHandler(QUmlExceptionHandler *handler);
-    void removeHandler(QUmlExceptionHandler *handler);
-
-protected:
-    QSet<QUmlExceptionHandler *> _handler;
+    Q_INVOKABLE const QSet<QUmlExceptionHandler *> handler() const;
+    Q_INVOKABLE void addHandler(UmlExceptionHandler *handler);
+    Q_INVOKABLE void removeHandler(UmlExceptionHandler *handler);
 };
 
 QT_END_NAMESPACE

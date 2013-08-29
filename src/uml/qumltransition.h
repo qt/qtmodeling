@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRedefinableElement>
-#include <QtUml/QUmlNamespace>
+#include <QtCore/QObject>
+#include "private/umltransition_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -56,50 +56,51 @@ QT_MODULE(QtUml)
 class QUmlBehavior;
 class QUmlClassifier;
 class QUmlConstraint;
+class QUmlRedefinableElement;
 class QUmlRegion;
 class QUmlStateMachine;
 class QUmlTrigger;
 class QUmlVertex;
 
-class Q_UML_EXPORT QUmlTransition : public QUmlRedefinableElement, public QUmlNamespace
+class Q_UML_EXPORT QUmlTransition : public QObject, public UmlTransition
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlRegion * container READ container)
+    Q_PROPERTY(QUmlBehavior * effect READ effect)
+    Q_PROPERTY(QUmlConstraint * guard READ guard)
+    Q_PROPERTY(QtUml::TransitionKind kind READ kind)
+    Q_PROPERTY(QUmlTransition * redefinedTransition READ redefinedTransition)
+    Q_PROPERTY(QUmlClassifier * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QUmlVertex * source READ source)
+    Q_PROPERTY(QUmlVertex * target READ target)
+    Q_PROPERTY(QSet<QUmlTrigger *> trigger READ trigger)
+
 public:
-    QUmlTransition();
+    Q_INVOKABLE explicit QUmlTransition(QObject *parent = 0);
 
     // Owned attributes
-    QUmlRegion *container() const;
-    void setContainer(QUmlRegion *container);
-    QUmlBehavior *effect() const;
-    void setEffect(QUmlBehavior *effect);
-    QUmlConstraint *guard() const;
-    void setGuard(QUmlConstraint *guard);
-    QtUml::TransitionKind kind() const;
-    void setKind(QtUml::TransitionKind kind);
-    QUmlTransition *redefinedTransition() const;
-    void setRedefinedTransition(QUmlTransition *redefinedTransition);
-    QUmlClassifier *redefinitionContext() const;
-    Q_DECL_HIDDEN void setRedefinitionContext(QUmlClassifier *redefinitionContext);
-    QUmlVertex *source() const;
-    void setSource(QUmlVertex *source);
-    QUmlVertex *target() const;
-    void setTarget(QUmlVertex *target);
-    const QSet<QUmlTrigger *> trigger() const;
-    void addTrigger(QUmlTrigger *trigger);
-    void removeTrigger(QUmlTrigger *trigger);
+    Q_INVOKABLE QUmlRegion *container() const;
+    Q_INVOKABLE void setContainer(QUmlRegion *container);
+    Q_INVOKABLE QUmlBehavior *effect() const;
+    Q_INVOKABLE void setEffect(QUmlBehavior *effect);
+    Q_INVOKABLE QUmlConstraint *guard() const;
+    Q_INVOKABLE void setGuard(QUmlConstraint *guard);
+    Q_INVOKABLE QtUml::TransitionKind kind() const;
+    Q_INVOKABLE void setKind(QtUml::TransitionKind kind);
+    Q_INVOKABLE QUmlTransition *redefinedTransition() const;
+    Q_INVOKABLE void setRedefinedTransition(QUmlTransition *redefinedTransition);
+    Q_INVOKABLE QUmlClassifier *redefinitionContext() const;
+    Q_INVOKABLE QUmlVertex *source() const;
+    Q_INVOKABLE void setSource(QUmlVertex *source);
+    Q_INVOKABLE QUmlVertex *target() const;
+    Q_INVOKABLE void setTarget(QUmlVertex *target);
+    Q_INVOKABLE const QSet<QUmlTrigger *> trigger() const;
+    Q_INVOKABLE void addTrigger(UmlTrigger *trigger);
+    Q_INVOKABLE void removeTrigger(UmlTrigger *trigger);
 
     // Operations
-    QUmlStateMachine *containingStateMachine() const;
-    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-
-protected:
-    QUmlRegion *_container;
-    QUmlBehavior *_effect;
-    QUmlConstraint *_guard;
-    QtUml::TransitionKind _kind;
-    QUmlTransition *_redefinedTransition;
-    QUmlVertex *_source;
-    QUmlVertex *_target;
-    QSet<QUmlTrigger *> _trigger;
+    Q_INVOKABLE QUmlStateMachine *containingStateMachine() const;
+    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
 };
 
 QT_END_NAMESPACE

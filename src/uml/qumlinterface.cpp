@@ -39,8 +39,8 @@
 **
 ****************************************************************************/
 #include "qumlinterface.h"
-#include "private/qmodelingobject_p.h"
 
+#include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlOperation>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlProtocolStateMachine>
@@ -48,248 +48,96 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInterface
-
-    \inmodule QtUml
-
-    \brief Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.Interfaces may include receptions (in addition to operations).An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
- */
-
-QUmlInterface::QUmlInterface() :
-    _protocol(0)
+QUmlInterface::QUmlInterface(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("nestedClassifier", QVariant::fromValue(&_nestedClassifier));
-    d_ptr->object.setProperty("ownedAttribute", QVariant::fromValue(&_ownedAttribute));
-    d_ptr->object.setProperty("ownedOperation", QVariant::fromValue(&_ownedOperation));
-    d_ptr->object.setProperty("ownedReception", QVariant::fromValue(&_ownedReception));
-    d_ptr->object.setProperty("protocol", QVariant::fromValue((QUmlProtocolStateMachine *)(0)));
-    d_ptr->object.setProperty("redefinedInterface", QVariant::fromValue(&_redefinedInterface));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References all the Classifiers that are defined (nested) within the Class.
- */
 const QList<QUmlClassifier *> QUmlInterface::nestedClassifier() const
 {
-    // This is a read-write association end
-
-    return _nestedClassifier;
+    return *(reinterpret_cast<const QList<QUmlClassifier *> *>(&_nestedClassifier));
 }
 
-void QUmlInterface::addNestedClassifier(QUmlClassifier *nestedClassifier)
+void QUmlInterface::addNestedClassifier(UmlClassifier *nestedClassifier)
 {
-    // This is a read-write association end
-
-    if (!_nestedClassifier.contains(nestedClassifier)) {
-        _nestedClassifier.append(nestedClassifier);
-
-        // Adjust subsetted properties
-        addOwnedMember(nestedClassifier);
-    }
+    UmlInterface::addNestedClassifier(nestedClassifier);
 }
 
-void QUmlInterface::removeNestedClassifier(QUmlClassifier *nestedClassifier)
+void QUmlInterface::removeNestedClassifier(UmlClassifier *nestedClassifier)
 {
-    // This is a read-write association end
-
-    if (_nestedClassifier.contains(nestedClassifier)) {
-        _nestedClassifier.removeAll(nestedClassifier);
-
-        // Adjust subsetted properties
-        removeOwnedMember(nestedClassifier);
-    }
+    UmlInterface::removeNestedClassifier(nestedClassifier);
 }
 
-/*!
-    The attributes (i.e. the properties) owned by the class.
- */
 const QList<QUmlProperty *> QUmlInterface::ownedAttribute() const
 {
-    // This is a read-write association end
-
-    return _ownedAttribute;
+    return *(reinterpret_cast<const QList<QUmlProperty *> *>(&_ownedAttribute));
 }
 
-void QUmlInterface::addOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlInterface::addOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedAttribute);
-        addAttribute(ownedAttribute);
-
-        // Adjust opposite properties
-        if (ownedAttribute) {
-            ownedAttribute->setInterface(this);
-        }
-    }
+    UmlInterface::addOwnedAttribute(ownedAttribute);
 }
 
-void QUmlInterface::removeOwnedAttribute(QUmlProperty *ownedAttribute)
+void QUmlInterface::removeOwnedAttribute(UmlProperty *ownedAttribute)
 {
-    // This is a read-write association end
-
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedAttribute);
-        removeAttribute(ownedAttribute);
-
-        // Adjust opposite properties
-        if (ownedAttribute) {
-            ownedAttribute->setInterface(0);
-        }
-    }
+    UmlInterface::removeOwnedAttribute(ownedAttribute);
 }
 
-/*!
-    The operations owned by the class.
- */
 const QList<QUmlOperation *> QUmlInterface::ownedOperation() const
 {
-    // This is a read-write association end
-
-    return _ownedOperation;
+    return *(reinterpret_cast<const QList<QUmlOperation *> *>(&_ownedOperation));
 }
 
-void QUmlInterface::addOwnedOperation(QUmlOperation *ownedOperation)
+void QUmlInterface::addOwnedOperation(UmlOperation *ownedOperation)
 {
-    // This is a read-write association end
-
-    if (!_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.append(ownedOperation);
-
-        // Adjust subsetted properties
-        addFeature(ownedOperation);
-        addOwnedMember(ownedOperation);
-
-        // Adjust opposite properties
-        if (ownedOperation) {
-            ownedOperation->setInterface(this);
-        }
-    }
+    UmlInterface::addOwnedOperation(ownedOperation);
 }
 
-void QUmlInterface::removeOwnedOperation(QUmlOperation *ownedOperation)
+void QUmlInterface::removeOwnedOperation(UmlOperation *ownedOperation)
 {
-    // This is a read-write association end
-
-    if (_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.removeAll(ownedOperation);
-
-        // Adjust subsetted properties
-        removeFeature(ownedOperation);
-        removeOwnedMember(ownedOperation);
-
-        // Adjust opposite properties
-        if (ownedOperation) {
-            ownedOperation->setInterface(0);
-        }
-    }
+    UmlInterface::removeOwnedOperation(ownedOperation);
 }
 
-/*!
-    Receptions that objects providing this interface are willing to accept.
- */
 const QSet<QUmlReception *> QUmlInterface::ownedReception() const
 {
-    // This is a read-write association end
-
-    return _ownedReception;
+    return *(reinterpret_cast<const QSet<QUmlReception *> *>(&_ownedReception));
 }
 
-void QUmlInterface::addOwnedReception(QUmlReception *ownedReception)
+void QUmlInterface::addOwnedReception(UmlReception *ownedReception)
 {
-    // This is a read-write association end
-
-    if (!_ownedReception.contains(ownedReception)) {
-        _ownedReception.insert(ownedReception);
-
-        // Adjust subsetted properties
-        addFeature(ownedReception);
-        addOwnedMember(ownedReception);
-    }
+    UmlInterface::addOwnedReception(ownedReception);
 }
 
-void QUmlInterface::removeOwnedReception(QUmlReception *ownedReception)
+void QUmlInterface::removeOwnedReception(UmlReception *ownedReception)
 {
-    // This is a read-write association end
-
-    if (_ownedReception.contains(ownedReception)) {
-        _ownedReception.remove(ownedReception);
-
-        // Adjust subsetted properties
-        removeFeature(ownedReception);
-        removeOwnedMember(ownedReception);
-    }
+    UmlInterface::removeOwnedReception(ownedReception);
 }
 
-/*!
-    References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.
- */
 QUmlProtocolStateMachine *QUmlInterface::protocol() const
 {
-    // This is a read-write association end
-
-    return _protocol;
+    return reinterpret_cast<QUmlProtocolStateMachine *>(_protocol);
 }
 
 void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
 {
-    // This is a read-write association end
-
-    if (_protocol != protocol) {
-        // Adjust subsetted properties
-        removeOwnedMember(_protocol);
-
-        _protocol = protocol;
-
-        // Adjust subsetted properties
-        if (protocol) {
-            addOwnedMember(protocol);
-        }
-    }
+    UmlInterface::setProtocol(protocol);
 }
 
-/*!
-    References all the Interfaces redefined by this Interface.
- */
 const QSet<QUmlInterface *> QUmlInterface::redefinedInterface() const
 {
-    // This is a read-write association end
-
-    return _redefinedInterface;
+    return *(reinterpret_cast<const QSet<QUmlInterface *> *>(&_redefinedInterface));
 }
 
-void QUmlInterface::addRedefinedInterface(QUmlInterface *redefinedInterface)
+void QUmlInterface::addRedefinedInterface(UmlInterface *redefinedInterface)
 {
-    // This is a read-write association end
-
-    if (!_redefinedInterface.contains(redefinedInterface)) {
-        _redefinedInterface.insert(redefinedInterface);
-
-        // Adjust subsetted properties
-        addRedefinedClassifier(redefinedInterface);
-    }
+    UmlInterface::addRedefinedInterface(redefinedInterface);
 }
 
-void QUmlInterface::removeRedefinedInterface(QUmlInterface *redefinedInterface)
+void QUmlInterface::removeRedefinedInterface(UmlInterface *redefinedInterface)
 {
-    // This is a read-write association end
-
-    if (_redefinedInterface.contains(redefinedInterface)) {
-        _redefinedInterface.remove(redefinedInterface);
-
-        // Adjust subsetted properties
-        removeRedefinedClassifier(redefinedInterface);
-    }
+    UmlInterface::removeRedefinedInterface(redefinedInterface);
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlVariableAction>
+#include <QtCore/QObject>
+#include "private/umlclearvariableaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlClearVariableAction : public QUmlVariableAction
+class Q_UML_EXPORT QUmlClearVariableAction : public QObject, public UmlClearVariableAction
 {
-public:
-    QUmlClearVariableAction();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlClearVariableAction(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlEncapsulatedClassifier>
-#include <QtUml/QUmlBehavioredClassifier>
+#include <QtCore/QObject>
+#include "private/umlclass_p.h"
 
 QT_BEGIN_HEADER
 
@@ -59,45 +59,45 @@ class QUmlOperation;
 class QUmlProperty;
 class QUmlReception;
 
-class Q_UML_EXPORT QUmlClass : public QUmlEncapsulatedClassifier, public QUmlBehavioredClassifier
+class Q_UML_EXPORT QUmlClass : public QObject, public UmlClass
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlExtension *> extension READ extension)
+    Q_PROPERTY(bool isAbstract READ isAbstract)
+    Q_PROPERTY(bool isActive READ isActive)
+    Q_PROPERTY(QList<QUmlClassifier *> nestedClassifier READ nestedClassifier)
+    Q_PROPERTY(QList<QUmlProperty *> ownedAttribute READ ownedAttribute)
+    Q_PROPERTY(QList<QUmlOperation *> ownedOperation READ ownedOperation)
+    Q_PROPERTY(QSet<QUmlReception *> ownedReception READ ownedReception)
+    Q_PROPERTY(QSet<QUmlClass *> superClass READ superClass)
+
 public:
-    QUmlClass();
+    Q_INVOKABLE explicit QUmlClass(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlExtension *> extension() const;
-    Q_DECL_HIDDEN void addExtension(QUmlExtension *extension);
-    Q_DECL_HIDDEN void removeExtension(QUmlExtension *extension);
-    bool isAbstract() const;
-    void setAbstract(bool isAbstract);
-    bool isActive() const;
-    void setActive(bool isActive);
-    const QList<QUmlClassifier *> nestedClassifier() const;
-    void addNestedClassifier(QUmlClassifier *nestedClassifier);
-    void removeNestedClassifier(QUmlClassifier *nestedClassifier);
-    const QList<QUmlProperty *> ownedAttribute() const;
-    void addOwnedAttribute(QUmlProperty *ownedAttribute);
-    void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QList<QUmlOperation *> ownedOperation() const;
-    void addOwnedOperation(QUmlOperation *ownedOperation);
-    void removeOwnedOperation(QUmlOperation *ownedOperation);
-    const QSet<QUmlReception *> ownedReception() const;
-    void addOwnedReception(QUmlReception *ownedReception);
-    void removeOwnedReception(QUmlReception *ownedReception);
-    const QSet<QUmlClass *> superClass() const;
-    void addSuperClass(QUmlClass *superClass);
-    void removeSuperClass(QUmlClass *superClass);
+    Q_INVOKABLE const QSet<QUmlExtension *> extension() const;
+    Q_INVOKABLE bool isAbstract() const;
+    Q_INVOKABLE void setAbstract(bool isAbstract);
+    Q_INVOKABLE bool isActive() const;
+    Q_INVOKABLE void setActive(bool isActive);
+    Q_INVOKABLE const QList<QUmlClassifier *> nestedClassifier() const;
+    Q_INVOKABLE void addNestedClassifier(UmlClassifier *nestedClassifier);
+    Q_INVOKABLE void removeNestedClassifier(UmlClassifier *nestedClassifier);
+    Q_INVOKABLE const QList<QUmlProperty *> ownedAttribute() const;
+    Q_INVOKABLE void addOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE void removeOwnedAttribute(UmlProperty *ownedAttribute);
+    Q_INVOKABLE const QList<QUmlOperation *> ownedOperation() const;
+    Q_INVOKABLE void addOwnedOperation(UmlOperation *ownedOperation);
+    Q_INVOKABLE void removeOwnedOperation(UmlOperation *ownedOperation);
+    Q_INVOKABLE const QSet<QUmlReception *> ownedReception() const;
+    Q_INVOKABLE void addOwnedReception(UmlReception *ownedReception);
+    Q_INVOKABLE void removeOwnedReception(UmlReception *ownedReception);
+    Q_INVOKABLE const QSet<QUmlClass *> superClass() const;
+    Q_INVOKABLE void addSuperClass(UmlClass *superClass);
+    Q_INVOKABLE void removeSuperClass(UmlClass *superClass);
 
     // Operations
-    QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
-
-protected:
-    bool _isAbstract;
-    bool _isActive;
-    QList<QUmlClassifier *> _nestedClassifier;
-    QList<QUmlProperty *> _ownedAttribute;
-    QList<QUmlOperation *> _ownedOperation;
-    QSet<QUmlReception *> _ownedReception;
+    Q_INVOKABLE QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
 };
 
 QT_END_NAMESPACE

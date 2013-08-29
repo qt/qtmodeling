@@ -39,112 +39,47 @@
 **
 ****************************************************************************/
 #include "qumltestidentityaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTestIdentityAction
-
-    \inmodule QtUml
-
-    \brief A test identity action is an action that tests if two values are identical objects.
- */
-
-QUmlTestIdentityAction::QUmlTestIdentityAction() :
-    _first(0),
-    _result(0),
-    _second(0)
+QUmlTestIdentityAction::QUmlTestIdentityAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("first", QVariant::fromValue((QUmlInputPin *)(0)));
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
-    d_ptr->object.setProperty("second", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the pin on which an object is placed.
- */
 QUmlInputPin *QUmlTestIdentityAction::first() const
 {
-    // This is a read-write association end
-
-    return _first;
+    return reinterpret_cast<QUmlInputPin *>(_first);
 }
 
 void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
 {
-    // This is a read-write association end
-
-    if (_first != first) {
-        // Adjust subsetted properties
-        removeInput(_first);
-
-        _first = first;
-
-        // Adjust subsetted properties
-        if (first) {
-            addInput(first);
-        }
-    }
+    UmlTestIdentityAction::setFirst(first);
 }
 
-/*!
-    Tells whether the two input objects are identical.
- */
 QUmlOutputPin *QUmlTestIdentityAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlTestIdentityAction::setResult(result);
 }
 
-/*!
-    Gives the pin on which an object is placed.
- */
 QUmlInputPin *QUmlTestIdentityAction::second() const
 {
-    // This is a read-write association end
-
-    return _second;
+    return reinterpret_cast<QUmlInputPin *>(_second);
 }
 
 void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
 {
-    // This is a read-write association end
-
-    if (_second != second) {
-        // Adjust subsetted properties
-        removeInput(_second);
-
-        _second = second;
-
-        // Adjust subsetted properties
-        if (second) {
-            addInput(second);
-        }
-    }
+    UmlTestIdentityAction::setSecond(second);
 }
 
 QT_END_NAMESPACE

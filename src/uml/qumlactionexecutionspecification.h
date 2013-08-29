@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlExecutionSpecification>
+#include <QtCore/QObject>
+#include "private/umlactionexecutionspecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlAction;
 
-class Q_UML_EXPORT QUmlActionExecutionSpecification : public QUmlExecutionSpecification
+class Q_UML_EXPORT QUmlActionExecutionSpecification : public QObject, public UmlActionExecutionSpecification
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlAction * action READ action)
+
 public:
-    QUmlActionExecutionSpecification();
+    Q_INVOKABLE explicit QUmlActionExecutionSpecification(QObject *parent = 0);
 
     // Owned attributes
-    QUmlAction *action() const;
-    void setAction(QUmlAction *action);
-
-protected:
-    QUmlAction *_action;
+    Q_INVOKABLE QUmlAction *action() const;
+    Q_INVOKABLE void setAction(QUmlAction *action);
 };
 
 QT_END_NAMESPACE

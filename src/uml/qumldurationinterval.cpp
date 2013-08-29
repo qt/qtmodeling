@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumldurationinterval.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDuration>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDurationInterval
-
-    \inmodule QtUml
-
-    \brief A duration interval defines the range between two durations.
- */
-
-QUmlDurationInterval::QUmlDurationInterval() :
-    _max(0),
-    _min(0)
+QUmlDurationInterval::QUmlDurationInterval(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("max", QVariant::fromValue((QUmlDuration *)(0)));
-    d_ptr->object.setProperty("min", QVariant::fromValue((QUmlDuration *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Refers to the Duration denoting the maximum value of the range.
- */
 QUmlDuration *QUmlDurationInterval::max() const
 {
-    // This is a read-write association end
-
-    return _max;
+    return reinterpret_cast<QUmlDuration *>(_max);
 }
 
 void QUmlDurationInterval::setMax(QUmlDuration *max)
 {
-    // This is a read-write association end
-
-    if (_max != max) {
-        _max = max;
-    }
+    UmlDurationInterval::setMax(max);
 }
 
-/*!
-    Refers to the Duration denoting the minimum value of the range.
- */
 QUmlDuration *QUmlDurationInterval::min() const
 {
-    // This is a read-write association end
-
-    return _min;
+    return reinterpret_cast<QUmlDuration *>(_min);
 }
 
 void QUmlDurationInterval::setMin(QUmlDuration *min)
 {
-    // This is a read-write association end
-
-    if (_min != min) {
-        _min = min;
-    }
+    UmlDurationInterval::setMin(min);
 }
 
 QT_END_NAMESPACE

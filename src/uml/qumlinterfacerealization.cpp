@@ -39,84 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlinterfacerealization.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavioredClassifier>
 #include <QtUml/QUmlInterface>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInterfaceRealization
-
-    \inmodule QtUml
-
-    \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
- */
-
-QUmlInterfaceRealization::QUmlInterfaceRealization() :
-    _contract(0),
-    _implementingClassifier(0)
+QUmlInterfaceRealization::QUmlInterfaceRealization(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("contract", QVariant::fromValue((QUmlInterface *)(0)));
-    d_ptr->object.setProperty("implementingClassifier", QVariant::fromValue((QUmlBehavioredClassifier *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the Interface specifying the conformance contract.
- */
 QUmlInterface *QUmlInterfaceRealization::contract() const
 {
-    // This is a read-write association end
-
-    return _contract;
+    return reinterpret_cast<QUmlInterface *>(_contract);
 }
 
 void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
 {
-    // This is a read-write association end
-
-    if (_contract != contract) {
-        // Adjust subsetted properties
-        removeSupplier(_contract);
-
-        _contract = contract;
-
-        // Adjust subsetted properties
-        if (contract) {
-            addSupplier(contract);
-        }
-    }
+    UmlInterfaceRealization::setContract(contract);
 }
 
-/*!
-    References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).
- */
 QUmlBehavioredClassifier *QUmlInterfaceRealization::implementingClassifier() const
 {
-    // This is a read-write association end
-
-    return _implementingClassifier;
+    return reinterpret_cast<QUmlBehavioredClassifier *>(_implementingClassifier);
 }
 
 void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifier *implementingClassifier)
 {
-    // This is a read-write association end
-
-    if (_implementingClassifier != implementingClassifier) {
-        // Adjust subsetted properties
-        removeClient(_implementingClassifier);
-
-        _implementingClassifier = implementingClassifier;
-
-        // Adjust subsetted properties
-        setOwner(implementingClassifier);
-        if (implementingClassifier) {
-            addClient(implementingClassifier);
-        }
-    }
+    UmlInterfaceRealization::setImplementingClassifier(implementingClassifier);
 }
 
 QT_END_NAMESPACE

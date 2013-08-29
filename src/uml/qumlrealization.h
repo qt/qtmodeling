@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAbstraction>
+#include <QtCore/QObject>
+#include "private/umlrealization_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlRealization : public QUmlAbstraction
+class Q_UML_EXPORT QUmlRealization : public QObject, public UmlRealization
 {
-public:
-    QUmlRealization();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlRealization(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

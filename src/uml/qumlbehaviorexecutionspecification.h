@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlExecutionSpecification>
+#include <QtCore/QObject>
+#include "private/umlbehaviorexecutionspecification_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlBehavior;
 
-class Q_UML_EXPORT QUmlBehaviorExecutionSpecification : public QUmlExecutionSpecification
+class Q_UML_EXPORT QUmlBehaviorExecutionSpecification : public QObject, public UmlBehaviorExecutionSpecification
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlBehavior * behavior READ behavior)
+
 public:
-    QUmlBehaviorExecutionSpecification();
+    Q_INVOKABLE explicit QUmlBehaviorExecutionSpecification(QObject *parent = 0);
 
     // Owned attributes
-    QUmlBehavior *behavior() const;
-    void setBehavior(QUmlBehavior *behavior);
-
-protected:
-    QUmlBehavior *_behavior;
+    Q_INVOKABLE QUmlBehavior *behavior() const;
+    Q_INVOKABLE void setBehavior(QUmlBehavior *behavior);
 };
 
 QT_END_NAMESPACE

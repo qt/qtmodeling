@@ -39,9 +39,9 @@
 **
 ****************************************************************************/
 #include "qumlregion.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlTransition>
@@ -49,262 +49,98 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlRegion
-
-    \inmodule QtUml
-
-    \brief A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
- */
-
-QUmlRegion::QUmlRegion() :
-    _extendedRegion(0),
-    _state(0),
-    _stateMachine(0)
+QUmlRegion::QUmlRegion(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("extendedRegion", QVariant::fromValue((QUmlRegion *)(0)));
-    d_ptr->object.setProperty("redefinitionContext", QVariant::fromValue((QUmlClassifier *)(0)));
-    d_ptr->object.setProperty("state", QVariant::fromValue((QUmlState *)(0)));
-    d_ptr->object.setProperty("stateMachine", QVariant::fromValue((QUmlStateMachine *)(0)));
-    d_ptr->object.setProperty("subvertex", QVariant::fromValue(&_subvertex));
-    d_ptr->object.setProperty("transition", QVariant::fromValue(&_transition));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The region of which this region is an extension.
- */
 QUmlRegion *QUmlRegion::extendedRegion() const
 {
-    // This is a read-write association end
-
-    return _extendedRegion;
+    return reinterpret_cast<QUmlRegion *>(_extendedRegion);
 }
 
 void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
 {
-    // This is a read-write association end
-
-    if (_extendedRegion != extendedRegion) {
-        // Adjust subsetted properties
-        removeRedefinedElement(_extendedRegion);
-
-        _extendedRegion = extendedRegion;
-
-        // Adjust subsetted properties
-        if (extendedRegion) {
-            addRedefinedElement(extendedRegion);
-        }
-    }
+    UmlRegion::setExtendedRegion(extendedRegion);
 }
 
-/*!
-    References the classifier in which context this element may be redefined.
- */
 QUmlClassifier *QUmlRegion::redefinitionContext() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlRegion::redefinitionContext(): to be implemented (this is a derived association end)");
-
-    return 0;
+    return reinterpret_cast<QUmlClassifier *>(UmlRegion::redefinitionContext());
 }
 
-void QUmlRegion::setRedefinitionContext(QUmlClassifier *redefinitionContext)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlRegion::redefinitionContext(): to be implemented (this is a derived association end)");
-    Q_UNUSED(redefinitionContext);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.
- */
 QUmlState *QUmlRegion::state() const
 {
-    // This is a read-write association end
-
-    return _state;
+    return reinterpret_cast<QUmlState *>(_state);
 }
 
 void QUmlRegion::setState(QUmlState *state)
 {
-    // This is a read-write association end
-
-    if (_state != state) {
-        // Adjust subsetted properties
-
-        _state = state;
-
-        // Adjust subsetted properties
-        setNamespace(state);
-    }
+    UmlRegion::setState(state);
 }
 
-/*!
-    The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State.
- */
 QUmlStateMachine *QUmlRegion::stateMachine() const
 {
-    // This is a read-write association end
-
-    return _stateMachine;
+    return reinterpret_cast<QUmlStateMachine *>(_stateMachine);
 }
 
 void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
 {
-    // This is a read-write association end
-
-    if (_stateMachine != stateMachine) {
-        // Adjust subsetted properties
-
-        _stateMachine = stateMachine;
-
-        // Adjust subsetted properties
-        setNamespace(stateMachine);
-    }
+    UmlRegion::setStateMachine(stateMachine);
 }
 
-/*!
-    The set of vertices that are owned by this region.
- */
 const QSet<QUmlVertex *> QUmlRegion::subvertex() const
 {
-    // This is a read-write association end
-
-    return _subvertex;
+    return *(reinterpret_cast<const QSet<QUmlVertex *> *>(&_subvertex));
 }
 
-void QUmlRegion::addSubvertex(QUmlVertex *subvertex)
+void QUmlRegion::addSubvertex(UmlVertex *subvertex)
 {
-    // This is a read-write association end
-
-    if (!_subvertex.contains(subvertex)) {
-        _subvertex.insert(subvertex);
-
-        // Adjust subsetted properties
-        addOwnedMember(subvertex);
-
-        // Adjust opposite properties
-        if (subvertex) {
-            subvertex->setContainer(this);
-        }
-    }
+    UmlRegion::addSubvertex(subvertex);
 }
 
-void QUmlRegion::removeSubvertex(QUmlVertex *subvertex)
+void QUmlRegion::removeSubvertex(UmlVertex *subvertex)
 {
-    // This is a read-write association end
-
-    if (_subvertex.contains(subvertex)) {
-        _subvertex.remove(subvertex);
-
-        // Adjust subsetted properties
-        removeOwnedMember(subvertex);
-
-        // Adjust opposite properties
-        if (subvertex) {
-            subvertex->setContainer(0);
-        }
-    }
+    UmlRegion::removeSubvertex(subvertex);
 }
 
-/*!
-    The set of transitions owned by the region.
- */
 const QSet<QUmlTransition *> QUmlRegion::transition() const
 {
-    // This is a read-write association end
-
-    return _transition;
+    return *(reinterpret_cast<const QSet<QUmlTransition *> *>(&_transition));
 }
 
-void QUmlRegion::addTransition(QUmlTransition *transition)
+void QUmlRegion::addTransition(UmlTransition *transition)
 {
-    // This is a read-write association end
-
-    if (!_transition.contains(transition)) {
-        _transition.insert(transition);
-
-        // Adjust subsetted properties
-        addOwnedMember(transition);
-
-        // Adjust opposite properties
-        if (transition) {
-            transition->setContainer(this);
-        }
-    }
+    UmlRegion::addTransition(transition);
 }
 
-void QUmlRegion::removeTransition(QUmlTransition *transition)
+void QUmlRegion::removeTransition(UmlTransition *transition)
 {
-    // This is a read-write association end
-
-    if (_transition.contains(transition)) {
-        _transition.remove(transition);
-
-        // Adjust subsetted properties
-        removeOwnedMember(transition);
-
-        // Adjust opposite properties
-        if (transition) {
-            transition->setContainer(0);
-        }
-    }
+    UmlRegion::removeTransition(transition);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The operation belongsToPSM () checks if the region belongs to a protocol state machine
- */
-bool QUmlRegion::belongsToPSM(
-    ) const
+bool QUmlRegion::belongsToPSM() const
 {
-    qWarning("QUmlRegion::belongsToPSM(): to be implemented (operation)");
-
-    return bool ();
+    return UmlRegion::belongsToPSM();
 }
 
-/*!
-    The operation containingStateMachine() returns the sate machine in which this Region is defined
- */
-QUmlStateMachine *QUmlRegion::containingStateMachine(
-    ) const
+QUmlStateMachine *QUmlRegion::containingStateMachine() const
 {
-    qWarning("QUmlRegion::containingStateMachine(): to be implemented (operation)");
-
-    return 0;
+    return reinterpret_cast<QUmlStateMachine *>(UmlRegion::containingStateMachine());
 }
 
-/*!
-    The query isConsistentWith() specifies that a redefining region is consistent with a redefined region provided that the redefining region is an extension of the redefined region, i.e. it adds vertices and transitions and it redefines states and transitions of the redefined region.
- */
-bool QUmlRegion::isConsistentWith(
-    QUmlRedefinableElement *redefinee) const
+bool QUmlRegion::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    qWarning("QUmlRegion::isConsistentWith(): to be implemented (operation)");
-
-    Q_UNUSED(redefinee);
-    return bool ();
+    return UmlRegion::isConsistentWith(redefinee);
 }
 
-/*!
-    The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.
- */
-bool QUmlRegion::isRedefinitionContextValid(
-    QUmlRegion *redefined) const
+bool QUmlRegion::isRedefinitionContextValid(QUmlRegion *redefined) const
 {
-    qWarning("QUmlRegion::isRedefinitionContextValid(): to be implemented (operation)");
-
-    Q_UNUSED(redefined);
-    return bool ();
+    return UmlRegion::isRedefinitionContextValid(redefined);
 }
 
 QT_END_NAMESPACE

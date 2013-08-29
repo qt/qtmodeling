@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
-#include <QtUml/QUmlPackageableElement>
+#include <QtCore/QObject>
+#include "private/umlinformationflow_p.h"
 
 QT_BEGIN_HEADER
 
@@ -59,42 +59,42 @@ class QUmlMessage;
 class QUmlNamedElement;
 class QUmlRelationship;
 
-class Q_UML_EXPORT QUmlInformationFlow : public QUmlDirectedRelationship, public QUmlPackageableElement
+class Q_UML_EXPORT QUmlInformationFlow : public QObject, public UmlInformationFlow
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlClassifier *> conveyed READ conveyed)
+    Q_PROPERTY(QSet<QUmlNamedElement *> informationSource READ informationSource)
+    Q_PROPERTY(QSet<QUmlNamedElement *> informationTarget READ informationTarget)
+    Q_PROPERTY(QSet<QUmlRelationship *> realization READ realization)
+    Q_PROPERTY(QSet<QUmlActivityEdge *> realizingActivityEdge READ realizingActivityEdge)
+    Q_PROPERTY(QSet<QUmlConnector *> realizingConnector READ realizingConnector)
+    Q_PROPERTY(QSet<QUmlMessage *> realizingMessage READ realizingMessage)
+
 public:
-    QUmlInformationFlow();
+    Q_INVOKABLE explicit QUmlInformationFlow(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlClassifier *> conveyed() const;
-    void addConveyed(QUmlClassifier *conveyed);
-    void removeConveyed(QUmlClassifier *conveyed);
-    const QSet<QUmlNamedElement *> informationSource() const;
-    void addInformationSource(QUmlNamedElement *informationSource);
-    void removeInformationSource(QUmlNamedElement *informationSource);
-    const QSet<QUmlNamedElement *> informationTarget() const;
-    void addInformationTarget(QUmlNamedElement *informationTarget);
-    void removeInformationTarget(QUmlNamedElement *informationTarget);
-    const QSet<QUmlRelationship *> realization() const;
-    void addRealization(QUmlRelationship *realization);
-    void removeRealization(QUmlRelationship *realization);
-    const QSet<QUmlActivityEdge *> realizingActivityEdge() const;
-    void addRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge);
-    void removeRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge);
-    const QSet<QUmlConnector *> realizingConnector() const;
-    void addRealizingConnector(QUmlConnector *realizingConnector);
-    void removeRealizingConnector(QUmlConnector *realizingConnector);
-    const QSet<QUmlMessage *> realizingMessage() const;
-    void addRealizingMessage(QUmlMessage *realizingMessage);
-    void removeRealizingMessage(QUmlMessage *realizingMessage);
-
-protected:
-    QSet<QUmlClassifier *> _conveyed;
-    QSet<QUmlNamedElement *> _informationSource;
-    QSet<QUmlNamedElement *> _informationTarget;
-    QSet<QUmlRelationship *> _realization;
-    QSet<QUmlActivityEdge *> _realizingActivityEdge;
-    QSet<QUmlConnector *> _realizingConnector;
-    QSet<QUmlMessage *> _realizingMessage;
+    Q_INVOKABLE const QSet<QUmlClassifier *> conveyed() const;
+    Q_INVOKABLE void addConveyed(UmlClassifier *conveyed);
+    Q_INVOKABLE void removeConveyed(UmlClassifier *conveyed);
+    Q_INVOKABLE const QSet<QUmlNamedElement *> informationSource() const;
+    Q_INVOKABLE void addInformationSource(UmlNamedElement *informationSource);
+    Q_INVOKABLE void removeInformationSource(UmlNamedElement *informationSource);
+    Q_INVOKABLE const QSet<QUmlNamedElement *> informationTarget() const;
+    Q_INVOKABLE void addInformationTarget(UmlNamedElement *informationTarget);
+    Q_INVOKABLE void removeInformationTarget(UmlNamedElement *informationTarget);
+    Q_INVOKABLE const QSet<QUmlRelationship *> realization() const;
+    Q_INVOKABLE void addRealization(UmlRelationship *realization);
+    Q_INVOKABLE void removeRealization(UmlRelationship *realization);
+    Q_INVOKABLE const QSet<QUmlActivityEdge *> realizingActivityEdge() const;
+    Q_INVOKABLE void addRealizingActivityEdge(UmlActivityEdge *realizingActivityEdge);
+    Q_INVOKABLE void removeRealizingActivityEdge(UmlActivityEdge *realizingActivityEdge);
+    Q_INVOKABLE const QSet<QUmlConnector *> realizingConnector() const;
+    Q_INVOKABLE void addRealizingConnector(UmlConnector *realizingConnector);
+    Q_INVOKABLE void removeRealizingConnector(UmlConnector *realizingConnector);
+    Q_INVOKABLE const QSet<QUmlMessage *> realizingMessage() const;
+    Q_INVOKABLE void addRealizingMessage(UmlMessage *realizingMessage);
+    Q_INVOKABLE void removeRealizingMessage(UmlMessage *realizingMessage);
 };
 
 QT_END_NAMESPACE

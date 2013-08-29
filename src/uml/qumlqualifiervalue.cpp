@@ -39,67 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlqualifiervalue.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlQualifierValue
-
-    \inmodule QtUml
-
-    \brief A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
- */
-
-QUmlQualifierValue::QUmlQualifierValue() :
-    _qualifier(0),
-    _value(0)
+QUmlQualifierValue::QUmlQualifierValue(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("qualifier", QVariant::fromValue((QUmlProperty *)(0)));
-    d_ptr->object.setProperty("value", QVariant::fromValue((QUmlInputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Attribute representing the qualifier for which the value is to be specified.
- */
 QUmlProperty *QUmlQualifierValue::qualifier() const
 {
-    // This is a read-write association end
-
-    return _qualifier;
+    return reinterpret_cast<QUmlProperty *>(_qualifier);
 }
 
 void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
 {
-    // This is a read-write association end
-
-    if (_qualifier != qualifier) {
-        _qualifier = qualifier;
-    }
+    UmlQualifierValue::setQualifier(qualifier);
 }
 
-/*!
-    Input pin from which the specified value for the qualifier is taken.
- */
 QUmlInputPin *QUmlQualifierValue::value() const
 {
-    // This is a read-write association end
-
-    return _value;
+    return reinterpret_cast<QUmlInputPin *>(_value);
 }
 
 void QUmlQualifierValue::setValue(QUmlInputPin *value)
 {
-    // This is a read-write association end
-
-    if (_value != value) {
-        _value = value;
-    }
+    UmlQualifierValue::setValue(value);
 }
 
 QT_END_NAMESPACE

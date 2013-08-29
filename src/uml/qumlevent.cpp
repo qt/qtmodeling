@@ -39,19 +39,11 @@
 **
 ****************************************************************************/
 #include "qumlevent.h"
-#include "private/qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlEvent
-
-    \inmodule QtUml
-
-    \brief An event is the specification of some occurrence that may potentially trigger effects by an object.
- */
-
-QUmlEvent::QUmlEvent()
+QUmlEvent::QUmlEvent(QObject *parent) :
+    QObject(parent)
 {
 }
 

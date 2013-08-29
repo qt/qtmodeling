@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlStateMachine>
+#include <QtCore/QObject>
+#include "private/umlprotocolstatemachine_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,18 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlProtocolConformance;
 
-class Q_UML_EXPORT QUmlProtocolStateMachine : public QUmlStateMachine
+class Q_UML_EXPORT QUmlProtocolStateMachine : public QObject, public UmlProtocolStateMachine
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlProtocolConformance *> conformance READ conformance)
+
 public:
-    QUmlProtocolStateMachine();
+    Q_INVOKABLE explicit QUmlProtocolStateMachine(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlProtocolConformance *> conformance() const;
-    void addConformance(QUmlProtocolConformance *conformance);
-    void removeConformance(QUmlProtocolConformance *conformance);
-
-protected:
-    QSet<QUmlProtocolConformance *> _conformance;
+    Q_INVOKABLE const QSet<QUmlProtocolConformance *> conformance() const;
+    Q_INVOKABLE void addConformance(UmlProtocolConformance *conformance);
+    Q_INVOKABLE void removeConformance(UmlProtocolConformance *conformance);
 };
 
 QT_END_NAMESPACE

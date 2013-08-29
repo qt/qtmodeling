@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlusecase.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlExtend>
@@ -48,205 +47,81 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlUseCase
-
-    \inmodule QtUml
-
-    \brief A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
- */
-
-QUmlUseCase::QUmlUseCase()
+QUmlUseCase::QUmlUseCase(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("extend", QVariant::fromValue(&_extend));
-    d_ptr->object.setProperty("extensionPoint", QVariant::fromValue(&_extensionPoint));
-    d_ptr->object.setProperty("include", QVariant::fromValue(&_include));
-    d_ptr->object.setProperty("subject", QVariant::fromValue(&_subject));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the Extend relationships owned by this use case.
- */
 const QSet<QUmlExtend *> QUmlUseCase::extend() const
 {
-    // This is a read-write association end
-
-    return _extend;
+    return *(reinterpret_cast<const QSet<QUmlExtend *> *>(&_extend));
 }
 
-void QUmlUseCase::addExtend(QUmlExtend *extend)
+void QUmlUseCase::addExtend(UmlExtend *extend)
 {
-    // This is a read-write association end
-
-    if (!_extend.contains(extend)) {
-        _extend.insert(extend);
-
-        // Adjust subsetted properties
-        addOwnedMember(extend);
-
-        // Adjust opposite properties
-        if (extend) {
-            extend->setExtension(this);
-        }
-    }
+    UmlUseCase::addExtend(extend);
 }
 
-void QUmlUseCase::removeExtend(QUmlExtend *extend)
+void QUmlUseCase::removeExtend(UmlExtend *extend)
 {
-    // This is a read-write association end
-
-    if (_extend.contains(extend)) {
-        _extend.remove(extend);
-
-        // Adjust subsetted properties
-        removeOwnedMember(extend);
-
-        // Adjust opposite properties
-        if (extend) {
-            extend->setExtension(0);
-        }
-    }
+    UmlUseCase::removeExtend(extend);
 }
 
-/*!
-    References the ExtensionPoints owned by the use case.
- */
 const QSet<QUmlExtensionPoint *> QUmlUseCase::extensionPoint() const
 {
-    // This is a read-write association end
-
-    return _extensionPoint;
+    return *(reinterpret_cast<const QSet<QUmlExtensionPoint *> *>(&_extensionPoint));
 }
 
-void QUmlUseCase::addExtensionPoint(QUmlExtensionPoint *extensionPoint)
+void QUmlUseCase::addExtensionPoint(UmlExtensionPoint *extensionPoint)
 {
-    // This is a read-write association end
-
-    if (!_extensionPoint.contains(extensionPoint)) {
-        _extensionPoint.insert(extensionPoint);
-
-        // Adjust subsetted properties
-        addOwnedMember(extensionPoint);
-
-        // Adjust opposite properties
-        if (extensionPoint) {
-            extensionPoint->setUseCase(this);
-        }
-    }
+    UmlUseCase::addExtensionPoint(extensionPoint);
 }
 
-void QUmlUseCase::removeExtensionPoint(QUmlExtensionPoint *extensionPoint)
+void QUmlUseCase::removeExtensionPoint(UmlExtensionPoint *extensionPoint)
 {
-    // This is a read-write association end
-
-    if (_extensionPoint.contains(extensionPoint)) {
-        _extensionPoint.remove(extensionPoint);
-
-        // Adjust subsetted properties
-        removeOwnedMember(extensionPoint);
-
-        // Adjust opposite properties
-        if (extensionPoint) {
-            extensionPoint->setUseCase(0);
-        }
-    }
+    UmlUseCase::removeExtensionPoint(extensionPoint);
 }
 
-/*!
-    References the Include relationships owned by this use case.
- */
 const QSet<QUmlInclude *> QUmlUseCase::include() const
 {
-    // This is a read-write association end
-
-    return _include;
+    return *(reinterpret_cast<const QSet<QUmlInclude *> *>(&_include));
 }
 
-void QUmlUseCase::addInclude(QUmlInclude *include)
+void QUmlUseCase::addInclude(UmlInclude *include)
 {
-    // This is a read-write association end
-
-    if (!_include.contains(include)) {
-        _include.insert(include);
-
-        // Adjust subsetted properties
-        addOwnedMember(include);
-
-        // Adjust opposite properties
-        if (include) {
-            include->setIncludingCase(this);
-        }
-    }
+    UmlUseCase::addInclude(include);
 }
 
-void QUmlUseCase::removeInclude(QUmlInclude *include)
+void QUmlUseCase::removeInclude(UmlInclude *include)
 {
-    // This is a read-write association end
-
-    if (_include.contains(include)) {
-        _include.remove(include);
-
-        // Adjust subsetted properties
-        removeOwnedMember(include);
-
-        // Adjust opposite properties
-        if (include) {
-            include->setIncludingCase(0);
-        }
-    }
+    UmlUseCase::removeInclude(include);
 }
 
-/*!
-    References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
- */
 const QSet<QUmlClassifier *> QUmlUseCase::subject() const
 {
-    // This is a read-write association end
-
-    return _subject;
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_subject));
 }
 
-void QUmlUseCase::addSubject(QUmlClassifier *subject)
+void QUmlUseCase::addSubject(UmlClassifier *subject)
 {
-    // This is a read-write association end
-
-    if (!_subject.contains(subject)) {
-        _subject.insert(subject);
-
-        // Adjust opposite properties
-        if (subject) {
-            subject->addUseCase(this);
-        }
-    }
+    UmlUseCase::addSubject(subject);
 }
 
-void QUmlUseCase::removeSubject(QUmlClassifier *subject)
+void QUmlUseCase::removeSubject(UmlClassifier *subject)
 {
-    // This is a read-write association end
-
-    if (_subject.contains(subject)) {
-        _subject.remove(subject);
-
-        // Adjust opposite properties
-        if (subject) {
-            subject->removeUseCase(this);
-        }
-    }
+    UmlUseCase::removeSubject(subject);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
- */
-QSet<QUmlUseCase *> QUmlUseCase::allIncludedUseCases(
-    ) const
+QSet<QUmlUseCase *> QUmlUseCase::allIncludedUseCases() const
 {
-    qWarning("QUmlUseCase::allIncludedUseCases(): to be implemented (operation)");
-
-    return QSet<QUmlUseCase *> ();
+    QSet<QUmlUseCase *> r;
+    foreach (UmlUseCase *element, UmlUseCase::allIncludedUseCases())
+        r.insert(reinterpret_cast<QUmlUseCase *>(element));
+    return r;
 }
 
 QT_END_NAMESPACE

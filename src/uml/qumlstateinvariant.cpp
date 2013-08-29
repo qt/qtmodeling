@@ -39,75 +39,37 @@
 **
 ****************************************************************************/
 #include "qumlstateinvariant.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlLifeline>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlStateInvariant
-
-    \inmodule QtUml
-
-    \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
- */
-
-QUmlStateInvariant::QUmlStateInvariant() :
-    _covered(0),
-    _invariant(0)
+QUmlStateInvariant::QUmlStateInvariant(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("covered", QVariant::fromValue((QUmlLifeline *)(0)));
-    d_ptr->object.setProperty("invariant", QVariant::fromValue((QUmlConstraint *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    References the Lifeline on which the StateInvariant appears.
- */
 QUmlLifeline *QUmlStateInvariant::covered() const
 {
-    // This is a read-write association end
-
-    return _covered;
+    return reinterpret_cast<QUmlLifeline *>(_covered);
 }
 
 void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
 {
-    // This is a read-write association end
-
-    if (_covered != covered) {
-        _covered = covered;
-    }
+    UmlStateInvariant::setCovered(covered);
 }
 
-/*!
-    A Constraint that should hold at runtime for this StateInvariant
- */
 QUmlConstraint *QUmlStateInvariant::invariant() const
 {
-    // This is a read-write association end
-
-    return _invariant;
+    return reinterpret_cast<QUmlConstraint *>(_invariant);
 }
 
 void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
 {
-    // This is a read-write association end
-
-    if (_invariant != invariant) {
-        // Adjust subsetted properties
-        removeOwnedElement(_invariant);
-
-        _invariant = invariant;
-
-        // Adjust subsetted properties
-        if (invariant) {
-            addOwnedElement(invariant);
-        }
-    }
+    UmlStateInvariant::setInvariant(invariant);
 }
 
 QT_END_NAMESPACE

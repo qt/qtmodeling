@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlvaluespecificationaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,20 +55,20 @@ QT_MODULE(QtUml)
 class QUmlOutputPin;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlValueSpecificationAction : public QUmlAction
+class Q_UML_EXPORT QUmlValueSpecificationAction : public QObject, public UmlValueSpecificationAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOutputPin * result READ result)
+    Q_PROPERTY(QUmlValueSpecification * value READ value)
+
 public:
-    QUmlValueSpecificationAction();
+    Q_INVOKABLE explicit QUmlValueSpecificationAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOutputPin *result() const;
-    void setResult(QUmlOutputPin *result);
-    QUmlValueSpecification *value() const;
-    void setValue(QUmlValueSpecification *value);
-
-protected:
-    QUmlOutputPin *_result;
-    QUmlValueSpecification *_value;
+    Q_INVOKABLE QUmlOutputPin *result() const;
+    Q_INVOKABLE void setResult(QUmlOutputPin *result);
+    Q_INVOKABLE QUmlValueSpecification *value() const;
+    Q_INVOKABLE void setValue(QUmlValueSpecification *value);
 };
 
 QT_END_NAMESPACE

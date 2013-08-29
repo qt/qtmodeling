@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClass>
-#include <QtUml/QUmlAssociation>
+#include <QtCore/QObject>
+#include "private/umlassociationclass_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlAssociationClass : public QUmlClass, public QUmlAssociation
+class Q_UML_EXPORT QUmlAssociationClass : public QObject, public UmlAssociationClass
 {
-public:
-    QUmlAssociationClass();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlAssociationClass(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

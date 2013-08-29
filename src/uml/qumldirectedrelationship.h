@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlRelationship>
+#include <QtCore/QObject>
+#include "private/umldirectedrelationship_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,22 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlElement;
 
-class Q_UML_EXPORT QUmlDirectedRelationship : public QUmlRelationship
+class Q_UML_EXPORT QUmlDirectedRelationship : public QObject, public UmlDirectedRelationship
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlElement *> source READ source)
+    Q_PROPERTY(QSet<QUmlElement *> target READ target)
+
 public:
-    Q_DECL_HIDDEN QUmlDirectedRelationship();
+    Q_DECL_HIDDEN explicit QUmlDirectedRelationship(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlElement *> source() const;
-    Q_DECL_HIDDEN void addSource(QUmlElement *source);
-    Q_DECL_HIDDEN void removeSource(QUmlElement *source);
-    const QSet<QUmlElement *> target() const;
-    Q_DECL_HIDDEN void addTarget(QUmlElement *target);
-    Q_DECL_HIDDEN void removeTarget(QUmlElement *target);
-
-protected:
-    QSet<QUmlElement *> _source;
-    QSet<QUmlElement *> _target;
+    Q_INVOKABLE const QSet<QUmlElement *> source() const;
+    Q_INVOKABLE const QSet<QUmlElement *> target() const;
 };
 
 QT_END_NAMESPACE

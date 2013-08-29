@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInterval>
+#include <QtCore/QObject>
+#include "private/umldurationinterval_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlDuration;
 
-class Q_UML_EXPORT QUmlDurationInterval : public QUmlInterval
+class Q_UML_EXPORT QUmlDurationInterval : public QObject, public UmlDurationInterval
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlDuration * max READ max)
+    Q_PROPERTY(QUmlDuration * min READ min)
+
 public:
-    QUmlDurationInterval();
+    Q_INVOKABLE explicit QUmlDurationInterval(QObject *parent = 0);
 
     // Owned attributes
-    QUmlDuration *max() const;
-    void setMax(QUmlDuration *max);
-    QUmlDuration *min() const;
-    void setMin(QUmlDuration *min);
-
-protected:
-    QUmlDuration *_max;
-    QUmlDuration *_min;
+    Q_INVOKABLE QUmlDuration *max() const;
+    Q_INVOKABLE void setMax(QUmlDuration *max);
+    Q_INVOKABLE QUmlDuration *min() const;
+    Q_INVOKABLE void setMin(QUmlDuration *min);
 };
 
 QT_END_NAMESPACE

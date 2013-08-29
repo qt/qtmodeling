@@ -39,53 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlsequencenode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlExecutableNode>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlSequenceNode
-
-    \inmodule QtUml
-
-    \brief A sequence node is a structured activity node that executes its actions in order.
- */
-
-QUmlSequenceNode::QUmlSequenceNode()
+QUmlSequenceNode::QUmlSequenceNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("executableNode", QVariant::fromValue(&_executableNode));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    An ordered set of executable nodes.
- */
 const QList<QUmlExecutableNode *> QUmlSequenceNode::executableNode() const
 {
-    // This is a read-write association end
-
-    return _executableNode;
+    return *(reinterpret_cast<const QList<QUmlExecutableNode *> *>(&_executableNode));
 }
 
-void QUmlSequenceNode::addExecutableNode(QUmlExecutableNode *executableNode)
+void QUmlSequenceNode::addExecutableNode(UmlExecutableNode *executableNode)
 {
-    // This is a read-write association end
-
-    if (!_executableNode.contains(executableNode)) {
-        _executableNode.append(executableNode);
-    }
+    UmlSequenceNode::addExecutableNode(executableNode);
 }
 
-void QUmlSequenceNode::removeExecutableNode(QUmlExecutableNode *executableNode)
+void QUmlSequenceNode::removeExecutableNode(UmlExecutableNode *executableNode)
 {
-    // This is a read-write association end
-
-    if (_executableNode.contains(executableNode)) {
-        _executableNode.removeAll(executableNode);
-    }
+    UmlSequenceNode::removeExecutableNode(executableNode);
 }
 
 QT_END_NAMESPACE

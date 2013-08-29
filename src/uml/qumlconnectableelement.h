@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlTypedElement>
-#include <QtUml/QUmlParameterableElement>
+#include <QtCore/QObject>
+#include "private/umlconnectableelement_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,20 +55,19 @@ QT_MODULE(QtUml)
 class QUmlConnectableElementTemplateParameter;
 class QUmlConnectorEnd;
 
-class Q_UML_EXPORT QUmlConnectableElement : public virtual QUmlTypedElement, public QUmlParameterableElement
+class Q_UML_EXPORT QUmlConnectableElement : public QObject, public UmlConnectableElement
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlConnectorEnd *> end READ end)
+    Q_PROPERTY(QUmlConnectableElementTemplateParameter * templateParameter READ templateParameter)
+
 public:
-    Q_DECL_HIDDEN QUmlConnectableElement();
+    Q_DECL_HIDDEN explicit QUmlConnectableElement(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlConnectorEnd *> end() const;
-    Q_DECL_HIDDEN void addEnd(QUmlConnectorEnd *end);
-    Q_DECL_HIDDEN void removeEnd(QUmlConnectorEnd *end);
-    QUmlConnectableElementTemplateParameter *templateParameter() const;
-    void setTemplateParameter(QUmlConnectableElementTemplateParameter *templateParameter);
-
-protected:
-    QUmlConnectableElementTemplateParameter *_templateParameter;
+    Q_INVOKABLE const QList<QUmlConnectorEnd *> end() const;
+    Q_INVOKABLE QUmlConnectableElementTemplateParameter *templateParameter() const;
+    Q_INVOKABLE void setTemplateParameter(QUmlConnectableElementTemplateParameter *templateParameter);
 };
 
 QT_END_NAMESPACE

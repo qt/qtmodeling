@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlMessageEvent>
+#include <QtCore/QObject>
+#include "private/umlanyreceiveevent_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlAnyReceiveEvent : public QUmlMessageEvent
+class Q_UML_EXPORT QUmlAnyReceiveEvent : public QObject, public UmlAnyReceiveEvent
 {
-public:
-    QUmlAnyReceiveEvent();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlAnyReceiveEvent(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

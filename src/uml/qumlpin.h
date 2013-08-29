@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlMultiplicityElement>
-#include <QtUml/QUmlObjectNode>
+#include <QtCore/QObject>
+#include "private/umlpin_p.h"
 
 QT_BEGIN_HEADER
 
@@ -52,17 +52,17 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlPin : public QUmlMultiplicityElement, public QUmlObjectNode
+class Q_UML_EXPORT QUmlPin : public QObject, public UmlPin
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isControl READ isControl)
+
 public:
-    Q_DECL_HIDDEN QUmlPin();
+    Q_DECL_HIDDEN explicit QUmlPin(QObject *parent = 0);
 
     // Owned attributes
-    bool isControl() const;
-    void setControl(bool isControl);
-
-protected:
-    bool _isControl;
+    Q_INVOKABLE bool isControl() const;
+    Q_INVOKABLE void setControl(bool isControl);
 };
 
 QT_END_NAMESPACE

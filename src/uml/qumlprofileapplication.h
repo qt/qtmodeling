@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDirectedRelationship>
+#include <QtCore/QObject>
+#include "private/umlprofileapplication_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,23 +55,23 @@ QT_MODULE(QtUml)
 class QUmlPackage;
 class QUmlProfile;
 
-class Q_UML_EXPORT QUmlProfileApplication : public QUmlDirectedRelationship
+class Q_UML_EXPORT QUmlProfileApplication : public QObject, public UmlProfileApplication
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlProfile * appliedProfile READ appliedProfile)
+    Q_PROPERTY(QUmlPackage * applyingPackage READ applyingPackage)
+    Q_PROPERTY(bool isStrict READ isStrict)
+
 public:
-    QUmlProfileApplication();
+    Q_INVOKABLE explicit QUmlProfileApplication(QObject *parent = 0);
 
     // Owned attributes
-    QUmlProfile *appliedProfile() const;
-    void setAppliedProfile(QUmlProfile *appliedProfile);
-    QUmlPackage *applyingPackage() const;
-    void setApplyingPackage(QUmlPackage *applyingPackage);
-    bool isStrict() const;
-    void setStrict(bool isStrict);
-
-protected:
-    QUmlProfile *_appliedProfile;
-    QUmlPackage *_applyingPackage;
-    bool _isStrict;
+    Q_INVOKABLE QUmlProfile *appliedProfile() const;
+    Q_INVOKABLE void setAppliedProfile(QUmlProfile *appliedProfile);
+    Q_INVOKABLE QUmlPackage *applyingPackage() const;
+    Q_INVOKABLE void setApplyingPackage(QUmlPackage *applyingPackage);
+    Q_INVOKABLE bool isStrict() const;
+    Q_INVOKABLE void setStrict(bool isStrict);
 };
 
 QT_END_NAMESPACE

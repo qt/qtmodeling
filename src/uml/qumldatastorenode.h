@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlCentralBufferNode>
+#include <QtCore/QObject>
+#include "private/umldatastorenode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlDataStoreNode : public QUmlCentralBufferNode
+class Q_UML_EXPORT QUmlDataStoreNode : public QObject, public UmlDataStoreNode
 {
-public:
-    QUmlDataStoreNode();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlDataStoreNode(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

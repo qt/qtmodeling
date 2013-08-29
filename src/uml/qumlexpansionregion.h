@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlStructuredActivityNode>
+#include <QtCore/QObject>
+#include "private/umlexpansionregion_p.h"
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -54,25 +55,25 @@ QT_MODULE(QtUml)
 
 class QUmlExpansionNode;
 
-class Q_UML_EXPORT QUmlExpansionRegion : public QUmlStructuredActivityNode
+class Q_UML_EXPORT QUmlExpansionRegion : public QObject, public UmlExpansionRegion
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlExpansionNode *> inputElement READ inputElement)
+    Q_PROPERTY(QtUml::ExpansionKind mode READ mode)
+    Q_PROPERTY(QSet<QUmlExpansionNode *> outputElement READ outputElement)
+
 public:
-    QUmlExpansionRegion();
+    Q_INVOKABLE explicit QUmlExpansionRegion(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlExpansionNode *> inputElement() const;
-    void addInputElement(QUmlExpansionNode *inputElement);
-    void removeInputElement(QUmlExpansionNode *inputElement);
-    QtUml::ExpansionKind mode() const;
-    void setMode(QtUml::ExpansionKind mode);
-    const QSet<QUmlExpansionNode *> outputElement() const;
-    void addOutputElement(QUmlExpansionNode *outputElement);
-    void removeOutputElement(QUmlExpansionNode *outputElement);
-
-protected:
-    QSet<QUmlExpansionNode *> _inputElement;
-    QtUml::ExpansionKind _mode;
-    QSet<QUmlExpansionNode *> _outputElement;
+    Q_INVOKABLE const QSet<QUmlExpansionNode *> inputElement() const;
+    Q_INVOKABLE void addInputElement(UmlExpansionNode *inputElement);
+    Q_INVOKABLE void removeInputElement(UmlExpansionNode *inputElement);
+    Q_INVOKABLE QtUml::ExpansionKind mode() const;
+    Q_INVOKABLE void setMode(QtUml::ExpansionKind mode);
+    Q_INVOKABLE const QSet<QUmlExpansionNode *> outputElement() const;
+    Q_INVOKABLE void addOutputElement(UmlExpansionNode *outputElement);
+    Q_INVOKABLE void removeOutputElement(UmlExpansionNode *outputElement);
 };
 
 QT_END_NAMESPACE

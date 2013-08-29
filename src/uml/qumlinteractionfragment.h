@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlNamedElement>
+#include <QtCore/QObject>
+#include "private/umlinteractionfragment_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,28 +57,28 @@ class QUmlInteraction;
 class QUmlInteractionOperand;
 class QUmlLifeline;
 
-class Q_UML_EXPORT QUmlInteractionFragment : public virtual QUmlNamedElement
+class Q_UML_EXPORT QUmlInteractionFragment : public QObject, public UmlInteractionFragment
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlLifeline *> covered READ covered)
+    Q_PROPERTY(QUmlInteraction * enclosingInteraction READ enclosingInteraction)
+    Q_PROPERTY(QUmlInteractionOperand * enclosingOperand READ enclosingOperand)
+    Q_PROPERTY(QSet<QUmlGeneralOrdering *> generalOrdering READ generalOrdering)
+
 public:
-    Q_DECL_HIDDEN QUmlInteractionFragment();
+    Q_DECL_HIDDEN explicit QUmlInteractionFragment(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlLifeline *> covered() const;
-    void addCovered(QUmlLifeline *covered);
-    void removeCovered(QUmlLifeline *covered);
-    QUmlInteraction *enclosingInteraction() const;
-    void setEnclosingInteraction(QUmlInteraction *enclosingInteraction);
-    QUmlInteractionOperand *enclosingOperand() const;
-    void setEnclosingOperand(QUmlInteractionOperand *enclosingOperand);
-    const QSet<QUmlGeneralOrdering *> generalOrdering() const;
-    void addGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
-    void removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
-
-protected:
-    QSet<QUmlLifeline *> _covered;
-    QUmlInteraction *_enclosingInteraction;
-    QUmlInteractionOperand *_enclosingOperand;
-    QSet<QUmlGeneralOrdering *> _generalOrdering;
+    Q_INVOKABLE const QSet<QUmlLifeline *> covered() const;
+    Q_INVOKABLE void addCovered(UmlLifeline *covered);
+    Q_INVOKABLE void removeCovered(UmlLifeline *covered);
+    Q_INVOKABLE QUmlInteraction *enclosingInteraction() const;
+    Q_INVOKABLE void setEnclosingInteraction(QUmlInteraction *enclosingInteraction);
+    Q_INVOKABLE QUmlInteractionOperand *enclosingOperand() const;
+    Q_INVOKABLE void setEnclosingOperand(QUmlInteractionOperand *enclosingOperand);
+    Q_INVOKABLE const QSet<QUmlGeneralOrdering *> generalOrdering() const;
+    Q_INVOKABLE void addGeneralOrdering(UmlGeneralOrdering *generalOrdering);
+    Q_INVOKABLE void removeGeneralOrdering(UmlGeneralOrdering *generalOrdering);
 };
 
 QT_END_NAMESPACE

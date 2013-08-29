@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlvariableaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlVariable>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlVariableAction
-
-    \inmodule QtUml
-
-    \brief VariableAction is an abstract class for actions that operate on a statically specified variable.
- */
-
-QUmlVariableAction::QUmlVariableAction() :
-    _variable(0)
+QUmlVariableAction::QUmlVariableAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("variable", QVariant::fromValue((QUmlVariable *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Variable to be read.
- */
 QUmlVariable *QUmlVariableAction::variable() const
 {
-    // This is a read-write association end
-
-    return _variable;
+    return reinterpret_cast<QUmlVariable *>(_variable);
 }
 
 void QUmlVariableAction::setVariable(QUmlVariable *variable)
 {
-    // This is a read-write association end
-
-    if (_variable != variable) {
-        _variable = variable;
-    }
+    UmlVariableAction::setVariable(variable);
 }
 
 QT_END_NAMESPACE

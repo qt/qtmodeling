@@ -39,45 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlcallevent.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOperation>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlCallEvent
-
-    \inmodule QtUml
-
-    \brief A call event models the receipt by an object of a message invoking a call of an operation.
- */
-
-QUmlCallEvent::QUmlCallEvent() :
-    _operation(0)
+QUmlCallEvent::QUmlCallEvent(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("operation", QVariant::fromValue((QUmlOperation *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Designates the operation whose invocation raised the call event.
- */
 QUmlOperation *QUmlCallEvent::operation() const
 {
-    // This is a read-write association end
-
-    return _operation;
+    return reinterpret_cast<QUmlOperation *>(_operation);
 }
 
 void QUmlCallEvent::setOperation(QUmlOperation *operation)
 {
-    // This is a read-write association end
-
-    if (_operation != operation) {
-        _operation = operation;
-    }
+    UmlCallEvent::setOperation(operation);
 }
 
 QT_END_NAMESPACE

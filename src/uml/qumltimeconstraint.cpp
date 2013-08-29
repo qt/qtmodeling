@@ -39,66 +39,36 @@
 **
 ****************************************************************************/
 #include "qumltimeconstraint.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTimeInterval>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTimeConstraint
-
-    \inmodule QtUml
-
-    \brief A time constraint is a constraint that refers to a time interval.
- */
-
-QUmlTimeConstraint::QUmlTimeConstraint() :
-    _firstEvent(true),
-    _specification(0)
+QUmlTimeConstraint::QUmlTimeConstraint(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("firstEvent", QVariant::fromValue(true));
-    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlTimeInterval *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.
- */
 bool QUmlTimeConstraint::firstEvent() const
 {
-    // This is a read-write property
-
     return _firstEvent;
 }
 
 void QUmlTimeConstraint::setFirstEvent(bool firstEvent)
 {
-    // This is a read-write property
-
-    if (_firstEvent != firstEvent) {
-        _firstEvent = firstEvent;
-    }
+    UmlTimeConstraint::setFirstEvent(firstEvent);
 }
 
-/*!
-    A condition that must be true when evaluated in order for the constraint to be satisfied.
- */
 QUmlTimeInterval *QUmlTimeConstraint::specification() const
 {
-    // This is a read-write association end
-
-    return _specification;
+    return reinterpret_cast<QUmlTimeInterval *>(_specification);
 }
 
 void QUmlTimeConstraint::setSpecification(QUmlTimeInterval *specification)
 {
-    // This is a read-write association end
-
-    if (_specification != specification) {
-        _specification = specification;
-    }
+    UmlTimeConstraint::setSpecification(specification);
 }
 
 QT_END_NAMESPACE

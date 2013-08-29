@@ -39,82 +39,42 @@
 **
 ****************************************************************************/
 #include "qumlduration.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlObservation>
+#include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDuration
-
-    \inmodule QtUml
-
-    \brief Duration defines a value specification that specifies the temporal distance between two time instants.
- */
-
-QUmlDuration::QUmlDuration() :
-    _expr(0)
+QUmlDuration::QUmlDuration(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("expr", QVariant::fromValue((QUmlValueSpecification *)(0)));
-    d_ptr->object.setProperty("observation", QVariant::fromValue(&_observation));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The value of the Duration.
- */
 QUmlValueSpecification *QUmlDuration::expr() const
 {
-    // This is a read-write association end
-
-    return _expr;
+    return reinterpret_cast<QUmlValueSpecification *>(_expr);
 }
 
 void QUmlDuration::setExpr(QUmlValueSpecification *expr)
 {
-    // This is a read-write association end
-
-    if (_expr != expr) {
-        // Adjust subsetted properties
-        removeOwnedElement(_expr);
-
-        _expr = expr;
-
-        // Adjust subsetted properties
-        if (expr) {
-            addOwnedElement(expr);
-        }
-    }
+    UmlDuration::setExpr(expr);
 }
 
-/*!
-    Refers to the time and duration observations that are involved in expr.
- */
 const QSet<QUmlObservation *> QUmlDuration::observation() const
 {
-    // This is a read-write association end
-
-    return _observation;
+    return *(reinterpret_cast<const QSet<QUmlObservation *> *>(&_observation));
 }
 
-void QUmlDuration::addObservation(QUmlObservation *observation)
+void QUmlDuration::addObservation(UmlObservation *observation)
 {
-    // This is a read-write association end
-
-    if (!_observation.contains(observation)) {
-        _observation.insert(observation);
-    }
+    UmlDuration::addObservation(observation);
 }
 
-void QUmlDuration::removeObservation(QUmlObservation *observation)
+void QUmlDuration::removeObservation(UmlObservation *observation)
 {
-    // This is a read-write association end
-
-    if (_observation.contains(observation)) {
-        _observation.remove(observation);
-    }
+    UmlDuration::removeObservation(observation);
 }
 
 QT_END_NAMESPACE

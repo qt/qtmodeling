@@ -39,64 +39,36 @@
 **
 ****************************************************************************/
 #include "qumlinterval.h"
-#include "private/qmodelingobject_p.h"
+
+#include <QtUml/QUmlValueSpecification>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlInterval
-
-    \inmodule QtUml
-
-    \brief An interval defines the range between two value specifications.
- */
-
-QUmlInterval::QUmlInterval() :
-    _max(0),
-    _min(0)
+QUmlInterval::QUmlInterval(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("max", QVariant::fromValue((QUmlValueSpecification *)(0)));
-    d_ptr->object.setProperty("min", QVariant::fromValue((QUmlValueSpecification *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Refers to the ValueSpecification denoting the maximum value of the range.
- */
 QUmlValueSpecification *QUmlInterval::max() const
 {
-    // This is a read-write association end
-
-    return _max;
+    return reinterpret_cast<QUmlValueSpecification *>(_max);
 }
 
 void QUmlInterval::setMax(QUmlValueSpecification *max)
 {
-    // This is a read-write association end
-
-    if (_max != max) {
-        _max = max;
-    }
+    UmlInterval::setMax(max);
 }
 
-/*!
-    Refers to the ValueSpecification denoting the minimum value of the range.
- */
 QUmlValueSpecification *QUmlInterval::min() const
 {
-    // This is a read-write association end
-
-    return _min;
+    return reinterpret_cast<QUmlValueSpecification *>(_min);
 }
 
 void QUmlInterval::setMin(QUmlValueSpecification *min)
 {
-    // This is a read-write association end
-
-    if (_min != min) {
-        _min = min;
-    }
+    UmlInterval::setMin(min);
 }
 
 QT_END_NAMESPACE

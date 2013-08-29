@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClass>
+#include <QtCore/QObject>
+#include "private/umlcomponent_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,35 +57,33 @@ class QUmlComponentRealization;
 class QUmlInterface;
 class QUmlPackageableElement;
 
-class Q_UML_EXPORT QUmlComponent : public QUmlClass
+class Q_UML_EXPORT QUmlComponent : public QObject, public UmlComponent
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isIndirectlyInstantiated READ isIndirectlyInstantiated)
+    Q_PROPERTY(QSet<QUmlPackageableElement *> packagedElement READ packagedElement)
+    Q_PROPERTY(QSet<QUmlInterface *> provided READ provided)
+    Q_PROPERTY(QSet<QUmlComponentRealization *> realization READ realization)
+    Q_PROPERTY(QSet<QUmlInterface *> required READ required)
+
 public:
-    QUmlComponent();
+    Q_INVOKABLE explicit QUmlComponent(QObject *parent = 0);
 
     // Owned attributes
-    bool isIndirectlyInstantiated() const;
-    void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
-    const QSet<QUmlPackageableElement *> packagedElement() const;
-    void addPackagedElement(QUmlPackageableElement *packagedElement);
-    void removePackagedElement(QUmlPackageableElement *packagedElement);
-    const QSet<QUmlInterface *> provided() const;
-    Q_DECL_HIDDEN void addProvided(QUmlInterface *provided);
-    Q_DECL_HIDDEN void removeProvided(QUmlInterface *provided);
-    const QSet<QUmlComponentRealization *> realization() const;
-    void addRealization(QUmlComponentRealization *realization);
-    void removeRealization(QUmlComponentRealization *realization);
-    const QSet<QUmlInterface *> required() const;
-    Q_DECL_HIDDEN void addRequired(QUmlInterface *required);
-    Q_DECL_HIDDEN void removeRequired(QUmlInterface *required);
+    Q_INVOKABLE bool isIndirectlyInstantiated() const;
+    Q_INVOKABLE void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
+    Q_INVOKABLE const QSet<QUmlPackageableElement *> packagedElement() const;
+    Q_INVOKABLE void addPackagedElement(UmlPackageableElement *packagedElement);
+    Q_INVOKABLE void removePackagedElement(UmlPackageableElement *packagedElement);
+    Q_INVOKABLE const QSet<QUmlInterface *> provided() const;
+    Q_INVOKABLE const QSet<QUmlComponentRealization *> realization() const;
+    Q_INVOKABLE void addRealization(UmlComponentRealization *realization);
+    Q_INVOKABLE void removeRealization(UmlComponentRealization *realization);
+    Q_INVOKABLE const QSet<QUmlInterface *> required() const;
 
     // Operations
-    QSet<QUmlInterface *> realizedInterfaces(QUmlClassifier *classifier) const;
-    QSet<QUmlInterface *> usedInterfaces(QUmlClassifier *classifier) const;
-
-protected:
-    bool _isIndirectlyInstantiated;
-    QSet<QUmlPackageableElement *> _packagedElement;
-    QSet<QUmlComponentRealization *> _realization;
+    Q_INVOKABLE QSet<QUmlInterface *> realizedInterfaces(QUmlClassifier *classifier) const;
+    Q_INVOKABLE QSet<QUmlInterface *> usedInterfaces(QUmlClassifier *classifier) const;
 };
 
 QT_END_NAMESPACE

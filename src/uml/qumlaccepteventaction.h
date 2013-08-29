@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlaccepteventaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,25 +55,25 @@ QT_MODULE(QtUml)
 class QUmlOutputPin;
 class QUmlTrigger;
 
-class Q_UML_EXPORT QUmlAcceptEventAction : public QUmlAction
+class Q_UML_EXPORT QUmlAcceptEventAction : public QObject, public UmlAcceptEventAction
 {
+    Q_OBJECT
+    Q_PROPERTY(bool isUnmarshall READ isUnmarshall)
+    Q_PROPERTY(QSet<QUmlOutputPin *> result READ result)
+    Q_PROPERTY(QSet<QUmlTrigger *> trigger READ trigger)
+
 public:
-    QUmlAcceptEventAction();
+    Q_INVOKABLE explicit QUmlAcceptEventAction(QObject *parent = 0);
 
     // Owned attributes
-    bool isUnmarshall() const;
-    void setUnmarshall(bool isUnmarshall);
-    const QSet<QUmlOutputPin *> result() const;
-    void addResult(QUmlOutputPin *result);
-    void removeResult(QUmlOutputPin *result);
-    const QSet<QUmlTrigger *> trigger() const;
-    void addTrigger(QUmlTrigger *trigger);
-    void removeTrigger(QUmlTrigger *trigger);
-
-protected:
-    bool _isUnmarshall;
-    QSet<QUmlOutputPin *> _result;
-    QSet<QUmlTrigger *> _trigger;
+    Q_INVOKABLE bool isUnmarshall() const;
+    Q_INVOKABLE void setUnmarshall(bool isUnmarshall);
+    Q_INVOKABLE const QSet<QUmlOutputPin *> result() const;
+    Q_INVOKABLE void addResult(UmlOutputPin *result);
+    Q_INVOKABLE void removeResult(UmlOutputPin *result);
+    Q_INVOKABLE const QSet<QUmlTrigger *> trigger() const;
+    Q_INVOKABLE void addTrigger(UmlTrigger *trigger);
+    Q_INVOKABLE void removeTrigger(UmlTrigger *trigger);
 };
 
 QT_END_NAMESPACE

@@ -39,53 +39,31 @@
 **
 ****************************************************************************/
 #include "qumlconsiderignorefragment.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlNamedElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlConsiderIgnoreFragment
-
-    \inmodule QtUml
-
-    \brief A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
- */
-
-QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment()
+QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("message", QVariant::fromValue(&_message));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The set of messages that apply to this fragment
- */
 const QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::message() const
 {
-    // This is a read-write association end
-
-    return _message;
+    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_message));
 }
 
-void QUmlConsiderIgnoreFragment::addMessage(QUmlNamedElement *message)
+void QUmlConsiderIgnoreFragment::addMessage(UmlNamedElement *message)
 {
-    // This is a read-write association end
-
-    if (!_message.contains(message)) {
-        _message.insert(message);
-    }
+    UmlConsiderIgnoreFragment::addMessage(message);
 }
 
-void QUmlConsiderIgnoreFragment::removeMessage(QUmlNamedElement *message)
+void QUmlConsiderIgnoreFragment::removeMessage(UmlNamedElement *message)
 {
-    // This is a read-write association end
-
-    if (_message.contains(message)) {
-        _message.remove(message);
-    }
+    UmlConsiderIgnoreFragment::removeMessage(message);
 }
 
 QT_END_NAMESPACE

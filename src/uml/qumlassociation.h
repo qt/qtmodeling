@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlClassifier>
-#include <QtUml/QUmlRelationship>
+#include <QtCore/QObject>
+#include "private/umlassociation_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,32 +55,31 @@ QT_MODULE(QtUml)
 class QUmlProperty;
 class QUmlType;
 
-class Q_UML_EXPORT QUmlAssociation : public virtual QUmlClassifier, public QUmlRelationship
+class Q_UML_EXPORT QUmlAssociation : public QObject, public UmlAssociation
 {
+    Q_OBJECT
+    Q_PROPERTY(QList<QUmlType *> endType READ endType)
+    Q_PROPERTY(bool isDerived READ isDerived)
+    Q_PROPERTY(QList<QUmlProperty *> memberEnd READ memberEnd)
+    Q_PROPERTY(QSet<QUmlProperty *> navigableOwnedEnd READ navigableOwnedEnd)
+    Q_PROPERTY(QList<QUmlProperty *> ownedEnd READ ownedEnd)
+
 public:
-    QUmlAssociation();
+    Q_INVOKABLE explicit QUmlAssociation(QObject *parent = 0);
 
     // Owned attributes
-    const QList<QUmlType *> endType() const;
-    Q_DECL_HIDDEN void addEndType(QUmlType *endType);
-    Q_DECL_HIDDEN void removeEndType(QUmlType *endType);
-    bool isDerived() const;
-    void setDerived(bool isDerived);
-    const QList<QUmlProperty *> memberEnd() const;
-    void addMemberEnd(QUmlProperty *memberEnd);
-    void removeMemberEnd(QUmlProperty *memberEnd);
-    const QSet<QUmlProperty *> navigableOwnedEnd() const;
-    void addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd);
-    void removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd);
-    const QList<QUmlProperty *> ownedEnd() const;
-    void addOwnedEnd(QUmlProperty *ownedEnd);
-    void removeOwnedEnd(QUmlProperty *ownedEnd);
-
-protected:
-    bool _isDerived;
-    QList<QUmlProperty *> _memberEnd;
-    QSet<QUmlProperty *> _navigableOwnedEnd;
-    QList<QUmlProperty *> _ownedEnd;
+    Q_INVOKABLE const QList<QUmlType *> endType() const;
+    Q_INVOKABLE bool isDerived() const;
+    Q_INVOKABLE void setDerived(bool isDerived);
+    Q_INVOKABLE const QList<QUmlProperty *> memberEnd() const;
+    Q_INVOKABLE void addMemberEnd(UmlProperty *memberEnd);
+    Q_INVOKABLE void removeMemberEnd(UmlProperty *memberEnd);
+    Q_INVOKABLE const QSet<QUmlProperty *> navigableOwnedEnd() const;
+    Q_INVOKABLE void addNavigableOwnedEnd(UmlProperty *navigableOwnedEnd);
+    Q_INVOKABLE void removeNavigableOwnedEnd(UmlProperty *navigableOwnedEnd);
+    Q_INVOKABLE const QList<QUmlProperty *> ownedEnd() const;
+    Q_INVOKABLE void addOwnedEnd(UmlProperty *ownedEnd);
+    Q_INVOKABLE void removeOwnedEnd(UmlProperty *ownedEnd);
 };
 
 QT_END_NAMESPACE

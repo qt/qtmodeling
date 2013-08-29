@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlactioninputpin.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlAction>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlActionInputPin
-
-    \inmodule QtUml
-
-    \brief An action input pin is a kind of pin that executes an action to determine the values to input to another.
- */
-
-QUmlActionInputPin::QUmlActionInputPin() :
-    _fromAction(0)
+QUmlActionInputPin::QUmlActionInputPin(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("fromAction", QVariant::fromValue((QUmlAction *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The action used to provide values.
- */
 QUmlAction *QUmlActionInputPin::fromAction() const
 {
-    // This is a read-write association end
-
-    return _fromAction;
+    return reinterpret_cast<QUmlAction *>(_fromAction);
 }
 
 void QUmlActionInputPin::setFromAction(QUmlAction *fromAction)
 {
-    // This is a read-write association end
-
-    if (_fromAction != fromAction) {
-        // Adjust subsetted properties
-        removeOwnedElement(_fromAction);
-
-        _fromAction = fromAction;
-
-        // Adjust subsetted properties
-        if (fromAction) {
-            addOwnedElement(fromAction);
-        }
-    }
+    UmlActionInputPin::setFromAction(fromAction);
 }
 
 QT_END_NAMESPACE

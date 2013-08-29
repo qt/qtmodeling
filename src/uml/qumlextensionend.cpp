@@ -39,83 +39,43 @@
 **
 ****************************************************************************/
 #include "qumlextensionend.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlStereotype>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExtensionEnd
-
-    \inmodule QtUml
-
-    \brief An extension end is used to tie an extension to a stereotype when extending a metaclass.The default multiplicity of an extension end is 0..1.
- */
-
-QUmlExtensionEnd::QUmlExtensionEnd() :
-    _type(0)
+QUmlExtensionEnd::QUmlExtensionEnd(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("lower", QVariant::fromValue((int)(0)));
-    d_ptr->object.setProperty("type", QVariant::fromValue((QUmlStereotype *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.
- */
 int QUmlExtensionEnd::lower() const
 {
-    // This is a read-write derived property
-
-    qWarning("QUmlExtensionEnd::lower(): to be implemented (this is a derived property)");
-
-    return int();
+    return UmlExtensionEnd::lower();
 }
 
 void QUmlExtensionEnd::setLower(int lower)
 {
-    // This is a read-write derived property
-
-    qWarning("QUmlExtensionEnd::lower(): to be implemented (this is a derived property)");
-    Q_UNUSED(lower);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
+    UmlExtensionEnd::setLower(lower);
 }
 
-/*!
-    References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.
- */
 QUmlStereotype *QUmlExtensionEnd::type() const
 {
-    // This is a read-write association end
-
-    return _type;
+    return reinterpret_cast<QUmlStereotype *>(_type);
 }
 
 void QUmlExtensionEnd::setType(QUmlStereotype *type)
 {
-    // This is a read-write association end
-
-    if (_type != type) {
-        _type = type;
-    }
+    UmlExtensionEnd::setType(type);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.
- */
-int QUmlExtensionEnd::lowerBound(
-    ) const
+int QUmlExtensionEnd::lowerBound() const
 {
-    qWarning("QUmlExtensionEnd::lowerBound(): to be implemented (operation)");
-
-    return int ();
+    return UmlExtensionEnd::lowerBound();
 }
 
 QT_END_NAMESPACE

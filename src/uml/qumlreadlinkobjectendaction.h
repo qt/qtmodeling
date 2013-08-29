@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlAction>
+#include <QtCore/QObject>
+#include "private/umlreadlinkobjectendaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -55,23 +56,23 @@ class QUmlInputPin;
 class QUmlOutputPin;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlReadLinkObjectEndAction : public QUmlAction
+class Q_UML_EXPORT QUmlReadLinkObjectEndAction : public QObject, public UmlReadLinkObjectEndAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlProperty * end READ end)
+    Q_PROPERTY(QUmlInputPin * object READ object)
+    Q_PROPERTY(QUmlOutputPin * result READ result)
+
 public:
-    QUmlReadLinkObjectEndAction();
+    Q_INVOKABLE explicit QUmlReadLinkObjectEndAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlProperty *end() const;
-    void setEnd(QUmlProperty *end);
-    QUmlInputPin *object() const;
-    void setObject(QUmlInputPin *object);
-    QUmlOutputPin *result() const;
-    void setResult(QUmlOutputPin *result);
-
-protected:
-    QUmlProperty *_end;
-    QUmlInputPin *_object;
-    QUmlOutputPin *_result;
+    Q_INVOKABLE QUmlProperty *end() const;
+    Q_INVOKABLE void setEnd(QUmlProperty *end);
+    Q_INVOKABLE QUmlInputPin *object() const;
+    Q_INVOKABLE void setObject(QUmlInputPin *object);
+    Q_INVOKABLE QUmlOutputPin *result() const;
+    Q_INVOKABLE void setResult(QUmlOutputPin *result);
 };
 
 QT_END_NAMESPACE

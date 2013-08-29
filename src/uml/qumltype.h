@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlPackageableElement>
+#include <QtCore/QObject>
+#include "private/umltype_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlPackage;
 
-class Q_UML_EXPORT QUmlType : public QUmlPackageableElement
+class Q_UML_EXPORT QUmlType : public QObject, public UmlType
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlPackage * package READ package)
+
 public:
-    Q_DECL_HIDDEN QUmlType();
+    Q_DECL_HIDDEN explicit QUmlType(QObject *parent = 0);
 
     // Owned attributes
-    QUmlPackage *package() const;
-    void setPackage(QUmlPackage *package);
+    Q_INVOKABLE QUmlPackage *package() const;
+    Q_INVOKABLE void setPackage(QUmlPackage *package);
 
     // Operations
-    bool conformsTo(QUmlType *other) const;
-
-protected:
-    QUmlPackage *_package;
+    Q_INVOKABLE bool conformsTo(QUmlType *other) const;
 };
 
 QT_END_NAMESPACE

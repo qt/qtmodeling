@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlInstanceSpecification>
+#include <QtCore/QObject>
+#include "private/umlenumerationliteral_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,19 +54,19 @@ QT_MODULE(QtUml)
 
 class QUmlEnumeration;
 
-class Q_UML_EXPORT QUmlEnumerationLiteral : public QUmlInstanceSpecification
+class Q_UML_EXPORT QUmlEnumerationLiteral : public QObject, public UmlEnumerationLiteral
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlEnumeration * classifier READ classifier)
+    Q_PROPERTY(QUmlEnumeration * enumeration READ enumeration)
+
 public:
-    QUmlEnumerationLiteral();
+    Q_INVOKABLE explicit QUmlEnumerationLiteral(QObject *parent = 0);
 
     // Owned attributes
-    QUmlEnumeration *classifier() const;
-    Q_DECL_HIDDEN void setClassifier(QUmlEnumeration *classifier);
-    QUmlEnumeration *enumeration() const;
-    void setEnumeration(QUmlEnumeration *enumeration);
-
-protected:
-    QUmlEnumeration *_enumeration;
+    Q_INVOKABLE QUmlEnumeration *classifier() const;
+    Q_INVOKABLE QUmlEnumeration *enumeration() const;
+    Q_INVOKABLE void setEnumeration(QUmlEnumeration *enumeration);
 };
 
 QT_END_NAMESPACE

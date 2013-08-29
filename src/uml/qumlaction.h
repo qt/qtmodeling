@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlExecutableNode>
+#include <QtCore/QObject>
+#include "private/umlaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -56,35 +57,31 @@ class QUmlConstraint;
 class QUmlInputPin;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlAction : public QUmlExecutableNode
+class Q_UML_EXPORT QUmlAction : public QObject, public UmlAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlClassifier * context READ context)
+    Q_PROPERTY(QList<QUmlInputPin *> input READ input)
+    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant)
+    Q_PROPERTY(QSet<QUmlConstraint *> localPostcondition READ localPostcondition)
+    Q_PROPERTY(QSet<QUmlConstraint *> localPrecondition READ localPrecondition)
+    Q_PROPERTY(QList<QUmlOutputPin *> output READ output)
+
 public:
-    Q_DECL_HIDDEN QUmlAction();
+    Q_DECL_HIDDEN explicit QUmlAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlClassifier *context() const;
-    Q_DECL_HIDDEN void setContext(QUmlClassifier *context);
-    const QList<QUmlInputPin *> input() const;
-    Q_DECL_HIDDEN void addInput(QUmlInputPin *input);
-    Q_DECL_HIDDEN void removeInput(QUmlInputPin *input);
-    bool isLocallyReentrant() const;
-    void setLocallyReentrant(bool isLocallyReentrant);
-    const QSet<QUmlConstraint *> localPostcondition() const;
-    void addLocalPostcondition(QUmlConstraint *localPostcondition);
-    void removeLocalPostcondition(QUmlConstraint *localPostcondition);
-    const QSet<QUmlConstraint *> localPrecondition() const;
-    void addLocalPrecondition(QUmlConstraint *localPrecondition);
-    void removeLocalPrecondition(QUmlConstraint *localPrecondition);
-    const QList<QUmlOutputPin *> output() const;
-    Q_DECL_HIDDEN void addOutput(QUmlOutputPin *output);
-    Q_DECL_HIDDEN void removeOutput(QUmlOutputPin *output);
-
-protected:
-    QList<QUmlInputPin *> _input;
-    bool _isLocallyReentrant;
-    QSet<QUmlConstraint *> _localPostcondition;
-    QSet<QUmlConstraint *> _localPrecondition;
-    QList<QUmlOutputPin *> _output;
+    Q_INVOKABLE QUmlClassifier *context() const;
+    Q_INVOKABLE const QList<QUmlInputPin *> input() const;
+    Q_INVOKABLE bool isLocallyReentrant() const;
+    Q_INVOKABLE void setLocallyReentrant(bool isLocallyReentrant);
+    Q_INVOKABLE const QSet<QUmlConstraint *> localPostcondition() const;
+    Q_INVOKABLE void addLocalPostcondition(UmlConstraint *localPostcondition);
+    Q_INVOKABLE void removeLocalPostcondition(UmlConstraint *localPostcondition);
+    Q_INVOKABLE const QSet<QUmlConstraint *> localPrecondition() const;
+    Q_INVOKABLE void addLocalPrecondition(UmlConstraint *localPrecondition);
+    Q_INVOKABLE void removeLocalPrecondition(UmlConstraint *localPrecondition);
+    Q_INVOKABLE const QList<QUmlOutputPin *> output() const;
 };
 
 QT_END_NAMESPACE

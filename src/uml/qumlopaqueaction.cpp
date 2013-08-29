@@ -39,153 +39,77 @@
 **
 ****************************************************************************/
 #include "qumlopaqueaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlOpaqueAction
-
-    \inmodule QtUml
-
-    \brief An action with implementation-specific semantics.
- */
-
-QUmlOpaqueAction::QUmlOpaqueAction()
+QUmlOpaqueAction::QUmlOpaqueAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("body", QVariant::fromValue(&_body));
-    d_ptr->object.setProperty("inputValue", QVariant::fromValue(&_inputValue));
-    d_ptr->object.setProperty("language", QVariant::fromValue(&_language));
-    d_ptr->object.setProperty("outputValue", QVariant::fromValue(&_outputValue));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Specifies the action in one or more languages.
- */
 const QList<QString> QUmlOpaqueAction::body() const
 {
-    // This is a read-write property
-
-    return _body;
+    return *(reinterpret_cast<const QList<QString> *>(&_body));
 }
 
 void QUmlOpaqueAction::addBody(QString body)
 {
-    // This is a read-write property
-
-    if (!_body.contains(body)) {
-        _body.append(body);
-    }
+    UmlOpaqueAction::addBody(body);
 }
 
 void QUmlOpaqueAction::removeBody(QString body)
 {
-    // This is a read-write property
-
-    if (_body.contains(body)) {
-        _body.removeAll(body);
-    }
+    UmlOpaqueAction::removeBody(body);
 }
 
-/*!
-    Provides input to the action.
- */
 const QSet<QUmlInputPin *> QUmlOpaqueAction::inputValue() const
 {
-    // This is a read-write association end
-
-    return _inputValue;
+    return *(reinterpret_cast<const QSet<QUmlInputPin *> *>(&_inputValue));
 }
 
-void QUmlOpaqueAction::addInputValue(QUmlInputPin *inputValue)
+void QUmlOpaqueAction::addInputValue(UmlInputPin *inputValue)
 {
-    // This is a read-write association end
-
-    if (!_inputValue.contains(inputValue)) {
-        _inputValue.insert(inputValue);
-
-        // Adjust subsetted properties
-        addInput(inputValue);
-    }
+    UmlOpaqueAction::addInputValue(inputValue);
 }
 
-void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
+void QUmlOpaqueAction::removeInputValue(UmlInputPin *inputValue)
 {
-    // This is a read-write association end
-
-    if (_inputValue.contains(inputValue)) {
-        _inputValue.remove(inputValue);
-
-        // Adjust subsetted properties
-        removeInput(inputValue);
-    }
+    UmlOpaqueAction::removeInputValue(inputValue);
 }
 
-/*!
-    Languages the body strings use, in the same order as the body strings
- */
 const QList<QString> QUmlOpaqueAction::language() const
 {
-    // This is a read-write property
-
-    return _language;
+    return *(reinterpret_cast<const QList<QString> *>(&_language));
 }
 
 void QUmlOpaqueAction::addLanguage(QString language)
 {
-    // This is a read-write property
-
-    if (!_language.contains(language)) {
-        _language.append(language);
-    }
+    UmlOpaqueAction::addLanguage(language);
 }
 
 void QUmlOpaqueAction::removeLanguage(QString language)
 {
-    // This is a read-write property
-
-    if (_language.contains(language)) {
-        _language.removeAll(language);
-    }
+    UmlOpaqueAction::removeLanguage(language);
 }
 
-/*!
-    Takes output from the action.
- */
 const QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValue() const
 {
-    // This is a read-write association end
-
-    return _outputValue;
+    return *(reinterpret_cast<const QSet<QUmlOutputPin *> *>(&_outputValue));
 }
 
-void QUmlOpaqueAction::addOutputValue(QUmlOutputPin *outputValue)
+void QUmlOpaqueAction::addOutputValue(UmlOutputPin *outputValue)
 {
-    // This is a read-write association end
-
-    if (!_outputValue.contains(outputValue)) {
-        _outputValue.insert(outputValue);
-
-        // Adjust subsetted properties
-        addOutput(outputValue);
-    }
+    UmlOpaqueAction::addOutputValue(outputValue);
 }
 
-void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
+void QUmlOpaqueAction::removeOutputValue(UmlOutputPin *outputValue)
 {
-    // This is a read-write association end
-
-    if (_outputValue.contains(outputValue)) {
-        _outputValue.remove(outputValue);
-
-        // Adjust subsetted properties
-        removeOutput(outputValue);
-    }
+    UmlOpaqueAction::removeOutputValue(outputValue);
 }
 
 QT_END_NAMESPACE

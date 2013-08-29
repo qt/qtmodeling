@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlMessageEvent>
+#include <QtCore/QObject>
+#include "private/umlcallevent_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlOperation;
 
-class Q_UML_EXPORT QUmlCallEvent : public QUmlMessageEvent
+class Q_UML_EXPORT QUmlCallEvent : public QObject, public UmlCallEvent
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlOperation * operation READ operation)
+
 public:
-    QUmlCallEvent();
+    Q_INVOKABLE explicit QUmlCallEvent(QObject *parent = 0);
 
     // Owned attributes
-    QUmlOperation *operation() const;
-    void setOperation(QUmlOperation *operation);
-
-protected:
-    QUmlOperation *_operation;
+    Q_INVOKABLE QUmlOperation *operation() const;
+    Q_INVOKABLE void setOperation(QUmlOperation *operation);
 };
 
 QT_END_NAMESPACE

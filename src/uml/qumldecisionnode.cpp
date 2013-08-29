@@ -39,67 +39,37 @@
 **
 ****************************************************************************/
 #include "qumldecisionnode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlObjectFlow>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDecisionNode
-
-    \inmodule QtUml
-
-    \brief A decision node is a control node that chooses between outgoing flows.
- */
-
-QUmlDecisionNode::QUmlDecisionNode() :
-    _decisionInput(0),
-    _decisionInputFlow(0)
+QUmlDecisionNode::QUmlDecisionNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("decisionInput", QVariant::fromValue((QUmlBehavior *)(0)));
-    d_ptr->object.setProperty("decisionInputFlow", QVariant::fromValue((QUmlObjectFlow *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Provides input to guard specifications on edges outgoing from the decision node.
- */
 QUmlBehavior *QUmlDecisionNode::decisionInput() const
 {
-    // This is a read-write association end
-
-    return _decisionInput;
+    return reinterpret_cast<QUmlBehavior *>(_decisionInput);
 }
 
 void QUmlDecisionNode::setDecisionInput(QUmlBehavior *decisionInput)
 {
-    // This is a read-write association end
-
-    if (_decisionInput != decisionInput) {
-        _decisionInput = decisionInput;
-    }
+    UmlDecisionNode::setDecisionInput(decisionInput);
 }
 
-/*!
-    An additional edge incoming to the decision node that provides a decision input value.
- */
 QUmlObjectFlow *QUmlDecisionNode::decisionInputFlow() const
 {
-    // This is a read-write association end
-
-    return _decisionInputFlow;
+    return reinterpret_cast<QUmlObjectFlow *>(_decisionInputFlow);
 }
 
 void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
 {
-    // This is a read-write association end
-
-    if (_decisionInputFlow != decisionInputFlow) {
-        _decisionInputFlow = decisionInputFlow;
-    }
+    UmlDecisionNode::setDecisionInputFlow(decisionInputFlow);
 }
 
 QT_END_NAMESPACE

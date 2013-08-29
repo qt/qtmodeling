@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumltemplatebinding.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameterSubstitution>
@@ -47,122 +46,46 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlTemplateBinding
-
-    \inmodule QtUml
-
-    \brief A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.
- */
-
-QUmlTemplateBinding::QUmlTemplateBinding() :
-    _boundElement(0),
-    _signature(0)
+QUmlTemplateBinding::QUmlTemplateBinding(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("boundElement", QVariant::fromValue((QUmlTemplateableElement *)(0)));
-    d_ptr->object.setProperty("parameterSubstitution", QVariant::fromValue(&_parameterSubstitution));
-    d_ptr->object.setProperty("signature", QVariant::fromValue((QUmlTemplateSignature *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The element that is bound by this binding.
- */
 QUmlTemplateableElement *QUmlTemplateBinding::boundElement() const
 {
-    // This is a read-write association end
-
-    return _boundElement;
+    return reinterpret_cast<QUmlTemplateableElement *>(_boundElement);
 }
 
 void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
 {
-    // This is a read-write association end
-
-    if (_boundElement != boundElement) {
-        // Adjust subsetted properties
-        removeSource(_boundElement);
-
-        _boundElement = boundElement;
-
-        // Adjust subsetted properties
-        setOwner(boundElement);
-        if (boundElement) {
-            addSource(boundElement);
-        }
-    }
+    UmlTemplateBinding::setBoundElement(boundElement);
 }
 
-/*!
-    The parameter substitutions owned by this template binding.
- */
 const QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitution() const
 {
-    // This is a read-write association end
-
-    return _parameterSubstitution;
+    return *(reinterpret_cast<const QSet<QUmlTemplateParameterSubstitution *> *>(&_parameterSubstitution));
 }
 
-void QUmlTemplateBinding::addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
+void QUmlTemplateBinding::addParameterSubstitution(UmlTemplateParameterSubstitution *parameterSubstitution)
 {
-    // This is a read-write association end
-
-    if (!_parameterSubstitution.contains(parameterSubstitution)) {
-        _parameterSubstitution.insert(parameterSubstitution);
-
-        // Adjust subsetted properties
-        addOwnedElement(parameterSubstitution);
-
-        // Adjust opposite properties
-        if (parameterSubstitution) {
-            parameterSubstitution->setTemplateBinding(this);
-        }
-    }
+    UmlTemplateBinding::addParameterSubstitution(parameterSubstitution);
 }
 
-void QUmlTemplateBinding::removeParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
+void QUmlTemplateBinding::removeParameterSubstitution(UmlTemplateParameterSubstitution *parameterSubstitution)
 {
-    // This is a read-write association end
-
-    if (_parameterSubstitution.contains(parameterSubstitution)) {
-        _parameterSubstitution.remove(parameterSubstitution);
-
-        // Adjust subsetted properties
-        removeOwnedElement(parameterSubstitution);
-
-        // Adjust opposite properties
-        if (parameterSubstitution) {
-            parameterSubstitution->setTemplateBinding(0);
-        }
-    }
+    UmlTemplateBinding::removeParameterSubstitution(parameterSubstitution);
 }
 
-/*!
-    The template signature for the template that is the target of the binding.
- */
 QUmlTemplateSignature *QUmlTemplateBinding::signature() const
 {
-    // This is a read-write association end
-
-    return _signature;
+    return reinterpret_cast<QUmlTemplateSignature *>(_signature);
 }
 
 void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
 {
-    // This is a read-write association end
-
-    if (_signature != signature) {
-        // Adjust subsetted properties
-        removeTarget(_signature);
-
-        _signature = signature;
-
-        // Adjust subsetted properties
-        if (signature) {
-            addTarget(signature);
-        }
-    }
+    UmlTemplateBinding::setSignature(signature);
 }
 
 QT_END_NAMESPACE

@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlStructuredClassifier>
-#include <QtUml/QUmlBehavioredClassifier>
+#include <QtCore/QObject>
+#include "private/umlcollaboration_p.h"
 
 QT_BEGIN_HEADER
 
@@ -54,18 +54,18 @@ QT_MODULE(QtUml)
 
 class QUmlConnectableElement;
 
-class Q_UML_EXPORT QUmlCollaboration : public QUmlStructuredClassifier, public QUmlBehavioredClassifier
+class Q_UML_EXPORT QUmlCollaboration : public QObject, public UmlCollaboration
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlConnectableElement *> collaborationRole READ collaborationRole)
+
 public:
-    QUmlCollaboration();
+    Q_INVOKABLE explicit QUmlCollaboration(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlConnectableElement *> collaborationRole() const;
-    void addCollaborationRole(QUmlConnectableElement *collaborationRole);
-    void removeCollaborationRole(QUmlConnectableElement *collaborationRole);
-
-protected:
-    QSet<QUmlConnectableElement *> _collaborationRole;
+    Q_INVOKABLE const QSet<QUmlConnectableElement *> collaborationRole() const;
+    Q_INVOKABLE void addCollaborationRole(UmlConnectableElement *collaborationRole);
+    Q_INVOKABLE void removeCollaborationRole(UmlConnectableElement *collaborationRole);
 };
 
 QT_END_NAMESPACE

@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlactivitynode.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
@@ -50,316 +49,111 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlActivityNode
-
-    \inmodule QtUml
-
-    \brief ActivityNode is an abstract class for points in the flow of an activity connected by edges.
- */
-
-QUmlActivityNode::QUmlActivityNode() :
-    _activity(0),
-    _inStructuredNode(0)
+QUmlActivityNode::QUmlActivityNode(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("activity", QVariant::fromValue((QUmlActivity *)(0)));
-    d_ptr->object.setProperty("inGroup", QVariant::fromValue(&_inGroup));
-    d_ptr->object.setProperty("inInterruptibleRegion", QVariant::fromValue(&_inInterruptibleRegion));
-    d_ptr->object.setProperty("inPartition", QVariant::fromValue(&_inPartition));
-    d_ptr->object.setProperty("inStructuredNode", QVariant::fromValue((QUmlStructuredActivityNode *)(0)));
-    d_ptr->object.setProperty("incoming", QVariant::fromValue(&_incoming));
-    d_ptr->object.setProperty("outgoing", QVariant::fromValue(&_outgoing));
-    d_ptr->object.setProperty("redefinedNode", QVariant::fromValue(&_redefinedNode));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Activity containing the node.
- */
 QUmlActivity *QUmlActivityNode::activity() const
 {
-    // This is a read-write association end
-
-    return _activity;
+    return reinterpret_cast<QUmlActivity *>(_activity);
 }
 
 void QUmlActivityNode::setActivity(QUmlActivity *activity)
 {
-    // This is a read-write association end
-
-    if (_activity != activity) {
-        // Adjust subsetted properties
-
-        _activity = activity;
-
-        // Adjust subsetted properties
-        setOwner(activity);
-    }
+    UmlActivityNode::setActivity(activity);
 }
 
-/*!
-    Groups containing the node.
- */
 const QSet<QUmlActivityGroup *> QUmlActivityNode::inGroup() const
 {
-    // This is a read-only derived union association end
-
-    return _inGroup;
+    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_inGroup));
 }
 
-void QUmlActivityNode::addInGroup(QUmlActivityGroup *inGroup)
-{
-    // This is a read-only derived union association end
-
-    if (!_inGroup.contains(inGroup)) {
-        _inGroup.insert(inGroup);
-
-        // Adjust opposite properties
-        if (inGroup) {
-            inGroup->addContainedNode(this);
-        }
-    }
-}
-
-void QUmlActivityNode::removeInGroup(QUmlActivityGroup *inGroup)
-{
-    // This is a read-only derived union association end
-
-    if (_inGroup.contains(inGroup)) {
-        _inGroup.remove(inGroup);
-
-        // Adjust opposite properties
-        if (inGroup) {
-            inGroup->removeContainedNode(this);
-        }
-    }
-}
-
-/*!
-    Interruptible regions containing the node.
- */
 const QSet<QUmlInterruptibleActivityRegion *> QUmlActivityNode::inInterruptibleRegion() const
 {
-    // This is a read-write association end
-
-    return _inInterruptibleRegion;
+    return *(reinterpret_cast<const QSet<QUmlInterruptibleActivityRegion *> *>(&_inInterruptibleRegion));
 }
 
-void QUmlActivityNode::addInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion)
+void QUmlActivityNode::addInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion)
 {
-    // This is a read-write association end
-
-    if (!_inInterruptibleRegion.contains(inInterruptibleRegion)) {
-        _inInterruptibleRegion.insert(inInterruptibleRegion);
-
-        // Adjust subsetted properties
-        addInGroup(inInterruptibleRegion);
-
-        // Adjust opposite properties
-        if (inInterruptibleRegion) {
-            inInterruptibleRegion->addNode(this);
-        }
-    }
+    UmlActivityNode::addInInterruptibleRegion(inInterruptibleRegion);
 }
 
-void QUmlActivityNode::removeInInterruptibleRegion(QUmlInterruptibleActivityRegion *inInterruptibleRegion)
+void QUmlActivityNode::removeInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion)
 {
-    // This is a read-write association end
-
-    if (_inInterruptibleRegion.contains(inInterruptibleRegion)) {
-        _inInterruptibleRegion.remove(inInterruptibleRegion);
-
-        // Adjust subsetted properties
-        removeInGroup(inInterruptibleRegion);
-
-        // Adjust opposite properties
-        if (inInterruptibleRegion) {
-            inInterruptibleRegion->removeNode(this);
-        }
-    }
+    UmlActivityNode::removeInInterruptibleRegion(inInterruptibleRegion);
 }
 
-/*!
-    Partitions containing the node.
- */
 const QSet<QUmlActivityPartition *> QUmlActivityNode::inPartition() const
 {
-    // This is a read-write association end
-
-    return _inPartition;
+    return *(reinterpret_cast<const QSet<QUmlActivityPartition *> *>(&_inPartition));
 }
 
-void QUmlActivityNode::addInPartition(QUmlActivityPartition *inPartition)
+void QUmlActivityNode::addInPartition(UmlActivityPartition *inPartition)
 {
-    // This is a read-write association end
-
-    if (!_inPartition.contains(inPartition)) {
-        _inPartition.insert(inPartition);
-
-        // Adjust subsetted properties
-        addInGroup(inPartition);
-
-        // Adjust opposite properties
-        if (inPartition) {
-            inPartition->addNode(this);
-        }
-    }
+    UmlActivityNode::addInPartition(inPartition);
 }
 
-void QUmlActivityNode::removeInPartition(QUmlActivityPartition *inPartition)
+void QUmlActivityNode::removeInPartition(UmlActivityPartition *inPartition)
 {
-    // This is a read-write association end
-
-    if (_inPartition.contains(inPartition)) {
-        _inPartition.remove(inPartition);
-
-        // Adjust subsetted properties
-        removeInGroup(inPartition);
-
-        // Adjust opposite properties
-        if (inPartition) {
-            inPartition->removeNode(this);
-        }
-    }
+    UmlActivityNode::removeInPartition(inPartition);
 }
 
-/*!
-    Structured activity node containing the node.
- */
 QUmlStructuredActivityNode *QUmlActivityNode::inStructuredNode() const
 {
-    // This is a read-write association end
-
-    return _inStructuredNode;
+    return reinterpret_cast<QUmlStructuredActivityNode *>(_inStructuredNode);
 }
 
 void QUmlActivityNode::setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode)
 {
-    // This is a read-write association end
-
-    if (_inStructuredNode != inStructuredNode) {
-        // Adjust subsetted properties
-        removeInGroup(_inStructuredNode);
-
-        _inStructuredNode = inStructuredNode;
-
-        // Adjust subsetted properties
-        if (inStructuredNode) {
-            addInGroup(inStructuredNode);
-        }
-        setOwner(inStructuredNode);
-    }
+    UmlActivityNode::setInStructuredNode(inStructuredNode);
 }
 
-/*!
-    Edges that have the node as target.
- */
 const QSet<QUmlActivityEdge *> QUmlActivityNode::incoming() const
 {
-    // This is a read-write association end
-
-    return _incoming;
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_incoming));
 }
 
-void QUmlActivityNode::addIncoming(QUmlActivityEdge *incoming)
+void QUmlActivityNode::addIncoming(UmlActivityEdge *incoming)
 {
-    // This is a read-write association end
-
-    if (!_incoming.contains(incoming)) {
-        _incoming.insert(incoming);
-
-        // Adjust opposite properties
-        if (incoming) {
-            incoming->setTarget(this);
-        }
-    }
+    UmlActivityNode::addIncoming(incoming);
 }
 
-void QUmlActivityNode::removeIncoming(QUmlActivityEdge *incoming)
+void QUmlActivityNode::removeIncoming(UmlActivityEdge *incoming)
 {
-    // This is a read-write association end
-
-    if (_incoming.contains(incoming)) {
-        _incoming.remove(incoming);
-
-        // Adjust opposite properties
-        if (incoming) {
-            incoming->setTarget(0);
-        }
-    }
+    UmlActivityNode::removeIncoming(incoming);
 }
 
-/*!
-    Edges that have the node as source.
- */
 const QSet<QUmlActivityEdge *> QUmlActivityNode::outgoing() const
 {
-    // This is a read-write association end
-
-    return _outgoing;
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_outgoing));
 }
 
-void QUmlActivityNode::addOutgoing(QUmlActivityEdge *outgoing)
+void QUmlActivityNode::addOutgoing(UmlActivityEdge *outgoing)
 {
-    // This is a read-write association end
-
-    if (!_outgoing.contains(outgoing)) {
-        _outgoing.insert(outgoing);
-
-        // Adjust opposite properties
-        if (outgoing) {
-            outgoing->setSource(this);
-        }
-    }
+    UmlActivityNode::addOutgoing(outgoing);
 }
 
-void QUmlActivityNode::removeOutgoing(QUmlActivityEdge *outgoing)
+void QUmlActivityNode::removeOutgoing(UmlActivityEdge *outgoing)
 {
-    // This is a read-write association end
-
-    if (_outgoing.contains(outgoing)) {
-        _outgoing.remove(outgoing);
-
-        // Adjust opposite properties
-        if (outgoing) {
-            outgoing->setSource(0);
-        }
-    }
+    UmlActivityNode::removeOutgoing(outgoing);
 }
 
-/*!
-    Inherited nodes replaced by this node in a specialization of the activity.
- */
 const QSet<QUmlActivityNode *> QUmlActivityNode::redefinedNode() const
 {
-    // This is a read-write association end
-
-    return _redefinedNode;
+    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_redefinedNode));
 }
 
-void QUmlActivityNode::addRedefinedNode(QUmlActivityNode *redefinedNode)
+void QUmlActivityNode::addRedefinedNode(UmlActivityNode *redefinedNode)
 {
-    // This is a read-write association end
-
-    if (!_redefinedNode.contains(redefinedNode)) {
-        _redefinedNode.insert(redefinedNode);
-
-        // Adjust subsetted properties
-        addRedefinedElement(redefinedNode);
-    }
+    UmlActivityNode::addRedefinedNode(redefinedNode);
 }
 
-void QUmlActivityNode::removeRedefinedNode(QUmlActivityNode *redefinedNode)
+void QUmlActivityNode::removeRedefinedNode(UmlActivityNode *redefinedNode)
 {
-    // This is a read-write association end
-
-    if (_redefinedNode.contains(redefinedNode)) {
-        _redefinedNode.remove(redefinedNode);
-
-        // Adjust subsetted properties
-        removeRedefinedElement(redefinedNode);
-    }
+    UmlActivityNode::removeRedefinedNode(redefinedNode);
 }
 
 QT_END_NAMESPACE

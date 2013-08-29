@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlbehavior.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlBehavioralFeature>
 #include <QtUml/QUmlBehavioredClassifier>
@@ -49,268 +48,111 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlBehavior
-
-    \inmodule QtUml
-
-    \brief Behavior is a specification of how its context classifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution.A behavior owns zero or more parameter sets.
- */
-
-QUmlBehavior::QUmlBehavior() :
-    _isReentrant(true),
-    _specification(0)
+QUmlBehavior::QUmlBehavior(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("context", QVariant::fromValue((QUmlBehavioredClassifier *)(0)));
-    d_ptr->object.setProperty("isReentrant", QVariant::fromValue(true));
-    d_ptr->object.setProperty("ownedParameter", QVariant::fromValue(&_ownedParameter));
-    d_ptr->object.setProperty("ownedParameterSet", QVariant::fromValue(&_ownedParameterSet));
-    d_ptr->object.setProperty("postcondition", QVariant::fromValue(&_postcondition));
-    d_ptr->object.setProperty("precondition", QVariant::fromValue(&_precondition));
-    d_ptr->object.setProperty("redefinedBehavior", QVariant::fromValue(&_redefinedBehavior));
-    d_ptr->object.setProperty("specification", QVariant::fromValue((QUmlBehavioralFeature *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.
- */
 QUmlBehavioredClassifier *QUmlBehavior::context() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlBehavior::context(): to be implemented (this is a derived association end)");
-
-    return 0;
+    return reinterpret_cast<QUmlBehavioredClassifier *>(UmlBehavior::context());
 }
 
-void QUmlBehavior::setContext(QUmlBehavioredClassifier *context)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlBehavior::context(): to be implemented (this is a derived association end)");
-    Q_UNUSED(context);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // Adjust subsetted properties
-        // removeRedefinitionContext(/* <derived-code> */);
-
-        // <derived-code>
-
-        // Adjust subsetted properties
-        if (context) {
-            addRedefinitionContext(context);
-        }
-    }
-}
-
-/*!
-    Tells whether the behavior can be invoked while it is still executing from a previous invocation.
- */
 bool QUmlBehavior::isReentrant() const
 {
-    // This is a read-write property
-
     return _isReentrant;
 }
 
 void QUmlBehavior::setReentrant(bool isReentrant)
 {
-    // This is a read-write property
-
-    if (_isReentrant != isReentrant) {
-        _isReentrant = isReentrant;
-    }
+    UmlBehavior::setReentrant(isReentrant);
 }
 
-/*!
-    References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
- */
 const QList<QUmlParameter *> QUmlBehavior::ownedParameter() const
 {
-    // This is a read-write association end
-
-    return _ownedParameter;
+    return *(reinterpret_cast<const QList<QUmlParameter *> *>(&_ownedParameter));
 }
 
-void QUmlBehavior::addOwnedParameter(QUmlParameter *ownedParameter)
+void QUmlBehavior::addOwnedParameter(UmlParameter *ownedParameter)
 {
-    // This is a read-write association end
-
-    if (!_ownedParameter.contains(ownedParameter)) {
-        _ownedParameter.append(ownedParameter);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedParameter);
-    }
+    UmlBehavior::addOwnedParameter(ownedParameter);
 }
 
-void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
+void QUmlBehavior::removeOwnedParameter(UmlParameter *ownedParameter)
 {
-    // This is a read-write association end
-
-    if (_ownedParameter.contains(ownedParameter)) {
-        _ownedParameter.removeAll(ownedParameter);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedParameter);
-    }
+    UmlBehavior::removeOwnedParameter(ownedParameter);
 }
 
-/*!
-    The ParameterSets owned by this Behavior.
- */
 const QSet<QUmlParameterSet *> QUmlBehavior::ownedParameterSet() const
 {
-    // This is a read-write association end
-
-    return _ownedParameterSet;
+    return *(reinterpret_cast<const QSet<QUmlParameterSet *> *>(&_ownedParameterSet));
 }
 
-void QUmlBehavior::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
+void QUmlBehavior::addOwnedParameterSet(UmlParameterSet *ownedParameterSet)
 {
-    // This is a read-write association end
-
-    if (!_ownedParameterSet.contains(ownedParameterSet)) {
-        _ownedParameterSet.insert(ownedParameterSet);
-
-        // Adjust subsetted properties
-        addOwnedMember(ownedParameterSet);
-    }
+    UmlBehavior::addOwnedParameterSet(ownedParameterSet);
 }
 
-void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
+void QUmlBehavior::removeOwnedParameterSet(UmlParameterSet *ownedParameterSet)
 {
-    // This is a read-write association end
-
-    if (_ownedParameterSet.contains(ownedParameterSet)) {
-        _ownedParameterSet.remove(ownedParameterSet);
-
-        // Adjust subsetted properties
-        removeOwnedMember(ownedParameterSet);
-    }
+    UmlBehavior::removeOwnedParameterSet(ownedParameterSet);
 }
 
-/*!
-    An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
- */
 const QSet<QUmlConstraint *> QUmlBehavior::postcondition() const
 {
-    // This is a read-write association end
-
-    return _postcondition;
+    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_postcondition));
 }
 
-void QUmlBehavior::addPostcondition(QUmlConstraint *postcondition)
+void QUmlBehavior::addPostcondition(UmlConstraint *postcondition)
 {
-    // This is a read-write association end
-
-    if (!_postcondition.contains(postcondition)) {
-        _postcondition.insert(postcondition);
-
-        // Adjust subsetted properties
-        addOwnedRule(postcondition);
-    }
+    UmlBehavior::addPostcondition(postcondition);
 }
 
-void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
+void QUmlBehavior::removePostcondition(UmlConstraint *postcondition)
 {
-    // This is a read-write association end
-
-    if (_postcondition.contains(postcondition)) {
-        _postcondition.remove(postcondition);
-
-        // Adjust subsetted properties
-        removeOwnedRule(postcondition);
-    }
+    UmlBehavior::removePostcondition(postcondition);
 }
 
-/*!
-    An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
- */
 const QSet<QUmlConstraint *> QUmlBehavior::precondition() const
 {
-    // This is a read-write association end
-
-    return _precondition;
+    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_precondition));
 }
 
-void QUmlBehavior::addPrecondition(QUmlConstraint *precondition)
+void QUmlBehavior::addPrecondition(UmlConstraint *precondition)
 {
-    // This is a read-write association end
-
-    if (!_precondition.contains(precondition)) {
-        _precondition.insert(precondition);
-
-        // Adjust subsetted properties
-        addOwnedRule(precondition);
-    }
+    UmlBehavior::addPrecondition(precondition);
 }
 
-void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
+void QUmlBehavior::removePrecondition(UmlConstraint *precondition)
 {
-    // This is a read-write association end
-
-    if (_precondition.contains(precondition)) {
-        _precondition.remove(precondition);
-
-        // Adjust subsetted properties
-        removeOwnedRule(precondition);
-    }
+    UmlBehavior::removePrecondition(precondition);
 }
 
-/*!
-    References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
- */
 const QSet<QUmlBehavior *> QUmlBehavior::redefinedBehavior() const
 {
-    // This is a read-write association end
-
-    return _redefinedBehavior;
+    return *(reinterpret_cast<const QSet<QUmlBehavior *> *>(&_redefinedBehavior));
 }
 
-void QUmlBehavior::addRedefinedBehavior(QUmlBehavior *redefinedBehavior)
+void QUmlBehavior::addRedefinedBehavior(UmlBehavior *redefinedBehavior)
 {
-    // This is a read-write association end
-
-    if (!_redefinedBehavior.contains(redefinedBehavior)) {
-        _redefinedBehavior.insert(redefinedBehavior);
-
-        // Adjust subsetted properties
-        addRedefinedClassifier(redefinedBehavior);
-    }
+    UmlBehavior::addRedefinedBehavior(redefinedBehavior);
 }
 
-void QUmlBehavior::removeRedefinedBehavior(QUmlBehavior *redefinedBehavior)
+void QUmlBehavior::removeRedefinedBehavior(UmlBehavior *redefinedBehavior)
 {
-    // This is a read-write association end
-
-    if (_redefinedBehavior.contains(redefinedBehavior)) {
-        _redefinedBehavior.remove(redefinedBehavior);
-
-        // Adjust subsetted properties
-        removeRedefinedClassifier(redefinedBehavior);
-    }
+    UmlBehavior::removeRedefinedBehavior(redefinedBehavior);
 }
 
-/*!
-    Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.
- */
 QUmlBehavioralFeature *QUmlBehavior::specification() const
 {
-    // This is a read-write association end
-
-    return _specification;
+    return reinterpret_cast<QUmlBehavioralFeature *>(_specification);
 }
 
 void QUmlBehavior::setSpecification(QUmlBehavioralFeature *specification)
 {
-    // This is a read-write association end
-
-    if (_specification != specification) {
-        _specification = specification;
-    }
+    UmlBehavior::setSpecification(specification);
 }
 
 QT_END_NAMESPACE

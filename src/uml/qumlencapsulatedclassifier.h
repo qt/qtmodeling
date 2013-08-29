@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlStructuredClassifier>
+#include <QtCore/QObject>
+#include "private/umlencapsulatedclassifier_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,16 @@ QT_MODULE(QtUml)
 
 class QUmlPort;
 
-class Q_UML_EXPORT QUmlEncapsulatedClassifier : public QUmlStructuredClassifier
+class Q_UML_EXPORT QUmlEncapsulatedClassifier : public QObject, public UmlEncapsulatedClassifier
 {
+    Q_OBJECT
+    Q_PROPERTY(QSet<QUmlPort *> ownedPort READ ownedPort)
+
 public:
-    Q_DECL_HIDDEN QUmlEncapsulatedClassifier();
+    Q_DECL_HIDDEN explicit QUmlEncapsulatedClassifier(QObject *parent = 0);
 
     // Owned attributes
-    const QSet<QUmlPort *> ownedPort() const;
-    Q_DECL_HIDDEN void addOwnedPort(QUmlPort *ownedPort);
-    Q_DECL_HIDDEN void removeOwnedPort(QUmlPort *ownedPort);
-
-protected:
+    Q_INVOKABLE const QSet<QUmlPort *> ownedPort() const;
 };
 
 QT_END_NAMESPACE

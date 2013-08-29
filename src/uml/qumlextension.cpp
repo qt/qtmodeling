@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 #include "qumlextension.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlClass>
 #include <QtUml/QUmlExtensionEnd>
@@ -47,102 +46,38 @@
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlExtension
-
-    \inmodule QtUml
-
-    \brief An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes.
- */
-
-QUmlExtension::QUmlExtension() :
-    _ownedEnd(0)
+QUmlExtension::QUmlExtension(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("isRequired", QVariant::fromValue(false));
-    d_ptr->object.setProperty("metaclass", QVariant::fromValue((QUmlClass *)(0)));
-    d_ptr->object.setProperty("ownedEnd", QVariant::fromValue((QUmlExtensionEnd *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.
- */
 bool QUmlExtension::isRequired() const
 {
-    // This is a read-only derived property
-
-    qWarning("QUmlExtension::isRequired(): to be implemented (this is a derived property)");
-
-    return bool();
+    return UmlExtension::isRequired();
 }
 
-void QUmlExtension::setRequired(bool isRequired)
-{
-    // This is a read-only derived property
-
-    qWarning("QUmlExtension::isRequired(): to be implemented (this is a derived property)");
-    Q_UNUSED(isRequired);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.
- */
 QUmlClass *QUmlExtension::metaclass() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlExtension::metaclass(): to be implemented (this is a derived association end)");
-
-    return 0;
+    return reinterpret_cast<QUmlClass *>(UmlExtension::metaclass());
 }
 
-void QUmlExtension::setMetaclass(QUmlClass *metaclass)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlExtension::metaclass(): to be implemented (this is a derived association end)");
-    Q_UNUSED(metaclass);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    References the end of the extension that is typed by a Stereotype.
- */
 QUmlExtensionEnd *QUmlExtension::ownedEnd() const
 {
-    // This is a read-write association end
-
-    return _ownedEnd;
+    return reinterpret_cast<QUmlExtensionEnd *>(_ownedEnd);
 }
 
 void QUmlExtension::setOwnedEnd(QUmlExtensionEnd *ownedEnd)
 {
-    // This is a read-write association end
-
-    if (_ownedEnd != ownedEnd) {
-        _ownedEnd = ownedEnd;
-    }
+    UmlExtension::setOwnedEnd(ownedEnd);
 }
 
-// OPERATIONS
+// Operations
 
-/*!
-    The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).
- */
-QUmlProperty *QUmlExtension::metaclassEnd(
-    ) const
+QUmlProperty *QUmlExtension::metaclassEnd() const
 {
-    qWarning("QUmlExtension::metaclassEnd(): to be implemented (operation)");
-
-    return 0;
+    return reinterpret_cast<QUmlProperty *>(UmlExtension::metaclassEnd());
 }
 
 QT_END_NAMESPACE

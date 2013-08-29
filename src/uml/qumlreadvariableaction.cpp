@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlreadvariableaction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOutputPin>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlReadVariableAction
-
-    \inmodule QtUml
-
-    \brief A read variable action is a variable action that retrieves the values of a variable.
- */
-
-QUmlReadVariableAction::QUmlReadVariableAction() :
-    _result(0)
+QUmlReadVariableAction::QUmlReadVariableAction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("result", QVariant::fromValue((QUmlOutputPin *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    Gives the output pin on which the result is put.
- */
 QUmlOutputPin *QUmlReadVariableAction::result() const
 {
-    // This is a read-write association end
-
-    return _result;
+    return reinterpret_cast<QUmlOutputPin *>(_result);
 }
 
 void QUmlReadVariableAction::setResult(QUmlOutputPin *result)
 {
-    // This is a read-write association end
-
-    if (_result != result) {
-        // Adjust subsetted properties
-        removeOutput(_result);
-
-        _result = result;
-
-        // Adjust subsetted properties
-        if (result) {
-            addOutput(result);
-        }
-    }
+    UmlReadVariableAction::setResult(result);
 }
 
 QT_END_NAMESPACE

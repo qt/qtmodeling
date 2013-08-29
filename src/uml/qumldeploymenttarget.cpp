@@ -39,109 +39,40 @@
 **
 ****************************************************************************/
 #include "qumldeploymenttarget.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlDeployment>
 #include <QtUml/QUmlPackageableElement>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlDeploymentTarget
-
-    \inmodule QtUml
-
-    \brief A deployment target is the location for a deployed artifact.
- */
-
-QUmlDeploymentTarget::QUmlDeploymentTarget()
+QUmlDeploymentTarget::QUmlDeploymentTarget(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("deployedElement", QVariant::fromValue(QSet<QUmlPackageableElement *>()));
-    d_ptr->object.setProperty("deployment", QVariant::fromValue(&_deployment));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
- */
 const QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElement() const
 {
-    // This is a read-only derived association end
-
-    qWarning("QUmlDeploymentTarget::deployedElement(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlPackageableElement *>();
+    QSet<QUmlPackageableElement *> r;
+    foreach (UmlPackageableElement *element, UmlDeploymentTarget::deployedElement())
+        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
+    return r;
 }
 
-void QUmlDeploymentTarget::addDeployedElement(QUmlPackageableElement *deployedElement)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlDeploymentTarget::deployedElement(): to be implemented (this is a derived association end)");
-    Q_UNUSED(deployedElement);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-void QUmlDeploymentTarget::removeDeployedElement(QUmlPackageableElement *deployedElement)
-{
-    // This is a read-only derived association end
-
-    qWarning("QUmlDeploymentTarget::deployedElement(): to be implemented (this is a derived association end)");
-    Q_UNUSED(deployedElement);
-
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-    }
-}
-
-/*!
-    The set of Deployments for a DeploymentTarget.
- */
 const QSet<QUmlDeployment *> QUmlDeploymentTarget::deployment() const
 {
-    // This is a read-write association end
-
-    return _deployment;
+    return *(reinterpret_cast<const QSet<QUmlDeployment *> *>(&_deployment));
 }
 
-void QUmlDeploymentTarget::addDeployment(QUmlDeployment *deployment)
+void QUmlDeploymentTarget::addDeployment(UmlDeployment *deployment)
 {
-    // This is a read-write association end
-
-    if (!_deployment.contains(deployment)) {
-        _deployment.insert(deployment);
-
-        // Adjust subsetted properties
-        addOwnedElement(deployment);
-        addClientDependency(deployment);
-
-        // Adjust opposite properties
-        if (deployment) {
-            deployment->setLocation(this);
-        }
-    }
+    UmlDeploymentTarget::addDeployment(deployment);
 }
 
-void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
+void QUmlDeploymentTarget::removeDeployment(UmlDeployment *deployment)
 {
-    // This is a read-write association end
-
-    if (_deployment.contains(deployment)) {
-        _deployment.remove(deployment);
-
-        // Adjust subsetted properties
-        removeOwnedElement(deployment);
-        removeClientDependency(deployment);
-
-        // Adjust opposite properties
-        if (deployment) {
-            deployment->setLocation(0);
-        }
-    }
+    UmlDeploymentTarget::removeDeployment(deployment);
 }
 
 QT_END_NAMESPACE

@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlDataType>
+#include <QtCore/QObject>
+#include "private/umlprimitivetype_p.h"
 
 QT_BEGIN_HEADER
 
@@ -51,12 +52,12 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class Q_UML_EXPORT QUmlPrimitiveType : public QUmlDataType
+class Q_UML_EXPORT QUmlPrimitiveType : public QObject, public UmlPrimitiveType
 {
-public:
-    QUmlPrimitiveType();
+    Q_OBJECT
 
-protected:
+public:
+    Q_INVOKABLE explicit QUmlPrimitiveType(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

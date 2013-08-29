@@ -39,53 +39,26 @@
 **
 ****************************************************************************/
 #include "qumlabstraction.h"
-#include "private/qmodelingobject_p.h"
 
 #include <QtUml/QUmlOpaqueExpression>
 
 QT_BEGIN_NAMESPACE
 
-/*!
-    \class QUmlAbstraction
-
-    \inmodule QtUml
-
-    \brief An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
- */
-
-QUmlAbstraction::QUmlAbstraction() :
-    _mapping(0)
+QUmlAbstraction::QUmlAbstraction(QObject *parent) :
+    QObject(parent)
 {
-    d_ptr->object.setProperty("mapping", QVariant::fromValue((QUmlOpaqueExpression *)(0)));
 }
 
-// OWNED ATTRIBUTES
+// Owned attributes
 
-/*!
-    An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.
- */
 QUmlOpaqueExpression *QUmlAbstraction::mapping() const
 {
-    // This is a read-write association end
-
-    return _mapping;
+    return reinterpret_cast<QUmlOpaqueExpression *>(_mapping);
 }
 
 void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
 {
-    // This is a read-write association end
-
-    if (_mapping != mapping) {
-        // Adjust subsetted properties
-        removeOwnedElement(_mapping);
-
-        _mapping = mapping;
-
-        // Adjust subsetted properties
-        if (mapping) {
-            addOwnedElement(mapping);
-        }
-    }
+    UmlAbstraction::setMapping(mapping);
 }
 
 QT_END_NAMESPACE

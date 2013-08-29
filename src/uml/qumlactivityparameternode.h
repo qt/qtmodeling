@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlObjectNode>
+#include <QtCore/QObject>
+#include "private/umlactivityparameternode_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,17 +54,17 @@ QT_MODULE(QtUml)
 
 class QUmlParameter;
 
-class Q_UML_EXPORT QUmlActivityParameterNode : public QUmlObjectNode
+class Q_UML_EXPORT QUmlActivityParameterNode : public QObject, public UmlActivityParameterNode
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlParameter * parameter READ parameter)
+
 public:
-    QUmlActivityParameterNode();
+    Q_INVOKABLE explicit QUmlActivityParameterNode(QObject *parent = 0);
 
     // Owned attributes
-    QUmlParameter *parameter() const;
-    void setParameter(QUmlParameter *parameter);
-
-protected:
-    QUmlParameter *_parameter;
+    Q_INVOKABLE QUmlParameter *parameter() const;
+    Q_INVOKABLE void setParameter(QUmlParameter *parameter);
 };
 
 QT_END_NAMESPACE

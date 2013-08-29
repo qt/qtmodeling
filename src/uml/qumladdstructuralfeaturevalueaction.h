@@ -43,7 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtUml/QUmlWriteStructuralFeatureAction>
+#include <QtCore/QObject>
+#include "private/umladdstructuralfeaturevalueaction_p.h"
 
 QT_BEGIN_HEADER
 
@@ -53,20 +54,20 @@ QT_MODULE(QtUml)
 
 class QUmlInputPin;
 
-class Q_UML_EXPORT QUmlAddStructuralFeatureValueAction : public QUmlWriteStructuralFeatureAction
+class Q_UML_EXPORT QUmlAddStructuralFeatureValueAction : public QObject, public UmlAddStructuralFeatureValueAction
 {
+    Q_OBJECT
+    Q_PROPERTY(QUmlInputPin * insertAt READ insertAt)
+    Q_PROPERTY(bool isReplaceAll READ isReplaceAll)
+
 public:
-    QUmlAddStructuralFeatureValueAction();
+    Q_INVOKABLE explicit QUmlAddStructuralFeatureValueAction(QObject *parent = 0);
 
     // Owned attributes
-    QUmlInputPin *insertAt() const;
-    void setInsertAt(QUmlInputPin *insertAt);
-    bool isReplaceAll() const;
-    void setReplaceAll(bool isReplaceAll);
-
-protected:
-    QUmlInputPin *_insertAt;
-    bool _isReplaceAll;
+    Q_INVOKABLE QUmlInputPin *insertAt() const;
+    Q_INVOKABLE void setInsertAt(QUmlInputPin *insertAt);
+    Q_INVOKABLE bool isReplaceAll() const;
+    Q_INVOKABLE void setReplaceAll(bool isReplaceAll);
 };
 
 QT_END_NAMESPACE
