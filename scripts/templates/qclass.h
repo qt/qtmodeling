@@ -100,27 +100,6 @@ public:
     [%- ELSE %]
     Q_INVOKABLE ${qtType}${qtAttribute}() const;
     [%- END %]
-    [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
-    [%- IF readOnly == "false" || readOnly == "" -%]
-    [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
-    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
-    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
-    Q_INVOKABLE void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
-    Q_INVOKABLE void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
-    [%- ELSE %]
-    Q_INVOKABLE void add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
-    Q_INVOKABLE void remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
-    [%- END -%]
-    [%- ELSE -%]
-    [%- IF qtType.match('QList|QSet') %]
-    Q_INVOKABLE void set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute});
-    [%- ELSIF qtType.match('\*$') %]
-    Q_INVOKABLE void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
-    [%- ELSE %]
-    Q_INVOKABLE void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
-    [%- END -%]
-    [%- END -%]
-    [%- END %]
     [%- IF loop.last %]
     [%- END %]
 [%- END -%]
@@ -138,6 +117,38 @@ ${parameter.findvalue("@name")}
         [%- IF !loop.last %], [% END -%]
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %];
+[%- END %]
+[%- FOREACH attribute IN attributes -%]
+    [%- IF loop.first %]
+
+public Q_SLOTS:
+    // Owned attributes
+    [%- END -%]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
+    [%- IF readOnly == "false" || readOnly == "" -%]
+    [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
+    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+    void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
+    void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
+    [%- ELSE %]
+    void add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
+    void remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
+    [%- END -%]
+    [%- ELSE -%]
+    [%- IF qtType.match('QList|QSet') %]
+    void set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute});
+    [%- ELSIF qtType.match('\*$') %]
+    void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
+    [%- ELSE %]
+    void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
+    [%- END -%]
+    [%- END -%]
+    [%- END %]
+    [%- IF loop.last %]
+    [%- END %]
 [%- END %]
 };
 

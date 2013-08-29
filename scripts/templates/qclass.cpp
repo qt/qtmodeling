@@ -60,8 +60,8 @@ Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
 {
 }
 
-[%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
-    [%- IF loop.first %]
+[% FOREACH attribute = class.findnodes("ownedAttribute") -%]
+    [%- IF loop.first -%]
 // Owned attributes
 [% END -%]
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
@@ -94,58 +94,15 @@ Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
     [%- END %]
 }
 
-    [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
-    [%- IF readOnly == "false" || readOnly == "" -%]
-    [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
-    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
-    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
-void Q${namespace}${className}::add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
-    [%- ELSE %]
-void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
-    [%- END %]
-{
-    ${namespace}${className}::add${attributeName}(${qtAttribute});
-}
-
-    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
-void Q${namespace}${className}::remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
-    [%- ELSE %]
-void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
-    [%- END %]
-{
-    ${namespace}${className}::remove${attributeName}(${qtAttribute});
-}
-
-    [%- ELSE -%]
-    [%- IF qtType.match('QList|QSet') %]
-void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute})
-{
-    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
-}
-
-    [%- ELSIF qtType.match('\*$') %]
-void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
-{
-    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
-}
-
-    [%- ELSE %]
-void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
-{
-    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
-}
+[%- IF loop.last %]
 [% END -%]
-    [%- END -%]
-    [%- END %]
-    [%- IF loop.last %]
-    [%- END %]
-[%- END %]
+[%- END -%]
 [% FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]
 [%- IF loop.first -%]
 // Operations
-[% END %]
+[% END -%]
 [% SET operationName = operation.findvalue("@name") -%]
-[%- SET return = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") -%]
+[%- SET return = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") %]
 [% return -%]
 Q${namespace}${className}::${operationName}(
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
@@ -186,6 +143,55 @@ ${parameter.findvalue("@name")}
 
 [%- IF loop.last %]
 [% END -%]
+[%- END -%]
+[% FOREACH attribute = class.findnodes("ownedAttribute") -%]
+    [%- IF loop.first -%]
+// Slots for owned attributes
 [% END -%]
+    [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
+    [%- IF readOnly == "false" || readOnly == "" -%]
+    [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+void Q${namespace}${className}::add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
+    [%- ELSE %]
+void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
+    [%- END %]
+{
+    ${namespace}${className}::add${attributeName}(${qtAttribute});
+}
+
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+void Q${namespace}${className}::remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
+    [%- ELSE %]
+void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
+    [%- END %]
+{
+    ${namespace}${className}::remove${attributeName}(${qtAttribute});
+}
+
+    [%- ELSE -%]
+    [%- IF qtType.match('QList|QSet') %]
+void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute})
+{
+    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
+}
+
+    [%- ELSIF qtType.match('\*$') %]
+void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
+{
+    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
+}
+
+    [%- ELSE %]
+void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
+{
+    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
+}
+[% END -%]
+    [%- END -%]
+    [%- END %]
+[%- END %]
 QT_END_NAMESPACE
 
