@@ -43,3 +43,286 @@ ${uml2qt_attribute.item(attributeName)}
 ${attributeName}
 [%- END -%]
 [%- END -%]
+[%- MACRO GENERATE_QPROPERTIES(class, visitedClasses) BLOCK -%]
+[%- FOREACH parent IN class.findnodes("generalization") -%]
+    [%- SET parentName = parent.findvalue("@general") -%]
+    [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
+    [%- visitedClasses.push("${parentName}") -%]
+    [%- GENERATE_QPROPERTIES(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses) -%]
+    [%- END -%]
+[%- END -%]
+[%- FOREACH attribute IN class.findnodes("ownedAttribute") -%]
+    [%- IF loop.first %]
+
+    // Properties [${class.findvalue("@name")}]
+    [%- END -%]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") %]
+    Q_PROPERTY(${qtType.trim} ${qtAttribute} READ ${qtAttribute})
+[%- END %]
+[%- END -%]
+[%- MACRO GENERATE_ATTRIBUTES(class, visitedClasses) BLOCK -%]
+[%- FOREACH parent IN class.findnodes("generalization") -%]
+    [%- SET parentName = parent.findvalue("@general") -%]
+    [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
+    [%- visitedClasses.push("${parentName}") -%]
+    [%- GENERATE_ATTRIBUTES(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses) -%]
+    [%- END -%]
+[%- END -%]
+[%- SET attributes = class.findnodes("ownedAttribute") -%]
+[%- FOREACH attribute IN attributes -%]
+    [%- IF loop.first %]
+
+    // Owned attributes [${class.findvalue("@name")}]
+    [%- END -%]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- IF qtType.match("QList|QSet") %]
+    Q_INVOKABLE const ${qtType}${qtAttribute}() const;
+    [%- ELSIF qtType.match('\*$') %]
+    Q_INVOKABLE ${qtType}${qtAttribute}() const;
+    [%- ELSE %]
+    Q_INVOKABLE ${qtType}${qtAttribute}() const;
+    [%- END %]
+    [%- IF loop.last %]
+    [%- END %]
+[%- END -%]
+[%- END -%]
+[%- MACRO GENERATE_OPERATIONS(class, visitedClasses) BLOCK -%]
+[%- FOREACH parent IN class.findnodes("generalization") -%]
+    [%- SET parentName = parent.findvalue("@general") -%]
+    [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
+    [%- visitedClasses.push("${parentName}") -%]
+    [%- GENERATE_OPERATIONS(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses) -%]
+    [%- END -%]
+[%- END -%]
+[%- FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]
+[%- IF loop.first %]
+
+    // Operations [${class.findvalue("@name")}]
+[%- END %]
+[% SET operationName = operation.findvalue("@name") -%]
+    Q_INVOKABLE [% QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") -%]
+${operationName}(
+    [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+        [%- QT_TYPE(namespace, parameter, "false") -%]
+${parameter.findvalue("@name")}
+        [%- IF !loop.last %], [% END -%]
+    [%- END -%]
+)[% IF operation.findvalue("@isQuery") == "true" %] const[% END %];
+[%- END %]
+[%- END -%]
+[%- MACRO GENERATE_SLOTS(class, visitedClasses) BLOCK -%]
+[%- FOREACH parent IN class.findnodes("generalization") -%]
+    [%- SET parentName = parent.findvalue("@general") -%]
+    [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
+    [%- visitedClasses.push("${parentName}") -%]
+    [%- GENERATE_SLOTS(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses) -%]
+    [%- END -%]
+[%- END -%]
+[%- FOREACH attribute IN class.findnodes("ownedAttribute") -%]
+[%- IF loop.first %]
+    // Slots for owned attributes [${class.findvalue("@name")}]
+[%- END %]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
+    [%- IF readOnly == "false" || readOnly == "" -%]
+    [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
+    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+    void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
+    void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
+    [%- ELSE %]
+    void add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
+    void remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
+    [%- END -%]
+    [%- ELSE -%]
+    [%- IF qtType.match('QList|QSet') %]
+    void set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute});
+    [%- ELSIF qtType.match('\*$') %]
+    void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
+    [%- ELSE %]
+    void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
+    [%- END -%]
+    [%- END -%]
+    [%- END %]
+[%- IF loop.last %]
+[% END %]
+[%- END -%]
+[%- END -%]
+[%- MACRO GENERATE_CPP_ATTRIBUTES(class, visitedClasses) BLOCK -%]
+[%- FOREACH parent IN class.findnodes("generalization") -%]
+    [%- SET parentName = parent.findvalue("@general") -%]
+    [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
+    [%- visitedClasses.push("${parentName}") -%]
+    [%- GENERATE_CPP_ATTRIBUTES(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses) -%]
+    [%- END -%]
+[%- END -%]
+[% FOREACH attribute = class.findnodes("ownedAttribute") -%]
+    [%- IF loop.first -%]
+// OWNED ATTRIBUTES [${class.findvalue("@name")}]
+[% END -%]
+[%- SET documentation = attribute.findvalue("ownedComment/body/text()") -%]
+[%- IF documentation != "" %]
+/*!
+    ${documentation}
+ */
+[%- END -%]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- SET derived = attribute.findvalue("@isDerived") -%]
+    [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") %]
+[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${className}::${qtAttribute}() const
+{
+    [%- IF qtType.match("QList|QSet") %]
+    [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
+    ${qtType}r;
+    foreach (${qtType.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, ${namespace}${className}::${qtAttribute}())
+        r.[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](reinterpret_cast<${qtType.remove("QList<").remove("QSet<").remove(">").trim}>(element));
+    return r;
+    [%- ELSE %]
+    return *(reinterpret_cast<const ${qtType.trim.remove(' \*$')} *>(&_${qtAttribute}));
+    [%- END -%]
+    [%- ELSIF qtType.match('\*$') %]
+    [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
+    return reinterpret_cast<${qtType.trim}>(${namespace}${className}::${qtAttribute}());
+    [%- ELSE %]
+    return reinterpret_cast<${qtType.trim}>(_${qtAttribute});
+    [%- END -%]
+    [%- ELSE %]
+    [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
+    return ${namespace}${className}::${qtAttribute}();
+    [%- ELSE %]
+    return _${qtAttribute};
+    [%- END -%]
+    [%- END %]
+}
+
+[%- IF loop.last %]
+[% END -%]
+[%- END -%]
+[%- END -%]
+[%- MACRO GENERATE_CPP_OPERATIONS(class, visitedClasses) BLOCK -%]
+[%- FOREACH parent IN class.findnodes("generalization") -%]
+    [%- SET parentName = parent.findvalue("@general") -%]
+    [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
+    [%- visitedClasses.push("${parentName}") -%]
+    [%- GENERATE_CPP_OPERATIONS(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses) -%]
+    [%- END -%]
+[%- END -%]
+[% FOREACH operation = class.findnodes("ownedOperation[@name != ../ownedAttribute[@isDerived='true']/@name]") -%]
+[%- IF loop.first -%]
+// OPERATIONS [${class.findvalue("@name")}]
+[% END -%]
+[% SET operationName = operation.findvalue("@name") -%]
+[%- SET return = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") %]
+[%- SET documentation = operation.findvalue("ownedComment/body/text()") -%]
+[%- IF documentation != "" %]
+/*!
+    ${documentation}
+ */
+[%- END %]
+[% return -%]
+Q${namespace}${className}::${operationName}(
+    [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+        [%- QT_TYPE(namespace, parameter, "false") -%]
+${parameter.findvalue("@name")}
+        [%- IF !loop.last %], [% END -%]
+    [%- END -%]
+)[% IF operation.findvalue("@isQuery") == "true" %] const[% END %]
+{
+    [%- IF return.match('\*$') || !return.match("QList|QSet") %]
+    return [% IF return.match('\*$') %]reinterpret_cast<${return.trim}>([% END %]${namespace}${className}::${operationName}(
+    [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+${parameter.findvalue("@name")}
+        [%- IF !loop.last %], [% END -%]
+    [%- END -%])[% IF return.match('\*$') %])[% END %];
+    [%- ELSIF return.match('\*') %]
+    ${return}r;
+    foreach (${return.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, ${namespace}${className}::${operationName}(
+    [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+[%- qtType = QT_TYPE(namespace, parameter, "false") -%]
+[%- IF qtType.match("QList|QSet") -%]
+*(reinterpret_cast<${qtType.replace("<Q", "<")}*>(&${parameter.findvalue("@name")}))
+[%- ELSE -%]
+${parameter.findvalue("@name")}
+[%- END -%]
+        [%- IF !loop.last %], [% END -%]
+    [%- END -%]))
+        r.[% IF return.match("QList") %]append[% ELSE %]insert[% END %](reinterpret_cast<${return.remove("QList<").remove("QSet<").remove(">").trim}>(element));
+    return r;
+    [%- ELSE %]
+    return ${namespace}${className}::${operationName}(
+    [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+${parameter.findvalue("@name")}
+        [%- IF !loop.last %], [% END -%]
+    [%- END -%]);
+    [%- END %]
+}
+
+[%- IF loop.last %]
+[% END -%]
+[%- END -%]
+[%- END -%]
+[%- MACRO GENERATE_CPP_SLOTS(class, visitedClasses) BLOCK -%]
+[%- FOREACH parent IN class.findnodes("generalization") -%]
+    [%- SET parentName = parent.findvalue("@general") -%]
+    [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
+    [%- visitedClasses.push("${parentName}") -%]
+    [%- GENERATE_CPP_SLOTS(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses) -%]
+    [%- END -%]
+[%- END -%]
+[% FOREACH attribute = class.findnodes("ownedAttribute") -%]
+    [%- IF loop.first -%]
+// SLOTS FOR OWNED ATTRIBUTES [${class.findvalue("@name")}]
+[% END -%]
+    [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
+    [%- IF readOnly == "false" || readOnly == "" -%]
+    [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+void Q${namespace}${className}::add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
+    [%- ELSE %]
+void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
+    [%- END %]
+{
+    ${namespace}${className}::add${attributeName}(${qtAttribute});
+}
+
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+void Q${namespace}${className}::remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
+    [%- ELSE %]
+void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
+    [%- END %]
+{
+    ${namespace}${className}::remove${attributeName}(${qtAttribute});
+}
+
+    [%- ELSE -%]
+    [%- IF qtType.match('QList|QSet') %]
+void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute})
+{
+    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
+}
+
+    [%- ELSIF qtType.match('\*$') %]
+void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
+{
+    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
+}
+
+    [%- ELSE %]
+void Q${namespace}${className}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
+{
+    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
+}
+[% END -%]
+    [%- END -%]
+    [%- END %]
+[%- IF loop.last %]
+[% END -%]
+[%- END %]
+[%- END -%]
