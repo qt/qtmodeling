@@ -47,17 +47,11 @@
 #include <QtCore/QObject>
 #include "private/${namespace.lower}${className.lower}_p.h"
 
-[%- SET useNamespace = 'false' -%]
+[%- useNamespace = [] -%]
 [%- forwards = [] -%]
-[%- FOREACH forward = class.findnodes("ownedAttribute[@type] | ownedOperation/ownedParameter[@type]") -%]
-[%- SET forwardName = forward.findvalue('@type') -%]
-[%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$forwardName']").findvalue("@name") != "" -%]
-    [%- SET useNamespace = 'true' -%]
-[%- ELSE -%]
-[%- IF forwardName != className -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
-[%- END -%]
-[%- END -%]
-[%- IF useNamespace == 'true' -%]
+[%- visitedClasses = [] -%]
+[%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace) -%]
+[%- IF useNamespace.size > 0 %]
 #include <Qt${namespace}/Qt${namespace}Namespace>
 [% END %]
 QT_BEGIN_HEADER
@@ -75,18 +69,23 @@ class Q_${namespace.upper}_EXPORT Q${namespace}${className} : public QObject, pu
 {
     Q_OBJECT
     [%- visitedClasses = [] -%]
-    [%- GENERATE_QPROPERTIES(class, visitedClasses) %]
+    [%- redefinedProperties = [] -%]
+    [%- POPULATE_REDEFINED_PROPERTIES(class, visitedClasses, redefinedProperties) -%]
+    [%- visitedClasses = [] -%]
+    [%- GENERATE_QPROPERTIES(class, visitedClasses, redefinedProperties) %]
 
 public:
     [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% ELSE %]Q_INVOKABLE [% END %]explicit Q${namespace}${className}(QObject *parent = 0);
 [%- visitedClasses = [] -%]
-[%- GENERATE_ATTRIBUTES(class, visitedClasses) -%]
+[%- GENERATE_ATTRIBUTES(class, visitedClasses, redefinedProperties) -%]
 [%- visitedClasses = [] -%]
-[%- GENERATE_OPERATIONS(class, visitedClasses) -%]
+[%- redefinedOperations = [] -%]
+[%- POPULATE_REDEFINED_OPERATIONS(class, visitedClasses, redefinedOperations) -%]
+[%- visitedClasses = [] -%]
+[%- GENERATE_OPERATIONS(class, visitedClasses, redefinedOperations) -%]
 [%- visitedClasses = [] %]
 
-public Q_SLOTS:
-[%- GENERATE_SLOTS(class, visitedClasses) -%]
+public Q_SLOTS:[%- GENERATE_SLOTS(class, visitedClasses, redefinedProperties) %]
 };
 
 QT_END_NAMESPACE

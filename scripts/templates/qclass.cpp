@@ -41,13 +41,10 @@
 ****************************************************************************/
 #include "q${namespace.lower}${className.lower}.h"
 
-[% forwards = [] -%]
-[%- FOREACH forward = class.findnodes("ownedAttribute[@type] | ownedOperation/ownedParameter[@type]") -%]
-[%- SET forwardName = forward.findvalue('@type') -%]
-[%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$forwardName']").findvalue("@name") == "" -%]
-[%- IF forwardName != className -%][%- forwards.push("Q${namespace}${forwardName}") -%][%- END -%]
-[%- END -%]
-[%- END -%]
+[% SET useNamespace = 'false' -%]
+[%- forwards = [] -%]
+[%- visitedClasses = [] -%]
+[%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace) -%]
 [%- FOREACH forward = forwards.unique.sort -%]
 #include <Qt${namespace}/${forward}>
 [% IF loop.last %]
@@ -68,11 +65,18 @@ Q${namespace}${className}::Q${namespace}${className}(QObject *parent) :
 {
 }
 
+[%- SET originalClassName = class.findvalue("@name") -%]
+[%- visitedClasses = [] -%]
+[%- redefinedProperties = [] -%]
+[%- POPULATE_REDEFINED_PROPERTIES(class, visitedClasses, redefinedProperties) -%]
 [%- visitedClasses = [] %]
-[% GENERATE_CPP_ATTRIBUTES(class, visitedClasses) -%]
+[% GENERATE_CPP_ATTRIBUTES(originalClassName, class, visitedClasses, redefinedProperties) -%]
+[%- visitedClasses = [] -%]
+[%- redefinedOperations = [] -%]
+[%- POPULATE_REDEFINED_OPERATIONS(class, visitedClasses, redefinedOperations) -%]
 [%- visitedClasses = [] %]
-[%- GENERATE_CPP_OPERATIONS(class, visitedClasses) -%]
+[%- GENERATE_CPP_OPERATIONS(originalClassName, class, visitedClasses, redefinedOperations) -%]
 [%- visitedClasses = [] %]
-[%- GENERATE_CPP_SLOTS(class, visitedClasses) -%]
+[%- GENERATE_CPP_SLOTS(originalClassName, class, visitedClasses, redefinedProperties) -%]
 QT_END_NAMESPACE
 
