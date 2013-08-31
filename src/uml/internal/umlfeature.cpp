@@ -42,14 +42,6 @@
 
 #include "private/umlclassifier_p.h"
 
-/*!
-    \class UmlFeature
-
-    \inmodule QtUml
-
-    \brief A feature declares a behavioral or structural characteristic of instances of classifiers.
- */
-
 UmlFeature::UmlFeature() :
     _isStatic(false)
 {
@@ -57,9 +49,6 @@ UmlFeature::UmlFeature() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The Classifiers that have this Feature as a feature.
- */
 const QSet<UmlClassifier *> UmlFeature::featuringClassifier() const
 {
     // This is a read-only derived union association end
@@ -95,9 +84,6 @@ void UmlFeature::removeFeaturingClassifier(UmlClassifier *featuringClassifier)
     }
 }
 
-/*!
-    Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
- */
 bool UmlFeature::isStatic() const
 {
     // This is a read-write property

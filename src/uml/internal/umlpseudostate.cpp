@@ -43,14 +43,6 @@
 #include "private/umlstate_p.h"
 #include "private/umlstatemachine_p.h"
 
-/*!
-    \class UmlPseudostate
-
-    \inmodule QtUml
-
-    \brief A pseudostate is an abstraction that encompasses different types of transient vertices in the state machine graph.
- */
-
 UmlPseudostate::UmlPseudostate() :
     _kind(QtUml::PseudostateKindInitial),
     _state(0),
@@ -60,9 +52,6 @@ UmlPseudostate::UmlPseudostate() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.
- */
 QtUml::PseudostateKind UmlPseudostate::kind() const
 {
     // This is a read-write property
@@ -79,9 +68,6 @@ void UmlPseudostate::setKind(QtUml::PseudostateKind kind)
     }
 }
 
-/*!
-    The State that owns this pseudostate and in which it appears.
- */
 UmlState *UmlPseudostate::state() const
 {
     // This is a read-write association end
@@ -103,9 +89,6 @@ void UmlPseudostate::setState(UmlState *state)
     }
 }
 
-/*!
-    The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.
- */
 UmlStateMachine *UmlPseudostate::stateMachine() const
 {
     // This is a read-write association end

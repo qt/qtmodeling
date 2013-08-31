@@ -42,14 +42,6 @@
 
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlReadStructuralFeatureAction
-
-    \inmodule QtUml
-
-    \brief A read structural feature action is a structural feature action that retrieves the values of a structural feature.
- */
-
 UmlReadStructuralFeatureAction::UmlReadStructuralFeatureAction() :
     _result(0)
 {
@@ -57,9 +49,6 @@ UmlReadStructuralFeatureAction::UmlReadStructuralFeatureAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the output pin on which the result is put.
- */
 UmlOutputPin *UmlReadStructuralFeatureAction::result() const
 {
     // This is a read-write association end

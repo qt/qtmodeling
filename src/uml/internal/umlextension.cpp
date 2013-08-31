@@ -44,14 +44,6 @@
 #include "private/umlextensionend_p.h"
 #include "private/umlproperty_p.h"
 
-/*!
-    \class UmlExtension
-
-    \inmodule QtUml
-
-    \brief An extension is used to indicate that the properties of a metaclass are extended through a stereotype, and gives the ability to flexibly add (and later remove) stereotypes to classes.
- */
-
 UmlExtension::UmlExtension() :
     _ownedEnd(0)
 {
@@ -59,9 +51,6 @@ UmlExtension::UmlExtension() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.
- */
 bool UmlExtension::isRequired() const
 {
     // This is a read-only derived property
@@ -83,9 +72,6 @@ void UmlExtension::setRequired(bool isRequired)
     }
 }
 
-/*!
-    References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.
- */
 UmlClass *UmlExtension::metaclass() const
 {
     // This is a read-only derived association end
@@ -107,9 +93,6 @@ void UmlExtension::setMetaclass(UmlClass *metaclass)
     }
 }
 
-/*!
-    References the end of the extension that is typed by a Stereotype.
- */
 UmlExtensionEnd *UmlExtension::ownedEnd() const
 {
     // This is a read-write association end
@@ -128,9 +111,6 @@ void UmlExtension::setOwnedEnd(UmlExtensionEnd *ownedEnd)
 
 // OPERATIONS
 
-/*!
-    The query metaclassEnd() returns the Property that is typed by a metaclass (as opposed to a stereotype).
- */
 UmlProperty *UmlExtension::metaclassEnd(
     ) const
 {

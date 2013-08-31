@@ -47,14 +47,6 @@
 #include "private/umlproperty_p.h"
 #include "private/umlreception_p.h"
 
-/*!
-    \class UmlClass
-
-    \inmodule QtUml
-
-    \brief A class may be designated as active (i.e., each of its instances having its own thread of control) or passive (i.e., each of its instances executing within the context of some other object). A class may also specify which signals the instances of this class handle.A class describes a set of objects that share the same specifications of features, constraints, and semantics.A class has the capability to have an internal structure and ports.Class has derived association that indicates how it may be extended through one or more stereotypes. Stereotype is the only kind of metaclass that cannot be extended by stereotypes.
- */
-
 UmlClass::UmlClass() :
     _isAbstract(false),
     _isActive(false)
@@ -63,9 +55,6 @@ UmlClass::UmlClass() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
- */
 const QSet<UmlExtension *> UmlClass::extension() const
 {
     // This is a read-only derived association end
@@ -109,9 +98,6 @@ void UmlClass::removeExtension(UmlExtension *extension)
     }
 }
 
-/*!
-    If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.True when a class is abstract.
- */
 bool UmlClass::isAbstract() const
 {
     // This is a read-write property
@@ -128,9 +114,6 @@ void UmlClass::setAbstract(bool isAbstract)
     }
 }
 
-/*!
-    Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class.
- */
 bool UmlClass::isActive() const
 {
     // This is a read-write property
@@ -147,9 +130,6 @@ void UmlClass::setActive(bool isActive)
     }
 }
 
-/*!
-    References all the Classifiers that are defined (nested) within the Class.
- */
 const QList<UmlClassifier *> UmlClass::nestedClassifier() const
 {
     // This is a read-write association end
@@ -181,9 +161,6 @@ void UmlClass::removeNestedClassifier(UmlClassifier *nestedClassifier)
     }
 }
 
-/*!
-    The attributes (i.e. the properties) owned by the class.
- */
 const QList<UmlProperty *> UmlClass::ownedAttribute() const
 {
     // This is a read-write association end
@@ -227,9 +204,6 @@ void UmlClass::removeOwnedAttribute(UmlProperty *ownedAttribute)
     }
 }
 
-/*!
-    The operations owned by the class.
- */
 const QList<UmlOperation *> UmlClass::ownedOperation() const
 {
     // This is a read-write association end
@@ -273,9 +247,6 @@ void UmlClass::removeOwnedOperation(UmlOperation *ownedOperation)
     }
 }
 
-/*!
-    Receptions that objects of this class are willing to accept.
- */
 const QSet<UmlReception *> UmlClass::ownedReception() const
 {
     // This is a read-write association end
@@ -309,9 +280,6 @@ void UmlClass::removeOwnedReception(UmlReception *ownedReception)
     }
 }
 
-/*!
-    This gives the superclasses of a class.
- */
 const QSet<UmlClass *> UmlClass::superClass() const
 {
     // This is a read-write derived association end
@@ -347,9 +315,6 @@ void UmlClass::removeSuperClass(UmlClass *superClass)
 
 // OPERATIONS
 
-/*!
-    The inherit operation is overridden to exclude redefined properties.
- */
 QSet<UmlNamedElement *> UmlClass::inherit(
     QSet<UmlNamedElement *> inhs) const
 {

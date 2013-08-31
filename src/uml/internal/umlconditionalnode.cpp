@@ -43,14 +43,6 @@
 #include "private/umlclause_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlConditionalNode
-
-    \inmodule QtUml
-
-    \brief A conditional node is a structured activity node that represents an exclusive choice among some number of alternatives.
- */
-
 UmlConditionalNode::UmlConditionalNode() :
     _isAssured(false),
     _isDeterminate(false)
@@ -59,9 +51,6 @@ UmlConditionalNode::UmlConditionalNode() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Set of clauses composing the conditional.
- */
 const QSet<UmlClause *> UmlConditionalNode::clause() const
 {
     // This is a read-write association end
@@ -93,9 +82,6 @@ void UmlConditionalNode::removeClause(UmlClause *clause)
     }
 }
 
-/*!
-    If true, the modeler asserts that at least one test will succeed.
- */
 bool UmlConditionalNode::isAssured() const
 {
     // This is a read-write property
@@ -112,9 +98,6 @@ void UmlConditionalNode::setAssured(bool isAssured)
     }
 }
 
-/*!
-    If true, the modeler asserts that at most one test will succeed.
- */
 bool UmlConditionalNode::isDeterminate() const
 {
     // This is a read-write property
@@ -131,9 +114,6 @@ void UmlConditionalNode::setDeterminate(bool isDeterminate)
     }
 }
 
-/*!
-    A list of output pins that constitute the data flow outputs of the conditional.
- */
 const QList<UmlOutputPin *> UmlConditionalNode::result() const
 {
     // This is a read-write association end

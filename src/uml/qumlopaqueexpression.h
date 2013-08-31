@@ -46,6 +46,8 @@
 #include <QtCore/QObject>
 #include "private/umlopaqueexpression_p.h"
 
+#include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -53,11 +55,45 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlBehavior;
+class QUmlComment;
+class QUmlDependency;
+class QUmlElement;
+class QUmlNamedElement;
+class QUmlNamespace;
+class QUmlPackage;
 class QUmlParameter;
+class QUmlParameterableElement;
+class QUmlStringExpression;
+class QUmlTemplateParameter;
+class QUmlType;
 
 class Q_UML_EXPORT QUmlOpaqueExpression : public QObject, public UmlOpaqueExpression
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [NamedElement]
+    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
+    Q_PROPERTY(QString name READ name)
+    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
+    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+
+    // Properties [TypedElement]
+    Q_PROPERTY(QUmlType * type READ type)
+
+    // Properties [ParameterableElement]
+    Q_PROPERTY(QUmlTemplateParameter * owningTemplateParameter READ owningTemplateParameter)
+    Q_PROPERTY(QUmlTemplateParameter * templateParameter READ templateParameter)
+
+    // Properties [PackageableElement]
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+
+    // Properties [OpaqueExpression]
     Q_PROPERTY(QUmlBehavior * behavior READ behavior)
     Q_PROPERTY(QList<QString> body READ body)
     Q_PROPERTY(QList<QString> language READ language)
@@ -66,22 +102,91 @@ class Q_UML_EXPORT QUmlOpaqueExpression : public QObject, public UmlOpaqueExpres
 public:
     Q_INVOKABLE explicit QUmlOpaqueExpression(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [NamedElement]
+    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
+    Q_INVOKABLE QUmlNamespace *namespace_() const;
+    Q_INVOKABLE QString qualifiedName() const;
+
+    // Owned attributes [TypedElement]
+    Q_INVOKABLE QUmlType *type() const;
+
+    // Owned attributes [ParameterableElement]
+    Q_INVOKABLE QUmlTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE QUmlTemplateParameter *templateParameter() const;
+
+    // Owned attributes [PackageableElement]
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+
+    // Owned attributes [OpaqueExpression]
     Q_INVOKABLE QUmlBehavior *behavior() const;
-    Q_INVOKABLE void setBehavior(QUmlBehavior *behavior);
     Q_INVOKABLE const QList<QString> body() const;
-    Q_INVOKABLE void addBody(QString body);
-    Q_INVOKABLE void removeBody(QString body);
     Q_INVOKABLE const QList<QString> language() const;
-    Q_INVOKABLE void addLanguage(QString language);
-    Q_INVOKABLE void removeLanguage(QString language);
     Q_INVOKABLE QUmlParameter *result() const;
 
-    // Operations
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+    // Operations [NamedElement]
+    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
+    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
+    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
+    Q_INVOKABLE QString separator() const;
+
+    // Operations [ParameterableElement]
+    Q_INVOKABLE bool isTemplateParameter() const;
+
+    // Operations [ValueSpecification]
+    Q_INVOKABLE bool booleanValue() const;
+    Q_INVOKABLE int integerValue() const;
+    Q_INVOKABLE bool isCompatibleWith(QUmlParameterableElement *p) const;
+    Q_INVOKABLE bool isComputable() const;
+    Q_INVOKABLE bool isNull() const;
+    Q_INVOKABLE double realValue() const;
+    Q_INVOKABLE QString stringValue() const;
+    Q_INVOKABLE int unlimitedValue() const;
+
+    // Operations [OpaqueExpression]
     Q_INVOKABLE bool isIntegral() const;
     Q_INVOKABLE bool isNonNegative() const;
     Q_INVOKABLE bool isPositive() const;
     Q_INVOKABLE int value() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [NamedElement]
+    void addClientDependency(UmlDependency *clientDependency);
+    void removeClientDependency(UmlDependency *clientDependency);
+    void setName(QString name);
+    void setNameExpression(QUmlStringExpression *nameExpression);
+
+    // Slots for owned attributes [TypedElement]
+    void setType(QUmlType *type);
+
+    // Slots for owned attributes [ParameterableElement]
+    void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
+    void setTemplateParameter(QUmlTemplateParameter *templateParameter);
+
+    // Slots for owned attributes [PackageableElement]
+    void setVisibility(QtUml::VisibilityKind visibility);
+
+    // Slots for owned attributes [OpaqueExpression]
+    void setBehavior(QUmlBehavior *behavior);
+    void addBody(QString body);
+    void removeBody(QString body);
+    void addLanguage(QString language);
+    void removeLanguage(QString language);
 };
 
 QT_END_NAMESPACE

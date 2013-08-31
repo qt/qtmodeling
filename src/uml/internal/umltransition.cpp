@@ -48,14 +48,6 @@
 #include "private/umltrigger_p.h"
 #include "private/umlvertex_p.h"
 
-/*!
-    \class UmlTransition
-
-    \inmodule QtUml
-
-    \brief A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound transition, which takes the state machine from one state configuration to another, representing the complete response of the state machine to an occurrence of an event of a particular type.
- */
-
 UmlTransition::UmlTransition() :
     _container(0),
     _effect(0),
@@ -69,9 +61,6 @@ UmlTransition::UmlTransition() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Designates the region that owns this transition.
- */
 UmlRegion *UmlTransition::container() const
 {
     // This is a read-write association end
@@ -93,9 +82,6 @@ void UmlTransition::setContainer(UmlRegion *container)
     }
 }
 
-/*!
-    Specifies an optional behavior to be performed when the transition fires.
- */
 UmlBehavior *UmlTransition::effect() const
 {
     // This is a read-write association end
@@ -120,9 +106,6 @@ void UmlTransition::setEffect(UmlBehavior *effect)
     }
 }
 
-/*!
-    A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
- */
 UmlConstraint *UmlTransition::guard() const
 {
     // This is a read-write association end
@@ -147,9 +130,6 @@ void UmlTransition::setGuard(UmlConstraint *guard)
     }
 }
 
-/*!
-    Indicates the precise type of the transition.
- */
 QtUml::TransitionKind UmlTransition::kind() const
 {
     // This is a read-write property
@@ -166,9 +146,6 @@ void UmlTransition::setKind(QtUml::TransitionKind kind)
     }
 }
 
-/*!
-    The transition that is redefined by this transition.
- */
 UmlTransition *UmlTransition::redefinedTransition() const
 {
     // This is a read-write association end
@@ -193,9 +170,6 @@ void UmlTransition::setRedefinedTransition(UmlTransition *redefinedTransition)
     }
 }
 
-/*!
-    References the classifier in which context this element may be redefined.
- */
 UmlClassifier *UmlTransition::redefinitionContext() const
 {
     // This is a read-only derived association end
@@ -217,9 +191,6 @@ void UmlTransition::setRedefinitionContext(UmlClassifier *redefinitionContext)
     }
 }
 
-/*!
-    Designates the originating vertex (state or pseudostate) of the transition.
- */
 UmlVertex *UmlTransition::source() const
 {
     // This is a read-write association end
@@ -236,9 +207,6 @@ void UmlTransition::setSource(UmlVertex *source)
     }
 }
 
-/*!
-    Designates the target vertex that is reached when the transition is taken.
- */
 UmlVertex *UmlTransition::target() const
 {
     // This is a read-write association end
@@ -255,9 +223,6 @@ void UmlTransition::setTarget(UmlVertex *target)
     }
 }
 
-/*!
-    Specifies the triggers that may fire the transition.
- */
 const QSet<UmlTrigger *> UmlTransition::trigger() const
 {
     // This is a read-write association end
@@ -291,9 +256,6 @@ void UmlTransition::removeTrigger(UmlTrigger *trigger)
 
 // OPERATIONS
 
-/*!
-    The query containingStateMachine() returns the state machine that contains the transition either directly or transitively.
- */
 UmlStateMachine *UmlTransition::containingStateMachine(
     ) const
 {
@@ -302,9 +264,6 @@ UmlStateMachine *UmlTransition::containingStateMachine(
     return 0;
 }
 
-/*!
-    The query isConsistentWith() specifies that a redefining transition is consistent with a redefined transition provided that the redefining transition has the following relation to the redefined transition: A redefining transition redefines all properties of the corresponding redefined transition, except the source state and the trigger.
- */
 bool UmlTransition::isConsistentWith(
     UmlRedefinableElement *redefinee) const
 {

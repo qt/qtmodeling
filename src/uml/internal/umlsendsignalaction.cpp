@@ -43,14 +43,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umlsignal_p.h"
 
-/*!
-    \class UmlSendSignalAction
-
-    \inmodule QtUml
-
-    \brief A send signal action is an action that creates a signal instance from its inputs, and transmits it to the target object, where it may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor. If the input is already a signal instance, use a send object action.
- */
-
 UmlSendSignalAction::UmlSendSignalAction() :
     _signal(0),
     _target(0)
@@ -59,9 +51,6 @@ UmlSendSignalAction::UmlSendSignalAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The type of signal transmitted to the target object.
- */
 UmlSignal *UmlSendSignalAction::signal() const
 {
     // This is a read-write association end
@@ -78,9 +67,6 @@ void UmlSendSignalAction::setSignal(UmlSignal *signal)
     }
 }
 
-/*!
-    The target object to which the signal is sent.
- */
 UmlInputPin *UmlSendSignalAction::target() const
 {
     // This is a read-write association end

@@ -43,14 +43,6 @@
 #include "private/umlexecutablenode_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlClause
-
-    \inmodule QtUml
-
-    \brief A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
- */
-
 UmlClause::UmlClause() :
     _decider(0)
 {
@@ -58,9 +50,6 @@ UmlClause::UmlClause() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
- */
 const QSet<UmlExecutableNode *> UmlClause::body() const
 {
     // This is a read-write association end
@@ -86,9 +75,6 @@ void UmlClause::removeBody(UmlExecutableNode *body)
     }
 }
 
-/*!
-    A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
- */
 const QList<UmlOutputPin *> UmlClause::bodyOutput() const
 {
     // This is a read-write association end
@@ -114,9 +100,6 @@ void UmlClause::removeBodyOutput(UmlOutputPin *bodyOutput)
     }
 }
 
-/*!
-    An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.
- */
 UmlOutputPin *UmlClause::decider() const
 {
     // This is a read-write association end
@@ -133,9 +116,6 @@ void UmlClause::setDecider(UmlOutputPin *decider)
     }
 }
 
-/*!
-    A set of clauses whose tests must all evaluate false before the current clause can be tested.
- */
 const QSet<UmlClause *> UmlClause::predecessorClause() const
 {
     // This is a read-write association end
@@ -161,9 +141,6 @@ void UmlClause::removePredecessorClause(UmlClause *predecessorClause)
     }
 }
 
-/*!
-    A set of clauses which may not be tested unless the current clause tests false.
- */
 const QSet<UmlClause *> UmlClause::successorClause() const
 {
     // This is a read-write association end
@@ -189,9 +166,6 @@ void UmlClause::removeSuccessorClause(UmlClause *successorClause)
     }
 }
 
-/*!
-    A nested activity fragment with a designated output pin that specifies the result of the test.
- */
 const QSet<UmlExecutableNode *> UmlClause::test() const
 {
     // This is a read-write association end

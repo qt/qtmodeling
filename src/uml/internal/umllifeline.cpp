@@ -46,14 +46,6 @@
 #include "private/umlpartdecomposition_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlLifeline
-
-    \inmodule QtUml
-
-    \brief A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
- */
-
 UmlLifeline::UmlLifeline() :
     _decomposedAs(0),
     _interaction(0),
@@ -64,9 +56,6 @@ UmlLifeline::UmlLifeline() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the InteractionFragments in which this Lifeline takes part.
- */
 const QSet<UmlInteractionFragment *> UmlLifeline::coveredBy() const
 {
     // This is a read-write association end
@@ -102,9 +91,6 @@ void UmlLifeline::removeCoveredBy(UmlInteractionFragment *coveredBy)
     }
 }
 
-/*!
-    References the Interaction that represents the decomposition.
- */
 UmlPartDecomposition *UmlLifeline::decomposedAs() const
 {
     // This is a read-write association end
@@ -121,9 +107,6 @@ void UmlLifeline::setDecomposedAs(UmlPartDecomposition *decomposedAs)
     }
 }
 
-/*!
-    References the Interaction enclosing this Lifeline.
- */
 UmlInteraction *UmlLifeline::interaction() const
 {
     // This is a read-write association end
@@ -145,9 +128,6 @@ void UmlLifeline::setInteraction(UmlInteraction *interaction)
     }
 }
 
-/*!
-    References the ConnectableElement within the classifier that contains the enclosing interaction.
- */
 UmlConnectableElement *UmlLifeline::represents() const
 {
     // This is a read-write association end
@@ -164,9 +144,6 @@ void UmlLifeline::setRepresents(UmlConnectableElement *represents)
     }
 }
 
-/*!
-    If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.
- */
 UmlValueSpecification *UmlLifeline::selector() const
 {
     // This is a read-write association end

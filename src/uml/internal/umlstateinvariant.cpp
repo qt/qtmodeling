@@ -43,14 +43,6 @@
 #include "private/umlconstraint_p.h"
 #include "private/umllifeline_p.h"
 
-/*!
-    \class UmlStateInvariant
-
-    \inmodule QtUml
-
-    \brief A state invariant is a runtime constraint on the participants of the interaction. It may be used to specify a variety of different kinds of constraints, such as values of attributes or variables, internal or external states, and so on. A state invariant is an interaction fragment and it is placed on a lifeline.
- */
-
 UmlStateInvariant::UmlStateInvariant() :
     _covered(0),
     _invariant(0)
@@ -59,9 +51,6 @@ UmlStateInvariant::UmlStateInvariant() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the Lifeline on which the StateInvariant appears.
- */
 UmlLifeline *UmlStateInvariant::covered() const
 {
     // This is a read-write association end
@@ -78,9 +67,6 @@ void UmlStateInvariant::setCovered(UmlLifeline *covered)
     }
 }
 
-/*!
-    A Constraint that should hold at runtime for this StateInvariant
- */
 UmlConstraint *UmlStateInvariant::invariant() const
 {
     // This is a read-write association end

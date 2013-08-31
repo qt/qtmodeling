@@ -47,23 +47,12 @@
 #include "private/umlnamedelement_p.h"
 #include "private/umlrelationship_p.h"
 
-/*!
-    \class UmlInformationFlow
-
-    \inmodule QtUml
-
-    \brief An information flow specifies that one or more information items circulates from its sources to its targets. Information flows require some kind of information channel for transmitting information items from the source to the destination. An information channel is represented in various ways depending on the nature of its sources and targets. It may be represented by connectors, links, associations, or even dependencies. For example, if the source and destination are parts in some composite structure such as a collaboration, then the information channel is likely to be represented by a connector between them. Or, if the source and target are objects (which are a kind of instance specification), they may be represented by a link that joins the two, and so on.
- */
-
 UmlInformationFlow::UmlInformationFlow()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the information items that may circulate on this information flow.
- */
 const QSet<UmlClassifier *> UmlInformationFlow::conveyed() const
 {
     // This is a read-write association end
@@ -89,9 +78,6 @@ void UmlInformationFlow::removeConveyed(UmlClassifier *conveyed)
     }
 }
 
-/*!
-    Defines from which source the conveyed InformationItems are initiated.
- */
 const QSet<UmlNamedElement *> UmlInformationFlow::informationSource() const
 {
     // This is a read-write association end
@@ -123,9 +109,6 @@ void UmlInformationFlow::removeInformationSource(UmlNamedElement *informationSou
     }
 }
 
-/*!
-    Defines to which target the conveyed InformationItems are directed.
- */
 const QSet<UmlNamedElement *> UmlInformationFlow::informationTarget() const
 {
     // This is a read-write association end
@@ -157,9 +140,6 @@ void UmlInformationFlow::removeInformationTarget(UmlNamedElement *informationTar
     }
 }
 
-/*!
-    Determines which Relationship will realize the specified flow
- */
 const QSet<UmlRelationship *> UmlInformationFlow::realization() const
 {
     // This is a read-write association end
@@ -185,9 +165,6 @@ void UmlInformationFlow::removeRealization(UmlRelationship *realization)
     }
 }
 
-/*!
-    Determines which ActivityEdges will realize the specified flow.
- */
 const QSet<UmlActivityEdge *> UmlInformationFlow::realizingActivityEdge() const
 {
     // This is a read-write association end
@@ -213,9 +190,6 @@ void UmlInformationFlow::removeRealizingActivityEdge(UmlActivityEdge *realizingA
     }
 }
 
-/*!
-    Determines which Connectors will realize the specified flow.
- */
 const QSet<UmlConnector *> UmlInformationFlow::realizingConnector() const
 {
     // This is a read-write association end
@@ -241,9 +215,6 @@ void UmlInformationFlow::removeRealizingConnector(UmlConnector *realizingConnect
     }
 }
 
-/*!
-    Determines which Messages will realize the specified flow.
- */
 const QSet<UmlMessage *> UmlInformationFlow::realizingMessage() const
 {
     // This is a read-write association end

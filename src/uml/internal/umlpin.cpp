@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlpin_p.h"
 
-/*!
-    \class UmlPin
-
-    \inmodule QtUml
-
-    \brief A pin is a typed element and multiplicity element that provides values to actions and accept result values from them.A pin is an object node for inputs and outputs to actions.
- */
-
 UmlPin::UmlPin() :
     _isControl(false)
 {
@@ -55,9 +47,6 @@ UmlPin::UmlPin() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Tells whether the pins provide data to the actions, or just controls when it executes it.
- */
 bool UmlPin::isControl() const
 {
     // This is a read-write property

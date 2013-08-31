@@ -43,14 +43,6 @@
 #include "private/umltemplateableelement_p.h"
 #include "private/umltemplateparameter_p.h"
 
-/*!
-    \class UmlTemplateSignature
-
-    \inmodule QtUml
-
-    \brief A template signature bundles the set of formal template parameters for a templated element.
- */
-
 UmlTemplateSignature::UmlTemplateSignature() :
     _template_(0)
 {
@@ -58,9 +50,6 @@ UmlTemplateSignature::UmlTemplateSignature() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The formal template parameters that are owned by this template signature.
- */
 const QList<UmlTemplateParameter *> UmlTemplateSignature::ownedParameter() const
 {
     // This is a read-write association end
@@ -104,9 +93,6 @@ void UmlTemplateSignature::removeOwnedParameter(UmlTemplateParameter *ownedParam
     }
 }
 
-/*!
-    The ordered set of all formal template parameters for this template signature.
- */
 const QList<UmlTemplateParameter *> UmlTemplateSignature::parameter() const
 {
     // This is a read-write association end
@@ -132,9 +118,6 @@ void UmlTemplateSignature::removeParameter(UmlTemplateParameter *parameter)
     }
 }
 
-/*!
-    The element that owns this template signature.
- */
 UmlTemplateableElement *UmlTemplateSignature::template_() const
 {
     // This is a read-write association end

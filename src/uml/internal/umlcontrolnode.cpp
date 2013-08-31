@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlcontrolnode_p.h"
 
-/*!
-    \class UmlControlNode
-
-    \inmodule QtUml
-
-    \brief A control node is an abstract activity node that coordinates flows in an activity.
- */
-
 UmlControlNode::UmlControlNode()
 {
 }

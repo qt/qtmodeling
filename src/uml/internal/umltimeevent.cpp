@@ -42,14 +42,6 @@
 
 #include "private/umltimeexpression_p.h"
 
-/*!
-    \class UmlTimeEvent
-
-    \inmodule QtUml
-
-    \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
- */
-
 UmlTimeEvent::UmlTimeEvent() :
     _isRelative(false),
     _when(0)
@@ -58,9 +50,6 @@ UmlTimeEvent::UmlTimeEvent() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies whether it is relative or absolute time.
- */
 bool UmlTimeEvent::isRelative() const
 {
     // This is a read-write property
@@ -77,9 +66,6 @@ void UmlTimeEvent::setRelative(bool isRelative)
     }
 }
 
-/*!
-    Specifies the corresponding time deadline.
- */
 UmlTimeExpression *UmlTimeEvent::when() const
 {
     // This is a read-write association end

@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlexecutionenvironment_p.h"
 
-/*!
-    \class UmlExecutionEnvironment
-
-    \inmodule QtUml
-
-    \brief An execution environment is a node that offers an execution environment for specific types of components that are deployed on it in the form of executable artifacts.
- */
-
 UmlExecutionEnvironment::UmlExecutionEnvironment()
 {
 }

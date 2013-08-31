@@ -40,11 +40,403 @@
 ****************************************************************************/
 #include "qumlcontrolflow.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
+#include <QtUml/QUmlValueSpecification>
+
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlControlFlow
+
+    \inmodule QtUml
+
+    \brief A control flow is an edge that starts an activity node after the previous one is finished.
+ */
 
 QUmlControlFlow::QUmlControlFlow(QObject *parent) :
     QObject(parent)
 {
+}
+
+// OWNED ATTRIBUTES [Element]
+
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlControlFlow::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlControlFlow::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlControlFlow::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [NamedElement]
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QUmlDependency *> QUmlControlFlow::clientDependency() const
+{
+    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
+}
+
+/*!
+    The name of the NamedElement.
+ */
+QString QUmlControlFlow::name() const
+{
+    return _name;
+}
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QUmlStringExpression *QUmlControlFlow::nameExpression() const
+{
+    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QUmlNamespace *QUmlControlFlow::namespace_() const
+{
+    return reinterpret_cast<QUmlNamespace *>(_namespace_);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QUmlControlFlow::qualifiedName() const
+{
+    return UmlNamedElement::qualifiedName();
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QUmlControlFlow::visibility() const
+{
+    return _visibility;
+}
+
+// OWNED ATTRIBUTES [RedefinableElement]
+
+/*!
+    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
+ */
+bool QUmlControlFlow::isLeaf() const
+{
+    return _isLeaf;
+}
+
+/*!
+    The redefinable element that is being redefined by this element.
+ */
+const QSet<QUmlRedefinableElement *> QUmlControlFlow::redefinedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlRedefinableElement *> *>(&_redefinedElement));
+}
+
+/*!
+    References the contexts that this element may be redefined from.
+ */
+const QSet<QUmlClassifier *> QUmlControlFlow::redefinitionContext() const
+{
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_redefinitionContext));
+}
+
+// OWNED ATTRIBUTES [ActivityEdge]
+
+/*!
+    Activity containing the edge.
+ */
+QUmlActivity *QUmlControlFlow::activity() const
+{
+    return reinterpret_cast<QUmlActivity *>(_activity);
+}
+
+/*!
+    Specification evaluated at runtime to determine if the edge can be traversed.
+ */
+QUmlValueSpecification *QUmlControlFlow::guard() const
+{
+    return reinterpret_cast<QUmlValueSpecification *>(_guard);
+}
+
+/*!
+    Groups containing the edge.
+ */
+const QSet<QUmlActivityGroup *> QUmlControlFlow::inGroup() const
+{
+    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_inGroup));
+}
+
+/*!
+    Partitions containing the edge.
+ */
+const QSet<QUmlActivityPartition *> QUmlControlFlow::inPartition() const
+{
+    return *(reinterpret_cast<const QSet<QUmlActivityPartition *> *>(&_inPartition));
+}
+
+/*!
+    Structured activity node containing the edge.
+ */
+QUmlStructuredActivityNode *QUmlControlFlow::inStructuredNode() const
+{
+    return reinterpret_cast<QUmlStructuredActivityNode *>(_inStructuredNode);
+}
+
+/*!
+    Region that the edge can interrupt.
+ */
+QUmlInterruptibleActivityRegion *QUmlControlFlow::interrupts() const
+{
+    return reinterpret_cast<QUmlInterruptibleActivityRegion *>(_interrupts);
+}
+
+/*!
+    Inherited edges replaced by this edge in a specialization of the activity.
+ */
+const QSet<QUmlActivityEdge *> QUmlControlFlow::redefinedEdge() const
+{
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_redefinedEdge));
+}
+
+/*!
+    Node from which tokens are taken when they traverse the edge.
+ */
+QUmlActivityNode *QUmlControlFlow::source() const
+{
+    return reinterpret_cast<QUmlActivityNode *>(_source);
+}
+
+/*!
+    Node to which tokens are put when they traverse the edge.
+ */
+QUmlActivityNode *QUmlControlFlow::target() const
+{
+    return reinterpret_cast<QUmlActivityNode *>(_target);
+}
+
+/*!
+    The minimum number of tokens that must traverse the edge at the same time.
+ */
+QUmlValueSpecification *QUmlControlFlow::weight() const
+{
+    return reinterpret_cast<QUmlValueSpecification *>(_weight);
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlControlFlow::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlControlFlow::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// OPERATIONS [NamedElement]
+
+/*!
+    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
+ */
+QList<QUmlNamespace *> QUmlControlFlow::allNamespaces() const
+{
+    QList<QUmlNamespace *> r;
+    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
+        r.append(reinterpret_cast<QUmlNamespace *>(element));
+    return r;
+}
+
+/*!
+    The query allOwningPackages() returns all the directly or indirectly owning packages.
+ */
+QSet<QUmlPackage *> QUmlControlFlow::allOwningPackages() const
+{
+    QSet<QUmlPackage *> r;
+    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
+        r.insert(reinterpret_cast<QUmlPackage *>(element));
+    return r;
+}
+
+/*!
+    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
+ */
+bool QUmlControlFlow::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
+{
+    return UmlNamedElement::isDistinguishableFrom(n, ns);
+}
+
+/*!
+    The query separator() gives the string that is used to separate names when constructing a qualified name.
+ */
+QString QUmlControlFlow::separator() const
+{
+    return UmlNamedElement::separator();
+}
+
+// OPERATIONS [RedefinableElement]
+
+/*!
+    The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
+ */
+bool QUmlControlFlow::isConsistentWith(QUmlRedefinableElement *redefinee) const
+{
+    return UmlRedefinableElement::isConsistentWith(redefinee);
+}
+
+/*!
+    The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
+ */
+bool QUmlControlFlow::isRedefinitionContextValid(QUmlRedefinableElement *redefined) const
+{
+    return UmlRedefinableElement::isRedefinitionContextValid(redefined);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlControlFlow::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlControlFlow::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
+
+void QUmlControlFlow::addClientDependency(UmlDependency *clientDependency)
+{
+    UmlNamedElement::addClientDependency(clientDependency);
+}
+
+void QUmlControlFlow::removeClientDependency(UmlDependency *clientDependency)
+{
+    UmlNamedElement::removeClientDependency(clientDependency);
+}
+
+void QUmlControlFlow::setName(QString name)
+{
+    UmlNamedElement::setName(name);
+}
+
+void QUmlControlFlow::setNameExpression(QUmlStringExpression *nameExpression)
+{
+    UmlNamedElement::setNameExpression(nameExpression);
+}
+
+void QUmlControlFlow::setVisibility(QtUml::VisibilityKind visibility)
+{
+    UmlNamedElement::setVisibility(visibility);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
+
+void QUmlControlFlow::setLeaf(bool isLeaf)
+{
+    UmlRedefinableElement::setLeaf(isLeaf);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [ActivityEdge]
+
+void QUmlControlFlow::setActivity(QUmlActivity *activity)
+{
+    UmlActivityEdge::setActivity(activity);
+}
+
+void QUmlControlFlow::setGuard(QUmlValueSpecification *guard)
+{
+    UmlActivityEdge::setGuard(guard);
+}
+
+void QUmlControlFlow::addInPartition(UmlActivityPartition *inPartition)
+{
+    UmlActivityEdge::addInPartition(inPartition);
+}
+
+void QUmlControlFlow::removeInPartition(UmlActivityPartition *inPartition)
+{
+    UmlActivityEdge::removeInPartition(inPartition);
+}
+
+void QUmlControlFlow::setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode)
+{
+    UmlActivityEdge::setInStructuredNode(inStructuredNode);
+}
+
+void QUmlControlFlow::setInterrupts(QUmlInterruptibleActivityRegion *interrupts)
+{
+    UmlActivityEdge::setInterrupts(interrupts);
+}
+
+void QUmlControlFlow::addRedefinedEdge(UmlActivityEdge *redefinedEdge)
+{
+    UmlActivityEdge::addRedefinedEdge(redefinedEdge);
+}
+
+void QUmlControlFlow::removeRedefinedEdge(UmlActivityEdge *redefinedEdge)
+{
+    UmlActivityEdge::removeRedefinedEdge(redefinedEdge);
+}
+
+void QUmlControlFlow::setSource(QUmlActivityNode *source)
+{
+    UmlActivityEdge::setSource(source);
+}
+
+void QUmlControlFlow::setTarget(QUmlActivityNode *target)
+{
+    UmlActivityEdge::setTarget(target);
+}
+
+void QUmlControlFlow::setWeight(QUmlValueSpecification *weight)
+{
+    UmlActivityEdge::setWeight(weight);
 }
 
 QT_END_NAMESPACE

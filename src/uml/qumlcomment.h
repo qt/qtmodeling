@@ -57,18 +57,42 @@ class QUmlElement;
 class Q_UML_EXPORT QUmlComment : public QObject, public UmlComment
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [Comment]
     Q_PROPERTY(QSet<QUmlElement *> annotatedElement READ annotatedElement)
     Q_PROPERTY(QString body READ body)
 
 public:
     Q_INVOKABLE explicit QUmlComment(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [Comment]
     Q_INVOKABLE const QSet<QUmlElement *> annotatedElement() const;
-    Q_INVOKABLE void addAnnotatedElement(UmlElement *annotatedElement);
-    Q_INVOKABLE void removeAnnotatedElement(UmlElement *annotatedElement);
     Q_INVOKABLE QString body() const;
-    Q_INVOKABLE void setBody(QString body);
+
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [Comment]
+    void addAnnotatedElement(UmlElement *annotatedElement);
+    void removeAnnotatedElement(UmlElement *annotatedElement);
+    void setBody(QString body);
 };
 
 QT_END_NAMESPACE

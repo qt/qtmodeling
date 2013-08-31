@@ -42,14 +42,6 @@
 
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlJoinNode
-
-    \inmodule QtUml
-
-    \brief A join node is a control node that synchronizes multiple flows.Join nodes have a Boolean value specification using the names of the incoming edges to specify the conditions under which the join will emit a token.
- */
-
 UmlJoinNode::UmlJoinNode() :
     _isCombineDuplicate(true),
     _joinSpec(0)
@@ -58,9 +50,6 @@ UmlJoinNode::UmlJoinNode() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Tells whether tokens having objects with the same identity are combined into one by the join.
- */
 bool UmlJoinNode::isCombineDuplicate() const
 {
     // This is a read-write property
@@ -77,9 +66,6 @@ void UmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
     }
 }
 
-/*!
-    A specification giving the conditions under which the join with emit a token. Default is "and".
- */
 UmlValueSpecification *UmlJoinNode::joinSpec() const
 {
     // This is a read-write association end

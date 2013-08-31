@@ -40,29 +40,121 @@
 ****************************************************************************/
 #include "qumlvertex.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlVertex
+
+    \inmodule QtUml
+
+    \brief A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.
+ */
 
 QUmlVertex::QUmlVertex(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlVertex::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlVertex::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlVertex::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [NamedElement]
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QUmlDependency *> QUmlVertex::clientDependency() const
+{
+    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
+}
+
+/*!
+    The name of the NamedElement.
+ */
+QString QUmlVertex::name() const
+{
+    return _name;
+}
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QUmlStringExpression *QUmlVertex::nameExpression() const
+{
+    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QUmlNamespace *QUmlVertex::namespace_() const
+{
+    return reinterpret_cast<QUmlNamespace *>(_namespace_);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QUmlVertex::qualifiedName() const
+{
+    return UmlNamedElement::qualifiedName();
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QUmlVertex::visibility() const
+{
+    return _visibility;
+}
+
+// OWNED ATTRIBUTES [Vertex]
+
+/*!
+    The region that contains this vertex.
+ */
 QUmlRegion *QUmlVertex::container() const
 {
     return reinterpret_cast<QUmlRegion *>(_container);
 }
 
-void QUmlVertex::setContainer(QUmlRegion *container)
-{
-    UmlVertex::setContainer(container);
-}
-
+/*!
+    Specifies the transitions entering this vertex.
+ */
 const QSet<QUmlTransition *> QUmlVertex::incoming() const
 {
     QSet<QUmlTransition *> r;
@@ -71,6 +163,9 @@ const QSet<QUmlTransition *> QUmlVertex::incoming() const
     return r;
 }
 
+/*!
+    Specifies the transitions departing from this vertex.
+ */
 const QSet<QUmlTransition *> QUmlVertex::outgoing() const
 {
     QSet<QUmlTransition *> r;
@@ -79,11 +174,121 @@ const QSet<QUmlTransition *> QUmlVertex::outgoing() const
     return r;
 }
 
-// Operations
+// OPERATIONS [Element]
 
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlVertex::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlVertex::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// OPERATIONS [NamedElement]
+
+/*!
+    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
+ */
+QList<QUmlNamespace *> QUmlVertex::allNamespaces() const
+{
+    QList<QUmlNamespace *> r;
+    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
+        r.append(reinterpret_cast<QUmlNamespace *>(element));
+    return r;
+}
+
+/*!
+    The query allOwningPackages() returns all the directly or indirectly owning packages.
+ */
+QSet<QUmlPackage *> QUmlVertex::allOwningPackages() const
+{
+    QSet<QUmlPackage *> r;
+    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
+        r.insert(reinterpret_cast<QUmlPackage *>(element));
+    return r;
+}
+
+/*!
+    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
+ */
+bool QUmlVertex::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
+{
+    return UmlNamedElement::isDistinguishableFrom(n, ns);
+}
+
+/*!
+    The query separator() gives the string that is used to separate names when constructing a qualified name.
+ */
+QString QUmlVertex::separator() const
+{
+    return UmlNamedElement::separator();
+}
+
+// OPERATIONS [Vertex]
+
+/*!
+    The operation containingStateMachine() returns the state machine in which this Vertex is defined
+ */
 QUmlStateMachine *QUmlVertex::containingStateMachine() const
 {
     return reinterpret_cast<QUmlStateMachine *>(UmlVertex::containingStateMachine());
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlVertex::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlVertex::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
+
+void QUmlVertex::addClientDependency(UmlDependency *clientDependency)
+{
+    UmlNamedElement::addClientDependency(clientDependency);
+}
+
+void QUmlVertex::removeClientDependency(UmlDependency *clientDependency)
+{
+    UmlNamedElement::removeClientDependency(clientDependency);
+}
+
+void QUmlVertex::setName(QString name)
+{
+    UmlNamedElement::setName(name);
+}
+
+void QUmlVertex::setNameExpression(QUmlStringExpression *nameExpression)
+{
+    UmlNamedElement::setNameExpression(nameExpression);
+}
+
+void QUmlVertex::setVisibility(QtUml::VisibilityKind visibility)
+{
+    UmlNamedElement::setVisibility(visibility);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Vertex]
+
+void QUmlVertex::setContainer(QUmlRegion *container)
+{
+    UmlVertex::setContainer(container);
 }
 
 QT_END_NAMESPACE

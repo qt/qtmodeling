@@ -42,14 +42,6 @@
 
 #include "private/umlvariable_p.h"
 
-/*!
-    \class UmlVariableAction
-
-    \inmodule QtUml
-
-    \brief VariableAction is an abstract class for actions that operate on a statically specified variable.
- */
-
 UmlVariableAction::UmlVariableAction() :
     _variable(0)
 {
@@ -57,9 +49,6 @@ UmlVariableAction::UmlVariableAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Variable to be read.
- */
 UmlVariable *UmlVariableAction::variable() const
 {
     // This is a read-write association end

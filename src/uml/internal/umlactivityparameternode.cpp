@@ -42,14 +42,6 @@
 
 #include "private/umlparameter_p.h"
 
-/*!
-    \class UmlActivityParameterNode
-
-    \inmodule QtUml
-
-    \brief An activity parameter node is an object node for inputs and outputs to activities.
- */
-
 UmlActivityParameterNode::UmlActivityParameterNode() :
     _parameter(0)
 {
@@ -57,9 +49,6 @@ UmlActivityParameterNode::UmlActivityParameterNode() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The parameter the object node will be accepting or providing values for.
- */
 UmlParameter *UmlActivityParameterNode::parameter() const
 {
     // This is a read-write association end

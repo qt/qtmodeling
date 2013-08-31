@@ -43,14 +43,6 @@
 #include "private/umloutputpin_p.h"
 #include "private/umltrigger_p.h"
 
-/*!
-    \class UmlAcceptEventAction
-
-    \inmodule QtUml
-
-    \brief A accept event action is an action that waits for the occurrence of an event meeting specified conditions.
- */
-
 UmlAcceptEventAction::UmlAcceptEventAction() :
     _isUnmarshall(false)
 {
@@ -58,9 +50,6 @@ UmlAcceptEventAction::UmlAcceptEventAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.
- */
 bool UmlAcceptEventAction::isUnmarshall() const
 {
     // This is a read-write property
@@ -77,9 +66,6 @@ void UmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
     }
 }
 
-/*!
-    Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
- */
 const QSet<UmlOutputPin *> UmlAcceptEventAction::result() const
 {
     // This is a read-write association end
@@ -111,9 +97,6 @@ void UmlAcceptEventAction::removeResult(UmlOutputPin *result)
     }
 }
 
-/*!
-    The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
- */
 const QSet<UmlTrigger *> UmlAcceptEventAction::trigger() const
 {
     // This is a read-write association end

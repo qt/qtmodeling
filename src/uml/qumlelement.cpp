@@ -44,17 +44,67 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class UmlElement
+
+    \inmodule QtUml
+
+    \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
+ */
+
 QUmlElement::QUmlElement(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
 const QSet<QUmlComment *> QUmlElement::ownedComment() const
 {
     return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlElement::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlElement::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlElement::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlElement::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
 
 void QUmlElement::addOwnedComment(UmlComment *ownedComment)
 {
@@ -64,31 +114,6 @@ void QUmlElement::addOwnedComment(UmlComment *ownedComment)
 void QUmlElement::removeOwnedComment(UmlComment *ownedComment)
 {
     UmlElement::removeOwnedComment(ownedComment);
-}
-
-const QSet<QUmlElement *> QUmlElement::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-QUmlElement *QUmlElement::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// Operations
-
-QSet<QUmlElement *> QUmlElement::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-bool QUmlElement::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
 }
 
 QT_END_NAMESPACE

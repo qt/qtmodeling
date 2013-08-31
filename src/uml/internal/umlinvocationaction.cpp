@@ -43,14 +43,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umlport_p.h"
 
-/*!
-    \class UmlInvocationAction
-
-    \inmodule QtUml
-
-    \brief InvocationAction is an abstract class for the various actions that invoke behavior.In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to a target via a given port, either on the sending object or on another object.
- */
-
 UmlInvocationAction::UmlInvocationAction() :
     _onPort(0)
 {
@@ -58,9 +50,6 @@ UmlInvocationAction::UmlInvocationAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specification of the ordered set of argument values that appears during execution.
- */
 const QList<UmlInputPin *> UmlInvocationAction::argument() const
 {
     // This is a read-write association end
@@ -92,9 +81,6 @@ void UmlInvocationAction::removeArgument(UmlInputPin *argument)
     }
 }
 
-/*!
-    A optional port of the receiver object on which the behavioral feature is invoked.
- */
 UmlPort *UmlInvocationAction::onPort() const
 {
     // This is a read-write association end

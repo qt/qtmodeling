@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlstructuralfeature_p.h"
 
-/*!
-    \class UmlStructuralFeature
-
-    \inmodule QtUml
-
-    \brief A structural feature is a typed feature of a classifier that specifies the structure of instances of the classifier.By specializing multiplicity element, it supports a multiplicity that specifies valid cardinalities for the collection of values associated with an instantiation of the structural feature.
- */
-
 UmlStructuralFeature::UmlStructuralFeature() :
     _isReadOnly(false)
 {
@@ -55,9 +47,6 @@ UmlStructuralFeature::UmlStructuralFeature() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    States whether the feature's value may be modified by a client.
- */
 bool UmlStructuralFeature::isReadOnly() const
 {
     // This is a read-write property

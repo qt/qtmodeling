@@ -42,14 +42,6 @@
 
 #include "private/umlaction_p.h"
 
-/*!
-    \class UmlActionInputPin
-
-    \inmodule QtUml
-
-    \brief An action input pin is a kind of pin that executes an action to determine the values to input to another.
- */
-
 UmlActionInputPin::UmlActionInputPin() :
     _fromAction(0)
 {
@@ -57,9 +49,6 @@ UmlActionInputPin::UmlActionInputPin() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The action used to provide values.
- */
 UmlAction *UmlActionInputPin::fromAction() const
 {
     // This is a read-write association end

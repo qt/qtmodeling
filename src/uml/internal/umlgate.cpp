@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlgate_p.h"
 
-/*!
-    \class UmlGate
-
-    \inmodule QtUml
-
-    \brief A gate is a connection point for relating a message outside an interaction fragment with a message inside the interaction fragment.
- */
-
 UmlGate::UmlGate()
 {
 }

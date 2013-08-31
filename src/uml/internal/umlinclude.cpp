@@ -42,14 +42,6 @@
 
 #include "private/umlusecase_p.h"
 
-/*!
-    \class UmlInclude
-
-    \inmodule QtUml
-
-    \brief An include relationship defines that a use case contains the behavior defined in another use case.
- */
-
 UmlInclude::UmlInclude() :
     _addition(0),
     _includingCase(0)
@@ -58,9 +50,6 @@ UmlInclude::UmlInclude() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the use case that is to be included.
- */
 UmlUseCase *UmlInclude::addition() const
 {
     // This is a read-write association end
@@ -85,9 +74,6 @@ void UmlInclude::setAddition(UmlUseCase *addition)
     }
 }
 
-/*!
-    References the use case which will include the addition and owns the include relationship.
- */
 UmlUseCase *UmlInclude::includingCase() const
 {
     // This is a read-write association end

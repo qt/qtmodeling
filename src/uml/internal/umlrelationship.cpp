@@ -40,23 +40,12 @@
 ****************************************************************************/
 #include "umlrelationship_p.h"
 
-/*!
-    \class UmlRelationship
-
-    \inmodule QtUml
-
-    \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
- */
-
 UmlRelationship::UmlRelationship()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the elements related by the Relationship.
- */
 const QSet<UmlElement *> UmlRelationship::relatedElement() const
 {
     // This is a read-only derived union association end

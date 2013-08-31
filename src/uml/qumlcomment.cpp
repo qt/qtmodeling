@@ -44,17 +44,97 @@
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class UmlComment
+
+    \inmodule QtUml
+
+    \brief A comment is a textual annotation that can be attached to a set of elements.
+ */
+
 QUmlComment::QUmlComment(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlComment::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlComment::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlComment::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [Comment]
+
+/*!
+    References the Element(s) being commented.
+ */
 const QSet<QUmlElement *> QUmlComment::annotatedElement() const
 {
     return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_annotatedElement));
 }
+
+/*!
+    Specifies a string that is the comment.
+ */
+QString QUmlComment::body() const
+{
+    return _body;
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlComment::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlComment::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlComment::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlComment::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Comment]
 
 void QUmlComment::addAnnotatedElement(UmlElement *annotatedElement)
 {
@@ -64,11 +144,6 @@ void QUmlComment::addAnnotatedElement(UmlElement *annotatedElement)
 void QUmlComment::removeAnnotatedElement(UmlElement *annotatedElement)
 {
     UmlComment::removeAnnotatedElement(annotatedElement);
-}
-
-QString QUmlComment::body() const
-{
-    return _body;
 }
 
 void QUmlComment::setBody(QString body)

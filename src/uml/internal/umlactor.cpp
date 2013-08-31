@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlactor_p.h"
 
-/*!
-    \class UmlActor
-
-    \inmodule QtUml
-
-    \brief An actor specifies a role played by a user or any other system that interacts with the subject.
- */
-
 UmlActor::UmlActor()
 {
 }

@@ -42,14 +42,6 @@
 
 #include "private/umloccurrencespecification_p.h"
 
-/*!
-    \class UmlGeneralOrdering
-
-    \inmodule QtUml
-
-    \brief A general ordering represents a binary relation between two occurrence specifications, to describe that one occurrence specification must occur before the other in a valid trace. This mechanism provides the ability to define partial orders of occurrence cpecifications that may otherwise not have a specified order.
- */
-
 UmlGeneralOrdering::UmlGeneralOrdering() :
     _after(0),
     _before(0)
@@ -58,9 +50,6 @@ UmlGeneralOrdering::UmlGeneralOrdering() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
- */
 UmlOccurrenceSpecification *UmlGeneralOrdering::after() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlGeneralOrdering::setAfter(UmlOccurrenceSpecification *after)
     }
 }
 
-/*!
-    The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
- */
 UmlOccurrenceSpecification *UmlGeneralOrdering::before() const
 {
     // This is a read-write association end

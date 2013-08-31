@@ -45,14 +45,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlAction
-
-    \inmodule QtUml
-
-    \brief An action has pre- and post-conditions.An action represents a single step within an activity, that is, one that is not further decomposed within the activity.An action is a named element that is the fundamental unit of executable functionality. The execution of an action represents some transformation or processing in the modeled system, be it a computer system or otherwise.
- */
-
 UmlAction::UmlAction() :
     _isLocallyReentrant(false)
 {
@@ -60,9 +52,6 @@ UmlAction::UmlAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The classifier that owns the behavior of which this action is a part.
- */
 UmlClassifier *UmlAction::context() const
 {
     // This is a read-only derived association end
@@ -84,9 +73,6 @@ void UmlAction::setContext(UmlClassifier *context)
     }
 }
 
-/*!
-    The ordered set of input pins connected to the Action. These are among the total set of inputs.
- */
 const QList<UmlInputPin *> UmlAction::input() const
 {
     // This is a read-only derived union association end
@@ -118,9 +104,6 @@ void UmlAction::removeInput(UmlInputPin *input)
     }
 }
 
-/*!
-    If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.
- */
 bool UmlAction::isLocallyReentrant() const
 {
     // This is a read-write property
@@ -137,9 +120,6 @@ void UmlAction::setLocallyReentrant(bool isLocallyReentrant)
     }
 }
 
-/*!
-    Constraint that must be satisfied when executed is completed.
- */
 const QSet<UmlConstraint *> UmlAction::localPostcondition() const
 {
     // This is a read-write association end
@@ -171,9 +151,6 @@ void UmlAction::removeLocalPostcondition(UmlConstraint *localPostcondition)
     }
 }
 
-/*!
-    Constraint that must be satisfied when execution is started.
- */
 const QSet<UmlConstraint *> UmlAction::localPrecondition() const
 {
     // This is a read-write association end
@@ -205,9 +182,6 @@ void UmlAction::removeLocalPrecondition(UmlConstraint *localPrecondition)
     }
 }
 
-/*!
-    The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
- */
 const QList<UmlOutputPin *> UmlAction::output() const
 {
     // This is a read-only derived union association end

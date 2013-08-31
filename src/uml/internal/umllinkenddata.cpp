@@ -44,14 +44,6 @@
 #include "private/umlproperty_p.h"
 #include "private/umlqualifiervalue_p.h"
 
-/*!
-    \class UmlLinkEndData
-
-    \inmodule QtUml
-
-    \brief A link end data is not an action. It is an element that identifies links. It identifies one end of a link to be read or written by the children of a link action. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, if any. This requires more than one piece of data, namely, the statically-specified end in the user model, the object on the end, and the qualifier values for that end, if any. These pieces are brought together around a link end data. Each association end is identified separately with an instance of the LinkEndData class.
- */
-
 UmlLinkEndData::UmlLinkEndData() :
     _end(0),
     _value(0)
@@ -60,9 +52,6 @@ UmlLinkEndData::UmlLinkEndData() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Association end for which this link-end data specifies values.
- */
 UmlProperty *UmlLinkEndData::end() const
 {
     // This is a read-write association end
@@ -79,9 +68,6 @@ void UmlLinkEndData::setEnd(UmlProperty *end)
     }
 }
 
-/*!
-    List of qualifier values
- */
 const QSet<UmlQualifierValue *> UmlLinkEndData::qualifier() const
 {
     // This is a read-write association end
@@ -113,9 +99,6 @@ void UmlLinkEndData::removeQualifier(UmlQualifierValue *qualifier)
     }
 }
 
-/*!
-    Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.
- */
 UmlInputPin *UmlLinkEndData::value() const
 {
     // This is a read-write association end

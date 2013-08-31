@@ -42,14 +42,6 @@
 
 #include "private/umlbehavior_p.h"
 
-/*!
-    \class UmlCallBehaviorAction
-
-    \inmodule QtUml
-
-    \brief A call behavior action is a call action that invokes a behavior directly rather than invoking a behavioral feature that, in turn, results in the invocation of that behavior. The argument values of the action are available to the execution of the invoked behavior. For synchronous calls the execution of the call behavior action waits until the execution of the invoked behavior completes and a result is returned on its output pin. The action completes immediately without a result, if the call is asynchronous. In particular, the invoked behavior may be an activity.
- */
-
 UmlCallBehaviorAction::UmlCallBehaviorAction() :
     _behavior(0)
 {
@@ -57,9 +49,6 @@ UmlCallBehaviorAction::UmlCallBehaviorAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The invoked behavior. It must be capable of accepting and returning control.
- */
 UmlBehavior *UmlCallBehaviorAction::behavior() const
 {
     // This is a read-write association end

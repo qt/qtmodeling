@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlWriteVariableAction
-
-    \inmodule QtUml
-
-    \brief WriteVariableAction is an abstract class for variable actions that change variable values.
- */
-
 UmlWriteVariableAction::UmlWriteVariableAction() :
     _value(0)
 {
@@ -57,9 +49,6 @@ UmlWriteVariableAction::UmlWriteVariableAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Value to be added or removed from the variable.
- */
 UmlInputPin *UmlWriteVariableAction::value() const
 {
     // This is a read-write association end

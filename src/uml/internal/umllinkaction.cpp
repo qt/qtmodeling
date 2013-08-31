@@ -44,23 +44,12 @@
 #include "private/umlinputpin_p.h"
 #include "private/umllinkenddata_p.h"
 
-/*!
-    \class UmlLinkAction
-
-    \inmodule QtUml
-
-    \brief LinkAction is an abstract class for all link actions that identify their links by the objects at the ends of the links and by the qualifiers at ends of the links.
- */
-
 UmlLinkAction::UmlLinkAction()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Data identifying one end of a link by the objects on its ends and qualifiers.
- */
 const QSet<UmlLinkEndData *> UmlLinkAction::endData() const
 {
     // This is a read-write association end
@@ -92,9 +81,6 @@ void UmlLinkAction::removeEndData(UmlLinkEndData *endData)
     }
 }
 
-/*!
-    Pins taking end objects and qualifier values as input.
- */
 const QSet<UmlInputPin *> UmlLinkAction::inputValue() const
 {
     // This is a read-write association end
@@ -128,9 +114,6 @@ void UmlLinkAction::removeInputValue(UmlInputPin *inputValue)
 
 // OPERATIONS
 
-/*!
-    The association operates on LinkAction. It returns the association of the action.
- */
 UmlAssociation *UmlLinkAction::association(
     ) const
 {

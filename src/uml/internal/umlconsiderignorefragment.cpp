@@ -42,23 +42,12 @@
 
 #include "private/umlnamedelement_p.h"
 
-/*!
-    \class UmlConsiderIgnoreFragment
-
-    \inmodule QtUml
-
-    \brief A consider ignore fragment is a kind of combined fragment that is used for the consider and ignore cases, which require lists of pertinent messages to be specified.
- */
-
 UmlConsiderIgnoreFragment::UmlConsiderIgnoreFragment()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    The set of messages that apply to this fragment
- */
 const QSet<UmlNamedElement *> UmlConsiderIgnoreFragment::message() const
 {
     // This is a read-write association end

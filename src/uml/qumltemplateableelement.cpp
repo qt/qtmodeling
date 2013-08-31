@@ -40,32 +40,130 @@
 ****************************************************************************/
 #include "qumltemplateableelement.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateSignature>
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class UmlTemplateableElement
+
+    \inmodule QtUml
+
+    \brief A templateable element is an element that can optionally be defined as a template and bound to other templates.
+ */
+
 QUmlTemplateableElement::QUmlTemplateableElement(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlTemplateableElement::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlTemplateableElement::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlTemplateableElement::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [TemplateableElement]
+
+/*!
+    The optional template signature specifying the formal template parameters.
+ */
 QUmlTemplateSignature *QUmlTemplateableElement::ownedTemplateSignature() const
 {
     return reinterpret_cast<QUmlTemplateSignature *>(_ownedTemplateSignature);
 }
 
-void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature)
-{
-    UmlTemplateableElement::setOwnedTemplateSignature(ownedTemplateSignature);
-}
-
+/*!
+    The optional bindings from this element to templates.
+ */
 const QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBinding() const
 {
     return *(reinterpret_cast<const QSet<QUmlTemplateBinding *> *>(&_templateBinding));
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlTemplateableElement::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlTemplateableElement::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// OPERATIONS [TemplateableElement]
+
+/*!
+    The query isTemplate() returns whether this templateable element is actually a template.
+ */
+bool QUmlTemplateableElement::isTemplate() const
+{
+    return UmlTemplateableElement::isTemplate();
+}
+
+/*!
+    The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
+ */
+QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements() const
+{
+    QSet<QUmlParameterableElement *> r;
+    foreach (UmlParameterableElement *element, UmlTemplateableElement::parameterableElements())
+        r.insert(reinterpret_cast<QUmlParameterableElement *>(element));
+    return r;
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlTemplateableElement::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlTemplateableElement::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
+
+void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature)
+{
+    UmlTemplateableElement::setOwnedTemplateSignature(ownedTemplateSignature);
 }
 
 void QUmlTemplateableElement::addTemplateBinding(UmlTemplateBinding *templateBinding)
@@ -76,21 +174,6 @@ void QUmlTemplateableElement::addTemplateBinding(UmlTemplateBinding *templateBin
 void QUmlTemplateableElement::removeTemplateBinding(UmlTemplateBinding *templateBinding)
 {
     UmlTemplateableElement::removeTemplateBinding(templateBinding);
-}
-
-// Operations
-
-bool QUmlTemplateableElement::isTemplate() const
-{
-    return UmlTemplateableElement::isTemplate();
-}
-
-QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements() const
-{
-    QSet<QUmlParameterableElement *> r;
-    foreach (UmlParameterableElement *element, UmlTemplateableElement::parameterableElements())
-        r.insert(reinterpret_cast<QUmlParameterableElement *>(element));
-    return r;
 }
 
 QT_END_NAMESPACE

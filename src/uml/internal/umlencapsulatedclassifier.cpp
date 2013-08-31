@@ -42,23 +42,12 @@
 
 #include "private/umlport_p.h"
 
-/*!
-    \class UmlEncapsulatedClassifier
-
-    \inmodule QtUml
-
-    \brief A classifier has the ability to own ports as specific and type checked interaction points.
- */
-
 UmlEncapsulatedClassifier::UmlEncapsulatedClassifier()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    References a set of ports that an encapsulated classifier owns.
- */
 const QSet<UmlPort *> UmlEncapsulatedClassifier::ownedPort() const
 {
     // This is a read-only derived association end

@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlinitialnode_p.h"
 
-/*!
-    \class UmlInitialNode
-
-    \inmodule QtUml
-
-    \brief An initial node is a control node at which flow starts when the activity is invoked.
- */
-
 UmlInitialNode::UmlInitialNode()
 {
 }

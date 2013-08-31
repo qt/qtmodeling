@@ -44,14 +44,6 @@
 #include "private/umlactivityedge_p.h"
 #include "private/umlactivitynode_p.h"
 
-/*!
-    \class UmlActivityGroup
-
-    \inmodule QtUml
-
-    \brief ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
- */
-
 UmlActivityGroup::UmlActivityGroup() :
     _inActivity(0),
     _superGroup(0)
@@ -60,9 +52,6 @@ UmlActivityGroup::UmlActivityGroup() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Edges immediately contained in the group.
- */
 const QSet<UmlActivityEdge *> UmlActivityGroup::containedEdge() const
 {
     // This is a read-only derived union association end
@@ -98,9 +87,6 @@ void UmlActivityGroup::removeContainedEdge(UmlActivityEdge *containedEdge)
     }
 }
 
-/*!
-    Nodes immediately contained in the group.
- */
 const QSet<UmlActivityNode *> UmlActivityGroup::containedNode() const
 {
     // This is a read-only derived union association end
@@ -136,9 +122,6 @@ void UmlActivityGroup::removeContainedNode(UmlActivityNode *containedNode)
     }
 }
 
-/*!
-    Activity containing the group.
- */
 UmlActivity *UmlActivityGroup::inActivity() const
 {
     // This is a read-write association end
@@ -160,9 +143,6 @@ void UmlActivityGroup::setInActivity(UmlActivity *inActivity)
     }
 }
 
-/*!
-    Groups immediately contained in the group.
- */
 const QSet<UmlActivityGroup *> UmlActivityGroup::subgroup() const
 {
     // This is a read-only derived union association end
@@ -194,9 +174,6 @@ void UmlActivityGroup::removeSubgroup(UmlActivityGroup *subgroup)
     }
 }
 
-/*!
-    Group immediately containing the group.
- */
 UmlActivityGroup *UmlActivityGroup::superGroup() const
 {
     // This is a read-only derived union association end

@@ -43,23 +43,12 @@
 #include "private/umldeployment_p.h"
 #include "private/umlpackageableelement_p.h"
 
-/*!
-    \class UmlDeploymentTarget
-
-    \inmodule QtUml
-
-    \brief A deployment target is the location for a deployed artifact.
- */
-
 UmlDeploymentTarget::UmlDeploymentTarget()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
- */
 const QSet<UmlPackageableElement *> UmlDeploymentTarget::deployedElement() const
 {
     // This is a read-only derived association end
@@ -93,9 +82,6 @@ void UmlDeploymentTarget::removeDeployedElement(UmlPackageableElement *deployedE
     }
 }
 
-/*!
-    The set of Deployments for a DeploymentTarget.
- */
 const QSet<UmlDeployment *> UmlDeploymentTarget::deployment() const
 {
     // This is a read-write association end

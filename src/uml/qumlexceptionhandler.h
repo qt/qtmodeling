@@ -53,12 +53,21 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlClassifier;
+class QUmlComment;
+class QUmlElement;
 class QUmlExecutableNode;
 class QUmlObjectNode;
 
 class Q_UML_EXPORT QUmlExceptionHandler : public QObject, public UmlExceptionHandler
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [ExceptionHandler]
     Q_PROPERTY(QUmlObjectNode * exceptionInput READ exceptionInput)
     Q_PROPERTY(QSet<QUmlClassifier *> exceptionType READ exceptionType)
     Q_PROPERTY(QUmlExecutableNode * handlerBody READ handlerBody)
@@ -67,16 +76,33 @@ class Q_UML_EXPORT QUmlExceptionHandler : public QObject, public UmlExceptionHan
 public:
     Q_INVOKABLE explicit QUmlExceptionHandler(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [ExceptionHandler]
     Q_INVOKABLE QUmlObjectNode *exceptionInput() const;
-    Q_INVOKABLE void setExceptionInput(QUmlObjectNode *exceptionInput);
     Q_INVOKABLE const QSet<QUmlClassifier *> exceptionType() const;
-    Q_INVOKABLE void addExceptionType(UmlClassifier *exceptionType);
-    Q_INVOKABLE void removeExceptionType(UmlClassifier *exceptionType);
     Q_INVOKABLE QUmlExecutableNode *handlerBody() const;
-    Q_INVOKABLE void setHandlerBody(QUmlExecutableNode *handlerBody);
     Q_INVOKABLE QUmlExecutableNode *protectedNode() const;
-    Q_INVOKABLE void setProtectedNode(QUmlExecutableNode *protectedNode);
+
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [ExceptionHandler]
+    void setExceptionInput(QUmlObjectNode *exceptionInput);
+    void addExceptionType(UmlClassifier *exceptionType);
+    void removeExceptionType(UmlClassifier *exceptionType);
+    void setHandlerBody(QUmlExecutableNode *handlerBody);
+    void setProtectedNode(QUmlExecutableNode *protectedNode);
 };
 
 QT_END_NAMESPACE

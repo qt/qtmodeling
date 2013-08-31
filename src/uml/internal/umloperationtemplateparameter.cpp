@@ -42,14 +42,6 @@
 
 #include "private/umloperation_p.h"
 
-/*!
-    \class UmlOperationTemplateParameter
-
-    \inmodule QtUml
-
-    \brief An operation template parameter exposes an operation as a formal parameter for a template.
- */
-
 UmlOperationTemplateParameter::UmlOperationTemplateParameter() :
     _parameteredElement(0)
 {
@@ -57,9 +49,6 @@ UmlOperationTemplateParameter::UmlOperationTemplateParameter() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The operation for this template parameter.
- */
 UmlOperation *UmlOperationTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end

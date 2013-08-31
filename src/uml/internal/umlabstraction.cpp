@@ -42,14 +42,6 @@
 
 #include "private/umlopaqueexpression_p.h"
 
-/*!
-    \class UmlAbstraction
-
-    \inmodule QtUml
-
-    \brief An abstraction is a relationship that relates two elements or sets of elements that represent the same concept at different levels of abstraction or from different viewpoints.
- */
-
 UmlAbstraction::UmlAbstraction() :
     _mapping(0)
 {
@@ -57,9 +49,6 @@ UmlAbstraction::UmlAbstraction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.
- */
 UmlOpaqueExpression *UmlAbstraction::mapping() const
 {
     // This is a read-write association end

@@ -40,23 +40,12 @@
 ****************************************************************************/
 #include "umlopaquebehavior_p.h"
 
-/*!
-    \class UmlOpaqueBehavior
-
-    \inmodule QtUml
-
-    \brief An behavior with implementation-specific semantics.
- */
-
 UmlOpaqueBehavior::UmlOpaqueBehavior()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the behavior in one or more languages.
- */
 const QList<QString> UmlOpaqueBehavior::body() const
 {
     // This is a read-write property
@@ -82,9 +71,6 @@ void UmlOpaqueBehavior::removeBody(QString body)
     }
 }
 
-/*!
-    Languages the body strings use in the same order as the body strings.
- */
 const QList<QString> UmlOpaqueBehavior::language() const
 {
     // This is a read-write property

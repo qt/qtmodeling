@@ -40,41 +40,153 @@
 ****************************************************************************/
 #include "qumlprofileapplication.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlProfile>
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlProfileApplication
+
+    \inmodule QtUml
+
+    \brief A profile application is used to show which profiles have been applied to a package.
+ */
 
 QUmlProfileApplication::QUmlProfileApplication(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlProfileApplication::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlProfileApplication::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlProfileApplication::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [Relationship]
+
+/*!
+    Specifies the elements related by the Relationship.
+ */
+const QSet<QUmlElement *> QUmlProfileApplication::relatedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_relatedElement));
+}
+
+// OWNED ATTRIBUTES [DirectedRelationship]
+
+/*!
+    Specifies the sources of the DirectedRelationship.
+ */
+const QSet<QUmlElement *> QUmlProfileApplication::source() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_source));
+}
+
+/*!
+    Specifies the targets of the DirectedRelationship.
+ */
+const QSet<QUmlElement *> QUmlProfileApplication::target() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_target));
+}
+
+// OWNED ATTRIBUTES [ProfileApplication]
+
+/*!
+    References the Profiles that are applied to a Package through this ProfileApplication.
+ */
 QUmlProfile *QUmlProfileApplication::appliedProfile() const
 {
     return reinterpret_cast<QUmlProfile *>(_appliedProfile);
 }
+
+/*!
+    The package that owns the profile application.
+ */
+QUmlPackage *QUmlProfileApplication::applyingPackage() const
+{
+    return reinterpret_cast<QUmlPackage *>(_applyingPackage);
+}
+
+/*!
+    Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.
+ */
+bool QUmlProfileApplication::isStrict() const
+{
+    return _isStrict;
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlProfileApplication::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlProfileApplication::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlProfileApplication::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlProfileApplication::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Relationship]
+
+// SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
+
+// SLOTS FOR OWNED ATTRIBUTES [ProfileApplication]
 
 void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
 {
     UmlProfileApplication::setAppliedProfile(appliedProfile);
 }
 
-QUmlPackage *QUmlProfileApplication::applyingPackage() const
-{
-    return reinterpret_cast<QUmlPackage *>(_applyingPackage);
-}
-
 void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
 {
     UmlProfileApplication::setApplyingPackage(applyingPackage);
-}
-
-bool QUmlProfileApplication::isStrict() const
-{
-    return _isStrict;
 }
 
 void QUmlProfileApplication::setStrict(bool isStrict)

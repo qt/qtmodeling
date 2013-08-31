@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlRaiseExceptionAction
-
-    \inmodule QtUml
-
-    \brief A raise exception action is an action that causes an exception to occur. The input value becomes the exception object.
- */
-
 UmlRaiseExceptionAction::UmlRaiseExceptionAction() :
     _exception(0)
 {
@@ -57,9 +49,6 @@ UmlRaiseExceptionAction::UmlRaiseExceptionAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    An input pin whose value becomes an exception object.
- */
 UmlInputPin *UmlRaiseExceptionAction::exception() const
 {
     // This is a read-write association end

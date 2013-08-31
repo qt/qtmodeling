@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlpartdecomposition_p.h"
 
-/*!
-    \class UmlPartDecomposition
-
-    \inmodule QtUml
-
-    \brief A part decomposition is a description of the internal interactions of one lifeline relative to an interaction.
- */
-
 UmlPartDecomposition::UmlPartDecomposition()
 {
 }

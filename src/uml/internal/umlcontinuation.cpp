@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlcontinuation_p.h"
 
-/*!
-    \class UmlContinuation
-
-    \inmodule QtUml
-
-    \brief A continuation is a syntactic way to define continuations of different branches of an alternative combined fragment. Continuations is intuitively similar to labels representing intermediate points in a flow of control.
- */
-
 UmlContinuation::UmlContinuation() :
     _setting(true)
 {
@@ -55,9 +47,6 @@ UmlContinuation::UmlContinuation() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.
- */
 bool UmlContinuation::setting() const
 {
     // This is a read-write property

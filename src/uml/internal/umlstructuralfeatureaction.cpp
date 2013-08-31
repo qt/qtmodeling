@@ -43,14 +43,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umlstructuralfeature_p.h"
 
-/*!
-    \class UmlStructuralFeatureAction
-
-    \inmodule QtUml
-
-    \brief StructuralFeatureAction is an abstract class for all structural feature actions.
- */
-
 UmlStructuralFeatureAction::UmlStructuralFeatureAction() :
     _object(0),
     _structuralFeature(0)
@@ -59,9 +51,6 @@ UmlStructuralFeatureAction::UmlStructuralFeatureAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the input pin from which the object whose structural feature is to be read or written is obtained.
- */
 UmlInputPin *UmlStructuralFeatureAction::object() const
 {
     // This is a read-write association end
@@ -86,9 +75,6 @@ void UmlStructuralFeatureAction::setObject(UmlInputPin *object)
     }
 }
 
-/*!
-    Structural feature to be read.
- */
 UmlStructuralFeature *UmlStructuralFeatureAction::structuralFeature() const
 {
     // This is a read-write association end

@@ -40,23 +40,12 @@
 ****************************************************************************/
 #include "umlnode_p.h"
 
-/*!
-    \class UmlNode
-
-    \inmodule QtUml
-
-    \brief A node is computational resource upon which artifacts may be deployed for execution. Nodes can be interconnected through communication paths to define network structures.
- */
-
 UmlNode::UmlNode()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    The Nodes that are defined (nested) within the Node.
- */
 const QSet<UmlNode *> UmlNode::nestedNode() const
 {
     // This is a read-write association end

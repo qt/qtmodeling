@@ -43,23 +43,12 @@
 #include "private/umlactivityedge_p.h"
 #include "private/umlactivitynode_p.h"
 
-/*!
-    \class UmlInterruptibleActivityRegion
-
-    \inmodule QtUml
-
-    \brief An interruptible activity region is an activity group that supports termination of tokens flowing in the portions of an activity.
- */
-
 UmlInterruptibleActivityRegion::UmlInterruptibleActivityRegion()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    The edges leaving the region that will abort other tokens flowing in the region.
- */
 const QSet<UmlActivityEdge *> UmlInterruptibleActivityRegion::interruptingEdge() const
 {
     // This is a read-write association end
@@ -95,9 +84,6 @@ void UmlInterruptibleActivityRegion::removeInterruptingEdge(UmlActivityEdge *int
     }
 }
 
-/*!
-    Nodes immediately contained in the group.
- */
 const QSet<UmlActivityNode *> UmlInterruptibleActivityRegion::node() const
 {
     // This is a read-write association end

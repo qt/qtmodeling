@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlcontrolflow_p.h"
 
-/*!
-    \class UmlControlFlow
-
-    \inmodule QtUml
-
-    \brief A control flow is an edge that starts an activity node after the previous one is finished.
- */
-
 UmlControlFlow::UmlControlFlow()
 {
 }

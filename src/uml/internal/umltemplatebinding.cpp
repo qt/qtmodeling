@@ -44,14 +44,6 @@
 #include "private/umltemplateparametersubstitution_p.h"
 #include "private/umltemplatesignature_p.h"
 
-/*!
-    \class UmlTemplateBinding
-
-    \inmodule QtUml
-
-    \brief A template binding represents a relationship between a templateable element and a template. A template binding specifies the substitutions of actual parameters for the formal parameters of the template.
- */
-
 UmlTemplateBinding::UmlTemplateBinding() :
     _boundElement(0),
     _signature(0)
@@ -60,9 +52,6 @@ UmlTemplateBinding::UmlTemplateBinding() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The element that is bound by this binding.
- */
 UmlTemplateableElement *UmlTemplateBinding::boundElement() const
 {
     // This is a read-write association end
@@ -88,9 +77,6 @@ void UmlTemplateBinding::setBoundElement(UmlTemplateableElement *boundElement)
     }
 }
 
-/*!
-    The parameter substitutions owned by this template binding.
- */
 const QSet<UmlTemplateParameterSubstitution *> UmlTemplateBinding::parameterSubstitution() const
 {
     // This is a read-write association end
@@ -132,9 +118,6 @@ void UmlTemplateBinding::removeParameterSubstitution(UmlTemplateParameterSubstit
     }
 }
 
-/*!
-    The template signature for the template that is the target of the binding.
- */
 UmlTemplateSignature *UmlTemplateBinding::signature() const
 {
     // This is a read-write association end

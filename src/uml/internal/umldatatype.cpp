@@ -44,23 +44,12 @@
 #include "private/umloperation_p.h"
 #include "private/umlproperty_p.h"
 
-/*!
-    \class UmlDataType
-
-    \inmodule QtUml
-
-    \brief A data type is a type whose instances are identified only by their value. A data type may contain attributes to support the modeling of structured data types.
- */
-
 UmlDataType::UmlDataType()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    The Attributes owned by the DataType.
- */
 const QList<UmlProperty *> UmlDataType::ownedAttribute() const
 {
     // This is a read-write association end
@@ -104,9 +93,6 @@ void UmlDataType::removeOwnedAttribute(UmlProperty *ownedAttribute)
     }
 }
 
-/*!
-    The Operations owned by the DataType.
- */
 const QList<UmlOperation *> UmlDataType::ownedOperation() const
 {
     // This is a read-write association end
@@ -152,9 +138,6 @@ void UmlDataType::removeOwnedOperation(UmlOperation *ownedOperation)
 
 // OPERATIONS
 
-/*!
-    The inherit operation is overridden to exclude redefined properties.
- */
 QSet<UmlNamedElement *> UmlDataType::inherit(
     QSet<UmlNamedElement *> inhs) const
 {

@@ -43,14 +43,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlWriteStructuralFeatureAction
-
-    \inmodule QtUml
-
-    \brief WriteStructuralFeatureAction is an abstract class for structural feature actions that change structural feature values.
- */
-
 UmlWriteStructuralFeatureAction::UmlWriteStructuralFeatureAction() :
     _result(0),
     _value(0)
@@ -59,9 +51,6 @@ UmlWriteStructuralFeatureAction::UmlWriteStructuralFeatureAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the output pin on which the result is put.
- */
 UmlOutputPin *UmlWriteStructuralFeatureAction::result() const
 {
     // This is a read-write association end
@@ -86,9 +75,6 @@ void UmlWriteStructuralFeatureAction::setResult(UmlOutputPin *result)
     }
 }
 
-/*!
-    Value to be added or removed from the structural feature.
- */
 UmlInputPin *UmlWriteStructuralFeatureAction::value() const
 {
     // This is a read-write association end

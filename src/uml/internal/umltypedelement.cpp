@@ -42,14 +42,6 @@
 
 #include "private/umltype_p.h"
 
-/*!
-    \class UmlTypedElement
-
-    \inmodule QtUml
-
-    \brief A typed element is a kind of named element that represents an element with a type.A typed element has a type.
- */
-
 UmlTypedElement::UmlTypedElement() :
     _type(0)
 {
@@ -57,9 +49,6 @@ UmlTypedElement::UmlTypedElement() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    This information is derived from the return result for this Operation.The type of the TypedElement.
- */
 UmlType *UmlTypedElement::type() const
 {
     // This is a read-write association end

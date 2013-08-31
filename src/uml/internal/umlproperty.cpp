@@ -49,14 +49,6 @@
 #include "private/umltype_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlProperty
-
-    \inmodule QtUml
-
-    \brief Property represents a declared state of one or more instances in terms of a named relationship to a value or values. When a property is an attribute of a classifier, the value or values are related to the instance of the classifier by being held in slots of the instance. When a property is an association end, the value or values are related to the instance or instances at the other end(s) of the association. The range of valid values represented by the property can be controlled by setting the property's type.A property is a structural feature of a classifier that characterizes instances of the classifier. A property related by ownedAttribute to a classifier (other than an association) represents an attribute and might also represent an association end. It relates an instance of the class to a value or set of values of the type of the attribute. A property related by memberEnd or its specializations to an association represents an end of the association. The type of the property is the type of the end of the association.A property has the capability of being a deployment target in a deployment relationship. This enables modeling the deployment to hierarchical nodes that have properties functioning as internal parts.Property specializes ParameterableElement to specify that a property can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.A property represents a set of instances that are owned by a containing classifier instance.
- */
-
 UmlProperty::UmlProperty() :
     _aggregation(QtUml::AggregationKindNone),
     _association(0),
@@ -75,9 +67,6 @@ UmlProperty::UmlProperty() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the kind of aggregation that applies to the Property.
- */
 QtUml::AggregationKind UmlProperty::aggregation() const
 {
     // This is a read-write property
@@ -94,9 +83,6 @@ void UmlProperty::setAggregation(QtUml::AggregationKind aggregation)
     }
 }
 
-/*!
-    References the association of which this property is a member, if any.
- */
 UmlAssociation *UmlProperty::association() const
 {
     // This is a read-write association end
@@ -113,9 +99,6 @@ void UmlProperty::setAssociation(UmlAssociation *association)
     }
 }
 
-/*!
-    Designates the optional association end that owns a qualifier attribute.
- */
 UmlProperty *UmlProperty::associationEnd() const
 {
     // This is a read-write association end
@@ -137,9 +120,6 @@ void UmlProperty::setAssociationEnd(UmlProperty *associationEnd)
     }
 }
 
-/*!
-    References the Class that owns the Property.References the Class that owns the Property.
- */
 UmlClass *UmlProperty::class_() const
 {
     // This is a read-write association end
@@ -161,9 +141,6 @@ void UmlProperty::setClass(UmlClass *class_)
     }
 }
 
-/*!
-    The DataType that owns this Property.
- */
 UmlDataType *UmlProperty::datatype() const
 {
     // This is a read-write association end
@@ -185,9 +162,6 @@ void UmlProperty::setDatatype(UmlDataType *datatype)
     }
 }
 
-/*!
-    Specifies a String that represents a value to be used when no argument is supplied for the Property.A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
- */
 QString UmlProperty::default_() const
 {
     // This is a read-write derived property
@@ -209,9 +183,6 @@ void UmlProperty::setDefault(QString default_)
     }
 }
 
-/*!
-    A ValueSpecification that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.
- */
 UmlValueSpecification *UmlProperty::defaultValue() const
 {
     // This is a read-write association end
@@ -236,9 +207,6 @@ void UmlProperty::setDefaultValue(UmlValueSpecification *defaultValue)
     }
 }
 
-/*!
-    References the Interface that owns the Property
- */
 UmlInterface *UmlProperty::interface_() const
 {
     // This is a read-write association end
@@ -260,9 +228,6 @@ void UmlProperty::setInterface(UmlInterface *interface_)
     }
 }
 
-/*!
-    If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute.This is a derived value, indicating whether the aggregation of the Property is composite or not.
- */
 bool UmlProperty::isComposite() const
 {
     // This is a read-write derived property
@@ -284,9 +249,6 @@ void UmlProperty::setComposite(bool isComposite)
     }
 }
 
-/*!
-    If isDerived is true, the value of the attribute is derived from information elsewhere.Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information.
- */
 bool UmlProperty::isDerived() const
 {
     // This is a read-write property
@@ -303,9 +265,6 @@ void UmlProperty::setDerived(bool isDerived)
     }
 }
 
-/*!
-    Specifies whether the property is derived as the union of all of the properties that are constrained to subset it.
- */
 bool UmlProperty::isDerivedUnion() const
 {
     // This is a read-write property
@@ -322,9 +281,6 @@ void UmlProperty::setDerivedUnion(bool isDerivedUnion)
     }
 }
 
-/*!
-    True indicates this property can be used to uniquely identify an instance of the containing Class.
- */
 bool UmlProperty::isID() const
 {
     // This is a read-write property
@@ -341,9 +297,6 @@ void UmlProperty::setID(bool isID)
     }
 }
 
-/*!
-    If true, the attribute may only be read, and not written.If isReadOnly is true, the attribute may not be written to after initialization.
- */
 bool UmlProperty::isReadOnly() const
 {
     // This is a read-write property
@@ -360,9 +313,6 @@ void UmlProperty::setReadOnly(bool isReadOnly)
     }
 }
 
-/*!
-    In the case where the property is one navigable end of a binary association with both ends navigable, this gives the other end.
- */
 UmlProperty *UmlProperty::opposite() const
 {
     // This is a read-write derived association end
@@ -384,9 +334,6 @@ void UmlProperty::setOpposite(UmlProperty *opposite)
     }
 }
 
-/*!
-    References the owning association of this property, if any.
- */
 UmlAssociation *UmlProperty::owningAssociation() const
 {
     // This is a read-write association end
@@ -417,9 +364,6 @@ void UmlProperty::setOwningAssociation(UmlAssociation *owningAssociation)
     }
 }
 
-/*!
-    An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.
- */
 const QList<UmlProperty *> UmlProperty::qualifier() const
 {
     // This is a read-write association end
@@ -451,9 +395,6 @@ void UmlProperty::removeQualifier(UmlProperty *qualifier)
     }
 }
 
-/*!
-    References the properties that are redefined by this property.
- */
 const QSet<UmlProperty *> UmlProperty::redefinedProperty() const
 {
     // This is a read-write association end
@@ -485,9 +426,6 @@ void UmlProperty::removeRedefinedProperty(UmlProperty *redefinedProperty)
     }
 }
 
-/*!
-    References the properties of which this property is constrained to be a subset.
- */
 const QSet<UmlProperty *> UmlProperty::subsettedProperty() const
 {
     // This is a read-write association end
@@ -515,9 +453,6 @@ void UmlProperty::removeSubsettedProperty(UmlProperty *subsettedProperty)
 
 // OPERATIONS
 
-/*!
-    The query isAttribute() is true if the Property is defined as an attribute of some classifier.
- */
 bool UmlProperty::isAttribute(
     UmlProperty *p) const
 {
@@ -527,9 +462,6 @@ bool UmlProperty::isAttribute(
     return bool ();
 }
 
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for properties, the type must be conformant with the type of the specified parameterable element.
- */
 bool UmlProperty::isCompatibleWith(
     UmlParameterableElement *p) const
 {
@@ -539,9 +471,6 @@ bool UmlProperty::isCompatibleWith(
     return bool ();
 }
 
-/*!
-    The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property.The query isConsistentWith() specifies, for any two Properties in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining property is consistent with a redefined property if the type of the redefining property conforms to the type of the redefined property, and the multiplicity of the redefining property (if specified) is contained in the multiplicity of the redefined property.
- */
 bool UmlProperty::isConsistentWith(
     UmlRedefinableElement *redefinee) const
 {
@@ -551,9 +480,6 @@ bool UmlProperty::isConsistentWith(
     return bool ();
 }
 
-/*!
-    The query isNavigable() indicates whether it is possible to navigate across the property.
- */
 bool UmlProperty::isNavigable(
     ) const
 {
@@ -562,9 +488,6 @@ bool UmlProperty::isNavigable(
     return bool ();
 }
 
-/*!
-    The query subsettingContext() gives the context for subsetting a property. It consists, in the case of an attribute, of the corresponding classifier, and in the case of an association end, all of the classifiers at the other ends.
- */
 QSet<UmlType *> UmlProperty::subsettingContext(
     ) const
 {

@@ -42,14 +42,6 @@
 
 #include "private/umlobservation_p.h"
 
-/*!
-    \class UmlDuration
-
-    \inmodule QtUml
-
-    \brief Duration defines a value specification that specifies the temporal distance between two time instants.
- */
-
 UmlDuration::UmlDuration() :
     _expr(0)
 {
@@ -57,9 +49,6 @@ UmlDuration::UmlDuration() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The value of the Duration.
- */
 UmlValueSpecification *UmlDuration::expr() const
 {
     // This is a read-write association end
@@ -84,9 +73,6 @@ void UmlDuration::setExpr(UmlValueSpecification *expr)
     }
 }
 
-/*!
-    Refers to the time and duration observations that are involved in expr.
- */
 const QSet<UmlObservation *> UmlDuration::observation() const
 {
     // This is a read-write association end

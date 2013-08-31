@@ -43,14 +43,6 @@
 #include "private/umlclassifier_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlCreateObjectAction
-
-    \inmodule QtUml
-
-    \brief A create object action is an action that creates an object that conforms to a statically specified classifier and puts it on an output pin at runtime.
- */
-
 UmlCreateObjectAction::UmlCreateObjectAction() :
     _classifier(0),
     _result(0)
@@ -59,9 +51,6 @@ UmlCreateObjectAction::UmlCreateObjectAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Classifier to be instantiated.
- */
 UmlClassifier *UmlCreateObjectAction::classifier() const
 {
     // This is a read-write association end
@@ -78,9 +67,6 @@ void UmlCreateObjectAction::setClassifier(UmlClassifier *classifier)
     }
 }
 
-/*!
-    Gives the output pin on which the result is put.
- */
 UmlOutputPin *UmlCreateObjectAction::result() const
 {
     // This is a read-write association end

@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umldeployedartifact_p.h"
 
-/*!
-    \class UmlDeployedArtifact
-
-    \inmodule QtUml
-
-    \brief A deployed artifact is an artifact or artifact instance that has been deployed to a deployment target.
- */
-
 UmlDeployedArtifact::UmlDeployedArtifact()
 {
 }

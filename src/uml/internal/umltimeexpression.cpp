@@ -42,14 +42,6 @@
 
 #include "private/umlobservation_p.h"
 
-/*!
-    \class UmlTimeExpression
-
-    \inmodule QtUml
-
-    \brief A time expression defines a value specification that represents a time value.
- */
-
 UmlTimeExpression::UmlTimeExpression() :
     _expr(0)
 {
@@ -57,9 +49,6 @@ UmlTimeExpression::UmlTimeExpression() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The value of the time expression.
- */
 UmlValueSpecification *UmlTimeExpression::expr() const
 {
     // This is a read-write association end
@@ -84,9 +73,6 @@ void UmlTimeExpression::setExpr(UmlValueSpecification *expr)
     }
 }
 
-/*!
-    Refers to the time and duration observations that are involved in expr.
- */
 const QSet<UmlObservation *> UmlTimeExpression::observation() const
 {
     // This is a read-write association end

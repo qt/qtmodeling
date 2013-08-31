@@ -43,23 +43,12 @@
 #include "private/umlconstraint_p.h"
 #include "private/umlparameter_p.h"
 
-/*!
-    \class UmlParameterSet
-
-    \inmodule QtUml
-
-    \brief A parameter set is an element that provides alternative sets of inputs or outputs that a behavior may use.
- */
-
 UmlParameterSet::UmlParameterSet()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
- */
 const QSet<UmlConstraint *> UmlParameterSet::condition() const
 {
     // This is a read-write association end
@@ -91,9 +80,6 @@ void UmlParameterSet::removeCondition(UmlConstraint *condition)
     }
 }
 
-/*!
-    Parameters in the parameter set.
- */
 const QSet<UmlParameter *> UmlParameterSet::parameter() const
 {
     // This is a read-write association end

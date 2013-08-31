@@ -43,23 +43,12 @@
 #include "private/umlimage_p.h"
 #include "private/umlprofile_p.h"
 
-/*!
-    \class UmlStereotype
-
-    \inmodule QtUml
-
-    \brief A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass.
- */
-
 UmlStereotype::UmlStereotype()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.
- */
 const QSet<UmlImage *> UmlStereotype::icon() const
 {
     // This is a read-write association end
@@ -91,9 +80,6 @@ void UmlStereotype::removeIcon(UmlImage *icon)
     }
 }
 
-/*!
-    The profile that directly or indirectly contains this stereotype.
- */
 UmlProfile *UmlStereotype::profile() const
 {
     // This is a read-only derived association end
@@ -117,9 +103,6 @@ void UmlStereotype::setProfile(UmlProfile *profile)
 
 // OPERATIONS
 
-/*!
-    The query containingProfile returns the closest profile directly or indirectly containing this stereotype.
- */
 UmlProfile *UmlStereotype::containingProfile(
     ) const
 {

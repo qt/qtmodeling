@@ -52,12 +52,21 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlComment;
+class QUmlElement;
 class QUmlTemplateableElement;
 class QUmlTemplateParameter;
 
 class Q_UML_EXPORT QUmlTemplateSignature : public QObject, public UmlTemplateSignature
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [TemplateSignature]
     Q_PROPERTY(QList<QUmlTemplateParameter *> ownedParameter READ ownedParameter)
     Q_PROPERTY(QList<QUmlTemplateParameter *> parameter READ parameter)
     Q_PROPERTY(QUmlTemplateableElement * template_ READ template_)
@@ -65,15 +74,32 @@ class Q_UML_EXPORT QUmlTemplateSignature : public QObject, public UmlTemplateSig
 public:
     Q_INVOKABLE explicit QUmlTemplateSignature(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [TemplateSignature]
     Q_INVOKABLE const QList<QUmlTemplateParameter *> ownedParameter() const;
-    Q_INVOKABLE void addOwnedParameter(UmlTemplateParameter *ownedParameter);
-    Q_INVOKABLE void removeOwnedParameter(UmlTemplateParameter *ownedParameter);
     Q_INVOKABLE const QList<QUmlTemplateParameter *> parameter() const;
-    Q_INVOKABLE void addParameter(UmlTemplateParameter *parameter);
-    Q_INVOKABLE void removeParameter(UmlTemplateParameter *parameter);
     Q_INVOKABLE QUmlTemplateableElement *template_() const;
-    Q_INVOKABLE void setTemplate(QUmlTemplateableElement *template_);
+
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [TemplateSignature]
+    void addOwnedParameter(UmlTemplateParameter *ownedParameter);
+    void removeOwnedParameter(UmlTemplateParameter *ownedParameter);
+    void addParameter(UmlTemplateParameter *parameter);
+    void removeParameter(UmlTemplateParameter *parameter);
+    void setTemplate(QUmlTemplateableElement *template_);
 };
 
 QT_END_NAMESPACE

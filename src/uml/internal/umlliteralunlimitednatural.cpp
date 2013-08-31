@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlliteralunlimitednatural_p.h"
 
-/*!
-    \class UmlLiteralUnlimitedNatural
-
-    \inmodule QtUml
-
-    \brief A literal unlimited natural is a specification of an unlimited natural number.
- */
-
 UmlLiteralUnlimitedNatural::UmlLiteralUnlimitedNatural() :
     _value(0)
 {
@@ -55,9 +47,6 @@ UmlLiteralUnlimitedNatural::UmlLiteralUnlimitedNatural() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The specified UnlimitedNatural value.
- */
 int UmlLiteralUnlimitedNatural::value() const
 {
     // This is a read-write property
@@ -76,9 +65,6 @@ void UmlLiteralUnlimitedNatural::setValue(int value)
 
 // OPERATIONS
 
-/*!
-    The query isComputable() is redefined to be true.
- */
 bool UmlLiteralUnlimitedNatural::isComputable(
     ) const
 {
@@ -87,9 +73,6 @@ bool UmlLiteralUnlimitedNatural::isComputable(
     return bool ();
 }
 
-/*!
-    The query unlimitedValue() gives the value.
- */
 int UmlLiteralUnlimitedNatural::unlimitedValue(
     ) const
 {

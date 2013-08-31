@@ -43,14 +43,6 @@
 #include "private/umlconstraint_p.h"
 #include "private/umloperation_p.h"
 
-/*!
-    \class UmlProtocolTransition
-
-    \inmodule QtUml
-
-    \brief A protocol transition specifies a legal transition for an operation. Transitions of protocol state machines have the following information: a pre condition (guard), on trigger, and a post condition. Every protocol transition is associated to zero or one operation (referred BehavioralFeature) that belongs to the context classifier of the protocol state machine.
- */
-
 UmlProtocolTransition::UmlProtocolTransition() :
     _postCondition(0),
     _preCondition(0)
@@ -59,9 +51,6 @@ UmlProtocolTransition::UmlProtocolTransition() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.
- */
 UmlConstraint *UmlProtocolTransition::postCondition() const
 {
     // This is a read-write association end
@@ -86,9 +75,6 @@ void UmlProtocolTransition::setPostCondition(UmlConstraint *postCondition)
     }
 }
 
-/*!
-    Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.
- */
 UmlConstraint *UmlProtocolTransition::preCondition() const
 {
     // This is a read-write association end
@@ -110,9 +96,6 @@ void UmlProtocolTransition::setPreCondition(UmlConstraint *preCondition)
     }
 }
 
-/*!
-    This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
- */
 const QSet<UmlOperation *> UmlProtocolTransition::referred() const
 {
     // This is a read-only derived association end

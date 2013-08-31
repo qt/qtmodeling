@@ -42,14 +42,6 @@
 
 #include "private/umlduration_p.h"
 
-/*!
-    \class UmlDurationInterval
-
-    \inmodule QtUml
-
-    \brief A duration interval defines the range between two durations.
- */
-
 UmlDurationInterval::UmlDurationInterval() :
     _max(0),
     _min(0)
@@ -58,9 +50,6 @@ UmlDurationInterval::UmlDurationInterval() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Refers to the Duration denoting the maximum value of the range.
- */
 UmlDuration *UmlDurationInterval::max() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlDurationInterval::setMax(UmlDuration *max)
     }
 }
 
-/*!
-    Refers to the Duration denoting the minimum value of the range.
- */
 UmlDuration *UmlDurationInterval::min() const
 {
     // This is a read-write association end

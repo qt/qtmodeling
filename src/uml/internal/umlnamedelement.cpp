@@ -45,14 +45,6 @@
 #include "private/umlpackage_p.h"
 #include "private/umlstringexpression_p.h"
 
-/*!
-    \class UmlNamedElement
-
-    \inmodule QtUml
-
-    \brief A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).A named element is an element in a model that may have a name.
- */
-
 UmlNamedElement::UmlNamedElement() :
     _nameExpression(0),
     _namespace_(0)
@@ -61,9 +53,6 @@ UmlNamedElement::UmlNamedElement() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Indicates the dependencies that reference the client.
- */
 const QSet<UmlDependency *> UmlNamedElement::clientDependency() const
 {
     // This is a read-write association end
@@ -99,9 +88,6 @@ void UmlNamedElement::removeClientDependency(UmlDependency *clientDependency)
     }
 }
 
-/*!
-    The name of the NamedElement.
- */
 QString UmlNamedElement::name() const
 {
     // This is a read-write property
@@ -118,9 +104,6 @@ void UmlNamedElement::setName(QString name)
     }
 }
 
-/*!
-    The string expression used to define the name of this named element.
- */
 UmlStringExpression *UmlNamedElement::nameExpression() const
 {
     // This is a read-write association end
@@ -145,9 +128,6 @@ void UmlNamedElement::setNameExpression(UmlStringExpression *nameExpression)
     }
 }
 
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
 UmlNamespace *UmlNamedElement::namespace_() const
 {
     // This is a read-only derived union association end
@@ -169,9 +149,6 @@ void UmlNamedElement::setNamespace(UmlNamespace *namespace_)
     }
 }
 
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
 QString UmlNamedElement::qualifiedName() const
 {
     // This is a read-only derived property
@@ -193,9 +170,6 @@ void UmlNamedElement::setQualifiedName(QString qualifiedName)
     }
 }
 
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
 QtUml::VisibilityKind UmlNamedElement::visibility() const
 {
     // This is a read-write property
@@ -214,9 +188,6 @@ void UmlNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 
 // OPERATIONS
 
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
 QList<UmlNamespace *> UmlNamedElement::allNamespaces(
     ) const
 {
@@ -225,9 +196,6 @@ QList<UmlNamespace *> UmlNamedElement::allNamespaces(
     return QList<UmlNamespace *> ();
 }
 
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
 QSet<UmlPackage *> UmlNamedElement::allOwningPackages(
     ) const
 {
@@ -236,9 +204,6 @@ QSet<UmlPackage *> UmlNamedElement::allOwningPackages(
     return QSet<UmlPackage *> ();
 }
 
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
 bool UmlNamedElement::isDistinguishableFrom(
     UmlNamedElement *n, UmlNamespace *ns) const
 {
@@ -249,9 +214,6 @@ bool UmlNamedElement::isDistinguishableFrom(
     return bool ();
 }
 
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
 QString UmlNamedElement::separator(
     ) const
 {

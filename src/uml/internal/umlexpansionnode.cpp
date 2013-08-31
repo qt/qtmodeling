@@ -42,14 +42,6 @@
 
 #include "private/umlexpansionregion_p.h"
 
-/*!
-    \class UmlExpansionNode
-
-    \inmodule QtUml
-
-    \brief An expansion node is an object node used to indicate a flow across the boundary of an expansion region. A flow into a region contains a collection that is broken into its individual elements inside the region, which is executed once per element. A flow out of a region combines individual elements into a collection for use outside the region.
- */
-
 UmlExpansionNode::UmlExpansionNode() :
     _regionAsInput(0),
     _regionAsOutput(0)
@@ -58,9 +50,6 @@ UmlExpansionNode::UmlExpansionNode() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The expansion region for which the node is an input.
- */
 UmlExpansionRegion *UmlExpansionNode::regionAsInput() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlExpansionNode::setRegionAsInput(UmlExpansionRegion *regionAsInput)
     }
 }
 
-/*!
-    The expansion region for which the node is an output.
- */
 UmlExpansionRegion *UmlExpansionNode::regionAsOutput() const
 {
     // This is a read-write association end

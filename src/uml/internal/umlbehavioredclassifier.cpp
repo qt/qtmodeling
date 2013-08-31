@@ -43,14 +43,6 @@
 #include "private/umlbehavior_p.h"
 #include "private/umlinterfacerealization_p.h"
 
-/*!
-    \class UmlBehavioredClassifier
-
-    \inmodule QtUml
-
-    \brief A behaviored classifier may have an interface realization.A classifier can have behavior specifications defined in its namespace. One of these may specify the behavior of the classifier itself.
- */
-
 UmlBehavioredClassifier::UmlBehavioredClassifier() :
     _classifierBehavior(0)
 {
@@ -58,9 +50,6 @@ UmlBehavioredClassifier::UmlBehavioredClassifier() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    A behavior specification that specifies the behavior of the classifier itself.
- */
 UmlBehavior *UmlBehavioredClassifier::classifierBehavior() const
 {
     // This is a read-write association end
@@ -85,9 +74,6 @@ void UmlBehavioredClassifier::setClassifierBehavior(UmlBehavior *classifierBehav
     }
 }
 
-/*!
-    The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
- */
 const QSet<UmlInterfaceRealization *> UmlBehavioredClassifier::interfaceRealization() const
 {
     // This is a read-write association end
@@ -131,9 +117,6 @@ void UmlBehavioredClassifier::removeInterfaceRealization(UmlInterfaceRealization
     }
 }
 
-/*!
-    References behavior specifications owned by a classifier.
- */
 const QSet<UmlBehavior *> UmlBehavioredClassifier::ownedBehavior() const
 {
     // This is a read-write association end

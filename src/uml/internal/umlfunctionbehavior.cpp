@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlfunctionbehavior_p.h"
 
-/*!
-    \class UmlFunctionBehavior
-
-    \inmodule QtUml
-
-    \brief A function behavior is an opaque behavior that does not access or modify any objects or other external data.
- */
-
 UmlFunctionBehavior::UmlFunctionBehavior()
 {
 }

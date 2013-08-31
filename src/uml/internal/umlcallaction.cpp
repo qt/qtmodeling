@@ -42,14 +42,6 @@
 
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlCallAction
-
-    \inmodule QtUml
-
-    \brief CallAction is an abstract class for actions that invoke behavior and receive return values.
- */
-
 UmlCallAction::UmlCallAction() :
     _isSynchronous(true)
 {
@@ -57,9 +49,6 @@ UmlCallAction::UmlCallAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.
- */
 bool UmlCallAction::isSynchronous() const
 {
     // This is a read-write property
@@ -76,9 +65,6 @@ void UmlCallAction::setSynchronous(bool isSynchronous)
     }
 }
 
-/*!
-    A list of output pins where the results of performing the invocation are placed.
- */
 const QList<UmlOutputPin *> UmlCallAction::result() const
 {
     // This is a read-write association end

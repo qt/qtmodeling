@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umloutputpin_p.h"
 
-/*!
-    \class UmlOutputPin
-
-    \inmodule QtUml
-
-    \brief An output pin is a pin that holds output values produced by an action.
- */
-
 UmlOutputPin::UmlOutputPin()
 {
 }

@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlliteralspecification_p.h"
 
-/*!
-    \class UmlLiteralSpecification
-
-    \inmodule QtUml
-
-    \brief A literal specification identifies a literal constant being modeled.
- */
-
 UmlLiteralSpecification::UmlLiteralSpecification()
 {
 }

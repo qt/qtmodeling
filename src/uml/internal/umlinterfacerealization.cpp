@@ -43,14 +43,6 @@
 #include "private/umlbehavioredclassifier_p.h"
 #include "private/umlinterface_p.h"
 
-/*!
-    \class UmlInterfaceRealization
-
-    \inmodule QtUml
-
-    \brief An interface realization is a specialized realization relationship between a classifier and an interface. This relationship signifies that the realizing classifier conforms to the contract specified by the interface.
- */
-
 UmlInterfaceRealization::UmlInterfaceRealization() :
     _contract(0),
     _implementingClassifier(0)
@@ -59,9 +51,6 @@ UmlInterfaceRealization::UmlInterfaceRealization() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the Interface specifying the conformance contract.
- */
 UmlInterface *UmlInterfaceRealization::contract() const
 {
     // This is a read-write association end
@@ -86,9 +75,6 @@ void UmlInterfaceRealization::setContract(UmlInterface *contract)
     }
 }
 
-/*!
-    References the BehavioredClassifier that owns this Interfacerealization (i.e., the classifier that realizes the Interface to which it points).
- */
 UmlBehavioredClassifier *UmlInterfaceRealization::implementingClassifier() const
 {
     // This is a read-write association end

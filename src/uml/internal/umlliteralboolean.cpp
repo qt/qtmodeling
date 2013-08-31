@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlliteralboolean_p.h"
 
-/*!
-    \class UmlLiteralBoolean
-
-    \inmodule QtUml
-
-    \brief A literal Boolean is a specification of a Boolean value.
- */
-
 UmlLiteralBoolean::UmlLiteralBoolean() :
     _value(false)
 {
@@ -55,9 +47,6 @@ UmlLiteralBoolean::UmlLiteralBoolean() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The specified Boolean value.
- */
 bool UmlLiteralBoolean::value() const
 {
     // This is a read-write property
@@ -76,9 +65,6 @@ void UmlLiteralBoolean::setValue(bool value)
 
 // OPERATIONS
 
-/*!
-    The query booleanValue() gives the value.
- */
 bool UmlLiteralBoolean::booleanValue(
     ) const
 {
@@ -87,9 +73,6 @@ bool UmlLiteralBoolean::booleanValue(
     return bool ();
 }
 
-/*!
-    The query isComputable() is redefined to be true.
- */
 bool UmlLiteralBoolean::isComputable(
     ) const
 {

@@ -42,23 +42,12 @@
 
 #include "private/umlconnectableelement_p.h"
 
-/*!
-    \class UmlCollaboration
-
-    \inmodule QtUml
-
-    \brief A collaboration use represents the application of the pattern described by a collaboration to a specific situation involving specific classes or instances playing the roles of the collaboration.
- */
-
 UmlCollaboration::UmlCollaboration()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
- */
 const QSet<UmlConnectableElement *> UmlCollaboration::collaborationRole() const
 {
     // This is a read-write association end

@@ -52,12 +52,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlComment;
+class QUmlElement;
 class QUmlPackage;
 class QUmlProfile;
 
 class Q_UML_EXPORT QUmlProfileApplication : public QObject, public UmlProfileApplication
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [Relationship]
+    Q_PROPERTY(QSet<QUmlElement *> relatedElement READ relatedElement)
+
+    // Properties [DirectedRelationship]
+    Q_PROPERTY(QSet<QUmlElement *> source READ source)
+    Q_PROPERTY(QSet<QUmlElement *> target READ target)
+
+    // Properties [ProfileApplication]
     Q_PROPERTY(QUmlProfile * appliedProfile READ appliedProfile)
     Q_PROPERTY(QUmlPackage * applyingPackage READ applyingPackage)
     Q_PROPERTY(bool isStrict READ isStrict)
@@ -65,13 +81,41 @@ class Q_UML_EXPORT QUmlProfileApplication : public QObject, public UmlProfileApp
 public:
     Q_INVOKABLE explicit QUmlProfileApplication(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [Relationship]
+    Q_INVOKABLE const QSet<QUmlElement *> relatedElement() const;
+
+    // Owned attributes [DirectedRelationship]
+    Q_INVOKABLE const QSet<QUmlElement *> source() const;
+    Q_INVOKABLE const QSet<QUmlElement *> target() const;
+
+    // Owned attributes [ProfileApplication]
     Q_INVOKABLE QUmlProfile *appliedProfile() const;
-    Q_INVOKABLE void setAppliedProfile(QUmlProfile *appliedProfile);
     Q_INVOKABLE QUmlPackage *applyingPackage() const;
-    Q_INVOKABLE void setApplyingPackage(QUmlPackage *applyingPackage);
     Q_INVOKABLE bool isStrict() const;
-    Q_INVOKABLE void setStrict(bool isStrict);
+
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [Relationship]
+
+    // Slots for owned attributes [DirectedRelationship]
+
+    // Slots for owned attributes [ProfileApplication]
+    void setAppliedProfile(QUmlProfile *appliedProfile);
+    void setApplyingPackage(QUmlPackage *applyingPackage);
+    void setStrict(bool isStrict);
 };
 
 QT_END_NAMESPACE

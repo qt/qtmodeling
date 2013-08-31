@@ -40,21 +40,559 @@
 ****************************************************************************/
 #include "qumlreadlinkaction.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlAssociation>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlExceptionHandler>
+#include <QtUml/QUmlInputPin>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlLinkEndData>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlReadLinkAction
+
+    \inmodule QtUml
+
+    \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
+ */
 
 QUmlReadLinkAction::QUmlReadLinkAction(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlReadLinkAction::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlReadLinkAction::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlReadLinkAction::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [NamedElement]
+
+/*!
+    Indicates the dependencies that reference the client.
+ */
+const QSet<QUmlDependency *> QUmlReadLinkAction::clientDependency() const
+{
+    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
+}
+
+/*!
+    The name of the NamedElement.
+ */
+QString QUmlReadLinkAction::name() const
+{
+    return _name;
+}
+
+/*!
+    The string expression used to define the name of this named element.
+ */
+QUmlStringExpression *QUmlReadLinkAction::nameExpression() const
+{
+    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
+}
+
+/*!
+    Specifies the namespace that owns the NamedElement.
+ */
+QUmlNamespace *QUmlReadLinkAction::namespace_() const
+{
+    return reinterpret_cast<QUmlNamespace *>(_namespace_);
+}
+
+/*!
+    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
+ */
+QString QUmlReadLinkAction::qualifiedName() const
+{
+    return UmlNamedElement::qualifiedName();
+}
+
+/*!
+    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
+ */
+QtUml::VisibilityKind QUmlReadLinkAction::visibility() const
+{
+    return _visibility;
+}
+
+// OWNED ATTRIBUTES [RedefinableElement]
+
+/*!
+    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
+ */
+bool QUmlReadLinkAction::isLeaf() const
+{
+    return _isLeaf;
+}
+
+/*!
+    The redefinable element that is being redefined by this element.
+ */
+const QSet<QUmlRedefinableElement *> QUmlReadLinkAction::redefinedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlRedefinableElement *> *>(&_redefinedElement));
+}
+
+/*!
+    References the contexts that this element may be redefined from.
+ */
+const QSet<QUmlClassifier *> QUmlReadLinkAction::redefinitionContext() const
+{
+    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_redefinitionContext));
+}
+
+// OWNED ATTRIBUTES [ActivityNode]
+
+/*!
+    Activity containing the node.
+ */
+QUmlActivity *QUmlReadLinkAction::activity() const
+{
+    return reinterpret_cast<QUmlActivity *>(_activity);
+}
+
+/*!
+    Groups containing the node.
+ */
+const QSet<QUmlActivityGroup *> QUmlReadLinkAction::inGroup() const
+{
+    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_inGroup));
+}
+
+/*!
+    Interruptible regions containing the node.
+ */
+const QSet<QUmlInterruptibleActivityRegion *> QUmlReadLinkAction::inInterruptibleRegion() const
+{
+    return *(reinterpret_cast<const QSet<QUmlInterruptibleActivityRegion *> *>(&_inInterruptibleRegion));
+}
+
+/*!
+    Partitions containing the node.
+ */
+const QSet<QUmlActivityPartition *> QUmlReadLinkAction::inPartition() const
+{
+    return *(reinterpret_cast<const QSet<QUmlActivityPartition *> *>(&_inPartition));
+}
+
+/*!
+    Structured activity node containing the node.
+ */
+QUmlStructuredActivityNode *QUmlReadLinkAction::inStructuredNode() const
+{
+    return reinterpret_cast<QUmlStructuredActivityNode *>(_inStructuredNode);
+}
+
+/*!
+    Edges that have the node as target.
+ */
+const QSet<QUmlActivityEdge *> QUmlReadLinkAction::incoming() const
+{
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_incoming));
+}
+
+/*!
+    Edges that have the node as source.
+ */
+const QSet<QUmlActivityEdge *> QUmlReadLinkAction::outgoing() const
+{
+    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_outgoing));
+}
+
+/*!
+    Inherited nodes replaced by this node in a specialization of the activity.
+ */
+const QSet<QUmlActivityNode *> QUmlReadLinkAction::redefinedNode() const
+{
+    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_redefinedNode));
+}
+
+// OWNED ATTRIBUTES [ExecutableNode]
+
+/*!
+    A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
+ */
+const QSet<QUmlExceptionHandler *> QUmlReadLinkAction::handler() const
+{
+    return *(reinterpret_cast<const QSet<QUmlExceptionHandler *> *>(&_handler));
+}
+
+// OWNED ATTRIBUTES [Action]
+
+/*!
+    The classifier that owns the behavior of which this action is a part.
+ */
+QUmlClassifier *QUmlReadLinkAction::context() const
+{
+    return reinterpret_cast<QUmlClassifier *>(UmlAction::context());
+}
+
+/*!
+    The ordered set of input pins connected to the Action. These are among the total set of inputs.
+ */
+const QList<QUmlInputPin *> QUmlReadLinkAction::input() const
+{
+    return *(reinterpret_cast<const QList<QUmlInputPin *> *>(&_input));
+}
+
+/*!
+    If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.
+ */
+bool QUmlReadLinkAction::isLocallyReentrant() const
+{
+    return _isLocallyReentrant;
+}
+
+/*!
+    Constraint that must be satisfied when executed is completed.
+ */
+const QSet<QUmlConstraint *> QUmlReadLinkAction::localPostcondition() const
+{
+    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_localPostcondition));
+}
+
+/*!
+    Constraint that must be satisfied when execution is started.
+ */
+const QSet<QUmlConstraint *> QUmlReadLinkAction::localPrecondition() const
+{
+    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_localPrecondition));
+}
+
+/*!
+    The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
+ */
+const QList<QUmlOutputPin *> QUmlReadLinkAction::output() const
+{
+    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_output));
+}
+
+// OWNED ATTRIBUTES [LinkAction]
+
+/*!
+    Data identifying one end of a link by the objects on its ends and qualifiers.
+ */
+const QSet<QUmlLinkEndData *> QUmlReadLinkAction::endData() const
+{
+    return *(reinterpret_cast<const QSet<QUmlLinkEndData *> *>(&_endData));
+}
+
+/*!
+    Pins taking end objects and qualifier values as input.
+ */
+const QSet<QUmlInputPin *> QUmlReadLinkAction::inputValue() const
+{
+    return *(reinterpret_cast<const QSet<QUmlInputPin *> *>(&_inputValue));
+}
+
+// OWNED ATTRIBUTES [ReadLinkAction]
+
+/*!
+    The pin on which are put the objects participating in the association at the end not specified by the inputs.
+ */
 QUmlOutputPin *QUmlReadLinkAction::result() const
 {
     return reinterpret_cast<QUmlOutputPin *>(_result);
 }
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlReadLinkAction::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlReadLinkAction::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// OPERATIONS [NamedElement]
+
+/*!
+    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
+ */
+QList<QUmlNamespace *> QUmlReadLinkAction::allNamespaces() const
+{
+    QList<QUmlNamespace *> r;
+    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
+        r.append(reinterpret_cast<QUmlNamespace *>(element));
+    return r;
+}
+
+/*!
+    The query allOwningPackages() returns all the directly or indirectly owning packages.
+ */
+QSet<QUmlPackage *> QUmlReadLinkAction::allOwningPackages() const
+{
+    QSet<QUmlPackage *> r;
+    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
+        r.insert(reinterpret_cast<QUmlPackage *>(element));
+    return r;
+}
+
+/*!
+    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
+ */
+bool QUmlReadLinkAction::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
+{
+    return UmlNamedElement::isDistinguishableFrom(n, ns);
+}
+
+/*!
+    The query separator() gives the string that is used to separate names when constructing a qualified name.
+ */
+QString QUmlReadLinkAction::separator() const
+{
+    return UmlNamedElement::separator();
+}
+
+// OPERATIONS [RedefinableElement]
+
+/*!
+    The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
+ */
+bool QUmlReadLinkAction::isConsistentWith(QUmlRedefinableElement *redefinee) const
+{
+    return UmlRedefinableElement::isConsistentWith(redefinee);
+}
+
+/*!
+    The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
+ */
+bool QUmlReadLinkAction::isRedefinitionContextValid(QUmlRedefinableElement *redefined) const
+{
+    return UmlRedefinableElement::isRedefinitionContextValid(redefined);
+}
+
+// OPERATIONS [LinkAction]
+
+/*!
+    The association operates on LinkAction. It returns the association of the action.
+ */
+QUmlAssociation *QUmlReadLinkAction::association() const
+{
+    return reinterpret_cast<QUmlAssociation *>(UmlLinkAction::association());
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlReadLinkAction::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlReadLinkAction::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
+
+void QUmlReadLinkAction::addClientDependency(UmlDependency *clientDependency)
+{
+    UmlNamedElement::addClientDependency(clientDependency);
+}
+
+void QUmlReadLinkAction::removeClientDependency(UmlDependency *clientDependency)
+{
+    UmlNamedElement::removeClientDependency(clientDependency);
+}
+
+void QUmlReadLinkAction::setName(QString name)
+{
+    UmlNamedElement::setName(name);
+}
+
+void QUmlReadLinkAction::setNameExpression(QUmlStringExpression *nameExpression)
+{
+    UmlNamedElement::setNameExpression(nameExpression);
+}
+
+void QUmlReadLinkAction::setVisibility(QtUml::VisibilityKind visibility)
+{
+    UmlNamedElement::setVisibility(visibility);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
+
+void QUmlReadLinkAction::setLeaf(bool isLeaf)
+{
+    UmlRedefinableElement::setLeaf(isLeaf);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
+
+void QUmlReadLinkAction::setActivity(QUmlActivity *activity)
+{
+    UmlActivityNode::setActivity(activity);
+}
+
+void QUmlReadLinkAction::addInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion)
+{
+    UmlActivityNode::addInInterruptibleRegion(inInterruptibleRegion);
+}
+
+void QUmlReadLinkAction::removeInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion)
+{
+    UmlActivityNode::removeInInterruptibleRegion(inInterruptibleRegion);
+}
+
+void QUmlReadLinkAction::addInPartition(UmlActivityPartition *inPartition)
+{
+    UmlActivityNode::addInPartition(inPartition);
+}
+
+void QUmlReadLinkAction::removeInPartition(UmlActivityPartition *inPartition)
+{
+    UmlActivityNode::removeInPartition(inPartition);
+}
+
+void QUmlReadLinkAction::setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode)
+{
+    UmlActivityNode::setInStructuredNode(inStructuredNode);
+}
+
+void QUmlReadLinkAction::addIncoming(UmlActivityEdge *incoming)
+{
+    UmlActivityNode::addIncoming(incoming);
+}
+
+void QUmlReadLinkAction::removeIncoming(UmlActivityEdge *incoming)
+{
+    UmlActivityNode::removeIncoming(incoming);
+}
+
+void QUmlReadLinkAction::addOutgoing(UmlActivityEdge *outgoing)
+{
+    UmlActivityNode::addOutgoing(outgoing);
+}
+
+void QUmlReadLinkAction::removeOutgoing(UmlActivityEdge *outgoing)
+{
+    UmlActivityNode::removeOutgoing(outgoing);
+}
+
+void QUmlReadLinkAction::addRedefinedNode(UmlActivityNode *redefinedNode)
+{
+    UmlActivityNode::addRedefinedNode(redefinedNode);
+}
+
+void QUmlReadLinkAction::removeRedefinedNode(UmlActivityNode *redefinedNode)
+{
+    UmlActivityNode::removeRedefinedNode(redefinedNode);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
+
+void QUmlReadLinkAction::addHandler(UmlExceptionHandler *handler)
+{
+    UmlExecutableNode::addHandler(handler);
+}
+
+void QUmlReadLinkAction::removeHandler(UmlExceptionHandler *handler)
+{
+    UmlExecutableNode::removeHandler(handler);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Action]
+
+void QUmlReadLinkAction::setLocallyReentrant(bool isLocallyReentrant)
+{
+    UmlAction::setLocallyReentrant(isLocallyReentrant);
+}
+
+void QUmlReadLinkAction::addLocalPostcondition(UmlConstraint *localPostcondition)
+{
+    UmlAction::addLocalPostcondition(localPostcondition);
+}
+
+void QUmlReadLinkAction::removeLocalPostcondition(UmlConstraint *localPostcondition)
+{
+    UmlAction::removeLocalPostcondition(localPostcondition);
+}
+
+void QUmlReadLinkAction::addLocalPrecondition(UmlConstraint *localPrecondition)
+{
+    UmlAction::addLocalPrecondition(localPrecondition);
+}
+
+void QUmlReadLinkAction::removeLocalPrecondition(UmlConstraint *localPrecondition)
+{
+    UmlAction::removeLocalPrecondition(localPrecondition);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [LinkAction]
+
+void QUmlReadLinkAction::addEndData(UmlLinkEndData *endData)
+{
+    UmlLinkAction::addEndData(endData);
+}
+
+void QUmlReadLinkAction::removeEndData(UmlLinkEndData *endData)
+{
+    UmlLinkAction::removeEndData(endData);
+}
+
+void QUmlReadLinkAction::addInputValue(UmlInputPin *inputValue)
+{
+    UmlLinkAction::addInputValue(inputValue);
+}
+
+void QUmlReadLinkAction::removeInputValue(UmlInputPin *inputValue)
+{
+    UmlLinkAction::removeInputValue(inputValue);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [ReadLinkAction]
 
 void QUmlReadLinkAction::setResult(QUmlOutputPin *result)
 {

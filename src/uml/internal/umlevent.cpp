@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlevent_p.h"
 
-/*!
-    \class UmlEvent
-
-    \inmodule QtUml
-
-    \brief An event is the specification of some occurrence that may potentially trigger effects by an object.
- */
-
 UmlEvent::UmlEvent()
 {
 }

@@ -44,14 +44,6 @@
 #include "private/umlnamespace_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlConstraint
-
-    \inmodule QtUml
-
-    \brief A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element.
- */
-
 UmlConstraint::UmlConstraint() :
     _context(0),
     _specification(0)
@@ -60,9 +52,6 @@ UmlConstraint::UmlConstraint() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The ordered set of Elements referenced by this Constraint.
- */
 const QList<UmlElement *> UmlConstraint::constrainedElement() const
 {
     // This is a read-write association end
@@ -88,9 +77,6 @@ void UmlConstraint::removeConstrainedElement(UmlElement *constrainedElement)
     }
 }
 
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
 UmlNamespace *UmlConstraint::context() const
 {
     // This is a read-write association end
@@ -112,9 +98,6 @@ void UmlConstraint::setContext(UmlNamespace *context)
     }
 }
 
-/*!
-    A condition that must be true when evaluated in order for the constraint to be satisfied.
- */
 UmlValueSpecification *UmlConstraint::specification() const
 {
     // This is a read-write association end

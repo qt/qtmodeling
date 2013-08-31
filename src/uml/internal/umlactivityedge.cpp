@@ -48,14 +48,6 @@
 #include "private/umlstructuredactivitynode_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlActivityEdge
-
-    \inmodule QtUml
-
-    \brief Activity edges can be contained in interruptible regions.An activity edge is an abstract class for directed connections between two activity nodes.
- */
-
 UmlActivityEdge::UmlActivityEdge() :
     _activity(0),
     _guard(0),
@@ -69,9 +61,6 @@ UmlActivityEdge::UmlActivityEdge() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Activity containing the edge.
- */
 UmlActivity *UmlActivityEdge::activity() const
 {
     // This is a read-write association end
@@ -93,9 +82,6 @@ void UmlActivityEdge::setActivity(UmlActivity *activity)
     }
 }
 
-/*!
-    Specification evaluated at runtime to determine if the edge can be traversed.
- */
 UmlValueSpecification *UmlActivityEdge::guard() const
 {
     // This is a read-write association end
@@ -120,9 +106,6 @@ void UmlActivityEdge::setGuard(UmlValueSpecification *guard)
     }
 }
 
-/*!
-    Groups containing the edge.
- */
 const QSet<UmlActivityGroup *> UmlActivityEdge::inGroup() const
 {
     // This is a read-only derived union association end
@@ -158,9 +141,6 @@ void UmlActivityEdge::removeInGroup(UmlActivityGroup *inGroup)
     }
 }
 
-/*!
-    Partitions containing the edge.
- */
 const QSet<UmlActivityPartition *> UmlActivityEdge::inPartition() const
 {
     // This is a read-write association end
@@ -202,9 +182,6 @@ void UmlActivityEdge::removeInPartition(UmlActivityPartition *inPartition)
     }
 }
 
-/*!
-    Structured activity node containing the edge.
- */
 UmlStructuredActivityNode *UmlActivityEdge::inStructuredNode() const
 {
     // This is a read-write association end
@@ -230,9 +207,6 @@ void UmlActivityEdge::setInStructuredNode(UmlStructuredActivityNode *inStructure
     }
 }
 
-/*!
-    Region that the edge can interrupt.
- */
 UmlInterruptibleActivityRegion *UmlActivityEdge::interrupts() const
 {
     // This is a read-write association end
@@ -249,9 +223,6 @@ void UmlActivityEdge::setInterrupts(UmlInterruptibleActivityRegion *interrupts)
     }
 }
 
-/*!
-    Inherited edges replaced by this edge in a specialization of the activity.
- */
 const QSet<UmlActivityEdge *> UmlActivityEdge::redefinedEdge() const
 {
     // This is a read-write association end
@@ -283,9 +254,6 @@ void UmlActivityEdge::removeRedefinedEdge(UmlActivityEdge *redefinedEdge)
     }
 }
 
-/*!
-    Node from which tokens are taken when they traverse the edge.
- */
 UmlActivityNode *UmlActivityEdge::source() const
 {
     // This is a read-write association end
@@ -302,9 +270,6 @@ void UmlActivityEdge::setSource(UmlActivityNode *source)
     }
 }
 
-/*!
-    Node to which tokens are put when they traverse the edge.
- */
 UmlActivityNode *UmlActivityEdge::target() const
 {
     // This is a read-write association end
@@ -321,9 +286,6 @@ void UmlActivityEdge::setTarget(UmlActivityNode *target)
     }
 }
 
-/*!
-    The minimum number of tokens that must traverse the edge at the same time.
- */
 UmlValueSpecification *UmlActivityEdge::weight() const
 {
     // This is a read-write association end

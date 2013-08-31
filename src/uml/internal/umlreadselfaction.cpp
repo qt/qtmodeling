@@ -42,14 +42,6 @@
 
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlReadSelfAction
-
-    \inmodule QtUml
-
-    \brief A read self action is an action that retrieves the host object of an action.
- */
-
 UmlReadSelfAction::UmlReadSelfAction() :
     _result(0)
 {
@@ -57,9 +49,6 @@ UmlReadSelfAction::UmlReadSelfAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the output pin on which the hosting object is placed.
- */
 UmlOutputPin *UmlReadSelfAction::result() const
 {
     // This is a read-write association end

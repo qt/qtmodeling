@@ -42,14 +42,6 @@
 
 #include "private/umlaction_p.h"
 
-/*!
-    \class UmlActionExecutionSpecification
-
-    \inmodule QtUml
-
-    \brief An action execution specification is a kind of execution specification representing the execution of an action.
- */
-
 UmlActionExecutionSpecification::UmlActionExecutionSpecification() :
     _action(0)
 {
@@ -57,9 +49,6 @@ UmlActionExecutionSpecification::UmlActionExecutionSpecification() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Action whose execution is occurring.
- */
 UmlAction *UmlActionExecutionSpecification::action() const
 {
     // This is a read-write association end

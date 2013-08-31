@@ -42,23 +42,12 @@
 
 #include "private/umlprotocolconformance_p.h"
 
-/*!
-    \class UmlProtocolStateMachine
-
-    \inmodule QtUml
-
-    \brief A protocol state machine is always defined in the context of a classifier. It specifies which operations of the classifier can be called in which state and under which condition, thus specifying the allowed call sequences on the classifier's operations. A protocol state machine presents the possible and permitted transitions on the instances of its context classifier, together with the operations which carry the transitions. In this manner, an instance lifecycle can be created for a classifier, by specifying the order in which the operations can be activated and the states through which an instance progresses during its existence.
- */
-
 UmlProtocolStateMachine::UmlProtocolStateMachine()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Conformance between protocol state machines.
- */
 const QSet<UmlProtocolConformance *> UmlProtocolStateMachine::conformance() const
 {
     // This is a read-write association end

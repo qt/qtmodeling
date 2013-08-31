@@ -46,6 +46,8 @@
 #include <QtCore/QObject>
 #include "private/umlredefinabletemplatesignature_p.h"
 
+#include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -53,12 +55,45 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtUml)
 
 class QUmlClassifier;
+class QUmlComment;
+class QUmlDependency;
+class QUmlElement;
+class QUmlNamedElement;
+class QUmlNamespace;
+class QUmlPackage;
 class QUmlRedefinableElement;
+class QUmlStringExpression;
+class QUmlTemplateableElement;
 class QUmlTemplateParameter;
 
 class Q_UML_EXPORT QUmlRedefinableTemplateSignature : public QObject, public UmlRedefinableTemplateSignature
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [TemplateSignature]
+    Q_PROPERTY(QList<QUmlTemplateParameter *> ownedParameter READ ownedParameter)
+    Q_PROPERTY(QList<QUmlTemplateParameter *> parameter READ parameter)
+    Q_PROPERTY(QUmlTemplateableElement * template_ READ template_)
+
+    // Properties [NamedElement]
+    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
+    Q_PROPERTY(QString name READ name)
+    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
+    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+
+    // Properties [RedefinableElement]
+    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(QSet<QUmlRedefinableElement *> redefinedElement READ redefinedElement)
+    Q_PROPERTY(QSet<QUmlClassifier *> redefinitionContext READ redefinitionContext)
+
+    // Properties [RedefinableTemplateSignature]
     Q_PROPERTY(QUmlClassifier * classifier READ classifier)
     Q_PROPERTY(QSet<QUmlRedefinableTemplateSignature *> extendedSignature READ extendedSignature)
     Q_PROPERTY(QSet<QUmlTemplateParameter *> inheritedParameter READ inheritedParameter)
@@ -66,16 +101,77 @@ class Q_UML_EXPORT QUmlRedefinableTemplateSignature : public QObject, public Uml
 public:
     Q_INVOKABLE explicit QUmlRedefinableTemplateSignature(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [TemplateSignature]
+    Q_INVOKABLE const QList<QUmlTemplateParameter *> ownedParameter() const;
+    Q_INVOKABLE const QList<QUmlTemplateParameter *> parameter() const;
+    Q_INVOKABLE QUmlTemplateableElement *template_() const;
+
+    // Owned attributes [NamedElement]
+    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
+    Q_INVOKABLE QUmlNamespace *namespace_() const;
+    Q_INVOKABLE QString qualifiedName() const;
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+
+    // Owned attributes [RedefinableElement]
+    Q_INVOKABLE bool isLeaf() const;
+    Q_INVOKABLE const QSet<QUmlRedefinableElement *> redefinedElement() const;
+    Q_INVOKABLE const QSet<QUmlClassifier *> redefinitionContext() const;
+
+    // Owned attributes [RedefinableTemplateSignature]
     Q_INVOKABLE QUmlClassifier *classifier() const;
-    Q_INVOKABLE void setClassifier(QUmlClassifier *classifier);
     Q_INVOKABLE const QSet<QUmlRedefinableTemplateSignature *> extendedSignature() const;
-    Q_INVOKABLE void addExtendedSignature(UmlRedefinableTemplateSignature *extendedSignature);
-    Q_INVOKABLE void removeExtendedSignature(UmlRedefinableTemplateSignature *extendedSignature);
     Q_INVOKABLE const QSet<QUmlTemplateParameter *> inheritedParameter() const;
 
-    // Operations
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+    // Operations [NamedElement]
+    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
+    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
+    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
+    Q_INVOKABLE QString separator() const;
+
+    // Operations [RedefinableElement]
+    Q_INVOKABLE bool isRedefinitionContextValid(QUmlRedefinableElement *redefined) const;
+
+    // Operations [RedefinableTemplateSignature]
     Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [TemplateSignature]
+    void addOwnedParameter(UmlTemplateParameter *ownedParameter);
+    void removeOwnedParameter(UmlTemplateParameter *ownedParameter);
+    void addParameter(UmlTemplateParameter *parameter);
+    void removeParameter(UmlTemplateParameter *parameter);
+    void setTemplate(QUmlTemplateableElement *template_);
+
+    // Slots for owned attributes [NamedElement]
+    void addClientDependency(UmlDependency *clientDependency);
+    void removeClientDependency(UmlDependency *clientDependency);
+    void setName(QString name);
+    void setNameExpression(QUmlStringExpression *nameExpression);
+    void setVisibility(QtUml::VisibilityKind visibility);
+
+    // Slots for owned attributes [RedefinableElement]
+    void setLeaf(bool isLeaf);
+
+    // Slots for owned attributes [RedefinableTemplateSignature]
+    void setClassifier(QUmlClassifier *classifier);
+    void addExtendedSignature(UmlRedefinableTemplateSignature *extendedSignature);
+    void removeExtendedSignature(UmlRedefinableTemplateSignature *extendedSignature);
 };
 
 QT_END_NAMESPACE

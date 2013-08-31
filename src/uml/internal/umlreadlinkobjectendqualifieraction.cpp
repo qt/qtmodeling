@@ -44,14 +44,6 @@
 #include "private/umloutputpin_p.h"
 #include "private/umlproperty_p.h"
 
-/*!
-    \class UmlReadLinkObjectEndQualifierAction
-
-    \inmodule QtUml
-
-    \brief A read link object end qualifier action is an action that retrieves a qualifier end value from a link object.
- */
-
 UmlReadLinkObjectEndQualifierAction::UmlReadLinkObjectEndQualifierAction() :
     _object(0),
     _qualifier(0),
@@ -61,9 +53,6 @@ UmlReadLinkObjectEndQualifierAction::UmlReadLinkObjectEndQualifierAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the input pin from which the link object is obtained.
- */
 UmlInputPin *UmlReadLinkObjectEndQualifierAction::object() const
 {
     // This is a read-write association end
@@ -88,9 +77,6 @@ void UmlReadLinkObjectEndQualifierAction::setObject(UmlInputPin *object)
     }
 }
 
-/*!
-    The attribute representing the qualifier to be read.
- */
 UmlProperty *UmlReadLinkObjectEndQualifierAction::qualifier() const
 {
     // This is a read-write association end
@@ -107,9 +93,6 @@ void UmlReadLinkObjectEndQualifierAction::setQualifier(UmlProperty *qualifier)
     }
 }
 
-/*!
-    Pin where the result value is placed.
- */
 UmlOutputPin *UmlReadLinkObjectEndQualifierAction::result() const
 {
     // This is a read-write association end

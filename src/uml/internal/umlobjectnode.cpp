@@ -44,14 +44,6 @@
 #include "private/umlstate_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlObjectNode
-
-    \inmodule QtUml
-
-    \brief An object node is an abstract activity node that is part of defining object flow in an activity.Object nodes have support for token selection, limitation on the number of tokens, specifying the state required for tokens, and carrying control values.
- */
-
 UmlObjectNode::UmlObjectNode() :
     _isControlType(false),
     _ordering(QtUml::ObjectNodeOrderingKindFIFO),
@@ -62,9 +54,6 @@ UmlObjectNode::UmlObjectNode() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The required states of the object available at this point in the activity.
- */
 const QSet<UmlState *> UmlObjectNode::inState() const
 {
     // This is a read-write association end
@@ -90,9 +79,6 @@ void UmlObjectNode::removeInState(UmlState *inState)
     }
 }
 
-/*!
-    Tells whether the type of the object node is to be treated as control.
- */
 bool UmlObjectNode::isControlType() const
 {
     // This is a read-write property
@@ -109,9 +95,6 @@ void UmlObjectNode::setControlType(bool isControlType)
     }
 }
 
-/*!
-    Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
- */
 QtUml::ObjectNodeOrderingKind UmlObjectNode::ordering() const
 {
     // This is a read-write property
@@ -128,9 +111,6 @@ void UmlObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
     }
 }
 
-/*!
-    Selects tokens for outgoing edges.
- */
 UmlBehavior *UmlObjectNode::selection() const
 {
     // This is a read-write association end
@@ -147,9 +127,6 @@ void UmlObjectNode::setSelection(UmlBehavior *selection)
     }
 }
 
-/*!
-    The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.
- */
 UmlValueSpecification *UmlObjectNode::upperBound() const
 {
     // This is a read-write association end

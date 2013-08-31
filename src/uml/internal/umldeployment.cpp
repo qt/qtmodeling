@@ -44,14 +44,6 @@
 #include "private/umldeploymentspecification_p.h"
 #include "private/umldeploymenttarget_p.h"
 
-/*!
-    \class UmlDeployment
-
-    \inmodule QtUml
-
-    \brief A deployment is the allocation of an artifact or artifact instance to a deployment target.A component deployment is the deployment of one or more artifacts or artifact instances to a deployment target, optionally parameterized by a deployment specification. Examples are executables and configuration files.
- */
-
 UmlDeployment::UmlDeployment() :
     _location(0)
 {
@@ -59,9 +51,6 @@ UmlDeployment::UmlDeployment() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The specification of properties that parameterize the deployment and execution of one or more Artifacts.
- */
 const QSet<UmlDeploymentSpecification *> UmlDeployment::configuration() const
 {
     // This is a read-write association end
@@ -103,9 +92,6 @@ void UmlDeployment::removeConfiguration(UmlDeploymentSpecification *configuratio
     }
 }
 
-/*!
-    The Artifacts that are deployed onto a Node. This association specializes the supplier association.
- */
 const QSet<UmlDeployedArtifact *> UmlDeployment::deployedArtifact() const
 {
     // This is a read-write association end
@@ -137,9 +123,6 @@ void UmlDeployment::removeDeployedArtifact(UmlDeployedArtifact *deployedArtifact
     }
 }
 
-/*!
-    The DeployedTarget which is the target of a Deployment.
- */
 UmlDeploymentTarget *UmlDeployment::location() const
 {
     // This is a read-write association end

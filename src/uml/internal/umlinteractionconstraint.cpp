@@ -42,14 +42,6 @@
 
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlInteractionConstraint
-
-    \inmodule QtUml
-
-    \brief An interaction constraint is a Boolean expression that guards an operand in a combined fragment.
- */
-
 UmlInteractionConstraint::UmlInteractionConstraint() :
     _maxint(0),
     _minint(0)
@@ -58,9 +50,6 @@ UmlInteractionConstraint::UmlInteractionConstraint() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The maximum number of iterations of a loop
- */
 UmlValueSpecification *UmlInteractionConstraint::maxint() const
 {
     // This is a read-write association end
@@ -85,9 +74,6 @@ void UmlInteractionConstraint::setMaxint(UmlValueSpecification *maxint)
     }
 }
 
-/*!
-    The minimum number of iterations of a loop
- */
 UmlValueSpecification *UmlInteractionConstraint::minint() const
 {
     // This is a read-write association end

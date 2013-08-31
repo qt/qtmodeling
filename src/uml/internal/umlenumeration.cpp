@@ -42,23 +42,12 @@
 
 #include "private/umlenumerationliteral_p.h"
 
-/*!
-    \class UmlEnumeration
-
-    \inmodule QtUml
-
-    \brief An enumeration is a data type whose values are enumerated in the model as enumeration literals.
- */
-
 UmlEnumeration::UmlEnumeration()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    The ordered set of literals for this Enumeration.
- */
 const QList<UmlEnumerationLiteral *> UmlEnumeration::ownedLiteral() const
 {
     // This is a read-write association end

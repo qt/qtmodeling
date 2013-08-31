@@ -46,14 +46,6 @@
 #include "private/umlparameterset_p.h"
 #include "private/umltype_p.h"
 
-/*!
-    \class UmlBehavioralFeature
-
-    \inmodule QtUml
-
-    \brief A behavioral feature is a feature of a classifier that specifies an aspect of the behavior of its instances.A behavioral feature is implemented (realized) by a behavior. A behavioral feature specifies that a classifier will respond to a designated request by invoking its implementing method.A behavioral feature owns zero or more parameter sets.
- */
-
 UmlBehavioralFeature::UmlBehavioralFeature() :
     _concurrency(QtUml::CallConcurrencyKindSequential),
     _isAbstract(false)
@@ -62,9 +54,6 @@ UmlBehavioralFeature::UmlBehavioralFeature() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features.
- */
 QtUml::CallConcurrencyKind UmlBehavioralFeature::concurrency() const
 {
     // This is a read-write property
@@ -81,9 +70,6 @@ void UmlBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrency
     }
 }
 
-/*!
-    If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.
- */
 bool UmlBehavioralFeature::isAbstract() const
 {
     // This is a read-write property
@@ -100,9 +86,6 @@ void UmlBehavioralFeature::setAbstract(bool isAbstract)
     }
 }
 
-/*!
-    A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
- */
 const QSet<UmlBehavior *> UmlBehavioralFeature::method() const
 {
     // This is a read-write association end
@@ -138,9 +121,6 @@ void UmlBehavioralFeature::removeMethod(UmlBehavior *method)
     }
 }
 
-/*!
-    Specifies the ordered set of formal parameters of this BehavioralFeature.
- */
 const QList<UmlParameter *> UmlBehavioralFeature::ownedParameter() const
 {
     // This is a read-write association end
@@ -172,9 +152,6 @@ void UmlBehavioralFeature::removeOwnedParameter(UmlParameter *ownedParameter)
     }
 }
 
-/*!
-    The ParameterSets owned by this BehavioralFeature.
- */
 const QSet<UmlParameterSet *> UmlBehavioralFeature::ownedParameterSet() const
 {
     // This is a read-write association end
@@ -206,9 +183,6 @@ void UmlBehavioralFeature::removeOwnedParameterSet(UmlParameterSet *ownedParamet
     }
 }
 
-/*!
-    References the Types representing exceptions that may be raised during an invocation of this feature.
- */
 const QSet<UmlType *> UmlBehavioralFeature::raisedException() const
 {
     // This is a read-write association end
@@ -236,9 +210,6 @@ void UmlBehavioralFeature::removeRaisedException(UmlType *raisedException)
 
 // OPERATIONS
 
-/*!
-    The query isDistinguishableFrom() determines whether two BehavioralFeatures may coexist in the same Namespace. It specifies that they have to have different signatures.
- */
 bool UmlBehavioralFeature::isDistinguishableFrom(
     UmlNamedElement *n, UmlNamespace *ns) const
 {

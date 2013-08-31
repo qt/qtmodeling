@@ -42,23 +42,12 @@
 
 #include "private/umlexceptionhandler_p.h"
 
-/*!
-    \class UmlExecutableNode
-
-    \inmodule QtUml
-
-    \brief An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for exception handlers.
- */
-
 UmlExecutableNode::UmlExecutableNode()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
- */
 const QSet<UmlExceptionHandler *> UmlExecutableNode::handler() const
 {
     // This is a read-write association end

@@ -40,32 +40,117 @@
 ****************************************************************************/
 #include "qumllinkenddata.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlQualifierValue>
 
 QT_BEGIN_NAMESPACE
 
+/*!
+    \class UmlLinkEndData
+
+    \inmodule QtUml
+
+    \brief A link end data is not an action. It is an element that identifies links. It identifies one end of a link to be read or written by the children of a link action. A link cannot be passed as a runtime value to or from an action. Instead, a link is identified by its end objects and qualifier values, if any. This requires more than one piece of data, namely, the statically-specified end in the user model, the object on the end, and the qualifier values for that end, if any. These pieces are brought together around a link end data. Each association end is identified separately with an instance of the LinkEndData class.
+ */
+
 QUmlLinkEndData::QUmlLinkEndData(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlLinkEndData::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlLinkEndData::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlLinkEndData::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [LinkEndData]
+
+/*!
+    Association end for which this link-end data specifies values.
+ */
 QUmlProperty *QUmlLinkEndData::end() const
 {
     return reinterpret_cast<QUmlProperty *>(_end);
 }
 
-void QUmlLinkEndData::setEnd(QUmlProperty *end)
-{
-    UmlLinkEndData::setEnd(end);
-}
-
+/*!
+    List of qualifier values
+ */
 const QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifier() const
 {
     return *(reinterpret_cast<const QSet<QUmlQualifierValue *> *>(&_qualifier));
+}
+
+/*!
+    Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.
+ */
+QUmlInputPin *QUmlLinkEndData::value() const
+{
+    return reinterpret_cast<QUmlInputPin *>(_value);
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlLinkEndData::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlLinkEndData::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlLinkEndData::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlLinkEndData::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [LinkEndData]
+
+void QUmlLinkEndData::setEnd(QUmlProperty *end)
+{
+    UmlLinkEndData::setEnd(end);
 }
 
 void QUmlLinkEndData::addQualifier(UmlQualifierValue *qualifier)
@@ -76,11 +161,6 @@ void QUmlLinkEndData::addQualifier(UmlQualifierValue *qualifier)
 void QUmlLinkEndData::removeQualifier(UmlQualifierValue *qualifier)
 {
     UmlLinkEndData::removeQualifier(qualifier);
-}
-
-QUmlInputPin *QUmlLinkEndData::value() const
-{
-    return reinterpret_cast<QUmlInputPin *>(_value);
 }
 
 void QUmlLinkEndData::setValue(QUmlInputPin *value)

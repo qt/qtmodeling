@@ -42,14 +42,6 @@
 
 #include "private/umlsignal_p.h"
 
-/*!
-    \class UmlSignalEvent
-
-    \inmodule QtUml
-
-    \brief A signal event represents the receipt of an asynchronous signal instance. A signal event may, for example, cause a state machine to trigger a transition.
- */
-
 UmlSignalEvent::UmlSignalEvent() :
     _signal(0)
 {
@@ -57,9 +49,6 @@ UmlSignalEvent::UmlSignalEvent() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The specific signal that is associated with this event.
- */
 UmlSignal *UmlSignalEvent::signal() const
 {
     // This is a read-write association end

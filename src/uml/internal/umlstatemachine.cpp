@@ -46,23 +46,12 @@
 #include "private/umlregion_p.h"
 #include "private/umlstate_p.h"
 
-/*!
-    \class UmlStateMachine
-
-    \inmodule QtUml
-
-    \brief State machines can be used to express the behavior of part of a system. Behavior is modeled as a traversal of a graph of state nodes interconnected by one or more joined transition arcs that are triggered by the dispatching of series of (event) occurrences. During this traversal, the state machine executes a series of activities associated with various elements of the state machine.
- */
-
 UmlStateMachine::UmlStateMachine()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
- */
 const QSet<UmlPseudostate *> UmlStateMachine::connectionPoint() const
 {
     // This is a read-write association end
@@ -104,9 +93,6 @@ void UmlStateMachine::removeConnectionPoint(UmlPseudostate *connectionPoint)
     }
 }
 
-/*!
-    The state machines of which this is an extension.
- */
 const QSet<UmlStateMachine *> UmlStateMachine::extendedStateMachine() const
 {
     // This is a read-write association end
@@ -132,9 +118,6 @@ void UmlStateMachine::removeExtendedStateMachine(UmlStateMachine *extendedStateM
     }
 }
 
-/*!
-    The regions owned directly by the state machine.
- */
 const QSet<UmlRegion *> UmlStateMachine::region() const
 {
     // This is a read-write association end
@@ -176,9 +159,6 @@ void UmlStateMachine::removeRegion(UmlRegion *region)
     }
 }
 
-/*!
-    References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
- */
 const QSet<UmlState *> UmlStateMachine::submachineState() const
 {
     // This is a read-write association end
@@ -216,9 +196,6 @@ void UmlStateMachine::removeSubmachineState(UmlState *submachineState)
 
 // OPERATIONS
 
-/*!
-    The operation LCA(s1,s2) returns an orthogonal state or region which is the least common ancestor of states s1 and s2, based on the statemachine containment hierarchy.
- */
 UmlNamespace *UmlStateMachine::LCA(
     UmlState *s1, UmlState *s2) const
 {
@@ -229,9 +206,6 @@ UmlNamespace *UmlStateMachine::LCA(
     return 0;
 }
 
-/*!
-    The query ancestor(s1, s2) checks whether s1 is an ancestor state of state s2.
- */
 bool UmlStateMachine::ancestor(
     UmlState *s1, UmlState *s2) const
 {
@@ -242,9 +216,6 @@ bool UmlStateMachine::ancestor(
     return bool ();
 }
 
-/*!
-    The query isConsistentWith() specifies that a redefining state machine is consistent with a redefined state machine provided that the redefining state machine is an extension of the redefined state machine: Regions are inherited and regions can be added, inherited regions can be redefined. In case of multiple redefining state machines, extension implies that the redefining state machine gets orthogonal regions for each of the redefined state machines.
- */
 bool UmlStateMachine::isConsistentWith(
     UmlRedefinableElement *redefinee) const
 {
@@ -254,9 +225,6 @@ bool UmlStateMachine::isConsistentWith(
     return bool ();
 }
 
-/*!
-    The query isRedefinitionContextValid() specifies whether the redefinition contexts of a statemachine are properly related to the redefinition contexts of the specified statemachine to allow this element to redefine the other. The containing classifier of a redefining statemachine must redefine the containing classifier of the redefined statemachine.
- */
 bool UmlStateMachine::isRedefinitionContextValid(
     UmlStateMachine *redefined) const
 {

@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlstringexpression_p.h"
 
-/*!
-    \class UmlStringExpression
-
-    \inmodule QtUml
-
-    \brief An expression that specifies a string value that is derived by concatenating a set of sub string expressions, some of which might be template parameters.
- */
-
 UmlStringExpression::UmlStringExpression() :
     _owningExpression(0)
 {
@@ -55,9 +47,6 @@ UmlStringExpression::UmlStringExpression() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The string expression of which this expression is a substring.
- */
 UmlStringExpression *UmlStringExpression::owningExpression() const
 {
     // This is a read-write association end
@@ -79,9 +68,6 @@ void UmlStringExpression::setOwningExpression(UmlStringExpression *owningExpress
     }
 }
 
-/*!
-    The StringExpressions that constitute this StringExpression.
- */
 const QSet<UmlStringExpression *> UmlStringExpression::subExpression() const
 {
     // This is a read-write association end
@@ -115,9 +101,6 @@ void UmlStringExpression::removeSubExpression(UmlStringExpression *subExpression
 
 // OPERATIONS
 
-/*!
-    The query stringValue() returns the string that concatenates, in order, all the component string literals of all the subexpressions that are part of the StringExpression.
- */
 QString UmlStringExpression::stringValue(
     ) const
 {

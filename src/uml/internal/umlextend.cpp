@@ -44,14 +44,6 @@
 #include "private/umlextensionpoint_p.h"
 #include "private/umlusecase_p.h"
 
-/*!
-    \class UmlExtend
-
-    \inmodule QtUml
-
-    \brief A relationship from an extending use case to an extended use case that specifies how and when the behavior defined in the extending use case can be inserted into the behavior defined in the extended use case.
- */
-
 UmlExtend::UmlExtend() :
     _condition(0),
     _extendedCase(0),
@@ -61,9 +53,6 @@ UmlExtend::UmlExtend() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
- */
 UmlConstraint *UmlExtend::condition() const
 {
     // This is a read-write association end
@@ -88,9 +77,6 @@ void UmlExtend::setCondition(UmlConstraint *condition)
     }
 }
 
-/*!
-    References the use case that is being extended.
- */
 UmlUseCase *UmlExtend::extendedCase() const
 {
     // This is a read-write association end
@@ -115,9 +101,6 @@ void UmlExtend::setExtendedCase(UmlUseCase *extendedCase)
     }
 }
 
-/*!
-    References the use case that represents the extension and owns the extend relationship.
- */
 UmlUseCase *UmlExtend::extension() const
 {
     // This is a read-write association end
@@ -143,9 +126,6 @@ void UmlExtend::setExtension(UmlUseCase *extension)
     }
 }
 
-/*!
-    An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
- */
 const QList<UmlExtensionPoint *> UmlExtend::extensionLocation() const
 {
     // This is a read-write association end

@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlpackageableelement_p.h"
 
-/*!
-    \class UmlPackageableElement
-
-    \inmodule QtUml
-
-    \brief Packageable elements are able to serve as a template parameter.A packageable element indicates a named element that may be owned directly by a package.
- */
-
 UmlPackageableElement::UmlPackageableElement() :
     _visibility(QtUml::VisibilityKindPublic)
 {
@@ -55,9 +47,6 @@ UmlPackageableElement::UmlPackageableElement() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
- */
 QtUml::VisibilityKind UmlPackageableElement::visibility() const
 {
     // This is a read-write property

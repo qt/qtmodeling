@@ -40,23 +40,12 @@
 ****************************************************************************/
 #include "umlimage_p.h"
 
-/*!
-    \class UmlImage
-
-    \inmodule QtUml
-
-    \brief Physical definition of a graphical image.
- */
-
 UmlImage::UmlImage()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).
- */
 QString UmlImage::content() const
 {
     // This is a read-write property
@@ -73,9 +62,6 @@ void UmlImage::setContent(QString content)
     }
 }
 
-/*!
-    This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example "SVG" could instead be expressed as "MIME: image/svg+xml".
- */
 QString UmlImage::format() const
 {
     // This is a read-write property
@@ -92,9 +78,6 @@ void UmlImage::setFormat(QString format)
     }
 }
 
-/*!
-    This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.
- */
 QString UmlImage::location() const
 {
     // This is a read-write property

@@ -45,14 +45,6 @@
 #include "private/umlprotocolstatemachine_p.h"
 #include "private/umlreception_p.h"
 
-/*!
-    \class UmlInterface
-
-    \inmodule QtUml
-
-    \brief Since an interface specifies conformance characteristics, it does not own detailed behavior specifications. Instead, interfaces may own a protocol state machine that specifies event sequences and pre/post conditions for the operations and receptions described by the interface.Interfaces may include receptions (in addition to operations).An interface is a kind of classifier that represents a declaration of a set of coherent public features and obligations. An interface specifies a contract; any instance of a classifier that realizes the interface must fulfill that contract. The obligations that may be associated with an interface are in the form of various kinds of constraints (such as pre- and post-conditions) or protocol specifications, which may impose ordering restrictions on interactions through the interface.
- */
-
 UmlInterface::UmlInterface() :
     _protocol(0)
 {
@@ -60,9 +52,6 @@ UmlInterface::UmlInterface() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References all the Classifiers that are defined (nested) within the Class.
- */
 const QList<UmlClassifier *> UmlInterface::nestedClassifier() const
 {
     // This is a read-write association end
@@ -94,9 +83,6 @@ void UmlInterface::removeNestedClassifier(UmlClassifier *nestedClassifier)
     }
 }
 
-/*!
-    The attributes (i.e. the properties) owned by the class.
- */
 const QList<UmlProperty *> UmlInterface::ownedAttribute() const
 {
     // This is a read-write association end
@@ -140,9 +126,6 @@ void UmlInterface::removeOwnedAttribute(UmlProperty *ownedAttribute)
     }
 }
 
-/*!
-    The operations owned by the class.
- */
 const QList<UmlOperation *> UmlInterface::ownedOperation() const
 {
     // This is a read-write association end
@@ -186,9 +169,6 @@ void UmlInterface::removeOwnedOperation(UmlOperation *ownedOperation)
     }
 }
 
-/*!
-    Receptions that objects providing this interface are willing to accept.
- */
 const QSet<UmlReception *> UmlInterface::ownedReception() const
 {
     // This is a read-write association end
@@ -222,9 +202,6 @@ void UmlInterface::removeOwnedReception(UmlReception *ownedReception)
     }
 }
 
-/*!
-    References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.
- */
 UmlProtocolStateMachine *UmlInterface::protocol() const
 {
     // This is a read-write association end
@@ -249,9 +226,6 @@ void UmlInterface::setProtocol(UmlProtocolStateMachine *protocol)
     }
 }
 
-/*!
-    References all the Interfaces redefined by this Interface.
- */
 const QSet<UmlInterface *> UmlInterface::redefinedInterface() const
 {
     // This is a read-write association end

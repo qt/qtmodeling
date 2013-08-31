@@ -46,28 +46,113 @@
 #include <QtCore/QObject>
 #include "private/umldurationobservation_p.h"
 
+#include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlComment;
+class QUmlDependency;
+class QUmlElement;
 class QUmlNamedElement;
+class QUmlNamespace;
+class QUmlPackage;
+class QUmlParameterableElement;
+class QUmlStringExpression;
+class QUmlTemplateParameter;
 
 class Q_UML_EXPORT QUmlDurationObservation : public QObject, public UmlDurationObservation
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [ParameterableElement]
+    Q_PROPERTY(QUmlTemplateParameter * owningTemplateParameter READ owningTemplateParameter)
+    Q_PROPERTY(QUmlTemplateParameter * templateParameter READ templateParameter)
+
+    // Properties [NamedElement]
+    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
+    Q_PROPERTY(QString name READ name)
+    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
+    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+
+    // Properties [PackageableElement]
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+
+    // Properties [DurationObservation]
     Q_PROPERTY(QUmlNamedElement * event READ event)
     Q_PROPERTY(bool firstEvent READ firstEvent)
 
 public:
     Q_INVOKABLE explicit QUmlDurationObservation(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [ParameterableElement]
+    Q_INVOKABLE QUmlTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE QUmlTemplateParameter *templateParameter() const;
+
+    // Owned attributes [NamedElement]
+    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
+    Q_INVOKABLE QUmlNamespace *namespace_() const;
+    Q_INVOKABLE QString qualifiedName() const;
+
+    // Owned attributes [PackageableElement]
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+
+    // Owned attributes [DurationObservation]
     Q_INVOKABLE QUmlNamedElement *event() const;
-    Q_INVOKABLE void setEvent(QUmlNamedElement *event);
     Q_INVOKABLE bool firstEvent() const;
-    Q_INVOKABLE void setFirstEvent(bool firstEvent);
+
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+    // Operations [ParameterableElement]
+    Q_INVOKABLE bool isCompatibleWith(QUmlParameterableElement *p) const;
+    Q_INVOKABLE bool isTemplateParameter() const;
+
+    // Operations [NamedElement]
+    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
+    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
+    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
+    Q_INVOKABLE QString separator() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [ParameterableElement]
+    void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
+    void setTemplateParameter(QUmlTemplateParameter *templateParameter);
+
+    // Slots for owned attributes [NamedElement]
+    void addClientDependency(UmlDependency *clientDependency);
+    void removeClientDependency(UmlDependency *clientDependency);
+    void setName(QString name);
+    void setNameExpression(QUmlStringExpression *nameExpression);
+
+    // Slots for owned attributes [PackageableElement]
+    void setVisibility(QtUml::VisibilityKind visibility);
+
+    // Slots for owned attributes [DurationObservation]
+    void setEvent(QUmlNamedElement *event);
+    void setFirstEvent(bool firstEvent);
 };
 
 QT_END_NAMESPACE

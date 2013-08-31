@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlliteralinteger_p.h"
 
-/*!
-    \class UmlLiteralInteger
-
-    \inmodule QtUml
-
-    \brief A literal integer is a specification of an integer value.
- */
-
 UmlLiteralInteger::UmlLiteralInteger() :
     _value(0)
 {
@@ -55,9 +47,6 @@ UmlLiteralInteger::UmlLiteralInteger() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The specified Integer value.
- */
 int UmlLiteralInteger::value() const
 {
     // This is a read-write property
@@ -76,9 +65,6 @@ void UmlLiteralInteger::setValue(int value)
 
 // OPERATIONS
 
-/*!
-    The query integerValue() gives the value.
- */
 int UmlLiteralInteger::integerValue(
     ) const
 {
@@ -87,9 +73,6 @@ int UmlLiteralInteger::integerValue(
     return int ();
 }
 
-/*!
-    The query isComputable() is redefined to be true.
- */
 bool UmlLiteralInteger::isComputable(
     ) const
 {

@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlfinalnode_p.h"
 
-/*!
-    \class UmlFinalNode
-
-    \inmodule QtUml
-
-    \brief A final node is an abstract control node at which a flow in an activity stops.
- */
-
 UmlFinalNode::UmlFinalNode()
 {
 }

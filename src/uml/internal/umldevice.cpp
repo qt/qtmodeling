@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umldevice_p.h"
 
-/*!
-    \class UmlDevice
-
-    \inmodule QtUml
-
-    \brief A device is a physical computational resource with processing capability upon which artifacts may be deployed for execution. Devices may be complex (i.e., they may consist of other devices).
- */
-
 UmlDevice::UmlDevice()
 {
 }

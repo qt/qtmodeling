@@ -42,14 +42,6 @@
 
 #include "private/umlcomment_p.h"
 
-/*!
-    \class UmlElement
-
-    \inmodule QtUml
-
-    \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
- */
-
 UmlElement::UmlElement() :
     _owner(0)
 {
@@ -57,9 +49,6 @@ UmlElement::UmlElement() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The Comments owned by this element.
- */
 const QSet<UmlComment *> UmlElement::ownedComment() const
 {
     // This is a read-write association end
@@ -91,9 +80,6 @@ void UmlElement::removeOwnedComment(UmlComment *ownedComment)
     }
 }
 
-/*!
-    The Elements owned by this element.
- */
 const QSet<UmlElement *> UmlElement::ownedElement() const
 {
     // This is a read-only derived union association end
@@ -119,9 +105,6 @@ void UmlElement::removeOwnedElement(UmlElement *ownedElement)
     }
 }
 
-/*!
-    The Element that owns this element.
- */
 UmlElement *UmlElement::owner() const
 {
     // This is a read-only derived union association end
@@ -140,9 +123,6 @@ void UmlElement::setOwner(UmlElement *owner)
 
 // OPERATIONS
 
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
 QSet<UmlElement *> UmlElement::allOwnedElements(
     ) const
 {
@@ -151,9 +131,6 @@ QSet<UmlElement *> UmlElement::allOwnedElements(
     return QSet<UmlElement *> ();
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
 bool UmlElement::mustBeOwned(
     ) const
 {

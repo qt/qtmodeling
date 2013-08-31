@@ -42,23 +42,12 @@
 
 #include "private/umlexecutablenode_p.h"
 
-/*!
-    \class UmlSequenceNode
-
-    \inmodule QtUml
-
-    \brief A sequence node is a structured activity node that executes its actions in order.
- */
-
 UmlSequenceNode::UmlSequenceNode()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    An ordered set of executable nodes.
- */
 const QList<UmlExecutableNode *> UmlSequenceNode::executableNode() const
 {
     // This is a read-write association end

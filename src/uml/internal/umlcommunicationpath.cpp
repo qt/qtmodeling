@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlcommunicationpath_p.h"
 
-/*!
-    \class UmlCommunicationPath
-
-    \inmodule QtUml
-
-    \brief A communication path is an association between two deployment targets, through which they are able to exchange signals and messages.
- */
-
 UmlCommunicationPath::UmlCommunicationPath()
 {
 }

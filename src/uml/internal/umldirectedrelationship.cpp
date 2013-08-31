@@ -42,23 +42,12 @@
 
 #include "private/umlelement_p.h"
 
-/*!
-    \class UmlDirectedRelationship
-
-    \inmodule QtUml
-
-    \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
- */
-
 UmlDirectedRelationship::UmlDirectedRelationship()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the sources of the DirectedRelationship.
- */
 const QSet<UmlElement *> UmlDirectedRelationship::source() const
 {
     // This is a read-only derived union association end
@@ -90,9 +79,6 @@ void UmlDirectedRelationship::removeSource(UmlElement *source)
     }
 }
 
-/*!
-    Specifies the targets of the DirectedRelationship.
- */
 const QSet<UmlElement *> UmlDirectedRelationship::target() const
 {
     // This is a read-only derived union association end

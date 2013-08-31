@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlRemoveStructuralFeatureValueAction
-
-    \inmodule QtUml
-
-    \brief A remove structural feature value action is a write structural feature action that removes values from structural features.
- */
-
 UmlRemoveStructuralFeatureValueAction::UmlRemoveStructuralFeatureValueAction() :
     _isRemoveDuplicates(false),
     _removeAt(0)
@@ -58,9 +50,6 @@ UmlRemoveStructuralFeatureValueAction::UmlRemoveStructuralFeatureValueAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies whether to remove duplicates of the value in nonunique structural features.
- */
 bool UmlRemoveStructuralFeatureValueAction::isRemoveDuplicates() const
 {
     // This is a read-write property
@@ -77,9 +66,6 @@ void UmlRemoveStructuralFeatureValueAction::setRemoveDuplicates(bool isRemoveDup
     }
 }
 
-/*!
-    Specifies the position of an existing value to remove in ordered nonunique structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
- */
 UmlInputPin *UmlRemoveStructuralFeatureValueAction::removeAt() const
 {
     // This is a read-write association end

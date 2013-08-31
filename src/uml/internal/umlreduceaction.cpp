@@ -44,14 +44,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlReduceAction
-
-    \inmodule QtUml
-
-    \brief A reduce action is an action that reduces a collection to a single value by combining the elements of the collection.
- */
-
 UmlReduceAction::UmlReduceAction() :
     _collection(0),
     _isOrdered(false),
@@ -62,9 +54,6 @@ UmlReduceAction::UmlReduceAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The collection to be reduced.
- */
 UmlInputPin *UmlReduceAction::collection() const
 {
     // This is a read-write association end
@@ -89,9 +78,6 @@ void UmlReduceAction::setCollection(UmlInputPin *collection)
     }
 }
 
-/*!
-    Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.
- */
 bool UmlReduceAction::isOrdered() const
 {
     // This is a read-write property
@@ -108,9 +94,6 @@ void UmlReduceAction::setOrdered(bool isOrdered)
     }
 }
 
-/*!
-    Behavior that is applied to two elements of the input collection to produce a value that is the same type as elements of the collection.
- */
 UmlBehavior *UmlReduceAction::reducer() const
 {
     // This is a read-write association end
@@ -127,9 +110,6 @@ void UmlReduceAction::setReducer(UmlBehavior *reducer)
     }
 }
 
-/*!
-    Gives the output pin on which the result is put.
- */
 UmlOutputPin *UmlReduceAction::result() const
 {
     // This is a read-write association end

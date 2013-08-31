@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlclearvariableaction_p.h"
 
-/*!
-    \class UmlClearVariableAction
-
-    \inmodule QtUml
-
-    \brief A clear variable action is a variable action that removes all values of a variable.
- */
-
 UmlClearVariableAction::UmlClearVariableAction()
 {
 }

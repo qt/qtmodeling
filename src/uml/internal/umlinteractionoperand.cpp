@@ -42,14 +42,6 @@
 
 #include "private/umlinteractionconstraint_p.h"
 
-/*!
-    \class UmlInteractionOperand
-
-    \inmodule QtUml
-
-    \brief An interaction operand is contained in a combined fragment. An interaction operand represents one operand of the expression given by the enclosing combined fragment.
- */
-
 UmlInteractionOperand::UmlInteractionOperand() :
     _guard(0)
 {
@@ -57,9 +49,6 @@ UmlInteractionOperand::UmlInteractionOperand() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The fragments of the operand.
- */
 const QList<UmlInteractionFragment *> UmlInteractionOperand::fragment() const
 {
     // This is a read-write association end
@@ -101,9 +90,6 @@ void UmlInteractionOperand::removeFragment(UmlInteractionFragment *fragment)
     }
 }
 
-/*!
-    Constraint of the operand.
- */
 UmlInteractionConstraint *UmlInteractionOperand::guard() const
 {
     // This is a read-write association end

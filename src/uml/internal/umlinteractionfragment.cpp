@@ -45,14 +45,6 @@
 #include "private/umlinteractionoperand_p.h"
 #include "private/umllifeline_p.h"
 
-/*!
-    \class UmlInteractionFragment
-
-    \inmodule QtUml
-
-    \brief InteractionFragment is an abstract notion of the most general interaction unit. An interaction fragment is a piece of an interaction. Each interaction fragment is conceptually like an interaction by itself.
- */
-
 UmlInteractionFragment::UmlInteractionFragment() :
     _enclosingInteraction(0),
     _enclosingOperand(0)
@@ -61,9 +53,6 @@ UmlInteractionFragment::UmlInteractionFragment() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the Lifelines that the InteractionFragment involves.
- */
 const QSet<UmlLifeline *> UmlInteractionFragment::covered() const
 {
     // This is a read-write association end
@@ -99,9 +88,6 @@ void UmlInteractionFragment::removeCovered(UmlLifeline *covered)
     }
 }
 
-/*!
-    The Interaction enclosing this InteractionFragment.
- */
 UmlInteraction *UmlInteractionFragment::enclosingInteraction() const
 {
     // This is a read-write association end
@@ -123,9 +109,6 @@ void UmlInteractionFragment::setEnclosingInteraction(UmlInteraction *enclosingIn
     }
 }
 
-/*!
-    The operand enclosing this InteractionFragment (they may nest recursively)
- */
 UmlInteractionOperand *UmlInteractionFragment::enclosingOperand() const
 {
     // This is a read-write association end
@@ -147,9 +130,6 @@ void UmlInteractionFragment::setEnclosingOperand(UmlInteractionOperand *enclosin
     }
 }
 
-/*!
-    The general ordering relationships contained in this fragment.
- */
 const QSet<UmlGeneralOrdering *> UmlInteractionFragment::generalOrdering() const
 {
     // This is a read-write association end

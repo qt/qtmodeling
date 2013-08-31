@@ -42,14 +42,6 @@
 
 #include "private/umltimeexpression_p.h"
 
-/*!
-    \class UmlTimeInterval
-
-    \inmodule QtUml
-
-    \brief A time interval defines the range between two time expressions.
- */
-
 UmlTimeInterval::UmlTimeInterval() :
     _max(0),
     _min(0)
@@ -58,9 +50,6 @@ UmlTimeInterval::UmlTimeInterval() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Refers to the TimeExpression denoting the maximum value of the range.
- */
 UmlTimeExpression *UmlTimeInterval::max() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlTimeInterval::setMax(UmlTimeExpression *max)
     }
 }
 
-/*!
-    Refers to the TimeExpression denoting the minimum value of the range.
- */
 UmlTimeExpression *UmlTimeInterval::min() const
 {
     // This is a read-write association end

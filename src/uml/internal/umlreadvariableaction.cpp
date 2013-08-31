@@ -42,14 +42,6 @@
 
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlReadVariableAction
-
-    \inmodule QtUml
-
-    \brief A read variable action is a variable action that retrieves the values of a variable.
- */
-
 UmlReadVariableAction::UmlReadVariableAction() :
     _result(0)
 {
@@ -57,9 +49,6 @@ UmlReadVariableAction::UmlReadVariableAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the output pin on which the result is put.
- */
 UmlOutputPin *UmlReadVariableAction::result() const
 {
     // This is a read-write association end

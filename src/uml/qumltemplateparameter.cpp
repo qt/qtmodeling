@@ -40,31 +40,132 @@
 ****************************************************************************/
 #include "qumltemplateparameter.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlTemplateParameter
+
+    \inmodule QtUml
+
+    \brief A template parameter exposes a parameterable element as a formal template parameter of a template.
+ */
 
 QUmlTemplateParameter::QUmlTemplateParameter(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlTemplateParameter::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlTemplateParameter::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlTemplateParameter::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [TemplateParameter]
+
+/*!
+    The element that is the default for this formal template parameter.
+ */
 QUmlParameterableElement *QUmlTemplateParameter::default_() const
 {
     return reinterpret_cast<QUmlParameterableElement *>(_default_);
 }
 
-void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
-{
-    UmlTemplateParameter::setDefault(default_);
-}
-
+/*!
+    The element that is owned by this template parameter for the purpose of providing a default.
+ */
 QUmlParameterableElement *QUmlTemplateParameter::ownedDefault() const
 {
     return reinterpret_cast<QUmlParameterableElement *>(_ownedDefault);
+}
+
+/*!
+    The element that is owned by this template parameter.
+ */
+QUmlParameterableElement *QUmlTemplateParameter::ownedParameteredElement() const
+{
+    return reinterpret_cast<QUmlParameterableElement *>(_ownedParameteredElement);
+}
+
+/*!
+    The element exposed by this template parameter.
+ */
+QUmlParameterableElement *QUmlTemplateParameter::parameteredElement() const
+{
+    return reinterpret_cast<QUmlParameterableElement *>(_parameteredElement);
+}
+
+/*!
+    The template signature that owns this template parameter.
+ */
+QUmlTemplateSignature *QUmlTemplateParameter::signature() const
+{
+    return reinterpret_cast<QUmlTemplateSignature *>(_signature);
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlTemplateParameter::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlTemplateParameter::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlTemplateParameter::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlTemplateParameter::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
+
+void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
+{
+    UmlTemplateParameter::setDefault(default_);
 }
 
 void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
@@ -72,29 +173,14 @@ void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefau
     UmlTemplateParameter::setOwnedDefault(ownedDefault);
 }
 
-QUmlParameterableElement *QUmlTemplateParameter::ownedParameteredElement() const
-{
-    return reinterpret_cast<QUmlParameterableElement *>(_ownedParameteredElement);
-}
-
 void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
 {
     UmlTemplateParameter::setOwnedParameteredElement(ownedParameteredElement);
 }
 
-QUmlParameterableElement *QUmlTemplateParameter::parameteredElement() const
-{
-    return reinterpret_cast<QUmlParameterableElement *>(_parameteredElement);
-}
-
 void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *parameteredElement)
 {
     UmlTemplateParameter::setParameteredElement(parameteredElement);
-}
-
-QUmlTemplateSignature *QUmlTemplateParameter::signature() const
-{
-    return reinterpret_cast<QUmlTemplateSignature *>(_signature);
 }
 
 void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)

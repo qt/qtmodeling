@@ -44,14 +44,6 @@
 #include "private/umlactivity_p.h"
 #include "private/umlstructuredactivitynode_p.h"
 
-/*!
-    \class UmlVariable
-
-    \inmodule QtUml
-
-    \brief A variable is considered a connectable element.Variables are elements for passing data between actions indirectly. A local variable stores values shared by the actions within a structured activity group but not accessible outside it. The output of an action may be written to a variable and read for the input to a subsequent action, which is effectively an indirect data flow path. Because there is no predefined relationship between actions that read and write variables, these actions must be sequenced by control flows to prevent race conditions that may occur between actions that read or write the same variable.
- */
-
 UmlVariable::UmlVariable() :
     _activityScope(0),
     _scope(0)
@@ -60,9 +52,6 @@ UmlVariable::UmlVariable() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    An activity that owns the variable.
- */
 UmlActivity *UmlVariable::activityScope() const
 {
     // This is a read-write association end
@@ -84,9 +73,6 @@ void UmlVariable::setActivityScope(UmlActivity *activityScope)
     }
 }
 
-/*!
-    A structured activity node that owns the variable.
- */
 UmlStructuredActivityNode *UmlVariable::scope() const
 {
     // This is a read-write association end
@@ -110,9 +96,6 @@ void UmlVariable::setScope(UmlStructuredActivityNode *scope)
 
 // OPERATIONS
 
-/*!
-    The isAccessibleBy() operation is not defined in standard UML. Implementations should define it to specify which actions can access a variable.
- */
 bool UmlVariable::isAccessibleBy(
     UmlAction *a) const
 {

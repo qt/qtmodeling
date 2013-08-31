@@ -44,14 +44,6 @@
 #include "private/umlparameterset_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlParameter
-
-    \inmodule QtUml
-
-    \brief Parameters are allowed to be treated as connectable elements.A parameter is a specification of an argument used to pass information into or out of an invocation of a behavioral feature.Parameters have support for streaming, exceptions, and parameter sets.
- */
-
 UmlParameter::UmlParameter() :
     _defaultValue(0),
     _direction(QtUml::ParameterDirectionKindIn),
@@ -63,9 +55,6 @@ UmlParameter::UmlParameter() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
- */
 QString UmlParameter::default_() const
 {
     // This is a read-write derived property
@@ -87,9 +76,6 @@ void UmlParameter::setDefault(QString default_)
     }
 }
 
-/*!
-    Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
- */
 UmlValueSpecification *UmlParameter::defaultValue() const
 {
     // This is a read-write association end
@@ -114,9 +100,6 @@ void UmlParameter::setDefaultValue(UmlValueSpecification *defaultValue)
     }
 }
 
-/*!
-    Indicates whether a parameter is being sent into or out of a behavioral element.
- */
 QtUml::ParameterDirectionKind UmlParameter::direction() const
 {
     // This is a read-write property
@@ -133,9 +116,6 @@ void UmlParameter::setDirection(QtUml::ParameterDirectionKind direction)
     }
 }
 
-/*!
-    Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.
- */
 QtUml::ParameterEffectKind UmlParameter::effect() const
 {
     // This is a read-write property
@@ -152,9 +132,6 @@ void UmlParameter::setEffect(QtUml::ParameterEffectKind effect)
     }
 }
 
-/*!
-    Tells whether an output parameter may emit a value to the exclusion of the other outputs.
- */
 bool UmlParameter::isException() const
 {
     // This is a read-write property
@@ -171,9 +148,6 @@ void UmlParameter::setException(bool isException)
     }
 }
 
-/*!
-    Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.
- */
 bool UmlParameter::isStream() const
 {
     // This is a read-write property
@@ -190,9 +164,6 @@ void UmlParameter::setStream(bool isStream)
     }
 }
 
-/*!
-    References the Operation owning this parameter.
- */
 UmlOperation *UmlParameter::operation() const
 {
     // This is a read-write association end
@@ -209,9 +180,6 @@ void UmlParameter::setOperation(UmlOperation *operation)
     }
 }
 
-/*!
-    The parameter sets containing the parameter. See ParameterSet.
- */
 const QSet<UmlParameterSet *> UmlParameter::parameterSet() const
 {
     // This is a read-write association end

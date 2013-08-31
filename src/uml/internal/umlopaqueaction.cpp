@@ -43,23 +43,12 @@
 #include "private/umlinputpin_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlOpaqueAction
-
-    \inmodule QtUml
-
-    \brief An action with implementation-specific semantics.
- */
-
 UmlOpaqueAction::UmlOpaqueAction()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the action in one or more languages.
- */
 const QList<QString> UmlOpaqueAction::body() const
 {
     // This is a read-write property
@@ -85,9 +74,6 @@ void UmlOpaqueAction::removeBody(QString body)
     }
 }
 
-/*!
-    Provides input to the action.
- */
 const QSet<UmlInputPin *> UmlOpaqueAction::inputValue() const
 {
     // This is a read-write association end
@@ -119,9 +105,6 @@ void UmlOpaqueAction::removeInputValue(UmlInputPin *inputValue)
     }
 }
 
-/*!
-    Languages the body strings use, in the same order as the body strings
- */
 const QList<QString> UmlOpaqueAction::language() const
 {
     // This is a read-write property
@@ -147,9 +130,6 @@ void UmlOpaqueAction::removeLanguage(QString language)
     }
 }
 
-/*!
-    Takes output from the action.
- */
 const QSet<UmlOutputPin *> UmlOpaqueAction::outputValue() const
 {
     // This is a read-write association end

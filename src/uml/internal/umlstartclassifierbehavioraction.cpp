@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlStartClassifierBehaviorAction
-
-    \inmodule QtUml
-
-    \brief A start classifier behavior action is an action that starts the classifier behavior of the input.
- */
-
 UmlStartClassifierBehaviorAction::UmlStartClassifierBehaviorAction() :
     _object(0)
 {
@@ -57,9 +49,6 @@ UmlStartClassifierBehaviorAction::UmlStartClassifierBehaviorAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Holds the object on which to start the owned behavior.
- */
 UmlInputPin *UmlStartClassifierBehaviorAction::object() const
 {
     // This is a read-write association end

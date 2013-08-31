@@ -45,23 +45,12 @@
 #include "private/umlextensionpoint_p.h"
 #include "private/umlinclude_p.h"
 
-/*!
-    \class UmlUseCase
-
-    \inmodule QtUml
-
-    \brief A use case is the specification of a set of actions performed by a system, which yields an observable result that is, typically, of value for one or more actors or other stakeholders of the system.
- */
-
 UmlUseCase::UmlUseCase()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the Extend relationships owned by this use case.
- */
 const QSet<UmlExtend *> UmlUseCase::extend() const
 {
     // This is a read-write association end
@@ -103,9 +92,6 @@ void UmlUseCase::removeExtend(UmlExtend *extend)
     }
 }
 
-/*!
-    References the ExtensionPoints owned by the use case.
- */
 const QSet<UmlExtensionPoint *> UmlUseCase::extensionPoint() const
 {
     // This is a read-write association end
@@ -147,9 +133,6 @@ void UmlUseCase::removeExtensionPoint(UmlExtensionPoint *extensionPoint)
     }
 }
 
-/*!
-    References the Include relationships owned by this use case.
- */
 const QSet<UmlInclude *> UmlUseCase::include() const
 {
     // This is a read-write association end
@@ -191,9 +174,6 @@ void UmlUseCase::removeInclude(UmlInclude *include)
     }
 }
 
-/*!
-    References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
- */
 const QSet<UmlClassifier *> UmlUseCase::subject() const
 {
     // This is a read-write association end
@@ -231,9 +211,6 @@ void UmlUseCase::removeSubject(UmlClassifier *subject)
 
 // OPERATIONS
 
-/*!
-    The query allIncludedUseCases() returns the transitive closure of all use cases (directly or indirectly) included by this use case.
- */
 QSet<UmlUseCase *> UmlUseCase::allIncludedUseCases(
     ) const
 {

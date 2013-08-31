@@ -42,14 +42,6 @@
 
 #include "private/umlbehavior_p.h"
 
-/*!
-    \class UmlObjectFlow
-
-    \inmodule QtUml
-
-    \brief An object flow is an activity edge that can have objects or data passing along it.Object flows have support for multicast/receive, token selection from object nodes, and transformation of tokens.
- */
-
 UmlObjectFlow::UmlObjectFlow() :
     _isMulticast(false),
     _isMultireceive(false),
@@ -60,9 +52,6 @@ UmlObjectFlow::UmlObjectFlow() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Tells whether the objects in the flow are passed by multicasting.
- */
 bool UmlObjectFlow::isMulticast() const
 {
     // This is a read-write property
@@ -79,9 +68,6 @@ void UmlObjectFlow::setMulticast(bool isMulticast)
     }
 }
 
-/*!
-    Tells whether the objects in the flow are gathered from respondents to multicasting.
- */
 bool UmlObjectFlow::isMultireceive() const
 {
     // This is a read-write property
@@ -98,9 +84,6 @@ void UmlObjectFlow::setMultireceive(bool isMultireceive)
     }
 }
 
-/*!
-    Selects tokens from a source object node.
- */
 UmlBehavior *UmlObjectFlow::selection() const
 {
     // This is a read-write association end
@@ -117,9 +100,6 @@ void UmlObjectFlow::setSelection(UmlBehavior *selection)
     }
 }
 
-/*!
-    Changes or replaces data tokens flowing along edge.
- */
 UmlBehavior *UmlObjectFlow::transformation() const
 {
     // This is a read-write association end

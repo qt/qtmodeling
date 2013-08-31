@@ -42,23 +42,12 @@
 
 #include "private/umllinkenddestructiondata_p.h"
 
-/*!
-    \class UmlDestroyLinkAction
-
-    \inmodule QtUml
-
-    \brief A destroy link action is a write link action that destroys links and link objects.
- */
-
 UmlDestroyLinkAction::UmlDestroyLinkAction()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies ends of association and inputs.
- */
 const QSet<UmlLinkEndDestructionData *> UmlDestroyLinkAction::endData() const
 {
     // This is a read-write association end

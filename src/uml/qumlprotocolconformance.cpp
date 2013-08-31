@@ -40,30 +40,139 @@
 ****************************************************************************/
 #include "qumlprotocolconformance.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlProtocolStateMachine>
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlProtocolConformance
+
+    \inmodule QtUml
+
+    \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
+ */
 
 QUmlProtocolConformance::QUmlProtocolConformance(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlProtocolConformance::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlProtocolConformance::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlProtocolConformance::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [Relationship]
+
+/*!
+    Specifies the elements related by the Relationship.
+ */
+const QSet<QUmlElement *> QUmlProtocolConformance::relatedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_relatedElement));
+}
+
+// OWNED ATTRIBUTES [DirectedRelationship]
+
+/*!
+    Specifies the sources of the DirectedRelationship.
+ */
+const QSet<QUmlElement *> QUmlProtocolConformance::source() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_source));
+}
+
+/*!
+    Specifies the targets of the DirectedRelationship.
+ */
+const QSet<QUmlElement *> QUmlProtocolConformance::target() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_target));
+}
+
+// OWNED ATTRIBUTES [ProtocolConformance]
+
+/*!
+    Specifies the protocol state machine to which the specific state machine conforms.
+ */
 QUmlProtocolStateMachine *QUmlProtocolConformance::generalMachine() const
 {
     return reinterpret_cast<QUmlProtocolStateMachine *>(_generalMachine);
 }
 
-void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *generalMachine)
-{
-    UmlProtocolConformance::setGeneralMachine(generalMachine);
-}
-
+/*!
+    Specifies the state machine which conforms to the general state machine.
+ */
 QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
 {
     return reinterpret_cast<QUmlProtocolStateMachine *>(_specificMachine);
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlProtocolConformance::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlProtocolConformance::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlProtocolConformance::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlProtocolConformance::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Relationship]
+
+// SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
+
+// SLOTS FOR OWNED ATTRIBUTES [ProtocolConformance]
+
+void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *generalMachine)
+{
+    UmlProtocolConformance::setGeneralMachine(generalMachine);
 }
 
 void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *specificMachine)

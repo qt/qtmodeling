@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlinterval_p.h"
 
-/*!
-    \class UmlInterval
-
-    \inmodule QtUml
-
-    \brief An interval defines the range between two value specifications.
- */
-
 UmlInterval::UmlInterval() :
     _max(0),
     _min(0)
@@ -56,9 +48,6 @@ UmlInterval::UmlInterval() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Refers to the ValueSpecification denoting the maximum value of the range.
- */
 UmlValueSpecification *UmlInterval::max() const
 {
     // This is a read-write association end
@@ -75,9 +64,6 @@ void UmlInterval::setMax(UmlValueSpecification *max)
     }
 }
 
-/*!
-    Refers to the ValueSpecification denoting the minimum value of the range.
- */
 UmlValueSpecification *UmlInterval::min() const
 {
     // This is a read-write association end

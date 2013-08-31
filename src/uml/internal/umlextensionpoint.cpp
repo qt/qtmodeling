@@ -42,14 +42,6 @@
 
 #include "private/umlusecase_p.h"
 
-/*!
-    \class UmlExtensionPoint
-
-    \inmodule QtUml
-
-    \brief An extension point identifies a point in the behavior of a use case where that behavior can be extended by the behavior of some other (extending) use case, as specified by an extend relationship.
- */
-
 UmlExtensionPoint::UmlExtensionPoint() :
     _useCase(0)
 {
@@ -57,9 +49,6 @@ UmlExtensionPoint::UmlExtensionPoint() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the use case that owns this extension point.
- */
 UmlUseCase *UmlExtensionPoint::useCase() const
 {
     // This is a read-write association end

@@ -42,14 +42,6 @@
 
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlMultiplicityElement
-
-    \inmodule QtUml
-
-    \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
- */
-
 UmlMultiplicityElement::UmlMultiplicityElement() :
     _isOrdered(false),
     _isUnique(true),
@@ -60,9 +52,6 @@ UmlMultiplicityElement::UmlMultiplicityElement() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
- */
 bool UmlMultiplicityElement::isOrdered() const
 {
     // This is a read-write property
@@ -79,9 +68,6 @@ void UmlMultiplicityElement::setOrdered(bool isOrdered)
     }
 }
 
-/*!
-    For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
- */
 bool UmlMultiplicityElement::isUnique() const
 {
     // This is a read-write property
@@ -98,9 +84,6 @@ void UmlMultiplicityElement::setUnique(bool isUnique)
     }
 }
 
-/*!
-    Specifies the lower bound of the multiplicity interval.
- */
 int UmlMultiplicityElement::lower() const
 {
     // This is a read-write derived property
@@ -122,9 +105,6 @@ void UmlMultiplicityElement::setLower(int lower)
     }
 }
 
-/*!
-    The specification of the lower bound for this multiplicity.
- */
 UmlValueSpecification *UmlMultiplicityElement::lowerValue() const
 {
     // This is a read-write association end
@@ -149,9 +129,6 @@ void UmlMultiplicityElement::setLowerValue(UmlValueSpecification *lowerValue)
     }
 }
 
-/*!
-    Specifies the upper bound of the multiplicity interval.
- */
 int UmlMultiplicityElement::upper() const
 {
     // This is a read-write derived property
@@ -173,9 +150,6 @@ void UmlMultiplicityElement::setUpper(int upper)
     }
 }
 
-/*!
-    The specification of the upper bound for this multiplicity.
- */
 UmlValueSpecification *UmlMultiplicityElement::upperValue() const
 {
     // This is a read-write association end
@@ -202,9 +176,6 @@ void UmlMultiplicityElement::setUpperValue(UmlValueSpecification *upperValue)
 
 // OPERATIONS
 
-/*!
-    The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
- */
 bool UmlMultiplicityElement::compatibleWith(
     UmlMultiplicityElement *other) const
 {
@@ -214,9 +185,6 @@ bool UmlMultiplicityElement::compatibleWith(
     return bool ();
 }
 
-/*!
-    The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.
- */
 bool UmlMultiplicityElement::includesCardinality(
     int C) const
 {
@@ -226,9 +194,6 @@ bool UmlMultiplicityElement::includesCardinality(
     return bool ();
 }
 
-/*!
-    The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
- */
 bool UmlMultiplicityElement::includesMultiplicity(
     UmlMultiplicityElement *M) const
 {
@@ -238,9 +203,6 @@ bool UmlMultiplicityElement::includesMultiplicity(
     return bool ();
 }
 
-/*!
-    The operation is determines if the upper and lower bound of the ranges are the ones given.
- */
 bool UmlMultiplicityElement::is(
     int lowerbound, int upperbound) const
 {
@@ -251,9 +213,6 @@ bool UmlMultiplicityElement::is(
     return bool ();
 }
 
-/*!
-    The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.
- */
 bool UmlMultiplicityElement::isMultivalued(
     ) const
 {
@@ -262,9 +221,6 @@ bool UmlMultiplicityElement::isMultivalued(
     return bool ();
 }
 
-/*!
-    The query lowerBound() returns the lower bound of the multiplicity as an integer.
- */
 int UmlMultiplicityElement::lowerBound(
     ) const
 {
@@ -273,9 +229,6 @@ int UmlMultiplicityElement::lowerBound(
     return int ();
 }
 
-/*!
-    The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
- */
 int UmlMultiplicityElement::upperBound(
     ) const
 {

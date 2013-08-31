@@ -43,14 +43,6 @@
 #include "private/umloutputpin_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlValueSpecificationAction
-
-    \inmodule QtUml
-
-    \brief A value specification action is an action that evaluates a value specification.
- */
-
 UmlValueSpecificationAction::UmlValueSpecificationAction() :
     _result(0),
     _value(0)
@@ -59,9 +51,6 @@ UmlValueSpecificationAction::UmlValueSpecificationAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the output pin on which the result is put.
- */
 UmlOutputPin *UmlValueSpecificationAction::result() const
 {
     // This is a read-write association end
@@ -86,9 +75,6 @@ void UmlValueSpecificationAction::setResult(UmlOutputPin *result)
     }
 }
 
-/*!
-    Value specification to be evaluated.
- */
 UmlValueSpecification *UmlValueSpecificationAction::value() const
 {
     // This is a read-write association end

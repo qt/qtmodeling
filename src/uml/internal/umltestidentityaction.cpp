@@ -43,14 +43,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlTestIdentityAction
-
-    \inmodule QtUml
-
-    \brief A test identity action is an action that tests if two values are identical objects.
- */
-
 UmlTestIdentityAction::UmlTestIdentityAction() :
     _first(0),
     _result(0),
@@ -60,9 +52,6 @@ UmlTestIdentityAction::UmlTestIdentityAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the pin on which an object is placed.
- */
 UmlInputPin *UmlTestIdentityAction::first() const
 {
     // This is a read-write association end
@@ -87,9 +76,6 @@ void UmlTestIdentityAction::setFirst(UmlInputPin *first)
     }
 }
 
-/*!
-    Tells whether the two input objects are identical.
- */
 UmlOutputPin *UmlTestIdentityAction::result() const
 {
     // This is a read-write association end
@@ -114,9 +100,6 @@ void UmlTestIdentityAction::setResult(UmlOutputPin *result)
     }
 }
 
-/*!
-    Gives the pin on which an object is placed.
- */
 UmlInputPin *UmlTestIdentityAction::second() const
 {
     // This is a read-write association end

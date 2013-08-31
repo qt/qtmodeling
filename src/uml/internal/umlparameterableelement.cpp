@@ -42,14 +42,6 @@
 
 #include "private/umltemplateparameter_p.h"
 
-/*!
-    \class UmlParameterableElement
-
-    \inmodule QtUml
-
-    \brief A parameterable element is an element that can be exposed as a formal template parameter for a template, or specified as an actual parameter in a binding of a template.
- */
-
 UmlParameterableElement::UmlParameterableElement() :
     _owningTemplateParameter(0),
     _templateParameter(0)
@@ -58,9 +50,6 @@ UmlParameterableElement::UmlParameterableElement() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The formal template parameter that owns this element.
- */
 UmlTemplateParameter *UmlParameterableElement::owningTemplateParameter() const
 {
     // This is a read-write association end
@@ -83,9 +72,6 @@ void UmlParameterableElement::setOwningTemplateParameter(UmlTemplateParameter *o
     }
 }
 
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
 UmlTemplateParameter *UmlParameterableElement::templateParameter() const
 {
     // This is a read-write association end
@@ -104,9 +90,6 @@ void UmlParameterableElement::setTemplateParameter(UmlTemplateParameter *templat
 
 // OPERATIONS
 
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
- */
 bool UmlParameterableElement::isCompatibleWith(
     UmlParameterableElement *p) const
 {
@@ -116,9 +99,6 @@ bool UmlParameterableElement::isCompatibleWith(
     return bool ();
 }
 
-/*!
-    The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
- */
 bool UmlParameterableElement::isTemplateParameter(
     ) const
 {

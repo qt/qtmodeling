@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlobservation_p.h"
 
-/*!
-    \class UmlObservation
-
-    \inmodule QtUml
-
-    \brief Observation is a superclass of TimeObservation and DurationObservation in order for TimeExpression and Duration to refer to either in a simple way.
- */
-
 UmlObservation::UmlObservation()
 {
 }

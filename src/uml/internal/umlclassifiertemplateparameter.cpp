@@ -42,14 +42,6 @@
 
 #include "private/umlclassifier_p.h"
 
-/*!
-    \class UmlClassifierTemplateParameter
-
-    \inmodule QtUml
-
-    \brief A classifier template parameter exposes a classifier as a formal template parameter.
- */
-
 UmlClassifierTemplateParameter::UmlClassifierTemplateParameter() :
     _allowSubstitutable(true),
     _parameteredElement(0)
@@ -58,9 +50,6 @@ UmlClassifierTemplateParameter::UmlClassifierTemplateParameter() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.
- */
 bool UmlClassifierTemplateParameter::allowSubstitutable() const
 {
     // This is a read-write property
@@ -77,9 +66,6 @@ void UmlClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutab
     }
 }
 
-/*!
-    The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
- */
 const QSet<UmlClassifier *> UmlClassifierTemplateParameter::constrainingClassifier() const
 {
     // This is a read-write association end
@@ -105,9 +91,6 @@ void UmlClassifierTemplateParameter::removeConstrainingClassifier(UmlClassifier 
     }
 }
 
-/*!
-    The parameterable classifier for this template parameter.
- */
 UmlClassifier *UmlClassifierTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end

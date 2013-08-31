@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlactivityfinalnode_p.h"
 
-/*!
-    \class UmlActivityFinalNode
-
-    \inmodule QtUml
-
-    \brief An activity final node is a final node that stops all flows in an activity.
- */
-
 UmlActivityFinalNode::UmlActivityFinalNode()
 {
 }

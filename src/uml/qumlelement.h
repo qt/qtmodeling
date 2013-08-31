@@ -57,6 +57,8 @@ class QUmlComment;
 class Q_UML_EXPORT QUmlElement : public QObject, public UmlElement
 {
     Q_OBJECT
+
+    // Properties [Element]
     Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
     Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
     Q_PROPERTY(QUmlElement * owner READ owner)
@@ -64,16 +66,20 @@ class Q_UML_EXPORT QUmlElement : public QObject, public UmlElement
 public:
     Q_DECL_HIDDEN explicit QUmlElement(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
     Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE void addOwnedComment(UmlComment *ownedComment);
-    Q_INVOKABLE void removeOwnedComment(UmlComment *ownedComment);
     Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
     Q_INVOKABLE QUmlElement *owner() const;
 
-    // Operations
+    // Operations [Element]
     Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
     Q_INVOKABLE bool mustBeOwned() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
 };
 
 QT_END_NAMESPACE

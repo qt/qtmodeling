@@ -42,14 +42,6 @@
 
 #include "private/umlinstancespecification_p.h"
 
-/*!
-    \class UmlInstanceValue
-
-    \inmodule QtUml
-
-    \brief An instance value is a value specification that identifies an instance.
- */
-
 UmlInstanceValue::UmlInstanceValue() :
     _instance(0)
 {
@@ -57,9 +49,6 @@ UmlInstanceValue::UmlInstanceValue() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The instance that is the specified value.
- */
 UmlInstanceSpecification *UmlInstanceValue::instance() const
 {
     // This is a read-write association end

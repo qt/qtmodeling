@@ -43,14 +43,6 @@
 #include "private/umlparameterableelement_p.h"
 #include "private/umltemplatesignature_p.h"
 
-/*!
-    \class UmlTemplateParameter
-
-    \inmodule QtUml
-
-    \brief A template parameter exposes a parameterable element as a formal template parameter of a template.
- */
-
 UmlTemplateParameter::UmlTemplateParameter() :
     _default_(0),
     _ownedDefault(0),
@@ -62,9 +54,6 @@ UmlTemplateParameter::UmlTemplateParameter() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The element that is the default for this formal template parameter.
- */
 UmlParameterableElement *UmlTemplateParameter::default_() const
 {
     // This is a read-write association end
@@ -81,9 +70,6 @@ void UmlTemplateParameter::setDefault(UmlParameterableElement *default_)
     }
 }
 
-/*!
-    The element that is owned by this template parameter for the purpose of providing a default.
- */
 UmlParameterableElement *UmlTemplateParameter::ownedDefault() const
 {
     // This is a read-write association end
@@ -109,9 +95,6 @@ void UmlTemplateParameter::setOwnedDefault(UmlParameterableElement *ownedDefault
     }
 }
 
-/*!
-    The element that is owned by this template parameter.
- */
 UmlParameterableElement *UmlTemplateParameter::ownedParameteredElement() const
 {
     // This is a read-write association end
@@ -137,9 +120,6 @@ void UmlTemplateParameter::setOwnedParameteredElement(UmlParameterableElement *o
     }
 }
 
-/*!
-    The element exposed by this template parameter.
- */
 UmlParameterableElement *UmlTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
@@ -156,9 +136,6 @@ void UmlTemplateParameter::setParameteredElement(UmlParameterableElement *parame
     }
 }
 
-/*!
-    The template signature that owns this template parameter.
- */
 UmlTemplateSignature *UmlTemplateParameter::signature() const
 {
     // This is a read-write association end

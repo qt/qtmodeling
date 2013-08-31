@@ -43,23 +43,12 @@
 #include "private/umlelementimport_p.h"
 #include "private/umlpackageimport_p.h"
 
-/*!
-    \class UmlProfile
-
-    \inmodule QtUml
-
-    \brief A profile defines limited extensions to a reference metamodel with the purpose of adapting the metamodel to a specific platform or domain.
- */
-
 UmlProfile::UmlProfile()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    References a metaclass that may be extended.
- */
 const QSet<UmlElementImport *> UmlProfile::metaclassReference() const
 {
     // This is a read-write association end
@@ -91,9 +80,6 @@ void UmlProfile::removeMetaclassReference(UmlElementImport *metaclassReference)
     }
 }
 
-/*!
-    References a package containing (directly or indirectly) metaclasses that may be extended.
- */
 const QSet<UmlPackageImport *> UmlProfile::metamodelReference() const
 {
     // This is a read-write association end

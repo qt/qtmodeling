@@ -42,14 +42,6 @@
 
 #include "private/umlpackage_p.h"
 
-/*!
-    \class UmlPackageMerge
-
-    \inmodule QtUml
-
-    \brief A package merge defines how the contents of one package are extended by the contents of another package.
- */
-
 UmlPackageMerge::UmlPackageMerge() :
     _mergedPackage(0),
     _receivingPackage(0)
@@ -58,9 +50,6 @@ UmlPackageMerge::UmlPackageMerge() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the Package that is to be merged with the receiving package of the PackageMerge.
- */
 UmlPackage *UmlPackageMerge::mergedPackage() const
 {
     // This is a read-write association end
@@ -85,9 +74,6 @@ void UmlPackageMerge::setMergedPackage(UmlPackage *mergedPackage)
     }
 }
 
-/*!
-    References the Package that is being extended with the contents of the merged package of the PackageMerge.
- */
 UmlPackage *UmlPackageMerge::receivingPackage() const
 {
     // This is a read-write association end

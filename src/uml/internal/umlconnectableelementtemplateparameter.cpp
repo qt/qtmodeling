@@ -42,14 +42,6 @@
 
 #include "private/umlconnectableelement_p.h"
 
-/*!
-    \class UmlConnectableElementTemplateParameter
-
-    \inmodule QtUml
-
-    \brief A connectable element template parameter exposes a connectable element as a formal parameter for a template.
- */
-
 UmlConnectableElementTemplateParameter::UmlConnectableElementTemplateParameter() :
     _parameteredElement(0)
 {
@@ -57,9 +49,6 @@ UmlConnectableElementTemplateParameter::UmlConnectableElementTemplateParameter()
 
 // OWNED ATTRIBUTES
 
-/*!
-    The ConnectableElement for this template parameter.
- */
 UmlConnectableElement *UmlConnectableElementTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end

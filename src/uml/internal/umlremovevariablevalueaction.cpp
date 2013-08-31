@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlRemoveVariableValueAction
-
-    \inmodule QtUml
-
-    \brief A remove variable value action is a write variable action that removes values from variables.
- */
-
 UmlRemoveVariableValueAction::UmlRemoveVariableValueAction() :
     _isRemoveDuplicates(false),
     _removeAt(0)
@@ -58,9 +50,6 @@ UmlRemoveVariableValueAction::UmlRemoveVariableValueAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies whether to remove duplicates of the value in nonunique variables.
- */
 bool UmlRemoveVariableValueAction::isRemoveDuplicates() const
 {
     // This is a read-write property
@@ -77,9 +66,6 @@ void UmlRemoveVariableValueAction::setRemoveDuplicates(bool isRemoveDuplicates)
     }
 }
 
-/*!
-    Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
- */
 UmlInputPin *UmlRemoveVariableValueAction::removeAt() const
 {
     // This is a read-write association end

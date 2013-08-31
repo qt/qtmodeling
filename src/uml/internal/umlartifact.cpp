@@ -44,23 +44,12 @@
 #include "private/umloperation_p.h"
 #include "private/umlproperty_p.h"
 
-/*!
-    \class UmlArtifact
-
-    \inmodule QtUml
-
-    \brief An artifact is the source of a deployment to a node.An artifact is the specification of a physical piece of information that is used or produced by a software development process, or by deployment and operation of a system. Examples of artifacts include model files, source files, scripts, and binary executable files, a table in a database system, a development deliverable, or a word-processing document, a mail message.
- */
-
 UmlArtifact::UmlArtifact()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.
- */
 QString UmlArtifact::fileName() const
 {
     // This is a read-write property
@@ -77,9 +66,6 @@ void UmlArtifact::setFileName(QString fileName)
     }
 }
 
-/*!
-    The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
- */
 const QSet<UmlManifestation *> UmlArtifact::manifestation() const
 {
     // This is a read-write association end
@@ -113,9 +99,6 @@ void UmlArtifact::removeManifestation(UmlManifestation *manifestation)
     }
 }
 
-/*!
-    The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
- */
 const QSet<UmlArtifact *> UmlArtifact::nestedArtifact() const
 {
     // This is a read-write association end
@@ -147,9 +130,6 @@ void UmlArtifact::removeNestedArtifact(UmlArtifact *nestedArtifact)
     }
 }
 
-/*!
-    The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.
- */
 const QList<UmlProperty *> UmlArtifact::ownedAttribute() const
 {
     // This is a read-write association end
@@ -183,9 +163,6 @@ void UmlArtifact::removeOwnedAttribute(UmlProperty *ownedAttribute)
     }
 }
 
-/*!
-    The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
- */
 const QList<UmlOperation *> UmlArtifact::ownedOperation() const
 {
     // This is a read-write association end

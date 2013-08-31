@@ -44,14 +44,6 @@
 #include "private/umlexecutablenode_p.h"
 #include "private/umlobjectnode_p.h"
 
-/*!
-    \class UmlExceptionHandler
-
-    \inmodule QtUml
-
-    \brief An exception handler is an element that specifies a body to execute in case the specified exception occurs during the execution of the protected node.
- */
-
 UmlExceptionHandler::UmlExceptionHandler() :
     _exceptionInput(0),
     _handlerBody(0),
@@ -61,9 +53,6 @@ UmlExceptionHandler::UmlExceptionHandler() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
- */
 UmlObjectNode *UmlExceptionHandler::exceptionInput() const
 {
     // This is a read-write association end
@@ -80,9 +69,6 @@ void UmlExceptionHandler::setExceptionInput(UmlObjectNode *exceptionInput)
     }
 }
 
-/*!
-    The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
- */
 const QSet<UmlClassifier *> UmlExceptionHandler::exceptionType() const
 {
     // This is a read-write association end
@@ -108,9 +94,6 @@ void UmlExceptionHandler::removeExceptionType(UmlClassifier *exceptionType)
     }
 }
 
-/*!
-    A node that is executed if the handler satisfies an uncaught exception.
- */
 UmlExecutableNode *UmlExceptionHandler::handlerBody() const
 {
     // This is a read-write association end
@@ -127,9 +110,6 @@ void UmlExceptionHandler::setHandlerBody(UmlExecutableNode *handlerBody)
     }
 }
 
-/*!
-    The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.
- */
 UmlExecutableNode *UmlExceptionHandler::protectedNode() const
 {
     // This is a read-write association end

@@ -40,23 +40,12 @@
 ****************************************************************************/
 #include "umlcomment_p.h"
 
-/*!
-    \class UmlComment
-
-    \inmodule QtUml
-
-    \brief A comment is a textual annotation that can be attached to a set of elements.
- */
-
 UmlComment::UmlComment()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the Element(s) being commented.
- */
 const QSet<UmlElement *> UmlComment::annotatedElement() const
 {
     // This is a read-write association end
@@ -82,9 +71,6 @@ void UmlComment::removeAnnotatedElement(UmlElement *annotatedElement)
     }
 }
 
-/*!
-    Specifies a string that is the comment.
- */
 QString UmlComment::body() const
 {
     // This is a read-write property

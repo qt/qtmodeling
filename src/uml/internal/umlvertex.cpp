@@ -44,14 +44,6 @@
 #include "private/umlstatemachine_p.h"
 #include "private/umltransition_p.h"
 
-/*!
-    \class UmlVertex
-
-    \inmodule QtUml
-
-    \brief A vertex is an abstraction of a node in a state machine graph. In general, it can be the source or destination of any number of transitions.
- */
-
 UmlVertex::UmlVertex() :
     _container(0)
 {
@@ -59,9 +51,6 @@ UmlVertex::UmlVertex() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The region that contains this vertex.
- */
 UmlRegion *UmlVertex::container() const
 {
     // This is a read-write association end
@@ -83,9 +72,6 @@ void UmlVertex::setContainer(UmlRegion *container)
     }
 }
 
-/*!
-    Specifies the transitions entering this vertex.
- */
 const QSet<UmlTransition *> UmlVertex::incoming() const
 {
     // This is a read-only derived association end
@@ -129,9 +115,6 @@ void UmlVertex::removeIncoming(UmlTransition *incoming)
     }
 }
 
-/*!
-    Specifies the transitions departing from this vertex.
- */
 const QSet<UmlTransition *> UmlVertex::outgoing() const
 {
     // This is a read-only derived association end
@@ -177,9 +160,6 @@ void UmlVertex::removeOutgoing(UmlTransition *outgoing)
 
 // OPERATIONS
 
-/*!
-    The operation containingStateMachine() returns the state machine in which this Vertex is defined
- */
 UmlStateMachine *UmlVertex::containingStateMachine(
     ) const
 {

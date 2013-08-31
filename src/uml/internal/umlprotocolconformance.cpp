@@ -42,14 +42,6 @@
 
 #include "private/umlprotocolstatemachine_p.h"
 
-/*!
-    \class UmlProtocolConformance
-
-    \inmodule QtUml
-
-    \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
- */
-
 UmlProtocolConformance::UmlProtocolConformance() :
     _generalMachine(0),
     _specificMachine(0)
@@ -58,9 +50,6 @@ UmlProtocolConformance::UmlProtocolConformance() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the protocol state machine to which the specific state machine conforms.
- */
 UmlProtocolStateMachine *UmlProtocolConformance::generalMachine() const
 {
     // This is a read-write association end
@@ -85,9 +74,6 @@ void UmlProtocolConformance::setGeneralMachine(UmlProtocolStateMachine *generalM
     }
 }
 
-/*!
-    Specifies the state machine which conforms to the general state machine.
- */
 UmlProtocolStateMachine *UmlProtocolConformance::specificMachine() const
 {
     // This is a read-write association end

@@ -42,14 +42,6 @@
 
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlAcceptCallAction
-
-    \inmodule QtUml
-
-    \brief An accept call action is an accept event action representing the receipt of a synchronous call request. In addition to the normal operation parameters, the action produces an output that is needed later to supply the information to the reply action necessary to return control to the caller. This action is for synchronous calls. If it is used to handle an asynchronous call, execution of the subsequent reply action will complete immediately with no effects.
- */
-
 UmlAcceptCallAction::UmlAcceptCallAction() :
     _returnInformation(0)
 {
@@ -57,9 +49,6 @@ UmlAcceptCallAction::UmlAcceptCallAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.
- */
 UmlOutputPin *UmlAcceptCallAction::returnInformation() const
 {
     // This is a read-write association end

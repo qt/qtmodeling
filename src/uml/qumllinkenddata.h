@@ -52,6 +52,8 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlComment;
+class QUmlElement;
 class QUmlInputPin;
 class QUmlProperty;
 class QUmlQualifierValue;
@@ -59,6 +61,13 @@ class QUmlQualifierValue;
 class Q_UML_EXPORT QUmlLinkEndData : public QObject, public UmlLinkEndData
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [LinkEndData]
     Q_PROPERTY(QUmlProperty * end READ end)
     Q_PROPERTY(QSet<QUmlQualifierValue *> qualifier READ qualifier)
     Q_PROPERTY(QUmlInputPin * value READ value)
@@ -66,14 +75,31 @@ class Q_UML_EXPORT QUmlLinkEndData : public QObject, public UmlLinkEndData
 public:
     Q_INVOKABLE explicit QUmlLinkEndData(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [LinkEndData]
     Q_INVOKABLE QUmlProperty *end() const;
-    Q_INVOKABLE void setEnd(QUmlProperty *end);
     Q_INVOKABLE const QSet<QUmlQualifierValue *> qualifier() const;
-    Q_INVOKABLE void addQualifier(UmlQualifierValue *qualifier);
-    Q_INVOKABLE void removeQualifier(UmlQualifierValue *qualifier);
     Q_INVOKABLE QUmlInputPin *value() const;
-    Q_INVOKABLE void setValue(QUmlInputPin *value);
+
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [LinkEndData]
+    void setEnd(QUmlProperty *end);
+    void addQualifier(UmlQualifierValue *qualifier);
+    void removeQualifier(UmlQualifierValue *qualifier);
+    void setValue(QUmlInputPin *value);
 };
 
 QT_END_NAMESPACE

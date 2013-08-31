@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlcentralbuffernode_p.h"
 
-/*!
-    \class UmlCentralBufferNode
-
-    \inmodule QtUml
-
-    \brief A central buffer node is an object node for managing flows from multiple sources and destinations.
- */
-
 UmlCentralBufferNode::UmlCentralBufferNode()
 {
 }

@@ -42,14 +42,6 @@
 
 #include "private/umlexecutionspecification_p.h"
 
-/*!
-    \class UmlExecutionOccurrenceSpecification
-
-    \inmodule QtUml
-
-    \brief An execution occurrence specification represents moments in time at which actions or behaviors start or finish.
- */
-
 UmlExecutionOccurrenceSpecification::UmlExecutionOccurrenceSpecification() :
     _execution(0)
 {
@@ -57,9 +49,6 @@ UmlExecutionOccurrenceSpecification::UmlExecutionOccurrenceSpecification() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the execution specification describing the execution that is started or finished at this execution event.
- */
 UmlExecutionSpecification *UmlExecutionOccurrenceSpecification::execution() const
 {
     // This is a read-write association end

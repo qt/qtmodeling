@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlfinalstate_p.h"
 
-/*!
-    \class UmlFinalState
-
-    \inmodule QtUml
-
-    \brief A special kind of state signifying that the enclosing region is completed. If the enclosing region is directly contained in a state machine and all other regions in the state machine also are completed, then it means that the entire state machine is completed.
- */
-
 UmlFinalState::UmlFinalState()
 {
 }

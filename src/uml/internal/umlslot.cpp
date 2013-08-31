@@ -44,14 +44,6 @@
 #include "private/umlstructuralfeature_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlSlot
-
-    \inmodule QtUml
-
-    \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
- */
-
 UmlSlot::UmlSlot() :
     _definingFeature(0),
     _owningInstance(0)
@@ -60,9 +52,6 @@ UmlSlot::UmlSlot() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The structural feature that specifies the values that may be held by the slot.
- */
 UmlStructuralFeature *UmlSlot::definingFeature() const
 {
     // This is a read-write association end
@@ -79,9 +68,6 @@ void UmlSlot::setDefiningFeature(UmlStructuralFeature *definingFeature)
     }
 }
 
-/*!
-    The instance specification that owns this slot.
- */
 UmlInstanceSpecification *UmlSlot::owningInstance() const
 {
     // This is a read-write association end
@@ -103,9 +89,6 @@ void UmlSlot::setOwningInstance(UmlInstanceSpecification *owningInstance)
     }
 }
 
-/*!
-    The value or values corresponding to the defining feature for the owning instance specification.
- */
 const QList<UmlValueSpecification *> UmlSlot::value() const
 {
     // This is a read-write association end

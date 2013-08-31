@@ -43,14 +43,6 @@
 #include "private/umlbehavior_p.h"
 #include "private/umlparameter_p.h"
 
-/*!
-    \class UmlOpaqueExpression
-
-    \inmodule QtUml
-
-    \brief An opaque expression is an uninterpreted textual statement that denotes a (possibly empty) set of values when evaluated in a context.Provides a mechanism for precisely defining the behavior of an opaque expression. An opaque expression is defined by a behavior restricted to return one result.
- */
-
 UmlOpaqueExpression::UmlOpaqueExpression() :
     _behavior(0)
 {
@@ -58,9 +50,6 @@ UmlOpaqueExpression::UmlOpaqueExpression() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the behavior of the opaque expression.
- */
 UmlBehavior *UmlOpaqueExpression::behavior() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlOpaqueExpression::setBehavior(UmlBehavior *behavior)
     }
 }
 
-/*!
-    The text of the expression, possibly in multiple languages.
- */
 const QList<QString> UmlOpaqueExpression::body() const
 {
     // This is a read-write property
@@ -105,9 +91,6 @@ void UmlOpaqueExpression::removeBody(QString body)
     }
 }
 
-/*!
-    Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
- */
 const QList<QString> UmlOpaqueExpression::language() const
 {
     // This is a read-write property
@@ -133,9 +116,6 @@ void UmlOpaqueExpression::removeLanguage(QString language)
     }
 }
 
-/*!
-    Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.
- */
 UmlParameter *UmlOpaqueExpression::result() const
 {
     // This is a read-only derived association end
@@ -159,9 +139,6 @@ void UmlOpaqueExpression::setResult(UmlParameter *result)
 
 // OPERATIONS
 
-/*!
-    The query isIntegral() tells whether an expression is intended to produce an integer.
- */
 bool UmlOpaqueExpression::isIntegral(
     ) const
 {
@@ -170,9 +147,6 @@ bool UmlOpaqueExpression::isIntegral(
     return bool ();
 }
 
-/*!
-    The query isNonNegative() tells whether an integer expression has a non-negative value.
- */
 bool UmlOpaqueExpression::isNonNegative(
     ) const
 {
@@ -181,9 +155,6 @@ bool UmlOpaqueExpression::isNonNegative(
     return bool ();
 }
 
-/*!
-    The query isPositive() tells whether an integer expression has a positive value.
- */
 bool UmlOpaqueExpression::isPositive(
     ) const
 {
@@ -192,9 +163,6 @@ bool UmlOpaqueExpression::isPositive(
     return bool ();
 }
 
-/*!
-    The query value() gives an integer value for an expression intended to produce one.
- */
 int UmlOpaqueExpression::value(
     ) const
 {

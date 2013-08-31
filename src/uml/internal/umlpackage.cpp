@@ -47,14 +47,6 @@
 #include "private/umlstereotype_p.h"
 #include "private/umltype_p.h"
 
-/*!
-    \class UmlPackage
-
-    \inmodule QtUml
-
-    \brief A package can have one or more profile applications to indicate which profiles have been applied. Because a profile is a package, it is possible to apply a profile not only to packages, but also to profiles.Package specializes TemplateableElement and PackageableElement specializes ParameterableElement to specify that a package can be used as a template and a PackageableElement as a template parameter.A package is used to group elements, and provides a namespace for the grouped elements.
- */
-
 UmlPackage::UmlPackage() :
     _nestingPackage(0)
 {
@@ -62,9 +54,6 @@ UmlPackage::UmlPackage() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.
- */
 QString UmlPackage::URI() const
 {
     // This is a read-write property
@@ -81,9 +70,6 @@ void UmlPackage::setURI(QString URI)
     }
 }
 
-/*!
-    References the packaged elements that are Packages.
- */
 const QSet<UmlPackage *> UmlPackage::nestedPackage() const
 {
     // This is a read-write derived association end
@@ -123,9 +109,6 @@ void UmlPackage::removeNestedPackage(UmlPackage *nestedPackage)
     }
 }
 
-/*!
-    References the Package that owns this Package.
- */
 UmlPackage *UmlPackage::nestingPackage() const
 {
     // This is a read-write association end
@@ -142,9 +125,6 @@ void UmlPackage::setNestingPackage(UmlPackage *nestingPackage)
     }
 }
 
-/*!
-    References the Stereotypes that are owned by the Package
- */
 const QSet<UmlStereotype *> UmlPackage::ownedStereotype() const
 {
     // This is a read-only derived association end
@@ -184,9 +164,6 @@ void UmlPackage::removeOwnedStereotype(UmlStereotype *ownedStereotype)
     }
 }
 
-/*!
-    References the packaged elements that are Types.
- */
 const QSet<UmlType *> UmlPackage::ownedType() const
 {
     // This is a read-write derived association end
@@ -236,9 +213,6 @@ void UmlPackage::removeOwnedType(UmlType *ownedType)
     }
 }
 
-/*!
-    References the PackageMerges that are owned by this Package.
- */
 const QSet<UmlPackageMerge *> UmlPackage::packageMerge() const
 {
     // This is a read-write association end
@@ -280,9 +254,6 @@ void UmlPackage::removePackageMerge(UmlPackageMerge *packageMerge)
     }
 }
 
-/*!
-    Specifies the packageable elements that are owned by this Package.
- */
 const QSet<UmlPackageableElement *> UmlPackage::packagedElement() const
 {
     // This is a read-write association end
@@ -314,9 +285,6 @@ void UmlPackage::removePackagedElement(UmlPackageableElement *packagedElement)
     }
 }
 
-/*!
-    References the ProfileApplications that indicate which profiles have been applied to the Package.
- */
 const QSet<UmlProfileApplication *> UmlPackage::profileApplication() const
 {
     // This is a read-write association end
@@ -360,9 +328,6 @@ void UmlPackage::removeProfileApplication(UmlProfileApplication *profileApplicat
 
 // OPERATIONS
 
-/*!
-    The query allApplicableStereotypes() returns all the directly or indirectly owned stereotypes, including stereotypes contained in sub-profiles.
- */
 QSet<UmlStereotype *> UmlPackage::allApplicableStereotypes(
     ) const
 {
@@ -371,9 +336,6 @@ QSet<UmlStereotype *> UmlPackage::allApplicableStereotypes(
     return QSet<UmlStereotype *> ();
 }
 
-/*!
-    The query containingProfile() returns the closest profile directly or indirectly containing this package (or this package itself, if it is a profile).
- */
 UmlProfile *UmlPackage::containingProfile(
     ) const
 {
@@ -382,9 +344,6 @@ UmlProfile *UmlPackage::containingProfile(
     return 0;
 }
 
-/*!
-    The query makesVisible() defines whether a Package makes an element visible outside itself. Elements with no visibility and elements with public visibility are made visible.
- */
 bool UmlPackage::makesVisible(
     UmlNamedElement *el) const
 {
@@ -394,9 +353,6 @@ bool UmlPackage::makesVisible(
     return bool ();
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner.
- */
 bool UmlPackage::mustBeOwned(
     ) const
 {
@@ -405,9 +361,6 @@ bool UmlPackage::mustBeOwned(
     return bool ();
 }
 
-/*!
-    The query visibleMembers() defines which members of a Package can be accessed outside it.
- */
 QSet<UmlPackageableElement *> UmlPackage::visibleMembers(
     ) const
 {

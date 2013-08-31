@@ -43,14 +43,6 @@
 #include "private/umlclassifier_p.h"
 #include "private/umlcomponent_p.h"
 
-/*!
-    \class UmlComponentRealization
-
-    \inmodule QtUml
-
-    \brief The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
- */
-
 UmlComponentRealization::UmlComponentRealization() :
     _abstraction(0)
 {
@@ -58,9 +50,6 @@ UmlComponentRealization::UmlComponentRealization() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
- */
 UmlComponent *UmlComponentRealization::abstraction() const
 {
     // This is a read-write association end
@@ -86,9 +75,6 @@ void UmlComponentRealization::setAbstraction(UmlComponent *abstraction)
     }
 }
 
-/*!
-    The classifiers that are involved in the implementation of the Component that owns this Realization.
- */
 const QSet<UmlClassifier *> UmlComponentRealization::realizingClassifier() const
 {
     // This is a read-write association end

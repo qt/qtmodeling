@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlmessageoccurrencespecification_p.h"
 
-/*!
-    \class UmlMessageOccurrenceSpecification
-
-    \inmodule QtUml
-
-    \brief A message occurrence specification pecifies the occurrence of message events, such as sending and receiving of signals or invoking or receiving of operation calls. A message occurrence specification is a kind of message end. Messages are generated either by synchronous operation calls or asynchronous signal sends. They are received by the execution of corresponding accept event actions.
- */
-
 UmlMessageOccurrenceSpecification::UmlMessageOccurrenceSpecification()
 {
 }

@@ -44,14 +44,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlReadIsClassifiedObjectAction
-
-    \inmodule QtUml
-
-    \brief A read is classified object action is an action that determines whether a runtime object is classified by a given classifier.
- */
-
 UmlReadIsClassifiedObjectAction::UmlReadIsClassifiedObjectAction() :
     _classifier(0),
     _isDirect(false),
@@ -62,9 +54,6 @@ UmlReadIsClassifiedObjectAction::UmlReadIsClassifiedObjectAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The classifier against which the classification of the input object is tested.
- */
 UmlClassifier *UmlReadIsClassifiedObjectAction::classifier() const
 {
     // This is a read-write association end
@@ -81,9 +70,6 @@ void UmlReadIsClassifiedObjectAction::setClassifier(UmlClassifier *classifier)
     }
 }
 
-/*!
-    Indicates whether the classifier must directly classify the input object.
- */
 bool UmlReadIsClassifiedObjectAction::isDirect() const
 {
     // This is a read-write property
@@ -100,9 +86,6 @@ void UmlReadIsClassifiedObjectAction::setDirect(bool isDirect)
     }
 }
 
-/*!
-    Holds the object whose classification is to be tested.
- */
 UmlInputPin *UmlReadIsClassifiedObjectAction::object() const
 {
     // This is a read-write association end
@@ -127,9 +110,6 @@ void UmlReadIsClassifiedObjectAction::setObject(UmlInputPin *object)
     }
 }
 
-/*!
-    After termination of the action, will hold the result of the test.
- */
 UmlOutputPin *UmlReadIsClassifiedObjectAction::result() const
 {
     // This is a read-write association end

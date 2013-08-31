@@ -42,14 +42,6 @@
 
 #include "private/umlsignal_p.h"
 
-/*!
-    \class UmlReception
-
-    \inmodule QtUml
-
-    \brief A reception is a declaration stating that a classifier is prepared to react to the receipt of a signal. A reception designates a signal and specifies the expected behavioral response. The details of handling a signal are specified by the behavior associated with the reception or the classifier itself.
- */
-
 UmlReception::UmlReception() :
     _signal(0)
 {
@@ -57,9 +49,6 @@ UmlReception::UmlReception() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The signal that this reception handles.
- */
 UmlSignal *UmlReception::signal() const
 {
     // This is a read-write association end

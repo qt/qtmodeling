@@ -42,14 +42,6 @@
 
 #include "private/umlclassifier_p.h"
 
-/*!
-    \class UmlRedefinableElement
-
-    \inmodule QtUml
-
-    \brief A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
- */
-
 UmlRedefinableElement::UmlRedefinableElement() :
     _isLeaf(false)
 {
@@ -57,9 +49,6 @@ UmlRedefinableElement::UmlRedefinableElement() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
- */
 bool UmlRedefinableElement::isLeaf() const
 {
     // This is a read-write property
@@ -76,9 +65,6 @@ void UmlRedefinableElement::setLeaf(bool isLeaf)
     }
 }
 
-/*!
-    The redefinable element that is being redefined by this element.
- */
 const QSet<UmlRedefinableElement *> UmlRedefinableElement::redefinedElement() const
 {
     // This is a read-only derived union association end
@@ -104,9 +90,6 @@ void UmlRedefinableElement::removeRedefinedElement(UmlRedefinableElement *redefi
     }
 }
 
-/*!
-    References the contexts that this element may be redefined from.
- */
 const QSet<UmlClassifier *> UmlRedefinableElement::redefinitionContext() const
 {
     // This is a read-only derived union association end
@@ -134,9 +117,6 @@ void UmlRedefinableElement::removeRedefinitionContext(UmlClassifier *redefinitio
 
 // OPERATIONS
 
-/*!
-    The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
- */
 bool UmlRedefinableElement::isConsistentWith(
     UmlRedefinableElement *redefinee) const
 {
@@ -146,9 +126,6 @@ bool UmlRedefinableElement::isConsistentWith(
     return bool ();
 }
 
-/*!
-    The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
- */
 bool UmlRedefinableElement::isRedefinitionContextValid(
     UmlRedefinableElement *redefined) const
 {

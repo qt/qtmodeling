@@ -40,23 +40,12 @@
 ****************************************************************************/
 #include "umlliteralnull_p.h"
 
-/*!
-    \class UmlLiteralNull
-
-    \inmodule QtUml
-
-    \brief A literal null specifies the lack of a value.
- */
-
 UmlLiteralNull::UmlLiteralNull()
 {
 }
 
 // OPERATIONS
 
-/*!
-    The query isComputable() is redefined to be true.
- */
 bool UmlLiteralNull::isComputable(
     ) const
 {
@@ -65,9 +54,6 @@ bool UmlLiteralNull::isComputable(
     return bool ();
 }
 
-/*!
-    The query isNull() returns true.
- */
 bool UmlLiteralNull::isNull(
     ) const
 {

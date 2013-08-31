@@ -42,14 +42,6 @@
 
 #include "private/umldurationinterval_p.h"
 
-/*!
-    \class UmlDurationConstraint
-
-    \inmodule QtUml
-
-    \brief A duration constraint is a constraint that refers to a duration interval.
- */
-
 UmlDurationConstraint::UmlDurationConstraint() :
     _specification(0)
 {
@@ -57,9 +49,6 @@ UmlDurationConstraint::UmlDurationConstraint() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.
- */
 bool UmlDurationConstraint::firstEvent() const
 {
     // This is a read-write property
@@ -76,9 +65,6 @@ void UmlDurationConstraint::setFirstEvent(bool firstEvent)
     }
 }
 
-/*!
-    The interval constraining the duration.
- */
 UmlDurationInterval *UmlDurationConstraint::specification() const
 {
     // This is a read-write association end

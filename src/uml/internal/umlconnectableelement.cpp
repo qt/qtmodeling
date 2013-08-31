@@ -43,14 +43,6 @@
 #include "private/umlconnectableelementtemplateparameter_p.h"
 #include "private/umlconnectorend_p.h"
 
-/*!
-    \class UmlConnectableElement
-
-    \inmodule QtUml
-
-    \brief ConnectableElement is an abstract metaclass representing a set of instances that play roles of a classifier. Connectable elements may be joined by attached connectors and specify configurations of linked instances to be created within an instance of the containing classifier.A connectable element may be exposed as a connectable element template parameter.
- */
-
 UmlConnectableElement::UmlConnectableElement() :
     _templateParameter(0)
 {
@@ -58,9 +50,6 @@ UmlConnectableElement::UmlConnectableElement() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Denotes a set of connector ends that attaches to this connectable element.
- */
 const QList<UmlConnectorEnd *> UmlConnectableElement::end() const
 {
     // This is a read-only derived association end
@@ -104,9 +93,6 @@ void UmlConnectableElement::removeEnd(UmlConnectorEnd *end)
     }
 }
 
-/*!
-    The ConnectableElementTemplateParameter for this ConnectableElement parameter.
- */
 UmlConnectableElementTemplateParameter *UmlConnectableElement::templateParameter() const
 {
     // This is a read-write association end

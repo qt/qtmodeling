@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umldestructionoccurrencespecification_p.h"
 
-/*!
-    \class UmlDestructionOccurrenceSpecification
-
-    \inmodule QtUml
-
-    \brief A destruction event models the destruction of an object.
- */
-
 UmlDestructionOccurrenceSpecification::UmlDestructionOccurrenceSpecification()
 {
 }

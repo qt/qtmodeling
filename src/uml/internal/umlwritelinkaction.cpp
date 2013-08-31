@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlwritelinkaction_p.h"
 
-/*!
-    \class UmlWriteLinkAction
-
-    \inmodule QtUml
-
-    \brief WriteLinkAction is an abstract class for link actions that create and destroy links.
- */
-
 UmlWriteLinkAction::UmlWriteLinkAction()
 {
 }

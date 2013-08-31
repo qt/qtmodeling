@@ -43,14 +43,6 @@
 #include "private/umlcollaboration_p.h"
 #include "private/umldependency_p.h"
 
-/*!
-    \class UmlCollaborationUse
-
-    \inmodule QtUml
-
-    \brief A collaboration use represents one particular use of a collaboration to explain the relationships between the properties of a classifier. A collaboration use shows how the pattern described by a collaboration is applied in a given context, by binding specific entities from that context to the roles of the collaboration. Depending on the context, these entities could be structural features of a classifier, instance specifications, or even roles in some containing collaboration. There may be multiple occurrences of a given collaboration within a classifier, each involving a different set of roles and connectors. A given role or connector may be involved in multiple occurrences of the same or different collaborations. Associated dependencies map features of the collaboration type to features in the classifier. These dependencies indicate which role in the classifier plays which role in the collaboration.
- */
-
 UmlCollaborationUse::UmlCollaborationUse() :
     _type(0)
 {
@@ -58,9 +50,6 @@ UmlCollaborationUse::UmlCollaborationUse() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
- */
 const QSet<UmlDependency *> UmlCollaborationUse::roleBinding() const
 {
     // This is a read-write association end
@@ -92,9 +81,6 @@ void UmlCollaborationUse::removeRoleBinding(UmlDependency *roleBinding)
     }
 }
 
-/*!
-    The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.
- */
 UmlCollaboration *UmlCollaborationUse::type() const
 {
     // This is a read-write association end

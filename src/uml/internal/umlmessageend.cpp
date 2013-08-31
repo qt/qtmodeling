@@ -42,14 +42,6 @@
 
 #include "private/umlmessage_p.h"
 
-/*!
-    \class UmlMessageEnd
-
-    \inmodule QtUml
-
-    \brief MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
- */
-
 UmlMessageEnd::UmlMessageEnd() :
     _message(0)
 {
@@ -57,9 +49,6 @@ UmlMessageEnd::UmlMessageEnd() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References a Message.
- */
 UmlMessage *UmlMessageEnd::message() const
 {
     // This is a read-write association end

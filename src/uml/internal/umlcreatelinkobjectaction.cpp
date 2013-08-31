@@ -42,14 +42,6 @@
 
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlCreateLinkObjectAction
-
-    \inmodule QtUml
-
-    \brief A create link object action creates a link object.
- */
-
 UmlCreateLinkObjectAction::UmlCreateLinkObjectAction() :
     _result(0)
 {
@@ -57,9 +49,6 @@ UmlCreateLinkObjectAction::UmlCreateLinkObjectAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the output pin on which the result is put.
- */
 UmlOutputPin *UmlCreateLinkObjectAction::result() const
 {
     // This is a read-write association end

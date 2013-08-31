@@ -43,14 +43,6 @@
 #include "private/umlclassifier_p.h"
 #include "private/umlgeneralizationset_p.h"
 
-/*!
-    \class UmlGeneralization
-
-    \inmodule QtUml
-
-    \brief A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.A generalization relates a specific classifier to a more general classifier, and is owned by the specific classifier.
- */
-
 UmlGeneralization::UmlGeneralization() :
     _general(0),
     _isSubstitutable(true),
@@ -60,9 +52,6 @@ UmlGeneralization::UmlGeneralization() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the general classifier in the Generalization relationship.
- */
 UmlClassifier *UmlGeneralization::general() const
 {
     // This is a read-write association end
@@ -87,9 +76,6 @@ void UmlGeneralization::setGeneral(UmlClassifier *general)
     }
 }
 
-/*!
-    Designates a set in which instances of Generalization is considered members.
- */
 const QSet<UmlGeneralizationSet *> UmlGeneralization::generalizationSet() const
 {
     // This is a read-write association end
@@ -125,9 +111,6 @@ void UmlGeneralization::removeGeneralizationSet(UmlGeneralizationSet *generaliza
     }
 }
 
-/*!
-    Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
- */
 bool UmlGeneralization::isSubstitutable() const
 {
     // This is a read-write property
@@ -144,9 +127,6 @@ void UmlGeneralization::setSubstitutable(bool isSubstitutable)
     }
 }
 
-/*!
-    References the specializing classifier in the Generalization relationship.
- */
 UmlClassifier *UmlGeneralization::specific() const
 {
     // This is a read-write association end

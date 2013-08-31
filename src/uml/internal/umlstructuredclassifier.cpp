@@ -44,23 +44,12 @@
 #include "private/umlconnector_p.h"
 #include "private/umlproperty_p.h"
 
-/*!
-    \class UmlStructuredClassifier
-
-    \inmodule QtUml
-
-    \brief A structured classifier is an abstract metaclass that represents any classifier whose behavior can be fully or partly described by the collaboration of owned or referenced instances.
- */
-
 UmlStructuredClassifier::UmlStructuredClassifier()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the properties owned by the classifier.
- */
 const QList<UmlProperty *> UmlStructuredClassifier::ownedAttribute() const
 {
     // This is a read-write association end
@@ -96,9 +85,6 @@ void UmlStructuredClassifier::removeOwnedAttribute(UmlProperty *ownedAttribute)
     }
 }
 
-/*!
-    References the connectors owned by the classifier.
- */
 const QSet<UmlConnector *> UmlStructuredClassifier::ownedConnector() const
 {
     // This is a read-write association end
@@ -132,9 +118,6 @@ void UmlStructuredClassifier::removeOwnedConnector(UmlConnector *ownedConnector)
     }
 }
 
-/*!
-    References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
- */
 const QSet<UmlProperty *> UmlStructuredClassifier::part() const
 {
     // This is a read-only derived association end
@@ -168,9 +151,6 @@ void UmlStructuredClassifier::removePart(UmlProperty *part)
     }
 }
 
-/*!
-    References the roles that instances may play in this classifier.
- */
 const QSet<UmlConnectableElement *> UmlStructuredClassifier::role() const
 {
     // This is a read-only derived union association end

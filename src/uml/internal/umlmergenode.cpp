@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlmergenode_p.h"
 
-/*!
-    \class UmlMergeNode
-
-    \inmodule QtUml
-
-    \brief A merge node is a control node that brings together multiple alternate flows. It is not used to synchronize concurrent flows but to accept one among several alternate flows.
- */
-
 UmlMergeNode::UmlMergeNode()
 {
 }

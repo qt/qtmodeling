@@ -42,23 +42,12 @@
 
 #include "private/umllinkendcreationdata_p.h"
 
-/*!
-    \class UmlCreateLinkAction
-
-    \inmodule QtUml
-
-    \brief A create link action is a write link action for creating links.
- */
-
 UmlCreateLinkAction::UmlCreateLinkAction()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies ends of association and inputs.
- */
 const QSet<UmlLinkEndCreationData *> UmlCreateLinkAction::endData() const
 {
     // This is a read-write association end

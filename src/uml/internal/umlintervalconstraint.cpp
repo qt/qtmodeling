@@ -42,14 +42,6 @@
 
 #include "private/umlinterval_p.h"
 
-/*!
-    \class UmlIntervalConstraint
-
-    \inmodule QtUml
-
-    \brief An interval constraint is a constraint that refers to an interval.
- */
-
 UmlIntervalConstraint::UmlIntervalConstraint() :
     _specification(0)
 {
@@ -57,9 +49,6 @@ UmlIntervalConstraint::UmlIntervalConstraint() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    A condition that must be true when evaluated in order for the constraint to be satisfied.
- */
 UmlInterval *UmlIntervalConstraint::specification() const
 {
     // This is a read-write association end

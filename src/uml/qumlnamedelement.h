@@ -45,6 +45,7 @@
 
 #include <QtCore/QObject>
 #include "private/umlnamedelement_p.h"
+
 #include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
@@ -53,7 +54,9 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlComment;
 class QUmlDependency;
+class QUmlElement;
 class QUmlNamespace;
 class QUmlPackage;
 class QUmlStringExpression;
@@ -61,6 +64,13 @@ class QUmlStringExpression;
 class Q_UML_EXPORT QUmlNamedElement : public QObject, public UmlNamedElement
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [NamedElement]
     Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
@@ -71,24 +81,41 @@ class Q_UML_EXPORT QUmlNamedElement : public QObject, public UmlNamedElement
 public:
     Q_DECL_HIDDEN explicit QUmlNamedElement(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [NamedElement]
     Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE void addClientDependency(UmlDependency *clientDependency);
-    Q_INVOKABLE void removeClientDependency(UmlDependency *clientDependency);
     Q_INVOKABLE QString name() const;
-    Q_INVOKABLE void setName(QString name);
     Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE void setNameExpression(QUmlStringExpression *nameExpression);
     Q_INVOKABLE QUmlNamespace *namespace_() const;
     Q_INVOKABLE QString qualifiedName() const;
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-    Q_INVOKABLE void setVisibility(QtUml::VisibilityKind visibility);
 
-    // Operations
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+    // Operations [NamedElement]
     Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
     Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
     Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
     Q_INVOKABLE QString separator() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [NamedElement]
+    void addClientDependency(UmlDependency *clientDependency);
+    void removeClientDependency(UmlDependency *clientDependency);
+    void setName(QString name);
+    void setNameExpression(QUmlStringExpression *nameExpression);
+    void setVisibility(QtUml::VisibilityKind visibility);
 };
 
 QT_END_NAMESPACE

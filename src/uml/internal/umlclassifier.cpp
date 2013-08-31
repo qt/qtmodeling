@@ -51,14 +51,6 @@
 #include "private/umlsubstitution_p.h"
 #include "private/umlusecase_p.h"
 
-/*!
-    \class UmlClassifier
-
-    \inmodule QtUml
-
-    \brief A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
- */
-
 UmlClassifier::UmlClassifier() :
     _isAbstract(false),
     _isFinalSpecialization(false),
@@ -70,9 +62,6 @@ UmlClassifier::UmlClassifier() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
- */
 const QSet<UmlProperty *> UmlClassifier::attribute() const
 {
     // This is a read-only derived union association end
@@ -104,9 +93,6 @@ void UmlClassifier::removeAttribute(UmlProperty *attribute)
     }
 }
 
-/*!
-    References the collaboration uses owned by the classifier.
- */
 const QSet<UmlCollaborationUse *> UmlClassifier::collaborationUse() const
 {
     // This is a read-write association end
@@ -138,9 +124,6 @@ void UmlClassifier::removeCollaborationUse(UmlCollaborationUse *collaborationUse
     }
 }
 
-/*!
-    Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
- */
 const QSet<UmlFeature *> UmlClassifier::feature() const
 {
     // This is a read-only derived union association end
@@ -182,9 +165,6 @@ void UmlClassifier::removeFeature(UmlFeature *feature)
     }
 }
 
-/*!
-    Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
- */
 const QSet<UmlClassifier *> UmlClassifier::general() const
 {
     // This is a read-write derived association end
@@ -218,9 +198,6 @@ void UmlClassifier::removeGeneral(UmlClassifier *general)
     }
 }
 
-/*!
-    Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
- */
 const QSet<UmlGeneralization *> UmlClassifier::generalization() const
 {
     // This is a read-write association end
@@ -262,9 +239,6 @@ void UmlClassifier::removeGeneralization(UmlGeneralization *generalization)
     }
 }
 
-/*!
-    Specifies all elements inherited by this classifier from the general classifiers.
- */
 const QSet<UmlNamedElement *> UmlClassifier::inheritedMember() const
 {
     // This is a read-only derived association end
@@ -304,9 +278,6 @@ void UmlClassifier::removeInheritedMember(UmlNamedElement *inheritedMember)
     }
 }
 
-/*!
-    If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
- */
 bool UmlClassifier::isAbstract() const
 {
     // This is a read-write property
@@ -323,9 +294,6 @@ void UmlClassifier::setAbstract(bool isAbstract)
     }
 }
 
-/*!
-    If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
- */
 bool UmlClassifier::isFinalSpecialization() const
 {
     // This is a read-write property
@@ -342,9 +310,6 @@ void UmlClassifier::setFinalSpecialization(bool isFinalSpecialization)
     }
 }
 
-/*!
-    The optional template signature specifying the formal template parameters.
- */
 UmlRedefinableTemplateSignature *UmlClassifier::ownedTemplateSignature() const
 {
     // This is a read-write association end
@@ -361,9 +326,6 @@ void UmlClassifier::setOwnedTemplateSignature(UmlRedefinableTemplateSignature *o
     }
 }
 
-/*!
-    References the use cases owned by this classifier.
- */
 const QSet<UmlUseCase *> UmlClassifier::ownedUseCase() const
 {
     // This is a read-write association end
@@ -395,9 +357,6 @@ void UmlClassifier::removeOwnedUseCase(UmlUseCase *ownedUseCase)
     }
 }
 
-/*!
-    Designates the GeneralizationSet of which the associated Classifier is a power type.
- */
 const QSet<UmlGeneralizationSet *> UmlClassifier::powertypeExtent() const
 {
     // This is a read-write association end
@@ -433,9 +392,6 @@ void UmlClassifier::removePowertypeExtent(UmlGeneralizationSet *powertypeExtent)
     }
 }
 
-/*!
-    References the Classifiers that are redefined by this Classifier.
- */
 const QSet<UmlClassifier *> UmlClassifier::redefinedClassifier() const
 {
     // This is a read-write association end
@@ -467,9 +423,6 @@ void UmlClassifier::removeRedefinedClassifier(UmlClassifier *redefinedClassifier
     }
 }
 
-/*!
-    References a collaboration use which indicates the collaboration that represents this classifier.
- */
 UmlCollaborationUse *UmlClassifier::representation() const
 {
     // This is a read-write association end
@@ -494,9 +447,6 @@ void UmlClassifier::setRepresentation(UmlCollaborationUse *representation)
     }
 }
 
-/*!
-    References the substitutions that are owned by this Classifier.
- */
 const QSet<UmlSubstitution *> UmlClassifier::substitution() const
 {
     // This is a read-write association end
@@ -540,9 +490,6 @@ void UmlClassifier::removeSubstitution(UmlSubstitution *substitution)
     }
 }
 
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
 UmlClassifierTemplateParameter *UmlClassifier::templateParameter() const
 {
     // This is a read-write association end
@@ -559,9 +506,6 @@ void UmlClassifier::setTemplateParameter(UmlClassifierTemplateParameter *templat
     }
 }
 
-/*!
-    The set of use cases for which this Classifier is the subject.
- */
 const QSet<UmlUseCase *> UmlClassifier::useCase() const
 {
     // This is a read-write association end
@@ -599,9 +543,6 @@ void UmlClassifier::removeUseCase(UmlUseCase *useCase)
 
 // OPERATIONS
 
-/*!
-    The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
- */
 QSet<UmlFeature *> UmlClassifier::allFeatures(
     ) const
 {
@@ -610,9 +551,6 @@ QSet<UmlFeature *> UmlClassifier::allFeatures(
     return QSet<UmlFeature *> ();
 }
 
-/*!
-    The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.
- */
 QSet<UmlClassifier *> UmlClassifier::allParents(
     ) const
 {
@@ -621,9 +559,6 @@ QSet<UmlClassifier *> UmlClassifier::allParents(
     return QSet<UmlClassifier *> ();
 }
 
-/*!
-    The query conformsTo() gives true for a classifier that defines a type that conforms to another. This is used, for example, in the specification of signature conformance for operations.
- */
 bool UmlClassifier::conformsTo(
     UmlClassifier *other) const
 {
@@ -633,9 +568,6 @@ bool UmlClassifier::conformsTo(
     return bool ();
 }
 
-/*!
-    The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.
- */
 bool UmlClassifier::hasVisibilityOf(
     UmlNamedElement *n) const
 {
@@ -645,9 +577,6 @@ bool UmlClassifier::hasVisibilityOf(
     return bool ();
 }
 
-/*!
-    The inherit operation is overridden to exclude redefined properties.The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.
- */
 QSet<UmlNamedElement *> UmlClassifier::inherit(
     QSet<UmlNamedElement *> inhs) const
 {
@@ -657,9 +586,6 @@ QSet<UmlNamedElement *> UmlClassifier::inherit(
     return QSet<UmlNamedElement *> ();
 }
 
-/*!
-    The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
- */
 QSet<UmlNamedElement *> UmlClassifier::inheritableMembers(
     UmlClassifier *c) const
 {
@@ -669,9 +595,6 @@ QSet<UmlNamedElement *> UmlClassifier::inheritableMembers(
     return QSet<UmlNamedElement *> ();
 }
 
-/*!
-    The query isTemplate() returns whether this templateable element is actually a template.
- */
 bool UmlClassifier::isTemplate(
     ) const
 {
@@ -680,9 +603,6 @@ bool UmlClassifier::isTemplate(
     return bool ();
 }
 
-/*!
-    The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
- */
 bool UmlClassifier::maySpecializeType(
     UmlClassifier *c) const
 {
@@ -692,9 +612,6 @@ bool UmlClassifier::maySpecializeType(
     return bool ();
 }
 
-/*!
-    The query parents() gives all of the immediate ancestors of a generalized Classifier.
- */
 QSet<UmlClassifier *> UmlClassifier::parents(
     ) const
 {

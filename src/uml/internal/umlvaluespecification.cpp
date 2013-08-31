@@ -42,23 +42,12 @@
 
 #include "private/umlparameterableelement_p.h"
 
-/*!
-    \class UmlValueSpecification
-
-    \inmodule QtUml
-
-    \brief ValueSpecification specializes ParameterableElement to specify that a value specification can be exposed as a formal template parameter, and provided as an actual parameter in a binding of a template.A value specification is the specification of a (possibly empty) set of instances, including both objects and data values.
- */
-
 UmlValueSpecification::UmlValueSpecification()
 {
 }
 
 // OPERATIONS
 
-/*!
-    The query booleanValue() gives a single Boolean value when one can be computed.
- */
 bool UmlValueSpecification::booleanValue(
     ) const
 {
@@ -67,9 +56,6 @@ bool UmlValueSpecification::booleanValue(
     return bool ();
 }
 
-/*!
-    The query integerValue() gives a single Integer value when one can be computed.
- */
 int UmlValueSpecification::integerValue(
     ) const
 {
@@ -78,9 +64,6 @@ int UmlValueSpecification::integerValue(
     return int ();
 }
 
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.
- */
 bool UmlValueSpecification::isCompatibleWith(
     UmlParameterableElement *p) const
 {
@@ -90,9 +73,6 @@ bool UmlValueSpecification::isCompatibleWith(
     return bool ();
 }
 
-/*!
-    The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.
- */
 bool UmlValueSpecification::isComputable(
     ) const
 {
@@ -101,9 +81,6 @@ bool UmlValueSpecification::isComputable(
     return bool ();
 }
 
-/*!
-    The query isNull() returns true when it can be computed that the value is null.
- */
 bool UmlValueSpecification::isNull(
     ) const
 {
@@ -112,9 +89,6 @@ bool UmlValueSpecification::isNull(
     return bool ();
 }
 
-/*!
-    The query realValue() gives a single Real value when one can be computed.
- */
 double UmlValueSpecification::realValue(
     ) const
 {
@@ -123,9 +97,6 @@ double UmlValueSpecification::realValue(
     return double ();
 }
 
-/*!
-    The query stringValue() gives a single String value when one can be computed.
- */
 QString UmlValueSpecification::stringValue(
     ) const
 {
@@ -134,9 +105,6 @@ QString UmlValueSpecification::stringValue(
     return QString ();
 }
 
-/*!
-    The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
- */
 int UmlValueSpecification::unlimitedValue(
     ) const
 {

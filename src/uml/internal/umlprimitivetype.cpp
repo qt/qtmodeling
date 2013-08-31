@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlprimitivetype_p.h"
 
-/*!
-    \class UmlPrimitiveType
-
-    \inmodule QtUml
-
-    \brief A primitive type defines a predefined data type, without any relevant substructure (i.e., it has no parts in the context of UML). A primitive datatype may have an algebra and operations defined outside of UML, for example, mathematically.
- */
-
 UmlPrimitiveType::UmlPrimitiveType()
 {
 }

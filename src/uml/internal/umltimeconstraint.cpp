@@ -42,14 +42,6 @@
 
 #include "private/umltimeinterval_p.h"
 
-/*!
-    \class UmlTimeConstraint
-
-    \inmodule QtUml
-
-    \brief A time constraint is a constraint that refers to a time interval.
- */
-
 UmlTimeConstraint::UmlTimeConstraint() :
     _firstEvent(true),
     _specification(0)
@@ -58,9 +50,6 @@ UmlTimeConstraint::UmlTimeConstraint() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.
- */
 bool UmlTimeConstraint::firstEvent() const
 {
     // This is a read-write property
@@ -77,9 +66,6 @@ void UmlTimeConstraint::setFirstEvent(bool firstEvent)
     }
 }
 
-/*!
-    A condition that must be true when evaluated in order for the constraint to be satisfied.
- */
 UmlTimeInterval *UmlTimeConstraint::specification() const
 {
     // This is a read-write association end

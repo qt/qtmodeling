@@ -45,14 +45,6 @@
 #include "private/umlmessageend_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlMessage
-
-    \inmodule QtUml
-
-    \brief A message defines a particular communication between lifelines of an interaction.
- */
-
 UmlMessage::UmlMessage() :
     _connector(0),
     _interaction(0),
@@ -65,9 +57,6 @@ UmlMessage::UmlMessage() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The arguments of the Message
- */
 const QList<UmlValueSpecification *> UmlMessage::argument() const
 {
     // This is a read-write association end
@@ -99,9 +88,6 @@ void UmlMessage::removeArgument(UmlValueSpecification *argument)
     }
 }
 
-/*!
-    The Connector on which this Message is sent.
- */
 UmlConnector *UmlMessage::connector() const
 {
     // This is a read-write association end
@@ -118,9 +104,6 @@ void UmlMessage::setConnector(UmlConnector *connector)
     }
 }
 
-/*!
-    The enclosing Interaction owning the Message
- */
 UmlInteraction *UmlMessage::interaction() const
 {
     // This is a read-write association end
@@ -142,9 +125,6 @@ void UmlMessage::setInteraction(UmlInteraction *interaction)
     }
 }
 
-/*!
-    The derived kind of the Message (complete, lost, found or unknown)
- */
 QtUml::MessageKind UmlMessage::messageKind() const
 {
     // This is a read-only derived property
@@ -166,9 +146,6 @@ void UmlMessage::setMessageKind(QtUml::MessageKind messageKind)
     }
 }
 
-/*!
-    The sort of communication reflected by the Message
- */
 QtUml::MessageSort UmlMessage::messageSort() const
 {
     // This is a read-write property
@@ -185,9 +162,6 @@ void UmlMessage::setMessageSort(QtUml::MessageSort messageSort)
     }
 }
 
-/*!
-    References the Receiving of the Message
- */
 UmlMessageEnd *UmlMessage::receiveEvent() const
 {
     // This is a read-write association end
@@ -204,9 +178,6 @@ void UmlMessage::setReceiveEvent(UmlMessageEnd *receiveEvent)
     }
 }
 
-/*!
-    References the Sending of the Message.
- */
 UmlMessageEnd *UmlMessage::sendEvent() const
 {
     // This is a read-write association end
@@ -223,9 +194,6 @@ void UmlMessage::setSendEvent(UmlMessageEnd *sendEvent)
     }
 }
 
-/*!
-    The signature of the Message is the specification of its content. It refers either an Operation or a Signal.
- */
 UmlNamedElement *UmlMessage::signature() const
 {
     // This is a read-write association end

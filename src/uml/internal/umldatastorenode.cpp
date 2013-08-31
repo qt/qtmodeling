@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umldatastorenode_p.h"
 
-/*!
-    \class UmlDataStoreNode
-
-    \inmodule QtUml
-
-    \brief A data store node is a central buffer node for non-transient information.
- */
-
 UmlDataStoreNode::UmlDataStoreNode()
 {
 }

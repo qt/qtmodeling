@@ -43,14 +43,6 @@
 #include "private/umlevent_p.h"
 #include "private/umlport_p.h"
 
-/*!
-    \class UmlTrigger
-
-    \inmodule QtUml
-
-    \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
- */
-
 UmlTrigger::UmlTrigger() :
     _event(0)
 {
@@ -58,9 +50,6 @@ UmlTrigger::UmlTrigger() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The event that causes the trigger.
- */
 UmlEvent *UmlTrigger::event() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlTrigger::setEvent(UmlEvent *event)
     }
 }
 
-/*!
-    A optional port of the receiver object on which the behavioral feature is invoked.
- */
 const QSet<UmlPort *> UmlTrigger::port() const
 {
     // This is a read-write association end

@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlmessageevent_p.h"
 
-/*!
-    \class UmlMessageEvent
-
-    \inmodule QtUml
-
-    \brief A message event specifies the receipt by an object of either a call or a signal.
- */
-
 UmlMessageEvent::UmlMessageEvent()
 {
 }

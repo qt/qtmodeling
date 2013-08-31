@@ -40,31 +40,108 @@
 ****************************************************************************/
 #include "qumlqualifiervalue.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlQualifierValue
+
+    \inmodule QtUml
+
+    \brief A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
+ */
 
 QUmlQualifierValue::QUmlQualifierValue(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlQualifierValue::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlQualifierValue::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlQualifierValue::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [QualifierValue]
+
+/*!
+    Attribute representing the qualifier for which the value is to be specified.
+ */
 QUmlProperty *QUmlQualifierValue::qualifier() const
 {
     return reinterpret_cast<QUmlProperty *>(_qualifier);
 }
 
-void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
-{
-    UmlQualifierValue::setQualifier(qualifier);
-}
-
+/*!
+    Input pin from which the specified value for the qualifier is taken.
+ */
 QUmlInputPin *QUmlQualifierValue::value() const
 {
     return reinterpret_cast<QUmlInputPin *>(_value);
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlQualifierValue::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlQualifierValue::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlQualifierValue::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlQualifierValue::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [QualifierValue]
+
+void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
+{
+    UmlQualifierValue::setQualifier(qualifier);
 }
 
 void QUmlQualifierValue::setValue(QUmlInputPin *value)

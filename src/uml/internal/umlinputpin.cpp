@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlinputpin_p.h"
 
-/*!
-    \class UmlInputPin
-
-    \inmodule QtUml
-
-    \brief An input pin is a pin that holds input values to be consumed by an action.
- */
-
 UmlInputPin::UmlInputPin()
 {
 }

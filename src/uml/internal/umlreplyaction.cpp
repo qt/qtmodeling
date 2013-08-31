@@ -43,14 +43,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umltrigger_p.h"
 
-/*!
-    \class UmlReplyAction
-
-    \inmodule QtUml
-
-    \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
- */
-
 UmlReplyAction::UmlReplyAction() :
     _replyToCall(0),
     _returnInformation(0)
@@ -59,9 +51,6 @@ UmlReplyAction::UmlReplyAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The trigger specifying the operation whose call is being replied to.
- */
 UmlTrigger *UmlReplyAction::replyToCall() const
 {
     // This is a read-write association end
@@ -78,9 +67,6 @@ void UmlReplyAction::setReplyToCall(UmlTrigger *replyToCall)
     }
 }
 
-/*!
-    A list of pins containing the reply values of the operation. These values are returned to the caller.
- */
 const QSet<UmlInputPin *> UmlReplyAction::replyValue() const
 {
     // This is a read-write association end
@@ -112,9 +98,6 @@ void UmlReplyAction::removeReplyValue(UmlInputPin *replyValue)
     }
 }
 
-/*!
-    A pin containing the return information value produced by an earlier AcceptCallAction.
- */
 UmlInputPin *UmlReplyAction::returnInformation() const
 {
     // This is a read-write association end

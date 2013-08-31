@@ -40,23 +40,12 @@
 ****************************************************************************/
 #include "umlliteralstring_p.h"
 
-/*!
-    \class UmlLiteralString
-
-    \inmodule QtUml
-
-    \brief A literal string is a specification of a string value.
- */
-
 UmlLiteralString::UmlLiteralString()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    The specified String value.
- */
 QString UmlLiteralString::value() const
 {
     // This is a read-write property
@@ -75,9 +64,6 @@ void UmlLiteralString::setValue(QString value)
 
 // OPERATIONS
 
-/*!
-    The query isComputable() is redefined to be true.
- */
 bool UmlLiteralString::isComputable(
     ) const
 {
@@ -86,9 +72,6 @@ bool UmlLiteralString::isComputable(
     return bool ();
 }
 
-/*!
-    The query stringValue() gives the value.
- */
 QString UmlLiteralString::stringValue(
     ) const
 {

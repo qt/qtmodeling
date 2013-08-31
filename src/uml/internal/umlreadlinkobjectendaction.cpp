@@ -44,14 +44,6 @@
 #include "private/umloutputpin_p.h"
 #include "private/umlproperty_p.h"
 
-/*!
-    \class UmlReadLinkObjectEndAction
-
-    \inmodule QtUml
-
-    \brief A read link object end action is an action that retrieves an end object from a link object.
- */
-
 UmlReadLinkObjectEndAction::UmlReadLinkObjectEndAction() :
     _end(0),
     _object(0),
@@ -61,9 +53,6 @@ UmlReadLinkObjectEndAction::UmlReadLinkObjectEndAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Link end to be read.
- */
 UmlProperty *UmlReadLinkObjectEndAction::end() const
 {
     // This is a read-write association end
@@ -80,9 +69,6 @@ void UmlReadLinkObjectEndAction::setEnd(UmlProperty *end)
     }
 }
 
-/*!
-    Gives the input pin from which the link object is obtained.
- */
 UmlInputPin *UmlReadLinkObjectEndAction::object() const
 {
     // This is a read-write association end
@@ -107,9 +93,6 @@ void UmlReadLinkObjectEndAction::setObject(UmlInputPin *object)
     }
 }
 
-/*!
-    Pin where the result value is placed.
- */
 UmlOutputPin *UmlReadLinkObjectEndAction::result() const
 {
     // This is a read-write association end

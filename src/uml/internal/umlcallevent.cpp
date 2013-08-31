@@ -42,14 +42,6 @@
 
 #include "private/umloperation_p.h"
 
-/*!
-    \class UmlCallEvent
-
-    \inmodule QtUml
-
-    \brief A call event models the receipt by an object of a message invoking a call of an operation.
- */
-
 UmlCallEvent::UmlCallEvent() :
     _operation(0)
 {
@@ -57,9 +49,6 @@ UmlCallEvent::UmlCallEvent() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Designates the operation whose invocation raised the call event.
- */
 UmlOperation *UmlCallEvent::operation() const
 {
     // This is a read-write association end

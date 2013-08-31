@@ -43,14 +43,6 @@
 #include "private/umlnamespace_p.h"
 #include "private/umlpackage_p.h"
 
-/*!
-    \class UmlPackageImport
-
-    \inmodule QtUml
-
-    \brief A package import is a relationship that allows the use of unqualified names to refer to package members from other namespaces.
- */
-
 UmlPackageImport::UmlPackageImport() :
     _importedPackage(0),
     _importingNamespace(0),
@@ -60,9 +52,6 @@ UmlPackageImport::UmlPackageImport() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the Package whose members are imported into a Namespace.
- */
 UmlPackage *UmlPackageImport::importedPackage() const
 {
     // This is a read-write association end
@@ -87,9 +76,6 @@ void UmlPackageImport::setImportedPackage(UmlPackage *importedPackage)
     }
 }
 
-/*!
-    Specifies the Namespace that imports the members from a Package.
- */
 UmlNamespace *UmlPackageImport::importingNamespace() const
 {
     // This is a read-write association end
@@ -115,9 +101,6 @@ void UmlPackageImport::setImportingNamespace(UmlNamespace *importingNamespace)
     }
 }
 
-/*!
-    Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.
- */
 QtUml::VisibilityKind UmlPackageImport::visibility() const
 {
     // This is a read-write property

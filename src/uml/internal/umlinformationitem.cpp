@@ -40,23 +40,12 @@
 ****************************************************************************/
 #include "umlinformationitem_p.h"
 
-/*!
-    \class UmlInformationItem
-
-    \inmodule QtUml
-
-    \brief An information item is an abstraction of all kinds of information that can be exchanged between objects. It is a kind of classifier intended for representing information in a very abstract way, one which cannot be instantiated.
- */
-
 UmlInformationItem::UmlInformationItem()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.
- */
 const QSet<UmlClassifier *> UmlInformationItem::represented() const
 {
     // This is a read-write association end

@@ -42,14 +42,6 @@
 
 #include "private/umlexpansionnode_p.h"
 
-/*!
-    \class UmlExpansionRegion
-
-    \inmodule QtUml
-
-    \brief An expansion region is a structured activity region that executes multiple times corresponding to elements of an input collection.
- */
-
 UmlExpansionRegion::UmlExpansionRegion() :
     _mode(QtUml::ExpansionKindIterative)
 {
@@ -57,9 +49,6 @@ UmlExpansionRegion::UmlExpansionRegion() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    An object node that holds a separate element of the input collection during each of the multiple executions of the region.
- */
 const QSet<UmlExpansionNode *> UmlExpansionRegion::inputElement() const
 {
     // This is a read-write association end
@@ -95,9 +84,6 @@ void UmlExpansionRegion::removeInputElement(UmlExpansionNode *inputElement)
     }
 }
 
-/*!
-    The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution
- */
 QtUml::ExpansionKind UmlExpansionRegion::mode() const
 {
     // This is a read-write property
@@ -114,9 +100,6 @@ void UmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
     }
 }
 
-/*!
-    An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
- */
 const QSet<UmlExpansionNode *> UmlExpansionRegion::outputElement() const
 {
     // This is a read-write association end

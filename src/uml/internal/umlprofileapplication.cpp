@@ -43,14 +43,6 @@
 #include "private/umlpackage_p.h"
 #include "private/umlprofile_p.h"
 
-/*!
-    \class UmlProfileApplication
-
-    \inmodule QtUml
-
-    \brief A profile application is used to show which profiles have been applied to a package.
- */
-
 UmlProfileApplication::UmlProfileApplication() :
     _appliedProfile(0),
     _applyingPackage(0),
@@ -60,9 +52,6 @@ UmlProfileApplication::UmlProfileApplication() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the Profiles that are applied to a Package through this ProfileApplication.
- */
 UmlProfile *UmlProfileApplication::appliedProfile() const
 {
     // This is a read-write association end
@@ -87,9 +76,6 @@ void UmlProfileApplication::setAppliedProfile(UmlProfile *appliedProfile)
     }
 }
 
-/*!
-    The package that owns the profile application.
- */
 UmlPackage *UmlProfileApplication::applyingPackage() const
 {
     // This is a read-write association end
@@ -115,9 +101,6 @@ void UmlProfileApplication::setApplyingPackage(UmlPackage *applyingPackage)
     }
 }
 
-/*!
-    Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.
- */
 bool UmlProfileApplication::isStrict() const
 {
     // This is a read-write property

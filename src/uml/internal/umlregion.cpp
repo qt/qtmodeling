@@ -46,14 +46,6 @@
 #include "private/umltransition_p.h"
 #include "private/umlvertex_p.h"
 
-/*!
-    \class UmlRegion
-
-    \inmodule QtUml
-
-    \brief A region is an orthogonal part of either a composite state or a state machine. It contains states and transitions.
- */
-
 UmlRegion::UmlRegion() :
     _extendedRegion(0),
     _state(0),
@@ -63,9 +55,6 @@ UmlRegion::UmlRegion() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The region of which this region is an extension.
- */
 UmlRegion *UmlRegion::extendedRegion() const
 {
     // This is a read-write association end
@@ -90,9 +79,6 @@ void UmlRegion::setExtendedRegion(UmlRegion *extendedRegion)
     }
 }
 
-/*!
-    References the classifier in which context this element may be redefined.
- */
 UmlClassifier *UmlRegion::redefinitionContext() const
 {
     // This is a read-only derived association end
@@ -114,9 +100,6 @@ void UmlRegion::setRedefinitionContext(UmlClassifier *redefinitionContext)
     }
 }
 
-/*!
-    The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.
- */
 UmlState *UmlRegion::state() const
 {
     // This is a read-write association end
@@ -138,9 +121,6 @@ void UmlRegion::setState(UmlState *state)
     }
 }
 
-/*!
-    The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State.
- */
 UmlStateMachine *UmlRegion::stateMachine() const
 {
     // This is a read-write association end
@@ -162,9 +142,6 @@ void UmlRegion::setStateMachine(UmlStateMachine *stateMachine)
     }
 }
 
-/*!
-    The set of vertices that are owned by this region.
- */
 const QSet<UmlVertex *> UmlRegion::subvertex() const
 {
     // This is a read-write association end
@@ -206,9 +183,6 @@ void UmlRegion::removeSubvertex(UmlVertex *subvertex)
     }
 }
 
-/*!
-    The set of transitions owned by the region.
- */
 const QSet<UmlTransition *> UmlRegion::transition() const
 {
     // This is a read-write association end
@@ -252,9 +226,6 @@ void UmlRegion::removeTransition(UmlTransition *transition)
 
 // OPERATIONS
 
-/*!
-    The operation belongsToPSM () checks if the region belongs to a protocol state machine
- */
 bool UmlRegion::belongsToPSM(
     ) const
 {
@@ -263,9 +234,6 @@ bool UmlRegion::belongsToPSM(
     return bool ();
 }
 
-/*!
-    The operation containingStateMachine() returns the sate machine in which this Region is defined
- */
 UmlStateMachine *UmlRegion::containingStateMachine(
     ) const
 {
@@ -274,9 +242,6 @@ UmlStateMachine *UmlRegion::containingStateMachine(
     return 0;
 }
 
-/*!
-    The query isConsistentWith() specifies that a redefining region is consistent with a redefined region provided that the redefining region is an extension of the redefined region, i.e. it adds vertices and transitions and it redefines states and transitions of the redefined region.
- */
 bool UmlRegion::isConsistentWith(
     UmlRedefinableElement *redefinee) const
 {
@@ -286,9 +251,6 @@ bool UmlRegion::isConsistentWith(
     return bool ();
 }
 
-/*!
-    The query isRedefinitionContextValid() specifies whether the redefinition contexts of a region are properly related to the redefinition contexts of the specified region to allow this element to redefine the other. The containing statemachine/state of a redefining region must redefine the containing statemachine/state of the redefined region.
- */
 bool UmlRegion::isRedefinitionContextValid(
     UmlRegion *redefined) const
 {

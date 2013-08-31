@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlanyreceiveevent_p.h"
 
-/*!
-    \class UmlAnyReceiveEvent
-
-    \inmodule QtUml
-
-    \brief A trigger for an AnyReceiveEvent is triggered by the receipt of any message that is not explicitly handled by any related trigger.
- */
-
 UmlAnyReceiveEvent::UmlAnyReceiveEvent()
 {
 }

@@ -47,14 +47,6 @@
 #include "private/umloutputpin_p.h"
 #include "private/umlvariable_p.h"
 
-/*!
-    \class UmlStructuredActivityNode
-
-    \inmodule QtUml
-
-    \brief A structured activity node is an executable activity node that may have an expansion into subordinate nodes as an activity group. The subordinate nodes must belong to only one structured activity node, although they may be nested.Because of the concurrent nature of the execution of actions within and across activities, it can be difficult to guarantee the consistent access and modification of object memory. In order to avoid race conditions or other concurrency-related problems, it is sometimes necessary to isolate the effects of a group of actions from the effects of actions outside the group. This may be indicated by setting the mustIsolate attribute to true on a structured activity node. If a structured activity node is "isolated," then any object used by an action within the node cannot be accessed by any action outside the node until the structured activity node as a whole completes. Any concurrent actions that would result in accessing such objects are required to have their execution deferred until the completion of the node.
- */
-
 UmlStructuredActivityNode::UmlStructuredActivityNode() :
     _activity(0),
     _mustIsolate(false)
@@ -63,9 +55,6 @@ UmlStructuredActivityNode::UmlStructuredActivityNode() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Activity immediately containing the node.
- */
 UmlActivity *UmlStructuredActivityNode::activity() const
 {
     // This is a read-write association end
@@ -82,9 +71,6 @@ void UmlStructuredActivityNode::setActivity(UmlActivity *activity)
     }
 }
 
-/*!
-    Edges immediately contained in the structured node.
- */
 const QSet<UmlActivityEdge *> UmlStructuredActivityNode::edge() const
 {
     // This is a read-write association end
@@ -128,9 +114,6 @@ void UmlStructuredActivityNode::removeEdge(UmlActivityEdge *edge)
     }
 }
 
-/*!
-    If true, then the actions in the node execute in isolation from actions outside the node.
- */
 bool UmlStructuredActivityNode::mustIsolate() const
 {
     // This is a read-write property
@@ -147,9 +130,6 @@ void UmlStructuredActivityNode::setMustIsolate(bool mustIsolate)
     }
 }
 
-/*!
-    Nodes immediately contained in the group.
- */
 const QSet<UmlActivityNode *> UmlStructuredActivityNode::node() const
 {
     // This is a read-write association end
@@ -255,9 +235,6 @@ void UmlStructuredActivityNode::removeStructuredNodeOutput(UmlOutputPin *structu
     }
 }
 
-/*!
-    A variable defined in the scope of the structured activity node. It has no value and may not be accessed
- */
 const QSet<UmlVariable *> UmlStructuredActivityNode::variable() const
 {
     // This is a read-write association end

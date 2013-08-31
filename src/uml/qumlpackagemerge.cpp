@@ -40,30 +40,139 @@
 ****************************************************************************/
 #include "qumlpackagemerge.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlPackage>
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlPackageMerge
+
+    \inmodule QtUml
+
+    \brief A package merge defines how the contents of one package are extended by the contents of another package.
+ */
 
 QUmlPackageMerge::QUmlPackageMerge(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlPackageMerge::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlPackageMerge::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlPackageMerge::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [Relationship]
+
+/*!
+    Specifies the elements related by the Relationship.
+ */
+const QSet<QUmlElement *> QUmlPackageMerge::relatedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_relatedElement));
+}
+
+// OWNED ATTRIBUTES [DirectedRelationship]
+
+/*!
+    Specifies the sources of the DirectedRelationship.
+ */
+const QSet<QUmlElement *> QUmlPackageMerge::source() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_source));
+}
+
+/*!
+    Specifies the targets of the DirectedRelationship.
+ */
+const QSet<QUmlElement *> QUmlPackageMerge::target() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_target));
+}
+
+// OWNED ATTRIBUTES [PackageMerge]
+
+/*!
+    References the Package that is to be merged with the receiving package of the PackageMerge.
+ */
 QUmlPackage *QUmlPackageMerge::mergedPackage() const
 {
     return reinterpret_cast<QUmlPackage *>(_mergedPackage);
 }
 
-void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
-{
-    UmlPackageMerge::setMergedPackage(mergedPackage);
-}
-
+/*!
+    References the Package that is being extended with the contents of the merged package of the PackageMerge.
+ */
 QUmlPackage *QUmlPackageMerge::receivingPackage() const
 {
     return reinterpret_cast<QUmlPackage *>(_receivingPackage);
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlPackageMerge::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlPackageMerge::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlPackageMerge::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlPackageMerge::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Relationship]
+
+// SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
+
+// SLOTS FOR OWNED ATTRIBUTES [PackageMerge]
+
+void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
+{
+    UmlPackageMerge::setMergedPackage(mergedPackage);
 }
 
 void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)

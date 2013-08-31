@@ -44,14 +44,6 @@
 #include "private/umltemplatebinding_p.h"
 #include "private/umltemplateparameter_p.h"
 
-/*!
-    \class UmlTemplateParameterSubstitution
-
-    \inmodule QtUml
-
-    \brief A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
- */
-
 UmlTemplateParameterSubstitution::UmlTemplateParameterSubstitution() :
     _actual(0),
     _formal(0),
@@ -62,9 +54,6 @@ UmlTemplateParameterSubstitution::UmlTemplateParameterSubstitution() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The element that is the actual parameter for this substitution.
- */
 UmlParameterableElement *UmlTemplateParameterSubstitution::actual() const
 {
     // This is a read-write association end
@@ -81,9 +70,6 @@ void UmlTemplateParameterSubstitution::setActual(UmlParameterableElement *actual
     }
 }
 
-/*!
-    The formal template parameter that is associated with this substitution.
- */
 UmlTemplateParameter *UmlTemplateParameterSubstitution::formal() const
 {
     // This is a read-write association end
@@ -100,9 +86,6 @@ void UmlTemplateParameterSubstitution::setFormal(UmlTemplateParameter *formal)
     }
 }
 
-/*!
-    The actual parameter that is owned by this substitution.
- */
 UmlParameterableElement *UmlTemplateParameterSubstitution::ownedActual() const
 {
     // This is a read-write association end
@@ -128,9 +111,6 @@ void UmlTemplateParameterSubstitution::setOwnedActual(UmlParameterableElement *o
     }
 }
 
-/*!
-    The optional bindings from this element to templates.
- */
 UmlTemplateBinding *UmlTemplateParameterSubstitution::templateBinding() const
 {
     // This is a read-write association end

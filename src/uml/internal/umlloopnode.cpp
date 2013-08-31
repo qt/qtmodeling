@@ -44,14 +44,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlLoopNode
-
-    \inmodule QtUml
-
-    \brief A loop node is a structured activity node that represents a loop with setup, test, and body sections.
- */
-
 UmlLoopNode::UmlLoopNode() :
     _decider(0),
     _isTestedFirst(false)
@@ -60,9 +52,6 @@ UmlLoopNode::UmlLoopNode() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
- */
 const QList<UmlOutputPin *> UmlLoopNode::bodyOutput() const
 {
     // This is a read-write association end
@@ -88,9 +77,6 @@ void UmlLoopNode::removeBodyOutput(UmlOutputPin *bodyOutput)
     }
 }
 
-/*!
-    The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
- */
 const QSet<UmlExecutableNode *> UmlLoopNode::bodyPart() const
 {
     // This is a read-write association end
@@ -116,9 +102,6 @@ void UmlLoopNode::removeBodyPart(UmlExecutableNode *bodyPart)
     }
 }
 
-/*!
-    An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.
- */
 UmlOutputPin *UmlLoopNode::decider() const
 {
     // This is a read-write association end
@@ -135,9 +118,6 @@ void UmlLoopNode::setDecider(UmlOutputPin *decider)
     }
 }
 
-/*!
-    If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.
- */
 bool UmlLoopNode::isTestedFirst() const
 {
     // This is a read-write property
@@ -154,9 +134,6 @@ void UmlLoopNode::setTestedFirst(bool isTestedFirst)
     }
 }
 
-/*!
-    A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
- */
 const QList<UmlOutputPin *> UmlLoopNode::loopVariable() const
 {
     // This is a read-write association end
@@ -182,9 +159,6 @@ void UmlLoopNode::removeLoopVariable(UmlOutputPin *loopVariable)
     }
 }
 
-/*!
-    A list of values that are moved into the loop variable pins before the first iteration of the loop.
- */
 const QList<UmlInputPin *> UmlLoopNode::loopVariableInput() const
 {
     // This is a read-write association end
@@ -210,9 +184,6 @@ void UmlLoopNode::removeLoopVariableInput(UmlInputPin *loopVariableInput)
     }
 }
 
-/*!
-    A list of output pins that constitute the data flow output of the entire loop.
- */
 const QList<UmlOutputPin *> UmlLoopNode::result() const
 {
     // This is a read-write association end
@@ -238,9 +209,6 @@ void UmlLoopNode::removeResult(UmlOutputPin *result)
     }
 }
 
-/*!
-    The set of nodes and edges that initialize values or perform other setup computations for the loop.
- */
 const QSet<UmlExecutableNode *> UmlLoopNode::setupPart() const
 {
     // This is a read-write association end
@@ -266,9 +234,6 @@ void UmlLoopNode::removeSetupPart(UmlExecutableNode *setupPart)
     }
 }
 
-/*!
-    The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
- */
 const QSet<UmlExecutableNode *> UmlLoopNode::test() const
 {
     // This is a read-write association end

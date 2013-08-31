@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlLinkEndDestructionData
-
-    \inmodule QtUml
-
-    \brief A link end destruction data is not an action. It is an element that identifies links. It identifies one end of a link to be destroyed by destroy link action.
- */
-
 UmlLinkEndDestructionData::UmlLinkEndDestructionData() :
     _destroyAt(0),
     _isDestroyDuplicates(false)
@@ -58,9 +50,6 @@ UmlLinkEndDestructionData::UmlLinkEndDestructionData() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
- */
 UmlInputPin *UmlLinkEndDestructionData::destroyAt() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlLinkEndDestructionData::setDestroyAt(UmlInputPin *destroyAt)
     }
 }
 
-/*!
-    Specifies whether to destroy duplicates of the value in nonunique association ends.
- */
 bool UmlLinkEndDestructionData::isDestroyDuplicates() const
 {
     // This is a read-write property

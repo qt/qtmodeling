@@ -43,14 +43,6 @@
 #include "private/umlassociation_p.h"
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlClearAssociationAction
-
-    \inmodule QtUml
-
-    \brief A clear association action is an action that destroys all links of an association in which a particular object participates.
- */
-
 UmlClearAssociationAction::UmlClearAssociationAction() :
     _association(0),
     _object(0)
@@ -59,9 +51,6 @@ UmlClearAssociationAction::UmlClearAssociationAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Association to be cleared.
- */
 UmlAssociation *UmlClearAssociationAction::association() const
 {
     // This is a read-write association end
@@ -78,9 +67,6 @@ void UmlClearAssociationAction::setAssociation(UmlAssociation *association)
     }
 }
 
-/*!
-    Gives the input pin from which is obtained the object whose participation in the association is to be cleared.
- */
 UmlInputPin *UmlClearAssociationAction::object() const
 {
     // This is a read-write association end

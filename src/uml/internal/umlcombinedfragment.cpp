@@ -43,14 +43,6 @@
 #include "private/umlgate_p.h"
 #include "private/umlinteractionoperand_p.h"
 
-/*!
-    \class UmlCombinedFragment
-
-    \inmodule QtUml
-
-    \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
- */
-
 UmlCombinedFragment::UmlCombinedFragment() :
     _interactionOperator(QtUml::InteractionOperatorKindSeq)
 {
@@ -58,9 +50,6 @@ UmlCombinedFragment::UmlCombinedFragment() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the gates that form the interface between this CombinedFragment and its surroundings
- */
 const QSet<UmlGate *> UmlCombinedFragment::cfragmentGate() const
 {
     // This is a read-write association end
@@ -92,9 +81,6 @@ void UmlCombinedFragment::removeCfragmentGate(UmlGate *cfragmentGate)
     }
 }
 
-/*!
-    Specifies the operation which defines the semantics of this combination of InteractionFragments.
- */
 QtUml::InteractionOperatorKind UmlCombinedFragment::interactionOperator() const
 {
     // This is a read-write property
@@ -111,9 +97,6 @@ void UmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind 
     }
 }
 
-/*!
-    The set of operands of the combined fragment.
- */
 const QList<UmlInteractionOperand *> UmlCombinedFragment::operand() const
 {
     // This is a read-write association end

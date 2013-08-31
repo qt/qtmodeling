@@ -45,14 +45,6 @@
 #include "private/umlproperty_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlInteractionUse
-
-    \inmodule QtUml
-
-    \brief An interaction use refers to an interaction. The interaction use is a shorthand for copying the contents of the referenced interaction where the interaction use is. To be accurate the copying must take into account substituting parameters with arguments and connect the formal gates with the actual ones.
- */
-
 UmlInteractionUse::UmlInteractionUse() :
     _refersTo(0),
     _returnValue(0),
@@ -62,9 +54,6 @@ UmlInteractionUse::UmlInteractionUse() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The actual gates of the InteractionUse
- */
 const QSet<UmlGate *> UmlInteractionUse::actualGate() const
 {
     // This is a read-write association end
@@ -96,9 +85,6 @@ void UmlInteractionUse::removeActualGate(UmlGate *actualGate)
     }
 }
 
-/*!
-    The actual arguments of the Interaction
- */
 const QList<UmlValueSpecification *> UmlInteractionUse::argument() const
 {
     // This is a read-write association end
@@ -130,9 +116,6 @@ void UmlInteractionUse::removeArgument(UmlValueSpecification *argument)
     }
 }
 
-/*!
-    Refers to the Interaction that defines its meaning
- */
 UmlInteraction *UmlInteractionUse::refersTo() const
 {
     // This is a read-write association end
@@ -149,9 +132,6 @@ void UmlInteractionUse::setRefersTo(UmlInteraction *refersTo)
     }
 }
 
-/*!
-    The value of the executed Interaction.
- */
 UmlValueSpecification *UmlInteractionUse::returnValue() const
 {
     // This is a read-write association end
@@ -176,9 +156,6 @@ void UmlInteractionUse::setReturnValue(UmlValueSpecification *returnValue)
     }
 }
 
-/*!
-    The recipient of the return value.
- */
 UmlProperty *UmlInteractionUse::returnValueRecipient() const
 {
     // This is a read-write association end

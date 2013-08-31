@@ -42,14 +42,6 @@
 
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlValuePin
-
-    \inmodule QtUml
-
-    \brief A value pin is an input pin that provides a value by evaluating a value specification.
- */
-
 UmlValuePin::UmlValuePin() :
     _value(0)
 {
@@ -57,9 +49,6 @@ UmlValuePin::UmlValuePin() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Value that the pin will provide.
- */
 UmlValueSpecification *UmlValuePin::value() const
 {
     // This is a read-write association end

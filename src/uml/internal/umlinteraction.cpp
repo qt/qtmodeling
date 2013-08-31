@@ -45,23 +45,12 @@
 #include "private/umllifeline_p.h"
 #include "private/umlmessage_p.h"
 
-/*!
-    \class UmlInteraction
-
-    \inmodule QtUml
-
-    \brief An interaction is a unit of behavior that focuses on the observable exchange of information between connectable elements.
- */
-
 UmlInteraction::UmlInteraction()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Actions owned by the Interaction.
- */
 const QSet<UmlAction *> UmlInteraction::action() const
 {
     // This is a read-write association end
@@ -93,9 +82,6 @@ void UmlInteraction::removeAction(UmlAction *action)
     }
 }
 
-/*!
-    Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
- */
 const QSet<UmlGate *> UmlInteraction::formalGate() const
 {
     // This is a read-write association end
@@ -127,9 +113,6 @@ void UmlInteraction::removeFormalGate(UmlGate *formalGate)
     }
 }
 
-/*!
-    The ordered set of fragments in the Interaction.
- */
 const QList<UmlInteractionFragment *> UmlInteraction::fragment() const
 {
     // This is a read-write association end
@@ -171,9 +154,6 @@ void UmlInteraction::removeFragment(UmlInteractionFragment *fragment)
     }
 }
 
-/*!
-    Specifies the participants in this Interaction.
- */
 const QSet<UmlLifeline *> UmlInteraction::lifeline() const
 {
     // This is a read-write association end
@@ -215,9 +195,6 @@ void UmlInteraction::removeLifeline(UmlLifeline *lifeline)
     }
 }
 
-/*!
-    The Messages contained in this Interaction.
- */
 const QSet<UmlMessage *> UmlInteraction::message() const
 {
     // This is a read-write association end

@@ -43,14 +43,6 @@
 #include "private/umlgeneralordering_p.h"
 #include "private/umllifeline_p.h"
 
-/*!
-    \class UmlOccurrenceSpecification
-
-    \inmodule QtUml
-
-    \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
- */
-
 UmlOccurrenceSpecification::UmlOccurrenceSpecification() :
     _covered(0)
 {
@@ -58,9 +50,6 @@ UmlOccurrenceSpecification::UmlOccurrenceSpecification() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the Lifeline on which the OccurrenceSpecification appears.
- */
 UmlLifeline *UmlOccurrenceSpecification::covered() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlOccurrenceSpecification::setCovered(UmlLifeline *covered)
     }
 }
 
-/*!
-    References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
- */
 const QSet<UmlGeneralOrdering *> UmlOccurrenceSpecification::toAfter() const
 {
     // This is a read-write association end
@@ -115,9 +101,6 @@ void UmlOccurrenceSpecification::removeToAfter(UmlGeneralOrdering *toAfter)
     }
 }
 
-/*!
-    References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
- */
 const QSet<UmlGeneralOrdering *> UmlOccurrenceSpecification::toBefore() const
 {
     // This is a read-write association end

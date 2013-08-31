@@ -42,14 +42,6 @@
 
 #include "private/umloccurrencespecification_p.h"
 
-/*!
-    \class UmlExecutionSpecification
-
-    \inmodule QtUml
-
-    \brief An execution specification is a specification of the execution of a unit of behavior or action within the lifeline. The duration of an execution specification is represented by two cccurrence specifications, the start occurrence specification and the finish occurrence specification.
- */
-
 UmlExecutionSpecification::UmlExecutionSpecification() :
     _finish(0),
     _start(0)
@@ -58,9 +50,6 @@ UmlExecutionSpecification::UmlExecutionSpecification() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the OccurrenceSpecification that designates the finish of the Action or Behavior.
- */
 UmlOccurrenceSpecification *UmlExecutionSpecification::finish() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlExecutionSpecification::setFinish(UmlOccurrenceSpecification *finish)
     }
 }
 
-/*!
-    References the OccurrenceSpecification that designates the start of the Action or Behavior
- */
 UmlOccurrenceSpecification *UmlExecutionSpecification::start() const
 {
     // This is a read-write association end

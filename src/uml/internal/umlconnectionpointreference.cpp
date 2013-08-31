@@ -43,14 +43,6 @@
 #include "private/umlpseudostate_p.h"
 #include "private/umlstate_p.h"
 
-/*!
-    \class UmlConnectionPointReference
-
-    \inmodule QtUml
-
-    \brief A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
- */
-
 UmlConnectionPointReference::UmlConnectionPointReference() :
     _state(0)
 {
@@ -58,9 +50,6 @@ UmlConnectionPointReference::UmlConnectionPointReference() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The entryPoint kind pseudo states corresponding to this connection point.
- */
 const QSet<UmlPseudostate *> UmlConnectionPointReference::entry() const
 {
     // This is a read-write association end
@@ -86,9 +75,6 @@ void UmlConnectionPointReference::removeEntry(UmlPseudostate *entry)
     }
 }
 
-/*!
-    The exitPoints kind pseudo states corresponding to this connection point.
- */
 const QSet<UmlPseudostate *> UmlConnectionPointReference::exit() const
 {
     // This is a read-write association end
@@ -114,9 +100,6 @@ void UmlConnectionPointReference::removeExit(UmlPseudostate *exit)
     }
 }
 
-/*!
-    The State in which the connection point refreshens are defined.
- */
 UmlState *UmlConnectionPointReference::state() const
 {
     // This is a read-write association end

@@ -47,14 +47,6 @@
 #include "private/umlstructuredactivitynode_p.h"
 #include "private/umlvariable_p.h"
 
-/*!
-    \class UmlActivity
-
-    \inmodule QtUml
-
-    \brief An activity is the specification of parameterized behavior as the coordinated sequencing of subordinate units whose individual elements are actions.
- */
-
 UmlActivity::UmlActivity() :
     _isReadOnly(false),
     _isSingleExecution(false)
@@ -63,9 +55,6 @@ UmlActivity::UmlActivity() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Edges expressing flow between nodes of the activity.
- */
 const QSet<UmlActivityEdge *> UmlActivity::edge() const
 {
     // This is a read-write association end
@@ -107,9 +96,6 @@ void UmlActivity::removeEdge(UmlActivityEdge *edge)
     }
 }
 
-/*!
-    Top-level groups in the activity.
- */
 const QSet<UmlActivityGroup *> UmlActivity::group() const
 {
     // This is a read-write association end
@@ -151,9 +137,6 @@ void UmlActivity::removeGroup(UmlActivityGroup *group)
     }
 }
 
-/*!
-    If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).
- */
 bool UmlActivity::isReadOnly() const
 {
     // This is a read-write property
@@ -170,9 +153,6 @@ void UmlActivity::setReadOnly(bool isReadOnly)
     }
 }
 
-/*!
-    If true, all invocations of the activity are handled by the same execution.
- */
 bool UmlActivity::isSingleExecution() const
 {
     // This is a read-write property
@@ -189,9 +169,6 @@ void UmlActivity::setSingleExecution(bool isSingleExecution)
     }
 }
 
-/*!
-    Nodes coordinated by the activity.
- */
 const QSet<UmlActivityNode *> UmlActivity::node() const
 {
     // This is a read-write association end
@@ -233,9 +210,6 @@ void UmlActivity::removeNode(UmlActivityNode *node)
     }
 }
 
-/*!
-    Top-level partitions in the activity.
- */
 const QSet<UmlActivityPartition *> UmlActivity::partition() const
 {
     // This is a read-write association end
@@ -267,9 +241,6 @@ void UmlActivity::removePartition(UmlActivityPartition *partition)
     }
 }
 
-/*!
-    Top-level structured nodes in the activity.
- */
 const QSet<UmlStructuredActivityNode *> UmlActivity::structuredNode() const
 {
     // This is a read-write association end
@@ -313,9 +284,6 @@ void UmlActivity::removeStructuredNode(UmlStructuredActivityNode *structuredNode
     }
 }
 
-/*!
-    Top-level variables in the activity.
- */
 const QSet<UmlVariable *> UmlActivity::variable() const
 {
     // This is a read-write association end

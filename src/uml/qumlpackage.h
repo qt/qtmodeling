@@ -46,23 +46,70 @@
 #include <QtCore/QObject>
 #include "private/umlpackage_p.h"
 
+#include <QtUml/QtUmlNamespace>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlComment;
+class QUmlConstraint;
+class QUmlDependency;
+class QUmlElement;
+class QUmlElementImport;
 class QUmlNamedElement;
+class QUmlNamespace;
 class QUmlPackageableElement;
+class QUmlPackageImport;
 class QUmlPackageMerge;
+class QUmlParameterableElement;
 class QUmlProfile;
 class QUmlProfileApplication;
 class QUmlStereotype;
+class QUmlStringExpression;
+class QUmlTemplateBinding;
+class QUmlTemplateParameter;
+class QUmlTemplateSignature;
 class QUmlType;
 
 class Q_UML_EXPORT QUmlPackage : public QObject, public UmlPackage
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [NamedElement]
+    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
+    Q_PROPERTY(QString name READ name)
+    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
+    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+
+    // Properties [Namespace]
+    Q_PROPERTY(QSet<QUmlElementImport *> elementImport READ elementImport)
+    Q_PROPERTY(QSet<QUmlPackageableElement *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QUmlNamedElement *> member READ member)
+    Q_PROPERTY(QSet<QUmlNamedElement *> ownedMember READ ownedMember)
+    Q_PROPERTY(QSet<QUmlConstraint *> ownedRule READ ownedRule)
+    Q_PROPERTY(QSet<QUmlPackageImport *> packageImport READ packageImport)
+
+    // Properties [ParameterableElement]
+    Q_PROPERTY(QUmlTemplateParameter * owningTemplateParameter READ owningTemplateParameter)
+    Q_PROPERTY(QUmlTemplateParameter * templateParameter READ templateParameter)
+
+    // Properties [PackageableElement]
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+
+    // Properties [TemplateableElement]
+    Q_PROPERTY(QUmlTemplateSignature * ownedTemplateSignature READ ownedTemplateSignature)
+    Q_PROPERTY(QSet<QUmlTemplateBinding *> templateBinding READ templateBinding)
+
+    // Properties [Package]
     Q_PROPERTY(QString URI READ URI)
     Q_PROPERTY(QSet<QUmlPackage *> nestedPackage READ nestedPackage)
     Q_PROPERTY(QUmlPackage * nestingPackage READ nestingPackage)
@@ -75,34 +122,122 @@ class Q_UML_EXPORT QUmlPackage : public QObject, public UmlPackage
 public:
     Q_INVOKABLE explicit QUmlPackage(QObject *parent = 0);
 
-    // Owned attributes
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
+
+    // Owned attributes [NamedElement]
+    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
+    Q_INVOKABLE QString name() const;
+    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
+    Q_INVOKABLE QUmlNamespace *namespace_() const;
+    Q_INVOKABLE QString qualifiedName() const;
+
+    // Owned attributes [Namespace]
+    Q_INVOKABLE const QSet<QUmlElementImport *> elementImport() const;
+    Q_INVOKABLE const QSet<QUmlPackageableElement *> importedMember() const;
+    Q_INVOKABLE const QSet<QUmlNamedElement *> member() const;
+    Q_INVOKABLE const QSet<QUmlNamedElement *> ownedMember() const;
+    Q_INVOKABLE const QSet<QUmlConstraint *> ownedRule() const;
+    Q_INVOKABLE const QSet<QUmlPackageImport *> packageImport() const;
+
+    // Owned attributes [ParameterableElement]
+    Q_INVOKABLE QUmlTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE QUmlTemplateParameter *templateParameter() const;
+
+    // Owned attributes [PackageableElement]
+    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+
+    // Owned attributes [TemplateableElement]
+    Q_INVOKABLE QUmlTemplateSignature *ownedTemplateSignature() const;
+    Q_INVOKABLE const QSet<QUmlTemplateBinding *> templateBinding() const;
+
+    // Owned attributes [Package]
     Q_INVOKABLE QString URI() const;
-    Q_INVOKABLE void setURI(QString URI);
     Q_INVOKABLE const QSet<QUmlPackage *> nestedPackage() const;
-    Q_INVOKABLE void addNestedPackage(UmlPackage *nestedPackage);
-    Q_INVOKABLE void removeNestedPackage(UmlPackage *nestedPackage);
     Q_INVOKABLE QUmlPackage *nestingPackage() const;
-    Q_INVOKABLE void setNestingPackage(QUmlPackage *nestingPackage);
     Q_INVOKABLE const QSet<QUmlStereotype *> ownedStereotype() const;
     Q_INVOKABLE const QSet<QUmlType *> ownedType() const;
-    Q_INVOKABLE void addOwnedType(UmlType *ownedType);
-    Q_INVOKABLE void removeOwnedType(UmlType *ownedType);
     Q_INVOKABLE const QSet<QUmlPackageMerge *> packageMerge() const;
-    Q_INVOKABLE void addPackageMerge(UmlPackageMerge *packageMerge);
-    Q_INVOKABLE void removePackageMerge(UmlPackageMerge *packageMerge);
     Q_INVOKABLE const QSet<QUmlPackageableElement *> packagedElement() const;
-    Q_INVOKABLE void addPackagedElement(UmlPackageableElement *packagedElement);
-    Q_INVOKABLE void removePackagedElement(UmlPackageableElement *packagedElement);
     Q_INVOKABLE const QSet<QUmlProfileApplication *> profileApplication() const;
-    Q_INVOKABLE void addProfileApplication(UmlProfileApplication *profileApplication);
-    Q_INVOKABLE void removeProfileApplication(UmlProfileApplication *profileApplication);
 
-    // Operations
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+
+    // Operations [NamedElement]
+    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
+    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
+    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
+    Q_INVOKABLE QString separator() const;
+
+    // Operations [Namespace]
+    Q_INVOKABLE QSet<QUmlPackageableElement *> excludeCollisions(QSet<QUmlPackageableElement *> imps) const;
+    Q_INVOKABLE QSet<QString> getNamesOfMember(QUmlNamedElement *element) const;
+    Q_INVOKABLE QSet<QUmlPackageableElement *> importMembers(QSet<QUmlPackageableElement *> imps) const;
+    Q_INVOKABLE bool membersAreDistinguishable() const;
+
+    // Operations [ParameterableElement]
+    Q_INVOKABLE bool isCompatibleWith(QUmlParameterableElement *p) const;
+    Q_INVOKABLE bool isTemplateParameter() const;
+
+    // Operations [TemplateableElement]
+    Q_INVOKABLE bool isTemplate() const;
+    Q_INVOKABLE QSet<QUmlParameterableElement *> parameterableElements() const;
+
+    // Operations [Package]
     Q_INVOKABLE QSet<QUmlStereotype *> allApplicableStereotypes() const;
     Q_INVOKABLE QUmlProfile *containingProfile() const;
     Q_INVOKABLE bool makesVisible(QUmlNamedElement *el) const;
     Q_INVOKABLE bool mustBeOwned() const;
     Q_INVOKABLE QSet<QUmlPackageableElement *> visibleMembers() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [NamedElement]
+    void addClientDependency(UmlDependency *clientDependency);
+    void removeClientDependency(UmlDependency *clientDependency);
+    void setName(QString name);
+    void setNameExpression(QUmlStringExpression *nameExpression);
+
+    // Slots for owned attributes [Namespace]
+    void addElementImport(UmlElementImport *elementImport);
+    void removeElementImport(UmlElementImport *elementImport);
+    void addOwnedRule(UmlConstraint *ownedRule);
+    void removeOwnedRule(UmlConstraint *ownedRule);
+    void addPackageImport(UmlPackageImport *packageImport);
+    void removePackageImport(UmlPackageImport *packageImport);
+
+    // Slots for owned attributes [ParameterableElement]
+    void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
+    void setTemplateParameter(QUmlTemplateParameter *templateParameter);
+
+    // Slots for owned attributes [PackageableElement]
+    void setVisibility(QtUml::VisibilityKind visibility);
+
+    // Slots for owned attributes [TemplateableElement]
+    void setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature);
+    void addTemplateBinding(UmlTemplateBinding *templateBinding);
+    void removeTemplateBinding(UmlTemplateBinding *templateBinding);
+
+    // Slots for owned attributes [Package]
+    void setURI(QString URI);
+    void addNestedPackage(UmlPackage *nestedPackage);
+    void removeNestedPackage(UmlPackage *nestedPackage);
+    void setNestingPackage(QUmlPackage *nestingPackage);
+    void addOwnedType(UmlType *ownedType);
+    void removeOwnedType(UmlType *ownedType);
+    void addPackageMerge(UmlPackageMerge *packageMerge);
+    void removePackageMerge(UmlPackageMerge *packageMerge);
+    void addPackagedElement(UmlPackageableElement *packagedElement);
+    void removePackagedElement(UmlPackageableElement *packagedElement);
+    void addProfileApplication(UmlProfileApplication *profileApplication);
+    void removeProfileApplication(UmlProfileApplication *profileApplication);
 };
 
 QT_END_NAMESPACE

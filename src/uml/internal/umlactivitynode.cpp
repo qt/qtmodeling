@@ -47,14 +47,6 @@
 #include "private/umlinterruptibleactivityregion_p.h"
 #include "private/umlstructuredactivitynode_p.h"
 
-/*!
-    \class UmlActivityNode
-
-    \inmodule QtUml
-
-    \brief ActivityNode is an abstract class for points in the flow of an activity connected by edges.
- */
-
 UmlActivityNode::UmlActivityNode() :
     _activity(0),
     _inStructuredNode(0)
@@ -63,9 +55,6 @@ UmlActivityNode::UmlActivityNode() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Activity containing the node.
- */
 UmlActivity *UmlActivityNode::activity() const
 {
     // This is a read-write association end
@@ -87,9 +76,6 @@ void UmlActivityNode::setActivity(UmlActivity *activity)
     }
 }
 
-/*!
-    Groups containing the node.
- */
 const QSet<UmlActivityGroup *> UmlActivityNode::inGroup() const
 {
     // This is a read-only derived union association end
@@ -125,9 +111,6 @@ void UmlActivityNode::removeInGroup(UmlActivityGroup *inGroup)
     }
 }
 
-/*!
-    Interruptible regions containing the node.
- */
 const QSet<UmlInterruptibleActivityRegion *> UmlActivityNode::inInterruptibleRegion() const
 {
     // This is a read-write association end
@@ -169,9 +152,6 @@ void UmlActivityNode::removeInInterruptibleRegion(UmlInterruptibleActivityRegion
     }
 }
 
-/*!
-    Partitions containing the node.
- */
 const QSet<UmlActivityPartition *> UmlActivityNode::inPartition() const
 {
     // This is a read-write association end
@@ -213,9 +193,6 @@ void UmlActivityNode::removeInPartition(UmlActivityPartition *inPartition)
     }
 }
 
-/*!
-    Structured activity node containing the node.
- */
 UmlStructuredActivityNode *UmlActivityNode::inStructuredNode() const
 {
     // This is a read-write association end
@@ -241,9 +218,6 @@ void UmlActivityNode::setInStructuredNode(UmlStructuredActivityNode *inStructure
     }
 }
 
-/*!
-    Edges that have the node as target.
- */
 const QSet<UmlActivityEdge *> UmlActivityNode::incoming() const
 {
     // This is a read-write association end
@@ -279,9 +253,6 @@ void UmlActivityNode::removeIncoming(UmlActivityEdge *incoming)
     }
 }
 
-/*!
-    Edges that have the node as source.
- */
 const QSet<UmlActivityEdge *> UmlActivityNode::outgoing() const
 {
     // This is a read-write association end
@@ -317,9 +288,6 @@ void UmlActivityNode::removeOutgoing(UmlActivityEdge *outgoing)
     }
 }
 
-/*!
-    Inherited nodes replaced by this node in a specialization of the activity.
- */
 const QSet<UmlActivityNode *> UmlActivityNode::redefinedNode() const
 {
     // This is a read-write association end

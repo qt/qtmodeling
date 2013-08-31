@@ -43,14 +43,6 @@
 #include "private/umlclassifier_p.h"
 #include "private/umltemplateparameter_p.h"
 
-/*!
-    \class UmlRedefinableTemplateSignature
-
-    \inmodule QtUml
-
-    \brief A redefinable template signature supports the addition of formal template parameters in a specialization of a template classifier.
- */
-
 UmlRedefinableTemplateSignature::UmlRedefinableTemplateSignature() :
     _classifier(0)
 {
@@ -58,9 +50,6 @@ UmlRedefinableTemplateSignature::UmlRedefinableTemplateSignature() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The classifier that owns this template signature.
- */
 UmlClassifier *UmlRedefinableTemplateSignature::classifier() const
 {
     // This is a read-write association end
@@ -85,9 +74,6 @@ void UmlRedefinableTemplateSignature::setClassifier(UmlClassifier *classifier)
     }
 }
 
-/*!
-    The template signature that is extended by this template signature.
- */
 const QSet<UmlRedefinableTemplateSignature *> UmlRedefinableTemplateSignature::extendedSignature() const
 {
     // This is a read-write association end
@@ -119,9 +105,6 @@ void UmlRedefinableTemplateSignature::removeExtendedSignature(UmlRedefinableTemp
     }
 }
 
-/*!
-    The formal template parameters of the extendedSignature.
- */
 const QSet<UmlTemplateParameter *> UmlRedefinableTemplateSignature::inheritedParameter() const
 {
     // This is a read-only derived association end
@@ -163,9 +146,6 @@ void UmlRedefinableTemplateSignature::removeInheritedParameter(UmlTemplateParame
 
 // OPERATIONS
 
-/*!
-    The query isConsistentWith() specifies, for any two RedefinableTemplateSignatures in a context in which redefinition is possible, whether redefinition would be logically consistent. A redefining template signature is always consistent with a redefined template signature, since redefinition only adds new formal parameters.
- */
 bool UmlRedefinableTemplateSignature::isConsistentWith(
     UmlRedefinableElement *redefinee) const
 {

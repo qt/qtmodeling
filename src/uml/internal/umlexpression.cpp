@@ -40,23 +40,12 @@
 ****************************************************************************/
 #include "umlexpression_p.h"
 
-/*!
-    \class UmlExpression
-
-    \inmodule QtUml
-
-    \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
- */
-
 UmlExpression::UmlExpression()
 {
 }
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies a sequence of operands.
- */
 const QList<UmlValueSpecification *> UmlExpression::operand() const
 {
     // This is a read-write association end
@@ -88,9 +77,6 @@ void UmlExpression::removeOperand(UmlValueSpecification *operand)
     }
 }
 
-/*!
-    The symbol associated with the node in the expression tree.
- */
 QString UmlExpression::symbol() const
 {
     // This is a read-write property

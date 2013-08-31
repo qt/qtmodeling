@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlSendObjectAction
-
-    \inmodule QtUml
-
-    \brief A send object action is an action that transmits an object to the target object, where it may invoke behavior such as the firing of state machine transitions or the execution of an activity. The value of the object is available to the execution of invoked behaviors. The requestor continues execution immediately. Any reply message is ignored and is not transmitted to the requestor.
- */
-
 UmlSendObjectAction::UmlSendObjectAction() :
     _request(0),
     _target(0)
@@ -58,9 +50,6 @@ UmlSendObjectAction::UmlSendObjectAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.
- */
 UmlInputPin *UmlSendObjectAction::request() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlSendObjectAction::setRequest(UmlInputPin *request)
     }
 }
 
-/*!
-    The target object to which the object is sent.
- */
 UmlInputPin *UmlSendObjectAction::target() const
 {
     // This is a read-write association end

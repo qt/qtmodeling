@@ -43,14 +43,6 @@
 #include "private/umlinterface_p.h"
 #include "private/umlprotocolstatemachine_p.h"
 
-/*!
-    \class UmlPort
-
-    \inmodule QtUml
-
-    \brief A port has an associated protocol state machine.A port is a property of a classifier that specifies a distinct interaction point between that classifier and its environment or between the (behavior of the) classifier and its internal parts. Ports are connected to properties of the classifier by connectors through which requests can be made to invoke the behavioral features of a classifier. A Port may specify the services a classifier provides (offers) to its environment as well as the services that a classifier expects (requires) of its environment.
- */
-
 UmlPort::UmlPort() :
     _isBehavior(false),
     _isConjugated(false),
@@ -61,9 +53,6 @@ UmlPort::UmlPort() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier. Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain.
- */
 bool UmlPort::isBehavior() const
 {
     // This is a read-write property
@@ -80,9 +69,6 @@ void UmlPort::setBehavior(bool isBehavior)
     }
 }
 
-/*!
-    Specifies the way that the provided and required interfaces are derived from the Port’s Type. The default value is false.
- */
 bool UmlPort::isConjugated() const
 {
     // This is a read-write property
@@ -99,9 +85,6 @@ void UmlPort::setConjugated(bool isConjugated)
     }
 }
 
-/*!
-    If true indicates that this port is used to provide the published functionality of a classifier; if false, this port is used to implement the classifier but is not part of the essential externally-visible functionality of the classifier and can, therefore, be altered or deleted along with the internal implementation of the classifier and other properties that are considered part of its implementation.
- */
 bool UmlPort::isService() const
 {
     // This is a read-write property
@@ -118,9 +101,6 @@ void UmlPort::setService(bool isService)
     }
 }
 
-/*!
-    References an optional protocol state machine which describes valid interactions at this interaction point.
- */
 UmlProtocolStateMachine *UmlPort::protocol() const
 {
     // This is a read-write association end
@@ -137,9 +117,6 @@ void UmlPort::setProtocol(UmlProtocolStateMachine *protocol)
     }
 }
 
-/*!
-    References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes.
- */
 const QSet<UmlInterface *> UmlPort::provided() const
 {
     // This is a read-only derived association end
@@ -173,9 +150,6 @@ void UmlPort::removeProvided(UmlInterface *provided)
     }
 }
 
-/*!
-    A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.
- */
 const QSet<UmlPort *> UmlPort::redefinedPort() const
 {
     // This is a read-write association end
@@ -207,9 +181,6 @@ void UmlPort::removeRedefinedPort(UmlPort *redefinedPort)
     }
 }
 
-/*!
-    References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface.
- */
 const QSet<UmlInterface *> UmlPort::required() const
 {
     // This is a read-only derived association end

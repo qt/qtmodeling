@@ -42,14 +42,6 @@
 
 #include "private/umlnamedelement_p.h"
 
-/*!
-    \class UmlTimeObservation
-
-    \inmodule QtUml
-
-    \brief A time observation is a reference to a time instant during an execution. It points out the element in the model to observe and whether the observation is when this model element is entered or when it is exited.
- */
-
 UmlTimeObservation::UmlTimeObservation() :
     _event(0),
     _firstEvent(true)
@@ -58,9 +50,6 @@ UmlTimeObservation::UmlTimeObservation() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The observation is determined by the entering or exiting of the event element during execution.
- */
 UmlNamedElement *UmlTimeObservation::event() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlTimeObservation::setEvent(UmlNamedElement *event)
     }
 }
 
-/*!
-    The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.
- */
 bool UmlTimeObservation::firstEvent() const
 {
     // This is a read-write property

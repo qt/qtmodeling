@@ -42,14 +42,6 @@
 
 #include "private/umlpackageableelement_p.h"
 
-/*!
-    \class UmlManifestation
-
-    \inmodule QtUml
-
-    \brief A manifestation is the concrete physical rendering of one or more model elements by an artifact.
- */
-
 UmlManifestation::UmlManifestation() :
     _utilizedElement(0)
 {
@@ -57,9 +49,6 @@ UmlManifestation::UmlManifestation() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The model element that is utilized in the manifestation in an Artifact.
- */
 UmlPackageableElement *UmlManifestation::utilizedElement() const
 {
     // This is a read-write association end

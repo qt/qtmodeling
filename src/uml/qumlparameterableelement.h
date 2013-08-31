@@ -52,26 +52,52 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
+class QUmlComment;
+class QUmlElement;
 class QUmlTemplateParameter;
 
 class Q_UML_EXPORT QUmlParameterableElement : public QObject, public UmlParameterableElement
 {
     Q_OBJECT
+
+    // Properties [Element]
+    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
+    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
+    Q_PROPERTY(QUmlElement * owner READ owner)
+
+    // Properties [ParameterableElement]
     Q_PROPERTY(QUmlTemplateParameter * owningTemplateParameter READ owningTemplateParameter)
     Q_PROPERTY(QUmlTemplateParameter * templateParameter READ templateParameter)
 
 public:
     Q_DECL_HIDDEN explicit QUmlParameterableElement(QObject *parent = 0);
 
-    // Owned attributes
-    Q_INVOKABLE QUmlTemplateParameter *owningTemplateParameter() const;
-    Q_INVOKABLE void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
-    Q_INVOKABLE QUmlTemplateParameter *templateParameter() const;
-    Q_INVOKABLE void setTemplateParameter(QUmlTemplateParameter *templateParameter);
+    // Owned attributes [Element]
+    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
+    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
+    Q_INVOKABLE QUmlElement *owner() const;
 
-    // Operations
+    // Owned attributes [ParameterableElement]
+    Q_INVOKABLE QUmlTemplateParameter *owningTemplateParameter() const;
+    Q_INVOKABLE QUmlTemplateParameter *templateParameter() const;
+
+    // Operations [Element]
+    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
+    Q_INVOKABLE bool mustBeOwned() const;
+
+    // Operations [ParameterableElement]
     Q_INVOKABLE bool isCompatibleWith(QUmlParameterableElement *p) const;
     Q_INVOKABLE bool isTemplateParameter() const;
+
+public Q_SLOTS:
+
+    // Slots for owned attributes [Element]
+    void addOwnedComment(UmlComment *ownedComment);
+    void removeOwnedComment(UmlComment *ownedComment);
+
+    // Slots for owned attributes [ParameterableElement]
+    void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
+    void setTemplateParameter(QUmlTemplateParameter *templateParameter);
 };
 
 QT_END_NAMESPACE

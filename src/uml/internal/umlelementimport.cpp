@@ -43,14 +43,6 @@
 #include "private/umlnamespace_p.h"
 #include "private/umlpackageableelement_p.h"
 
-/*!
-    \class UmlElementImport
-
-    \inmodule QtUml
-
-    \brief An element import identifies an element in another package, and allows the element to be referenced using its name without a qualifier.
- */
-
 UmlElementImport::UmlElementImport() :
     _importedElement(0),
     _importingNamespace(0),
@@ -60,9 +52,6 @@ UmlElementImport::UmlElementImport() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.
- */
 QString UmlElementImport::alias() const
 {
     // This is a read-write property
@@ -79,9 +68,6 @@ void UmlElementImport::setAlias(QString alias)
     }
 }
 
-/*!
-    Specifies the PackageableElement whose name is to be added to a Namespace.
- */
 UmlPackageableElement *UmlElementImport::importedElement() const
 {
     // This is a read-write association end
@@ -106,9 +92,6 @@ void UmlElementImport::setImportedElement(UmlPackageableElement *importedElement
     }
 }
 
-/*!
-    Specifies the Namespace that imports a PackageableElement from another Package.
- */
 UmlNamespace *UmlElementImport::importingNamespace() const
 {
     // This is a read-write association end
@@ -134,9 +117,6 @@ void UmlElementImport::setImportingNamespace(UmlNamespace *importingNamespace)
     }
 }
 
-/*!
-    Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.
- */
 QtUml::VisibilityKind UmlElementImport::visibility() const
 {
     // This is a read-write property
@@ -155,9 +135,6 @@ void UmlElementImport::setVisibility(QtUml::VisibilityKind visibility)
 
 // OPERATIONS
 
-/*!
-    The query getName() returns the name under which the imported PackageableElement will be known in the importing namespace.
- */
 QString UmlElementImport::getName(
     ) const
 {

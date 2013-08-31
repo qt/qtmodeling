@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlliteralreal_p.h"
 
-/*!
-    \class UmlLiteralReal
-
-    \inmodule QtUml
-
-    \brief A literal real is a specification of a real value.
- */
-
 UmlLiteralReal::UmlLiteralReal()
 {
 }
@@ -72,9 +64,6 @@ void UmlLiteralReal::setValue(double value)
 
 // OPERATIONS
 
-/*!
-    The query isComputable() is redefined to be true.
- */
 bool UmlLiteralReal::isComputable(
     ) const
 {
@@ -83,9 +72,6 @@ bool UmlLiteralReal::isComputable(
     return bool ();
 }
 
-/*!
-    The query realValue() gives the value.
- */
 double UmlLiteralReal::realValue(
     ) const
 {

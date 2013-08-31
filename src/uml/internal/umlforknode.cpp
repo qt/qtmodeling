@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlforknode_p.h"
 
-/*!
-    \class UmlForkNode
-
-    \inmodule QtUml
-
-    \brief A fork node is a control node that splits a flow into multiple concurrent flows.
- */
-
 UmlForkNode::UmlForkNode()
 {
 }

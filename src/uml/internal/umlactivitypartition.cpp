@@ -44,14 +44,6 @@
 #include "private/umlactivitynode_p.h"
 #include "private/umlelement_p.h"
 
-/*!
-    \class UmlActivityPartition
-
-    \inmodule QtUml
-
-    \brief An activity partition is a kind of activity group for identifying actions that have some characteristic in common.
- */
-
 UmlActivityPartition::UmlActivityPartition() :
     _isDimension(false),
     _isExternal(false),
@@ -62,9 +54,6 @@ UmlActivityPartition::UmlActivityPartition() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Edges immediately contained in the group.
- */
 const QSet<UmlActivityEdge *> UmlActivityPartition::edge() const
 {
     // This is a read-write association end
@@ -106,9 +95,6 @@ void UmlActivityPartition::removeEdge(UmlActivityEdge *edge)
     }
 }
 
-/*!
-    Tells whether the partition groups other partitions along a dimension.
- */
 bool UmlActivityPartition::isDimension() const
 {
     // This is a read-write property
@@ -125,9 +111,6 @@ void UmlActivityPartition::setDimension(bool isDimension)
     }
 }
 
-/*!
-    Tells whether the partition represents an entity to which the partitioning structure does not apply.
- */
 bool UmlActivityPartition::isExternal() const
 {
     // This is a read-write property
@@ -144,9 +127,6 @@ void UmlActivityPartition::setExternal(bool isExternal)
     }
 }
 
-/*!
-    Nodes immediately contained in the group.
- */
 const QSet<UmlActivityNode *> UmlActivityPartition::node() const
 {
     // This is a read-write association end
@@ -188,9 +168,6 @@ void UmlActivityPartition::removeNode(UmlActivityNode *node)
     }
 }
 
-/*!
-    An element constraining behaviors invoked by nodes in the partition.
- */
 UmlElement *UmlActivityPartition::represents() const
 {
     // This is a read-write association end
@@ -207,9 +184,6 @@ void UmlActivityPartition::setRepresents(UmlElement *represents)
     }
 }
 
-/*!
-    Partitions immediately contained in the partition.
- */
 const QSet<UmlActivityPartition *> UmlActivityPartition::subpartition() const
 {
     // This is a read-write association end
@@ -241,9 +215,6 @@ void UmlActivityPartition::removeSubpartition(UmlActivityPartition *subpartition
     }
 }
 
-/*!
-    Partition immediately containing the partition.
- */
 UmlActivityPartition *UmlActivityPartition::superPartition() const
 {
     // This is a read-write association end

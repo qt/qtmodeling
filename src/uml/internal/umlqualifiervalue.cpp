@@ -43,14 +43,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umlproperty_p.h"
 
-/*!
-    \class UmlQualifierValue
-
-    \inmodule QtUml
-
-    \brief A qualifier value is not an action. It is an element that identifies links. It gives a single qualifier within a link end data specification.
- */
-
 UmlQualifierValue::UmlQualifierValue() :
     _qualifier(0),
     _value(0)
@@ -59,9 +51,6 @@ UmlQualifierValue::UmlQualifierValue() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Attribute representing the qualifier for which the value is to be specified.
- */
 UmlProperty *UmlQualifierValue::qualifier() const
 {
     // This is a read-write association end
@@ -78,9 +67,6 @@ void UmlQualifierValue::setQualifier(UmlProperty *qualifier)
     }
 }
 
-/*!
-    Input pin from which the specified value for the qualifier is taken.
- */
 UmlInputPin *UmlQualifierValue::value() const
 {
     // This is a read-write association end

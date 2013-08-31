@@ -42,14 +42,6 @@
 
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlClearStructuralFeatureAction
-
-    \inmodule QtUml
-
-    \brief A clear structural feature action is a structural feature action that removes all values of a structural feature.
- */
-
 UmlClearStructuralFeatureAction::UmlClearStructuralFeatureAction() :
     _result(0)
 {
@@ -57,9 +49,6 @@ UmlClearStructuralFeatureAction::UmlClearStructuralFeatureAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the output pin on which the result is put.
- */
 UmlOutputPin *UmlClearStructuralFeatureAction::result() const
 {
     // This is a read-write association end

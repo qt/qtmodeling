@@ -42,14 +42,6 @@
 
 #include "private/umlbehavior_p.h"
 
-/*!
-    \class UmlBehaviorExecutionSpecification
-
-    \inmodule QtUml
-
-    \brief A behavior execution specification is a kind of execution specification representing the execution of a behavior.
- */
-
 UmlBehaviorExecutionSpecification::UmlBehaviorExecutionSpecification() :
     _behavior(0)
 {
@@ -57,9 +49,6 @@ UmlBehaviorExecutionSpecification::UmlBehaviorExecutionSpecification() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Behavior whose execution is occurring.
- */
 UmlBehavior *UmlBehaviorExecutionSpecification::behavior() const
 {
     // This is a read-write association end

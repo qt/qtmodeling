@@ -42,14 +42,6 @@
 
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlReadLinkAction
-
-    \inmodule QtUml
-
-    \brief A read link action is a link action that navigates across associations to retrieve objects on one end.
- */
-
 UmlReadLinkAction::UmlReadLinkAction() :
     _result(0)
 {
@@ -57,9 +49,6 @@ UmlReadLinkAction::UmlReadLinkAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The pin on which are put the objects participating in the association at the end not specified by the inputs.
- */
 UmlOutputPin *UmlReadLinkAction::result() const
 {
     // This is a read-write association end

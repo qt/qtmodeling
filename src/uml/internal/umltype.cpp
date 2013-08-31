@@ -42,14 +42,6 @@
 
 #include "private/umlpackage_p.h"
 
-/*!
-    \class UmlType
-
-    \inmodule QtUml
-
-    \brief A type is a named element that is used as the type for a typed element. A type can be contained in a package.A type constrains the values represented by a typed element.
- */
-
 UmlType::UmlType() :
     _package(0)
 {
@@ -57,9 +49,6 @@ UmlType::UmlType() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies the owning package of this classifier, if any.
- */
 UmlPackage *UmlType::package() const
 {
     // This is a read-write association end
@@ -78,9 +67,6 @@ void UmlType::setPackage(UmlPackage *package)
 
 // OPERATIONS
 
-/*!
-    The query conformsTo() gives true for a type that conforms to another. By default, two types do not conform to each other. This query is intended to be redefined for specific conformance situations.
- */
 bool UmlType::conformsTo(
     UmlType *other) const
 {

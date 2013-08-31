@@ -43,14 +43,6 @@
 #include "private/umlconnectableelement_p.h"
 #include "private/umlproperty_p.h"
 
-/*!
-    \class UmlConnectorEnd
-
-    \inmodule QtUml
-
-    \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
- */
-
 UmlConnectorEnd::UmlConnectorEnd() :
     _partWithPort(0),
     _role(0)
@@ -59,9 +51,6 @@ UmlConnectorEnd::UmlConnectorEnd() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
- */
 UmlProperty *UmlConnectorEnd::definingEnd() const
 {
     // This is a read-only derived association end
@@ -83,9 +72,6 @@ void UmlConnectorEnd::setDefiningEnd(UmlProperty *definingEnd)
     }
 }
 
-/*!
-    Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.
- */
 UmlProperty *UmlConnectorEnd::partWithPort() const
 {
     // This is a read-write association end
@@ -102,9 +88,6 @@ void UmlConnectorEnd::setPartWithPort(UmlProperty *partWithPort)
     }
 }
 
-/*!
-    The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
- */
 UmlConnectableElement *UmlConnectorEnd::role() const
 {
     // This is a read-write association end

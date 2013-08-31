@@ -42,14 +42,6 @@
 
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlChangeEvent
-
-    \inmodule QtUml
-
-    \brief A change event models a change in the system configuration that makes a condition true.
- */
-
 UmlChangeEvent::UmlChangeEvent() :
     _changeExpression(0)
 {
@@ -57,9 +49,6 @@ UmlChangeEvent::UmlChangeEvent() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
- */
 UmlValueSpecification *UmlChangeEvent::changeExpression() const
 {
     // This is a read-write association end

@@ -43,14 +43,6 @@
 #include "private/umlbehavior_p.h"
 #include "private/umlobjectflow_p.h"
 
-/*!
-    \class UmlDecisionNode
-
-    \inmodule QtUml
-
-    \brief A decision node is a control node that chooses between outgoing flows.
- */
-
 UmlDecisionNode::UmlDecisionNode() :
     _decisionInput(0),
     _decisionInputFlow(0)
@@ -59,9 +51,6 @@ UmlDecisionNode::UmlDecisionNode() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Provides input to guard specifications on edges outgoing from the decision node.
- */
 UmlBehavior *UmlDecisionNode::decisionInput() const
 {
     // This is a read-write association end
@@ -78,9 +67,6 @@ void UmlDecisionNode::setDecisionInput(UmlBehavior *decisionInput)
     }
 }
 
-/*!
-    An additional edge incoming to the decision node that provides a decision input value.
- */
 UmlObjectFlow *UmlDecisionNode::decisionInputFlow() const
 {
     // This is a read-write association end

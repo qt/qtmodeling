@@ -44,14 +44,6 @@
 #include "private/umltemplatebinding_p.h"
 #include "private/umltemplatesignature_p.h"
 
-/*!
-    \class UmlTemplateableElement
-
-    \inmodule QtUml
-
-    \brief A templateable element is an element that can optionally be defined as a template and bound to other templates.
- */
-
 UmlTemplateableElement::UmlTemplateableElement() :
     _ownedTemplateSignature(0)
 {
@@ -59,9 +51,6 @@ UmlTemplateableElement::UmlTemplateableElement() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The optional template signature specifying the formal template parameters.
- */
 UmlTemplateSignature *UmlTemplateableElement::ownedTemplateSignature() const
 {
     // This is a read-write association end
@@ -86,9 +75,6 @@ void UmlTemplateableElement::setOwnedTemplateSignature(UmlTemplateSignature *own
     }
 }
 
-/*!
-    The optional bindings from this element to templates.
- */
 const QSet<UmlTemplateBinding *> UmlTemplateableElement::templateBinding() const
 {
     // This is a read-write association end
@@ -132,9 +118,6 @@ void UmlTemplateableElement::removeTemplateBinding(UmlTemplateBinding *templateB
 
 // OPERATIONS
 
-/*!
-    The query isTemplate() returns whether this templateable element is actually a template.
- */
 bool UmlTemplateableElement::isTemplate(
     ) const
 {
@@ -143,9 +126,6 @@ bool UmlTemplateableElement::isTemplate(
     return bool ();
 }
 
-/*!
-    The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
- */
 QSet<UmlParameterableElement *> UmlTemplateableElement::parameterableElements(
     ) const
 {

@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlusage_p.h"
 
-/*!
-    \class UmlUsage
-
-    \inmodule QtUml
-
-    \brief A usage is a relationship in which one element requires another element (or set of elements) for its full implementation or operation. A usage is a dependency in which the client requires the presence of the supplier.
- */
-
 UmlUsage::UmlUsage()
 {
 }

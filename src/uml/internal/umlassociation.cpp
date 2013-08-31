@@ -43,14 +43,6 @@
 #include "private/umlproperty_p.h"
 #include "private/umltype_p.h"
 
-/*!
-    \class UmlAssociation
-
-    \inmodule QtUml
-
-    \brief An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link.A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.An association describes a set of tuples whose values refer to typed instances. An instance of an association is called a link. A link is a tuple with one value for each end of the association, where each value is an instance of the type of the end.
- */
-
 UmlAssociation::UmlAssociation() :
     _isDerived(false)
 {
@@ -58,9 +50,6 @@ UmlAssociation::UmlAssociation() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    References the classifiers that are used as types of the ends of the association.
- */
 const QList<UmlType *> UmlAssociation::endType() const
 {
     // This is a read-only derived association end
@@ -100,9 +89,6 @@ void UmlAssociation::removeEndType(UmlType *endType)
     }
 }
 
-/*!
-    Specifies whether the association is derived from other model elements such as other associations or constraints.
- */
 bool UmlAssociation::isDerived() const
 {
     // This is a read-write property
@@ -119,9 +105,6 @@ void UmlAssociation::setDerived(bool isDerived)
     }
 }
 
-/*!
-    Each end represents participation of instances of the classifier connected to the end in links of the association.
- */
 const QList<UmlProperty *> UmlAssociation::memberEnd() const
 {
     // This is a read-write association end
@@ -163,9 +146,6 @@ void UmlAssociation::removeMemberEnd(UmlProperty *memberEnd)
     }
 }
 
-/*!
-    The navigable ends that are owned by the association itself.
- */
 const QSet<UmlProperty *> UmlAssociation::navigableOwnedEnd() const
 {
     // This is a read-write association end
@@ -197,9 +177,6 @@ void UmlAssociation::removeNavigableOwnedEnd(UmlProperty *navigableOwnedEnd)
     }
 }
 
-/*!
-    The ends that are owned by the association itself.
- */
 const QList<UmlProperty *> UmlAssociation::ownedEnd() const
 {
     // This is a read-write association end

@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlDestroyObjectAction
-
-    \inmodule QtUml
-
-    \brief A destroy object action is an action that destroys objects.
- */
-
 UmlDestroyObjectAction::UmlDestroyObjectAction() :
     _isDestroyLinks(false),
     _isDestroyOwnedObjects(false),
@@ -59,9 +51,6 @@ UmlDestroyObjectAction::UmlDestroyObjectAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies whether links in which the object participates are destroyed along with the object.
- */
 bool UmlDestroyObjectAction::isDestroyLinks() const
 {
     // This is a read-write property
@@ -78,9 +67,6 @@ void UmlDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
     }
 }
 
-/*!
-    Specifies whether objects owned by the object are destroyed along with the object.
- */
 bool UmlDestroyObjectAction::isDestroyOwnedObjects() const
 {
     // This is a read-write property
@@ -97,9 +83,6 @@ void UmlDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
     }
 }
 
-/*!
-    The input pin providing the object to be destroyed.
- */
 UmlInputPin *UmlDestroyObjectAction::target() const
 {
     // This is a read-write association end

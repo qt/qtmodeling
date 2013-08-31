@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlAddStructuralFeatureValueAction
-
-    \inmodule QtUml
-
-    \brief An add structural feature value action is a write structural feature action for adding values to a structural feature.
- */
-
 UmlAddStructuralFeatureValueAction::UmlAddStructuralFeatureValueAction() :
     _insertAt(0),
     _isReplaceAll(false)
@@ -58,9 +50,6 @@ UmlAddStructuralFeatureValueAction::UmlAddStructuralFeatureValueAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the position at which to insert a new value or move an existing value in ordered structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero. This pin is omitted for unordered structural features.
- */
 UmlInputPin *UmlAddStructuralFeatureValueAction::insertAt() const
 {
     // This is a read-write association end
@@ -85,9 +74,6 @@ void UmlAddStructuralFeatureValueAction::setInsertAt(UmlInputPin *insertAt)
     }
 }
 
-/*!
-    Specifies whether existing values of the structural feature of the object should be removed before adding the new value.
- */
 bool UmlAddStructuralFeatureValueAction::isReplaceAll() const
 {
     // This is a read-write property

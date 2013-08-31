@@ -43,14 +43,6 @@
 #include "private/umlclassifier_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlReadExtentAction
-
-    \inmodule QtUml
-
-    \brief A read extent action is an action that retrieves the current instances of a classifier.
- */
-
 UmlReadExtentAction::UmlReadExtentAction() :
     _classifier(0),
     _result(0)
@@ -59,9 +51,6 @@ UmlReadExtentAction::UmlReadExtentAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The classifier whose instances are to be retrieved.
- */
 UmlClassifier *UmlReadExtentAction::classifier() const
 {
     // This is a read-write association end
@@ -78,9 +67,6 @@ void UmlReadExtentAction::setClassifier(UmlClassifier *classifier)
     }
 }
 
-/*!
-    The runtime instances of the classifier.
- */
 UmlOutputPin *UmlReadExtentAction::result() const
 {
     // This is a read-write association end

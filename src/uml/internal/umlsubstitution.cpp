@@ -42,14 +42,6 @@
 
 #include "private/umlclassifier_p.h"
 
-/*!
-    \class UmlSubstitution
-
-    \inmodule QtUml
-
-    \brief A substitution is a relationship between two classifiers signifies that the substituting classifier complies with the contract specified by the contract classifier. This implies that instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
- */
-
 UmlSubstitution::UmlSubstitution() :
     _contract(0),
     _substitutingClassifier(0)
@@ -58,9 +50,6 @@ UmlSubstitution::UmlSubstitution() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The contract with which the substituting classifier complies.
- */
 UmlClassifier *UmlSubstitution::contract() const
 {
     // This is a read-write association end
@@ -85,9 +74,6 @@ void UmlSubstitution::setContract(UmlClassifier *contract)
     }
 }
 
-/*!
-    Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.
- */
 UmlClassifier *UmlSubstitution::substitutingClassifier() const
 {
     // This is a read-write association end

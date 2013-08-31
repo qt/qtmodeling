@@ -43,14 +43,6 @@
 #include "private/umlclassifier_p.h"
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlReclassifyObjectAction
-
-    \inmodule QtUml
-
-    \brief A reclassify object action is an action that changes which classifiers classify an object.
- */
-
 UmlReclassifyObjectAction::UmlReclassifyObjectAction() :
     _isReplaceAll(false),
     _object(0)
@@ -59,9 +51,6 @@ UmlReclassifyObjectAction::UmlReclassifyObjectAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies whether existing classifiers should be removed before adding the new classifiers.
- */
 bool UmlReclassifyObjectAction::isReplaceAll() const
 {
     // This is a read-write property
@@ -78,9 +67,6 @@ void UmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
     }
 }
 
-/*!
-    A set of classifiers to be added to the classifiers of the object.
- */
 const QSet<UmlClassifier *> UmlReclassifyObjectAction::newClassifier() const
 {
     // This is a read-write association end
@@ -106,9 +92,6 @@ void UmlReclassifyObjectAction::removeNewClassifier(UmlClassifier *newClassifier
     }
 }
 
-/*!
-    Holds the object to be reclassified.
- */
 UmlInputPin *UmlReclassifyObjectAction::object() const
 {
     // This is a read-write association end
@@ -133,9 +116,6 @@ void UmlReclassifyObjectAction::setObject(UmlInputPin *object)
     }
 }
 
-/*!
-    A set of classifiers to be removed from the classifiers of the object.
- */
 const QSet<UmlClassifier *> UmlReclassifyObjectAction::oldClassifier() const
 {
     // This is a read-write association end

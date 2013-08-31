@@ -41,29 +41,172 @@
 #include "qumlclassifiertemplateparameter.h"
 
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlTemplateSignature>
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlClassifierTemplateParameter
+
+    \inmodule QtUml
+
+    \brief A classifier template parameter exposes a classifier as a formal template parameter.
+ */
 
 QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlClassifierTemplateParameter::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlClassifierTemplateParameter::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlClassifierTemplateParameter::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [TemplateParameter]
+
+/*!
+    The element that is the default for this formal template parameter.
+ */
+QUmlParameterableElement *QUmlClassifierTemplateParameter::default_() const
+{
+    return reinterpret_cast<QUmlParameterableElement *>(_default_);
+}
+
+/*!
+    The element that is owned by this template parameter for the purpose of providing a default.
+ */
+QUmlParameterableElement *QUmlClassifierTemplateParameter::ownedDefault() const
+{
+    return reinterpret_cast<QUmlParameterableElement *>(_ownedDefault);
+}
+
+/*!
+    The element that is owned by this template parameter.
+ */
+QUmlParameterableElement *QUmlClassifierTemplateParameter::ownedParameteredElement() const
+{
+    return reinterpret_cast<QUmlParameterableElement *>(_ownedParameteredElement);
+}
+
+/*!
+    The template signature that owns this template parameter.
+ */
+QUmlTemplateSignature *QUmlClassifierTemplateParameter::signature() const
+{
+    return reinterpret_cast<QUmlTemplateSignature *>(_signature);
+}
+
+// OWNED ATTRIBUTES [ClassifierTemplateParameter]
+
+/*!
+    Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.
+ */
 bool QUmlClassifierTemplateParameter::allowSubstitutable() const
 {
     return _allowSubstitutable;
 }
 
-void QUmlClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable)
-{
-    UmlClassifierTemplateParameter::setAllowSubstitutable(allowSubstitutable);
-}
-
+/*!
+    The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
+ */
 const QSet<QUmlClassifier *> QUmlClassifierTemplateParameter::constrainingClassifier() const
 {
     return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_constrainingClassifier));
+}
+
+/*!
+    The parameterable classifier for this template parameter.
+ */
+QUmlClassifier *QUmlClassifierTemplateParameter::parameteredElement() const
+{
+    return reinterpret_cast<QUmlClassifier *>(_parameteredElement);
+}
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlClassifierTemplateParameter::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlClassifierTemplateParameter::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlClassifierTemplateParameter::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlClassifierTemplateParameter::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
+
+void QUmlClassifierTemplateParameter::setDefault(QUmlParameterableElement *default_)
+{
+    UmlTemplateParameter::setDefault(default_);
+}
+
+void QUmlClassifierTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
+{
+    UmlTemplateParameter::setOwnedDefault(ownedDefault);
+}
+
+void QUmlClassifierTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
+{
+    UmlTemplateParameter::setOwnedParameteredElement(ownedParameteredElement);
+}
+
+void QUmlClassifierTemplateParameter::setSignature(QUmlTemplateSignature *signature)
+{
+    UmlTemplateParameter::setSignature(signature);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [ClassifierTemplateParameter]
+
+void QUmlClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstitutable)
+{
+    UmlClassifierTemplateParameter::setAllowSubstitutable(allowSubstitutable);
 }
 
 void QUmlClassifierTemplateParameter::addConstrainingClassifier(UmlClassifier *constrainingClassifier)
@@ -74,11 +217,6 @@ void QUmlClassifierTemplateParameter::addConstrainingClassifier(UmlClassifier *c
 void QUmlClassifierTemplateParameter::removeConstrainingClassifier(UmlClassifier *constrainingClassifier)
 {
     UmlClassifierTemplateParameter::removeConstrainingClassifier(constrainingClassifier);
-}
-
-QUmlClassifier *QUmlClassifierTemplateParameter::parameteredElement() const
-{
-    return reinterpret_cast<QUmlClassifier *>(_parameteredElement);
 }
 
 void QUmlClassifierTemplateParameter::setParameteredElement(QUmlClassifier *parameteredElement)

@@ -42,14 +42,6 @@
 
 #include "private/umldeployment_p.h"
 
-/*!
-    \class UmlDeploymentSpecification
-
-    \inmodule QtUml
-
-    \brief A deployment specification specifies a set of properties that determine execution parameters of a component artifact that is deployed on a node. A deployment specification can be aimed at a specific type of container. An artifact that reifies or implements deployment specification properties is a deployment descriptor.
- */
-
 UmlDeploymentSpecification::UmlDeploymentSpecification() :
     _deployment(0)
 {
@@ -57,9 +49,6 @@ UmlDeploymentSpecification::UmlDeploymentSpecification() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The deployment with which the DeploymentSpecification is associated.
- */
 UmlDeployment *UmlDeploymentSpecification::deployment() const
 {
     // This is a read-write association end
@@ -81,9 +70,6 @@ void UmlDeploymentSpecification::setDeployment(UmlDeployment *deployment)
     }
 }
 
-/*!
-    The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.
- */
 QString UmlDeploymentSpecification::deploymentLocation() const
 {
     // This is a read-write property
@@ -100,9 +86,6 @@ void UmlDeploymentSpecification::setDeploymentLocation(QString deploymentLocatio
     }
 }
 
-/*!
-    The location where a component Artifact executes. This may be a local or remote location.
- */
 QString UmlDeploymentSpecification::executionLocation() const
 {
     // This is a read-write property

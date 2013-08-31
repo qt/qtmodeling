@@ -40,21 +40,153 @@
 ****************************************************************************/
 #include "qumlconnectableelementtemplateparameter.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnectableElement>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlTemplateSignature>
 
 QT_BEGIN_NAMESPACE
+
+/*!
+    \class UmlConnectableElementTemplateParameter
+
+    \inmodule QtUml
+
+    \brief A connectable element template parameter exposes a connectable element as a formal parameter for a template.
+ */
 
 QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter(QObject *parent) :
     QObject(parent)
 {
 }
 
-// Owned attributes
+// OWNED ATTRIBUTES [Element]
 
+/*!
+    The Comments owned by this element.
+ */
+const QSet<QUmlComment *> QUmlConnectableElementTemplateParameter::ownedComment() const
+{
+    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+}
+
+/*!
+    The Elements owned by this element.
+ */
+const QSet<QUmlElement *> QUmlConnectableElementTemplateParameter::ownedElement() const
+{
+    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+}
+
+/*!
+    The Element that owns this element.
+ */
+QUmlElement *QUmlConnectableElementTemplateParameter::owner() const
+{
+    return reinterpret_cast<QUmlElement *>(_owner);
+}
+
+// OWNED ATTRIBUTES [TemplateParameter]
+
+/*!
+    The element that is the default for this formal template parameter.
+ */
+QUmlParameterableElement *QUmlConnectableElementTemplateParameter::default_() const
+{
+    return reinterpret_cast<QUmlParameterableElement *>(_default_);
+}
+
+/*!
+    The element that is owned by this template parameter for the purpose of providing a default.
+ */
+QUmlParameterableElement *QUmlConnectableElementTemplateParameter::ownedDefault() const
+{
+    return reinterpret_cast<QUmlParameterableElement *>(_ownedDefault);
+}
+
+/*!
+    The element that is owned by this template parameter.
+ */
+QUmlParameterableElement *QUmlConnectableElementTemplateParameter::ownedParameteredElement() const
+{
+    return reinterpret_cast<QUmlParameterableElement *>(_ownedParameteredElement);
+}
+
+/*!
+    The template signature that owns this template parameter.
+ */
+QUmlTemplateSignature *QUmlConnectableElementTemplateParameter::signature() const
+{
+    return reinterpret_cast<QUmlTemplateSignature *>(_signature);
+}
+
+// OWNED ATTRIBUTES [ConnectableElementTemplateParameter]
+
+/*!
+    The ConnectableElement for this template parameter.
+ */
 QUmlConnectableElement *QUmlConnectableElementTemplateParameter::parameteredElement() const
 {
     return reinterpret_cast<QUmlConnectableElement *>(_parameteredElement);
 }
+
+// OPERATIONS [Element]
+
+/*!
+    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
+ */
+QSet<QUmlElement *> QUmlConnectableElementTemplateParameter::allOwnedElements() const
+{
+    QSet<QUmlElement *> r;
+    foreach (UmlElement *element, UmlElement::allOwnedElements())
+        r.insert(reinterpret_cast<QUmlElement *>(element));
+    return r;
+}
+
+/*!
+    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
+ */
+bool QUmlConnectableElementTemplateParameter::mustBeOwned() const
+{
+    return UmlElement::mustBeOwned();
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [Element]
+
+void QUmlConnectableElementTemplateParameter::addOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::addOwnedComment(ownedComment);
+}
+
+void QUmlConnectableElementTemplateParameter::removeOwnedComment(UmlComment *ownedComment)
+{
+    UmlElement::removeOwnedComment(ownedComment);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
+
+void QUmlConnectableElementTemplateParameter::setDefault(QUmlParameterableElement *default_)
+{
+    UmlTemplateParameter::setDefault(default_);
+}
+
+void QUmlConnectableElementTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
+{
+    UmlTemplateParameter::setOwnedDefault(ownedDefault);
+}
+
+void QUmlConnectableElementTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
+{
+    UmlTemplateParameter::setOwnedParameteredElement(ownedParameteredElement);
+}
+
+void QUmlConnectableElementTemplateParameter::setSignature(QUmlTemplateSignature *signature)
+{
+    UmlTemplateParameter::setSignature(signature);
+}
+
+// SLOTS FOR OWNED ATTRIBUTES [ConnectableElementTemplateParameter]
 
 void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnectableElement *parameteredElement)
 {

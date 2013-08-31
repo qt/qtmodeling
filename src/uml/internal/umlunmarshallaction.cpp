@@ -44,14 +44,6 @@
 #include "private/umlinputpin_p.h"
 #include "private/umloutputpin_p.h"
 
-/*!
-    \class UmlUnmarshallAction
-
-    \inmodule QtUml
-
-    \brief An unmarshall action is an action that breaks an object of a known type into outputs each of which is equal to a value from a structural feature of the object.
- */
-
 UmlUnmarshallAction::UmlUnmarshallAction() :
     _object(0),
     _unmarshallType(0)
@@ -60,9 +52,6 @@ UmlUnmarshallAction::UmlUnmarshallAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The object to be unmarshalled.
- */
 UmlInputPin *UmlUnmarshallAction::object() const
 {
     // This is a read-write association end
@@ -87,9 +76,6 @@ void UmlUnmarshallAction::setObject(UmlInputPin *object)
     }
 }
 
-/*!
-    The values of the structural features of the input object.
- */
 const QSet<UmlOutputPin *> UmlUnmarshallAction::result() const
 {
     // This is a read-write association end
@@ -121,9 +107,6 @@ void UmlUnmarshallAction::removeResult(UmlOutputPin *result)
     }
 }
 
-/*!
-    The type of the object to be unmarshalled.
- */
 UmlClassifier *UmlUnmarshallAction::unmarshallType() const
 {
     // This is a read-write association end

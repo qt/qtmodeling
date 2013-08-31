@@ -44,14 +44,6 @@
 #include "private/umlslot_p.h"
 #include "private/umlvaluespecification_p.h"
 
-/*!
-    \class UmlInstanceSpecification
-
-    \inmodule QtUml
-
-    \brief An instance specification has the capability of being a deployment target in a deployment relationship, in the case that it is an instance of a node. It is also has the capability of being a deployed artifact, if it is an instance of an artifact.An instance specification is a model element that represents an instance in a modeled system.
- */
-
 UmlInstanceSpecification::UmlInstanceSpecification() :
     _specification(0)
 {
@@ -59,9 +51,6 @@ UmlInstanceSpecification::UmlInstanceSpecification() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
- */
 const QSet<UmlClassifier *> UmlInstanceSpecification::classifier() const
 {
     // This is a read-write association end
@@ -87,9 +76,6 @@ void UmlInstanceSpecification::removeClassifier(UmlClassifier *classifier)
     }
 }
 
-/*!
-    A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
- */
 const QSet<UmlSlot *> UmlInstanceSpecification::slot_() const
 {
     // This is a read-write association end
@@ -131,9 +117,6 @@ void UmlInstanceSpecification::removeSlot(UmlSlot *slot_)
     }
 }
 
-/*!
-    A specification of how to compute, derive, or construct the instance.
- */
 UmlValueSpecification *UmlInstanceSpecification::specification() const
 {
     // This is a read-write association end

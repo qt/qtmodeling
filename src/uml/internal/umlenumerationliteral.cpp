@@ -42,14 +42,6 @@
 
 #include "private/umlenumeration_p.h"
 
-/*!
-    \class UmlEnumerationLiteral
-
-    \inmodule QtUml
-
-    \brief An enumeration literal is a user-defined data value for an enumeration.
- */
-
 UmlEnumerationLiteral::UmlEnumerationLiteral() :
     _enumeration(0)
 {
@@ -57,9 +49,6 @@ UmlEnumerationLiteral::UmlEnumerationLiteral() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    The classifier of this EnumerationLiteral derived to be equal to its enumeration.
- */
 UmlEnumeration *UmlEnumerationLiteral::classifier() const
 {
     // This is a read-only derived association end
@@ -81,9 +70,6 @@ void UmlEnumerationLiteral::setClassifier(UmlEnumeration *classifier)
     }
 }
 
-/*!
-    The Enumeration that this EnumerationLiteral is a member of.
- */
 UmlEnumeration *UmlEnumerationLiteral::enumeration() const
 {
     // This is a read-write association end

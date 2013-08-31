@@ -40,14 +40,6 @@
 ****************************************************************************/
 #include "umlflowfinalnode_p.h"
 
-/*!
-    \class UmlFlowFinalNode
-
-    \inmodule QtUml
-
-    \brief A flow final node is a final node that terminates a flow.
- */
-
 UmlFlowFinalNode::UmlFlowFinalNode()
 {
 }

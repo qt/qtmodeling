@@ -42,14 +42,6 @@
 
 #include "private/umlstereotype_p.h"
 
-/*!
-    \class UmlExtensionEnd
-
-    \inmodule QtUml
-
-    \brief An extension end is used to tie an extension to a stereotype when extending a metaclass.The default multiplicity of an extension end is 0..1.
- */
-
 UmlExtensionEnd::UmlExtensionEnd() :
     _type(0)
 {
@@ -57,9 +49,6 @@ UmlExtensionEnd::UmlExtensionEnd() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.
- */
 int UmlExtensionEnd::lower() const
 {
     // This is a read-write derived property
@@ -81,9 +70,6 @@ void UmlExtensionEnd::setLower(int lower)
     }
 }
 
-/*!
-    References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.
- */
 UmlStereotype *UmlExtensionEnd::type() const
 {
     // This is a read-write association end
@@ -102,9 +88,6 @@ void UmlExtensionEnd::setType(UmlStereotype *type)
 
 // OPERATIONS
 
-/*!
-    The query lowerBound() returns the lower bound of the multiplicity as an Integer. This is a redefinition of the default lower bound, which normally, for MultiplicityElements, evaluates to 1 if empty.
- */
 int UmlExtensionEnd::lowerBound(
     ) const
 {

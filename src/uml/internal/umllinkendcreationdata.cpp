@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlLinkEndCreationData
-
-    \inmodule QtUml
-
-    \brief A link end creation data is not an action. It is an element that identifies links. It identifies one end of a link to be created by a create link action.
- */
-
 UmlLinkEndCreationData::UmlLinkEndCreationData() :
     _insertAt(0),
     _isReplaceAll(false)
@@ -58,9 +50,6 @@ UmlLinkEndCreationData::UmlLinkEndCreationData() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.
- */
 UmlInputPin *UmlLinkEndCreationData::insertAt() const
 {
     // This is a read-write association end
@@ -77,9 +66,6 @@ void UmlLinkEndCreationData::setInsertAt(UmlInputPin *insertAt)
     }
 }
 
-/*!
-    Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.
- */
 bool UmlLinkEndCreationData::isReplaceAll() const
 {
     // This is a read-write property

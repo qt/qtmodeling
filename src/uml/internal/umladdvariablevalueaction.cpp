@@ -42,14 +42,6 @@
 
 #include "private/umlinputpin_p.h"
 
-/*!
-    \class UmlAddVariableValueAction
-
-    \inmodule QtUml
-
-    \brief An add variable value action is a write variable action for adding values to a variable.
- */
-
 UmlAddVariableValueAction::UmlAddVariableValueAction() :
     _insertAt(0),
     _isReplaceAll(false)
@@ -58,9 +50,6 @@ UmlAddVariableValueAction::UmlAddVariableValueAction() :
 
 // OWNED ATTRIBUTES
 
-/*!
-    Gives the position at which to insert a new value or move an existing value in ordered variables. The types is UnlimitedINatural, but the value cannot be zero. This pin is omitted for unordered variables.
- */
 UmlInputPin *UmlAddVariableValueAction::insertAt() const
 {
     // This is a read-write association end
@@ -85,9 +74,6 @@ void UmlAddVariableValueAction::setInsertAt(UmlInputPin *insertAt)
     }
 }
 
-/*!
-    Specifies whether existing values of the variable should be removed before adding the new value.
- */
 bool UmlAddVariableValueAction::isReplaceAll() const
 {
     // This is a read-write property
