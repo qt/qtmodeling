@@ -153,8 +153,7 @@ Q${namespace}${className}::~Q${namespace}${className}()
     ${documentation}
  */
 [%- END %]
-[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}
-Q${namespace}${className}::${qtAttribute}() const
+[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${className}::${qtAttribute}() const
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
 
