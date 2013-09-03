@@ -40,94 +40,51 @@
 ****************************************************************************/
 #include "qumlrelationship.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
-
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlRelationship
+    \class QUmlRelationship
 
     \inmodule QtUml
 
     \brief Relationship is an abstract concept that specifies some kind of relationship between elements.
  */
-
-QUmlRelationship::QUmlRelationship(QObject *parent) :
-    QObject(parent)
+QUmlRelationship::QUmlRelationship()
 {
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlRelationship::ownedComment() const
+QUmlRelationship::~QUmlRelationship()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlRelationship::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlRelationship::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [Relationship]
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QUmlElement *> QUmlRelationship::relatedElement() const
+const QSet<QUmlElement *> 
+QUmlRelationship::relatedElement() const
 {
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_relatedElement));
+    // This is a read-only derived union association end
+
+    return _relatedElement;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlRelationship::allOwnedElements() const
+void QUmlRelationship::addRelatedElement(QUmlElement *relatedElement)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-only derived union association end
+
+    if (!_relatedElement.contains(relatedElement)) {
+        _relatedElement.insert(relatedElement);
+        if (relatedElement->asQObject() && this->asQObject())
+            QObject::connect(relatedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRelatedElement(QObject *)));
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlRelationship::mustBeOwned() const
+void QUmlRelationship::removeRelatedElement(QUmlElement *relatedElement)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-only derived union association end
+
+    if (_relatedElement.contains(relatedElement)) {
+        _relatedElement.remove(relatedElement);
+    }
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlRelationship::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlRelationship::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Relationship]
-
-QT_END_NAMESPACE
 

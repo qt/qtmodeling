@@ -40,544 +40,126 @@
 ****************************************************************************/
 #include "qumlreplyaction.h"
 
-#include <QtUml/QUmlActivity>
-#include <QtUml/QUmlActivityEdge>
-#include <QtUml/QUmlActivityGroup>
-#include <QtUml/QUmlActivityNode>
-#include <QtUml/QUmlActivityPartition>
-#include <QtUml/QUmlClassifier>
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlConstraint>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlExceptionHandler>
+#include "private/qumlreplyactionobject_p.h"
+
 #include <QtUml/QUmlInputPin>
-#include <QtUml/QUmlInterruptibleActivityRegion>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlOutputPin>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlRedefinableElement>
-#include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlTrigger>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlReplyAction
+    \class QUmlReplyAction
 
     \inmodule QtUml
 
     \brief A reply action is an action that accepts a set of return values and a value containing return information produced by a previous accept call action. The reply action returns the values to the caller of the previous call, completing execution of the call.
  */
-
-QUmlReplyAction::QUmlReplyAction(QObject *parent) :
-    QObject(parent)
+QUmlReplyAction::QUmlReplyAction(bool createQObject) :
+    _replyToCall(0),
+    _returnInformation(0)
 {
+    if (createQObject)
+        _qObject = new QUmlReplyActionObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlReplyAction::ownedComment() const
+QUmlReplyAction::~QUmlReplyAction()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlReplyAction::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlReplyAction::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlReplyAction::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlReplyAction::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlReplyAction::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlReplyAction::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlReplyAction::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlReplyAction::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [RedefinableElement]
-
-/*!
-    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
- */
-bool QUmlReplyAction::isLeaf() const
-{
-    return _isLeaf;
-}
-
-/*!
-    The redefinable element that is being redefined by this element.
- */
-const QSet<QUmlRedefinableElement *> QUmlReplyAction::redefinedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlRedefinableElement *> *>(&_redefinedElement));
-}
-
-/*!
-    References the contexts that this element may be redefined from.
- */
-const QSet<QUmlClassifier *> QUmlReplyAction::redefinitionContext() const
-{
-    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_redefinitionContext));
-}
-
-// OWNED ATTRIBUTES [ActivityNode]
-
-/*!
-    Activity containing the node.
- */
-QUmlActivity *QUmlReplyAction::activity() const
-{
-    return reinterpret_cast<QUmlActivity *>(_activity);
-}
-
-/*!
-    Groups containing the node.
- */
-const QSet<QUmlActivityGroup *> QUmlReplyAction::inGroup() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_inGroup));
-}
-
-/*!
-    Interruptible regions containing the node.
- */
-const QSet<QUmlInterruptibleActivityRegion *> QUmlReplyAction::inInterruptibleRegion() const
-{
-    return *(reinterpret_cast<const QSet<QUmlInterruptibleActivityRegion *> *>(&_inInterruptibleRegion));
-}
-
-/*!
-    Partitions containing the node.
- */
-const QSet<QUmlActivityPartition *> QUmlReplyAction::inPartition() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityPartition *> *>(&_inPartition));
-}
-
-/*!
-    Structured activity node containing the node.
- */
-QUmlStructuredActivityNode *QUmlReplyAction::inStructuredNode() const
-{
-    return reinterpret_cast<QUmlStructuredActivityNode *>(_inStructuredNode);
-}
-
-/*!
-    Edges that have the node as target.
- */
-const QSet<QUmlActivityEdge *> QUmlReplyAction::incoming() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_incoming));
-}
-
-/*!
-    Edges that have the node as source.
- */
-const QSet<QUmlActivityEdge *> QUmlReplyAction::outgoing() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_outgoing));
-}
-
-/*!
-    Inherited nodes replaced by this node in a specialization of the activity.
- */
-const QSet<QUmlActivityNode *> QUmlReplyAction::redefinedNode() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_redefinedNode));
-}
-
-// OWNED ATTRIBUTES [ExecutableNode]
-
-/*!
-    A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
- */
-const QSet<QUmlExceptionHandler *> QUmlReplyAction::handler() const
-{
-    return *(reinterpret_cast<const QSet<QUmlExceptionHandler *> *>(&_handler));
-}
-
-// OWNED ATTRIBUTES [Action]
-
-/*!
-    The classifier that owns the behavior of which this action is a part.
- */
-QUmlClassifier *QUmlReplyAction::context() const
-{
-    return reinterpret_cast<QUmlClassifier *>(UmlAction::context());
-}
-
-/*!
-    The ordered set of input pins connected to the Action. These are among the total set of inputs.
- */
-const QList<QUmlInputPin *> QUmlReplyAction::input() const
-{
-    return *(reinterpret_cast<const QList<QUmlInputPin *> *>(&_input));
-}
-
-/*!
-    If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.
- */
-bool QUmlReplyAction::isLocallyReentrant() const
-{
-    return _isLocallyReentrant;
-}
-
-/*!
-    Constraint that must be satisfied when executed is completed.
- */
-const QSet<QUmlConstraint *> QUmlReplyAction::localPostcondition() const
-{
-    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_localPostcondition));
-}
-
-/*!
-    Constraint that must be satisfied when execution is started.
- */
-const QSet<QUmlConstraint *> QUmlReplyAction::localPrecondition() const
-{
-    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_localPrecondition));
-}
-
-/*!
-    The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
- */
-const QList<QUmlOutputPin *> QUmlReplyAction::output() const
-{
-    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_output));
-}
-
-// OWNED ATTRIBUTES [ReplyAction]
+// OWNED ATTRIBUTES
 
 /*!
     The trigger specifying the operation whose call is being replied to.
  */
-QUmlTrigger *QUmlReplyAction::replyToCall() const
+QUmlTrigger *
+QUmlReplyAction::replyToCall() const
 {
-    return reinterpret_cast<QUmlTrigger *>(_replyToCall);
+    // This is a read-write association end
+
+    return _replyToCall;
+}
+
+void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
+{
+    // This is a read-write association end
+
+    if (_replyToCall != replyToCall) {
+        _replyToCall = replyToCall;
+        if (replyToCall->asQObject() && this->asQObject())
+            QObject::connect(replyToCall->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReplyToCall()));
+    }
 }
 
 /*!
     A list of pins containing the reply values of the operation. These values are returned to the caller.
  */
-const QSet<QUmlInputPin *> QUmlReplyAction::replyValue() const
+const QSet<QUmlInputPin *> 
+QUmlReplyAction::replyValue() const
 {
-    return *(reinterpret_cast<const QSet<QUmlInputPin *> *>(&_replyValue));
+    // This is a read-write association end
+
+    return _replyValue;
+}
+
+void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
+{
+    // This is a read-write association end
+
+    if (!_replyValue.contains(replyValue)) {
+        _replyValue.insert(replyValue);
+        if (replyValue->asQObject() && this->asQObject())
+            QObject::connect(replyValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeReplyValue(QObject *)));
+        replyValue->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addInput(replyValue);
+    }
+}
+
+void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
+{
+    // This is a read-write association end
+
+    if (_replyValue.contains(replyValue)) {
+        _replyValue.remove(replyValue);
+        if (replyValue->asQObject())
+            replyValue->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeInput(replyValue);
+    }
 }
 
 /*!
     A pin containing the return information value produced by an earlier AcceptCallAction.
  */
-QUmlInputPin *QUmlReplyAction::returnInformation() const
+QUmlInputPin *
+QUmlReplyAction::returnInformation() const
 {
-    return reinterpret_cast<QUmlInputPin *>(_returnInformation);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlReplyAction::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlReplyAction::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlReplyAction::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlReplyAction::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlReplyAction::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlReplyAction::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// OPERATIONS [RedefinableElement]
-
-/*!
-    The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
- */
-bool QUmlReplyAction::isConsistentWith(QUmlRedefinableElement *redefinee) const
-{
-    return UmlRedefinableElement::isConsistentWith(redefinee);
-}
-
-/*!
-    The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
- */
-bool QUmlReplyAction::isRedefinitionContextValid(QUmlRedefinableElement *redefined) const
-{
-    return UmlRedefinableElement::isRedefinitionContextValid(redefined);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlReplyAction::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlReplyAction::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlReplyAction::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlReplyAction::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlReplyAction::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlReplyAction::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlReplyAction::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
-
-void QUmlReplyAction::setLeaf(bool isLeaf)
-{
-    UmlRedefinableElement::setLeaf(isLeaf);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
-
-void QUmlReplyAction::setActivity(QUmlActivity *activity)
-{
-    UmlActivityNode::setActivity(activity);
-}
-
-void QUmlReplyAction::addInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion)
-{
-    UmlActivityNode::addInInterruptibleRegion(inInterruptibleRegion);
-}
-
-void QUmlReplyAction::removeInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion)
-{
-    UmlActivityNode::removeInInterruptibleRegion(inInterruptibleRegion);
-}
-
-void QUmlReplyAction::addInPartition(UmlActivityPartition *inPartition)
-{
-    UmlActivityNode::addInPartition(inPartition);
-}
-
-void QUmlReplyAction::removeInPartition(UmlActivityPartition *inPartition)
-{
-    UmlActivityNode::removeInPartition(inPartition);
-}
-
-void QUmlReplyAction::setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode)
-{
-    UmlActivityNode::setInStructuredNode(inStructuredNode);
-}
-
-void QUmlReplyAction::addIncoming(UmlActivityEdge *incoming)
-{
-    UmlActivityNode::addIncoming(incoming);
-}
-
-void QUmlReplyAction::removeIncoming(UmlActivityEdge *incoming)
-{
-    UmlActivityNode::removeIncoming(incoming);
-}
-
-void QUmlReplyAction::addOutgoing(UmlActivityEdge *outgoing)
-{
-    UmlActivityNode::addOutgoing(outgoing);
-}
-
-void QUmlReplyAction::removeOutgoing(UmlActivityEdge *outgoing)
-{
-    UmlActivityNode::removeOutgoing(outgoing);
-}
-
-void QUmlReplyAction::addRedefinedNode(UmlActivityNode *redefinedNode)
-{
-    UmlActivityNode::addRedefinedNode(redefinedNode);
-}
-
-void QUmlReplyAction::removeRedefinedNode(UmlActivityNode *redefinedNode)
-{
-    UmlActivityNode::removeRedefinedNode(redefinedNode);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
-
-void QUmlReplyAction::addHandler(UmlExceptionHandler *handler)
-{
-    UmlExecutableNode::addHandler(handler);
-}
-
-void QUmlReplyAction::removeHandler(UmlExceptionHandler *handler)
-{
-    UmlExecutableNode::removeHandler(handler);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Action]
-
-void QUmlReplyAction::setLocallyReentrant(bool isLocallyReentrant)
-{
-    UmlAction::setLocallyReentrant(isLocallyReentrant);
-}
-
-void QUmlReplyAction::addLocalPostcondition(UmlConstraint *localPostcondition)
-{
-    UmlAction::addLocalPostcondition(localPostcondition);
-}
-
-void QUmlReplyAction::removeLocalPostcondition(UmlConstraint *localPostcondition)
-{
-    UmlAction::removeLocalPostcondition(localPostcondition);
-}
-
-void QUmlReplyAction::addLocalPrecondition(UmlConstraint *localPrecondition)
-{
-    UmlAction::addLocalPrecondition(localPrecondition);
-}
-
-void QUmlReplyAction::removeLocalPrecondition(UmlConstraint *localPrecondition)
-{
-    UmlAction::removeLocalPrecondition(localPrecondition);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ReplyAction]
-
-void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
-{
-    UmlReplyAction::setReplyToCall(replyToCall);
-}
-
-void QUmlReplyAction::addReplyValue(UmlInputPin *replyValue)
-{
-    UmlReplyAction::addReplyValue(replyValue);
-}
-
-void QUmlReplyAction::removeReplyValue(UmlInputPin *replyValue)
-{
-    UmlReplyAction::removeReplyValue(replyValue);
+    return _returnInformation;
 }
 
 void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
 {
-    UmlReplyAction::setReturnInformation(returnInformation);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_returnInformation != returnInformation) {
+        // Adjust subsetted properties
+        removeInput(_returnInformation);
+
+        _returnInformation = returnInformation;
+        if (returnInformation->asQObject() && this->asQObject())
+            QObject::connect(returnInformation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReturnInformation()));
+        returnInformation->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        if (returnInformation) {
+            addInput(returnInformation);
+        }
+    }
+}
 

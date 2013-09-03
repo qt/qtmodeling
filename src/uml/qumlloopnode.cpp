@@ -40,888 +40,300 @@
 ****************************************************************************/
 #include "qumlloopnode.h"
 
-#include <QtUml/QUmlActivity>
-#include <QtUml/QUmlActivityEdge>
-#include <QtUml/QUmlActivityGroup>
-#include <QtUml/QUmlActivityNode>
-#include <QtUml/QUmlActivityPartition>
-#include <QtUml/QUmlClassifier>
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlConstraint>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlElementImport>
-#include <QtUml/QUmlExceptionHandler>
+#include "private/qumlloopnodeobject_p.h"
+
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlInputPin>
-#include <QtUml/QUmlInterruptibleActivityRegion>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlPackageableElement>
-#include <QtUml/QUmlPackageImport>
-#include <QtUml/QUmlRedefinableElement>
-#include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlStructuredActivityNode>
-#include <QtUml/QUmlVariable>
-
-QT_BEGIN_NAMESPACE
 
 /*!
-    \class UmlLoopNode
+    \class QUmlLoopNode
 
     \inmodule QtUml
 
     \brief A loop node is a structured activity node that represents a loop with setup, test, and body sections.
  */
-
-QUmlLoopNode::QUmlLoopNode(QObject *parent) :
-    QObject(parent)
+QUmlLoopNode::QUmlLoopNode(bool createQObject) :
+    QUmlStructuredActivityNode(false),
+    _decider(0),
+    _isTestedFirst(false)
 {
+    if (createQObject)
+        _qObject = new QUmlLoopNodeObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlLoopNode::ownedComment() const
+QUmlLoopNode::~QUmlLoopNode()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlLoopNode::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlLoopNode::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlLoopNode::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlLoopNode::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlLoopNode::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlLoopNode::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlLoopNode::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlLoopNode::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [RedefinableElement]
-
-/*!
-    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
- */
-bool QUmlLoopNode::isLeaf() const
-{
-    return _isLeaf;
-}
-
-/*!
-    The redefinable element that is being redefined by this element.
- */
-const QSet<QUmlRedefinableElement *> QUmlLoopNode::redefinedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlRedefinableElement *> *>(&_redefinedElement));
-}
-
-/*!
-    References the contexts that this element may be redefined from.
- */
-const QSet<QUmlClassifier *> QUmlLoopNode::redefinitionContext() const
-{
-    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_redefinitionContext));
-}
-
-// OWNED ATTRIBUTES [ActivityNode]
-
-/*!
-    Groups containing the node.
- */
-const QSet<QUmlActivityGroup *> QUmlLoopNode::inGroup() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_inGroup));
-}
-
-/*!
-    Interruptible regions containing the node.
- */
-const QSet<QUmlInterruptibleActivityRegion *> QUmlLoopNode::inInterruptibleRegion() const
-{
-    return *(reinterpret_cast<const QSet<QUmlInterruptibleActivityRegion *> *>(&_inInterruptibleRegion));
-}
-
-/*!
-    Partitions containing the node.
- */
-const QSet<QUmlActivityPartition *> QUmlLoopNode::inPartition() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityPartition *> *>(&_inPartition));
-}
-
-/*!
-    Structured activity node containing the node.
- */
-QUmlStructuredActivityNode *QUmlLoopNode::inStructuredNode() const
-{
-    return reinterpret_cast<QUmlStructuredActivityNode *>(_inStructuredNode);
-}
-
-/*!
-    Edges that have the node as target.
- */
-const QSet<QUmlActivityEdge *> QUmlLoopNode::incoming() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_incoming));
-}
-
-/*!
-    Edges that have the node as source.
- */
-const QSet<QUmlActivityEdge *> QUmlLoopNode::outgoing() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_outgoing));
-}
-
-/*!
-    Inherited nodes replaced by this node in a specialization of the activity.
- */
-const QSet<QUmlActivityNode *> QUmlLoopNode::redefinedNode() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_redefinedNode));
-}
-
-// OWNED ATTRIBUTES [ExecutableNode]
-
-/*!
-    A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
- */
-const QSet<QUmlExceptionHandler *> QUmlLoopNode::handler() const
-{
-    return *(reinterpret_cast<const QSet<QUmlExceptionHandler *> *>(&_handler));
-}
-
-// OWNED ATTRIBUTES [Action]
-
-/*!
-    The classifier that owns the behavior of which this action is a part.
- */
-QUmlClassifier *QUmlLoopNode::context() const
-{
-    return reinterpret_cast<QUmlClassifier *>(UmlAction::context());
-}
-
-/*!
-    The ordered set of input pins connected to the Action. These are among the total set of inputs.
- */
-const QList<QUmlInputPin *> QUmlLoopNode::input() const
-{
-    return *(reinterpret_cast<const QList<QUmlInputPin *> *>(&_input));
-}
-
-/*!
-    If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.
- */
-bool QUmlLoopNode::isLocallyReentrant() const
-{
-    return _isLocallyReentrant;
-}
-
-/*!
-    Constraint that must be satisfied when executed is completed.
- */
-const QSet<QUmlConstraint *> QUmlLoopNode::localPostcondition() const
-{
-    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_localPostcondition));
-}
-
-/*!
-    Constraint that must be satisfied when execution is started.
- */
-const QSet<QUmlConstraint *> QUmlLoopNode::localPrecondition() const
-{
-    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_localPrecondition));
-}
-
-/*!
-    The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
- */
-const QList<QUmlOutputPin *> QUmlLoopNode::output() const
-{
-    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_output));
-}
-
-// OWNED ATTRIBUTES [Namespace]
-
-/*!
-    References the ElementImports owned by the Namespace.
- */
-const QSet<QUmlElementImport *> QUmlLoopNode::elementImport() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElementImport *> *>(&_elementImport));
-}
-
-/*!
-    References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
- */
-const QSet<QUmlPackageableElement *> QUmlLoopNode::importedMember() const
-{
-    QSet<QUmlPackageableElement *> r;
-    foreach (UmlPackageableElement *element, UmlNamespace::importedMember())
-        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
-    return r;
-}
-
-/*!
-    A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
- */
-const QSet<QUmlNamedElement *> QUmlLoopNode::member() const
-{
-    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_member));
-}
-
-/*!
-    A collection of NamedElements owned by the Namespace.
- */
-const QSet<QUmlNamedElement *> QUmlLoopNode::ownedMember() const
-{
-    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_ownedMember));
-}
-
-/*!
-    Specifies a set of Constraints owned by this Namespace.
- */
-const QSet<QUmlConstraint *> QUmlLoopNode::ownedRule() const
-{
-    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_ownedRule));
-}
-
-/*!
-    References the PackageImports owned by the Namespace.
- */
-const QSet<QUmlPackageImport *> QUmlLoopNode::packageImport() const
-{
-    return *(reinterpret_cast<const QSet<QUmlPackageImport *> *>(&_packageImport));
-}
-
-// OWNED ATTRIBUTES [ActivityGroup]
-
-/*!
-    Edges immediately contained in the group.
- */
-const QSet<QUmlActivityEdge *> QUmlLoopNode::containedEdge() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_containedEdge));
-}
-
-/*!
-    Nodes immediately contained in the group.
- */
-const QSet<QUmlActivityNode *> QUmlLoopNode::containedNode() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_containedNode));
-}
-
-/*!
-    Groups immediately contained in the group.
- */
-const QSet<QUmlActivityGroup *> QUmlLoopNode::subgroup() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_subgroup));
-}
-
-/*!
-    Group immediately containing the group.
- */
-QUmlActivityGroup *QUmlLoopNode::superGroup() const
-{
-    return reinterpret_cast<QUmlActivityGroup *>(_superGroup);
-}
-
-// OWNED ATTRIBUTES [StructuredActivityNode]
-
-/*!
-    Activity immediately containing the node.
- */
-QUmlActivity *QUmlLoopNode::activity() const
-{
-    return reinterpret_cast<QUmlActivity *>(_activity);
-}
-
-/*!
-    Edges immediately contained in the structured node.
- */
-const QSet<QUmlActivityEdge *> QUmlLoopNode::edge() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_edge));
-}
-
-/*!
-    If true, then the actions in the node execute in isolation from actions outside the node.
- */
-bool QUmlLoopNode::mustIsolate() const
-{
-    return _mustIsolate;
-}
-
-/*!
-    Nodes immediately contained in the group.
- */
-const QSet<QUmlActivityNode *> QUmlLoopNode::node() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_node));
-}
-
-/*!
-    A variable defined in the scope of the structured activity node. It has no value and may not be accessed
- */
-const QSet<QUmlVariable *> QUmlLoopNode::variable() const
-{
-    return *(reinterpret_cast<const QSet<QUmlVariable *> *>(&_variable));
-}
-
-// OWNED ATTRIBUTES [LoopNode]
+// OWNED ATTRIBUTES
 
 /*!
     A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
  */
-const QList<QUmlOutputPin *> QUmlLoopNode::bodyOutput() const
+const QList<QUmlOutputPin *> 
+QUmlLoopNode::bodyOutput() const
 {
-    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_bodyOutput));
+    // This is a read-write association end
+
+    return _bodyOutput;
+}
+
+void QUmlLoopNode::addBodyOutput(QUmlOutputPin *bodyOutput)
+{
+    // This is a read-write association end
+
+    if (!_bodyOutput.contains(bodyOutput)) {
+        _bodyOutput.append(bodyOutput);
+        if (bodyOutput->asQObject() && this->asQObject())
+            QObject::connect(bodyOutput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyOutput(QObject *)));
+    }
+}
+
+void QUmlLoopNode::removeBodyOutput(QUmlOutputPin *bodyOutput)
+{
+    // This is a read-write association end
+
+    if (_bodyOutput.contains(bodyOutput)) {
+        _bodyOutput.removeAll(bodyOutput);
+    }
 }
 
 /*!
     The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
  */
-const QSet<QUmlExecutableNode *> QUmlLoopNode::bodyPart() const
+const QSet<QUmlExecutableNode *> 
+QUmlLoopNode::bodyPart() const
 {
-    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_bodyPart));
+    // This is a read-write association end
+
+    return _bodyPart;
+}
+
+void QUmlLoopNode::addBodyPart(QUmlExecutableNode *bodyPart)
+{
+    // This is a read-write association end
+
+    if (!_bodyPart.contains(bodyPart)) {
+        _bodyPart.insert(bodyPart);
+        if (bodyPart->asQObject() && this->asQObject())
+            QObject::connect(bodyPart->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyPart(QObject *)));
+    }
+}
+
+void QUmlLoopNode::removeBodyPart(QUmlExecutableNode *bodyPart)
+{
+    // This is a read-write association end
+
+    if (_bodyPart.contains(bodyPart)) {
+        _bodyPart.remove(bodyPart);
+    }
 }
 
 /*!
     An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.
  */
-QUmlOutputPin *QUmlLoopNode::decider() const
+QUmlOutputPin *
+QUmlLoopNode::decider() const
 {
-    return reinterpret_cast<QUmlOutputPin *>(_decider);
+    // This is a read-write association end
+
+    return _decider;
+}
+
+void QUmlLoopNode::setDecider(QUmlOutputPin *decider)
+{
+    // This is a read-write association end
+
+    if (_decider != decider) {
+        _decider = decider;
+        if (decider->asQObject() && this->asQObject())
+            QObject::connect(decider->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecider()));
+    }
 }
 
 /*!
     If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.
  */
-bool QUmlLoopNode::isTestedFirst() const
+bool 
+QUmlLoopNode::isTestedFirst() const
 {
+    // This is a read-write property
+
     return _isTestedFirst;
+}
+
+void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
+{
+    // This is a read-write property
+
+    if (_isTestedFirst != isTestedFirst) {
+        _isTestedFirst = isTestedFirst;
+    }
 }
 
 /*!
     A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
  */
-const QList<QUmlOutputPin *> QUmlLoopNode::loopVariable() const
+const QList<QUmlOutputPin *> 
+QUmlLoopNode::loopVariable() const
 {
-    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_loopVariable));
+    // This is a read-write association end
+
+    return _loopVariable;
+}
+
+void QUmlLoopNode::addLoopVariable(QUmlOutputPin *loopVariable)
+{
+    // This is a read-write association end
+
+    if (!_loopVariable.contains(loopVariable)) {
+        _loopVariable.append(loopVariable);
+        if (loopVariable->asQObject() && this->asQObject())
+            QObject::connect(loopVariable->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLoopVariable(QObject *)));
+    }
+}
+
+void QUmlLoopNode::removeLoopVariable(QUmlOutputPin *loopVariable)
+{
+    // This is a read-write association end
+
+    if (_loopVariable.contains(loopVariable)) {
+        _loopVariable.removeAll(loopVariable);
+    }
 }
 
 /*!
     A list of values that are moved into the loop variable pins before the first iteration of the loop.
  */
-const QList<QUmlInputPin *> QUmlLoopNode::loopVariableInput() const
+const QList<QUmlInputPin *> 
+QUmlLoopNode::loopVariableInput() const
 {
-    return *(reinterpret_cast<const QList<QUmlInputPin *> *>(&_loopVariableInput));
+    // This is a read-write association end
+
+    return _loopVariableInput;
+}
+
+void QUmlLoopNode::addLoopVariableInput(QUmlInputPin *loopVariableInput)
+{
+    // This is a read-write association end
+
+    if (!_loopVariableInput.contains(loopVariableInput)) {
+        _loopVariableInput.append(loopVariableInput);
+        if (loopVariableInput->asQObject() && this->asQObject())
+            QObject::connect(loopVariableInput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLoopVariableInput(QObject *)));
+        loopVariableInput->asQObject()->setParent(this->asQObject());
+    }
+}
+
+void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
+{
+    // This is a read-write association end
+
+    if (_loopVariableInput.contains(loopVariableInput)) {
+        _loopVariableInput.removeAll(loopVariableInput);
+        if (loopVariableInput->asQObject())
+            loopVariableInput->asQObject()->setParent(0);
+    }
 }
 
 /*!
     A list of output pins that constitute the data flow output of the entire loop.
  */
-const QList<QUmlOutputPin *> QUmlLoopNode::result() const
+const QList<QUmlOutputPin *> 
+QUmlLoopNode::result() const
 {
-    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_result));
+    // This is a read-write association end
+
+    return _result;
+}
+
+void QUmlLoopNode::addResult(QUmlOutputPin *result)
+{
+    // This is a read-write association end
+
+    if (!_result.contains(result)) {
+        _result.append(result);
+        if (result->asQObject() && this->asQObject())
+            QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
+        result->asQObject()->setParent(this->asQObject());
+    }
+}
+
+void QUmlLoopNode::removeResult(QUmlOutputPin *result)
+{
+    // This is a read-write association end
+
+    if (_result.contains(result)) {
+        _result.removeAll(result);
+        if (result->asQObject())
+            result->asQObject()->setParent(0);
+    }
 }
 
 /*!
     The set of nodes and edges that initialize values or perform other setup computations for the loop.
  */
-const QSet<QUmlExecutableNode *> QUmlLoopNode::setupPart() const
+const QSet<QUmlExecutableNode *> 
+QUmlLoopNode::setupPart() const
 {
-    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_setupPart));
+    // This is a read-write association end
+
+    return _setupPart;
+}
+
+void QUmlLoopNode::addSetupPart(QUmlExecutableNode *setupPart)
+{
+    // This is a read-write association end
+
+    if (!_setupPart.contains(setupPart)) {
+        _setupPart.insert(setupPart);
+        if (setupPart->asQObject() && this->asQObject())
+            QObject::connect(setupPart->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSetupPart(QObject *)));
+    }
+}
+
+void QUmlLoopNode::removeSetupPart(QUmlExecutableNode *setupPart)
+{
+    // This is a read-write association end
+
+    if (_setupPart.contains(setupPart)) {
+        _setupPart.remove(setupPart);
+    }
 }
 
 /*!
     The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
  */
-const QSet<QUmlExecutableNode *> QUmlLoopNode::test() const
+const QSet<QUmlExecutableNode *> 
+QUmlLoopNode::test() const
 {
-    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_test));
-}
-
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlLoopNode::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlLoopNode::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlLoopNode::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlLoopNode::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlLoopNode::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlLoopNode::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// OPERATIONS [RedefinableElement]
-
-/*!
-    The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
- */
-bool QUmlLoopNode::isConsistentWith(QUmlRedefinableElement *redefinee) const
-{
-    return UmlRedefinableElement::isConsistentWith(redefinee);
-}
-
-/*!
-    The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
- */
-bool QUmlLoopNode::isRedefinitionContextValid(QUmlRedefinableElement *redefined) const
-{
-    return UmlRedefinableElement::isRedefinitionContextValid(redefined);
-}
-
-// OPERATIONS [Namespace]
-
-/*!
-    The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
- */
-QSet<QUmlPackageableElement *> QUmlLoopNode::excludeCollisions(QSet<QUmlPackageableElement *> imps) const
-{
-    QSet<QUmlPackageableElement *> r;
-    foreach (UmlPackageableElement *element, UmlNamespace::excludeCollisions(*(reinterpret_cast<QSet<UmlPackageableElement *> *>(&imps))))
-        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
-    return r;
-}
-
-/*!
-    The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.The query getNamesOfMember() takes importing into account. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
- */
-QSet<QString> QUmlLoopNode::getNamesOfMember(QUmlNamedElement *element) const
-{
-    return UmlNamespace::getNamesOfMember(element);
-}
-
-/*!
-    The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.
- */
-QSet<QUmlPackageableElement *> QUmlLoopNode::importMembers(QSet<QUmlPackageableElement *> imps) const
-{
-    QSet<QUmlPackageableElement *> r;
-    foreach (UmlPackageableElement *element, UmlNamespace::importMembers(*(reinterpret_cast<QSet<UmlPackageableElement *> *>(&imps))))
-        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
-    return r;
-}
-
-/*!
-    The Boolean query membersAreDistinguishable() determines whether all of the namespace's members are distinguishable within it.
- */
-bool QUmlLoopNode::membersAreDistinguishable() const
-{
-    return UmlNamespace::membersAreDistinguishable();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlLoopNode::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlLoopNode::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlLoopNode::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlLoopNode::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlLoopNode::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlLoopNode::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlLoopNode::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
-
-void QUmlLoopNode::setLeaf(bool isLeaf)
-{
-    UmlRedefinableElement::setLeaf(isLeaf);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ActivityNode]
-
-void QUmlLoopNode::addInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion)
-{
-    UmlActivityNode::addInInterruptibleRegion(inInterruptibleRegion);
-}
-
-void QUmlLoopNode::removeInInterruptibleRegion(UmlInterruptibleActivityRegion *inInterruptibleRegion)
-{
-    UmlActivityNode::removeInInterruptibleRegion(inInterruptibleRegion);
-}
-
-void QUmlLoopNode::addInPartition(UmlActivityPartition *inPartition)
-{
-    UmlActivityNode::addInPartition(inPartition);
-}
-
-void QUmlLoopNode::removeInPartition(UmlActivityPartition *inPartition)
-{
-    UmlActivityNode::removeInPartition(inPartition);
-}
-
-void QUmlLoopNode::setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode)
-{
-    UmlActivityNode::setInStructuredNode(inStructuredNode);
-}
-
-void QUmlLoopNode::addIncoming(UmlActivityEdge *incoming)
-{
-    UmlActivityNode::addIncoming(incoming);
-}
-
-void QUmlLoopNode::removeIncoming(UmlActivityEdge *incoming)
-{
-    UmlActivityNode::removeIncoming(incoming);
-}
-
-void QUmlLoopNode::addOutgoing(UmlActivityEdge *outgoing)
-{
-    UmlActivityNode::addOutgoing(outgoing);
-}
-
-void QUmlLoopNode::removeOutgoing(UmlActivityEdge *outgoing)
-{
-    UmlActivityNode::removeOutgoing(outgoing);
-}
-
-void QUmlLoopNode::addRedefinedNode(UmlActivityNode *redefinedNode)
-{
-    UmlActivityNode::addRedefinedNode(redefinedNode);
-}
-
-void QUmlLoopNode::removeRedefinedNode(UmlActivityNode *redefinedNode)
-{
-    UmlActivityNode::removeRedefinedNode(redefinedNode);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ExecutableNode]
-
-void QUmlLoopNode::addHandler(UmlExceptionHandler *handler)
-{
-    UmlExecutableNode::addHandler(handler);
-}
-
-void QUmlLoopNode::removeHandler(UmlExceptionHandler *handler)
-{
-    UmlExecutableNode::removeHandler(handler);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Action]
-
-void QUmlLoopNode::setLocallyReentrant(bool isLocallyReentrant)
-{
-    UmlAction::setLocallyReentrant(isLocallyReentrant);
-}
-
-void QUmlLoopNode::addLocalPostcondition(UmlConstraint *localPostcondition)
-{
-    UmlAction::addLocalPostcondition(localPostcondition);
-}
-
-void QUmlLoopNode::removeLocalPostcondition(UmlConstraint *localPostcondition)
-{
-    UmlAction::removeLocalPostcondition(localPostcondition);
-}
-
-void QUmlLoopNode::addLocalPrecondition(UmlConstraint *localPrecondition)
-{
-    UmlAction::addLocalPrecondition(localPrecondition);
-}
-
-void QUmlLoopNode::removeLocalPrecondition(UmlConstraint *localPrecondition)
-{
-    UmlAction::removeLocalPrecondition(localPrecondition);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Namespace]
-
-void QUmlLoopNode::addElementImport(UmlElementImport *elementImport)
-{
-    UmlNamespace::addElementImport(elementImport);
-}
-
-void QUmlLoopNode::removeElementImport(UmlElementImport *elementImport)
-{
-    UmlNamespace::removeElementImport(elementImport);
-}
-
-void QUmlLoopNode::addOwnedRule(UmlConstraint *ownedRule)
-{
-    UmlNamespace::addOwnedRule(ownedRule);
-}
-
-void QUmlLoopNode::removeOwnedRule(UmlConstraint *ownedRule)
-{
-    UmlNamespace::removeOwnedRule(ownedRule);
-}
-
-void QUmlLoopNode::addPackageImport(UmlPackageImport *packageImport)
-{
-    UmlNamespace::addPackageImport(packageImport);
-}
-
-void QUmlLoopNode::removePackageImport(UmlPackageImport *packageImport)
-{
-    UmlNamespace::removePackageImport(packageImport);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
-
-// SLOTS FOR OWNED ATTRIBUTES [StructuredActivityNode]
-
-void QUmlLoopNode::setActivity(QUmlActivity *activity)
-{
-    UmlStructuredActivityNode::setActivity(activity);
-}
-
-void QUmlLoopNode::addEdge(UmlActivityEdge *edge)
-{
-    UmlStructuredActivityNode::addEdge(edge);
-}
-
-void QUmlLoopNode::removeEdge(UmlActivityEdge *edge)
-{
-    UmlStructuredActivityNode::removeEdge(edge);
-}
-
-void QUmlLoopNode::setMustIsolate(bool mustIsolate)
-{
-    UmlStructuredActivityNode::setMustIsolate(mustIsolate);
-}
-
-void QUmlLoopNode::addNode(UmlActivityNode *node)
-{
-    UmlStructuredActivityNode::addNode(node);
-}
-
-void QUmlLoopNode::removeNode(UmlActivityNode *node)
-{
-    UmlStructuredActivityNode::removeNode(node);
-}
-
-void QUmlLoopNode::addVariable(UmlVariable *variable)
-{
-    UmlStructuredActivityNode::addVariable(variable);
-}
-
-void QUmlLoopNode::removeVariable(UmlVariable *variable)
-{
-    UmlStructuredActivityNode::removeVariable(variable);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [LoopNode]
-
-void QUmlLoopNode::addBodyOutput(UmlOutputPin *bodyOutput)
-{
-    UmlLoopNode::addBodyOutput(bodyOutput);
-}
-
-void QUmlLoopNode::removeBodyOutput(UmlOutputPin *bodyOutput)
-{
-    UmlLoopNode::removeBodyOutput(bodyOutput);
-}
-
-void QUmlLoopNode::addBodyPart(UmlExecutableNode *bodyPart)
-{
-    UmlLoopNode::addBodyPart(bodyPart);
-}
-
-void QUmlLoopNode::removeBodyPart(UmlExecutableNode *bodyPart)
-{
-    UmlLoopNode::removeBodyPart(bodyPart);
-}
+    // This is a read-write association end
 
-void QUmlLoopNode::setDecider(QUmlOutputPin *decider)
-{
-    UmlLoopNode::setDecider(decider);
-}
-
-void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
-{
-    UmlLoopNode::setTestedFirst(isTestedFirst);
-}
-
-void QUmlLoopNode::addLoopVariable(UmlOutputPin *loopVariable)
-{
-    UmlLoopNode::addLoopVariable(loopVariable);
-}
-
-void QUmlLoopNode::removeLoopVariable(UmlOutputPin *loopVariable)
-{
-    UmlLoopNode::removeLoopVariable(loopVariable);
-}
-
-void QUmlLoopNode::addLoopVariableInput(UmlInputPin *loopVariableInput)
-{
-    UmlLoopNode::addLoopVariableInput(loopVariableInput);
+    return _test;
 }
 
-void QUmlLoopNode::removeLoopVariableInput(UmlInputPin *loopVariableInput)
+void QUmlLoopNode::addTest(QUmlExecutableNode *test)
 {
-    UmlLoopNode::removeLoopVariableInput(loopVariableInput);
-}
-
-void QUmlLoopNode::addResult(UmlOutputPin *result)
-{
-    UmlLoopNode::addResult(result);
-}
-
-void QUmlLoopNode::removeResult(UmlOutputPin *result)
-{
-    UmlLoopNode::removeResult(result);
-}
+    // This is a read-write association end
 
-void QUmlLoopNode::addSetupPart(UmlExecutableNode *setupPart)
-{
-    UmlLoopNode::addSetupPart(setupPart);
-}
-
-void QUmlLoopNode::removeSetupPart(UmlExecutableNode *setupPart)
-{
-    UmlLoopNode::removeSetupPart(setupPart);
+    if (!_test.contains(test)) {
+        _test.insert(test);
+        if (test->asQObject() && this->asQObject())
+            QObject::connect(test->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTest(QObject *)));
+    }
 }
 
-void QUmlLoopNode::addTest(UmlExecutableNode *test)
+void QUmlLoopNode::removeTest(QUmlExecutableNode *test)
 {
-    UmlLoopNode::addTest(test);
-}
+    // This is a read-write association end
 
-void QUmlLoopNode::removeTest(UmlExecutableNode *test)
-{
-    UmlLoopNode::removeTest(test);
+    if (_test.contains(test)) {
+        _test.remove(test);
+    }
 }
-
-QT_END_NAMESPACE
 

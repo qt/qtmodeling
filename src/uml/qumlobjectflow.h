@@ -43,10 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlobjectflow_p.h"
+#include <QtUml/QUmlActivityEdge>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -54,159 +52,34 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlActivity;
-class QUmlActivityEdge;
-class QUmlActivityGroup;
-class QUmlActivityNode;
-class QUmlActivityPartition;
 class QUmlBehavior;
-class QUmlClassifier;
-class QUmlComment;
-class QUmlDependency;
-class QUmlElement;
-class QUmlInterruptibleActivityRegion;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlRedefinableElement;
-class QUmlStringExpression;
-class QUmlStructuredActivityNode;
-class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlObjectFlow : public QObject, public UmlObjectFlow
+class Q_UML_EXPORT QUmlObjectFlow : public QUmlActivityEdge
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
-    Q_PROPERTY(QSet<QUmlRedefinableElement *> redefinedElement READ redefinedElement)
-    Q_PROPERTY(QSet<QUmlClassifier *> redefinitionContext READ redefinitionContext)
-
-    // Properties [ActivityEdge]
-    Q_PROPERTY(QUmlActivity * activity READ activity)
-    Q_PROPERTY(QUmlValueSpecification * guard READ guard)
-    Q_PROPERTY(QSet<QUmlActivityGroup *> inGroup READ inGroup)
-    Q_PROPERTY(QSet<QUmlActivityPartition *> inPartition READ inPartition)
-    Q_PROPERTY(QUmlStructuredActivityNode * inStructuredNode READ inStructuredNode)
-    Q_PROPERTY(QUmlInterruptibleActivityRegion * interrupts READ interrupts)
-    Q_PROPERTY(QSet<QUmlActivityEdge *> redefinedEdge READ redefinedEdge)
-    Q_PROPERTY(QUmlActivityNode * source READ source)
-    Q_PROPERTY(QUmlActivityNode * target READ target)
-    Q_PROPERTY(QUmlValueSpecification * weight READ weight)
-
-    // Properties [ObjectFlow]
-    Q_PROPERTY(bool isMulticast READ isMulticast)
-    Q_PROPERTY(bool isMultireceive READ isMultireceive)
-    Q_PROPERTY(QUmlBehavior * selection READ selection)
-    Q_PROPERTY(QUmlBehavior * transformation READ transformation)
-
 public:
-    Q_INVOKABLE explicit QUmlObjectFlow(QObject *parent = 0);
+    explicit QUmlObjectFlow(bool createQObject = true);
+    virtual ~QUmlObjectFlow();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [RedefinableElement]
-    Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QUmlRedefinableElement *> redefinedElement() const;
-    Q_INVOKABLE const QSet<QUmlClassifier *> redefinitionContext() const;
-
-    // Owned attributes [ActivityEdge]
-    Q_INVOKABLE QUmlActivity *activity() const;
-    Q_INVOKABLE QUmlValueSpecification *guard() const;
-    Q_INVOKABLE const QSet<QUmlActivityGroup *> inGroup() const;
-    Q_INVOKABLE const QSet<QUmlActivityPartition *> inPartition() const;
-    Q_INVOKABLE QUmlStructuredActivityNode *inStructuredNode() const;
-    Q_INVOKABLE QUmlInterruptibleActivityRegion *interrupts() const;
-    Q_INVOKABLE const QSet<QUmlActivityEdge *> redefinedEdge() const;
-    Q_INVOKABLE QUmlActivityNode *source() const;
-    Q_INVOKABLE QUmlActivityNode *target() const;
-    Q_INVOKABLE QUmlValueSpecification *weight() const;
-
-    // Owned attributes [ObjectFlow]
-    Q_INVOKABLE bool isMulticast() const;
-    Q_INVOKABLE bool isMultireceive() const;
-    Q_INVOKABLE QUmlBehavior *selection() const;
-    Q_INVOKABLE QUmlBehavior *transformation() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-    // Operations [RedefinableElement]
-    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-    Q_INVOKABLE bool isRedefinitionContextValid(QUmlRedefinableElement *redefined) const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [RedefinableElement]
-    void setLeaf(bool isLeaf);
-
-    // Slots for owned attributes [ActivityEdge]
-    void setActivity(QUmlActivity *activity);
-    void setGuard(QUmlValueSpecification *guard);
-    void addInPartition(UmlActivityPartition *inPartition);
-    void removeInPartition(UmlActivityPartition *inPartition);
-    void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
-    void setInterrupts(QUmlInterruptibleActivityRegion *interrupts);
-    void addRedefinedEdge(UmlActivityEdge *redefinedEdge);
-    void removeRedefinedEdge(UmlActivityEdge *redefinedEdge);
-    void setSource(QUmlActivityNode *source);
-    void setTarget(QUmlActivityNode *target);
-    void setWeight(QUmlValueSpecification *weight);
-
-    // Slots for owned attributes [ObjectFlow]
+    // Owned attributes
+    bool isMulticast() const;
     void setMulticast(bool isMulticast);
+    bool isMultireceive() const;
     void setMultireceive(bool isMultireceive);
+    QUmlBehavior *selection() const;
     void setSelection(QUmlBehavior *selection);
+    QUmlBehavior *transformation() const;
     void setTransformation(QUmlBehavior *transformation);
+
+protected:
+    bool _isMulticast;
+    bool _isMultireceive;
+    QUmlBehavior *_selection;
+    QUmlBehavior *_transformation;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlObjectFlow *)
-Q_DECLARE_METATYPE(QList<QUmlObjectFlow *> *)
-Q_DECLARE_METATYPE(QSet<QUmlObjectFlow *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlObjectFlow) *)
 
 QT_END_HEADER
 

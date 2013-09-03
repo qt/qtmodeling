@@ -40,153 +40,171 @@
 ****************************************************************************/
 #include "qumltemplateparameter.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
+#include "private/qumltemplateparameterobject_p.h"
+
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlTemplateParameter
+    \class QUmlTemplateParameter
 
     \inmodule QtUml
 
     \brief A template parameter exposes a parameterable element as a formal template parameter of a template.
  */
-
-QUmlTemplateParameter::QUmlTemplateParameter(QObject *parent) :
-    QObject(parent)
+QUmlTemplateParameter::QUmlTemplateParameter(bool createQObject) :
+    _default_(0),
+    _ownedDefault(0),
+    _ownedParameteredElement(0),
+    _parameteredElement(0),
+    _signature(0)
 {
+    if (createQObject)
+        _qObject = new QUmlTemplateParameterObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlTemplateParameter::ownedComment() const
+QUmlTemplateParameter::~QUmlTemplateParameter()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlTemplateParameter::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlTemplateParameter::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [TemplateParameter]
+// OWNED ATTRIBUTES
 
 /*!
     The element that is the default for this formal template parameter.
  */
-QUmlParameterableElement *QUmlTemplateParameter::default_() const
+QUmlParameterableElement *
+QUmlTemplateParameter::default_() const
 {
-    return reinterpret_cast<QUmlParameterableElement *>(_default_);
+    // This is a read-write association end
+
+    return _default_;
+}
+
+void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
+{
+    // This is a read-write association end
+
+    if (_default_ != default_) {
+        _default_ = default_;
+        if (default_->asQObject() && this->asQObject())
+            QObject::connect(default_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDefault()));
+    }
 }
 
 /*!
     The element that is owned by this template parameter for the purpose of providing a default.
  */
-QUmlParameterableElement *QUmlTemplateParameter::ownedDefault() const
+QUmlParameterableElement *
+QUmlTemplateParameter::ownedDefault() const
 {
-    return reinterpret_cast<QUmlParameterableElement *>(_ownedDefault);
+    // This is a read-write association end
+
+    return _ownedDefault;
+}
+
+void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
+{
+    // This is a read-write association end
+
+    if (_ownedDefault != ownedDefault) {
+        // Adjust subsetted properties
+        removeOwnedElement(_ownedDefault);
+
+        _ownedDefault = ownedDefault;
+        if (ownedDefault->asQObject() && this->asQObject())
+            QObject::connect(ownedDefault->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedDefault()));
+        ownedDefault->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        if (ownedDefault) {
+            addOwnedElement(ownedDefault);
+        }
+        setDefault(ownedDefault);
+    }
 }
 
 /*!
     The element that is owned by this template parameter.
  */
-QUmlParameterableElement *QUmlTemplateParameter::ownedParameteredElement() const
+QUmlParameterableElement *
+QUmlTemplateParameter::ownedParameteredElement() const
 {
-    return reinterpret_cast<QUmlParameterableElement *>(_ownedParameteredElement);
+    // This is a read-write association end
+
+    return _ownedParameteredElement;
+}
+
+void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
+{
+    // This is a read-write association end
+
+    if (_ownedParameteredElement != ownedParameteredElement) {
+        // Adjust subsetted properties
+        removeOwnedElement(_ownedParameteredElement);
+
+        _ownedParameteredElement = ownedParameteredElement;
+        if (ownedParameteredElement->asQObject() && this->asQObject())
+            QObject::connect(ownedParameteredElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedParameteredElement()));
+        ownedParameteredElement->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        setParameteredElement(ownedParameteredElement);
+        if (ownedParameteredElement) {
+            addOwnedElement(ownedParameteredElement);
+        }
+    }
 }
 
 /*!
     The element exposed by this template parameter.
  */
-QUmlParameterableElement *QUmlTemplateParameter::parameteredElement() const
+QUmlParameterableElement *
+QUmlTemplateParameter::parameteredElement() const
 {
-    return reinterpret_cast<QUmlParameterableElement *>(_parameteredElement);
+    // This is a read-write association end
+
+    return _parameteredElement;
+}
+
+void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *parameteredElement)
+{
+    // This is a read-write association end
+
+    if (_parameteredElement != parameteredElement) {
+        _parameteredElement = parameteredElement;
+        if (parameteredElement->asQObject() && this->asQObject())
+            QObject::connect(parameteredElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setParameteredElement()));
+    }
 }
 
 /*!
     The template signature that owns this template parameter.
  */
-QUmlTemplateSignature *QUmlTemplateParameter::signature() const
+QUmlTemplateSignature *
+QUmlTemplateParameter::signature() const
 {
-    return reinterpret_cast<QUmlTemplateSignature *>(_signature);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlTemplateParameter::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlTemplateParameter::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlTemplateParameter::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlTemplateParameter::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
-
-void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
-{
-    UmlTemplateParameter::setDefault(default_);
-}
-
-void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
-{
-    UmlTemplateParameter::setOwnedDefault(ownedDefault);
-}
-
-void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
-{
-    UmlTemplateParameter::setOwnedParameteredElement(ownedParameteredElement);
-}
-
-void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *parameteredElement)
-{
-    UmlTemplateParameter::setParameteredElement(parameteredElement);
+    return _signature;
 }
 
 void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)
 {
-    UmlTemplateParameter::setSignature(signature);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_signature != signature) {
+        // Adjust subsetted properties
+
+        _signature = signature;
+        if (signature->asQObject() && this->asQObject())
+            QObject::connect(signature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSignature()));
+
+        // Adjust subsetted properties
+        setOwner(signature);
+    }
+}
 

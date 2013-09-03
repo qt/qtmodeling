@@ -40,287 +40,83 @@
 ****************************************************************************/
 #include "qumltimeevent.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlTemplateParameter>
+#include "private/qumltimeeventobject_p.h"
+
 #include <QtUml/QUmlTimeExpression>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlTimeEvent
+    \class QUmlTimeEvent
 
     \inmodule QtUml
 
     \brief A time event can be defined relative to entering the current state of the executing state machine.A time event specifies a point in time. At the specified time, the event occurs.
  */
-
-QUmlTimeEvent::QUmlTimeEvent(QObject *parent) :
-    QObject(parent)
+QUmlTimeEvent::QUmlTimeEvent(bool createQObject) :
+    _isRelative(false),
+    _when(0)
 {
+    if (createQObject)
+        _qObject = new QUmlTimeEventObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlTimeEvent::ownedComment() const
+QUmlTimeEvent::~QUmlTimeEvent()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlTimeEvent::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlTimeEvent::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [ParameterableElement]
-
-/*!
-    The formal template parameter that owns this element.
- */
-QUmlTemplateParameter *QUmlTimeEvent::owningTemplateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_owningTemplateParameter);
-}
-
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
-QUmlTemplateParameter *QUmlTimeEvent::templateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_templateParameter);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlTimeEvent::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlTimeEvent::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlTimeEvent::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlTimeEvent::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlTimeEvent::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-// OWNED ATTRIBUTES [PackageableElement]
-
-/*!
-    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
- */
-QtUml::VisibilityKind QUmlTimeEvent::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [TimeEvent]
+// OWNED ATTRIBUTES
 
 /*!
     Specifies whether it is relative or absolute time.
  */
-bool QUmlTimeEvent::isRelative() const
+bool 
+QUmlTimeEvent::isRelative() const
 {
+    // This is a read-write property
+
     return _isRelative;
+}
+
+void QUmlTimeEvent::setRelative(bool isRelative)
+{
+    // This is a read-write property
+
+    if (_isRelative != isRelative) {
+        _isRelative = isRelative;
+    }
 }
 
 /*!
     Specifies the corresponding time deadline.
  */
-QUmlTimeExpression *QUmlTimeEvent::when() const
+QUmlTimeExpression *
+QUmlTimeEvent::when() const
 {
-    return reinterpret_cast<QUmlTimeExpression *>(_when);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlTimeEvent::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlTimeEvent::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [ParameterableElement]
-
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
- */
-bool QUmlTimeEvent::isCompatibleWith(QUmlParameterableElement *p) const
-{
-    return UmlParameterableElement::isCompatibleWith(p);
-}
-
-/*!
-    The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
- */
-bool QUmlTimeEvent::isTemplateParameter() const
-{
-    return UmlParameterableElement::isTemplateParameter();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlTimeEvent::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlTimeEvent::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlTimeEvent::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlTimeEvent::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlTimeEvent::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlTimeEvent::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
-
-void QUmlTimeEvent::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
-{
-    UmlParameterableElement::setOwningTemplateParameter(owningTemplateParameter);
-}
-
-void QUmlTimeEvent::setTemplateParameter(QUmlTemplateParameter *templateParameter)
-{
-    UmlParameterableElement::setTemplateParameter(templateParameter);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlTimeEvent::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlTimeEvent::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlTimeEvent::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlTimeEvent::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
-
-void QUmlTimeEvent::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlPackageableElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [TimeEvent]
-
-void QUmlTimeEvent::setRelative(bool isRelative)
-{
-    UmlTimeEvent::setRelative(isRelative);
+    return _when;
 }
 
 void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
 {
-    UmlTimeEvent::setWhen(when);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_when != when) {
+        // Adjust subsetted properties
+        removeOwnedElement(_when);
+
+        _when = when;
+        if (when->asQObject() && this->asQObject())
+            QObject::connect(when->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setWhen()));
+        when->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        if (when) {
+            addOwnedElement(when);
+        }
+    }
+}
 

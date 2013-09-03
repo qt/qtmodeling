@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umltemplateparametersubstitution_p.h"
+#include <QtUml/QUmlElement>
+
 
 QT_BEGIN_HEADER
 
@@ -52,63 +52,36 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlParameterableElement;
 class QUmlTemplateBinding;
 class QUmlTemplateParameter;
 
-class Q_UML_EXPORT QUmlTemplateParameterSubstitution : public QObject, public UmlTemplateParameterSubstitution
+class Q_UML_EXPORT QUmlTemplateParameterSubstitution : public QUmlElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [TemplateParameterSubstitution]
-    Q_PROPERTY(QUmlParameterableElement * actual READ actual)
-    Q_PROPERTY(QUmlTemplateParameter * formal READ formal)
-    Q_PROPERTY(QUmlParameterableElement * ownedActual READ ownedActual)
-    Q_PROPERTY(QUmlTemplateBinding * templateBinding READ templateBinding)
-
 public:
-    Q_INVOKABLE explicit QUmlTemplateParameterSubstitution(QObject *parent = 0);
+    explicit QUmlTemplateParameterSubstitution(bool createQObject = true);
+    virtual ~QUmlTemplateParameterSubstitution();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [TemplateParameterSubstitution]
-    Q_INVOKABLE QUmlParameterableElement *actual() const;
-    Q_INVOKABLE QUmlTemplateParameter *formal() const;
-    Q_INVOKABLE QUmlParameterableElement *ownedActual() const;
-    Q_INVOKABLE QUmlTemplateBinding *templateBinding() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [TemplateParameterSubstitution]
+    // Owned attributes
+    QUmlParameterableElement *actual() const;
     void setActual(QUmlParameterableElement *actual);
+    QUmlTemplateParameter *formal() const;
     void setFormal(QUmlTemplateParameter *formal);
+    QUmlParameterableElement *ownedActual() const;
     void setOwnedActual(QUmlParameterableElement *ownedActual);
+    QUmlTemplateBinding *templateBinding() const;
     void setTemplateBinding(QUmlTemplateBinding *templateBinding);
+
+protected:
+    QUmlParameterableElement *_actual;
+    QUmlTemplateParameter *_formal;
+    QUmlParameterableElement *_ownedActual;
+    QUmlTemplateBinding *_templateBinding;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlTemplateParameterSubstitution *)
-Q_DECLARE_METATYPE(QList<QUmlTemplateParameterSubstitution *> *)
-Q_DECLARE_METATYPE(QSet<QUmlTemplateParameterSubstitution *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlTemplateParameterSubstitution) *)
 
 QT_END_HEADER
 

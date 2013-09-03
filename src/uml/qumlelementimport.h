@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlelementimport_p.h"
+#include <QtUml/QUmlDirectedRelationship>
+
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,83 +54,38 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlNamespace;
 class QUmlPackageableElement;
 
-class Q_UML_EXPORT QUmlElementImport : public QObject, public UmlElementImport
+class Q_UML_EXPORT QUmlElementImport : public QUmlDirectedRelationship
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [Relationship]
-    Q_PROPERTY(QSet<QUmlElement *> relatedElement READ relatedElement)
-
-    // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QUmlElement *> source READ source)
-    Q_PROPERTY(QSet<QUmlElement *> target READ target)
-
-    // Properties [ElementImport]
-    Q_PROPERTY(QString alias READ alias)
-    Q_PROPERTY(QUmlPackageableElement * importedElement READ importedElement)
-    Q_PROPERTY(QUmlNamespace * importingNamespace READ importingNamespace)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
 public:
-    Q_INVOKABLE explicit QUmlElementImport(QObject *parent = 0);
+    explicit QUmlElementImport(bool createQObject = true);
+    virtual ~QUmlElementImport();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [Relationship]
-    Q_INVOKABLE const QSet<QUmlElement *> relatedElement() const;
-
-    // Owned attributes [DirectedRelationship]
-    Q_INVOKABLE const QSet<QUmlElement *> source() const;
-    Q_INVOKABLE const QSet<QUmlElement *> target() const;
-
-    // Owned attributes [ElementImport]
-    Q_INVOKABLE QString alias() const;
-    Q_INVOKABLE QUmlPackageableElement *importedElement() const;
-    Q_INVOKABLE QUmlNamespace *importingNamespace() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [ElementImport]
-    Q_INVOKABLE QString getName() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [Relationship]
-
-    // Slots for owned attributes [DirectedRelationship]
-
-    // Slots for owned attributes [ElementImport]
+    // Owned attributes
+    QString alias() const;
     void setAlias(QString alias);
+    QUmlPackageableElement *importedElement() const;
     void setImportedElement(QUmlPackageableElement *importedElement);
+    QUmlNamespace *importingNamespace() const;
     void setImportingNamespace(QUmlNamespace *importingNamespace);
+    QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);
+
+    // Operations
+    QString getName() const;
+
+protected:
+    QString _alias;
+    QUmlPackageableElement *_importedElement;
+    QUmlNamespace *_importingNamespace;
+    QtUml::VisibilityKind _visibility;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlElementImport *)
-Q_DECLARE_METATYPE(QList<QUmlElementImport *> *)
-Q_DECLARE_METATYPE(QSet<QUmlElementImport *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlElementImport) *)
 
 QT_END_HEADER
 

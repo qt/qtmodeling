@@ -43,10 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlactivitypartition_p.h"
+#include <QtUml/QUmlActivityGroup>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -54,127 +52,48 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlActivity;
 class QUmlActivityEdge;
-class QUmlActivityGroup;
 class QUmlActivityNode;
-class QUmlComment;
-class QUmlDependency;
 class QUmlElement;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlStringExpression;
 
-class Q_UML_EXPORT QUmlActivityPartition : public QObject, public UmlActivityPartition
+class Q_UML_EXPORT QUmlActivityPartition : public QUmlActivityGroup
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [ActivityGroup]
-    Q_PROPERTY(QSet<QUmlActivityEdge *> containedEdge READ containedEdge)
-    Q_PROPERTY(QSet<QUmlActivityNode *> containedNode READ containedNode)
-    Q_PROPERTY(QUmlActivity * inActivity READ inActivity)
-    Q_PROPERTY(QSet<QUmlActivityGroup *> subgroup READ subgroup)
-    Q_PROPERTY(QUmlActivityGroup * superGroup READ superGroup)
-
-    // Properties [ActivityPartition]
-    Q_PROPERTY(QSet<QUmlActivityEdge *> edge READ edge)
-    Q_PROPERTY(bool isDimension READ isDimension)
-    Q_PROPERTY(bool isExternal READ isExternal)
-    Q_PROPERTY(QSet<QUmlActivityNode *> node READ node)
-    Q_PROPERTY(QUmlElement * represents READ represents)
-    Q_PROPERTY(QSet<QUmlActivityPartition *> subpartition READ subpartition)
-    Q_PROPERTY(QUmlActivityPartition * superPartition READ superPartition)
-
 public:
-    Q_INVOKABLE explicit QUmlActivityPartition(QObject *parent = 0);
+    explicit QUmlActivityPartition(bool createQObject = true);
+    virtual ~QUmlActivityPartition();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [ActivityGroup]
-    Q_INVOKABLE const QSet<QUmlActivityEdge *> containedEdge() const;
-    Q_INVOKABLE const QSet<QUmlActivityNode *> containedNode() const;
-    Q_INVOKABLE QUmlActivity *inActivity() const;
-    Q_INVOKABLE const QSet<QUmlActivityGroup *> subgroup() const;
-    Q_INVOKABLE QUmlActivityGroup *superGroup() const;
-
-    // Owned attributes [ActivityPartition]
-    Q_INVOKABLE const QSet<QUmlActivityEdge *> edge() const;
-    Q_INVOKABLE bool isDimension() const;
-    Q_INVOKABLE bool isExternal() const;
-    Q_INVOKABLE const QSet<QUmlActivityNode *> node() const;
-    Q_INVOKABLE QUmlElement *represents() const;
-    Q_INVOKABLE const QSet<QUmlActivityPartition *> subpartition() const;
-    Q_INVOKABLE QUmlActivityPartition *superPartition() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [ActivityGroup]
-    void setInActivity(QUmlActivity *inActivity);
-
-    // Slots for owned attributes [ActivityPartition]
-    void addEdge(UmlActivityEdge *edge);
-    void removeEdge(UmlActivityEdge *edge);
+    // Owned attributes
+    const QSet<QUmlActivityEdge *> edge() const;
+    void addEdge(QUmlActivityEdge *edge);
+    void removeEdge(QUmlActivityEdge *edge);
+    bool isDimension() const;
     void setDimension(bool isDimension);
+    bool isExternal() const;
     void setExternal(bool isExternal);
-    void addNode(UmlActivityNode *node);
-    void removeNode(UmlActivityNode *node);
+    const QSet<QUmlActivityNode *> node() const;
+    void addNode(QUmlActivityNode *node);
+    void removeNode(QUmlActivityNode *node);
+    QUmlElement *represents() const;
     void setRepresents(QUmlElement *represents);
-    void addSubpartition(UmlActivityPartition *subpartition);
-    void removeSubpartition(UmlActivityPartition *subpartition);
+    const QSet<QUmlActivityPartition *> subpartition() const;
+    void addSubpartition(QUmlActivityPartition *subpartition);
+    void removeSubpartition(QUmlActivityPartition *subpartition);
+    QUmlActivityPartition *superPartition() const;
     void setSuperPartition(QUmlActivityPartition *superPartition);
+
+protected:
+    QSet<QUmlActivityEdge *> _edge;
+    bool _isDimension;
+    bool _isExternal;
+    QSet<QUmlActivityNode *> _node;
+    QUmlElement *_represents;
+    QSet<QUmlActivityPartition *> _subpartition;
+    QUmlActivityPartition *_superPartition;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlActivityPartition *)
-Q_DECLARE_METATYPE(QList<QUmlActivityPartition *> *)
-Q_DECLARE_METATYPE(QSet<QUmlActivityPartition *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlActivityPartition) *)
 
 QT_END_HEADER
 

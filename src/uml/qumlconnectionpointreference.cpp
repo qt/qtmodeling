@@ -40,311 +40,121 @@
 ****************************************************************************/
 #include "qumlconnectionpointreference.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlPseudostate>
-#include <QtUml/QUmlRegion>
-#include <QtUml/QUmlState>
-#include <QtUml/QUmlStateMachine>
-#include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlTransition>
+#include "private/qumlconnectionpointreferenceobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlPseudostate>
+#include <QtUml/QUmlState>
 
 /*!
-    \class UmlConnectionPointReference
+    \class QUmlConnectionPointReference
 
     \inmodule QtUml
 
     \brief A connection point reference represents a usage (as part of a submachine state) of an entry/exit point defined in the statemachine reference by the submachine state.
  */
-
-QUmlConnectionPointReference::QUmlConnectionPointReference(QObject *parent) :
-    QObject(parent)
+QUmlConnectionPointReference::QUmlConnectionPointReference(bool createQObject) :
+    _state(0)
 {
+    if (createQObject)
+        _qObject = new QUmlConnectionPointReferenceObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlConnectionPointReference::ownedComment() const
+QUmlConnectionPointReference::~QUmlConnectionPointReference()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlConnectionPointReference::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlConnectionPointReference::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlConnectionPointReference::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlConnectionPointReference::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlConnectionPointReference::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlConnectionPointReference::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlConnectionPointReference::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlConnectionPointReference::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [Vertex]
-
-/*!
-    The region that contains this vertex.
- */
-QUmlRegion *QUmlConnectionPointReference::container() const
-{
-    return reinterpret_cast<QUmlRegion *>(_container);
-}
-
-/*!
-    Specifies the transitions entering this vertex.
- */
-const QSet<QUmlTransition *> QUmlConnectionPointReference::incoming() const
-{
-    QSet<QUmlTransition *> r;
-    foreach (UmlTransition *element, UmlVertex::incoming())
-        r.insert(reinterpret_cast<QUmlTransition *>(element));
-    return r;
-}
-
-/*!
-    Specifies the transitions departing from this vertex.
- */
-const QSet<QUmlTransition *> QUmlConnectionPointReference::outgoing() const
-{
-    QSet<QUmlTransition *> r;
-    foreach (UmlTransition *element, UmlVertex::outgoing())
-        r.insert(reinterpret_cast<QUmlTransition *>(element));
-    return r;
-}
-
-// OWNED ATTRIBUTES [ConnectionPointReference]
+// OWNED ATTRIBUTES
 
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
  */
-const QSet<QUmlPseudostate *> QUmlConnectionPointReference::entry() const
+const QSet<QUmlPseudostate *> 
+QUmlConnectionPointReference::entry() const
 {
-    return *(reinterpret_cast<const QSet<QUmlPseudostate *> *>(&_entry));
+    // This is a read-write association end
+
+    return _entry;
+}
+
+void QUmlConnectionPointReference::addEntry(QUmlPseudostate *entry)
+{
+    // This is a read-write association end
+
+    if (!_entry.contains(entry)) {
+        _entry.insert(entry);
+        if (entry->asQObject() && this->asQObject())
+            QObject::connect(entry->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEntry(QObject *)));
+    }
+}
+
+void QUmlConnectionPointReference::removeEntry(QUmlPseudostate *entry)
+{
+    // This is a read-write association end
+
+    if (_entry.contains(entry)) {
+        _entry.remove(entry);
+    }
 }
 
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
-const QSet<QUmlPseudostate *> QUmlConnectionPointReference::exit() const
+const QSet<QUmlPseudostate *> 
+QUmlConnectionPointReference::exit() const
 {
-    return *(reinterpret_cast<const QSet<QUmlPseudostate *> *>(&_exit));
+    // This is a read-write association end
+
+    return _exit;
+}
+
+void QUmlConnectionPointReference::addExit(QUmlPseudostate *exit)
+{
+    // This is a read-write association end
+
+    if (!_exit.contains(exit)) {
+        _exit.insert(exit);
+        if (exit->asQObject() && this->asQObject())
+            QObject::connect(exit->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExit(QObject *)));
+    }
+}
+
+void QUmlConnectionPointReference::removeExit(QUmlPseudostate *exit)
+{
+    // This is a read-write association end
+
+    if (_exit.contains(exit)) {
+        _exit.remove(exit);
+    }
 }
 
 /*!
     The State in which the connection point refreshens are defined.
  */
-QUmlState *QUmlConnectionPointReference::state() const
+QUmlState *
+QUmlConnectionPointReference::state() const
 {
-    return reinterpret_cast<QUmlState *>(_state);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlConnectionPointReference::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlConnectionPointReference::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlConnectionPointReference::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlConnectionPointReference::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlConnectionPointReference::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlConnectionPointReference::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// OPERATIONS [Vertex]
-
-/*!
-    The operation containingStateMachine() returns the state machine in which this Vertex is defined
- */
-QUmlStateMachine *QUmlConnectionPointReference::containingStateMachine() const
-{
-    return reinterpret_cast<QUmlStateMachine *>(UmlVertex::containingStateMachine());
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlConnectionPointReference::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlConnectionPointReference::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlConnectionPointReference::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlConnectionPointReference::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlConnectionPointReference::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlConnectionPointReference::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlConnectionPointReference::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Vertex]
-
-void QUmlConnectionPointReference::setContainer(QUmlRegion *container)
-{
-    UmlVertex::setContainer(container);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ConnectionPointReference]
-
-void QUmlConnectionPointReference::addEntry(UmlPseudostate *entry)
-{
-    UmlConnectionPointReference::addEntry(entry);
-}
-
-void QUmlConnectionPointReference::removeEntry(UmlPseudostate *entry)
-{
-    UmlConnectionPointReference::removeEntry(entry);
-}
-
-void QUmlConnectionPointReference::addExit(UmlPseudostate *exit)
-{
-    UmlConnectionPointReference::addExit(exit);
-}
-
-void QUmlConnectionPointReference::removeExit(UmlPseudostate *exit)
-{
-    UmlConnectionPointReference::removeExit(exit);
+    return _state;
 }
 
 void QUmlConnectionPointReference::setState(QUmlState *state)
 {
-    UmlConnectionPointReference::setState(state);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_state != state) {
+        // Adjust subsetted properties
+
+        _state = state;
+        if (state->asQObject() && this->asQObject())
+            QObject::connect(state->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setState()));
+
+        // Adjust subsetted properties
+        setNamespace(state);
+    }
+}
 

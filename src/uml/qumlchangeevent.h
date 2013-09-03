@@ -43,10 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlchangeevent_p.h"
+#include <QtUml/QUmlEvent>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -54,110 +52,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlDependency;
-class QUmlElement;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlParameterableElement;
-class QUmlStringExpression;
-class QUmlTemplateParameter;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlChangeEvent : public QObject, public UmlChangeEvent
+class Q_UML_EXPORT QUmlChangeEvent : public QUmlEvent
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [ParameterableElement]
-    Q_PROPERTY(QUmlTemplateParameter * owningTemplateParameter READ owningTemplateParameter)
-    Q_PROPERTY(QUmlTemplateParameter * templateParameter READ templateParameter)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-
-    // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [ChangeEvent]
-    Q_PROPERTY(QUmlValueSpecification * changeExpression READ changeExpression)
-
 public:
-    Q_INVOKABLE explicit QUmlChangeEvent(QObject *parent = 0);
+    explicit QUmlChangeEvent(bool createQObject = true);
+    virtual ~QUmlChangeEvent();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [ParameterableElement]
-    Q_INVOKABLE QUmlTemplateParameter *owningTemplateParameter() const;
-    Q_INVOKABLE QUmlTemplateParameter *templateParameter() const;
-
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-
-    // Owned attributes [PackageableElement]
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [ChangeEvent]
-    Q_INVOKABLE QUmlValueSpecification *changeExpression() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [ParameterableElement]
-    Q_INVOKABLE bool isCompatibleWith(QUmlParameterableElement *p) const;
-    Q_INVOKABLE bool isTemplateParameter() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [ParameterableElement]
-    void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
-    void setTemplateParameter(QUmlTemplateParameter *templateParameter);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-
-    // Slots for owned attributes [PackageableElement]
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [ChangeEvent]
+    // Owned attributes
+    QUmlValueSpecification *changeExpression() const;
     void setChangeExpression(QUmlValueSpecification *changeExpression);
+
+protected:
+    QUmlValueSpecification *_changeExpression;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlChangeEvent *)
-Q_DECLARE_METATYPE(QList<QUmlChangeEvent *> *)
-Q_DECLARE_METATYPE(QSet<QUmlChangeEvent *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlChangeEvent) *)
 
 QT_END_HEADER
 

@@ -9,14 +9,19 @@ HEADERS += \
 
 PRIVATE_HEADERS +=
 [%- FOREACH class = xmi.findnodes('//packagedElement[@xmi:type=\'uml:Class\']') -%]
+[%- IF class.findvalue("@isAbstract") != "true" -%]
  \
-    internal/${namespace.lower}${class.findvalue('@name').lower}_p.h
+    qobjects/q${namespace.lower}${class.findvalue('@name').lower}object_p.h
+[%- END -%]
 [%- END %]
 
 SOURCES += \
     qt${namespace.lower}namespace.cpp
 [%- FOREACH class = xmi.findnodes('//packagedElement[@xmi:type=\'uml:Class\']') -%]
+[%- IF class.findvalue("@isAbstract") != "true" -%]
  \
-    internal/${namespace.lower}${class.findvalue('@name').lower}.cpp \
+    qobjects/q${namespace.lower}${class.findvalue('@name').lower}object.cpp
+[%- END -%]
+ \
     q${namespace.lower}${class.findvalue('@name').lower}.cpp
 [%- END %]

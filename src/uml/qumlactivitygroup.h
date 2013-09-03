@@ -43,10 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlactivitygroup_p.h"
+#include <QtUml/QUmlNamedElement>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -57,93 +55,40 @@ QT_MODULE(QtUml)
 class QUmlActivity;
 class QUmlActivityEdge;
 class QUmlActivityNode;
-class QUmlComment;
-class QUmlDependency;
-class QUmlElement;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlStringExpression;
 
-class Q_UML_EXPORT QUmlActivityGroup : public QObject, public UmlActivityGroup
+class Q_UML_EXPORT QUmlActivityGroup : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [ActivityGroup]
-    Q_PROPERTY(QSet<QUmlActivityEdge *> containedEdge READ containedEdge)
-    Q_PROPERTY(QSet<QUmlActivityNode *> containedNode READ containedNode)
-    Q_PROPERTY(QUmlActivity * inActivity READ inActivity)
-    Q_PROPERTY(QSet<QUmlActivityGroup *> subgroup READ subgroup)
-    Q_PROPERTY(QUmlActivityGroup * superGroup READ superGroup)
-
 public:
-    Q_DECL_HIDDEN explicit QUmlActivityGroup(QObject *parent = 0);
+    virtual ~QUmlActivityGroup();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [ActivityGroup]
-    Q_INVOKABLE const QSet<QUmlActivityEdge *> containedEdge() const;
-    Q_INVOKABLE const QSet<QUmlActivityNode *> containedNode() const;
-    Q_INVOKABLE QUmlActivity *inActivity() const;
-    Q_INVOKABLE const QSet<QUmlActivityGroup *> subgroup() const;
-    Q_INVOKABLE QUmlActivityGroup *superGroup() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [ActivityGroup]
+    // Owned attributes
+    const QSet<QUmlActivityEdge *> containedEdge() const;
+    Q_DECL_HIDDEN void addContainedEdge(QUmlActivityEdge *containedEdge);
+    Q_DECL_HIDDEN void removeContainedEdge(QUmlActivityEdge *containedEdge);
+    const QSet<QUmlActivityNode *> containedNode() const;
+    Q_DECL_HIDDEN void addContainedNode(QUmlActivityNode *containedNode);
+    Q_DECL_HIDDEN void removeContainedNode(QUmlActivityNode *containedNode);
+    QUmlActivity *inActivity() const;
     void setInActivity(QUmlActivity *inActivity);
+    const QSet<QUmlActivityGroup *> subgroup() const;
+    Q_DECL_HIDDEN void addSubgroup(QUmlActivityGroup *subgroup);
+    Q_DECL_HIDDEN void removeSubgroup(QUmlActivityGroup *subgroup);
+    QUmlActivityGroup *superGroup() const;
+    Q_DECL_HIDDEN void setSuperGroup(QUmlActivityGroup *superGroup);
+
+protected:
+    explicit QUmlActivityGroup();
+
+    QSet<QUmlActivityEdge *> _containedEdge;
+    QSet<QUmlActivityNode *> _containedNode;
+    QUmlActivity *_inActivity;
+    QSet<QUmlActivityGroup *> _subgroup;
+    QUmlActivityGroup *_superGroup;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlActivityGroup *)
-Q_DECLARE_METATYPE(QList<QUmlActivityGroup *> *)
-Q_DECLARE_METATYPE(QSet<QUmlActivityGroup *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlActivityGroup) *)
 
 QT_END_HEADER
 

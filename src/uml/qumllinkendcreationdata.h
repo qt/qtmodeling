@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umllinkendcreationdata_p.h"
+#include <QtUml/QUmlLinkEndData>
+
 
 QT_BEGIN_HEADER
 
@@ -52,73 +52,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlInputPin;
-class QUmlProperty;
-class QUmlQualifierValue;
 
-class Q_UML_EXPORT QUmlLinkEndCreationData : public QObject, public UmlLinkEndCreationData
+class Q_UML_EXPORT QUmlLinkEndCreationData : public QUmlLinkEndData
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [LinkEndData]
-    Q_PROPERTY(QUmlProperty * end READ end)
-    Q_PROPERTY(QSet<QUmlQualifierValue *> qualifier READ qualifier)
-    Q_PROPERTY(QUmlInputPin * value READ value)
-
-    // Properties [LinkEndCreationData]
-    Q_PROPERTY(QUmlInputPin * insertAt READ insertAt)
-    Q_PROPERTY(bool isReplaceAll READ isReplaceAll)
-
 public:
-    Q_INVOKABLE explicit QUmlLinkEndCreationData(QObject *parent = 0);
+    explicit QUmlLinkEndCreationData(bool createQObject = true);
+    virtual ~QUmlLinkEndCreationData();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [LinkEndData]
-    Q_INVOKABLE QUmlProperty *end() const;
-    Q_INVOKABLE const QSet<QUmlQualifierValue *> qualifier() const;
-    Q_INVOKABLE QUmlInputPin *value() const;
-
-    // Owned attributes [LinkEndCreationData]
-    Q_INVOKABLE QUmlInputPin *insertAt() const;
-    Q_INVOKABLE bool isReplaceAll() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [LinkEndData]
-    void setEnd(QUmlProperty *end);
-    void addQualifier(UmlQualifierValue *qualifier);
-    void removeQualifier(UmlQualifierValue *qualifier);
-    void setValue(QUmlInputPin *value);
-
-    // Slots for owned attributes [LinkEndCreationData]
+    // Owned attributes
+    QUmlInputPin *insertAt() const;
     void setInsertAt(QUmlInputPin *insertAt);
+    bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
+
+protected:
+    QUmlInputPin *_insertAt;
+    bool _isReplaceAll;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlLinkEndCreationData *)
-Q_DECLARE_METATYPE(QList<QUmlLinkEndCreationData *> *)
-Q_DECLARE_METATYPE(QSet<QUmlLinkEndCreationData *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlLinkEndCreationData) *)
 
 QT_END_HEADER
 

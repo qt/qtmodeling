@@ -40,222 +40,45 @@
 ****************************************************************************/
 #include "qumlmessageend.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlMessage>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlStringExpression>
-
-QT_BEGIN_NAMESPACE
 
 /*!
-    \class UmlMessageEnd
+    \class QUmlMessageEnd
 
     \inmodule QtUml
 
     \brief MessageEnd is an abstract specialization of NamedElement that represents what can occur at the end of a message.
  */
-
-QUmlMessageEnd::QUmlMessageEnd(QObject *parent) :
-    QObject(parent)
+QUmlMessageEnd::QUmlMessageEnd() :
+    _message(0)
 {
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlMessageEnd::ownedComment() const
+QUmlMessageEnd::~QUmlMessageEnd()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlMessageEnd::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlMessageEnd::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlMessageEnd::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlMessageEnd::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlMessageEnd::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlMessageEnd::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlMessageEnd::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlMessageEnd::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [MessageEnd]
+// OWNED ATTRIBUTES
 
 /*!
     References a Message.
  */
-QUmlMessage *QUmlMessageEnd::message() const
+QUmlMessage *
+QUmlMessageEnd::message() const
 {
-    return reinterpret_cast<QUmlMessage *>(_message);
+    // This is a read-write association end
+
+    return _message;
 }
-
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlMessageEnd::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlMessageEnd::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlMessageEnd::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlMessageEnd::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlMessageEnd::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlMessageEnd::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlMessageEnd::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlMessageEnd::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlMessageEnd::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlMessageEnd::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlMessageEnd::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlMessageEnd::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlMessageEnd::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [MessageEnd]
 
 void QUmlMessageEnd::setMessage(QUmlMessage *message)
 {
-    UmlMessageEnd::setMessage(message);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_message != message) {
+        _message = message;
+        if (message->asQObject() && this->asQObject())
+            QObject::connect(message->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMessage()));
+    }
+}
 

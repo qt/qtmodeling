@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umllinkenddestructiondata_p.h"
+#include <QtUml/QUmlLinkEndData>
+
 
 QT_BEGIN_HEADER
 
@@ -52,73 +52,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlInputPin;
-class QUmlProperty;
-class QUmlQualifierValue;
 
-class Q_UML_EXPORT QUmlLinkEndDestructionData : public QObject, public UmlLinkEndDestructionData
+class Q_UML_EXPORT QUmlLinkEndDestructionData : public QUmlLinkEndData
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [LinkEndData]
-    Q_PROPERTY(QUmlProperty * end READ end)
-    Q_PROPERTY(QSet<QUmlQualifierValue *> qualifier READ qualifier)
-    Q_PROPERTY(QUmlInputPin * value READ value)
-
-    // Properties [LinkEndDestructionData]
-    Q_PROPERTY(QUmlInputPin * destroyAt READ destroyAt)
-    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates)
-
 public:
-    Q_INVOKABLE explicit QUmlLinkEndDestructionData(QObject *parent = 0);
+    explicit QUmlLinkEndDestructionData(bool createQObject = true);
+    virtual ~QUmlLinkEndDestructionData();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [LinkEndData]
-    Q_INVOKABLE QUmlProperty *end() const;
-    Q_INVOKABLE const QSet<QUmlQualifierValue *> qualifier() const;
-    Q_INVOKABLE QUmlInputPin *value() const;
-
-    // Owned attributes [LinkEndDestructionData]
-    Q_INVOKABLE QUmlInputPin *destroyAt() const;
-    Q_INVOKABLE bool isDestroyDuplicates() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [LinkEndData]
-    void setEnd(QUmlProperty *end);
-    void addQualifier(UmlQualifierValue *qualifier);
-    void removeQualifier(UmlQualifierValue *qualifier);
-    void setValue(QUmlInputPin *value);
-
-    // Slots for owned attributes [LinkEndDestructionData]
+    // Owned attributes
+    QUmlInputPin *destroyAt() const;
     void setDestroyAt(QUmlInputPin *destroyAt);
+    bool isDestroyDuplicates() const;
     void setDestroyDuplicates(bool isDestroyDuplicates);
+
+protected:
+    QUmlInputPin *_destroyAt;
+    bool _isDestroyDuplicates;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlLinkEndDestructionData *)
-Q_DECLARE_METATYPE(QList<QUmlLinkEndDestructionData *> *)
-Q_DECLARE_METATYPE(QSet<QUmlLinkEndDestructionData *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlLinkEndDestructionData) *)
 
 QT_END_HEADER
 

@@ -40,308 +40,55 @@
 ****************************************************************************/
 #include "qumlintervalconstraint.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlInterval>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlTemplateParameter>
-#include <QtUml/QUmlValueSpecification>
+#include "private/qumlintervalconstraintobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlInterval>
 
 /*!
-    \class UmlIntervalConstraint
+    \class QUmlIntervalConstraint
 
     \inmodule QtUml
 
     \brief An interval constraint is a constraint that refers to an interval.
  */
-
-QUmlIntervalConstraint::QUmlIntervalConstraint(QObject *parent) :
-    QObject(parent)
+QUmlIntervalConstraint::QUmlIntervalConstraint(bool createQObject) :
+    QUmlConstraint(false),
+    _specification(0)
 {
+    if (createQObject)
+        _qObject = new QUmlIntervalConstraintObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlIntervalConstraint::ownedComment() const
+QUmlIntervalConstraint::~QUmlIntervalConstraint()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlIntervalConstraint::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlIntervalConstraint::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [ParameterableElement]
-
-/*!
-    The formal template parameter that owns this element.
- */
-QUmlTemplateParameter *QUmlIntervalConstraint::owningTemplateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_owningTemplateParameter);
-}
-
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
-QUmlTemplateParameter *QUmlIntervalConstraint::templateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_templateParameter);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlIntervalConstraint::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlIntervalConstraint::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlIntervalConstraint::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlIntervalConstraint::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlIntervalConstraint::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-// OWNED ATTRIBUTES [PackageableElement]
-
-/*!
-    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
- */
-QtUml::VisibilityKind QUmlIntervalConstraint::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [Constraint]
-
-/*!
-    The ordered set of Elements referenced by this Constraint.
- */
-const QList<QUmlElement *> QUmlIntervalConstraint::constrainedElement() const
-{
-    return *(reinterpret_cast<const QList<QUmlElement *> *>(&_constrainedElement));
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlIntervalConstraint::context() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_context);
-}
-// OWNED ATTRIBUTES [IntervalConstraint]
+// OWNED ATTRIBUTES
 
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
  */
-QUmlInterval *QUmlIntervalConstraint::specification() const
+QUmlInterval *
+QUmlIntervalConstraint::specification() const
 {
-    return reinterpret_cast<QUmlInterval *>(_specification);
+    // This is a read-write association end
+
+    return _specification;
 }
-
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlIntervalConstraint::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlIntervalConstraint::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [ParameterableElement]
-
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
- */
-bool QUmlIntervalConstraint::isCompatibleWith(QUmlParameterableElement *p) const
-{
-    return UmlParameterableElement::isCompatibleWith(p);
-}
-
-/*!
-    The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
- */
-bool QUmlIntervalConstraint::isTemplateParameter() const
-{
-    return UmlParameterableElement::isTemplateParameter();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlIntervalConstraint::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlIntervalConstraint::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlIntervalConstraint::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlIntervalConstraint::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlIntervalConstraint::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlIntervalConstraint::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
-
-void QUmlIntervalConstraint::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
-{
-    UmlParameterableElement::setOwningTemplateParameter(owningTemplateParameter);
-}
-
-void QUmlIntervalConstraint::setTemplateParameter(QUmlTemplateParameter *templateParameter)
-{
-    UmlParameterableElement::setTemplateParameter(templateParameter);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlIntervalConstraint::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlIntervalConstraint::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlIntervalConstraint::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlIntervalConstraint::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
-
-void QUmlIntervalConstraint::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlPackageableElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Constraint]
-
-void QUmlIntervalConstraint::addConstrainedElement(UmlElement *constrainedElement)
-{
-    UmlConstraint::addConstrainedElement(constrainedElement);
-}
-
-void QUmlIntervalConstraint::removeConstrainedElement(UmlElement *constrainedElement)
-{
-    UmlConstraint::removeConstrainedElement(constrainedElement);
-}
-
-void QUmlIntervalConstraint::setContext(QUmlNamespace *context)
-{
-    UmlConstraint::setContext(context);
-}
-// SLOTS FOR OWNED ATTRIBUTES [IntervalConstraint]
 
 void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
 {
-    UmlIntervalConstraint::setSpecification(specification);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_specification != specification) {
+        _specification = specification;
+        if (specification->asQObject() && this->asQObject())
+            QObject::connect(specification->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecification()));
+        specification->asQObject()->setParent(this->asQObject());
+    }
+}
 

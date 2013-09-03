@@ -42,529 +42,627 @@
 
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlConstraint>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlFeature>
 #include <QtUml/QUmlGeneralization>
 #include <QtUml/QUmlGeneralizationSet>
 #include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlPackageableElement>
-#include <QtUml/QUmlPackageImport>
-#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlProperty>
-#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRedefinableTemplateSignature>
-#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlSubstitution>
-#include <QtUml/QUmlTemplateBinding>
-#include <QtUml/QUmlTemplateParameter>
-#include <QtUml/QUmlTemplateSignature>
-#include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlClassifier
+    \class QUmlClassifier
 
     \inmodule QtUml
 
     \brief A classifier is a classification of instances - it describes a set of instances that have features in common. A classifier can specify a generalization hierarchy by referencing its general classifiers.A classifier has the capability to own use cases. Although the owning classifier typically represents the subject to which the owned use cases apply, this is not necessarily the case. In principle, the same use case can be applied to multiple subjects, as identified by the subject association role of a use case.Classifier is defined to be a kind of templateable element so that a classifier can be parameterized. It is also defined to be a kind of parameterable element so that a classifier can be a formal template parameter.A classifier has the capability to own collaboration uses. These collaboration uses link a collaboration with the classifier to give a description of the workings of the classifier.
  */
-
-QUmlClassifier::QUmlClassifier(QObject *parent) :
-    QObject(parent)
+QUmlClassifier::QUmlClassifier() :
+    _isAbstract(false),
+    _isFinalSpecialization(false),
+    _ownedTemplateSignature(0),
+    _representation(0),
+    _templateParameter(0)
 {
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlClassifier::ownedComment() const
+QUmlClassifier::~QUmlClassifier()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlClassifier::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlClassifier::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlClassifier::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlClassifier::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlClassifier::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlClassifier::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlClassifier::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-// OWNED ATTRIBUTES [Namespace]
-
-/*!
-    References the ElementImports owned by the Namespace.
- */
-const QSet<QUmlElementImport *> QUmlClassifier::elementImport() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElementImport *> *>(&_elementImport));
-}
-
-/*!
-    References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
- */
-const QSet<QUmlPackageableElement *> QUmlClassifier::importedMember() const
-{
-    QSet<QUmlPackageableElement *> r;
-    foreach (UmlPackageableElement *element, UmlNamespace::importedMember())
-        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
-    return r;
-}
-
-/*!
-    A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
- */
-const QSet<QUmlNamedElement *> QUmlClassifier::member() const
-{
-    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_member));
-}
-
-/*!
-    A collection of NamedElements owned by the Namespace.
- */
-const QSet<QUmlNamedElement *> QUmlClassifier::ownedMember() const
-{
-    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_ownedMember));
-}
-
-/*!
-    Specifies a set of Constraints owned by this Namespace.
- */
-const QSet<QUmlConstraint *> QUmlClassifier::ownedRule() const
-{
-    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_ownedRule));
-}
-
-/*!
-    References the PackageImports owned by the Namespace.
- */
-const QSet<QUmlPackageImport *> QUmlClassifier::packageImport() const
-{
-    return *(reinterpret_cast<const QSet<QUmlPackageImport *> *>(&_packageImport));
-}
-
-// OWNED ATTRIBUTES [ParameterableElement]
-
-/*!
-    The formal template parameter that owns this element.
- */
-QUmlTemplateParameter *QUmlClassifier::owningTemplateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_owningTemplateParameter);
-}
-// OWNED ATTRIBUTES [PackageableElement]
-
-/*!
-    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
- */
-QtUml::VisibilityKind QUmlClassifier::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [Type]
-
-/*!
-    Specifies the owning package of this classifier, if any.
- */
-QUmlPackage *QUmlClassifier::package() const
-{
-    return reinterpret_cast<QUmlPackage *>(_package);
-}
-
-// OWNED ATTRIBUTES [RedefinableElement]
-
-/*!
-    Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
- */
-bool QUmlClassifier::isLeaf() const
-{
-    return _isLeaf;
-}
-
-/*!
-    The redefinable element that is being redefined by this element.
- */
-const QSet<QUmlRedefinableElement *> QUmlClassifier::redefinedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlRedefinableElement *> *>(&_redefinedElement));
-}
-
-/*!
-    References the contexts that this element may be redefined from.
- */
-const QSet<QUmlClassifier *> QUmlClassifier::redefinitionContext() const
-{
-    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_redefinitionContext));
-}
-
-// OWNED ATTRIBUTES [TemplateableElement]
-
-/*!
-    The optional bindings from this element to templates.
- */
-const QSet<QUmlTemplateBinding *> QUmlClassifier::templateBinding() const
-{
-    return *(reinterpret_cast<const QSet<QUmlTemplateBinding *> *>(&_templateBinding));
-}
-
-// OWNED ATTRIBUTES [Classifier]
+// OWNED ATTRIBUTES
 
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
-const QSet<QUmlProperty *> QUmlClassifier::attribute() const
+const QSet<QUmlProperty *> 
+QUmlClassifier::attribute() const
 {
-    return *(reinterpret_cast<const QSet<QUmlProperty *> *>(&_attribute));
+    // This is a read-only derived union association end
+
+    return _attribute;
+}
+
+void QUmlClassifier::addAttribute(QUmlProperty *attribute)
+{
+    // This is a read-only derived union association end
+
+    if (!_attribute.contains(attribute)) {
+        _attribute.insert(attribute);
+        if (attribute->asQObject() && this->asQObject())
+            QObject::connect(attribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeAttribute(QObject *)));
+
+        // Adjust subsetted properties
+        addFeature(attribute);
+    }
+}
+
+void QUmlClassifier::removeAttribute(QUmlProperty *attribute)
+{
+    // This is a read-only derived union association end
+
+    if (_attribute.contains(attribute)) {
+        _attribute.remove(attribute);
+
+        // Adjust subsetted properties
+        removeFeature(attribute);
+    }
 }
 
 /*!
     References the collaboration uses owned by the classifier.
  */
-const QSet<QUmlCollaborationUse *> QUmlClassifier::collaborationUse() const
+const QSet<QUmlCollaborationUse *> 
+QUmlClassifier::collaborationUse() const
 {
-    return *(reinterpret_cast<const QSet<QUmlCollaborationUse *> *>(&_collaborationUse));
+    // This is a read-write association end
+
+    return _collaborationUse;
+}
+
+void QUmlClassifier::addCollaborationUse(QUmlCollaborationUse *collaborationUse)
+{
+    // This is a read-write association end
+
+    if (!_collaborationUse.contains(collaborationUse)) {
+        _collaborationUse.insert(collaborationUse);
+        if (collaborationUse->asQObject() && this->asQObject())
+            QObject::connect(collaborationUse->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCollaborationUse(QObject *)));
+        collaborationUse->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(collaborationUse);
+    }
+}
+
+void QUmlClassifier::removeCollaborationUse(QUmlCollaborationUse *collaborationUse)
+{
+    // This is a read-write association end
+
+    if (_collaborationUse.contains(collaborationUse)) {
+        _collaborationUse.remove(collaborationUse);
+        if (collaborationUse->asQObject())
+            collaborationUse->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(collaborationUse);
+    }
 }
 
 /*!
     Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
  */
-const QSet<QUmlFeature *> QUmlClassifier::feature() const
+const QSet<QUmlFeature *> 
+QUmlClassifier::feature() const
 {
-    return *(reinterpret_cast<const QSet<QUmlFeature *> *>(&_feature));
+    // This is a read-only derived union association end
+
+    return _feature;
+}
+
+void QUmlClassifier::addFeature(QUmlFeature *feature)
+{
+    // This is a read-only derived union association end
+
+    if (!_feature.contains(feature)) {
+        _feature.insert(feature);
+        if (feature->asQObject() && this->asQObject())
+            QObject::connect(feature->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFeature(QObject *)));
+
+        // Adjust subsetted properties
+        addMember(feature);
+
+        // Adjust opposite properties
+        if (feature) {
+            feature->addFeaturingClassifier(this);
+        }
+    }
+}
+
+void QUmlClassifier::removeFeature(QUmlFeature *feature)
+{
+    // This is a read-only derived union association end
+
+    if (_feature.contains(feature)) {
+        _feature.remove(feature);
+
+        // Adjust subsetted properties
+        removeMember(feature);
+
+        // Adjust opposite properties
+        if (feature) {
+            feature->removeFeaturingClassifier(this);
+        }
+    }
 }
 
 /*!
     Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
  */
-const QSet<QUmlClassifier *> QUmlClassifier::general() const
+const QSet<QUmlClassifier *> 
+QUmlClassifier::general() const
 {
-    QSet<QUmlClassifier *> r;
-    foreach (UmlClassifier *element, UmlClassifier::general())
-        r.insert(reinterpret_cast<QUmlClassifier *>(element));
-    return r;
+    // This is a read-write derived association end
+
+    qWarning("UmlClassifier::general(): to be implemented (this is a derived association end)");
+
+    return QSet<QUmlClassifier *>();
+}
+
+void QUmlClassifier::addGeneral(QUmlClassifier *general)
+{
+    // This is a read-write derived association end
+
+    qWarning("UmlClassifier::general(): to be implemented (this is a derived association end)");
+    Q_UNUSED(general);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
+}
+
+void QUmlClassifier::removeGeneral(QUmlClassifier *general)
+{
+    // This is a read-write derived association end
+
+    qWarning("UmlClassifier::general(): to be implemented (this is a derived association end)");
+    Q_UNUSED(general);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-const QSet<QUmlGeneralization *> QUmlClassifier::generalization() const
+const QSet<QUmlGeneralization *> 
+QUmlClassifier::generalization() const
 {
-    return *(reinterpret_cast<const QSet<QUmlGeneralization *> *>(&_generalization));
+    // This is a read-write association end
+
+    return _generalization;
+}
+
+void QUmlClassifier::addGeneralization(QUmlGeneralization *generalization)
+{
+    // This is a read-write association end
+
+    if (!_generalization.contains(generalization)) {
+        _generalization.insert(generalization);
+        if (generalization->asQObject() && this->asQObject())
+            QObject::connect(generalization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeGeneralization(QObject *)));
+        generalization->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(generalization);
+
+        // Adjust opposite properties
+        if (generalization) {
+            generalization->setSpecific(this);
+        }
+    }
+}
+
+void QUmlClassifier::removeGeneralization(QUmlGeneralization *generalization)
+{
+    // This is a read-write association end
+
+    if (_generalization.contains(generalization)) {
+        _generalization.remove(generalization);
+        if (generalization->asQObject())
+            generalization->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(generalization);
+
+        // Adjust opposite properties
+        if (generalization) {
+            generalization->setSpecific(0);
+        }
+    }
 }
 
 /*!
     Specifies all elements inherited by this classifier from the general classifiers.
  */
-const QSet<QUmlNamedElement *> QUmlClassifier::inheritedMember() const
+const QSet<QUmlNamedElement *> 
+QUmlClassifier::inheritedMember() const
 {
-    QSet<QUmlNamedElement *> r;
-    foreach (UmlNamedElement *element, UmlClassifier::inheritedMember())
-        r.insert(reinterpret_cast<QUmlNamedElement *>(element));
-    return r;
+    // This is a read-only derived association end
+
+    qWarning("UmlClassifier::inheritedMember(): to be implemented (this is a derived association end)");
+
+    return QSet<QUmlNamedElement *>();
+}
+
+void QUmlClassifier::addInheritedMember(QUmlNamedElement *inheritedMember)
+{
+    // This is a read-only derived association end
+
+    qWarning("UmlClassifier::inheritedMember(): to be implemented (this is a derived association end)");
+    Q_UNUSED(inheritedMember);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust subsetted properties
+        addMember(inheritedMember);
+    }
+}
+
+void QUmlClassifier::removeInheritedMember(QUmlNamedElement *inheritedMember)
+{
+    // This is a read-only derived association end
+
+    qWarning("UmlClassifier::inheritedMember(): to be implemented (this is a derived association end)");
+    Q_UNUSED(inheritedMember);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust subsetted properties
+        removeMember(inheritedMember);
+    }
 }
 
 /*!
     If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
  */
-bool QUmlClassifier::isAbstract() const
+bool 
+QUmlClassifier::isAbstract() const
 {
+    // This is a read-write property
+
     return _isAbstract;
+}
+
+void QUmlClassifier::setAbstract(bool isAbstract)
+{
+    // This is a read-write property
+
+    if (_isAbstract != isAbstract) {
+        _isAbstract = isAbstract;
+    }
 }
 
 /*!
     If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
  */
-bool QUmlClassifier::isFinalSpecialization() const
+bool 
+QUmlClassifier::isFinalSpecialization() const
 {
+    // This is a read-write property
+
     return _isFinalSpecialization;
+}
+
+void QUmlClassifier::setFinalSpecialization(bool isFinalSpecialization)
+{
+    // This is a read-write property
+
+    if (_isFinalSpecialization != isFinalSpecialization) {
+        _isFinalSpecialization = isFinalSpecialization;
+    }
 }
 
 /*!
     The optional template signature specifying the formal template parameters.
  */
-QUmlRedefinableTemplateSignature *QUmlClassifier::ownedTemplateSignature() const
+QUmlRedefinableTemplateSignature *
+QUmlClassifier::ownedTemplateSignature() const
 {
-    return reinterpret_cast<QUmlRedefinableTemplateSignature *>(_ownedTemplateSignature);
+    // This is a read-write association end
+
+    return _ownedTemplateSignature;
+}
+
+void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature *ownedTemplateSignature)
+{
+    // This is a read-write association end
+
+    if (_ownedTemplateSignature != ownedTemplateSignature) {
+        _ownedTemplateSignature = ownedTemplateSignature;
+        if (ownedTemplateSignature->asQObject() && this->asQObject())
+            QObject::connect(ownedTemplateSignature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedTemplateSignature()));
+        ownedTemplateSignature->asQObject()->setParent(this->asQObject());
+    }
 }
 
 /*!
     References the use cases owned by this classifier.
  */
-const QSet<QUmlUseCase *> QUmlClassifier::ownedUseCase() const
+const QSet<QUmlUseCase *> 
+QUmlClassifier::ownedUseCase() const
 {
-    return *(reinterpret_cast<const QSet<QUmlUseCase *> *>(&_ownedUseCase));
+    // This is a read-write association end
+
+    return _ownedUseCase;
+}
+
+void QUmlClassifier::addOwnedUseCase(QUmlUseCase *ownedUseCase)
+{
+    // This is a read-write association end
+
+    if (!_ownedUseCase.contains(ownedUseCase)) {
+        _ownedUseCase.insert(ownedUseCase);
+        if (ownedUseCase->asQObject() && this->asQObject())
+            QObject::connect(ownedUseCase->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedUseCase(QObject *)));
+        ownedUseCase->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedUseCase);
+    }
+}
+
+void QUmlClassifier::removeOwnedUseCase(QUmlUseCase *ownedUseCase)
+{
+    // This is a read-write association end
+
+    if (_ownedUseCase.contains(ownedUseCase)) {
+        _ownedUseCase.remove(ownedUseCase);
+        if (ownedUseCase->asQObject())
+            ownedUseCase->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedUseCase);
+    }
 }
 
 /*!
     Designates the GeneralizationSet of which the associated Classifier is a power type.
  */
-const QSet<QUmlGeneralizationSet *> QUmlClassifier::powertypeExtent() const
+const QSet<QUmlGeneralizationSet *> 
+QUmlClassifier::powertypeExtent() const
 {
-    return *(reinterpret_cast<const QSet<QUmlGeneralizationSet *> *>(&_powertypeExtent));
+    // This is a read-write association end
+
+    return _powertypeExtent;
+}
+
+void QUmlClassifier::addPowertypeExtent(QUmlGeneralizationSet *powertypeExtent)
+{
+    // This is a read-write association end
+
+    if (!_powertypeExtent.contains(powertypeExtent)) {
+        _powertypeExtent.insert(powertypeExtent);
+        if (powertypeExtent->asQObject() && this->asQObject())
+            QObject::connect(powertypeExtent->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePowertypeExtent(QObject *)));
+
+        // Adjust opposite properties
+        if (powertypeExtent) {
+            powertypeExtent->setPowertype(this);
+        }
+    }
+}
+
+void QUmlClassifier::removePowertypeExtent(QUmlGeneralizationSet *powertypeExtent)
+{
+    // This is a read-write association end
+
+    if (_powertypeExtent.contains(powertypeExtent)) {
+        _powertypeExtent.remove(powertypeExtent);
+
+        // Adjust opposite properties
+        if (powertypeExtent) {
+            powertypeExtent->setPowertype(0);
+        }
+    }
 }
 
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-const QSet<QUmlClassifier *> QUmlClassifier::redefinedClassifier() const
+const QSet<QUmlClassifier *> 
+QUmlClassifier::redefinedClassifier() const
 {
-    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_redefinedClassifier));
+    // This is a read-write association end
+
+    return _redefinedClassifier;
+}
+
+void QUmlClassifier::addRedefinedClassifier(QUmlClassifier *redefinedClassifier)
+{
+    // This is a read-write association end
+
+    if (!_redefinedClassifier.contains(redefinedClassifier)) {
+        _redefinedClassifier.insert(redefinedClassifier);
+        if (redefinedClassifier->asQObject() && this->asQObject())
+            QObject::connect(redefinedClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedClassifier(QObject *)));
+
+        // Adjust subsetted properties
+        addRedefinedElement(redefinedClassifier);
+    }
+}
+
+void QUmlClassifier::removeRedefinedClassifier(QUmlClassifier *redefinedClassifier)
+{
+    // This is a read-write association end
+
+    if (_redefinedClassifier.contains(redefinedClassifier)) {
+        _redefinedClassifier.remove(redefinedClassifier);
+
+        // Adjust subsetted properties
+        removeRedefinedElement(redefinedClassifier);
+    }
 }
 
 /*!
     References a collaboration use which indicates the collaboration that represents this classifier.
  */
-QUmlCollaborationUse *QUmlClassifier::representation() const
+QUmlCollaborationUse *
+QUmlClassifier::representation() const
 {
-    return reinterpret_cast<QUmlCollaborationUse *>(_representation);
+    // This is a read-write association end
+
+    return _representation;
+}
+
+void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
+{
+    // This is a read-write association end
+
+    if (_representation != representation) {
+        // Adjust subsetted properties
+        removeCollaborationUse(_representation);
+
+        _representation = representation;
+        if (representation->asQObject() && this->asQObject())
+            QObject::connect(representation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRepresentation()));
+
+        // Adjust subsetted properties
+        if (representation) {
+            addCollaborationUse(representation);
+        }
+    }
 }
 
 /*!
     References the substitutions that are owned by this Classifier.
  */
-const QSet<QUmlSubstitution *> QUmlClassifier::substitution() const
+const QSet<QUmlSubstitution *> 
+QUmlClassifier::substitution() const
 {
-    return *(reinterpret_cast<const QSet<QUmlSubstitution *> *>(&_substitution));
+    // This is a read-write association end
+
+    return _substitution;
+}
+
+void QUmlClassifier::addSubstitution(QUmlSubstitution *substitution)
+{
+    // This is a read-write association end
+
+    if (!_substitution.contains(substitution)) {
+        _substitution.insert(substitution);
+        if (substitution->asQObject() && this->asQObject())
+            QObject::connect(substitution->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubstitution(QObject *)));
+        substitution->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(substitution);
+        addClientDependency(substitution);
+
+        // Adjust opposite properties
+        if (substitution) {
+            substitution->setSubstitutingClassifier(this);
+        }
+    }
+}
+
+void QUmlClassifier::removeSubstitution(QUmlSubstitution *substitution)
+{
+    // This is a read-write association end
+
+    if (_substitution.contains(substitution)) {
+        _substitution.remove(substitution);
+        if (substitution->asQObject())
+            substitution->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(substitution);
+        removeClientDependency(substitution);
+
+        // Adjust opposite properties
+        if (substitution) {
+            substitution->setSubstitutingClassifier(0);
+        }
+    }
 }
 
 /*!
     The template parameter that exposes this element as a formal parameter.
  */
-QUmlClassifierTemplateParameter *QUmlClassifier::templateParameter() const
+QUmlClassifierTemplateParameter *
+QUmlClassifier::templateParameter() const
 {
-    return reinterpret_cast<QUmlClassifierTemplateParameter *>(_templateParameter);
+    // This is a read-write association end
+
+    return _templateParameter;
+}
+
+void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templateParameter)
+{
+    // This is a read-write association end
+
+    if (_templateParameter != templateParameter) {
+        _templateParameter = templateParameter;
+        if (templateParameter->asQObject() && this->asQObject())
+            QObject::connect(templateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateParameter()));
+    }
 }
 
 /*!
     The set of use cases for which this Classifier is the subject.
  */
-const QSet<QUmlUseCase *> QUmlClassifier::useCase() const
+const QSet<QUmlUseCase *> 
+QUmlClassifier::useCase() const
 {
-    return *(reinterpret_cast<const QSet<QUmlUseCase *> *>(&_useCase));
+    // This is a read-write association end
+
+    return _useCase;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlClassifier::allOwnedElements() const
+void QUmlClassifier::addUseCase(QUmlUseCase *useCase)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write association end
+
+    if (!_useCase.contains(useCase)) {
+        _useCase.insert(useCase);
+        if (useCase->asQObject() && this->asQObject())
+            QObject::connect(useCase->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeUseCase(QObject *)));
+
+        // Adjust opposite properties
+        if (useCase) {
+            useCase->addSubject(this);
+        }
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlClassifier::mustBeOwned() const
+void QUmlClassifier::removeUseCase(QUmlUseCase *useCase)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-write association end
+
+    if (_useCase.contains(useCase)) {
+        _useCase.remove(useCase);
+
+        // Adjust opposite properties
+        if (useCase) {
+            useCase->removeSubject(this);
+        }
+    }
 }
 
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlClassifier::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlClassifier::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlClassifier::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlClassifier::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// OPERATIONS [Namespace]
-
-/*!
-    The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
- */
-QSet<QUmlPackageableElement *> QUmlClassifier::excludeCollisions(QSet<QUmlPackageableElement *> imps) const
-{
-    QSet<QUmlPackageableElement *> r;
-    foreach (UmlPackageableElement *element, UmlNamespace::excludeCollisions(*(reinterpret_cast<QSet<UmlPackageableElement *> *>(&imps))))
-        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
-    return r;
-}
-
-/*!
-    The query getNamesOfMember() gives a set of all of the names that a member would have in a Namespace. In general a member can have multiple names in a Namespace if it is imported more than once with different aliases. The query takes account of importing. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.The query getNamesOfMember() takes importing into account. It gives back the set of names that an element would have in an importing namespace, either because it is owned, or if not owned then imported individually, or if not individually then from a package.
- */
-QSet<QString> QUmlClassifier::getNamesOfMember(QUmlNamedElement *element) const
-{
-    return UmlNamespace::getNamesOfMember(element);
-}
-
-/*!
-    The query importMembers() defines which of a set of PackageableElements are actually imported into the namespace. This excludes hidden ones, i.e., those which have names that conflict with names of owned members, and also excludes elements which would have the same name when imported.
- */
-QSet<QUmlPackageableElement *> QUmlClassifier::importMembers(QSet<QUmlPackageableElement *> imps) const
-{
-    QSet<QUmlPackageableElement *> r;
-    foreach (UmlPackageableElement *element, UmlNamespace::importMembers(*(reinterpret_cast<QSet<UmlPackageableElement *> *>(&imps))))
-        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
-    return r;
-}
-
-/*!
-    The Boolean query membersAreDistinguishable() determines whether all of the namespace's members are distinguishable within it.
- */
-bool QUmlClassifier::membersAreDistinguishable() const
-{
-    return UmlNamespace::membersAreDistinguishable();
-}
-
-// OPERATIONS [ParameterableElement]
-
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
- */
-bool QUmlClassifier::isCompatibleWith(QUmlParameterableElement *p) const
-{
-    return UmlParameterableElement::isCompatibleWith(p);
-}
-
-/*!
-    The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
- */
-bool QUmlClassifier::isTemplateParameter() const
-{
-    return UmlParameterableElement::isTemplateParameter();
-}
-
-// OPERATIONS [Type]
-// OPERATIONS [RedefinableElement]
-
-/*!
-    The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
- */
-bool QUmlClassifier::isConsistentWith(QUmlRedefinableElement *redefinee) const
-{
-    return UmlRedefinableElement::isConsistentWith(redefinee);
-}
-
-/*!
-    The query isRedefinitionContextValid() specifies whether the redefinition contexts of this RedefinableElement are properly related to the redefinition contexts of the specified RedefinableElement to allow this element to redefine the other. By default at least one of the redefinition contexts of this element must be a specialization of at least one of the redefinition contexts of the specified element.
- */
-bool QUmlClassifier::isRedefinitionContextValid(QUmlRedefinableElement *redefined) const
-{
-    return UmlRedefinableElement::isRedefinitionContextValid(redefined);
-}
-
-// OPERATIONS [TemplateableElement]
-
-/*!
-    The query parameterableElements() returns the set of elements that may be used as the parametered elements for a template parameter of this templateable element. By default, this set includes all the owned elements. Subclasses may override this operation if they choose to restrict the set of parameterable elements.
- */
-QSet<QUmlParameterableElement *> QUmlClassifier::parameterableElements() const
-{
-    QSet<QUmlParameterableElement *> r;
-    foreach (UmlParameterableElement *element, UmlTemplateableElement::parameterableElements())
-        r.insert(reinterpret_cast<QUmlParameterableElement *>(element));
-    return r;
-}
-
-// OPERATIONS [Classifier]
+// OPERATIONS
 
 /*!
     The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
  */
 QSet<QUmlFeature *> QUmlClassifier::allFeatures() const
 {
-    QSet<QUmlFeature *> r;
-    foreach (UmlFeature *element, UmlClassifier::allFeatures())
-        r.insert(reinterpret_cast<QUmlFeature *>(element));
-    return r;
+    qWarning("UmlClassifier::allFeatures(): to be implemented (operation)");
+
+    return QSet<QUmlFeature *> ();
 }
 
 /*!
@@ -572,10 +670,9 @@ QSet<QUmlFeature *> QUmlClassifier::allFeatures() const
  */
 QSet<QUmlClassifier *> QUmlClassifier::allParents() const
 {
-    QSet<QUmlClassifier *> r;
-    foreach (UmlClassifier *element, UmlClassifier::allParents())
-        r.insert(reinterpret_cast<QUmlClassifier *>(element));
-    return r;
+    qWarning("UmlClassifier::allParents(): to be implemented (operation)");
+
+    return QSet<QUmlClassifier *> ();
 }
 
 /*!
@@ -583,7 +680,10 @@ QSet<QUmlClassifier *> QUmlClassifier::allParents() const
  */
 bool QUmlClassifier::conformsTo(QUmlClassifier *other) const
 {
-    return UmlClassifier::conformsTo(other);
+    qWarning("UmlClassifier::conformsTo(): to be implemented (operation)");
+
+    Q_UNUSED(other);
+    return bool ();
 }
 
 /*!
@@ -591,7 +691,10 @@ bool QUmlClassifier::conformsTo(QUmlClassifier *other) const
  */
 bool QUmlClassifier::hasVisibilityOf(QUmlNamedElement *n) const
 {
-    return UmlClassifier::hasVisibilityOf(n);
+    qWarning("UmlClassifier::hasVisibilityOf(): to be implemented (operation)");
+
+    Q_UNUSED(n);
+    return bool ();
 }
 
 /*!
@@ -599,10 +702,10 @@ bool QUmlClassifier::hasVisibilityOf(QUmlNamedElement *n) const
  */
 QSet<QUmlNamedElement *> QUmlClassifier::inherit(QSet<QUmlNamedElement *> inhs) const
 {
-    QSet<QUmlNamedElement *> r;
-    foreach (UmlNamedElement *element, UmlClassifier::inherit(*(reinterpret_cast<QSet<UmlNamedElement *> *>(&inhs))))
-        r.insert(reinterpret_cast<QUmlNamedElement *>(element));
-    return r;
+    qWarning("UmlClassifier::inherit(): to be implemented (operation)");
+
+    Q_UNUSED(inhs);
+    return QSet<QUmlNamedElement *> ();
 }
 
 /*!
@@ -610,10 +713,10 @@ QSet<QUmlNamedElement *> QUmlClassifier::inherit(QSet<QUmlNamedElement *> inhs) 
  */
 QSet<QUmlNamedElement *> QUmlClassifier::inheritableMembers(QUmlClassifier *c) const
 {
-    QSet<QUmlNamedElement *> r;
-    foreach (UmlNamedElement *element, UmlClassifier::inheritableMembers(c))
-        r.insert(reinterpret_cast<QUmlNamedElement *>(element));
-    return r;
+    qWarning("UmlClassifier::inheritableMembers(): to be implemented (operation)");
+
+    Q_UNUSED(c);
+    return QSet<QUmlNamedElement *> ();
 }
 
 /*!
@@ -621,7 +724,9 @@ QSet<QUmlNamedElement *> QUmlClassifier::inheritableMembers(QUmlClassifier *c) c
  */
 bool QUmlClassifier::isTemplate() const
 {
-    return UmlClassifier::isTemplate();
+    qWarning("UmlClassifier::isTemplate(): to be implemented (operation)");
+
+    return bool ();
 }
 
 /*!
@@ -629,7 +734,10 @@ bool QUmlClassifier::isTemplate() const
  */
 bool QUmlClassifier::maySpecializeType(QUmlClassifier *c) const
 {
-    return UmlClassifier::maySpecializeType(c);
+    qWarning("UmlClassifier::maySpecializeType(): to be implemented (operation)");
+
+    Q_UNUSED(c);
+    return bool ();
 }
 
 /*!
@@ -637,222 +745,8 @@ bool QUmlClassifier::maySpecializeType(QUmlClassifier *c) const
  */
 QSet<QUmlClassifier *> QUmlClassifier::parents() const
 {
-    QSet<QUmlClassifier *> r;
-    foreach (UmlClassifier *element, UmlClassifier::parents())
-        r.insert(reinterpret_cast<QUmlClassifier *>(element));
-    return r;
+    qWarning("UmlClassifier::parents(): to be implemented (operation)");
+
+    return QSet<QUmlClassifier *> ();
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlClassifier::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlClassifier::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlClassifier::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlClassifier::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlClassifier::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlClassifier::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-// SLOTS FOR OWNED ATTRIBUTES [Namespace]
-
-void QUmlClassifier::addElementImport(UmlElementImport *elementImport)
-{
-    UmlNamespace::addElementImport(elementImport);
-}
-
-void QUmlClassifier::removeElementImport(UmlElementImport *elementImport)
-{
-    UmlNamespace::removeElementImport(elementImport);
-}
-
-void QUmlClassifier::addOwnedRule(UmlConstraint *ownedRule)
-{
-    UmlNamespace::addOwnedRule(ownedRule);
-}
-
-void QUmlClassifier::removeOwnedRule(UmlConstraint *ownedRule)
-{
-    UmlNamespace::removeOwnedRule(ownedRule);
-}
-
-void QUmlClassifier::addPackageImport(UmlPackageImport *packageImport)
-{
-    UmlNamespace::addPackageImport(packageImport);
-}
-
-void QUmlClassifier::removePackageImport(UmlPackageImport *packageImport)
-{
-    UmlNamespace::removePackageImport(packageImport);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
-
-void QUmlClassifier::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
-{
-    UmlParameterableElement::setOwningTemplateParameter(owningTemplateParameter);
-}
-// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
-
-void QUmlClassifier::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlPackageableElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Type]
-
-void QUmlClassifier::setPackage(QUmlPackage *package)
-{
-    UmlType::setPackage(package);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
-
-void QUmlClassifier::setLeaf(bool isLeaf)
-{
-    UmlRedefinableElement::setLeaf(isLeaf);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
-
-void QUmlClassifier::addTemplateBinding(UmlTemplateBinding *templateBinding)
-{
-    UmlTemplateableElement::addTemplateBinding(templateBinding);
-}
-
-void QUmlClassifier::removeTemplateBinding(UmlTemplateBinding *templateBinding)
-{
-    UmlTemplateableElement::removeTemplateBinding(templateBinding);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Classifier]
-
-void QUmlClassifier::addCollaborationUse(UmlCollaborationUse *collaborationUse)
-{
-    UmlClassifier::addCollaborationUse(collaborationUse);
-}
-
-void QUmlClassifier::removeCollaborationUse(UmlCollaborationUse *collaborationUse)
-{
-    UmlClassifier::removeCollaborationUse(collaborationUse);
-}
-
-void QUmlClassifier::addGeneral(UmlClassifier *general)
-{
-    UmlClassifier::addGeneral(general);
-}
-
-void QUmlClassifier::removeGeneral(UmlClassifier *general)
-{
-    UmlClassifier::removeGeneral(general);
-}
-
-void QUmlClassifier::addGeneralization(UmlGeneralization *generalization)
-{
-    UmlClassifier::addGeneralization(generalization);
-}
-
-void QUmlClassifier::removeGeneralization(UmlGeneralization *generalization)
-{
-    UmlClassifier::removeGeneralization(generalization);
-}
-
-void QUmlClassifier::setAbstract(bool isAbstract)
-{
-    UmlClassifier::setAbstract(isAbstract);
-}
-
-void QUmlClassifier::setFinalSpecialization(bool isFinalSpecialization)
-{
-    UmlClassifier::setFinalSpecialization(isFinalSpecialization);
-}
-
-void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature *ownedTemplateSignature)
-{
-    UmlClassifier::setOwnedTemplateSignature(ownedTemplateSignature);
-}
-
-void QUmlClassifier::addOwnedUseCase(UmlUseCase *ownedUseCase)
-{
-    UmlClassifier::addOwnedUseCase(ownedUseCase);
-}
-
-void QUmlClassifier::removeOwnedUseCase(UmlUseCase *ownedUseCase)
-{
-    UmlClassifier::removeOwnedUseCase(ownedUseCase);
-}
-
-void QUmlClassifier::addPowertypeExtent(UmlGeneralizationSet *powertypeExtent)
-{
-    UmlClassifier::addPowertypeExtent(powertypeExtent);
-}
-
-void QUmlClassifier::removePowertypeExtent(UmlGeneralizationSet *powertypeExtent)
-{
-    UmlClassifier::removePowertypeExtent(powertypeExtent);
-}
-
-void QUmlClassifier::addRedefinedClassifier(UmlClassifier *redefinedClassifier)
-{
-    UmlClassifier::addRedefinedClassifier(redefinedClassifier);
-}
-
-void QUmlClassifier::removeRedefinedClassifier(UmlClassifier *redefinedClassifier)
-{
-    UmlClassifier::removeRedefinedClassifier(redefinedClassifier);
-}
-
-void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
-{
-    UmlClassifier::setRepresentation(representation);
-}
-
-void QUmlClassifier::addSubstitution(UmlSubstitution *substitution)
-{
-    UmlClassifier::addSubstitution(substitution);
-}
-
-void QUmlClassifier::removeSubstitution(UmlSubstitution *substitution)
-{
-    UmlClassifier::removeSubstitution(substitution);
-}
-
-void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templateParameter)
-{
-    UmlClassifier::setTemplateParameter(templateParameter);
-}
-
-void QUmlClassifier::addUseCase(UmlUseCase *useCase)
-{
-    UmlClassifier::addUseCase(useCase);
-}
-
-void QUmlClassifier::removeUseCase(UmlUseCase *useCase)
-{
-    UmlClassifier::removeUseCase(useCase);
-}
-
-QT_END_NAMESPACE
 

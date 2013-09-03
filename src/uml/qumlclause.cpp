@@ -40,191 +40,209 @@
 ****************************************************************************/
 #include "qumlclause.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
+#include "private/qumlclauseobject_p.h"
+
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlOutputPin>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlClause
+    \class QUmlClause
 
     \inmodule QtUml
 
     \brief A clause is an element that represents a single branch of a conditional construct, including a test and a body section. The body section is executed only if (but not necessarily if) the test section evaluates true.
  */
-
-QUmlClause::QUmlClause(QObject *parent) :
-    QObject(parent)
+QUmlClause::QUmlClause(bool createQObject) :
+    _decider(0)
 {
+    if (createQObject)
+        _qObject = new QUmlClauseObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlClause::ownedComment() const
+QUmlClause::~QUmlClause()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlClause::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlClause::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [Clause]
+// OWNED ATTRIBUTES
 
 /*!
     A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
  */
-const QSet<QUmlExecutableNode *> QUmlClause::body() const
+const QSet<QUmlExecutableNode *> 
+QUmlClause::body() const
 {
-    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_body));
+    // This is a read-write association end
+
+    return _body;
+}
+
+void QUmlClause::addBody(QUmlExecutableNode *body)
+{
+    // This is a read-write association end
+
+    if (!_body.contains(body)) {
+        _body.insert(body);
+        if (body->asQObject() && this->asQObject())
+            QObject::connect(body->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBody(QObject *)));
+    }
+}
+
+void QUmlClause::removeBody(QUmlExecutableNode *body)
+{
+    // This is a read-write association end
+
+    if (_body.contains(body)) {
+        _body.remove(body);
+    }
 }
 
 /*!
     A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
  */
-const QList<QUmlOutputPin *> QUmlClause::bodyOutput() const
+const QList<QUmlOutputPin *> 
+QUmlClause::bodyOutput() const
 {
-    return *(reinterpret_cast<const QList<QUmlOutputPin *> *>(&_bodyOutput));
+    // This is a read-write association end
+
+    return _bodyOutput;
+}
+
+void QUmlClause::addBodyOutput(QUmlOutputPin *bodyOutput)
+{
+    // This is a read-write association end
+
+    if (!_bodyOutput.contains(bodyOutput)) {
+        _bodyOutput.append(bodyOutput);
+        if (bodyOutput->asQObject() && this->asQObject())
+            QObject::connect(bodyOutput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyOutput(QObject *)));
+    }
+}
+
+void QUmlClause::removeBodyOutput(QUmlOutputPin *bodyOutput)
+{
+    // This is a read-write association end
+
+    if (_bodyOutput.contains(bodyOutput)) {
+        _bodyOutput.removeAll(bodyOutput);
+    }
 }
 
 /*!
     An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.
  */
-QUmlOutputPin *QUmlClause::decider() const
+QUmlOutputPin *
+QUmlClause::decider() const
 {
-    return reinterpret_cast<QUmlOutputPin *>(_decider);
+    // This is a read-write association end
+
+    return _decider;
+}
+
+void QUmlClause::setDecider(QUmlOutputPin *decider)
+{
+    // This is a read-write association end
+
+    if (_decider != decider) {
+        _decider = decider;
+        if (decider->asQObject() && this->asQObject())
+            QObject::connect(decider->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecider()));
+    }
 }
 
 /*!
     A set of clauses whose tests must all evaluate false before the current clause can be tested.
  */
-const QSet<QUmlClause *> QUmlClause::predecessorClause() const
+const QSet<QUmlClause *> 
+QUmlClause::predecessorClause() const
 {
-    return *(reinterpret_cast<const QSet<QUmlClause *> *>(&_predecessorClause));
+    // This is a read-write association end
+
+    return _predecessorClause;
+}
+
+void QUmlClause::addPredecessorClause(QUmlClause *predecessorClause)
+{
+    // This is a read-write association end
+
+    if (!_predecessorClause.contains(predecessorClause)) {
+        _predecessorClause.insert(predecessorClause);
+        if (predecessorClause->asQObject() && this->asQObject())
+            QObject::connect(predecessorClause->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePredecessorClause(QObject *)));
+    }
+}
+
+void QUmlClause::removePredecessorClause(QUmlClause *predecessorClause)
+{
+    // This is a read-write association end
+
+    if (_predecessorClause.contains(predecessorClause)) {
+        _predecessorClause.remove(predecessorClause);
+    }
 }
 
 /*!
     A set of clauses which may not be tested unless the current clause tests false.
  */
-const QSet<QUmlClause *> QUmlClause::successorClause() const
+const QSet<QUmlClause *> 
+QUmlClause::successorClause() const
 {
-    return *(reinterpret_cast<const QSet<QUmlClause *> *>(&_successorClause));
+    // This is a read-write association end
+
+    return _successorClause;
+}
+
+void QUmlClause::addSuccessorClause(QUmlClause *successorClause)
+{
+    // This is a read-write association end
+
+    if (!_successorClause.contains(successorClause)) {
+        _successorClause.insert(successorClause);
+        if (successorClause->asQObject() && this->asQObject())
+            QObject::connect(successorClause->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSuccessorClause(QObject *)));
+    }
+}
+
+void QUmlClause::removeSuccessorClause(QUmlClause *successorClause)
+{
+    // This is a read-write association end
+
+    if (_successorClause.contains(successorClause)) {
+        _successorClause.remove(successorClause);
+    }
 }
 
 /*!
     A nested activity fragment with a designated output pin that specifies the result of the test.
  */
-const QSet<QUmlExecutableNode *> QUmlClause::test() const
+const QSet<QUmlExecutableNode *> 
+QUmlClause::test() const
 {
-    return *(reinterpret_cast<const QSet<QUmlExecutableNode *> *>(&_test));
+    // This is a read-write association end
+
+    return _test;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlClause::allOwnedElements() const
+void QUmlClause::addTest(QUmlExecutableNode *test)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write association end
+
+    if (!_test.contains(test)) {
+        _test.insert(test);
+        if (test->asQObject() && this->asQObject())
+            QObject::connect(test->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTest(QObject *)));
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlClause::mustBeOwned() const
+void QUmlClause::removeTest(QUmlExecutableNode *test)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-write association end
+
+    if (_test.contains(test)) {
+        _test.remove(test);
+    }
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlClause::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlClause::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Clause]
-
-void QUmlClause::addBody(UmlExecutableNode *body)
-{
-    UmlClause::addBody(body);
-}
-
-void QUmlClause::removeBody(UmlExecutableNode *body)
-{
-    UmlClause::removeBody(body);
-}
-
-void QUmlClause::addBodyOutput(UmlOutputPin *bodyOutput)
-{
-    UmlClause::addBodyOutput(bodyOutput);
-}
-
-void QUmlClause::removeBodyOutput(UmlOutputPin *bodyOutput)
-{
-    UmlClause::removeBodyOutput(bodyOutput);
-}
-
-void QUmlClause::setDecider(QUmlOutputPin *decider)
-{
-    UmlClause::setDecider(decider);
-}
-
-void QUmlClause::addPredecessorClause(UmlClause *predecessorClause)
-{
-    UmlClause::addPredecessorClause(predecessorClause);
-}
-
-void QUmlClause::removePredecessorClause(UmlClause *predecessorClause)
-{
-    UmlClause::removePredecessorClause(predecessorClause);
-}
-
-void QUmlClause::addSuccessorClause(UmlClause *successorClause)
-{
-    UmlClause::addSuccessorClause(successorClause);
-}
-
-void QUmlClause::removeSuccessorClause(UmlClause *successorClause)
-{
-    UmlClause::removeSuccessorClause(successorClause);
-}
-
-void QUmlClause::addTest(UmlExecutableNode *test)
-{
-    UmlClause::addTest(test);
-}
-
-void QUmlClause::removeTest(UmlExecutableNode *test)
-{
-    UmlClause::removeTest(test);
-}
-
-QT_END_NAMESPACE
 

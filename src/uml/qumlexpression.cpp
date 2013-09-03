@@ -40,368 +40,88 @@
 ****************************************************************************/
 #include "qumlexpression.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlTemplateParameter>
-#include <QtUml/QUmlType>
-#include <QtUml/QUmlValueSpecification>
-
-QT_BEGIN_NAMESPACE
+#include "private/qumlexpressionobject_p.h"
 
 /*!
-    \class UmlExpression
+    \class QUmlExpression
 
     \inmodule QtUml
 
     \brief An expression is a structured tree of symbols that denotes a (possibly empty) set of values when evaluated in a context.An expression represents a node in an expression tree, which may be non-terminal or terminal. It defines a symbol, and has a possibly empty sequence of operands which are value specifications.
  */
-
-QUmlExpression::QUmlExpression(QObject *parent) :
-    QObject(parent)
+QUmlExpression::QUmlExpression(bool createQObject)
 {
+    if (createQObject)
+        _qObject = new QUmlExpressionObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlExpression::ownedComment() const
+QUmlExpression::~QUmlExpression()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlExpression::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlExpression::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlExpression::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlExpression::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlExpression::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlExpression::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlExpression::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-// OWNED ATTRIBUTES [TypedElement]
-
-/*!
-    This information is derived from the return result for this Operation.The type of the TypedElement.
- */
-QUmlType *QUmlExpression::type() const
-{
-    return reinterpret_cast<QUmlType *>(_type);
-}
-
-// OWNED ATTRIBUTES [ParameterableElement]
-
-/*!
-    The formal template parameter that owns this element.
- */
-QUmlTemplateParameter *QUmlExpression::owningTemplateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_owningTemplateParameter);
-}
-
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
-QUmlTemplateParameter *QUmlExpression::templateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_templateParameter);
-}
-
-// OWNED ATTRIBUTES [PackageableElement]
-
-/*!
-    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
- */
-QtUml::VisibilityKind QUmlExpression::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [Expression]
+// OWNED ATTRIBUTES
 
 /*!
     Specifies a sequence of operands.
  */
-const QList<QUmlValueSpecification *> QUmlExpression::operand() const
+const QList<QUmlValueSpecification *> 
+QUmlExpression::operand() const
 {
-    return *(reinterpret_cast<const QList<QUmlValueSpecification *> *>(&_operand));
+    // This is a read-write association end
+
+    return _operand;
+}
+
+void QUmlExpression::addOperand(QUmlValueSpecification *operand)
+{
+    // This is a read-write association end
+
+    if (!_operand.contains(operand)) {
+        _operand.append(operand);
+        if (operand->asQObject() && this->asQObject())
+            QObject::connect(operand->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOperand(QObject *)));
+        operand->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(operand);
+    }
+}
+
+void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
+{
+    // This is a read-write association end
+
+    if (_operand.contains(operand)) {
+        _operand.removeAll(operand);
+        if (operand->asQObject())
+            operand->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(operand);
+    }
 }
 
 /*!
     The symbol associated with the node in the expression tree.
  */
-QString QUmlExpression::symbol() const
+QString 
+QUmlExpression::symbol() const
 {
+    // This is a read-write property
+
     return _symbol;
-}
-
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlExpression::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlExpression::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlExpression::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlExpression::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlExpression::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlExpression::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// OPERATIONS [ParameterableElement]
-
-/*!
-    The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
- */
-bool QUmlExpression::isTemplateParameter() const
-{
-    return UmlParameterableElement::isTemplateParameter();
-}
-
-// OPERATIONS [ValueSpecification]
-
-/*!
-    The query booleanValue() gives a single Boolean value when one can be computed.
- */
-bool QUmlExpression::booleanValue() const
-{
-    return UmlValueSpecification::booleanValue();
-}
-
-/*!
-    The query integerValue() gives a single Integer value when one can be computed.
- */
-int QUmlExpression::integerValue() const
-{
-    return UmlValueSpecification::integerValue();
-}
-
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.
- */
-bool QUmlExpression::isCompatibleWith(QUmlParameterableElement *p) const
-{
-    return UmlValueSpecification::isCompatibleWith(p);
-}
-
-/*!
-    The query isComputable() determines whether a value specification can be computed in a model. This operation cannot be fully defined in OCL. A conforming implementation is expected to deliver true for this operation for all value specifications that it can compute, and to compute all of those for which the operation is true. A conforming implementation is expected to be able to compute the value of all literals.
- */
-bool QUmlExpression::isComputable() const
-{
-    return UmlValueSpecification::isComputable();
-}
-
-/*!
-    The query isNull() returns true when it can be computed that the value is null.
- */
-bool QUmlExpression::isNull() const
-{
-    return UmlValueSpecification::isNull();
-}
-
-/*!
-    The query realValue() gives a single Real value when one can be computed.
- */
-double QUmlExpression::realValue() const
-{
-    return UmlValueSpecification::realValue();
-}
-
-/*!
-    The query stringValue() gives a single String value when one can be computed.
- */
-QString QUmlExpression::stringValue() const
-{
-    return UmlValueSpecification::stringValue();
-}
-
-/*!
-    The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
- */
-int QUmlExpression::unlimitedValue() const
-{
-    return UmlValueSpecification::unlimitedValue();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlExpression::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlExpression::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlExpression::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlExpression::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlExpression::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlExpression::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
-
-void QUmlExpression::setType(QUmlType *type)
-{
-    UmlTypedElement::setType(type);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
-
-void QUmlExpression::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
-{
-    UmlParameterableElement::setOwningTemplateParameter(owningTemplateParameter);
-}
-
-void QUmlExpression::setTemplateParameter(QUmlTemplateParameter *templateParameter)
-{
-    UmlParameterableElement::setTemplateParameter(templateParameter);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
-
-void QUmlExpression::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlPackageableElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Expression]
-
-void QUmlExpression::addOperand(UmlValueSpecification *operand)
-{
-    UmlExpression::addOperand(operand);
-}
-
-void QUmlExpression::removeOperand(UmlValueSpecification *operand)
-{
-    UmlExpression::removeOperand(operand);
 }
 
 void QUmlExpression::setSymbol(QString symbol)
 {
-    UmlExpression::setSymbol(symbol);
-}
+    // This is a read-write property
 
-QT_END_NAMESPACE
+    if (_symbol != symbol) {
+        _symbol = symbol;
+    }
+}
 

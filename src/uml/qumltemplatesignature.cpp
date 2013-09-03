@@ -40,137 +40,142 @@
 ****************************************************************************/
 #include "qumltemplatesignature.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
+#include "private/qumltemplatesignatureobject_p.h"
+
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlTemplateSignature
+    \class QUmlTemplateSignature
 
     \inmodule QtUml
 
     \brief A template signature bundles the set of formal template parameters for a templated element.
  */
-
-QUmlTemplateSignature::QUmlTemplateSignature(QObject *parent) :
-    QObject(parent)
+QUmlTemplateSignature::QUmlTemplateSignature(bool createQObject) :
+    _template_(0)
 {
+    if (createQObject)
+        _qObject = new QUmlTemplateSignatureObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlTemplateSignature::ownedComment() const
+QUmlTemplateSignature::~QUmlTemplateSignature()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlTemplateSignature::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlTemplateSignature::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [TemplateSignature]
+// OWNED ATTRIBUTES
 
 /*!
     The formal template parameters that are owned by this template signature.
  */
-const QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameter() const
+const QList<QUmlTemplateParameter *> 
+QUmlTemplateSignature::ownedParameter() const
 {
-    return *(reinterpret_cast<const QList<QUmlTemplateParameter *> *>(&_ownedParameter));
+    // This is a read-write association end
+
+    return _ownedParameter;
+}
+
+void QUmlTemplateSignature::addOwnedParameter(QUmlTemplateParameter *ownedParameter)
+{
+    // This is a read-write association end
+
+    if (!_ownedParameter.contains(ownedParameter)) {
+        _ownedParameter.append(ownedParameter);
+        if (ownedParameter->asQObject() && this->asQObject())
+            QObject::connect(ownedParameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameter(QObject *)));
+        ownedParameter->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addParameter(ownedParameter);
+        addOwnedElement(ownedParameter);
+
+        // Adjust opposite properties
+        if (ownedParameter) {
+            ownedParameter->setSignature(this);
+        }
+    }
+}
+
+void QUmlTemplateSignature::removeOwnedParameter(QUmlTemplateParameter *ownedParameter)
+{
+    // This is a read-write association end
+
+    if (_ownedParameter.contains(ownedParameter)) {
+        _ownedParameter.removeAll(ownedParameter);
+        if (ownedParameter->asQObject())
+            ownedParameter->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeParameter(ownedParameter);
+        removeOwnedElement(ownedParameter);
+
+        // Adjust opposite properties
+        if (ownedParameter) {
+            ownedParameter->setSignature(0);
+        }
+    }
 }
 
 /*!
     The ordered set of all formal template parameters for this template signature.
  */
-const QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameter() const
+const QList<QUmlTemplateParameter *> 
+QUmlTemplateSignature::parameter() const
 {
-    return *(reinterpret_cast<const QList<QUmlTemplateParameter *> *>(&_parameter));
+    // This is a read-write association end
+
+    return _parameter;
+}
+
+void QUmlTemplateSignature::addParameter(QUmlTemplateParameter *parameter)
+{
+    // This is a read-write association end
+
+    if (!_parameter.contains(parameter)) {
+        _parameter.append(parameter);
+        if (parameter->asQObject() && this->asQObject())
+            QObject::connect(parameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameter(QObject *)));
+    }
+}
+
+void QUmlTemplateSignature::removeParameter(QUmlTemplateParameter *parameter)
+{
+    // This is a read-write association end
+
+    if (_parameter.contains(parameter)) {
+        _parameter.removeAll(parameter);
+    }
 }
 
 /*!
     The element that owns this template signature.
  */
-QUmlTemplateableElement *QUmlTemplateSignature::template_() const
+QUmlTemplateableElement *
+QUmlTemplateSignature::template_() const
 {
-    return reinterpret_cast<QUmlTemplateableElement *>(_template_);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlTemplateSignature::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlTemplateSignature::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlTemplateSignature::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlTemplateSignature::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [TemplateSignature]
-
-void QUmlTemplateSignature::addOwnedParameter(UmlTemplateParameter *ownedParameter)
-{
-    UmlTemplateSignature::addOwnedParameter(ownedParameter);
-}
-
-void QUmlTemplateSignature::removeOwnedParameter(UmlTemplateParameter *ownedParameter)
-{
-    UmlTemplateSignature::removeOwnedParameter(ownedParameter);
-}
-
-void QUmlTemplateSignature::addParameter(UmlTemplateParameter *parameter)
-{
-    UmlTemplateSignature::addParameter(parameter);
-}
-
-void QUmlTemplateSignature::removeParameter(UmlTemplateParameter *parameter)
-{
-    UmlTemplateSignature::removeParameter(parameter);
+    return _template_;
 }
 
 void QUmlTemplateSignature::setTemplate(QUmlTemplateableElement *template_)
 {
-    UmlTemplateSignature::setTemplate(template_);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_template_ != template_) {
+        // Adjust subsetted properties
+
+        _template_ = template_;
+        if (template_->asQObject() && this->asQObject())
+            QObject::connect(template_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplate()));
+
+        // Adjust subsetted properties
+        setOwner(template_);
+    }
+}
 

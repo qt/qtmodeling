@@ -8,7 +8,7 @@
       "Real" = "double"
    };
 -%]
-[%- MACRO QT_TYPE(namespace, attribute, internal) BLOCK -%]
+[%- MACRO QT_TYPE(namespace, attribute, external) BLOCK -%]
     [%- SET multiplicity = attribute.findnodes("upperValue").findvalue("@value") -%]
     [%- SET isUnique = attribute.findvalue("@isUnique") -%]
     [%- SET isOrdered = attribute.findvalue("@isOrdered") -%]
@@ -18,7 +18,7 @@
     [%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$attributeType']").findvalue("@name") != "" -%]
 Qt${namespace}::${attributeType} 
     [%- ELSE -%]
-[% IF internal == "false" %]Q[% END %]${namespace}${attributeType} *
+[% IF external == "false" %]QObject *[% ELSE %]Q${namespace}${attributeType} *[% END %]
     [%- END -%]
     [%- ELSE -%]
 ${uml2qt_type.item(attribute.findnodes("type").findvalue("@href").split("#").last)}[%- IF multiplicity != "*" %] [% END -%]
@@ -173,26 +173,24 @@ ${parameter.findvalue("@name")}
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
     [%- SET readOnly = attribute.findvalue("@isReadOnly") -%]
-    [%- IF readOnly == "false" || readOnly == "" -%]
     [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
     [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
-    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
-    void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
-    void remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute});
-    [%- ELSE %]
-    void add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
-    void remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
-    [%- END -%]
+        [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+    void [%- IF readOnly == "true" -%]Q_DECL_HIDDEN [% END %]add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*') %]${qtAttribute});
+    void [%- IF readOnly == "true" -%]Q_DECL_HIDDEN [% END %]remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*') %]${qtAttribute});
+        [%- ELSE %]
+    void [%- IF readOnly == "true" -%]Q_DECL_HIDDEN [% END %]add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
+    void [%- IF readOnly == "true" -%]Q_DECL_HIDDEN [% END %]remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")}${qtAttribute});
+        [%- END -%]
     [%- ELSE -%]
-    [%- IF qtType.match('QList|QSet') %]
-    void set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute});
-    [%- ELSIF qtType.match('\*$') %]
-    void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
-    [%- ELSE %]
-    void set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
+        [%- IF qtType.match('QList|QSet') %]
+    void [%- IF readOnly == "true" -%]Q_DECL_HIDDEN [% END %]set${attributeName}(${qtType}${qtAttribute});
+        [%- ELSIF qtType.match('\*$') %]
+    void [%- IF readOnly == "true" -%]Q_DECL_HIDDEN [% END %]set${attributeName}(${qtType}${qtAttribute} = 0);
+        [%- ELSE %]
+    void [%- IF readOnly == "true" -%]Q_DECL_HIDDEN [% END %]set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
+            [%- END -%]
     [%- END -%]
-    [%- END -%]
-    [%- END %]
 [%- END %]
 [%- END -%]
 [%- MACRO GENERATE_CPP_ATTRIBUTES(originalClassName, class, visitedClasses, redefinedProperties) BLOCK -%]
@@ -213,38 +211,21 @@ ${parameter.findvalue("@name")}
 
 [%- SET found = "true" -%]
 [% END -%]
-[%- SET documentation = attribute.findvalue("ownedComment/body/text()") -%]
-[%- IF documentation != "" %]
-/*!
-    ${documentation}
- */
-[%- END -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- SET originalQtType = QT_TYPE(namespace, attribute, "true") -%]
     [%- SET derived = attribute.findvalue("@isDerived") -%]
     [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") %]
-[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${originalClassName}::${qtAttribute}() const
+[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${originalClassName}Object::${qtAttribute}() const
 {
     [%- IF qtType.match("QList|QSet") %]
-    [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
-    ${qtType}r;
-    foreach (${qtType.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, ${namespace}${className}::${qtAttribute}())
-        r.[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](reinterpret_cast<${qtType.remove("QList<").remove("QSet<").remove(">").trim}>(element));
-    return r;
-    [%- ELSE %]
-    return *(reinterpret_cast<const ${qtType.trim.remove(' \*$')} *>(&_${qtAttribute}));
-    [%- END -%]
+    ${qtType}[% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
+    foreach (Q${originalQtType.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}())
+        [% IF qtType.match("QList") %]list[% ELSE %]set[% END %].[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](element->asQObject());
+    return [% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
     [%- ELSIF qtType.match('\*$') %]
-    [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
-    return reinterpret_cast<${qtType.trim}>(${namespace}${className}::${qtAttribute}());
+    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}()->asQObject();
     [%- ELSE %]
-    return reinterpret_cast<${qtType.trim}>(_${qtAttribute});
-    [%- END -%]
-    [%- ELSE %]
-    [%- IF derived == "true" && (derivedUnion == "" || derivedUnion == "false") %]
-    return ${namespace}${className}::${qtAttribute}();
-    [%- ELSE %]
-    return _${qtAttribute};
-    [%- END -%]
+    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}();
     [%- END %]
 }
 
@@ -271,14 +252,9 @@ ${parameter.findvalue("@name")}
 [% SET operationName = operation.findvalue("@name") -%]
 [%- NEXT IF redefinedOperations.grep("^${className}-${operationName}$").size > 0 -%]
 [%- SET return = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "false") %]
-[%- SET documentation = operation.findvalue("ownedComment/body/text()") -%]
-[%- IF documentation != "" %]
-/*!
-    ${documentation}
- */
-[%- END %]
+[%- SET originalReturn = QT_TYPE(namespace, operation.findnodes("ownedParameter[@direction='return']"), "true") %]
 [% return -%]
-Q${namespace}${originalClassName}::${operationName}(
+Q${namespace}${originalClassName}Object::${operationName}(
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
         [%- QT_TYPE(namespace, parameter, "false") -%]
 ${parameter.findvalue("@name")}
@@ -286,32 +262,51 @@ ${parameter.findvalue("@name")}
     [%- END -%]
 )[% IF operation.findvalue("@isQuery") == "true" %] const[% END %]
 {
-    [%- IF return.match('\*$') || !return.match("QList|QSet") %]
-    return [% IF return.match('\*$') %]reinterpret_cast<${return.trim}>([% END %]${namespace}${className}::${operationName}(
     [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+        [%- IF QT_TYPE(namespace, parameter, "true").match("QList|QSet") %]
+    ${QT_TYPE(namespace, parameter, "true")}${parameter.findvalue("@name")}Converted;
+    foreach (QObject *object, ${parameter.findvalue("@name")})
+        ${parameter.findvalue("@name")}Converted.[% IF QT_TYPE(namespace, parameter, "true").match("QList") %]append[% ELSE %]insert[% END %](qmodelingobjectproperty_cast<${QT_TYPE(namespace, parameter, "true").remove("QList<").remove("QSet<").remove(">").trim}>(object));
+        [%- END -%]
+    [%- END -%]
+    [%- IF return.match("QList|QSet") && return.match('\*') %]
+    ${return}[% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
+    foreach (${originalReturn.remove("QList<").remove("QSet<").remove(">").trim}element, qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
+        [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+            [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
+        [%- IF qtType.match('QList|QSet') -%]
+${parameter.findvalue("@name")}Converted
+        [%- ELSIF qtType.match('\*$') -%]
+qmodelingobjectproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+        [%- ELSE -%]
 ${parameter.findvalue("@name")}
-        [%- IF !loop.last %], [% END -%]
-    [%- END -%])[% IF return.match('\*$') %])[% END %];
-    [%- ELSIF return.match('\*') %]
-    ${return}r;
-    foreach (${return.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, ${namespace}${className}::${operationName}(
-    [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
-[%- qtType = QT_TYPE(namespace, parameter, "false") -%]
-[%- IF qtType.match("QList|QSet") -%]
-*(reinterpret_cast<${qtType.replace("<Q", "<")}*>(&${parameter.findvalue("@name")}))
-[%- ELSE -%]
+        [%- END -%]
+            [%- IF !loop.last %], [% END -%]
+        [%- END -%]))
+        [% IF qtType.match("QList") %]list[% ELSE %]set[% END %].[% IF return.match("QList") %]append[% ELSE %]insert[% END %](element->asQObject());
+    return [% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
+    [%- ELSIF !return.match("QList|QSet") && return.match('\*$') %]
+    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
+        [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+        [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
+        [%- IF qtType.match('\*$') -%]
+qmodelingobjectproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+        [%- ELSE -%]
 ${parameter.findvalue("@name")}
-[%- END -%]
-        [%- IF !loop.last %], [% END -%]
-    [%- END -%]))
-        r.[% IF return.match("QList") %]append[% ELSE %]insert[% END %](reinterpret_cast<${return.remove("QList<").remove("QSet<").remove(">").trim}>(element));
-    return r;
+        [%- END -%]
+            [%- IF !loop.last %], [% END -%]
+        [%- END -%])->asQObject();
     [%- ELSE %]
-    return ${namespace}${className}::${operationName}(
-    [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
+        [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+            [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
+        [%- IF qtType.match('\*$') -%]
+qmodelingobjectproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+        [%- ELSE -%]
 ${parameter.findvalue("@name")}
-        [%- IF !loop.last %], [% END -%]
-    [%- END -%]);
+        [%- END -%]
+            [%- IF !loop.last %], [% END -%]
+        [%- END -%]);
     [%- END %]
 }
 
@@ -337,50 +332,48 @@ ${parameter.findvalue("@name")}
 
 [%- SET found = "true" -%]
 [% END -%]
-    [%- SET readOnly = attribute.findvalue("@isReadOnly") %]
-    [%- IF readOnly == "false" || readOnly == "" -%]
     [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
+    [%- SET originalQtType = QT_TYPE(namespace, attribute, "true") -%]
     [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" -%]
-    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
-void Q${namespace}${originalClassName}::add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
-    [%- ELSE %]
-void Q${namespace}${originalClassName}::add${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
-    [%- END %]
+        [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+void Q${namespace}${originalClassName}Object::add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*') %]${qtAttribute})
+        [%- ELSE %]
+void Q${namespace}${originalClassName}Object::add${attributeName}(${originalQtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
+        [%- END %]
 {
-    ${namespace}${className}::add${attributeName}(${qtAttribute});
+        [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->add${attributeName}(qmodelingobjectproperty_cast<${originalQtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}>(${qtAttribute}));
+        [%- ELSE %]
+    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->add${attributeName}(${qtAttribute});
+        [%- END %]
 }
 
     [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
-void Q${namespace}${originalClassName}::remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*').remove('^Q') %]${qtAttribute})
+void Q${namespace}${originalClassName}Object::remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*') %]${qtAttribute})
     [%- ELSE %]
-void Q${namespace}${originalClassName}::remove${attributeName}(${qtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
+void Q${namespace}${originalClassName}Object::remove${attributeName}(${originalQtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
     [%- END %]
 {
-    ${namespace}${className}::remove${attributeName}(${qtAttribute});
-}
-
-    [%- ELSE -%]
-    [%- IF qtType.match('QList|QSet') %]
-void Q${namespace}${originalClassName}::set${attributeName.remove("^Is")}(${qtType.remove('^Q')}${qtAttribute})
-{
-    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
+    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(qmodelingobjectproperty_cast<${originalQtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}>(${qtAttribute}));
+    [%- ELSE %]
+    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(${qtAttribute});
+    [%- END %]
 }
 
     [%- ELSIF qtType.match('\*$') %]
-void Q${namespace}${originalClassName}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
+void Q${namespace}${originalClassName}Object::set${attributeName}(${qtType}${qtAttribute})
 {
-    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
+    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName}(qmodelingobjectproperty_cast<${originalQtType}>(${qtAttribute}));
 }
 
     [%- ELSE %]
-void Q${namespace}${originalClassName}::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
+void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
 {
-    ${namespace}${className}::set${attributeName.remove("^Is")}(${qtAttribute});
+    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName.remove("^Is")}(${qtAttribute});
 }
-[% END -%]
-    [%- END -%]
-    [%- END %]
+    [% END -%]
 [%- IF loop.last %]
 [% END -%]
 [%- END %]

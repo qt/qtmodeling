@@ -40,367 +40,259 @@
 ****************************************************************************/
 #include "qumlactivitypartition.h"
 
-#include <QtUml/QUmlActivity>
-#include <QtUml/QUmlActivityEdge>
-#include <QtUml/QUmlActivityGroup>
-#include <QtUml/QUmlActivityNode>
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlStringExpression>
+#include "private/qumlactivitypartitionobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlElement>
 
 /*!
-    \class UmlActivityPartition
+    \class QUmlActivityPartition
 
     \inmodule QtUml
 
     \brief An activity partition is a kind of activity group for identifying actions that have some characteristic in common.
  */
-
-QUmlActivityPartition::QUmlActivityPartition(QObject *parent) :
-    QObject(parent)
+QUmlActivityPartition::QUmlActivityPartition(bool createQObject) :
+    _isDimension(false),
+    _isExternal(false),
+    _represents(0),
+    _superPartition(0)
 {
+    if (createQObject)
+        _qObject = new QUmlActivityPartitionObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlActivityPartition::ownedComment() const
+QUmlActivityPartition::~QUmlActivityPartition()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlActivityPartition::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlActivityPartition::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlActivityPartition::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlActivityPartition::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlActivityPartition::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlActivityPartition::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlActivityPartition::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlActivityPartition::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [ActivityGroup]
+// OWNED ATTRIBUTES
 
 /*!
     Edges immediately contained in the group.
  */
-const QSet<QUmlActivityEdge *> QUmlActivityPartition::containedEdge() const
+const QSet<QUmlActivityEdge *> 
+QUmlActivityPartition::edge() const
 {
-    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_containedEdge));
+    // This is a read-write association end
+
+    return _edge;
 }
 
-/*!
-    Nodes immediately contained in the group.
- */
-const QSet<QUmlActivityNode *> QUmlActivityPartition::containedNode() const
+void QUmlActivityPartition::addEdge(QUmlActivityEdge *edge)
 {
-    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_containedNode));
+    // This is a read-write association end
+
+    if (!_edge.contains(edge)) {
+        _edge.insert(edge);
+        if (edge->asQObject() && this->asQObject())
+            QObject::connect(edge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEdge(QObject *)));
+
+        // Adjust subsetted properties
+        addContainedEdge(edge);
+
+        // Adjust opposite properties
+        if (edge) {
+            edge->addInPartition(this);
+        }
+    }
 }
 
-/*!
-    Activity containing the group.
- */
-QUmlActivity *QUmlActivityPartition::inActivity() const
+void QUmlActivityPartition::removeEdge(QUmlActivityEdge *edge)
 {
-    return reinterpret_cast<QUmlActivity *>(_inActivity);
-}
+    // This is a read-write association end
 
-/*!
-    Groups immediately contained in the group.
- */
-const QSet<QUmlActivityGroup *> QUmlActivityPartition::subgroup() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_subgroup));
-}
+    if (_edge.contains(edge)) {
+        _edge.remove(edge);
 
-/*!
-    Group immediately containing the group.
- */
-QUmlActivityGroup *QUmlActivityPartition::superGroup() const
-{
-    return reinterpret_cast<QUmlActivityGroup *>(_superGroup);
-}
+        // Adjust subsetted properties
+        removeContainedEdge(edge);
 
-// OWNED ATTRIBUTES [ActivityPartition]
-
-/*!
-    Edges immediately contained in the group.
- */
-const QSet<QUmlActivityEdge *> QUmlActivityPartition::edge() const
-{
-    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_edge));
+        // Adjust opposite properties
+        if (edge) {
+            edge->removeInPartition(this);
+        }
+    }
 }
 
 /*!
     Tells whether the partition groups other partitions along a dimension.
  */
-bool QUmlActivityPartition::isDimension() const
+bool 
+QUmlActivityPartition::isDimension() const
 {
+    // This is a read-write property
+
     return _isDimension;
+}
+
+void QUmlActivityPartition::setDimension(bool isDimension)
+{
+    // This is a read-write property
+
+    if (_isDimension != isDimension) {
+        _isDimension = isDimension;
+    }
 }
 
 /*!
     Tells whether the partition represents an entity to which the partitioning structure does not apply.
  */
-bool QUmlActivityPartition::isExternal() const
+bool 
+QUmlActivityPartition::isExternal() const
 {
+    // This is a read-write property
+
     return _isExternal;
+}
+
+void QUmlActivityPartition::setExternal(bool isExternal)
+{
+    // This is a read-write property
+
+    if (_isExternal != isExternal) {
+        _isExternal = isExternal;
+    }
 }
 
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QUmlActivityNode *> QUmlActivityPartition::node() const
+const QSet<QUmlActivityNode *> 
+QUmlActivityPartition::node() const
 {
-    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_node));
+    // This is a read-write association end
+
+    return _node;
+}
+
+void QUmlActivityPartition::addNode(QUmlActivityNode *node)
+{
+    // This is a read-write association end
+
+    if (!_node.contains(node)) {
+        _node.insert(node);
+        if (node->asQObject() && this->asQObject())
+            QObject::connect(node->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNode(QObject *)));
+
+        // Adjust subsetted properties
+        addContainedNode(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->addInPartition(this);
+        }
+    }
+}
+
+void QUmlActivityPartition::removeNode(QUmlActivityNode *node)
+{
+    // This is a read-write association end
+
+    if (_node.contains(node)) {
+        _node.remove(node);
+
+        // Adjust subsetted properties
+        removeContainedNode(node);
+
+        // Adjust opposite properties
+        if (node) {
+            node->removeInPartition(this);
+        }
+    }
 }
 
 /*!
     An element constraining behaviors invoked by nodes in the partition.
  */
-QUmlElement *QUmlActivityPartition::represents() const
+QUmlElement *
+QUmlActivityPartition::represents() const
 {
-    return reinterpret_cast<QUmlElement *>(_represents);
+    // This is a read-write association end
+
+    return _represents;
+}
+
+void QUmlActivityPartition::setRepresents(QUmlElement *represents)
+{
+    // This is a read-write association end
+
+    if (_represents != represents) {
+        _represents = represents;
+        if (represents->asQObject() && this->asQObject())
+            QObject::connect(represents->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRepresents()));
+    }
 }
 
 /*!
     Partitions immediately contained in the partition.
  */
-const QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartition() const
+const QSet<QUmlActivityPartition *> 
+QUmlActivityPartition::subpartition() const
 {
-    return *(reinterpret_cast<const QSet<QUmlActivityPartition *> *>(&_subpartition));
+    // This is a read-write association end
+
+    return _subpartition;
+}
+
+void QUmlActivityPartition::addSubpartition(QUmlActivityPartition *subpartition)
+{
+    // This is a read-write association end
+
+    if (!_subpartition.contains(subpartition)) {
+        _subpartition.insert(subpartition);
+        if (subpartition->asQObject() && this->asQObject())
+            QObject::connect(subpartition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubpartition(QObject *)));
+        subpartition->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addSubgroup(subpartition);
+    }
+}
+
+void QUmlActivityPartition::removeSubpartition(QUmlActivityPartition *subpartition)
+{
+    // This is a read-write association end
+
+    if (_subpartition.contains(subpartition)) {
+        _subpartition.remove(subpartition);
+        if (subpartition->asQObject())
+            subpartition->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeSubgroup(subpartition);
+    }
 }
 
 /*!
     Partition immediately containing the partition.
  */
-QUmlActivityPartition *QUmlActivityPartition::superPartition() const
+QUmlActivityPartition *
+QUmlActivityPartition::superPartition() const
 {
-    return reinterpret_cast<QUmlActivityPartition *>(_superPartition);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlActivityPartition::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlActivityPartition::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlActivityPartition::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlActivityPartition::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlActivityPartition::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlActivityPartition::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlActivityPartition::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlActivityPartition::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlActivityPartition::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlActivityPartition::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlActivityPartition::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlActivityPartition::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlActivityPartition::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
-
-void QUmlActivityPartition::setInActivity(QUmlActivity *inActivity)
-{
-    UmlActivityGroup::setInActivity(inActivity);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ActivityPartition]
-
-void QUmlActivityPartition::addEdge(UmlActivityEdge *edge)
-{
-    UmlActivityPartition::addEdge(edge);
-}
-
-void QUmlActivityPartition::removeEdge(UmlActivityEdge *edge)
-{
-    UmlActivityPartition::removeEdge(edge);
-}
-
-void QUmlActivityPartition::setDimension(bool isDimension)
-{
-    UmlActivityPartition::setDimension(isDimension);
-}
-
-void QUmlActivityPartition::setExternal(bool isExternal)
-{
-    UmlActivityPartition::setExternal(isExternal);
-}
-
-void QUmlActivityPartition::addNode(UmlActivityNode *node)
-{
-    UmlActivityPartition::addNode(node);
-}
-
-void QUmlActivityPartition::removeNode(UmlActivityNode *node)
-{
-    UmlActivityPartition::removeNode(node);
-}
-
-void QUmlActivityPartition::setRepresents(QUmlElement *represents)
-{
-    UmlActivityPartition::setRepresents(represents);
-}
-
-void QUmlActivityPartition::addSubpartition(UmlActivityPartition *subpartition)
-{
-    UmlActivityPartition::addSubpartition(subpartition);
-}
-
-void QUmlActivityPartition::removeSubpartition(UmlActivityPartition *subpartition)
-{
-    UmlActivityPartition::removeSubpartition(subpartition);
+    return _superPartition;
 }
 
 void QUmlActivityPartition::setSuperPartition(QUmlActivityPartition *superPartition)
 {
-    UmlActivityPartition::setSuperPartition(superPartition);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_superPartition != superPartition) {
+        // Adjust subsetted properties
+
+        _superPartition = superPartition;
+        if (superPartition->asQObject() && this->asQObject())
+            QObject::connect(superPartition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSuperPartition()));
+
+        // Adjust subsetted properties
+        setSuperGroup(superPartition);
+    }
+}
 

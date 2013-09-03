@@ -43,10 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umllifeline_p.h"
+#include <QtUml/QUmlNamedElement>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -54,103 +52,42 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
 class QUmlConnectableElement;
-class QUmlDependency;
-class QUmlElement;
 class QUmlInteraction;
 class QUmlInteractionFragment;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
 class QUmlPartDecomposition;
-class QUmlStringExpression;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlLifeline : public QObject, public UmlLifeline
+class Q_UML_EXPORT QUmlLifeline : public QUmlNamedElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [Lifeline]
-    Q_PROPERTY(QSet<QUmlInteractionFragment *> coveredBy READ coveredBy)
-    Q_PROPERTY(QUmlPartDecomposition * decomposedAs READ decomposedAs)
-    Q_PROPERTY(QUmlInteraction * interaction READ interaction)
-    Q_PROPERTY(QUmlConnectableElement * represents READ represents)
-    Q_PROPERTY(QUmlValueSpecification * selector READ selector)
-
 public:
-    Q_INVOKABLE explicit QUmlLifeline(QObject *parent = 0);
+    explicit QUmlLifeline(bool createQObject = true);
+    virtual ~QUmlLifeline();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [Lifeline]
-    Q_INVOKABLE const QSet<QUmlInteractionFragment *> coveredBy() const;
-    Q_INVOKABLE QUmlPartDecomposition *decomposedAs() const;
-    Q_INVOKABLE QUmlInteraction *interaction() const;
-    Q_INVOKABLE QUmlConnectableElement *represents() const;
-    Q_INVOKABLE QUmlValueSpecification *selector() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [Lifeline]
-    void addCoveredBy(UmlInteractionFragment *coveredBy);
-    void removeCoveredBy(UmlInteractionFragment *coveredBy);
+    // Owned attributes
+    const QSet<QUmlInteractionFragment *> coveredBy() const;
+    void addCoveredBy(QUmlInteractionFragment *coveredBy);
+    void removeCoveredBy(QUmlInteractionFragment *coveredBy);
+    QUmlPartDecomposition *decomposedAs() const;
     void setDecomposedAs(QUmlPartDecomposition *decomposedAs);
+    QUmlInteraction *interaction() const;
     void setInteraction(QUmlInteraction *interaction);
+    QUmlConnectableElement *represents() const;
     void setRepresents(QUmlConnectableElement *represents);
+    QUmlValueSpecification *selector() const;
     void setSelector(QUmlValueSpecification *selector);
+
+protected:
+    QSet<QUmlInteractionFragment *> _coveredBy;
+    QUmlPartDecomposition *_decomposedAs;
+    QUmlInteraction *_interaction;
+    QUmlConnectableElement *_represents;
+    QUmlValueSpecification *_selector;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlLifeline *)
-Q_DECLARE_METATYPE(QList<QUmlLifeline *> *)
-Q_DECLARE_METATYPE(QSet<QUmlLifeline *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlLifeline) *)
 
 QT_END_HEADER
 

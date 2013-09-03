@@ -40,163 +40,75 @@
 ****************************************************************************/
 #include "qumllinkenddestructiondata.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlInputPin>
-#include <QtUml/QUmlProperty>
-#include <QtUml/QUmlQualifierValue>
+#include "private/qumllinkenddestructiondataobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlInputPin>
 
 /*!
-    \class UmlLinkEndDestructionData
+    \class QUmlLinkEndDestructionData
 
     \inmodule QtUml
 
     \brief A link end destruction data is not an action. It is an element that identifies links. It identifies one end of a link to be destroyed by destroy link action.
  */
-
-QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(QObject *parent) :
-    QObject(parent)
+QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(bool createQObject) :
+    QUmlLinkEndData(false),
+    _destroyAt(0),
+    _isDestroyDuplicates(false)
 {
+    if (createQObject)
+        _qObject = new QUmlLinkEndDestructionDataObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlLinkEndDestructionData::ownedComment() const
+QUmlLinkEndDestructionData::~QUmlLinkEndDestructionData()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlLinkEndDestructionData::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlLinkEndDestructionData::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [LinkEndData]
-
-/*!
-    Association end for which this link-end data specifies values.
- */
-QUmlProperty *QUmlLinkEndDestructionData::end() const
-{
-    return reinterpret_cast<QUmlProperty *>(_end);
-}
-
-/*!
-    List of qualifier values
- */
-const QSet<QUmlQualifierValue *> QUmlLinkEndDestructionData::qualifier() const
-{
-    return *(reinterpret_cast<const QSet<QUmlQualifierValue *> *>(&_qualifier));
-}
-
-/*!
-    Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.
- */
-QUmlInputPin *QUmlLinkEndDestructionData::value() const
-{
-    return reinterpret_cast<QUmlInputPin *>(_value);
-}
-
-// OWNED ATTRIBUTES [LinkEndDestructionData]
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
  */
-QUmlInputPin *QUmlLinkEndDestructionData::destroyAt() const
+QUmlInputPin *
+QUmlLinkEndDestructionData::destroyAt() const
 {
-    return reinterpret_cast<QUmlInputPin *>(_destroyAt);
+    // This is a read-write association end
+
+    return _destroyAt;
+}
+
+void QUmlLinkEndDestructionData::setDestroyAt(QUmlInputPin *destroyAt)
+{
+    // This is a read-write association end
+
+    if (_destroyAt != destroyAt) {
+        _destroyAt = destroyAt;
+        if (destroyAt->asQObject() && this->asQObject())
+            QObject::connect(destroyAt->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDestroyAt()));
+    }
 }
 
 /*!
     Specifies whether to destroy duplicates of the value in nonunique association ends.
  */
-bool QUmlLinkEndDestructionData::isDestroyDuplicates() const
+bool 
+QUmlLinkEndDestructionData::isDestroyDuplicates() const
 {
+    // This is a read-write property
+
     return _isDestroyDuplicates;
-}
-
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlLinkEndDestructionData::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlLinkEndDestructionData::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlLinkEndDestructionData::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlLinkEndDestructionData::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [LinkEndData]
-
-void QUmlLinkEndDestructionData::setEnd(QUmlProperty *end)
-{
-    UmlLinkEndData::setEnd(end);
-}
-
-void QUmlLinkEndDestructionData::addQualifier(UmlQualifierValue *qualifier)
-{
-    UmlLinkEndData::addQualifier(qualifier);
-}
-
-void QUmlLinkEndDestructionData::removeQualifier(UmlQualifierValue *qualifier)
-{
-    UmlLinkEndData::removeQualifier(qualifier);
-}
-
-void QUmlLinkEndDestructionData::setValue(QUmlInputPin *value)
-{
-    UmlLinkEndData::setValue(value);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [LinkEndDestructionData]
-
-void QUmlLinkEndDestructionData::setDestroyAt(QUmlInputPin *destroyAt)
-{
-    UmlLinkEndDestructionData::setDestroyAt(destroyAt);
 }
 
 void QUmlLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 {
-    UmlLinkEndDestructionData::setDestroyDuplicates(isDestroyDuplicates);
-}
+    // This is a read-write property
 
-QT_END_NAMESPACE
+    if (_isDestroyDuplicates != isDestroyDuplicates) {
+        _isDestroyDuplicates = isDestroyDuplicates;
+    }
+}
 

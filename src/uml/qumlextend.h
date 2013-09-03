@@ -43,10 +43,9 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlextend_p.h"
+#include <QtUml/QUmlDirectedRelationship>
+#include <QtUml/QUmlNamedElement>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -54,116 +53,37 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
 class QUmlConstraint;
-class QUmlDependency;
-class QUmlElement;
 class QUmlExtensionPoint;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlStringExpression;
 class QUmlUseCase;
 
-class Q_UML_EXPORT QUmlExtend : public QObject, public UmlExtend
+class Q_UML_EXPORT QUmlExtend : public QUmlDirectedRelationship, public QUmlNamedElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [Relationship]
-    Q_PROPERTY(QSet<QUmlElement *> relatedElement READ relatedElement)
-
-    // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QUmlElement *> source READ source)
-    Q_PROPERTY(QSet<QUmlElement *> target READ target)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [Extend]
-    Q_PROPERTY(QUmlConstraint * condition READ condition)
-    Q_PROPERTY(QUmlUseCase * extendedCase READ extendedCase)
-    Q_PROPERTY(QUmlUseCase * extension READ extension)
-    Q_PROPERTY(QList<QUmlExtensionPoint *> extensionLocation READ extensionLocation)
-
 public:
-    Q_INVOKABLE explicit QUmlExtend(QObject *parent = 0);
+    explicit QUmlExtend(bool createQObject = true);
+    virtual ~QUmlExtend();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [Relationship]
-    Q_INVOKABLE const QSet<QUmlElement *> relatedElement() const;
-
-    // Owned attributes [DirectedRelationship]
-    Q_INVOKABLE const QSet<QUmlElement *> source() const;
-    Q_INVOKABLE const QSet<QUmlElement *> target() const;
-
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [Extend]
-    Q_INVOKABLE QUmlConstraint *condition() const;
-    Q_INVOKABLE QUmlUseCase *extendedCase() const;
-    Q_INVOKABLE QUmlUseCase *extension() const;
-    Q_INVOKABLE const QList<QUmlExtensionPoint *> extensionLocation() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [Relationship]
-
-    // Slots for owned attributes [DirectedRelationship]
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [Extend]
+    // Owned attributes
+    QUmlConstraint *condition() const;
     void setCondition(QUmlConstraint *condition);
+    QUmlUseCase *extendedCase() const;
     void setExtendedCase(QUmlUseCase *extendedCase);
+    QUmlUseCase *extension() const;
     void setExtension(QUmlUseCase *extension);
-    void addExtensionLocation(UmlExtensionPoint *extensionLocation);
-    void removeExtensionLocation(UmlExtensionPoint *extensionLocation);
+    const QList<QUmlExtensionPoint *> extensionLocation() const;
+    void addExtensionLocation(QUmlExtensionPoint *extensionLocation);
+    void removeExtensionLocation(QUmlExtensionPoint *extensionLocation);
+
+protected:
+    QUmlConstraint *_condition;
+    QUmlUseCase *_extendedCase;
+    QUmlUseCase *_extension;
+    QList<QUmlExtensionPoint *> _extensionLocation;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlExtend *)
-Q_DECLARE_METATYPE(QList<QUmlExtend *> *)
-Q_DECLARE_METATYPE(QSet<QUmlExtend *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlExtend) *)
 
 QT_END_HEADER
 

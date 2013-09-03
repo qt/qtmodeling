@@ -43,10 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlinterruptibleactivityregion_p.h"
+#include <QtUml/QUmlActivityGroup>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -54,111 +52,31 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlActivity;
 class QUmlActivityEdge;
-class QUmlActivityGroup;
 class QUmlActivityNode;
-class QUmlComment;
-class QUmlDependency;
-class QUmlElement;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlStringExpression;
 
-class Q_UML_EXPORT QUmlInterruptibleActivityRegion : public QObject, public UmlInterruptibleActivityRegion
+class Q_UML_EXPORT QUmlInterruptibleActivityRegion : public QUmlActivityGroup
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [ActivityGroup]
-    Q_PROPERTY(QSet<QUmlActivityEdge *> containedEdge READ containedEdge)
-    Q_PROPERTY(QSet<QUmlActivityNode *> containedNode READ containedNode)
-    Q_PROPERTY(QUmlActivity * inActivity READ inActivity)
-    Q_PROPERTY(QSet<QUmlActivityGroup *> subgroup READ subgroup)
-    Q_PROPERTY(QUmlActivityGroup * superGroup READ superGroup)
-
-    // Properties [InterruptibleActivityRegion]
-    Q_PROPERTY(QSet<QUmlActivityEdge *> interruptingEdge READ interruptingEdge)
-    Q_PROPERTY(QSet<QUmlActivityNode *> node READ node)
-
 public:
-    Q_INVOKABLE explicit QUmlInterruptibleActivityRegion(QObject *parent = 0);
+    explicit QUmlInterruptibleActivityRegion(bool createQObject = true);
+    virtual ~QUmlInterruptibleActivityRegion();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
+    // Owned attributes
+    const QSet<QUmlActivityEdge *> interruptingEdge() const;
+    void addInterruptingEdge(QUmlActivityEdge *interruptingEdge);
+    void removeInterruptingEdge(QUmlActivityEdge *interruptingEdge);
+    const QSet<QUmlActivityNode *> node() const;
+    void addNode(QUmlActivityNode *node);
+    void removeNode(QUmlActivityNode *node);
 
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [ActivityGroup]
-    Q_INVOKABLE const QSet<QUmlActivityEdge *> containedEdge() const;
-    Q_INVOKABLE const QSet<QUmlActivityNode *> containedNode() const;
-    Q_INVOKABLE QUmlActivity *inActivity() const;
-    Q_INVOKABLE const QSet<QUmlActivityGroup *> subgroup() const;
-    Q_INVOKABLE QUmlActivityGroup *superGroup() const;
-
-    // Owned attributes [InterruptibleActivityRegion]
-    Q_INVOKABLE const QSet<QUmlActivityEdge *> interruptingEdge() const;
-    Q_INVOKABLE const QSet<QUmlActivityNode *> node() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [ActivityGroup]
-    void setInActivity(QUmlActivity *inActivity);
-
-    // Slots for owned attributes [InterruptibleActivityRegion]
-    void addInterruptingEdge(UmlActivityEdge *interruptingEdge);
-    void removeInterruptingEdge(UmlActivityEdge *interruptingEdge);
-    void addNode(UmlActivityNode *node);
-    void removeNode(UmlActivityNode *node);
+protected:
+    QSet<QUmlActivityEdge *> _interruptingEdge;
+    QSet<QUmlActivityNode *> _node;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlInterruptibleActivityRegion *)
-Q_DECLARE_METATYPE(QList<QUmlInterruptibleActivityRegion *> *)
-Q_DECLARE_METATYPE(QSet<QUmlInterruptibleActivityRegion *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlInterruptibleActivityRegion) *)
 
 QT_END_HEADER
 

@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlimage_p.h"
+#include <QtUml/QUmlElement>
+
 
 QT_BEGIN_HEADER
 
@@ -52,57 +52,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
-
-class Q_UML_EXPORT QUmlImage : public QObject, public UmlImage
+class Q_UML_EXPORT QUmlImage : public QUmlElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [Image]
-    Q_PROPERTY(QString content READ content)
-    Q_PROPERTY(QString format READ format)
-    Q_PROPERTY(QString location READ location)
-
 public:
-    Q_INVOKABLE explicit QUmlImage(QObject *parent = 0);
+    explicit QUmlImage(bool createQObject = true);
+    virtual ~QUmlImage();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [Image]
-    Q_INVOKABLE QString content() const;
-    Q_INVOKABLE QString format() const;
-    Q_INVOKABLE QString location() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [Image]
+    // Owned attributes
+    QString content() const;
     void setContent(QString content);
+    QString format() const;
     void setFormat(QString format);
+    QString location() const;
     void setLocation(QString location);
+
+protected:
+    QString _content;
+    QString _format;
+    QString _location;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlImage *)
-Q_DECLARE_METATYPE(QList<QUmlImage *> *)
-Q_DECLARE_METATYPE(QSet<QUmlImage *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlImage) *)
 
 QT_END_HEADER
 

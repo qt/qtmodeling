@@ -43,8 +43,9 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umltransition_p.h"
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlNamespace>
+
 
 #include <QtUml/QtUmlNamespace>
 
@@ -56,166 +57,57 @@ QT_MODULE(QtUml)
 
 class QUmlBehavior;
 class QUmlClassifier;
-class QUmlComment;
 class QUmlConstraint;
-class QUmlDependency;
-class QUmlElement;
-class QUmlElementImport;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlPackageableElement;
-class QUmlPackageImport;
-class QUmlRedefinableElement;
 class QUmlRegion;
 class QUmlStateMachine;
-class QUmlStringExpression;
 class QUmlTrigger;
 class QUmlVertex;
 
-class Q_UML_EXPORT QUmlTransition : public QObject, public UmlTransition
+class Q_UML_EXPORT QUmlTransition : public QUmlRedefinableElement, public QUmlNamespace
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
-    Q_PROPERTY(QSet<QUmlRedefinableElement *> redefinedElement READ redefinedElement)
-
-    // Properties [Namespace]
-    Q_PROPERTY(QSet<QUmlElementImport *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QUmlPackageableElement *> importedMember READ importedMember)
-    Q_PROPERTY(QSet<QUmlNamedElement *> member READ member)
-    Q_PROPERTY(QSet<QUmlNamedElement *> ownedMember READ ownedMember)
-    Q_PROPERTY(QSet<QUmlConstraint *> ownedRule READ ownedRule)
-    Q_PROPERTY(QSet<QUmlPackageImport *> packageImport READ packageImport)
-
-    // Properties [Transition]
-    Q_PROPERTY(QUmlRegion * container READ container)
-    Q_PROPERTY(QUmlBehavior * effect READ effect)
-    Q_PROPERTY(QUmlConstraint * guard READ guard)
-    Q_PROPERTY(QtUml::TransitionKind kind READ kind)
-    Q_PROPERTY(QUmlTransition * redefinedTransition READ redefinedTransition)
-    Q_PROPERTY(QUmlClassifier * redefinitionContext READ redefinitionContext)
-    Q_PROPERTY(QUmlVertex * source READ source)
-    Q_PROPERTY(QUmlVertex * target READ target)
-    Q_PROPERTY(QSet<QUmlTrigger *> trigger READ trigger)
-
 public:
-    Q_INVOKABLE explicit QUmlTransition(QObject *parent = 0);
+    explicit QUmlTransition(bool createQObject = true);
+    virtual ~QUmlTransition();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [RedefinableElement]
-    Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QUmlRedefinableElement *> redefinedElement() const;
-
-    // Owned attributes [Namespace]
-    Q_INVOKABLE const QSet<QUmlElementImport *> elementImport() const;
-    Q_INVOKABLE const QSet<QUmlPackageableElement *> importedMember() const;
-    Q_INVOKABLE const QSet<QUmlNamedElement *> member() const;
-    Q_INVOKABLE const QSet<QUmlNamedElement *> ownedMember() const;
-    Q_INVOKABLE const QSet<QUmlConstraint *> ownedRule() const;
-    Q_INVOKABLE const QSet<QUmlPackageImport *> packageImport() const;
-
-    // Owned attributes [Transition]
-    Q_INVOKABLE QUmlRegion *container() const;
-    Q_INVOKABLE QUmlBehavior *effect() const;
-    Q_INVOKABLE QUmlConstraint *guard() const;
-    Q_INVOKABLE QtUml::TransitionKind kind() const;
-    Q_INVOKABLE QUmlTransition *redefinedTransition() const;
-    Q_INVOKABLE QUmlClassifier *redefinitionContext() const;
-    Q_INVOKABLE QUmlVertex *source() const;
-    Q_INVOKABLE QUmlVertex *target() const;
-    Q_INVOKABLE const QSet<QUmlTrigger *> trigger() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-    // Operations [RedefinableElement]
-    Q_INVOKABLE bool isRedefinitionContextValid(QUmlRedefinableElement *redefined) const;
-
-    // Operations [Namespace]
-    Q_INVOKABLE QSet<QUmlPackageableElement *> excludeCollisions(QSet<QUmlPackageableElement *> imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(QUmlNamedElement *element) const;
-    Q_INVOKABLE QSet<QUmlPackageableElement *> importMembers(QSet<QUmlPackageableElement *> imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
-
-    // Operations [Transition]
-    Q_INVOKABLE QUmlStateMachine *containingStateMachine() const;
-    Q_INVOKABLE bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [RedefinableElement]
-    void setLeaf(bool isLeaf);
-
-    // Slots for owned attributes [Namespace]
-    void addElementImport(UmlElementImport *elementImport);
-    void removeElementImport(UmlElementImport *elementImport);
-    void addOwnedRule(UmlConstraint *ownedRule);
-    void removeOwnedRule(UmlConstraint *ownedRule);
-    void addPackageImport(UmlPackageImport *packageImport);
-    void removePackageImport(UmlPackageImport *packageImport);
-
-    // Slots for owned attributes [Transition]
+    // Owned attributes
+    QUmlRegion *container() const;
     void setContainer(QUmlRegion *container);
+    QUmlBehavior *effect() const;
     void setEffect(QUmlBehavior *effect);
+    QUmlConstraint *guard() const;
     void setGuard(QUmlConstraint *guard);
+    QtUml::TransitionKind kind() const;
     void setKind(QtUml::TransitionKind kind);
+    QUmlTransition *redefinedTransition() const;
     void setRedefinedTransition(QUmlTransition *redefinedTransition);
+    QUmlClassifier *redefinitionContext() const;
+    Q_DECL_HIDDEN void setRedefinitionContext(QUmlClassifier *redefinitionContext);
+    QUmlVertex *source() const;
     void setSource(QUmlVertex *source);
+    QUmlVertex *target() const;
     void setTarget(QUmlVertex *target);
-    void addTrigger(UmlTrigger *trigger);
-    void removeTrigger(UmlTrigger *trigger);
+    const QSet<QUmlTrigger *> trigger() const;
+    void addTrigger(QUmlTrigger *trigger);
+    void removeTrigger(QUmlTrigger *trigger);
+
+    // Operations
+    QUmlStateMachine *containingStateMachine() const;
+    bool isConsistentWith(QUmlRedefinableElement *redefinee) const;
+
+protected:
+    QUmlRegion *_container;
+    QUmlBehavior *_effect;
+    QUmlConstraint *_guard;
+    QtUml::TransitionKind _kind;
+    QUmlTransition *_redefinedTransition;
+    QUmlVertex *_source;
+    QUmlVertex *_target;
+    QSet<QUmlTrigger *> _trigger;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlTransition *)
-Q_DECLARE_METATYPE(QList<QUmlTransition *> *)
-Q_DECLARE_METATYPE(QSet<QUmlTransition *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlTransition) *)
 
 QT_END_HEADER
 

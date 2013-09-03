@@ -40,114 +40,96 @@
 ****************************************************************************/
 #include "qumldirectedrelationship.h"
 
-#include <QtUml/QUmlComment>
 #include <QtUml/QUmlElement>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlDirectedRelationship
+    \class QUmlDirectedRelationship
 
     \inmodule QtUml
 
     \brief A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
  */
-
-QUmlDirectedRelationship::QUmlDirectedRelationship(QObject *parent) :
-    QObject(parent)
+QUmlDirectedRelationship::QUmlDirectedRelationship()
 {
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlDirectedRelationship::ownedComment() const
+QUmlDirectedRelationship::~QUmlDirectedRelationship()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlDirectedRelationship::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlDirectedRelationship::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [Relationship]
-
-/*!
-    Specifies the elements related by the Relationship.
- */
-const QSet<QUmlElement *> QUmlDirectedRelationship::relatedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_relatedElement));
-}
-
-// OWNED ATTRIBUTES [DirectedRelationship]
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QUmlElement *> QUmlDirectedRelationship::source() const
+const QSet<QUmlElement *> 
+QUmlDirectedRelationship::source() const
 {
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_source));
+    // This is a read-only derived union association end
+
+    return _source;
+}
+
+void QUmlDirectedRelationship::addSource(QUmlElement *source)
+{
+    // This is a read-only derived union association end
+
+    if (!_source.contains(source)) {
+        _source.insert(source);
+        if (source->asQObject() && this->asQObject())
+            QObject::connect(source->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSource(QObject *)));
+
+        // Adjust subsetted properties
+        addRelatedElement(source);
+    }
+}
+
+void QUmlDirectedRelationship::removeSource(QUmlElement *source)
+{
+    // This is a read-only derived union association end
+
+    if (_source.contains(source)) {
+        _source.remove(source);
+
+        // Adjust subsetted properties
+        removeRelatedElement(source);
+    }
 }
 
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QUmlElement *> QUmlDirectedRelationship::target() const
+const QSet<QUmlElement *> 
+QUmlDirectedRelationship::target() const
 {
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_target));
+    // This is a read-only derived union association end
+
+    return _target;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlDirectedRelationship::allOwnedElements() const
+void QUmlDirectedRelationship::addTarget(QUmlElement *target)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-only derived union association end
+
+    if (!_target.contains(target)) {
+        _target.insert(target);
+        if (target->asQObject() && this->asQObject())
+            QObject::connect(target->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTarget(QObject *)));
+
+        // Adjust subsetted properties
+        addRelatedElement(target);
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlDirectedRelationship::mustBeOwned() const
+void QUmlDirectedRelationship::removeTarget(QUmlElement *target)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-only derived union association end
+
+    if (_target.contains(target)) {
+        _target.remove(target);
+
+        // Adjust subsetted properties
+        removeRelatedElement(target);
+    }
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlDirectedRelationship::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlDirectedRelationship::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Relationship]
-
-// SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
-
-QT_END_NAMESPACE
 

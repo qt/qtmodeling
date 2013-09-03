@@ -40,158 +40,54 @@
 ****************************************************************************/
 #include "qumloperationtemplateparameter.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlOperation>
-#include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlTemplateSignature>
+#include "private/qumloperationtemplateparameterobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlOperation>
 
 /*!
-    \class UmlOperationTemplateParameter
+    \class QUmlOperationTemplateParameter
 
     \inmodule QtUml
 
     \brief An operation template parameter exposes an operation as a formal parameter for a template.
  */
-
-QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(QObject *parent) :
-    QObject(parent)
+QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool createQObject) :
+    QUmlTemplateParameter(false),
+    _parameteredElement(0)
 {
+    if (createQObject)
+        _qObject = new QUmlOperationTemplateParameterObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlOperationTemplateParameter::ownedComment() const
+QUmlOperationTemplateParameter::~QUmlOperationTemplateParameter()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlOperationTemplateParameter::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlOperationTemplateParameter::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [TemplateParameter]
-
-/*!
-    The element that is the default for this formal template parameter.
- */
-QUmlParameterableElement *QUmlOperationTemplateParameter::default_() const
-{
-    return reinterpret_cast<QUmlParameterableElement *>(_default_);
-}
-
-/*!
-    The element that is owned by this template parameter for the purpose of providing a default.
- */
-QUmlParameterableElement *QUmlOperationTemplateParameter::ownedDefault() const
-{
-    return reinterpret_cast<QUmlParameterableElement *>(_ownedDefault);
-}
-
-/*!
-    The element that is owned by this template parameter.
- */
-QUmlParameterableElement *QUmlOperationTemplateParameter::ownedParameteredElement() const
-{
-    return reinterpret_cast<QUmlParameterableElement *>(_ownedParameteredElement);
-}
-
-/*!
-    The template signature that owns this template parameter.
- */
-QUmlTemplateSignature *QUmlOperationTemplateParameter::signature() const
-{
-    return reinterpret_cast<QUmlTemplateSignature *>(_signature);
-}
-
-// OWNED ATTRIBUTES [OperationTemplateParameter]
+// OWNED ATTRIBUTES
 
 /*!
     The operation for this template parameter.
  */
-QUmlOperation *QUmlOperationTemplateParameter::parameteredElement() const
+QUmlOperation *
+QUmlOperationTemplateParameter::parameteredElement() const
 {
-    return reinterpret_cast<QUmlOperation *>(_parameteredElement);
+    // This is a read-write association end
+
+    return _parameteredElement;
 }
-
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlOperationTemplateParameter::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlOperationTemplateParameter::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlOperationTemplateParameter::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlOperationTemplateParameter::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [TemplateParameter]
-
-void QUmlOperationTemplateParameter::setDefault(QUmlParameterableElement *default_)
-{
-    UmlTemplateParameter::setDefault(default_);
-}
-
-void QUmlOperationTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefault)
-{
-    UmlTemplateParameter::setOwnedDefault(ownedDefault);
-}
-
-void QUmlOperationTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement)
-{
-    UmlTemplateParameter::setOwnedParameteredElement(ownedParameteredElement);
-}
-
-void QUmlOperationTemplateParameter::setSignature(QUmlTemplateSignature *signature)
-{
-    UmlTemplateParameter::setSignature(signature);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [OperationTemplateParameter]
 
 void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parameteredElement)
 {
-    UmlOperationTemplateParameter::setParameteredElement(parameteredElement);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_parameteredElement != parameteredElement) {
+        _parameteredElement = parameteredElement;
+        if (parameteredElement->asQObject() && this->asQObject())
+            QObject::connect(parameteredElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setParameteredElement()));
+    }
+}
 

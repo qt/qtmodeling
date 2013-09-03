@@ -40,141 +40,139 @@
 ****************************************************************************/
 #include "qumltemplateparametersubstitution.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
+#include "private/qumltemplateparametersubstitutionobject_p.h"
+
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateParameter>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlTemplateParameterSubstitution
+    \class QUmlTemplateParameterSubstitution
 
     \inmodule QtUml
 
     \brief A template parameter substitution relates the actual parameter to a formal template parameter as part of a template binding.
  */
-
-QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(QObject *parent) :
-    QObject(parent)
+QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool createQObject) :
+    _actual(0),
+    _formal(0),
+    _ownedActual(0),
+    _templateBinding(0)
 {
+    if (createQObject)
+        _qObject = new QUmlTemplateParameterSubstitutionObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlTemplateParameterSubstitution::ownedComment() const
+QUmlTemplateParameterSubstitution::~QUmlTemplateParameterSubstitution()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlTemplateParameterSubstitution::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlTemplateParameterSubstitution::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [TemplateParameterSubstitution]
+// OWNED ATTRIBUTES
 
 /*!
     The element that is the actual parameter for this substitution.
  */
-QUmlParameterableElement *QUmlTemplateParameterSubstitution::actual() const
+QUmlParameterableElement *
+QUmlTemplateParameterSubstitution::actual() const
 {
-    return reinterpret_cast<QUmlParameterableElement *>(_actual);
+    // This is a read-write association end
+
+    return _actual;
+}
+
+void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actual)
+{
+    // This is a read-write association end
+
+    if (_actual != actual) {
+        _actual = actual;
+        if (actual->asQObject() && this->asQObject())
+            QObject::connect(actual->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setActual()));
+    }
 }
 
 /*!
     The formal template parameter that is associated with this substitution.
  */
-QUmlTemplateParameter *QUmlTemplateParameterSubstitution::formal() const
+QUmlTemplateParameter *
+QUmlTemplateParameterSubstitution::formal() const
 {
-    return reinterpret_cast<QUmlTemplateParameter *>(_formal);
+    // This is a read-write association end
+
+    return _formal;
+}
+
+void QUmlTemplateParameterSubstitution::setFormal(QUmlTemplateParameter *formal)
+{
+    // This is a read-write association end
+
+    if (_formal != formal) {
+        _formal = formal;
+        if (formal->asQObject() && this->asQObject())
+            QObject::connect(formal->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setFormal()));
+    }
 }
 
 /*!
     The actual parameter that is owned by this substitution.
  */
-QUmlParameterableElement *QUmlTemplateParameterSubstitution::ownedActual() const
+QUmlParameterableElement *
+QUmlTemplateParameterSubstitution::ownedActual() const
 {
-    return reinterpret_cast<QUmlParameterableElement *>(_ownedActual);
+    // This is a read-write association end
+
+    return _ownedActual;
+}
+
+void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement *ownedActual)
+{
+    // This is a read-write association end
+
+    if (_ownedActual != ownedActual) {
+        // Adjust subsetted properties
+        removeOwnedElement(_ownedActual);
+
+        _ownedActual = ownedActual;
+        if (ownedActual->asQObject() && this->asQObject())
+            QObject::connect(ownedActual->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedActual()));
+        ownedActual->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        if (ownedActual) {
+            addOwnedElement(ownedActual);
+        }
+        setActual(ownedActual);
+    }
 }
 
 /*!
     The optional bindings from this element to templates.
  */
-QUmlTemplateBinding *QUmlTemplateParameterSubstitution::templateBinding() const
+QUmlTemplateBinding *
+QUmlTemplateParameterSubstitution::templateBinding() const
 {
-    return reinterpret_cast<QUmlTemplateBinding *>(_templateBinding);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlTemplateParameterSubstitution::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlTemplateParameterSubstitution::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlTemplateParameterSubstitution::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlTemplateParameterSubstitution::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [TemplateParameterSubstitution]
-
-void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actual)
-{
-    UmlTemplateParameterSubstitution::setActual(actual);
-}
-
-void QUmlTemplateParameterSubstitution::setFormal(QUmlTemplateParameter *formal)
-{
-    UmlTemplateParameterSubstitution::setFormal(formal);
-}
-
-void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement *ownedActual)
-{
-    UmlTemplateParameterSubstitution::setOwnedActual(ownedActual);
+    return _templateBinding;
 }
 
 void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
-    UmlTemplateParameterSubstitution::setTemplateBinding(templateBinding);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_templateBinding != templateBinding) {
+        // Adjust subsetted properties
+
+        _templateBinding = templateBinding;
+        if (templateBinding->asQObject() && this->asQObject())
+            QObject::connect(templateBinding->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateBinding()));
+
+        // Adjust subsetted properties
+        setOwner(templateBinding);
+    }
+}
 

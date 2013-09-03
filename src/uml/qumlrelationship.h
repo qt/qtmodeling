@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlrelationship_p.h"
+#include <QtUml/QUmlElement>
+
 
 QT_BEGIN_HEADER
 
@@ -52,50 +52,25 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
-
-class Q_UML_EXPORT QUmlRelationship : public QObject, public UmlRelationship
+class Q_UML_EXPORT QUmlRelationship : public virtual QUmlElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [Relationship]
-    Q_PROPERTY(QSet<QUmlElement *> relatedElement READ relatedElement)
-
 public:
-    Q_DECL_HIDDEN explicit QUmlRelationship(QObject *parent = 0);
+    virtual ~QUmlRelationship();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
+    // Owned attributes
+    const QSet<QUmlElement *> relatedElement() const;
+    Q_DECL_HIDDEN void addRelatedElement(QUmlElement *relatedElement);
+    Q_DECL_HIDDEN void removeRelatedElement(QUmlElement *relatedElement);
 
-    // Owned attributes [Relationship]
-    Q_INVOKABLE const QSet<QUmlElement *> relatedElement() const;
+protected:
+    explicit QUmlRelationship();
 
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [Relationship]
+    QSet<QUmlElement *> _relatedElement;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlRelationship *)
-Q_DECLARE_METATYPE(QList<QUmlRelationship *> *)
-Q_DECLARE_METATYPE(QSet<QUmlRelationship *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlRelationship) *)
 
 QT_END_HEADER
 

@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlpackagemerge_p.h"
+#include <QtUml/QUmlDirectedRelationship>
+
 
 QT_BEGIN_HEADER
 
@@ -52,73 +52,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlPackage;
 
-class Q_UML_EXPORT QUmlPackageMerge : public QObject, public UmlPackageMerge
+class Q_UML_EXPORT QUmlPackageMerge : public QUmlDirectedRelationship
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [Relationship]
-    Q_PROPERTY(QSet<QUmlElement *> relatedElement READ relatedElement)
-
-    // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QUmlElement *> source READ source)
-    Q_PROPERTY(QSet<QUmlElement *> target READ target)
-
-    // Properties [PackageMerge]
-    Q_PROPERTY(QUmlPackage * mergedPackage READ mergedPackage)
-    Q_PROPERTY(QUmlPackage * receivingPackage READ receivingPackage)
-
 public:
-    Q_INVOKABLE explicit QUmlPackageMerge(QObject *parent = 0);
+    explicit QUmlPackageMerge(bool createQObject = true);
+    virtual ~QUmlPackageMerge();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [Relationship]
-    Q_INVOKABLE const QSet<QUmlElement *> relatedElement() const;
-
-    // Owned attributes [DirectedRelationship]
-    Q_INVOKABLE const QSet<QUmlElement *> source() const;
-    Q_INVOKABLE const QSet<QUmlElement *> target() const;
-
-    // Owned attributes [PackageMerge]
-    Q_INVOKABLE QUmlPackage *mergedPackage() const;
-    Q_INVOKABLE QUmlPackage *receivingPackage() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [Relationship]
-
-    // Slots for owned attributes [DirectedRelationship]
-
-    // Slots for owned attributes [PackageMerge]
+    // Owned attributes
+    QUmlPackage *mergedPackage() const;
     void setMergedPackage(QUmlPackage *mergedPackage);
+    QUmlPackage *receivingPackage() const;
     void setReceivingPackage(QUmlPackage *receivingPackage);
+
+protected:
+    QUmlPackage *_mergedPackage;
+    QUmlPackage *_receivingPackage;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlPackageMerge *)
-Q_DECLARE_METATYPE(QList<QUmlPackageMerge *> *)
-Q_DECLARE_METATYPE(QSet<QUmlPackageMerge *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlPackageMerge) *)
 
 QT_END_HEADER
 

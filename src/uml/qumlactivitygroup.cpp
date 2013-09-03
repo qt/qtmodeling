@@ -43,253 +43,199 @@
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlStringExpression>
-
-QT_BEGIN_NAMESPACE
 
 /*!
-    \class UmlActivityGroup
+    \class QUmlActivityGroup
 
     \inmodule QtUml
 
     \brief ActivityGroup is an abstract class for defining sets of nodes and edges in an activity.
  */
-
-QUmlActivityGroup::QUmlActivityGroup(QObject *parent) :
-    QObject(parent)
+QUmlActivityGroup::QUmlActivityGroup() :
+    _inActivity(0),
+    _superGroup(0)
 {
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlActivityGroup::ownedComment() const
+QUmlActivityGroup::~QUmlActivityGroup()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlActivityGroup::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlActivityGroup::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlActivityGroup::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlActivityGroup::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlActivityGroup::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlActivityGroup::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlActivityGroup::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlActivityGroup::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [ActivityGroup]
+// OWNED ATTRIBUTES
 
 /*!
     Edges immediately contained in the group.
  */
-const QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdge() const
+const QSet<QUmlActivityEdge *> 
+QUmlActivityGroup::containedEdge() const
 {
-    return *(reinterpret_cast<const QSet<QUmlActivityEdge *> *>(&_containedEdge));
+    // This is a read-only derived union association end
+
+    return _containedEdge;
+}
+
+void QUmlActivityGroup::addContainedEdge(QUmlActivityEdge *containedEdge)
+{
+    // This is a read-only derived union association end
+
+    if (!_containedEdge.contains(containedEdge)) {
+        _containedEdge.insert(containedEdge);
+        if (containedEdge->asQObject() && this->asQObject())
+            QObject::connect(containedEdge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeContainedEdge(QObject *)));
+
+        // Adjust opposite properties
+        if (containedEdge) {
+            containedEdge->addInGroup(this);
+        }
+    }
+}
+
+void QUmlActivityGroup::removeContainedEdge(QUmlActivityEdge *containedEdge)
+{
+    // This is a read-only derived union association end
+
+    if (_containedEdge.contains(containedEdge)) {
+        _containedEdge.remove(containedEdge);
+
+        // Adjust opposite properties
+        if (containedEdge) {
+            containedEdge->removeInGroup(this);
+        }
+    }
 }
 
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QUmlActivityNode *> QUmlActivityGroup::containedNode() const
+const QSet<QUmlActivityNode *> 
+QUmlActivityGroup::containedNode() const
 {
-    return *(reinterpret_cast<const QSet<QUmlActivityNode *> *>(&_containedNode));
+    // This is a read-only derived union association end
+
+    return _containedNode;
+}
+
+void QUmlActivityGroup::addContainedNode(QUmlActivityNode *containedNode)
+{
+    // This is a read-only derived union association end
+
+    if (!_containedNode.contains(containedNode)) {
+        _containedNode.insert(containedNode);
+        if (containedNode->asQObject() && this->asQObject())
+            QObject::connect(containedNode->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeContainedNode(QObject *)));
+
+        // Adjust opposite properties
+        if (containedNode) {
+            containedNode->addInGroup(this);
+        }
+    }
+}
+
+void QUmlActivityGroup::removeContainedNode(QUmlActivityNode *containedNode)
+{
+    // This is a read-only derived union association end
+
+    if (_containedNode.contains(containedNode)) {
+        _containedNode.remove(containedNode);
+
+        // Adjust opposite properties
+        if (containedNode) {
+            containedNode->removeInGroup(this);
+        }
+    }
 }
 
 /*!
     Activity containing the group.
  */
-QUmlActivity *QUmlActivityGroup::inActivity() const
+QUmlActivity *
+QUmlActivityGroup::inActivity() const
 {
-    return reinterpret_cast<QUmlActivity *>(_inActivity);
+    // This is a read-write association end
+
+    return _inActivity;
+}
+
+void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
+{
+    // This is a read-write association end
+
+    if (_inActivity != inActivity) {
+        // Adjust subsetted properties
+
+        _inActivity = inActivity;
+        if (inActivity->asQObject() && this->asQObject())
+            QObject::connect(inActivity->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInActivity()));
+
+        // Adjust subsetted properties
+        setOwner(inActivity);
+    }
 }
 
 /*!
     Groups immediately contained in the group.
  */
-const QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroup() const
+const QSet<QUmlActivityGroup *> 
+QUmlActivityGroup::subgroup() const
 {
-    return *(reinterpret_cast<const QSet<QUmlActivityGroup *> *>(&_subgroup));
+    // This is a read-only derived union association end
+
+    return _subgroup;
+}
+
+void QUmlActivityGroup::addSubgroup(QUmlActivityGroup *subgroup)
+{
+    // This is a read-only derived union association end
+
+    if (!_subgroup.contains(subgroup)) {
+        _subgroup.insert(subgroup);
+        if (subgroup->asQObject() && this->asQObject())
+            QObject::connect(subgroup->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubgroup(QObject *)));
+        subgroup->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(subgroup);
+    }
+}
+
+void QUmlActivityGroup::removeSubgroup(QUmlActivityGroup *subgroup)
+{
+    // This is a read-only derived union association end
+
+    if (_subgroup.contains(subgroup)) {
+        _subgroup.remove(subgroup);
+        if (subgroup->asQObject())
+            subgroup->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(subgroup);
+    }
 }
 
 /*!
     Group immediately containing the group.
  */
-QUmlActivityGroup *QUmlActivityGroup::superGroup() const
+QUmlActivityGroup *
+QUmlActivityGroup::superGroup() const
 {
-    return reinterpret_cast<QUmlActivityGroup *>(_superGroup);
+    // This is a read-only derived union association end
+
+    return _superGroup;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlActivityGroup::allOwnedElements() const
+void QUmlActivityGroup::setSuperGroup(QUmlActivityGroup *superGroup)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-only derived union association end
+
+    if (_superGroup != superGroup) {
+        // Adjust subsetted properties
+
+        _superGroup = superGroup;
+        if (superGroup->asQObject() && this->asQObject())
+            QObject::connect(superGroup->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSuperGroup()));
+
+        // Adjust subsetted properties
+        setOwner(superGroup);
+    }
 }
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlActivityGroup::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlActivityGroup::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlActivityGroup::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlActivityGroup::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlActivityGroup::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlActivityGroup::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlActivityGroup::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlActivityGroup::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlActivityGroup::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlActivityGroup::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlActivityGroup::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlActivityGroup::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
-
-void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
-{
-    UmlActivityGroup::setInActivity(inActivity);
-}
-
-QT_END_NAMESPACE
 

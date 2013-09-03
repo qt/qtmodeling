@@ -40,125 +40,88 @@
 ****************************************************************************/
 #include "qumlimage.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
-
-QT_BEGIN_NAMESPACE
+#include "private/qumlimageobject_p.h"
 
 /*!
-    \class UmlImage
+    \class QUmlImage
 
     \inmodule QtUml
 
     \brief Physical definition of a graphical image.
  */
-
-QUmlImage::QUmlImage(QObject *parent) :
-    QObject(parent)
+QUmlImage::QUmlImage(bool createQObject)
 {
+    if (createQObject)
+        _qObject = new QUmlImageObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlImage::ownedComment() const
+QUmlImage::~QUmlImage()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlImage::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlImage::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [Image]
+// OWNED ATTRIBUTES
 
 /*!
     This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).
  */
-QString QUmlImage::content() const
+QString 
+QUmlImage::content() const
 {
+    // This is a read-write property
+
     return _content;
+}
+
+void QUmlImage::setContent(QString content)
+{
+    // This is a read-write property
+
+    if (_content != content) {
+        _content = content;
+    }
 }
 
 /*!
     This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example "SVG" could instead be expressed as "MIME: image/svg+xml".
  */
-QString QUmlImage::format() const
+QString 
+QUmlImage::format() const
 {
+    // This is a read-write property
+
     return _format;
+}
+
+void QUmlImage::setFormat(QString format)
+{
+    // This is a read-write property
+
+    if (_format != format) {
+        _format = format;
+    }
 }
 
 /*!
     This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.
  */
-QString QUmlImage::location() const
+QString 
+QUmlImage::location() const
 {
+    // This is a read-write property
+
     return _location;
-}
-
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlImage::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlImage::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlImage::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlImage::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Image]
-
-void QUmlImage::setContent(QString content)
-{
-    UmlImage::setContent(content);
-}
-
-void QUmlImage::setFormat(QString format)
-{
-    UmlImage::setFormat(format);
 }
 
 void QUmlImage::setLocation(QString location)
 {
-    UmlImage::setLocation(location);
-}
+    // This is a read-write property
 
-QT_END_NAMESPACE
+    if (_location != location) {
+        _location = location;
+    }
+}
 

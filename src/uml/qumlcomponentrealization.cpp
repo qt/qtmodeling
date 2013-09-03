@@ -40,383 +40,101 @@
 ****************************************************************************/
 #include "qumlcomponentrealization.h"
 
-#include <QtUml/QUmlClassifier>
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlComponent>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlOpaqueExpression>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlTemplateParameter>
+#include "private/qumlcomponentrealizationobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComponent>
 
 /*!
-    \class UmlComponentRealization
+    \class QUmlComponentRealization
 
     \inmodule QtUml
 
     \brief The realization concept is specialized to (optionally) define the classifiers that realize the contract offered by a component in terms of its provided and required interfaces. The component forms an abstraction from these various classifiers.
  */
-
-QUmlComponentRealization::QUmlComponentRealization(QObject *parent) :
-    QObject(parent)
+QUmlComponentRealization::QUmlComponentRealization(bool createQObject) :
+    QUmlRealization(false),
+    _abstraction(0)
 {
+    if (createQObject)
+        _qObject = new QUmlComponentRealizationObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlComponentRealization::ownedComment() const
+QUmlComponentRealization::~QUmlComponentRealization()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlComponentRealization::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlComponentRealization::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [ParameterableElement]
-
-/*!
-    The formal template parameter that owns this element.
- */
-QUmlTemplateParameter *QUmlComponentRealization::owningTemplateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_owningTemplateParameter);
-}
-
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
-QUmlTemplateParameter *QUmlComponentRealization::templateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_templateParameter);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlComponentRealization::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlComponentRealization::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlComponentRealization::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlComponentRealization::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlComponentRealization::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-// OWNED ATTRIBUTES [PackageableElement]
-
-/*!
-    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
- */
-QtUml::VisibilityKind QUmlComponentRealization::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [Relationship]
-
-/*!
-    Specifies the elements related by the Relationship.
- */
-const QSet<QUmlElement *> QUmlComponentRealization::relatedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_relatedElement));
-}
-
-// OWNED ATTRIBUTES [DirectedRelationship]
-
-/*!
-    Specifies the sources of the DirectedRelationship.
- */
-const QSet<QUmlElement *> QUmlComponentRealization::source() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_source));
-}
-
-/*!
-    Specifies the targets of the DirectedRelationship.
- */
-const QSet<QUmlElement *> QUmlComponentRealization::target() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_target));
-}
-
-// OWNED ATTRIBUTES [Dependency]
-
-/*!
-    The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.
- */
-const QSet<QUmlNamedElement *> QUmlComponentRealization::client() const
-{
-    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_client));
-}
-
-/*!
-    The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.
- */
-const QSet<QUmlNamedElement *> QUmlComponentRealization::supplier() const
-{
-    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_supplier));
-}
-
-// OWNED ATTRIBUTES [Abstraction]
-
-/*!
-    An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.
- */
-QUmlOpaqueExpression *QUmlComponentRealization::mapping() const
-{
-    return reinterpret_cast<QUmlOpaqueExpression *>(_mapping);
-}
-
-// OWNED ATTRIBUTES [ComponentRealization]
+// OWNED ATTRIBUTES
 
 /*!
     The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
  */
-QUmlComponent *QUmlComponentRealization::abstraction() const
+QUmlComponent *
+QUmlComponentRealization::abstraction() const
 {
-    return reinterpret_cast<QUmlComponent *>(_abstraction);
+    // This is a read-write association end
+
+    return _abstraction;
+}
+
+void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
+{
+    // This is a read-write association end
+
+    if (_abstraction != abstraction) {
+        // Adjust subsetted properties
+        removeSupplier(_abstraction);
+
+        _abstraction = abstraction;
+        if (abstraction->asQObject() && this->asQObject())
+            QObject::connect(abstraction->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAbstraction()));
+
+        // Adjust subsetted properties
+        if (abstraction) {
+            addSupplier(abstraction);
+        }
+        setOwner(abstraction);
+    }
 }
 
 /*!
     The classifiers that are involved in the implementation of the Component that owns this Realization.
  */
-const QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifier() const
+const QSet<QUmlClassifier *> 
+QUmlComponentRealization::realizingClassifier() const
 {
-    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_realizingClassifier));
+    // This is a read-write association end
+
+    return _realizingClassifier;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlComponentRealization::allOwnedElements() const
+void QUmlComponentRealization::addRealizingClassifier(QUmlClassifier *realizingClassifier)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write association end
+
+    if (!_realizingClassifier.contains(realizingClassifier)) {
+        _realizingClassifier.insert(realizingClassifier);
+        if (realizingClassifier->asQObject() && this->asQObject())
+            QObject::connect(realizingClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealizingClassifier(QObject *)));
+
+        // Adjust subsetted properties
+        addClient(realizingClassifier);
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlComponentRealization::mustBeOwned() const
+void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizingClassifier)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-write association end
+
+    if (_realizingClassifier.contains(realizingClassifier)) {
+        _realizingClassifier.remove(realizingClassifier);
+
+        // Adjust subsetted properties
+        removeClient(realizingClassifier);
+    }
 }
-
-// OPERATIONS [ParameterableElement]
-
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. Subclasses should override this operation to specify different compatibility constraints.
- */
-bool QUmlComponentRealization::isCompatibleWith(QUmlParameterableElement *p) const
-{
-    return UmlParameterableElement::isCompatibleWith(p);
-}
-
-/*!
-    The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
- */
-bool QUmlComponentRealization::isTemplateParameter() const
-{
-    return UmlParameterableElement::isTemplateParameter();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlComponentRealization::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlComponentRealization::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlComponentRealization::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlComponentRealization::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlComponentRealization::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlComponentRealization::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
-
-void QUmlComponentRealization::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
-{
-    UmlParameterableElement::setOwningTemplateParameter(owningTemplateParameter);
-}
-
-void QUmlComponentRealization::setTemplateParameter(QUmlTemplateParameter *templateParameter)
-{
-    UmlParameterableElement::setTemplateParameter(templateParameter);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlComponentRealization::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlComponentRealization::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlComponentRealization::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlComponentRealization::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
-
-void QUmlComponentRealization::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlPackageableElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Relationship]
-
-// SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
-
-// SLOTS FOR OWNED ATTRIBUTES [Dependency]
-
-void QUmlComponentRealization::addClient(UmlNamedElement *client)
-{
-    UmlDependency::addClient(client);
-}
-
-void QUmlComponentRealization::removeClient(UmlNamedElement *client)
-{
-    UmlDependency::removeClient(client);
-}
-
-void QUmlComponentRealization::addSupplier(UmlNamedElement *supplier)
-{
-    UmlDependency::addSupplier(supplier);
-}
-
-void QUmlComponentRealization::removeSupplier(UmlNamedElement *supplier)
-{
-    UmlDependency::removeSupplier(supplier);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Abstraction]
-
-void QUmlComponentRealization::setMapping(QUmlOpaqueExpression *mapping)
-{
-    UmlAbstraction::setMapping(mapping);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ComponentRealization]
-
-void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
-{
-    UmlComponentRealization::setAbstraction(abstraction);
-}
-
-void QUmlComponentRealization::addRealizingClassifier(UmlClassifier *realizingClassifier)
-{
-    UmlComponentRealization::addRealizingClassifier(realizingClassifier);
-}
-
-void QUmlComponentRealization::removeRealizingClassifier(UmlClassifier *realizingClassifier)
-{
-    UmlComponentRealization::removeRealizingClassifier(realizingClassifier);
-}
-
-QT_END_NAMESPACE
 

@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umltemplateparameter_p.h"
+#include <QtUml/QUmlElement>
+
 
 QT_BEGIN_HEADER
 
@@ -52,65 +52,38 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlParameterableElement;
 class QUmlTemplateSignature;
 
-class Q_UML_EXPORT QUmlTemplateParameter : public QObject, public UmlTemplateParameter
+class Q_UML_EXPORT QUmlTemplateParameter : public QUmlElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [TemplateParameter]
-    Q_PROPERTY(QUmlParameterableElement * default_ READ default_)
-    Q_PROPERTY(QUmlParameterableElement * ownedDefault READ ownedDefault)
-    Q_PROPERTY(QUmlParameterableElement * ownedParameteredElement READ ownedParameteredElement)
-    Q_PROPERTY(QUmlParameterableElement * parameteredElement READ parameteredElement)
-    Q_PROPERTY(QUmlTemplateSignature * signature READ signature)
-
 public:
-    Q_INVOKABLE explicit QUmlTemplateParameter(QObject *parent = 0);
+    explicit QUmlTemplateParameter(bool createQObject = true);
+    virtual ~QUmlTemplateParameter();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [TemplateParameter]
-    Q_INVOKABLE QUmlParameterableElement *default_() const;
-    Q_INVOKABLE QUmlParameterableElement *ownedDefault() const;
-    Q_INVOKABLE QUmlParameterableElement *ownedParameteredElement() const;
-    Q_INVOKABLE QUmlParameterableElement *parameteredElement() const;
-    Q_INVOKABLE QUmlTemplateSignature *signature() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [TemplateParameter]
+    // Owned attributes
+    QUmlParameterableElement *default_() const;
     void setDefault(QUmlParameterableElement *default_);
+    QUmlParameterableElement *ownedDefault() const;
     void setOwnedDefault(QUmlParameterableElement *ownedDefault);
+    QUmlParameterableElement *ownedParameteredElement() const;
     void setOwnedParameteredElement(QUmlParameterableElement *ownedParameteredElement);
+    QUmlParameterableElement *parameteredElement() const;
     void setParameteredElement(QUmlParameterableElement *parameteredElement);
+    QUmlTemplateSignature *signature() const;
     void setSignature(QUmlTemplateSignature *signature);
+
+protected:
+    QUmlParameterableElement *_default_;
+    QUmlParameterableElement *_ownedDefault;
+    QUmlParameterableElement *_ownedParameteredElement;
+    QUmlParameterableElement *_parameteredElement;
+    QUmlTemplateSignature *_signature;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlTemplateParameter *)
-Q_DECLARE_METATYPE(QList<QUmlTemplateParameter *> *)
-Q_DECLARE_METATYPE(QSet<QUmlTemplateParameter *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlTemplateParameter) *)
 
 QT_END_HEADER
 

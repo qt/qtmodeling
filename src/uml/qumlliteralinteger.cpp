@@ -40,276 +40,62 @@
 ****************************************************************************/
 #include "qumlliteralinteger.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlParameterableElement>
-#include <QtUml/QUmlStringExpression>
-#include <QtUml/QUmlTemplateParameter>
-#include <QtUml/QUmlType>
-
-QT_BEGIN_NAMESPACE
+#include "private/qumlliteralintegerobject_p.h"
 
 /*!
-    \class UmlLiteralInteger
+    \class QUmlLiteralInteger
 
     \inmodule QtUml
 
     \brief A literal integer is a specification of an integer value.
  */
-
-QUmlLiteralInteger::QUmlLiteralInteger(QObject *parent) :
-    QObject(parent)
+QUmlLiteralInteger::QUmlLiteralInteger(bool createQObject) :
+    _value(0)
 {
+    if (createQObject)
+        _qObject = new QUmlLiteralIntegerObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlLiteralInteger::ownedComment() const
+QUmlLiteralInteger::~QUmlLiteralInteger()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlLiteralInteger::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlLiteralInteger::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlLiteralInteger::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlLiteralInteger::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlLiteralInteger::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlLiteralInteger::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlLiteralInteger::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-// OWNED ATTRIBUTES [TypedElement]
-
-/*!
-    This information is derived from the return result for this Operation.The type of the TypedElement.
- */
-QUmlType *QUmlLiteralInteger::type() const
-{
-    return reinterpret_cast<QUmlType *>(_type);
-}
-
-// OWNED ATTRIBUTES [ParameterableElement]
-
-/*!
-    The formal template parameter that owns this element.
- */
-QUmlTemplateParameter *QUmlLiteralInteger::owningTemplateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_owningTemplateParameter);
-}
-
-/*!
-    The template parameter that exposes this element as a formal parameter.
- */
-QUmlTemplateParameter *QUmlLiteralInteger::templateParameter() const
-{
-    return reinterpret_cast<QUmlTemplateParameter *>(_templateParameter);
-}
-
-// OWNED ATTRIBUTES [PackageableElement]
-
-/*!
-    Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
- */
-QtUml::VisibilityKind QUmlLiteralInteger::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [LiteralInteger]
+// OWNED ATTRIBUTES
 
 /*!
     The specified Integer value.
  */
-int QUmlLiteralInteger::value() const
+int 
+QUmlLiteralInteger::value() const
 {
+    // This is a read-write property
+
     return _value;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlLiteralInteger::allOwnedElements() const
+void QUmlLiteralInteger::setValue(int value)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write property
+
+    if (_value != value) {
+        _value = value;
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlLiteralInteger::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlLiteralInteger::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlLiteralInteger::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlLiteralInteger::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlLiteralInteger::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// OPERATIONS [ParameterableElement]
-
-/*!
-    The query isTemplateParameter() determines if this parameterable element is exposed as a formal template parameter.
- */
-bool QUmlLiteralInteger::isTemplateParameter() const
-{
-    return UmlParameterableElement::isTemplateParameter();
-}
-
-// OPERATIONS [ValueSpecification]
-
-/*!
-    The query booleanValue() gives a single Boolean value when one can be computed.
- */
-bool QUmlLiteralInteger::booleanValue() const
-{
-    return UmlValueSpecification::booleanValue();
-}
-
-/*!
-    The query isCompatibleWith() determines if this parameterable element is compatible with the specified parameterable element. By default parameterable element P is compatible with parameterable element Q if the kind of P is the same or a subtype as the kind of Q. In addition, for ValueSpecification, the type must be conformant with the type of the specified parameterable element.
- */
-bool QUmlLiteralInteger::isCompatibleWith(QUmlParameterableElement *p) const
-{
-    return UmlValueSpecification::isCompatibleWith(p);
-}
-
-/*!
-    The query isNull() returns true when it can be computed that the value is null.
- */
-bool QUmlLiteralInteger::isNull() const
-{
-    return UmlValueSpecification::isNull();
-}
-
-/*!
-    The query realValue() gives a single Real value when one can be computed.
- */
-double QUmlLiteralInteger::realValue() const
-{
-    return UmlValueSpecification::realValue();
-}
-
-/*!
-    The query stringValue() gives a single String value when one can be computed.
- */
-QString QUmlLiteralInteger::stringValue() const
-{
-    return UmlValueSpecification::stringValue();
-}
-
-/*!
-    The query unlimitedValue() gives a single UnlimitedNatural value when one can be computed.
- */
-int QUmlLiteralInteger::unlimitedValue() const
-{
-    return UmlValueSpecification::unlimitedValue();
-}
-
-// OPERATIONS [LiteralInteger]
+// OPERATIONS
 
 /*!
     The query integerValue() gives the value.
  */
 int QUmlLiteralInteger::integerValue() const
 {
-    return UmlLiteralInteger::integerValue();
+    qWarning("UmlLiteralInteger::integerValue(): to be implemented (operation)");
+
+    return int ();
 }
 
 /*!
@@ -317,74 +103,8 @@ int QUmlLiteralInteger::integerValue() const
  */
 bool QUmlLiteralInteger::isComputable() const
 {
-    return UmlLiteralInteger::isComputable();
+    qWarning("UmlLiteralInteger::isComputable(): to be implemented (operation)");
+
+    return bool ();
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlLiteralInteger::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlLiteralInteger::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlLiteralInteger::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlLiteralInteger::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlLiteralInteger::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlLiteralInteger::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
-
-void QUmlLiteralInteger::setType(QUmlType *type)
-{
-    UmlTypedElement::setType(type);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
-
-void QUmlLiteralInteger::setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter)
-{
-    UmlParameterableElement::setOwningTemplateParameter(owningTemplateParameter);
-}
-
-void QUmlLiteralInteger::setTemplateParameter(QUmlTemplateParameter *templateParameter)
-{
-    UmlParameterableElement::setTemplateParameter(templateParameter);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
-
-void QUmlLiteralInteger::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlPackageableElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [LiteralInteger]
-
-void QUmlLiteralInteger::setValue(int value)
-{
-    UmlLiteralInteger::setValue(value);
-}
-
-QT_END_NAMESPACE
 

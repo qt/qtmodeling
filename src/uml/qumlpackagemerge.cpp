@@ -40,145 +40,93 @@
 ****************************************************************************/
 #include "qumlpackagemerge.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
+#include "private/qumlpackagemergeobject_p.h"
+
 #include <QtUml/QUmlPackage>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlPackageMerge
+    \class QUmlPackageMerge
 
     \inmodule QtUml
 
     \brief A package merge defines how the contents of one package are extended by the contents of another package.
  */
-
-QUmlPackageMerge::QUmlPackageMerge(QObject *parent) :
-    QObject(parent)
+QUmlPackageMerge::QUmlPackageMerge(bool createQObject) :
+    _mergedPackage(0),
+    _receivingPackage(0)
 {
+    if (createQObject)
+        _qObject = new QUmlPackageMergeObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlPackageMerge::ownedComment() const
+QUmlPackageMerge::~QUmlPackageMerge()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlPackageMerge::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlPackageMerge::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [Relationship]
-
-/*!
-    Specifies the elements related by the Relationship.
- */
-const QSet<QUmlElement *> QUmlPackageMerge::relatedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_relatedElement));
-}
-
-// OWNED ATTRIBUTES [DirectedRelationship]
-
-/*!
-    Specifies the sources of the DirectedRelationship.
- */
-const QSet<QUmlElement *> QUmlPackageMerge::source() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_source));
-}
-
-/*!
-    Specifies the targets of the DirectedRelationship.
- */
-const QSet<QUmlElement *> QUmlPackageMerge::target() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_target));
-}
-
-// OWNED ATTRIBUTES [PackageMerge]
+// OWNED ATTRIBUTES
 
 /*!
     References the Package that is to be merged with the receiving package of the PackageMerge.
  */
-QUmlPackage *QUmlPackageMerge::mergedPackage() const
+QUmlPackage *
+QUmlPackageMerge::mergedPackage() const
 {
-    return reinterpret_cast<QUmlPackage *>(_mergedPackage);
+    // This is a read-write association end
+
+    return _mergedPackage;
+}
+
+void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
+{
+    // This is a read-write association end
+
+    if (_mergedPackage != mergedPackage) {
+        // Adjust subsetted properties
+        removeTarget(_mergedPackage);
+
+        _mergedPackage = mergedPackage;
+        if (mergedPackage->asQObject() && this->asQObject())
+            QObject::connect(mergedPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMergedPackage()));
+
+        // Adjust subsetted properties
+        if (mergedPackage) {
+            addTarget(mergedPackage);
+        }
+    }
 }
 
 /*!
     References the Package that is being extended with the contents of the merged package of the PackageMerge.
  */
-QUmlPackage *QUmlPackageMerge::receivingPackage() const
+QUmlPackage *
+QUmlPackageMerge::receivingPackage() const
 {
-    return reinterpret_cast<QUmlPackage *>(_receivingPackage);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlPackageMerge::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlPackageMerge::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlPackageMerge::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlPackageMerge::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Relationship]
-
-// SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
-
-// SLOTS FOR OWNED ATTRIBUTES [PackageMerge]
-
-void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
-{
-    UmlPackageMerge::setMergedPackage(mergedPackage);
+    return _receivingPackage;
 }
 
 void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
 {
-    UmlPackageMerge::setReceivingPackage(receivingPackage);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_receivingPackage != receivingPackage) {
+        // Adjust subsetted properties
+        removeSource(_receivingPackage);
+
+        _receivingPackage = receivingPackage;
+        if (receivingPackage->asQObject() && this->asQObject())
+            QObject::connect(receivingPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReceivingPackage()));
+
+        // Adjust subsetted properties
+        setOwner(receivingPackage);
+        if (receivingPackage) {
+            addSource(receivingPackage);
+        }
+    }
+}
 

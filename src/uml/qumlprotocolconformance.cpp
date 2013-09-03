@@ -40,145 +40,93 @@
 ****************************************************************************/
 #include "qumlprotocolconformance.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
+#include "private/qumlprotocolconformanceobject_p.h"
+
 #include <QtUml/QUmlProtocolStateMachine>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlProtocolConformance
+    \class QUmlProtocolConformance
 
     \inmodule QtUml
 
     \brief Protocol state machines can be redefined into more specific protocol state machines, or into behavioral state machines. Protocol conformance declares that the specific protocol state machine specifies a protocol that conforms to the general state machine one, or that the specific behavioral state machine abide by the protocol of the general protocol state machine.
  */
-
-QUmlProtocolConformance::QUmlProtocolConformance(QObject *parent) :
-    QObject(parent)
+QUmlProtocolConformance::QUmlProtocolConformance(bool createQObject) :
+    _generalMachine(0),
+    _specificMachine(0)
 {
+    if (createQObject)
+        _qObject = new QUmlProtocolConformanceObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlProtocolConformance::ownedComment() const
+QUmlProtocolConformance::~QUmlProtocolConformance()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlProtocolConformance::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlProtocolConformance::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [Relationship]
-
-/*!
-    Specifies the elements related by the Relationship.
- */
-const QSet<QUmlElement *> QUmlProtocolConformance::relatedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_relatedElement));
-}
-
-// OWNED ATTRIBUTES [DirectedRelationship]
-
-/*!
-    Specifies the sources of the DirectedRelationship.
- */
-const QSet<QUmlElement *> QUmlProtocolConformance::source() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_source));
-}
-
-/*!
-    Specifies the targets of the DirectedRelationship.
- */
-const QSet<QUmlElement *> QUmlProtocolConformance::target() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_target));
-}
-
-// OWNED ATTRIBUTES [ProtocolConformance]
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the protocol state machine to which the specific state machine conforms.
  */
-QUmlProtocolStateMachine *QUmlProtocolConformance::generalMachine() const
+QUmlProtocolStateMachine *
+QUmlProtocolConformance::generalMachine() const
 {
-    return reinterpret_cast<QUmlProtocolStateMachine *>(_generalMachine);
+    // This is a read-write association end
+
+    return _generalMachine;
+}
+
+void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *generalMachine)
+{
+    // This is a read-write association end
+
+    if (_generalMachine != generalMachine) {
+        // Adjust subsetted properties
+        removeTarget(_generalMachine);
+
+        _generalMachine = generalMachine;
+        if (generalMachine->asQObject() && this->asQObject())
+            QObject::connect(generalMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setGeneralMachine()));
+
+        // Adjust subsetted properties
+        if (generalMachine) {
+            addTarget(generalMachine);
+        }
+    }
 }
 
 /*!
     Specifies the state machine which conforms to the general state machine.
  */
-QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
+QUmlProtocolStateMachine *
+QUmlProtocolConformance::specificMachine() const
 {
-    return reinterpret_cast<QUmlProtocolStateMachine *>(_specificMachine);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlProtocolConformance::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlProtocolConformance::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlProtocolConformance::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlProtocolConformance::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Relationship]
-
-// SLOTS FOR OWNED ATTRIBUTES [DirectedRelationship]
-
-// SLOTS FOR OWNED ATTRIBUTES [ProtocolConformance]
-
-void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *generalMachine)
-{
-    UmlProtocolConformance::setGeneralMachine(generalMachine);
+    return _specificMachine;
 }
 
 void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *specificMachine)
 {
-    UmlProtocolConformance::setSpecificMachine(specificMachine);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_specificMachine != specificMachine) {
+        // Adjust subsetted properties
+        removeSource(_specificMachine);
+
+        _specificMachine = specificMachine;
+        if (specificMachine->asQObject() && this->asQObject())
+            QObject::connect(specificMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecificMachine()));
+
+        // Adjust subsetted properties
+        setOwner(specificMachine);
+        if (specificMachine) {
+            addSource(specificMachine);
+        }
+    }
+}
 

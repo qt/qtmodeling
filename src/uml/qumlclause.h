@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlclause_p.h"
+#include <QtUml/QUmlElement>
+
 
 QT_BEGIN_HEADER
 
@@ -52,73 +52,46 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlExecutableNode;
 class QUmlOutputPin;
 
-class Q_UML_EXPORT QUmlClause : public QObject, public UmlClause
+class Q_UML_EXPORT QUmlClause : public QUmlElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [Clause]
-    Q_PROPERTY(QSet<QUmlExecutableNode *> body READ body)
-    Q_PROPERTY(QList<QUmlOutputPin *> bodyOutput READ bodyOutput)
-    Q_PROPERTY(QUmlOutputPin * decider READ decider)
-    Q_PROPERTY(QSet<QUmlClause *> predecessorClause READ predecessorClause)
-    Q_PROPERTY(QSet<QUmlClause *> successorClause READ successorClause)
-    Q_PROPERTY(QSet<QUmlExecutableNode *> test READ test)
-
 public:
-    Q_INVOKABLE explicit QUmlClause(QObject *parent = 0);
+    explicit QUmlClause(bool createQObject = true);
+    virtual ~QUmlClause();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [Clause]
-    Q_INVOKABLE const QSet<QUmlExecutableNode *> body() const;
-    Q_INVOKABLE const QList<QUmlOutputPin *> bodyOutput() const;
-    Q_INVOKABLE QUmlOutputPin *decider() const;
-    Q_INVOKABLE const QSet<QUmlClause *> predecessorClause() const;
-    Q_INVOKABLE const QSet<QUmlClause *> successorClause() const;
-    Q_INVOKABLE const QSet<QUmlExecutableNode *> test() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [Clause]
-    void addBody(UmlExecutableNode *body);
-    void removeBody(UmlExecutableNode *body);
-    void addBodyOutput(UmlOutputPin *bodyOutput);
-    void removeBodyOutput(UmlOutputPin *bodyOutput);
+    // Owned attributes
+    const QSet<QUmlExecutableNode *> body() const;
+    void addBody(QUmlExecutableNode *body);
+    void removeBody(QUmlExecutableNode *body);
+    const QList<QUmlOutputPin *> bodyOutput() const;
+    void addBodyOutput(QUmlOutputPin *bodyOutput);
+    void removeBodyOutput(QUmlOutputPin *bodyOutput);
+    QUmlOutputPin *decider() const;
     void setDecider(QUmlOutputPin *decider);
-    void addPredecessorClause(UmlClause *predecessorClause);
-    void removePredecessorClause(UmlClause *predecessorClause);
-    void addSuccessorClause(UmlClause *successorClause);
-    void removeSuccessorClause(UmlClause *successorClause);
-    void addTest(UmlExecutableNode *test);
-    void removeTest(UmlExecutableNode *test);
+    const QSet<QUmlClause *> predecessorClause() const;
+    void addPredecessorClause(QUmlClause *predecessorClause);
+    void removePredecessorClause(QUmlClause *predecessorClause);
+    const QSet<QUmlClause *> successorClause() const;
+    void addSuccessorClause(QUmlClause *successorClause);
+    void removeSuccessorClause(QUmlClause *successorClause);
+    const QSet<QUmlExecutableNode *> test() const;
+    void addTest(QUmlExecutableNode *test);
+    void removeTest(QUmlExecutableNode *test);
+
+protected:
+    QSet<QUmlExecutableNode *> _body;
+    QList<QUmlOutputPin *> _bodyOutput;
+    QUmlOutputPin *_decider;
+    QSet<QUmlClause *> _predecessorClause;
+    QSet<QUmlClause *> _successorClause;
+    QSet<QUmlExecutableNode *> _test;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlClause *)
-Q_DECLARE_METATYPE(QList<QUmlClause *> *)
-Q_DECLARE_METATYPE(QSet<QUmlClause *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlClause) *)
 
 QT_END_HEADER
 

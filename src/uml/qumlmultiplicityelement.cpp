@@ -40,130 +40,192 @@
 ****************************************************************************/
 #include "qumlmultiplicityelement.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlValueSpecification>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlMultiplicityElement
+    \class QUmlMultiplicityElement
 
     \inmodule QtUml
 
     \brief A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A multiplicity element embeds this information to specify the allowable cardinalities for an instantiation of this element.
  */
-
-QUmlMultiplicityElement::QUmlMultiplicityElement(QObject *parent) :
-    QObject(parent)
+QUmlMultiplicityElement::QUmlMultiplicityElement() :
+    _isOrdered(false),
+    _isUnique(true),
+    _lowerValue(0),
+    _upperValue(0)
 {
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlMultiplicityElement::ownedComment() const
+QUmlMultiplicityElement::~QUmlMultiplicityElement()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlMultiplicityElement::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlMultiplicityElement::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [MultiplicityElement]
+// OWNED ATTRIBUTES
 
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
-bool QUmlMultiplicityElement::isOrdered() const
+bool 
+QUmlMultiplicityElement::isOrdered() const
 {
+    // This is a read-write property
+
     return _isOrdered;
+}
+
+void QUmlMultiplicityElement::setOrdered(bool isOrdered)
+{
+    // This is a read-write property
+
+    if (_isOrdered != isOrdered) {
+        _isOrdered = isOrdered;
+    }
 }
 
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
-bool QUmlMultiplicityElement::isUnique() const
+bool 
+QUmlMultiplicityElement::isUnique() const
 {
+    // This is a read-write property
+
     return _isUnique;
+}
+
+void QUmlMultiplicityElement::setUnique(bool isUnique)
+{
+    // This is a read-write property
+
+    if (_isUnique != isUnique) {
+        _isUnique = isUnique;
+    }
 }
 
 /*!
     Specifies the lower bound of the multiplicity interval.
  */
-int QUmlMultiplicityElement::lower() const
+int 
+QUmlMultiplicityElement::lower() const
 {
-    return UmlMultiplicityElement::lower();
+    // This is a read-write derived property
+
+    qWarning("UmlMultiplicityElement::lower(): to be implemented (this is a derived property)");
+
+    return int();
+}
+
+void QUmlMultiplicityElement::setLower(int lower)
+{
+    // This is a read-write derived property
+
+    qWarning("UmlMultiplicityElement::lower(): to be implemented (this is a derived property)");
+    Q_UNUSED(lower);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
     The specification of the lower bound for this multiplicity.
  */
-QUmlValueSpecification *QUmlMultiplicityElement::lowerValue() const
+QUmlValueSpecification *
+QUmlMultiplicityElement::lowerValue() const
 {
-    return reinterpret_cast<QUmlValueSpecification *>(_lowerValue);
+    // This is a read-write association end
+
+    return _lowerValue;
+}
+
+void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
+{
+    // This is a read-write association end
+
+    if (_lowerValue != lowerValue) {
+        // Adjust subsetted properties
+        removeOwnedElement(_lowerValue);
+
+        _lowerValue = lowerValue;
+        if (lowerValue->asQObject() && this->asQObject())
+            QObject::connect(lowerValue->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setLowerValue()));
+        lowerValue->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        if (lowerValue) {
+            addOwnedElement(lowerValue);
+        }
+    }
 }
 
 /*!
     Specifies the upper bound of the multiplicity interval.
  */
-int QUmlMultiplicityElement::upper() const
+int 
+QUmlMultiplicityElement::upper() const
 {
-    return UmlMultiplicityElement::upper();
+    // This is a read-write derived property
+
+    qWarning("UmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
+
+    return int();
+}
+
+void QUmlMultiplicityElement::setUpper(int upper)
+{
+    // This is a read-write derived property
+
+    qWarning("UmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
+    Q_UNUSED(upper);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
     The specification of the upper bound for this multiplicity.
  */
-QUmlValueSpecification *QUmlMultiplicityElement::upperValue() const
+QUmlValueSpecification *
+QUmlMultiplicityElement::upperValue() const
 {
-    return reinterpret_cast<QUmlValueSpecification *>(_upperValue);
+    // This is a read-write association end
+
+    return _upperValue;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlMultiplicityElement::allOwnedElements() const
+void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write association end
+
+    if (_upperValue != upperValue) {
+        // Adjust subsetted properties
+        removeOwnedElement(_upperValue);
+
+        _upperValue = upperValue;
+        if (upperValue->asQObject() && this->asQObject())
+            QObject::connect(upperValue->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setUpperValue()));
+        upperValue->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        if (upperValue) {
+            addOwnedElement(upperValue);
+        }
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlMultiplicityElement::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [MultiplicityElement]
+// OPERATIONS
 
 /*!
     The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
  */
 bool QUmlMultiplicityElement::compatibleWith(QUmlMultiplicityElement *other) const
 {
-    return UmlMultiplicityElement::compatibleWith(other);
+    qWarning("UmlMultiplicityElement::compatibleWith(): to be implemented (operation)");
+
+    Q_UNUSED(other);
+    return bool ();
 }
 
 /*!
@@ -171,7 +233,10 @@ bool QUmlMultiplicityElement::compatibleWith(QUmlMultiplicityElement *other) con
  */
 bool QUmlMultiplicityElement::includesCardinality(int C) const
 {
-    return UmlMultiplicityElement::includesCardinality(C);
+    qWarning("UmlMultiplicityElement::includesCardinality(): to be implemented (operation)");
+
+    Q_UNUSED(C);
+    return bool ();
 }
 
 /*!
@@ -179,7 +244,10 @@ bool QUmlMultiplicityElement::includesCardinality(int C) const
  */
 bool QUmlMultiplicityElement::includesMultiplicity(QUmlMultiplicityElement *M) const
 {
-    return UmlMultiplicityElement::includesMultiplicity(M);
+    qWarning("UmlMultiplicityElement::includesMultiplicity(): to be implemented (operation)");
+
+    Q_UNUSED(M);
+    return bool ();
 }
 
 /*!
@@ -187,7 +255,11 @@ bool QUmlMultiplicityElement::includesMultiplicity(QUmlMultiplicityElement *M) c
  */
 bool QUmlMultiplicityElement::is(int lowerbound, int upperbound) const
 {
-    return UmlMultiplicityElement::is(lowerbound, upperbound);
+    qWarning("UmlMultiplicityElement::is(): to be implemented (operation)");
+
+    Q_UNUSED(lowerbound);
+    Q_UNUSED(upperbound);
+    return bool ();
 }
 
 /*!
@@ -195,7 +267,9 @@ bool QUmlMultiplicityElement::is(int lowerbound, int upperbound) const
  */
 bool QUmlMultiplicityElement::isMultivalued() const
 {
-    return UmlMultiplicityElement::isMultivalued();
+    qWarning("UmlMultiplicityElement::isMultivalued(): to be implemented (operation)");
+
+    return bool ();
 }
 
 /*!
@@ -203,60 +277,18 @@ bool QUmlMultiplicityElement::isMultivalued() const
  */
 int QUmlMultiplicityElement::lowerBound() const
 {
-    return UmlMultiplicityElement::lowerBound();
+    qWarning("UmlMultiplicityElement::lowerBound(): to be implemented (operation)");
+
+    return int ();
 }
 
 /*!
     The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
  */
-int QUmlMultiplicityElement::upperBound() const
-{
-    return UmlMultiplicityElement::upperBound();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlMultiplicityElement::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlMultiplicityElement::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [MultiplicityElement]
-
-void QUmlMultiplicityElement::setOrdered(bool isOrdered)
-{
-    UmlMultiplicityElement::setOrdered(isOrdered);
-}
-
-void QUmlMultiplicityElement::setUnique(bool isUnique)
-{
-    UmlMultiplicityElement::setUnique(isUnique);
-}
-
-void QUmlMultiplicityElement::setLower(int lower)
-{
-    UmlMultiplicityElement::setLower(lower);
-}
-
-void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
-{
-    UmlMultiplicityElement::setLowerValue(lowerValue);
-}
-
-void QUmlMultiplicityElement::setUpper(int upper)
-{
-    UmlMultiplicityElement::setUpper(upper);
-}
-
-void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
-{
-    UmlMultiplicityElement::setUpperValue(upperValue);
-}
-
-QT_END_NAMESPACE
+//int QUmlMultiplicityElement::upperBound() const
+//{
+//    qWarning("UmlMultiplicityElement::upperBound(): to be implemented (operation)");
+//
+//    return int ();
+//}
 

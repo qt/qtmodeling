@@ -40,133 +40,123 @@
 ****************************************************************************/
 #include "qumlslot.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlElement>
+#include "private/qumlslotobject_p.h"
+
 #include <QtUml/QUmlInstanceSpecification>
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlValueSpecification>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlSlot
+    \class QUmlSlot
 
     \inmodule QtUml
 
     \brief A slot specifies that an entity modeled by an instance specification has a value or values for a specific structural feature.
  */
-
-QUmlSlot::QUmlSlot(QObject *parent) :
-    QObject(parent)
+QUmlSlot::QUmlSlot(bool createQObject) :
+    _definingFeature(0),
+    _owningInstance(0)
 {
+    if (createQObject)
+        _qObject = new QUmlSlotObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlSlot::ownedComment() const
+QUmlSlot::~QUmlSlot()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlSlot::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlSlot::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [Slot]
+// OWNED ATTRIBUTES
 
 /*!
     The structural feature that specifies the values that may be held by the slot.
  */
-QUmlStructuralFeature *QUmlSlot::definingFeature() const
+QUmlStructuralFeature *
+QUmlSlot::definingFeature() const
 {
-    return reinterpret_cast<QUmlStructuralFeature *>(_definingFeature);
+    // This is a read-write association end
+
+    return _definingFeature;
+}
+
+void QUmlSlot::setDefiningFeature(QUmlStructuralFeature *definingFeature)
+{
+    // This is a read-write association end
+
+    if (_definingFeature != definingFeature) {
+        _definingFeature = definingFeature;
+        if (definingFeature->asQObject() && this->asQObject())
+            QObject::connect(definingFeature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDefiningFeature()));
+    }
 }
 
 /*!
     The instance specification that owns this slot.
  */
-QUmlInstanceSpecification *QUmlSlot::owningInstance() const
+QUmlInstanceSpecification *
+QUmlSlot::owningInstance() const
 {
-    return reinterpret_cast<QUmlInstanceSpecification *>(_owningInstance);
+    // This is a read-write association end
+
+    return _owningInstance;
+}
+
+void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
+{
+    // This is a read-write association end
+
+    if (_owningInstance != owningInstance) {
+        // Adjust subsetted properties
+
+        _owningInstance = owningInstance;
+        if (owningInstance->asQObject() && this->asQObject())
+            QObject::connect(owningInstance->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwningInstance()));
+
+        // Adjust subsetted properties
+        setOwner(owningInstance);
+    }
 }
 
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */
-const QList<QUmlValueSpecification *> QUmlSlot::value() const
+const QList<QUmlValueSpecification *> 
+QUmlSlot::value() const
 {
-    return *(reinterpret_cast<const QList<QUmlValueSpecification *> *>(&_value));
+    // This is a read-write association end
+
+    return _value;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlSlot::allOwnedElements() const
+void QUmlSlot::addValue(QUmlValueSpecification *value)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write association end
+
+    if (!_value.contains(value)) {
+        _value.append(value);
+        if (value->asQObject() && this->asQObject())
+            QObject::connect(value->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeValue(QObject *)));
+        value->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(value);
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlSlot::mustBeOwned() const
+void QUmlSlot::removeValue(QUmlValueSpecification *value)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-write association end
+
+    if (_value.contains(value)) {
+        _value.removeAll(value);
+        if (value->asQObject())
+            value->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(value);
+    }
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlSlot::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlSlot::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Slot]
-
-void QUmlSlot::setDefiningFeature(QUmlStructuralFeature *definingFeature)
-{
-    UmlSlot::setDefiningFeature(definingFeature);
-}
-
-void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
-{
-    UmlSlot::setOwningInstance(owningInstance);
-}
-
-void QUmlSlot::addValue(UmlValueSpecification *value)
-{
-    UmlSlot::addValue(value);
-}
-
-void QUmlSlot::removeValue(UmlValueSpecification *value)
-{
-    UmlSlot::removeValue(value);
-}
-
-QT_END_NAMESPACE
 

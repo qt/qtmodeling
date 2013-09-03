@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlprotocolconformance_p.h"
+#include <QtUml/QUmlDirectedRelationship>
+
 
 QT_BEGIN_HEADER
 
@@ -52,73 +52,28 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlProtocolStateMachine;
 
-class Q_UML_EXPORT QUmlProtocolConformance : public QObject, public UmlProtocolConformance
+class Q_UML_EXPORT QUmlProtocolConformance : public QUmlDirectedRelationship
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [Relationship]
-    Q_PROPERTY(QSet<QUmlElement *> relatedElement READ relatedElement)
-
-    // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QUmlElement *> source READ source)
-    Q_PROPERTY(QSet<QUmlElement *> target READ target)
-
-    // Properties [ProtocolConformance]
-    Q_PROPERTY(QUmlProtocolStateMachine * generalMachine READ generalMachine)
-    Q_PROPERTY(QUmlProtocolStateMachine * specificMachine READ specificMachine)
-
 public:
-    Q_INVOKABLE explicit QUmlProtocolConformance(QObject *parent = 0);
+    explicit QUmlProtocolConformance(bool createQObject = true);
+    virtual ~QUmlProtocolConformance();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [Relationship]
-    Q_INVOKABLE const QSet<QUmlElement *> relatedElement() const;
-
-    // Owned attributes [DirectedRelationship]
-    Q_INVOKABLE const QSet<QUmlElement *> source() const;
-    Q_INVOKABLE const QSet<QUmlElement *> target() const;
-
-    // Owned attributes [ProtocolConformance]
-    Q_INVOKABLE QUmlProtocolStateMachine *generalMachine() const;
-    Q_INVOKABLE QUmlProtocolStateMachine *specificMachine() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [Relationship]
-
-    // Slots for owned attributes [DirectedRelationship]
-
-    // Slots for owned attributes [ProtocolConformance]
+    // Owned attributes
+    QUmlProtocolStateMachine *generalMachine() const;
     void setGeneralMachine(QUmlProtocolStateMachine *generalMachine);
+    QUmlProtocolStateMachine *specificMachine() const;
     void setSpecificMachine(QUmlProtocolStateMachine *specificMachine);
+
+protected:
+    QUmlProtocolStateMachine *_generalMachine;
+    QUmlProtocolStateMachine *_specificMachine;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlProtocolConformance *)
-Q_DECLARE_METATYPE(QList<QUmlProtocolConformance *> *)
-Q_DECLARE_METATYPE(QSet<QUmlProtocolConformance *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlProtocolConformance) *)
 
 QT_END_HEADER
 

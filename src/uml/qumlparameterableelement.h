@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlparameterableelement_p.h"
+#include <QtUml/QUmlElement>
+
 
 QT_BEGIN_HEADER
 
@@ -52,59 +52,33 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlTemplateParameter;
 
-class Q_UML_EXPORT QUmlParameterableElement : public QObject, public UmlParameterableElement
+class Q_UML_EXPORT QUmlParameterableElement : public virtual QUmlElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [ParameterableElement]
-    Q_PROPERTY(QUmlTemplateParameter * owningTemplateParameter READ owningTemplateParameter)
-    Q_PROPERTY(QUmlTemplateParameter * templateParameter READ templateParameter)
-
 public:
-    Q_DECL_HIDDEN explicit QUmlParameterableElement(QObject *parent = 0);
+    virtual ~QUmlParameterableElement();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [ParameterableElement]
-    Q_INVOKABLE QUmlTemplateParameter *owningTemplateParameter() const;
-    Q_INVOKABLE QUmlTemplateParameter *templateParameter() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [ParameterableElement]
-    Q_INVOKABLE bool isCompatibleWith(QUmlParameterableElement *p) const;
-    Q_INVOKABLE bool isTemplateParameter() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [ParameterableElement]
+    // Owned attributes
+    QUmlTemplateParameter *owningTemplateParameter() const;
     void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
+    QUmlTemplateParameter *templateParameter() const;
     void setTemplateParameter(QUmlTemplateParameter *templateParameter);
+
+    // Operations
+    bool isCompatibleWith(QUmlParameterableElement *p) const;
+    bool isTemplateParameter() const;
+
+protected:
+    explicit QUmlParameterableElement();
+
+    QUmlTemplateParameter *_owningTemplateParameter;
+    QUmlTemplateParameter *_templateParameter;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlParameterableElement *)
-Q_DECLARE_METATYPE(QList<QUmlParameterableElement *> *)
-Q_DECLARE_METATYPE(QSet<QUmlParameterableElement *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlParameterableElement) *)
 
 QT_END_HEADER
 

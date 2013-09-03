@@ -40,328 +40,132 @@
 ****************************************************************************/
 #include "qumlcombinedfragment.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlGate>
-#include <QtUml/QUmlGeneralOrdering>
-#include <QtUml/QUmlInteraction>
-#include <QtUml/QUmlInteractionOperand>
-#include <QtUml/QUmlLifeline>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlStringExpression>
+#include "private/qumlcombinedfragmentobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlGate>
+#include <QtUml/QUmlInteractionOperand>
 
 /*!
-    \class UmlCombinedFragment
+    \class QUmlCombinedFragment
 
     \inmodule QtUml
 
     \brief A combined fragment defines an expression of interaction fragments. A combined fragment is defined by an interaction operator and corresponding interaction operands. Through the use of combined fragments the user will be able to describe a number of traces in a compact and concise manner.
  */
-
-QUmlCombinedFragment::QUmlCombinedFragment(QObject *parent) :
-    QObject(parent)
+QUmlCombinedFragment::QUmlCombinedFragment(bool createQObject) :
+    _interactionOperator(QtUml::InteractionOperatorKindSeq)
 {
+    if (createQObject)
+        _qObject = new QUmlCombinedFragmentObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlCombinedFragment::ownedComment() const
+QUmlCombinedFragment::~QUmlCombinedFragment()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlCombinedFragment::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlCombinedFragment::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlCombinedFragment::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlCombinedFragment::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlCombinedFragment::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlCombinedFragment::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlCombinedFragment::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlCombinedFragment::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [InteractionFragment]
-
-/*!
-    References the Lifelines that the InteractionFragment involves.
- */
-const QSet<QUmlLifeline *> QUmlCombinedFragment::covered() const
-{
-    return *(reinterpret_cast<const QSet<QUmlLifeline *> *>(&_covered));
-}
-
-/*!
-    The Interaction enclosing this InteractionFragment.
- */
-QUmlInteraction *QUmlCombinedFragment::enclosingInteraction() const
-{
-    return reinterpret_cast<QUmlInteraction *>(_enclosingInteraction);
-}
-
-/*!
-    The operand enclosing this InteractionFragment (they may nest recursively)
- */
-QUmlInteractionOperand *QUmlCombinedFragment::enclosingOperand() const
-{
-    return reinterpret_cast<QUmlInteractionOperand *>(_enclosingOperand);
-}
-
-/*!
-    The general ordering relationships contained in this fragment.
- */
-const QSet<QUmlGeneralOrdering *> QUmlCombinedFragment::generalOrdering() const
-{
-    return *(reinterpret_cast<const QSet<QUmlGeneralOrdering *> *>(&_generalOrdering));
-}
-
-// OWNED ATTRIBUTES [CombinedFragment]
+// OWNED ATTRIBUTES
 
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
  */
-const QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGate() const
+const QSet<QUmlGate *> 
+QUmlCombinedFragment::cfragmentGate() const
 {
-    return *(reinterpret_cast<const QSet<QUmlGate *> *>(&_cfragmentGate));
+    // This is a read-write association end
+
+    return _cfragmentGate;
+}
+
+void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
+{
+    // This is a read-write association end
+
+    if (!_cfragmentGate.contains(cfragmentGate)) {
+        _cfragmentGate.insert(cfragmentGate);
+        if (cfragmentGate->asQObject() && this->asQObject())
+            QObject::connect(cfragmentGate->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCfragmentGate(QObject *)));
+        cfragmentGate->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(cfragmentGate);
+    }
+}
+
+void QUmlCombinedFragment::removeCfragmentGate(QUmlGate *cfragmentGate)
+{
+    // This is a read-write association end
+
+    if (_cfragmentGate.contains(cfragmentGate)) {
+        _cfragmentGate.remove(cfragmentGate);
+        if (cfragmentGate->asQObject())
+            cfragmentGate->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(cfragmentGate);
+    }
 }
 
 /*!
     Specifies the operation which defines the semantics of this combination of InteractionFragments.
  */
-QtUml::InteractionOperatorKind QUmlCombinedFragment::interactionOperator() const
+QtUml::InteractionOperatorKind 
+QUmlCombinedFragment::interactionOperator() const
 {
+    // This is a read-write property
+
     return _interactionOperator;
+}
+
+void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
+{
+    // This is a read-write property
+
+    if (_interactionOperator != interactionOperator) {
+        _interactionOperator = interactionOperator;
+    }
 }
 
 /*!
     The set of operands of the combined fragment.
  */
-const QList<QUmlInteractionOperand *> QUmlCombinedFragment::operand() const
+const QList<QUmlInteractionOperand *> 
+QUmlCombinedFragment::operand() const
 {
-    return *(reinterpret_cast<const QList<QUmlInteractionOperand *> *>(&_operand));
+    // This is a read-write association end
+
+    return _operand;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlCombinedFragment::allOwnedElements() const
+void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write association end
+
+    if (!_operand.contains(operand)) {
+        _operand.append(operand);
+        if (operand->asQObject() && this->asQObject())
+            QObject::connect(operand->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOperand(QObject *)));
+        operand->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(operand);
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlCombinedFragment::mustBeOwned() const
+void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-write association end
+
+    if (_operand.contains(operand)) {
+        _operand.removeAll(operand);
+        if (operand->asQObject())
+            operand->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(operand);
+    }
 }
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlCombinedFragment::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlCombinedFragment::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlCombinedFragment::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlCombinedFragment::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlCombinedFragment::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlCombinedFragment::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlCombinedFragment::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlCombinedFragment::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlCombinedFragment::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlCombinedFragment::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlCombinedFragment::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
-
-void QUmlCombinedFragment::addCovered(UmlLifeline *covered)
-{
-    UmlInteractionFragment::addCovered(covered);
-}
-
-void QUmlCombinedFragment::removeCovered(UmlLifeline *covered)
-{
-    UmlInteractionFragment::removeCovered(covered);
-}
-
-void QUmlCombinedFragment::setEnclosingInteraction(QUmlInteraction *enclosingInteraction)
-{
-    UmlInteractionFragment::setEnclosingInteraction(enclosingInteraction);
-}
-
-void QUmlCombinedFragment::setEnclosingOperand(QUmlInteractionOperand *enclosingOperand)
-{
-    UmlInteractionFragment::setEnclosingOperand(enclosingOperand);
-}
-
-void QUmlCombinedFragment::addGeneralOrdering(UmlGeneralOrdering *generalOrdering)
-{
-    UmlInteractionFragment::addGeneralOrdering(generalOrdering);
-}
-
-void QUmlCombinedFragment::removeGeneralOrdering(UmlGeneralOrdering *generalOrdering)
-{
-    UmlInteractionFragment::removeGeneralOrdering(generalOrdering);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [CombinedFragment]
-
-void QUmlCombinedFragment::addCfragmentGate(UmlGate *cfragmentGate)
-{
-    UmlCombinedFragment::addCfragmentGate(cfragmentGate);
-}
-
-void QUmlCombinedFragment::removeCfragmentGate(UmlGate *cfragmentGate)
-{
-    UmlCombinedFragment::removeCfragmentGate(cfragmentGate);
-}
-
-void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
-{
-    UmlCombinedFragment::setInteractionOperator(interactionOperator);
-}
-
-void QUmlCombinedFragment::addOperand(UmlInteractionOperand *operand)
-{
-    UmlCombinedFragment::addOperand(operand);
-}
-
-void QUmlCombinedFragment::removeOperand(UmlInteractionOperand *operand)
-{
-    UmlCombinedFragment::removeOperand(operand);
-}
-
-QT_END_NAMESPACE
 

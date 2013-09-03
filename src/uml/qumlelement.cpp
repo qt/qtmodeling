@@ -42,58 +42,130 @@
 
 #include <QtUml/QUmlComment>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlElement
+    \class QUmlElement
 
     \inmodule QtUml
 
     \brief An element is a constituent of a model. As such, it has the capability of owning other elements.
  */
-
-QUmlElement::QUmlElement(QObject *parent) :
-    QObject(parent)
+QUmlElement::QUmlElement() :
+    _owner(0)
 {
 }
 
-// OWNED ATTRIBUTES [Element]
+QUmlElement::~QUmlElement()
+{
+}
+
+// OWNED ATTRIBUTES
 
 /*!
     The Comments owned by this element.
  */
-const QSet<QUmlComment *> QUmlElement::ownedComment() const
+const QSet<QUmlComment *> 
+QUmlElement::ownedComment() const
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    // This is a read-write association end
+
+    return _ownedComment;
+}
+
+void QUmlElement::addOwnedComment(QUmlComment *ownedComment)
+{
+    // This is a read-write association end
+
+    if (!_ownedComment.contains(ownedComment)) {
+        _ownedComment.insert(ownedComment);
+        if (ownedComment->asQObject() && this->asQObject())
+            QObject::connect(ownedComment->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedComment(QObject *)));
+        ownedComment->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(ownedComment);
+    }
+}
+
+void QUmlElement::removeOwnedComment(QUmlComment *ownedComment)
+{
+    // This is a read-write association end
+
+    if (_ownedComment.contains(ownedComment)) {
+        _ownedComment.remove(ownedComment);
+        if (ownedComment->asQObject())
+            ownedComment->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(ownedComment);
+    }
 }
 
 /*!
     The Elements owned by this element.
  */
-const QSet<QUmlElement *> QUmlElement::ownedElement() const
+const QSet<QUmlElement *> 
+QUmlElement::ownedElement() const
 {
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
+    // This is a read-only derived union association end
+
+    return _ownedElement;
+}
+
+void QUmlElement::addOwnedElement(QUmlElement *ownedElement)
+{
+    // This is a read-only derived union association end
+
+    if (!_ownedElement.contains(ownedElement)) {
+        _ownedElement.insert(ownedElement);
+        if (ownedElement->asQObject() && this->asQObject())
+            QObject::connect(ownedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedElement(QObject *)));
+        ownedElement->asQObject()->setParent(this->asQObject());
+    }
+}
+
+void QUmlElement::removeOwnedElement(QUmlElement *ownedElement)
+{
+    // This is a read-only derived union association end
+
+    if (_ownedElement.contains(ownedElement)) {
+        _ownedElement.remove(ownedElement);
+        if (ownedElement->asQObject())
+            ownedElement->asQObject()->setParent(0);
+    }
 }
 
 /*!
     The Element that owns this element.
  */
-QUmlElement *QUmlElement::owner() const
+QUmlElement *
+QUmlElement::owner() const
 {
-    return reinterpret_cast<QUmlElement *>(_owner);
+    // This is a read-only derived union association end
+
+    return _owner;
 }
 
-// OPERATIONS [Element]
+void QUmlElement::setOwner(QUmlElement *owner)
+{
+    // This is a read-only derived union association end
+
+    if (_owner != owner) {
+        _owner = owner;
+        if (owner->asQObject() && this->asQObject())
+            QObject::connect(owner->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwner()));
+    }
+}
+
+// OPERATIONS
 
 /*!
     The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
  */
 QSet<QUmlElement *> QUmlElement::allOwnedElements() const
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    qWarning("UmlElement::allOwnedElements(): to be implemented (operation)");
+
+    return QSet<QUmlElement *> ();
 }
 
 /*!
@@ -101,20 +173,8 @@ QSet<QUmlElement *> QUmlElement::allOwnedElements() const
  */
 bool QUmlElement::mustBeOwned() const
 {
-    return UmlElement::mustBeOwned();
+    qWarning("UmlElement::mustBeOwned(): to be implemented (operation)");
+
+    return bool ();
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlElement::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlElement::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-QT_END_NAMESPACE
 

@@ -43,10 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlconsiderignorefragment_p.h"
+#include <QtUml/QUmlCombinedFragment>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -54,128 +52,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlDependency;
-class QUmlElement;
-class QUmlGate;
-class QUmlGeneralOrdering;
-class QUmlInteraction;
-class QUmlInteractionOperand;
-class QUmlLifeline;
 class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlStringExpression;
 
-class Q_UML_EXPORT QUmlConsiderIgnoreFragment : public QObject, public UmlConsiderIgnoreFragment
+class Q_UML_EXPORT QUmlConsiderIgnoreFragment : public QUmlCombinedFragment
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [InteractionFragment]
-    Q_PROPERTY(QSet<QUmlLifeline *> covered READ covered)
-    Q_PROPERTY(QUmlInteraction * enclosingInteraction READ enclosingInteraction)
-    Q_PROPERTY(QUmlInteractionOperand * enclosingOperand READ enclosingOperand)
-    Q_PROPERTY(QSet<QUmlGeneralOrdering *> generalOrdering READ generalOrdering)
-
-    // Properties [CombinedFragment]
-    Q_PROPERTY(QSet<QUmlGate *> cfragmentGate READ cfragmentGate)
-    Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator)
-    Q_PROPERTY(QList<QUmlInteractionOperand *> operand READ operand)
-
-    // Properties [ConsiderIgnoreFragment]
-    Q_PROPERTY(QSet<QUmlNamedElement *> message READ message)
-
 public:
-    Q_INVOKABLE explicit QUmlConsiderIgnoreFragment(QObject *parent = 0);
+    explicit QUmlConsiderIgnoreFragment(bool createQObject = true);
+    virtual ~QUmlConsiderIgnoreFragment();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
+    // Owned attributes
+    const QSet<QUmlNamedElement *> message() const;
+    void addMessage(QUmlNamedElement *message);
+    void removeMessage(QUmlNamedElement *message);
 
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [InteractionFragment]
-    Q_INVOKABLE const QSet<QUmlLifeline *> covered() const;
-    Q_INVOKABLE QUmlInteraction *enclosingInteraction() const;
-    Q_INVOKABLE QUmlInteractionOperand *enclosingOperand() const;
-    Q_INVOKABLE const QSet<QUmlGeneralOrdering *> generalOrdering() const;
-
-    // Owned attributes [CombinedFragment]
-    Q_INVOKABLE const QSet<QUmlGate *> cfragmentGate() const;
-    Q_INVOKABLE QtUml::InteractionOperatorKind interactionOperator() const;
-    Q_INVOKABLE const QList<QUmlInteractionOperand *> operand() const;
-
-    // Owned attributes [ConsiderIgnoreFragment]
-    Q_INVOKABLE const QSet<QUmlNamedElement *> message() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [InteractionFragment]
-    void addCovered(UmlLifeline *covered);
-    void removeCovered(UmlLifeline *covered);
-    void setEnclosingInteraction(QUmlInteraction *enclosingInteraction);
-    void setEnclosingOperand(QUmlInteractionOperand *enclosingOperand);
-    void addGeneralOrdering(UmlGeneralOrdering *generalOrdering);
-    void removeGeneralOrdering(UmlGeneralOrdering *generalOrdering);
-
-    // Slots for owned attributes [CombinedFragment]
-    void addCfragmentGate(UmlGate *cfragmentGate);
-    void removeCfragmentGate(UmlGate *cfragmentGate);
-    void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
-    void addOperand(UmlInteractionOperand *operand);
-    void removeOperand(UmlInteractionOperand *operand);
-
-    // Slots for owned attributes [ConsiderIgnoreFragment]
-    void addMessage(UmlNamedElement *message);
-    void removeMessage(UmlNamedElement *message);
+protected:
+    QSet<QUmlNamedElement *> _message;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlConsiderIgnoreFragment *)
-Q_DECLARE_METATYPE(QList<QUmlConsiderIgnoreFragment *> *)
-Q_DECLARE_METATYPE(QSet<QUmlConsiderIgnoreFragment *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlConsiderIgnoreFragment) *)
 
 QT_END_HEADER
 

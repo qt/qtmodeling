@@ -40,240 +40,94 @@
 ****************************************************************************/
 #include "qumlcollaborationuse.h"
 
-#include <QtUml/QUmlCollaboration>
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlStringExpression>
+#include "private/qumlcollaborationuseobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlCollaboration>
+#include <QtUml/QUmlDependency>
 
 /*!
-    \class UmlCollaborationUse
+    \class QUmlCollaborationUse
 
     \inmodule QtUml
 
     \brief A collaboration use represents one particular use of a collaboration to explain the relationships between the properties of a classifier. A collaboration use shows how the pattern described by a collaboration is applied in a given context, by binding specific entities from that context to the roles of the collaboration. Depending on the context, these entities could be structural features of a classifier, instance specifications, or even roles in some containing collaboration. There may be multiple occurrences of a given collaboration within a classifier, each involving a different set of roles and connectors. A given role or connector may be involved in multiple occurrences of the same or different collaborations. Associated dependencies map features of the collaboration type to features in the classifier. These dependencies indicate which role in the classifier plays which role in the collaboration.
  */
-
-QUmlCollaborationUse::QUmlCollaborationUse(QObject *parent) :
-    QObject(parent)
+QUmlCollaborationUse::QUmlCollaborationUse(bool createQObject) :
+    _type(0)
 {
+    if (createQObject)
+        _qObject = new QUmlCollaborationUseObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlCollaborationUse::ownedComment() const
+QUmlCollaborationUse::~QUmlCollaborationUse()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlCollaborationUse::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlCollaborationUse::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlCollaborationUse::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlCollaborationUse::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlCollaborationUse::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlCollaborationUse::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlCollaborationUse::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlCollaborationUse::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [CollaborationUse]
+// OWNED ATTRIBUTES
 
 /*!
     A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
  */
-const QSet<QUmlDependency *> QUmlCollaborationUse::roleBinding() const
+const QSet<QUmlDependency *> 
+QUmlCollaborationUse::roleBinding() const
 {
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_roleBinding));
+    // This is a read-write association end
+
+    return _roleBinding;
+}
+
+void QUmlCollaborationUse::addRoleBinding(QUmlDependency *roleBinding)
+{
+    // This is a read-write association end
+
+    if (!_roleBinding.contains(roleBinding)) {
+        _roleBinding.insert(roleBinding);
+        if (roleBinding->asQObject() && this->asQObject())
+            QObject::connect(roleBinding->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRoleBinding(QObject *)));
+        roleBinding->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(roleBinding);
+    }
+}
+
+void QUmlCollaborationUse::removeRoleBinding(QUmlDependency *roleBinding)
+{
+    // This is a read-write association end
+
+    if (_roleBinding.contains(roleBinding)) {
+        _roleBinding.remove(roleBinding);
+        if (roleBinding->asQObject())
+            roleBinding->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(roleBinding);
+    }
 }
 
 /*!
     The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.
  */
-QUmlCollaboration *QUmlCollaborationUse::type() const
+QUmlCollaboration *
+QUmlCollaborationUse::type() const
 {
-    return reinterpret_cast<QUmlCollaboration *>(_type);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlCollaborationUse::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlCollaborationUse::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlCollaborationUse::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlCollaborationUse::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlCollaborationUse::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlCollaborationUse::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlCollaborationUse::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlCollaborationUse::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlCollaborationUse::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlCollaborationUse::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlCollaborationUse::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlCollaborationUse::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlCollaborationUse::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [CollaborationUse]
-
-void QUmlCollaborationUse::addRoleBinding(UmlDependency *roleBinding)
-{
-    UmlCollaborationUse::addRoleBinding(roleBinding);
-}
-
-void QUmlCollaborationUse::removeRoleBinding(UmlDependency *roleBinding)
-{
-    UmlCollaborationUse::removeRoleBinding(roleBinding);
+    return _type;
 }
 
 void QUmlCollaborationUse::setType(QUmlCollaboration *type)
 {
-    UmlCollaborationUse::setType(type);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_type != type) {
+        _type = type;
+        if (type->asQObject() && this->asQObject())
+            QObject::connect(type->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setType()));
+    }
+}
 

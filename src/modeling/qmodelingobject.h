@@ -38,12 +38,16 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QMODELINGOBJECT_H
-#define QMODELINGOBJECT_H
+#ifndef QMODELINGBASE_H
+#define QMODELINGBASE_H
 
 #include <QtModeling/QtModelingGlobal>
 
-#include <QtCore/QVariant>
+#include <QtCore/QSet>
+#include <QtCore/QList>
+#include <QtCore/QString>
+#include <QtCore/QPointer>
+#include <QtCore/QMetaType>
 
 QT_BEGIN_HEADER
 
@@ -51,27 +55,24 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
 
-#define QM_D(Class) Class##Private *d = dynamic_cast<Class##Private *>(d_ptr);
-#define QM_Q(Class) Class *q = dynamic_cast<Class *>(q_ptr);
-
 class QObject;
 
-class QModelingObjectPrivate;
 class Q_MODELING_EXPORT QModelingObject
 {
 public:
-    QModelingObject();
-    virtual ~QModelingObject();
+    virtual ~QModelingObject() {}
+    inline QObject *asQObject() { return _qObject; }
 
-    QObject *asQObject() const;
-
+    bool deletingFromQObject;
 protected:
-    QModelingObject(QModelingObjectPrivate *dd);
-    QModelingObjectPrivate *d_ptr;
+    QModelingObject() : deletingFromQObject(false), _qObject(0) {}
+    QPointer<QObject> _qObject;
 };
 
 QT_END_NAMESPACE
 
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QModelingObject) *)
+
 QT_END_HEADER
 
-#endif // QMODELINGOBJECT_H
+#endif // QMODELINGBASE_H

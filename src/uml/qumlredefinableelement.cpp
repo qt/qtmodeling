@@ -41,200 +41,118 @@
 #include "qumlredefinableelement.h"
 
 #include <QtUml/QUmlClassifier>
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlStringExpression>
-
-QT_BEGIN_NAMESPACE
 
 /*!
-    \class UmlRedefinableElement
+    \class QUmlRedefinableElement
 
     \inmodule QtUml
 
     \brief A redefinable element is an element that, when defined in the context of a classifier, can be redefined more specifically or differently in the context of another classifier that specializes (directly or indirectly) the context classifier.
  */
-
-QUmlRedefinableElement::QUmlRedefinableElement(QObject *parent) :
-    QObject(parent)
+QUmlRedefinableElement::QUmlRedefinableElement() :
+    _isLeaf(false)
 {
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlRedefinableElement::ownedComment() const
+QUmlRedefinableElement::~QUmlRedefinableElement()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlRedefinableElement::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlRedefinableElement::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlRedefinableElement::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlRedefinableElement::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlRedefinableElement::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlRedefinableElement::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlRedefinableElement::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlRedefinableElement::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [RedefinableElement]
+// OWNED ATTRIBUTES
 
 /*!
     Indicates whether it is possible to further redefine a RedefinableElement. If the value is true, then it is not possible to further redefine the RedefinableElement. Note that this property is preserved through package merge operations; that is, the capability to redefine a RedefinableElement (i.e., isLeaf=false) must be preserved in the resulting RedefinableElement of a package merge operation where a RedefinableElement with isLeaf=false is merged with a matching RedefinableElement with isLeaf=true: the resulting RedefinableElement will have isLeaf=false. Default value is false.
  */
-bool QUmlRedefinableElement::isLeaf() const
+bool 
+QUmlRedefinableElement::isLeaf() const
 {
+    // This is a read-write property
+
     return _isLeaf;
+}
+
+void QUmlRedefinableElement::setLeaf(bool isLeaf)
+{
+    // This is a read-write property
+
+    if (_isLeaf != isLeaf) {
+        _isLeaf = isLeaf;
+    }
 }
 
 /*!
     The redefinable element that is being redefined by this element.
  */
-const QSet<QUmlRedefinableElement *> QUmlRedefinableElement::redefinedElement() const
+const QSet<QUmlRedefinableElement *> 
+QUmlRedefinableElement::redefinedElement() const
 {
-    return *(reinterpret_cast<const QSet<QUmlRedefinableElement *> *>(&_redefinedElement));
+    // This is a read-only derived union association end
+
+    return _redefinedElement;
+}
+
+void QUmlRedefinableElement::addRedefinedElement(QUmlRedefinableElement *redefinedElement)
+{
+    // This is a read-only derived union association end
+
+    if (!_redefinedElement.contains(redefinedElement)) {
+        _redefinedElement.insert(redefinedElement);
+        if (redefinedElement->asQObject() && this->asQObject())
+            QObject::connect(redefinedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedElement(QObject *)));
+    }
+}
+
+void QUmlRedefinableElement::removeRedefinedElement(QUmlRedefinableElement *redefinedElement)
+{
+    // This is a read-only derived union association end
+
+    if (_redefinedElement.contains(redefinedElement)) {
+        _redefinedElement.remove(redefinedElement);
+    }
 }
 
 /*!
     References the contexts that this element may be redefined from.
  */
-const QSet<QUmlClassifier *> QUmlRedefinableElement::redefinitionContext() const
+const QSet<QUmlClassifier *> 
+QUmlRedefinableElement::redefinitionContext() const
 {
-    return *(reinterpret_cast<const QSet<QUmlClassifier *> *>(&_redefinitionContext));
+    // This is a read-only derived union association end
+
+    return _redefinitionContext;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlRedefinableElement::allOwnedElements() const
+void QUmlRedefinableElement::addRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-only derived union association end
+
+    if (!_redefinitionContext.contains(redefinitionContext)) {
+        _redefinitionContext.insert(redefinitionContext);
+        if (redefinitionContext->asQObject() && this->asQObject())
+            QObject::connect(redefinitionContext->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinitionContext(QObject *)));
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlRedefinableElement::mustBeOwned() const
+void QUmlRedefinableElement::removeRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-only derived union association end
+
+    if (_redefinitionContext.contains(redefinitionContext)) {
+        _redefinitionContext.remove(redefinitionContext);
+    }
 }
 
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlRedefinableElement::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlRedefinableElement::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlRedefinableElement::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlRedefinableElement::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// OPERATIONS [RedefinableElement]
+// OPERATIONS
 
 /*!
     The query isConsistentWith() specifies, for any two RedefinableElements in a context in which redefinition is possible, whether redefinition would be logically consistent. By default, this is false; this operation must be overridden for subclasses of RedefinableElement to define the consistency conditions.
  */
 bool QUmlRedefinableElement::isConsistentWith(QUmlRedefinableElement *redefinee) const
 {
-    return UmlRedefinableElement::isConsistentWith(redefinee);
+    qWarning("UmlRedefinableElement::isConsistentWith(): to be implemented (operation)");
+
+    Q_UNUSED(redefinee);
+    return bool ();
 }
 
 /*!
@@ -242,54 +160,9 @@ bool QUmlRedefinableElement::isConsistentWith(QUmlRedefinableElement *redefinee)
  */
 bool QUmlRedefinableElement::isRedefinitionContextValid(QUmlRedefinableElement *redefined) const
 {
-    return UmlRedefinableElement::isRedefinitionContextValid(redefined);
+    qWarning("UmlRedefinableElement::isRedefinitionContextValid(): to be implemented (operation)");
+
+    Q_UNUSED(redefined);
+    return bool ();
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlRedefinableElement::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlRedefinableElement::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlRedefinableElement::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlRedefinableElement::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlRedefinableElement::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlRedefinableElement::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlRedefinableElement::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
-
-void QUmlRedefinableElement::setLeaf(bool isLeaf)
-{
-    UmlRedefinableElement::setLeaf(isLeaf);
-}
-
-QT_END_NAMESPACE
 

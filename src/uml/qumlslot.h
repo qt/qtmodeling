@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlslot_p.h"
+#include <QtUml/QUmlElement>
+
 
 QT_BEGIN_HEADER
 
@@ -52,61 +52,34 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlInstanceSpecification;
 class QUmlStructuralFeature;
 class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlSlot : public QObject, public UmlSlot
+class Q_UML_EXPORT QUmlSlot : public QUmlElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [Slot]
-    Q_PROPERTY(QUmlStructuralFeature * definingFeature READ definingFeature)
-    Q_PROPERTY(QUmlInstanceSpecification * owningInstance READ owningInstance)
-    Q_PROPERTY(QList<QUmlValueSpecification *> value READ value)
-
 public:
-    Q_INVOKABLE explicit QUmlSlot(QObject *parent = 0);
+    explicit QUmlSlot(bool createQObject = true);
+    virtual ~QUmlSlot();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [Slot]
-    Q_INVOKABLE QUmlStructuralFeature *definingFeature() const;
-    Q_INVOKABLE QUmlInstanceSpecification *owningInstance() const;
-    Q_INVOKABLE const QList<QUmlValueSpecification *> value() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [Slot]
+    // Owned attributes
+    QUmlStructuralFeature *definingFeature() const;
     void setDefiningFeature(QUmlStructuralFeature *definingFeature);
+    QUmlInstanceSpecification *owningInstance() const;
     void setOwningInstance(QUmlInstanceSpecification *owningInstance);
-    void addValue(UmlValueSpecification *value);
-    void removeValue(UmlValueSpecification *value);
+    const QList<QUmlValueSpecification *> value() const;
+    void addValue(QUmlValueSpecification *value);
+    void removeValue(QUmlValueSpecification *value);
+
+protected:
+    QUmlStructuralFeature *_definingFeature;
+    QUmlInstanceSpecification *_owningInstance;
+    QList<QUmlValueSpecification *> _value;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlSlot *)
-Q_DECLARE_METATYPE(QList<QUmlSlot *> *)
-Q_DECLARE_METATYPE(QSet<QUmlSlot *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlSlot) *)
 
 QT_END_HEADER
 

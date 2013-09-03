@@ -40,233 +40,315 @@
 ****************************************************************************/
 #include "qumlnamespace.h"
 
-#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConstraint>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlElementImport>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
-#include <QtUml/QUmlStringExpression>
-
-QT_BEGIN_NAMESPACE
 
 /*!
-    \class UmlNamespace
+    \class QUmlNamespace
 
     \inmodule QtUml
 
     \brief A namespace is an element in a model that contains a set of named elements that can be identified by name.
  */
-
-QUmlNamespace::QUmlNamespace(QObject *parent) :
-    QObject(parent)
+QUmlNamespace::QUmlNamespace()
 {
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlNamespace::ownedComment() const
+QUmlNamespace::~QUmlNamespace()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlNamespace::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlNamespace::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlNamespace::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlNamespace::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlNamespace::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlNamespace::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlNamespace::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlNamespace::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [Namespace]
+// OWNED ATTRIBUTES
 
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QUmlElementImport *> QUmlNamespace::elementImport() const
+const QSet<QUmlElementImport *> 
+QUmlNamespace::elementImport() const
 {
-    return *(reinterpret_cast<const QSet<QUmlElementImport *> *>(&_elementImport));
+    // This is a read-write association end
+
+    return _elementImport;
+}
+
+void QUmlNamespace::addElementImport(QUmlElementImport *elementImport)
+{
+    // This is a read-write association end
+
+    if (!_elementImport.contains(elementImport)) {
+        _elementImport.insert(elementImport);
+        if (elementImport->asQObject() && this->asQObject())
+            QObject::connect(elementImport->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeElementImport(QObject *)));
+        elementImport->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(elementImport);
+
+        // Adjust opposite properties
+        if (elementImport) {
+            elementImport->setImportingNamespace(this);
+        }
+    }
+}
+
+void QUmlNamespace::removeElementImport(QUmlElementImport *elementImport)
+{
+    // This is a read-write association end
+
+    if (_elementImport.contains(elementImport)) {
+        _elementImport.remove(elementImport);
+        if (elementImport->asQObject())
+            elementImport->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(elementImport);
+
+        // Adjust opposite properties
+        if (elementImport) {
+            elementImport->setImportingNamespace(0);
+        }
+    }
 }
 
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QUmlPackageableElement *> QUmlNamespace::importedMember() const
+const QSet<QUmlPackageableElement *> 
+QUmlNamespace::importedMember() const
 {
-    QSet<QUmlPackageableElement *> r;
-    foreach (UmlPackageableElement *element, UmlNamespace::importedMember())
-        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
-    return r;
+    // This is a read-only derived association end
+
+    qWarning("UmlNamespace::importedMember(): to be implemented (this is a derived association end)");
+
+    return QSet<QUmlPackageableElement *>();
+}
+
+void QUmlNamespace::addImportedMember(QUmlPackageableElement *importedMember)
+{
+    // This is a read-only derived association end
+
+    qWarning("UmlNamespace::importedMember(): to be implemented (this is a derived association end)");
+    Q_UNUSED(importedMember);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust subsetted properties
+        addMember(importedMember);
+    }
+}
+
+void QUmlNamespace::removeImportedMember(QUmlPackageableElement *importedMember)
+{
+    // This is a read-only derived association end
+
+    qWarning("UmlNamespace::importedMember(): to be implemented (this is a derived association end)");
+    Q_UNUSED(importedMember);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+
+        // Adjust subsetted properties
+        removeMember(importedMember);
+    }
 }
 
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QUmlNamedElement *> QUmlNamespace::member() const
+const QSet<QUmlNamedElement *> 
+QUmlNamespace::member() const
 {
-    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_member));
+    // This is a read-only derived union association end
+
+    return _member;
+}
+
+void QUmlNamespace::addMember(QUmlNamedElement *member)
+{
+    // This is a read-only derived union association end
+
+    if (!_member.contains(member)) {
+        _member.insert(member);
+        if (member->asQObject() && this->asQObject())
+            QObject::connect(member->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMember(QObject *)));
+    }
+}
+
+void QUmlNamespace::removeMember(QUmlNamedElement *member)
+{
+    // This is a read-only derived union association end
+
+    if (_member.contains(member)) {
+        _member.remove(member);
+    }
 }
 
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QUmlNamedElement *> QUmlNamespace::ownedMember() const
+const QSet<QUmlNamedElement *> 
+QUmlNamespace::ownedMember() const
 {
-    return *(reinterpret_cast<const QSet<QUmlNamedElement *> *>(&_ownedMember));
+    // This is a read-only derived union association end
+
+    return _ownedMember;
+}
+
+void QUmlNamespace::addOwnedMember(QUmlNamedElement *ownedMember)
+{
+    // This is a read-only derived union association end
+
+    if (!_ownedMember.contains(ownedMember)) {
+        _ownedMember.insert(ownedMember);
+        if (ownedMember->asQObject() && this->asQObject())
+            QObject::connect(ownedMember->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedMember(QObject *)));
+        ownedMember->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addMember(ownedMember);
+        addOwnedElement(ownedMember);
+
+        // Adjust opposite properties
+        if (ownedMember) {
+            ownedMember->setNamespace(this);
+        }
+    }
+}
+
+void QUmlNamespace::removeOwnedMember(QUmlNamedElement *ownedMember)
+{
+    // This is a read-only derived union association end
+
+    if (_ownedMember.contains(ownedMember)) {
+        _ownedMember.remove(ownedMember);
+        if (ownedMember->asQObject())
+            ownedMember->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeMember(ownedMember);
+        removeOwnedElement(ownedMember);
+
+        // Adjust opposite properties
+        if (ownedMember) {
+            ownedMember->setNamespace(0);
+        }
+    }
 }
 
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QUmlConstraint *> QUmlNamespace::ownedRule() const
+const QSet<QUmlConstraint *> 
+QUmlNamespace::ownedRule() const
 {
-    return *(reinterpret_cast<const QSet<QUmlConstraint *> *>(&_ownedRule));
+    // This is a read-write association end
+
+    return _ownedRule;
+}
+
+void QUmlNamespace::addOwnedRule(QUmlConstraint *ownedRule)
+{
+    // This is a read-write association end
+
+    if (!_ownedRule.contains(ownedRule)) {
+        _ownedRule.insert(ownedRule);
+        if (ownedRule->asQObject() && this->asQObject())
+            QObject::connect(ownedRule->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedRule(QObject *)));
+        ownedRule->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedMember(ownedRule);
+
+        // Adjust opposite properties
+        if (ownedRule) {
+            ownedRule->setContext(this);
+        }
+    }
+}
+
+void QUmlNamespace::removeOwnedRule(QUmlConstraint *ownedRule)
+{
+    // This is a read-write association end
+
+    if (_ownedRule.contains(ownedRule)) {
+        _ownedRule.remove(ownedRule);
+        if (ownedRule->asQObject())
+            ownedRule->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedMember(ownedRule);
+
+        // Adjust opposite properties
+        if (ownedRule) {
+            ownedRule->setContext(0);
+        }
+    }
 }
 
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QUmlPackageImport *> QUmlNamespace::packageImport() const
+const QSet<QUmlPackageImport *> 
+QUmlNamespace::packageImport() const
 {
-    return *(reinterpret_cast<const QSet<QUmlPackageImport *> *>(&_packageImport));
+    // This is a read-write association end
+
+    return _packageImport;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlNamespace::allOwnedElements() const
+void QUmlNamespace::addPackageImport(QUmlPackageImport *packageImport)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write association end
+
+    if (!_packageImport.contains(packageImport)) {
+        _packageImport.insert(packageImport);
+        if (packageImport->asQObject() && this->asQObject())
+            QObject::connect(packageImport->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePackageImport(QObject *)));
+        packageImport->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        addOwnedElement(packageImport);
+
+        // Adjust opposite properties
+        if (packageImport) {
+            packageImport->setImportingNamespace(this);
+        }
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlNamespace::mustBeOwned() const
+void QUmlNamespace::removePackageImport(QUmlPackageImport *packageImport)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-write association end
+
+    if (_packageImport.contains(packageImport)) {
+        _packageImport.remove(packageImport);
+        if (packageImport->asQObject())
+            packageImport->asQObject()->setParent(0);
+
+        // Adjust subsetted properties
+        removeOwnedElement(packageImport);
+
+        // Adjust opposite properties
+        if (packageImport) {
+            packageImport->setImportingNamespace(0);
+        }
+    }
 }
 
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlNamespace::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlNamespace::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlNamespace::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlNamespace::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// OPERATIONS [Namespace]
+// OPERATIONS
 
 /*!
     The query excludeCollisions() excludes from a set of PackageableElements any that would not be distinguishable from each other in this namespace.
  */
 QSet<QUmlPackageableElement *> QUmlNamespace::excludeCollisions(QSet<QUmlPackageableElement *> imps) const
 {
-    QSet<QUmlPackageableElement *> r;
-    foreach (UmlPackageableElement *element, UmlNamespace::excludeCollisions(*(reinterpret_cast<QSet<UmlPackageableElement *> *>(&imps))))
-        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
-    return r;
+    qWarning("UmlNamespace::excludeCollisions(): to be implemented (operation)");
+
+    Q_UNUSED(imps);
+    return QSet<QUmlPackageableElement *> ();
 }
 
 /*!
@@ -274,7 +356,10 @@ QSet<QUmlPackageableElement *> QUmlNamespace::excludeCollisions(QSet<QUmlPackage
  */
 QSet<QString> QUmlNamespace::getNamesOfMember(QUmlNamedElement *element) const
 {
-    return UmlNamespace::getNamesOfMember(element);
+    qWarning("UmlNamespace::getNamesOfMember(): to be implemented (operation)");
+
+    Q_UNUSED(element);
+    return QSet<QString> ();
 }
 
 /*!
@@ -282,10 +367,10 @@ QSet<QString> QUmlNamespace::getNamesOfMember(QUmlNamedElement *element) const
  */
 QSet<QUmlPackageableElement *> QUmlNamespace::importMembers(QSet<QUmlPackageableElement *> imps) const
 {
-    QSet<QUmlPackageableElement *> r;
-    foreach (UmlPackageableElement *element, UmlNamespace::importMembers(*(reinterpret_cast<QSet<UmlPackageableElement *> *>(&imps))))
-        r.insert(reinterpret_cast<QUmlPackageableElement *>(element));
-    return r;
+    qWarning("UmlNamespace::importMembers(): to be implemented (operation)");
+
+    Q_UNUSED(imps);
+    return QSet<QUmlPackageableElement *> ();
 }
 
 /*!
@@ -293,79 +378,8 @@ QSet<QUmlPackageableElement *> QUmlNamespace::importMembers(QSet<QUmlPackageable
  */
 bool QUmlNamespace::membersAreDistinguishable() const
 {
-    return UmlNamespace::membersAreDistinguishable();
+    qWarning("UmlNamespace::membersAreDistinguishable(): to be implemented (operation)");
+
+    return bool ();
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlNamespace::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlNamespace::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlNamespace::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlNamespace::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlNamespace::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlNamespace::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlNamespace::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Namespace]
-
-void QUmlNamespace::addElementImport(UmlElementImport *elementImport)
-{
-    UmlNamespace::addElementImport(elementImport);
-}
-
-void QUmlNamespace::removeElementImport(UmlElementImport *elementImport)
-{
-    UmlNamespace::removeElementImport(elementImport);
-}
-
-void QUmlNamespace::addOwnedRule(UmlConstraint *ownedRule)
-{
-    UmlNamespace::addOwnedRule(ownedRule);
-}
-
-void QUmlNamespace::removeOwnedRule(UmlConstraint *ownedRule)
-{
-    UmlNamespace::removeOwnedRule(ownedRule);
-}
-
-void QUmlNamespace::addPackageImport(UmlPackageImport *packageImport)
-{
-    UmlNamespace::addPackageImport(packageImport);
-}
-
-void QUmlNamespace::removePackageImport(UmlPackageImport *packageImport)
-{
-    UmlNamespace::removePackageImport(packageImport);
-}
-
-QT_END_NAMESPACE
 

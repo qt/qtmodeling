@@ -40,309 +40,136 @@
 ****************************************************************************/
 #include "qumloccurrencespecification.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlGeneralOrdering>
-#include <QtUml/QUmlInteraction>
-#include <QtUml/QUmlInteractionOperand>
-#include <QtUml/QUmlLifeline>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlStringExpression>
+#include "private/qumloccurrencespecificationobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlLifeline>
 
 /*!
-    \class UmlOccurrenceSpecification
+    \class QUmlOccurrenceSpecification
 
     \inmodule QtUml
 
     \brief An occurrence specification is the basic semantic unit of interactions. The sequences of occurrences specified by them are the meanings of interactions.
  */
-
-QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(QObject *parent) :
-    QObject(parent)
+QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool createQObject) :
+    _covered(0)
 {
+    if (createQObject)
+        _qObject = new QUmlOccurrenceSpecificationObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlOccurrenceSpecification::ownedComment() const
+QUmlOccurrenceSpecification::~QUmlOccurrenceSpecification()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlOccurrenceSpecification::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlOccurrenceSpecification::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlOccurrenceSpecification::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlOccurrenceSpecification::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlOccurrenceSpecification::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlOccurrenceSpecification::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlOccurrenceSpecification::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlOccurrenceSpecification::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [InteractionFragment]
-
-/*!
-    The Interaction enclosing this InteractionFragment.
- */
-QUmlInteraction *QUmlOccurrenceSpecification::enclosingInteraction() const
-{
-    return reinterpret_cast<QUmlInteraction *>(_enclosingInteraction);
-}
-
-/*!
-    The operand enclosing this InteractionFragment (they may nest recursively)
- */
-QUmlInteractionOperand *QUmlOccurrenceSpecification::enclosingOperand() const
-{
-    return reinterpret_cast<QUmlInteractionOperand *>(_enclosingOperand);
-}
-
-/*!
-    The general ordering relationships contained in this fragment.
- */
-const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::generalOrdering() const
-{
-    return *(reinterpret_cast<const QSet<QUmlGeneralOrdering *> *>(&_generalOrdering));
-}
-
-// OWNED ATTRIBUTES [OccurrenceSpecification]
+// OWNED ATTRIBUTES
 
 /*!
     References the Lifeline on which the OccurrenceSpecification appears.
  */
-QUmlLifeline *QUmlOccurrenceSpecification::covered() const
+QUmlLifeline *
+QUmlOccurrenceSpecification::covered() const
 {
-    return reinterpret_cast<QUmlLifeline *>(_covered);
+    // This is a read-write association end
+
+    return _covered;
+}
+
+void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
+{
+    // This is a read-write association end
+
+    if (_covered != covered) {
+        _covered = covered;
+        if (covered->asQObject() && this->asQObject())
+            QObject::connect(covered->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setCovered()));
+    }
 }
 
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
  */
-const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfter() const
+const QSet<QUmlGeneralOrdering *> 
+QUmlOccurrenceSpecification::toAfter() const
 {
-    return *(reinterpret_cast<const QSet<QUmlGeneralOrdering *> *>(&_toAfter));
+    // This is a read-write association end
+
+    return _toAfter;
+}
+
+void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
+{
+    // This is a read-write association end
+
+    if (!_toAfter.contains(toAfter)) {
+        _toAfter.insert(toAfter);
+        if (toAfter->asQObject() && this->asQObject())
+            QObject::connect(toAfter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeToAfter(QObject *)));
+
+        // Adjust opposite properties
+        if (toAfter) {
+            toAfter->setBefore(this);
+        }
+    }
+}
+
+void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
+{
+    // This is a read-write association end
+
+    if (_toAfter.contains(toAfter)) {
+        _toAfter.remove(toAfter);
+
+        // Adjust opposite properties
+        if (toAfter) {
+            toAfter->setBefore(0);
+        }
+    }
 }
 
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
  */
-const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefore() const
+const QSet<QUmlGeneralOrdering *> 
+QUmlOccurrenceSpecification::toBefore() const
 {
-    return *(reinterpret_cast<const QSet<QUmlGeneralOrdering *> *>(&_toBefore));
+    // This is a read-write association end
+
+    return _toBefore;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlOccurrenceSpecification::allOwnedElements() const
+void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write association end
+
+    if (!_toBefore.contains(toBefore)) {
+        _toBefore.insert(toBefore);
+        if (toBefore->asQObject() && this->asQObject())
+            QObject::connect(toBefore->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeToBefore(QObject *)));
+
+        // Adjust opposite properties
+        if (toBefore) {
+            toBefore->setAfter(this);
+        }
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlOccurrenceSpecification::mustBeOwned() const
+void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-write association end
+
+    if (_toBefore.contains(toBefore)) {
+        _toBefore.remove(toBefore);
+
+        // Adjust opposite properties
+        if (toBefore) {
+            toBefore->setAfter(0);
+        }
+    }
 }
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlOccurrenceSpecification::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlOccurrenceSpecification::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlOccurrenceSpecification::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlOccurrenceSpecification::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlOccurrenceSpecification::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlOccurrenceSpecification::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlOccurrenceSpecification::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlOccurrenceSpecification::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlOccurrenceSpecification::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlOccurrenceSpecification::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlOccurrenceSpecification::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
-
-void QUmlOccurrenceSpecification::setEnclosingInteraction(QUmlInteraction *enclosingInteraction)
-{
-    UmlInteractionFragment::setEnclosingInteraction(enclosingInteraction);
-}
-
-void QUmlOccurrenceSpecification::setEnclosingOperand(QUmlInteractionOperand *enclosingOperand)
-{
-    UmlInteractionFragment::setEnclosingOperand(enclosingOperand);
-}
-
-void QUmlOccurrenceSpecification::addGeneralOrdering(UmlGeneralOrdering *generalOrdering)
-{
-    UmlInteractionFragment::addGeneralOrdering(generalOrdering);
-}
-
-void QUmlOccurrenceSpecification::removeGeneralOrdering(UmlGeneralOrdering *generalOrdering)
-{
-    UmlInteractionFragment::removeGeneralOrdering(generalOrdering);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [OccurrenceSpecification]
-
-void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
-{
-    UmlOccurrenceSpecification::setCovered(covered);
-}
-
-void QUmlOccurrenceSpecification::addToAfter(UmlGeneralOrdering *toAfter)
-{
-    UmlOccurrenceSpecification::addToAfter(toAfter);
-}
-
-void QUmlOccurrenceSpecification::removeToAfter(UmlGeneralOrdering *toAfter)
-{
-    UmlOccurrenceSpecification::removeToAfter(toAfter);
-}
-
-void QUmlOccurrenceSpecification::addToBefore(UmlGeneralOrdering *toBefore)
-{
-    UmlOccurrenceSpecification::addToBefore(toBefore);
-}
-
-void QUmlOccurrenceSpecification::removeToBefore(UmlGeneralOrdering *toBefore)
-{
-    UmlOccurrenceSpecification::removeToBefore(toBefore);
-}
-
-QT_END_NAMESPACE
 

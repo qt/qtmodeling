@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlpseudostate_p.h"
+#include <QtUml/QUmlVertex>
+
 
 #include <QtUml/QtUmlNamespace>
 
@@ -54,111 +54,32 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlDependency;
-class QUmlElement;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlRegion;
 class QUmlState;
 class QUmlStateMachine;
-class QUmlStringExpression;
-class QUmlTransition;
 
-class Q_UML_EXPORT QUmlPseudostate : public QObject, public UmlPseudostate
+class Q_UML_EXPORT QUmlPseudostate : public QUmlVertex
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [Vertex]
-    Q_PROPERTY(QUmlRegion * container READ container)
-    Q_PROPERTY(QSet<QUmlTransition *> incoming READ incoming)
-    Q_PROPERTY(QSet<QUmlTransition *> outgoing READ outgoing)
-
-    // Properties [Pseudostate]
-    Q_PROPERTY(QtUml::PseudostateKind kind READ kind)
-    Q_PROPERTY(QUmlState * state READ state)
-    Q_PROPERTY(QUmlStateMachine * stateMachine READ stateMachine)
-
 public:
-    Q_INVOKABLE explicit QUmlPseudostate(QObject *parent = 0);
+    explicit QUmlPseudostate(bool createQObject = true);
+    virtual ~QUmlPseudostate();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [Vertex]
-    Q_INVOKABLE QUmlRegion *container() const;
-    Q_INVOKABLE const QSet<QUmlTransition *> incoming() const;
-    Q_INVOKABLE const QSet<QUmlTransition *> outgoing() const;
-
-    // Owned attributes [Pseudostate]
-    Q_INVOKABLE QtUml::PseudostateKind kind() const;
-    Q_INVOKABLE QUmlState *state() const;
-    Q_INVOKABLE QUmlStateMachine *stateMachine() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-    // Operations [Vertex]
-    Q_INVOKABLE QUmlStateMachine *containingStateMachine() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [Vertex]
-    void setContainer(QUmlRegion *container);
-
-    // Slots for owned attributes [Pseudostate]
+    // Owned attributes
+    QtUml::PseudostateKind kind() const;
     void setKind(QtUml::PseudostateKind kind);
+    QUmlState *state() const;
     void setState(QUmlState *state);
+    QUmlStateMachine *stateMachine() const;
     void setStateMachine(QUmlStateMachine *stateMachine);
+
+protected:
+    QtUml::PseudostateKind _kind;
+    QUmlState *_state;
+    QUmlStateMachine *_stateMachine;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlPseudostate *)
-Q_DECLARE_METATYPE(QList<QUmlPseudostate *> *)
-Q_DECLARE_METATYPE(QSet<QUmlPseudostate *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlPseudostate) *)
 
 QT_END_HEADER
 

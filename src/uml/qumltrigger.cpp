@@ -40,241 +40,85 @@
 ****************************************************************************/
 #include "qumltrigger.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlEvent>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
-#include <QtUml/QUmlPort>
-#include <QtUml/QUmlStringExpression>
+#include "private/qumltriggerobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlEvent>
+#include <QtUml/QUmlPort>
 
 /*!
-    \class UmlTrigger
+    \class QUmlTrigger
 
     \inmodule QtUml
 
     \brief A trigger specification may be qualified by the port on which the event occurred.A trigger relates an event to a behavior that may affect an instance of the classifier.
  */
-
-QUmlTrigger::QUmlTrigger(QObject *parent) :
-    QObject(parent)
+QUmlTrigger::QUmlTrigger(bool createQObject) :
+    _event(0)
 {
+    if (createQObject)
+        _qObject = new QUmlTriggerObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlTrigger::ownedComment() const
+QUmlTrigger::~QUmlTrigger()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlTrigger::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlTrigger::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlTrigger::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlTrigger::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlTrigger::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlTrigger::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlTrigger::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlTrigger::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [Trigger]
+// OWNED ATTRIBUTES
 
 /*!
     The event that causes the trigger.
  */
-QUmlEvent *QUmlTrigger::event() const
+QUmlEvent *
+QUmlTrigger::event() const
 {
-    return reinterpret_cast<QUmlEvent *>(_event);
+    // This is a read-write association end
+
+    return _event;
+}
+
+void QUmlTrigger::setEvent(QUmlEvent *event)
+{
+    // This is a read-write association end
+
+    if (_event != event) {
+        _event = event;
+        if (event->asQObject() && this->asQObject())
+            QObject::connect(event->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEvent()));
+    }
 }
 
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */
-const QSet<QUmlPort *> QUmlTrigger::port() const
+const QSet<QUmlPort *> 
+QUmlTrigger::port() const
 {
-    return *(reinterpret_cast<const QSet<QUmlPort *> *>(&_port));
+    // This is a read-write association end
+
+    return _port;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlTrigger::allOwnedElements() const
+void QUmlTrigger::addPort(QUmlPort *port)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write association end
+
+    if (!_port.contains(port)) {
+        _port.insert(port);
+        if (port->asQObject() && this->asQObject())
+            QObject::connect(port->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePort(QObject *)));
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlTrigger::mustBeOwned() const
+void QUmlTrigger::removePort(QUmlPort *port)
 {
-    return UmlElement::mustBeOwned();
+    // This is a read-write association end
+
+    if (_port.contains(port)) {
+        _port.remove(port);
+    }
 }
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlTrigger::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlTrigger::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlTrigger::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlTrigger::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlTrigger::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlTrigger::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlTrigger::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlTrigger::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlTrigger::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlTrigger::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlTrigger::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Trigger]
-
-void QUmlTrigger::setEvent(QUmlEvent *event)
-{
-    UmlTrigger::setEvent(event);
-}
-
-void QUmlTrigger::addPort(UmlPort *port)
-{
-    UmlTrigger::addPort(port);
-}
-
-void QUmlTrigger::removePort(UmlPort *port)
-{
-    UmlTrigger::removePort(port);
-}
-
-QT_END_NAMESPACE
 

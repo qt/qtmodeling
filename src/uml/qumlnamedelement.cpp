@@ -40,136 +40,204 @@
 ****************************************************************************/
 #include "qumlnamedelement.h"
 
-#include <QtUml/QUmlComment>
 #include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlNamedElement
+    \class QUmlNamedElement
 
     \inmodule QtUml
 
     \brief A named element supports using a string expression to specify its name. This allows names of model elements to involve template parameters. The actual name is evaluated from the string expression only when it is sensible to do so (e.g., when a template is bound).A named element is an element in a model that may have a name.
  */
-
-QUmlNamedElement::QUmlNamedElement(QObject *parent) :
-    QObject(parent)
+QUmlNamedElement::QUmlNamedElement() :
+    _nameExpression(0),
+    _namespace_(0)
 {
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlNamedElement::ownedComment() const
+QUmlNamedElement::~QUmlNamedElement()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlNamedElement::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlNamedElement::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
+// OWNED ATTRIBUTES
 
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QUmlDependency *> QUmlNamedElement::clientDependency() const
+const QSet<QUmlDependency *> 
+QUmlNamedElement::clientDependency() const
 {
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
+    // This is a read-write association end
+
+    return _clientDependency;
+}
+
+void QUmlNamedElement::addClientDependency(QUmlDependency *clientDependency)
+{
+    // This is a read-write association end
+
+    if (!_clientDependency.contains(clientDependency)) {
+        _clientDependency.insert(clientDependency);
+        if (clientDependency->asQObject() && this->asQObject())
+            QObject::connect(clientDependency->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClientDependency(QObject *)));
+
+        // Adjust opposite properties
+        if (clientDependency) {
+            clientDependency->addClient(this);
+        }
+    }
+}
+
+void QUmlNamedElement::removeClientDependency(QUmlDependency *clientDependency)
+{
+    // This is a read-write association end
+
+    if (_clientDependency.contains(clientDependency)) {
+        _clientDependency.remove(clientDependency);
+
+        // Adjust opposite properties
+        if (clientDependency) {
+            clientDependency->removeClient(this);
+        }
+    }
 }
 
 /*!
     The name of the NamedElement.
  */
-QString QUmlNamedElement::name() const
+QString 
+QUmlNamedElement::name() const
 {
+    // This is a read-write property
+
     return _name;
+}
+
+void QUmlNamedElement::setName(QString name)
+{
+    // This is a read-write property
+
+    if (_name != name) {
+        _name = name;
+    }
 }
 
 /*!
     The string expression used to define the name of this named element.
  */
-QUmlStringExpression *QUmlNamedElement::nameExpression() const
+QUmlStringExpression *
+QUmlNamedElement::nameExpression() const
 {
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
+    // This is a read-write association end
+
+    return _nameExpression;
+}
+
+void QUmlNamedElement::setNameExpression(QUmlStringExpression *nameExpression)
+{
+    // This is a read-write association end
+
+    if (_nameExpression != nameExpression) {
+        // Adjust subsetted properties
+        removeOwnedElement(_nameExpression);
+
+        _nameExpression = nameExpression;
+        if (nameExpression->asQObject() && this->asQObject())
+            QObject::connect(nameExpression->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setNameExpression()));
+        nameExpression->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        if (nameExpression) {
+            addOwnedElement(nameExpression);
+        }
+    }
 }
 
 /*!
     Specifies the namespace that owns the NamedElement.
  */
-QUmlNamespace *QUmlNamedElement::namespace_() const
+QUmlNamespace *
+QUmlNamedElement::namespace_() const
 {
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
+    // This is a read-only derived union association end
+
+    return _namespace_;
+}
+
+void QUmlNamedElement::setNamespace(QUmlNamespace *namespace_)
+{
+    // This is a read-only derived union association end
+
+    if (_namespace_ != namespace_) {
+        // Adjust subsetted properties
+
+        _namespace_ = namespace_;
+        if (namespace_->asQObject() && this->asQObject())
+            QObject::connect(namespace_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setNamespace()));
+
+        // Adjust subsetted properties
+        setOwner(namespace_);
+    }
 }
 
 /*!
     A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
  */
-QString QUmlNamedElement::qualifiedName() const
+QString 
+QUmlNamedElement::qualifiedName() const
 {
-    return UmlNamedElement::qualifiedName();
+    // This is a read-only derived property
+
+    qWarning("UmlNamedElement::qualifiedName(): to be implemented (this is a derived property)");
+
+    return QString();
+}
+
+void QUmlNamedElement::setQualifiedName(QString qualifiedName)
+{
+    // This is a read-only derived property
+
+    qWarning("UmlNamedElement::qualifiedName(): to be implemented (this is a derived property)");
+    Q_UNUSED(qualifiedName);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind QUmlNamedElement::visibility() const
+QtUml::VisibilityKind 
+QUmlNamedElement::visibility() const
 {
+    // This is a read-write property
+
     return _visibility;
 }
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlNamedElement::allOwnedElements() const
+void QUmlNamedElement::setVisibility(QtUml::VisibilityKind visibility)
 {
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
+    // This is a read-write property
+
+    if (_visibility != visibility) {
+        _visibility = visibility;
+    }
 }
 
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlNamedElement::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
+// OPERATIONS
 
 /*!
     The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
  */
 QList<QUmlNamespace *> QUmlNamedElement::allNamespaces() const
 {
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
+    qWarning("UmlNamedElement::allNamespaces(): to be implemented (operation)");
+
+    return QList<QUmlNamespace *> ();
 }
 
 /*!
@@ -177,10 +245,9 @@ QList<QUmlNamespace *> QUmlNamedElement::allNamespaces() const
  */
 QSet<QUmlPackage *> QUmlNamedElement::allOwningPackages() const
 {
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
+    qWarning("UmlNamedElement::allOwningPackages(): to be implemented (operation)");
+
+    return QSet<QUmlPackage *> ();
 }
 
 /*!
@@ -188,7 +255,11 @@ QSet<QUmlPackage *> QUmlNamedElement::allOwningPackages() const
  */
 bool QUmlNamedElement::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
 {
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
+    qWarning("UmlNamedElement::isDistinguishableFrom(): to be implemented (operation)");
+
+    Q_UNUSED(n);
+    Q_UNUSED(ns);
+    return bool ();
 }
 
 /*!
@@ -196,47 +267,8 @@ bool QUmlNamedElement::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace 
  */
 QString QUmlNamedElement::separator() const
 {
-    return UmlNamedElement::separator();
+    qWarning("UmlNamedElement::separator(): to be implemented (operation)");
+
+    return QString ();
 }
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlNamedElement::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlNamedElement::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlNamedElement::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlNamedElement::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlNamedElement::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlNamedElement::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlNamedElement::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-QT_END_NAMESPACE
 

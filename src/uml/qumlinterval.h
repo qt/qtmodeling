@@ -43,10 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlinterval_p.h"
+#include <QtUml/QUmlValueSpecification>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -54,132 +52,26 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlDependency;
-class QUmlElement;
-class QUmlNamedElement;
-class QUmlNamespace;
-class QUmlPackage;
-class QUmlParameterableElement;
-class QUmlStringExpression;
-class QUmlTemplateParameter;
-class QUmlType;
-class QUmlValueSpecification;
-
-class Q_UML_EXPORT QUmlInterval : public QObject, public UmlInterval
+class Q_UML_EXPORT QUmlInterval : public QUmlValueSpecification
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-
-    // Properties [TypedElement]
-    Q_PROPERTY(QUmlType * type READ type)
-
-    // Properties [ParameterableElement]
-    Q_PROPERTY(QUmlTemplateParameter * owningTemplateParameter READ owningTemplateParameter)
-    Q_PROPERTY(QUmlTemplateParameter * templateParameter READ templateParameter)
-
-    // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [Interval]
-    Q_PROPERTY(QUmlValueSpecification * max READ max)
-    Q_PROPERTY(QUmlValueSpecification * min READ min)
-
 public:
-    Q_INVOKABLE explicit QUmlInterval(QObject *parent = 0);
+    explicit QUmlInterval(bool createQObject = true);
+    virtual ~QUmlInterval();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-
-    // Owned attributes [TypedElement]
-    Q_INVOKABLE QUmlType *type() const;
-
-    // Owned attributes [ParameterableElement]
-    Q_INVOKABLE QUmlTemplateParameter *owningTemplateParameter() const;
-    Q_INVOKABLE QUmlTemplateParameter *templateParameter() const;
-
-    // Owned attributes [PackageableElement]
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
-
-    // Owned attributes [Interval]
-    Q_INVOKABLE QUmlValueSpecification *max() const;
-    Q_INVOKABLE QUmlValueSpecification *min() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-    // Operations [ParameterableElement]
-    Q_INVOKABLE bool isTemplateParameter() const;
-
-    // Operations [ValueSpecification]
-    Q_INVOKABLE bool booleanValue() const;
-    Q_INVOKABLE int integerValue() const;
-    Q_INVOKABLE bool isCompatibleWith(QUmlParameterableElement *p) const;
-    Q_INVOKABLE bool isComputable() const;
-    Q_INVOKABLE bool isNull() const;
-    Q_INVOKABLE double realValue() const;
-    Q_INVOKABLE QString stringValue() const;
-    Q_INVOKABLE int unlimitedValue() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-
-    // Slots for owned attributes [TypedElement]
-    void setType(QUmlType *type);
-
-    // Slots for owned attributes [ParameterableElement]
-    void setOwningTemplateParameter(QUmlTemplateParameter *owningTemplateParameter);
-    void setTemplateParameter(QUmlTemplateParameter *templateParameter);
-
-    // Slots for owned attributes [PackageableElement]
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [Interval]
+    // Owned attributes
+    QUmlValueSpecification *max() const;
     void setMax(QUmlValueSpecification *max);
+    QUmlValueSpecification *min() const;
     void setMin(QUmlValueSpecification *min);
+
+protected:
+    QUmlValueSpecification *_max;
+    QUmlValueSpecification *_min;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlInterval *)
-Q_DECLARE_METATYPE(QList<QUmlInterval *> *)
-Q_DECLARE_METATYPE(QSet<QUmlInterval *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlInterval) *)
 
 QT_END_HEADER
 

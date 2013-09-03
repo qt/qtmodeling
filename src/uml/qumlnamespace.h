@@ -43,10 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlnamespace_p.h"
+#include <QtUml/QUmlNamedElement>
 
-#include <QtUml/QtUmlNamespace>
 
 QT_BEGIN_HEADER
 
@@ -54,109 +52,55 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
 class QUmlConstraint;
-class QUmlDependency;
-class QUmlElement;
 class QUmlElementImport;
-class QUmlNamedElement;
-class QUmlPackage;
 class QUmlPackageableElement;
 class QUmlPackageImport;
-class QUmlStringExpression;
 
-class Q_UML_EXPORT QUmlNamespace : public QObject, public UmlNamespace
+class Q_UML_EXPORT QUmlNamespace : public virtual QUmlNamedElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [NamedElement]
-    Q_PROPERTY(QSet<QUmlDependency *> clientDependency READ clientDependency)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QUmlStringExpression * nameExpression READ nameExpression)
-    Q_PROPERTY(QUmlNamespace * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
-
-    // Properties [Namespace]
-    Q_PROPERTY(QSet<QUmlElementImport *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QUmlPackageableElement *> importedMember READ importedMember)
-    Q_PROPERTY(QSet<QUmlNamedElement *> member READ member)
-    Q_PROPERTY(QSet<QUmlNamedElement *> ownedMember READ ownedMember)
-    Q_PROPERTY(QSet<QUmlConstraint *> ownedRule READ ownedRule)
-    Q_PROPERTY(QSet<QUmlPackageImport *> packageImport READ packageImport)
-
 public:
-    Q_DECL_HIDDEN explicit QUmlNamespace(QObject *parent = 0);
+    virtual ~QUmlNamespace();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
+    // Owned attributes
+    const QSet<QUmlElementImport *> elementImport() const;
+    void addElementImport(QUmlElementImport *elementImport);
+    void removeElementImport(QUmlElementImport *elementImport);
+    const QSet<QUmlPackageableElement *> importedMember() const;
+    Q_DECL_HIDDEN void addImportedMember(QUmlPackageableElement *importedMember);
+    Q_DECL_HIDDEN void removeImportedMember(QUmlPackageableElement *importedMember);
+    const QSet<QUmlNamedElement *> member() const;
+    Q_DECL_HIDDEN void addMember(QUmlNamedElement *member);
+    Q_DECL_HIDDEN void removeMember(QUmlNamedElement *member);
+    const QSet<QUmlNamedElement *> ownedMember() const;
+    Q_DECL_HIDDEN void addOwnedMember(QUmlNamedElement *ownedMember);
+    Q_DECL_HIDDEN void removeOwnedMember(QUmlNamedElement *ownedMember);
+    const QSet<QUmlConstraint *> ownedRule() const;
+    void addOwnedRule(QUmlConstraint *ownedRule);
+    void removeOwnedRule(QUmlConstraint *ownedRule);
+    const QSet<QUmlPackageImport *> packageImport() const;
+    void addPackageImport(QUmlPackageImport *packageImport);
+    void removePackageImport(QUmlPackageImport *packageImport);
 
-    // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QUmlDependency *> clientDependency() const;
-    Q_INVOKABLE QString name() const;
-    Q_INVOKABLE QUmlStringExpression *nameExpression() const;
-    Q_INVOKABLE QUmlNamespace *namespace_() const;
-    Q_INVOKABLE QString qualifiedName() const;
-    Q_INVOKABLE QtUml::VisibilityKind visibility() const;
+    // Operations
+    QSet<QUmlPackageableElement *> excludeCollisions(QSet<QUmlPackageableElement *> imps) const;
+    QSet<QString> getNamesOfMember(QUmlNamedElement *element) const;
+    QSet<QUmlPackageableElement *> importMembers(QSet<QUmlPackageableElement *> imps) const;
+    bool membersAreDistinguishable() const;
 
-    // Owned attributes [Namespace]
-    Q_INVOKABLE const QSet<QUmlElementImport *> elementImport() const;
-    Q_INVOKABLE const QSet<QUmlPackageableElement *> importedMember() const;
-    Q_INVOKABLE const QSet<QUmlNamedElement *> member() const;
-    Q_INVOKABLE const QSet<QUmlNamedElement *> ownedMember() const;
-    Q_INVOKABLE const QSet<QUmlConstraint *> ownedRule() const;
-    Q_INVOKABLE const QSet<QUmlPackageImport *> packageImport() const;
+protected:
+    explicit QUmlNamespace();
 
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [NamedElement]
-    Q_INVOKABLE QList<QUmlNamespace *> allNamespaces() const;
-    Q_INVOKABLE QSet<QUmlPackage *> allOwningPackages() const;
-    Q_INVOKABLE bool isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const;
-    Q_INVOKABLE QString separator() const;
-
-    // Operations [Namespace]
-    Q_INVOKABLE QSet<QUmlPackageableElement *> excludeCollisions(QSet<QUmlPackageableElement *> imps) const;
-    Q_INVOKABLE QSet<QString> getNamesOfMember(QUmlNamedElement *element) const;
-    Q_INVOKABLE QSet<QUmlPackageableElement *> importMembers(QSet<QUmlPackageableElement *> imps) const;
-    Q_INVOKABLE bool membersAreDistinguishable() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [NamedElement]
-    void addClientDependency(UmlDependency *clientDependency);
-    void removeClientDependency(UmlDependency *clientDependency);
-    void setName(QString name);
-    void setNameExpression(QUmlStringExpression *nameExpression);
-    void setVisibility(QtUml::VisibilityKind visibility);
-
-    // Slots for owned attributes [Namespace]
-    void addElementImport(UmlElementImport *elementImport);
-    void removeElementImport(UmlElementImport *elementImport);
-    void addOwnedRule(UmlConstraint *ownedRule);
-    void removeOwnedRule(UmlConstraint *ownedRule);
-    void addPackageImport(UmlPackageImport *packageImport);
-    void removePackageImport(UmlPackageImport *packageImport);
+    QSet<QUmlElementImport *> _elementImport;
+    QSet<QUmlNamedElement *> _member;
+    QSet<QUmlNamedElement *> _ownedMember;
+    QSet<QUmlConstraint *> _ownedRule;
+    QSet<QUmlPackageImport *> _packageImport;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlNamespace *)
-Q_DECLARE_METATYPE(QList<QUmlNamespace *> *)
-Q_DECLARE_METATYPE(QSet<QUmlNamespace *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlNamespace) *)
 
 QT_END_HEADER
 

@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlconnectorend_p.h"
+#include <QtUml/QUmlMultiplicityElement>
+
 
 QT_BEGIN_HEADER
 
@@ -52,93 +52,31 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
 class QUmlConnectableElement;
-class QUmlElement;
-class QUmlMultiplicityElement;
 class QUmlProperty;
-class QUmlValueSpecification;
 
-class Q_UML_EXPORT QUmlConnectorEnd : public QObject, public UmlConnectorEnd
+class Q_UML_EXPORT QUmlConnectorEnd : public QUmlMultiplicityElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique)
-    Q_PROPERTY(int lower READ lower)
-    Q_PROPERTY(QUmlValueSpecification * lowerValue READ lowerValue)
-    Q_PROPERTY(int upper READ upper)
-    Q_PROPERTY(QUmlValueSpecification * upperValue READ upperValue)
-
-    // Properties [ConnectorEnd]
-    Q_PROPERTY(QUmlProperty * definingEnd READ definingEnd)
-    Q_PROPERTY(QUmlProperty * partWithPort READ partWithPort)
-    Q_PROPERTY(QUmlConnectableElement * role READ role)
-
 public:
-    Q_INVOKABLE explicit QUmlConnectorEnd(QObject *parent = 0);
+    explicit QUmlConnectorEnd(bool createQObject = true);
+    virtual ~QUmlConnectorEnd();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [MultiplicityElement]
-    Q_INVOKABLE bool isOrdered() const;
-    Q_INVOKABLE bool isUnique() const;
-    Q_INVOKABLE int lower() const;
-    Q_INVOKABLE QUmlValueSpecification *lowerValue() const;
-    Q_INVOKABLE int upper() const;
-    Q_INVOKABLE QUmlValueSpecification *upperValue() const;
-
-    // Owned attributes [ConnectorEnd]
-    Q_INVOKABLE QUmlProperty *definingEnd() const;
-    Q_INVOKABLE QUmlProperty *partWithPort() const;
-    Q_INVOKABLE QUmlConnectableElement *role() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-    // Operations [MultiplicityElement]
-    Q_INVOKABLE bool compatibleWith(QUmlMultiplicityElement *other) const;
-    Q_INVOKABLE bool includesCardinality(int C) const;
-    Q_INVOKABLE bool includesMultiplicity(QUmlMultiplicityElement *M) const;
-    Q_INVOKABLE bool is(int lowerbound, int upperbound) const;
-    Q_INVOKABLE bool isMultivalued() const;
-    Q_INVOKABLE int lowerBound() const;
-    Q_INVOKABLE int upperBound() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [MultiplicityElement]
-    void setOrdered(bool isOrdered);
-    void setUnique(bool isUnique);
-    void setLower(int lower);
-    void setLowerValue(QUmlValueSpecification *lowerValue);
-    void setUpper(int upper);
-    void setUpperValue(QUmlValueSpecification *upperValue);
-
-    // Slots for owned attributes [ConnectorEnd]
+    // Owned attributes
+    QUmlProperty *definingEnd() const;
+    Q_DECL_HIDDEN void setDefiningEnd(QUmlProperty *definingEnd);
+    QUmlProperty *partWithPort() const;
     void setPartWithPort(QUmlProperty *partWithPort);
+    QUmlConnectableElement *role() const;
     void setRole(QUmlConnectableElement *role);
+
+protected:
+    QUmlProperty *_partWithPort;
+    QUmlConnectableElement *_role;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlConnectorEnd *)
-Q_DECLARE_METATYPE(QList<QUmlConnectorEnd *> *)
-Q_DECLARE_METATYPE(QSet<QUmlConnectorEnd *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlConnectorEnd) *)
 
 QT_END_HEADER
 

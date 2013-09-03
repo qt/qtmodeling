@@ -40,264 +40,102 @@
 ****************************************************************************/
 #include "qumlconnectorend.h"
 
-#include <QtUml/QUmlComment>
-#include <QtUml/QUmlConnectableElement>
-#include <QtUml/QUmlElement>
-#include <QtUml/QUmlMultiplicityElement>
-#include <QtUml/QUmlProperty>
-#include <QtUml/QUmlValueSpecification>
+#include "private/qumlconnectorendobject_p.h"
 
-QT_BEGIN_NAMESPACE
+#include <QtUml/QUmlConnectableElement>
+#include <QtUml/QUmlProperty>
 
 /*!
-    \class UmlConnectorEnd
+    \class QUmlConnectorEnd
 
     \inmodule QtUml
 
     \brief A connector end is an endpoint of a connector, which attaches the connector to a connectable element. Each connector end is part of one connector.
  */
-
-QUmlConnectorEnd::QUmlConnectorEnd(QObject *parent) :
-    QObject(parent)
+QUmlConnectorEnd::QUmlConnectorEnd(bool createQObject) :
+    _partWithPort(0),
+    _role(0)
 {
+    if (createQObject)
+        _qObject = new QUmlConnectorEndObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlConnectorEnd::ownedComment() const
+QUmlConnectorEnd::~QUmlConnectorEnd()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlConnectorEnd::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlConnectorEnd::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [MultiplicityElement]
-
-/*!
-    For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
- */
-bool QUmlConnectorEnd::isOrdered() const
-{
-    return _isOrdered;
-}
-
-/*!
-    For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
- */
-bool QUmlConnectorEnd::isUnique() const
-{
-    return _isUnique;
-}
-
-/*!
-    Specifies the lower bound of the multiplicity interval.
- */
-int QUmlConnectorEnd::lower() const
-{
-    return UmlMultiplicityElement::lower();
-}
-
-/*!
-    The specification of the lower bound for this multiplicity.
- */
-QUmlValueSpecification *QUmlConnectorEnd::lowerValue() const
-{
-    return reinterpret_cast<QUmlValueSpecification *>(_lowerValue);
-}
-
-/*!
-    Specifies the upper bound of the multiplicity interval.
- */
-int QUmlConnectorEnd::upper() const
-{
-    return UmlMultiplicityElement::upper();
-}
-
-/*!
-    The specification of the upper bound for this multiplicity.
- */
-QUmlValueSpecification *QUmlConnectorEnd::upperValue() const
-{
-    return reinterpret_cast<QUmlValueSpecification *>(_upperValue);
-}
-
-// OWNED ATTRIBUTES [ConnectorEnd]
+// OWNED ATTRIBUTES
 
 /*!
     A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
  */
-QUmlProperty *QUmlConnectorEnd::definingEnd() const
+QUmlProperty *
+QUmlConnectorEnd::definingEnd() const
 {
-    return reinterpret_cast<QUmlProperty *>(UmlConnectorEnd::definingEnd());
+    // This is a read-only derived association end
+
+    qWarning("UmlConnectorEnd::definingEnd(): to be implemented (this is a derived association end)");
+
+    return 0;
+}
+
+void QUmlConnectorEnd::setDefiningEnd(QUmlProperty *definingEnd)
+{
+    // This is a read-only derived association end
+
+    qWarning("UmlConnectorEnd::definingEnd(): to be implemented (this is a derived association end)");
+    Q_UNUSED(definingEnd);
+
+    if (false /* <derivedexclusion-criteria> */) {
+        // <derived-code>
+    }
 }
 
 /*!
     Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.
  */
-QUmlProperty *QUmlConnectorEnd::partWithPort() const
+QUmlProperty *
+QUmlConnectorEnd::partWithPort() const
 {
-    return reinterpret_cast<QUmlProperty *>(_partWithPort);
+    // This is a read-write association end
+
+    return _partWithPort;
+}
+
+void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
+{
+    // This is a read-write association end
+
+    if (_partWithPort != partWithPort) {
+        _partWithPort = partWithPort;
+        if (partWithPort->asQObject() && this->asQObject())
+            QObject::connect(partWithPort->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPartWithPort()));
+    }
 }
 
 /*!
     The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
  */
-QUmlConnectableElement *QUmlConnectorEnd::role() const
+QUmlConnectableElement *
+QUmlConnectorEnd::role() const
 {
-    return reinterpret_cast<QUmlConnectableElement *>(_role);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlConnectorEnd::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlConnectorEnd::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [MultiplicityElement]
-
-/*!
-    The operation compatibleWith takes another multiplicity as input. It checks if one multiplicity is compatible with another.
- */
-bool QUmlConnectorEnd::compatibleWith(QUmlMultiplicityElement *other) const
-{
-    return UmlMultiplicityElement::compatibleWith(other);
-}
-
-/*!
-    The query includesCardinality() checks whether the specified cardinality is valid for this multiplicity.
- */
-bool QUmlConnectorEnd::includesCardinality(int C) const
-{
-    return UmlMultiplicityElement::includesCardinality(C);
-}
-
-/*!
-    The query includesMultiplicity() checks whether this multiplicity includes all the cardinalities allowed by the specified multiplicity.
- */
-bool QUmlConnectorEnd::includesMultiplicity(QUmlMultiplicityElement *M) const
-{
-    return UmlMultiplicityElement::includesMultiplicity(M);
-}
-
-/*!
-    The operation is determines if the upper and lower bound of the ranges are the ones given.
- */
-bool QUmlConnectorEnd::is(int lowerbound, int upperbound) const
-{
-    return UmlMultiplicityElement::is(lowerbound, upperbound);
-}
-
-/*!
-    The query isMultivalued() checks whether this multiplicity has an upper bound greater than one.
- */
-bool QUmlConnectorEnd::isMultivalued() const
-{
-    return UmlMultiplicityElement::isMultivalued();
-}
-
-/*!
-    The query lowerBound() returns the lower bound of the multiplicity as an integer.
- */
-int QUmlConnectorEnd::lowerBound() const
-{
-    return UmlMultiplicityElement::lowerBound();
-}
-
-/*!
-    The query upperBound() returns the upper bound of the multiplicity for a bounded multiplicity as an unlimited natural.
- */
-int QUmlConnectorEnd::upperBound() const
-{
-    return UmlMultiplicityElement::upperBound();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlConnectorEnd::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlConnectorEnd::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [MultiplicityElement]
-
-void QUmlConnectorEnd::setOrdered(bool isOrdered)
-{
-    UmlMultiplicityElement::setOrdered(isOrdered);
-}
-
-void QUmlConnectorEnd::setUnique(bool isUnique)
-{
-    UmlMultiplicityElement::setUnique(isUnique);
-}
-
-void QUmlConnectorEnd::setLower(int lower)
-{
-    UmlMultiplicityElement::setLower(lower);
-}
-
-void QUmlConnectorEnd::setLowerValue(QUmlValueSpecification *lowerValue)
-{
-    UmlMultiplicityElement::setLowerValue(lowerValue);
-}
-
-void QUmlConnectorEnd::setUpper(int upper)
-{
-    UmlMultiplicityElement::setUpper(upper);
-}
-
-void QUmlConnectorEnd::setUpperValue(QUmlValueSpecification *upperValue)
-{
-    UmlMultiplicityElement::setUpperValue(upperValue);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [ConnectorEnd]
-
-void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
-{
-    UmlConnectorEnd::setPartWithPort(partWithPort);
+    return _role;
 }
 
 void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
 {
-    UmlConnectorEnd::setRole(role);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_role != role) {
+        _role = role;
+        if (role->asQObject() && this->asQObject())
+            QObject::connect(role->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRole()));
+    }
+}
 

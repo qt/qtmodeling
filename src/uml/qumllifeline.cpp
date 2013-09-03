@@ -40,283 +40,181 @@
 ****************************************************************************/
 #include "qumllifeline.h"
 
-#include <QtUml/QUmlComment>
+#include "private/qumllifelineobject_p.h"
+
 #include <QtUml/QUmlConnectableElement>
-#include <QtUml/QUmlDependency>
-#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionFragment>
-#include <QtUml/QUmlNamedElement>
-#include <QtUml/QUmlNamespace>
-#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPartDecomposition>
-#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
 
-QT_BEGIN_NAMESPACE
-
 /*!
-    \class UmlLifeline
+    \class QUmlLifeline
 
     \inmodule QtUml
 
     \brief A lifeline represents an individual participant in the interaction. While parts and structural features may have multiplicity greater than 1, lifelines represent only one interacting entity.
  */
-
-QUmlLifeline::QUmlLifeline(QObject *parent) :
-    QObject(parent)
+QUmlLifeline::QUmlLifeline(bool createQObject) :
+    _decomposedAs(0),
+    _interaction(0),
+    _represents(0),
+    _selector(0)
 {
+    if (createQObject)
+        _qObject = new QUmlLifelineObject(this);
 }
 
-// OWNED ATTRIBUTES [Element]
-
-/*!
-    The Comments owned by this element.
- */
-const QSet<QUmlComment *> QUmlLifeline::ownedComment() const
+QUmlLifeline::~QUmlLifeline()
 {
-    return *(reinterpret_cast<const QSet<QUmlComment *> *>(&_ownedComment));
+    if (!deletingFromQObject) {
+        _qObject->setProperty("deletingFromModelingObject", true);
+        delete _qObject;
+    }
 }
 
-/*!
-    The Elements owned by this element.
- */
-const QSet<QUmlElement *> QUmlLifeline::ownedElement() const
-{
-    return *(reinterpret_cast<const QSet<QUmlElement *> *>(&_ownedElement));
-}
-
-/*!
-    The Element that owns this element.
- */
-QUmlElement *QUmlLifeline::owner() const
-{
-    return reinterpret_cast<QUmlElement *>(_owner);
-}
-
-// OWNED ATTRIBUTES [NamedElement]
-
-/*!
-    Indicates the dependencies that reference the client.
- */
-const QSet<QUmlDependency *> QUmlLifeline::clientDependency() const
-{
-    return *(reinterpret_cast<const QSet<QUmlDependency *> *>(&_clientDependency));
-}
-
-/*!
-    The name of the NamedElement.
- */
-QString QUmlLifeline::name() const
-{
-    return _name;
-}
-
-/*!
-    The string expression used to define the name of this named element.
- */
-QUmlStringExpression *QUmlLifeline::nameExpression() const
-{
-    return reinterpret_cast<QUmlStringExpression *>(_nameExpression);
-}
-
-/*!
-    Specifies the namespace that owns the NamedElement.
- */
-QUmlNamespace *QUmlLifeline::namespace_() const
-{
-    return reinterpret_cast<QUmlNamespace *>(_namespace_);
-}
-
-/*!
-    A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
- */
-QString QUmlLifeline::qualifiedName() const
-{
-    return UmlNamedElement::qualifiedName();
-}
-
-/*!
-    Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
- */
-QtUml::VisibilityKind QUmlLifeline::visibility() const
-{
-    return _visibility;
-}
-
-// OWNED ATTRIBUTES [Lifeline]
+// OWNED ATTRIBUTES
 
 /*!
     References the InteractionFragments in which this Lifeline takes part.
  */
-const QSet<QUmlInteractionFragment *> QUmlLifeline::coveredBy() const
+const QSet<QUmlInteractionFragment *> 
+QUmlLifeline::coveredBy() const
 {
-    return *(reinterpret_cast<const QSet<QUmlInteractionFragment *> *>(&_coveredBy));
+    // This is a read-write association end
+
+    return _coveredBy;
+}
+
+void QUmlLifeline::addCoveredBy(QUmlInteractionFragment *coveredBy)
+{
+    // This is a read-write association end
+
+    if (!_coveredBy.contains(coveredBy)) {
+        _coveredBy.insert(coveredBy);
+        if (coveredBy->asQObject() && this->asQObject())
+            QObject::connect(coveredBy->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCoveredBy(QObject *)));
+
+        // Adjust opposite properties
+        if (coveredBy) {
+            coveredBy->addCovered(this);
+        }
+    }
+}
+
+void QUmlLifeline::removeCoveredBy(QUmlInteractionFragment *coveredBy)
+{
+    // This is a read-write association end
+
+    if (_coveredBy.contains(coveredBy)) {
+        _coveredBy.remove(coveredBy);
+
+        // Adjust opposite properties
+        if (coveredBy) {
+            coveredBy->removeCovered(this);
+        }
+    }
 }
 
 /*!
     References the Interaction that represents the decomposition.
  */
-QUmlPartDecomposition *QUmlLifeline::decomposedAs() const
+QUmlPartDecomposition *
+QUmlLifeline::decomposedAs() const
 {
-    return reinterpret_cast<QUmlPartDecomposition *>(_decomposedAs);
+    // This is a read-write association end
+
+    return _decomposedAs;
+}
+
+void QUmlLifeline::setDecomposedAs(QUmlPartDecomposition *decomposedAs)
+{
+    // This is a read-write association end
+
+    if (_decomposedAs != decomposedAs) {
+        _decomposedAs = decomposedAs;
+        if (decomposedAs->asQObject() && this->asQObject())
+            QObject::connect(decomposedAs->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecomposedAs()));
+    }
 }
 
 /*!
     References the Interaction enclosing this Lifeline.
  */
-QUmlInteraction *QUmlLifeline::interaction() const
+QUmlInteraction *
+QUmlLifeline::interaction() const
 {
-    return reinterpret_cast<QUmlInteraction *>(_interaction);
+    // This is a read-write association end
+
+    return _interaction;
+}
+
+void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
+{
+    // This is a read-write association end
+
+    if (_interaction != interaction) {
+        // Adjust subsetted properties
+
+        _interaction = interaction;
+        if (interaction->asQObject() && this->asQObject())
+            QObject::connect(interaction->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInteraction()));
+
+        // Adjust subsetted properties
+        setNamespace(interaction);
+    }
 }
 
 /*!
     References the ConnectableElement within the classifier that contains the enclosing interaction.
  */
-QUmlConnectableElement *QUmlLifeline::represents() const
+QUmlConnectableElement *
+QUmlLifeline::represents() const
 {
-    return reinterpret_cast<QUmlConnectableElement *>(_represents);
+    // This is a read-write association end
+
+    return _represents;
+}
+
+void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
+{
+    // This is a read-write association end
+
+    if (_represents != represents) {
+        _represents = represents;
+        if (represents->asQObject() && this->asQObject())
+            QObject::connect(represents->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRepresents()));
+    }
 }
 
 /*!
     If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.
  */
-QUmlValueSpecification *QUmlLifeline::selector() const
+QUmlValueSpecification *
+QUmlLifeline::selector() const
 {
-    return reinterpret_cast<QUmlValueSpecification *>(_selector);
-}
+    // This is a read-write association end
 
-// OPERATIONS [Element]
-
-/*!
-    The query allOwnedElements() gives all of the direct and indirect owned elements of an element.
- */
-QSet<QUmlElement *> QUmlLifeline::allOwnedElements() const
-{
-    QSet<QUmlElement *> r;
-    foreach (UmlElement *element, UmlElement::allOwnedElements())
-        r.insert(reinterpret_cast<QUmlElement *>(element));
-    return r;
-}
-
-/*!
-    The query mustBeOwned() indicates whether elements of this type must have an owner. Subclasses of Element that do not require an owner must override this operation.
- */
-bool QUmlLifeline::mustBeOwned() const
-{
-    return UmlElement::mustBeOwned();
-}
-
-// OPERATIONS [NamedElement]
-
-/*!
-    The query allNamespaces() gives the sequence of namespaces in which the NamedElement is nested, working outwards.
- */
-QList<QUmlNamespace *> QUmlLifeline::allNamespaces() const
-{
-    QList<QUmlNamespace *> r;
-    foreach (UmlNamespace *element, UmlNamedElement::allNamespaces())
-        r.append(reinterpret_cast<QUmlNamespace *>(element));
-    return r;
-}
-
-/*!
-    The query allOwningPackages() returns all the directly or indirectly owning packages.
- */
-QSet<QUmlPackage *> QUmlLifeline::allOwningPackages() const
-{
-    QSet<QUmlPackage *> r;
-    foreach (UmlPackage *element, UmlNamedElement::allOwningPackages())
-        r.insert(reinterpret_cast<QUmlPackage *>(element));
-    return r;
-}
-
-/*!
-    The query isDistinguishableFrom() determines whether two NamedElements may logically co-exist within a Namespace. By default, two named elements are distinguishable if (a) they have unrelated types or (b) they have related types but different names.
- */
-bool QUmlLifeline::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace *ns) const
-{
-    return UmlNamedElement::isDistinguishableFrom(n, ns);
-}
-
-/*!
-    The query separator() gives the string that is used to separate names when constructing a qualified name.
- */
-QString QUmlLifeline::separator() const
-{
-    return UmlNamedElement::separator();
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Element]
-
-void QUmlLifeline::addOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::addOwnedComment(ownedComment);
-}
-
-void QUmlLifeline::removeOwnedComment(UmlComment *ownedComment)
-{
-    UmlElement::removeOwnedComment(ownedComment);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [NamedElement]
-
-void QUmlLifeline::addClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::addClientDependency(clientDependency);
-}
-
-void QUmlLifeline::removeClientDependency(UmlDependency *clientDependency)
-{
-    UmlNamedElement::removeClientDependency(clientDependency);
-}
-
-void QUmlLifeline::setName(QString name)
-{
-    UmlNamedElement::setName(name);
-}
-
-void QUmlLifeline::setNameExpression(QUmlStringExpression *nameExpression)
-{
-    UmlNamedElement::setNameExpression(nameExpression);
-}
-
-void QUmlLifeline::setVisibility(QtUml::VisibilityKind visibility)
-{
-    UmlNamedElement::setVisibility(visibility);
-}
-
-// SLOTS FOR OWNED ATTRIBUTES [Lifeline]
-
-void QUmlLifeline::addCoveredBy(UmlInteractionFragment *coveredBy)
-{
-    UmlLifeline::addCoveredBy(coveredBy);
-}
-
-void QUmlLifeline::removeCoveredBy(UmlInteractionFragment *coveredBy)
-{
-    UmlLifeline::removeCoveredBy(coveredBy);
-}
-
-void QUmlLifeline::setDecomposedAs(QUmlPartDecomposition *decomposedAs)
-{
-    UmlLifeline::setDecomposedAs(decomposedAs);
-}
-
-void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
-{
-    UmlLifeline::setInteraction(interaction);
-}
-
-void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
-{
-    UmlLifeline::setRepresents(represents);
+    return _selector;
 }
 
 void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
 {
-    UmlLifeline::setSelector(selector);
-}
+    // This is a read-write association end
 
-QT_END_NAMESPACE
+    if (_selector != selector) {
+        // Adjust subsetted properties
+        removeOwnedElement(_selector);
+
+        _selector = selector;
+        if (selector->asQObject() && this->asQObject())
+            QObject::connect(selector->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSelector()));
+        selector->asQObject()->setParent(this->asQObject());
+
+        // Adjust subsetted properties
+        if (selector) {
+            addOwnedElement(selector);
+        }
+    }
+}
 

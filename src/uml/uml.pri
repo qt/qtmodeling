@@ -245,732 +245,634 @@ HEADERS += \
     qumlwritevariableaction.h
 
 PRIVATE_HEADERS += \
-    internal/umlabstraction_p.h \
-    internal/umlacceptcallaction_p.h \
-    internal/umlaccepteventaction_p.h \
-    internal/umlaction_p.h \
-    internal/umlactionexecutionspecification_p.h \
-    internal/umlactioninputpin_p.h \
-    internal/umlactivity_p.h \
-    internal/umlactivityedge_p.h \
-    internal/umlactivityfinalnode_p.h \
-    internal/umlactivitygroup_p.h \
-    internal/umlactivitynode_p.h \
-    internal/umlactivityparameternode_p.h \
-    internal/umlactivitypartition_p.h \
-    internal/umlactor_p.h \
-    internal/umladdstructuralfeaturevalueaction_p.h \
-    internal/umladdvariablevalueaction_p.h \
-    internal/umlanyreceiveevent_p.h \
-    internal/umlartifact_p.h \
-    internal/umlassociation_p.h \
-    internal/umlassociationclass_p.h \
-    internal/umlbehavior_p.h \
-    internal/umlbehaviorexecutionspecification_p.h \
-    internal/umlbehavioralfeature_p.h \
-    internal/umlbehavioredclassifier_p.h \
-    internal/umlbroadcastsignalaction_p.h \
-    internal/umlcallaction_p.h \
-    internal/umlcallbehavioraction_p.h \
-    internal/umlcallevent_p.h \
-    internal/umlcalloperationaction_p.h \
-    internal/umlcentralbuffernode_p.h \
-    internal/umlchangeevent_p.h \
-    internal/umlclass_p.h \
-    internal/umlclassifier_p.h \
-    internal/umlclassifiertemplateparameter_p.h \
-    internal/umlclause_p.h \
-    internal/umlclearassociationaction_p.h \
-    internal/umlclearstructuralfeatureaction_p.h \
-    internal/umlclearvariableaction_p.h \
-    internal/umlcollaboration_p.h \
-    internal/umlcollaborationuse_p.h \
-    internal/umlcombinedfragment_p.h \
-    internal/umlcomment_p.h \
-    internal/umlcommunicationpath_p.h \
-    internal/umlcomponent_p.h \
-    internal/umlcomponentrealization_p.h \
-    internal/umlconditionalnode_p.h \
-    internal/umlconnectableelement_p.h \
-    internal/umlconnectableelementtemplateparameter_p.h \
-    internal/umlconnectionpointreference_p.h \
-    internal/umlconnector_p.h \
-    internal/umlconnectorend_p.h \
-    internal/umlconsiderignorefragment_p.h \
-    internal/umlconstraint_p.h \
-    internal/umlcontinuation_p.h \
-    internal/umlcontrolflow_p.h \
-    internal/umlcontrolnode_p.h \
-    internal/umlcreatelinkaction_p.h \
-    internal/umlcreatelinkobjectaction_p.h \
-    internal/umlcreateobjectaction_p.h \
-    internal/umldatastorenode_p.h \
-    internal/umldatatype_p.h \
-    internal/umldecisionnode_p.h \
-    internal/umldependency_p.h \
-    internal/umldeployedartifact_p.h \
-    internal/umldeployment_p.h \
-    internal/umldeploymentspecification_p.h \
-    internal/umldeploymenttarget_p.h \
-    internal/umldestroylinkaction_p.h \
-    internal/umldestroyobjectaction_p.h \
-    internal/umldestructionoccurrencespecification_p.h \
-    internal/umldevice_p.h \
-    internal/umldirectedrelationship_p.h \
-    internal/umlduration_p.h \
-    internal/umldurationconstraint_p.h \
-    internal/umldurationinterval_p.h \
-    internal/umldurationobservation_p.h \
-    internal/umlelement_p.h \
-    internal/umlelementimport_p.h \
-    internal/umlencapsulatedclassifier_p.h \
-    internal/umlenumeration_p.h \
-    internal/umlenumerationliteral_p.h \
-    internal/umlevent_p.h \
-    internal/umlexceptionhandler_p.h \
-    internal/umlexecutablenode_p.h \
-    internal/umlexecutionenvironment_p.h \
-    internal/umlexecutionoccurrencespecification_p.h \
-    internal/umlexecutionspecification_p.h \
-    internal/umlexpansionnode_p.h \
-    internal/umlexpansionregion_p.h \
-    internal/umlexpression_p.h \
-    internal/umlextend_p.h \
-    internal/umlextension_p.h \
-    internal/umlextensionend_p.h \
-    internal/umlextensionpoint_p.h \
-    internal/umlfeature_p.h \
-    internal/umlfinalnode_p.h \
-    internal/umlfinalstate_p.h \
-    internal/umlflowfinalnode_p.h \
-    internal/umlforknode_p.h \
-    internal/umlfunctionbehavior_p.h \
-    internal/umlgate_p.h \
-    internal/umlgeneralordering_p.h \
-    internal/umlgeneralization_p.h \
-    internal/umlgeneralizationset_p.h \
-    internal/umlimage_p.h \
-    internal/umlinclude_p.h \
-    internal/umlinformationflow_p.h \
-    internal/umlinformationitem_p.h \
-    internal/umlinitialnode_p.h \
-    internal/umlinputpin_p.h \
-    internal/umlinstancespecification_p.h \
-    internal/umlinstancevalue_p.h \
-    internal/umlinteraction_p.h \
-    internal/umlinteractionconstraint_p.h \
-    internal/umlinteractionfragment_p.h \
-    internal/umlinteractionoperand_p.h \
-    internal/umlinteractionuse_p.h \
-    internal/umlinterface_p.h \
-    internal/umlinterfacerealization_p.h \
-    internal/umlinterruptibleactivityregion_p.h \
-    internal/umlinterval_p.h \
-    internal/umlintervalconstraint_p.h \
-    internal/umlinvocationaction_p.h \
-    internal/umljoinnode_p.h \
-    internal/umllifeline_p.h \
-    internal/umllinkaction_p.h \
-    internal/umllinkendcreationdata_p.h \
-    internal/umllinkenddata_p.h \
-    internal/umllinkenddestructiondata_p.h \
-    internal/umlliteralboolean_p.h \
-    internal/umlliteralinteger_p.h \
-    internal/umlliteralnull_p.h \
-    internal/umlliteralreal_p.h \
-    internal/umlliteralspecification_p.h \
-    internal/umlliteralstring_p.h \
-    internal/umlliteralunlimitednatural_p.h \
-    internal/umlloopnode_p.h \
-    internal/umlmanifestation_p.h \
-    internal/umlmergenode_p.h \
-    internal/umlmessage_p.h \
-    internal/umlmessageend_p.h \
-    internal/umlmessageevent_p.h \
-    internal/umlmessageoccurrencespecification_p.h \
-    internal/umlmodel_p.h \
-    internal/umlmultiplicityelement_p.h \
-    internal/umlnamedelement_p.h \
-    internal/umlnamespace_p.h \
-    internal/umlnode_p.h \
-    internal/umlobjectflow_p.h \
-    internal/umlobjectnode_p.h \
-    internal/umlobservation_p.h \
-    internal/umloccurrencespecification_p.h \
-    internal/umlopaqueaction_p.h \
-    internal/umlopaquebehavior_p.h \
-    internal/umlopaqueexpression_p.h \
-    internal/umloperation_p.h \
-    internal/umloperationtemplateparameter_p.h \
-    internal/umloutputpin_p.h \
-    internal/umlpackage_p.h \
-    internal/umlpackageimport_p.h \
-    internal/umlpackagemerge_p.h \
-    internal/umlpackageableelement_p.h \
-    internal/umlparameter_p.h \
-    internal/umlparameterset_p.h \
-    internal/umlparameterableelement_p.h \
-    internal/umlpartdecomposition_p.h \
-    internal/umlpin_p.h \
-    internal/umlport_p.h \
-    internal/umlprimitivetype_p.h \
-    internal/umlprofile_p.h \
-    internal/umlprofileapplication_p.h \
-    internal/umlproperty_p.h \
-    internal/umlprotocolconformance_p.h \
-    internal/umlprotocolstatemachine_p.h \
-    internal/umlprotocoltransition_p.h \
-    internal/umlpseudostate_p.h \
-    internal/umlqualifiervalue_p.h \
-    internal/umlraiseexceptionaction_p.h \
-    internal/umlreadextentaction_p.h \
-    internal/umlreadisclassifiedobjectaction_p.h \
-    internal/umlreadlinkaction_p.h \
-    internal/umlreadlinkobjectendaction_p.h \
-    internal/umlreadlinkobjectendqualifieraction_p.h \
-    internal/umlreadselfaction_p.h \
-    internal/umlreadstructuralfeatureaction_p.h \
-    internal/umlreadvariableaction_p.h \
-    internal/umlrealization_p.h \
-    internal/umlreception_p.h \
-    internal/umlreclassifyobjectaction_p.h \
-    internal/umlredefinableelement_p.h \
-    internal/umlredefinabletemplatesignature_p.h \
-    internal/umlreduceaction_p.h \
-    internal/umlregion_p.h \
-    internal/umlrelationship_p.h \
-    internal/umlremovestructuralfeaturevalueaction_p.h \
-    internal/umlremovevariablevalueaction_p.h \
-    internal/umlreplyaction_p.h \
-    internal/umlsendobjectaction_p.h \
-    internal/umlsendsignalaction_p.h \
-    internal/umlsequencenode_p.h \
-    internal/umlsignal_p.h \
-    internal/umlsignalevent_p.h \
-    internal/umlslot_p.h \
-    internal/umlstartclassifierbehavioraction_p.h \
-    internal/umlstartobjectbehavioraction_p.h \
-    internal/umlstate_p.h \
-    internal/umlstateinvariant_p.h \
-    internal/umlstatemachine_p.h \
-    internal/umlstereotype_p.h \
-    internal/umlstringexpression_p.h \
-    internal/umlstructuralfeature_p.h \
-    internal/umlstructuralfeatureaction_p.h \
-    internal/umlstructuredactivitynode_p.h \
-    internal/umlstructuredclassifier_p.h \
-    internal/umlsubstitution_p.h \
-    internal/umltemplatebinding_p.h \
-    internal/umltemplateparameter_p.h \
-    internal/umltemplateparametersubstitution_p.h \
-    internal/umltemplatesignature_p.h \
-    internal/umltemplateableelement_p.h \
-    internal/umltestidentityaction_p.h \
-    internal/umltimeconstraint_p.h \
-    internal/umltimeevent_p.h \
-    internal/umltimeexpression_p.h \
-    internal/umltimeinterval_p.h \
-    internal/umltimeobservation_p.h \
-    internal/umltransition_p.h \
-    internal/umltrigger_p.h \
-    internal/umltype_p.h \
-    internal/umltypedelement_p.h \
-    internal/umlunmarshallaction_p.h \
-    internal/umlusage_p.h \
-    internal/umlusecase_p.h \
-    internal/umlvaluepin_p.h \
-    internal/umlvaluespecification_p.h \
-    internal/umlvaluespecificationaction_p.h \
-    internal/umlvariable_p.h \
-    internal/umlvariableaction_p.h \
-    internal/umlvertex_p.h \
-    internal/umlwritelinkaction_p.h \
-    internal/umlwritestructuralfeatureaction_p.h \
-    internal/umlwritevariableaction_p.h
+    qobjects/qumlabstractionobject_p.h \
+    qobjects/qumlacceptcallactionobject_p.h \
+    qobjects/qumlaccepteventactionobject_p.h \
+    qobjects/qumlactionexecutionspecificationobject_p.h \
+    qobjects/qumlactioninputpinobject_p.h \
+    qobjects/qumlactivityobject_p.h \
+    qobjects/qumlactivityfinalnodeobject_p.h \
+    qobjects/qumlactivityparameternodeobject_p.h \
+    qobjects/qumlactivitypartitionobject_p.h \
+    qobjects/qumlactorobject_p.h \
+    qobjects/qumladdstructuralfeaturevalueactionobject_p.h \
+    qobjects/qumladdvariablevalueactionobject_p.h \
+    qobjects/qumlanyreceiveeventobject_p.h \
+    qobjects/qumlartifactobject_p.h \
+    qobjects/qumlassociationobject_p.h \
+    qobjects/qumlassociationclassobject_p.h \
+    qobjects/qumlbehaviorexecutionspecificationobject_p.h \
+    qobjects/qumlbroadcastsignalactionobject_p.h \
+    qobjects/qumlcallbehavioractionobject_p.h \
+    qobjects/qumlcalleventobject_p.h \
+    qobjects/qumlcalloperationactionobject_p.h \
+    qobjects/qumlcentralbuffernodeobject_p.h \
+    qobjects/qumlchangeeventobject_p.h \
+    qobjects/qumlclassobject_p.h \
+    qobjects/qumlclassifiertemplateparameterobject_p.h \
+    qobjects/qumlclauseobject_p.h \
+    qobjects/qumlclearassociationactionobject_p.h \
+    qobjects/qumlclearstructuralfeatureactionobject_p.h \
+    qobjects/qumlclearvariableactionobject_p.h \
+    qobjects/qumlcollaborationobject_p.h \
+    qobjects/qumlcollaborationuseobject_p.h \
+    qobjects/qumlcombinedfragmentobject_p.h \
+    qobjects/qumlcommentobject_p.h \
+    qobjects/qumlcommunicationpathobject_p.h \
+    qobjects/qumlcomponentobject_p.h \
+    qobjects/qumlcomponentrealizationobject_p.h \
+    qobjects/qumlconditionalnodeobject_p.h \
+    qobjects/qumlconnectableelementtemplateparameterobject_p.h \
+    qobjects/qumlconnectionpointreferenceobject_p.h \
+    qobjects/qumlconnectorobject_p.h \
+    qobjects/qumlconnectorendobject_p.h \
+    qobjects/qumlconsiderignorefragmentobject_p.h \
+    qobjects/qumlconstraintobject_p.h \
+    qobjects/qumlcontinuationobject_p.h \
+    qobjects/qumlcontrolflowobject_p.h \
+    qobjects/qumlcreatelinkactionobject_p.h \
+    qobjects/qumlcreatelinkobjectactionobject_p.h \
+    qobjects/qumlcreateobjectactionobject_p.h \
+    qobjects/qumldatastorenodeobject_p.h \
+    qobjects/qumldatatypeobject_p.h \
+    qobjects/qumldecisionnodeobject_p.h \
+    qobjects/qumldependencyobject_p.h \
+    qobjects/qumldeploymentobject_p.h \
+    qobjects/qumldeploymentspecificationobject_p.h \
+    qobjects/qumldestroylinkactionobject_p.h \
+    qobjects/qumldestroyobjectactionobject_p.h \
+    qobjects/qumldestructionoccurrencespecificationobject_p.h \
+    qobjects/qumldeviceobject_p.h \
+    qobjects/qumldurationobject_p.h \
+    qobjects/qumldurationconstraintobject_p.h \
+    qobjects/qumldurationintervalobject_p.h \
+    qobjects/qumldurationobservationobject_p.h \
+    qobjects/qumlelementimportobject_p.h \
+    qobjects/qumlenumerationobject_p.h \
+    qobjects/qumlenumerationliteralobject_p.h \
+    qobjects/qumlexceptionhandlerobject_p.h \
+    qobjects/qumlexecutionenvironmentobject_p.h \
+    qobjects/qumlexecutionoccurrencespecificationobject_p.h \
+    qobjects/qumlexpansionnodeobject_p.h \
+    qobjects/qumlexpansionregionobject_p.h \
+    qobjects/qumlexpressionobject_p.h \
+    qobjects/qumlextendobject_p.h \
+    qobjects/qumlextensionobject_p.h \
+    qobjects/qumlextensionendobject_p.h \
+    qobjects/qumlextensionpointobject_p.h \
+    qobjects/qumlfinalstateobject_p.h \
+    qobjects/qumlflowfinalnodeobject_p.h \
+    qobjects/qumlforknodeobject_p.h \
+    qobjects/qumlfunctionbehaviorobject_p.h \
+    qobjects/qumlgateobject_p.h \
+    qobjects/qumlgeneralorderingobject_p.h \
+    qobjects/qumlgeneralizationobject_p.h \
+    qobjects/qumlgeneralizationsetobject_p.h \
+    qobjects/qumlimageobject_p.h \
+    qobjects/qumlincludeobject_p.h \
+    qobjects/qumlinformationflowobject_p.h \
+    qobjects/qumlinformationitemobject_p.h \
+    qobjects/qumlinitialnodeobject_p.h \
+    qobjects/qumlinputpinobject_p.h \
+    qobjects/qumlinstancespecificationobject_p.h \
+    qobjects/qumlinstancevalueobject_p.h \
+    qobjects/qumlinteractionobject_p.h \
+    qobjects/qumlinteractionconstraintobject_p.h \
+    qobjects/qumlinteractionoperandobject_p.h \
+    qobjects/qumlinteractionuseobject_p.h \
+    qobjects/qumlinterfaceobject_p.h \
+    qobjects/qumlinterfacerealizationobject_p.h \
+    qobjects/qumlinterruptibleactivityregionobject_p.h \
+    qobjects/qumlintervalobject_p.h \
+    qobjects/qumlintervalconstraintobject_p.h \
+    qobjects/qumljoinnodeobject_p.h \
+    qobjects/qumllifelineobject_p.h \
+    qobjects/qumllinkendcreationdataobject_p.h \
+    qobjects/qumllinkenddataobject_p.h \
+    qobjects/qumllinkenddestructiondataobject_p.h \
+    qobjects/qumlliteralbooleanobject_p.h \
+    qobjects/qumlliteralintegerobject_p.h \
+    qobjects/qumlliteralnullobject_p.h \
+    qobjects/qumlliteralrealobject_p.h \
+    qobjects/qumlliteralstringobject_p.h \
+    qobjects/qumlliteralunlimitednaturalobject_p.h \
+    qobjects/qumlloopnodeobject_p.h \
+    qobjects/qumlmanifestationobject_p.h \
+    qobjects/qumlmergenodeobject_p.h \
+    qobjects/qumlmessageobject_p.h \
+    qobjects/qumlmessageoccurrencespecificationobject_p.h \
+    qobjects/qumlmodelobject_p.h \
+    qobjects/qumlnodeobject_p.h \
+    qobjects/qumlobjectflowobject_p.h \
+    qobjects/qumloccurrencespecificationobject_p.h \
+    qobjects/qumlopaqueactionobject_p.h \
+    qobjects/qumlopaquebehaviorobject_p.h \
+    qobjects/qumlopaqueexpressionobject_p.h \
+    qobjects/qumloperationobject_p.h \
+    qobjects/qumloperationtemplateparameterobject_p.h \
+    qobjects/qumloutputpinobject_p.h \
+    qobjects/qumlpackageobject_p.h \
+    qobjects/qumlpackageimportobject_p.h \
+    qobjects/qumlpackagemergeobject_p.h \
+    qobjects/qumlparameterobject_p.h \
+    qobjects/qumlparametersetobject_p.h \
+    qobjects/qumlpartdecompositionobject_p.h \
+    qobjects/qumlportobject_p.h \
+    qobjects/qumlprimitivetypeobject_p.h \
+    qobjects/qumlprofileobject_p.h \
+    qobjects/qumlprofileapplicationobject_p.h \
+    qobjects/qumlpropertyobject_p.h \
+    qobjects/qumlprotocolconformanceobject_p.h \
+    qobjects/qumlprotocolstatemachineobject_p.h \
+    qobjects/qumlprotocoltransitionobject_p.h \
+    qobjects/qumlpseudostateobject_p.h \
+    qobjects/qumlqualifiervalueobject_p.h \
+    qobjects/qumlraiseexceptionactionobject_p.h \
+    qobjects/qumlreadextentactionobject_p.h \
+    qobjects/qumlreadisclassifiedobjectactionobject_p.h \
+    qobjects/qumlreadlinkactionobject_p.h \
+    qobjects/qumlreadlinkobjectendactionobject_p.h \
+    qobjects/qumlreadlinkobjectendqualifieractionobject_p.h \
+    qobjects/qumlreadselfactionobject_p.h \
+    qobjects/qumlreadstructuralfeatureactionobject_p.h \
+    qobjects/qumlreadvariableactionobject_p.h \
+    qobjects/qumlrealizationobject_p.h \
+    qobjects/qumlreceptionobject_p.h \
+    qobjects/qumlreclassifyobjectactionobject_p.h \
+    qobjects/qumlredefinabletemplatesignatureobject_p.h \
+    qobjects/qumlreduceactionobject_p.h \
+    qobjects/qumlregionobject_p.h \
+    qobjects/qumlremovestructuralfeaturevalueactionobject_p.h \
+    qobjects/qumlremovevariablevalueactionobject_p.h \
+    qobjects/qumlreplyactionobject_p.h \
+    qobjects/qumlsendobjectactionobject_p.h \
+    qobjects/qumlsendsignalactionobject_p.h \
+    qobjects/qumlsequencenodeobject_p.h \
+    qobjects/qumlsignalobject_p.h \
+    qobjects/qumlsignaleventobject_p.h \
+    qobjects/qumlslotobject_p.h \
+    qobjects/qumlstartclassifierbehavioractionobject_p.h \
+    qobjects/qumlstartobjectbehavioractionobject_p.h \
+    qobjects/qumlstateobject_p.h \
+    qobjects/qumlstateinvariantobject_p.h \
+    qobjects/qumlstatemachineobject_p.h \
+    qobjects/qumlstereotypeobject_p.h \
+    qobjects/qumlstringexpressionobject_p.h \
+    qobjects/qumlstructuredactivitynodeobject_p.h \
+    qobjects/qumlsubstitutionobject_p.h \
+    qobjects/qumltemplatebindingobject_p.h \
+    qobjects/qumltemplateparameterobject_p.h \
+    qobjects/qumltemplateparametersubstitutionobject_p.h \
+    qobjects/qumltemplatesignatureobject_p.h \
+    qobjects/qumltestidentityactionobject_p.h \
+    qobjects/qumltimeconstraintobject_p.h \
+    qobjects/qumltimeeventobject_p.h \
+    qobjects/qumltimeexpressionobject_p.h \
+    qobjects/qumltimeintervalobject_p.h \
+    qobjects/qumltimeobservationobject_p.h \
+    qobjects/qumltransitionobject_p.h \
+    qobjects/qumltriggerobject_p.h \
+    qobjects/qumlunmarshallactionobject_p.h \
+    qobjects/qumlusageobject_p.h \
+    qobjects/qumlusecaseobject_p.h \
+    qobjects/qumlvaluepinobject_p.h \
+    qobjects/qumlvaluespecificationactionobject_p.h \
+    qobjects/qumlvariableobject_p.h
 
 SOURCES += \
     qtumlnamespace.cpp \
-    internal/umlabstraction.cpp \
+    qobjects/qumlabstractionobject.cpp \
     qumlabstraction.cpp \
-    internal/umlacceptcallaction.cpp \
+    qobjects/qumlacceptcallactionobject.cpp \
     qumlacceptcallaction.cpp \
-    internal/umlaccepteventaction.cpp \
+    qobjects/qumlaccepteventactionobject.cpp \
     qumlaccepteventaction.cpp \
-    internal/umlaction.cpp \
     qumlaction.cpp \
-    internal/umlactionexecutionspecification.cpp \
+    qobjects/qumlactionexecutionspecificationobject.cpp \
     qumlactionexecutionspecification.cpp \
-    internal/umlactioninputpin.cpp \
+    qobjects/qumlactioninputpinobject.cpp \
     qumlactioninputpin.cpp \
-    internal/umlactivity.cpp \
+    qobjects/qumlactivityobject.cpp \
     qumlactivity.cpp \
-    internal/umlactivityedge.cpp \
     qumlactivityedge.cpp \
-    internal/umlactivityfinalnode.cpp \
+    qobjects/qumlactivityfinalnodeobject.cpp \
     qumlactivityfinalnode.cpp \
-    internal/umlactivitygroup.cpp \
     qumlactivitygroup.cpp \
-    internal/umlactivitynode.cpp \
     qumlactivitynode.cpp \
-    internal/umlactivityparameternode.cpp \
+    qobjects/qumlactivityparameternodeobject.cpp \
     qumlactivityparameternode.cpp \
-    internal/umlactivitypartition.cpp \
+    qobjects/qumlactivitypartitionobject.cpp \
     qumlactivitypartition.cpp \
-    internal/umlactor.cpp \
+    qobjects/qumlactorobject.cpp \
     qumlactor.cpp \
-    internal/umladdstructuralfeaturevalueaction.cpp \
+    qobjects/qumladdstructuralfeaturevalueactionobject.cpp \
     qumladdstructuralfeaturevalueaction.cpp \
-    internal/umladdvariablevalueaction.cpp \
+    qobjects/qumladdvariablevalueactionobject.cpp \
     qumladdvariablevalueaction.cpp \
-    internal/umlanyreceiveevent.cpp \
+    qobjects/qumlanyreceiveeventobject.cpp \
     qumlanyreceiveevent.cpp \
-    internal/umlartifact.cpp \
+    qobjects/qumlartifactobject.cpp \
     qumlartifact.cpp \
-    internal/umlassociation.cpp \
+    qobjects/qumlassociationobject.cpp \
     qumlassociation.cpp \
-    internal/umlassociationclass.cpp \
+    qobjects/qumlassociationclassobject.cpp \
     qumlassociationclass.cpp \
-    internal/umlbehavior.cpp \
     qumlbehavior.cpp \
-    internal/umlbehaviorexecutionspecification.cpp \
+    qobjects/qumlbehaviorexecutionspecificationobject.cpp \
     qumlbehaviorexecutionspecification.cpp \
-    internal/umlbehavioralfeature.cpp \
     qumlbehavioralfeature.cpp \
-    internal/umlbehavioredclassifier.cpp \
     qumlbehavioredclassifier.cpp \
-    internal/umlbroadcastsignalaction.cpp \
+    qobjects/qumlbroadcastsignalactionobject.cpp \
     qumlbroadcastsignalaction.cpp \
-    internal/umlcallaction.cpp \
     qumlcallaction.cpp \
-    internal/umlcallbehavioraction.cpp \
+    qobjects/qumlcallbehavioractionobject.cpp \
     qumlcallbehavioraction.cpp \
-    internal/umlcallevent.cpp \
+    qobjects/qumlcalleventobject.cpp \
     qumlcallevent.cpp \
-    internal/umlcalloperationaction.cpp \
+    qobjects/qumlcalloperationactionobject.cpp \
     qumlcalloperationaction.cpp \
-    internal/umlcentralbuffernode.cpp \
+    qobjects/qumlcentralbuffernodeobject.cpp \
     qumlcentralbuffernode.cpp \
-    internal/umlchangeevent.cpp \
+    qobjects/qumlchangeeventobject.cpp \
     qumlchangeevent.cpp \
-    internal/umlclass.cpp \
+    qobjects/qumlclassobject.cpp \
     qumlclass.cpp \
-    internal/umlclassifier.cpp \
     qumlclassifier.cpp \
-    internal/umlclassifiertemplateparameter.cpp \
+    qobjects/qumlclassifiertemplateparameterobject.cpp \
     qumlclassifiertemplateparameter.cpp \
-    internal/umlclause.cpp \
+    qobjects/qumlclauseobject.cpp \
     qumlclause.cpp \
-    internal/umlclearassociationaction.cpp \
+    qobjects/qumlclearassociationactionobject.cpp \
     qumlclearassociationaction.cpp \
-    internal/umlclearstructuralfeatureaction.cpp \
+    qobjects/qumlclearstructuralfeatureactionobject.cpp \
     qumlclearstructuralfeatureaction.cpp \
-    internal/umlclearvariableaction.cpp \
+    qobjects/qumlclearvariableactionobject.cpp \
     qumlclearvariableaction.cpp \
-    internal/umlcollaboration.cpp \
+    qobjects/qumlcollaborationobject.cpp \
     qumlcollaboration.cpp \
-    internal/umlcollaborationuse.cpp \
+    qobjects/qumlcollaborationuseobject.cpp \
     qumlcollaborationuse.cpp \
-    internal/umlcombinedfragment.cpp \
+    qobjects/qumlcombinedfragmentobject.cpp \
     qumlcombinedfragment.cpp \
-    internal/umlcomment.cpp \
+    qobjects/qumlcommentobject.cpp \
     qumlcomment.cpp \
-    internal/umlcommunicationpath.cpp \
+    qobjects/qumlcommunicationpathobject.cpp \
     qumlcommunicationpath.cpp \
-    internal/umlcomponent.cpp \
+    qobjects/qumlcomponentobject.cpp \
     qumlcomponent.cpp \
-    internal/umlcomponentrealization.cpp \
+    qobjects/qumlcomponentrealizationobject.cpp \
     qumlcomponentrealization.cpp \
-    internal/umlconditionalnode.cpp \
+    qobjects/qumlconditionalnodeobject.cpp \
     qumlconditionalnode.cpp \
-    internal/umlconnectableelement.cpp \
     qumlconnectableelement.cpp \
-    internal/umlconnectableelementtemplateparameter.cpp \
+    qobjects/qumlconnectableelementtemplateparameterobject.cpp \
     qumlconnectableelementtemplateparameter.cpp \
-    internal/umlconnectionpointreference.cpp \
+    qobjects/qumlconnectionpointreferenceobject.cpp \
     qumlconnectionpointreference.cpp \
-    internal/umlconnector.cpp \
+    qobjects/qumlconnectorobject.cpp \
     qumlconnector.cpp \
-    internal/umlconnectorend.cpp \
+    qobjects/qumlconnectorendobject.cpp \
     qumlconnectorend.cpp \
-    internal/umlconsiderignorefragment.cpp \
+    qobjects/qumlconsiderignorefragmentobject.cpp \
     qumlconsiderignorefragment.cpp \
-    internal/umlconstraint.cpp \
+    qobjects/qumlconstraintobject.cpp \
     qumlconstraint.cpp \
-    internal/umlcontinuation.cpp \
+    qobjects/qumlcontinuationobject.cpp \
     qumlcontinuation.cpp \
-    internal/umlcontrolflow.cpp \
+    qobjects/qumlcontrolflowobject.cpp \
     qumlcontrolflow.cpp \
-    internal/umlcontrolnode.cpp \
     qumlcontrolnode.cpp \
-    internal/umlcreatelinkaction.cpp \
+    qobjects/qumlcreatelinkactionobject.cpp \
     qumlcreatelinkaction.cpp \
-    internal/umlcreatelinkobjectaction.cpp \
+    qobjects/qumlcreatelinkobjectactionobject.cpp \
     qumlcreatelinkobjectaction.cpp \
-    internal/umlcreateobjectaction.cpp \
+    qobjects/qumlcreateobjectactionobject.cpp \
     qumlcreateobjectaction.cpp \
-    internal/umldatastorenode.cpp \
+    qobjects/qumldatastorenodeobject.cpp \
     qumldatastorenode.cpp \
-    internal/umldatatype.cpp \
+    qobjects/qumldatatypeobject.cpp \
     qumldatatype.cpp \
-    internal/umldecisionnode.cpp \
+    qobjects/qumldecisionnodeobject.cpp \
     qumldecisionnode.cpp \
-    internal/umldependency.cpp \
+    qobjects/qumldependencyobject.cpp \
     qumldependency.cpp \
-    internal/umldeployedartifact.cpp \
     qumldeployedartifact.cpp \
-    internal/umldeployment.cpp \
+    qobjects/qumldeploymentobject.cpp \
     qumldeployment.cpp \
-    internal/umldeploymentspecification.cpp \
+    qobjects/qumldeploymentspecificationobject.cpp \
     qumldeploymentspecification.cpp \
-    internal/umldeploymenttarget.cpp \
     qumldeploymenttarget.cpp \
-    internal/umldestroylinkaction.cpp \
+    qobjects/qumldestroylinkactionobject.cpp \
     qumldestroylinkaction.cpp \
-    internal/umldestroyobjectaction.cpp \
+    qobjects/qumldestroyobjectactionobject.cpp \
     qumldestroyobjectaction.cpp \
-    internal/umldestructionoccurrencespecification.cpp \
+    qobjects/qumldestructionoccurrencespecificationobject.cpp \
     qumldestructionoccurrencespecification.cpp \
-    internal/umldevice.cpp \
+    qobjects/qumldeviceobject.cpp \
     qumldevice.cpp \
-    internal/umldirectedrelationship.cpp \
     qumldirectedrelationship.cpp \
-    internal/umlduration.cpp \
+    qobjects/qumldurationobject.cpp \
     qumlduration.cpp \
-    internal/umldurationconstraint.cpp \
+    qobjects/qumldurationconstraintobject.cpp \
     qumldurationconstraint.cpp \
-    internal/umldurationinterval.cpp \
+    qobjects/qumldurationintervalobject.cpp \
     qumldurationinterval.cpp \
-    internal/umldurationobservation.cpp \
+    qobjects/qumldurationobservationobject.cpp \
     qumldurationobservation.cpp \
-    internal/umlelement.cpp \
     qumlelement.cpp \
-    internal/umlelementimport.cpp \
+    qobjects/qumlelementimportobject.cpp \
     qumlelementimport.cpp \
-    internal/umlencapsulatedclassifier.cpp \
     qumlencapsulatedclassifier.cpp \
-    internal/umlenumeration.cpp \
+    qobjects/qumlenumerationobject.cpp \
     qumlenumeration.cpp \
-    internal/umlenumerationliteral.cpp \
+    qobjects/qumlenumerationliteralobject.cpp \
     qumlenumerationliteral.cpp \
-    internal/umlevent.cpp \
     qumlevent.cpp \
-    internal/umlexceptionhandler.cpp \
+    qobjects/qumlexceptionhandlerobject.cpp \
     qumlexceptionhandler.cpp \
-    internal/umlexecutablenode.cpp \
     qumlexecutablenode.cpp \
-    internal/umlexecutionenvironment.cpp \
+    qobjects/qumlexecutionenvironmentobject.cpp \
     qumlexecutionenvironment.cpp \
-    internal/umlexecutionoccurrencespecification.cpp \
+    qobjects/qumlexecutionoccurrencespecificationobject.cpp \
     qumlexecutionoccurrencespecification.cpp \
-    internal/umlexecutionspecification.cpp \
     qumlexecutionspecification.cpp \
-    internal/umlexpansionnode.cpp \
+    qobjects/qumlexpansionnodeobject.cpp \
     qumlexpansionnode.cpp \
-    internal/umlexpansionregion.cpp \
+    qobjects/qumlexpansionregionobject.cpp \
     qumlexpansionregion.cpp \
-    internal/umlexpression.cpp \
+    qobjects/qumlexpressionobject.cpp \
     qumlexpression.cpp \
-    internal/umlextend.cpp \
+    qobjects/qumlextendobject.cpp \
     qumlextend.cpp \
-    internal/umlextension.cpp \
+    qobjects/qumlextensionobject.cpp \
     qumlextension.cpp \
-    internal/umlextensionend.cpp \
+    qobjects/qumlextensionendobject.cpp \
     qumlextensionend.cpp \
-    internal/umlextensionpoint.cpp \
+    qobjects/qumlextensionpointobject.cpp \
     qumlextensionpoint.cpp \
-    internal/umlfeature.cpp \
     qumlfeature.cpp \
-    internal/umlfinalnode.cpp \
     qumlfinalnode.cpp \
-    internal/umlfinalstate.cpp \
+    qobjects/qumlfinalstateobject.cpp \
     qumlfinalstate.cpp \
-    internal/umlflowfinalnode.cpp \
+    qobjects/qumlflowfinalnodeobject.cpp \
     qumlflowfinalnode.cpp \
-    internal/umlforknode.cpp \
+    qobjects/qumlforknodeobject.cpp \
     qumlforknode.cpp \
-    internal/umlfunctionbehavior.cpp \
+    qobjects/qumlfunctionbehaviorobject.cpp \
     qumlfunctionbehavior.cpp \
-    internal/umlgate.cpp \
+    qobjects/qumlgateobject.cpp \
     qumlgate.cpp \
-    internal/umlgeneralordering.cpp \
+    qobjects/qumlgeneralorderingobject.cpp \
     qumlgeneralordering.cpp \
-    internal/umlgeneralization.cpp \
+    qobjects/qumlgeneralizationobject.cpp \
     qumlgeneralization.cpp \
-    internal/umlgeneralizationset.cpp \
+    qobjects/qumlgeneralizationsetobject.cpp \
     qumlgeneralizationset.cpp \
-    internal/umlimage.cpp \
+    qobjects/qumlimageobject.cpp \
     qumlimage.cpp \
-    internal/umlinclude.cpp \
+    qobjects/qumlincludeobject.cpp \
     qumlinclude.cpp \
-    internal/umlinformationflow.cpp \
+    qobjects/qumlinformationflowobject.cpp \
     qumlinformationflow.cpp \
-    internal/umlinformationitem.cpp \
+    qobjects/qumlinformationitemobject.cpp \
     qumlinformationitem.cpp \
-    internal/umlinitialnode.cpp \
+    qobjects/qumlinitialnodeobject.cpp \
     qumlinitialnode.cpp \
-    internal/umlinputpin.cpp \
+    qobjects/qumlinputpinobject.cpp \
     qumlinputpin.cpp \
-    internal/umlinstancespecification.cpp \
+    qobjects/qumlinstancespecificationobject.cpp \
     qumlinstancespecification.cpp \
-    internal/umlinstancevalue.cpp \
+    qobjects/qumlinstancevalueobject.cpp \
     qumlinstancevalue.cpp \
-    internal/umlinteraction.cpp \
+    qobjects/qumlinteractionobject.cpp \
     qumlinteraction.cpp \
-    internal/umlinteractionconstraint.cpp \
+    qobjects/qumlinteractionconstraintobject.cpp \
     qumlinteractionconstraint.cpp \
-    internal/umlinteractionfragment.cpp \
     qumlinteractionfragment.cpp \
-    internal/umlinteractionoperand.cpp \
+    qobjects/qumlinteractionoperandobject.cpp \
     qumlinteractionoperand.cpp \
-    internal/umlinteractionuse.cpp \
+    qobjects/qumlinteractionuseobject.cpp \
     qumlinteractionuse.cpp \
-    internal/umlinterface.cpp \
+    qobjects/qumlinterfaceobject.cpp \
     qumlinterface.cpp \
-    internal/umlinterfacerealization.cpp \
+    qobjects/qumlinterfacerealizationobject.cpp \
     qumlinterfacerealization.cpp \
-    internal/umlinterruptibleactivityregion.cpp \
+    qobjects/qumlinterruptibleactivityregionobject.cpp \
     qumlinterruptibleactivityregion.cpp \
-    internal/umlinterval.cpp \
+    qobjects/qumlintervalobject.cpp \
     qumlinterval.cpp \
-    internal/umlintervalconstraint.cpp \
+    qobjects/qumlintervalconstraintobject.cpp \
     qumlintervalconstraint.cpp \
-    internal/umlinvocationaction.cpp \
     qumlinvocationaction.cpp \
-    internal/umljoinnode.cpp \
+    qobjects/qumljoinnodeobject.cpp \
     qumljoinnode.cpp \
-    internal/umllifeline.cpp \
+    qobjects/qumllifelineobject.cpp \
     qumllifeline.cpp \
-    internal/umllinkaction.cpp \
     qumllinkaction.cpp \
-    internal/umllinkendcreationdata.cpp \
+    qobjects/qumllinkendcreationdataobject.cpp \
     qumllinkendcreationdata.cpp \
-    internal/umllinkenddata.cpp \
+    qobjects/qumllinkenddataobject.cpp \
     qumllinkenddata.cpp \
-    internal/umllinkenddestructiondata.cpp \
+    qobjects/qumllinkenddestructiondataobject.cpp \
     qumllinkenddestructiondata.cpp \
-    internal/umlliteralboolean.cpp \
+    qobjects/qumlliteralbooleanobject.cpp \
     qumlliteralboolean.cpp \
-    internal/umlliteralinteger.cpp \
+    qobjects/qumlliteralintegerobject.cpp \
     qumlliteralinteger.cpp \
-    internal/umlliteralnull.cpp \
+    qobjects/qumlliteralnullobject.cpp \
     qumlliteralnull.cpp \
-    internal/umlliteralreal.cpp \
+    qobjects/qumlliteralrealobject.cpp \
     qumlliteralreal.cpp \
-    internal/umlliteralspecification.cpp \
     qumlliteralspecification.cpp \
-    internal/umlliteralstring.cpp \
+    qobjects/qumlliteralstringobject.cpp \
     qumlliteralstring.cpp \
-    internal/umlliteralunlimitednatural.cpp \
+    qobjects/qumlliteralunlimitednaturalobject.cpp \
     qumlliteralunlimitednatural.cpp \
-    internal/umlloopnode.cpp \
+    qobjects/qumlloopnodeobject.cpp \
     qumlloopnode.cpp \
-    internal/umlmanifestation.cpp \
+    qobjects/qumlmanifestationobject.cpp \
     qumlmanifestation.cpp \
-    internal/umlmergenode.cpp \
+    qobjects/qumlmergenodeobject.cpp \
     qumlmergenode.cpp \
-    internal/umlmessage.cpp \
+    qobjects/qumlmessageobject.cpp \
     qumlmessage.cpp \
-    internal/umlmessageend.cpp \
     qumlmessageend.cpp \
-    internal/umlmessageevent.cpp \
     qumlmessageevent.cpp \
-    internal/umlmessageoccurrencespecification.cpp \
+    qobjects/qumlmessageoccurrencespecificationobject.cpp \
     qumlmessageoccurrencespecification.cpp \
-    internal/umlmodel.cpp \
+    qobjects/qumlmodelobject.cpp \
     qumlmodel.cpp \
-    internal/umlmultiplicityelement.cpp \
     qumlmultiplicityelement.cpp \
-    internal/umlnamedelement.cpp \
     qumlnamedelement.cpp \
-    internal/umlnamespace.cpp \
     qumlnamespace.cpp \
-    internal/umlnode.cpp \
+    qobjects/qumlnodeobject.cpp \
     qumlnode.cpp \
-    internal/umlobjectflow.cpp \
+    qobjects/qumlobjectflowobject.cpp \
     qumlobjectflow.cpp \
-    internal/umlobjectnode.cpp \
     qumlobjectnode.cpp \
-    internal/umlobservation.cpp \
     qumlobservation.cpp \
-    internal/umloccurrencespecification.cpp \
+    qobjects/qumloccurrencespecificationobject.cpp \
     qumloccurrencespecification.cpp \
-    internal/umlopaqueaction.cpp \
+    qobjects/qumlopaqueactionobject.cpp \
     qumlopaqueaction.cpp \
-    internal/umlopaquebehavior.cpp \
+    qobjects/qumlopaquebehaviorobject.cpp \
     qumlopaquebehavior.cpp \
-    internal/umlopaqueexpression.cpp \
+    qobjects/qumlopaqueexpressionobject.cpp \
     qumlopaqueexpression.cpp \
-    internal/umloperation.cpp \
+    qobjects/qumloperationobject.cpp \
     qumloperation.cpp \
-    internal/umloperationtemplateparameter.cpp \
+    qobjects/qumloperationtemplateparameterobject.cpp \
     qumloperationtemplateparameter.cpp \
-    internal/umloutputpin.cpp \
+    qobjects/qumloutputpinobject.cpp \
     qumloutputpin.cpp \
-    internal/umlpackage.cpp \
+    qobjects/qumlpackageobject.cpp \
     qumlpackage.cpp \
-    internal/umlpackageimport.cpp \
+    qobjects/qumlpackageimportobject.cpp \
     qumlpackageimport.cpp \
-    internal/umlpackagemerge.cpp \
+    qobjects/qumlpackagemergeobject.cpp \
     qumlpackagemerge.cpp \
-    internal/umlpackageableelement.cpp \
     qumlpackageableelement.cpp \
-    internal/umlparameter.cpp \
+    qobjects/qumlparameterobject.cpp \
     qumlparameter.cpp \
-    internal/umlparameterset.cpp \
+    qobjects/qumlparametersetobject.cpp \
     qumlparameterset.cpp \
-    internal/umlparameterableelement.cpp \
     qumlparameterableelement.cpp \
-    internal/umlpartdecomposition.cpp \
+    qobjects/qumlpartdecompositionobject.cpp \
     qumlpartdecomposition.cpp \
-    internal/umlpin.cpp \
     qumlpin.cpp \
-    internal/umlport.cpp \
+    qobjects/qumlportobject.cpp \
     qumlport.cpp \
-    internal/umlprimitivetype.cpp \
+    qobjects/qumlprimitivetypeobject.cpp \
     qumlprimitivetype.cpp \
-    internal/umlprofile.cpp \
+    qobjects/qumlprofileobject.cpp \
     qumlprofile.cpp \
-    internal/umlprofileapplication.cpp \
+    qobjects/qumlprofileapplicationobject.cpp \
     qumlprofileapplication.cpp \
-    internal/umlproperty.cpp \
+    qobjects/qumlpropertyobject.cpp \
     qumlproperty.cpp \
-    internal/umlprotocolconformance.cpp \
+    qobjects/qumlprotocolconformanceobject.cpp \
     qumlprotocolconformance.cpp \
-    internal/umlprotocolstatemachine.cpp \
+    qobjects/qumlprotocolstatemachineobject.cpp \
     qumlprotocolstatemachine.cpp \
-    internal/umlprotocoltransition.cpp \
+    qobjects/qumlprotocoltransitionobject.cpp \
     qumlprotocoltransition.cpp \
-    internal/umlpseudostate.cpp \
+    qobjects/qumlpseudostateobject.cpp \
     qumlpseudostate.cpp \
-    internal/umlqualifiervalue.cpp \
+    qobjects/qumlqualifiervalueobject.cpp \
     qumlqualifiervalue.cpp \
-    internal/umlraiseexceptionaction.cpp \
+    qobjects/qumlraiseexceptionactionobject.cpp \
     qumlraiseexceptionaction.cpp \
-    internal/umlreadextentaction.cpp \
+    qobjects/qumlreadextentactionobject.cpp \
     qumlreadextentaction.cpp \
-    internal/umlreadisclassifiedobjectaction.cpp \
+    qobjects/qumlreadisclassifiedobjectactionobject.cpp \
     qumlreadisclassifiedobjectaction.cpp \
-    internal/umlreadlinkaction.cpp \
+    qobjects/qumlreadlinkactionobject.cpp \
     qumlreadlinkaction.cpp \
-    internal/umlreadlinkobjectendaction.cpp \
+    qobjects/qumlreadlinkobjectendactionobject.cpp \
     qumlreadlinkobjectendaction.cpp \
-    internal/umlreadlinkobjectendqualifieraction.cpp \
+    qobjects/qumlreadlinkobjectendqualifieractionobject.cpp \
     qumlreadlinkobjectendqualifieraction.cpp \
-    internal/umlreadselfaction.cpp \
+    qobjects/qumlreadselfactionobject.cpp \
     qumlreadselfaction.cpp \
-    internal/umlreadstructuralfeatureaction.cpp \
+    qobjects/qumlreadstructuralfeatureactionobject.cpp \
     qumlreadstructuralfeatureaction.cpp \
-    internal/umlreadvariableaction.cpp \
+    qobjects/qumlreadvariableactionobject.cpp \
     qumlreadvariableaction.cpp \
-    internal/umlrealization.cpp \
+    qobjects/qumlrealizationobject.cpp \
     qumlrealization.cpp \
-    internal/umlreception.cpp \
+    qobjects/qumlreceptionobject.cpp \
     qumlreception.cpp \
-    internal/umlreclassifyobjectaction.cpp \
+    qobjects/qumlreclassifyobjectactionobject.cpp \
     qumlreclassifyobjectaction.cpp \
-    internal/umlredefinableelement.cpp \
     qumlredefinableelement.cpp \
-    internal/umlredefinabletemplatesignature.cpp \
+    qobjects/qumlredefinabletemplatesignatureobject.cpp \
     qumlredefinabletemplatesignature.cpp \
-    internal/umlreduceaction.cpp \
+    qobjects/qumlreduceactionobject.cpp \
     qumlreduceaction.cpp \
-    internal/umlregion.cpp \
+    qobjects/qumlregionobject.cpp \
     qumlregion.cpp \
-    internal/umlrelationship.cpp \
     qumlrelationship.cpp \
-    internal/umlremovestructuralfeaturevalueaction.cpp \
+    qobjects/qumlremovestructuralfeaturevalueactionobject.cpp \
     qumlremovestructuralfeaturevalueaction.cpp \
-    internal/umlremovevariablevalueaction.cpp \
+    qobjects/qumlremovevariablevalueactionobject.cpp \
     qumlremovevariablevalueaction.cpp \
-    internal/umlreplyaction.cpp \
+    qobjects/qumlreplyactionobject.cpp \
     qumlreplyaction.cpp \
-    internal/umlsendobjectaction.cpp \
+    qobjects/qumlsendobjectactionobject.cpp \
     qumlsendobjectaction.cpp \
-    internal/umlsendsignalaction.cpp \
+    qobjects/qumlsendsignalactionobject.cpp \
     qumlsendsignalaction.cpp \
-    internal/umlsequencenode.cpp \
+    qobjects/qumlsequencenodeobject.cpp \
     qumlsequencenode.cpp \
-    internal/umlsignal.cpp \
+    qobjects/qumlsignalobject.cpp \
     qumlsignal.cpp \
-    internal/umlsignalevent.cpp \
+    qobjects/qumlsignaleventobject.cpp \
     qumlsignalevent.cpp \
-    internal/umlslot.cpp \
+    qobjects/qumlslotobject.cpp \
     qumlslot.cpp \
-    internal/umlstartclassifierbehavioraction.cpp \
+    qobjects/qumlstartclassifierbehavioractionobject.cpp \
     qumlstartclassifierbehavioraction.cpp \
-    internal/umlstartobjectbehavioraction.cpp \
+    qobjects/qumlstartobjectbehavioractionobject.cpp \
     qumlstartobjectbehavioraction.cpp \
-    internal/umlstate.cpp \
+    qobjects/qumlstateobject.cpp \
     qumlstate.cpp \
-    internal/umlstateinvariant.cpp \
+    qobjects/qumlstateinvariantobject.cpp \
     qumlstateinvariant.cpp \
-    internal/umlstatemachine.cpp \
+    qobjects/qumlstatemachineobject.cpp \
     qumlstatemachine.cpp \
-    internal/umlstereotype.cpp \
+    qobjects/qumlstereotypeobject.cpp \
     qumlstereotype.cpp \
-    internal/umlstringexpression.cpp \
+    qobjects/qumlstringexpressionobject.cpp \
     qumlstringexpression.cpp \
-    internal/umlstructuralfeature.cpp \
     qumlstructuralfeature.cpp \
-    internal/umlstructuralfeatureaction.cpp \
     qumlstructuralfeatureaction.cpp \
-    internal/umlstructuredactivitynode.cpp \
+    qobjects/qumlstructuredactivitynodeobject.cpp \
     qumlstructuredactivitynode.cpp \
-    internal/umlstructuredclassifier.cpp \
     qumlstructuredclassifier.cpp \
-    internal/umlsubstitution.cpp \
+    qobjects/qumlsubstitutionobject.cpp \
     qumlsubstitution.cpp \
-    internal/umltemplatebinding.cpp \
+    qobjects/qumltemplatebindingobject.cpp \
     qumltemplatebinding.cpp \
-    internal/umltemplateparameter.cpp \
+    qobjects/qumltemplateparameterobject.cpp \
     qumltemplateparameter.cpp \
-    internal/umltemplateparametersubstitution.cpp \
+    qobjects/qumltemplateparametersubstitutionobject.cpp \
     qumltemplateparametersubstitution.cpp \
-    internal/umltemplatesignature.cpp \
+    qobjects/qumltemplatesignatureobject.cpp \
     qumltemplatesignature.cpp \
-    internal/umltemplateableelement.cpp \
     qumltemplateableelement.cpp \
-    internal/umltestidentityaction.cpp \
+    qobjects/qumltestidentityactionobject.cpp \
     qumltestidentityaction.cpp \
-    internal/umltimeconstraint.cpp \
+    qobjects/qumltimeconstraintobject.cpp \
     qumltimeconstraint.cpp \
-    internal/umltimeevent.cpp \
+    qobjects/qumltimeeventobject.cpp \
     qumltimeevent.cpp \
-    internal/umltimeexpression.cpp \
+    qobjects/qumltimeexpressionobject.cpp \
     qumltimeexpression.cpp \
-    internal/umltimeinterval.cpp \
+    qobjects/qumltimeintervalobject.cpp \
     qumltimeinterval.cpp \
-    internal/umltimeobservation.cpp \
+    qobjects/qumltimeobservationobject.cpp \
     qumltimeobservation.cpp \
-    internal/umltransition.cpp \
+    qobjects/qumltransitionobject.cpp \
     qumltransition.cpp \
-    internal/umltrigger.cpp \
+    qobjects/qumltriggerobject.cpp \
     qumltrigger.cpp \
-    internal/umltype.cpp \
     qumltype.cpp \
-    internal/umltypedelement.cpp \
     qumltypedelement.cpp \
-    internal/umlunmarshallaction.cpp \
+    qobjects/qumlunmarshallactionobject.cpp \
     qumlunmarshallaction.cpp \
-    internal/umlusage.cpp \
+    qobjects/qumlusageobject.cpp \
     qumlusage.cpp \
-    internal/umlusecase.cpp \
+    qobjects/qumlusecaseobject.cpp \
     qumlusecase.cpp \
-    internal/umlvaluepin.cpp \
+    qobjects/qumlvaluepinobject.cpp \
     qumlvaluepin.cpp \
-    internal/umlvaluespecification.cpp \
     qumlvaluespecification.cpp \
-    internal/umlvaluespecificationaction.cpp \
+    qobjects/qumlvaluespecificationactionobject.cpp \
     qumlvaluespecificationaction.cpp \
-    internal/umlvariable.cpp \
+    qobjects/qumlvariableobject.cpp \
     qumlvariable.cpp \
-    internal/umlvariableaction.cpp \
     qumlvariableaction.cpp \
-    internal/umlvertex.cpp \
     qumlvertex.cpp \
-    internal/umlwritelinkaction.cpp \
     qumlwritelinkaction.cpp \
-    internal/umlwritestructuralfeatureaction.cpp \
     qumlwritestructuralfeatureaction.cpp \
-    internal/umlwritevariableaction.cpp \
     qumlwritevariableaction.cpp

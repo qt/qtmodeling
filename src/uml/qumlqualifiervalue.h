@@ -43,8 +43,8 @@
 
 #include <QtUml/QtUmlGlobal>
 
-#include <QtCore/QObject>
-#include "private/umlqualifiervalue_p.h"
+#include <QtUml/QUmlElement>
+
 
 QT_BEGIN_HEADER
 
@@ -52,56 +52,29 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtUml)
 
-class QUmlComment;
-class QUmlElement;
 class QUmlInputPin;
 class QUmlProperty;
 
-class Q_UML_EXPORT QUmlQualifierValue : public QObject, public UmlQualifierValue
+class Q_UML_EXPORT QUmlQualifierValue : public QUmlElement
 {
-    Q_OBJECT
-
-    // Properties [Element]
-    Q_PROPERTY(QSet<QUmlComment *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QUmlElement *> ownedElement READ ownedElement)
-    Q_PROPERTY(QUmlElement * owner READ owner)
-
-    // Properties [QualifierValue]
-    Q_PROPERTY(QUmlProperty * qualifier READ qualifier)
-    Q_PROPERTY(QUmlInputPin * value READ value)
-
 public:
-    Q_INVOKABLE explicit QUmlQualifierValue(QObject *parent = 0);
+    explicit QUmlQualifierValue(bool createQObject = true);
+    virtual ~QUmlQualifierValue();
 
-    // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QUmlComment *> ownedComment() const;
-    Q_INVOKABLE const QSet<QUmlElement *> ownedElement() const;
-    Q_INVOKABLE QUmlElement *owner() const;
-
-    // Owned attributes [QualifierValue]
-    Q_INVOKABLE QUmlProperty *qualifier() const;
-    Q_INVOKABLE QUmlInputPin *value() const;
-
-    // Operations [Element]
-    Q_INVOKABLE QSet<QUmlElement *> allOwnedElements() const;
-    Q_INVOKABLE bool mustBeOwned() const;
-
-public Q_SLOTS:
-
-    // Slots for owned attributes [Element]
-    void addOwnedComment(UmlComment *ownedComment);
-    void removeOwnedComment(UmlComment *ownedComment);
-
-    // Slots for owned attributes [QualifierValue]
+    // Owned attributes
+    QUmlProperty *qualifier() const;
     void setQualifier(QUmlProperty *qualifier);
+    QUmlInputPin *value() const;
     void setValue(QUmlInputPin *value);
+
+protected:
+    QUmlProperty *_qualifier;
+    QUmlInputPin *_value;
 };
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QUmlQualifierValue *)
-Q_DECLARE_METATYPE(QList<QUmlQualifierValue *> *)
-Q_DECLARE_METATYPE(QSet<QUmlQualifierValue *> *)
+Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QUmlQualifierValue) *)
 
 QT_END_HEADER
 
