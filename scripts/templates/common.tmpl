@@ -395,3 +395,28 @@ void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(
 [%- END -%]
 [%- END -%]
 [%- END -%]
+[%- MACRO GENERATE_CLONE(class, visitedClasses, redefinedProperties) BLOCK -%]
+[%- FOREACH parent IN class.findnodes("generalization") -%]
+    [%- SET parentName = parent.findvalue("@general") -%]
+    [%- IF visitedClasses.grep("^${parentName}$").size == 0 -%]
+    [%- visitedClasses.push("${parentName}") -%]
+    [%- GENERATE_CLONE(xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${parentName}\"]"), visitedClasses, redefinedProperties) -%]
+    [%- END -%]
+[%- END -%]
+[%- FOREACH attribute = class.findnodes("ownedAttribute[@isDerived=\"false\" or not(@isDerived)]") -%]
+    [%- SET qtType = QT_TYPE(namespace, attribute) -%]
+    [%- SET attributeName = attribute.findvalue("@name") -%]
+    [%- SET className = class.findvalue("@name") -%]
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+    [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
+    [%- IF qtType.match("QList|QSet") && qtType.match('\*') %]
+    foreach (${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}element, ${attributeName}())
+        c->add${attributeName.ucfirst}(dynamic_cast<${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}>(element->clone()));
+    [%- ELSIF qtType.match('\*') %]
+    if (${attributeName}())
+        c->set${attributeName.ucfirst}(dynamic_cast<${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}>(${attributeName}()->clone()));
+    [%- ELSE %]
+    c->set${attributeName.ucfirst}(${attributeName}());
+    [%- END -%]
+[%- END %]
+[%- END -%]

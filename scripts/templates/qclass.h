@@ -97,6 +97,8 @@ public:
     explicit Q${namespace}${className}(bool createQObject = true);
 [%- END %]
     virtual ~Q${namespace}${className}();
+
+    [% IF class.findvalue("@isAbstract") == "true" %]Q_DECL_HIDDEN [% END %]QModelingObject *clone() const;
 [% FOREACH attribute = class.findnodes("ownedAttribute") -%]
     [%- IF loop.first %]
     // Owned attributes

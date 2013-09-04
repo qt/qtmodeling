@@ -135,6 +135,17 @@ Q${namespace}${className}::~Q${namespace}${className}()
     }
 [%- END %]
 }
+
+QModelingObject *Q${namespace}${className}::clone() const
+{
+    Q${namespace}${className} *c = new Q${namespace}${className};
+[%- visitedClasses = [] -%]
+[%- redefinedProperties = [] -%]
+[%- POPULATE_REDEFINED_PROPERTIES(class, visitedClasses, redefinedProperties) -%]
+[%- visitedClasses = [] -%]
+[%- GENERATE_CLONE(class, visitedClasses, redefinedProperties) %]
+    return c;
+}
 [%- FOREACH attribute = class.findnodes("ownedAttribute") %]
 [%- IF loop.first %]
 

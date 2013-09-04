@@ -49,12 +49,22 @@ int main ()
     c2->asQObject()->setObjectName("c2");
     QUmlComment *c3 = new QUmlComment;
     c3->asQObject()->setObjectName("c3");
+    c3->setBody("c3 body");
 
-    c2->setBody("Teste");
+    c1->setBody("c1 body");
+    c2->setBody("c2 body");
     c1->addOwnedComment(c2);
     c1->addOwnedComment(c3);
     qDebug() << "c2's parent:" << c2->asQObject()->parent()->objectName();
     qDebug() << "c3's parent:" << c3->asQObject()->parent()->objectName();
+
+    QUmlComment *c4 = dynamic_cast<QUmlComment *>(c1->clone());
+    qDebug() << "c1 body:" << c4->body();
+    foreach (QUmlComment *comment, c1->ownedComment())
+        qDebug() << "c1 owned comment body:" << comment->body();
+    qDebug() << "c4 body:" << c4->body();
+    foreach (QUmlComment *comment, c4->ownedComment())
+        qDebug() << "c4 owned comment body:" << comment->body();
 
     //c1->removeOwnedComment(c3);
     qDebug() << "c3's parent:" << c3->asQObject()->parent();
@@ -70,5 +80,6 @@ int main ()
         qDebug() << c->objectName();
 
     delete c1;
+    delete c4;
     //delete c3;
 }

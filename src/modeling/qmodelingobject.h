@@ -64,6 +64,9 @@ public:
     inline QObject *asQObject() { return _qObject; }
 
     bool deletingFromQObject;
+
+    virtual QModelingObject *clone() const = 0;
+
 protected:
     QModelingObject() : deletingFromQObject(false), _qObject(0) {}
     QPointer<QObject> _qObject;
