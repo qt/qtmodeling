@@ -60,6 +60,8 @@ class Q_UML_EXPORT QUmlInvocationAction : public QUmlAction
 public:
     virtual ~QUmlInvocationAction();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlInputPin *> argument() const;
     void addArgument(QUmlInputPin *argument);

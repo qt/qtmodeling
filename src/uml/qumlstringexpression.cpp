@@ -42,6 +42,18 @@
 
 #include "private/qumlstringexpressionobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlStringExpression
 
@@ -65,13 +77,43 @@ QUmlStringExpression::~QUmlStringExpression()
     }
 }
 
+QModelingObject *QUmlStringExpression::clone() const
+{
+    QUmlStringExpression *c = new QUmlStringExpression;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlValueSpecification *element, operand())
+        c->addOperand(dynamic_cast<QUmlValueSpecification *>(element->clone()));
+    c->setSymbol(symbol());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    if (owningExpression())
+        c->setOwningExpression(dynamic_cast<QUmlStringExpression *>(owningExpression()->clone()));
+    foreach (QUmlStringExpression *element, subExpression())
+        c->addSubExpression(dynamic_cast<QUmlStringExpression *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The string expression of which this expression is a substring.
  */
-QUmlStringExpression *
-QUmlStringExpression::owningExpression() const
+QUmlStringExpression *QUmlStringExpression::owningExpression() const
 {
     // This is a read-write association end
 
@@ -97,8 +139,7 @@ void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpre
 /*!
     The StringExpressions that constitute this StringExpression.
  */
-const QSet<QUmlStringExpression *> 
-QUmlStringExpression::subExpression() const
+const QSet<QUmlStringExpression *> QUmlStringExpression::subExpression() const
 {
     // This is a read-write association end
 

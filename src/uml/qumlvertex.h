@@ -61,6 +61,8 @@ class Q_UML_EXPORT QUmlVertex : public virtual QUmlNamedElement
 public:
     virtual ~QUmlVertex();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlRegion *container() const;
     void setContainer(QUmlRegion *container);

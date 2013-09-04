@@ -58,6 +58,8 @@ public:
     explicit QUmlPartDecomposition(bool createQObject = true);
     virtual ~QUmlPartDecomposition();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

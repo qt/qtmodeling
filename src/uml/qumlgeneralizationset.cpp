@@ -43,8 +43,16 @@
 #include "private/qumlgeneralizationsetobject_p.h"
 
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlGeneralization>
-
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlGeneralizationSet
 
@@ -69,13 +77,36 @@ QUmlGeneralizationSet::~QUmlGeneralizationSet()
     }
 }
 
+QModelingObject *QUmlGeneralizationSet::clone() const
+{
+    QUmlGeneralizationSet *c = new QUmlGeneralizationSet;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlGeneralization *element, generalization())
+        c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
+    c->setCovering(isCovering());
+    c->setDisjoint(isDisjoint());
+    if (powertype())
+        c->setPowertype(dynamic_cast<QUmlClassifier *>(powertype()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Designates the instances of Generalization which are members of a given GeneralizationSet.
  */
-const QSet<QUmlGeneralization *> 
-QUmlGeneralizationSet::generalization() const
+const QSet<QUmlGeneralization *> QUmlGeneralizationSet::generalization() const
 {
     // This is a read-write association end
 
@@ -115,8 +146,7 @@ void QUmlGeneralizationSet::removeGeneralization(QUmlGeneralization *generalizat
 /*!
     Indicates (via the associated Generalizations) whether or not the set of specific Classifiers are covering for a particular general classifier. When isCovering is true, every instance of a particular general Classifier is also an instance of at least one of its specific Classifiers for the GeneralizationSet. When isCovering is false, there are one or more instances of the particular general Classifier that are not instances of at least one of its specific Classifiers defined for the GeneralizationSet.
  */
-bool 
-QUmlGeneralizationSet::isCovering() const
+bool QUmlGeneralizationSet::isCovering() const
 {
     // This is a read-write property
 
@@ -135,8 +165,7 @@ void QUmlGeneralizationSet::setCovering(bool isCovering)
 /*!
     Indicates whether or not the set of specific Classifiers in a Generalization relationship have instance in common. If isDisjoint is true, the specific Classifiers for a particular GeneralizationSet have no members in common; that is, their intersection is empty. If isDisjoint is false, the specific Classifiers in a particular GeneralizationSet have one or more members in common; that is, their intersection is not empty. For example, Person could have two Generalization relationships, each with the different specific Classifier: Manager or Staff. This would be disjoint because every instance of Person must either be a Manager or Staff. In contrast, Person could have two Generalization relationships involving two specific (and non-covering) Classifiers: Sales Person and Manager. This GeneralizationSet would not be disjoint because there are instances of Person which can be a Sales Person and a Manager.
  */
-bool 
-QUmlGeneralizationSet::isDisjoint() const
+bool QUmlGeneralizationSet::isDisjoint() const
 {
     // This is a read-write property
 
@@ -155,8 +184,7 @@ void QUmlGeneralizationSet::setDisjoint(bool isDisjoint)
 /*!
     Designates the Classifier that is defined as the power type for the associated GeneralizationSet.
  */
-QUmlClassifier *
-QUmlGeneralizationSet::powertype() const
+QUmlClassifier *QUmlGeneralizationSet::powertype() const
 {
     // This is a read-write association end
 

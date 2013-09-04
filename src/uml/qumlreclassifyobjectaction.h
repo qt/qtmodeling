@@ -61,6 +61,8 @@ public:
     explicit QUmlReclassifyObjectAction(bool createQObject = true);
     virtual ~QUmlReclassifyObjectAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);

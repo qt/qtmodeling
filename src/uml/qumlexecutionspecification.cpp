@@ -40,8 +40,18 @@
 ****************************************************************************/
 #include "qumlexecutionspecification.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
+#include <QtUml/QUmlInteractionOperand>
+#include <QtUml/QUmlLifeline>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOccurrenceSpecification>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlExecutionSpecification
 
@@ -59,13 +69,38 @@ QUmlExecutionSpecification::~QUmlExecutionSpecification()
 {
 }
 
+QModelingObject *QUmlExecutionSpecification::clone() const
+{
+    QUmlExecutionSpecification *c = new QUmlExecutionSpecification;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlLifeline *element, covered())
+        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    if (finish())
+        c->setFinish(dynamic_cast<QUmlOccurrenceSpecification *>(finish()->clone()));
+    if (start())
+        c->setStart(dynamic_cast<QUmlOccurrenceSpecification *>(start()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the OccurrenceSpecification that designates the finish of the Action or Behavior.
  */
-QUmlOccurrenceSpecification *
-QUmlExecutionSpecification::finish() const
+QUmlOccurrenceSpecification *QUmlExecutionSpecification::finish() const
 {
     // This is a read-write association end
 
@@ -86,8 +121,7 @@ void QUmlExecutionSpecification::setFinish(QUmlOccurrenceSpecification *finish)
 /*!
     References the OccurrenceSpecification that designates the start of the Action or Behavior
  */
-QUmlOccurrenceSpecification *
-QUmlExecutionSpecification::start() const
+QUmlOccurrenceSpecification *QUmlExecutionSpecification::start() const
 {
     // This is a read-write association end
 

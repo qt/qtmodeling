@@ -61,6 +61,8 @@ class Q_UML_EXPORT QUmlLinkAction : public QUmlAction
 public:
     virtual ~QUmlLinkAction();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlLinkEndData *> endData() const;
     void addEndData(QUmlLinkEndData *endData);

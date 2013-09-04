@@ -58,6 +58,8 @@ public:
     explicit QUmlLiteralInteger(bool createQObject = true);
     virtual ~QUmlLiteralInteger();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     int value() const;
     void setValue(int value);

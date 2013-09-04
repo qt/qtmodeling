@@ -60,6 +60,8 @@ public:
     explicit QUmlDestroyObjectAction(bool createQObject = true);
     virtual ~QUmlDestroyObjectAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isDestroyLinks() const;
     void setDestroyLinks(bool isDestroyLinks);

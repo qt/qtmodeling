@@ -63,6 +63,8 @@ public:
     explicit QUmlArtifact(bool createQObject = true);
     virtual ~QUmlArtifact();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QString fileName() const;
     void setFileName(QString fileName);

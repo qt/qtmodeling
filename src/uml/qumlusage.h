@@ -58,6 +58,8 @@ public:
     explicit QUmlUsage(bool createQObject = true);
     virtual ~QUmlUsage();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

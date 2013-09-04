@@ -61,6 +61,8 @@ public:
     explicit QUmlProfileApplication(bool createQObject = true);
     virtual ~QUmlProfileApplication();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlProfile *appliedProfile() const;
     void setAppliedProfile(QUmlProfile *appliedProfile);

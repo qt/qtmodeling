@@ -442,11 +442,11 @@ QString QUmlArtifactObject::separator() const
 
 QSet<QObject *> QUmlArtifactObject::excludeCollisions(QSet<QObject *> imps) const
 {
-    QSet<QUmlPackageableElement *> inputSet;
+    QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        inputSet.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlArtifact *>(this)->excludeCollisions(inputSet))
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlArtifact *>(this)->excludeCollisions(impsConverted))
         set.insert(element->asQObject());
     return set;
 }
@@ -458,11 +458,11 @@ QSet<QString> QUmlArtifactObject::getNamesOfMember(QObject *element) const
 
 QSet<QObject *> QUmlArtifactObject::importMembers(QSet<QObject *> imps) const
 {
-    QSet<QUmlPackageableElement *> inputSet;
+    QSet<QUmlPackageableElement *> impsConverted;
     foreach (QObject *object, imps)
-        inputSet.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
+        impsConverted.insert(qmodelingobjectproperty_cast<QUmlPackageableElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlArtifact *>(this)->importMembers(inputSet))
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlArtifact *>(this)->importMembers(impsConverted))
         set.insert(element->asQObject());
     return set;
 }
@@ -537,11 +537,11 @@ bool QUmlArtifactObject::hasVisibilityOf(QObject *n) const
 
 QSet<QObject *> QUmlArtifactObject::inherit(QSet<QObject *> inhs) const
 {
-    QSet<QUmlNamedElement *> inputSet;
+    QSet<QUmlNamedElement *> inhsConverted;
     foreach (QObject *object, inhs)
-        inputSet.insert(qmodelingobjectproperty_cast<QUmlNamedElement *>(object)); 
+        inhsConverted.insert(qmodelingobjectproperty_cast<QUmlNamedElement *>(object));
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlArtifact *>(this)->inherit(inputSet))
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlArtifact *>(this)->inherit(inhsConverted))
         set.insert(element->asQObject());
     return set;
 }

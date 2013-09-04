@@ -43,8 +43,9 @@
 #include "private/qumlgeneralizationobject_p.h"
 
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlGeneralizationSet>
-
 /*!
     \class QUmlGeneralization
 
@@ -69,13 +70,27 @@ QUmlGeneralization::~QUmlGeneralization()
     }
 }
 
+QModelingObject *QUmlGeneralization::clone() const
+{
+    QUmlGeneralization *c = new QUmlGeneralization;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (general())
+        c->setGeneral(dynamic_cast<QUmlClassifier *>(general()->clone()));
+    foreach (QUmlGeneralizationSet *element, generalizationSet())
+        c->addGeneralizationSet(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
+    c->setSubstitutable(isSubstitutable());
+    if (specific())
+        c->setSpecific(dynamic_cast<QUmlClassifier *>(specific()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the general classifier in the Generalization relationship.
  */
-QUmlClassifier *
-QUmlGeneralization::general() const
+QUmlClassifier *QUmlGeneralization::general() const
 {
     // This is a read-write association end
 
@@ -104,8 +119,7 @@ void QUmlGeneralization::setGeneral(QUmlClassifier *general)
 /*!
     Designates a set in which instances of Generalization is considered members.
  */
-const QSet<QUmlGeneralizationSet *> 
-QUmlGeneralization::generalizationSet() const
+const QSet<QUmlGeneralizationSet *> QUmlGeneralization::generalizationSet() const
 {
     // This is a read-write association end
 
@@ -145,8 +159,7 @@ void QUmlGeneralization::removeGeneralizationSet(QUmlGeneralizationSet *generali
 /*!
     Indicates whether the specific classifier can be used wherever the general classifier can be used. If true, the execution traces of the specific classifier will be a superset of the execution traces of the general classifier.
  */
-bool 
-QUmlGeneralization::isSubstitutable() const
+bool QUmlGeneralization::isSubstitutable() const
 {
     // This is a read-write property
 
@@ -165,8 +178,7 @@ void QUmlGeneralization::setSubstitutable(bool isSubstitutable)
 /*!
     References the specializing classifier in the Generalization relationship.
  */
-QUmlClassifier *
-QUmlGeneralization::specific() const
+QUmlClassifier *QUmlGeneralization::specific() const
 {
     // This is a read-write association end
 

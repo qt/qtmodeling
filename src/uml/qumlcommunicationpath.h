@@ -58,6 +58,8 @@ public:
     explicit QUmlCommunicationPath(bool createQObject = true);
     virtual ~QUmlCommunicationPath();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

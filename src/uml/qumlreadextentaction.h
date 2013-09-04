@@ -61,6 +61,8 @@ public:
     explicit QUmlReadExtentAction(bool createQObject = true);
     virtual ~QUmlReadExtentAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlClassifier *classifier() const;
     void setClassifier(QUmlClassifier *classifier);

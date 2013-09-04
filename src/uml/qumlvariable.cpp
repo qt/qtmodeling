@@ -44,8 +44,21 @@
 
 #include <QtUml/QUmlAction>
 #include <QtUml/QUmlActivity>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConnectableElementTemplateParameter>
+#include <QtUml/QUmlConnectorEnd>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlMultiplicityElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
-
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlVariable
 
@@ -69,13 +82,42 @@ QUmlVariable::~QUmlVariable()
     }
 }
 
+QModelingObject *QUmlVariable::clone() const
+{
+    QUmlVariable *c = new QUmlVariable;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    c->setOrdered(isOrdered());
+    c->setUnique(isUnique());
+    if (lowerValue())
+        c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
+    if (upperValue())
+        c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlConnectableElementTemplateParameter *>(templateParameter()->clone()));
+    if (activityScope())
+        c->setActivityScope(dynamic_cast<QUmlActivity *>(activityScope()->clone()));
+    if (scope())
+        c->setScope(dynamic_cast<QUmlStructuredActivityNode *>(scope()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     An activity that owns the variable.
  */
-QUmlActivity *
-QUmlVariable::activityScope() const
+QUmlActivity *QUmlVariable::activityScope() const
 {
     // This is a read-write association end
 
@@ -101,8 +143,7 @@ void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
 /*!
     A structured activity node that owns the variable.
  */
-QUmlStructuredActivityNode *
-QUmlVariable::scope() const
+QUmlStructuredActivityNode *QUmlVariable::scope() const
 {
     // This is a read-write association end
 

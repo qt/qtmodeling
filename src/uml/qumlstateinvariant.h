@@ -61,6 +61,8 @@ public:
     explicit QUmlStateInvariant(bool createQObject = true);
     virtual ~QUmlStateInvariant();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlLifeline *covered() const;
     void setCovered(QUmlLifeline *covered);

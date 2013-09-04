@@ -42,11 +42,17 @@
 
 #include "private/qumlmessageobject_p.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnector>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlMessageEnd>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlMessage
 
@@ -74,13 +80,39 @@ QUmlMessage::~QUmlMessage()
     }
 }
 
+QModelingObject *QUmlMessage::clone() const
+{
+    QUmlMessage *c = new QUmlMessage;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlValueSpecification *element, argument())
+        c->addArgument(dynamic_cast<QUmlValueSpecification *>(element->clone()));
+    if (connector())
+        c->setConnector(dynamic_cast<QUmlConnector *>(connector()->clone()));
+    if (interaction())
+        c->setInteraction(dynamic_cast<QUmlInteraction *>(interaction()->clone()));
+    c->setMessageSort(messageSort());
+    if (receiveEvent())
+        c->setReceiveEvent(dynamic_cast<QUmlMessageEnd *>(receiveEvent()->clone()));
+    if (sendEvent())
+        c->setSendEvent(dynamic_cast<QUmlMessageEnd *>(sendEvent()->clone()));
+    if (signature())
+        c->setSignature(dynamic_cast<QUmlNamedElement *>(signature()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The arguments of the Message
  */
-const QList<QUmlValueSpecification *> 
-QUmlMessage::argument() const
+const QList<QUmlValueSpecification *> QUmlMessage::argument() const
 {
     // This is a read-write association end
 
@@ -119,8 +151,7 @@ void QUmlMessage::removeArgument(QUmlValueSpecification *argument)
 /*!
     The Connector on which this Message is sent.
  */
-QUmlConnector *
-QUmlMessage::connector() const
+QUmlConnector *QUmlMessage::connector() const
 {
     // This is a read-write association end
 
@@ -141,8 +172,7 @@ void QUmlMessage::setConnector(QUmlConnector *connector)
 /*!
     The enclosing Interaction owning the Message
  */
-QUmlInteraction *
-QUmlMessage::interaction() const
+QUmlInteraction *QUmlMessage::interaction() const
 {
     // This is a read-write association end
 
@@ -168,8 +198,7 @@ void QUmlMessage::setInteraction(QUmlInteraction *interaction)
 /*!
     The derived kind of the Message (complete, lost, found or unknown)
  */
-QtUml::MessageKind 
-QUmlMessage::messageKind() const
+QtUml::MessageKind QUmlMessage::messageKind() const
 {
     // This is a read-only derived property
 
@@ -193,8 +222,7 @@ void QUmlMessage::setMessageKind(QtUml::MessageKind messageKind)
 /*!
     The sort of communication reflected by the Message
  */
-QtUml::MessageSort 
-QUmlMessage::messageSort() const
+QtUml::MessageSort QUmlMessage::messageSort() const
 {
     // This is a read-write property
 
@@ -213,8 +241,7 @@ void QUmlMessage::setMessageSort(QtUml::MessageSort messageSort)
 /*!
     References the Receiving of the Message
  */
-QUmlMessageEnd *
-QUmlMessage::receiveEvent() const
+QUmlMessageEnd *QUmlMessage::receiveEvent() const
 {
     // This is a read-write association end
 
@@ -235,8 +262,7 @@ void QUmlMessage::setReceiveEvent(QUmlMessageEnd *receiveEvent)
 /*!
     References the Sending of the Message.
  */
-QUmlMessageEnd *
-QUmlMessage::sendEvent() const
+QUmlMessageEnd *QUmlMessage::sendEvent() const
 {
     // This is a read-write association end
 
@@ -257,8 +283,7 @@ void QUmlMessage::setSendEvent(QUmlMessageEnd *sendEvent)
 /*!
     The signature of the Message is the specification of its content. It refers either an Operation or a Signal.
  */
-QUmlNamedElement *
-QUmlMessage::signature() const
+QUmlNamedElement *QUmlMessage::signature() const
 {
     // This is a read-write association end
 

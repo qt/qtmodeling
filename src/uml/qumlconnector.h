@@ -64,6 +64,8 @@ public:
     explicit QUmlConnector(bool createQObject = true);
     virtual ~QUmlConnector();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlBehavior *> contract() const;
     void addContract(QUmlBehavior *contract);

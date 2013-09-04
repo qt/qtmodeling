@@ -60,6 +60,8 @@ public:
     explicit QUmlDeploymentSpecification(bool createQObject = true);
     virtual ~QUmlDeploymentSpecification();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlDeployment *deployment() const;
     void setDeployment(QUmlDeployment *deployment);

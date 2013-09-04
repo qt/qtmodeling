@@ -40,8 +40,15 @@
 ****************************************************************************/
 #include "qumltype.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
-
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlType
 
@@ -58,13 +65,32 @@ QUmlType::~QUmlType()
 {
 }
 
+QModelingObject *QUmlType::clone() const
+{
+    QUmlType *c = new QUmlType;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the owning package of this classifier, if any.
  */
-QUmlPackage *
-QUmlType::package() const
+QUmlPackage *QUmlType::package() const
 {
     // This is a read-write association end
 

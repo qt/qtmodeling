@@ -65,6 +65,8 @@ public:
     explicit QUmlParameter(bool createQObject = true);
     virtual ~QUmlParameter();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QString default_() const;
     void setDefault(QString default_);

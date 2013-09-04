@@ -58,6 +58,8 @@ public:
     explicit QUmlModel(bool createQObject = true);
     virtual ~QUmlModel();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QString viewpoint() const;
     void setViewpoint(QString viewpoint);

@@ -43,9 +43,10 @@
 #include "private/qumlexceptionhandlerobject_p.h"
 
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlObjectNode>
-
 /*!
     \class QUmlExceptionHandler
 
@@ -70,13 +71,28 @@ QUmlExceptionHandler::~QUmlExceptionHandler()
     }
 }
 
+QModelingObject *QUmlExceptionHandler::clone() const
+{
+    QUmlExceptionHandler *c = new QUmlExceptionHandler;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (exceptionInput())
+        c->setExceptionInput(dynamic_cast<QUmlObjectNode *>(exceptionInput()->clone()));
+    foreach (QUmlClassifier *element, exceptionType())
+        c->addExceptionType(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (handlerBody())
+        c->setHandlerBody(dynamic_cast<QUmlExecutableNode *>(handlerBody()->clone()));
+    if (protectedNode())
+        c->setProtectedNode(dynamic_cast<QUmlExecutableNode *>(protectedNode()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.
  */
-QUmlObjectNode *
-QUmlExceptionHandler::exceptionInput() const
+QUmlObjectNode *QUmlExceptionHandler::exceptionInput() const
 {
     // This is a read-write association end
 
@@ -97,8 +113,7 @@ void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 /*!
     The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
  */
-const QSet<QUmlClassifier *> 
-QUmlExceptionHandler::exceptionType() const
+const QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionType() const
 {
     // This is a read-write association end
 
@@ -128,8 +143,7 @@ void QUmlExceptionHandler::removeExceptionType(QUmlClassifier *exceptionType)
 /*!
     A node that is executed if the handler satisfies an uncaught exception.
  */
-QUmlExecutableNode *
-QUmlExceptionHandler::handlerBody() const
+QUmlExecutableNode *QUmlExceptionHandler::handlerBody() const
 {
     // This is a read-write association end
 
@@ -150,8 +164,7 @@ void QUmlExceptionHandler::setHandlerBody(QUmlExecutableNode *handlerBody)
 /*!
     The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.
  */
-QUmlExecutableNode *
-QUmlExceptionHandler::protectedNode() const
+QUmlExecutableNode *QUmlExceptionHandler::protectedNode() const
 {
     // This is a read-write association end
 

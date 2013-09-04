@@ -42,9 +42,26 @@
 
 #include "private/qumlprotocoltransitionobject_p.h"
 
+#include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOperation>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlRegion>
+#include <QtUml/QUmlStateMachine>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTransition>
+#include <QtUml/QUmlTrigger>
+#include <QtUml/QUmlVertex>
 /*!
     \class QUmlProtocolTransition
 
@@ -69,13 +86,52 @@ QUmlProtocolTransition::~QUmlProtocolTransition()
     }
 }
 
+QModelingObject *QUmlProtocolTransition::clone() const
+{
+    QUmlProtocolTransition *c = new QUmlProtocolTransition;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (container())
+        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
+    if (effect())
+        c->setEffect(dynamic_cast<QUmlBehavior *>(effect()->clone()));
+    if (guard())
+        c->setGuard(dynamic_cast<QUmlConstraint *>(guard()->clone()));
+    c->setKind(kind());
+    if (redefinedTransition())
+        c->setRedefinedTransition(dynamic_cast<QUmlTransition *>(redefinedTransition()->clone()));
+    if (source())
+        c->setSource(dynamic_cast<QUmlVertex *>(source()->clone()));
+    if (target())
+        c->setTarget(dynamic_cast<QUmlVertex *>(target()->clone()));
+    foreach (QUmlTrigger *element, trigger())
+        c->addTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
+    if (postCondition())
+        c->setPostCondition(dynamic_cast<QUmlConstraint *>(postCondition()->clone()));
+    if (preCondition())
+        c->setPreCondition(dynamic_cast<QUmlConstraint *>(preCondition()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.
  */
-QUmlConstraint *
-QUmlProtocolTransition::postCondition() const
+QUmlConstraint *QUmlProtocolTransition::postCondition() const
 {
     // This is a read-write association end
 
@@ -105,8 +161,7 @@ void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
 /*!
     Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.
  */
-QUmlConstraint *
-QUmlProtocolTransition::preCondition() const
+QUmlConstraint *QUmlProtocolTransition::preCondition() const
 {
     // This is a read-write association end
 
@@ -133,8 +188,7 @@ void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
 /*!
     This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.
  */
-const QSet<QUmlOperation *> 
-QUmlProtocolTransition::referred() const
+const QSet<QUmlOperation *> QUmlProtocolTransition::referred() const
 {
     // This is a read-only derived association end
 

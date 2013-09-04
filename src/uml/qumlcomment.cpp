@@ -42,6 +42,7 @@
 
 #include "private/qumlcommentobject_p.h"
 
+#include <QtUml/QUmlElement>
 /*!
     \class QUmlComment
 
@@ -63,13 +64,23 @@ QUmlComment::~QUmlComment()
     }
 }
 
+QModelingObject *QUmlComment::clone() const
+{
+    QUmlComment *c = new QUmlComment;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlElement *element, annotatedElement())
+        c->addAnnotatedElement(dynamic_cast<QUmlElement *>(element->clone()));
+    c->setBody(body());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the Element(s) being commented.
  */
-const QSet<QUmlElement *> 
-QUmlComment::annotatedElement() const
+const QSet<QUmlElement *> QUmlComment::annotatedElement() const
 {
     // This is a read-write association end
 
@@ -99,8 +110,7 @@ void QUmlComment::removeAnnotatedElement(QUmlElement *annotatedElement)
 /*!
     Specifies a string that is the comment.
  */
-QString 
-QUmlComment::body() const
+QString QUmlComment::body() const
 {
     // This is a read-write property
 

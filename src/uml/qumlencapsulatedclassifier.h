@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlEncapsulatedClassifier : public QUmlStructuredClassifier
 public:
     virtual ~QUmlEncapsulatedClassifier();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlPort *> ownedPort() const;
     Q_DECL_HIDDEN void addOwnedPort(QUmlPort *ownedPort);

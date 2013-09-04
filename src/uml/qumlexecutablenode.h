@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlExecutableNode : public QUmlActivityNode
 public:
     virtual ~QUmlExecutableNode();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlExceptionHandler *> handler() const;
     void addHandler(QUmlExceptionHandler *handler);

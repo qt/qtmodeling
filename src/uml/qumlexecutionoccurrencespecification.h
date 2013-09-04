@@ -60,6 +60,8 @@ public:
     explicit QUmlExecutionOccurrenceSpecification(bool createQObject = true);
     virtual ~QUmlExecutionOccurrenceSpecification();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlExecutionSpecification *execution() const;
     void setExecution(QUmlExecutionSpecification *execution);

@@ -58,6 +58,8 @@ public:
     explicit QUmlActor(bool createQObject = true);
     virtual ~QUmlActor();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

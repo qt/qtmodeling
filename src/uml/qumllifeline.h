@@ -64,6 +64,8 @@ public:
     explicit QUmlLifeline(bool createQObject = true);
     virtual ~QUmlLifeline();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlInteractionFragment *> coveredBy() const;
     void addCoveredBy(QUmlInteractionFragment *coveredBy);

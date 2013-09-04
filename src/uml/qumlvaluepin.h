@@ -60,6 +60,8 @@ public:
     explicit QUmlValuePin(bool createQObject = true);
     virtual ~QUmlValuePin();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlValueSpecification *value() const;
     void setValue(QUmlValueSpecification *value);

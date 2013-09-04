@@ -40,11 +40,26 @@
 ****************************************************************************/
 #include "qumlaction.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlInputPin>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
 /*!
     \class QUmlAction
 
@@ -61,13 +76,48 @@ QUmlAction::~QUmlAction()
 {
 }
 
+QModelingObject *QUmlAction::clone() const
+{
+    QUmlAction *c = new QUmlAction;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The classifier that owns the behavior of which this action is a part.
  */
-QUmlClassifier *
-QUmlAction::context() const
+QUmlClassifier *QUmlAction::context() const
 {
     // This is a read-only derived association end
 
@@ -91,8 +141,7 @@ void QUmlAction::setContext(QUmlClassifier *context)
 /*!
     The ordered set of input pins connected to the Action. These are among the total set of inputs.
  */
-const QList<QUmlInputPin *> 
-QUmlAction::input() const
+const QList<QUmlInputPin *> QUmlAction::input() const
 {
     // This is a read-only derived union association end
 
@@ -131,8 +180,7 @@ void QUmlAction::removeInput(QUmlInputPin *input)
 /*!
     If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.
  */
-bool 
-QUmlAction::isLocallyReentrant() const
+bool QUmlAction::isLocallyReentrant() const
 {
     // This is a read-write property
 
@@ -151,8 +199,7 @@ void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
 /*!
     Constraint that must be satisfied when executed is completed.
  */
-const QSet<QUmlConstraint *> 
-QUmlAction::localPostcondition() const
+const QSet<QUmlConstraint *> QUmlAction::localPostcondition() const
 {
     // This is a read-write association end
 
@@ -191,8 +238,7 @@ void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 /*!
     Constraint that must be satisfied when execution is started.
  */
-const QSet<QUmlConstraint *> 
-QUmlAction::localPrecondition() const
+const QSet<QUmlConstraint *> QUmlAction::localPrecondition() const
 {
     // This is a read-write association end
 
@@ -231,8 +277,7 @@ void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 /*!
     The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
  */
-const QList<QUmlOutputPin *> 
-QUmlAction::output() const
+const QList<QUmlOutputPin *> QUmlAction::output() const
 {
     // This is a read-only derived union association end
 

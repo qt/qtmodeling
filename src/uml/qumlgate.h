@@ -58,6 +58,8 @@ public:
     explicit QUmlGate(bool createQObject = true);
     virtual ~QUmlGate();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

@@ -42,8 +42,14 @@
 
 #include "private/qumldependencyobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamedElement>
-
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlDependency
 
@@ -65,13 +71,34 @@ QUmlDependency::~QUmlDependency()
     }
 }
 
+QModelingObject *QUmlDependency::clone() const
+{
+    QUmlDependency *c = new QUmlDependency;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlNamedElement *element, client())
+        c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    foreach (QUmlNamedElement *element, supplier())
+        c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.
  */
-const QSet<QUmlNamedElement *> 
-QUmlDependency::client() const
+const QSet<QUmlNamedElement *> QUmlDependency::client() const
 {
     // This is a read-write association end
 
@@ -117,8 +144,7 @@ void QUmlDependency::removeClient(QUmlNamedElement *client)
 /*!
     The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.
  */
-const QSet<QUmlNamedElement *> 
-QUmlDependency::supplier() const
+const QSet<QUmlNamedElement *> QUmlDependency::supplier() const
 {
     // This is a read-write association end
 

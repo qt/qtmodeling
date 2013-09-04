@@ -42,8 +42,16 @@
 
 #include "private/qumlsignaleventobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlSignal>
-
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlSignalEvent
 
@@ -66,13 +74,32 @@ QUmlSignalEvent::~QUmlSignalEvent()
     }
 }
 
+QModelingObject *QUmlSignalEvent::clone() const
+{
+    QUmlSignalEvent *c = new QUmlSignalEvent;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (signal())
+        c->setSignal(dynamic_cast<QUmlSignal *>(signal()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The specific signal that is associated with this event.
  */
-QUmlSignal *
-QUmlSignalEvent::signal() const
+QUmlSignal *QUmlSignalEvent::signal() const
 {
     // This is a read-write association end
 

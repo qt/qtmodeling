@@ -64,6 +64,8 @@ public:
     explicit QUmlInstanceSpecification(bool createQObject = true);
     virtual ~QUmlInstanceSpecification();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlClassifier *> classifier() const;
     void addClassifier(QUmlClassifier *classifier);

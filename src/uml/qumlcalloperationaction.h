@@ -61,6 +61,8 @@ public:
     explicit QUmlCallOperationAction(bool createQObject = true);
     virtual ~QUmlCallOperationAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOperation *operation() const;
     void setOperation(QUmlOperation *operation);

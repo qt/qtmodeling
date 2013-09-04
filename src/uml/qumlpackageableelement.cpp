@@ -40,6 +40,15 @@
 ****************************************************************************/
 #include "qumlpackageableelement.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlPackageableElement
 
@@ -56,13 +65,30 @@ QUmlPackageableElement::~QUmlPackageableElement()
 {
 }
 
+QModelingObject *QUmlPackageableElement::clone() const
+{
+    QUmlPackageableElement *c = new QUmlPackageableElement;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.
  */
-QtUml::VisibilityKind 
-QUmlPackageableElement::visibility() const
+QtUml::VisibilityKind QUmlPackageableElement::visibility() const
 {
     // This is a read-write property
 

@@ -58,6 +58,8 @@ public:
     explicit QUmlLiteralNull(bool createQObject = true);
     virtual ~QUmlLiteralNull();
 
+    QModelingObject *clone() const;
+
 
     // Operations
     bool isComputable() const;

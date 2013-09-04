@@ -60,6 +60,8 @@ public:
     explicit QUmlSubstitution(bool createQObject = true);
     virtual ~QUmlSubstitution();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlClassifier *contract() const;
     void setContract(QUmlClassifier *contract);

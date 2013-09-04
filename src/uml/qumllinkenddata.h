@@ -62,6 +62,8 @@ public:
     explicit QUmlLinkEndData(bool createQObject = true);
     virtual ~QUmlLinkEndData();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlProperty *end() const;
     void setEnd(QUmlProperty *end);

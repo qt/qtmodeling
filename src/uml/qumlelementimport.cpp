@@ -42,9 +42,10 @@
 
 #include "private/qumlelementimportobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackageableElement>
-
 /*!
     \class QUmlElementImport
 
@@ -69,13 +70,26 @@ QUmlElementImport::~QUmlElementImport()
     }
 }
 
+QModelingObject *QUmlElementImport::clone() const
+{
+    QUmlElementImport *c = new QUmlElementImport;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    c->setAlias(alias());
+    if (importedElement())
+        c->setImportedElement(dynamic_cast<QUmlPackageableElement *>(importedElement()->clone()));
+    if (importingNamespace())
+        c->setImportingNamespace(dynamic_cast<QUmlNamespace *>(importingNamespace()->clone()));
+    c->setVisibility(visibility());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.
  */
-QString 
-QUmlElementImport::alias() const
+QString QUmlElementImport::alias() const
 {
     // This is a read-write property
 
@@ -94,8 +108,7 @@ void QUmlElementImport::setAlias(QString alias)
 /*!
     Specifies the PackageableElement whose name is to be added to a Namespace.
  */
-QUmlPackageableElement *
-QUmlElementImport::importedElement() const
+QUmlPackageableElement *QUmlElementImport::importedElement() const
 {
     // This is a read-write association end
 
@@ -124,8 +137,7 @@ void QUmlElementImport::setImportedElement(QUmlPackageableElement *importedEleme
 /*!
     Specifies the Namespace that imports a PackageableElement from another Package.
  */
-QUmlNamespace *
-QUmlElementImport::importingNamespace() const
+QUmlNamespace *QUmlElementImport::importingNamespace() const
 {
     // This is a read-write association end
 
@@ -155,8 +167,7 @@ void QUmlElementImport::setImportingNamespace(QUmlNamespace *importingNamespace)
 /*!
     Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.
  */
-QtUml::VisibilityKind 
-QUmlElementImport::visibility() const
+QtUml::VisibilityKind QUmlElementImport::visibility() const
 {
     // This is a read-write property
 

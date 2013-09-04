@@ -62,6 +62,8 @@ public:
     explicit QUmlConstraint(bool createQObject = true);
     virtual ~QUmlConstraint();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlElement *> constrainedElement() const;
     void addConstrainedElement(QUmlElement *constrainedElement);

@@ -58,6 +58,8 @@ public:
     explicit QUmlDataStoreNode(bool createQObject = true);
     virtual ~QUmlDataStoreNode();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

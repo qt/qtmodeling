@@ -60,6 +60,8 @@ public:
     explicit QUmlActionInputPin(bool createQObject = true);
     virtual ~QUmlActionInputPin();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlAction *fromAction() const;
     void setFromAction(QUmlAction *fromAction);

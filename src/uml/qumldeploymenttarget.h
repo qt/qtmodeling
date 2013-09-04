@@ -60,6 +60,8 @@ class Q_UML_EXPORT QUmlDeploymentTarget : public virtual QUmlNamedElement
 public:
     virtual ~QUmlDeploymentTarget();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlPackageableElement *> deployedElement() const;
     Q_DECL_HIDDEN void addDeployedElement(QUmlPackageableElement *deployedElement);

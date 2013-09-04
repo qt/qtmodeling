@@ -42,8 +42,14 @@
 
 #include "private/qumlgeneralorderingobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOccurrenceSpecification>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlGeneralOrdering
 
@@ -67,13 +73,30 @@ QUmlGeneralOrdering::~QUmlGeneralOrdering()
     }
 }
 
+QModelingObject *QUmlGeneralOrdering::clone() const
+{
+    QUmlGeneralOrdering *c = new QUmlGeneralOrdering;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (after())
+        c->setAfter(dynamic_cast<QUmlOccurrenceSpecification *>(after()->clone()));
+    if (before())
+        c->setBefore(dynamic_cast<QUmlOccurrenceSpecification *>(before()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.
  */
-QUmlOccurrenceSpecification *
-QUmlGeneralOrdering::after() const
+QUmlOccurrenceSpecification *QUmlGeneralOrdering::after() const
 {
     // This is a read-write association end
 
@@ -94,8 +117,7 @@ void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
 /*!
     The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.
  */
-QUmlOccurrenceSpecification *
-QUmlGeneralOrdering::before() const
+QUmlOccurrenceSpecification *QUmlGeneralOrdering::before() const
 {
     // This is a read-write association end
 

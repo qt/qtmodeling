@@ -61,6 +61,8 @@ public:
     explicit QUmlGeneralization(bool createQObject = true);
     virtual ~QUmlGeneralization();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlClassifier *general() const;
     void setGeneral(QUmlClassifier *general);

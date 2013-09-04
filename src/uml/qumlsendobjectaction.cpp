@@ -42,8 +42,27 @@
 
 #include "private/qumlsendobjectactionobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlInputPin>
-
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOutputPin>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPort>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
 /*!
     \class QUmlSendObjectAction
 
@@ -67,13 +86,54 @@ QUmlSendObjectAction::~QUmlSendObjectAction()
     }
 }
 
+QModelingObject *QUmlSendObjectAction::clone() const
+{
+    QUmlSendObjectAction *c = new QUmlSendObjectAction;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    if (onPort())
+        c->setOnPort(dynamic_cast<QUmlPort *>(onPort()->clone()));
+    if (request())
+        c->setRequest(dynamic_cast<QUmlInputPin *>(request()->clone()));
+    if (target())
+        c->setTarget(dynamic_cast<QUmlInputPin *>(target()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.
  */
-QUmlInputPin *
-QUmlSendObjectAction::request() const
+QUmlInputPin *QUmlSendObjectAction::request() const
 {
     // This is a read-write association end
 
@@ -95,8 +155,7 @@ void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
 /*!
     The target object to which the object is sent.
  */
-QUmlInputPin *
-QUmlSendObjectAction::target() const
+QUmlInputPin *QUmlSendObjectAction::target() const
 {
     // This is a read-write association end
 

@@ -61,6 +61,8 @@ public:
     explicit QUmlClearAssociationAction(bool createQObject = true);
     virtual ~QUmlClearAssociationAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlAssociation *association() const;
     void setAssociation(QUmlAssociation *association);

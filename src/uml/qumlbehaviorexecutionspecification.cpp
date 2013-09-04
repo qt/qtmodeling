@@ -43,7 +43,18 @@
 #include "private/qumlbehaviorexecutionspecificationobject_p.h"
 
 #include <QtUml/QUmlBehavior>
-
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
+#include <QtUml/QUmlInteractionOperand>
+#include <QtUml/QUmlLifeline>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOccurrenceSpecification>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlBehaviorExecutionSpecification
 
@@ -66,13 +77,40 @@ QUmlBehaviorExecutionSpecification::~QUmlBehaviorExecutionSpecification()
     }
 }
 
+QModelingObject *QUmlBehaviorExecutionSpecification::clone() const
+{
+    QUmlBehaviorExecutionSpecification *c = new QUmlBehaviorExecutionSpecification;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlLifeline *element, covered())
+        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    if (finish())
+        c->setFinish(dynamic_cast<QUmlOccurrenceSpecification *>(finish()->clone()));
+    if (start())
+        c->setStart(dynamic_cast<QUmlOccurrenceSpecification *>(start()->clone()));
+    if (behavior())
+        c->setBehavior(dynamic_cast<QUmlBehavior *>(behavior()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Behavior whose execution is occurring.
  */
-QUmlBehavior *
-QUmlBehaviorExecutionSpecification::behavior() const
+QUmlBehavior *QUmlBehaviorExecutionSpecification::behavior() const
 {
     // This is a read-write association end
 

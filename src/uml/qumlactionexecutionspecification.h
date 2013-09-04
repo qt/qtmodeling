@@ -60,6 +60,8 @@ public:
     explicit QUmlActionExecutionSpecification(bool createQObject = true);
     virtual ~QUmlActionExecutionSpecification();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlAction *action() const;
     void setAction(QUmlAction *action);

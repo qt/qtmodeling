@@ -60,6 +60,8 @@ public:
     explicit QUmlEnumeration(bool createQObject = true);
     virtual ~QUmlEnumeration();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlEnumerationLiteral *> ownedLiteral() const;
     void addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral);

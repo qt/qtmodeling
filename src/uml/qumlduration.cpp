@@ -42,8 +42,18 @@
 
 #include "private/qumldurationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlObservation>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlDuration
 
@@ -66,13 +76,36 @@ QUmlDuration::~QUmlDuration()
     }
 }
 
+QModelingObject *QUmlDuration::clone() const
+{
+    QUmlDuration *c = new QUmlDuration;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (expr())
+        c->setExpr(dynamic_cast<QUmlValueSpecification *>(expr()->clone()));
+    foreach (QUmlObservation *element, observation())
+        c->addObservation(dynamic_cast<QUmlObservation *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The value of the Duration.
  */
-QUmlValueSpecification *
-QUmlDuration::expr() const
+QUmlValueSpecification *QUmlDuration::expr() const
 {
     // This is a read-write association end
 
@@ -102,8 +135,7 @@ void QUmlDuration::setExpr(QUmlValueSpecification *expr)
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-const QSet<QUmlObservation *> 
-QUmlDuration::observation() const
+const QSet<QUmlObservation *> QUmlDuration::observation() const
 {
     // This is a read-write association end
 

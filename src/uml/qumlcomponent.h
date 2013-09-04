@@ -63,6 +63,8 @@ public:
     explicit QUmlComponent(bool createQObject = true);
     virtual ~QUmlComponent();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isIndirectlyInstantiated() const;
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);

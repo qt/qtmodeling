@@ -42,10 +42,11 @@
 
 #include "private/qumllinkenddataobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlQualifierValue>
-
 /*!
     \class QUmlLinkEndData
 
@@ -69,13 +70,26 @@ QUmlLinkEndData::~QUmlLinkEndData()
     }
 }
 
+QModelingObject *QUmlLinkEndData::clone() const
+{
+    QUmlLinkEndData *c = new QUmlLinkEndData;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (end())
+        c->setEnd(dynamic_cast<QUmlProperty *>(end()->clone()));
+    foreach (QUmlQualifierValue *element, qualifier())
+        c->addQualifier(dynamic_cast<QUmlQualifierValue *>(element->clone()));
+    if (value())
+        c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Association end for which this link-end data specifies values.
  */
-QUmlProperty *
-QUmlLinkEndData::end() const
+QUmlProperty *QUmlLinkEndData::end() const
 {
     // This is a read-write association end
 
@@ -96,8 +110,7 @@ void QUmlLinkEndData::setEnd(QUmlProperty *end)
 /*!
     List of qualifier values
  */
-const QSet<QUmlQualifierValue *> 
-QUmlLinkEndData::qualifier() const
+const QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifier() const
 {
     // This is a read-write association end
 
@@ -136,8 +149,7 @@ void QUmlLinkEndData::removeQualifier(QUmlQualifierValue *qualifier)
 /*!
     Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.
  */
-QUmlInputPin *
-QUmlLinkEndData::value() const
+QUmlInputPin *QUmlLinkEndData::value() const
 {
     // This is a read-write association end
 

@@ -61,6 +61,8 @@ public:
     explicit QUmlInteractionOperand(bool createQObject = true);
     virtual ~QUmlInteractionOperand();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlInteractionFragment *> fragment() const;
     void addFragment(QUmlInteractionFragment *fragment);

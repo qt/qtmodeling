@@ -42,9 +42,10 @@
 
 #include "private/qumlqualifiervalueobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
-
 /*!
     \class QUmlQualifierValue
 
@@ -68,13 +69,24 @@ QUmlQualifierValue::~QUmlQualifierValue()
     }
 }
 
+QModelingObject *QUmlQualifierValue::clone() const
+{
+    QUmlQualifierValue *c = new QUmlQualifierValue;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (qualifier())
+        c->setQualifier(dynamic_cast<QUmlProperty *>(qualifier()->clone()));
+    if (value())
+        c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Attribute representing the qualifier for which the value is to be specified.
  */
-QUmlProperty *
-QUmlQualifierValue::qualifier() const
+QUmlProperty *QUmlQualifierValue::qualifier() const
 {
     // This is a read-write association end
 
@@ -95,8 +107,7 @@ void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
 /*!
     Input pin from which the specified value for the qualifier is taken.
  */
-QUmlInputPin *
-QUmlQualifierValue::value() const
+QUmlInputPin *QUmlQualifierValue::value() const
 {
     // This is a read-write association end
 

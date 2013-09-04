@@ -62,6 +62,8 @@ public:
     explicit QUmlExpansionRegion(bool createQObject = true);
     virtual ~QUmlExpansionRegion();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlExpansionNode *> inputElement() const;
     void addInputElement(QUmlExpansionNode *inputElement);

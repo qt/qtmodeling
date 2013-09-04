@@ -60,6 +60,8 @@ public:
     explicit QUmlAbstraction(bool createQObject = true);
     virtual ~QUmlAbstraction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOpaqueExpression *mapping() const;
     void setMapping(QUmlOpaqueExpression *mapping);

@@ -60,6 +60,8 @@ public:
     explicit QUmlTimeExpression(bool createQObject = true);
     virtual ~QUmlTimeExpression();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlValueSpecification *expr() const;
     void setExpr(QUmlValueSpecification *expr);

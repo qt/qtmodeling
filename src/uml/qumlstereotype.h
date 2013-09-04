@@ -61,6 +61,8 @@ public:
     explicit QUmlStereotype(bool createQObject = true);
     virtual ~QUmlStereotype();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlImage *> icon() const;
     void addIcon(QUmlImage *icon);

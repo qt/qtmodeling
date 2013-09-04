@@ -43,8 +43,17 @@
 #include "private/qumlopaqueexpressionobject_p.h"
 
 #include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlParameter>
-
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
 /*!
     \class QUmlOpaqueExpression
 
@@ -67,13 +76,36 @@ QUmlOpaqueExpression::~QUmlOpaqueExpression()
     }
 }
 
+QModelingObject *QUmlOpaqueExpression::clone() const
+{
+    QUmlOpaqueExpression *c = new QUmlOpaqueExpression;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (behavior())
+        c->setBehavior(dynamic_cast<QUmlBehavior *>(behavior()->clone()));
+//    c->setBody(body());
+//    c->setLanguage(language());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the behavior of the opaque expression.
  */
-QUmlBehavior *
-QUmlOpaqueExpression::behavior() const
+QUmlBehavior *QUmlOpaqueExpression::behavior() const
 {
     // This is a read-write association end
 
@@ -94,8 +126,7 @@ void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 /*!
     The text of the expression, possibly in multiple languages.
  */
-const QList<QString> 
-QUmlOpaqueExpression::body() const
+const QList<QString> QUmlOpaqueExpression::body() const
 {
     // This is a read-write property
 
@@ -123,8 +154,7 @@ void QUmlOpaqueExpression::removeBody(QString body)
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-const QList<QString> 
-QUmlOpaqueExpression::language() const
+const QList<QString> QUmlOpaqueExpression::language() const
 {
     // This is a read-write property
 
@@ -152,8 +182,7 @@ void QUmlOpaqueExpression::removeLanguage(QString language)
 /*!
     Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.
  */
-QUmlParameter *
-QUmlOpaqueExpression::result() const
+QUmlParameter *QUmlOpaqueExpression::result() const
 {
     // This is a read-only derived association end
 

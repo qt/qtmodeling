@@ -42,9 +42,15 @@
 
 #include "private/qumltriggerobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlEvent>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPort>
-
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlTrigger
 
@@ -67,13 +73,30 @@ QUmlTrigger::~QUmlTrigger()
     }
 }
 
+QModelingObject *QUmlTrigger::clone() const
+{
+    QUmlTrigger *c = new QUmlTrigger;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (event())
+        c->setEvent(dynamic_cast<QUmlEvent *>(event()->clone()));
+    foreach (QUmlPort *element, port())
+        c->addPort(dynamic_cast<QUmlPort *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The event that causes the trigger.
  */
-QUmlEvent *
-QUmlTrigger::event() const
+QUmlEvent *QUmlTrigger::event() const
 {
     // This is a read-write association end
 
@@ -94,8 +117,7 @@ void QUmlTrigger::setEvent(QUmlEvent *event)
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */
-const QSet<QUmlPort *> 
-QUmlTrigger::port() const
+const QSet<QUmlPort *> QUmlTrigger::port() const
 {
     // This is a read-write association end
 

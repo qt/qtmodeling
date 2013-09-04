@@ -58,6 +58,8 @@ public:
     explicit QUmlAnyReceiveEvent(bool createQObject = true);
     virtual ~QUmlAnyReceiveEvent();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

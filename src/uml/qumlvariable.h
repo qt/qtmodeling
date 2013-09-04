@@ -63,6 +63,8 @@ public:
     explicit QUmlVariable(bool createQObject = true);
     virtual ~QUmlVariable();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlActivity *activityScope() const;
     void setActivityScope(QUmlActivity *activityScope);

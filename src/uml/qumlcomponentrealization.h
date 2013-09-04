@@ -61,6 +61,8 @@ public:
     explicit QUmlComponentRealization(bool createQObject = true);
     virtual ~QUmlComponentRealization();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlComponent *abstraction() const;
     void setAbstraction(QUmlComponent *abstraction);

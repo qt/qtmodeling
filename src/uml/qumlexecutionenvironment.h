@@ -58,6 +58,8 @@ public:
     explicit QUmlExecutionEnvironment(bool createQObject = true);
     virtual ~QUmlExecutionEnvironment();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

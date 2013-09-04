@@ -60,6 +60,8 @@ public:
     explicit QUmlAddVariableValueAction(bool createQObject = true);
     virtual ~QUmlAddVariableValueAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *insertAt() const;
     void setInsertAt(QUmlInputPin *insertAt);

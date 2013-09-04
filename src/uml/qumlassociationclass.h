@@ -59,6 +59,8 @@ public:
     explicit QUmlAssociationClass(bool createQObject = true);
     virtual ~QUmlAssociationClass();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

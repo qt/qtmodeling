@@ -60,6 +60,8 @@ public:
     explicit QUmlReadLinkAction(bool createQObject = true);
     virtual ~QUmlReadLinkAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);

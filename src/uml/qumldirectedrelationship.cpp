@@ -40,8 +40,8 @@
 ****************************************************************************/
 #include "qumldirectedrelationship.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlElement>
-
 /*!
     \class QUmlDirectedRelationship
 
@@ -57,13 +57,20 @@ QUmlDirectedRelationship::~QUmlDirectedRelationship()
 {
 }
 
+QModelingObject *QUmlDirectedRelationship::clone() const
+{
+    QUmlDirectedRelationship *c = new QUmlDirectedRelationship;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QUmlElement *> 
-QUmlDirectedRelationship::source() const
+const QSet<QUmlElement *> QUmlDirectedRelationship::source() const
 {
     // This is a read-only derived union association end
 
@@ -99,8 +106,7 @@ void QUmlDirectedRelationship::removeSource(QUmlElement *source)
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QUmlElement *> 
-QUmlDirectedRelationship::target() const
+const QSet<QUmlElement *> QUmlDirectedRelationship::target() const
 {
     // This is a read-only derived union association end
 

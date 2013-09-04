@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlDirectedRelationship : public QUmlRelationship
 public:
     virtual ~QUmlDirectedRelationship();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlElement *> source() const;
     Q_DECL_HIDDEN void addSource(QUmlElement *source);

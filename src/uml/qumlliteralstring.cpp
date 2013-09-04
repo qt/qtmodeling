@@ -42,6 +42,16 @@
 
 #include "private/qumlliteralstringobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
 /*!
     \class QUmlLiteralString
 
@@ -63,13 +73,33 @@ QUmlLiteralString::~QUmlLiteralString()
     }
 }
 
+QModelingObject *QUmlLiteralString::clone() const
+{
+    QUmlLiteralString *c = new QUmlLiteralString;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    c->setValue(value());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The specified String value.
  */
-QString 
-QUmlLiteralString::value() const
+QString QUmlLiteralString::value() const
 {
     // This is a read-write property
 

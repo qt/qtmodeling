@@ -42,9 +42,31 @@
 
 #include "private/qumlconditionalnodeobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
 #include <QtUml/QUmlClause>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlExceptionHandler>
+#include <QtUml/QUmlInputPin>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
+#include <QtUml/QUmlVariable>
 /*!
     \class QUmlConditionalNode
 
@@ -69,13 +91,69 @@ QUmlConditionalNode::~QUmlConditionalNode()
     }
 }
 
+QModelingObject *QUmlConditionalNode::clone() const
+{
+    QUmlConditionalNode *c = new QUmlConditionalNode;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlActivityEdge *element, edge())
+        c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    c->setMustIsolate(mustIsolate());
+    foreach (QUmlActivityNode *element, node())
+        c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlInputPin *element, structuredNodeInput())
+        c->addStructuredNodeInput(dynamic_cast<QUmlInputPin *>(element->clone()));
+    foreach (QUmlVariable *element, variable())
+        c->addVariable(dynamic_cast<QUmlVariable *>(element->clone()));
+    foreach (QUmlClause *element, clause())
+        c->addClause(dynamic_cast<QUmlClause *>(element->clone()));
+    c->setAssured(isAssured());
+    c->setDeterminate(isDeterminate());
+    foreach (QUmlOutputPin *element, result())
+        c->addResult(dynamic_cast<QUmlOutputPin *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Set of clauses composing the conditional.
  */
-const QSet<QUmlClause *> 
-QUmlConditionalNode::clause() const
+const QSet<QUmlClause *> QUmlConditionalNode::clause() const
 {
     // This is a read-write association end
 
@@ -114,8 +192,7 @@ void QUmlConditionalNode::removeClause(QUmlClause *clause)
 /*!
     If true, the modeler asserts that at least one test will succeed.
  */
-bool 
-QUmlConditionalNode::isAssured() const
+bool QUmlConditionalNode::isAssured() const
 {
     // This is a read-write property
 
@@ -134,8 +211,7 @@ void QUmlConditionalNode::setAssured(bool isAssured)
 /*!
     If true, the modeler asserts that at most one test will succeed.
  */
-bool 
-QUmlConditionalNode::isDeterminate() const
+bool QUmlConditionalNode::isDeterminate() const
 {
     // This is a read-write property
 
@@ -154,8 +230,7 @@ void QUmlConditionalNode::setDeterminate(bool isDeterminate)
 /*!
     A list of output pins that constitute the data flow outputs of the conditional.
  */
-const QList<QUmlOutputPin *> 
-QUmlConditionalNode::result() const
+const QList<QUmlOutputPin *> QUmlConditionalNode::result() const
 {
     // This is a read-write association end
 

@@ -42,8 +42,9 @@
 
 #include "private/qumlpackagemergeobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlPackage>
-
 /*!
     \class QUmlPackageMerge
 
@@ -67,13 +68,24 @@ QUmlPackageMerge::~QUmlPackageMerge()
     }
 }
 
+QModelingObject *QUmlPackageMerge::clone() const
+{
+    QUmlPackageMerge *c = new QUmlPackageMerge;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (mergedPackage())
+        c->setMergedPackage(dynamic_cast<QUmlPackage *>(mergedPackage()->clone()));
+    if (receivingPackage())
+        c->setReceivingPackage(dynamic_cast<QUmlPackage *>(receivingPackage()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the Package that is to be merged with the receiving package of the PackageMerge.
  */
-QUmlPackage *
-QUmlPackageMerge::mergedPackage() const
+QUmlPackage *QUmlPackageMerge::mergedPackage() const
 {
     // This is a read-write association end
 
@@ -102,8 +114,7 @@ void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
 /*!
     References the Package that is being extended with the contents of the merged package of the PackageMerge.
  */
-QUmlPackage *
-QUmlPackageMerge::receivingPackage() const
+QUmlPackage *QUmlPackageMerge::receivingPackage() const
 {
     // This is a read-write association end
 

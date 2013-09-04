@@ -42,10 +42,27 @@
 
 #include "private/qumlreduceactionobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
 #include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlInputPin>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
 /*!
     \class QUmlReduceAction
 
@@ -71,13 +88,55 @@ QUmlReduceAction::~QUmlReduceAction()
     }
 }
 
+QModelingObject *QUmlReduceAction::clone() const
+{
+    QUmlReduceAction *c = new QUmlReduceAction;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    if (collection())
+        c->setCollection(dynamic_cast<QUmlInputPin *>(collection()->clone()));
+    c->setOrdered(isOrdered());
+    if (reducer())
+        c->setReducer(dynamic_cast<QUmlBehavior *>(reducer()->clone()));
+    if (result())
+        c->setResult(dynamic_cast<QUmlOutputPin *>(result()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The collection to be reduced.
  */
-QUmlInputPin *
-QUmlReduceAction::collection() const
+QUmlInputPin *QUmlReduceAction::collection() const
 {
     // This is a read-write association end
 
@@ -107,8 +166,7 @@ void QUmlReduceAction::setCollection(QUmlInputPin *collection)
 /*!
     Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.
  */
-bool 
-QUmlReduceAction::isOrdered() const
+bool QUmlReduceAction::isOrdered() const
 {
     // This is a read-write property
 
@@ -127,8 +185,7 @@ void QUmlReduceAction::setOrdered(bool isOrdered)
 /*!
     Behavior that is applied to two elements of the input collection to produce a value that is the same type as elements of the collection.
  */
-QUmlBehavior *
-QUmlReduceAction::reducer() const
+QUmlBehavior *QUmlReduceAction::reducer() const
 {
     // This is a read-write association end
 
@@ -149,8 +206,7 @@ void QUmlReduceAction::setReducer(QUmlBehavior *reducer)
 /*!
     Gives the output pin on which the result is put.
  */
-QUmlOutputPin *
-QUmlReduceAction::result() const
+QUmlOutputPin *QUmlReduceAction::result() const
 {
     // This is a read-write association end
 

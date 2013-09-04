@@ -42,9 +42,10 @@
 
 #include "private/qumlclauseobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlOutputPin>
-
 /*!
     \class QUmlClause
 
@@ -67,13 +68,32 @@ QUmlClause::~QUmlClause()
     }
 }
 
+QModelingObject *QUmlClause::clone() const
+{
+    QUmlClause *c = new QUmlClause;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlExecutableNode *element, body())
+        c->addBody(dynamic_cast<QUmlExecutableNode *>(element->clone()));
+    foreach (QUmlOutputPin *element, bodyOutput())
+        c->addBodyOutput(dynamic_cast<QUmlOutputPin *>(element->clone()));
+    if (decider())
+        c->setDecider(dynamic_cast<QUmlOutputPin *>(decider()->clone()));
+    foreach (QUmlClause *element, predecessorClause())
+        c->addPredecessorClause(dynamic_cast<QUmlClause *>(element->clone()));
+    foreach (QUmlClause *element, successorClause())
+        c->addSuccessorClause(dynamic_cast<QUmlClause *>(element->clone()));
+    foreach (QUmlExecutableNode *element, test())
+        c->addTest(dynamic_cast<QUmlExecutableNode *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.
  */
-const QSet<QUmlExecutableNode *> 
-QUmlClause::body() const
+const QSet<QUmlExecutableNode *> QUmlClause::body() const
 {
     // This is a read-write association end
 
@@ -103,8 +123,7 @@ void QUmlClause::removeBody(QUmlExecutableNode *body)
 /*!
     A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.
  */
-const QList<QUmlOutputPin *> 
-QUmlClause::bodyOutput() const
+const QList<QUmlOutputPin *> QUmlClause::bodyOutput() const
 {
     // This is a read-write association end
 
@@ -134,8 +153,7 @@ void QUmlClause::removeBodyOutput(QUmlOutputPin *bodyOutput)
 /*!
     An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.
  */
-QUmlOutputPin *
-QUmlClause::decider() const
+QUmlOutputPin *QUmlClause::decider() const
 {
     // This is a read-write association end
 
@@ -156,8 +174,7 @@ void QUmlClause::setDecider(QUmlOutputPin *decider)
 /*!
     A set of clauses whose tests must all evaluate false before the current clause can be tested.
  */
-const QSet<QUmlClause *> 
-QUmlClause::predecessorClause() const
+const QSet<QUmlClause *> QUmlClause::predecessorClause() const
 {
     // This is a read-write association end
 
@@ -187,8 +204,7 @@ void QUmlClause::removePredecessorClause(QUmlClause *predecessorClause)
 /*!
     A set of clauses which may not be tested unless the current clause tests false.
  */
-const QSet<QUmlClause *> 
-QUmlClause::successorClause() const
+const QSet<QUmlClause *> QUmlClause::successorClause() const
 {
     // This is a read-write association end
 
@@ -218,8 +234,7 @@ void QUmlClause::removeSuccessorClause(QUmlClause *successorClause)
 /*!
     A nested activity fragment with a designated output pin that specifies the result of the test.
  */
-const QSet<QUmlExecutableNode *> 
-QUmlClause::test() const
+const QSet<QUmlExecutableNode *> QUmlClause::test() const
 {
     // This is a read-write association end
 

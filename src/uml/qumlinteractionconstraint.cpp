@@ -42,8 +42,16 @@
 
 #include "private/qumlinteractionconstraintobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlInteractionConstraint
 
@@ -68,13 +76,40 @@ QUmlInteractionConstraint::~QUmlInteractionConstraint()
     }
 }
 
+QModelingObject *QUmlInteractionConstraint::clone() const
+{
+    QUmlInteractionConstraint *c = new QUmlInteractionConstraint;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElement *element, constrainedElement())
+        c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
+    if (context())
+        c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
+    if (specification())
+        c->setSpecification(dynamic_cast<QUmlValueSpecification *>(specification()->clone()));
+    if (maxint())
+        c->setMaxint(dynamic_cast<QUmlValueSpecification *>(maxint()->clone()));
+    if (minint())
+        c->setMinint(dynamic_cast<QUmlValueSpecification *>(minint()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The maximum number of iterations of a loop
  */
-QUmlValueSpecification *
-QUmlInteractionConstraint::maxint() const
+QUmlValueSpecification *QUmlInteractionConstraint::maxint() const
 {
     // This is a read-write association end
 
@@ -104,8 +139,7 @@ void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
 /*!
     The minimum number of iterations of a loop
  */
-QUmlValueSpecification *
-QUmlInteractionConstraint::minint() const
+QUmlValueSpecification *QUmlInteractionConstraint::minint() const
 {
     // This is a read-write association end
 

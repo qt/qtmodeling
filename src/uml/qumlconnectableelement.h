@@ -61,6 +61,8 @@ class Q_UML_EXPORT QUmlConnectableElement : public virtual QUmlTypedElement, pub
 public:
     virtual ~QUmlConnectableElement();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlConnectorEnd *> end() const;
     Q_DECL_HIDDEN void addEnd(QUmlConnectorEnd *end);

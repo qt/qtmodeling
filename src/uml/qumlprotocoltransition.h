@@ -61,6 +61,8 @@ public:
     explicit QUmlProtocolTransition(bool createQObject = true);
     virtual ~QUmlProtocolTransition();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlConstraint *postCondition() const;
     void setPostCondition(QUmlConstraint *postCondition);

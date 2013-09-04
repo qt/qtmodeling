@@ -42,6 +42,27 @@
 
 #include "private/qumlfinalstateobject_p.h"
 
+#include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConnectionPointReference>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlPseudostate>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlRegion>
+#include <QtUml/QUmlState>
+#include <QtUml/QUmlStateMachine>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTransition>
+#include <QtUml/QUmlTrigger>
 /*!
     \class QUmlFinalState
 
@@ -62,5 +83,48 @@ QUmlFinalState::~QUmlFinalState()
         _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
+}
+
+QModelingObject *QUmlFinalState::clone() const
+{
+    QUmlFinalState *c = new QUmlFinalState;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    c->setLeaf(isLeaf());
+    if (container())
+        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
+    foreach (QUmlConnectionPointReference *element, connection())
+        c->addConnection(dynamic_cast<QUmlConnectionPointReference *>(element->clone()));
+    foreach (QUmlPseudostate *element, connectionPoint())
+        c->addConnectionPoint(dynamic_cast<QUmlPseudostate *>(element->clone()));
+    foreach (QUmlTrigger *element, deferrableTrigger())
+        c->addDeferrableTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
+    if (doActivity())
+        c->setDoActivity(dynamic_cast<QUmlBehavior *>(doActivity()->clone()));
+    if (entry())
+        c->setEntry(dynamic_cast<QUmlBehavior *>(entry()->clone()));
+    if (exit())
+        c->setExit(dynamic_cast<QUmlBehavior *>(exit()->clone()));
+    if (redefinedState())
+        c->setRedefinedState(dynamic_cast<QUmlState *>(redefinedState()->clone()));
+    foreach (QUmlRegion *element, region())
+        c->addRegion(dynamic_cast<QUmlRegion *>(element->clone()));
+    if (stateInvariant())
+        c->setStateInvariant(dynamic_cast<QUmlConstraint *>(stateInvariant()->clone()));
+    if (submachine())
+        c->setSubmachine(dynamic_cast<QUmlStateMachine *>(submachine()->clone()));
+    return c;
 }
 

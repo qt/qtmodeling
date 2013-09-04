@@ -44,11 +44,18 @@
 
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnector>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlMessage>
 #include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlRelationship>
-
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlInformationFlow
 
@@ -70,13 +77,44 @@ QUmlInformationFlow::~QUmlInformationFlow()
     }
 }
 
+QModelingObject *QUmlInformationFlow::clone() const
+{
+    QUmlInformationFlow *c = new QUmlInformationFlow;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlClassifier *element, conveyed())
+        c->addConveyed(dynamic_cast<QUmlClassifier *>(element->clone()));
+    foreach (QUmlNamedElement *element, informationSource())
+        c->addInformationSource(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    foreach (QUmlNamedElement *element, informationTarget())
+        c->addInformationTarget(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    foreach (QUmlRelationship *element, realization())
+        c->addRealization(dynamic_cast<QUmlRelationship *>(element->clone()));
+    foreach (QUmlActivityEdge *element, realizingActivityEdge())
+        c->addRealizingActivityEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlConnector *element, realizingConnector())
+        c->addRealizingConnector(dynamic_cast<QUmlConnector *>(element->clone()));
+    foreach (QUmlMessage *element, realizingMessage())
+        c->addRealizingMessage(dynamic_cast<QUmlMessage *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the information items that may circulate on this information flow.
  */
-const QSet<QUmlClassifier *> 
-QUmlInformationFlow::conveyed() const
+const QSet<QUmlClassifier *> QUmlInformationFlow::conveyed() const
 {
     // This is a read-write association end
 
@@ -106,8 +144,7 @@ void QUmlInformationFlow::removeConveyed(QUmlClassifier *conveyed)
 /*!
     Defines from which source the conveyed InformationItems are initiated.
  */
-const QSet<QUmlNamedElement *> 
-QUmlInformationFlow::informationSource() const
+const QSet<QUmlNamedElement *> QUmlInformationFlow::informationSource() const
 {
     // This is a read-write association end
 
@@ -143,8 +180,7 @@ void QUmlInformationFlow::removeInformationSource(QUmlNamedElement *informationS
 /*!
     Defines to which target the conveyed InformationItems are directed.
  */
-const QSet<QUmlNamedElement *> 
-QUmlInformationFlow::informationTarget() const
+const QSet<QUmlNamedElement *> QUmlInformationFlow::informationTarget() const
 {
     // This is a read-write association end
 
@@ -180,8 +216,7 @@ void QUmlInformationFlow::removeInformationTarget(QUmlNamedElement *informationT
 /*!
     Determines which Relationship will realize the specified flow
  */
-const QSet<QUmlRelationship *> 
-QUmlInformationFlow::realization() const
+const QSet<QUmlRelationship *> QUmlInformationFlow::realization() const
 {
     // This is a read-write association end
 
@@ -211,8 +246,7 @@ void QUmlInformationFlow::removeRealization(QUmlRelationship *realization)
 /*!
     Determines which ActivityEdges will realize the specified flow.
  */
-const QSet<QUmlActivityEdge *> 
-QUmlInformationFlow::realizingActivityEdge() const
+const QSet<QUmlActivityEdge *> QUmlInformationFlow::realizingActivityEdge() const
 {
     // This is a read-write association end
 
@@ -242,8 +276,7 @@ void QUmlInformationFlow::removeRealizingActivityEdge(QUmlActivityEdge *realizin
 /*!
     Determines which Connectors will realize the specified flow.
  */
-const QSet<QUmlConnector *> 
-QUmlInformationFlow::realizingConnector() const
+const QSet<QUmlConnector *> QUmlInformationFlow::realizingConnector() const
 {
     // This is a read-write association end
 
@@ -273,8 +306,7 @@ void QUmlInformationFlow::removeRealizingConnector(QUmlConnector *realizingConne
 /*!
     Determines which Messages will realize the specified flow.
  */
-const QSet<QUmlMessage *> 
-QUmlInformationFlow::realizingMessage() const
+const QSet<QUmlMessage *> QUmlInformationFlow::realizingMessage() const
 {
     // This is a read-write association end
 

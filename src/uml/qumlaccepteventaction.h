@@ -61,6 +61,8 @@ public:
     explicit QUmlAcceptEventAction(bool createQObject = true);
     virtual ~QUmlAcceptEventAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isUnmarshall() const;
     void setUnmarshall(bool isUnmarshall);

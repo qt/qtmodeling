@@ -66,6 +66,8 @@ public:
     explicit QUmlClass(bool createQObject = true);
     virtual ~QUmlClass();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlExtension *> extension() const;
     Q_DECL_HIDDEN void addExtension(QUmlExtension *extension);

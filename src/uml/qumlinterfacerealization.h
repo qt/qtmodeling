@@ -61,6 +61,8 @@ public:
     explicit QUmlInterfaceRealization(bool createQObject = true);
     virtual ~QUmlInterfaceRealization();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInterface *contract() const;
     void setContract(QUmlInterface *contract);

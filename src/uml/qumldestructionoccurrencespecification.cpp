@@ -42,6 +42,18 @@
 
 #include "private/qumldestructionoccurrencespecificationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
+#include <QtUml/QUmlInteractionOperand>
+#include <QtUml/QUmlLifeline>
+#include <QtUml/QUmlMessage>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlDestructionOccurrenceSpecification
 
@@ -62,5 +74,33 @@ QUmlDestructionOccurrenceSpecification::~QUmlDestructionOccurrenceSpecification(
         _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
+}
+
+QModelingObject *QUmlDestructionOccurrenceSpecification::clone() const
+{
+    QUmlDestructionOccurrenceSpecification *c = new QUmlDestructionOccurrenceSpecification;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    if (covered())
+        c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
+    foreach (QUmlGeneralOrdering *element, toAfter())
+        c->addToAfter(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    foreach (QUmlGeneralOrdering *element, toBefore())
+        c->addToBefore(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    if (message())
+        c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
+    return c;
 }
 

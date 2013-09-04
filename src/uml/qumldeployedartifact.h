@@ -57,6 +57,8 @@ class Q_UML_EXPORT QUmlDeployedArtifact : public virtual QUmlNamedElement
 public:
     virtual ~QUmlDeployedArtifact();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
 
 protected:
     explicit QUmlDeployedArtifact();

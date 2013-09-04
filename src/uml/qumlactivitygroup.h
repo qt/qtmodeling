@@ -61,6 +61,8 @@ class Q_UML_EXPORT QUmlActivityGroup : public virtual QUmlNamedElement
 public:
     virtual ~QUmlActivityGroup();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlActivityEdge *> containedEdge() const;
     Q_DECL_HIDDEN void addContainedEdge(QUmlActivityEdge *containedEdge);

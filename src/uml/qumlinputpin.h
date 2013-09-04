@@ -58,6 +58,8 @@ public:
     explicit QUmlInputPin(bool createQObject = true);
     virtual ~QUmlInputPin();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

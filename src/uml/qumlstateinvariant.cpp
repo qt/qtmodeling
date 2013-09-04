@@ -42,9 +42,18 @@
 
 #include "private/qumlstateinvariantobject_p.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
+#include <QtUml/QUmlInteractionOperand>
 #include <QtUml/QUmlLifeline>
-
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlStateInvariant
 
@@ -68,13 +77,36 @@ QUmlStateInvariant::~QUmlStateInvariant()
     }
 }
 
+QModelingObject *QUmlStateInvariant::clone() const
+{
+    QUmlStateInvariant *c = new QUmlStateInvariant;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    if (covered())
+        c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
+    if (invariant())
+        c->setInvariant(dynamic_cast<QUmlConstraint *>(invariant()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the Lifeline on which the StateInvariant appears.
  */
-QUmlLifeline *
-QUmlStateInvariant::covered() const
+QUmlLifeline *QUmlStateInvariant::covered() const
 {
     // This is a read-write association end
 
@@ -95,8 +127,7 @@ void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
 /*!
     A Constraint that should hold at runtime for this StateInvariant
  */
-QUmlConstraint *
-QUmlStateInvariant::invariant() const
+QUmlConstraint *QUmlStateInvariant::invariant() const
 {
     // This is a read-write association end
 

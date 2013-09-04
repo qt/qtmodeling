@@ -43,7 +43,13 @@
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityNode>
-
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlActivityGroup
 
@@ -61,13 +67,28 @@ QUmlActivityGroup::~QUmlActivityGroup()
 {
 }
 
+QModelingObject *QUmlActivityGroup::clone() const
+{
+    QUmlActivityGroup *c = new QUmlActivityGroup;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (inActivity())
+        c->setInActivity(dynamic_cast<QUmlActivity *>(inActivity()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Edges immediately contained in the group.
  */
-const QSet<QUmlActivityEdge *> 
-QUmlActivityGroup::containedEdge() const
+const QSet<QUmlActivityEdge *> QUmlActivityGroup::containedEdge() const
 {
     // This is a read-only derived union association end
 
@@ -107,8 +128,7 @@ void QUmlActivityGroup::removeContainedEdge(QUmlActivityEdge *containedEdge)
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QUmlActivityNode *> 
-QUmlActivityGroup::containedNode() const
+const QSet<QUmlActivityNode *> QUmlActivityGroup::containedNode() const
 {
     // This is a read-only derived union association end
 
@@ -148,8 +168,7 @@ void QUmlActivityGroup::removeContainedNode(QUmlActivityNode *containedNode)
 /*!
     Activity containing the group.
  */
-QUmlActivity *
-QUmlActivityGroup::inActivity() const
+QUmlActivity *QUmlActivityGroup::inActivity() const
 {
     // This is a read-write association end
 
@@ -175,8 +194,7 @@ void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
 /*!
     Groups immediately contained in the group.
  */
-const QSet<QUmlActivityGroup *> 
-QUmlActivityGroup::subgroup() const
+const QSet<QUmlActivityGroup *> QUmlActivityGroup::subgroup() const
 {
     // This is a read-only derived union association end
 
@@ -215,8 +233,7 @@ void QUmlActivityGroup::removeSubgroup(QUmlActivityGroup *subgroup)
 /*!
     Group immediately containing the group.
  */
-QUmlActivityGroup *
-QUmlActivityGroup::superGroup() const
+QUmlActivityGroup *QUmlActivityGroup::superGroup() const
 {
     // This is a read-only derived union association end
 

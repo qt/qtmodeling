@@ -67,6 +67,8 @@ public:
     explicit QUmlPackage(bool createQObject = true);
     virtual ~QUmlPackage();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QString URI() const;
     void setURI(QString URI);

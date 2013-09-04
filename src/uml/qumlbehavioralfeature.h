@@ -66,6 +66,8 @@ class Q_UML_EXPORT QUmlBehavioralFeature : public QUmlNamespace, public QUmlFeat
 public:
     virtual ~QUmlBehavioralFeature();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QtUml::CallConcurrencyKind concurrency() const;
     void setConcurrency(QtUml::CallConcurrencyKind concurrency);

@@ -44,8 +44,16 @@
 
 #include <QtUml/QUmlAssociation>
 #include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnectorEnd>
-
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlConnector
 
@@ -68,13 +76,36 @@ QUmlConnector::~QUmlConnector()
     }
 }
 
+QModelingObject *QUmlConnector::clone() const
+{
+    QUmlConnector *c = new QUmlConnector;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    c->setStatic(isStatic());
+    foreach (QUmlBehavior *element, contract())
+        c->addContract(dynamic_cast<QUmlBehavior *>(element->clone()));
+    foreach (QUmlConnectorEnd *element, end())
+        c->addEnd(dynamic_cast<QUmlConnectorEnd *>(element->clone()));
+    foreach (QUmlConnector *element, redefinedConnector())
+        c->addRedefinedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlAssociation *>(type()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
  */
-const QSet<QUmlBehavior *> 
-QUmlConnector::contract() const
+const QSet<QUmlBehavior *> QUmlConnector::contract() const
 {
     // This is a read-write association end
 
@@ -104,8 +135,7 @@ void QUmlConnector::removeContract(QUmlBehavior *contract)
 /*!
     A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
  */
-const QList<QUmlConnectorEnd *> 
-QUmlConnector::end() const
+const QList<QUmlConnectorEnd *> QUmlConnector::end() const
 {
     // This is a read-write association end
 
@@ -144,8 +174,7 @@ void QUmlConnector::removeEnd(QUmlConnectorEnd *end)
 /*!
     Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.
  */
-QtUml::ConnectorKind 
-QUmlConnector::kind() const
+QtUml::ConnectorKind QUmlConnector::kind() const
 {
     // This is a read-only derived property
 
@@ -169,8 +198,7 @@ void QUmlConnector::setKind(QtUml::ConnectorKind kind)
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
  */
-const QSet<QUmlConnector *> 
-QUmlConnector::redefinedConnector() const
+const QSet<QUmlConnector *> QUmlConnector::redefinedConnector() const
 {
     // This is a read-write association end
 
@@ -206,8 +234,7 @@ void QUmlConnector::removeRedefinedConnector(QUmlConnector *redefinedConnector)
 /*!
     An optional association that specifies the link corresponding to this connector.
  */
-QUmlAssociation *
-QUmlConnector::type() const
+QUmlAssociation *QUmlConnector::type() const
 {
     // This is a read-write association end
 

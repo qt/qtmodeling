@@ -60,6 +60,8 @@ public:
     explicit QUmlOperationTemplateParameter(bool createQObject = true);
     virtual ~QUmlOperationTemplateParameter();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOperation *parameteredElement() const;
     void setParameteredElement(QUmlOperation *parameteredElement);

@@ -58,6 +58,8 @@ public:
     explicit QUmlFinalState(bool createQObject = true);
     virtual ~QUmlFinalState();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

@@ -42,8 +42,11 @@
 
 #include "private/qumlconnectableelementtemplateparameterobject_p.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnectableElement>
-
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlTemplateSignature>
 /*!
     \class QUmlConnectableElementTemplateParameter
 
@@ -67,13 +70,30 @@ QUmlConnectableElementTemplateParameter::~QUmlConnectableElementTemplateParamete
     }
 }
 
+QModelingObject *QUmlConnectableElementTemplateParameter::clone() const
+{
+    QUmlConnectableElementTemplateParameter *c = new QUmlConnectableElementTemplateParameter;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (default_())
+        c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
+    if (ownedDefault())
+        c->setOwnedDefault(dynamic_cast<QUmlParameterableElement *>(ownedDefault()->clone()));
+    if (ownedParameteredElement())
+        c->setOwnedParameteredElement(dynamic_cast<QUmlParameterableElement *>(ownedParameteredElement()->clone()));
+    if (signature())
+        c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
+    if (parameteredElement())
+        c->setParameteredElement(dynamic_cast<QUmlConnectableElement *>(parameteredElement()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The ConnectableElement for this template parameter.
  */
-QUmlConnectableElement *
-QUmlConnectableElementTemplateParameter::parameteredElement() const
+QUmlConnectableElement *QUmlConnectableElementTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
 

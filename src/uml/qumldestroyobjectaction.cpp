@@ -42,8 +42,26 @@
 
 #include "private/qumldestroyobjectactionobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlInputPin>
-
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOutputPin>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
 /*!
     \class QUmlDestroyObjectAction
 
@@ -68,13 +86,52 @@ QUmlDestroyObjectAction::~QUmlDestroyObjectAction()
     }
 }
 
+QModelingObject *QUmlDestroyObjectAction::clone() const
+{
+    QUmlDestroyObjectAction *c = new QUmlDestroyObjectAction;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    c->setDestroyLinks(isDestroyLinks());
+    c->setDestroyOwnedObjects(isDestroyOwnedObjects());
+    if (target())
+        c->setTarget(dynamic_cast<QUmlInputPin *>(target()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies whether links in which the object participates are destroyed along with the object.
  */
-bool 
-QUmlDestroyObjectAction::isDestroyLinks() const
+bool QUmlDestroyObjectAction::isDestroyLinks() const
 {
     // This is a read-write property
 
@@ -93,8 +150,7 @@ void QUmlDestroyObjectAction::setDestroyLinks(bool isDestroyLinks)
 /*!
     Specifies whether objects owned by the object are destroyed along with the object.
  */
-bool 
-QUmlDestroyObjectAction::isDestroyOwnedObjects() const
+bool QUmlDestroyObjectAction::isDestroyOwnedObjects() const
 {
     // This is a read-write property
 
@@ -113,8 +169,7 @@ void QUmlDestroyObjectAction::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 /*!
     The input pin providing the object to be destroyed.
  */
-QUmlInputPin *
-QUmlDestroyObjectAction::target() const
+QUmlInputPin *QUmlDestroyObjectAction::target() const
 {
     // This is a read-write association end
 

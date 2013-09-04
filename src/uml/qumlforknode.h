@@ -58,6 +58,8 @@ public:
     explicit QUmlForkNode(bool createQObject = true);
     virtual ~QUmlForkNode();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

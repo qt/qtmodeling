@@ -60,6 +60,8 @@ public:
     explicit QUmlChangeEvent(bool createQObject = true);
     virtual ~QUmlChangeEvent();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlValueSpecification *changeExpression() const;
     void setChangeExpression(QUmlValueSpecification *changeExpression);

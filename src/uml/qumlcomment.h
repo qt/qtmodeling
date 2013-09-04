@@ -58,6 +58,8 @@ public:
     explicit QUmlComment(bool createQObject = true);
     virtual ~QUmlComment();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlElement *> annotatedElement() const;
     void addAnnotatedElement(QUmlElement *annotatedElement);

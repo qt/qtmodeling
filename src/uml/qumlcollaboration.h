@@ -61,6 +61,8 @@ public:
     explicit QUmlCollaboration(bool createQObject = true);
     virtual ~QUmlCollaboration();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlConnectableElement *> collaborationRole() const;
     void addCollaborationRole(QUmlConnectableElement *collaborationRole);

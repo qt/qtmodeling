@@ -69,6 +69,8 @@ public:
     explicit QUmlState(bool createQObject = true);
     virtual ~QUmlState();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlConnectionPointReference *> connection() const;
     void addConnection(QUmlConnectionPointReference *connection);

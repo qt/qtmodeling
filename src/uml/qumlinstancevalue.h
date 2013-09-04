@@ -60,6 +60,8 @@ public:
     explicit QUmlInstanceValue(bool createQObject = true);
     virtual ~QUmlInstanceValue();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInstanceSpecification *instance() const;
     void setInstance(QUmlInstanceSpecification *instance);

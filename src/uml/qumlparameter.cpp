@@ -42,10 +42,22 @@
 
 #include "private/qumlparameterobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConnectableElementTemplateParameter>
+#include <QtUml/QUmlConnectorEnd>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlMultiplicityElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOperation>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlParameterSet>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlParameter
 
@@ -72,13 +84,48 @@ QUmlParameter::~QUmlParameter()
     }
 }
 
+QModelingObject *QUmlParameter::clone() const
+{
+    QUmlParameter *c = new QUmlParameter;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    c->setOrdered(isOrdered());
+    c->setUnique(isUnique());
+    if (lowerValue())
+        c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
+    if (upperValue())
+        c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlConnectableElementTemplateParameter *>(templateParameter()->clone()));
+    if (defaultValue())
+        c->setDefaultValue(dynamic_cast<QUmlValueSpecification *>(defaultValue()->clone()));
+    c->setDirection(direction());
+    c->setEffect(effect());
+    c->setException(isException());
+    c->setStream(isStream());
+    if (operation())
+        c->setOperation(dynamic_cast<QUmlOperation *>(operation()->clone()));
+    foreach (QUmlParameterSet *element, parameterSet())
+        c->addParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies a String that represents a value to be used when no argument is supplied for the Parameter.
  */
-QString 
-QUmlParameter::default_() const
+QString QUmlParameter::default_() const
 {
     // This is a read-write derived property
 
@@ -102,8 +149,7 @@ void QUmlParameter::setDefault(QString default_)
 /*!
     Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.
  */
-QUmlValueSpecification *
-QUmlParameter::defaultValue() const
+QUmlValueSpecification *QUmlParameter::defaultValue() const
 {
     // This is a read-write association end
 
@@ -133,8 +179,7 @@ void QUmlParameter::setDefaultValue(QUmlValueSpecification *defaultValue)
 /*!
     Indicates whether a parameter is being sent into or out of a behavioral element.
  */
-QtUml::ParameterDirectionKind 
-QUmlParameter::direction() const
+QtUml::ParameterDirectionKind QUmlParameter::direction() const
 {
     // This is a read-write property
 
@@ -153,8 +198,7 @@ void QUmlParameter::setDirection(QtUml::ParameterDirectionKind direction)
 /*!
     Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.
  */
-QtUml::ParameterEffectKind 
-QUmlParameter::effect() const
+QtUml::ParameterEffectKind QUmlParameter::effect() const
 {
     // This is a read-write property
 
@@ -173,8 +217,7 @@ void QUmlParameter::setEffect(QtUml::ParameterEffectKind effect)
 /*!
     Tells whether an output parameter may emit a value to the exclusion of the other outputs.
  */
-bool 
-QUmlParameter::isException() const
+bool QUmlParameter::isException() const
 {
     // This is a read-write property
 
@@ -193,8 +236,7 @@ void QUmlParameter::setException(bool isException)
 /*!
     Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.
  */
-bool 
-QUmlParameter::isStream() const
+bool QUmlParameter::isStream() const
 {
     // This is a read-write property
 
@@ -213,8 +255,7 @@ void QUmlParameter::setStream(bool isStream)
 /*!
     References the Operation owning this parameter.
  */
-QUmlOperation *
-QUmlParameter::operation() const
+QUmlOperation *QUmlParameter::operation() const
 {
     // This is a read-write association end
 
@@ -235,8 +276,7 @@ void QUmlParameter::setOperation(QUmlOperation *operation)
 /*!
     The parameter sets containing the parameter. See ParameterSet.
  */
-const QSet<QUmlParameterSet *> 
-QUmlParameter::parameterSet() const
+const QSet<QUmlParameterSet *> QUmlParameter::parameterSet() const
 {
     // This is a read-write association end
 

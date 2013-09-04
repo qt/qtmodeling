@@ -42,13 +42,25 @@
 
 #include "private/qumlpackageobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlPackageMerge>
+#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlProfile>
 #include <QtUml/QUmlProfileApplication>
 #include <QtUml/QUmlStereotype>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
-
 /*!
     \class QUmlPackage
 
@@ -71,13 +83,49 @@ QUmlPackage::~QUmlPackage()
     }
 }
 
+QModelingObject *QUmlPackage::clone() const
+{
+    QUmlPackage *c = new QUmlPackage;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    c->setURI(URI());
+    if (nestingPackage())
+        c->setNestingPackage(dynamic_cast<QUmlPackage *>(nestingPackage()->clone()));
+    foreach (QUmlPackageMerge *element, packageMerge())
+        c->addPackageMerge(dynamic_cast<QUmlPackageMerge *>(element->clone()));
+    foreach (QUmlPackageableElement *element, packagedElement())
+        c->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(element->clone()));
+    foreach (QUmlProfileApplication *element, profileApplication())
+        c->addProfileApplication(dynamic_cast<QUmlProfileApplication *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Provides an identifier for the package that can be used for many purposes. A URI is the universally unique identification of the package following the IETF URI specification, RFC 2396 http://www.ietf.org/rfc/rfc2396.txt and it must comply with those syntax rules.
  */
-QString 
-QUmlPackage::URI() const
+QString QUmlPackage::URI() const
 {
     // This is a read-write property
 
@@ -96,8 +144,7 @@ void QUmlPackage::setURI(QString URI)
 /*!
     References the packaged elements that are Packages.
  */
-const QSet<QUmlPackage *> 
-QUmlPackage::nestedPackage() const
+const QSet<QUmlPackage *> QUmlPackage::nestedPackage() const
 {
     // This is a read-write derived association end
 
@@ -139,8 +186,7 @@ void QUmlPackage::removeNestedPackage(QUmlPackage *nestedPackage)
 /*!
     References the Package that owns this Package.
  */
-QUmlPackage *
-QUmlPackage::nestingPackage() const
+QUmlPackage *QUmlPackage::nestingPackage() const
 {
     // This is a read-write association end
 
@@ -161,8 +207,7 @@ void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
 /*!
     References the Stereotypes that are owned by the Package
  */
-const QSet<QUmlStereotype *> 
-QUmlPackage::ownedStereotype() const
+const QSet<QUmlStereotype *> QUmlPackage::ownedStereotype() const
 {
     // This is a read-only derived association end
 
@@ -204,8 +249,7 @@ void QUmlPackage::removeOwnedStereotype(QUmlStereotype *ownedStereotype)
 /*!
     References the packaged elements that are Types.
  */
-const QSet<QUmlType *> 
-QUmlPackage::ownedType() const
+const QSet<QUmlType *> QUmlPackage::ownedType() const
 {
     // This is a read-write derived association end
 
@@ -257,8 +301,7 @@ void QUmlPackage::removeOwnedType(QUmlType *ownedType)
 /*!
     References the PackageMerges that are owned by this Package.
  */
-const QSet<QUmlPackageMerge *> 
-QUmlPackage::packageMerge() const
+const QSet<QUmlPackageMerge *> QUmlPackage::packageMerge() const
 {
     // This is a read-write association end
 
@@ -307,8 +350,7 @@ void QUmlPackage::removePackageMerge(QUmlPackageMerge *packageMerge)
 /*!
     Specifies the packageable elements that are owned by this Package.
  */
-const QSet<QUmlPackageableElement *> 
-QUmlPackage::packagedElement() const
+const QSet<QUmlPackageableElement *> QUmlPackage::packagedElement() const
 {
     // This is a read-write association end
 
@@ -347,8 +389,7 @@ void QUmlPackage::removePackagedElement(QUmlPackageableElement *packagedElement)
 /*!
     References the ProfileApplications that indicate which profiles have been applied to the Package.
  */
-const QSet<QUmlProfileApplication *> 
-QUmlPackage::profileApplication() const
+const QSet<QUmlProfileApplication *> QUmlPackage::profileApplication() const
 {
     // This is a read-write association end
 

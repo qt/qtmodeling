@@ -58,6 +58,8 @@ public:
     explicit QUmlInitialNode(bool createQObject = true);
     virtual ~QUmlInitialNode();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

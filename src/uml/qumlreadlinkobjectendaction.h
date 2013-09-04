@@ -62,6 +62,8 @@ public:
     explicit QUmlReadLinkObjectEndAction(bool createQObject = true);
     virtual ~QUmlReadLinkObjectEndAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlProperty *end() const;
     void setEnd(QUmlProperty *end);

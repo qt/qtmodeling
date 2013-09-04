@@ -58,6 +58,8 @@ public:
     explicit QUmlDevice(bool createQObject = true);
     virtual ~QUmlDevice();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

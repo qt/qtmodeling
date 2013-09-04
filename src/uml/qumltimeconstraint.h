@@ -60,6 +60,8 @@ public:
     explicit QUmlTimeConstraint(bool createQObject = true);
     virtual ~QUmlTimeConstraint();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool firstEvent() const;
     void setFirstEvent(bool firstEvent);

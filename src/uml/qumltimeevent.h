@@ -60,6 +60,8 @@ public:
     explicit QUmlTimeEvent(bool createQObject = true);
     virtual ~QUmlTimeEvent();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isRelative() const;
     void setRelative(bool isRelative);

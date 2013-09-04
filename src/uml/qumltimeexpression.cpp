@@ -42,8 +42,18 @@
 
 #include "private/qumltimeexpressionobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlObservation>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlTimeExpression
 
@@ -66,13 +76,36 @@ QUmlTimeExpression::~QUmlTimeExpression()
     }
 }
 
+QModelingObject *QUmlTimeExpression::clone() const
+{
+    QUmlTimeExpression *c = new QUmlTimeExpression;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (expr())
+        c->setExpr(dynamic_cast<QUmlValueSpecification *>(expr()->clone()));
+    foreach (QUmlObservation *element, observation())
+        c->addObservation(dynamic_cast<QUmlObservation *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The value of the time expression.
  */
-QUmlValueSpecification *
-QUmlTimeExpression::expr() const
+QUmlValueSpecification *QUmlTimeExpression::expr() const
 {
     // This is a read-write association end
 
@@ -102,8 +135,7 @@ void QUmlTimeExpression::setExpr(QUmlValueSpecification *expr)
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-const QSet<QUmlObservation *> 
-QUmlTimeExpression::observation() const
+const QSet<QUmlObservation *> QUmlTimeExpression::observation() const
 {
     // This is a read-write association end
 

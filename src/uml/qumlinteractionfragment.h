@@ -62,6 +62,8 @@ class Q_UML_EXPORT QUmlInteractionFragment : public virtual QUmlNamedElement
 public:
     virtual ~QUmlInteractionFragment();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlLifeline *> covered() const;
     void addCovered(QUmlLifeline *covered);

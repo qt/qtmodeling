@@ -416,7 +416,7 @@ void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(
     if (${attributeName}())
         c->set${attributeName.ucfirst}(dynamic_cast<${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}>(${attributeName}()->clone()));
     [%- ELSE %]
-    c->set${attributeName.ucfirst}(${attributeName}());
+    c->set${attributeName.ucfirst.remove("^Is")}(${attributeName}());
     [%- END -%]
 [%- END %]
 [%- END -%]

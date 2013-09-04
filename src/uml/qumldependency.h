@@ -61,6 +61,8 @@ public:
     explicit QUmlDependency(bool createQObject = true);
     virtual ~QUmlDependency();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlNamedElement *> client() const;
     void addClient(QUmlNamedElement *client);

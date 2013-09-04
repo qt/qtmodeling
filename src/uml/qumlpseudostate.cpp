@@ -42,9 +42,17 @@
 
 #include "private/qumlpseudostateobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRegion>
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlStateMachine>
-
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTransition>
 /*!
     \class QUmlPseudostate
 
@@ -69,13 +77,33 @@ QUmlPseudostate::~QUmlPseudostate()
     }
 }
 
+QModelingObject *QUmlPseudostate::clone() const
+{
+    QUmlPseudostate *c = new QUmlPseudostate;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (container())
+        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
+    c->setKind(kind());
+    if (state())
+        c->setState(dynamic_cast<QUmlState *>(state()->clone()));
+    if (stateMachine())
+        c->setStateMachine(dynamic_cast<QUmlStateMachine *>(stateMachine()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.
  */
-QtUml::PseudostateKind 
-QUmlPseudostate::kind() const
+QtUml::PseudostateKind QUmlPseudostate::kind() const
 {
     // This is a read-write property
 
@@ -94,8 +122,7 @@ void QUmlPseudostate::setKind(QtUml::PseudostateKind kind)
 /*!
     The State that owns this pseudostate and in which it appears.
  */
-QUmlState *
-QUmlPseudostate::state() const
+QUmlState *QUmlPseudostate::state() const
 {
     // This is a read-write association end
 
@@ -121,8 +148,7 @@ void QUmlPseudostate::setState(QUmlState *state)
 /*!
     The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.
  */
-QUmlStateMachine *
-QUmlPseudostate::stateMachine() const
+QUmlStateMachine *QUmlPseudostate::stateMachine() const
 {
     // This is a read-write association end
 

@@ -44,10 +44,18 @@
 #include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityNode>
 #include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlActivityEdge
 
@@ -70,13 +78,45 @@ QUmlActivityEdge::~QUmlActivityEdge()
 {
 }
 
+QModelingObject *QUmlActivityEdge::clone() const
+{
+    QUmlActivityEdge *c = new QUmlActivityEdge;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    if (guard())
+        c->setGuard(dynamic_cast<QUmlValueSpecification *>(guard()->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    if (interrupts())
+        c->setInterrupts(dynamic_cast<QUmlInterruptibleActivityRegion *>(interrupts()->clone()));
+    foreach (QUmlActivityEdge *element, redefinedEdge())
+        c->addRedefinedEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    if (source())
+        c->setSource(dynamic_cast<QUmlActivityNode *>(source()->clone()));
+    if (target())
+        c->setTarget(dynamic_cast<QUmlActivityNode *>(target()->clone()));
+    if (weight())
+        c->setWeight(dynamic_cast<QUmlValueSpecification *>(weight()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Activity containing the edge.
  */
-QUmlActivity *
-QUmlActivityEdge::activity() const
+QUmlActivity *QUmlActivityEdge::activity() const
 {
     // This is a read-write association end
 
@@ -102,8 +142,7 @@ void QUmlActivityEdge::setActivity(QUmlActivity *activity)
 /*!
     Specification evaluated at runtime to determine if the edge can be traversed.
  */
-QUmlValueSpecification *
-QUmlActivityEdge::guard() const
+QUmlValueSpecification *QUmlActivityEdge::guard() const
 {
     // This is a read-write association end
 
@@ -133,8 +172,7 @@ void QUmlActivityEdge::setGuard(QUmlValueSpecification *guard)
 /*!
     Groups containing the edge.
  */
-const QSet<QUmlActivityGroup *> 
-QUmlActivityEdge::inGroup() const
+const QSet<QUmlActivityGroup *> QUmlActivityEdge::inGroup() const
 {
     // This is a read-only derived union association end
 
@@ -174,8 +212,7 @@ void QUmlActivityEdge::removeInGroup(QUmlActivityGroup *inGroup)
 /*!
     Partitions containing the edge.
  */
-const QSet<QUmlActivityPartition *> 
-QUmlActivityEdge::inPartition() const
+const QSet<QUmlActivityPartition *> QUmlActivityEdge::inPartition() const
 {
     // This is a read-write association end
 
@@ -221,8 +258,7 @@ void QUmlActivityEdge::removeInPartition(QUmlActivityPartition *inPartition)
 /*!
     Structured activity node containing the edge.
  */
-QUmlStructuredActivityNode *
-QUmlActivityEdge::inStructuredNode() const
+QUmlStructuredActivityNode *QUmlActivityEdge::inStructuredNode() const
 {
     // This is a read-write association end
 
@@ -252,8 +288,7 @@ void QUmlActivityEdge::setInStructuredNode(QUmlStructuredActivityNode *inStructu
 /*!
     Region that the edge can interrupt.
  */
-QUmlInterruptibleActivityRegion *
-QUmlActivityEdge::interrupts() const
+QUmlInterruptibleActivityRegion *QUmlActivityEdge::interrupts() const
 {
     // This is a read-write association end
 
@@ -274,8 +309,7 @@ void QUmlActivityEdge::setInterrupts(QUmlInterruptibleActivityRegion *interrupts
 /*!
     Inherited edges replaced by this edge in a specialization of the activity.
  */
-const QSet<QUmlActivityEdge *> 
-QUmlActivityEdge::redefinedEdge() const
+const QSet<QUmlActivityEdge *> QUmlActivityEdge::redefinedEdge() const
 {
     // This is a read-write association end
 
@@ -311,8 +345,7 @@ void QUmlActivityEdge::removeRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 /*!
     Node from which tokens are taken when they traverse the edge.
  */
-QUmlActivityNode *
-QUmlActivityEdge::source() const
+QUmlActivityNode *QUmlActivityEdge::source() const
 {
     // This is a read-write association end
 
@@ -333,8 +366,7 @@ void QUmlActivityEdge::setSource(QUmlActivityNode *source)
 /*!
     Node to which tokens are put when they traverse the edge.
  */
-QUmlActivityNode *
-QUmlActivityEdge::target() const
+QUmlActivityNode *QUmlActivityEdge::target() const
 {
     // This is a read-write association end
 
@@ -355,8 +387,7 @@ void QUmlActivityEdge::setTarget(QUmlActivityNode *target)
 /*!
     The minimum number of tokens that must traverse the edge at the same time.
  */
-QUmlValueSpecification *
-QUmlActivityEdge::weight() const
+QUmlValueSpecification *QUmlActivityEdge::weight() const
 {
     // This is a read-write association end
 

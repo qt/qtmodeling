@@ -63,6 +63,8 @@ public:
     explicit QUmlUseCase(bool createQObject = true);
     virtual ~QUmlUseCase();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlExtend *> extend() const;
     void addExtend(QUmlExtend *extend);

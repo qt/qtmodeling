@@ -42,10 +42,31 @@
 
 #include "private/qumlloopnodeobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlInputPin>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
+#include <QtUml/QUmlVariable>
 /*!
     \class QUmlLoopNode
 
@@ -70,13 +91,78 @@ QUmlLoopNode::~QUmlLoopNode()
     }
 }
 
+QModelingObject *QUmlLoopNode::clone() const
+{
+    QUmlLoopNode *c = new QUmlLoopNode;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlActivityEdge *element, edge())
+        c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    c->setMustIsolate(mustIsolate());
+    foreach (QUmlActivityNode *element, node())
+        c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlVariable *element, variable())
+        c->addVariable(dynamic_cast<QUmlVariable *>(element->clone()));
+    foreach (QUmlOutputPin *element, bodyOutput())
+        c->addBodyOutput(dynamic_cast<QUmlOutputPin *>(element->clone()));
+    foreach (QUmlExecutableNode *element, bodyPart())
+        c->addBodyPart(dynamic_cast<QUmlExecutableNode *>(element->clone()));
+    if (decider())
+        c->setDecider(dynamic_cast<QUmlOutputPin *>(decider()->clone()));
+    c->setTestedFirst(isTestedFirst());
+    foreach (QUmlOutputPin *element, loopVariable())
+        c->addLoopVariable(dynamic_cast<QUmlOutputPin *>(element->clone()));
+    foreach (QUmlInputPin *element, loopVariableInput())
+        c->addLoopVariableInput(dynamic_cast<QUmlInputPin *>(element->clone()));
+    foreach (QUmlOutputPin *element, result())
+        c->addResult(dynamic_cast<QUmlOutputPin *>(element->clone()));
+    foreach (QUmlExecutableNode *element, setupPart())
+        c->addSetupPart(dynamic_cast<QUmlExecutableNode *>(element->clone()));
+    foreach (QUmlExecutableNode *element, test())
+        c->addTest(dynamic_cast<QUmlExecutableNode *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
  */
-const QList<QUmlOutputPin *> 
-QUmlLoopNode::bodyOutput() const
+const QList<QUmlOutputPin *> QUmlLoopNode::bodyOutput() const
 {
     // This is a read-write association end
 
@@ -106,8 +192,7 @@ void QUmlLoopNode::removeBodyOutput(QUmlOutputPin *bodyOutput)
 /*!
     The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
  */
-const QSet<QUmlExecutableNode *> 
-QUmlLoopNode::bodyPart() const
+const QSet<QUmlExecutableNode *> QUmlLoopNode::bodyPart() const
 {
     // This is a read-write association end
 
@@ -137,8 +222,7 @@ void QUmlLoopNode::removeBodyPart(QUmlExecutableNode *bodyPart)
 /*!
     An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.
  */
-QUmlOutputPin *
-QUmlLoopNode::decider() const
+QUmlOutputPin *QUmlLoopNode::decider() const
 {
     // This is a read-write association end
 
@@ -159,8 +243,7 @@ void QUmlLoopNode::setDecider(QUmlOutputPin *decider)
 /*!
     If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.
  */
-bool 
-QUmlLoopNode::isTestedFirst() const
+bool QUmlLoopNode::isTestedFirst() const
 {
     // This is a read-write property
 
@@ -179,8 +262,7 @@ void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
 /*!
     A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
  */
-const QList<QUmlOutputPin *> 
-QUmlLoopNode::loopVariable() const
+const QList<QUmlOutputPin *> QUmlLoopNode::loopVariable() const
 {
     // This is a read-write association end
 
@@ -210,8 +292,7 @@ void QUmlLoopNode::removeLoopVariable(QUmlOutputPin *loopVariable)
 /*!
     A list of values that are moved into the loop variable pins before the first iteration of the loop.
  */
-const QList<QUmlInputPin *> 
-QUmlLoopNode::loopVariableInput() const
+const QList<QUmlInputPin *> QUmlLoopNode::loopVariableInput() const
 {
     // This is a read-write association end
 
@@ -244,8 +325,7 @@ void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
 /*!
     A list of output pins that constitute the data flow output of the entire loop.
  */
-const QList<QUmlOutputPin *> 
-QUmlLoopNode::result() const
+const QList<QUmlOutputPin *> QUmlLoopNode::result() const
 {
     // This is a read-write association end
 
@@ -278,8 +358,7 @@ void QUmlLoopNode::removeResult(QUmlOutputPin *result)
 /*!
     The set of nodes and edges that initialize values or perform other setup computations for the loop.
  */
-const QSet<QUmlExecutableNode *> 
-QUmlLoopNode::setupPart() const
+const QSet<QUmlExecutableNode *> QUmlLoopNode::setupPart() const
 {
     // This is a read-write association end
 
@@ -309,8 +388,7 @@ void QUmlLoopNode::removeSetupPart(QUmlExecutableNode *setupPart)
 /*!
     The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
  */
-const QSet<QUmlExecutableNode *> 
-QUmlLoopNode::test() const
+const QSet<QUmlExecutableNode *> QUmlLoopNode::test() const
 {
     // This is a read-write association end
 

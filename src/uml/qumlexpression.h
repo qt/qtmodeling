@@ -58,6 +58,8 @@ public:
     explicit QUmlExpression(bool createQObject = true);
     virtual ~QUmlExpression();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlValueSpecification *> operand() const;
     void addOperand(QUmlValueSpecification *operand);

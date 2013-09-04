@@ -42,8 +42,15 @@
 
 #include "private/qumltimeobservationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamedElement>
-
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlTimeObservation
 
@@ -67,13 +74,33 @@ QUmlTimeObservation::~QUmlTimeObservation()
     }
 }
 
+QModelingObject *QUmlTimeObservation::clone() const
+{
+    QUmlTimeObservation *c = new QUmlTimeObservation;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (event())
+        c->setEvent(dynamic_cast<QUmlNamedElement *>(event()->clone()));
+    c->setFirstEvent(firstEvent());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The observation is determined by the entering or exiting of the event element during execution.
  */
-QUmlNamedElement *
-QUmlTimeObservation::event() const
+QUmlNamedElement *QUmlTimeObservation::event() const
 {
     // This is a read-write association end
 
@@ -94,8 +121,7 @@ void QUmlTimeObservation::setEvent(QUmlNamedElement *event)
 /*!
     The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.
  */
-bool 
-QUmlTimeObservation::firstEvent() const
+bool QUmlTimeObservation::firstEvent() const
 {
     // This is a read-write property
 

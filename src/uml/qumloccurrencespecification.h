@@ -61,6 +61,8 @@ public:
     explicit QUmlOccurrenceSpecification(bool createQObject = true);
     virtual ~QUmlOccurrenceSpecification();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlLifeline *covered() const;
     void setCovered(QUmlLifeline *covered);

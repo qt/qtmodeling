@@ -61,6 +61,8 @@ public:
     explicit QUmlConnectorEnd(bool createQObject = true);
     virtual ~QUmlConnectorEnd();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlProperty *definingEnd() const;
     Q_DECL_HIDDEN void setDefiningEnd(QUmlProperty *definingEnd);

@@ -42,8 +42,23 @@
 
 #include "private/qumljoinnodeobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlJoinNode
 
@@ -67,13 +82,44 @@ QUmlJoinNode::~QUmlJoinNode()
     }
 }
 
+QModelingObject *QUmlJoinNode::clone() const
+{
+    QUmlJoinNode *c = new QUmlJoinNode;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    c->setCombineDuplicate(isCombineDuplicate());
+    if (joinSpec())
+        c->setJoinSpec(dynamic_cast<QUmlValueSpecification *>(joinSpec()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Tells whether tokens having objects with the same identity are combined into one by the join.
  */
-bool 
-QUmlJoinNode::isCombineDuplicate() const
+bool QUmlJoinNode::isCombineDuplicate() const
 {
     // This is a read-write property
 
@@ -92,8 +138,7 @@ void QUmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 /*!
     A specification giving the conditions under which the join with emit a token. Default is "and".
  */
-QUmlValueSpecification *
-QUmlJoinNode::joinSpec() const
+QUmlValueSpecification *QUmlJoinNode::joinSpec() const
 {
     // This is a read-write association end
 

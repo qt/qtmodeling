@@ -62,6 +62,8 @@ public:
     explicit QUmlReduceAction(bool createQObject = true);
     virtual ~QUmlReduceAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *collection() const;
     void setCollection(QUmlInputPin *collection);

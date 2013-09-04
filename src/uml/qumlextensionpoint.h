@@ -60,6 +60,8 @@ public:
     explicit QUmlExtensionPoint(bool createQObject = true);
     virtual ~QUmlExtensionPoint();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlUseCase *useCase() const;
     void setUseCase(QUmlUseCase *useCase);

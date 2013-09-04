@@ -61,6 +61,8 @@ public:
     explicit QUmlTrigger(bool createQObject = true);
     virtual ~QUmlTrigger();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlEvent *event() const;
     void setEvent(QUmlEvent *event);

@@ -61,6 +61,8 @@ public:
     explicit QUmlDecisionNode(bool createQObject = true);
     virtual ~QUmlDecisionNode();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlBehavior *decisionInput() const;
     void setDecisionInput(QUmlBehavior *decisionInput);

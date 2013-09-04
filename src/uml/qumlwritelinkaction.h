@@ -57,6 +57,8 @@ class Q_UML_EXPORT QUmlWriteLinkAction : public QUmlLinkAction
 public:
     virtual ~QUmlWriteLinkAction();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
 
 protected:
     explicit QUmlWriteLinkAction();

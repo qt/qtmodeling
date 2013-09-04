@@ -40,9 +40,15 @@
 ****************************************************************************/
 #include "qumldeploymenttarget.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
 #include <QtUml/QUmlDeployment>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
-
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlDeploymentTarget
 
@@ -58,13 +64,28 @@ QUmlDeploymentTarget::~QUmlDeploymentTarget()
 {
 }
 
+QModelingObject *QUmlDeploymentTarget::clone() const
+{
+    QUmlDeploymentTarget *c = new QUmlDeploymentTarget;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlDeployment *element, deployment())
+        c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
  */
-const QSet<QUmlPackageableElement *> 
-QUmlDeploymentTarget::deployedElement() const
+const QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElement() const
 {
     // This is a read-only derived association end
 
@@ -100,8 +121,7 @@ void QUmlDeploymentTarget::removeDeployedElement(QUmlPackageableElement *deploye
 /*!
     The set of Deployments for a DeploymentTarget.
  */
-const QSet<QUmlDeployment *> 
-QUmlDeploymentTarget::deployment() const
+const QSet<QUmlDeployment *> QUmlDeploymentTarget::deployment() const
 {
     // This is a read-write association end
 

@@ -71,6 +71,8 @@ class Q_UML_EXPORT QUmlClassifier : public QUmlNamespace, public QUmlType, publi
 public:
     virtual ~QUmlClassifier();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlProperty *> attribute() const;
     Q_DECL_HIDDEN void addAttribute(QUmlProperty *attribute);

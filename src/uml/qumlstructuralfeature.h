@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlStructuralFeature : public virtual QUmlTypedElement, publ
 public:
     virtual ~QUmlStructuralFeature();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);

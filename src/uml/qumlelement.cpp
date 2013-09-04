@@ -41,7 +41,6 @@
 #include "qumlelement.h"
 
 #include <QtUml/QUmlComment>
-
 /*!
     \class QUmlElement
 
@@ -58,13 +57,20 @@ QUmlElement::~QUmlElement()
 {
 }
 
+QModelingObject *QUmlElement::clone() const
+{
+    QUmlElement *c = new QUmlElement;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The Comments owned by this element.
  */
-const QSet<QUmlComment *> 
-QUmlElement::ownedComment() const
+const QSet<QUmlComment *> QUmlElement::ownedComment() const
 {
     // This is a read-write association end
 
@@ -103,8 +109,7 @@ void QUmlElement::removeOwnedComment(QUmlComment *ownedComment)
 /*!
     The Elements owned by this element.
  */
-const QSet<QUmlElement *> 
-QUmlElement::ownedElement() const
+const QSet<QUmlElement *> QUmlElement::ownedElement() const
 {
     // This is a read-only derived union association end
 
@@ -137,8 +142,7 @@ void QUmlElement::removeOwnedElement(QUmlElement *ownedElement)
 /*!
     The Element that owns this element.
  */
-QUmlElement *
-QUmlElement::owner() const
+QUmlElement *QUmlElement::owner() const
 {
     // This is a read-only derived union association end
 

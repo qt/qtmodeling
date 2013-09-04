@@ -62,6 +62,8 @@ class Q_UML_EXPORT QUmlNamespace : public virtual QUmlNamedElement
 public:
     virtual ~QUmlNamespace();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlElementImport *> elementImport() const;
     void addElementImport(QUmlElementImport *elementImport);

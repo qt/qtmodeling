@@ -40,8 +40,9 @@
 ****************************************************************************/
 #include "qumlmultiplicityelement.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlMultiplicityElement
 
@@ -61,13 +62,26 @@ QUmlMultiplicityElement::~QUmlMultiplicityElement()
 {
 }
 
+QModelingObject *QUmlMultiplicityElement::clone() const
+{
+    QUmlMultiplicityElement *c = new QUmlMultiplicityElement;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    c->setOrdered(isOrdered());
+    c->setUnique(isUnique());
+    if (lowerValue())
+        c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
+    if (upperValue())
+        c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.
  */
-bool 
-QUmlMultiplicityElement::isOrdered() const
+bool QUmlMultiplicityElement::isOrdered() const
 {
     // This is a read-write property
 
@@ -86,8 +100,7 @@ void QUmlMultiplicityElement::setOrdered(bool isOrdered)
 /*!
     For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.
  */
-bool 
-QUmlMultiplicityElement::isUnique() const
+bool QUmlMultiplicityElement::isUnique() const
 {
     // This is a read-write property
 
@@ -106,8 +119,7 @@ void QUmlMultiplicityElement::setUnique(bool isUnique)
 /*!
     Specifies the lower bound of the multiplicity interval.
  */
-int 
-QUmlMultiplicityElement::lower() const
+int QUmlMultiplicityElement::lower() const
 {
     // This is a read-write derived property
 
@@ -131,8 +143,7 @@ void QUmlMultiplicityElement::setLower(int lower)
 /*!
     The specification of the lower bound for this multiplicity.
  */
-QUmlValueSpecification *
-QUmlMultiplicityElement::lowerValue() const
+QUmlValueSpecification *QUmlMultiplicityElement::lowerValue() const
 {
     // This is a read-write association end
 
@@ -162,8 +173,7 @@ void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
 /*!
     Specifies the upper bound of the multiplicity interval.
  */
-int 
-QUmlMultiplicityElement::upper() const
+int QUmlMultiplicityElement::upper() const
 {
     // This is a read-write derived property
 
@@ -187,8 +197,7 @@ void QUmlMultiplicityElement::setUpper(int upper)
 /*!
     The specification of the upper bound for this multiplicity.
  */
-QUmlValueSpecification *
-QUmlMultiplicityElement::upperValue() const
+QUmlValueSpecification *QUmlMultiplicityElement::upperValue() const
 {
     // This is a read-write association end
 

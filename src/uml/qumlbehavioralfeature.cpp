@@ -41,11 +41,22 @@
 #include "qumlbehavioralfeature.h"
 
 #include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlParameter>
 #include <QtUml/QUmlParameterSet>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlType>
-
 /*!
     \class QUmlBehavioralFeature
 
@@ -63,13 +74,44 @@ QUmlBehavioralFeature::~QUmlBehavioralFeature()
 {
 }
 
+QModelingObject *QUmlBehavioralFeature::clone() const
+{
+    QUmlBehavioralFeature *c = new QUmlBehavioralFeature;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    c->setLeaf(isLeaf());
+    c->setStatic(isStatic());
+    c->setConcurrency(concurrency());
+    c->setAbstract(isAbstract());
+    foreach (QUmlBehavior *element, method())
+        c->addMethod(dynamic_cast<QUmlBehavior *>(element->clone()));
+    foreach (QUmlParameter *element, ownedParameter())
+        c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
+    foreach (QUmlParameterSet *element, ownedParameterSet())
+        c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
+    foreach (QUmlType *element, raisedException())
+        c->addRaisedException(dynamic_cast<QUmlType *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features.
  */
-QtUml::CallConcurrencyKind 
-QUmlBehavioralFeature::concurrency() const
+QtUml::CallConcurrencyKind QUmlBehavioralFeature::concurrency() const
 {
     // This is a read-write property
 
@@ -88,8 +130,7 @@ void QUmlBehavioralFeature::setConcurrency(QtUml::CallConcurrencyKind concurrenc
 /*!
     If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.
  */
-bool 
-QUmlBehavioralFeature::isAbstract() const
+bool QUmlBehavioralFeature::isAbstract() const
 {
     // This is a read-write property
 
@@ -108,8 +149,7 @@ void QUmlBehavioralFeature::setAbstract(bool isAbstract)
 /*!
     A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).
  */
-const QSet<QUmlBehavior *> 
-QUmlBehavioralFeature::method() const
+const QSet<QUmlBehavior *> QUmlBehavioralFeature::method() const
 {
     // This is a read-write association end
 
@@ -149,8 +189,7 @@ void QUmlBehavioralFeature::removeMethod(QUmlBehavior *method)
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.
  */
-const QList<QUmlParameter *> 
-QUmlBehavioralFeature::ownedParameter() const
+const QList<QUmlParameter *> QUmlBehavioralFeature::ownedParameter() const
 {
     // This is a read-write association end
 
@@ -189,8 +228,7 @@ void QUmlBehavioralFeature::removeOwnedParameter(QUmlParameter *ownedParameter)
 /*!
     The ParameterSets owned by this BehavioralFeature.
  */
-const QSet<QUmlParameterSet *> 
-QUmlBehavioralFeature::ownedParameterSet() const
+const QSet<QUmlParameterSet *> QUmlBehavioralFeature::ownedParameterSet() const
 {
     // This is a read-write association end
 
@@ -229,8 +267,7 @@ void QUmlBehavioralFeature::removeOwnedParameterSet(QUmlParameterSet *ownedParam
 /*!
     References the Types representing exceptions that may be raised during an invocation of this feature.
  */
-const QSet<QUmlType *> 
-QUmlBehavioralFeature::raisedException() const
+const QSet<QUmlType *> QUmlBehavioralFeature::raisedException() const
 {
     // This is a read-write association end
 

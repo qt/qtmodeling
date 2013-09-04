@@ -42,8 +42,22 @@
 
 #include "private/qumlinteractionoperandobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionConstraint>
-
+#include <QtUml/QUmlInteractionFragment>
+#include <QtUml/QUmlLifeline>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlInteractionOperand
 
@@ -66,13 +80,44 @@ QUmlInteractionOperand::~QUmlInteractionOperand()
     }
 }
 
+QModelingObject *QUmlInteractionOperand::clone() const
+{
+    QUmlInteractionOperand *c = new QUmlInteractionOperand;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlLifeline *element, covered())
+        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    foreach (QUmlInteractionFragment *element, fragment())
+        c->addFragment(dynamic_cast<QUmlInteractionFragment *>(element->clone()));
+    if (guard())
+        c->setGuard(dynamic_cast<QUmlInteractionConstraint *>(guard()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The fragments of the operand.
  */
-const QList<QUmlInteractionFragment *> 
-QUmlInteractionOperand::fragment() const
+const QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragment() const
 {
     // This is a read-write association end
 
@@ -121,8 +166,7 @@ void QUmlInteractionOperand::removeFragment(QUmlInteractionFragment *fragment)
 /*!
     Constraint of the operand.
  */
-QUmlInteractionConstraint *
-QUmlInteractionOperand::guard() const
+QUmlInteractionConstraint *QUmlInteractionOperand::guard() const
 {
     // This is a read-write association end
 

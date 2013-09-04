@@ -63,6 +63,8 @@ public:
     explicit QUmlCombinedFragment(bool createQObject = true);
     virtual ~QUmlCombinedFragment();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlGate *> cfragmentGate() const;
     void addCfragmentGate(QUmlGate *cfragmentGate);

@@ -64,6 +64,8 @@ public:
     explicit QUmlInteraction(bool createQObject = true);
     virtual ~QUmlInteraction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlAction *> action() const;
     void addAction(QUmlAction *action);

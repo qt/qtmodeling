@@ -42,8 +42,31 @@
 
 #include "private/qumlexpansionregionobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlExpansionNode>
-
+#include <QtUml/QUmlInputPin>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOutputPin>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
+#include <QtUml/QUmlVariable>
 /*!
     \class QUmlExpansionRegion
 
@@ -67,13 +90,70 @@ QUmlExpansionRegion::~QUmlExpansionRegion()
     }
 }
 
+QModelingObject *QUmlExpansionRegion::clone() const
+{
+    QUmlExpansionRegion *c = new QUmlExpansionRegion;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlActivityEdge *element, edge())
+        c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    c->setMustIsolate(mustIsolate());
+    foreach (QUmlActivityNode *element, node())
+        c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlInputPin *element, structuredNodeInput())
+        c->addStructuredNodeInput(dynamic_cast<QUmlInputPin *>(element->clone()));
+    foreach (QUmlOutputPin *element, structuredNodeOutput())
+        c->addStructuredNodeOutput(dynamic_cast<QUmlOutputPin *>(element->clone()));
+    foreach (QUmlVariable *element, variable())
+        c->addVariable(dynamic_cast<QUmlVariable *>(element->clone()));
+    foreach (QUmlExpansionNode *element, inputElement())
+        c->addInputElement(dynamic_cast<QUmlExpansionNode *>(element->clone()));
+    c->setMode(mode());
+    foreach (QUmlExpansionNode *element, outputElement())
+        c->addOutputElement(dynamic_cast<QUmlExpansionNode *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     An object node that holds a separate element of the input collection during each of the multiple executions of the region.
  */
-const QSet<QUmlExpansionNode *> 
-QUmlExpansionRegion::inputElement() const
+const QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElement() const
 {
     // This is a read-write association end
 
@@ -113,8 +193,7 @@ void QUmlExpansionRegion::removeInputElement(QUmlExpansionNode *inputElement)
 /*!
     The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution
  */
-QtUml::ExpansionKind 
-QUmlExpansionRegion::mode() const
+QtUml::ExpansionKind QUmlExpansionRegion::mode() const
 {
     // This is a read-write property
 
@@ -133,8 +212,7 @@ void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
 /*!
     An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
  */
-const QSet<QUmlExpansionNode *> 
-QUmlExpansionRegion::outputElement() const
+const QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElement() const
 {
     // This is a read-write association end
 

@@ -61,6 +61,8 @@ public:
     explicit QUmlValueSpecificationAction(bool createQObject = true);
     virtual ~QUmlValueSpecificationAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);

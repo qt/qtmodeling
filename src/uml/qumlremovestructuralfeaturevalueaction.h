@@ -60,6 +60,8 @@ public:
     explicit QUmlRemoveStructuralFeatureValueAction(bool createQObject = true);
     virtual ~QUmlRemoveStructuralFeatureValueAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isRemoveDuplicates() const;
     void setRemoveDuplicates(bool isRemoveDuplicates);

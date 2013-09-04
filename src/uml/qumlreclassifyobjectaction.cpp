@@ -42,9 +42,26 @@
 
 #include "private/qumlreclassifyobjectactionobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlInputPin>
-
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOutputPin>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
 /*!
     \class QUmlReclassifyObjectAction
 
@@ -68,13 +85,55 @@ QUmlReclassifyObjectAction::~QUmlReclassifyObjectAction()
     }
 }
 
+QModelingObject *QUmlReclassifyObjectAction::clone() const
+{
+    QUmlReclassifyObjectAction *c = new QUmlReclassifyObjectAction;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    c->setReplaceAll(isReplaceAll());
+    foreach (QUmlClassifier *element, newClassifier())
+        c->addNewClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (object())
+        c->setObject(dynamic_cast<QUmlInputPin *>(object()->clone()));
+    foreach (QUmlClassifier *element, oldClassifier())
+        c->addOldClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies whether existing classifiers should be removed before adding the new classifiers.
  */
-bool 
-QUmlReclassifyObjectAction::isReplaceAll() const
+bool QUmlReclassifyObjectAction::isReplaceAll() const
 {
     // This is a read-write property
 
@@ -93,8 +152,7 @@ void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 /*!
     A set of classifiers to be added to the classifiers of the object.
  */
-const QSet<QUmlClassifier *> 
-QUmlReclassifyObjectAction::newClassifier() const
+const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifier() const
 {
     // This is a read-write association end
 
@@ -124,8 +182,7 @@ void QUmlReclassifyObjectAction::removeNewClassifier(QUmlClassifier *newClassifi
 /*!
     Holds the object to be reclassified.
  */
-QUmlInputPin *
-QUmlReclassifyObjectAction::object() const
+QUmlInputPin *QUmlReclassifyObjectAction::object() const
 {
     // This is a read-write association end
 
@@ -155,8 +212,7 @@ void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
 /*!
     A set of classifiers to be removed from the classifiers of the object.
  */
-const QSet<QUmlClassifier *> 
-QUmlReclassifyObjectAction::oldClassifier() const
+const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifier() const
 {
     // This is a read-write association end
 

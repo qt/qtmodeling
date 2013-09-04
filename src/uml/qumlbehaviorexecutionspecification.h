@@ -60,6 +60,8 @@ public:
     explicit QUmlBehaviorExecutionSpecification(bool createQObject = true);
     virtual ~QUmlBehaviorExecutionSpecification();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlBehavior *behavior() const;
     void setBehavior(QUmlBehavior *behavior);

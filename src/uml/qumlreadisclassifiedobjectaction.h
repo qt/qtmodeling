@@ -62,6 +62,8 @@ public:
     explicit QUmlReadIsClassifiedObjectAction(bool createQObject = true);
     virtual ~QUmlReadIsClassifiedObjectAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlClassifier *classifier() const;
     void setClassifier(QUmlClassifier *classifier);

@@ -58,6 +58,8 @@ public:
     explicit QUmlLiteralReal(bool createQObject = true);
     virtual ~QUmlLiteralReal();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     double value() const;
     void setValue(double value);

@@ -58,6 +58,8 @@ public:
     explicit QUmlDestructionOccurrenceSpecification(bool createQObject = true);
     virtual ~QUmlDestructionOccurrenceSpecification();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

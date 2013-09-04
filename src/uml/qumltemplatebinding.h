@@ -62,6 +62,8 @@ public:
     explicit QUmlTemplateBinding(bool createQObject = true);
     virtual ~QUmlTemplateBinding();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlTemplateableElement *boundElement() const;
     void setBoundElement(QUmlTemplateableElement *boundElement);

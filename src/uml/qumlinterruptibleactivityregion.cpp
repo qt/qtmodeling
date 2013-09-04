@@ -42,9 +42,17 @@
 
 #include "private/qumlinterruptibleactivityregionobject_p.h"
 
+#include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityNode>
-
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlInterruptibleActivityRegion
 
@@ -66,13 +74,32 @@ QUmlInterruptibleActivityRegion::~QUmlInterruptibleActivityRegion()
     }
 }
 
+QModelingObject *QUmlInterruptibleActivityRegion::clone() const
+{
+    QUmlInterruptibleActivityRegion *c = new QUmlInterruptibleActivityRegion;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (inActivity())
+        c->setInActivity(dynamic_cast<QUmlActivity *>(inActivity()->clone()));
+    foreach (QUmlActivityEdge *element, interruptingEdge())
+        c->addInterruptingEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, node())
+        c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
  */
-const QSet<QUmlActivityEdge *> 
-QUmlInterruptibleActivityRegion::interruptingEdge() const
+const QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdge() const
 {
     // This is a read-write association end
 
@@ -112,8 +139,7 @@ void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *i
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QUmlActivityNode *> 
-QUmlInterruptibleActivityRegion::node() const
+const QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::node() const
 {
     // This is a read-write association end
 

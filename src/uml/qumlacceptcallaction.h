@@ -60,6 +60,8 @@ public:
     explicit QUmlAcceptCallAction(bool createQObject = true);
     virtual ~QUmlAcceptCallAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOutputPin *returnInformation() const;
     void setReturnInformation(QUmlOutputPin *returnInformation);

@@ -42,6 +42,17 @@
 
 #include "private/qumlintervalobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlInterval
 
@@ -65,13 +76,36 @@ QUmlInterval::~QUmlInterval()
     }
 }
 
+QModelingObject *QUmlInterval::clone() const
+{
+    QUmlInterval *c = new QUmlInterval;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (max())
+        c->setMax(dynamic_cast<QUmlValueSpecification *>(max()->clone()));
+    if (min())
+        c->setMin(dynamic_cast<QUmlValueSpecification *>(min()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Refers to the ValueSpecification denoting the maximum value of the range.
  */
-QUmlValueSpecification *
-QUmlInterval::max() const
+QUmlValueSpecification *QUmlInterval::max() const
 {
     // This is a read-write association end
 
@@ -92,8 +126,7 @@ void QUmlInterval::setMax(QUmlValueSpecification *max)
 /*!
     Refers to the ValueSpecification denoting the minimum value of the range.
  */
-QUmlValueSpecification *
-QUmlInterval::min() const
+QUmlValueSpecification *QUmlInterval::min() const
 {
     // This is a read-write association end
 

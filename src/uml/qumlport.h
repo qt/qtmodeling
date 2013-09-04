@@ -61,6 +61,8 @@ public:
     explicit QUmlPort(bool createQObject = true);
     virtual ~QUmlPort();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isBehavior() const;
     void setBehavior(bool isBehavior);

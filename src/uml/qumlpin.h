@@ -58,6 +58,8 @@ class Q_UML_EXPORT QUmlPin : public QUmlMultiplicityElement, public QUmlObjectNo
 public:
     virtual ~QUmlPin();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     bool isControl() const;
     void setControl(bool isControl);

@@ -43,11 +43,22 @@
 #include "private/qumlregionobject_p.h"
 
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlState>
 #include <QtUml/QUmlStateMachine>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
 #include <QtUml/QUmlVertex>
-
 /*!
     \class QUmlRegion
 
@@ -72,13 +83,43 @@ QUmlRegion::~QUmlRegion()
     }
 }
 
+QModelingObject *QUmlRegion::clone() const
+{
+    QUmlRegion *c = new QUmlRegion;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (extendedRegion())
+        c->setExtendedRegion(dynamic_cast<QUmlRegion *>(extendedRegion()->clone()));
+    if (state())
+        c->setState(dynamic_cast<QUmlState *>(state()->clone()));
+    if (stateMachine())
+        c->setStateMachine(dynamic_cast<QUmlStateMachine *>(stateMachine()->clone()));
+    foreach (QUmlVertex *element, subvertex())
+        c->addSubvertex(dynamic_cast<QUmlVertex *>(element->clone()));
+    foreach (QUmlTransition *element, transition())
+        c->addTransition(dynamic_cast<QUmlTransition *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The region of which this region is an extension.
  */
-QUmlRegion *
-QUmlRegion::extendedRegion() const
+QUmlRegion *QUmlRegion::extendedRegion() const
 {
     // This is a read-write association end
 
@@ -107,8 +148,7 @@ void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
 /*!
     References the classifier in which context this element may be redefined.
  */
-QUmlClassifier *
-QUmlRegion::redefinitionContext() const
+QUmlClassifier *QUmlRegion::redefinitionContext() const
 {
     // This is a read-only derived association end
 
@@ -132,8 +172,7 @@ void QUmlRegion::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 /*!
     The State that owns the Region. If a Region is owned by a State, then it cannot also be owned by a StateMachine.
  */
-QUmlState *
-QUmlRegion::state() const
+QUmlState *QUmlRegion::state() const
 {
     // This is a read-write association end
 
@@ -159,8 +198,7 @@ void QUmlRegion::setState(QUmlState *state)
 /*!
     The StateMachine that owns the Region. If a Region is owned by a StateMachine, then it cannot also be owned by a State.
  */
-QUmlStateMachine *
-QUmlRegion::stateMachine() const
+QUmlStateMachine *QUmlRegion::stateMachine() const
 {
     // This is a read-write association end
 
@@ -186,8 +224,7 @@ void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
 /*!
     The set of vertices that are owned by this region.
  */
-const QSet<QUmlVertex *> 
-QUmlRegion::subvertex() const
+const QSet<QUmlVertex *> QUmlRegion::subvertex() const
 {
     // This is a read-write association end
 
@@ -236,8 +273,7 @@ void QUmlRegion::removeSubvertex(QUmlVertex *subvertex)
 /*!
     The set of transitions owned by the region.
  */
-const QSet<QUmlTransition *> 
-QUmlRegion::transition() const
+const QSet<QUmlTransition *> QUmlRegion::transition() const
 {
     // This is a read-write association end
 

@@ -60,6 +60,8 @@ public:
     explicit QUmlLinkEndCreationData(bool createQObject = true);
     virtual ~QUmlLinkEndCreationData();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *insertAt() const;
     void setInsertAt(QUmlInputPin *insertAt);

@@ -42,10 +42,43 @@
 
 #include <QtUml/QUmlBehavioralFeature>
 #include <QtUml/QUmlBehavioredClassifier>
+#include <QtUml/QUmlClass>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlClassifierTemplateParameter>
+#include <QtUml/QUmlCollaborationUse>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConnectableElement>
+#include <QtUml/QUmlConnector>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlExtension>
+#include <QtUml/QUmlFeature>
+#include <QtUml/QUmlGeneralization>
+#include <QtUml/QUmlGeneralizationSet>
+#include <QtUml/QUmlInterfaceRealization>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOperation>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlParameter>
+#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlParameterSet>
-
+#include <QtUml/QUmlPort>
+#include <QtUml/QUmlProperty>
+#include <QtUml/QUmlReception>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlRedefinableTemplateSignature>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlSubstitution>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlUseCase>
 /*!
     \class QUmlBehavior
 
@@ -64,13 +97,91 @@ QUmlBehavior::~QUmlBehavior()
 {
 }
 
+QModelingObject *QUmlBehavior::clone() const
+{
+    QUmlBehavior *c = new QUmlBehavior;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    foreach (QUmlCollaborationUse *element, collaborationUse())
+        c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
+    foreach (QUmlGeneralization *element, generalization())
+        c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
+    c->setFinalSpecialization(isFinalSpecialization());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlUseCase *element, ownedUseCase())
+        c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+        c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
+    foreach (QUmlClassifier *element, redefinedClassifier())
+        c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (representation())
+        c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
+    foreach (QUmlSubstitution *element, substitution())
+        c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlUseCase *element, useCase())
+        c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlConnector *element, ownedConnector())
+        c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
+    if (classifierBehavior())
+        c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
+    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+        c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
+    foreach (QUmlBehavior *element, ownedBehavior())
+        c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setActive(isActive());
+    foreach (QUmlClassifier *element, nestedClassifier())
+        c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    foreach (QUmlProperty *element, ownedAttribute())
+        c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
+    foreach (QUmlOperation *element, ownedOperation())
+        c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
+    foreach (QUmlReception *element, ownedReception())
+        c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
+    c->setReentrant(isReentrant());
+    foreach (QUmlParameter *element, ownedParameter())
+        c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
+    foreach (QUmlParameterSet *element, ownedParameterSet())
+        c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
+    foreach (QUmlConstraint *element, postcondition())
+        c->addPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, precondition())
+        c->addPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlBehavior *element, redefinedBehavior())
+        c->addRedefinedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
+    if (specification())
+        c->setSpecification(dynamic_cast<QUmlBehavioralFeature *>(specification()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.
  */
-QUmlBehavioredClassifier *
-QUmlBehavior::context() const
+QUmlBehavioredClassifier *QUmlBehavior::context() const
 {
     // This is a read-only derived association end
 
@@ -102,8 +213,7 @@ void QUmlBehavior::setContext(QUmlBehavioredClassifier *context)
 /*!
     Tells whether the behavior can be invoked while it is still executing from a previous invocation.
  */
-bool 
-QUmlBehavior::isReentrant() const
+bool QUmlBehavior::isReentrant() const
 {
     // This is a read-write property
 
@@ -122,8 +232,7 @@ void QUmlBehavior::setReentrant(bool isReentrant)
 /*!
     References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
  */
-const QList<QUmlParameter *> 
-QUmlBehavior::ownedParameter() const
+const QList<QUmlParameter *> QUmlBehavior::ownedParameter() const
 {
     // This is a read-write association end
 
@@ -162,8 +271,7 @@ void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
 /*!
     The ParameterSets owned by this Behavior.
  */
-const QSet<QUmlParameterSet *> 
-QUmlBehavior::ownedParameterSet() const
+const QSet<QUmlParameterSet *> QUmlBehavior::ownedParameterSet() const
 {
     // This is a read-write association end
 
@@ -202,8 +310,7 @@ void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 /*!
     An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
  */
-const QSet<QUmlConstraint *> 
-QUmlBehavior::postcondition() const
+const QSet<QUmlConstraint *> QUmlBehavior::postcondition() const
 {
     // This is a read-write association end
 
@@ -242,8 +349,7 @@ void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
 /*!
     An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
  */
-const QSet<QUmlConstraint *> 
-QUmlBehavior::precondition() const
+const QSet<QUmlConstraint *> QUmlBehavior::precondition() const
 {
     // This is a read-write association end
 
@@ -282,8 +388,7 @@ void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
 /*!
     References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
  */
-const QSet<QUmlBehavior *> 
-QUmlBehavior::redefinedBehavior() const
+const QSet<QUmlBehavior *> QUmlBehavior::redefinedBehavior() const
 {
     // This is a read-write association end
 
@@ -319,8 +424,7 @@ void QUmlBehavior::removeRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 /*!
     Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.
  */
-QUmlBehavioralFeature *
-QUmlBehavior::specification() const
+QUmlBehavioralFeature *QUmlBehavior::specification() const
 {
     // This is a read-write association end
 

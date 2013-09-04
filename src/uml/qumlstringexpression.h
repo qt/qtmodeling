@@ -59,6 +59,8 @@ public:
     explicit QUmlStringExpression(bool createQObject = true);
     virtual ~QUmlStringExpression();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlStringExpression *owningExpression() const;
     void setOwningExpression(QUmlStringExpression *owningExpression);

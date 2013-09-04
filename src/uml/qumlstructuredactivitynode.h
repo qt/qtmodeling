@@ -67,6 +67,8 @@ public:
     explicit QUmlStructuredActivityNode(bool createQObject = true);
     virtual ~QUmlStructuredActivityNode();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlActivity *activity() const;
     void setActivity(QUmlActivity *activity);

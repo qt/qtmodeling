@@ -42,6 +42,17 @@
 
 #include "private/qumlcontinuationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
+#include <QtUml/QUmlInteractionOperand>
+#include <QtUml/QUmlLifeline>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlContinuation
 
@@ -64,13 +75,35 @@ QUmlContinuation::~QUmlContinuation()
     }
 }
 
+QModelingObject *QUmlContinuation::clone() const
+{
+    QUmlContinuation *c = new QUmlContinuation;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlLifeline *element, covered())
+        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    c->setSetting(setting());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.
  */
-bool 
-QUmlContinuation::setting() const
+bool QUmlContinuation::setting() const
 {
     // This is a read-write property
 

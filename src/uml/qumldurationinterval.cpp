@@ -42,8 +42,18 @@
 
 #include "private/qumldurationintervalobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
 #include <QtUml/QUmlDuration>
-
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlDurationInterval
 
@@ -68,13 +78,36 @@ QUmlDurationInterval::~QUmlDurationInterval()
     }
 }
 
+QModelingObject *QUmlDurationInterval::clone() const
+{
+    QUmlDurationInterval *c = new QUmlDurationInterval;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (max())
+        c->setMax(dynamic_cast<QUmlDuration *>(max()->clone()));
+    if (min())
+        c->setMin(dynamic_cast<QUmlDuration *>(min()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Refers to the Duration denoting the maximum value of the range.
  */
-QUmlDuration *
-QUmlDurationInterval::max() const
+QUmlDuration *QUmlDurationInterval::max() const
 {
     // This is a read-write association end
 
@@ -95,8 +128,7 @@ void QUmlDurationInterval::setMax(QUmlDuration *max)
 /*!
     Refers to the Duration denoting the minimum value of the range.
  */
-QUmlDuration *
-QUmlDurationInterval::min() const
+QUmlDuration *QUmlDurationInterval::min() const
 {
     // This is a read-write association end
 

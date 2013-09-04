@@ -60,6 +60,8 @@ public:
     explicit QUmlBroadcastSignalAction(bool createQObject = true);
     virtual ~QUmlBroadcastSignalAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlSignal *signal() const;
     void setSignal(QUmlSignal *signal);

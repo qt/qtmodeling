@@ -42,9 +42,10 @@
 
 #include "private/qumlprofileapplicationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlProfile>
-
 /*!
     \class QUmlProfileApplication
 
@@ -69,13 +70,25 @@ QUmlProfileApplication::~QUmlProfileApplication()
     }
 }
 
+QModelingObject *QUmlProfileApplication::clone() const
+{
+    QUmlProfileApplication *c = new QUmlProfileApplication;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (appliedProfile())
+        c->setAppliedProfile(dynamic_cast<QUmlProfile *>(appliedProfile()->clone()));
+    if (applyingPackage())
+        c->setApplyingPackage(dynamic_cast<QUmlPackage *>(applyingPackage()->clone()));
+    c->setStrict(isStrict());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the Profiles that are applied to a Package through this ProfileApplication.
  */
-QUmlProfile *
-QUmlProfileApplication::appliedProfile() const
+QUmlProfile *QUmlProfileApplication::appliedProfile() const
 {
     // This is a read-write association end
 
@@ -104,8 +117,7 @@ void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
 /*!
     The package that owns the profile application.
  */
-QUmlPackage *
-QUmlProfileApplication::applyingPackage() const
+QUmlPackage *QUmlProfileApplication::applyingPackage() const
 {
     // This is a read-write association end
 
@@ -135,8 +147,7 @@ void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
 /*!
     Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied.
  */
-bool 
-QUmlProfileApplication::isStrict() const
+bool QUmlProfileApplication::isStrict() const
 {
     // This is a read-write property
 

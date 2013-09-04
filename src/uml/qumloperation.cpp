@@ -42,15 +42,31 @@
 
 #include "private/qumloperationobject_p.h"
 
+#include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlClass>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConstraint>
 #include <QtUml/QUmlDataType>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlInterface>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOperationTemplateParameter>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlParameter>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlParameterSet>
 #include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
-
 /*!
     \class QUmlOperation
 
@@ -78,13 +94,67 @@ QUmlOperation::~QUmlOperation()
     }
 }
 
+QModelingObject *QUmlOperation::clone() const
+{
+    QUmlOperation *c = new QUmlOperation;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    c->setLeaf(isLeaf());
+    c->setStatic(isStatic());
+    c->setConcurrency(concurrency());
+    c->setAbstract(isAbstract());
+    foreach (QUmlBehavior *element, method())
+        c->addMethod(dynamic_cast<QUmlBehavior *>(element->clone()));
+    foreach (QUmlParameterSet *element, ownedParameterSet())
+        c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (bodyCondition())
+        c->setBodyCondition(dynamic_cast<QUmlConstraint *>(bodyCondition()->clone()));
+    if (class_())
+        c->setClass(dynamic_cast<QUmlClass *>(class_()->clone()));
+    if (datatype())
+        c->setDatatype(dynamic_cast<QUmlDataType *>(datatype()->clone()));
+    if (interface_())
+        c->setInterface(dynamic_cast<QUmlInterface *>(interface_()->clone()));
+    c->setQuery(isQuery());
+    foreach (QUmlParameter *element, ownedParameter())
+        c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
+    foreach (QUmlConstraint *element, postcondition())
+        c->addPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, precondition())
+        c->addPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlType *element, raisedException())
+        c->addRaisedException(dynamic_cast<QUmlType *>(element->clone()));
+    foreach (QUmlOperation *element, redefinedOperation())
+        c->addRedefinedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlOperationTemplateParameter *>(templateParameter()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     An optional Constraint on the result values of an invocation of this Operation.
  */
-QUmlConstraint *
-QUmlOperation::bodyCondition() const
+QUmlConstraint *QUmlOperation::bodyCondition() const
 {
     // This is a read-write association end
 
@@ -114,8 +184,7 @@ void QUmlOperation::setBodyCondition(QUmlConstraint *bodyCondition)
 /*!
     The class that owns the operation.
  */
-QUmlClass *
-QUmlOperation::class_() const
+QUmlClass *QUmlOperation::class_() const
 {
     // This is a read-write association end
 
@@ -149,8 +218,7 @@ void QUmlOperation::setClass(QUmlClass *class_)
 /*!
     The DataType that owns this Operation.
  */
-QUmlDataType *
-QUmlOperation::datatype() const
+QUmlDataType *QUmlOperation::datatype() const
 {
     // This is a read-write association end
 
@@ -184,8 +252,7 @@ void QUmlOperation::setDatatype(QUmlDataType *datatype)
 /*!
     The Interface that owns this Operation.
  */
-QUmlInterface *
-QUmlOperation::interface_() const
+QUmlInterface *QUmlOperation::interface_() const
 {
     // This is a read-write association end
 
@@ -219,8 +286,7 @@ void QUmlOperation::setInterface(QUmlInterface *interface_)
 /*!
     This information is derived from the return result for this Operation.Specifies whether the return parameter is ordered or not, if present.
  */
-bool 
-QUmlOperation::isOrdered() const
+bool QUmlOperation::isOrdered() const
 {
     // This is a read-only derived property
 
@@ -244,8 +310,7 @@ void QUmlOperation::setOrdered(bool isOrdered)
 /*!
     Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).
  */
-bool 
-QUmlOperation::isQuery() const
+bool QUmlOperation::isQuery() const
 {
     // This is a read-write property
 
@@ -264,8 +329,7 @@ void QUmlOperation::setQuery(bool isQuery)
 /*!
     Specifies whether the return parameter is unique or not, if present.This information is derived from the return result for this Operation.
  */
-bool 
-QUmlOperation::isUnique() const
+bool QUmlOperation::isUnique() const
 {
     // This is a read-only derived property
 
@@ -289,8 +353,7 @@ void QUmlOperation::setUnique(bool isUnique)
 /*!
     This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.
  */
-int 
-QUmlOperation::lower() const
+int QUmlOperation::lower() const
 {
     // This is a read-only derived property
 
@@ -314,8 +377,7 @@ void QUmlOperation::setLower(int lower)
 /*!
     Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.
  */
-const QList<QUmlParameter *> 
-QUmlOperation::ownedParameter() const
+const QList<QUmlParameter *> QUmlOperation::ownedParameter() const
 {
     // This is a read-write association end
 
@@ -358,8 +420,7 @@ void QUmlOperation::removeOwnedParameter(QUmlParameter *ownedParameter)
 /*!
     An optional set of Constraints specifying the state of the system when the Operation is completed.
  */
-const QSet<QUmlConstraint *> 
-QUmlOperation::postcondition() const
+const QSet<QUmlConstraint *> QUmlOperation::postcondition() const
 {
     // This is a read-write association end
 
@@ -398,8 +459,7 @@ void QUmlOperation::removePostcondition(QUmlConstraint *postcondition)
 /*!
     An optional set of Constraints on the state of the system when the Operation is invoked.
  */
-const QSet<QUmlConstraint *> 
-QUmlOperation::precondition() const
+const QSet<QUmlConstraint *> QUmlOperation::precondition() const
 {
     // This is a read-write association end
 
@@ -438,8 +498,7 @@ void QUmlOperation::removePrecondition(QUmlConstraint *precondition)
 /*!
     References the Types representing exceptions that may be raised during an invocation of this operation.
  */
-const QSet<QUmlType *> 
-QUmlOperation::raisedException() const
+const QSet<QUmlType *> QUmlOperation::raisedException() const
 {
     // This is a read-write association end
 
@@ -469,8 +528,7 @@ void QUmlOperation::removeRaisedException(QUmlType *raisedException)
 /*!
     References the Operations that are redefined by this Operation.
  */
-const QSet<QUmlOperation *> 
-QUmlOperation::redefinedOperation() const
+const QSet<QUmlOperation *> QUmlOperation::redefinedOperation() const
 {
     // This is a read-write association end
 
@@ -506,8 +564,7 @@ void QUmlOperation::removeRedefinedOperation(QUmlOperation *redefinedOperation)
 /*!
     The template parameter that exposes this element as a formal parameter.
  */
-QUmlOperationTemplateParameter *
-QUmlOperation::templateParameter() const
+QUmlOperationTemplateParameter *QUmlOperation::templateParameter() const
 {
     // This is a read-write association end
 
@@ -528,8 +585,7 @@ void QUmlOperation::setTemplateParameter(QUmlOperationTemplateParameter *templat
 /*!
     This information is derived from the return result for this Operation.Specifies the return result of the operation, if present.
  */
-QUmlType *
-QUmlOperation::type() const
+QUmlType *QUmlOperation::type() const
 {
     // This is a read-only derived association end
 
@@ -553,8 +609,7 @@ void QUmlOperation::setType(QUmlType *type)
 /*!
     This information is derived from the return result for this Operation.Specifies the upper multiplicity of the return parameter, if present.
  */
-int 
-QUmlOperation::upper() const
+int QUmlOperation::upper() const
 {
     // This is a read-only derived property
 

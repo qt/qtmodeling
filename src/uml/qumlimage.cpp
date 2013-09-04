@@ -42,6 +42,8 @@
 
 #include "private/qumlimageobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 /*!
     \class QUmlImage
 
@@ -63,13 +65,23 @@ QUmlImage::~QUmlImage()
     }
 }
 
+QModelingObject *QUmlImage::clone() const
+{
+    QUmlImage *c = new QUmlImage;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    c->setContent(content());
+    c->setFormat(format());
+    c->setLocation(location());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).
  */
-QString 
-QUmlImage::content() const
+QString QUmlImage::content() const
 {
     // This is a read-write property
 
@@ -88,8 +100,7 @@ void QUmlImage::setContent(QString content)
 /*!
     This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example "SVG" could instead be expressed as "MIME: image/svg+xml".
  */
-QString 
-QUmlImage::format() const
+QString QUmlImage::format() const
 {
     // This is a read-write property
 
@@ -108,8 +119,7 @@ void QUmlImage::setFormat(QString format)
 /*!
     This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.
  */
-QString 
-QUmlImage::location() const
+QString QUmlImage::location() const
 {
     // This is a read-write property
 

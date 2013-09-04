@@ -42,8 +42,16 @@
 
 #include "private/qumlchangeeventobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlChangeEvent
 
@@ -66,13 +74,32 @@ QUmlChangeEvent::~QUmlChangeEvent()
     }
 }
 
+QModelingObject *QUmlChangeEvent::clone() const
+{
+    QUmlChangeEvent *c = new QUmlChangeEvent;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (changeExpression())
+        c->setChangeExpression(dynamic_cast<QUmlValueSpecification *>(changeExpression()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     A Boolean-valued expression that will result in a change event whenever its value changes from false to true.
  */
-QUmlValueSpecification *
-QUmlChangeEvent::changeExpression() const
+QUmlValueSpecification *QUmlChangeEvent::changeExpression() const
 {
     // This is a read-write association end
 

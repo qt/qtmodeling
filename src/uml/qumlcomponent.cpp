@@ -42,11 +42,44 @@
 
 #include "private/qumlcomponentobject_p.h"
 
+#include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClass>
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlClassifierTemplateParameter>
+#include <QtUml/QUmlCollaborationUse>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlComponentRealization>
+#include <QtUml/QUmlConnectableElement>
+#include <QtUml/QUmlConnector>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlExtension>
+#include <QtUml/QUmlFeature>
+#include <QtUml/QUmlGeneralization>
+#include <QtUml/QUmlGeneralizationSet>
 #include <QtUml/QUmlInterface>
+#include <QtUml/QUmlInterfaceRealization>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOperation>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
-
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlPort>
+#include <QtUml/QUmlProperty>
+#include <QtUml/QUmlReception>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlRedefinableTemplateSignature>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlSubstitution>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlUseCase>
 /*!
     \class QUmlComponent
 
@@ -70,13 +103,83 @@ QUmlComponent::~QUmlComponent()
     }
 }
 
+QModelingObject *QUmlComponent::clone() const
+{
+    QUmlComponent *c = new QUmlComponent;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    foreach (QUmlCollaborationUse *element, collaborationUse())
+        c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
+    foreach (QUmlGeneralization *element, generalization())
+        c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
+    c->setFinalSpecialization(isFinalSpecialization());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlUseCase *element, ownedUseCase())
+        c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+        c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
+    foreach (QUmlClassifier *element, redefinedClassifier())
+        c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (representation())
+        c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
+    foreach (QUmlSubstitution *element, substitution())
+        c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlUseCase *element, useCase())
+        c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlConnector *element, ownedConnector())
+        c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
+    if (classifierBehavior())
+        c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
+    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+        c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
+    foreach (QUmlBehavior *element, ownedBehavior())
+        c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setActive(isActive());
+    foreach (QUmlClassifier *element, nestedClassifier())
+        c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    foreach (QUmlProperty *element, ownedAttribute())
+        c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
+    foreach (QUmlOperation *element, ownedOperation())
+        c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
+    foreach (QUmlReception *element, ownedReception())
+        c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
+    c->setIndirectlyInstantiated(isIndirectlyInstantiated());
+    foreach (QUmlPackageableElement *element, packagedElement())
+        c->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(element->clone()));
+    foreach (QUmlComponentRealization *element, realization())
+        c->addRealization(dynamic_cast<QUmlComponentRealization *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., «specification», «focus», «subsystem»).
  */
-bool 
-QUmlComponent::isIndirectlyInstantiated() const
+bool QUmlComponent::isIndirectlyInstantiated() const
 {
     // This is a read-write property
 
@@ -95,8 +198,7 @@ void QUmlComponent::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 /*!
     The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.
  */
-const QSet<QUmlPackageableElement *> 
-QUmlComponent::packagedElement() const
+const QSet<QUmlPackageableElement *> QUmlComponent::packagedElement() const
 {
     // This is a read-write association end
 
@@ -135,8 +237,7 @@ void QUmlComponent::removePackagedElement(QUmlPackageableElement *packagedElemen
 /*!
     The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.
  */
-const QSet<QUmlInterface *> 
-QUmlComponent::provided() const
+const QSet<QUmlInterface *> QUmlComponent::provided() const
 {
     // This is a read-only derived association end
 
@@ -172,8 +273,7 @@ void QUmlComponent::removeProvided(QUmlInterface *provided)
 /*!
     The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.
  */
-const QSet<QUmlComponentRealization *> 
-QUmlComponent::realization() const
+const QSet<QUmlComponentRealization *> QUmlComponent::realization() const
 {
     // This is a read-write association end
 
@@ -222,8 +322,7 @@ void QUmlComponent::removeRealization(QUmlComponentRealization *realization)
 /*!
     The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.
  */
-const QSet<QUmlInterface *> 
-QUmlComponent::required() const
+const QSet<QUmlInterface *> QUmlComponent::required() const
 {
     // This is a read-only derived association end
 

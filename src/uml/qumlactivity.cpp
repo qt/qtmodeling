@@ -46,9 +46,48 @@
 #include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityNode>
 #include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlBehavioralFeature>
+#include <QtUml/QUmlBehavioredClassifier>
+#include <QtUml/QUmlClass>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlClassifierTemplateParameter>
+#include <QtUml/QUmlCollaborationUse>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConnectableElement>
+#include <QtUml/QUmlConnector>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlExtension>
+#include <QtUml/QUmlFeature>
+#include <QtUml/QUmlGeneralization>
+#include <QtUml/QUmlGeneralizationSet>
+#include <QtUml/QUmlInterfaceRealization>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOperation>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlParameter>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlParameterSet>
+#include <QtUml/QUmlPort>
+#include <QtUml/QUmlProperty>
+#include <QtUml/QUmlReception>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlRedefinableTemplateSignature>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+#include <QtUml/QUmlSubstitution>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlUseCase>
 #include <QtUml/QUmlVariable>
-
 /*!
     \class QUmlActivity
 
@@ -72,13 +111,105 @@ QUmlActivity::~QUmlActivity()
     }
 }
 
+QModelingObject *QUmlActivity::clone() const
+{
+    QUmlActivity *c = new QUmlActivity;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    foreach (QUmlCollaborationUse *element, collaborationUse())
+        c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
+    foreach (QUmlGeneralization *element, generalization())
+        c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
+    c->setFinalSpecialization(isFinalSpecialization());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlUseCase *element, ownedUseCase())
+        c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+        c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
+    foreach (QUmlClassifier *element, redefinedClassifier())
+        c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (representation())
+        c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
+    foreach (QUmlSubstitution *element, substitution())
+        c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlUseCase *element, useCase())
+        c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlConnector *element, ownedConnector())
+        c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
+    if (classifierBehavior())
+        c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
+    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+        c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
+    foreach (QUmlBehavior *element, ownedBehavior())
+        c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setActive(isActive());
+    foreach (QUmlClassifier *element, nestedClassifier())
+        c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    foreach (QUmlProperty *element, ownedAttribute())
+        c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
+    foreach (QUmlOperation *element, ownedOperation())
+        c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
+    foreach (QUmlReception *element, ownedReception())
+        c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
+    c->setReentrant(isReentrant());
+    foreach (QUmlParameter *element, ownedParameter())
+        c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
+    foreach (QUmlParameterSet *element, ownedParameterSet())
+        c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
+    foreach (QUmlConstraint *element, postcondition())
+        c->addPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, precondition())
+        c->addPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlBehavior *element, redefinedBehavior())
+        c->addRedefinedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
+    if (specification())
+        c->setSpecification(dynamic_cast<QUmlBehavioralFeature *>(specification()->clone()));
+    foreach (QUmlActivityEdge *element, edge())
+        c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityGroup *element, group())
+        c->addGroup(dynamic_cast<QUmlActivityGroup *>(element->clone()));
+    c->setReadOnly(isReadOnly());
+    c->setSingleExecution(isSingleExecution());
+    foreach (QUmlActivityNode *element, node())
+        c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlActivityPartition *element, partition())
+        c->addPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    foreach (QUmlStructuredActivityNode *element, structuredNode())
+        c->addStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(element->clone()));
+    foreach (QUmlVariable *element, variable())
+        c->addVariable(dynamic_cast<QUmlVariable *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Edges expressing flow between nodes of the activity.
  */
-const QSet<QUmlActivityEdge *> 
-QUmlActivity::edge() const
+const QSet<QUmlActivityEdge *> QUmlActivity::edge() const
 {
     // This is a read-write association end
 
@@ -127,8 +258,7 @@ void QUmlActivity::removeEdge(QUmlActivityEdge *edge)
 /*!
     Top-level groups in the activity.
  */
-const QSet<QUmlActivityGroup *> 
-QUmlActivity::group() const
+const QSet<QUmlActivityGroup *> QUmlActivity::group() const
 {
     // This is a read-write association end
 
@@ -177,8 +307,7 @@ void QUmlActivity::removeGroup(QUmlActivityGroup *group)
 /*!
     If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).
  */
-bool 
-QUmlActivity::isReadOnly() const
+bool QUmlActivity::isReadOnly() const
 {
     // This is a read-write property
 
@@ -197,8 +326,7 @@ void QUmlActivity::setReadOnly(bool isReadOnly)
 /*!
     If true, all invocations of the activity are handled by the same execution.
  */
-bool 
-QUmlActivity::isSingleExecution() const
+bool QUmlActivity::isSingleExecution() const
 {
     // This is a read-write property
 
@@ -217,8 +345,7 @@ void QUmlActivity::setSingleExecution(bool isSingleExecution)
 /*!
     Nodes coordinated by the activity.
  */
-const QSet<QUmlActivityNode *> 
-QUmlActivity::node() const
+const QSet<QUmlActivityNode *> QUmlActivity::node() const
 {
     // This is a read-write association end
 
@@ -267,8 +394,7 @@ void QUmlActivity::removeNode(QUmlActivityNode *node)
 /*!
     Top-level partitions in the activity.
  */
-const QSet<QUmlActivityPartition *> 
-QUmlActivity::partition() const
+const QSet<QUmlActivityPartition *> QUmlActivity::partition() const
 {
     // This is a read-write association end
 
@@ -304,8 +430,7 @@ void QUmlActivity::removePartition(QUmlActivityPartition *partition)
 /*!
     Top-level structured nodes in the activity.
  */
-const QSet<QUmlStructuredActivityNode *> 
-QUmlActivity::structuredNode() const
+const QSet<QUmlStructuredActivityNode *> QUmlActivity::structuredNode() const
 {
     // This is a read-write association end
 
@@ -356,8 +481,7 @@ void QUmlActivity::removeStructuredNode(QUmlStructuredActivityNode *structuredNo
 /*!
     Top-level variables in the activity.
  */
-const QSet<QUmlVariable *> 
-QUmlActivity::variable() const
+const QSet<QUmlVariable *> QUmlActivity::variable() const
 {
     // This is a read-write association end
 

@@ -61,6 +61,8 @@ public:
     explicit QUmlGeneralizationSet(bool createQObject = true);
     virtual ~QUmlGeneralizationSet();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlGeneralization *> generalization() const;
     void addGeneralization(QUmlGeneralization *generalization);

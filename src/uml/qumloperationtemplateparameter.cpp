@@ -42,8 +42,11 @@
 
 #include "private/qumloperationtemplateparameterobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlOperation>
-
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlTemplateSignature>
 /*!
     \class QUmlOperationTemplateParameter
 
@@ -67,13 +70,30 @@ QUmlOperationTemplateParameter::~QUmlOperationTemplateParameter()
     }
 }
 
+QModelingObject *QUmlOperationTemplateParameter::clone() const
+{
+    QUmlOperationTemplateParameter *c = new QUmlOperationTemplateParameter;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (default_())
+        c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
+    if (ownedDefault())
+        c->setOwnedDefault(dynamic_cast<QUmlParameterableElement *>(ownedDefault()->clone()));
+    if (ownedParameteredElement())
+        c->setOwnedParameteredElement(dynamic_cast<QUmlParameterableElement *>(ownedParameteredElement()->clone()));
+    if (signature())
+        c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
+    if (parameteredElement())
+        c->setParameteredElement(dynamic_cast<QUmlOperation *>(parameteredElement()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The operation for this template parameter.
  */
-QUmlOperation *
-QUmlOperationTemplateParameter::parameteredElement() const
+QUmlOperation *QUmlOperationTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
 

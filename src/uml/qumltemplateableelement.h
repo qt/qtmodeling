@@ -61,6 +61,8 @@ class Q_UML_EXPORT QUmlTemplateableElement : public virtual QUmlElement
 public:
     virtual ~QUmlTemplateableElement();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlTemplateSignature *ownedTemplateSignature() const;
     void setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature);

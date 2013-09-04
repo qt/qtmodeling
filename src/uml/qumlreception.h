@@ -60,6 +60,8 @@ public:
     explicit QUmlReception(bool createQObject = true);
     virtual ~QUmlReception();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlSignal *signal() const;
     void setSignal(QUmlSignal *signal);

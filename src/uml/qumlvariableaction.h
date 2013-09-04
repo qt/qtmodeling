@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlVariableAction : public QUmlAction
 public:
     virtual ~QUmlVariableAction();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlVariable *variable() const;
     void setVariable(QUmlVariable *variable);

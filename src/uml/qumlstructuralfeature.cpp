@@ -40,6 +40,18 @@
 ****************************************************************************/
 #include "qumlstructuralfeature.h"
 
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlMultiplicityElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlStructuralFeature
 
@@ -56,13 +68,37 @@ QUmlStructuralFeature::~QUmlStructuralFeature()
 {
 }
 
+QModelingObject *QUmlStructuralFeature::clone() const
+{
+    QUmlStructuralFeature *c = new QUmlStructuralFeature;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    c->setOrdered(isOrdered());
+    c->setUnique(isUnique());
+    if (lowerValue())
+        c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
+    if (upperValue())
+        c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
+    c->setLeaf(isLeaf());
+    c->setStatic(isStatic());
+    c->setReadOnly(isReadOnly());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     States whether the feature's value may be modified by a client.
  */
-bool 
-QUmlStructuralFeature::isReadOnly() const
+bool QUmlStructuralFeature::isReadOnly() const
 {
     // This is a read-write property
 

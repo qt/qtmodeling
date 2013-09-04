@@ -60,6 +60,8 @@ public:
     explicit QUmlSignal(bool createQObject = true);
     virtual ~QUmlSignal();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlProperty *> ownedAttribute() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);

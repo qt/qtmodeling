@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlMultiplicityElement : public virtual QUmlElement
 public:
     virtual ~QUmlMultiplicityElement();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     bool isOrdered() const;
     void setOrdered(bool isOrdered);

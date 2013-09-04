@@ -42,8 +42,16 @@
 
 #include "private/qumlabstractionobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOpaqueExpression>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlAbstraction
 
@@ -67,13 +75,36 @@ QUmlAbstraction::~QUmlAbstraction()
     }
 }
 
+QModelingObject *QUmlAbstraction::clone() const
+{
+    QUmlAbstraction *c = new QUmlAbstraction;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlNamedElement *element, client())
+        c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    foreach (QUmlNamedElement *element, supplier())
+        c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    if (mapping())
+        c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.
  */
-QUmlOpaqueExpression *
-QUmlAbstraction::mapping() const
+QUmlOpaqueExpression *QUmlAbstraction::mapping() const
 {
     // This is a read-write association end
 

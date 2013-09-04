@@ -65,6 +65,8 @@ public:
     explicit QUmlRegion(bool createQObject = true);
     virtual ~QUmlRegion();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlRegion *extendedRegion() const;
     void setExtendedRegion(QUmlRegion *extendedRegion);

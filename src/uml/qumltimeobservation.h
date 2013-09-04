@@ -60,6 +60,8 @@ public:
     explicit QUmlTimeObservation(bool createQObject = true);
     virtual ~QUmlTimeObservation();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlNamedElement *event() const;
     void setEvent(QUmlNamedElement *event);

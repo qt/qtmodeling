@@ -61,6 +61,8 @@ public:
     explicit QUmlOpaqueExpression(bool createQObject = true);
     virtual ~QUmlOpaqueExpression();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlBehavior *behavior() const;
     void setBehavior(QUmlBehavior *behavior);

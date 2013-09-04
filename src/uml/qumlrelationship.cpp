@@ -40,6 +40,8 @@
 ****************************************************************************/
 #include "qumlrelationship.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 /*!
     \class QUmlRelationship
 
@@ -55,13 +57,20 @@ QUmlRelationship::~QUmlRelationship()
 {
 }
 
+QModelingObject *QUmlRelationship::clone() const
+{
+    QUmlRelationship *c = new QUmlRelationship;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the elements related by the Relationship.
  */
-const QSet<QUmlElement *> 
-QUmlRelationship::relatedElement() const
+const QSet<QUmlElement *> QUmlRelationship::relatedElement() const
 {
     // This is a read-only derived union association end
 

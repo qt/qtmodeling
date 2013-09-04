@@ -42,8 +42,37 @@
 
 #include "private/qumlcollaborationobject_p.h"
 
+#include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlClassifierTemplateParameter>
+#include <QtUml/QUmlCollaborationUse>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnectableElement>
-
+#include <QtUml/QUmlConnector>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlFeature>
+#include <QtUml/QUmlGeneralization>
+#include <QtUml/QUmlGeneralizationSet>
+#include <QtUml/QUmlInterfaceRealization>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlProperty>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlRedefinableTemplateSignature>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlSubstitution>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlUseCase>
 /*!
     \class QUmlCollaboration
 
@@ -65,13 +94,73 @@ QUmlCollaboration::~QUmlCollaboration()
     }
 }
 
+QModelingObject *QUmlCollaboration::clone() const
+{
+    QUmlCollaboration *c = new QUmlCollaboration;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    foreach (QUmlCollaborationUse *element, collaborationUse())
+        c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
+    foreach (QUmlGeneralization *element, generalization())
+        c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setFinalSpecialization(isFinalSpecialization());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlUseCase *element, ownedUseCase())
+        c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+        c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
+    foreach (QUmlClassifier *element, redefinedClassifier())
+        c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (representation())
+        c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
+    foreach (QUmlSubstitution *element, substitution())
+        c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlUseCase *element, useCase())
+        c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlProperty *element, ownedAttribute())
+        c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
+    foreach (QUmlConnector *element, ownedConnector())
+        c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
+    if (classifierBehavior())
+        c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
+    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+        c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
+    foreach (QUmlBehavior *element, ownedBehavior())
+        c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
+    foreach (QUmlConnectableElement *element, collaborationRole())
+        c->addCollaborationRole(dynamic_cast<QUmlConnectableElement *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
  */
-const QSet<QUmlConnectableElement *> 
-QUmlCollaboration::collaborationRole() const
+const QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRole() const
 {
     // This is a read-write association end
 

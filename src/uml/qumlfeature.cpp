@@ -41,7 +41,14 @@
 #include "qumlfeature.h"
 
 #include <QtUml/QUmlClassifier>
-
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlFeature
 
@@ -58,13 +65,28 @@ QUmlFeature::~QUmlFeature()
 {
 }
 
+QModelingObject *QUmlFeature::clone() const
+{
+    QUmlFeature *c = new QUmlFeature;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    c->setStatic(isStatic());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The Classifiers that have this Feature as a feature.
  */
-const QSet<QUmlClassifier *> 
-QUmlFeature::featuringClassifier() const
+const QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
 {
     // This is a read-only derived union association end
 
@@ -104,8 +126,7 @@ void QUmlFeature::removeFeaturingClassifier(QUmlClassifier *featuringClassifier)
 /*!
     Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).
  */
-bool 
-QUmlFeature::isStatic() const
+bool QUmlFeature::isStatic() const
 {
     // This is a read-write property
 

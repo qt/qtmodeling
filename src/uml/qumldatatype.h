@@ -62,6 +62,8 @@ public:
     explicit QUmlDataType(bool createQObject = true);
     virtual ~QUmlDataType();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlProperty *> ownedAttribute() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);

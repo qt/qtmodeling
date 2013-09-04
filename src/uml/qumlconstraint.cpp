@@ -42,10 +42,16 @@
 
 #include "private/qumlconstraintobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
 #include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlConstraint
 
@@ -69,13 +75,36 @@ QUmlConstraint::~QUmlConstraint()
     }
 }
 
+QModelingObject *QUmlConstraint::clone() const
+{
+    QUmlConstraint *c = new QUmlConstraint;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElement *element, constrainedElement())
+        c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
+    if (context())
+        c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
+    if (specification())
+        c->setSpecification(dynamic_cast<QUmlValueSpecification *>(specification()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
-const QList<QUmlElement *> 
-QUmlConstraint::constrainedElement() const
+const QList<QUmlElement *> QUmlConstraint::constrainedElement() const
 {
     // This is a read-write association end
 
@@ -105,8 +134,7 @@ void QUmlConstraint::removeConstrainedElement(QUmlElement *constrainedElement)
 /*!
     Specifies the namespace that owns the NamedElement.
  */
-QUmlNamespace *
-QUmlConstraint::context() const
+QUmlNamespace *QUmlConstraint::context() const
 {
     // This is a read-write association end
 
@@ -132,8 +160,7 @@ void QUmlConstraint::setContext(QUmlNamespace *context)
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
  */
-QUmlValueSpecification *
-QUmlConstraint::specification() const
+QUmlValueSpecification *QUmlConstraint::specification() const
 {
     // This is a read-write association end
 

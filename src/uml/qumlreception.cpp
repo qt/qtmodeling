@@ -42,8 +42,24 @@
 
 #include "private/qumlreceptionobject_p.h"
 
+#include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlParameter>
+#include <QtUml/QUmlParameterSet>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlSignal>
-
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlType>
 /*!
     \class QUmlReception
 
@@ -66,13 +82,46 @@ QUmlReception::~QUmlReception()
     }
 }
 
+QModelingObject *QUmlReception::clone() const
+{
+    QUmlReception *c = new QUmlReception;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    c->setLeaf(isLeaf());
+    c->setStatic(isStatic());
+    c->setConcurrency(concurrency());
+    c->setAbstract(isAbstract());
+    foreach (QUmlBehavior *element, method())
+        c->addMethod(dynamic_cast<QUmlBehavior *>(element->clone()));
+    foreach (QUmlParameter *element, ownedParameter())
+        c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
+    foreach (QUmlParameterSet *element, ownedParameterSet())
+        c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
+    foreach (QUmlType *element, raisedException())
+        c->addRaisedException(dynamic_cast<QUmlType *>(element->clone()));
+    if (signal())
+        c->setSignal(dynamic_cast<QUmlSignal *>(signal()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The signal that this reception handles.
  */
-QUmlSignal *
-QUmlReception::signal() const
+QUmlSignal *QUmlReception::signal() const
 {
     // This is a read-write association end
 

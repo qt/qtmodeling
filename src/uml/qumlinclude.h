@@ -61,6 +61,8 @@ public:
     explicit QUmlInclude(bool createQObject = true);
     virtual ~QUmlInclude();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlUseCase *addition() const;
     void setAddition(QUmlUseCase *addition);

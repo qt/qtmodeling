@@ -42,8 +42,16 @@
 
 #include "private/qumlextensionpointobject_p.h"
 
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlUseCase>
-
 /*!
     \class QUmlExtensionPoint
 
@@ -66,13 +74,29 @@ QUmlExtensionPoint::~QUmlExtensionPoint()
     }
 }
 
+QModelingObject *QUmlExtensionPoint::clone() const
+{
+    QUmlExtensionPoint *c = new QUmlExtensionPoint;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (useCase())
+        c->setUseCase(dynamic_cast<QUmlUseCase *>(useCase()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the use case that owns this extension point.
  */
-QUmlUseCase *
-QUmlExtensionPoint::useCase() const
+QUmlUseCase *QUmlExtensionPoint::useCase() const
 {
     // This is a read-write association end
 

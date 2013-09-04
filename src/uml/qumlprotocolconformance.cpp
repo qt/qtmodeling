@@ -42,8 +42,9 @@
 
 #include "private/qumlprotocolconformanceobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlProtocolStateMachine>
-
 /*!
     \class QUmlProtocolConformance
 
@@ -67,13 +68,24 @@ QUmlProtocolConformance::~QUmlProtocolConformance()
     }
 }
 
+QModelingObject *QUmlProtocolConformance::clone() const
+{
+    QUmlProtocolConformance *c = new QUmlProtocolConformance;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (generalMachine())
+        c->setGeneralMachine(dynamic_cast<QUmlProtocolStateMachine *>(generalMachine()->clone()));
+    if (specificMachine())
+        c->setSpecificMachine(dynamic_cast<QUmlProtocolStateMachine *>(specificMachine()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the protocol state machine to which the specific state machine conforms.
  */
-QUmlProtocolStateMachine *
-QUmlProtocolConformance::generalMachine() const
+QUmlProtocolStateMachine *QUmlProtocolConformance::generalMachine() const
 {
     // This is a read-write association end
 
@@ -102,8 +114,7 @@ void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *genera
 /*!
     Specifies the state machine which conforms to the general state machine.
  */
-QUmlProtocolStateMachine *
-QUmlProtocolConformance::specificMachine() const
+QUmlProtocolStateMachine *QUmlProtocolConformance::specificMachine() const
 {
     // This is a read-write association end
 

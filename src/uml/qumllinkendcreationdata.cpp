@@ -42,8 +42,11 @@
 
 #include "private/qumllinkendcreationdataobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInputPin>
-
+#include <QtUml/QUmlProperty>
+#include <QtUml/QUmlQualifierValue>
 /*!
     \class QUmlLinkEndCreationData
 
@@ -68,13 +71,29 @@ QUmlLinkEndCreationData::~QUmlLinkEndCreationData()
     }
 }
 
+QModelingObject *QUmlLinkEndCreationData::clone() const
+{
+    QUmlLinkEndCreationData *c = new QUmlLinkEndCreationData;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (end())
+        c->setEnd(dynamic_cast<QUmlProperty *>(end()->clone()));
+    foreach (QUmlQualifierValue *element, qualifier())
+        c->addQualifier(dynamic_cast<QUmlQualifierValue *>(element->clone()));
+    if (value())
+        c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
+    if (insertAt())
+        c->setInsertAt(dynamic_cast<QUmlInputPin *>(insertAt()->clone()));
+    c->setReplaceAll(isReplaceAll());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.
  */
-QUmlInputPin *
-QUmlLinkEndCreationData::insertAt() const
+QUmlInputPin *QUmlLinkEndCreationData::insertAt() const
 {
     // This is a read-write association end
 
@@ -95,8 +114,7 @@ void QUmlLinkEndCreationData::setInsertAt(QUmlInputPin *insertAt)
 /*!
     Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.
  */
-bool 
-QUmlLinkEndCreationData::isReplaceAll() const
+bool QUmlLinkEndCreationData::isReplaceAll() const
 {
     // This is a read-write property
 

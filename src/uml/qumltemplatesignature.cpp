@@ -42,9 +42,10 @@
 
 #include "private/qumltemplatesignatureobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
-
 /*!
     \class QUmlTemplateSignature
 
@@ -67,13 +68,26 @@ QUmlTemplateSignature::~QUmlTemplateSignature()
     }
 }
 
+QModelingObject *QUmlTemplateSignature::clone() const
+{
+    QUmlTemplateSignature *c = new QUmlTemplateSignature;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlTemplateParameter *element, ownedParameter())
+        c->addOwnedParameter(dynamic_cast<QUmlTemplateParameter *>(element->clone()));
+    foreach (QUmlTemplateParameter *element, parameter())
+        c->addParameter(dynamic_cast<QUmlTemplateParameter *>(element->clone()));
+    if (template_())
+        c->setTemplate(dynamic_cast<QUmlTemplateableElement *>(template_()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The formal template parameters that are owned by this template signature.
  */
-const QList<QUmlTemplateParameter *> 
-QUmlTemplateSignature::ownedParameter() const
+const QList<QUmlTemplateParameter *> QUmlTemplateSignature::ownedParameter() const
 {
     // This is a read-write association end
 
@@ -124,8 +138,7 @@ void QUmlTemplateSignature::removeOwnedParameter(QUmlTemplateParameter *ownedPar
 /*!
     The ordered set of all formal template parameters for this template signature.
  */
-const QList<QUmlTemplateParameter *> 
-QUmlTemplateSignature::parameter() const
+const QList<QUmlTemplateParameter *> QUmlTemplateSignature::parameter() const
 {
     // This is a read-write association end
 
@@ -155,8 +168,7 @@ void QUmlTemplateSignature::removeParameter(QUmlTemplateParameter *parameter)
 /*!
     The element that owns this template signature.
  */
-QUmlTemplateableElement *
-QUmlTemplateSignature::template_() const
+QUmlTemplateableElement *QUmlTemplateSignature::template_() const
 {
     // This is a read-write association end
 

@@ -58,6 +58,8 @@ public:
     explicit QUmlControlFlow(bool createQObject = true);
     virtual ~QUmlControlFlow();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

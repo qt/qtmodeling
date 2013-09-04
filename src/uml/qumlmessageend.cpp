@@ -40,8 +40,14 @@
 ****************************************************************************/
 #include "qumlmessageend.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlMessage>
-
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlMessageEnd
 
@@ -58,13 +64,28 @@ QUmlMessageEnd::~QUmlMessageEnd()
 {
 }
 
+QModelingObject *QUmlMessageEnd::clone() const
+{
+    QUmlMessageEnd *c = new QUmlMessageEnd;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (message())
+        c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References a Message.
  */
-QUmlMessage *
-QUmlMessageEnd::message() const
+QUmlMessage *QUmlMessageEnd::message() const
 {
     // This is a read-write association end
 

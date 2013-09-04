@@ -42,8 +42,17 @@
 
 #include "private/qumlintervalconstraintobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInterval>
-
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlIntervalConstraint
 
@@ -67,13 +76,36 @@ QUmlIntervalConstraint::~QUmlIntervalConstraint()
     }
 }
 
+QModelingObject *QUmlIntervalConstraint::clone() const
+{
+    QUmlIntervalConstraint *c = new QUmlIntervalConstraint;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElement *element, constrainedElement())
+        c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
+    if (context())
+        c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
+    if (specification())
+        c->setSpecification(dynamic_cast<QUmlInterval *>(specification()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
  */
-QUmlInterval *
-QUmlIntervalConstraint::specification() const
+QUmlInterval *QUmlIntervalConstraint::specification() const
 {
     // This is a read-write association end
 

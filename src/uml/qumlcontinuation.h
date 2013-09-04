@@ -58,6 +58,8 @@ public:
     explicit QUmlContinuation(bool createQObject = true);
     virtual ~QUmlContinuation();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool setting() const;
     void setSetting(bool setting);

@@ -60,6 +60,8 @@ public:
     explicit QUmlProtocolConformance(bool createQObject = true);
     virtual ~QUmlProtocolConformance();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlProtocolStateMachine *generalMachine() const;
     void setGeneralMachine(QUmlProtocolStateMachine *generalMachine);

@@ -62,6 +62,8 @@ public:
     explicit QUmlUnmarshallAction(bool createQObject = true);
     virtual ~QUmlUnmarshallAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);

@@ -60,6 +60,8 @@ public:
     explicit QUmlManifestation(bool createQObject = true);
     virtual ~QUmlManifestation();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlPackageableElement *utilizedElement() const;
     void setUtilizedElement(QUmlPackageableElement *utilizedElement);

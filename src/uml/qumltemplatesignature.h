@@ -61,6 +61,8 @@ public:
     explicit QUmlTemplateSignature(bool createQObject = true);
     virtual ~QUmlTemplateSignature();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlTemplateParameter *> ownedParameter() const;
     void addOwnedParameter(QUmlTemplateParameter *ownedParameter);

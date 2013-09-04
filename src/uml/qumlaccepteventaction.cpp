@@ -42,9 +42,27 @@
 
 #include "private/qumlaccepteventactionobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlExceptionHandler>
+#include <QtUml/QUmlInputPin>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlTrigger>
-
 /*!
     \class QUmlAcceptEventAction
 
@@ -67,13 +85,53 @@ QUmlAcceptEventAction::~QUmlAcceptEventAction()
     }
 }
 
+QModelingObject *QUmlAcceptEventAction::clone() const
+{
+    QUmlAcceptEventAction *c = new QUmlAcceptEventAction;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    c->setUnmarshall(isUnmarshall());
+    foreach (QUmlOutputPin *element, result())
+        c->addResult(dynamic_cast<QUmlOutputPin *>(element->clone()));
+    foreach (QUmlTrigger *element, trigger())
+        c->addTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.
  */
-bool 
-QUmlAcceptEventAction::isUnmarshall() const
+bool QUmlAcceptEventAction::isUnmarshall() const
 {
     // This is a read-write property
 
@@ -92,8 +150,7 @@ void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 /*!
     Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
  */
-const QSet<QUmlOutputPin *> 
-QUmlAcceptEventAction::result() const
+const QSet<QUmlOutputPin *> QUmlAcceptEventAction::result() const
 {
     // This is a read-write association end
 
@@ -132,8 +189,7 @@ void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 /*!
     The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
  */
-const QSet<QUmlTrigger *> 
-QUmlAcceptEventAction::trigger() const
+const QSet<QUmlTrigger *> QUmlAcceptEventAction::trigger() const
 {
     // This is a read-write association end
 

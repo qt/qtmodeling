@@ -44,13 +44,24 @@
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnectionPointReference>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlPseudostate>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTransition>
 #include <QtUml/QUmlTrigger>
-
 /*!
     \class QUmlState
 
@@ -78,13 +89,55 @@ QUmlState::~QUmlState()
     }
 }
 
+QModelingObject *QUmlState::clone() const
+{
+    QUmlState *c = new QUmlState;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    c->setLeaf(isLeaf());
+    if (container())
+        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
+    foreach (QUmlConnectionPointReference *element, connection())
+        c->addConnection(dynamic_cast<QUmlConnectionPointReference *>(element->clone()));
+    foreach (QUmlPseudostate *element, connectionPoint())
+        c->addConnectionPoint(dynamic_cast<QUmlPseudostate *>(element->clone()));
+    foreach (QUmlTrigger *element, deferrableTrigger())
+        c->addDeferrableTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
+    if (doActivity())
+        c->setDoActivity(dynamic_cast<QUmlBehavior *>(doActivity()->clone()));
+    if (entry())
+        c->setEntry(dynamic_cast<QUmlBehavior *>(entry()->clone()));
+    if (exit())
+        c->setExit(dynamic_cast<QUmlBehavior *>(exit()->clone()));
+    if (redefinedState())
+        c->setRedefinedState(dynamic_cast<QUmlState *>(redefinedState()->clone()));
+    foreach (QUmlRegion *element, region())
+        c->addRegion(dynamic_cast<QUmlRegion *>(element->clone()));
+    if (stateInvariant())
+        c->setStateInvariant(dynamic_cast<QUmlConstraint *>(stateInvariant()->clone()));
+    if (submachine())
+        c->setSubmachine(dynamic_cast<QUmlStateMachine *>(submachine()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
  */
-const QSet<QUmlConnectionPointReference *> 
-QUmlState::connection() const
+const QSet<QUmlConnectionPointReference *> QUmlState::connection() const
 {
     // This is a read-write association end
 
@@ -133,8 +186,7 @@ void QUmlState::removeConnection(QUmlConnectionPointReference *connection)
 /*!
     The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
  */
-const QSet<QUmlPseudostate *> 
-QUmlState::connectionPoint() const
+const QSet<QUmlPseudostate *> QUmlState::connectionPoint() const
 {
     // This is a read-write association end
 
@@ -183,8 +235,7 @@ void QUmlState::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 /*!
     A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
  */
-const QSet<QUmlTrigger *> 
-QUmlState::deferrableTrigger() const
+const QSet<QUmlTrigger *> QUmlState::deferrableTrigger() const
 {
     // This is a read-write association end
 
@@ -223,8 +274,7 @@ void QUmlState::removeDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 /*!
     An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first.
  */
-QUmlBehavior *
-QUmlState::doActivity() const
+QUmlBehavior *QUmlState::doActivity() const
 {
     // This is a read-write association end
 
@@ -254,8 +304,7 @@ void QUmlState::setDoActivity(QUmlBehavior *doActivity)
 /*!
     An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.
  */
-QUmlBehavior *
-QUmlState::entry() const
+QUmlBehavior *QUmlState::entry() const
 {
     // This is a read-write association end
 
@@ -285,8 +334,7 @@ void QUmlState::setEntry(QUmlBehavior *entry)
 /*!
     An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution.
  */
-QUmlBehavior *
-QUmlState::exit() const
+QUmlBehavior *QUmlState::exit() const
 {
     // This is a read-write association end
 
@@ -316,8 +364,7 @@ void QUmlState::setExit(QUmlBehavior *exit)
 /*!
     A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.
  */
-bool 
-QUmlState::isComposite() const
+bool QUmlState::isComposite() const
 {
     // This is a read-only derived property
 
@@ -341,8 +388,7 @@ void QUmlState::setComposite(bool isComposite)
 /*!
     A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.
  */
-bool 
-QUmlState::isOrthogonal() const
+bool QUmlState::isOrthogonal() const
 {
     // This is a read-only derived property
 
@@ -366,8 +412,7 @@ void QUmlState::setOrthogonal(bool isOrthogonal)
 /*!
     A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.
  */
-bool 
-QUmlState::isSimple() const
+bool QUmlState::isSimple() const
 {
     // This is a read-only derived property
 
@@ -391,8 +436,7 @@ void QUmlState::setSimple(bool isSimple)
 /*!
     A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).
  */
-bool 
-QUmlState::isSubmachineState() const
+bool QUmlState::isSubmachineState() const
 {
     // This is a read-only derived property
 
@@ -416,8 +460,7 @@ void QUmlState::setSubmachineState(bool isSubmachineState)
 /*!
     The state of which this state is a redefinition.
  */
-QUmlState *
-QUmlState::redefinedState() const
+QUmlState *QUmlState::redefinedState() const
 {
     // This is a read-write association end
 
@@ -446,8 +489,7 @@ void QUmlState::setRedefinedState(QUmlState *redefinedState)
 /*!
     References the classifier in which context this element may be redefined.
  */
-QUmlClassifier *
-QUmlState::redefinitionContext() const
+QUmlClassifier *QUmlState::redefinitionContext() const
 {
     // This is a read-only derived association end
 
@@ -471,8 +513,7 @@ void QUmlState::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 /*!
     The regions owned directly by the state.
  */
-const QSet<QUmlRegion *> 
-QUmlState::region() const
+const QSet<QUmlRegion *> QUmlState::region() const
 {
     // This is a read-write association end
 
@@ -521,8 +562,7 @@ void QUmlState::removeRegion(QUmlRegion *region)
 /*!
     Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.
  */
-QUmlConstraint *
-QUmlState::stateInvariant() const
+QUmlConstraint *QUmlState::stateInvariant() const
 {
     // This is a read-write association end
 
@@ -552,8 +592,7 @@ void QUmlState::setStateInvariant(QUmlConstraint *stateInvariant)
 /*!
     The state machine that is to be inserted in place of the (submachine) state.
  */
-QUmlStateMachine *
-QUmlState::submachine() const
+QUmlStateMachine *QUmlState::submachine() const
 {
     // This is a read-write association end
 

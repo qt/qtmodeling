@@ -60,6 +60,8 @@ public:
     explicit QUmlStartClassifierBehaviorAction(bool createQObject = true);
     virtual ~QUmlStartClassifierBehaviorAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);

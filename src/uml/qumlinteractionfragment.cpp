@@ -40,11 +40,17 @@
 ****************************************************************************/
 #include "qumlinteractionfragment.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlGeneralOrdering>
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionOperand>
 #include <QtUml/QUmlLifeline>
-
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlInteractionFragment
 
@@ -62,13 +68,34 @@ QUmlInteractionFragment::~QUmlInteractionFragment()
 {
 }
 
+QModelingObject *QUmlInteractionFragment::clone() const
+{
+    QUmlInteractionFragment *c = new QUmlInteractionFragment;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlLifeline *element, covered())
+        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the Lifelines that the InteractionFragment involves.
  */
-const QSet<QUmlLifeline *> 
-QUmlInteractionFragment::covered() const
+const QSet<QUmlLifeline *> QUmlInteractionFragment::covered() const
 {
     // This is a read-write association end
 
@@ -108,8 +135,7 @@ void QUmlInteractionFragment::removeCovered(QUmlLifeline *covered)
 /*!
     The Interaction enclosing this InteractionFragment.
  */
-QUmlInteraction *
-QUmlInteractionFragment::enclosingInteraction() const
+QUmlInteraction *QUmlInteractionFragment::enclosingInteraction() const
 {
     // This is a read-write association end
 
@@ -135,8 +161,7 @@ void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosing
 /*!
     The operand enclosing this InteractionFragment (they may nest recursively)
  */
-QUmlInteractionOperand *
-QUmlInteractionFragment::enclosingOperand() const
+QUmlInteractionOperand *QUmlInteractionFragment::enclosingOperand() const
 {
     // This is a read-write association end
 
@@ -162,8 +187,7 @@ void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclos
 /*!
     The general ordering relationships contained in this fragment.
  */
-const QSet<QUmlGeneralOrdering *> 
-QUmlInteractionFragment::generalOrdering() const
+const QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrdering() const
 {
     // This is a read-write association end
 

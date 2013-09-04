@@ -66,6 +66,8 @@ public:
     explicit QUmlInformationFlow(bool createQObject = true);
     virtual ~QUmlInformationFlow();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlClassifier *> conveyed() const;
     void addConveyed(QUmlClassifier *conveyed);

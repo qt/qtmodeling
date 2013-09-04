@@ -40,10 +40,26 @@
 ****************************************************************************/
 #include "qumlobjectnode.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
 #include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlState>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
+#include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlObjectNode
 
@@ -63,13 +79,51 @@ QUmlObjectNode::~QUmlObjectNode()
 {
 }
 
+QModelingObject *QUmlObjectNode::clone() const
+{
+    QUmlObjectNode *c = new QUmlObjectNode;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    foreach (QUmlState *element, inState())
+        c->addInState(dynamic_cast<QUmlState *>(element->clone()));
+    c->setControlType(isControlType());
+    c->setOrdering(ordering());
+    if (selection())
+        c->setSelection(dynamic_cast<QUmlBehavior *>(selection()->clone()));
+    if (upperBound())
+        c->setUpperBound(dynamic_cast<QUmlValueSpecification *>(upperBound()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The required states of the object available at this point in the activity.
  */
-const QSet<QUmlState *> 
-QUmlObjectNode::inState() const
+const QSet<QUmlState *> QUmlObjectNode::inState() const
 {
     // This is a read-write association end
 
@@ -99,8 +153,7 @@ void QUmlObjectNode::removeInState(QUmlState *inState)
 /*!
     Tells whether the type of the object node is to be treated as control.
  */
-bool 
-QUmlObjectNode::isControlType() const
+bool QUmlObjectNode::isControlType() const
 {
     // This is a read-write property
 
@@ -119,8 +172,7 @@ void QUmlObjectNode::setControlType(bool isControlType)
 /*!
     Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.
  */
-QtUml::ObjectNodeOrderingKind 
-QUmlObjectNode::ordering() const
+QtUml::ObjectNodeOrderingKind QUmlObjectNode::ordering() const
 {
     // This is a read-write property
 
@@ -139,8 +191,7 @@ void QUmlObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 /*!
     Selects tokens for outgoing edges.
  */
-QUmlBehavior *
-QUmlObjectNode::selection() const
+QUmlBehavior *QUmlObjectNode::selection() const
 {
     // This is a read-write association end
 
@@ -161,8 +212,7 @@ void QUmlObjectNode::setSelection(QUmlBehavior *selection)
 /*!
     The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.
  */
-QUmlValueSpecification *
-QUmlObjectNode::upperBound() const
+QUmlValueSpecification *QUmlObjectNode::upperBound() const
 {
     // This is a read-write association end
 

@@ -60,6 +60,8 @@ public:
     explicit QUmlClassifierTemplateParameter(bool createQObject = true);
     virtual ~QUmlClassifierTemplateParameter();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool allowSubstitutable() const;
     void setAllowSubstitutable(bool allowSubstitutable);

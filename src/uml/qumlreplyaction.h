@@ -61,6 +61,8 @@ public:
     explicit QUmlReplyAction(bool createQObject = true);
     virtual ~QUmlReplyAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlTrigger *replyToCall() const;
     void setReplyToCall(QUmlTrigger *replyToCall);

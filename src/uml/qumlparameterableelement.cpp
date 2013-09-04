@@ -40,8 +40,9 @@
 ****************************************************************************/
 #include "qumlparameterableelement.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlTemplateParameter>
-
 /*!
     \class QUmlParameterableElement
 
@@ -59,13 +60,24 @@ QUmlParameterableElement::~QUmlParameterableElement()
 {
 }
 
+QModelingObject *QUmlParameterableElement::clone() const
+{
+    QUmlParameterableElement *c = new QUmlParameterableElement;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The formal template parameter that owns this element.
  */
-QUmlTemplateParameter *
-QUmlParameterableElement::owningTemplateParameter() const
+QUmlTemplateParameter *QUmlParameterableElement::owningTemplateParameter() const
 {
     // This is a read-write association end
 
@@ -92,8 +104,7 @@ void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter 
 /*!
     The template parameter that exposes this element as a formal parameter.
  */
-QUmlTemplateParameter *
-QUmlParameterableElement::templateParameter() const
+QUmlTemplateParameter *QUmlParameterableElement::templateParameter() const
 {
     // This is a read-write association end
 

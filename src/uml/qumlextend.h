@@ -63,6 +63,8 @@ public:
     explicit QUmlExtend(bool createQObject = true);
     virtual ~QUmlExtend();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlConstraint *condition() const;
     void setCondition(QUmlConstraint *condition);

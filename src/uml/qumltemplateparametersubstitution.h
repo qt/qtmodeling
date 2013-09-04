@@ -62,6 +62,8 @@ public:
     explicit QUmlTemplateParameterSubstitution(bool createQObject = true);
     virtual ~QUmlTemplateParameterSubstitution();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlParameterableElement *actual() const;
     void setActual(QUmlParameterableElement *actual);

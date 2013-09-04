@@ -60,6 +60,8 @@ public:
     explicit QUmlSendObjectAction(bool createQObject = true);
     virtual ~QUmlSendObjectAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *request() const;
     void setRequest(QUmlInputPin *request);

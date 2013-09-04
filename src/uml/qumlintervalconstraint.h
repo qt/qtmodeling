@@ -60,6 +60,8 @@ public:
     explicit QUmlIntervalConstraint(bool createQObject = true);
     virtual ~QUmlIntervalConstraint();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInterval *specification() const;
     void setSpecification(QUmlInterval *specification);

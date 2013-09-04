@@ -42,10 +42,16 @@
 
 #include "private/qumlextendobject_p.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlExtensionPoint>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlUseCase>
-
 /*!
     \class QUmlExtend
 
@@ -70,13 +76,34 @@ QUmlExtend::~QUmlExtend()
     }
 }
 
+QModelingObject *QUmlExtend::clone() const
+{
+    QUmlExtend *c = new QUmlExtend;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (condition())
+        c->setCondition(dynamic_cast<QUmlConstraint *>(condition()->clone()));
+    if (extendedCase())
+        c->setExtendedCase(dynamic_cast<QUmlUseCase *>(extendedCase()->clone()));
+    if (extension())
+        c->setExtension(dynamic_cast<QUmlUseCase *>(extension()->clone()));
+    foreach (QUmlExtensionPoint *element, extensionLocation())
+        c->addExtensionLocation(dynamic_cast<QUmlExtensionPoint *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.
  */
-QUmlConstraint *
-QUmlExtend::condition() const
+QUmlConstraint *QUmlExtend::condition() const
 {
     // This is a read-write association end
 
@@ -106,8 +133,7 @@ void QUmlExtend::setCondition(QUmlConstraint *condition)
 /*!
     References the use case that is being extended.
  */
-QUmlUseCase *
-QUmlExtend::extendedCase() const
+QUmlUseCase *QUmlExtend::extendedCase() const
 {
     // This is a read-write association end
 
@@ -136,8 +162,7 @@ void QUmlExtend::setExtendedCase(QUmlUseCase *extendedCase)
 /*!
     References the use case that represents the extension and owns the extend relationship.
  */
-QUmlUseCase *
-QUmlExtend::extension() const
+QUmlUseCase *QUmlExtend::extension() const
 {
     // This is a read-write association end
 
@@ -167,8 +192,7 @@ void QUmlExtend::setExtension(QUmlUseCase *extension)
 /*!
     An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)
  */
-const QList<QUmlExtensionPoint *> 
-QUmlExtend::extensionLocation() const
+const QList<QUmlExtensionPoint *> QUmlExtend::extensionLocation() const
 {
     // This is a read-write association end
 

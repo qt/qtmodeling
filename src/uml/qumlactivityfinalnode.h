@@ -58,6 +58,8 @@ public:
     explicit QUmlActivityFinalNode(bool createQObject = true);
     virtual ~QUmlActivityFinalNode();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

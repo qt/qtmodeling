@@ -60,6 +60,8 @@ public:
     explicit QUmlDuration(bool createQObject = true);
     virtual ~QUmlDuration();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlValueSpecification *expr() const;
     void setExpr(QUmlValueSpecification *expr);

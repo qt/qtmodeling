@@ -58,6 +58,8 @@ public:
     explicit QUmlCentralBufferNode(bool createQObject = true);
     virtual ~QUmlCentralBufferNode();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

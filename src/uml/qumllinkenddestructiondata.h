@@ -60,6 +60,8 @@ public:
     explicit QUmlLinkEndDestructionData(bool createQObject = true);
     virtual ~QUmlLinkEndDestructionData();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *destroyAt() const;
     void setDestroyAt(QUmlInputPin *destroyAt);

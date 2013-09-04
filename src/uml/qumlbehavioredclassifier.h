@@ -60,6 +60,8 @@ class Q_UML_EXPORT QUmlBehavioredClassifier : public virtual QUmlClassifier
 public:
     virtual ~QUmlBehavioredClassifier();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlBehavior *classifierBehavior() const;
     void setClassifierBehavior(QUmlBehavior *classifierBehavior);

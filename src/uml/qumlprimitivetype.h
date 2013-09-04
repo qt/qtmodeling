@@ -58,6 +58,8 @@ public:
     explicit QUmlPrimitiveType(bool createQObject = true);
     virtual ~QUmlPrimitiveType();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

@@ -64,6 +64,8 @@ class Q_UML_EXPORT QUmlObjectNode : public QUmlActivityNode, public QUmlTypedEle
 public:
     virtual ~QUmlObjectNode();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlState *> inState() const;
     void addInState(QUmlState *inState);

@@ -61,6 +61,8 @@ public:
     explicit QUmlOpaqueAction(bool createQObject = true);
     virtual ~QUmlOpaqueAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QString> body() const;
     void addBody(QString body);

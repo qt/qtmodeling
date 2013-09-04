@@ -62,6 +62,8 @@ public:
     explicit QUmlSlot(bool createQObject = true);
     virtual ~QUmlSlot();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlStructuralFeature *definingFeature() const;
     void setDefiningFeature(QUmlStructuralFeature *definingFeature);

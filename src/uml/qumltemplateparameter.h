@@ -61,6 +61,8 @@ public:
     explicit QUmlTemplateParameter(bool createQObject = true);
     virtual ~QUmlTemplateParameter();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlParameterableElement *default_() const;
     void setDefault(QUmlParameterableElement *default_);

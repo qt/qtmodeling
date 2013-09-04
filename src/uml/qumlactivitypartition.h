@@ -62,6 +62,8 @@ public:
     explicit QUmlActivityPartition(bool createQObject = true);
     virtual ~QUmlActivityPartition();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlActivityEdge *> edge() const;
     void addEdge(QUmlActivityEdge *edge);

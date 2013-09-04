@@ -42,10 +42,17 @@
 
 #include "private/qumlactivitypartitionobject_p.h"
 
+#include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
 #include <QtUml/QUmlElement>
-
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlActivityPartition
 
@@ -71,13 +78,40 @@ QUmlActivityPartition::~QUmlActivityPartition()
     }
 }
 
+QModelingObject *QUmlActivityPartition::clone() const
+{
+    QUmlActivityPartition *c = new QUmlActivityPartition;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (inActivity())
+        c->setInActivity(dynamic_cast<QUmlActivity *>(inActivity()->clone()));
+    foreach (QUmlActivityEdge *element, edge())
+        c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    c->setDimension(isDimension());
+    c->setExternal(isExternal());
+    foreach (QUmlActivityNode *element, node())
+        c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    if (represents())
+        c->setRepresents(dynamic_cast<QUmlElement *>(represents()->clone()));
+    foreach (QUmlActivityPartition *element, subpartition())
+        c->addSubpartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (superPartition())
+        c->setSuperPartition(dynamic_cast<QUmlActivityPartition *>(superPartition()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Edges immediately contained in the group.
  */
-const QSet<QUmlActivityEdge *> 
-QUmlActivityPartition::edge() const
+const QSet<QUmlActivityEdge *> QUmlActivityPartition::edge() const
 {
     // This is a read-write association end
 
@@ -123,8 +157,7 @@ void QUmlActivityPartition::removeEdge(QUmlActivityEdge *edge)
 /*!
     Tells whether the partition groups other partitions along a dimension.
  */
-bool 
-QUmlActivityPartition::isDimension() const
+bool QUmlActivityPartition::isDimension() const
 {
     // This is a read-write property
 
@@ -143,8 +176,7 @@ void QUmlActivityPartition::setDimension(bool isDimension)
 /*!
     Tells whether the partition represents an entity to which the partitioning structure does not apply.
  */
-bool 
-QUmlActivityPartition::isExternal() const
+bool QUmlActivityPartition::isExternal() const
 {
     // This is a read-write property
 
@@ -163,8 +195,7 @@ void QUmlActivityPartition::setExternal(bool isExternal)
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QUmlActivityNode *> 
-QUmlActivityPartition::node() const
+const QSet<QUmlActivityNode *> QUmlActivityPartition::node() const
 {
     // This is a read-write association end
 
@@ -210,8 +241,7 @@ void QUmlActivityPartition::removeNode(QUmlActivityNode *node)
 /*!
     An element constraining behaviors invoked by nodes in the partition.
  */
-QUmlElement *
-QUmlActivityPartition::represents() const
+QUmlElement *QUmlActivityPartition::represents() const
 {
     // This is a read-write association end
 
@@ -232,8 +262,7 @@ void QUmlActivityPartition::setRepresents(QUmlElement *represents)
 /*!
     Partitions immediately contained in the partition.
  */
-const QSet<QUmlActivityPartition *> 
-QUmlActivityPartition::subpartition() const
+const QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartition() const
 {
     // This is a read-write association end
 
@@ -272,8 +301,7 @@ void QUmlActivityPartition::removeSubpartition(QUmlActivityPartition *subpartiti
 /*!
     Partition immediately containing the partition.
  */
-QUmlActivityPartition *
-QUmlActivityPartition::superPartition() const
+QUmlActivityPartition *QUmlActivityPartition::superPartition() const
 {
     // This is a read-write association end
 

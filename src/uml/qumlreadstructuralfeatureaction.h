@@ -60,6 +60,8 @@ public:
     explicit QUmlReadStructuralFeatureAction(bool createQObject = true);
     virtual ~QUmlReadStructuralFeatureAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);

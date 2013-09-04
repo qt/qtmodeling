@@ -42,8 +42,18 @@
 
 #include "private/qumlexecutionoccurrencespecificationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlExecutionSpecification>
-
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
+#include <QtUml/QUmlInteractionOperand>
+#include <QtUml/QUmlLifeline>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlExecutionOccurrenceSpecification
 
@@ -67,13 +77,40 @@ QUmlExecutionOccurrenceSpecification::~QUmlExecutionOccurrenceSpecification()
     }
 }
 
+QModelingObject *QUmlExecutionOccurrenceSpecification::clone() const
+{
+    QUmlExecutionOccurrenceSpecification *c = new QUmlExecutionOccurrenceSpecification;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    if (covered())
+        c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
+    foreach (QUmlGeneralOrdering *element, toAfter())
+        c->addToAfter(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    foreach (QUmlGeneralOrdering *element, toBefore())
+        c->addToBefore(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    if (execution())
+        c->setExecution(dynamic_cast<QUmlExecutionSpecification *>(execution()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the execution specification describing the execution that is started or finished at this execution event.
  */
-QUmlExecutionSpecification *
-QUmlExecutionOccurrenceSpecification::execution() const
+QUmlExecutionSpecification *QUmlExecutionOccurrenceSpecification::execution() const
 {
     // This is a read-write association end
 

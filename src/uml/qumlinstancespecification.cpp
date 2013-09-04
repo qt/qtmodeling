@@ -43,9 +43,19 @@
 #include "private/qumlinstancespecificationobject_p.h"
 
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlDeployment>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlSlot>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlInstanceSpecification
 
@@ -68,13 +78,38 @@ QUmlInstanceSpecification::~QUmlInstanceSpecification()
     }
 }
 
+QModelingObject *QUmlInstanceSpecification::clone() const
+{
+    QUmlInstanceSpecification *c = new QUmlInstanceSpecification;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlDeployment *element, deployment())
+        c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
+    foreach (QUmlClassifier *element, classifier())
+        c->addClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    foreach (QUmlSlot *element, slot_())
+        c->addSlot(dynamic_cast<QUmlSlot *>(element->clone()));
+    if (specification())
+        c->setSpecification(dynamic_cast<QUmlValueSpecification *>(specification()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
  */
-const QSet<QUmlClassifier *> 
-QUmlInstanceSpecification::classifier() const
+const QSet<QUmlClassifier *> QUmlInstanceSpecification::classifier() const
 {
     // This is a read-write association end
 
@@ -104,8 +139,7 @@ void QUmlInstanceSpecification::removeClassifier(QUmlClassifier *classifier)
 /*!
     A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
  */
-const QSet<QUmlSlot *> 
-QUmlInstanceSpecification::slot_() const
+const QSet<QUmlSlot *> QUmlInstanceSpecification::slot_() const
 {
     // This is a read-write association end
 
@@ -154,8 +188,7 @@ void QUmlInstanceSpecification::removeSlot(QUmlSlot *slot_)
 /*!
     A specification of how to compute, derive, or construct the instance.
  */
-QUmlValueSpecification *
-QUmlInstanceSpecification::specification() const
+QUmlValueSpecification *QUmlInstanceSpecification::specification() const
 {
     // This is a read-write association end
 

@@ -42,12 +42,18 @@
 
 #include "private/qumllifelineobject_p.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnectableElement>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionFragment>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPartDecomposition>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlLifeline
 
@@ -73,13 +79,36 @@ QUmlLifeline::~QUmlLifeline()
     }
 }
 
+QModelingObject *QUmlLifeline::clone() const
+{
+    QUmlLifeline *c = new QUmlLifeline;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlInteractionFragment *element, coveredBy())
+        c->addCoveredBy(dynamic_cast<QUmlInteractionFragment *>(element->clone()));
+    if (decomposedAs())
+        c->setDecomposedAs(dynamic_cast<QUmlPartDecomposition *>(decomposedAs()->clone()));
+    if (interaction())
+        c->setInteraction(dynamic_cast<QUmlInteraction *>(interaction()->clone()));
+    if (represents())
+        c->setRepresents(dynamic_cast<QUmlConnectableElement *>(represents()->clone()));
+    if (selector())
+        c->setSelector(dynamic_cast<QUmlValueSpecification *>(selector()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the InteractionFragments in which this Lifeline takes part.
  */
-const QSet<QUmlInteractionFragment *> 
-QUmlLifeline::coveredBy() const
+const QSet<QUmlInteractionFragment *> QUmlLifeline::coveredBy() const
 {
     // This is a read-write association end
 
@@ -119,8 +148,7 @@ void QUmlLifeline::removeCoveredBy(QUmlInteractionFragment *coveredBy)
 /*!
     References the Interaction that represents the decomposition.
  */
-QUmlPartDecomposition *
-QUmlLifeline::decomposedAs() const
+QUmlPartDecomposition *QUmlLifeline::decomposedAs() const
 {
     // This is a read-write association end
 
@@ -141,8 +169,7 @@ void QUmlLifeline::setDecomposedAs(QUmlPartDecomposition *decomposedAs)
 /*!
     References the Interaction enclosing this Lifeline.
  */
-QUmlInteraction *
-QUmlLifeline::interaction() const
+QUmlInteraction *QUmlLifeline::interaction() const
 {
     // This is a read-write association end
 
@@ -168,8 +195,7 @@ void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
 /*!
     References the ConnectableElement within the classifier that contains the enclosing interaction.
  */
-QUmlConnectableElement *
-QUmlLifeline::represents() const
+QUmlConnectableElement *QUmlLifeline::represents() const
 {
     // This is a read-write association end
 
@@ -190,8 +216,7 @@ void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
 /*!
     If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.
  */
-QUmlValueSpecification *
-QUmlLifeline::selector() const
+QUmlValueSpecification *QUmlLifeline::selector() const
 {
     // This is a read-write association end
 

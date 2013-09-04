@@ -64,6 +64,8 @@ class Q_UML_EXPORT QUmlNamedElement : public virtual QUmlElement
 public:
     virtual ~QUmlNamedElement();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlDependency *> clientDependency() const;
     void addClientDependency(QUmlDependency *clientDependency);

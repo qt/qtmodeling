@@ -43,8 +43,13 @@
 #include "private/qumlcollaborationuseobject_p.h"
 
 #include <QtUml/QUmlCollaboration>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlDependency>
-
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlCollaborationUse
 
@@ -67,13 +72,30 @@ QUmlCollaborationUse::~QUmlCollaborationUse()
     }
 }
 
+QModelingObject *QUmlCollaborationUse::clone() const
+{
+    QUmlCollaborationUse *c = new QUmlCollaborationUse;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlDependency *element, roleBinding())
+        c->addRoleBinding(dynamic_cast<QUmlDependency *>(element->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlCollaboration *>(type()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).
  */
-const QSet<QUmlDependency *> 
-QUmlCollaborationUse::roleBinding() const
+const QSet<QUmlDependency *> QUmlCollaborationUse::roleBinding() const
 {
     // This is a read-write association end
 
@@ -112,8 +134,7 @@ void QUmlCollaborationUse::removeRoleBinding(QUmlDependency *roleBinding)
 /*!
     The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.
  */
-QUmlCollaboration *
-QUmlCollaborationUse::type() const
+QUmlCollaboration *QUmlCollaborationUse::type() const
 {
     // This is a read-write association end
 

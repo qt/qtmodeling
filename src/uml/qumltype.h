@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlType : public QUmlPackageableElement
 public:
     virtual ~QUmlType();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlPackage *package() const;
     void setPackage(QUmlPackage *package);

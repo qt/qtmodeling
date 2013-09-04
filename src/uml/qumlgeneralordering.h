@@ -60,6 +60,8 @@ public:
     explicit QUmlGeneralOrdering(bool createQObject = true);
     virtual ~QUmlGeneralOrdering();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOccurrenceSpecification *after() const;
     void setAfter(QUmlOccurrenceSpecification *after);

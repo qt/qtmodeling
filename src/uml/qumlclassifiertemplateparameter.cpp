@@ -43,7 +43,10 @@
 #include "private/qumlclassifiertemplateparameterobject_p.h"
 
 #include <QtUml/QUmlClassifier>
-
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlTemplateSignature>
 /*!
     \class QUmlClassifierTemplateParameter
 
@@ -68,13 +71,33 @@ QUmlClassifierTemplateParameter::~QUmlClassifierTemplateParameter()
     }
 }
 
+QModelingObject *QUmlClassifierTemplateParameter::clone() const
+{
+    QUmlClassifierTemplateParameter *c = new QUmlClassifierTemplateParameter;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (default_())
+        c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
+    if (ownedDefault())
+        c->setOwnedDefault(dynamic_cast<QUmlParameterableElement *>(ownedDefault()->clone()));
+    if (ownedParameteredElement())
+        c->setOwnedParameteredElement(dynamic_cast<QUmlParameterableElement *>(ownedParameteredElement()->clone()));
+    if (signature())
+        c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
+    c->setAllowSubstitutable(allowSubstitutable());
+    foreach (QUmlClassifier *element, constrainingClassifier())
+        c->addConstrainingClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (parameteredElement())
+        c->setParameteredElement(dynamic_cast<QUmlClassifier *>(parameteredElement()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.
  */
-bool 
-QUmlClassifierTemplateParameter::allowSubstitutable() const
+bool QUmlClassifierTemplateParameter::allowSubstitutable() const
 {
     // This is a read-write property
 
@@ -93,8 +116,7 @@ void QUmlClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstituta
 /*!
     The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
  */
-const QSet<QUmlClassifier *> 
-QUmlClassifierTemplateParameter::constrainingClassifier() const
+const QSet<QUmlClassifier *> QUmlClassifierTemplateParameter::constrainingClassifier() const
 {
     // This is a read-write association end
 
@@ -124,8 +146,7 @@ void QUmlClassifierTemplateParameter::removeConstrainingClassifier(QUmlClassifie
 /*!
     The parameterable classifier for this template parameter.
  */
-QUmlClassifier *
-QUmlClassifierTemplateParameter::parameteredElement() const
+QUmlClassifier *QUmlClassifierTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
 

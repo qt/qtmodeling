@@ -63,6 +63,8 @@ public:
     explicit QUmlInteractionUse(bool createQObject = true);
     virtual ~QUmlInteractionUse();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlGate *> actualGate() const;
     void addActualGate(QUmlGate *actualGate);

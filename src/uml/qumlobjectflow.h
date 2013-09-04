@@ -60,6 +60,8 @@ public:
     explicit QUmlObjectFlow(bool createQObject = true);
     virtual ~QUmlObjectFlow();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isMulticast() const;
     void setMulticast(bool isMulticast);

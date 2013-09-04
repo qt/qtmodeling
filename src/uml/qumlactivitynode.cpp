@@ -44,9 +44,17 @@
 #include <QtUml/QUmlActivityEdge>
 #include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
-
 /*!
     \class QUmlActivityNode
 
@@ -64,13 +72,41 @@ QUmlActivityNode::~QUmlActivityNode()
 {
 }
 
+QModelingObject *QUmlActivityNode::clone() const
+{
+    QUmlActivityNode *c = new QUmlActivityNode;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Activity containing the node.
  */
-QUmlActivity *
-QUmlActivityNode::activity() const
+QUmlActivity *QUmlActivityNode::activity() const
 {
     // This is a read-write association end
 
@@ -96,8 +132,7 @@ void QUmlActivityNode::setActivity(QUmlActivity *activity)
 /*!
     Groups containing the node.
  */
-const QSet<QUmlActivityGroup *> 
-QUmlActivityNode::inGroup() const
+const QSet<QUmlActivityGroup *> QUmlActivityNode::inGroup() const
 {
     // This is a read-only derived union association end
 
@@ -137,8 +172,7 @@ void QUmlActivityNode::removeInGroup(QUmlActivityGroup *inGroup)
 /*!
     Interruptible regions containing the node.
  */
-const QSet<QUmlInterruptibleActivityRegion *> 
-QUmlActivityNode::inInterruptibleRegion() const
+const QSet<QUmlInterruptibleActivityRegion *> QUmlActivityNode::inInterruptibleRegion() const
 {
     // This is a read-write association end
 
@@ -184,8 +218,7 @@ void QUmlActivityNode::removeInInterruptibleRegion(QUmlInterruptibleActivityRegi
 /*!
     Partitions containing the node.
  */
-const QSet<QUmlActivityPartition *> 
-QUmlActivityNode::inPartition() const
+const QSet<QUmlActivityPartition *> QUmlActivityNode::inPartition() const
 {
     // This is a read-write association end
 
@@ -231,8 +264,7 @@ void QUmlActivityNode::removeInPartition(QUmlActivityPartition *inPartition)
 /*!
     Structured activity node containing the node.
  */
-QUmlStructuredActivityNode *
-QUmlActivityNode::inStructuredNode() const
+QUmlStructuredActivityNode *QUmlActivityNode::inStructuredNode() const
 {
     // This is a read-write association end
 
@@ -262,8 +294,7 @@ void QUmlActivityNode::setInStructuredNode(QUmlStructuredActivityNode *inStructu
 /*!
     Edges that have the node as target.
  */
-const QSet<QUmlActivityEdge *> 
-QUmlActivityNode::incoming() const
+const QSet<QUmlActivityEdge *> QUmlActivityNode::incoming() const
 {
     // This is a read-write association end
 
@@ -303,8 +334,7 @@ void QUmlActivityNode::removeIncoming(QUmlActivityEdge *incoming)
 /*!
     Edges that have the node as source.
  */
-const QSet<QUmlActivityEdge *> 
-QUmlActivityNode::outgoing() const
+const QSet<QUmlActivityEdge *> QUmlActivityNode::outgoing() const
 {
     // This is a read-write association end
 
@@ -344,8 +374,7 @@ void QUmlActivityNode::removeOutgoing(QUmlActivityEdge *outgoing)
 /*!
     Inherited nodes replaced by this node in a specialization of the activity.
  */
-const QSet<QUmlActivityNode *> 
-QUmlActivityNode::redefinedNode() const
+const QSet<QUmlActivityNode *> QUmlActivityNode::redefinedNode() const
 {
     // This is a read-write association end
 

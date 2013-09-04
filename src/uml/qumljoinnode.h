@@ -60,6 +60,8 @@ public:
     explicit QUmlJoinNode(bool createQObject = true);
     virtual ~QUmlJoinNode();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isCombineDuplicate() const;
     void setCombineDuplicate(bool isCombineDuplicate);

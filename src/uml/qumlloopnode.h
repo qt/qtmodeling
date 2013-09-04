@@ -62,6 +62,8 @@ public:
     explicit QUmlLoopNode(bool createQObject = true);
     virtual ~QUmlLoopNode();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlOutputPin *> bodyOutput() const;
     void addBodyOutput(QUmlOutputPin *bodyOutput);

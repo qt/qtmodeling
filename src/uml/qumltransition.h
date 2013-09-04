@@ -69,6 +69,8 @@ public:
     explicit QUmlTransition(bool createQObject = true);
     virtual ~QUmlTransition();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlRegion *container() const;
     void setContainer(QUmlRegion *container);

@@ -62,6 +62,8 @@ public:
     explicit QUmlReadLinkObjectEndQualifierAction(bool createQObject = true);
     virtual ~QUmlReadLinkObjectEndQualifierAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);

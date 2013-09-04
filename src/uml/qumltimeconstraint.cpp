@@ -42,8 +42,18 @@
 
 #include "private/qumltimeconstraintobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlInterval>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlTimeInterval>
-
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlTimeConstraint
 
@@ -68,13 +78,37 @@ QUmlTimeConstraint::~QUmlTimeConstraint()
     }
 }
 
+QModelingObject *QUmlTimeConstraint::clone() const
+{
+    QUmlTimeConstraint *c = new QUmlTimeConstraint;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElement *element, constrainedElement())
+        c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
+    if (context())
+        c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
+    c->setFirstEvent(firstEvent());
+    if (specification())
+        c->setSpecification(dynamic_cast<QUmlTimeInterval *>(specification()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.
  */
-bool 
-QUmlTimeConstraint::firstEvent() const
+bool QUmlTimeConstraint::firstEvent() const
 {
     // This is a read-write property
 
@@ -93,8 +127,7 @@ void QUmlTimeConstraint::setFirstEvent(bool firstEvent)
 /*!
     A condition that must be true when evaluated in order for the constraint to be satisfied.
  */
-QUmlTimeInterval *
-QUmlTimeConstraint::specification() const
+QUmlTimeInterval *QUmlTimeConstraint::specification() const
 {
     // This is a read-write association end
 

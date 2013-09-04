@@ -61,6 +61,8 @@ public:
     explicit QUmlTestIdentityAction(bool createQObject = true);
     virtual ~QUmlTestIdentityAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *first() const;
     void setFirst(QUmlInputPin *first);

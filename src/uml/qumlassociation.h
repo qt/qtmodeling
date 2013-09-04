@@ -62,6 +62,8 @@ public:
     explicit QUmlAssociation(bool createQObject = true);
     virtual ~QUmlAssociation();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlType *> endType() const;
     Q_DECL_HIDDEN void addEndType(QUmlType *endType);

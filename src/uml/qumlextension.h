@@ -62,6 +62,8 @@ public:
     explicit QUmlExtension(bool createQObject = true);
     virtual ~QUmlExtension();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isRequired() const;
     Q_DECL_HIDDEN void setRequired(bool isRequired);

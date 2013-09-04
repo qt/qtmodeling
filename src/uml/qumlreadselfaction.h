@@ -60,6 +60,8 @@ public:
     explicit QUmlReadSelfAction(bool createQObject = true);
     virtual ~QUmlReadSelfAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);

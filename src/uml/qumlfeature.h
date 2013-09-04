@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlFeature : public QUmlRedefinableElement
 public:
     virtual ~QUmlFeature();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlClassifier *> featuringClassifier() const;
     Q_DECL_HIDDEN void addFeaturingClassifier(QUmlClassifier *featuringClassifier);

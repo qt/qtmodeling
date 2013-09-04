@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlRedefinableElement : public virtual QUmlNamedElement
 public:
     virtual ~QUmlRedefinableElement();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     bool isLeaf() const;
     void setLeaf(bool isLeaf);

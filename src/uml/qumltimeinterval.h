@@ -60,6 +60,8 @@ public:
     explicit QUmlTimeInterval(bool createQObject = true);
     virtual ~QUmlTimeInterval();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlTimeExpression *max() const;
     void setMax(QUmlTimeExpression *max);

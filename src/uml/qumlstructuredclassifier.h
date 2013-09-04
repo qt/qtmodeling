@@ -61,6 +61,8 @@ class Q_UML_EXPORT QUmlStructuredClassifier : public virtual QUmlClassifier
 public:
     virtual ~QUmlStructuredClassifier();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlProperty *> ownedAttribute() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);

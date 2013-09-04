@@ -42,8 +42,11 @@
 
 #include "private/qumllinkenddestructiondataobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInputPin>
-
+#include <QtUml/QUmlProperty>
+#include <QtUml/QUmlQualifierValue>
 /*!
     \class QUmlLinkEndDestructionData
 
@@ -68,13 +71,29 @@ QUmlLinkEndDestructionData::~QUmlLinkEndDestructionData()
     }
 }
 
+QModelingObject *QUmlLinkEndDestructionData::clone() const
+{
+    QUmlLinkEndDestructionData *c = new QUmlLinkEndDestructionData;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (end())
+        c->setEnd(dynamic_cast<QUmlProperty *>(end()->clone()));
+    foreach (QUmlQualifierValue *element, qualifier())
+        c->addQualifier(dynamic_cast<QUmlQualifierValue *>(element->clone()));
+    if (value())
+        c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
+    if (destroyAt())
+        c->setDestroyAt(dynamic_cast<QUmlInputPin *>(destroyAt()->clone()));
+    c->setDestroyDuplicates(isDestroyDuplicates());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.
  */
-QUmlInputPin *
-QUmlLinkEndDestructionData::destroyAt() const
+QUmlInputPin *QUmlLinkEndDestructionData::destroyAt() const
 {
     // This is a read-write association end
 
@@ -95,8 +114,7 @@ void QUmlLinkEndDestructionData::setDestroyAt(QUmlInputPin *destroyAt)
 /*!
     Specifies whether to destroy duplicates of the value in nonunique association ends.
  */
-bool 
-QUmlLinkEndDestructionData::isDestroyDuplicates() const
+bool QUmlLinkEndDestructionData::isDestroyDuplicates() const
 {
     // This is a read-write property
 

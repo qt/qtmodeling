@@ -44,11 +44,27 @@
 
 #include <QtUml/QUmlActivity>
 #include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
 #include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlInputPin>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlVariable>
-
 /*!
     \class QUmlStructuredActivityNode
 
@@ -72,13 +88,65 @@ QUmlStructuredActivityNode::~QUmlStructuredActivityNode()
     }
 }
 
+QModelingObject *QUmlStructuredActivityNode::clone() const
+{
+    QUmlStructuredActivityNode *c = new QUmlStructuredActivityNode;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlActivityEdge *element, edge())
+        c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    c->setMustIsolate(mustIsolate());
+    foreach (QUmlActivityNode *element, node())
+        c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlInputPin *element, structuredNodeInput())
+        c->addStructuredNodeInput(dynamic_cast<QUmlInputPin *>(element->clone()));
+    foreach (QUmlOutputPin *element, structuredNodeOutput())
+        c->addStructuredNodeOutput(dynamic_cast<QUmlOutputPin *>(element->clone()));
+    foreach (QUmlVariable *element, variable())
+        c->addVariable(dynamic_cast<QUmlVariable *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Activity immediately containing the node.
  */
-QUmlActivity *
-QUmlStructuredActivityNode::activity() const
+QUmlActivity *QUmlStructuredActivityNode::activity() const
 {
     // This is a read-write association end
 
@@ -99,8 +167,7 @@ void QUmlStructuredActivityNode::setActivity(QUmlActivity *activity)
 /*!
     Edges immediately contained in the structured node.
  */
-const QSet<QUmlActivityEdge *> 
-QUmlStructuredActivityNode::edge() const
+const QSet<QUmlActivityEdge *> QUmlStructuredActivityNode::edge() const
 {
     // This is a read-write association end
 
@@ -151,8 +218,7 @@ void QUmlStructuredActivityNode::removeEdge(QUmlActivityEdge *edge)
 /*!
     If true, then the actions in the node execute in isolation from actions outside the node.
  */
-bool 
-QUmlStructuredActivityNode::mustIsolate() const
+bool QUmlStructuredActivityNode::mustIsolate() const
 {
     // This is a read-write property
 
@@ -171,8 +237,7 @@ void QUmlStructuredActivityNode::setMustIsolate(bool mustIsolate)
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QUmlActivityNode *> 
-QUmlStructuredActivityNode::node() const
+const QSet<QUmlActivityNode *> QUmlStructuredActivityNode::node() const
 {
     // This is a read-write association end
 
@@ -220,8 +285,7 @@ void QUmlStructuredActivityNode::removeNode(QUmlActivityNode *node)
     }
 }
 
-const QSet<QUmlInputPin *> 
-QUmlStructuredActivityNode::structuredNodeInput() const
+const QSet<QUmlInputPin *> QUmlStructuredActivityNode::structuredNodeInput() const
 {
     // This is a read-write association end
 
@@ -257,8 +321,7 @@ void QUmlStructuredActivityNode::removeStructuredNodeInput(QUmlInputPin *structu
     }
 }
 
-const QSet<QUmlOutputPin *> 
-QUmlStructuredActivityNode::structuredNodeOutput() const
+const QSet<QUmlOutputPin *> QUmlStructuredActivityNode::structuredNodeOutput() const
 {
     // This is a read-write association end
 
@@ -297,8 +360,7 @@ void QUmlStructuredActivityNode::removeStructuredNodeOutput(QUmlOutputPin *struc
 /*!
     A variable defined in the scope of the structured activity node. It has no value and may not be accessed
  */
-const QSet<QUmlVariable *> 
-QUmlStructuredActivityNode::variable() const
+const QSet<QUmlVariable *> QUmlStructuredActivityNode::variable() const
 {
     // This is a read-write association end
 

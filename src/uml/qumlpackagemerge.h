@@ -60,6 +60,8 @@ public:
     explicit QUmlPackageMerge(bool createQObject = true);
     virtual ~QUmlPackageMerge();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlPackage *mergedPackage() const;
     void setMergedPackage(QUmlPackage *mergedPackage);

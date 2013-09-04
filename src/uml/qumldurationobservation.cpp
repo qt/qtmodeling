@@ -42,8 +42,15 @@
 
 #include "private/qumldurationobservationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamedElement>
-
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlDurationObservation
 
@@ -66,13 +73,33 @@ QUmlDurationObservation::~QUmlDurationObservation()
     }
 }
 
+QModelingObject *QUmlDurationObservation::clone() const
+{
+    QUmlDurationObservation *c = new QUmlDurationObservation;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (event())
+        c->setEvent(dynamic_cast<QUmlNamedElement *>(event()->clone()));
+    c->setFirstEvent(firstEvent());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The observation is determined by the entering or exiting of the event element during execution.
  */
-QUmlNamedElement *
-QUmlDurationObservation::event() const
+QUmlNamedElement *QUmlDurationObservation::event() const
 {
     // This is a read-write association end
 
@@ -93,8 +120,7 @@ void QUmlDurationObservation::setEvent(QUmlNamedElement *event)
 /*!
     The value of firstEvent[i] is related to event[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters event[i]. If firstEvent[i] is false, then the corresponding observation event is the time instant the execution exits event[i]. Default value is true applied when event[i] refers an element that represents only one time instant.
  */
-bool 
-QUmlDurationObservation::firstEvent() const
+bool QUmlDurationObservation::firstEvent() const
 {
     // This is a read-write property
 

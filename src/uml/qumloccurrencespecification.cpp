@@ -42,9 +42,17 @@
 
 #include "private/qumloccurrencespecificationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
+#include <QtUml/QUmlInteractionOperand>
 #include <QtUml/QUmlLifeline>
-
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlOccurrenceSpecification
 
@@ -67,13 +75,38 @@ QUmlOccurrenceSpecification::~QUmlOccurrenceSpecification()
     }
 }
 
+QModelingObject *QUmlOccurrenceSpecification::clone() const
+{
+    QUmlOccurrenceSpecification *c = new QUmlOccurrenceSpecification;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    if (covered())
+        c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
+    foreach (QUmlGeneralOrdering *element, toAfter())
+        c->addToAfter(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    foreach (QUmlGeneralOrdering *element, toBefore())
+        c->addToBefore(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the Lifeline on which the OccurrenceSpecification appears.
  */
-QUmlLifeline *
-QUmlOccurrenceSpecification::covered() const
+QUmlLifeline *QUmlOccurrenceSpecification::covered() const
 {
     // This is a read-write association end
 
@@ -94,8 +127,7 @@ void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
  */
-const QSet<QUmlGeneralOrdering *> 
-QUmlOccurrenceSpecification::toAfter() const
+const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfter() const
 {
     // This is a read-write association end
 
@@ -135,8 +167,7 @@ void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
  */
-const QSet<QUmlGeneralOrdering *> 
-QUmlOccurrenceSpecification::toBefore() const
+const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefore() const
 {
     // This is a read-write association end
 

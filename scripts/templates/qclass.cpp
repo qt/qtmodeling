@@ -49,20 +49,16 @@
 [%- SET generalization = class.findnodes("generalization") -%]
 [%- FOREACH superclass IN generalization -%]
 [%- superclasses.push("${namespace}${superclass.findvalue('@general')}") -%]
-[%- END -%]
-[%- forwards = [] -%]
-[%- FOREACH forward = class.findnodes("ownedAttribute[@type] | ownedOperation/ownedParameter[@type]") -%]
-[%- SET forwardName = forward.findvalue('@type') -%]
-[%- IF xmi.findnodes("//packagedElement[@xmi:type='uml:Enumeration' and @name='$forwardName']").findvalue("@name") == "" -%]
-[%- IF forwardName != className && superclasses.grep("^${namespace}${forwardName}\$").size == 0 -%][%- forwards.push("${namespace}${forwardName}") -%][%- END -%]
-[%- END -%]
-[%- END -%]
-[%- FOREACH forward = forwards.unique.sort -%]
-[%- IF loop.first %]
-[% END %]
-#include <Qt${namespace}/Q$${forward}>
 [%- END %]
-
+[% SET useNamespace = 'false' -%]
+[%- forwards = [] -%]
+[%- visitedClasses = [] -%]
+[%- GENERATE_FWD_DECLARATIONS(class, visitedClasses, forwards, useNamespace) -%]
+[%- FOREACH forward = forwards.unique.sort %]
+#include <Qt${namespace}/${forward}>
+[%- IF loop.last %]
+[% END -%]
+[%- END -%]
 /*!
     \class Q${namespace}${className}
 

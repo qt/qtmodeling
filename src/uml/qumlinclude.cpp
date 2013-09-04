@@ -42,8 +42,14 @@
 
 #include "private/qumlincludeobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlUseCase>
-
 /*!
     \class QUmlInclude
 
@@ -67,13 +73,30 @@ QUmlInclude::~QUmlInclude()
     }
 }
 
+QModelingObject *QUmlInclude::clone() const
+{
+    QUmlInclude *c = new QUmlInclude;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (addition())
+        c->setAddition(dynamic_cast<QUmlUseCase *>(addition()->clone()));
+    if (includingCase())
+        c->setIncludingCase(dynamic_cast<QUmlUseCase *>(includingCase()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the use case that is to be included.
  */
-QUmlUseCase *
-QUmlInclude::addition() const
+QUmlUseCase *QUmlInclude::addition() const
 {
     // This is a read-write association end
 
@@ -102,8 +125,7 @@ void QUmlInclude::setAddition(QUmlUseCase *addition)
 /*!
     References the use case which will include the addition and owns the include relationship.
  */
-QUmlUseCase *
-QUmlInclude::includingCase() const
+QUmlUseCase *QUmlInclude::includingCase() const
 {
     // This is a read-write association end
 

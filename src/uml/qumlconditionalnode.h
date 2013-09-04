@@ -61,6 +61,8 @@ public:
     explicit QUmlConditionalNode(bool createQObject = true);
     virtual ~QUmlConditionalNode();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlClause *> clause() const;
     void addClause(QUmlClause *clause);

@@ -40,10 +40,11 @@
 ****************************************************************************/
 #include "qumltemplateableelement.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateSignature>
-
 /*!
     \class QUmlTemplateableElement
 
@@ -60,13 +61,24 @@ QUmlTemplateableElement::~QUmlTemplateableElement()
 {
 }
 
+QModelingObject *QUmlTemplateableElement::clone() const
+{
+    QUmlTemplateableElement *c = new QUmlTemplateableElement;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The optional template signature specifying the formal template parameters.
  */
-QUmlTemplateSignature *
-QUmlTemplateableElement::ownedTemplateSignature() const
+QUmlTemplateSignature *QUmlTemplateableElement::ownedTemplateSignature() const
 {
     // This is a read-write association end
 
@@ -96,8 +108,7 @@ void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *o
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QUmlTemplateBinding *> 
-QUmlTemplateableElement::templateBinding() const
+const QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBinding() const
 {
     // This is a read-write association end
 

@@ -42,9 +42,18 @@
 
 #include "private/qumlcombinedfragmentobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlGate>
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
 #include <QtUml/QUmlInteractionOperand>
-
+#include <QtUml/QUmlLifeline>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlCombinedFragment
 
@@ -67,13 +76,39 @@ QUmlCombinedFragment::~QUmlCombinedFragment()
     }
 }
 
+QModelingObject *QUmlCombinedFragment::clone() const
+{
+    QUmlCombinedFragment *c = new QUmlCombinedFragment;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlLifeline *element, covered())
+        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    foreach (QUmlGate *element, cfragmentGate())
+        c->addCfragmentGate(dynamic_cast<QUmlGate *>(element->clone()));
+    c->setInteractionOperator(interactionOperator());
+    foreach (QUmlInteractionOperand *element, operand())
+        c->addOperand(dynamic_cast<QUmlInteractionOperand *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
  */
-const QSet<QUmlGate *> 
-QUmlCombinedFragment::cfragmentGate() const
+const QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGate() const
 {
     // This is a read-write association end
 
@@ -112,8 +147,7 @@ void QUmlCombinedFragment::removeCfragmentGate(QUmlGate *cfragmentGate)
 /*!
     Specifies the operation which defines the semantics of this combination of InteractionFragments.
  */
-QtUml::InteractionOperatorKind 
-QUmlCombinedFragment::interactionOperator() const
+QtUml::InteractionOperatorKind QUmlCombinedFragment::interactionOperator() const
 {
     // This is a read-write property
 
@@ -132,8 +166,7 @@ void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind
 /*!
     The set of operands of the combined fragment.
  */
-const QList<QUmlInteractionOperand *> 
-QUmlCombinedFragment::operand() const
+const QList<QUmlInteractionOperand *> QUmlCombinedFragment::operand() const
 {
     // This is a read-write association end
 

@@ -61,6 +61,8 @@ public:
     explicit QUmlClause(bool createQObject = true);
     virtual ~QUmlClause();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlExecutableNode *> body() const;
     void addBody(QUmlExecutableNode *body);

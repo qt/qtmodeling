@@ -42,6 +42,16 @@
 
 #include "private/qumlrealizationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOpaqueExpression>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlRealization
 
@@ -62,5 +72,29 @@ QUmlRealization::~QUmlRealization()
         _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
+}
+
+QModelingObject *QUmlRealization::clone() const
+{
+    QUmlRealization *c = new QUmlRealization;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlNamedElement *element, client())
+        c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    foreach (QUmlNamedElement *element, supplier())
+        c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    if (mapping())
+        c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
+    return c;
 }
 

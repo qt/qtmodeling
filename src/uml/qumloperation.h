@@ -69,6 +69,8 @@ public:
     explicit QUmlOperation(bool createQObject = true);
     virtual ~QUmlOperation();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlConstraint *bodyCondition() const;
     void setBodyCondition(QUmlConstraint *bodyCondition);

@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlCallAction : public QUmlInvocationAction
 public:
     virtual ~QUmlCallAction();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     bool isSynchronous() const;
     void setSynchronous(bool isSynchronous);

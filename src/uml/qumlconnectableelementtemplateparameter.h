@@ -60,6 +60,8 @@ public:
     explicit QUmlConnectableElementTemplateParameter(bool createQObject = true);
     virtual ~QUmlConnectableElementTemplateParameter();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlConnectableElement *parameteredElement() const;
     void setParameteredElement(QUmlConnectableElement *parameteredElement);

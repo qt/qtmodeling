@@ -62,6 +62,8 @@ public:
     explicit QUmlRedefinableTemplateSignature(bool createQObject = true);
     virtual ~QUmlRedefinableTemplateSignature();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlClassifier *classifier() const;
     void setClassifier(QUmlClassifier *classifier);

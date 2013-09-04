@@ -42,11 +42,20 @@
 
 #include "private/qumlinteractionuseobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlGate>
+#include <QtUml/QUmlGeneralOrdering>
 #include <QtUml/QUmlInteraction>
+#include <QtUml/QUmlInteractionOperand>
+#include <QtUml/QUmlLifeline>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlProperty>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlInteractionUse
 
@@ -71,13 +80,44 @@ QUmlInteractionUse::~QUmlInteractionUse()
     }
 }
 
+QModelingObject *QUmlInteractionUse::clone() const
+{
+    QUmlInteractionUse *c = new QUmlInteractionUse;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlLifeline *element, covered())
+        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    foreach (QUmlGate *element, actualGate())
+        c->addActualGate(dynamic_cast<QUmlGate *>(element->clone()));
+    foreach (QUmlValueSpecification *element, argument())
+        c->addArgument(dynamic_cast<QUmlValueSpecification *>(element->clone()));
+    if (refersTo())
+        c->setRefersTo(dynamic_cast<QUmlInteraction *>(refersTo()->clone()));
+    if (returnValue())
+        c->setReturnValue(dynamic_cast<QUmlValueSpecification *>(returnValue()->clone()));
+    if (returnValueRecipient())
+        c->setReturnValueRecipient(dynamic_cast<QUmlProperty *>(returnValueRecipient()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The actual gates of the InteractionUse
  */
-const QSet<QUmlGate *> 
-QUmlInteractionUse::actualGate() const
+const QSet<QUmlGate *> QUmlInteractionUse::actualGate() const
 {
     // This is a read-write association end
 
@@ -116,8 +156,7 @@ void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 /*!
     The actual arguments of the Interaction
  */
-const QList<QUmlValueSpecification *> 
-QUmlInteractionUse::argument() const
+const QList<QUmlValueSpecification *> QUmlInteractionUse::argument() const
 {
     // This is a read-write association end
 
@@ -156,8 +195,7 @@ void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
 /*!
     Refers to the Interaction that defines its meaning
  */
-QUmlInteraction *
-QUmlInteractionUse::refersTo() const
+QUmlInteraction *QUmlInteractionUse::refersTo() const
 {
     // This is a read-write association end
 
@@ -178,8 +216,7 @@ void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
 /*!
     The value of the executed Interaction.
  */
-QUmlValueSpecification *
-QUmlInteractionUse::returnValue() const
+QUmlValueSpecification *QUmlInteractionUse::returnValue() const
 {
     // This is a read-write association end
 
@@ -209,8 +246,7 @@ void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
 /*!
     The recipient of the return value.
  */
-QUmlProperty *
-QUmlInteractionUse::returnValueRecipient() const
+QUmlProperty *QUmlInteractionUse::returnValueRecipient() const
 {
     // This is a read-write association end
 

@@ -42,15 +42,30 @@
 
 #include <QtUml/QUmlClassifierTemplateParameter>
 #include <QtUml/QUmlCollaborationUse>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlFeature>
 #include <QtUml/QUmlGeneralization>
 #include <QtUml/QUmlGeneralizationSet>
 #include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlProperty>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRedefinableTemplateSignature>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlSubstitution>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
+#include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
-
 /*!
     \class QUmlClassifier
 
@@ -71,13 +86,61 @@ QUmlClassifier::~QUmlClassifier()
 {
 }
 
+QModelingObject *QUmlClassifier::clone() const
+{
+    QUmlClassifier *c = new QUmlClassifier;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    foreach (QUmlCollaborationUse *element, collaborationUse())
+        c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
+    foreach (QUmlGeneralization *element, generalization())
+        c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setFinalSpecialization(isFinalSpecialization());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlUseCase *element, ownedUseCase())
+        c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+        c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
+    foreach (QUmlClassifier *element, redefinedClassifier())
+        c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (representation())
+        c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
+    foreach (QUmlSubstitution *element, substitution())
+        c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlUseCase *element, useCase())
+        c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Refers to all of the Properties that are direct (i.e. not inherited or imported) attributes of the classifier.
  */
-const QSet<QUmlProperty *> 
-QUmlClassifier::attribute() const
+const QSet<QUmlProperty *> QUmlClassifier::attribute() const
 {
     // This is a read-only derived union association end
 
@@ -113,8 +176,7 @@ void QUmlClassifier::removeAttribute(QUmlProperty *attribute)
 /*!
     References the collaboration uses owned by the classifier.
  */
-const QSet<QUmlCollaborationUse *> 
-QUmlClassifier::collaborationUse() const
+const QSet<QUmlCollaborationUse *> QUmlClassifier::collaborationUse() const
 {
     // This is a read-write association end
 
@@ -153,8 +215,7 @@ void QUmlClassifier::removeCollaborationUse(QUmlCollaborationUse *collaborationU
 /*!
     Specifies each feature defined in the classifier.Note that there may be members of the Classifier that are of the type Feature but are not included in this association, e.g. inherited features.
  */
-const QSet<QUmlFeature *> 
-QUmlClassifier::feature() const
+const QSet<QUmlFeature *> QUmlClassifier::feature() const
 {
     // This is a read-only derived union association end
 
@@ -200,8 +261,7 @@ void QUmlClassifier::removeFeature(QUmlFeature *feature)
 /*!
     Specifies the general Classifiers for this Classifier.References the general classifier in the Generalization relationship.
  */
-const QSet<QUmlClassifier *> 
-QUmlClassifier::general() const
+const QSet<QUmlClassifier *> QUmlClassifier::general() const
 {
     // This is a read-write derived association end
 
@@ -237,8 +297,7 @@ void QUmlClassifier::removeGeneral(QUmlClassifier *general)
 /*!
     Specifies the Generalization relationships for this Classifier. These Generalizations navigaten to more general classifiers in the generalization hierarchy.
  */
-const QSet<QUmlGeneralization *> 
-QUmlClassifier::generalization() const
+const QSet<QUmlGeneralization *> QUmlClassifier::generalization() const
 {
     // This is a read-write association end
 
@@ -287,8 +346,7 @@ void QUmlClassifier::removeGeneralization(QUmlGeneralization *generalization)
 /*!
     Specifies all elements inherited by this classifier from the general classifiers.
  */
-const QSet<QUmlNamedElement *> 
-QUmlClassifier::inheritedMember() const
+const QSet<QUmlNamedElement *> QUmlClassifier::inheritedMember() const
 {
     // This is a read-only derived association end
 
@@ -330,8 +388,7 @@ void QUmlClassifier::removeInheritedMember(QUmlNamedElement *inheritedMember)
 /*!
     If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.
  */
-bool 
-QUmlClassifier::isAbstract() const
+bool QUmlClassifier::isAbstract() const
 {
     // This is a read-write property
 
@@ -350,8 +407,7 @@ void QUmlClassifier::setAbstract(bool isAbstract)
 /*!
     If true, the Classifier cannot be specialized by generalization. Note that this property is preserved through package merge operations; that is, the capability to specialize a Classifier (i.e., isFinalSpecialization =false) must be preserved in the resulting Classifier of a package merge operation where a Classifier with isFinalSpecialization =false is merged with a matching Classifier with isFinalSpecialization =true: the resulting Classifier will have isFinalSpecialization =false.
  */
-bool 
-QUmlClassifier::isFinalSpecialization() const
+bool QUmlClassifier::isFinalSpecialization() const
 {
     // This is a read-write property
 
@@ -370,8 +426,7 @@ void QUmlClassifier::setFinalSpecialization(bool isFinalSpecialization)
 /*!
     The optional template signature specifying the formal template parameters.
  */
-QUmlRedefinableTemplateSignature *
-QUmlClassifier::ownedTemplateSignature() const
+QUmlRedefinableTemplateSignature *QUmlClassifier::ownedTemplateSignature() const
 {
     // This is a read-write association end
 
@@ -393,8 +448,7 @@ void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature 
 /*!
     References the use cases owned by this classifier.
  */
-const QSet<QUmlUseCase *> 
-QUmlClassifier::ownedUseCase() const
+const QSet<QUmlUseCase *> QUmlClassifier::ownedUseCase() const
 {
     // This is a read-write association end
 
@@ -433,8 +487,7 @@ void QUmlClassifier::removeOwnedUseCase(QUmlUseCase *ownedUseCase)
 /*!
     Designates the GeneralizationSet of which the associated Classifier is a power type.
  */
-const QSet<QUmlGeneralizationSet *> 
-QUmlClassifier::powertypeExtent() const
+const QSet<QUmlGeneralizationSet *> QUmlClassifier::powertypeExtent() const
 {
     // This is a read-write association end
 
@@ -474,8 +527,7 @@ void QUmlClassifier::removePowertypeExtent(QUmlGeneralizationSet *powertypeExten
 /*!
     References the Classifiers that are redefined by this Classifier.
  */
-const QSet<QUmlClassifier *> 
-QUmlClassifier::redefinedClassifier() const
+const QSet<QUmlClassifier *> QUmlClassifier::redefinedClassifier() const
 {
     // This is a read-write association end
 
@@ -511,8 +563,7 @@ void QUmlClassifier::removeRedefinedClassifier(QUmlClassifier *redefinedClassifi
 /*!
     References a collaboration use which indicates the collaboration that represents this classifier.
  */
-QUmlCollaborationUse *
-QUmlClassifier::representation() const
+QUmlCollaborationUse *QUmlClassifier::representation() const
 {
     // This is a read-write association end
 
@@ -541,8 +592,7 @@ void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
 /*!
     References the substitutions that are owned by this Classifier.
  */
-const QSet<QUmlSubstitution *> 
-QUmlClassifier::substitution() const
+const QSet<QUmlSubstitution *> QUmlClassifier::substitution() const
 {
     // This is a read-write association end
 
@@ -593,8 +643,7 @@ void QUmlClassifier::removeSubstitution(QUmlSubstitution *substitution)
 /*!
     The template parameter that exposes this element as a formal parameter.
  */
-QUmlClassifierTemplateParameter *
-QUmlClassifier::templateParameter() const
+QUmlClassifierTemplateParameter *QUmlClassifier::templateParameter() const
 {
     // This is a read-write association end
 
@@ -615,8 +664,7 @@ void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templ
 /*!
     The set of use cases for which this Classifier is the subject.
  */
-const QSet<QUmlUseCase *> 
-QUmlClassifier::useCase() const
+const QSet<QUmlUseCase *> QUmlClassifier::useCase() const
 {
     // This is a read-write association end
 

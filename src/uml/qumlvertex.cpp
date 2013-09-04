@@ -40,10 +40,16 @@
 ****************************************************************************/
 #include "qumlvertex.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
-
 /*!
     \class QUmlVertex
 
@@ -60,13 +66,28 @@ QUmlVertex::~QUmlVertex()
 {
 }
 
+QModelingObject *QUmlVertex::clone() const
+{
+    QUmlVertex *c = new QUmlVertex;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (container())
+        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The region that contains this vertex.
  */
-QUmlRegion *
-QUmlVertex::container() const
+QUmlRegion *QUmlVertex::container() const
 {
     // This is a read-write association end
 
@@ -92,8 +113,7 @@ void QUmlVertex::setContainer(QUmlRegion *container)
 /*!
     Specifies the transitions entering this vertex.
  */
-const QSet<QUmlTransition *> 
-QUmlVertex::incoming() const
+const QSet<QUmlTransition *> QUmlVertex::incoming() const
 {
     // This is a read-only derived association end
 
@@ -139,8 +159,7 @@ void QUmlVertex::removeIncoming(QUmlTransition *incoming)
 /*!
     Specifies the transitions departing from this vertex.
  */
-const QSet<QUmlTransition *> 
-QUmlVertex::outgoing() const
+const QSet<QUmlTransition *> QUmlVertex::outgoing() const
 {
     // This is a read-only derived association end
 

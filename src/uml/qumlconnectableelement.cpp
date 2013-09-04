@@ -40,9 +40,18 @@
 ****************************************************************************/
 #include "qumlconnectableelement.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnectableElementTemplateParameter>
 #include <QtUml/QUmlConnectorEnd>
-
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
 /*!
     \class QUmlConnectableElement
 
@@ -59,13 +68,32 @@ QUmlConnectableElement::~QUmlConnectableElement()
 {
 }
 
+QModelingObject *QUmlConnectableElement::clone() const
+{
+    QUmlConnectableElement *c = new QUmlConnectableElement;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlConnectableElementTemplateParameter *>(templateParameter()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
-const QList<QUmlConnectorEnd *> 
-QUmlConnectableElement::end() const
+const QList<QUmlConnectorEnd *> QUmlConnectableElement::end() const
 {
     // This is a read-only derived association end
 
@@ -111,8 +139,7 @@ void QUmlConnectableElement::removeEnd(QUmlConnectorEnd *end)
 /*!
     The ConnectableElementTemplateParameter for this ConnectableElement parameter.
  */
-QUmlConnectableElementTemplateParameter *
-QUmlConnectableElement::templateParameter() const
+QUmlConnectableElementTemplateParameter *QUmlConnectableElement::templateParameter() const
 {
     // This is a read-write association end
 

@@ -42,10 +42,11 @@
 
 #include "private/qumlslotobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlInstanceSpecification>
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlValueSpecification>
-
 /*!
     \class QUmlSlot
 
@@ -69,13 +70,26 @@ QUmlSlot::~QUmlSlot()
     }
 }
 
+QModelingObject *QUmlSlot::clone() const
+{
+    QUmlSlot *c = new QUmlSlot;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (definingFeature())
+        c->setDefiningFeature(dynamic_cast<QUmlStructuralFeature *>(definingFeature()->clone()));
+    if (owningInstance())
+        c->setOwningInstance(dynamic_cast<QUmlInstanceSpecification *>(owningInstance()->clone()));
+    foreach (QUmlValueSpecification *element, value())
+        c->addValue(dynamic_cast<QUmlValueSpecification *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The structural feature that specifies the values that may be held by the slot.
  */
-QUmlStructuralFeature *
-QUmlSlot::definingFeature() const
+QUmlStructuralFeature *QUmlSlot::definingFeature() const
 {
     // This is a read-write association end
 
@@ -96,8 +110,7 @@ void QUmlSlot::setDefiningFeature(QUmlStructuralFeature *definingFeature)
 /*!
     The instance specification that owns this slot.
  */
-QUmlInstanceSpecification *
-QUmlSlot::owningInstance() const
+QUmlInstanceSpecification *QUmlSlot::owningInstance() const
 {
     // This is a read-write association end
 
@@ -123,8 +136,7 @@ void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */
-const QList<QUmlValueSpecification *> 
-QUmlSlot::value() const
+const QList<QUmlValueSpecification *> QUmlSlot::value() const
 {
     // This is a read-write association end
 

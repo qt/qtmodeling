@@ -40,11 +40,16 @@
 ****************************************************************************/
 #include "qumlnamespace.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
-
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlNamespace
 
@@ -60,13 +65,32 @@ QUmlNamespace::~QUmlNamespace()
 {
 }
 
+QModelingObject *QUmlNamespace::clone() const
+{
+    QUmlNamespace *c = new QUmlNamespace;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QUmlElementImport *> 
-QUmlNamespace::elementImport() const
+const QSet<QUmlElementImport *> QUmlNamespace::elementImport() const
 {
     // This is a read-write association end
 
@@ -115,8 +139,7 @@ void QUmlNamespace::removeElementImport(QUmlElementImport *elementImport)
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QUmlPackageableElement *> 
-QUmlNamespace::importedMember() const
+const QSet<QUmlPackageableElement *> QUmlNamespace::importedMember() const
 {
     // This is a read-only derived association end
 
@@ -158,8 +181,7 @@ void QUmlNamespace::removeImportedMember(QUmlPackageableElement *importedMember)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QUmlNamedElement *> 
-QUmlNamespace::member() const
+const QSet<QUmlNamedElement *> QUmlNamespace::member() const
 {
     // This is a read-only derived union association end
 
@@ -189,8 +211,7 @@ void QUmlNamespace::removeMember(QUmlNamedElement *member)
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QUmlNamedElement *> 
-QUmlNamespace::ownedMember() const
+const QSet<QUmlNamedElement *> QUmlNamespace::ownedMember() const
 {
     // This is a read-only derived union association end
 
@@ -241,8 +262,7 @@ void QUmlNamespace::removeOwnedMember(QUmlNamedElement *ownedMember)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QUmlConstraint *> 
-QUmlNamespace::ownedRule() const
+const QSet<QUmlConstraint *> QUmlNamespace::ownedRule() const
 {
     // This is a read-write association end
 
@@ -291,8 +311,7 @@ void QUmlNamespace::removeOwnedRule(QUmlConstraint *ownedRule)
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QUmlPackageImport *> 
-QUmlNamespace::packageImport() const
+const QSet<QUmlPackageImport *> QUmlNamespace::packageImport() const
 {
     // This is a read-write association end
 

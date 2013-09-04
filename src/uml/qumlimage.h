@@ -58,6 +58,8 @@ public:
     explicit QUmlImage(bool createQObject = true);
     virtual ~QUmlImage();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QString content() const;
     void setContent(QString content);

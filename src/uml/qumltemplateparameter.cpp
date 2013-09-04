@@ -42,9 +42,10 @@
 
 #include "private/qumltemplateparameterobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
-
 /*!
     \class QUmlTemplateParameter
 
@@ -71,13 +72,30 @@ QUmlTemplateParameter::~QUmlTemplateParameter()
     }
 }
 
+QModelingObject *QUmlTemplateParameter::clone() const
+{
+    QUmlTemplateParameter *c = new QUmlTemplateParameter;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (default_())
+        c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
+    if (ownedDefault())
+        c->setOwnedDefault(dynamic_cast<QUmlParameterableElement *>(ownedDefault()->clone()));
+    if (ownedParameteredElement())
+        c->setOwnedParameteredElement(dynamic_cast<QUmlParameterableElement *>(ownedParameteredElement()->clone()));
+    if (parameteredElement())
+        c->setParameteredElement(dynamic_cast<QUmlParameterableElement *>(parameteredElement()->clone()));
+    if (signature())
+        c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The element that is the default for this formal template parameter.
  */
-QUmlParameterableElement *
-QUmlTemplateParameter::default_() const
+QUmlParameterableElement *QUmlTemplateParameter::default_() const
 {
     // This is a read-write association end
 
@@ -98,8 +116,7 @@ void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
 /*!
     The element that is owned by this template parameter for the purpose of providing a default.
  */
-QUmlParameterableElement *
-QUmlTemplateParameter::ownedDefault() const
+QUmlParameterableElement *QUmlTemplateParameter::ownedDefault() const
 {
     // This is a read-write association end
 
@@ -130,8 +147,7 @@ void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefau
 /*!
     The element that is owned by this template parameter.
  */
-QUmlParameterableElement *
-QUmlTemplateParameter::ownedParameteredElement() const
+QUmlParameterableElement *QUmlTemplateParameter::ownedParameteredElement() const
 {
     // This is a read-write association end
 
@@ -162,8 +178,7 @@ void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement 
 /*!
     The element exposed by this template parameter.
  */
-QUmlParameterableElement *
-QUmlTemplateParameter::parameteredElement() const
+QUmlParameterableElement *QUmlTemplateParameter::parameteredElement() const
 {
     // This is a read-write association end
 
@@ -184,8 +199,7 @@ void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *para
 /*!
     The template signature that owns this template parameter.
  */
-QUmlTemplateSignature *
-QUmlTemplateParameter::signature() const
+QUmlTemplateSignature *QUmlTemplateParameter::signature() const
 {
     // This is a read-write association end
 

@@ -63,6 +63,8 @@ public:
     explicit QUmlPackageImport(bool createQObject = true);
     virtual ~QUmlPackageImport();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlPackage *importedPackage() const;
     void setImportedPackage(QUmlPackage *importedPackage);

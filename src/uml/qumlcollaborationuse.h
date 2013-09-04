@@ -61,6 +61,8 @@ public:
     explicit QUmlCollaborationUse(bool createQObject = true);
     virtual ~QUmlCollaborationUse();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlDependency *> roleBinding() const;
     void addRoleBinding(QUmlDependency *roleBinding);

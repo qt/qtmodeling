@@ -60,6 +60,8 @@ class Q_UML_EXPORT QUmlValueSpecification : public QUmlTypedElement, public QUml
 public:
     virtual ~QUmlValueSpecification();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
 
     // Operations
     bool booleanValue() const;

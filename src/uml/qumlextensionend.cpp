@@ -42,8 +42,30 @@
 
 #include "private/qumlextensionendobject_p.h"
 
+#include <QtUml/QUmlAssociation>
+#include <QtUml/QUmlClass>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConnectableElementTemplateParameter>
+#include <QtUml/QUmlConnectorEnd>
+#include <QtUml/QUmlDataType>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlDeployment>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlInterface>
+#include <QtUml/QUmlMultiplicityElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlProperty>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStereotype>
-
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlExtensionEnd
 
@@ -67,13 +89,67 @@ QUmlExtensionEnd::~QUmlExtensionEnd()
     }
 }
 
+QModelingObject *QUmlExtensionEnd::clone() const
+{
+    QUmlExtensionEnd *c = new QUmlExtensionEnd;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setOrdered(isOrdered());
+    c->setUnique(isUnique());
+    if (lowerValue())
+        c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
+    if (upperValue())
+        c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
+    c->setLeaf(isLeaf());
+    c->setStatic(isStatic());
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlConnectableElementTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDeployment *element, deployment())
+        c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
+    c->setAggregation(aggregation());
+    if (association())
+        c->setAssociation(dynamic_cast<QUmlAssociation *>(association()->clone()));
+    if (associationEnd())
+        c->setAssociationEnd(dynamic_cast<QUmlProperty *>(associationEnd()->clone()));
+    if (class_())
+        c->setClass(dynamic_cast<QUmlClass *>(class_()->clone()));
+    if (datatype())
+        c->setDatatype(dynamic_cast<QUmlDataType *>(datatype()->clone()));
+    if (defaultValue())
+        c->setDefaultValue(dynamic_cast<QUmlValueSpecification *>(defaultValue()->clone()));
+    if (interface_())
+        c->setInterface(dynamic_cast<QUmlInterface *>(interface_()->clone()));
+    c->setDerived(isDerived());
+    c->setDerivedUnion(isDerivedUnion());
+    c->setID(isID());
+    c->setReadOnly(isReadOnly());
+    if (owningAssociation())
+        c->setOwningAssociation(dynamic_cast<QUmlAssociation *>(owningAssociation()->clone()));
+    foreach (QUmlProperty *element, qualifier())
+        c->addQualifier(dynamic_cast<QUmlProperty *>(element->clone()));
+    foreach (QUmlProperty *element, redefinedProperty())
+        c->addRedefinedProperty(dynamic_cast<QUmlProperty *>(element->clone()));
+    foreach (QUmlProperty *element, subsettedProperty())
+        c->addSubsettedProperty(dynamic_cast<QUmlProperty *>(element->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlStereotype *>(type()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.
  */
-int 
-QUmlExtensionEnd::lower() const
+int QUmlExtensionEnd::lower() const
 {
     // This is a read-write derived property
 
@@ -97,8 +173,7 @@ void QUmlExtensionEnd::setLower(int lower)
 /*!
     References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.
  */
-QUmlStereotype *
-QUmlExtensionEnd::type() const
+QUmlStereotype *QUmlExtensionEnd::type() const
 {
     // This is a read-write association end
 

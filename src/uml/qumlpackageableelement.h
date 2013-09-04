@@ -60,6 +60,8 @@ class Q_UML_EXPORT QUmlPackageableElement : public QUmlParameterableElement, pub
 public:
     virtual ~QUmlPackageableElement();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QtUml::VisibilityKind visibility() const;
     void setVisibility(QtUml::VisibilityKind visibility);

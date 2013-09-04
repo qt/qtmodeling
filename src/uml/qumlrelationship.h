@@ -57,6 +57,8 @@ class Q_UML_EXPORT QUmlRelationship : public virtual QUmlElement
 public:
     virtual ~QUmlRelationship();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlElement *> relatedElement() const;
     Q_DECL_HIDDEN void addRelatedElement(QUmlElement *relatedElement);

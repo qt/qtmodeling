@@ -42,8 +42,27 @@
 
 #include "private/qumlexpansionnodeobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlBehavior>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlExpansionRegion>
-
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlState>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlExpansionNode
 
@@ -67,13 +86,55 @@ QUmlExpansionNode::~QUmlExpansionNode()
     }
 }
 
+QModelingObject *QUmlExpansionNode::clone() const
+{
+    QUmlExpansionNode *c = new QUmlExpansionNode;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    foreach (QUmlState *element, inState())
+        c->addInState(dynamic_cast<QUmlState *>(element->clone()));
+    c->setControlType(isControlType());
+    c->setOrdering(ordering());
+    if (selection())
+        c->setSelection(dynamic_cast<QUmlBehavior *>(selection()->clone()));
+    if (upperBound())
+        c->setUpperBound(dynamic_cast<QUmlValueSpecification *>(upperBound()->clone()));
+    if (regionAsInput())
+        c->setRegionAsInput(dynamic_cast<QUmlExpansionRegion *>(regionAsInput()->clone()));
+    if (regionAsOutput())
+        c->setRegionAsOutput(dynamic_cast<QUmlExpansionRegion *>(regionAsOutput()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The expansion region for which the node is an input.
  */
-QUmlExpansionRegion *
-QUmlExpansionNode::regionAsInput() const
+QUmlExpansionRegion *QUmlExpansionNode::regionAsInput() const
 {
     // This is a read-write association end
 
@@ -94,8 +155,7 @@ void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
 /*!
     The expansion region for which the node is an output.
  */
-QUmlExpansionRegion *
-QUmlExpansionNode::regionAsOutput() const
+QUmlExpansionRegion *QUmlExpansionNode::regionAsOutput() const
 {
     // This is a read-write association end
 

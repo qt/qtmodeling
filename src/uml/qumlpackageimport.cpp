@@ -42,9 +42,10 @@
 
 #include "private/qumlpackageimportobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
-
 /*!
     \class QUmlPackageImport
 
@@ -69,13 +70,25 @@ QUmlPackageImport::~QUmlPackageImport()
     }
 }
 
+QModelingObject *QUmlPackageImport::clone() const
+{
+    QUmlPackageImport *c = new QUmlPackageImport;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (importedPackage())
+        c->setImportedPackage(dynamic_cast<QUmlPackage *>(importedPackage()->clone()));
+    if (importingNamespace())
+        c->setImportingNamespace(dynamic_cast<QUmlNamespace *>(importingNamespace()->clone()));
+    c->setVisibility(visibility());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies the Package whose members are imported into a Namespace.
  */
-QUmlPackage *
-QUmlPackageImport::importedPackage() const
+QUmlPackage *QUmlPackageImport::importedPackage() const
 {
     // This is a read-write association end
 
@@ -104,8 +117,7 @@ void QUmlPackageImport::setImportedPackage(QUmlPackage *importedPackage)
 /*!
     Specifies the Namespace that imports the members from a Package.
  */
-QUmlNamespace *
-QUmlPackageImport::importingNamespace() const
+QUmlNamespace *QUmlPackageImport::importingNamespace() const
 {
     // This is a read-write association end
 
@@ -135,8 +147,7 @@ void QUmlPackageImport::setImportingNamespace(QUmlNamespace *importingNamespace)
 /*!
     Specifies the visibility of the imported PackageableElements within the importing Namespace, i.e., whether imported elements will in turn be visible to other packages that use that importingPackage as an importedPackage. If the PackageImport is public, the imported elements will be visible outside the package, while if it is private they will not.
  */
-QtUml::VisibilityKind 
-QUmlPackageImport::visibility() const
+QtUml::VisibilityKind QUmlPackageImport::visibility() const
 {
     // This is a read-write property
 

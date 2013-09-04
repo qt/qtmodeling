@@ -42,9 +42,12 @@
 
 #include "private/qumlconnectorendobject_p.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConnectableElement>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlMultiplicityElement>
 #include <QtUml/QUmlProperty>
-
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlConnectorEnd
 
@@ -68,13 +71,30 @@ QUmlConnectorEnd::~QUmlConnectorEnd()
     }
 }
 
+QModelingObject *QUmlConnectorEnd::clone() const
+{
+    QUmlConnectorEnd *c = new QUmlConnectorEnd;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    c->setOrdered(isOrdered());
+    c->setUnique(isUnique());
+    if (lowerValue())
+        c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
+    if (upperValue())
+        c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
+    if (partWithPort())
+        c->setPartWithPort(dynamic_cast<QUmlProperty *>(partWithPort()->clone()));
+    if (role())
+        c->setRole(dynamic_cast<QUmlConnectableElement *>(role()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.
  */
-QUmlProperty *
-QUmlConnectorEnd::definingEnd() const
+QUmlProperty *QUmlConnectorEnd::definingEnd() const
 {
     // This is a read-only derived association end
 
@@ -98,8 +118,7 @@ void QUmlConnectorEnd::setDefiningEnd(QUmlProperty *definingEnd)
 /*!
     Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.
  */
-QUmlProperty *
-QUmlConnectorEnd::partWithPort() const
+QUmlProperty *QUmlConnectorEnd::partWithPort() const
 {
     // This is a read-write association end
 
@@ -120,8 +139,7 @@ void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
 /*!
     The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.
  */
-QUmlConnectableElement *
-QUmlConnectorEnd::role() const
+QUmlConnectableElement *QUmlConnectorEnd::role() const
 {
     // This is a read-write association end
 

@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlMessageEnd : public virtual QUmlNamedElement
 public:
     virtual ~QUmlMessageEnd();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlMessage *message() const;
     void setMessage(QUmlMessage *message);

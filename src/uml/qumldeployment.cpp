@@ -42,10 +42,18 @@
 
 #include "private/qumldeploymentobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
 #include <QtUml/QUmlDeployedArtifact>
 #include <QtUml/QUmlDeploymentSpecification>
 #include <QtUml/QUmlDeploymentTarget>
-
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlDeployment
 
@@ -69,13 +77,40 @@ QUmlDeployment::~QUmlDeployment()
     }
 }
 
+QModelingObject *QUmlDeployment::clone() const
+{
+    QUmlDeployment *c = new QUmlDeployment;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlNamedElement *element, client())
+        c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    foreach (QUmlNamedElement *element, supplier())
+        c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    foreach (QUmlDeploymentSpecification *element, configuration())
+        c->addConfiguration(dynamic_cast<QUmlDeploymentSpecification *>(element->clone()));
+    foreach (QUmlDeployedArtifact *element, deployedArtifact())
+        c->addDeployedArtifact(dynamic_cast<QUmlDeployedArtifact *>(element->clone()));
+    if (location())
+        c->setLocation(dynamic_cast<QUmlDeploymentTarget *>(location()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
  */
-const QSet<QUmlDeploymentSpecification *> 
-QUmlDeployment::configuration() const
+const QSet<QUmlDeploymentSpecification *> QUmlDeployment::configuration() const
 {
     // This is a read-write association end
 
@@ -124,8 +159,7 @@ void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configurat
 /*!
     The Artifacts that are deployed onto a Node. This association specializes the supplier association.
  */
-const QSet<QUmlDeployedArtifact *> 
-QUmlDeployment::deployedArtifact() const
+const QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifact() const
 {
     // This is a read-write association end
 
@@ -161,8 +195,7 @@ void QUmlDeployment::removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifa
 /*!
     The DeployedTarget which is the target of a Deployment.
  */
-QUmlDeploymentTarget *
-QUmlDeployment::location() const
+QUmlDeploymentTarget *QUmlDeployment::location() const
 {
     // This is a read-write association end
 

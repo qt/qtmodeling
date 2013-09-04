@@ -42,8 +42,18 @@
 
 #include "private/qumldurationconstraintobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
 #include <QtUml/QUmlDurationInterval>
-
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlInterval>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlDurationConstraint
 
@@ -67,13 +77,37 @@ QUmlDurationConstraint::~QUmlDurationConstraint()
     }
 }
 
+QModelingObject *QUmlDurationConstraint::clone() const
+{
+    QUmlDurationConstraint *c = new QUmlDurationConstraint;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlElement *element, constrainedElement())
+        c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
+    if (context())
+        c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
+    c->setFirstEvent(firstEvent());
+    if (specification())
+        c->setSpecification(dynamic_cast<QUmlDurationInterval *>(specification()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The value of firstEvent[i] is related to constrainedElement[i] (where i is 1 or 2). If firstEvent[i] is true, then the corresponding observation event is the first time instant the execution enters constrainedElement[i]. If firstEvent[i] is false, then the corresponding observation event is the last time instant the execution is within constrainedElement[i]. Default value is true applied when constrainedElement[i] refers an element that represents only one time instant.
  */
-bool 
-QUmlDurationConstraint::firstEvent() const
+bool QUmlDurationConstraint::firstEvent() const
 {
     // This is a read-write property
 
@@ -92,8 +126,7 @@ void QUmlDurationConstraint::setFirstEvent(bool firstEvent)
 /*!
     The interval constraining the duration.
  */
-QUmlDurationInterval *
-QUmlDurationConstraint::specification() const
+QUmlDurationInterval *QUmlDurationConstraint::specification() const
 {
     // This is a read-write association end
 

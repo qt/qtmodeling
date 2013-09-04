@@ -58,6 +58,8 @@ public:
     explicit QUmlLiteralString(bool createQObject = true);
     virtual ~QUmlLiteralString();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QString value() const;
     void setValue(QString value);

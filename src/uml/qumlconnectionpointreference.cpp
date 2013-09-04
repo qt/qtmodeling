@@ -42,9 +42,18 @@
 
 #include "private/qumlconnectionpointreferenceobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPseudostate>
+#include <QtUml/QUmlRegion>
 #include <QtUml/QUmlState>
-
+#include <QtUml/QUmlStateMachine>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTransition>
 /*!
     \class QUmlConnectionPointReference
 
@@ -67,13 +76,34 @@ QUmlConnectionPointReference::~QUmlConnectionPointReference()
     }
 }
 
+QModelingObject *QUmlConnectionPointReference::clone() const
+{
+    QUmlConnectionPointReference *c = new QUmlConnectionPointReference;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (container())
+        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
+    foreach (QUmlPseudostate *element, entry())
+        c->addEntry(dynamic_cast<QUmlPseudostate *>(element->clone()));
+    foreach (QUmlPseudostate *element, exit())
+        c->addExit(dynamic_cast<QUmlPseudostate *>(element->clone()));
+    if (state())
+        c->setState(dynamic_cast<QUmlState *>(state()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
  */
-const QSet<QUmlPseudostate *> 
-QUmlConnectionPointReference::entry() const
+const QSet<QUmlPseudostate *> QUmlConnectionPointReference::entry() const
 {
     // This is a read-write association end
 
@@ -103,8 +133,7 @@ void QUmlConnectionPointReference::removeEntry(QUmlPseudostate *entry)
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
-const QSet<QUmlPseudostate *> 
-QUmlConnectionPointReference::exit() const
+const QSet<QUmlPseudostate *> QUmlConnectionPointReference::exit() const
 {
     // This is a read-write association end
 
@@ -134,8 +163,7 @@ void QUmlConnectionPointReference::removeExit(QUmlPseudostate *exit)
 /*!
     The State in which the connection point refreshens are defined.
  */
-QUmlState *
-QUmlConnectionPointReference::state() const
+QUmlState *QUmlConnectionPointReference::state() const
 {
     // This is a read-write association end
 

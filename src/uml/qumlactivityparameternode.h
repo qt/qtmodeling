@@ -60,6 +60,8 @@ public:
     explicit QUmlActivityParameterNode(bool createQObject = true);
     virtual ~QUmlActivityParameterNode();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlParameter *parameter() const;
     void setParameter(QUmlParameter *parameter);

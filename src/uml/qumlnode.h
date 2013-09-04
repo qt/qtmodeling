@@ -59,6 +59,8 @@ public:
     explicit QUmlNode(bool createQObject = true);
     virtual ~QUmlNode();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlNode *> nestedNode() const;
     void addNestedNode(QUmlNode *nestedNode);

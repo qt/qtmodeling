@@ -44,12 +44,22 @@
 
 #include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlRegion>
 #include <QtUml/QUmlStateMachine>
+#include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTrigger>
 #include <QtUml/QUmlVertex>
-
 /*!
     \class QUmlTransition
 
@@ -78,13 +88,48 @@ QUmlTransition::~QUmlTransition()
     }
 }
 
+QModelingObject *QUmlTransition::clone() const
+{
+    QUmlTransition *c = new QUmlTransition;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (container())
+        c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
+    if (effect())
+        c->setEffect(dynamic_cast<QUmlBehavior *>(effect()->clone()));
+    if (guard())
+        c->setGuard(dynamic_cast<QUmlConstraint *>(guard()->clone()));
+    c->setKind(kind());
+    if (redefinedTransition())
+        c->setRedefinedTransition(dynamic_cast<QUmlTransition *>(redefinedTransition()->clone()));
+    if (source())
+        c->setSource(dynamic_cast<QUmlVertex *>(source()->clone()));
+    if (target())
+        c->setTarget(dynamic_cast<QUmlVertex *>(target()->clone()));
+    foreach (QUmlTrigger *element, trigger())
+        c->addTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Designates the region that owns this transition.
  */
-QUmlRegion *
-QUmlTransition::container() const
+QUmlRegion *QUmlTransition::container() const
 {
     // This is a read-write association end
 
@@ -110,8 +155,7 @@ void QUmlTransition::setContainer(QUmlRegion *container)
 /*!
     Specifies an optional behavior to be performed when the transition fires.
  */
-QUmlBehavior *
-QUmlTransition::effect() const
+QUmlBehavior *QUmlTransition::effect() const
 {
     // This is a read-write association end
 
@@ -141,8 +185,7 @@ void QUmlTransition::setEffect(QUmlBehavior *effect)
 /*!
     A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.
  */
-QUmlConstraint *
-QUmlTransition::guard() const
+QUmlConstraint *QUmlTransition::guard() const
 {
     // This is a read-write association end
 
@@ -172,8 +215,7 @@ void QUmlTransition::setGuard(QUmlConstraint *guard)
 /*!
     Indicates the precise type of the transition.
  */
-QtUml::TransitionKind 
-QUmlTransition::kind() const
+QtUml::TransitionKind QUmlTransition::kind() const
 {
     // This is a read-write property
 
@@ -192,8 +234,7 @@ void QUmlTransition::setKind(QtUml::TransitionKind kind)
 /*!
     The transition that is redefined by this transition.
  */
-QUmlTransition *
-QUmlTransition::redefinedTransition() const
+QUmlTransition *QUmlTransition::redefinedTransition() const
 {
     // This is a read-write association end
 
@@ -222,8 +263,7 @@ void QUmlTransition::setRedefinedTransition(QUmlTransition *redefinedTransition)
 /*!
     References the classifier in which context this element may be redefined.
  */
-QUmlClassifier *
-QUmlTransition::redefinitionContext() const
+QUmlClassifier *QUmlTransition::redefinitionContext() const
 {
     // This is a read-only derived association end
 
@@ -247,8 +287,7 @@ void QUmlTransition::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 /*!
     Designates the originating vertex (state or pseudostate) of the transition.
  */
-QUmlVertex *
-QUmlTransition::source() const
+QUmlVertex *QUmlTransition::source() const
 {
     // This is a read-write association end
 
@@ -269,8 +308,7 @@ void QUmlTransition::setSource(QUmlVertex *source)
 /*!
     Designates the target vertex that is reached when the transition is taken.
  */
-QUmlVertex *
-QUmlTransition::target() const
+QUmlVertex *QUmlTransition::target() const
 {
     // This is a read-write association end
 
@@ -291,8 +329,7 @@ void QUmlTransition::setTarget(QUmlVertex *target)
 /*!
     Specifies the triggers that may fire the transition.
  */
-const QSet<QUmlTrigger *> 
-QUmlTransition::trigger() const
+const QSet<QUmlTrigger *> QUmlTransition::trigger() const
 {
     // This is a read-write association end
 

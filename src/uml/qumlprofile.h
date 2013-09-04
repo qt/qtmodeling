@@ -61,6 +61,8 @@ public:
     explicit QUmlProfile(bool createQObject = true);
     virtual ~QUmlProfile();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlElementImport *> metaclassReference() const;
     void addMetaclassReference(QUmlElementImport *metaclassReference);

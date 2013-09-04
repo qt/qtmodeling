@@ -42,10 +42,11 @@
 
 #include "private/qumltemplateparametersubstitutionobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateParameter>
-
 /*!
     \class QUmlTemplateParameterSubstitution
 
@@ -71,13 +72,28 @@ QUmlTemplateParameterSubstitution::~QUmlTemplateParameterSubstitution()
     }
 }
 
+QModelingObject *QUmlTemplateParameterSubstitution::clone() const
+{
+    QUmlTemplateParameterSubstitution *c = new QUmlTemplateParameterSubstitution;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (actual())
+        c->setActual(dynamic_cast<QUmlParameterableElement *>(actual()->clone()));
+    if (formal())
+        c->setFormal(dynamic_cast<QUmlTemplateParameter *>(formal()->clone()));
+    if (ownedActual())
+        c->setOwnedActual(dynamic_cast<QUmlParameterableElement *>(ownedActual()->clone()));
+    if (templateBinding())
+        c->setTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(templateBinding()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The element that is the actual parameter for this substitution.
  */
-QUmlParameterableElement *
-QUmlTemplateParameterSubstitution::actual() const
+QUmlParameterableElement *QUmlTemplateParameterSubstitution::actual() const
 {
     // This is a read-write association end
 
@@ -98,8 +114,7 @@ void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actu
 /*!
     The formal template parameter that is associated with this substitution.
  */
-QUmlTemplateParameter *
-QUmlTemplateParameterSubstitution::formal() const
+QUmlTemplateParameter *QUmlTemplateParameterSubstitution::formal() const
 {
     // This is a read-write association end
 
@@ -120,8 +135,7 @@ void QUmlTemplateParameterSubstitution::setFormal(QUmlTemplateParameter *formal)
 /*!
     The actual parameter that is owned by this substitution.
  */
-QUmlParameterableElement *
-QUmlTemplateParameterSubstitution::ownedActual() const
+QUmlParameterableElement *QUmlTemplateParameterSubstitution::ownedActual() const
 {
     // This is a read-write association end
 
@@ -152,8 +166,7 @@ void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement 
 /*!
     The optional bindings from this element to templates.
  */
-QUmlTemplateBinding *
-QUmlTemplateParameterSubstitution::templateBinding() const
+QUmlTemplateBinding *QUmlTemplateParameterSubstitution::templateBinding() const
 {
     // This is a read-write association end
 

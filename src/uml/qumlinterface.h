@@ -63,6 +63,8 @@ public:
     explicit QUmlInterface(bool createQObject = true);
     virtual ~QUmlInterface();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlClassifier *> nestedClassifier() const;
     void addNestedClassifier(QUmlClassifier *nestedClassifier);

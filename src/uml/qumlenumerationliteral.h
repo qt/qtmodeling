@@ -60,6 +60,8 @@ public:
     explicit QUmlEnumerationLiteral(bool createQObject = true);
     virtual ~QUmlEnumerationLiteral();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlEnumeration *classifier() const;
     Q_DECL_HIDDEN void setClassifier(QUmlEnumeration *classifier);

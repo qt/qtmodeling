@@ -63,6 +63,8 @@ public:
     explicit QUmlPseudostate(bool createQObject = true);
     virtual ~QUmlPseudostate();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QtUml::PseudostateKind kind() const;
     void setKind(QtUml::PseudostateKind kind);

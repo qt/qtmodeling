@@ -65,6 +65,8 @@ public:
     explicit QUmlMessage(bool createQObject = true);
     virtual ~QUmlMessage();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlValueSpecification *> argument() const;
     void addArgument(QUmlValueSpecification *argument);

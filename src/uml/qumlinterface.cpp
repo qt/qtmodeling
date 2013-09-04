@@ -42,11 +42,36 @@
 
 #include "private/qumlinterfaceobject_p.h"
 
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlClassifierTemplateParameter>
+#include <QtUml/QUmlCollaborationUse>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlFeature>
+#include <QtUml/QUmlGeneralization>
+#include <QtUml/QUmlGeneralizationSet>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOperation>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlProtocolStateMachine>
 #include <QtUml/QUmlReception>
-
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlRedefinableTemplateSignature>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlSubstitution>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlUseCase>
 /*!
     \class QUmlInterface
 
@@ -69,13 +94,73 @@ QUmlInterface::~QUmlInterface()
     }
 }
 
+QModelingObject *QUmlInterface::clone() const
+{
+    QUmlInterface *c = new QUmlInterface;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    foreach (QUmlCollaborationUse *element, collaborationUse())
+        c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
+    foreach (QUmlGeneralization *element, generalization())
+        c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setFinalSpecialization(isFinalSpecialization());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlUseCase *element, ownedUseCase())
+        c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+        c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
+    foreach (QUmlClassifier *element, redefinedClassifier())
+        c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (representation())
+        c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
+    foreach (QUmlSubstitution *element, substitution())
+        c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlUseCase *element, useCase())
+        c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlClassifier *element, nestedClassifier())
+        c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    foreach (QUmlProperty *element, ownedAttribute())
+        c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
+    foreach (QUmlOperation *element, ownedOperation())
+        c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
+    foreach (QUmlReception *element, ownedReception())
+        c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
+    if (protocol())
+        c->setProtocol(dynamic_cast<QUmlProtocolStateMachine *>(protocol()->clone()));
+    foreach (QUmlInterface *element, redefinedInterface())
+        c->addRedefinedInterface(dynamic_cast<QUmlInterface *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-const QList<QUmlClassifier *> 
-QUmlInterface::nestedClassifier() const
+const QList<QUmlClassifier *> QUmlInterface::nestedClassifier() const
 {
     // This is a read-write association end
 
@@ -114,8 +199,7 @@ void QUmlInterface::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-const QList<QUmlProperty *> 
-QUmlInterface::ownedAttribute() const
+const QList<QUmlProperty *> QUmlInterface::ownedAttribute() const
 {
     // This is a read-write association end
 
@@ -166,8 +250,7 @@ void QUmlInterface::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 /*!
     The operations owned by the class.
  */
-const QList<QUmlOperation *> 
-QUmlInterface::ownedOperation() const
+const QList<QUmlOperation *> QUmlInterface::ownedOperation() const
 {
     // This is a read-write association end
 
@@ -218,8 +301,7 @@ void QUmlInterface::removeOwnedOperation(QUmlOperation *ownedOperation)
 /*!
     Receptions that objects providing this interface are willing to accept.
  */
-const QSet<QUmlReception *> 
-QUmlInterface::ownedReception() const
+const QSet<QUmlReception *> QUmlInterface::ownedReception() const
 {
     // This is a read-write association end
 
@@ -260,8 +342,7 @@ void QUmlInterface::removeOwnedReception(QUmlReception *ownedReception)
 /*!
     References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.
  */
-QUmlProtocolStateMachine *
-QUmlInterface::protocol() const
+QUmlProtocolStateMachine *QUmlInterface::protocol() const
 {
     // This is a read-write association end
 
@@ -291,8 +372,7 @@ void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
 /*!
     References all the Interfaces redefined by this Interface.
  */
-const QSet<QUmlInterface *> 
-QUmlInterface::redefinedInterface() const
+const QSet<QUmlInterface *> QUmlInterface::redefinedInterface() const
 {
     // This is a read-write association end
 

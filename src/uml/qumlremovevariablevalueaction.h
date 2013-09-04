@@ -60,6 +60,8 @@ public:
     explicit QUmlRemoveVariableValueAction(bool createQObject = true);
     virtual ~QUmlRemoveVariableValueAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     bool isRemoveDuplicates() const;
     void setRemoveDuplicates(bool isRemoveDuplicates);

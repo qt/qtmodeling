@@ -42,6 +42,14 @@
 
 #include "private/qumlgateobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlMessage>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlGate
 
@@ -61,5 +69,21 @@ QUmlGate::~QUmlGate()
         _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
+}
+
+QModelingObject *QUmlGate::clone() const
+{
+    QUmlGate *c = new QUmlGate;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    if (message())
+        c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
+    return c;
 }
 

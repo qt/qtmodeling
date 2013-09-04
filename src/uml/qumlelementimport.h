@@ -63,6 +63,8 @@ public:
     explicit QUmlElementImport(bool createQObject = true);
     virtual ~QUmlElementImport();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QString alias() const;
     void setAlias(QString alias);

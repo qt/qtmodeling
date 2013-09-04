@@ -42,8 +42,21 @@
 
 #include "private/qumlenumerationliteralobject_p.h"
 
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlDeployment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlEnumeration>
-
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlSlot>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlEnumerationLiteral
 
@@ -67,13 +80,38 @@ QUmlEnumerationLiteral::~QUmlEnumerationLiteral()
     }
 }
 
+QModelingObject *QUmlEnumerationLiteral::clone() const
+{
+    QUmlEnumerationLiteral *c = new QUmlEnumerationLiteral;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlDeployment *element, deployment())
+        c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
+    foreach (QUmlSlot *element, slot_())
+        c->addSlot(dynamic_cast<QUmlSlot *>(element->clone()));
+    if (specification())
+        c->setSpecification(dynamic_cast<QUmlValueSpecification *>(specification()->clone()));
+    if (enumeration())
+        c->setEnumeration(dynamic_cast<QUmlEnumeration *>(enumeration()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The classifier of this EnumerationLiteral derived to be equal to its enumeration.
  */
-QUmlEnumeration *
-QUmlEnumerationLiteral::classifier() const
+QUmlEnumeration *QUmlEnumerationLiteral::classifier() const
 {
     // This is a read-only derived association end
 
@@ -97,8 +135,7 @@ void QUmlEnumerationLiteral::setClassifier(QUmlEnumeration *classifier)
 /*!
     The Enumeration that this EnumerationLiteral is a member of.
  */
-QUmlEnumeration *
-QUmlEnumerationLiteral::enumeration() const
+QUmlEnumeration *QUmlEnumerationLiteral::enumeration() const
 {
     // This is a read-write association end
 

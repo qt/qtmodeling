@@ -60,6 +60,8 @@ public:
     explicit QUmlCreateLinkAction(bool createQObject = true);
     virtual ~QUmlCreateLinkAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlLinkEndCreationData *> endData() const;
     void addEndData(QUmlLinkEndCreationData *endData);

@@ -42,9 +42,15 @@
 
 #include "private/qumlparametersetobject_p.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlParameter>
-
+#include <QtUml/QUmlStringExpression>
 /*!
     \class QUmlParameterSet
 
@@ -66,13 +72,30 @@ QUmlParameterSet::~QUmlParameterSet()
     }
 }
 
+QModelingObject *QUmlParameterSet::clone() const
+{
+    QUmlParameterSet *c = new QUmlParameterSet;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlConstraint *element, condition())
+        c->addCondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlParameter *element, parameter())
+        c->addParameter(dynamic_cast<QUmlParameter *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
  */
-const QSet<QUmlConstraint *> 
-QUmlParameterSet::condition() const
+const QSet<QUmlConstraint *> QUmlParameterSet::condition() const
 {
     // This is a read-write association end
 
@@ -111,8 +134,7 @@ void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 /*!
     Parameters in the parameter set.
  */
-const QSet<QUmlParameter *> 
-QUmlParameterSet::parameter() const
+const QSet<QUmlParameter *> QUmlParameterSet::parameter() const
 {
     // This is a read-write association end
 

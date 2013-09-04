@@ -42,11 +42,37 @@
 
 #include "private/qumlusecaseobject_p.h"
 
+#include <QtUml/QUmlBehavior>
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlClassifierTemplateParameter>
+#include <QtUml/QUmlCollaborationUse>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
 #include <QtUml/QUmlExtend>
 #include <QtUml/QUmlExtensionPoint>
+#include <QtUml/QUmlFeature>
+#include <QtUml/QUmlGeneralization>
+#include <QtUml/QUmlGeneralizationSet>
 #include <QtUml/QUmlInclude>
-
+#include <QtUml/QUmlInterfaceRealization>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlProperty>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlRedefinableTemplateSignature>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlSubstitution>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
+#include <QtUml/QUmlType>
 /*!
     \class QUmlUseCase
 
@@ -68,13 +94,75 @@ QUmlUseCase::~QUmlUseCase()
     }
 }
 
+QModelingObject *QUmlUseCase::clone() const
+{
+    QUmlUseCase *c = new QUmlUseCase;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (package())
+        c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
+    c->setLeaf(isLeaf());
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    foreach (QUmlCollaborationUse *element, collaborationUse())
+        c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
+    foreach (QUmlGeneralization *element, generalization())
+        c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
+    c->setAbstract(isAbstract());
+    c->setFinalSpecialization(isFinalSpecialization());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlUseCase *element, ownedUseCase())
+        c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+        c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
+    foreach (QUmlClassifier *element, redefinedClassifier())
+        c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    if (representation())
+        c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
+    foreach (QUmlSubstitution *element, substitution())
+        c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlUseCase *element, useCase())
+        c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
+    if (classifierBehavior())
+        c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
+    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+        c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
+    foreach (QUmlBehavior *element, ownedBehavior())
+        c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
+    foreach (QUmlExtend *element, extend())
+        c->addExtend(dynamic_cast<QUmlExtend *>(element->clone()));
+    foreach (QUmlExtensionPoint *element, extensionPoint())
+        c->addExtensionPoint(dynamic_cast<QUmlExtensionPoint *>(element->clone()));
+    foreach (QUmlInclude *element, include())
+        c->addInclude(dynamic_cast<QUmlInclude *>(element->clone()));
+    foreach (QUmlClassifier *element, subject())
+        c->addSubject(dynamic_cast<QUmlClassifier *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     References the Extend relationships owned by this use case.
  */
-const QSet<QUmlExtend *> 
-QUmlUseCase::extend() const
+const QSet<QUmlExtend *> QUmlUseCase::extend() const
 {
     // This is a read-write association end
 
@@ -123,8 +211,7 @@ void QUmlUseCase::removeExtend(QUmlExtend *extend)
 /*!
     References the ExtensionPoints owned by the use case.
  */
-const QSet<QUmlExtensionPoint *> 
-QUmlUseCase::extensionPoint() const
+const QSet<QUmlExtensionPoint *> QUmlUseCase::extensionPoint() const
 {
     // This is a read-write association end
 
@@ -173,8 +260,7 @@ void QUmlUseCase::removeExtensionPoint(QUmlExtensionPoint *extensionPoint)
 /*!
     References the Include relationships owned by this use case.
  */
-const QSet<QUmlInclude *> 
-QUmlUseCase::include() const
+const QSet<QUmlInclude *> QUmlUseCase::include() const
 {
     // This is a read-write association end
 
@@ -223,8 +309,7 @@ void QUmlUseCase::removeInclude(QUmlInclude *include)
 /*!
     References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
  */
-const QSet<QUmlClassifier *> 
-QUmlUseCase::subject() const
+const QSet<QUmlClassifier *> QUmlUseCase::subject() const
 {
     // This is a read-write association end
 

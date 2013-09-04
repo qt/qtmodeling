@@ -61,6 +61,8 @@ public:
     explicit QUmlInterruptibleActivityRegion(bool createQObject = true);
     virtual ~QUmlInterruptibleActivityRegion();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlActivityEdge *> interruptingEdge() const;
     void addInterruptingEdge(QUmlActivityEdge *interruptingEdge);

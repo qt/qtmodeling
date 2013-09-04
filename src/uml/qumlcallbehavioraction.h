@@ -60,6 +60,8 @@ public:
     explicit QUmlCallBehaviorAction(bool createQObject = true);
     virtual ~QUmlCallBehaviorAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlBehavior *behavior() const;
     void setBehavior(QUmlBehavior *behavior);

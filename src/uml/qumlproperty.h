@@ -71,6 +71,8 @@ public:
     explicit QUmlProperty(bool createQObject = true);
     virtual ~QUmlProperty();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QtUml::AggregationKind aggregation() const;
     void setAggregation(QtUml::AggregationKind aggregation);

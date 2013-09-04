@@ -58,6 +58,8 @@ public:
     explicit QUmlMergeNode(bool createQObject = true);
     virtual ~QUmlMergeNode();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

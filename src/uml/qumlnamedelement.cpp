@@ -40,11 +40,12 @@
 ****************************************************************************/
 #include "qumlnamedelement.h"
 
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
-
 /*!
     \class QUmlNamedElement
 
@@ -62,13 +63,26 @@ QUmlNamedElement::~QUmlNamedElement()
 {
 }
 
+QModelingObject *QUmlNamedElement::clone() const
+{
+    QUmlNamedElement *c = new QUmlNamedElement;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Indicates the dependencies that reference the client.
  */
-const QSet<QUmlDependency *> 
-QUmlNamedElement::clientDependency() const
+const QSet<QUmlDependency *> QUmlNamedElement::clientDependency() const
 {
     // This is a read-write association end
 
@@ -108,8 +122,7 @@ void QUmlNamedElement::removeClientDependency(QUmlDependency *clientDependency)
 /*!
     The name of the NamedElement.
  */
-QString 
-QUmlNamedElement::name() const
+QString QUmlNamedElement::name() const
 {
     // This is a read-write property
 
@@ -128,8 +141,7 @@ void QUmlNamedElement::setName(QString name)
 /*!
     The string expression used to define the name of this named element.
  */
-QUmlStringExpression *
-QUmlNamedElement::nameExpression() const
+QUmlStringExpression *QUmlNamedElement::nameExpression() const
 {
     // This is a read-write association end
 
@@ -159,8 +171,7 @@ void QUmlNamedElement::setNameExpression(QUmlStringExpression *nameExpression)
 /*!
     Specifies the namespace that owns the NamedElement.
  */
-QUmlNamespace *
-QUmlNamedElement::namespace_() const
+QUmlNamespace *QUmlNamedElement::namespace_() const
 {
     // This is a read-only derived union association end
 
@@ -186,8 +197,7 @@ void QUmlNamedElement::setNamespace(QUmlNamespace *namespace_)
 /*!
     A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.
  */
-QString 
-QUmlNamedElement::qualifiedName() const
+QString QUmlNamedElement::qualifiedName() const
 {
     // This is a read-only derived property
 
@@ -211,8 +221,7 @@ void QUmlNamedElement::setQualifiedName(QString qualifiedName)
 /*!
     Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.
  */
-QtUml::VisibilityKind 
-QUmlNamedElement::visibility() const
+QtUml::VisibilityKind QUmlNamedElement::visibility() const
 {
     // This is a read-write property
 

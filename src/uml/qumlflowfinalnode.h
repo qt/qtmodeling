@@ -58,6 +58,8 @@ public:
     explicit QUmlFlowFinalNode(bool createQObject = true);
     virtual ~QUmlFlowFinalNode();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

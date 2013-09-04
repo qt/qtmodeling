@@ -42,6 +42,20 @@
 
 #include "private/qumlpartdecompositionobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlGate>
+#include <QtUml/QUmlGeneralOrdering>
+#include <QtUml/QUmlInteraction>
+#include <QtUml/QUmlInteractionOperand>
+#include <QtUml/QUmlLifeline>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlProperty>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlPartDecomposition
 
@@ -62,5 +76,37 @@ QUmlPartDecomposition::~QUmlPartDecomposition()
         _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
+}
+
+QModelingObject *QUmlPartDecomposition::clone() const
+{
+    QUmlPartDecomposition *c = new QUmlPartDecomposition;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlLifeline *element, covered())
+        c->addCovered(dynamic_cast<QUmlLifeline *>(element->clone()));
+    if (enclosingInteraction())
+        c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
+    if (enclosingOperand())
+        c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
+    foreach (QUmlGeneralOrdering *element, generalOrdering())
+        c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
+    foreach (QUmlGate *element, actualGate())
+        c->addActualGate(dynamic_cast<QUmlGate *>(element->clone()));
+    foreach (QUmlValueSpecification *element, argument())
+        c->addArgument(dynamic_cast<QUmlValueSpecification *>(element->clone()));
+    if (refersTo())
+        c->setRefersTo(dynamic_cast<QUmlInteraction *>(refersTo()->clone()));
+    if (returnValue())
+        c->setReturnValue(dynamic_cast<QUmlValueSpecification *>(returnValue()->clone()));
+    if (returnValueRecipient())
+        c->setReturnValueRecipient(dynamic_cast<QUmlProperty *>(returnValueRecipient()->clone()));
+    return c;
 }
 

@@ -62,6 +62,8 @@ public:
     explicit QUmlExceptionHandler(bool createQObject = true);
     virtual ~QUmlExceptionHandler();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlObjectNode *exceptionInput() const;
     void setExceptionInput(QUmlObjectNode *exceptionInput);

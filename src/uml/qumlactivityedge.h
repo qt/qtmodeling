@@ -65,6 +65,8 @@ class Q_UML_EXPORT QUmlActivityEdge : public QUmlRedefinableElement
 public:
     virtual ~QUmlActivityEdge();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlActivity *activity() const;
     void setActivity(QUmlActivity *activity);

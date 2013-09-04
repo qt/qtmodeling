@@ -42,8 +42,24 @@
 
 #include "private/qumlobjectflowobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
 #include <QtUml/QUmlBehavior>
-
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlObjectFlow
 
@@ -69,13 +85,51 @@ QUmlObjectFlow::~QUmlObjectFlow()
     }
 }
 
+QModelingObject *QUmlObjectFlow::clone() const
+{
+    QUmlObjectFlow *c = new QUmlObjectFlow;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    if (guard())
+        c->setGuard(dynamic_cast<QUmlValueSpecification *>(guard()->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    if (interrupts())
+        c->setInterrupts(dynamic_cast<QUmlInterruptibleActivityRegion *>(interrupts()->clone()));
+    foreach (QUmlActivityEdge *element, redefinedEdge())
+        c->addRedefinedEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    if (source())
+        c->setSource(dynamic_cast<QUmlActivityNode *>(source()->clone()));
+    if (target())
+        c->setTarget(dynamic_cast<QUmlActivityNode *>(target()->clone()));
+    if (weight())
+        c->setWeight(dynamic_cast<QUmlValueSpecification *>(weight()->clone()));
+    c->setMulticast(isMulticast());
+    c->setMultireceive(isMultireceive());
+    if (selection())
+        c->setSelection(dynamic_cast<QUmlBehavior *>(selection()->clone()));
+    if (transformation())
+        c->setTransformation(dynamic_cast<QUmlBehavior *>(transformation()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Tells whether the objects in the flow are passed by multicasting.
  */
-bool 
-QUmlObjectFlow::isMulticast() const
+bool QUmlObjectFlow::isMulticast() const
 {
     // This is a read-write property
 
@@ -94,8 +148,7 @@ void QUmlObjectFlow::setMulticast(bool isMulticast)
 /*!
     Tells whether the objects in the flow are gathered from respondents to multicasting.
  */
-bool 
-QUmlObjectFlow::isMultireceive() const
+bool QUmlObjectFlow::isMultireceive() const
 {
     // This is a read-write property
 
@@ -114,8 +167,7 @@ void QUmlObjectFlow::setMultireceive(bool isMultireceive)
 /*!
     Selects tokens from a source object node.
  */
-QUmlBehavior *
-QUmlObjectFlow::selection() const
+QUmlBehavior *QUmlObjectFlow::selection() const
 {
     // This is a read-write association end
 
@@ -136,8 +188,7 @@ void QUmlObjectFlow::setSelection(QUmlBehavior *selection)
 /*!
     Changes or replaces data tokens flowing along edge.
  */
-QUmlBehavior *
-QUmlObjectFlow::transformation() const
+QUmlBehavior *QUmlObjectFlow::transformation() const
 {
     // This is a read-write association end
 

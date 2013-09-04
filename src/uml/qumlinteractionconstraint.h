@@ -60,6 +60,8 @@ public:
     explicit QUmlInteractionConstraint(bool createQObject = true);
     virtual ~QUmlInteractionConstraint();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlValueSpecification *maxint() const;
     void setMaxint(QUmlValueSpecification *maxint);

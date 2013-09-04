@@ -42,10 +42,26 @@
 
 #include "private/qumlreadisclassifiedobjectactionobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlExceptionHandler>
 #include <QtUml/QUmlInputPin>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlOutputPin>
-
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
 /*!
     \class QUmlReadIsClassifiedObjectAction
 
@@ -71,13 +87,55 @@ QUmlReadIsClassifiedObjectAction::~QUmlReadIsClassifiedObjectAction()
     }
 }
 
+QModelingObject *QUmlReadIsClassifiedObjectAction::clone() const
+{
+    QUmlReadIsClassifiedObjectAction *c = new QUmlReadIsClassifiedObjectAction;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+        c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    foreach (QUmlActivityEdge *element, incoming())
+        c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityEdge *element, outgoing())
+        c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    foreach (QUmlActivityNode *element, redefinedNode())
+        c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
+    foreach (QUmlExceptionHandler *element, handler())
+        c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
+    c->setLocallyReentrant(isLocallyReentrant());
+    foreach (QUmlConstraint *element, localPostcondition())
+        c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlConstraint *element, localPrecondition())
+        c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
+    if (classifier())
+        c->setClassifier(dynamic_cast<QUmlClassifier *>(classifier()->clone()));
+    c->setDirect(isDirect());
+    if (object())
+        c->setObject(dynamic_cast<QUmlInputPin *>(object()->clone()));
+    if (result())
+        c->setResult(dynamic_cast<QUmlOutputPin *>(result()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The classifier against which the classification of the input object is tested.
  */
-QUmlClassifier *
-QUmlReadIsClassifiedObjectAction::classifier() const
+QUmlClassifier *QUmlReadIsClassifiedObjectAction::classifier() const
 {
     // This is a read-write association end
 
@@ -98,8 +156,7 @@ void QUmlReadIsClassifiedObjectAction::setClassifier(QUmlClassifier *classifier)
 /*!
     Indicates whether the classifier must directly classify the input object.
  */
-bool 
-QUmlReadIsClassifiedObjectAction::isDirect() const
+bool QUmlReadIsClassifiedObjectAction::isDirect() const
 {
     // This is a read-write property
 
@@ -118,8 +175,7 @@ void QUmlReadIsClassifiedObjectAction::setDirect(bool isDirect)
 /*!
     Holds the object whose classification is to be tested.
  */
-QUmlInputPin *
-QUmlReadIsClassifiedObjectAction::object() const
+QUmlInputPin *QUmlReadIsClassifiedObjectAction::object() const
 {
     // This is a read-write association end
 
@@ -149,8 +205,7 @@ void QUmlReadIsClassifiedObjectAction::setObject(QUmlInputPin *object)
 /*!
     After termination of the action, will hold the result of the test.
  */
-QUmlOutputPin *
-QUmlReadIsClassifiedObjectAction::result() const
+QUmlOutputPin *QUmlReadIsClassifiedObjectAction::result() const
 {
     // This is a read-write association end
 

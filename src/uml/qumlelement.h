@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlElement : public QModelingObject
 public:
     virtual ~QUmlElement();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlComment *> ownedComment() const;
     void addOwnedComment(QUmlComment *ownedComment);

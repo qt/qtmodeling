@@ -60,6 +60,8 @@ public:
     explicit QUmlConsiderIgnoreFragment(bool createQObject = true);
     virtual ~QUmlConsiderIgnoreFragment();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlNamedElement *> message() const;
     void addMessage(QUmlNamedElement *message);

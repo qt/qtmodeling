@@ -59,6 +59,8 @@ class Q_UML_EXPORT QUmlTypedElement : public virtual QUmlNamedElement
 public:
     virtual ~QUmlTypedElement();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlType *type() const;
     void setType(QUmlType *type);

@@ -61,6 +61,8 @@ public:
     explicit QUmlQualifierValue(bool createQObject = true);
     virtual ~QUmlQualifierValue();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlProperty *qualifier() const;
     void setQualifier(QUmlProperty *qualifier);

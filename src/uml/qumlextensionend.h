@@ -60,6 +60,8 @@ public:
     explicit QUmlExtensionEnd(bool createQObject = true);
     virtual ~QUmlExtensionEnd();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     int lower() const;
     void setLower(int lower);

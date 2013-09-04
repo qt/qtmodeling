@@ -58,6 +58,8 @@ public:
     explicit QUmlInformationItem(bool createQObject = true);
     virtual ~QUmlInformationItem();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlClassifier *> represented() const;
     void addRepresented(QUmlClassifier *represented);

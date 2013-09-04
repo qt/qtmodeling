@@ -42,6 +42,17 @@
 
 #include "private/qumlexpressionobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlType>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlExpression
 
@@ -63,13 +74,35 @@ QUmlExpression::~QUmlExpression()
     }
 }
 
+QModelingObject *QUmlExpression::clone() const
+{
+    QUmlExpression *c = new QUmlExpression;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    if (type())
+        c->setType(dynamic_cast<QUmlType *>(type()->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlValueSpecification *element, operand())
+        c->addOperand(dynamic_cast<QUmlValueSpecification *>(element->clone()));
+    c->setSymbol(symbol());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     Specifies a sequence of operands.
  */
-const QList<QUmlValueSpecification *> 
-QUmlExpression::operand() const
+const QList<QUmlValueSpecification *> QUmlExpression::operand() const
 {
     // This is a read-write association end
 
@@ -108,8 +141,7 @@ void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
 /*!
     The symbol associated with the node in the expression tree.
  */
-QString 
-QUmlExpression::symbol() const
+QString QUmlExpression::symbol() const
 {
     // This is a read-write property
 

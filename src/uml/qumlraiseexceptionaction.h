@@ -60,6 +60,8 @@ public:
     explicit QUmlRaiseExceptionAction(bool createQObject = true);
     virtual ~QUmlRaiseExceptionAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *exception() const;
     void setException(QUmlInputPin *exception);

@@ -43,8 +43,17 @@
 #include "private/qumlcomponentrealizationobject_p.h"
 
 #include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
 #include <QtUml/QUmlComponent>
-
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOpaqueExpression>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlComponentRealization
 
@@ -68,13 +77,40 @@ QUmlComponentRealization::~QUmlComponentRealization()
     }
 }
 
+QModelingObject *QUmlComponentRealization::clone() const
+{
+    QUmlComponentRealization *c = new QUmlComponentRealization;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlNamedElement *element, client())
+        c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    foreach (QUmlNamedElement *element, supplier())
+        c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    if (mapping())
+        c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
+    if (abstraction())
+        c->setAbstraction(dynamic_cast<QUmlComponent *>(abstraction()->clone()));
+    foreach (QUmlClassifier *element, realizingClassifier())
+        c->addRealizingClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.
  */
-QUmlComponent *
-QUmlComponentRealization::abstraction() const
+QUmlComponent *QUmlComponentRealization::abstraction() const
 {
     // This is a read-write association end
 
@@ -104,8 +140,7 @@ void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
 /*!
     The classifiers that are involved in the implementation of the Component that owns this Realization.
  */
-const QSet<QUmlClassifier *> 
-QUmlComponentRealization::realizingClassifier() const
+const QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifier() const
 {
     // This is a read-write association end
 

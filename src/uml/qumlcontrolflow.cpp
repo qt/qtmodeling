@@ -42,6 +42,23 @@
 
 #include "private/qumlcontrolflowobject_p.h"
 
+#include <QtUml/QUmlActivity>
+#include <QtUml/QUmlActivityEdge>
+#include <QtUml/QUmlActivityGroup>
+#include <QtUml/QUmlActivityNode>
+#include <QtUml/QUmlActivityPartition>
+#include <QtUml/QUmlClassifier>
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlInterruptibleActivityRegion>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlRedefinableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlStructuredActivityNode>
+#include <QtUml/QUmlValueSpecification>
 /*!
     \class QUmlControlFlow
 
@@ -61,5 +78,38 @@ QUmlControlFlow::~QUmlControlFlow()
         _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
+}
+
+QModelingObject *QUmlControlFlow::clone() const
+{
+    QUmlControlFlow *c = new QUmlControlFlow;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    c->setLeaf(isLeaf());
+    if (activity())
+        c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
+    if (guard())
+        c->setGuard(dynamic_cast<QUmlValueSpecification *>(guard()->clone()));
+    foreach (QUmlActivityPartition *element, inPartition())
+        c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
+    if (inStructuredNode())
+        c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
+    if (interrupts())
+        c->setInterrupts(dynamic_cast<QUmlInterruptibleActivityRegion *>(interrupts()->clone()));
+    foreach (QUmlActivityEdge *element, redefinedEdge())
+        c->addRedefinedEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
+    if (source())
+        c->setSource(dynamic_cast<QUmlActivityNode *>(source()->clone()));
+    if (target())
+        c->setTarget(dynamic_cast<QUmlActivityNode *>(target()->clone()));
+    if (weight())
+        c->setWeight(dynamic_cast<QUmlValueSpecification *>(weight()->clone()));
+    return c;
 }
 

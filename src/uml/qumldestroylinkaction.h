@@ -60,6 +60,8 @@ public:
     explicit QUmlDestroyLinkAction(bool createQObject = true);
     virtual ~QUmlDestroyLinkAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QSet<QUmlLinkEndDestructionData *> endData() const;
     void addEndData(QUmlLinkEndDestructionData *endData);

@@ -60,6 +60,8 @@ public:
     explicit QUmlSequenceNode(bool createQObject = true);
     virtual ~QUmlSequenceNode();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     const QList<QUmlExecutableNode *> executableNode() const;
     void addExecutableNode(QUmlExecutableNode *executableNode);

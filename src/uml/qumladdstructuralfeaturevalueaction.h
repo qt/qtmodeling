@@ -60,6 +60,8 @@ public:
     explicit QUmlAddStructuralFeatureValueAction(bool createQObject = true);
     virtual ~QUmlAddStructuralFeatureValueAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlInputPin *insertAt() const;
     void setInsertAt(QUmlInputPin *insertAt);

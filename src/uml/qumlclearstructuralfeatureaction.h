@@ -60,6 +60,8 @@ public:
     explicit QUmlClearStructuralFeatureAction(bool createQObject = true);
     virtual ~QUmlClearStructuralFeatureAction();
 
+    QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);

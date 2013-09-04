@@ -62,6 +62,8 @@ class Q_UML_EXPORT QUmlAction : public QUmlExecutableNode
 public:
     virtual ~QUmlAction();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlClassifier *context() const;
     Q_DECL_HIDDEN void setContext(QUmlClassifier *context);

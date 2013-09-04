@@ -64,6 +64,8 @@ class Q_UML_EXPORT QUmlActivityNode : public QUmlRedefinableElement
 public:
     virtual ~QUmlActivityNode();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlActivity *activity() const;
     void setActivity(QUmlActivity *activity);

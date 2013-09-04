@@ -60,6 +60,8 @@ class Q_UML_EXPORT QUmlWriteStructuralFeatureAction : public QUmlStructuralFeatu
 public:
     virtual ~QUmlWriteStructuralFeatureAction();
 
+    Q_DECL_HIDDEN QModelingObject *clone() const;
+
     // Owned attributes
     QUmlOutputPin *result() const;
     void setResult(QUmlOutputPin *result);

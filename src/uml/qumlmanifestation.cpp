@@ -42,8 +42,17 @@
 
 #include "private/qumlmanifestationobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlOpaqueExpression>
+#include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
-
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateParameter>
 /*!
     \class QUmlManifestation
 
@@ -67,13 +76,38 @@ QUmlManifestation::~QUmlManifestation()
     }
 }
 
+QModelingObject *QUmlManifestation::clone() const
+{
+    QUmlManifestation *c = new QUmlManifestation;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    c->setVisibility(visibility());
+    foreach (QUmlNamedElement *element, client())
+        c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    foreach (QUmlNamedElement *element, supplier())
+        c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
+    if (mapping())
+        c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
+    if (utilizedElement())
+        c->setUtilizedElement(dynamic_cast<QUmlPackageableElement *>(utilizedElement()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The model element that is utilized in the manifestation in an Artifact.
  */
-QUmlPackageableElement *
-QUmlManifestation::utilizedElement() const
+QUmlPackageableElement *QUmlManifestation::utilizedElement() const
 {
     // This is a read-write association end
 

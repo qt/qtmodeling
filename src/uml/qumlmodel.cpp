@@ -42,6 +42,26 @@
 
 #include "private/qumlmodelobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlConstraint>
+#include <QtUml/QUmlDependency>
+#include <QtUml/QUmlElement>
+#include <QtUml/QUmlElementImport>
+#include <QtUml/QUmlNamedElement>
+#include <QtUml/QUmlNamespace>
+#include <QtUml/QUmlPackage>
+#include <QtUml/QUmlPackageableElement>
+#include <QtUml/QUmlPackageImport>
+#include <QtUml/QUmlPackageMerge>
+#include <QtUml/QUmlParameterableElement>
+#include <QtUml/QUmlProfile>
+#include <QtUml/QUmlProfileApplication>
+#include <QtUml/QUmlStereotype>
+#include <QtUml/QUmlStringExpression>
+#include <QtUml/QUmlTemplateBinding>
+#include <QtUml/QUmlTemplateParameter>
+#include <QtUml/QUmlTemplateSignature>
+#include <QtUml/QUmlType>
 /*!
     \class QUmlModel
 
@@ -64,13 +84,50 @@ QUmlModel::~QUmlModel()
     }
 }
 
+QModelingObject *QUmlModel::clone() const
+{
+    QUmlModel *c = new QUmlModel;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    foreach (QUmlDependency *element, clientDependency())
+        c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
+    c->setName(name());
+    if (nameExpression())
+        c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
+    foreach (QUmlElementImport *element, elementImport())
+        c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
+    foreach (QUmlConstraint *element, ownedRule())
+        c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
+    foreach (QUmlPackageImport *element, packageImport())
+        c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
+    if (owningTemplateParameter())
+        c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
+    if (templateParameter())
+        c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
+    c->setVisibility(visibility());
+    if (ownedTemplateSignature())
+        c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
+    foreach (QUmlTemplateBinding *element, templateBinding())
+        c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
+    c->setURI(URI());
+    if (nestingPackage())
+        c->setNestingPackage(dynamic_cast<QUmlPackage *>(nestingPackage()->clone()));
+    foreach (QUmlPackageMerge *element, packageMerge())
+        c->addPackageMerge(dynamic_cast<QUmlPackageMerge *>(element->clone()));
+    foreach (QUmlPackageableElement *element, packagedElement())
+        c->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(element->clone()));
+    foreach (QUmlProfileApplication *element, profileApplication())
+        c->addProfileApplication(dynamic_cast<QUmlProfileApplication *>(element->clone()));
+    c->setViewpoint(viewpoint());
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).
  */
-QString 
-QUmlModel::viewpoint() const
+QString QUmlModel::viewpoint() const
 {
     // This is a read-write property
 

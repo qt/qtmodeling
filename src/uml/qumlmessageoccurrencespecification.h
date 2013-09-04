@@ -59,6 +59,8 @@ public:
     explicit QUmlMessageOccurrenceSpecification(bool createQObject = true);
     virtual ~QUmlMessageOccurrenceSpecification();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };

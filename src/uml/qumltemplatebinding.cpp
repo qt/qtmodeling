@@ -42,10 +42,11 @@
 
 #include "private/qumltemplatebindingobject_p.h"
 
+#include <QtUml/QUmlComment>
+#include <QtUml/QUmlElement>
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameterSubstitution>
 #include <QtUml/QUmlTemplateSignature>
-
 /*!
     \class QUmlTemplateBinding
 
@@ -69,13 +70,26 @@ QUmlTemplateBinding::~QUmlTemplateBinding()
     }
 }
 
+QModelingObject *QUmlTemplateBinding::clone() const
+{
+    QUmlTemplateBinding *c = new QUmlTemplateBinding;
+    foreach (QUmlComment *element, ownedComment())
+        c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
+    if (boundElement())
+        c->setBoundElement(dynamic_cast<QUmlTemplateableElement *>(boundElement()->clone()));
+    foreach (QUmlTemplateParameterSubstitution *element, parameterSubstitution())
+        c->addParameterSubstitution(dynamic_cast<QUmlTemplateParameterSubstitution *>(element->clone()));
+    if (signature())
+        c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
+    return c;
+}
+
 // OWNED ATTRIBUTES
 
 /*!
     The element that is bound by this binding.
  */
-QUmlTemplateableElement *
-QUmlTemplateBinding::boundElement() const
+QUmlTemplateableElement *QUmlTemplateBinding::boundElement() const
 {
     // This is a read-write association end
 
@@ -105,8 +119,7 @@ void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
 /*!
     The parameter substitutions owned by this template binding.
  */
-const QSet<QUmlTemplateParameterSubstitution *> 
-QUmlTemplateBinding::parameterSubstitution() const
+const QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitution() const
 {
     // This is a read-write association end
 
@@ -155,8 +168,7 @@ void QUmlTemplateBinding::removeParameterSubstitution(QUmlTemplateParameterSubst
 /*!
     The template signature for the template that is the target of the binding.
  */
-QUmlTemplateSignature *
-QUmlTemplateBinding::signature() const
+QUmlTemplateSignature *QUmlTemplateBinding::signature() const
 {
     // This is a read-write association end
 

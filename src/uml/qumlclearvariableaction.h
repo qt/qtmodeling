@@ -58,6 +58,8 @@ public:
     explicit QUmlClearVariableAction(bool createQObject = true);
     virtual ~QUmlClearVariableAction();
 
+    QModelingObject *clone() const;
+
 
 protected:
 };
