@@ -82,6 +82,7 @@ QUmlPrimitiveType::QUmlPrimitiveType(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlPrimitiveTypeObject(this);
+    setPropertyData();
 }
 
 QUmlPrimitiveType::~QUmlPrimitiveType()
@@ -143,5 +144,9 @@ QModelingObject *QUmlPrimitiveType::clone() const
     foreach (QUmlOperation *element, ownedOperation())
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
     return c;
+}
+
+void QUmlPrimitiveType::setPropertyData()
+{
 }
 

@@ -72,6 +72,7 @@ QUmlJoinNode::QUmlJoinNode(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlJoinNodeObject(this);
+    setPropertyData();
 }
 
 QUmlJoinNode::~QUmlJoinNode()
@@ -163,5 +164,21 @@ void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
             addOwnedElement(joinSpec);
         }
     }
+}
+
+void QUmlJoinNode::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether tokens having objects with the same identity are combined into one by the join.");
+    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::DocumentationRole] = QStringLiteral("A specification giving the conditions under which the join with emit a token. Default is \"and\".");
+    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

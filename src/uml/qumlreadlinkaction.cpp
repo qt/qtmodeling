@@ -76,6 +76,7 @@ QUmlReadLinkAction::QUmlReadLinkAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlReadLinkActionObject(this);
+    setPropertyData();
 }
 
 QUmlReadLinkAction::~QUmlReadLinkAction()
@@ -158,5 +159,15 @@ void QUmlReadLinkAction::setResult(QUmlOutputPin *result)
             addOutput(result);
         }
     }
+}
+
+void QUmlReadLinkAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("The pin on which are put the objects participating in the association at the end not specified by the inputs.");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -71,6 +71,8 @@ public:
 protected:
     QUmlProtocolStateMachine *_generalMachine;
     QUmlProtocolStateMachine *_specificMachine;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

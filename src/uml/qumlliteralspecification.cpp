@@ -59,6 +59,7 @@
  */
 QUmlLiteralSpecification::QUmlLiteralSpecification()
 {
+    setPropertyData();
 }
 
 QUmlLiteralSpecification::~QUmlLiteralSpecification()
@@ -83,5 +84,9 @@ QModelingObject *QUmlLiteralSpecification::clone() const
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
     return c;
+}
+
+void QUmlLiteralSpecification::setPropertyData()
+{
 }
 

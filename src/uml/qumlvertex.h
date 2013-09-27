@@ -80,6 +80,8 @@ protected:
     explicit QUmlVertex();
 
     QUmlRegion *_container;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

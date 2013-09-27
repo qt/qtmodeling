@@ -70,6 +70,8 @@ public:
 
 protected:
     bool _value;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

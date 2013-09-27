@@ -98,6 +98,8 @@ protected:
     QList<QUmlParameter *> _ownedParameter;
     QSet<QUmlParameterSet *> _ownedParameterSet;
     QSet<QUmlType *> _raisedException;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

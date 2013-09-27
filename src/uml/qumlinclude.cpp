@@ -63,6 +63,7 @@ QUmlInclude::QUmlInclude(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlIncludeObject(this);
+    setPropertyData();
 }
 
 QUmlInclude::~QUmlInclude()
@@ -150,5 +151,21 @@ void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
         }
         setNamespace(includingCase);
     }
+}
+
+void QUmlInclude::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that is to be included.");
+    QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
+    QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::DocumentationRole] = QStringLiteral("References the use case which will include the addition and owns the include relationship.");
+    QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-source NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::OppositeEndRole] = QStringLiteral("UseCase-include");
+
 }
 

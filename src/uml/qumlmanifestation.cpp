@@ -66,6 +66,7 @@ QUmlManifestation::QUmlManifestation(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlManifestationObject(this);
+    setPropertyData();
 }
 
 QUmlManifestation::~QUmlManifestation()
@@ -131,5 +132,15 @@ void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedEleme
             addSupplier(utilizedElement);
         }
     }
+}
+
+void QUmlManifestation::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::DocumentationRole] = QStringLiteral("The model element that is utilized in the manifestation in an Artifact.");
+    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier");
+    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

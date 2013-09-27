@@ -69,6 +69,8 @@ public:
 
 protected:
     QSet<QUmlLinkEndCreationData *> _endData;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

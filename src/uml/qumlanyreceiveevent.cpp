@@ -62,6 +62,7 @@ QUmlAnyReceiveEvent::QUmlAnyReceiveEvent(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlAnyReceiveEventObject(this);
+    setPropertyData();
 }
 
 QUmlAnyReceiveEvent::~QUmlAnyReceiveEvent()
@@ -88,5 +89,9 @@ QModelingObject *QUmlAnyReceiveEvent::clone() const
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     return c;
+}
+
+void QUmlAnyReceiveEvent::setPropertyData()
+{
 }
 

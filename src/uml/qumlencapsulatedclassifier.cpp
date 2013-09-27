@@ -79,6 +79,7 @@
  */
 QUmlEncapsulatedClassifier::QUmlEncapsulatedClassifier()
 {
+    setPropertyData();
 }
 
 QUmlEncapsulatedClassifier::~QUmlEncapsulatedClassifier()
@@ -180,5 +181,15 @@ void QUmlEncapsulatedClassifier::removeOwnedPort(QUmlPort *ownedPort)
         // Adjust subsetted properties
         removeOwnedAttribute(ownedPort);
     }
+}
+
+void QUmlEncapsulatedClassifier::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::DocumentationRole] = QStringLiteral("References a set of ports that an encapsulated classifier owns.");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("StructuredClassifier-ownedAttribute");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

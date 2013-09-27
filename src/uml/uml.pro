@@ -1,7 +1,7 @@
 load(qt_build_config)
 
 TARGET = QtUml
-QT = core
+QT = core modeling
 
 QMAKE_DOCS = $$PWD/doc/qtuml.qdocconf
 

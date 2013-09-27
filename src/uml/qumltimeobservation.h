@@ -71,6 +71,8 @@ public:
 protected:
     QUmlNamedElement *_event;
     bool _firstEvent;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -74,6 +74,8 @@ public:
 protected:
     QUmlStringExpression *_owningExpression;
     QSet<QUmlStringExpression *> _subExpression;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

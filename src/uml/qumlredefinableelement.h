@@ -81,6 +81,8 @@ protected:
     bool _isLeaf;
     QSet<QUmlRedefinableElement *> _redefinedElement;
     QSet<QUmlClassifier *> _redefinitionContext;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -75,6 +75,8 @@ protected:
     QUmlProfile *_appliedProfile;
     QUmlPackage *_applyingPackage;
     bool _isStrict;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

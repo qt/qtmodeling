@@ -68,6 +68,8 @@ public:
 
 protected:
     QUmlAction *_fromAction;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

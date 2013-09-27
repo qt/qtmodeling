@@ -85,6 +85,8 @@ protected:
     QUmlInteraction *_refersTo;
     QUmlValueSpecification *_returnValue;
     QUmlProperty *_returnValueRecipient;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

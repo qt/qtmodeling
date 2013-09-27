@@ -68,6 +68,8 @@ public:
 
 protected:
     QUmlOpaqueExpression *_mapping;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

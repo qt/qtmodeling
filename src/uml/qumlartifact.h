@@ -87,6 +87,8 @@ protected:
     QSet<QUmlArtifact *> _nestedArtifact;
     QList<QUmlProperty *> _ownedAttribute;
     QList<QUmlOperation *> _ownedOperation;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

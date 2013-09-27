@@ -105,6 +105,8 @@ protected:
     QUmlActivityNode *_source;
     QUmlActivityNode *_target;
     QUmlValueSpecification *_weight;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

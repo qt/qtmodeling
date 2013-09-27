@@ -73,6 +73,7 @@ QUmlCentralBufferNode::QUmlCentralBufferNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlCentralBufferNodeObject(this);
+    setPropertyData();
 }
 
 QUmlCentralBufferNode::~QUmlCentralBufferNode()
@@ -120,5 +121,9 @@ QModelingObject *QUmlCentralBufferNode::clone() const
     if (upperBound())
         c->setUpperBound(dynamic_cast<QUmlValueSpecification *>(upperBound()->clone()));
     return c;
+}
+
+void QUmlCentralBufferNode::setPropertyData()
+{
 }
 

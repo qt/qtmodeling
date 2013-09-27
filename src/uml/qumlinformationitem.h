@@ -67,6 +67,8 @@ public:
 
 protected:
     QSet<QUmlClassifier *> _represented;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

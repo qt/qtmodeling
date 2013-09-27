@@ -69,6 +69,7 @@ QUmlActivityFinalNode::QUmlActivityFinalNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlActivityFinalNodeObject(this);
+    setPropertyData();
 }
 
 QUmlActivityFinalNode::~QUmlActivityFinalNode()
@@ -106,5 +107,9 @@ QModelingObject *QUmlActivityFinalNode::clone() const
     foreach (QUmlActivityNode *element, redefinedNode())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
+}
+
+void QUmlActivityFinalNode::setPropertyData()
+{
 }
 

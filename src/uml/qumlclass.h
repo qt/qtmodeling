@@ -102,6 +102,8 @@ protected:
     QList<QUmlProperty *> _ownedAttribute;
     QList<QUmlOperation *> _ownedOperation;
     QSet<QUmlReception *> _ownedReception;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

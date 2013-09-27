@@ -80,6 +80,7 @@ QUmlInformationItem::QUmlInformationItem(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlInformationItemObject(this);
+    setPropertyData();
 }
 
 QUmlInformationItem::~QUmlInformationItem()
@@ -171,5 +172,15 @@ void QUmlInformationItem::removeRepresented(QUmlClassifier *represented)
     if (_represented.contains(represented)) {
         _represented.remove(represented);
     }
+}
+
+void QUmlInformationItem::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::DocumentationRole] = QStringLiteral("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
+    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

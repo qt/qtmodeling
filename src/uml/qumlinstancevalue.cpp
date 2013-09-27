@@ -65,6 +65,7 @@ QUmlInstanceValue::QUmlInstanceValue(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlInstanceValueObject(this);
+    setPropertyData();
 }
 
 QUmlInstanceValue::~QUmlInstanceValue()
@@ -118,5 +119,15 @@ void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
         if (instance->asQObject() && this->asQObject())
             QObject::connect(instance->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInstance()));
     }
+}
+
+void QUmlInstanceValue::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::DocumentationRole] = QStringLiteral("The instance that is the specified value.");
+    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

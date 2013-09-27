@@ -82,6 +82,8 @@ protected:
     QSet<QUmlInputPin *> _inputValue;
     QList<QString> _language;
     QSet<QUmlOutputPin *> _outputValue;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

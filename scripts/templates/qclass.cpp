@@ -120,6 +120,7 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
     if (createQObject)
         _qObject = new Q${namespace}${className}Object(this);
 [%- END %]
+    setPropertyData();
 }
 
 Q${namespace}${className}::~Q${namespace}${className}()
@@ -396,4 +397,30 @@ ${parameter.findvalue("@name")}
     [%- END %]
 }
 [%- END %]
+
+void Q${namespace}${className}::setPropertyData()
+{
+[%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
+[%- SET association = attribute.findvalue("@association") -%]
+[%- IF attribute.findvalue("@aggregation") == "composite" %]
+    QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::AggregationRole] = QStringLiteral("composite");
+[%- ELSE %]
+    QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::AggregationRole] = QStringLiteral("none");
+[%- END -%]
+    QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::IsDerivedUnionRole] = [% IF attribute.findvalue("@isDerivedUnion") == "true" %]true[% ELSE %]false[% END %];
+    QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::DocumentationRole] = QStringLiteral("${attribute.findvalue("ownedComment/body/text()")}");
+    QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("${attribute.findvalue("@redefinedProperty")}");
+    QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("${attribute.findvalue("@subsettedProperty")}");
+    QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::OppositeEndRole] = QStringLiteral("
+[%- IF association != "" -%]
+[%- FOREACH memberEnd = xmi.findvalue("//packagedElement[@xmi:type=\"uml:Association\" and @name=\"${association}\"]/@memberEnd").split(' ') -%]
+[%- NEXT IF memberEnd.split('-').0 == className -%]
+[%- SET oppositeProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
+[%- IF oppositeProperty.findvalue("@name") != "" -%]${oppositeProperty.findvalue("@xmi:id")}[%- END -%]
+[%- END -%]
+[%- END -%]
+");
+
+[%- END %]
+}
 

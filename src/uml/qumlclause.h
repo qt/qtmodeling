@@ -89,6 +89,8 @@ protected:
     QSet<QUmlClause *> _predecessorClause;
     QSet<QUmlClause *> _successorClause;
     QSet<QUmlExecutableNode *> _test;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -74,6 +74,7 @@ QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlRaiseExceptionActionObject(this);
+    setPropertyData();
 }
 
 QUmlRaiseExceptionAction::~QUmlRaiseExceptionAction()
@@ -152,5 +153,15 @@ void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
             addInput(exception);
         }
     }
+}
+
+void QUmlRaiseExceptionAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("exception")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("exception")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("exception")][QtModeling::DocumentationRole] = QStringLiteral("An input pin whose value becomes an exception object.");
+    QModelingObject::propertyDataHash[QStringLiteral("exception")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("exception")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("exception")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

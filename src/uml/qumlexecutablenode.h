@@ -70,6 +70,8 @@ protected:
     explicit QUmlExecutableNode();
 
     QSet<QUmlExceptionHandler *> _handler;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

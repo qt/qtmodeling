@@ -74,6 +74,7 @@ QUmlInputPin::QUmlInputPin(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlInputPinObject(this);
+    setPropertyData();
 }
 
 QUmlInputPin::~QUmlInputPin()
@@ -128,5 +129,9 @@ QModelingObject *QUmlInputPin::clone() const
         c->setUpperBound(dynamic_cast<QUmlValueSpecification *>(upperBound()->clone()));
     c->setControl(isControl());
     return c;
+}
+
+void QUmlInputPin::setPropertyData()
+{
 }
 

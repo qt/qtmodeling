@@ -63,6 +63,7 @@ QUmlLiteralReal::QUmlLiteralReal(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlLiteralRealObject(this);
+    setPropertyData();
 }
 
 QUmlLiteralReal::~QUmlLiteralReal()
@@ -132,5 +133,15 @@ double QUmlLiteralReal::realValue() const
     qWarning("UmlLiteralReal::realValue(): to be implemented (operation)");
 
     return double ();
+}
+
+void QUmlLiteralReal::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

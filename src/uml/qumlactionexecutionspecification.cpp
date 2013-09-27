@@ -67,6 +67,7 @@ QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(bool createQO
 {
     if (createQObject)
         _qObject = new QUmlActionExecutionSpecificationObject(this);
+    setPropertyData();
 }
 
 QUmlActionExecutionSpecification::~QUmlActionExecutionSpecification()
@@ -126,5 +127,15 @@ void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
         if (action->asQObject() && this->asQObject())
             QObject::connect(action->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAction()));
     }
+}
+
+void QUmlActionExecutionSpecification::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::DocumentationRole] = QStringLiteral("Action whose execution is occurring.");
+    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

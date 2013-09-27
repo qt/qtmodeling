@@ -76,6 +76,8 @@ protected:
 
     QUmlTemplateParameter *_owningTemplateParameter;
     QUmlTemplateParameter *_templateParameter;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

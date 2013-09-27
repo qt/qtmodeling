@@ -71,6 +71,7 @@
  */
 QUmlWriteLinkAction::QUmlWriteLinkAction()
 {
+    setPropertyData();
 }
 
 QUmlWriteLinkAction::~QUmlWriteLinkAction()
@@ -115,5 +116,9 @@ QModelingObject *QUmlWriteLinkAction::clone() const
     foreach (QUmlInputPin *element, inputValue())
         c->addInputValue(dynamic_cast<QUmlInputPin *>(element->clone()));
     return c;
+}
+
+void QUmlWriteLinkAction::setPropertyData()
+{
 }
 

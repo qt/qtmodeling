@@ -66,6 +66,7 @@
  */
 QUmlExecutableNode::QUmlExecutableNode()
 {
+    setPropertyData();
 }
 
 QUmlExecutableNode::~QUmlExecutableNode()
@@ -152,5 +153,15 @@ void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
             handler->setProtectedNode(0);
         }
     }
+}
+
+void QUmlExecutableNode::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::DocumentationRole] = QStringLiteral("A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.");
+    QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::OppositeEndRole] = QStringLiteral("ExceptionHandler-protectedNode");
+
 }
 

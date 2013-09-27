@@ -77,6 +77,7 @@ QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool createQO
 {
     if (createQObject)
         _qObject = new QUmlReadIsClassifiedObjectActionObject(this);
+    setPropertyData();
 }
 
 QUmlReadIsClassifiedObjectAction::~QUmlReadIsClassifiedObjectAction()
@@ -230,5 +231,33 @@ void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
             addOutput(result);
         }
     }
+}
+
+void QUmlReadIsClassifiedObjectAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifier against which the classification of the input object is tested.");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isDirect")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isDirect")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isDirect")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether the classifier must directly classify the input object.");
+    QModelingObject::propertyDataHash[QStringLiteral("isDirect")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isDirect")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isDirect")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Holds the object whose classification is to be tested.");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("After termination of the action, will hold the result of the test.");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

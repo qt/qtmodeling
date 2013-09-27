@@ -79,6 +79,7 @@ QUmlExtensionEnd::QUmlExtensionEnd(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExtensionEndObject(this);
+    setPropertyData();
 }
 
 QUmlExtensionEnd::~QUmlExtensionEnd()
@@ -201,5 +202,21 @@ int QUmlExtensionEnd::lowerBound() const
     qWarning("UmlExtensionEnd::lowerBound(): to be implemented (operation)");
 
     return int ();
+}
+
+void QUmlExtensionEnd::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.");
+    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("MultiplicityElement-lower");
+    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TypedElement-type");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

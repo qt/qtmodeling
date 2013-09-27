@@ -70,6 +70,7 @@ QUmlEnumerationLiteral::QUmlEnumerationLiteral(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlEnumerationLiteralObject(this);
+    setPropertyData();
 }
 
 QUmlEnumerationLiteral::~QUmlEnumerationLiteral()
@@ -156,5 +157,21 @@ void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
         // Adjust subsetted properties
         setNamespace(enumeration);
     }
+}
+
+void QUmlEnumerationLiteral::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifier of this EnumerationLiteral derived to be equal to its enumeration.");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InstanceSpecification-classifier");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::DocumentationRole] = QStringLiteral("The Enumeration that this EnumerationLiteral is a member of.");
+    QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::OppositeEndRole] = QStringLiteral("Enumeration-ownedLiteral");
+
 }
 

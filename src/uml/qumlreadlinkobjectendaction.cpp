@@ -77,6 +77,7 @@ QUmlReadLinkObjectEndAction::QUmlReadLinkObjectEndAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlReadLinkObjectEndActionObject(this);
+    setPropertyData();
 }
 
 QUmlReadLinkObjectEndAction::~QUmlReadLinkObjectEndAction()
@@ -210,5 +211,27 @@ void QUmlReadLinkObjectEndAction::setResult(QUmlOutputPin *result)
             addOutput(result);
         }
     }
+}
+
+void QUmlReadLinkObjectEndAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::DocumentationRole] = QStringLiteral("Link end to be read.");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Gives the input pin from which the link object is obtained.");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Pin where the result value is placed.");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -68,6 +68,7 @@ QUmlPartDecomposition::QUmlPartDecomposition(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlPartDecompositionObject(this);
+    setPropertyData();
 }
 
 QUmlPartDecomposition::~QUmlPartDecomposition()
@@ -108,5 +109,9 @@ QModelingObject *QUmlPartDecomposition::clone() const
     if (returnValueRecipient())
         c->setReturnValueRecipient(dynamic_cast<QUmlProperty *>(returnValueRecipient()->clone()));
     return c;
+}
+
+void QUmlPartDecomposition::setPropertyData()
+{
 }
 

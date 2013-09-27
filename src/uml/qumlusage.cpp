@@ -63,6 +63,7 @@ QUmlUsage::QUmlUsage(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlUsageObject(this);
+    setPropertyData();
 }
 
 QUmlUsage::~QUmlUsage()
@@ -93,5 +94,9 @@ QModelingObject *QUmlUsage::clone() const
     foreach (QUmlNamedElement *element, supplier())
         c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     return c;
+}
+
+void QUmlUsage::setPropertyData()
+{
 }
 

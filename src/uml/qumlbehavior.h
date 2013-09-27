@@ -98,6 +98,8 @@ protected:
     QSet<QUmlConstraint *> _precondition;
     QSet<QUmlBehavior *> _redefinedBehavior;
     QUmlBehavioralFeature *_specification;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

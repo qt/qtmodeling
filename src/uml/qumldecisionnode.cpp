@@ -73,6 +73,7 @@ QUmlDecisionNode::QUmlDecisionNode(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDecisionNodeObject(this);
+    setPropertyData();
 }
 
 QUmlDecisionNode::~QUmlDecisionNode()
@@ -158,5 +159,21 @@ void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
         if (decisionInputFlow->asQObject() && this->asQObject())
             QObject::connect(decisionInputFlow->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecisionInputFlow()));
     }
+}
+
+void QUmlDecisionNode::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::DocumentationRole] = QStringLiteral("Provides input to guard specifications on edges outgoing from the decision node.");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::DocumentationRole] = QStringLiteral("An additional edge incoming to the decision node that provides a decision input value.");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

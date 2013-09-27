@@ -93,6 +93,7 @@ QUmlOpaqueBehavior::QUmlOpaqueBehavior(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlOpaqueBehaviorObject(this);
+    setPropertyData();
 }
 
 QUmlOpaqueBehavior::~QUmlOpaqueBehavior()
@@ -240,5 +241,21 @@ void QUmlOpaqueBehavior::removeLanguage(QString language)
     if (_language.contains(language)) {
         _language.removeAll(language);
     }
+}
+
+void QUmlOpaqueBehavior::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the behavior in one or more languages.");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::DocumentationRole] = QStringLiteral("Languages the body strings use in the same order as the body strings.");
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

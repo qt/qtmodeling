@@ -75,6 +75,8 @@ protected:
     bool _allowSubstitutable;
     QSet<QUmlClassifier *> _constrainingClassifier;
     QUmlClassifier *_parameteredElement;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

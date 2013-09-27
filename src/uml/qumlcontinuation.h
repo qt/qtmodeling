@@ -66,6 +66,8 @@ public:
 
 protected:
     bool _setting;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

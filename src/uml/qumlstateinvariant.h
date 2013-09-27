@@ -72,6 +72,8 @@ public:
 protected:
     QUmlLifeline *_covered;
     QUmlConstraint *_invariant;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

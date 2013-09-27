@@ -79,6 +79,8 @@ protected:
     QSet<QUmlGeneralizationSet *> _generalizationSet;
     bool _isSubstitutable;
     QUmlClassifier *_specific;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

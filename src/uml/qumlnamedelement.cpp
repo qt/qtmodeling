@@ -57,6 +57,7 @@ QUmlNamedElement::QUmlNamedElement() :
     _nameExpression(0),
     _namespace_(0)
 {
+    setPropertyData();
 }
 
 QUmlNamedElement::~QUmlNamedElement()
@@ -279,5 +280,45 @@ QString QUmlNamedElement::separator() const
     qWarning("UmlNamedElement::separator(): to be implemented (operation)");
 
     return QString ();
+}
+
+void QUmlNamedElement::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("clientDependency")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("clientDependency")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("clientDependency")][QtModeling::DocumentationRole] = QStringLiteral("Indicates the dependencies that reference the client.");
+    QModelingObject::propertyDataHash[QStringLiteral("clientDependency")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("clientDependency")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship");
+    QModelingObject::propertyDataHash[QStringLiteral("clientDependency")][QtModeling::OppositeEndRole] = QStringLiteral("Dependency-client");
+
+    QModelingObject::propertyDataHash[QStringLiteral("name")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("name")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("name")][QtModeling::DocumentationRole] = QStringLiteral("The name of the NamedElement.");
+    QModelingObject::propertyDataHash[QStringLiteral("name")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("name")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("name")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("nameExpression")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("nameExpression")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("nameExpression")][QtModeling::DocumentationRole] = QStringLiteral("The string expression used to define the name of this named element.");
+    QModelingObject::propertyDataHash[QStringLiteral("nameExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("nameExpression")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("nameExpression")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("namespace")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("namespace")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("namespace")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the namespace that owns the NamedElement.");
+    QModelingObject::propertyDataHash[QStringLiteral("namespace")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("namespace")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_member_memberNamespace-memberNamespace Element-owner");
+    QModelingObject::propertyDataHash[QStringLiteral("namespace")][QtModeling::OppositeEndRole] = QStringLiteral("Namespace-ownedMember");
+
+    QModelingObject::propertyDataHash[QStringLiteral("qualifiedName")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("qualifiedName")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("qualifiedName")][QtModeling::DocumentationRole] = QStringLiteral("A name which allows the NamedElement to be identified within a hierarchy of nested Namespaces. It is constructed from the names of the containing namespaces starting at the root of the hierarchy and ending with the name of the NamedElement itself.");
+    QModelingObject::propertyDataHash[QStringLiteral("qualifiedName")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("qualifiedName")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("qualifiedName")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::DocumentationRole] = QStringLiteral("Determines where the NamedElement appears within different Namespaces within the overall model, and its accessibility.");
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

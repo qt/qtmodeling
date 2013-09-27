@@ -74,6 +74,8 @@ protected:
     bool _isDestroyLinks;
     bool _isDestroyOwnedObjects;
     QUmlInputPin *_target;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

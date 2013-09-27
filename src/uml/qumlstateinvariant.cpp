@@ -67,6 +67,7 @@ QUmlStateInvariant::QUmlStateInvariant(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlStateInvariantObject(this);
+    setPropertyData();
 }
 
 QUmlStateInvariant::~QUmlStateInvariant()
@@ -152,5 +153,21 @@ void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
             addOwnedElement(invariant);
         }
     }
+}
+
+void QUmlStateInvariant::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::DocumentationRole] = QStringLiteral("References the Lifeline on which the StateInvariant appears.");
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InteractionFragment-covered");
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::DocumentationRole] = QStringLiteral("A Constraint that should hold at runtime for this StateInvariant");
+    QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

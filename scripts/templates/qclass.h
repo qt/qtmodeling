@@ -140,6 +140,8 @@ protected:
 [%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") %]
     [% QT_TYPE(namespace, attribute) -%]_[%- QT_ATTRIBUTE(attribute) %];
 [%- END %]
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

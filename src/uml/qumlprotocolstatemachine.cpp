@@ -99,6 +99,7 @@ QUmlProtocolStateMachine::QUmlProtocolStateMachine(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlProtocolStateMachineObject(this);
+    setPropertyData();
 }
 
 QUmlProtocolStateMachine::~QUmlProtocolStateMachine()
@@ -245,5 +246,15 @@ void QUmlProtocolStateMachine::removeConformance(QUmlProtocolConformance *confor
             conformance->setSpecificMachine(0);
         }
     }
+}
+
+void QUmlProtocolStateMachine::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::DocumentationRole] = QStringLiteral("Conformance between protocol state machines.");
+    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::OppositeEndRole] = QStringLiteral("ProtocolConformance-specificMachine");
+
 }
 

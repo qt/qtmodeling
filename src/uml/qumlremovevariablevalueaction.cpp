@@ -76,6 +76,7 @@ QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlRemoveVariableValueActionObject(this);
+    setPropertyData();
 }
 
 QUmlRemoveVariableValueAction::~QUmlRemoveVariableValueAction()
@@ -178,5 +179,21 @@ void QUmlRemoveVariableValueAction::setRemoveAt(QUmlInputPin *removeAt)
             addInput(removeAt);
         }
     }
+}
+
+void QUmlRemoveVariableValueAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("isRemoveDuplicates")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isRemoveDuplicates")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isRemoveDuplicates")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether to remove duplicates of the value in nonunique variables.");
+    QModelingObject::propertyDataHash[QStringLiteral("isRemoveDuplicates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isRemoveDuplicates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isRemoveDuplicates")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("removeAt")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("removeAt")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("removeAt")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the position of an existing value to remove in ordered nonunique variables. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
+    QModelingObject::propertyDataHash[QStringLiteral("removeAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("removeAt")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("removeAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

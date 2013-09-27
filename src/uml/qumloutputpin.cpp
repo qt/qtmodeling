@@ -74,6 +74,7 @@ QUmlOutputPin::QUmlOutputPin(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlOutputPinObject(this);
+    setPropertyData();
 }
 
 QUmlOutputPin::~QUmlOutputPin()
@@ -128,5 +129,9 @@ QModelingObject *QUmlOutputPin::clone() const
         c->setUpperBound(dynamic_cast<QUmlValueSpecification *>(upperBound()->clone()));
     c->setControl(isControl());
     return c;
+}
+
+void QUmlOutputPin::setPropertyData()
+{
 }
 

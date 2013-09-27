@@ -69,6 +69,7 @@ QUmlInitialNode::QUmlInitialNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlInitialNodeObject(this);
+    setPropertyData();
 }
 
 QUmlInitialNode::~QUmlInitialNode()
@@ -106,5 +107,9 @@ QModelingObject *QUmlInitialNode::clone() const
     foreach (QUmlActivityNode *element, redefinedNode())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
+}
+
+void QUmlInitialNode::setPropertyData()
+{
 }
 

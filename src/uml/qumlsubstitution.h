@@ -71,6 +71,8 @@ public:
 protected:
     QUmlClassifier *_contract;
     QUmlClassifier *_substitutingClassifier;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

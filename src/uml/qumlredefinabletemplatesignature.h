@@ -80,6 +80,8 @@ public:
 protected:
     QUmlClassifier *_classifier;
     QSet<QUmlRedefinableTemplateSignature *> _extendedSignature;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

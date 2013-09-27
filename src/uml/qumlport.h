@@ -88,6 +88,8 @@ protected:
     bool _isService;
     QUmlProtocolStateMachine *_protocol;
     QSet<QUmlPort *> _redefinedPort;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -66,6 +66,8 @@ public:
 
 protected:
     QString _viewpoint;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -73,6 +73,8 @@ protected:
 
     bool _isSynchronous;
     QList<QUmlOutputPin *> _result;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

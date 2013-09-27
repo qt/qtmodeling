@@ -74,6 +74,7 @@ QUmlDataStoreNode::QUmlDataStoreNode(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDataStoreNodeObject(this);
+    setPropertyData();
 }
 
 QUmlDataStoreNode::~QUmlDataStoreNode()
@@ -121,5 +122,9 @@ QModelingObject *QUmlDataStoreNode::clone() const
     if (upperBound())
         c->setUpperBound(dynamic_cast<QUmlValueSpecification *>(upperBound()->clone()));
     return c;
+}
+
+void QUmlDataStoreNode::setPropertyData()
+{
 }
 

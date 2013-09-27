@@ -77,6 +77,8 @@ protected:
     QUmlStructuralFeature *_definingFeature;
     QUmlInstanceSpecification *_owningInstance;
     QList<QUmlValueSpecification *> _value;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

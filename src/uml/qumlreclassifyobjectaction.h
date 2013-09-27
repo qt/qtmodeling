@@ -80,6 +80,8 @@ protected:
     QSet<QUmlClassifier *> _newClassifier;
     QUmlInputPin *_object;
     QSet<QUmlClassifier *> _oldClassifier;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

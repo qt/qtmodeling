@@ -63,6 +63,8 @@ public:
 protected:
     explicit QUmlControlNode();
 
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

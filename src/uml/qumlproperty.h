@@ -137,6 +137,8 @@ protected:
     QList<QUmlProperty *> _qualifier;
     QSet<QUmlProperty *> _redefinedProperty;
     QSet<QUmlProperty *> _subsettedProperty;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -72,6 +72,8 @@ public:
 protected:
     QUmlValueSpecification *_expr;
     QSet<QUmlObservation *> _observation;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

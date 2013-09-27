@@ -79,6 +79,8 @@ protected:
 
     QSet<QUmlLinkEndData *> _endData;
     QSet<QUmlInputPin *> _inputValue;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -66,6 +66,7 @@ QUmlMessageOccurrenceSpecification::QUmlMessageOccurrenceSpecification(bool crea
 {
     if (createQObject)
         _qObject = new QUmlMessageOccurrenceSpecificationObject(this);
+    setPropertyData();
 }
 
 QUmlMessageOccurrenceSpecification::~QUmlMessageOccurrenceSpecification()
@@ -102,5 +103,9 @@ QModelingObject *QUmlMessageOccurrenceSpecification::clone() const
     if (message())
         c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
     return c;
+}
+
+void QUmlMessageOccurrenceSpecification::setPropertyData()
+{
 }
 

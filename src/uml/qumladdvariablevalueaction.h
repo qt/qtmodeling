@@ -71,6 +71,8 @@ public:
 protected:
     QUmlInputPin *_insertAt;
     bool _isReplaceAll;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

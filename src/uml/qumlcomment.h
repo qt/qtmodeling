@@ -70,6 +70,8 @@ public:
 protected:
     QSet<QUmlElement *> _annotatedElement;
     QString _body;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

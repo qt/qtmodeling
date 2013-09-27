@@ -64,6 +64,7 @@ QUmlExpression::QUmlExpression(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlExpressionObject(this);
+    setPropertyData();
 }
 
 QUmlExpression::~QUmlExpression()
@@ -155,5 +156,21 @@ void QUmlExpression::setSymbol(QString symbol)
     if (_symbol != symbol) {
         _symbol = symbol;
     }
+}
+
+void QUmlExpression::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a sequence of operands.");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::DocumentationRole] = QStringLiteral("The symbol associated with the node in the expression tree.");
+    QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

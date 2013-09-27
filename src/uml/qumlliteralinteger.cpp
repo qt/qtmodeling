@@ -64,6 +64,7 @@ QUmlLiteralInteger::QUmlLiteralInteger(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLiteralIntegerObject(this);
+    setPropertyData();
 }
 
 QUmlLiteralInteger::~QUmlLiteralInteger()
@@ -136,5 +137,15 @@ bool QUmlLiteralInteger::isComputable() const
     qWarning("UmlLiteralInteger::isComputable(): to be implemented (operation)");
 
     return bool ();
+}
+
+void QUmlLiteralInteger::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified Integer value.");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

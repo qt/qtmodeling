@@ -70,6 +70,8 @@ public:
 
 protected:
     QSet<QUmlConnectableElement *> _collaborationRole;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

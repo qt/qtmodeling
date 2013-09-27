@@ -74,6 +74,8 @@ protected:
     explicit QUmlConnectableElement();
 
     QUmlConnectableElementTemplateParameter *_templateParameter;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

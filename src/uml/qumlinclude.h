@@ -72,6 +72,8 @@ public:
 protected:
     QUmlUseCase *_addition;
     QUmlUseCase *_includingCase;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

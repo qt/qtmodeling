@@ -94,6 +94,8 @@ protected:
     QUmlMessageEnd *_receiveEvent;
     QUmlMessageEnd *_sendEvent;
     QUmlNamedElement *_signature;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

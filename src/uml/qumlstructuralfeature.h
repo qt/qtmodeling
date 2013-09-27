@@ -69,6 +69,8 @@ protected:
     explicit QUmlStructuralFeature();
 
     bool _isReadOnly;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

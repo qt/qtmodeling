@@ -80,6 +80,8 @@ protected:
     QSet<QUmlClassifier *> _exceptionType;
     QUmlExecutableNode *_handlerBody;
     QUmlExecutableNode *_protectedNode;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

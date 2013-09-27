@@ -81,6 +81,7 @@ QUmlCommunicationPath::QUmlCommunicationPath(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCommunicationPathObject(this);
+    setPropertyData();
 }
 
 QUmlCommunicationPath::~QUmlCommunicationPath()
@@ -145,5 +146,9 @@ QModelingObject *QUmlCommunicationPath::clone() const
     foreach (QUmlProperty *element, ownedEnd())
         c->addOwnedEnd(dynamic_cast<QUmlProperty *>(element->clone()));
     return c;
+}
+
+void QUmlCommunicationPath::setPropertyData()
+{
 }
 

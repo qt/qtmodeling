@@ -91,6 +91,8 @@ protected:
     QUmlElement *_represents;
     QSet<QUmlActivityPartition *> _subpartition;
     QUmlActivityPartition *_superPartition;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

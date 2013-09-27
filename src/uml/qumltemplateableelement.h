@@ -79,6 +79,8 @@ protected:
 
     QUmlTemplateSignature *_ownedTemplateSignature;
     QSet<QUmlTemplateBinding *> _templateBinding;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

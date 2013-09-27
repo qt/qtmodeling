@@ -58,6 +58,7 @@
 QUmlMessageEnd::QUmlMessageEnd() :
     _message(0)
 {
+    setPropertyData();
 }
 
 QUmlMessageEnd::~QUmlMessageEnd()
@@ -101,5 +102,15 @@ void QUmlMessageEnd::setMessage(QUmlMessage *message)
         if (message->asQObject() && this->asQObject())
             QObject::connect(message->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMessage()));
     }
+}
+
+void QUmlMessageEnd::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::DocumentationRole] = QStringLiteral("References a Message.");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

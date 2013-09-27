@@ -71,6 +71,7 @@
 QUmlWriteVariableAction::QUmlWriteVariableAction() :
     _value(0)
 {
+    setPropertyData();
 }
 
 QUmlWriteVariableAction::~QUmlWriteVariableAction()
@@ -147,5 +148,15 @@ void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
             addInput(value);
         }
     }
+}
+
+void QUmlWriteVariableAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Value to be added or removed from the variable.");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -1,7 +1,7 @@
-QT.uml.VERSION = 5.1.0
+QT.uml.VERSION = 5.1.1
 QT.uml.MAJOR_VERSION = 5
 QT.uml.MINOR_VERSION = 1
-QT.uml.PATCH_VERSION = 0
+QT.uml.PATCH_VERSION = 1
 
 QT.uml.name = QtUml
 QT.uml.bins = $$QT_MODULE_BIN_BASE

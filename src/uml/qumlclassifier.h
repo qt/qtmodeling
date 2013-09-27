@@ -146,6 +146,8 @@ protected:
     QSet<QUmlSubstitution *> _substitution;
     QUmlClassifierTemplateParameter *_templateParameter;
     QSet<QUmlUseCase *> _useCase;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

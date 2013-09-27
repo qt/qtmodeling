@@ -80,6 +80,8 @@ protected:
     bool _isAssured;
     bool _isDeterminate;
     QList<QUmlOutputPin *> _result;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

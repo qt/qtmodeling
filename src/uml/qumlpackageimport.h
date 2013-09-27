@@ -77,6 +77,8 @@ protected:
     QUmlPackage *_importedPackage;
     QUmlNamespace *_importingNamespace;
     QtUml::VisibilityKind _visibility;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

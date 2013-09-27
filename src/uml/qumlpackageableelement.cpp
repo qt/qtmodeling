@@ -59,6 +59,7 @@
 QUmlPackageableElement::QUmlPackageableElement() :
     _visibility(QtUml::VisibilityKindPublic)
 {
+    setPropertyData();
 }
 
 QUmlPackageableElement::~QUmlPackageableElement()
@@ -102,5 +103,15 @@ void QUmlPackageableElement::setVisibility(QtUml::VisibilityKind visibility)
     if (_visibility != visibility) {
         _visibility = visibility;
     }
+}
+
+void QUmlPackageableElement::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::DocumentationRole] = QStringLiteral("Indicates that packageable elements must always have a visibility, i.e., visibility is not optional.");
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("NamedElement-visibility");
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -72,6 +72,8 @@ protected:
     explicit QUmlType();
 
     QUmlPackage *_package;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

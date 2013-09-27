@@ -91,6 +91,7 @@ QUmlNode::QUmlNode(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlNodeObject(this);
+    setPropertyData();
 }
 
 QUmlNode::~QUmlNode()
@@ -210,5 +211,15 @@ void QUmlNode::removeNestedNode(QUmlNode *nestedNode)
         // Adjust subsetted properties
         removeOwnedMember(nestedNode);
     }
+}
+
+void QUmlNode::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("nestedNode")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("nestedNode")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("nestedNode")][QtModeling::DocumentationRole] = QStringLiteral("The Nodes that are defined (nested) within the Node.");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedNode")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

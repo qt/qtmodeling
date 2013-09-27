@@ -70,6 +70,7 @@ QUmlControlFlow::QUmlControlFlow(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlControlFlowObject(this);
+    setPropertyData();
 }
 
 QUmlControlFlow::~QUmlControlFlow()
@@ -111,5 +112,9 @@ QModelingObject *QUmlControlFlow::clone() const
     if (weight())
         c->setWeight(dynamic_cast<QUmlValueSpecification *>(weight()->clone()));
     return c;
+}
+
+void QUmlControlFlow::setPropertyData()
+{
 }
 

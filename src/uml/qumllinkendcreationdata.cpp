@@ -61,6 +61,7 @@ QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLinkEndCreationDataObject(this);
+    setPropertyData();
 }
 
 QUmlLinkEndCreationData::~QUmlLinkEndCreationData()
@@ -128,5 +129,21 @@ void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
     if (_isReplaceAll != isReplaceAll) {
         _isReplaceAll = isReplaceAll;
     }
+}
+
+void QUmlLinkEndCreationData::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::DocumentationRole] = QStringLiteral("Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.");
+    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.");
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

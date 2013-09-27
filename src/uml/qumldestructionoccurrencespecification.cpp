@@ -66,6 +66,7 @@ QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(b
 {
     if (createQObject)
         _qObject = new QUmlDestructionOccurrenceSpecificationObject(this);
+    setPropertyData();
 }
 
 QUmlDestructionOccurrenceSpecification::~QUmlDestructionOccurrenceSpecification()
@@ -102,5 +103,9 @@ QModelingObject *QUmlDestructionOccurrenceSpecification::clone() const
     if (message())
         c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
     return c;
+}
+
+void QUmlDestructionOccurrenceSpecification::setPropertyData()
+{
 }
 

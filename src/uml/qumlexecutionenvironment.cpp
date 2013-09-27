@@ -92,6 +92,7 @@ QUmlExecutionEnvironment::QUmlExecutionEnvironment(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExecutionEnvironmentObject(this);
+    setPropertyData();
 }
 
 QUmlExecutionEnvironment::~QUmlExecutionEnvironment()
@@ -170,5 +171,9 @@ QModelingObject *QUmlExecutionEnvironment::clone() const
     foreach (QUmlNode *element, nestedNode())
         c->addNestedNode(dynamic_cast<QUmlNode *>(element->clone()));
     return c;
+}
+
+void QUmlExecutionEnvironment::setPropertyData()
+{
 }
 

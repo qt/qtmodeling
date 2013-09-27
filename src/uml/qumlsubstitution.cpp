@@ -67,6 +67,7 @@ QUmlSubstitution::QUmlSubstitution(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlSubstitutionObject(this);
+    setPropertyData();
 }
 
 QUmlSubstitution::~QUmlSubstitution()
@@ -164,5 +165,21 @@ void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingCla
             addClient(substitutingClassifier);
         }
     }
+}
+
+void QUmlSubstitution::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::DocumentationRole] = QStringLiteral("The contract with which the substituting classifier complies.");
+    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier");
+    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::DocumentationRole] = QStringLiteral("Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.");
+    QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner Dependency-client");
+    QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-substitution");
+
 }
 

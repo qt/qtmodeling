@@ -79,6 +79,8 @@ protected:
     QSet<QUmlGate *> _cfragmentGate;
     QtUml::InteractionOperatorKind _interactionOperator;
     QList<QUmlInteractionOperand *> _operand;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

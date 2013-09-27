@@ -69,6 +69,8 @@ public:
 
 protected:
     QList<QUmlEnumerationLiteral *> _ownedLiteral;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

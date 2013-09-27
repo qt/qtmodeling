@@ -66,6 +66,7 @@ QUmlCombinedFragment::QUmlCombinedFragment(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCombinedFragmentObject(this);
+    setPropertyData();
 }
 
 QUmlCombinedFragment::~QUmlCombinedFragment()
@@ -200,5 +201,27 @@ void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
         // Adjust subsetted properties
         removeOwnedElement(operand);
     }
+}
+
+void QUmlCombinedFragment::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the gates that form the interface between this CombinedFragment and its surroundings");
+    QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the operation which defines the semantics of this combination of InteractionFragments.");
+    QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::DocumentationRole] = QStringLiteral("The set of operands of the combined fragment.");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

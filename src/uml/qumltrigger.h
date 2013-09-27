@@ -73,6 +73,8 @@ public:
 protected:
     QUmlEvent *_event;
     QSet<QUmlPort *> _port;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

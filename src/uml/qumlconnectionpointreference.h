@@ -77,6 +77,8 @@ protected:
     QSet<QUmlPseudostate *> _entry;
     QSet<QUmlPseudostate *> _exit;
     QUmlState *_state;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

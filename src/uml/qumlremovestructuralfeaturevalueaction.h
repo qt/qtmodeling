@@ -71,6 +71,8 @@ public:
 protected:
     bool _isRemoveDuplicates;
     QUmlInputPin *_removeAt;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

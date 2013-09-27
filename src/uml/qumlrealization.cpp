@@ -64,6 +64,7 @@ QUmlRealization::QUmlRealization(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlRealizationObject(this);
+    setPropertyData();
 }
 
 QUmlRealization::~QUmlRealization()
@@ -96,5 +97,9 @@ QModelingObject *QUmlRealization::clone() const
     if (mapping())
         c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
     return c;
+}
+
+void QUmlRealization::setPropertyData()
+{
 }
 

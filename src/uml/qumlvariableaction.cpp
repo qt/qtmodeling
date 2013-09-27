@@ -71,6 +71,7 @@
 QUmlVariableAction::QUmlVariableAction() :
     _variable(0)
 {
+    setPropertyData();
 }
 
 QUmlVariableAction::~QUmlVariableAction()
@@ -136,5 +137,15 @@ void QUmlVariableAction::setVariable(QUmlVariable *variable)
         if (variable->asQObject() && this->asQObject())
             QObject::connect(variable->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setVariable()));
     }
+}
+
+void QUmlVariableAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::DocumentationRole] = QStringLiteral("Variable to be read.");
+    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

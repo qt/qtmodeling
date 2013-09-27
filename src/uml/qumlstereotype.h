@@ -75,6 +75,8 @@ public:
 
 protected:
     QSet<QUmlImage *> _icon;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

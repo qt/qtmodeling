@@ -83,6 +83,8 @@ protected:
     QList<QUmlProperty *> _ownedAttribute;
     QSet<QUmlConnector *> _ownedConnector;
     QSet<QUmlConnectableElement *> _role;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

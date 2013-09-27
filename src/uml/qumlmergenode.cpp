@@ -69,6 +69,7 @@ QUmlMergeNode::QUmlMergeNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlMergeNodeObject(this);
+    setPropertyData();
 }
 
 QUmlMergeNode::~QUmlMergeNode()
@@ -106,5 +107,9 @@ QModelingObject *QUmlMergeNode::clone() const
     foreach (QUmlActivityNode *element, redefinedNode())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
+}
+
+void QUmlMergeNode::setPropertyData()
+{
 }
 

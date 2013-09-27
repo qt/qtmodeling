@@ -72,6 +72,8 @@ public:
 protected:
     QUmlAssociation *_association;
     QUmlInputPin *_object;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

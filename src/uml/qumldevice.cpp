@@ -92,6 +92,7 @@ QUmlDevice::QUmlDevice(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDeviceObject(this);
+    setPropertyData();
 }
 
 QUmlDevice::~QUmlDevice()
@@ -170,5 +171,9 @@ QModelingObject *QUmlDevice::clone() const
     foreach (QUmlNode *element, nestedNode())
         c->addNestedNode(dynamic_cast<QUmlNode *>(element->clone()));
     return c;
+}
+
+void QUmlDevice::setPropertyData()
+{
 }
 

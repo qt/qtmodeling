@@ -74,6 +74,8 @@ protected:
     QUmlDeployment *_deployment;
     QString _deploymentLocation;
     QString _executionLocation;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

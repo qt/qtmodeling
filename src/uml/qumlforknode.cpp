@@ -69,6 +69,7 @@ QUmlForkNode::QUmlForkNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlForkNodeObject(this);
+    setPropertyData();
 }
 
 QUmlForkNode::~QUmlForkNode()
@@ -106,5 +107,9 @@ QModelingObject *QUmlForkNode::clone() const
     foreach (QUmlActivityNode *element, redefinedNode())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
+}
+
+void QUmlForkNode::setPropertyData()
+{
 }
 

@@ -69,6 +69,8 @@ public:
 
 protected:
     QSet<QUmlNamedElement *> _message;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -95,6 +95,8 @@ protected:
     QUmlStringExpression *_nameExpression;
     QUmlNamespace *_namespace_;
     QtUml::VisibilityKind _visibility;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

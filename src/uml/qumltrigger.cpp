@@ -63,6 +63,7 @@ QUmlTrigger::QUmlTrigger(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlTriggerObject(this);
+    setPropertyData();
 }
 
 QUmlTrigger::~QUmlTrigger()
@@ -142,5 +143,21 @@ void QUmlTrigger::removePort(QUmlPort *port)
     if (_port.contains(port)) {
         _port.remove(port);
     }
+}
+
+void QUmlTrigger::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::DocumentationRole] = QStringLiteral("The event that causes the trigger.");
+    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
+    QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

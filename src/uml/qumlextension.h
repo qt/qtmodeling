@@ -77,6 +77,8 @@ public:
 
 protected:
     QUmlExtensionEnd *_ownedEnd;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

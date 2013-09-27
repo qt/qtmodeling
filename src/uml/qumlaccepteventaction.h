@@ -77,6 +77,8 @@ protected:
     bool _isUnmarshall;
     QSet<QUmlOutputPin *> _result;
     QSet<QUmlTrigger *> _trigger;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

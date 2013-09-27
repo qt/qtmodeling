@@ -105,6 +105,8 @@ protected:
     QUmlVertex *_source;
     QUmlVertex *_target;
     QSet<QUmlTrigger *> _trigger;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

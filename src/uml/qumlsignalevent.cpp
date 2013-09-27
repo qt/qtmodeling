@@ -64,6 +64,7 @@ QUmlSignalEvent::QUmlSignalEvent(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlSignalEventObject(this);
+    setPropertyData();
 }
 
 QUmlSignalEvent::~QUmlSignalEvent()
@@ -115,5 +116,15 @@ void QUmlSignalEvent::setSignal(QUmlSignal *signal)
         if (signal->asQObject() && this->asQObject())
             QObject::connect(signal->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSignal()));
     }
+}
+
+void QUmlSignalEvent::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The specific signal that is associated with this event.");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

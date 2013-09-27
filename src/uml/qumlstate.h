@@ -123,6 +123,8 @@ protected:
     QSet<QUmlRegion *> _region;
     QUmlConstraint *_stateInvariant;
     QUmlStateMachine *_submachine;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

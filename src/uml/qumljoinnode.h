@@ -71,6 +71,8 @@ public:
 protected:
     bool _isCombineDuplicate;
     QUmlValueSpecification *_joinSpec;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

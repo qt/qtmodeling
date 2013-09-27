@@ -78,6 +78,8 @@ protected:
     QSet<QUmlExpansionNode *> _inputElement;
     QtUml::ExpansionKind _mode;
     QSet<QUmlExpansionNode *> _outputElement;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

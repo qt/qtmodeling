@@ -74,6 +74,7 @@ QUmlStartClassifierBehaviorAction::QUmlStartClassifierBehaviorAction(bool create
 {
     if (createQObject)
         _qObject = new QUmlStartClassifierBehaviorActionObject(this);
+    setPropertyData();
 }
 
 QUmlStartClassifierBehaviorAction::~QUmlStartClassifierBehaviorAction()
@@ -152,5 +153,15 @@ void QUmlStartClassifierBehaviorAction::setObject(QUmlInputPin *object)
             addInput(object);
         }
     }
+}
+
+void QUmlStartClassifierBehaviorAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Holds the object on which to start the owned behavior.");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

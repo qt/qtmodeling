@@ -79,6 +79,8 @@ protected:
     bool _isDirect;
     QUmlInputPin *_object;
     QUmlOutputPin *_result;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

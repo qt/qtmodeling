@@ -92,6 +92,7 @@ QUmlStereotype::QUmlStereotype(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlStereotypeObject(this);
+    setPropertyData();
 }
 
 QUmlStereotype::~QUmlStereotype()
@@ -245,5 +246,21 @@ QUmlProfile *QUmlStereotype::containingProfile() const
     qWarning("UmlStereotype::containingProfile(): to be implemented (operation)");
 
     return 0;
+}
+
+void QUmlStereotype::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("icon")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("icon")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("icon")][QtModeling::DocumentationRole] = QStringLiteral("Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.");
+    QModelingObject::propertyDataHash[QStringLiteral("icon")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("icon")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("icon")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("profile")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("profile")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("profile")][QtModeling::DocumentationRole] = QStringLiteral("The profile that directly or indirectly contains this stereotype.");
+    QModelingObject::propertyDataHash[QStringLiteral("profile")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("profile")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("profile")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

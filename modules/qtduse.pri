@@ -1,7 +1,7 @@
-QT.duse.VERSION = 5.1.0
+QT.duse.VERSION = 5.1.1
 QT.duse.MAJOR_VERSION = 5
 QT.duse.MINOR_VERSION = 1
-QT.duse.PATCH_VERSION = 0
+QT.duse.PATCH_VERSION = 1
 
 QT.duse.name = QtDuse
 QT.duse.bins = $$QT_MODULE_BIN_BASE

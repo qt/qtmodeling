@@ -77,6 +77,8 @@ protected:
     QUmlInputPin *_object;
     QSet<QUmlOutputPin *> _result;
     QUmlClassifier *_unmarshallType;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -94,6 +94,7 @@ QUmlFunctionBehavior::QUmlFunctionBehavior(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlFunctionBehaviorObject(this);
+    setPropertyData();
 }
 
 QUmlFunctionBehavior::~QUmlFunctionBehavior()
@@ -183,5 +184,9 @@ QModelingObject *QUmlFunctionBehavior::clone() const
 //    c->setBody(body());
 //    c->setLanguage(language());
     return c;
+}
+
+void QUmlFunctionBehavior::setPropertyData()
+{
 }
 

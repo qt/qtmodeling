@@ -71,6 +71,8 @@ public:
 protected:
     QUmlPackage *_mergedPackage;
     QUmlPackage *_receivingPackage;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

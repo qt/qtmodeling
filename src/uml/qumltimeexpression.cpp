@@ -66,6 +66,7 @@ QUmlTimeExpression::QUmlTimeExpression(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlTimeExpressionObject(this);
+    setPropertyData();
 }
 
 QUmlTimeExpression::~QUmlTimeExpression()
@@ -160,5 +161,21 @@ void QUmlTimeExpression::removeObservation(QUmlObservation *observation)
     if (_observation.contains(observation)) {
         _observation.remove(observation);
     }
+}
+
+void QUmlTimeExpression::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::DocumentationRole] = QStringLiteral("The value of the time expression.");
+    QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the time and duration observations that are involved in expr.");
+    QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

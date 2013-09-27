@@ -89,6 +89,8 @@ protected:
     QList<QUmlInteractionFragment *> _fragment;
     QSet<QUmlLifeline *> _lifeline;
     QSet<QUmlMessage *> _message;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -62,6 +62,7 @@ QUmlCollaborationUse::QUmlCollaborationUse(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCollaborationUseObject(this);
+    setPropertyData();
 }
 
 QUmlCollaborationUse::~QUmlCollaborationUse()
@@ -150,5 +151,21 @@ void QUmlCollaborationUse::setType(QUmlCollaboration *type)
         if (type->asQObject() && this->asQObject())
             QObject::connect(type->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setType()));
     }
+}
+
+void QUmlCollaborationUse::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("roleBinding")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("roleBinding")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("roleBinding")][QtModeling::DocumentationRole] = QStringLiteral("A mapping between features of the collaboration type and features of the owning classifier. This mapping indicates which connectable element of the classifier plays which role(s) in the collaboration. A connectable element may be bound to multiple roles in the same collaboration use (that is, it may play multiple roles).");
+    QModelingObject::propertyDataHash[QStringLiteral("roleBinding")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("roleBinding")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("roleBinding")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("The collaboration which is used in this occurrence. The collaboration defines the cooperation between its roles which are mapped to properties of the classifier owning the collaboration use.");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

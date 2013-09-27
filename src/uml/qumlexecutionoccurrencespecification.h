@@ -68,6 +68,8 @@ public:
 
 protected:
     QUmlExecutionSpecification *_execution;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

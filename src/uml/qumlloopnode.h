@@ -101,6 +101,8 @@ protected:
     QList<QUmlOutputPin *> _result;
     QSet<QUmlExecutableNode *> _setupPart;
     QSet<QUmlExecutableNode *> _test;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

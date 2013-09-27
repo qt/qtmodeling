@@ -76,6 +76,7 @@ QUmlBroadcastSignalAction::QUmlBroadcastSignalAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlBroadcastSignalActionObject(this);
+    setPropertyData();
 }
 
 QUmlBroadcastSignalAction::~QUmlBroadcastSignalAction()
@@ -149,5 +150,15 @@ void QUmlBroadcastSignalAction::setSignal(QUmlSignal *signal)
         if (signal->asQObject() && this->asQObject())
             QObject::connect(signal->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSignal()));
     }
+}
+
+void QUmlBroadcastSignalAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The specification of signal object transmitted to the target objects.");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

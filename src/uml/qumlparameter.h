@@ -94,6 +94,8 @@ protected:
     bool _isStream;
     QUmlOperation *_operation;
     QSet<QUmlParameterSet *> _parameterSet;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

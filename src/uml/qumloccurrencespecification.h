@@ -77,6 +77,8 @@ protected:
     QUmlLifeline *_covered;
     QSet<QUmlGeneralOrdering *> _toAfter;
     QSet<QUmlGeneralOrdering *> _toBefore;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

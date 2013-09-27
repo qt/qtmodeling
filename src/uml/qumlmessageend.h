@@ -69,6 +69,8 @@ protected:
     explicit QUmlMessageEnd();
 
     QUmlMessage *_message;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

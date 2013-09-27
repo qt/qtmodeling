@@ -87,6 +87,8 @@ protected:
     QSet<QUmlExtensionPoint *> _extensionPoint;
     QSet<QUmlInclude *> _include;
     QSet<QUmlClassifier *> _subject;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

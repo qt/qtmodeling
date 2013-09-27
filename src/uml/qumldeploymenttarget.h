@@ -74,6 +74,8 @@ protected:
     explicit QUmlDeploymentTarget();
 
     QSet<QUmlDeployment *> _deployment;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

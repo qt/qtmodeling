@@ -86,6 +86,8 @@ protected:
     QUmlActivity *_inActivity;
     QSet<QUmlActivityGroup *> _subgroup;
     QUmlActivityGroup *_superGroup;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -70,6 +70,8 @@ public:
 
 protected:
     QUmlEnumeration *_enumeration;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

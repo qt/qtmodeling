@@ -71,6 +71,8 @@ public:
 protected:
     QList<QString> _body;
     QList<QString> _language;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

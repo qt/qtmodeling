@@ -66,6 +66,7 @@ QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlConsiderIgnoreFragmentObject(this);
+    setPropertyData();
 }
 
 QUmlConsiderIgnoreFragment::~QUmlConsiderIgnoreFragment()
@@ -135,5 +136,15 @@ void QUmlConsiderIgnoreFragment::removeMessage(QUmlNamedElement *message)
     if (_message.contains(message)) {
         _message.remove(message);
     }
+}
+
+void QUmlConsiderIgnoreFragment::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::DocumentationRole] = QStringLiteral("The set of messages that apply to this fragment");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

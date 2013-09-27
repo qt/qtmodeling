@@ -79,6 +79,8 @@ protected:
     bool _isOrdered;
     QUmlBehavior *_reducer;
     QUmlOutputPin *_result;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -70,6 +70,8 @@ public:
 protected:
     QList<QUmlValueSpecification *> _operand;
     QString _symbol;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

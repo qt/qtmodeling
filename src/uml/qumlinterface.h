@@ -91,6 +91,8 @@ protected:
     QSet<QUmlReception *> _ownedReception;
     QUmlProtocolStateMachine *_protocol;
     QSet<QUmlInterface *> _redefinedInterface;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

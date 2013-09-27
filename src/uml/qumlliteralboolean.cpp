@@ -64,6 +64,7 @@ QUmlLiteralBoolean::QUmlLiteralBoolean(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLiteralBooleanObject(this);
+    setPropertyData();
 }
 
 QUmlLiteralBoolean::~QUmlLiteralBoolean()
@@ -136,5 +137,15 @@ bool QUmlLiteralBoolean::isComputable() const
     qWarning("UmlLiteralBoolean::isComputable(): to be implemented (operation)");
 
     return bool ();
+}
+
+void QUmlLiteralBoolean::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified Boolean value.");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

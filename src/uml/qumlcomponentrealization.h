@@ -73,6 +73,8 @@ public:
 protected:
     QUmlComponent *_abstraction;
     QSet<QUmlClassifier *> _realizingClassifier;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

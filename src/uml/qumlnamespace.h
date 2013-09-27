@@ -98,6 +98,8 @@ protected:
     QSet<QUmlNamedElement *> _ownedMember;
     QSet<QUmlConstraint *> _ownedRule;
     QSet<QUmlPackageImport *> _packageImport;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

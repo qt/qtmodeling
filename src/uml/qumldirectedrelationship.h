@@ -74,6 +74,8 @@ protected:
 
     QSet<QUmlElement *> _source;
     QSet<QUmlElement *> _target;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

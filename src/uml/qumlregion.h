@@ -95,6 +95,8 @@ protected:
     QUmlStateMachine *_stateMachine;
     QSet<QUmlVertex *> _subvertex;
     QSet<QUmlTransition *> _transition;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -68,6 +68,8 @@ public:
 
 protected:
     QUmlSignal *_signal;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

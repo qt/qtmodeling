@@ -71,6 +71,8 @@ public:
 protected:
     bool _isRelative;
     QUmlTimeExpression *_when;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

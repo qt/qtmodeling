@@ -71,6 +71,8 @@ public:
 protected:
     QUmlValueSpecification *_maxint;
     QUmlValueSpecification *_minint;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

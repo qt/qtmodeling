@@ -90,6 +90,8 @@ protected:
     QSet<QUmlConstraint *> _localPostcondition;
     QSet<QUmlConstraint *> _localPrecondition;
     QList<QUmlOutputPin *> _output;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

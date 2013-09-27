@@ -72,6 +72,8 @@ public:
 protected:
     QUmlInterface *_contract;
     QUmlBehavioredClassifier *_implementingClassifier;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -69,6 +69,8 @@ protected:
     explicit QUmlTypedElement();
 
     QUmlType *_type;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

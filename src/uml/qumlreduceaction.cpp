@@ -78,6 +78,7 @@ QUmlReduceAction::QUmlReduceAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlReduceActionObject(this);
+    setPropertyData();
 }
 
 QUmlReduceAction::~QUmlReduceAction()
@@ -231,5 +232,33 @@ void QUmlReduceAction::setResult(QUmlOutputPin *result)
             addOutput(result);
         }
     }
+}
+
+void QUmlReduceAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("collection")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("collection")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("collection")][QtModeling::DocumentationRole] = QStringLiteral("The collection to be reduced.");
+    QModelingObject::propertyDataHash[QStringLiteral("collection")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("collection")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("collection")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the order of the input collection should determine the order in which the behavior is applied to its elements.");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("reducer")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("reducer")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("reducer")][QtModeling::DocumentationRole] = QStringLiteral("Behavior that is applied to two elements of the input collection to produce a value that is the same type as elements of the collection.");
+    QModelingObject::propertyDataHash[QStringLiteral("reducer")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("reducer")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("reducer")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

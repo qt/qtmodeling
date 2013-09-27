@@ -71,6 +71,7 @@
 QUmlInvocationAction::QUmlInvocationAction() :
     _onPort(0)
 {
+    setPropertyData();
 }
 
 QUmlInvocationAction::~QUmlInvocationAction()
@@ -177,5 +178,21 @@ void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
         if (onPort->asQObject() && this->asQObject())
             QObject::connect(onPort->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOnPort()));
     }
+}
+
+void QUmlInvocationAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::DocumentationRole] = QStringLiteral("Specification of the ordered set of argument values that appears during execution.");
+    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
+    QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

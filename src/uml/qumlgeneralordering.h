@@ -71,6 +71,8 @@ public:
 protected:
     QUmlOccurrenceSpecification *_after;
     QUmlOccurrenceSpecification *_before;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

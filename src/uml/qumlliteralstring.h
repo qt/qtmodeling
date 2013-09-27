@@ -70,6 +70,8 @@ public:
 
 protected:
     QString _value;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

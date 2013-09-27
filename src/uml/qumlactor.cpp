@@ -82,6 +82,7 @@ QUmlActor::QUmlActor(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlActorObject(this);
+    setPropertyData();
 }
 
 QUmlActor::~QUmlActor()
@@ -145,5 +146,9 @@ QModelingObject *QUmlActor::clone() const
     foreach (QUmlBehavior *element, ownedBehavior())
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     return c;
+}
+
+void QUmlActor::setPropertyData()
+{
 }
 

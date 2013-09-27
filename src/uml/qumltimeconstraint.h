@@ -71,6 +71,8 @@ public:
 protected:
     bool _firstEvent;
     QUmlTimeInterval *_specification;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

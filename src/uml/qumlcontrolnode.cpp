@@ -65,6 +65,7 @@
  */
 QUmlControlNode::QUmlControlNode()
 {
+    setPropertyData();
 }
 
 QUmlControlNode::~QUmlControlNode()
@@ -98,5 +99,9 @@ QModelingObject *QUmlControlNode::clone() const
     foreach (QUmlActivityNode *element, redefinedNode())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
+}
+
+void QUmlControlNode::setPropertyData()
+{
 }
 

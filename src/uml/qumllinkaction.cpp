@@ -71,6 +71,7 @@
  */
 QUmlLinkAction::QUmlLinkAction()
 {
+    setPropertyData();
 }
 
 QUmlLinkAction::~QUmlLinkAction()
@@ -207,5 +208,21 @@ QUmlAssociation *QUmlLinkAction::association() const
     qWarning("UmlLinkAction::association(): to be implemented (operation)");
 
     return 0;
+}
+
+void QUmlLinkAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::DocumentationRole] = QStringLiteral("Data identifying one end of a link by the objects on its ends and qualifiers.");
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::DocumentationRole] = QStringLiteral("Pins taking end objects and qualifier values as input.");
+    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

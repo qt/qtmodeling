@@ -77,6 +77,8 @@ protected:
     bool _isMultireceive;
     QUmlBehavior *_selection;
     QUmlBehavior *_transformation;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

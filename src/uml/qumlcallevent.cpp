@@ -64,6 +64,7 @@ QUmlCallEvent::QUmlCallEvent(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCallEventObject(this);
+    setPropertyData();
 }
 
 QUmlCallEvent::~QUmlCallEvent()
@@ -115,5 +116,15 @@ void QUmlCallEvent::setOperation(QUmlOperation *operation)
         if (operation->asQObject() && this->asQObject())
             QObject::connect(operation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOperation()));
     }
+}
+
+void QUmlCallEvent::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("Designates the operation whose invocation raised the call event.");
+    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

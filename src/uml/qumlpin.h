@@ -68,6 +68,8 @@ protected:
     explicit QUmlPin();
 
     bool _isControl;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

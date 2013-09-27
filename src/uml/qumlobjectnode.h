@@ -87,6 +87,8 @@ protected:
     QtUml::ObjectNodeOrderingKind _ordering;
     QUmlBehavior *_selection;
     QUmlValueSpecification *_upperBound;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

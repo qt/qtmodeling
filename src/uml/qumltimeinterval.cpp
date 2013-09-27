@@ -68,6 +68,7 @@ QUmlTimeInterval::QUmlTimeInterval(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlTimeIntervalObject(this);
+    setPropertyData();
 }
 
 QUmlTimeInterval::~QUmlTimeInterval()
@@ -144,5 +145,21 @@ void QUmlTimeInterval::setMin(QUmlTimeExpression *min)
         if (min->asQObject() && this->asQObject())
             QObject::connect(min->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMin()));
     }
+}
+
+void QUmlTimeInterval::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the TimeExpression denoting the maximum value of the range.");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-max");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the TimeExpression denoting the minimum value of the range.");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-min");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -68,6 +68,8 @@ protected:
     explicit QUmlRelationship();
 
     QSet<QUmlElement *> _relatedElement;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

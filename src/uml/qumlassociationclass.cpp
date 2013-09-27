@@ -91,6 +91,7 @@ QUmlAssociationClass::QUmlAssociationClass(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlAssociationClassObject(this);
+    setPropertyData();
 }
 
 QUmlAssociationClass::~QUmlAssociationClass()
@@ -172,5 +173,9 @@ QModelingObject *QUmlAssociationClass::clone() const
     foreach (QUmlProperty *element, ownedEnd())
         c->addOwnedEnd(dynamic_cast<QUmlProperty *>(element->clone()));
     return c;
+}
+
+void QUmlAssociationClass::setPropertyData()
+{
 }
 

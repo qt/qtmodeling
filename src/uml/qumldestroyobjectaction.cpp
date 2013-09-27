@@ -76,6 +76,7 @@ QUmlDestroyObjectAction::QUmlDestroyObjectAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDestroyObjectActionObject(this);
+    setPropertyData();
 }
 
 QUmlDestroyObjectAction::~QUmlDestroyObjectAction()
@@ -194,5 +195,27 @@ void QUmlDestroyObjectAction::setTarget(QUmlInputPin *target)
             addInput(target);
         }
     }
+}
+
+void QUmlDestroyObjectAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether links in which the object participates are destroyed along with the object.");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether objects owned by the object are destroyed along with the object.");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("The input pin providing the object to be destroyed.");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

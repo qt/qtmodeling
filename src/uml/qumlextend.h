@@ -81,6 +81,8 @@ protected:
     QUmlUseCase *_extendedCase;
     QUmlUseCase *_extension;
     QList<QUmlExtensionPoint *> _extensionLocation;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

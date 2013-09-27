@@ -59,6 +59,7 @@ QUmlQualifierValue::QUmlQualifierValue(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlQualifierValueObject(this);
+    setPropertyData();
 }
 
 QUmlQualifierValue::~QUmlQualifierValue()
@@ -123,5 +124,21 @@ void QUmlQualifierValue::setValue(QUmlInputPin *value)
         if (value->asQObject() && this->asQObject())
             QObject::connect(value->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setValue()));
     }
+}
+
+void QUmlQualifierValue::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("Attribute representing the qualifier for which the value is to be specified.");
+    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Input pin from which the specified value for the qualifier is taken.");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

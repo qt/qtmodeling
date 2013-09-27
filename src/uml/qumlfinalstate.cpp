@@ -75,6 +75,7 @@ QUmlFinalState::QUmlFinalState(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlFinalStateObject(this);
+    setPropertyData();
 }
 
 QUmlFinalState::~QUmlFinalState()
@@ -126,5 +127,9 @@ QModelingObject *QUmlFinalState::clone() const
     if (submachine())
         c->setSubmachine(dynamic_cast<QUmlStateMachine *>(submachine()->clone()));
     return c;
+}
+
+void QUmlFinalState::setPropertyData()
+{
 }
 

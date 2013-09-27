@@ -56,6 +56,7 @@
  */
 QUmlDeployedArtifact::QUmlDeployedArtifact()
 {
+    setPropertyData();
 }
 
 QUmlDeployedArtifact::~QUmlDeployedArtifact()
@@ -74,5 +75,9 @@ QModelingObject *QUmlDeployedArtifact::clone() const
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     return c;
+}
+
+void QUmlDeployedArtifact::setPropertyData()
+{
 }
 

@@ -58,6 +58,7 @@
  */
 QUmlEvent::QUmlEvent()
 {
+    setPropertyData();
 }
 
 QUmlEvent::~QUmlEvent()
@@ -80,5 +81,9 @@ QModelingObject *QUmlEvent::clone() const
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     return c;
+}
+
+void QUmlEvent::setPropertyData()
+{
 }
 

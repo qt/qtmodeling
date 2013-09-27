@@ -69,6 +69,8 @@ public:
 protected:
     explicit QUmlEncapsulatedClassifier();
 
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -78,6 +78,8 @@ protected:
     QUmlBehavior *_classifierBehavior;
     QSet<QUmlInterfaceRealization *> _interfaceRealization;
     QSet<QUmlBehavior *> _ownedBehavior;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -73,6 +73,8 @@ public:
 
 protected:
     QUmlStereotype *_type;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

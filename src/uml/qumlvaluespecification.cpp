@@ -59,6 +59,7 @@
  */
 QUmlValueSpecification::QUmlValueSpecification()
 {
+    setPropertyData();
 }
 
 QUmlValueSpecification::~QUmlValueSpecification()
@@ -166,5 +167,9 @@ int QUmlValueSpecification::unlimitedValue() const
     qWarning("UmlValueSpecification::unlimitedValue(): to be implemented (operation)");
 
     return int ();
+}
+
+void QUmlValueSpecification::setPropertyData()
+{
 }
 

@@ -79,6 +79,7 @@ QUmlState::QUmlState(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlStateObject(this);
+    setPropertyData();
 }
 
 QUmlState::~QUmlState()
@@ -642,5 +643,99 @@ bool QUmlState::isRedefinitionContextValid(QUmlState *redefined) const
 
     Q_UNUSED(redefined);
     return bool ();
+}
+
+void QUmlState::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::DocumentationRole] = QStringLiteral("The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.");
+    QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectionPointReference-state");
+
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::DocumentationRole] = QStringLiteral("The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::OppositeEndRole] = QStringLiteral("Pseudostate-state");
+
+    QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::DocumentationRole] = QStringLiteral("A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.");
+    QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::DocumentationRole] = QStringLiteral("An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first.");
+    QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::DocumentationRole] = QStringLiteral("An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.");
+    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::DocumentationRole] = QStringLiteral("An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution.");
+    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::DocumentationRole] = QStringLiteral("A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.");
+    QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::DocumentationRole] = QStringLiteral("A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::DocumentationRole] = QStringLiteral("A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.");
+    QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::DocumentationRole] = QStringLiteral("A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).");
+    QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::DocumentationRole] = QStringLiteral("The state of which this state is a redefinition.");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::DocumentationRole] = QStringLiteral("References the classifier in which context this element may be redefined.");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("RedefinableElement-redefinitionContext");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::DocumentationRole] = QStringLiteral("The regions owned directly by the state.");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::OppositeEndRole] = QStringLiteral("Region-state");
+
+    QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::DocumentationRole] = QStringLiteral("Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.");
+    QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
+    QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::DocumentationRole] = QStringLiteral("The state machine that is to be inserted in place of the (submachine) state.");
+    QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::OppositeEndRole] = QStringLiteral("StateMachine-submachineState");
+
 }
 

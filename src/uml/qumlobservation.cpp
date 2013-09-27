@@ -58,6 +58,7 @@
  */
 QUmlObservation::QUmlObservation()
 {
+    setPropertyData();
 }
 
 QUmlObservation::~QUmlObservation()
@@ -80,5 +81,9 @@ QModelingObject *QUmlObservation::clone() const
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     return c;
+}
+
+void QUmlObservation::setPropertyData()
+{
 }
 

@@ -77,6 +77,8 @@ public:
 protected:
     QUmlActivity *_activityScope;
     QUmlStructuredActivityNode *_scope;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

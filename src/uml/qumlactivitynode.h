@@ -101,6 +101,8 @@ protected:
     QSet<QUmlActivityEdge *> _incoming;
     QSet<QUmlActivityEdge *> _outgoing;
     QSet<QUmlActivityNode *> _redefinedNode;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

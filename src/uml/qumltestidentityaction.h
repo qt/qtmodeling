@@ -75,6 +75,8 @@ protected:
     QUmlInputPin *_first;
     QUmlOutputPin *_result;
     QUmlInputPin *_second;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

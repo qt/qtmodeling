@@ -74,6 +74,8 @@ public:
 protected:
     QSet<QUmlActivityEdge *> _interruptingEdge;
     QSet<QUmlActivityNode *> _node;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

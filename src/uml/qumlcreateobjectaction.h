@@ -72,6 +72,8 @@ public:
 protected:
     QUmlClassifier *_classifier;
     QUmlOutputPin *_result;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

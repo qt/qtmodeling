@@ -63,6 +63,8 @@ public:
 protected:
     explicit QUmlObservation();
 
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

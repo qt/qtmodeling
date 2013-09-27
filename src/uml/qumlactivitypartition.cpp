@@ -68,6 +68,7 @@ QUmlActivityPartition::QUmlActivityPartition(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlActivityPartitionObject(this);
+    setPropertyData();
 }
 
 QUmlActivityPartition::~QUmlActivityPartition()
@@ -322,5 +323,51 @@ void QUmlActivityPartition::setSuperPartition(QUmlActivityPartition *superPartit
         // Adjust subsetted properties
         setSuperGroup(superPartition);
     }
+}
+
+void QUmlActivityPartition::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::DocumentationRole] = QStringLiteral("Edges immediately contained in the group.");
+    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityGroup-containedEdge");
+    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-inPartition");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the partition groups other partitions along a dimension.");
+    QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the partition represents an entity to which the partitioning structure does not apply.");
+    QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::DocumentationRole] = QStringLiteral("Nodes immediately contained in the group.");
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityGroup-containedNode");
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-inPartition");
+
+    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::DocumentationRole] = QStringLiteral("An element constraining behaviors invoked by nodes in the partition.");
+    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::DocumentationRole] = QStringLiteral("Partitions immediately contained in the partition.");
+    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityGroup-subgroup");
+    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::DocumentationRole] = QStringLiteral("Partition immediately containing the partition.");
+    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityGroup-superGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

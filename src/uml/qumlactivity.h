@@ -100,6 +100,8 @@ protected:
     QSet<QUmlActivityPartition *> _partition;
     QSet<QUmlStructuredActivityNode *> _structuredNode;
     QSet<QUmlVariable *> _variable;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

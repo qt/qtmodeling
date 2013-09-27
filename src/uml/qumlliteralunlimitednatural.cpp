@@ -64,6 +64,7 @@ QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLiteralUnlimitedNaturalObject(this);
+    setPropertyData();
 }
 
 QUmlLiteralUnlimitedNatural::~QUmlLiteralUnlimitedNatural()
@@ -136,5 +137,15 @@ int QUmlLiteralUnlimitedNatural::unlimitedValue() const
     qWarning("UmlLiteralUnlimitedNatural::unlimitedValue(): to be implemented (operation)");
 
     return int ();
+}
+
+void QUmlLiteralUnlimitedNatural::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified UnlimitedNatural value.");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

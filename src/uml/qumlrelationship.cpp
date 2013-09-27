@@ -51,6 +51,7 @@
  */
 QUmlRelationship::QUmlRelationship()
 {
+    setPropertyData();
 }
 
 QUmlRelationship::~QUmlRelationship()
@@ -95,5 +96,15 @@ void QUmlRelationship::removeRelatedElement(QUmlElement *relatedElement)
     if (_relatedElement.contains(relatedElement)) {
         _relatedElement.remove(relatedElement);
     }
+}
+
+void QUmlRelationship::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("relatedElement")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("relatedElement")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("relatedElement")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the elements related by the Relationship.");
+    QModelingObject::propertyDataHash[QStringLiteral("relatedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("relatedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("relatedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -9,4 +9,9 @@ load(qt_module)
 
 HEADERS += \
     qtmodelingglobal.h \
+    qtmodelingnamespace.h \
     qmodelingobject.h
+
+SOURCES += \
+    qtmodelingnamespace.cpp \
+    qmodelingobject.cpp

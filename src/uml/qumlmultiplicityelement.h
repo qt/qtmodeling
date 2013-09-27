@@ -91,6 +91,8 @@ protected:
     bool _isUnique;
     QUmlValueSpecification *_lowerValue;
     QUmlValueSpecification *_upperValue;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

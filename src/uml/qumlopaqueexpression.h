@@ -85,6 +85,8 @@ protected:
     QUmlBehavior *_behavior;
     QList<QString> _body;
     QList<QString> _language;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -66,6 +66,8 @@ public:
     bool isNull() const;
 
 protected:
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

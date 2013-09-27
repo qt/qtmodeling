@@ -71,6 +71,8 @@ public:
 protected:
     QUmlTimeExpression *_max;
     QUmlTimeExpression *_min;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

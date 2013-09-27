@@ -66,6 +66,7 @@ QUmlInterval::QUmlInterval(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlIntervalObject(this);
+    setPropertyData();
 }
 
 QUmlInterval::~QUmlInterval()
@@ -142,5 +143,21 @@ void QUmlInterval::setMin(QUmlValueSpecification *min)
         if (min->asQObject() && this->asQObject())
             QObject::connect(min->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMin()));
     }
+}
+
+void QUmlInterval::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the ValueSpecification denoting the maximum value of the range.");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the ValueSpecification denoting the minimum value of the range.");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

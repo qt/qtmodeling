@@ -64,6 +64,7 @@ QUmlExtensionPoint::QUmlExtensionPoint(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExtensionPointObject(this);
+    setPropertyData();
 }
 
 QUmlExtensionPoint::~QUmlExtensionPoint()
@@ -117,5 +118,15 @@ void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
         // Adjust subsetted properties
         setNamespace(useCase);
     }
+}
+
+void QUmlExtensionPoint::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that owns this extension point.");
+    QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::OppositeEndRole] = QStringLiteral("UseCase-extensionPoint");
+
 }
 

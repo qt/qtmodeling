@@ -77,6 +77,8 @@ protected:
     QList<QUmlElement *> _constrainedElement;
     QUmlNamespace *_context;
     QUmlValueSpecification *_specification;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

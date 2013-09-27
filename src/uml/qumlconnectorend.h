@@ -74,6 +74,8 @@ public:
 protected:
     QUmlProperty *_partWithPort;
     QUmlConnectableElement *_role;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

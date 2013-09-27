@@ -68,6 +68,8 @@ public:
 
 protected:
     QSet<QUmlNode *> _nestedNode;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -73,6 +73,8 @@ public:
 protected:
     QSet<QUmlDependency *> _roleBinding;
     QUmlCollaboration *_type;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

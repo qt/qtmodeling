@@ -58,6 +58,7 @@
 QUmlTypedElement::QUmlTypedElement() :
     _type(0)
 {
+    setPropertyData();
 }
 
 QUmlTypedElement::~QUmlTypedElement()
@@ -101,5 +102,15 @@ void QUmlTypedElement::setType(QUmlType *type)
         if (type->asQObject() && this->asQObject())
             QObject::connect(type->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setType()));
     }
+}
+
+void QUmlTypedElement::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.The type of the TypedElement.");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

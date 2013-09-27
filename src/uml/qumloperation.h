@@ -126,6 +126,8 @@ protected:
     QSet<QUmlType *> _raisedException;
     QSet<QUmlOperation *> _redefinedOperation;
     QUmlOperationTemplateParameter *_templateParameter;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

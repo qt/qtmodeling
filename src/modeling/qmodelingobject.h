@@ -42,12 +42,14 @@
 #define QMODELINGBASE_H
 
 #include <QtModeling/QtModelingGlobal>
+#include <QtModeling/QtModelingNamespace>
 
 #include <QtCore/QSet>
 #include <QtCore/QList>
 #include <QtCore/QString>
 #include <QtCore/QPointer>
 #include <QtCore/QMetaType>
+#include <QtCore/QMetaProperty>
 
 QT_BEGIN_HEADER
 
@@ -67,9 +69,16 @@ public:
 
     virtual QModelingObject *clone() const = 0;
 
+    static inline QVariant propertyData(QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role)
+    {
+        return propertyDataHash[QString::fromLatin1(metaProperty.name())][role];
+    }
+
 protected:
     QModelingObject() : deletingFromQObject(false), _qObject(0) {}
     QPointer<QObject> _qObject;
+    static QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > propertyDataHash;
+    virtual void setPropertyData() = 0;
 };
 
 QT_END_NAMESPACE

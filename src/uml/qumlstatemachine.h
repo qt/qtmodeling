@@ -91,6 +91,8 @@ protected:
     QSet<QUmlStateMachine *> _extendedStateMachine;
     QSet<QUmlRegion *> _region;
     QSet<QUmlState *> _submachineState;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

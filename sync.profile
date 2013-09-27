@@ -14,6 +14,7 @@
 %classnames = (
     "qtmodelingversion.h" => "QtModelingVersion",
     "qtmodelingglobal.h"  => "QtModelingGlobal",
+    "qtmodelingnamespace.h"  => "QtModelingNamespace",
     "qtwrappedobjectsversion.h" => "QtWrappedObjectsVersion",
     "qtwrappedobjectsglobal.h"  => "QtWrappedObjectsGlobal",
     "qtwrappedobjectsnamespace.h"  => "QtWrappedObjectsNamespace",

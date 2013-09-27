@@ -80,6 +80,7 @@ QUmlSignal::QUmlSignal(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlSignalObject(this);
+    setPropertyData();
 }
 
 QUmlSignal::~QUmlSignal()
@@ -182,5 +183,15 @@ void QUmlSignal::removeOwnedAttribute(QUmlProperty *ownedAttribute)
         removeOwnedMember(ownedAttribute);
         removeAttribute(ownedAttribute);
     }
+}
+
+void QUmlSignal::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes owned by the signal.");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

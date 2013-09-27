@@ -77,6 +77,8 @@ protected:
     QtUml::PseudostateKind _kind;
     QUmlState *_state;
     QUmlStateMachine *_stateMachine;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

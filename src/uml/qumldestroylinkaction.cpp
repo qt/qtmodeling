@@ -76,6 +76,7 @@ QUmlDestroyLinkAction::QUmlDestroyLinkAction(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlDestroyLinkActionObject(this);
+    setPropertyData();
 }
 
 QUmlDestroyLinkAction::~QUmlDestroyLinkAction()
@@ -159,5 +160,15 @@ void QUmlDestroyLinkAction::removeEndData(QUmlLinkEndDestructionData *endData)
         if (endData->asQObject())
             endData->asQObject()->setParent(0);
     }
+}
+
+void QUmlDestroyLinkAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::DocumentationRole] = QStringLiteral("Specifies ends of association and inputs.");
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("LinkAction-endData");
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

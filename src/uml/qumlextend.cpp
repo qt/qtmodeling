@@ -66,6 +66,7 @@ QUmlExtend::QUmlExtend(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExtendObject(this);
+    setPropertyData();
 }
 
 QUmlExtend::~QUmlExtend()
@@ -217,5 +218,33 @@ void QUmlExtend::removeExtensionLocation(QUmlExtensionPoint *extensionLocation)
     if (_extensionLocation.contains(extensionLocation)) {
         _extensionLocation.removeAll(extensionLocation);
     }
+}
+
+void QUmlExtend::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::DocumentationRole] = QStringLiteral("References the condition that must hold when the first extension point is reached for the extension to take place. If no constraint is associated with the extend relationship, the extension is unconditional.");
+    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("extendedCase")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("extendedCase")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("extendedCase")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that is being extended.");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedCase")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedCase")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedCase")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that represents the extension and owns the extend relationship.");
+    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-source NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::OppositeEndRole] = QStringLiteral("UseCase-extend");
+
+    QModelingObject::propertyDataHash[QStringLiteral("extensionLocation")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("extensionLocation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("extensionLocation")][QtModeling::DocumentationRole] = QStringLiteral("An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)");
+    QModelingObject::propertyDataHash[QStringLiteral("extensionLocation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("extensionLocation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("extensionLocation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

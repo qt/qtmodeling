@@ -63,6 +63,7 @@ QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlGeneralOrderingObject(this);
+    setPropertyData();
 }
 
 QUmlGeneralOrdering::~QUmlGeneralOrdering()
@@ -133,5 +134,21 @@ void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
         if (before->asQObject() && this->asQObject())
             QObject::connect(before->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBefore()));
     }
+}
+
+void QUmlGeneralOrdering::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::DocumentationRole] = QStringLiteral("The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.");
+    QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::OppositeEndRole] = QStringLiteral("OccurrenceSpecification-toBefore");
+
+    QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::DocumentationRole] = QStringLiteral("The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.");
+    QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::OppositeEndRole] = QStringLiteral("OccurrenceSpecification-toAfter");
+
 }
 

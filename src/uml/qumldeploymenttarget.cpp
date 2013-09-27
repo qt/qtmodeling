@@ -58,6 +58,7 @@
  */
 QUmlDeploymentTarget::QUmlDeploymentTarget()
 {
+    setPropertyData();
 }
 
 QUmlDeploymentTarget::~QUmlDeploymentTarget()
@@ -167,5 +168,21 @@ void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
             deployment->setLocation(0);
         }
     }
+}
+
+void QUmlDeploymentTarget::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::DocumentationRole] = QStringLiteral("The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.");
+    QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::DocumentationRole] = QStringLiteral("The set of Deployments for a DeploymentTarget.");
+    QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement NamedElement-clientDependency");
+    QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::OppositeEndRole] = QStringLiteral("Deployment-location");
+
 }
 

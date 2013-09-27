@@ -69,6 +69,7 @@ QUmlFlowFinalNode::QUmlFlowFinalNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlFlowFinalNodeObject(this);
+    setPropertyData();
 }
 
 QUmlFlowFinalNode::~QUmlFlowFinalNode()
@@ -106,5 +107,9 @@ QModelingObject *QUmlFlowFinalNode::clone() const
     foreach (QUmlActivityNode *element, redefinedNode())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
+}
+
+void QUmlFlowFinalNode::setPropertyData()
+{
 }
 

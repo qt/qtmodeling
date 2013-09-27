@@ -75,6 +75,7 @@ QUmlActivityParameterNode::QUmlActivityParameterNode(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlActivityParameterNodeObject(this);
+    setPropertyData();
 }
 
 QUmlActivityParameterNode::~QUmlActivityParameterNode()
@@ -147,5 +148,15 @@ void QUmlActivityParameterNode::setParameter(QUmlParameter *parameter)
         if (parameter->asQObject() && this->asQObject())
             QObject::connect(parameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setParameter()));
     }
+}
+
+void QUmlActivityParameterNode::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::DocumentationRole] = QStringLiteral("The parameter the object node will be accepting or providing values for.");
+    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

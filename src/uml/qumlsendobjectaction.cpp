@@ -76,6 +76,7 @@ QUmlSendObjectAction::QUmlSendObjectAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlSendObjectActionObject(this);
+    setPropertyData();
 }
 
 QUmlSendObjectAction::~QUmlSendObjectAction()
@@ -180,5 +181,21 @@ void QUmlSendObjectAction::setTarget(QUmlInputPin *target)
             addInput(target);
         }
     }
+}
+
+void QUmlSendObjectAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("request")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("request")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("request")][QtModeling::DocumentationRole] = QStringLiteral("The request object, which is transmitted to the target object. The object may be copied in transmission, so identity might not be preserved.");
+    QModelingObject::propertyDataHash[QStringLiteral("request")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InvocationAction-argument");
+    QModelingObject::propertyDataHash[QStringLiteral("request")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("request")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("The target object to which the object is sent.");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

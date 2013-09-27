@@ -106,6 +106,8 @@ protected:
     QSet<QUmlPackageMerge *> _packageMerge;
     QSet<QUmlPackageableElement *> _packagedElement;
     QSet<QUmlProfileApplication *> _profileApplication;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

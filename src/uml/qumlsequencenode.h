@@ -69,6 +69,8 @@ public:
 
 protected:
     QList<QUmlExecutableNode *> _executableNode;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

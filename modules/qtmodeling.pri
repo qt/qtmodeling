@@ -1,7 +1,7 @@
-QT.modeling.VERSION = 5.1.0
+QT.modeling.VERSION = 5.1.1
 QT.modeling.MAJOR_VERSION = 5
 QT.modeling.MINOR_VERSION = 1
-QT.modeling.PATCH_VERSION = 0
+QT.modeling.PATCH_VERSION = 1
 
 QT.modeling.name = QtModeling
 QT.modeling.bins = $$QT_MODULE_BIN_BASE

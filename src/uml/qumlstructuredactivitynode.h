@@ -98,6 +98,8 @@ protected:
     QSet<QUmlInputPin *> _structuredNodeInput;
     QSet<QUmlOutputPin *> _structuredNodeOutput;
     QSet<QUmlVariable *> _variable;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

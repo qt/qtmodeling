@@ -68,6 +68,8 @@ public:
 
 protected:
     QUmlOutputPin *_returnInformation;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

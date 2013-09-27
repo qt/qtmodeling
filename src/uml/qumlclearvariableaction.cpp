@@ -74,6 +74,7 @@ QUmlClearVariableAction::QUmlClearVariableAction(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlClearVariableActionObject(this);
+    setPropertyData();
 }
 
 QUmlClearVariableAction::~QUmlClearVariableAction()
@@ -120,5 +121,9 @@ QModelingObject *QUmlClearVariableAction::clone() const
     if (variable())
         c->setVariable(dynamic_cast<QUmlVariable *>(variable()->clone()));
     return c;
+}
+
+void QUmlClearVariableAction::setPropertyData()
+{
 }
 

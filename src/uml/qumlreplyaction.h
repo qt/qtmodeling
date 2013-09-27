@@ -76,6 +76,8 @@ protected:
     QUmlTrigger *_replyToCall;
     QSet<QUmlInputPin *> _replyValue;
     QUmlInputPin *_returnInformation;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -63,6 +63,7 @@ QUmlLiteralNull::QUmlLiteralNull(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlLiteralNullObject(this);
+    setPropertyData();
 }
 
 QUmlLiteralNull::~QUmlLiteralNull()
@@ -113,5 +114,9 @@ bool QUmlLiteralNull::isNull() const
     qWarning("UmlLiteralNull::isNull(): to be implemented (operation)");
 
     return bool ();
+}
+
+void QUmlLiteralNull::setPropertyData()
+{
 }
 

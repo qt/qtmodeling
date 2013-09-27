@@ -99,6 +99,8 @@ protected:
     QSet<QUmlActivityEdge *> _realizingActivityEdge;
     QSet<QUmlConnector *> _realizingConnector;
     QSet<QUmlMessage *> _realizingMessage;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

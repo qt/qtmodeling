@@ -68,6 +68,8 @@ public:
 
 protected:
     QUmlParameter *_parameter;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

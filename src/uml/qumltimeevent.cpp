@@ -65,6 +65,7 @@ QUmlTimeEvent::QUmlTimeEvent(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlTimeEventObject(this);
+    setPropertyData();
 }
 
 QUmlTimeEvent::~QUmlTimeEvent()
@@ -145,5 +146,21 @@ void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
             addOwnedElement(when);
         }
     }
+}
+
+void QUmlTimeEvent::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("isRelative")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isRelative")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isRelative")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether it is relative or absolute time.");
+    QModelingObject::propertyDataHash[QStringLiteral("isRelative")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isRelative")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("isRelative")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("when")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("when")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("when")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the corresponding time deadline.");
+    QModelingObject::propertyDataHash[QStringLiteral("when")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("when")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("when")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

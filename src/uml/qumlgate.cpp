@@ -61,6 +61,7 @@ QUmlGate::QUmlGate(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlGateObject(this);
+    setPropertyData();
 }
 
 QUmlGate::~QUmlGate()
@@ -85,5 +86,9 @@ QModelingObject *QUmlGate::clone() const
     if (message())
         c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));
     return c;
+}
+
+void QUmlGate::setPropertyData()
+{
 }
 

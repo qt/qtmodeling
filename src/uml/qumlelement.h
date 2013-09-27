@@ -81,6 +81,8 @@ protected:
     QSet<QUmlComment *> _ownedComment;
     QSet<QUmlElement *> _ownedElement;
     QUmlElement *_owner;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

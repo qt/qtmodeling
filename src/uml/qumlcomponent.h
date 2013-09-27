@@ -89,6 +89,8 @@ protected:
     bool _isIndirectlyInstantiated;
     QSet<QUmlPackageableElement *> _packagedElement;
     QSet<QUmlComponentRealization *> _realization;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

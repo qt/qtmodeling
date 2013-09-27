@@ -96,6 +96,7 @@ QUmlStateMachine::QUmlStateMachine(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlStateMachineObject(this);
+    setPropertyData();
 }
 
 QUmlStateMachine::~QUmlStateMachine()
@@ -407,5 +408,33 @@ bool QUmlStateMachine::isRedefinitionContextValid(QUmlStateMachine *redefined) c
 
     Q_UNUSED(redefined);
     return bool ();
+}
+
+void QUmlStateMachine::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::DocumentationRole] = QStringLiteral("The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::OppositeEndRole] = QStringLiteral("Pseudostate-stateMachine");
+
+    QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::DocumentationRole] = QStringLiteral("The state machines of which this is an extension.");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Behavior-redefinedBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::DocumentationRole] = QStringLiteral("The regions owned directly by the state machine.");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::OppositeEndRole] = QStringLiteral("Region-stateMachine");
+
+    QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::DocumentationRole] = QStringLiteral("References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.");
+    QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::OppositeEndRole] = QStringLiteral("State-submachine");
+
 }
 

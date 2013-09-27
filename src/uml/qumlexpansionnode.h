@@ -71,6 +71,8 @@ public:
 protected:
     QUmlExpansionRegion *_regionAsInput;
     QUmlExpansionRegion *_regionAsOutput;
+
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE
