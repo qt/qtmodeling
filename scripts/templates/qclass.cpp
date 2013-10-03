@@ -415,7 +415,7 @@ void Q${namespace}${className}::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::OppositeEndRole] = QStringLiteral("
 [%- IF association != "" -%]
 [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[@xmi:type=\"uml:Association\" and @name=\"${association}\"]/@memberEnd").split(' ') -%]
-[%- NEXT IF memberEnd.split('-').0 == className -%]
+[%- NEXT IF memberEnd == className.replace('$', "-${attribute.findvalue(\"@name\")}") -%]
 [%- SET oppositeProperty = xmi.findnodes("//packagedElement[@xmi:type=\"uml:Class\" and @name=\"${memberEnd.split('-').0}\"]/ownedAttribute[@name=\"${memberEnd.split('-').1}\"]") -%]
 [%- IF oppositeProperty.findvalue("@name") != "" -%]${oppositeProperty.findvalue("@xmi:id")}[%- END -%]
 [%- END -%]

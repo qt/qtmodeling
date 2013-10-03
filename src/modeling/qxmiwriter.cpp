@@ -44,6 +44,8 @@
 
 #include <QtModeling/QModelingObject>
 
+#include <QtCore/QDebug>
+
 #include <QtCore/QSet>
 #include <QtCore/QDir>
 #include <QtCore/QJsonObject>
@@ -151,7 +153,8 @@ void QXmiWriter::populateIdMap(QObject *modelingObject, int index)
 
         if (aggregationRole == QString::fromLatin1("composite"))
             if (!QModelingObject::propertyData(metaProperty, QtModeling::OppositeEndRole).toString().isEmpty()) {
-                d->blacklistedOppositeEnds << QModelingObject::propertyData(metaProperty, QtModeling::OppositeEndRole).toString();
+                d->blacklistedOppositeEnds << QModelingObject::propertyData(metaProperty, QtModeling::OppositeEndRole).toString().split('-').last();
+                qDebug() << "Incluindo " << QModelingObject::propertyData(metaProperty, QtModeling::OppositeEndRole).toString().split('-').last();
             }
 
         if (QModelingObject::propertyData(metaProperty, QtModeling::AggregationRole).toString() != QString::fromLatin1("composite"))
@@ -189,11 +192,11 @@ void QXmiWriter::writeObject(QObject *modelingObject, QString elementName)
 
     d->visitedObjects.append(modelingObject);
 
-    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->modelingObject->metaObject()->className()).split(QString::fromLatin1("::")).last().remove(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value())).prepend(QString::fromLatin1("%1:").arg(d->metaModelXmlNamespace))
+    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->modelingObject->metaObject()->className()).remove(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value())).remove(QRegExp(QStringLiteral("Object$"))).prepend(QString::fromLatin1("%1:").arg(d->metaModelXmlNamespace))
                                                       :
                                                         elementName);
     if (!elementName.isEmpty())
-        d->writer.writeAttribute(QString::fromLatin1("xmi:type"), QString::fromLatin1(modelingObject->metaObject()->className()).remove(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value())).prepend(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value()).mid(1).toLower().append(QString::fromLatin1(":"))));
+        d->writer.writeAttribute(QString::fromLatin1("xmi:type"), QString::fromLatin1(modelingObject->metaObject()->className()).remove(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value())).remove(QRegExp(QStringLiteral("Object$"))).prepend(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value()).mid(1).toLower().append(QString::fromLatin1(":"))));
 
     const QMetaObject *metaObject = modelingObject->metaObject();
     int propertyCount = metaObject->propertyCount();
@@ -227,7 +230,8 @@ void QXmiWriter::writeObject(QObject *modelingObject, QString elementName)
     for (int i = propertyCount - 1; i >= 0; --i) {
         QMetaProperty metaProperty = metaObject->property(i);
 
-        if (d->blacklistedOppositeEnds.contains(QString::fromLatin1("%1::%2").arg(QString::fromLatin1(metaObject->className())).arg(QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$"))))))
+        qDebug() << "Contem " << QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$")));
+        if (d->blacklistedOppositeEnds.contains(QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QString::fromLatin1("_$")))))
             continue;
 
         QString typeName = QString::fromLatin1(metaProperty.typeName());
