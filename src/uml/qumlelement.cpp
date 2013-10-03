@@ -156,7 +156,7 @@ void QUmlElement::setOwner(QUmlElement *owner)
 
     if (_owner != owner) {
         _owner = owner;
-        if (owner->asQObject() && this->asQObject())
+        if (owner && owner->asQObject() && this->asQObject())
             QObject::connect(owner->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwner()));
     }
 }
@@ -168,9 +168,9 @@ void QUmlElement::setOwner(QUmlElement *owner)
  */
 QSet<QUmlElement *> QUmlElement::allOwnedElements() const
 {
-    qWarning("UmlElement::allOwnedElements(): to be implemented (operation)");
-
-    return QSet<QUmlElement *> ();
+    QSet<QUmlElement *> allOwnedElements_;
+    allOwnedElements(allOwnedElements_);
+    return allOwnedElements_;
 }
 
 /*!
@@ -178,9 +178,7 @@ QSet<QUmlElement *> QUmlElement::allOwnedElements() const
  */
 bool QUmlElement::mustBeOwned() const
 {
-    qWarning("UmlElement::mustBeOwned(): to be implemented (operation)");
-
-    return bool ();
+    return true;
 }
 
 void QUmlElement::setPropertyData()
@@ -203,5 +201,12 @@ void QUmlElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("owner")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("owner")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
+}
+
+void QUmlElement::allOwnedElements(QSet<QUmlElement *> &allOwnedElements_) const
+{
+    allOwnedElements_.unite(_ownedElement);
+    foreach (QUmlElement *element, _ownedElement)
+        element->allOwnedElements(allOwnedElements_);
 }
 

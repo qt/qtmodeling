@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,13 +38,60 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qumlmetamodel.h"
+#ifndef QMODELINGOBJECTVIEW_H
+#define QMODELINGOBJECTVIEW_H
+
+#include <QtCore/QModelIndex>
+
+#include <QtModelingWidgets/QtModelingWidgetsGlobal>
+
+#include <QtWidgets/QWidget>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-void QUmlMetaModel::init(QScriptEngine *scriptEngine)
+QT_MODULE(QtModelingWidgets)
+
+class QAbstractItemModel;
+class QItemSelection;
+class QQuickItem;
+
+class QModelingObjectViewPrivate;
+
+class Q_MODELINGWIDGETS_EXPORT QModelingObjectView : public QWidget
 {
-}
+    Q_OBJECT
+
+    Q_DISABLE_COPY(QModelingObjectView)
+    Q_DECLARE_PRIVATE(QModelingObjectView)
+
+public:
+    explicit QModelingObjectView(QWidget *parent = 0, Qt::WindowFlags f = 0);
+
+public Q_SLOTS:
+    virtual void setModel(QAbstractItemModel *model);
+    void updateSelected();
+
+Q_SIGNALS:
+    void modelingObjectChanged(QObject *selectedModelingObject, QModelIndex index = QModelIndex());
+    void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
+
+protected:
+     void contextMenuEvent(QContextMenuEvent *event);
+
+private Q_SLOTS:
+    void handleAddMethod();
+    void addElementToView();
+    void deleteObject();
+    void modelReset();
+    void rowsInserted(const QModelIndex &parent, int first);
+    void selectionChanged(const QItemSelection &selected);
+};
 
 QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QMODELINGOBJECTVIEW_H
 

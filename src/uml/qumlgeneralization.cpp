@@ -107,7 +107,7 @@ void QUmlGeneralization::setGeneral(QUmlClassifier *general)
         removeTarget(_general);
 
         _general = general;
-        if (general->asQObject() && this->asQObject())
+        if (general && general->asQObject() && this->asQObject())
             QObject::connect(general->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setGeneral()));
 
         // Adjust subsetted properties
@@ -195,7 +195,7 @@ void QUmlGeneralization::setSpecific(QUmlClassifier *specific)
         removeSource(_specific);
 
         _specific = specific;
-        if (specific->asQObject() && this->asQObject())
+        if (specific && specific->asQObject() && this->asQObject())
             QObject::connect(specific->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecific()));
 
         // Adjust subsetted properties

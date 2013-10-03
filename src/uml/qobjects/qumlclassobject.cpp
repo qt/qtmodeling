@@ -132,7 +132,10 @@ QString QUmlClassObject::name() const
 
 QObject *QUmlClassObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlClass *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClass *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClass *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlClassObject::namespace_() const
@@ -198,8 +201,12 @@ const QSet<QObject *> QUmlClassObject::packageImport() const
 
 QObject *QUmlClassObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlClass *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClass *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClass *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlClassObject::visibility() const
@@ -296,7 +303,10 @@ bool QUmlClassObject::isFinalSpecialization() const
 
 QObject *QUmlClassObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlClass *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClass *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClass *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlClassObject::ownedUseCase() const
@@ -325,7 +335,10 @@ const QSet<QObject *> QUmlClassObject::redefinedClassifier() const
 
 QObject *QUmlClassObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlClass *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClass *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClass *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlClassObject::substitution() const
@@ -338,7 +351,10 @@ const QSet<QObject *> QUmlClassObject::substitution() const
 
 QObject *QUmlClassObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlClass *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClass *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClass *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlClassObject::useCase() const
@@ -389,7 +405,10 @@ const QSet<QObject *> QUmlClassObject::ownedPort() const
 
 QObject *QUmlClassObject::classifierBehavior() const
 {
-    return qmodelingobjectproperty_cast<QUmlClass *>(this)->classifierBehavior()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClass *>(this)->classifierBehavior())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClass *>(this)->classifierBehavior()->asQObject();
 }
 
 const QSet<QObject *> QUmlClassObject::interfaceRealization() const

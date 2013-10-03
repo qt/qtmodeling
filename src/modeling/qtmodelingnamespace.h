@@ -56,6 +56,7 @@ class Q_MODELING_EXPORT QtModeling : public QObject
     Q_OBJECT
 
     Q_ENUMS(MetaPropertyDataRole)
+    Q_ENUMS(ModelingObjectRole)
 
 public:
     enum MetaPropertyDataRole
@@ -72,11 +73,22 @@ public:
         UserRole = 0x0100
     };
 
+    enum ModelingObjectRole
+    {
+        ModelElementRole = 0,
+        ImportedElementRole,
+        ImportedPackageRole,
+        AppliedProfileRole
+    };
+
 private:
     explicit QtModeling();
 };
 
 QT_END_NAMESPACE
+
+Q_DECLARE_METATYPE (QT_PREPEND_NAMESPACE(QtModeling::MetaPropertyDataRole))
+Q_DECLARE_METATYPE (QT_PREPEND_NAMESPACE(QtModeling::ModelingObjectRole))
 
 QT_END_HEADER
 

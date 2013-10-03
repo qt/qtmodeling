@@ -222,7 +222,7 @@ void QUmlProperty::setAssociationEnd(QUmlProperty *associationEnd)
 }
 
 /*!
-    References the Class that owns the Property.References the Class that owns the Property.
+    References the Class that owns the Property.References the Class that owns the Property.
  */
 QUmlClass *QUmlProperty::class_() const
 {
@@ -239,7 +239,7 @@ void QUmlProperty::setClass(QUmlClass *class_)
         // Adjust subsetted properties
 
         _class_ = class_;
-        if (class_->asQObject() && this->asQObject())
+        if (class_ && class_->asQObject() && this->asQObject())
             QObject::connect(class_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setClass()));
 
         // Adjust subsetted properties

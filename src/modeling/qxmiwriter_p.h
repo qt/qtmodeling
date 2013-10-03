@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the QtModeling module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,13 +38,44 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qumlmetamodel.h"
+#ifndef QTMODELING_QXMIWRITER_P_H
+#define QTMODELING_QXMIWRITER_P_H
+
+#include "qtmodelingglobal.h"
+#include "private/qobject_p.h"
+
+#include <QtCore/QStringList>
+#include <QtCore/QXmlStreamWriter>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-void QUmlMetaModel::init(QScriptEngine *scriptEngine)
+QT_MODULE(QtModeling)
+
+class QMetaModelPlugin;
+
+class Q_MODELING_EXPORT QXmiWriterPrivate : public QObjectPrivate
 {
-}
+    Q_DECLARE_PUBLIC(QXmiWriter)
+
+public:
+    explicit QXmiWriterPrivate(QObject *modelingObject);
+    virtual ~QXmiWriterPrivate();
+
+    QObject *modelingObject;
+    QXmlStreamWriter writer;
+    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > metaModelPlugins;
+    QObjectList visitedObjects;
+    QHash<QObject *, QString> idMap;
+    QStringList idStack;
+    QString metaModelXmlNamespace;
+    QStringList blacklistedOppositeEnds;
+};
 
 QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QTMODELING_QXMIWRITER_P_H
 

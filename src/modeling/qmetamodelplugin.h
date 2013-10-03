@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModeling module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,64 +38,36 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTVIEW_H
-#define QWRAPPEDOBJECTVIEW_H
+#ifndef QTMODELING_QMETAMODELPLUGIN_H
+#define QTMODELING_QMETAMODELPLUGIN_H
 
-#include <QtCore/QModelIndex>
+#include <QtModeling/QtModelingGlobal>
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
-
-#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtWrappedObjectsWidgets)
+QT_MODULE(QtModeling)
 
-class QAbstractItemModel;
-class QItemSelection;
-class QQuickItem;
-class QWrappedObject;
+class QScriptEngine;
+class QModelingObject;
 
-class QWrappedObjectViewPrivate;
-
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectView : public QWidget
+class Q_MODELING_EXPORT QMetaModelPlugin : public QObject
 {
     Q_OBJECT
 
-    Q_DISABLE_COPY(QWrappedObjectView)
-    Q_DECLARE_PRIVATE(QWrappedObjectView)
-
 public:
-    explicit QWrappedObjectView(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    explicit QMetaModelPlugin(QObject *parent = 0);
 
-public Q_SLOTS:
-    virtual void setModel(QAbstractItemModel *model);
-    void updateSelected();
-
-Q_SIGNALS:
-    void wrappedObjectChanged(QWrappedObject *selectedWrappedObject, QModelIndex index = QModelIndex());
-    void addToView(QWrappedObject *selectedWrappedObject, QQuickItem *parent = 0);
-
-protected:
-     void contextMenuEvent(QContextMenuEvent *event);
-
-private Q_SLOTS:
-    void handleAddMethod();
-    void addElementToView();
-    void deleteObject();
-    void modelReset();
-    void rowsInserted(const QModelIndex &parent, int first);
-    void selectionChanged(const QItemSelection &selected);
-
-private:
-    void removeObjectUse(QWrappedObject *container, QWrappedObject *usedObject);
+    virtual void initMetaModel(QScriptEngine *scriptEngine = 0) = 0;
+    virtual QModelingObject *createModelingObject(QString type) = 0;
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QWRAPPEDOBJECTVIEW_H
+#endif // QTMODELING_QMETAMODELPLUGIN_H
 

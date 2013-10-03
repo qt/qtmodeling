@@ -126,12 +126,18 @@ QString QUmlEnumerationObject::name() const
 
 QObject *QUmlEnumerationObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlEnumerationObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlEnumerationObject::qualifiedName() const
@@ -192,8 +198,12 @@ const QSet<QObject *> QUmlEnumerationObject::packageImport() const
 
 QObject *QUmlEnumerationObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlEnumerationObject::visibility() const
@@ -205,7 +215,10 @@ QtUml::VisibilityKind QUmlEnumerationObject::visibility() const
 
 QObject *QUmlEnumerationObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -303,7 +316,10 @@ bool QUmlEnumerationObject::isFinalSpecialization() const
 
 QObject *QUmlEnumerationObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlEnumerationObject::ownedUseCase() const
@@ -332,7 +348,10 @@ const QSet<QObject *> QUmlEnumerationObject::redefinedClassifier() const
 
 QObject *QUmlEnumerationObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlEnumerationObject::substitution() const
@@ -345,7 +364,10 @@ const QSet<QObject *> QUmlEnumerationObject::substitution() const
 
 QObject *QUmlEnumerationObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlEnumerationObject::useCase() const
@@ -621,7 +643,8 @@ void QUmlEnumerationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlEnumerationObject::addElementImport(QObject *elementImport)
 {

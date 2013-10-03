@@ -151,7 +151,7 @@ void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
         // Adjust subsetted properties
 
         _enumeration = enumeration;
-        if (enumeration->asQObject() && this->asQObject())
+        if (enumeration && enumeration->asQObject() && this->asQObject())
             QObject::connect(enumeration->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEnumeration()));
 
         // Adjust subsetted properties

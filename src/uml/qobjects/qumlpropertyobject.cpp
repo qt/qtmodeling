@@ -119,7 +119,10 @@ QString QUmlPropertyObject::name() const
 
 QObject *QUmlPropertyObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlPropertyObject::namespace_() const
@@ -163,7 +166,10 @@ int QUmlPropertyObject::lower() const
 
 QObject *QUmlPropertyObject::lowerValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->lowerValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->lowerValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->lowerValue()->asQObject();
 }
 
 int QUmlPropertyObject::upper() const
@@ -173,7 +179,10 @@ int QUmlPropertyObject::upper() const
 
 QObject *QUmlPropertyObject::upperValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->upperValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->upperValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->upperValue()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -218,7 +227,10 @@ bool QUmlPropertyObject::isStatic() const
 
 QObject *QUmlPropertyObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [ConnectableElement]
 
@@ -232,7 +244,10 @@ const QList<QObject *> QUmlPropertyObject::end() const
 
 QObject *QUmlPropertyObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [DeploymentTarget]
@@ -262,22 +277,34 @@ QtUml::AggregationKind QUmlPropertyObject::aggregation() const
 
 QObject *QUmlPropertyObject::association() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->association()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->association())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->association()->asQObject();
 }
 
 QObject *QUmlPropertyObject::associationEnd() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->associationEnd()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->associationEnd())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->associationEnd()->asQObject();
 }
 
 QObject *QUmlPropertyObject::class_() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->class_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->class_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->class_()->asQObject();
 }
 
 QObject *QUmlPropertyObject::datatype() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->datatype()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->datatype())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->datatype()->asQObject();
 }
 
 QString QUmlPropertyObject::default_() const
@@ -287,12 +314,18 @@ QString QUmlPropertyObject::default_() const
 
 QObject *QUmlPropertyObject::defaultValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->defaultValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->defaultValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->defaultValue()->asQObject();
 }
 
 QObject *QUmlPropertyObject::interface_() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->interface_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->interface_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->interface_()->asQObject();
 }
 
 bool QUmlPropertyObject::isComposite() const
@@ -322,12 +355,18 @@ bool QUmlPropertyObject::isReadOnly() const
 
 QObject *QUmlPropertyObject::opposite() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->opposite()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->opposite())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->opposite()->asQObject();
 }
 
 QObject *QUmlPropertyObject::owningAssociation() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->owningAssociation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->owningAssociation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->owningAssociation()->asQObject();
 }
 
 const QList<QObject *> QUmlPropertyObject::qualifier() const

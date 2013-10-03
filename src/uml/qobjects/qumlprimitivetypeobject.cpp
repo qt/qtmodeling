@@ -125,12 +125,18 @@ QString QUmlPrimitiveTypeObject::name() const
 
 QObject *QUmlPrimitiveTypeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlPrimitiveTypeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlPrimitiveTypeObject::qualifiedName() const
@@ -191,7 +197,10 @@ const QSet<QObject *> QUmlPrimitiveTypeObject::packageImport() const
 
 QObject *QUmlPrimitiveTypeObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -302,7 +311,10 @@ bool QUmlPrimitiveTypeObject::isFinalSpecialization() const
 
 QObject *QUmlPrimitiveTypeObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlPrimitiveTypeObject::ownedUseCase() const
@@ -331,7 +343,10 @@ const QSet<QObject *> QUmlPrimitiveTypeObject::redefinedClassifier() const
 
 QObject *QUmlPrimitiveTypeObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlPrimitiveTypeObject::substitution() const
@@ -344,7 +359,10 @@ const QSet<QObject *> QUmlPrimitiveTypeObject::substitution() const
 
 QObject *QUmlPrimitiveTypeObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlPrimitiveTypeObject::useCase() const

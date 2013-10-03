@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,36 +38,31 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTVIEW_P_H
-#define QWRAPPEDOBJECTVIEW_P_H
-
-#include "qtwrappedobjectswidgetsglobal.h"
-#include "private/qwidget_p.h"
-
-QT_BEGIN_HEADER
+#include "qmodelingobjectpropertyfiltermodel.h"
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtWrappedObjectsWidgets)
-
-class QTreeView;
-
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectViewPrivate : public QWidgetPrivate
+QModelingObjectPropertyFilterModel::QModelingObjectPropertyFilterModel(QObject *parent) :
+    QSortFilterProxyModel(parent)
 {
-    Q_DECLARE_PUBLIC(QWrappedObjectView)
+}
 
-public:
-    explicit QWrappedObjectViewPrivate();
+bool QModelingObjectPropertyFilterModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
+{
+    int rows;
+    QModelIndex sourceIndex = sourceModel()->index(sourceRow, 0, sourceParent);
+    if ((rows = sourceModel()->rowCount(sourceIndex)) > 0) {
+        for (int i = 0; i < rows; ++i)
+            if (filterAcceptsRow(i, sourceIndex))
+                return true;
+        return false;
+    }
+    else {
+        return QSortFilterProxyModel::filterAcceptsRow(sourceRow, sourceParent);
+    }
+}
 
-    void populateContextMenu(QMenu &menu, QWrappedObject *element);
-
-    QTreeView *treeView;
-    QHash< QString, QPair<QObject *, QMetaMethod> > visitedAddMethods;
-};
+#include "moc_qmodelingobjectpropertyfiltermodel.cpp"
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QWRAPPEDOBJECTVIEW_P_H
 

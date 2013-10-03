@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModeling module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,35 +38,43 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTPROPERTYMODEL_P_H
-#define QWRAPPEDOBJECTPROPERTYMODEL_P_H
+#ifndef QTMODELING_QXMIREADER_P_H
+#define QTMODELING_QXMIREADER_P_H
 
-#include "qtwrappedobjectswidgetsglobal.h"
-#include "private/qabstractitemmodel_p.h"
+#include "qtmodelingglobal.h"
+#include "private/qobject_p.h"
+
+#include <QtCore/QStringList>
+#include <QtCore/QXmlStreamReader>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtWrappedObjectsWidgets)
+QT_MODULE(QtModeling)
 
-class QMetaWrappedObject;
+class QMetaModelPlugin;
+class QScriptEngine;
 
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectPropertyModelPrivate : public QAbstractItemModelPrivate
+class Q_MODELING_EXPORT QXmiReaderPrivate : public QObjectPrivate
 {
-    Q_DECLARE_PUBLIC(QWrappedObjectPropertyModel)
+    Q_DECLARE_PUBLIC(QXmiReader)
 
 public:
-    explicit QWrappedObjectPropertyModelPrivate();
+    explicit QXmiReaderPrivate();
+    virtual ~QXmiReaderPrivate();
 
-    QModelIndex wrappedObjectIndex;
-    QWrappedObject *wrappedObject;
-    const QMetaWrappedObject *metaWrappedObject;
+    QHash<QString, QObject *> idMap;
+    QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > metaModelPlugins;
+    QHash<QString, QString> xmlNamespaceToImplementationNamespace;
+    QStringList errors;
+    QScriptEngine *scriptEngine;
+    bool initMetaModel;
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QWRAPPEDOBJECTPROPERTYMODEL_P_H
+#endif // QTMODELING_QXMIREADER_P_H
 

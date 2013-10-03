@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,11 +38,10 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qwrappedobjectpropertymodel.h"
-#include "qwrappedobjectpropertymodel_p.h"
+#include "qmodelingobjectpropertymodel.h"
+#include "qmodelingobjectpropertymodel_p.h"
 
-#include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaPropertyInfo>
+#include <QtModeling/QModelingObject>
 
 #include <QtGui/QFontMetrics>
 
@@ -50,70 +49,70 @@
 
 QT_BEGIN_NAMESPACE
 
-QWrappedObjectPropertyModelPrivate::QWrappedObjectPropertyModelPrivate() :
-    wrappedObject(0), metaWrappedObject(0)
+QModelingObjectPropertyModelPrivate::QModelingObjectPropertyModelPrivate() :
+    modelingObject(0), modelingMetaObject(0)
 {
 }
 
-QWrappedObjectPropertyModel::QWrappedObjectPropertyModel(QObject *parent) :
-    QAbstractItemModel(*new QWrappedObjectPropertyModelPrivate, parent)
+QModelingObjectPropertyModel::QModelingObjectPropertyModel(QObject *parent) :
+    QAbstractItemModel(*new QModelingObjectPropertyModelPrivate, parent)
 {
 }
 
-void QWrappedObjectPropertyModel::setWrappedObject(QWrappedObject *wrappedObject, QModelIndex index)
+void QModelingObjectPropertyModel::setModelingObject(QObject *modelingObject, QModelIndex index)
 {
-    Q_D(QWrappedObjectPropertyModel);
+    Q_D(QModelingObjectPropertyModel);
 
-    if (wrappedObject && d->metaWrappedObject != wrappedObject->metaWrappedObject()) {
+    if (modelingObject && d->modelingMetaObject != modelingObject->metaObject()) {
         beginResetModel();
-        d->wrappedObject = wrappedObject;
-        d->metaWrappedObject = d->wrappedObject->metaWrappedObject();
-        d->wrappedObjectIndex = index;
+        d->modelingObject = modelingObject;
+        d->modelingMetaObject = d->modelingObject->metaObject();
+        d->modelingObjectIndex = index;
         endResetModel();
     }
 }
 
-QModelIndex QWrappedObjectPropertyModel::index(int row, int column, const QModelIndex &parent) const
+QModelIndex QModelingObjectPropertyModel::index(int row, int column, const QModelIndex &parent) const
 {
-    Q_D(const QWrappedObjectPropertyModel);
+    Q_D(const QModelingObjectPropertyModel);
 
-    if (!d->metaWrappedObject || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
+    if (!d->modelingMetaObject || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
         return QModelIndex();
-    return createIndex(row, column, (parent.isValid()) ? static_cast<void *>(&d->metaWrappedObject->property(parent.row(), row)):0);
+    return createIndex(row, column, (parent.isValid()) ? static_cast<void *>(&d->modelingMetaObject->property(parent.row(), row)):0);
 }
 
-QModelIndex QWrappedObjectPropertyModel::parent(const QModelIndex &child) const
+QModelIndex QModelingObjectPropertyModel::parent(const QModelIndex &child) const
 {
-    Q_D(const QWrappedObjectPropertyModel);
+    Q_D(const QModelingObjectPropertyModel);
 
     QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(child.internalPointer());
-    if (!d->metaWrappedObject || !child.isValid() || !metaPropertyInfo)
+    if (!d->modelingMetaObject || !child.isValid() || !metaPropertyInfo)
         return QModelIndex();
-    return createIndex(d->metaWrappedObject->indexOfGroup(metaPropertyInfo->propertyMetaObject->className()), 0);
+    return createIndex(d->modelingMetaObject->indexOfGroup(metaPropertyInfo->propertyMetaObject->className()), 0);
 }
 
-int QWrappedObjectPropertyModel::rowCount(const QModelIndex &parent) const
+int QModelingObjectPropertyModel::rowCount(const QModelIndex &parent) const
 {
-    Q_D(const QWrappedObjectPropertyModel);
+    Q_D(const QModelingObjectPropertyModel);
 
-    if (!d->metaWrappedObject || (parent.isValid() && parent.column() != 0))
+    if (!d->modelingMetaObject || (parent.isValid() && parent.column() != 0))
         return 0;
-    return (parent.row() == -1) ? d->metaWrappedObject->propertyGroupCount():
-                                  (!parent.internalPointer()) ? d->metaWrappedObject->propertyCount(parent.row()):0;
+    return (parent.row() == -1) ? d->modelingMetaObject->propertyGroupCount():
+                                  (!parent.internalPointer()) ? d->modelingMetaObject->propertyCount(parent.row()):0;
 }
 
-int QWrappedObjectPropertyModel::columnCount(const QModelIndex &parent) const
+int QModelingObjectPropertyModel::columnCount(const QModelIndex &parent) const
 {
-    Q_D(const QWrappedObjectPropertyModel);
+    Q_D(const QModelingObjectPropertyModel);
 
-    return (!d->metaWrappedObject || (parent.isValid() && parent.column() != 0)) ? 0:2;
+    return (!d->modelingMetaObject || (parent.isValid() && parent.column() != 0)) ? 0:2;
 }
 
-QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) const
+QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) const
 {
-    Q_D(const QWrappedObjectPropertyModel);
+    Q_D(const QModelingObjectPropertyModel);
 
-    if (!d->metaWrappedObject || d->metaWrappedObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
+    if (!d->modelingMetaObject || d->modelingMetaObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
         return QVariant();
     switch (role) {
         case Qt::DisplayRole:
@@ -128,28 +127,28 @@ QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) c
                             propertyName = propertyName.replace(0, 1, propertyName.left(1).toLower());
                         return propertyName.append(QString::fromLatin1(!metaProperty.isWritable() ? " (RO)":""));
                     }
-                    return QString::fromLatin1(d->metaWrappedObject->property(index.row(), 0).propertyMetaObject->className());
+                    return QString::fromLatin1(d->modelingMetaObject->property(index.row(), 0).propertyMetaObject->className());
                 }
                 case 1: {
                     if (index.parent().row() != -1 && metaPropertyInfo) {
                         QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
-                        QWrappedObject *propertyWrappedObject = metaPropertyInfo->propertyWrappedObject;
+                        QObject *propertyModelingObject = metaPropertyInfo->propertyModelingObject;
                         QString typeName = QString::fromLatin1(metaProperty.typeName());
-                        QVariant variant = metaProperty.read(propertyWrappedObject);
+                        QVariant variant = metaProperty.read(propertyModelingObject);
                         if (metaProperty.type() == QVariant::String) {
                             if (QString::fromLatin1(metaProperty.name()) == QString::fromLatin1("objectName"))
-                                propertyWrappedObject = qTopLevelWrapper(propertyWrappedObject);
-                            return metaProperty.read(propertyWrappedObject);
+                                propertyModelingObject = propertyModelingObject;
+                            return metaProperty.read(propertyModelingObject);
                         }
                         else if (metaProperty.type() == QVariant::Bool) {
                             return variant;
                         }
                         else if (metaProperty.isEnumType())
                             return QString::fromLatin1(metaProperty.enumerator().valueToKey(variant.toInt())).toLower().remove(QString::fromLatin1(metaProperty.name()));
-                        else if (typeName.endsWith('*') && qvariant_cast<QWrappedObject *>(variant)) {
-                            QWrappedObject *objectElement = qvariant_cast<QWrappedObject *>(variant);
+                        else if (typeName.endsWith('*') && qvariant_cast<QObject *>(variant)) {
+                            QObject *objectElement = qvariant_cast<QObject *>(variant);
                             if (objectElement) {
-                                QString returnedValue = qTopLevelWrapper(objectElement)->objectName();
+                                QString returnedValue = objectElement->objectName();
                                 if (!metaProperty.isStored())
                                     delete objectElement;
                                 return returnedValue;
@@ -158,25 +157,25 @@ QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) c
                                 return QVariant();
                         }
                         else if (typeName.contains(QString::fromLatin1("QSet")) && variant.isValid()) {
-                            QSet<QWrappedObject *> elements = *(static_cast<QSet<QWrappedObject *> *>(variant.data()));
+                            QSet<QObject *> elements = *(static_cast<QSet<QObject *> *>(variant.data()));
                             QString str;
                             if (elements.size() > 0) {
                                 str.append(QString::fromLatin1("["));
-                                foreach (QWrappedObject *object, elements)
+                                foreach (QObject *object, elements)
                                     if (object)
-                                        str.append((qTopLevelWrapper(object))->objectName().append(QString::fromLatin1(", ")));
+                                        str.append((object)->objectName().append(QString::fromLatin1(", ")));
                                 str.chop(2);
                                 str.append(QString::fromLatin1("]"));
                             }
                             return !str.isEmpty() ? str:QVariant();
                         }
                         else if (typeName.contains(QString::fromLatin1("QList")) && variant.isValid()) {
-                            QList<QWrappedObject *> elements = *(static_cast<QList<QWrappedObject *> *>(variant.data()));
+                            QObjectList elements = *(static_cast<QObjectList *>(variant.data()));
                             QString str;
                             if (elements.size() > 0) {
                                 str.append(QString::fromLatin1("["));
-                                foreach (QWrappedObject *object, elements)
-                                    str.append((qTopLevelWrapper(object))->objectName().append(QString::fromLatin1(", ")));
+                                foreach (QObject *object, elements)
+                                    str.append((object)->objectName().append(QString::fromLatin1(", ")));
                                 str.chop(2);
                                 str.append(QString::fromLatin1("]"));
                             }
@@ -198,16 +197,16 @@ QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) c
             QFont font;
             QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
             if (metaPropertyInfo && index.column() == 0 && metaPropertyInfo->metaProperty.isResettable())
-                font.setBold(metaPropertyInfo->propertyWrappedObject->isPropertyModified(metaPropertyInfo->metaProperty));
+                font.setBold(metaPropertyInfo->propertyModelingObject->isPropertyModified(metaPropertyInfo->metaProperty));
             if (metaPropertyInfo && index.column() == 0)
-                font.setItalic(QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::AggregationRole).toString() == QString::fromLatin1("composite"));
+                font.setItalic(QModelingObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtModelingObjects::AggregationRole).toString() == QString::fromLatin1("composite"));
             return font;
         }
         case Qt::ToolTipRole: {
             QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
             if (metaPropertyInfo) {
-                QString toolTip = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::DocumentationRole).toString().remove(QRegularExpression(QString::fromLatin1(".$"))).append(QString::fromLatin1("."));
-                if (QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::IsDerivedUnionRole).toBool())
+                QString toolTip = QModelingObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtModelingObjects::DocumentationRole).toString().remove(QRegularExpression(QString::fromLatin1(".$"))).append(QString::fromLatin1("."));
+                if (QModelingObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtModelingObjects::IsDerivedUnionRole).toBool())
                     toolTip += QString::fromLatin1(" This is a derived union property.");
                 else if (!metaPropertyInfo->metaProperty.isStored())
                     toolTip += QString::fromLatin1(" This is a derived property.");
@@ -219,16 +218,16 @@ QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) c
                 if (!toolTip.isEmpty())
                     toolTip += QString::fromLatin1("\n\n");
                 toolTip += QString::fromLatin1("Type: %1").arg(QString::fromLatin1(metaPropertyInfo->metaProperty.typeName()));
-                QVariant variant = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::AggregationRole);
+                QVariant variant = QModelingObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtModelingObjects::AggregationRole);
                 if (variant.isValid() && variant.toString() != QString::fromLatin1("none"))
                     toolTip += QString::fromLatin1("\nAggregation: %1").arg(variant.toString());
-                QString redefinedProperties = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::RedefinedPropertiesRole).toString();
+                QString redefinedProperties = QModelingObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtModelingObjects::RedefinedPropertiesRole).toString();
                 if (!redefinedProperties.isEmpty())
                     toolTip += QString::fromLatin1("\nRedefines: %1").arg(redefinedProperties);
-                QString subsettedProperties = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::SubsettedPropertiesRole).toString();
+                QString subsettedProperties = QModelingObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtModelingObjects::SubsettedPropertiesRole).toString();
                 if (!subsettedProperties.isEmpty())
                     toolTip += QString::fromLatin1("\nSubsets: %1").arg(subsettedProperties);
-                QString oppositeEnd = QWrappedObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtWrappedObjects::OppositeEndRole).toString();
+                QString oppositeEnd = QModelingObject::propertyData(QString::fromLatin1(metaPropertyInfo->propertyMetaObject->className()), metaPropertyInfo->metaProperty, QtModelingObjects::OppositeEndRole).toString();
                 if (!oppositeEnd.isEmpty())
                     toolTip += QString::fromLatin1("\nOpposite end: %1").arg(oppositeEnd);
                 return toolTip;
@@ -244,26 +243,26 @@ QVariant QWrappedObjectPropertyModel::data(const QModelIndex &index, int role) c
     return QVariant();
 }
 
-bool QWrappedObjectPropertyModel::setData(const QModelIndex &index, const QVariant &value, int role)
+bool QModelingObjectPropertyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    Q_D(QWrappedObjectPropertyModel);
+    Q_D(QModelingObjectPropertyModel);
 
-    if (!d->metaWrappedObject || d->metaWrappedObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
+    if (!d->modelingMetaObject || d->modelingMetaObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
         return false;
     switch (role) {
         case Qt::DisplayRole: {
             QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
             QMetaProperty metaProperty = metaPropertyInfo->metaProperty;
-            QWrappedObject *propertyWrappedObject = metaPropertyInfo->propertyWrappedObject;
+            QObject *propertyModelingObject = metaPropertyInfo->propertyModelingObject;
             if (QString::fromLatin1(metaProperty.name()) == QString::fromLatin1("objectName")) {
-                    propertyWrappedObject = qTopLevelWrapper(propertyWrappedObject);
-                    propertyWrappedObject->setProperty("name", value);
-                    emit indexChanged(d->wrappedObjectIndex);
+                    propertyModelingObject = propertyModelingObject;
+                    propertyModelingObject->setProperty("name", value);
+                    emit indexChanged(d->modelingObjectIndex);
             }
             if (QString::fromLatin1(metaProperty.name()) == QString::fromLatin1("name"))
-                emit indexChanged(d->wrappedObjectIndex);
-            if (metaProperty.read(propertyWrappedObject) != value)
-                metaProperty.write(propertyWrappedObject, value);
+                emit indexChanged(d->modelingObjectIndex);
+            if (metaProperty.read(propertyModelingObject) != value)
+                metaProperty.write(propertyModelingObject, value);
             if (QString::fromLatin1(metaProperty.typeName()).endsWith('*'))
                 emit indexChanged(QModelIndex());
             return true;
@@ -272,14 +271,14 @@ bool QWrappedObjectPropertyModel::setData(const QModelIndex &index, const QVaria
     return false;
 }
 
-QVariant QWrappedObjectPropertyModel::headerData(int section, Qt::Orientation orientation, int role) const
+QVariant QModelingObjectPropertyModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if ((section == 0 || section == 1) && orientation == Qt::Horizontal && role == Qt::DisplayRole)
         return QString::fromLatin1(section == 0 ? "Property":"Value");
     return QVariant();
 }
 
-Qt::ItemFlags QWrappedObjectPropertyModel::flags(const QModelIndex &index) const
+Qt::ItemFlags QModelingObjectPropertyModel::flags(const QModelIndex &index) const
 {
     QMetaPropertyInfo *metaPropertyInfo = static_cast<QMetaPropertyInfo *>(index.internalPointer());
     if (metaPropertyInfo && metaPropertyInfo->metaProperty.isWritable() && index.column() == 1)
@@ -287,14 +286,14 @@ Qt::ItemFlags QWrappedObjectPropertyModel::flags(const QModelIndex &index) const
     return QAbstractItemModel::flags(index);
 }
 
-QWrappedObject *QWrappedObjectPropertyModel::wrappedObject() const
+QObject *QModelingObjectPropertyModel::modelingObject() const
 {
-    Q_D(const QWrappedObjectPropertyModel);
+    Q_D(const QModelingObjectPropertyModel);
 
-    return d->wrappedObject;
+    return d->modelingObject;
 }
 
-#include "moc_qwrappedobjectpropertymodel.cpp"
+#include "moc_qmodelingobjectpropertymodel.cpp"
 
 QT_END_NAMESPACE
 

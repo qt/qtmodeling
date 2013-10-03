@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModeling module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,46 +38,46 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTPROPERTYEDITOR_H
-#define QWRAPPEDOBJECTPROPERTYEDITOR_H
+#ifndef QTMODELING_QXMIWRITER_H
+#define QTMODELING_QXMIWRITER_H
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
+#include <QtModeling/QtModelingGlobal>
 
-#include <QtWidgets/QWidget>
+#include <QtCore/QObject>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtWrappedObjectsWidgets)
+QT_MODULE(QtModeling)
 
-class QWrappedObjectPropertyModel;
+class QIODevice;
+class QObject;
 
-class QWrappedObjectPropertyEditorPrivate;
+class QXmiWriterPrivate;
 
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectPropertyEditor : public QWidget
+class Q_MODELING_EXPORT QXmiWriter : public QObject
 {
     Q_OBJECT
 
-    Q_DISABLE_COPY(QWrappedObjectPropertyEditor)
-    Q_DECLARE_PRIVATE(QWrappedObjectPropertyEditor)
+    Q_DISABLE_COPY(QXmiWriter)
+    Q_DECLARE_PRIVATE(QXmiWriter)
 
 public:
-    explicit QWrappedObjectPropertyEditor(QWidget *parent = 0, Qt::WindowFlags f = 0);
+    explicit QXmiWriter(QObject *modelingObject, QObject *parent = 0);
+    virtual ~QXmiWriter();
 
-    QWrappedObjectPropertyModel *model() const;
+    bool writeFile(QIODevice *device);
 
-public Q_SLOTS:
-    void setModel(QWrappedObjectPropertyModel *model);
-
-private Q_SLOTS:
-    void filterChanged();
-    void modelReset();
+protected:
+    void loadPlugins();
+    void populateIdMap(QObject *modelingObject, int index = -1);
+    void writeObject(QObject *modelingObject, QString elementName = QStringLiteral(""));
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QWRAPPEDOBJECTPROPERTYEDITOR_H
+#endif // QTMODELING_QXMIWRITER_H
 

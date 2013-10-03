@@ -187,7 +187,7 @@ void QUmlNamedElement::setNamespace(QUmlNamespace *namespace_)
         // Adjust subsetted properties
 
         _namespace_ = namespace_;
-        if (namespace_->asQObject() && this->asQObject())
+        if (namespace_ && namespace_->asQObject() && this->asQObject())
             QObject::connect(namespace_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setNamespace()));
 
         // Adjust subsetted properties
@@ -202,9 +202,16 @@ QString QUmlNamedElement::qualifiedName() const
 {
     // This is a read-only derived property
 
-    qWarning("UmlNamedElement::qualifiedName(): to be implemented (this is a derived property)");
-
-    return QString();
+    if (_name.isEmpty()) return QString();
+    QString qualifiedName_(_name);
+    QList<QUmlNamespace *> allNamespaces_ = allNamespaces();
+    QString separator_ = separator();
+    foreach (QUmlNamespace *namespace_, allNamespaces_) {
+        if (namespace_->name().isEmpty())
+            return QString();
+        qualifiedName_.prepend(separator_).prepend(namespace_->name());
+    }
+    return qualifiedName_;
 }
 
 void QUmlNamedElement::setQualifiedName(QString qualifiedName)
@@ -245,9 +252,18 @@ void QUmlNamedElement::setVisibility(QtUml::VisibilityKind visibility)
  */
 QList<QUmlNamespace *> QUmlNamedElement::allNamespaces() const
 {
-    qWarning("UmlNamedElement::allNamespaces(): to be implemented (operation)");
-
-    return QList<QUmlNamespace *> ();
+    if (!_namespace_) {
+        return QList<QUmlNamespace *>();
+    }
+    else {
+        QList<QUmlNamespace *> allNamespaces_;
+        QUmlNamespace *namespace_ = this->namespace_();
+        while (namespace_) {
+            allNamespaces_.append(namespace_);
+            namespace_ = namespace_->namespace_();
+        }
+        return allNamespaces_;
+    }
 }
 
 /*!
@@ -277,9 +293,7 @@ bool QUmlNamedElement::isDistinguishableFrom(QUmlNamedElement *n, QUmlNamespace 
  */
 QString QUmlNamedElement::separator() const
 {
-    qWarning("UmlNamedElement::separator(): to be implemented (operation)");
-
-    return QString ();
+    return QStringLiteral("::");
 }
 
 void QUmlNamedElement::setPropertyData()

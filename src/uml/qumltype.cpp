@@ -104,7 +104,7 @@ void QUmlType::setPackage(QUmlPackage *package)
 
     if (_package != package) {
         _package = package;
-        if (package->asQObject() && this->asQObject())
+        if (package && package->asQObject() && this->asQObject())
             QObject::connect(package->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPackage()));
     }
 }

@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,13 +38,35 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qumlmetamodel.h"
+#ifndef QMODELINGOBJECTPROPERTYMODEL_P_H
+#define QMODELINGOBJECTPROPERTYMODEL_P_H
+
+#include "qtmodelingwidgetsglobal.h"
+#include "private/qabstractitemmodel_p.h"
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-void QUmlMetaModel::init(QScriptEngine *scriptEngine)
+QT_MODULE(QtModelingWidgets)
+
+class QMetaModelingObject;
+
+class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyModelPrivate : public QAbstractItemModelPrivate
 {
-}
+    Q_DECLARE_PUBLIC(QModelingObjectPropertyModel)
+
+public:
+    explicit QModelingObjectPropertyModelPrivate();
+
+    QModelIndex modelingObjectIndex;
+    QObject *modelingObject;
+    const QMetaObject *modelingMetaObject;
+};
 
 QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QMODELINGOBJECTPROPERTYMODEL_P_H
 

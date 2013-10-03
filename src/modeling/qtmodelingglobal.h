@@ -43,6 +43,9 @@
 
 #include <QtCore/QtGlobal>
 #include <QtCore/QVariant>
+#include <QtScript/QScriptValue>
+#include <QtScript/QScriptEngine>
+#include <QtScript/QScriptValueIterator>
 
 QT_BEGIN_NAMESPACE
 
@@ -63,7 +66,45 @@ class QModelingObject;
 template<class T>
 T qmodelingobjectproperty_cast(const QObject *object)
 {
-    return object->property("modelingObject").value<T>();
+    return object ? object->property("modelingObject").value<T>():T();
+}
+
+template <class T>
+QScriptValue qSetToScriptValue(QScriptEngine *engine, const QSet<T *> &elements)
+{
+    QScriptValue array = engine->newArray();
+    foreach (T *element, elements)
+        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
+    return array;
+}
+
+template <class T>
+void scriptValueToQSet(const QScriptValue &obj, QSet<T *> &elements)
+{
+    QScriptValueIterator it(obj);
+    while (it.hasNext()) {
+        it.next();
+        elements.insert(qobject_cast<T *>(it.value().toQObject()));
+    }
+}
+
+template <class T>
+QScriptValue qListToScriptValue(QScriptEngine *engine, const QList<T *> &elements)
+{
+    QScriptValue array = engine->newArray();
+    foreach (T *element, elements)
+        array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << engine->newQObject(element));
+    return array;
+}
+
+template <class T>
+void scriptValueToQList(const QScriptValue &obj, QList<T *> &elements)
+{
+    QScriptValueIterator it(obj);
+    while (it.hasNext()) {
+        it.next();
+        elements.append(qobject_cast<T *>(it.value().toQObject()));
+    }
 }
 
 #endif // QTMODELINGGLOBAL_H

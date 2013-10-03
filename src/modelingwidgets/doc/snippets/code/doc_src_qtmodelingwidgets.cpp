@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtUml module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,13 +38,6 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qumlmetamodel.h"
-
-QT_BEGIN_NAMESPACE
-
-void QUmlMetaModel::init(QScriptEngine *scriptEngine)
-{
-}
-
-QT_END_NAMESPACE
-
+//! [0]
+#include <QtModelingWidgets>
+//! [0]

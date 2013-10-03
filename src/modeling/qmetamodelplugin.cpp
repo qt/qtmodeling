@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModeling module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,32 +38,16 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTPROPERTYFILTERMODEL_H
-#define QWRAPPEDOBJECTPROPERTYFILTERMODEL_H
-
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
-
-#include <QtCore/QSortFilterProxyModel>
-
-QT_BEGIN_HEADER
+#include "qmetamodelplugin.h"
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtWrappedObjectsWidgets)
-
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectPropertyFilterModel : public QSortFilterProxyModel
+QMetaModelPlugin::QMetaModelPlugin(QObject *parent)
+    : QObject(parent)
 {
-    Q_OBJECT
-public:
-    explicit QWrappedObjectPropertyFilterModel(QObject *parent = 0);
+}
 
-protected:
-    bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
-};
+#include "moc_qmetamodelplugin.cpp"
 
 QT_END_NAMESPACE
-
-QT_END_HEADER
-
-#endif // QWRAPPEDOBJECTPROPERTYFILTERMODEL_H
 

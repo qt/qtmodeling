@@ -144,9 +144,13 @@ const QSet<QUmlPackageableElement *> QUmlNamespace::importedMember() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlNamespace::importedMember(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlPackageableElement *>();
+    QSet<QUmlPackageableElement *> importedMembers_;
+    foreach (QUmlElementImport *elementImport, _elementImport)
+        importedMembers_.insert(elementImport->importedElement());
+    foreach (QUmlPackageImport *packageImport, _packageImport)
+        if (packageImport->importedPackage())
+            importedMembers_.unite(packageImport->importedPackage()->packagedElement());
+    return importedMembers_;
 }
 
 void QUmlNamespace::addImportedMember(QUmlPackageableElement *importedMember)

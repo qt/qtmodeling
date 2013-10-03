@@ -25,42 +25,42 @@
 **
 ****************************************************************************/
 /*!
-    \page qtwrappedobjectswidgets-index.html
-    \title Qt WrappedObjectsWidgets
-    \brief Provide model and widget classes for use with QtWrappedObjects module.
+    \page qtmodelingwidgets-index.html
+    \title Qt ModelingWidgets
+    \brief Provide model and widget classes for use with QtModelingWidgets module.
 
-    Qt WrappedObjectsWidgets is an add-on module which provides model and widget classes for use with QtWrappedObjects module.
+    Qt ModelingWidgets is an add-on module which provides model and widget classes for use with QtModelingWidgets module.
 
     \section1 Getting Started
-    To enable Qt WrappedObjectsWidgets in a project, add this directive into the C++ files:
+    To enable Qt ModelingWidgets in a project, add this directive into the C++ files:
     \code
-    #include <QtWrappedObjectsWidgets>
+    #include <QtModelingWidgets>
     \endcode
-    To link against the Qt WrappedObjectsWidgets module, add this line to the project file:
+    To link against the Qt ModelingWidgets module, add this line to the project file:
     \code
-    QT += wrappedobjectswidgets
+    QT += modelingwidgets
     \endcode
 
     \section1 Reference
     These are links to the API reference materials.
     \list
-    \li \l{Qt WrappedObjectsWidgets Module C++ Classes}{C++ classes}
+    \li \l{Qt ModelingWidgets Module C++ Classes}{C++ classes}
     \endlist
 */
 
 /*!
-    \module QtWrappedObjectsWidgets
-    \title Qt WrappedObjectsWidgets Module C++ Classes
+    \module QtModelingWidgets
+    \title Qt ModelingWidgets Module C++ Classes
     \ingroup modules
-    \brief Provide model and widget classes for use with QtWrappedObjects module.
+    \brief Provide model and widget classes for use with QtModelingWidgets module.
 
     To include the definitions of the module's classes, use the
     following directive:
 
-    \snippet code/doc_src_qtwrappedobjectswidgets.cpp 0
+    \snippet code/doc_src_qtmodelingwidgets.cpp 0
 
     To link against the module, add this line to your \l qmake \c
     .pro file:
 
-    \snippet code/doc_src_qtwrappedobjectswidgets.pro 0
+    \snippet code/doc_src_qtmodelingwidgets.pro 0
 */

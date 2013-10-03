@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,53 +38,24 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTMODEL_H
-#define QWRAPPEDOBJECTMODEL_H
+#ifndef QTMODELINGWIDGETSGLOBAL_H
+#define QTMODELINGWIDGETSGLOBAL_H
 
-#include <QtWrappedObjectsWidgets/QtWrappedObjectsWidgetsGlobal>
-
-#include <QtCore/QAbstractItemModel>
-
-QT_BEGIN_HEADER
+#include <QtCore/QtGlobal>
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtWrappedObjectsWidgets)
-
-class QWrappedObject;
-
-class QWrappedObjectModelPrivate;
-
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectModel : public QAbstractItemModel
-{
-    Q_OBJECT
-
-    Q_DISABLE_COPY(QWrappedObjectModel)
-    Q_DECLARE_PRIVATE(QWrappedObjectModel)
-
-public:
-    explicit QWrappedObjectModel(QObject *parent = 0);
-
-    QList<QWrappedObject *> wrappedObjects() const;
-
-    virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
-    virtual QModelIndex parent(const QModelIndex &child) const;
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
-    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
-    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
-    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
-    Qt::ItemFlags flags(const QModelIndex &index) const;
-
-public Q_SLOTS:
-    void addWrappedObject(QWrappedObject *wrappedObjects);
-    void updateIndex(const QModelIndex &index);
-    void clear();
-};
+#ifndef QT_STATIC
+#    if defined(QT_BUILD_MODELINGWIDGETS_LIB)
+#        define Q_MODELINGWIDGETS_EXPORT Q_DECL_EXPORT
+#    else
+#        define Q_MODELINGWIDGETS_EXPORT Q_DECL_IMPORT
+#    endif
+#else
+#    define Q_MODELINGWIDGETS_EXPORT
+#endif
 
 QT_END_NAMESPACE
 
-QT_END_HEADER
-
-#endif // QWRAPPEDOBJECTMODEL_H
+#endif // QTMODELINGWIDGETSGLOBAL_H
 

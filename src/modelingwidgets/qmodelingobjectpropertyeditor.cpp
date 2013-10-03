@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,10 +38,10 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qwrappedobjectpropertyeditor.h"
-#include "qwrappedobjectpropertyeditor_p.h"
-#include "qwrappedobjectpropertymodel.h"
-#include "qwrappedobjectpropertyfiltermodel.h"
+#include "qmodelingobjectpropertyeditor.h"
+#include "qmodelingobjectpropertyeditor_p.h"
+#include "qmodelingobjectpropertymodel.h"
+#include "qmodelingobjectpropertyfiltermodel.h"
 #include "internal/filterwidget_p.h"
 #include "internal/propertyeditoritemdelegate_p.h"
 
@@ -50,19 +50,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QWrappedObjectPropertyEditorPrivate::QWrappedObjectPropertyEditorPrivate() :
+QModelingObjectPropertyEditorPrivate::QModelingObjectPropertyEditorPrivate() :
     label(new QLabel),
     treeView(new QTreeView),
     filter(new FilterWidget),
-    proxyModel(new QWrappedObjectPropertyFilterModel(q_func())),
+    proxyModel(new QModelingObjectPropertyFilterModel(q_func())),
     propertyModel(0)
 {
 }
 
-QWrappedObjectPropertyEditor::QWrappedObjectPropertyEditor(QWidget *parent, Qt::WindowFlags f) :
-    QWidget(*new QWrappedObjectPropertyEditorPrivate, parent, f)
+QModelingObjectPropertyEditor::QModelingObjectPropertyEditor(QWidget *parent, Qt::WindowFlags f) :
+    QWidget(*new QModelingObjectPropertyEditorPrivate, parent, f)
 {
-    Q_D(QWrappedObjectPropertyEditor);
+    Q_D(QModelingObjectPropertyEditor);
 
     d->treeView->setMinimumSize(QSize(350, 0));
     d->treeView->setEditTriggers(QAbstractItemView::AllEditTriggers);
@@ -88,49 +88,49 @@ QWrappedObjectPropertyEditor::QWrappedObjectPropertyEditor(QWidget *parent, Qt::
 
     connect(d->filter, &FilterWidget::filterChanged,
             d->proxyModel, static_cast<void (QSortFilterProxyModel::*)(const QString &)>(&QSortFilterProxyModel::setFilterRegExp));
-    connect(d->filter, &FilterWidget::filterChanged, this, &QWrappedObjectPropertyEditor::filterChanged);
+    connect(d->filter, &FilterWidget::filterChanged, this, &QModelingObjectPropertyEditor::filterChanged);
 }
 
-void QWrappedObjectPropertyEditor::setModel(QWrappedObjectPropertyModel *propertyModel)
+void QModelingObjectPropertyEditor::setModel(QModelingObjectPropertyModel *propertyModel)
 {
-    Q_D(QWrappedObjectPropertyEditor);
+    Q_D(QModelingObjectPropertyEditor);
 
     if (d->propertyModel)
         disconnect(d->propertyModel, 0, this, 0);
     d->propertyModel = propertyModel;
     d->proxyModel->setSourceModel(d->propertyModel);
     if (propertyModel) {
-        connect(propertyModel, &QAbstractItemModel::modelReset, this, &QWrappedObjectPropertyEditor::modelReset);
+        connect(propertyModel, &QAbstractItemModel::modelReset, this, &QModelingObjectPropertyEditor::modelReset);
     }
 }
 
-QWrappedObjectPropertyModel *QWrappedObjectPropertyEditor::model() const
+QModelingObjectPropertyModel *QModelingObjectPropertyEditor::model() const
 {
-    Q_D(const QWrappedObjectPropertyEditor);
+    Q_D(const QModelingObjectPropertyEditor);
 
     return d->propertyModel;
 }
 
-void QWrappedObjectPropertyEditor::filterChanged()
+void QModelingObjectPropertyEditor::filterChanged()
 {
-    Q_D(QWrappedObjectPropertyEditor);
+    Q_D(QModelingObjectPropertyEditor);
 
     d->treeView->expandAll();
     d->treeView->resizeColumnToContents(0);
     d->treeView->resizeColumnToContents(1);
 }
 
-void QWrappedObjectPropertyEditor::modelReset()
+void QModelingObjectPropertyEditor::modelReset()
 {
-    Q_D(QWrappedObjectPropertyEditor);
+    Q_D(QModelingObjectPropertyEditor);
 
-    d->label->setText(QString::fromLatin1("%1: %2").arg(d->propertyModel->wrappedObject()->objectName()).arg(QString::fromLatin1(d->propertyModel->wrappedObject()->metaObject()->className())));
+    d->label->setText(QString::fromLatin1("%1: %2").arg(d->propertyModel->modelingObject()->objectName()).arg(QString::fromLatin1(d->propertyModel->modelingObject()->metaObject()->className())));
     d->treeView->expandAll();
     d->treeView->resizeColumnToContents(0);
     d->treeView->resizeColumnToContents(1);
 }
 
-#include "moc_qwrappedobjectpropertyeditor.cpp"
+#include "moc_qmodelingobjectpropertyeditor.cpp"
 
 QT_END_NAMESPACE
 

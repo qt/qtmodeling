@@ -112,7 +112,10 @@ QString QUmlEnumerationLiteralObject::name() const
 
 QObject *QUmlEnumerationLiteralObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlEnumerationLiteralObject::namespace_() const
@@ -124,16 +127,23 @@ QString QUmlEnumerationLiteralObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlEnumerationLiteralObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlEnumerationLiteralObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -173,14 +183,20 @@ const QSet<QObject *> QUmlEnumerationLiteralObject::slot_() const
 
 QObject *QUmlEnumerationLiteralObject::specification() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->specification()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->specification())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->specification()->asQObject();
 }
 
 // OWNED ATTRIBUTES [EnumerationLiteral]
 
 QObject *QUmlEnumerationLiteralObject::classifier() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->classifier()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->classifier())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->classifier()->asQObject();
 }
 
 QObject *QUmlEnumerationLiteralObject::enumeration() const

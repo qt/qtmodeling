@@ -96,7 +96,10 @@ const QSet<QObject *> QUmlPackageObject::ownedElement() const
 
 QObject *QUmlPackageObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackage *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackage *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackage *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -116,18 +119,25 @@ QString QUmlPackageObject::name() const
 
 QObject *QUmlPackageObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackage *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackage *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackage *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlPackageObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackage *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackage *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackage *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlPackageObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlPackage *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
 const QSet<QObject *> QUmlPackageObject::elementImport() const
@@ -182,12 +192,18 @@ const QSet<QObject *> QUmlPackageObject::packageImport() const
 
 QObject *QUmlPackageObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackage *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackage *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackage *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlPackageObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackage *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackage *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackage *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -201,7 +217,10 @@ QtUml::VisibilityKind QUmlPackageObject::visibility() const
 
 QObject *QUmlPackageObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlPackageObject::templateBinding() const
@@ -229,7 +248,10 @@ const QSet<QObject *> QUmlPackageObject::nestedPackage() const
 
 QObject *QUmlPackageObject::nestingPackage() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackage *>(this)->nestingPackage()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackage *>(this)->nestingPackage())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackage *>(this)->nestingPackage()->asQObject();
 }
 
 const QSet<QObject *> QUmlPackageObject::ownedStereotype() const
@@ -382,7 +404,10 @@ QSet<QObject *> QUmlPackageObject::allApplicableStereotypes() const
 
 QObject *QUmlPackageObject::containingProfile() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackage *>(this)->containingProfile()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackage *>(this)->containingProfile())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackage *>(this)->containingProfile()->asQObject();
 }
 
 bool QUmlPackageObject::makesVisible(QObject *el) const

@@ -3,7 +3,7 @@ TARGET = xmi-write
 DEPENDPATH += .
 INCLUDEPATH += .
 
-QT += uml mof
+QT += uml
 QT -= gui
 
 # Input

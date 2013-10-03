@@ -38,43 +38,42 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include <QtWrappedObjects/QXmiWriter>
-#include <QtWrappedObjects/QtWrappedObjects>
+#include <QtModeling/QXmiWriter>
 
 #include <QtUml/QtUml>
 
 int main ()
 {
-    QWrappedObjectPointer<QUmlPackage> model = new QUmlPackage;
+    QUmlPackage *model = new QUmlPackage;
     model->setName("MyRootPackage");
 
-    QWrappedObjectPointer<QUmlPackage> package = new QUmlPackage;
+    QUmlPackage *package = new QUmlPackage;
     package->setName("Package1");
 
-    QWrappedObjectPointer<QUmlPrimitiveType> primitiveType = new QUmlPrimitiveType;
+    QUmlPrimitiveType *primitiveType = new QUmlPrimitiveType;
     primitiveType->setName("String");
 
-    QWrappedObjectPointer<QUmlEnumeration> enumeration = new QUmlEnumeration;
+    QUmlEnumeration *enumeration = new QUmlEnumeration;
     enumeration->setName("DirectionKind");
-    QWrappedObjectPointer<QUmlEnumerationLiteral> directionIn = new QUmlEnumerationLiteral;
+    QUmlEnumerationLiteral *directionIn = new QUmlEnumerationLiteral;
     directionIn->setName("DirectionIn");
     enumeration->addOwnedLiteral(directionIn);
 
-    QWrappedObjectPointer<QUmlClass> class_ = new QUmlClass;
+    QUmlClass *class_ = new QUmlClass;
     class_->setName("Student");
     class_->setAbstract(false);
-    class_->setVisibility(QtUml::QtUml::VisibilityPackage);
+    class_->setVisibility(QtUml::VisibilityKindPackage);
 
-    QWrappedObjectPointer<QUmlProperty> property = new QUmlProperty;
+    QUmlProperty *property = new QUmlProperty;
     property->setName("name");
     property->setType(primitiveType);
     class_->addOwnedAttribute(property);
 
-    QWrappedObjectPointer<QUmlClass> class2_ = new QUmlClass;
+    QUmlClass *class2_ = new QUmlClass;
     class2_->setName("InterStudent");
 
-    QWrappedObjectPointer<QUmlGeneralization> generalization = new QUmlGeneralization;
-    generalization->setObjectName("generalization");
+    QUmlGeneralization *generalization = new QUmlGeneralization;
+    generalization->asQObject()->setObjectName("generalization");
     generalization->setGeneral(class_);
     class2_->addGeneralization(generalization);
 
@@ -92,13 +91,13 @@ int main ()
         return 1;
     }
 
-    QXmiWriter writer(model);
+    QXmiWriter writer(model->asQObject());
     if (writer.writeFile(&file))
         qDebug() << "XMI file saved !";
     else
         qDebug() << "Error when writing XMI file !";
     file.close();
 
-    delete package.data();
+    delete package;
 }
 

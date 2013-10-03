@@ -149,23 +149,23 @@ const QSet<QUmlPackage *> QUmlPackage::nestedPackage() const
 {
     // This is a read-write derived association end
 
-    qWarning("UmlPackage::nestedPackage(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlPackage *>();
+    QSet<QUmlPackage *> nestedPackages_;
+    foreach (QUmlPackageableElement *packageableElement, _packagedElement)
+        if (QUmlPackage *package = dynamic_cast<QUmlPackage *>(packageableElement))
+            nestedPackages_.insert(package);
+    return nestedPackages_;
 }
 
 void QUmlPackage::addNestedPackage(QUmlPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlPackage::nestedPackage(): to be implemented (this is a derived association end)");
-    Q_UNUSED(nestedPackage);
+    if (!_packagedElement.contains(dynamic_cast<QUmlPackageableElement *>(nestedPackage))) {
+        // Adjust subsetted property(ies)
+        (dynamic_cast<QUmlPackage *>(this))->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(nestedPackage));
 
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        addPackagedElement(nestedPackage);
+        // Adjust opposite property
+        nestedPackage->setNestingPackage(this);
     }
 }
 
@@ -173,14 +173,12 @@ void QUmlPackage::removeNestedPackage(QUmlPackage *nestedPackage)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlPackage::nestedPackage(): to be implemented (this is a derived association end)");
-    Q_UNUSED(nestedPackage);
+    if (_packagedElement.contains(dynamic_cast<QUmlPackageableElement *>(nestedPackage))) {
+        // Adjust subsetted property(ies)
+        (dynamic_cast<QUmlPackage *>(this))->removePackagedElement(dynamic_cast<QUmlPackageableElement *>(nestedPackage));
 
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        removePackagedElement(nestedPackage);
+        // Adjust opposite property
+        nestedPackage->setNestingPackage(0);
     }
 }
 
@@ -212,9 +210,11 @@ const QSet<QUmlStereotype *> QUmlPackage::ownedStereotype() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPackage::ownedStereotype(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlStereotype *>();
+    QSet<QUmlStereotype *> ownedStereotypes_;
+    foreach (QUmlPackageableElement *packageableElement, _packagedElement)
+        if (QUmlStereotype *stereotype = dynamic_cast<QUmlStereotype *>(packageableElement))
+            ownedStereotypes_.insert(stereotype);
+    return ownedStereotypes_;
 }
 
 void QUmlPackage::addOwnedStereotype(QUmlStereotype *ownedStereotype)
@@ -254,28 +254,23 @@ const QSet<QUmlType *> QUmlPackage::ownedType() const
 {
     // This is a read-write derived association end
 
-    qWarning("UmlPackage::ownedType(): to be implemented (this is a derived association end)");
-
-    return QSet<QUmlType *>();
+    QSet<QUmlType *> ownedTypes_;
+    foreach (QUmlPackageableElement *packageableElement, _packagedElement)
+        if (QUmlType *type = dynamic_cast<QUmlType *>(packageableElement))
+            ownedTypes_.insert(type);
+    return ownedTypes_;
 }
 
 void QUmlPackage::addOwnedType(QUmlType *ownedType)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlPackage::ownedType(): to be implemented (this is a derived association end)");
-    Q_UNUSED(ownedType);
+    if (!_packagedElement.contains(ownedType)) {
+        // Adjust subsetted property(ies)
+        (dynamic_cast<QUmlPackage *>(this))->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(ownedType));
 
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        addPackagedElement(ownedType);
-
-        // Adjust opposite properties
-        if (ownedType) {
-            ownedType->setPackage(this);
-        }
+        // Adjust opposite property
+        ownedType->setPackage(this);
     }
 }
 
@@ -283,19 +278,12 @@ void QUmlPackage::removeOwnedType(QUmlType *ownedType)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlPackage::ownedType(): to be implemented (this is a derived association end)");
-    Q_UNUSED(ownedType);
+    if (_packagedElement.contains(ownedType)) {
+        // Adjust subsetted property(ies)
+        (dynamic_cast<QUmlPackage *>(this))->removePackagedElement(dynamic_cast<QUmlPackageableElement *>(ownedType));
 
-    if (false /* <derivedexclusion-criteria> */) {
-        // <derived-code>
-
-        // Adjust subsetted properties
-        removePackagedElement(ownedType);
-
-        // Adjust opposite properties
-        if (ownedType) {
-            ownedType->setPackage(0);
-        }
+        // Adjust opposite property
+        ownedType->setPackage(0);
     }
 }
 

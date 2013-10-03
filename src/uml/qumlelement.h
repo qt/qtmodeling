@@ -83,6 +83,9 @@ protected:
     QUmlElement *_owner;
 
     virtual void setPropertyData();
+
+private:
+    void allOwnedElements(QSet<QUmlElement *> &allOwnedElements_) const;
 };
 
 QT_END_NAMESPACE

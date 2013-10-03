@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModeling module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,24 +38,47 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTWRAPPEDOBJECTSWIDGETSGLOBAL_H
-#define QTWRAPPEDOBJECTSWIDGETSGLOBAL_H
+#ifndef QTMODELING_QXMIREADER_H
+#define QTMODELING_QXMIREADER_H
 
-#include <QtCore/QtGlobal>
+#include <QtModeling/QtModelingGlobal>
+
+#include <QtCore/QObject>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-#ifndef QT_STATIC
-#    if defined(QT_BUILD_WRAPPEDOBJECTSWIDGETS_LIB)
-#        define Q_WRAPPEDOBJECTSWIDGETS_EXPORT Q_DECL_EXPORT
-#    else
-#        define Q_WRAPPEDOBJECTSWIDGETS_EXPORT Q_DECL_IMPORT
-#    endif
-#else
-#    define Q_WRAPPEDOBJECTSWIDGETS_EXPORT
-#endif
+QT_MODULE(QtModeling)
+
+class QIODevice;
+class QObject;
+
+class QScriptEngine;
+class QXmiReaderPrivate;
+
+class Q_MODELING_EXPORT QXmiReader : public QObject
+{
+    Q_OBJECT
+
+    Q_DISABLE_COPY(QXmiReader)
+    Q_DECLARE_PRIVATE(QXmiReader)
+
+public:
+    explicit QXmiReader(QScriptEngine *scriptEngine = 0, bool initMetaModel = false, QObject *parent = 0);
+    virtual ~QXmiReader();
+
+    QObjectList readFile(QIODevice *device, QString importedId = QString::fromLatin1(""));
+    QStringList errorStrings() const;
+
+protected:
+    void loadPlugins();
+    QObject *createInstance(QString instanceClass, QString instanceName);
+};
 
 QT_END_NAMESPACE
 
-#endif // QTWRAPPEDOBJECTSWIDGETSGLOBAL_H
+QT_END_HEADER
+
+#endif // QTMODELING_QXMIREADER_H
 

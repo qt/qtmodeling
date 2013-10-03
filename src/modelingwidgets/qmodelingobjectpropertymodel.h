@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,6 +38,52 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-//! [0]
-#include <QtWrappedObjectsWidgets>
-//! [0]
+#ifndef QMODELINGOBJECTPROPERTYMODEL_H
+#define QMODELINGOBJECTPROPERTYMODEL_H
+
+#include <QtModelingWidgets/QtModelingWidgetsGlobal>
+
+#include <QtCore/QAbstractItemModel>
+
+QT_BEGIN_HEADER
+
+QT_BEGIN_NAMESPACE
+
+QT_MODULE(QtModelingWidgets)
+
+class QModelingObjectPropertyModelPrivate;
+
+class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyModel : public QAbstractItemModel
+{
+    Q_OBJECT
+
+    Q_DISABLE_COPY(QModelingObjectPropertyModel)
+    Q_DECLARE_PRIVATE(QModelingObjectPropertyModel)
+
+public:
+    explicit QModelingObjectPropertyModel(QObject *parent = 0);
+
+    virtual QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+    virtual QModelIndex parent(const QModelIndex &child) const;
+    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    virtual int columnCount(const QModelIndex &parent = QModelIndex()) const;
+    virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
+    QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
+    Qt::ItemFlags flags(const QModelIndex & index) const;
+
+    QObject *modelingObject() const;
+
+public Q_SLOTS:
+    void setModelingObject(QObject *modelingObject, QModelIndex index);
+
+Q_SIGNALS:
+    void indexChanged(const QModelIndex &modelingObjectIndex);
+};
+
+QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QMODELINGOBJECTPROPERTYMODEL_H
+

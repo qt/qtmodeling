@@ -1,8 +1,8 @@
 TEMPLATE = subdirs
 CONFIG  += ordered
 
-SUBDIRS = modeling wrappedobjects
-#qtHaveModule(widgets): SUBDIRS += wrappedobjectswidgets
+SUBDIRS = modeling
+#qtHaveModule(widgets): SUBDIRS += modelingwidgets
 #qtHaveModule(qml): SUBDIRS += mof uml duse saduseprofile plugins
-qtHaveModule(qml): SUBDIRS += mof uml duse saduseprofile
+qtHaveModule(qml): SUBDIRS += uml plugins
 #qtHaveModule(quick): SUBDIRS += imports

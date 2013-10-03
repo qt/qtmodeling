@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtModeling module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,29 +38,36 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qwrappedobject.h"
+#ifndef QMODELINGOBJECTVIEW_P_H
+#define QMODELINGOBJECTVIEW_P_H
+
+#include "qtmodelingwidgetsglobal.h"
+#include "private/qwidget_p.h"
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QWrappedObject::QWrappedObject(QWrappedObject *wrapper, QObject *parent) :
-    QObject(*new QWrappedObjectPrivate, parent)
-{
-    setWrapper(wrapper);
-}
+QT_MODULE(QtModelingWidgets)
 
-QWrappedObject::~QWrappedObject()
-{
-    Q_D(QWrappedObject);
-    qDeleteAll(d->wrappedObjects);
-}
+class QTreeView;
 
-QWrappedObject::QWrappedObject(QWrappedObjectPrivate &dd, QWrappedObject *wrapper, QObject *parent) :
-    QObject(dd, parent)
+class Q_MODELINGWIDGETS_EXPORT QModelingObjectViewPrivate : public QWidgetPrivate
 {
-    setWrapper(wrapper);
-}
+    Q_DECLARE_PUBLIC(QModelingObjectView)
 
-#include "moc_qwrappedobject.cpp"
+public:
+    explicit QModelingObjectViewPrivate();
+
+    void populateContextMenu(QMenu &menu, QObject *element);
+
+    QTreeView *treeView;
+    QHash< QString, QPair<QObject *, QMetaMethod> > visitedAddMethods;
+};
 
 QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QMODELINGOBJECTVIEW_P_H
 

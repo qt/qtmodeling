@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,31 +38,46 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include "qwrappedobjectpropertyfiltermodel.h"
+#ifndef QMODELINGOBJECTPROPERTYEDITOR_P_H
+#define QMODELINGOBJECTPROPERTYEDITOR_P_H
+
+#include "qtwrappedobjectswidgetsglobal.h"
+#include "private/qwidget_p.h"
+
+#include <QtModeling/QModelingObject>
+
+#include <QtWidgets/QHBoxLayout>
+
+QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QWrappedObjectPropertyFilterModel::QWrappedObjectPropertyFilterModel(QObject *parent) :
-    QSortFilterProxyModel(parent)
-{
-}
+QT_MODULE(QtModelingWidgets)
 
-bool QWrappedObjectPropertyFilterModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
-{
-    int rows;
-    QModelIndex sourceIndex = sourceModel()->index(sourceRow, 0, sourceParent);
-    if ((rows = sourceModel()->rowCount(sourceIndex)) > 0) {
-        for (int i = 0; i < rows; ++i)
-            if (filterAcceptsRow(i, sourceIndex))
-                return true;
-        return false;
-    }
-    else {
-        return QSortFilterProxyModel::filterAcceptsRow(sourceRow, sourceParent);
-    }
-}
+class QLabel;
+class QTreeView;
 
-#include "moc_qwrappedobjectpropertyfiltermodel.cpp"
+class QModelingObjectPropertyModel;
+class QModelingObjectPropertyFilterModel;
+class FilterWidget;
+
+class Q_MODELINGOBJECTSWIDGETS_EXPORT QModelingObjectPropertyEditorPrivate : public QWidgetPrivate
+{
+    Q_DECLARE_PUBLIC(QModelingObjectPropertyEditor)
+
+public:
+    explicit QModelingObjectPropertyEditorPrivate();
+
+    QLabel *label;
+    QTreeView *treeView;
+    FilterWidget *filter;
+    QModelingObjectPropertyFilterModel *proxyModel;
+    QModelingObjectPropertyModel *propertyModel;
+};
 
 QT_END_NAMESPACE
+
+QT_END_HEADER
+
+#endif // QMODELINGOBJECTPROPERTYEDITOR_P_H
 

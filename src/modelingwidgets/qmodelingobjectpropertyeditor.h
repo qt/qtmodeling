@@ -3,7 +3,7 @@
 ** Copyright (C) 2013 Sandro S. Andrade <sandroandrade@kde.org>
 ** Contact: http://www.qt-project.org/legal
 **
-** This file is part of the QtWrappedObjectsWidgets module of the Qt Toolkit.
+** This file is part of the QtModelingWidgets module of the Qt Toolkit.
 **
 ** $QT_BEGIN_LICENSE:LGPL$
 ** Commercial License Usage
@@ -38,31 +38,46 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QWRAPPEDOBJECTMODEL_P_H
-#define QWRAPPEDOBJECTMODEL_P_H
+#ifndef QMODELINGOBJECTPROPERTYEDITOR_H
+#define QMODELINGOBJECTPROPERTYEDITOR_H
 
-#include "qtwrappedobjectswidgetsglobal.h"
-#include "private/qabstractitemmodel_p.h"
+#include <QtModelingWidgets/QtModelingWidgetsGlobal>
+
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtWrappedObjectsWidgets)
+QT_MODULE(QtModelingWidgets)
 
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT QWrappedObjectModelPrivate : public QAbstractItemModelPrivate
+class QModelingObjectPropertyModel;
+
+class QModelingObjectPropertyEditorPrivate;
+
+class Q_MODELINGOBJECTSWIDGETS_EXPORT QModelingObjectPropertyEditor : public QWidget
 {
-    Q_DECLARE_PUBLIC(QWrappedObjectModel)
+    Q_OBJECT
+
+    Q_DISABLE_COPY(QModelingObjectPropertyEditor)
+    Q_DECLARE_PRIVATE(QModelingObjectPropertyEditor)
 
 public:
-    explicit QWrappedObjectModelPrivate();
+    explicit QModelingObjectPropertyEditor(QWidget *parent = 0, Qt::WindowFlags f = 0);
 
-    QList<QWrappedObject *> wrappedObjects;
+    QModelingObjectPropertyModel *model() const;
+
+public Q_SLOTS:
+    void setModel(QModelingObjectPropertyModel *model);
+
+private Q_SLOTS:
+    void filterChanged();
+    void modelReset();
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QWRAPPEDOBJECTMODEL_P_H
+#endif // QMODELINGOBJECTPROPERTYEDITOR_H
 
