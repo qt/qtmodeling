@@ -3,7 +3,7 @@ TARGET = xmi-read
 DEPENDPATH += .
 INCLUDEPATH += .
 
-QT += wrappedobjects
+QT += modeling
 QT -= gui
 
 # Input

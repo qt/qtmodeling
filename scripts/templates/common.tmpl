@@ -217,13 +217,16 @@ ${parameter.findvalue("@name")}
     [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") %]
 [% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${originalClassName}Object::${qtAttribute}() const
 {
-    [%- IF qtType.match("QList|QSet") %]
+    [%- IF qtType.match("QList|QSet") && !qtType.match("QString") %]
     ${qtType}[% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
     foreach (Q${originalQtType.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}())
         [% IF qtType.match("QList") %]list[% ELSE %]set[% END %].[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](element->asQObject());
     return [% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
     [%- ELSIF qtType.match('\*$') %]
-    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}()->asQObject();
+    if (!qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}()->asQObject();
     [%- ELSE %]
     return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}();
     [%- END %]
@@ -286,7 +289,19 @@ ${parameter.findvalue("@name")}
         [% IF qtType.match("QList") %]list[% ELSE %]set[% END %].[% IF return.match("QList") %]append[% ELSE %]insert[% END %](element->asQObject());
     return [% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
     [%- ELSIF !return.match("QList|QSet") && return.match('\*$') %]
-    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
+    if (!qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
+        [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
+        [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
+        [%- IF qtType.match('\*$') -%]
+qmodelingobjectproperty_cast<${qtType.remove("QList<").remove("QSet<").remove(">")}>(${parameter.findvalue("@name")})
+        [%- ELSE -%]
+${parameter.findvalue("@name")}
+        [%- END -%]
+            [%- IF !loop.last %], [% END -%]
+        [%- END -%]))
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${operationName}(
         [%- FOREACH parameter = operation.findnodes("ownedParameter[@direction!='return']") -%]
         [%- qtType = QT_TYPE(namespace, parameter, "true") -%]
         [%- IF qtType.match('\*$') -%]
@@ -409,9 +424,13 @@ void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(
     [%- SET className = class.findvalue("@name") -%]
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
-    [%- IF qtType.match("QList|QSet") && qtType.match('\*') %]
+    [%- IF qtType.match("QList|QSet") %]
     foreach (${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}element, ${attributeName}())
+        [%- IF qtType.match('\*') %]
         c->add${attributeName.ucfirst}(dynamic_cast<${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}>(element->clone()));
+        [%- ELSE %]
+        c->add${attributeName.ucfirst}(element);
+        [%- END -%]
     [%- ELSIF qtType.match('\*') %]
     if (${attributeName}())
         c->set${attributeName.ucfirst}(dynamic_cast<${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}>(${attributeName}()->clone()));

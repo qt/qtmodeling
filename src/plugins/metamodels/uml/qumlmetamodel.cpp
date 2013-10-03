@@ -44,6 +44,7 @@ QT_BEGIN_NAMESPACE
 
 void QUmlMetaModel::init(QScriptEngine *scriptEngine)
 {
+    Q_UNUSED(scriptEngine);
 }
 
 QT_END_NAMESPACE
