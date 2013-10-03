@@ -69,6 +69,7 @@ public:
     QObjectList visitedObjects;
     QHash<QObject *, QString> idMap;
     QStringList idStack;
+    QString metaModelPrefix;
     QString metaModelXmlNamespace;
     QStringList blacklistedOppositeEnds;
 };

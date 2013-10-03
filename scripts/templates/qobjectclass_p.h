@@ -63,7 +63,6 @@ class Q${namespace}${className};
 class Q_${namespace.upper}_EXPORT Q${namespace}${className}Object : public QObject
 {
     Q_OBJECT
-    Q_CLASSINFO("MetaModelPrefix", "Q${namespace}")
     [%- visitedClasses = [] -%]
     [%- redefinedProperties = [] -%]
     [%- POPULATE_REDEFINED_PROPERTIES(class, visitedClasses, redefinedProperties) -%]

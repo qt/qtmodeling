@@ -111,7 +111,8 @@ bool QXmiWriter::writeFile(QIODevice *device)
     typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
     foreach (const PluginData &pair, d->metaModelPlugins.values()) {
         if (pair.second.value(QString::fromLatin1("MetaModelPrefix")).toString() == metaModelImplementationNamespace) {
-            d->metaModelXmlNamespace = pair.second.value(QString::fromLatin1("MetaModelPrefix")).toString().mid(1).toLower();
+            d->metaModelPrefix = pair.second.value(QString::fromLatin1("MetaModelPrefix")).toString();
+            d->metaModelXmlNamespace = d->metaModelPrefix.mid(1).toLower();
             d->writer.writeNamespace(pair.second.value(QString::fromLatin1("MetaModelNamespaceUri")).toString(), d->metaModelXmlNamespace);
             break;
         }
@@ -137,7 +138,7 @@ void QXmiWriter::populateIdMap(QObject *modelingObject, int index)
     if (modelingObject->metaObject()->indexOfProperty("name") != -1)
         d->idStack << modelingObject->property("name").toString();
     else
-        d->idStack << QString::fromLatin1(modelingObject->metaObject()->className()).remove(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value())) +
+        d->idStack << QString::fromLatin1(modelingObject->metaObject()->className()).remove(d->metaModelPrefix) +
                       QString::fromLatin1((index != -1) ? ".%1":"").arg(index);
     d->idMap.insert(modelingObject, d->idStack.join(QString::fromLatin1("-")));
     d->visitedObjects.append(modelingObject);
@@ -192,11 +193,11 @@ void QXmiWriter::writeObject(QObject *modelingObject, QString elementName)
 
     d->visitedObjects.append(modelingObject);
 
-    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->modelingObject->metaObject()->className()).remove(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value())).remove(QRegExp(QStringLiteral("Object$"))).prepend(QString::fromLatin1("%1:").arg(d->metaModelXmlNamespace))
+    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(QString::fromLatin1("%1:").arg(d->metaModelXmlNamespace))
                                                       :
                                                         elementName);
     if (!elementName.isEmpty())
-        d->writer.writeAttribute(QString::fromLatin1("xmi:type"), QString::fromLatin1(modelingObject->metaObject()->className()).remove(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value())).remove(QRegExp(QStringLiteral("Object$"))).prepend(QString::fromLatin1(modelingObject->metaObject()->classInfo(modelingObject->metaObject()->indexOfClassInfo("MetaModelPrefix")).value()).mid(1).toLower().append(QString::fromLatin1(":"))));
+        d->writer.writeAttribute(QString::fromLatin1("xmi:type"), QString::fromLatin1(modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(d->metaModelXmlNamespace + QString::fromLatin1(":")));
 
     const QMetaObject *metaObject = modelingObject->metaObject();
     int propertyCount = metaObject->propertyCount();
