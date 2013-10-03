@@ -49,6 +49,7 @@
 #include <QtCore/QString>
 #include <QtCore/QPointer>
 #include <QtCore/QMetaType>
+#include <QtCore/QStringList>
 #include <QtCore/QMetaProperty>
 
 QT_BEGIN_HEADER
@@ -69,6 +70,11 @@ public:
 
     virtual QModelingObject *clone() const = 0;
 
+    inline bool isPropertyModified(QMetaProperty metaProperty) const
+    {
+        return _modifiedResettableProperties.contains(QString::fromLatin1(metaProperty.name()));
+    }
+
     static inline QVariant propertyData(QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role)
     {
         return propertyDataHash[QString::fromLatin1(metaProperty.name())][role];
@@ -77,6 +83,7 @@ public:
 protected:
     QModelingObject() : deletingFromQObject(false), _qObject(0) {}
     QPointer<QObject> _qObject;
+    QStringList _modifiedResettableProperties;
     static QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > propertyDataHash;
     virtual void setPropertyData() = 0;
 };

@@ -90,7 +90,7 @@ ${attributeName}
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") %]
-    Q_PROPERTY(${qtType.trim} ${qtAttribute} READ ${qtAttribute})
+    Q_PROPERTY(${qtType.trim} ${qtAttribute} READ ${qtAttribute}[% IF attribute.findvalue("defaultValue/@xmi:type") != "" %] RESET unset${qtAttribute.remove("^is").ucfirst}[% END %][% IF attribute.findvalue("@isDerived") == "true" and attribute.findvalue("@isDerivedUnion") != "true" %] STORED false[% END %])
 [%- END %]
 [%- END -%]
 [%- MACRO GENERATE_ATTRIBUTES(class, visitedClasses, redefinedProperties) BLOCK -%]
@@ -190,6 +190,9 @@ ${parameter.findvalue("@name")}
         [%- ELSE %]
     void [%- IF readOnly == "true" -%]Q_DECL_HIDDEN [% END %]set${attributeName.remove("^Is")}(${qtType}${qtAttribute});
             [%- END -%]
+    [%- END -%]
+    [%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
+    void unset${qtAttribute.remove("^is").ucfirst}();
     [%- END -%]
 [%- END %]
 [%- END -%]
@@ -364,31 +367,45 @@ void Q${namespace}${originalClassName}Object::add${attributeName}(${originalQtTy
         [%- END %]
 }
 
-    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+        [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
 void Q${namespace}${originalClassName}Object::remove${attributeName}([% qtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*') %]${qtAttribute})
-    [%- ELSE %]
+        [%- ELSE %]
 void Q${namespace}${originalClassName}Object::remove${attributeName}(${originalQtType.remove("QSet<").remove("QList<").replace(">", "")} ${qtAttribute})
-    [%- END %]
+        [%- END %]
 {
-    [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
+        [%- IF qtType.remove("QSet<").remove("QList<").match('\*') %]
     qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(qmodelingobjectproperty_cast<${originalQtType.remove("QSet<").remove("QList<").replace(">", "").replace('\* $', '*')}>(${qtAttribute}));
-    [%- ELSE %]
+        [%- ELSE %]
     qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->remove${attributeName}(${qtAttribute});
-    [%- END %]
+        [%- END %]
 }
 
     [%- ELSIF qtType.match('\*$') %]
 void Q${namespace}${originalClassName}Object::set${attributeName}(${qtType}${qtAttribute})
 {
     qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName}(qmodelingobjectproperty_cast<${originalQtType}>(${qtAttribute}));
+[%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
+    _modifiedResettableProperties << QStringLiteral("${attributeName.remove("^Is").lcfirst}");
+[%- END %]
 }
 
     [%- ELSE %]
 void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
 {
     qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName.remove("^Is")}(${qtAttribute});
+[%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
+    _modifiedResettableProperties << QStringLiteral("${attributeName.remove("^Is").lcfirst}");
+[%- END %]
 }
-    [% END -%]
+
+    [%- END -%]
+    [%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
+void unset${qtAttribute.remove("^is").ucfirst}()
+{
+    _modifiedResettableProperties.removeAll(QStringLiteral("${attributeName.remove("^Is").lcfirst}"));
+}
+
+    [%- END -%]
 [%- IF loop.last %]
 [% END -%]
 [%- END %]
