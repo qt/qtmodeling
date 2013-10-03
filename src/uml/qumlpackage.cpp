@@ -79,7 +79,8 @@ QUmlPackage::QUmlPackage(bool createQObject) :
 QUmlPackage::~QUmlPackage()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -198,7 +199,7 @@ void QUmlPackage::setNestingPackage(QUmlPackage *nestingPackage)
 
     if (_nestingPackage != nestingPackage) {
         _nestingPackage = nestingPackage;
-        if (nestingPackage->asQObject() && this->asQObject())
+        if (nestingPackage && nestingPackage->asQObject() && this->asQObject())
             QObject::connect(nestingPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setNestingPackage()));
     }
 }
@@ -303,7 +304,7 @@ void QUmlPackage::addPackageMerge(QUmlPackageMerge *packageMerge)
 
     if (!_packageMerge.contains(packageMerge)) {
         _packageMerge.insert(packageMerge);
-        if (packageMerge->asQObject() && this->asQObject())
+        if (packageMerge && packageMerge->asQObject() && this->asQObject())
             QObject::connect(packageMerge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePackageMerge(QObject *)));
         packageMerge->asQObject()->setParent(this->asQObject());
 
@@ -352,7 +353,7 @@ void QUmlPackage::addPackagedElement(QUmlPackageableElement *packagedElement)
 
     if (!_packagedElement.contains(packagedElement)) {
         _packagedElement.insert(packagedElement);
-        if (packagedElement->asQObject() && this->asQObject())
+        if (packagedElement && packagedElement->asQObject() && this->asQObject())
             QObject::connect(packagedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePackagedElement(QObject *)));
         packagedElement->asQObject()->setParent(this->asQObject());
 
@@ -391,7 +392,7 @@ void QUmlPackage::addProfileApplication(QUmlProfileApplication *profileApplicati
 
     if (!_profileApplication.contains(profileApplication)) {
         _profileApplication.insert(profileApplication);
-        if (profileApplication->asQObject() && this->asQObject())
+        if (profileApplication && profileApplication->asQObject() && this->asQObject())
             QObject::connect(profileApplication->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeProfileApplication(QObject *)));
         profileApplication->asQObject()->setParent(this->asQObject());
 

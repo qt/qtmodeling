@@ -127,7 +127,8 @@ Q${namespace}${className}::~Q${namespace}${className}()
 {
 [%- IF class.findvalue("@isAbstract") != "true" %]
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 [%- END %]
@@ -194,7 +195,7 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
     if (!_${qtAttribute}.contains(${qtAttribute})) {
         _${qtAttribute}.[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](${qtAttribute});
         [%- IF qtType.match('\*') %]
-        if (${qtAttribute}->asQObject() && this->asQObject())
+        if (${qtAttribute} && ${qtAttribute}->asQObject() && this->asQObject())
             QObject::connect(${qtAttribute}->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(remove${attributeName}(QObject *)));
             [%- IF attribute.findvalue("@aggregation") == "composite" %]
         ${qtAttribute}->asQObject()->setParent(this->asQObject());
@@ -332,7 +333,7 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
         [%- ELSE %]
         _${qtAttribute} = ${qtAttribute};
             [%- IF qtType.match('\*') %]
-        if (${qtAttribute}->asQObject() && this->asQObject())
+        if (${qtAttribute} && ${qtAttribute}->asQObject() && this->asQObject())
             QObject::connect(${qtAttribute}->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(set${attributeName}()));
                 [%- IF attribute.findvalue("@aggregation") == "composite" %]
         ${qtAttribute}->asQObject()->setParent(this->asQObject());
