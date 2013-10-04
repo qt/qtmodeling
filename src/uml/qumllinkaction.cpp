@@ -136,7 +136,7 @@ void QUmlLinkAction::addEndData(QUmlLinkEndData *endData)
 
     if (!_endData.contains(endData)) {
         _endData.insert(endData);
-        if (endData->asQObject() && this->asQObject())
+        if (endData && endData->asQObject() && this->asQObject())
             QObject::connect(endData->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEndData(QObject *)));
         endData->asQObject()->setParent(this->asQObject());
 
@@ -175,7 +175,7 @@ void QUmlLinkAction::addInputValue(QUmlInputPin *inputValue)
 
     if (!_inputValue.contains(inputValue)) {
         _inputValue.insert(inputValue);
-        if (inputValue->asQObject() && this->asQObject())
+        if (inputValue && inputValue->asQObject() && this->asQObject())
             QObject::connect(inputValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInputValue(QObject *)));
         inputValue->asQObject()->setParent(this->asQObject());
 

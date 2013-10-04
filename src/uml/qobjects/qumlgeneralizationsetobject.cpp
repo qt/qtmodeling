@@ -88,19 +88,28 @@ const QSet<QObject *> QUmlGeneralizationSetObject::ownedElement() const
 
 QObject *QUmlGeneralizationSetObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlGeneralizationSetObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlGeneralizationSetObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -120,12 +129,18 @@ QString QUmlGeneralizationSetObject::name() const
 
 QObject *QUmlGeneralizationSetObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlGeneralizationSetObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlGeneralizationSetObject::qualifiedName() const
@@ -161,7 +176,10 @@ bool QUmlGeneralizationSetObject::isDisjoint() const
 
 QObject *QUmlGeneralizationSetObject::powertype() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->powertype()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->powertype())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->powertype()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -274,7 +292,7 @@ void QUmlGeneralizationSetObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setName(name);
 }
-    
+
 void QUmlGeneralizationSetObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -289,13 +307,19 @@ void QUmlGeneralizationSetObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlGeneralizationSetObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlGeneralizationSetObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [GeneralizationSet]
 
 void QUmlGeneralizationSetObject::addGeneralization(QObject *generalization)
@@ -311,13 +335,25 @@ void QUmlGeneralizationSetObject::removeGeneralization(QObject *generalization)
 void QUmlGeneralizationSetObject::setCovering(bool isCovering)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setCovering(isCovering);
+    qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->modifiedResettableProperties() << QStringLiteral("covering");
 }
-    
+
+void QUmlGeneralizationSetObject::unsetCovering()
+{
+    qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("covering"));
+}
+
 void QUmlGeneralizationSetObject::setDisjoint(bool isDisjoint)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setDisjoint(isDisjoint);
+    qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->modifiedResettableProperties() << QStringLiteral("disjoint");
 }
-    
+
+void QUmlGeneralizationSetObject::unsetDisjoint()
+{
+    qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("disjoint"));
+}
+
 void QUmlGeneralizationSetObject::setPowertype(QObject *powertype)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setPowertype(qmodelingobjectproperty_cast<QUmlClassifier *>(powertype));

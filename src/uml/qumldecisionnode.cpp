@@ -79,7 +79,8 @@ QUmlDecisionNode::QUmlDecisionNode(bool createQObject) :
 QUmlDecisionNode::~QUmlDecisionNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -135,7 +136,7 @@ void QUmlDecisionNode::setDecisionInput(QUmlBehavior *decisionInput)
 
     if (_decisionInput != decisionInput) {
         _decisionInput = decisionInput;
-        if (decisionInput->asQObject() && this->asQObject())
+        if (decisionInput && decisionInput->asQObject() && this->asQObject())
             QObject::connect(decisionInput->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecisionInput()));
     }
 }
@@ -156,7 +157,7 @@ void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
 
     if (_decisionInputFlow != decisionInputFlow) {
         _decisionInputFlow = decisionInputFlow;
-        if (decisionInputFlow->asQObject() && this->asQObject())
+        if (decisionInputFlow && decisionInputFlow->asQObject() && this->asQObject())
             QObject::connect(decisionInputFlow->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecisionInputFlow()));
     }
 }

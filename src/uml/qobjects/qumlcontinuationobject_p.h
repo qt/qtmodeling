@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlContinuationObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [InteractionFragment]
@@ -78,7 +78,7 @@ class Q_UML_EXPORT QUmlContinuationObject : public QObject
     Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrdering)
 
     // Properties [Continuation]
-    Q_PROPERTY(bool setting READ setting)
+    Q_PROPERTY(bool setting READ setting RESET unsetSetting)
 
 public:
     Q_INVOKABLE explicit QUmlContinuationObject(QUmlContinuation *qModelingObject);
@@ -144,6 +144,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [Continuation]
     void setSetting(bool setting);
+    void unsetSetting();
 };
 
 QT_END_NAMESPACE

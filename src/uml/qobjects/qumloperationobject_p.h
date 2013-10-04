@@ -72,29 +72,29 @@ class Q_UML_EXPORT QUmlOperationObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
     Q_PROPERTY(QSet<QObject *> member READ member)
     Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
     Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
     Q_PROPERTY(QSet<QObject *> packageImport READ packageImport)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
     // Properties [Feature]
     Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifier)
-    Q_PROPERTY(bool isStatic READ isStatic)
+    Q_PROPERTY(bool isStatic READ isStatic RESET unsetStatic)
 
     // Properties [BehavioralFeature]
-    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency)
-    Q_PROPERTY(bool isAbstract READ isAbstract)
+    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency RESET unsetConcurrency)
+    Q_PROPERTY(bool isAbstract READ isAbstract RESET unsetAbstract)
     Q_PROPERTY(QSet<QObject *> method READ method)
     Q_PROPERTY(QSet<QObject *> ownedParameterSet READ ownedParameterSet)
 
@@ -106,18 +106,18 @@ class Q_UML_EXPORT QUmlOperationObject : public QObject
     Q_PROPERTY(QObject * class_ READ class_)
     Q_PROPERTY(QObject * datatype READ datatype)
     Q_PROPERTY(QObject * interface_ READ interface_)
-    Q_PROPERTY(bool isOrdered READ isOrdered)
-    Q_PROPERTY(bool isQuery READ isQuery)
-    Q_PROPERTY(bool isUnique READ isUnique)
-    Q_PROPERTY(int lower READ lower)
+    Q_PROPERTY(bool isOrdered READ isOrdered RESET unsetOrdered STORED false)
+    Q_PROPERTY(bool isQuery READ isQuery RESET unsetQuery)
+    Q_PROPERTY(bool isUnique READ isUnique RESET unsetUnique STORED false)
+    Q_PROPERTY(int lower READ lower RESET unsetLower STORED false)
     Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameter)
     Q_PROPERTY(QSet<QObject *> postcondition READ postcondition)
     Q_PROPERTY(QSet<QObject *> precondition READ precondition)
     Q_PROPERTY(QSet<QObject *> raisedException READ raisedException)
     Q_PROPERTY(QSet<QObject *> redefinedOperation READ redefinedOperation)
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
-    Q_PROPERTY(QObject * type READ type)
-    Q_PROPERTY(int upper READ upper)
+    Q_PROPERTY(QObject * type READ type STORED false)
+    Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
 
 public:
     Q_INVOKABLE explicit QUmlOperationObject(QUmlOperation *qModelingObject);
@@ -256,6 +256,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -265,10 +266,13 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addFeaturingClassifier(QObject *featuringClassifier);
     void Q_DECL_HIDDEN removeFeaturingClassifier(QObject *featuringClassifier);
     void setStatic(bool isStatic);
+    void unsetStatic();
 
     // Slots for owned attributes [BehavioralFeature]
     void setConcurrency(QtUml::CallConcurrencyKind concurrency);
+    void unsetConcurrency();
     void setAbstract(bool isAbstract);
+    void unsetAbstract();
     void addMethod(QObject *method);
     void removeMethod(QObject *method);
     void addOwnedParameterSet(QObject *ownedParameterSet);
@@ -283,9 +287,13 @@ public Q_SLOTS:
     void setDatatype(QObject *datatype = 0);
     void setInterface(QObject *interface_ = 0);
     void Q_DECL_HIDDEN setOrdered(bool isOrdered);
+    void unsetOrdered();
     void setQuery(bool isQuery);
+    void unsetQuery();
     void Q_DECL_HIDDEN setUnique(bool isUnique);
+    void unsetUnique();
     void Q_DECL_HIDDEN setLower(int lower);
+    void unsetLower();
     void addOwnedParameter(QObject *ownedParameter);
     void removeOwnedParameter(QObject *ownedParameter);
     void addPostcondition(QObject *postcondition);
@@ -299,6 +307,7 @@ public Q_SLOTS:
     void setTemplateParameter(QObject *templateParameter = 0);
     void Q_DECL_HIDDEN setType(QObject *type = 0);
     void Q_DECL_HIDDEN setUpper(int upper);
+    void unsetUpper();
 };
 
 QT_END_NAMESPACE

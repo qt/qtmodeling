@@ -68,25 +68,25 @@ class Q_UML_EXPORT QUmlStateObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
     Q_PROPERTY(QSet<QObject *> member READ member)
     Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
     Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
     Q_PROPERTY(QSet<QObject *> packageImport READ packageImport)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
 
     // Properties [Vertex]
     Q_PROPERTY(QObject * container READ container)
-    Q_PROPERTY(QSet<QObject *> incoming READ incoming)
-    Q_PROPERTY(QSet<QObject *> outgoing READ outgoing)
+    Q_PROPERTY(QSet<QObject *> incoming READ incoming STORED false)
+    Q_PROPERTY(QSet<QObject *> outgoing READ outgoing STORED false)
 
     // Properties [State]
     Q_PROPERTY(QSet<QObject *> connection READ connection)
@@ -95,12 +95,12 @@ class Q_UML_EXPORT QUmlStateObject : public QObject
     Q_PROPERTY(QObject * doActivity READ doActivity)
     Q_PROPERTY(QObject * entry READ entry)
     Q_PROPERTY(QObject * exit READ exit)
-    Q_PROPERTY(bool isComposite READ isComposite)
-    Q_PROPERTY(bool isOrthogonal READ isOrthogonal)
-    Q_PROPERTY(bool isSimple READ isSimple)
-    Q_PROPERTY(bool isSubmachineState READ isSubmachineState)
+    Q_PROPERTY(bool isComposite READ isComposite RESET unsetComposite STORED false)
+    Q_PROPERTY(bool isOrthogonal READ isOrthogonal RESET unsetOrthogonal STORED false)
+    Q_PROPERTY(bool isSimple READ isSimple RESET unsetSimple STORED false)
+    Q_PROPERTY(bool isSubmachineState READ isSubmachineState RESET unsetSubmachineState STORED false)
     Q_PROPERTY(QObject * redefinedState READ redefinedState)
-    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
     Q_PROPERTY(QSet<QObject *> region READ region)
     Q_PROPERTY(QObject * stateInvariant READ stateInvariant)
     Q_PROPERTY(QObject * submachine READ submachine)
@@ -215,6 +215,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
 
@@ -236,9 +237,13 @@ public Q_SLOTS:
     void setEntry(QObject *entry = 0);
     void setExit(QObject *exit = 0);
     void Q_DECL_HIDDEN setComposite(bool isComposite);
+    void unsetComposite();
     void Q_DECL_HIDDEN setOrthogonal(bool isOrthogonal);
+    void unsetOrthogonal();
     void Q_DECL_HIDDEN setSimple(bool isSimple);
+    void unsetSimple();
     void Q_DECL_HIDDEN setSubmachineState(bool isSubmachineState);
+    void unsetSubmachineState();
     void setRedefinedState(QObject *redefinedState = 0);
     void Q_DECL_HIDDEN setRedefinitionContext(QObject *redefinitionContext = 0);
     void addRegion(QObject *region);

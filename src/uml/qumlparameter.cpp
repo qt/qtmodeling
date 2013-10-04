@@ -80,7 +80,8 @@ QUmlParameter::QUmlParameter(bool createQObject) :
 QUmlParameter::~QUmlParameter()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -166,7 +167,7 @@ void QUmlParameter::setDefaultValue(QUmlValueSpecification *defaultValue)
         removeOwnedElement(_defaultValue);
 
         _defaultValue = defaultValue;
-        if (defaultValue->asQObject() && this->asQObject())
+        if (defaultValue && defaultValue->asQObject() && this->asQObject())
             QObject::connect(defaultValue->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDefaultValue()));
         defaultValue->asQObject()->setParent(this->asQObject());
 
@@ -269,7 +270,7 @@ void QUmlParameter::setOperation(QUmlOperation *operation)
 
     if (_operation != operation) {
         _operation = operation;
-        if (operation->asQObject() && this->asQObject())
+        if (operation && operation->asQObject() && this->asQObject())
             QObject::connect(operation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOperation()));
     }
 }
@@ -290,7 +291,7 @@ void QUmlParameter::addParameterSet(QUmlParameterSet *parameterSet)
 
     if (!_parameterSet.contains(parameterSet)) {
         _parameterSet.insert(parameterSet);
-        if (parameterSet->asQObject() && this->asQObject())
+        if (parameterSet && parameterSet->asQObject() && this->asQObject())
             QObject::connect(parameterSet->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameterSet(QObject *)));
 
         // Adjust opposite properties

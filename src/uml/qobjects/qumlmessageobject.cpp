@@ -88,7 +88,10 @@ const QSet<QObject *> QUmlMessageObject::ownedElement() const
 
 QObject *QUmlMessageObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -108,12 +111,18 @@ QString QUmlMessageObject::name() const
 
 QObject *QUmlMessageObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlMessageObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlMessageObject::qualifiedName() const
@@ -138,12 +147,18 @@ const QList<QObject *> QUmlMessageObject::argument() const
 
 QObject *QUmlMessageObject::connector() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->connector()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->connector())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->connector()->asQObject();
 }
 
 QObject *QUmlMessageObject::interaction() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->interaction()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->interaction())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->interaction()->asQObject();
 }
 
 QtUml::MessageKind QUmlMessageObject::messageKind() const
@@ -158,17 +173,26 @@ QtUml::MessageSort QUmlMessageObject::messageSort() const
 
 QObject *QUmlMessageObject::receiveEvent() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->receiveEvent()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->receiveEvent())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->receiveEvent()->asQObject();
 }
 
 QObject *QUmlMessageObject::sendEvent() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->sendEvent()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->sendEvent())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->sendEvent()->asQObject();
 }
 
 QObject *QUmlMessageObject::signature() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessage *>(this)->signature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessage *>(this)->signature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessage *>(this)->signature()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -257,7 +281,7 @@ void QUmlMessageObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlMessage *>(this)->setName(name);
 }
-    
+
 void QUmlMessageObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlMessage *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -272,12 +296,12 @@ void QUmlMessageObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlMessage *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlMessageObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlMessage *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Message]
 
 void QUmlMessageObject::addArgument(QObject *argument)
@@ -303,13 +327,25 @@ void QUmlMessageObject::setInteraction(QObject *interaction)
 void QUmlMessageObject::setMessageKind(QtUml::MessageKind messageKind)
 {
     qmodelingobjectproperty_cast<QUmlMessage *>(this)->setMessageKind(messageKind);
+    qmodelingobjectproperty_cast<QUmlMessage *>(this)->modifiedResettableProperties() << QStringLiteral("messageKind");
 }
-    
+
+void QUmlMessageObject::unsetMessageKind()
+{
+    qmodelingobjectproperty_cast<QUmlMessage *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("messageKind"));
+}
+
 void QUmlMessageObject::setMessageSort(QtUml::MessageSort messageSort)
 {
     qmodelingobjectproperty_cast<QUmlMessage *>(this)->setMessageSort(messageSort);
+    qmodelingobjectproperty_cast<QUmlMessage *>(this)->modifiedResettableProperties() << QStringLiteral("messageSort");
 }
-    
+
+void QUmlMessageObject::unsetMessageSort()
+{
+    qmodelingobjectproperty_cast<QUmlMessage *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("messageSort"));
+}
+
 void QUmlMessageObject::setReceiveEvent(QObject *receiveEvent)
 {
     qmodelingobjectproperty_cast<QUmlMessage *>(this)->setReceiveEvent(qmodelingobjectproperty_cast<QUmlMessageEnd *>(receiveEvent));

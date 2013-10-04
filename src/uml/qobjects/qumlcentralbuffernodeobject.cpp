@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlCentralBufferNodeObject::ownedElement() const
 
 QObject *QUmlCentralBufferNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlCentralBufferNodeObject::name() const
 
 QObject *QUmlCentralBufferNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlCentralBufferNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlCentralBufferNodeObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlCentralBufferNodeObject::redefinitionContext() const
 
 QObject *QUmlCentralBufferNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlCentralBufferNodeObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlCentralBufferNodeObject::inPartition() const
 
 QObject *QUmlCentralBufferNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlCentralBufferNodeObject::incoming() const
@@ -222,7 +237,10 @@ const QSet<QObject *> QUmlCentralBufferNodeObject::redefinedNode() const
 
 QObject *QUmlCentralBufferNodeObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ObjectNode]
@@ -247,12 +265,18 @@ QtUml::ObjectNodeOrderingKind QUmlCentralBufferNodeObject::ordering() const
 
 QObject *QUmlCentralBufferNodeObject::selection() const
 {
-    return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->selection()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->selection())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->selection()->asQObject();
 }
 
 QObject *QUmlCentralBufferNodeObject::upperBound() const
 {
-    return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->upperBound()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->upperBound())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->upperBound()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -353,7 +377,7 @@ void QUmlCentralBufferNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setName(name);
 }
-    
+
 void QUmlCentralBufferNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -368,19 +392,25 @@ void QUmlCentralBufferNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlCentralBufferNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlCentralBufferNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlCentralBufferNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlCentralBufferNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -495,13 +525,25 @@ void QUmlCentralBufferNodeObject::removeInState(QObject *inState)
 void QUmlCentralBufferNodeObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setControlType(isControlType);
+    qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
-    
+
+void QUmlCentralBufferNodeObject::unsetControlType()
+{
+    qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("controlType"));
+}
+
 void QUmlCentralBufferNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setOrdering(ordering);
+    qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
-    
+
+void QUmlCentralBufferNodeObject::unsetOrdering()
+{
+    qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordering"));
+}
+
 void QUmlCentralBufferNodeObject::setSelection(QObject *selection)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setSelection(qmodelingobjectproperty_cast<QUmlBehavior *>(selection));

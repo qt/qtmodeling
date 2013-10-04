@@ -74,7 +74,8 @@ QUmlActivityPartition::QUmlActivityPartition(bool createQObject) :
 QUmlActivityPartition::~QUmlActivityPartition()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -125,7 +126,7 @@ void QUmlActivityPartition::addEdge(QUmlActivityEdge *edge)
 
     if (!_edge.contains(edge)) {
         _edge.insert(edge);
-        if (edge->asQObject() && this->asQObject())
+        if (edge && edge->asQObject() && this->asQObject())
             QObject::connect(edge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEdge(QObject *)));
 
         // Adjust subsetted properties
@@ -209,7 +210,7 @@ void QUmlActivityPartition::addNode(QUmlActivityNode *node)
 
     if (!_node.contains(node)) {
         _node.insert(node);
-        if (node->asQObject() && this->asQObject())
+        if (node && node->asQObject() && this->asQObject())
             QObject::connect(node->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNode(QObject *)));
 
         // Adjust subsetted properties
@@ -255,7 +256,7 @@ void QUmlActivityPartition::setRepresents(QUmlElement *represents)
 
     if (_represents != represents) {
         _represents = represents;
-        if (represents->asQObject() && this->asQObject())
+        if (represents && represents->asQObject() && this->asQObject())
             QObject::connect(represents->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRepresents()));
     }
 }
@@ -276,7 +277,7 @@ void QUmlActivityPartition::addSubpartition(QUmlActivityPartition *subpartition)
 
     if (!_subpartition.contains(subpartition)) {
         _subpartition.insert(subpartition);
-        if (subpartition->asQObject() && this->asQObject())
+        if (subpartition && subpartition->asQObject() && this->asQObject())
             QObject::connect(subpartition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubpartition(QObject *)));
         subpartition->asQObject()->setParent(this->asQObject());
 
@@ -317,7 +318,7 @@ void QUmlActivityPartition::setSuperPartition(QUmlActivityPartition *superPartit
         // Adjust subsetted properties
 
         _superPartition = superPartition;
-        if (superPartition->asQObject() && this->asQObject())
+        if (superPartition && superPartition->asQObject() && this->asQObject())
             QObject::connect(superPartition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSuperPartition()));
 
         // Adjust subsetted properties
@@ -361,13 +362,13 @@ void QUmlActivityPartition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::DocumentationRole] = QStringLiteral("Partitions immediately contained in the partition.");
     QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityGroup-subgroup");
-    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityPartition-superPartition");
 
     QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::DocumentationRole] = QStringLiteral("Partition immediately containing the partition.");
     QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityGroup-superGroup");
-    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityPartition-subpartition");
 
 }
 

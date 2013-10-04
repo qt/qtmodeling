@@ -156,7 +156,7 @@ void QUmlStructuredClassifier::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.append(ownedAttribute);
-        if (ownedAttribute->asQObject() && this->asQObject())
+        if (ownedAttribute && ownedAttribute->asQObject() && this->asQObject())
             QObject::connect(ownedAttribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedAttribute(QObject *)));
         ownedAttribute->asQObject()->setParent(this->asQObject());
 
@@ -199,7 +199,7 @@ void QUmlStructuredClassifier::addOwnedConnector(QUmlConnector *ownedConnector)
 
     if (!_ownedConnector.contains(ownedConnector)) {
         _ownedConnector.insert(ownedConnector);
-        if (ownedConnector->asQObject() && this->asQObject())
+        if (ownedConnector && ownedConnector->asQObject() && this->asQObject())
             QObject::connect(ownedConnector->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedConnector(QObject *)));
         ownedConnector->asQObject()->setParent(this->asQObject());
 
@@ -276,7 +276,7 @@ void QUmlStructuredClassifier::addRole(QUmlConnectableElement *role)
 
     if (!_role.contains(role)) {
         _role.insert(role);
-        if (role->asQObject() && this->asQObject())
+        if (role && role->asQObject() && this->asQObject())
             QObject::connect(role->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRole(QObject *)));
 
         // Adjust subsetted properties

@@ -93,7 +93,7 @@ void QUmlParameterableElement::setOwningTemplateParameter(QUmlTemplateParameter 
         // Adjust subsetted properties
 
         _owningTemplateParameter = owningTemplateParameter;
-        if (owningTemplateParameter->asQObject() && this->asQObject())
+        if (owningTemplateParameter && owningTemplateParameter->asQObject() && this->asQObject())
             QObject::connect(owningTemplateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwningTemplateParameter()));
 
         // Adjust subsetted properties
@@ -118,7 +118,7 @@ void QUmlParameterableElement::setTemplateParameter(QUmlTemplateParameter *templ
 
     if (_templateParameter != templateParameter) {
         _templateParameter = templateParameter;
-        if (templateParameter->asQObject() && this->asQObject())
+        if (templateParameter && templateParameter->asQObject() && this->asQObject())
             QObject::connect(templateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateParameter()));
     }
 }

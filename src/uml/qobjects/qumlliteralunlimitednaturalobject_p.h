@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlLiteralUnlimitedNaturalObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [TypedElement]
     Q_PROPERTY(QObject * type READ type)
@@ -78,10 +78,10 @@ class Q_UML_EXPORT QUmlLiteralUnlimitedNaturalObject : public QObject
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [LiteralUnlimitedNatural]
-    Q_PROPERTY(int value READ value)
+    Q_PROPERTY(int value READ value RESET unsetValue)
 
 public:
     Q_INVOKABLE explicit QUmlLiteralUnlimitedNaturalObject(QUmlLiteralUnlimitedNatural *qModelingObject);
@@ -163,9 +163,11 @@ public Q_SLOTS:
 
     // Slots for owned attributes [PackageableElement]
     void setVisibility(QtUml::VisibilityKind visibility);
+    void unsetVisibility();
 
     // Slots for owned attributes [LiteralUnlimitedNatural]
     void setValue(int value);
+    void unsetValue();
 };
 
 QT_END_NAMESPACE

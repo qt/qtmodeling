@@ -86,7 +86,8 @@ QUmlInformationItem::QUmlInformationItem(bool createQObject)
 QUmlInformationItem::~QUmlInformationItem()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -160,7 +161,7 @@ void QUmlInformationItem::addRepresented(QUmlClassifier *represented)
 
     if (!_represented.contains(represented)) {
         _represented.insert(represented);
-        if (represented->asQObject() && this->asQObject())
+        if (represented && represented->asQObject() && this->asQObject())
             QObject::connect(represented->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRepresented(QObject *)));
     }
 }

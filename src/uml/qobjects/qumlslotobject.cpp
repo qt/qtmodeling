@@ -82,19 +82,28 @@ const QSet<QObject *> QUmlSlotObject::ownedElement() const
 
 QObject *QUmlSlotObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlSlot *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSlot *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSlot *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Slot]
 
 QObject *QUmlSlotObject::definingFeature() const
 {
-    return qmodelingobjectproperty_cast<QUmlSlot *>(this)->definingFeature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSlot *>(this)->definingFeature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSlot *>(this)->definingFeature()->asQObject();
 }
 
 QObject *QUmlSlotObject::owningInstance() const
 {
-    return qmodelingobjectproperty_cast<QUmlSlot *>(this)->owningInstance()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSlot *>(this)->owningInstance())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSlot *>(this)->owningInstance()->asQObject();
 }
 
 const QList<QObject *> QUmlSlotObject::value() const

@@ -73,7 +73,8 @@ QUmlStateInvariant::QUmlStateInvariant(bool createQObject) :
 QUmlStateInvariant::~QUmlStateInvariant()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -120,7 +121,7 @@ void QUmlStateInvariant::setCovered(QUmlLifeline *covered)
 
     if (_covered != covered) {
         _covered = covered;
-        if (covered->asQObject() && this->asQObject())
+        if (covered && covered->asQObject() && this->asQObject())
             QObject::connect(covered->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setCovered()));
     }
 }
@@ -144,7 +145,7 @@ void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
         removeOwnedElement(_invariant);
 
         _invariant = invariant;
-        if (invariant->asQObject() && this->asQObject())
+        if (invariant && invariant->asQObject() && this->asQObject())
             QObject::connect(invariant->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInvariant()));
         invariant->asQObject()->setParent(this->asQObject());
 

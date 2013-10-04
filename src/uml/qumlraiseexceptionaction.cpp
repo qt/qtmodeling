@@ -80,7 +80,8 @@ QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(bool createQObject) :
 QUmlRaiseExceptionAction::~QUmlRaiseExceptionAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -144,7 +145,7 @@ void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
         removeInput(_exception);
 
         _exception = exception;
-        if (exception->asQObject() && this->asQObject())
+        if (exception && exception->asQObject() && this->asQObject())
             QObject::connect(exception->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setException()));
         exception->asQObject()->setParent(this->asQObject());
 

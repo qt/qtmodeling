@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlCreateObjectActionObject::ownedElement() const
 
 QObject *QUmlCreateObjectActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlCreateObjectActionObject::name() const
 
 QObject *QUmlCreateObjectActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlCreateObjectActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlCreateObjectActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlCreateObjectActionObject::redefinitionContext() const
 
 QObject *QUmlCreateObjectActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlCreateObjectActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlCreateObjectActionObject::inPartition() const
 
 QObject *QUmlCreateObjectActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlCreateObjectActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlCreateObjectActionObject::handler() const
 
 QObject *QUmlCreateObjectActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlCreateObjectActionObject::input() const
@@ -276,12 +294,18 @@ const QList<QObject *> QUmlCreateObjectActionObject::output() const
 
 QObject *QUmlCreateObjectActionObject::classifier() const
 {
-    return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->classifier()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->classifier())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->classifier()->asQObject();
 }
 
 QObject *QUmlCreateObjectActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->result()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -382,7 +406,7 @@ void QUmlCreateObjectActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->setName(name);
 }
-    
+
 void QUmlCreateObjectActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -397,19 +421,25 @@ void QUmlCreateObjectActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlCreateObjectActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlCreateObjectActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlCreateObjectActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlCreateObjectActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -534,8 +564,14 @@ void QUmlCreateObjectActionObject::removeInput(QObject *input)
 void QUmlCreateObjectActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlCreateObjectActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlCreateObjectActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlCreateObjectAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

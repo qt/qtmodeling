@@ -108,7 +108,10 @@ const QSet<QObject *> QUmlUseCaseObject::ownedElement() const
 
 QObject *QUmlUseCaseObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUseCase *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -128,12 +131,18 @@ QString QUmlUseCaseObject::name() const
 
 QObject *QUmlUseCaseObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUseCase *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlUseCaseObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUseCase *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlUseCaseObject::qualifiedName() const
@@ -194,7 +203,10 @@ const QSet<QObject *> QUmlUseCaseObject::packageImport() const
 
 QObject *QUmlUseCaseObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUseCase *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -207,7 +219,10 @@ QtUml::VisibilityKind QUmlUseCaseObject::visibility() const
 
 QObject *QUmlUseCaseObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUseCase *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -305,7 +320,10 @@ bool QUmlUseCaseObject::isFinalSpecialization() const
 
 QObject *QUmlUseCaseObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUseCase *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlUseCaseObject::ownedUseCase() const
@@ -334,7 +352,10 @@ const QSet<QObject *> QUmlUseCaseObject::redefinedClassifier() const
 
 QObject *QUmlUseCaseObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUseCase *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlUseCaseObject::substitution() const
@@ -347,7 +368,10 @@ const QSet<QObject *> QUmlUseCaseObject::substitution() const
 
 QObject *QUmlUseCaseObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUseCase *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlUseCaseObject::useCase() const
@@ -362,7 +386,10 @@ const QSet<QObject *> QUmlUseCaseObject::useCase() const
 
 QObject *QUmlUseCaseObject::classifierBehavior() const
 {
-    return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->classifierBehavior()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUseCase *>(this)->classifierBehavior())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUseCase *>(this)->classifierBehavior()->asQObject();
 }
 
 const QSet<QObject *> QUmlUseCaseObject::interfaceRealization() const
@@ -645,7 +672,7 @@ void QUmlUseCaseObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlUseCase *>(this)->setName(name);
 }
-    
+
 void QUmlUseCaseObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlUseCase *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -660,7 +687,7 @@ void QUmlUseCaseObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlUseCase *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlUseCaseObject::addElementImport(QObject *elementImport)
 {
@@ -733,8 +760,14 @@ void QUmlUseCaseObject::setOwningTemplateParameter(QObject *owningTemplateParame
 void QUmlUseCaseObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlUseCase *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlUseCase *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlUseCaseObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlUseCase *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlUseCaseObject::setPackage(QObject *package)
@@ -747,8 +780,14 @@ void QUmlUseCaseObject::setPackage(QObject *package)
 void QUmlUseCaseObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlUseCase *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlUseCase *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlUseCaseObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlUseCase *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlUseCaseObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlUseCase *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -846,13 +885,25 @@ void QUmlUseCaseObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlUseCaseObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlUseCase *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlUseCase *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlUseCaseObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlUseCase *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlUseCaseObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlUseCase *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlUseCase *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlUseCaseObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlUseCase *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlUseCaseObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlUseCase *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));

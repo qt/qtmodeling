@@ -64,7 +64,8 @@ QUmlClause::QUmlClause(bool createQObject) :
 QUmlClause::~QUmlClause()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -107,7 +108,7 @@ void QUmlClause::addBody(QUmlExecutableNode *body)
 
     if (!_body.contains(body)) {
         _body.insert(body);
-        if (body->asQObject() && this->asQObject())
+        if (body && body->asQObject() && this->asQObject())
             QObject::connect(body->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBody(QObject *)));
     }
 }
@@ -137,7 +138,7 @@ void QUmlClause::addBodyOutput(QUmlOutputPin *bodyOutput)
 
     if (!_bodyOutput.contains(bodyOutput)) {
         _bodyOutput.append(bodyOutput);
-        if (bodyOutput->asQObject() && this->asQObject())
+        if (bodyOutput && bodyOutput->asQObject() && this->asQObject())
             QObject::connect(bodyOutput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyOutput(QObject *)));
     }
 }
@@ -167,7 +168,7 @@ void QUmlClause::setDecider(QUmlOutputPin *decider)
 
     if (_decider != decider) {
         _decider = decider;
-        if (decider->asQObject() && this->asQObject())
+        if (decider && decider->asQObject() && this->asQObject())
             QObject::connect(decider->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecider()));
     }
 }
@@ -188,7 +189,7 @@ void QUmlClause::addPredecessorClause(QUmlClause *predecessorClause)
 
     if (!_predecessorClause.contains(predecessorClause)) {
         _predecessorClause.insert(predecessorClause);
-        if (predecessorClause->asQObject() && this->asQObject())
+        if (predecessorClause && predecessorClause->asQObject() && this->asQObject())
             QObject::connect(predecessorClause->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePredecessorClause(QObject *)));
     }
 }
@@ -218,7 +219,7 @@ void QUmlClause::addSuccessorClause(QUmlClause *successorClause)
 
     if (!_successorClause.contains(successorClause)) {
         _successorClause.insert(successorClause);
-        if (successorClause->asQObject() && this->asQObject())
+        if (successorClause && successorClause->asQObject() && this->asQObject())
             QObject::connect(successorClause->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSuccessorClause(QObject *)));
     }
 }
@@ -248,7 +249,7 @@ void QUmlClause::addTest(QUmlExecutableNode *test)
 
     if (!_test.contains(test)) {
         _test.insert(test);
-        if (test->asQObject() && this->asQObject())
+        if (test && test->asQObject() && this->asQObject())
             QObject::connect(test->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTest(QObject *)));
     }
 }
@@ -286,13 +287,13 @@ void QUmlClause::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::DocumentationRole] = QStringLiteral("A set of clauses whose tests must all evaluate false before the current clause can be tested.");
     QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::OppositeEndRole] = QStringLiteral("Clause-successorClause");
 
     QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::DocumentationRole] = QStringLiteral("A set of clauses which may not be tested unless the current clause tests false.");
     QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::OppositeEndRole] = QStringLiteral("Clause-predecessorClause");
 
     QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::DocumentationRole] = QStringLiteral("A nested activity fragment with a designated output pin that specifies the result of the test.");

@@ -67,7 +67,8 @@ QUmlDependency::QUmlDependency(bool createQObject)
 QUmlDependency::~QUmlDependency()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -112,7 +113,7 @@ void QUmlDependency::addClient(QUmlNamedElement *client)
 
     if (!_client.contains(client)) {
         _client.insert(client);
-        if (client->asQObject() && this->asQObject())
+        if (client && client->asQObject() && this->asQObject())
             QObject::connect(client->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClient(QObject *)));
 
         // Adjust subsetted properties
@@ -158,7 +159,7 @@ void QUmlDependency::addSupplier(QUmlNamedElement *supplier)
 
     if (!_supplier.contains(supplier)) {
         _supplier.insert(supplier);
-        if (supplier->asQObject() && this->asQObject())
+        if (supplier && supplier->asQObject() && this->asQObject())
             QObject::connect(supplier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSupplier(QObject *)));
 
         // Adjust subsetted properties

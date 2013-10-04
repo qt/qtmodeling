@@ -72,7 +72,8 @@ QUmlConnectionPointReference::QUmlConnectionPointReference(bool createQObject) :
 QUmlConnectionPointReference::~QUmlConnectionPointReference()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -117,7 +118,7 @@ void QUmlConnectionPointReference::addEntry(QUmlPseudostate *entry)
 
     if (!_entry.contains(entry)) {
         _entry.insert(entry);
-        if (entry->asQObject() && this->asQObject())
+        if (entry && entry->asQObject() && this->asQObject())
             QObject::connect(entry->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEntry(QObject *)));
     }
 }
@@ -147,7 +148,7 @@ void QUmlConnectionPointReference::addExit(QUmlPseudostate *exit)
 
     if (!_exit.contains(exit)) {
         _exit.insert(exit);
-        if (exit->asQObject() && this->asQObject())
+        if (exit && exit->asQObject() && this->asQObject())
             QObject::connect(exit->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExit(QObject *)));
     }
 }
@@ -179,7 +180,7 @@ void QUmlConnectionPointReference::setState(QUmlState *state)
         // Adjust subsetted properties
 
         _state = state;
-        if (state->asQObject() && this->asQObject())
+        if (state && state->asQObject() && this->asQObject())
             QObject::connect(state->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setState()));
 
         // Adjust subsetted properties

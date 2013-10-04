@@ -153,7 +153,7 @@ void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplate
 
     if (_templateParameter != templateParameter) {
         _templateParameter = templateParameter;
-        if (templateParameter->asQObject() && this->asQObject())
+        if (templateParameter && templateParameter->asQObject() && this->asQObject())
             QObject::connect(templateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateParameter()));
     }
 }

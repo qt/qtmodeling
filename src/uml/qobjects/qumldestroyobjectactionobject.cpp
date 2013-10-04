@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlDestroyObjectActionObject::ownedElement() const
 
 QObject *QUmlDestroyObjectActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlDestroyObjectActionObject::name() const
 
 QObject *QUmlDestroyObjectActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlDestroyObjectActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlDestroyObjectActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlDestroyObjectActionObject::redefinitionContext() const
 
 QObject *QUmlDestroyObjectActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlDestroyObjectActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlDestroyObjectActionObject::inPartition() const
 
 QObject *QUmlDestroyObjectActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlDestroyObjectActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlDestroyObjectActionObject::handler() const
 
 QObject *QUmlDestroyObjectActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlDestroyObjectActionObject::input() const
@@ -286,7 +304,10 @@ bool QUmlDestroyObjectActionObject::isDestroyOwnedObjects() const
 
 QObject *QUmlDestroyObjectActionObject::target() const
 {
-    return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->target()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->target())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->target()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -387,7 +408,7 @@ void QUmlDestroyObjectActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->setName(name);
 }
-    
+
 void QUmlDestroyObjectActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -402,19 +423,25 @@ void QUmlDestroyObjectActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlDestroyObjectActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlDestroyObjectActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlDestroyObjectActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlDestroyObjectActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -539,8 +566,14 @@ void QUmlDestroyObjectActionObject::removeInput(QObject *input)
 void QUmlDestroyObjectActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlDestroyObjectActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlDestroyObjectActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -576,13 +609,25 @@ void QUmlDestroyObjectActionObject::removeOutput(QObject *output)
 void QUmlDestroyObjectActionObject::setDestroyLinks(bool isDestroyLinks)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->setDestroyLinks(isDestroyLinks);
+    qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("destroyLinks");
 }
-    
+
+void QUmlDestroyObjectActionObject::unsetDestroyLinks()
+{
+    qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("destroyLinks"));
+}
+
 void QUmlDestroyObjectActionObject::setDestroyOwnedObjects(bool isDestroyOwnedObjects)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->setDestroyOwnedObjects(isDestroyOwnedObjects);
+    qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("destroyOwnedObjects");
 }
-    
+
+void QUmlDestroyObjectActionObject::unsetDestroyOwnedObjects()
+{
+    qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("destroyOwnedObjects"));
+}
+
 void QUmlDestroyObjectActionObject::setTarget(QObject *target)
 {
     qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->setTarget(qmodelingobjectproperty_cast<QUmlInputPin *>(target));

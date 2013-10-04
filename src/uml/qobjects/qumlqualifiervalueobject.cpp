@@ -81,19 +81,28 @@ const QSet<QObject *> QUmlQualifierValueObject::ownedElement() const
 
 QObject *QUmlQualifierValueObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [QualifierValue]
 
 QObject *QUmlQualifierValueObject::qualifier() const
 {
-    return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->qualifier()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->qualifier())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->qualifier()->asQObject();
 }
 
 QObject *QUmlQualifierValueObject::value() const
 {
-    return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->value()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->value())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->value()->asQObject();
 }
 
 // OPERATIONS [Element]

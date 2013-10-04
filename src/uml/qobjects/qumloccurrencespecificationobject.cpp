@@ -88,7 +88,10 @@ const QSet<QObject *> QUmlOccurrenceSpecificationObject::ownedElement() const
 
 QObject *QUmlOccurrenceSpecificationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -108,12 +111,18 @@ QString QUmlOccurrenceSpecificationObject::name() const
 
 QObject *QUmlOccurrenceSpecificationObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlOccurrenceSpecificationObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlOccurrenceSpecificationObject::qualifiedName() const
@@ -130,12 +139,18 @@ QtUml::VisibilityKind QUmlOccurrenceSpecificationObject::visibility() const
 
 QObject *QUmlOccurrenceSpecificationObject::enclosingInteraction() const
 {
-    return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->enclosingInteraction()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->enclosingInteraction())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->enclosingInteraction()->asQObject();
 }
 
 QObject *QUmlOccurrenceSpecificationObject::enclosingOperand() const
 {
-    return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->enclosingOperand()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->enclosingOperand())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->enclosingOperand()->asQObject();
 }
 
 const QSet<QObject *> QUmlOccurrenceSpecificationObject::generalOrdering() const
@@ -150,7 +165,10 @@ const QSet<QObject *> QUmlOccurrenceSpecificationObject::generalOrdering() const
 
 QObject *QUmlOccurrenceSpecificationObject::covered() const
 {
-    return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->covered()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->covered())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->covered()->asQObject();
 }
 
 const QSet<QObject *> QUmlOccurrenceSpecificationObject::toAfter() const
@@ -255,7 +273,7 @@ void QUmlOccurrenceSpecificationObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->setName(name);
 }
-    
+
 void QUmlOccurrenceSpecificationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -270,12 +288,12 @@ void QUmlOccurrenceSpecificationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlOccurrenceSpecificationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlOccurrenceSpecificationObject::setEnclosingInteraction(QObject *enclosingInteraction)

@@ -78,7 +78,8 @@ QUmlReception::QUmlReception(bool createQObject) :
 QUmlReception::~QUmlReception()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -135,7 +136,7 @@ void QUmlReception::setSignal(QUmlSignal *signal)
 
     if (_signal != signal) {
         _signal = signal;
-        if (signal->asQObject() && this->asQObject())
+        if (signal && signal->asQObject() && this->asQObject())
             QObject::connect(signal->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSignal()));
     }
 }

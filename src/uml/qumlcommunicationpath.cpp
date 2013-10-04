@@ -87,7 +87,8 @@ QUmlCommunicationPath::QUmlCommunicationPath(bool createQObject) :
 QUmlCommunicationPath::~QUmlCommunicationPath()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }

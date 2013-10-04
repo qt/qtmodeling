@@ -96,7 +96,8 @@ QUmlClass::QUmlClass(bool createQObject) :
 QUmlClass::~QUmlClass()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -269,7 +270,7 @@ void QUmlClass::addNestedClassifier(QUmlClassifier *nestedClassifier)
 
     if (!_nestedClassifier.contains(nestedClassifier)) {
         _nestedClassifier.append(nestedClassifier);
-        if (nestedClassifier->asQObject() && this->asQObject())
+        if (nestedClassifier && nestedClassifier->asQObject() && this->asQObject())
             QObject::connect(nestedClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNestedClassifier(QObject *)));
         nestedClassifier->asQObject()->setParent(this->asQObject());
 
@@ -308,7 +309,7 @@ void QUmlClass::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.append(ownedAttribute);
-        if (ownedAttribute->asQObject() && this->asQObject())
+        if (ownedAttribute && ownedAttribute->asQObject() && this->asQObject())
             QObject::connect(ownedAttribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedAttribute(QObject *)));
         ownedAttribute->asQObject()->setParent(this->asQObject());
 
@@ -359,7 +360,7 @@ void QUmlClass::addOwnedOperation(QUmlOperation *ownedOperation)
 
     if (!_ownedOperation.contains(ownedOperation)) {
         _ownedOperation.append(ownedOperation);
-        if (ownedOperation->asQObject() && this->asQObject())
+        if (ownedOperation && ownedOperation->asQObject() && this->asQObject())
             QObject::connect(ownedOperation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedOperation(QObject *)));
         ownedOperation->asQObject()->setParent(this->asQObject());
 
@@ -410,7 +411,7 @@ void QUmlClass::addOwnedReception(QUmlReception *ownedReception)
 
     if (!_ownedReception.contains(ownedReception)) {
         _ownedReception.insert(ownedReception);
-        if (ownedReception->asQObject() && this->asQObject())
+        if (ownedReception && ownedReception->asQObject() && this->asQObject())
             QObject::connect(ownedReception->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedReception(QObject *)));
         ownedReception->asQObject()->setParent(this->asQObject());
 

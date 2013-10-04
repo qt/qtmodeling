@@ -82,14 +82,20 @@ const QSet<QObject *> QUmlExceptionHandlerObject::ownedElement() const
 
 QObject *QUmlExceptionHandlerObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ExceptionHandler]
 
 QObject *QUmlExceptionHandlerObject::exceptionInput() const
 {
-    return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->exceptionInput()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->exceptionInput())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->exceptionInput()->asQObject();
 }
 
 const QSet<QObject *> QUmlExceptionHandlerObject::exceptionType() const
@@ -102,12 +108,18 @@ const QSet<QObject *> QUmlExceptionHandlerObject::exceptionType() const
 
 QObject *QUmlExceptionHandlerObject::handlerBody() const
 {
-    return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->handlerBody()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->handlerBody())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->handlerBody()->asQObject();
 }
 
 QObject *QUmlExceptionHandlerObject::protectedNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->protectedNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->protectedNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->protectedNode()->asQObject();
 }
 
 // OPERATIONS [Element]

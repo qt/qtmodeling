@@ -72,7 +72,8 @@ QUmlIntervalConstraint::QUmlIntervalConstraint(bool createQObject) :
 QUmlIntervalConstraint::~QUmlIntervalConstraint()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -119,7 +120,7 @@ void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
 
     if (_specification != specification) {
         _specification = specification;
-        if (specification->asQObject() && this->asQObject())
+        if (specification && specification->asQObject() && this->asQObject())
             QObject::connect(specification->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecification()));
         specification->asQObject()->setParent(this->asQObject());
     }

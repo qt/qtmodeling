@@ -72,10 +72,10 @@ class Q_UML_EXPORT QUmlDurationObservationObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [DurationObservation]
     Q_PROPERTY(QObject * event READ event)
@@ -145,6 +145,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [PackageableElement]
     void setVisibility(QtUml::VisibilityKind visibility);
+    void unsetVisibility();
 
     // Slots for owned attributes [DurationObservation]
     void setEvent(QObject *event = 0);

@@ -87,7 +87,10 @@ const QSet<QObject *> QUmlExtendObject::ownedElement() const
 
 QObject *QUmlExtendObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtend *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtend *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtend *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -135,12 +138,18 @@ QString QUmlExtendObject::name() const
 
 QObject *QUmlExtendObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtend *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtend *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtend *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlExtendObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtend *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtend *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtend *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlExtendObject::qualifiedName() const
@@ -157,17 +166,26 @@ QtUml::VisibilityKind QUmlExtendObject::visibility() const
 
 QObject *QUmlExtendObject::condition() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtend *>(this)->condition()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtend *>(this)->condition())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtend *>(this)->condition()->asQObject();
 }
 
 QObject *QUmlExtendObject::extendedCase() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtend *>(this)->extendedCase()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtend *>(this)->extendedCase())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtend *>(this)->extendedCase()->asQObject();
 }
 
 QObject *QUmlExtendObject::extension() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtend *>(this)->extension()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtend *>(this)->extension())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtend *>(this)->extension()->asQObject();
 }
 
 const QList<QObject *> QUmlExtendObject::extensionLocation() const
@@ -298,7 +316,7 @@ void QUmlExtendObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlExtend *>(this)->setName(name);
 }
-    
+
 void QUmlExtendObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlExtend *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -313,12 +331,12 @@ void QUmlExtendObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlExtend *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlExtendObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlExtend *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Extend]
 
 void QUmlExtendObject::setCondition(QObject *condition)

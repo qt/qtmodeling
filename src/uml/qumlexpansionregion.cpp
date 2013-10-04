@@ -86,7 +86,8 @@ QUmlExpansionRegion::QUmlExpansionRegion(bool createQObject) :
 QUmlExpansionRegion::~QUmlExpansionRegion()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -167,7 +168,7 @@ void QUmlExpansionRegion::addInputElement(QUmlExpansionNode *inputElement)
 
     if (!_inputElement.contains(inputElement)) {
         _inputElement.insert(inputElement);
-        if (inputElement->asQObject() && this->asQObject())
+        if (inputElement && inputElement->asQObject() && this->asQObject())
             QObject::connect(inputElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInputElement(QObject *)));
 
         // Adjust opposite properties
@@ -226,7 +227,7 @@ void QUmlExpansionRegion::addOutputElement(QUmlExpansionNode *outputElement)
 
     if (!_outputElement.contains(outputElement)) {
         _outputElement.insert(outputElement);
-        if (outputElement->asQObject() && this->asQObject())
+        if (outputElement && outputElement->asQObject() && this->asQObject())
             QObject::connect(outputElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOutputElement(QObject *)));
 
         // Adjust opposite properties

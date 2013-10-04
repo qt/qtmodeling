@@ -102,7 +102,8 @@ QUmlStateMachine::QUmlStateMachine(bool createQObject)
 QUmlStateMachine::~QUmlStateMachine()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -210,7 +211,7 @@ void QUmlStateMachine::addConnectionPoint(QUmlPseudostate *connectionPoint)
 
     if (!_connectionPoint.contains(connectionPoint)) {
         _connectionPoint.insert(connectionPoint);
-        if (connectionPoint->asQObject() && this->asQObject())
+        if (connectionPoint && connectionPoint->asQObject() && this->asQObject())
             QObject::connect(connectionPoint->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConnectionPoint(QObject *)));
         connectionPoint->asQObject()->setParent(this->asQObject());
 
@@ -259,7 +260,7 @@ void QUmlStateMachine::addExtendedStateMachine(QUmlStateMachine *extendedStateMa
 
     if (!_extendedStateMachine.contains(extendedStateMachine)) {
         _extendedStateMachine.insert(extendedStateMachine);
-        if (extendedStateMachine->asQObject() && this->asQObject())
+        if (extendedStateMachine && extendedStateMachine->asQObject() && this->asQObject())
             QObject::connect(extendedStateMachine->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtendedStateMachine(QObject *)));
     }
 }
@@ -289,7 +290,7 @@ void QUmlStateMachine::addRegion(QUmlRegion *region)
 
     if (!_region.contains(region)) {
         _region.insert(region);
-        if (region->asQObject() && this->asQObject())
+        if (region && region->asQObject() && this->asQObject())
             QObject::connect(region->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRegion(QObject *)));
         region->asQObject()->setParent(this->asQObject());
 
@@ -338,7 +339,7 @@ void QUmlStateMachine::addSubmachineState(QUmlState *submachineState)
 
     if (!_submachineState.contains(submachineState)) {
         _submachineState.insert(submachineState);
-        if (submachineState->asQObject() && this->asQObject())
+        if (submachineState && submachineState->asQObject() && this->asQObject())
             QObject::connect(submachineState->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubmachineState(QObject *)));
 
         // Adjust opposite properties

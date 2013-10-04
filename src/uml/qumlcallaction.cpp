@@ -158,7 +158,7 @@ void QUmlCallAction::addResult(QUmlOutputPin *result)
 
     if (!_result.contains(result)) {
         _result.append(result);
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
         result->asQObject()->setParent(this->asQObject());
 

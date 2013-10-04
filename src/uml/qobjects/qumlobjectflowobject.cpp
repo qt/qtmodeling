@@ -95,7 +95,10 @@ const QSet<QObject *> QUmlObjectFlowObject::ownedElement() const
 
 QObject *QUmlObjectFlowObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -115,12 +118,18 @@ QString QUmlObjectFlowObject::name() const
 
 QObject *QUmlObjectFlowObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlObjectFlowObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlObjectFlowObject::qualifiedName() const
@@ -160,12 +169,18 @@ const QSet<QObject *> QUmlObjectFlowObject::redefinitionContext() const
 
 QObject *QUmlObjectFlowObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->activity()->asQObject();
 }
 
 QObject *QUmlObjectFlowObject::guard() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->guard()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->guard())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->guard()->asQObject();
 }
 
 const QSet<QObject *> QUmlObjectFlowObject::inGroup() const
@@ -186,12 +201,18 @@ const QSet<QObject *> QUmlObjectFlowObject::inPartition() const
 
 QObject *QUmlObjectFlowObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inStructuredNode()->asQObject();
 }
 
 QObject *QUmlObjectFlowObject::interrupts() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->interrupts()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->interrupts())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->interrupts()->asQObject();
 }
 
 const QSet<QObject *> QUmlObjectFlowObject::redefinedEdge() const
@@ -204,17 +225,26 @@ const QSet<QObject *> QUmlObjectFlowObject::redefinedEdge() const
 
 QObject *QUmlObjectFlowObject::source() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->source()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->source())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->source()->asQObject();
 }
 
 QObject *QUmlObjectFlowObject::target() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->target()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->target())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->target()->asQObject();
 }
 
 QObject *QUmlObjectFlowObject::weight() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->weight()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->weight())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->weight()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ObjectFlow]
@@ -231,12 +261,18 @@ bool QUmlObjectFlowObject::isMultireceive() const
 
 QObject *QUmlObjectFlowObject::selection() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->selection()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->selection())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->selection()->asQObject();
 }
 
 QObject *QUmlObjectFlowObject::transformation() const
 {
-    return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->transformation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->transformation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->transformation()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -337,7 +373,7 @@ void QUmlObjectFlowObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setName(name);
 }
-    
+
 void QUmlObjectFlowObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -352,19 +388,25 @@ void QUmlObjectFlowObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlObjectFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlObjectFlowObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlObjectFlowObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlObjectFlowObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -457,13 +499,25 @@ void QUmlObjectFlowObject::setWeight(QObject *weight)
 void QUmlObjectFlowObject::setMulticast(bool isMulticast)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setMulticast(isMulticast);
+    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties() << QStringLiteral("multicast");
 }
-    
+
+void QUmlObjectFlowObject::unsetMulticast()
+{
+    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("multicast"));
+}
+
 void QUmlObjectFlowObject::setMultireceive(bool isMultireceive)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setMultireceive(isMultireceive);
+    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties() << QStringLiteral("multireceive");
 }
-    
+
+void QUmlObjectFlowObject::unsetMultireceive()
+{
+    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("multireceive"));
+}
+
 void QUmlObjectFlowObject::setSelection(QObject *selection)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setSelection(qmodelingobjectproperty_cast<QUmlBehavior *>(selection));

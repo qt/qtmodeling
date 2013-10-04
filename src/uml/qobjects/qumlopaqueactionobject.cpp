@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlOpaqueActionObject::ownedElement() const
 
 QObject *QUmlOpaqueActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlOpaqueActionObject::name() const
 
 QObject *QUmlOpaqueActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlOpaqueActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlOpaqueActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlOpaqueActionObject::redefinitionContext() const
 
 QObject *QUmlOpaqueActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlOpaqueActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlOpaqueActionObject::inPartition() const
 
 QObject *QUmlOpaqueActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlOpaqueActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlOpaqueActionObject::handler() const
 
 QObject *QUmlOpaqueActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlOpaqueActionObject::input() const
@@ -398,7 +416,7 @@ void QUmlOpaqueActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->setName(name);
 }
-    
+
 void QUmlOpaqueActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -413,19 +431,25 @@ void QUmlOpaqueActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlOpaqueActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlOpaqueActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlOpaqueActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlOpaqueActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -550,8 +574,14 @@ void QUmlOpaqueActionObject::removeInput(QObject *input)
 void QUmlOpaqueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlOpaqueActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlOpaqueActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

@@ -104,7 +104,10 @@ const QSet<QObject *> QUmlInformationItemObject::ownedElement() const
 
 QObject *QUmlInformationItemObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -124,12 +127,18 @@ QString QUmlInformationItemObject::name() const
 
 QObject *QUmlInformationItemObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlInformationItemObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlInformationItemObject::qualifiedName() const
@@ -190,7 +199,10 @@ const QSet<QObject *> QUmlInformationItemObject::packageImport() const
 
 QObject *QUmlInformationItemObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -203,7 +215,10 @@ QtUml::VisibilityKind QUmlInformationItemObject::visibility() const
 
 QObject *QUmlInformationItemObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -301,7 +316,10 @@ bool QUmlInformationItemObject::isFinalSpecialization() const
 
 QObject *QUmlInformationItemObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlInformationItemObject::ownedUseCase() const
@@ -330,7 +348,10 @@ const QSet<QObject *> QUmlInformationItemObject::redefinedClassifier() const
 
 QObject *QUmlInformationItemObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlInformationItemObject::substitution() const
@@ -343,7 +364,10 @@ const QSet<QObject *> QUmlInformationItemObject::substitution() const
 
 QObject *QUmlInformationItemObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlInformationItemObject::useCase() const
@@ -584,7 +608,7 @@ void QUmlInformationItemObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->setName(name);
 }
-    
+
 void QUmlInformationItemObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -599,7 +623,7 @@ void QUmlInformationItemObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlInformationItemObject::addElementImport(QObject *elementImport)
 {
@@ -672,8 +696,14 @@ void QUmlInformationItemObject::setOwningTemplateParameter(QObject *owningTempla
 void QUmlInformationItemObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlInformationItemObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlInformationItemObject::setPackage(QObject *package)
@@ -686,8 +716,14 @@ void QUmlInformationItemObject::setPackage(QObject *package)
 void QUmlInformationItemObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlInformationItemObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlInformationItemObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -785,13 +821,25 @@ void QUmlInformationItemObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlInformationItemObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlInformationItemObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlInformationItemObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlInformationItemObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlInformationItemObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlInformationItem *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));

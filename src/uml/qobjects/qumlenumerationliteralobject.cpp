@@ -92,7 +92,10 @@ const QSet<QObject *> QUmlEnumerationLiteralObject::ownedElement() const
 
 QObject *QUmlEnumerationLiteralObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -120,14 +123,16 @@ QObject *QUmlEnumerationLiteralObject::nameExpression() const
 
 QObject *QUmlEnumerationLiteralObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlEnumerationLiteralObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->qualifiedName();
 }
-
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlEnumerationLiteralObject::owningTemplateParameter() const
@@ -201,7 +206,10 @@ QObject *QUmlEnumerationLiteralObject::classifier() const
 
 QObject *QUmlEnumerationLiteralObject::enumeration() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->enumeration()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->enumeration())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->enumeration()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -302,7 +310,7 @@ void QUmlEnumerationLiteralObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->setName(name);
 }
-    
+
 void QUmlEnumerationLiteralObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -317,7 +325,7 @@ void QUmlEnumerationLiteralObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
+// SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlEnumerationLiteralObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
 {
@@ -334,8 +342,14 @@ void QUmlEnumerationLiteralObject::setTemplateParameter(QObject *templateParamet
 void QUmlEnumerationLiteralObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlEnumerationLiteralObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [DeploymentTarget]
 
 void QUmlEnumerationLiteralObject::addDeployedElement(QObject *deployedElement)

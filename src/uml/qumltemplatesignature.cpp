@@ -64,7 +64,8 @@ QUmlTemplateSignature::QUmlTemplateSignature(bool createQObject) :
 QUmlTemplateSignature::~QUmlTemplateSignature()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -101,7 +102,7 @@ void QUmlTemplateSignature::addOwnedParameter(QUmlTemplateParameter *ownedParame
 
     if (!_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.append(ownedParameter);
-        if (ownedParameter->asQObject() && this->asQObject())
+        if (ownedParameter && ownedParameter->asQObject() && this->asQObject())
             QObject::connect(ownedParameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameter(QObject *)));
         ownedParameter->asQObject()->setParent(this->asQObject());
 
@@ -152,7 +153,7 @@ void QUmlTemplateSignature::addParameter(QUmlTemplateParameter *parameter)
 
     if (!_parameter.contains(parameter)) {
         _parameter.append(parameter);
-        if (parameter->asQObject() && this->asQObject())
+        if (parameter && parameter->asQObject() && this->asQObject())
             QObject::connect(parameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameter(QObject *)));
     }
 }
@@ -184,7 +185,7 @@ void QUmlTemplateSignature::setTemplate(QUmlTemplateableElement *template_)
         // Adjust subsetted properties
 
         _template_ = template_;
-        if (template_->asQObject() && this->asQObject())
+        if (template_ && template_->asQObject() && this->asQObject())
             QObject::connect(template_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplate()));
 
         // Adjust subsetted properties

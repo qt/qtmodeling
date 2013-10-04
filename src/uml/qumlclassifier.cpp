@@ -154,7 +154,7 @@ void QUmlClassifier::addAttribute(QUmlProperty *attribute)
 
     if (!_attribute.contains(attribute)) {
         _attribute.insert(attribute);
-        if (attribute->asQObject() && this->asQObject())
+        if (attribute && attribute->asQObject() && this->asQObject())
             QObject::connect(attribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeAttribute(QObject *)));
 
         // Adjust subsetted properties
@@ -190,7 +190,7 @@ void QUmlClassifier::addCollaborationUse(QUmlCollaborationUse *collaborationUse)
 
     if (!_collaborationUse.contains(collaborationUse)) {
         _collaborationUse.insert(collaborationUse);
-        if (collaborationUse->asQObject() && this->asQObject())
+        if (collaborationUse && collaborationUse->asQObject() && this->asQObject())
             QObject::connect(collaborationUse->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCollaborationUse(QObject *)));
         collaborationUse->asQObject()->setParent(this->asQObject());
 
@@ -229,7 +229,7 @@ void QUmlClassifier::addFeature(QUmlFeature *feature)
 
     if (!_feature.contains(feature)) {
         _feature.insert(feature);
-        if (feature->asQObject() && this->asQObject())
+        if (feature && feature->asQObject() && this->asQObject())
             QObject::connect(feature->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFeature(QObject *)));
 
         // Adjust subsetted properties
@@ -311,7 +311,7 @@ void QUmlClassifier::addGeneralization(QUmlGeneralization *generalization)
 
     if (!_generalization.contains(generalization)) {
         _generalization.insert(generalization);
-        if (generalization->asQObject() && this->asQObject())
+        if (generalization && generalization->asQObject() && this->asQObject())
             QObject::connect(generalization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeGeneralization(QObject *)));
         generalization->asQObject()->setParent(this->asQObject());
 
@@ -440,7 +440,7 @@ void QUmlClassifier::setOwnedTemplateSignature(QUmlRedefinableTemplateSignature 
 
     if (_ownedTemplateSignature != ownedTemplateSignature) {
         _ownedTemplateSignature = ownedTemplateSignature;
-        if (ownedTemplateSignature->asQObject() && this->asQObject())
+        if (ownedTemplateSignature && ownedTemplateSignature->asQObject() && this->asQObject())
             QObject::connect(ownedTemplateSignature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedTemplateSignature()));
         ownedTemplateSignature->asQObject()->setParent(this->asQObject());
     }
@@ -462,7 +462,7 @@ void QUmlClassifier::addOwnedUseCase(QUmlUseCase *ownedUseCase)
 
     if (!_ownedUseCase.contains(ownedUseCase)) {
         _ownedUseCase.insert(ownedUseCase);
-        if (ownedUseCase->asQObject() && this->asQObject())
+        if (ownedUseCase && ownedUseCase->asQObject() && this->asQObject())
             QObject::connect(ownedUseCase->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedUseCase(QObject *)));
         ownedUseCase->asQObject()->setParent(this->asQObject());
 
@@ -501,7 +501,7 @@ void QUmlClassifier::addPowertypeExtent(QUmlGeneralizationSet *powertypeExtent)
 
     if (!_powertypeExtent.contains(powertypeExtent)) {
         _powertypeExtent.insert(powertypeExtent);
-        if (powertypeExtent->asQObject() && this->asQObject())
+        if (powertypeExtent && powertypeExtent->asQObject() && this->asQObject())
             QObject::connect(powertypeExtent->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePowertypeExtent(QObject *)));
 
         // Adjust opposite properties
@@ -541,7 +541,7 @@ void QUmlClassifier::addRedefinedClassifier(QUmlClassifier *redefinedClassifier)
 
     if (!_redefinedClassifier.contains(redefinedClassifier)) {
         _redefinedClassifier.insert(redefinedClassifier);
-        if (redefinedClassifier->asQObject() && this->asQObject())
+        if (redefinedClassifier && redefinedClassifier->asQObject() && this->asQObject())
             QObject::connect(redefinedClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedClassifier(QObject *)));
 
         // Adjust subsetted properties
@@ -580,7 +580,7 @@ void QUmlClassifier::setRepresentation(QUmlCollaborationUse *representation)
         removeCollaborationUse(_representation);
 
         _representation = representation;
-        if (representation->asQObject() && this->asQObject())
+        if (representation && representation->asQObject() && this->asQObject())
             QObject::connect(representation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRepresentation()));
 
         // Adjust subsetted properties
@@ -606,7 +606,7 @@ void QUmlClassifier::addSubstitution(QUmlSubstitution *substitution)
 
     if (!_substitution.contains(substitution)) {
         _substitution.insert(substitution);
-        if (substitution->asQObject() && this->asQObject())
+        if (substitution && substitution->asQObject() && this->asQObject())
             QObject::connect(substitution->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubstitution(QObject *)));
         substitution->asQObject()->setParent(this->asQObject());
 
@@ -657,7 +657,7 @@ void QUmlClassifier::setTemplateParameter(QUmlClassifierTemplateParameter *templ
 
     if (_templateParameter != templateParameter) {
         _templateParameter = templateParameter;
-        if (templateParameter->asQObject() && this->asQObject())
+        if (templateParameter && templateParameter->asQObject() && this->asQObject())
             QObject::connect(templateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateParameter()));
     }
 }
@@ -678,7 +678,7 @@ void QUmlClassifier::addUseCase(QUmlUseCase *useCase)
 
     if (!_useCase.contains(useCase)) {
         _useCase.insert(useCase);
-        if (useCase->asQObject() && this->asQObject())
+        if (useCase && useCase->asQObject() && this->asQObject())
             QObject::connect(useCase->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeUseCase(QObject *)));
 
         // Adjust opposite properties

@@ -87,19 +87,28 @@ const QSet<QObject *> QUmlSignalEventObject::ownedElement() const
 
 QObject *QUmlSignalEventObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlSignalEventObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlSignalEventObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -119,12 +128,18 @@ QString QUmlSignalEventObject::name() const
 
 QObject *QUmlSignalEventObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlSignalEventObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlSignalEventObject::qualifiedName() const
@@ -142,7 +157,10 @@ QtUml::VisibilityKind QUmlSignalEventObject::visibility() const
 
 QObject *QUmlSignalEventObject::signal() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->signal()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->signal())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->signal()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -255,7 +273,7 @@ void QUmlSignalEventObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->setName(name);
 }
-    
+
 void QUmlSignalEventObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -270,13 +288,19 @@ void QUmlSignalEventObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlSignalEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlSignalEventObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [SignalEvent]
 
 void QUmlSignalEventObject::setSignal(QObject *signal)

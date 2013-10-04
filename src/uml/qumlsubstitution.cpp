@@ -73,7 +73,8 @@ QUmlSubstitution::QUmlSubstitution(bool createQObject) :
 QUmlSubstitution::~QUmlSubstitution()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -127,7 +128,7 @@ void QUmlSubstitution::setContract(QUmlClassifier *contract)
         removeSupplier(_contract);
 
         _contract = contract;
-        if (contract->asQObject() && this->asQObject())
+        if (contract && contract->asQObject() && this->asQObject())
             QObject::connect(contract->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setContract()));
 
         // Adjust subsetted properties
@@ -156,7 +157,7 @@ void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingCla
         removeClient(_substitutingClassifier);
 
         _substitutingClassifier = substitutingClassifier;
-        if (substitutingClassifier->asQObject() && this->asQObject())
+        if (substitutingClassifier && substitutingClassifier->asQObject() && this->asQObject())
             QObject::connect(substitutingClassifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSubstitutingClassifier()));
 
         // Adjust subsetted properties

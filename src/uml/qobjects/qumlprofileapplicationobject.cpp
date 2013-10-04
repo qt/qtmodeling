@@ -81,7 +81,10 @@ const QSet<QObject *> QUmlProfileApplicationObject::ownedElement() const
 
 QObject *QUmlProfileApplicationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -116,12 +119,18 @@ const QSet<QObject *> QUmlProfileApplicationObject::target() const
 
 QObject *QUmlProfileApplicationObject::appliedProfile() const
 {
-    return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->appliedProfile()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->appliedProfile())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->appliedProfile()->asQObject();
 }
 
 QObject *QUmlProfileApplicationObject::applyingPackage() const
 {
-    return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->applyingPackage()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->applyingPackage())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->applyingPackage()->asQObject();
 }
 
 bool QUmlProfileApplicationObject::isStrict() const
@@ -220,7 +229,13 @@ void QUmlProfileApplicationObject::setApplyingPackage(QObject *applyingPackage)
 void QUmlProfileApplicationObject::setStrict(bool isStrict)
 {
     qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->setStrict(isStrict);
+    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->modifiedResettableProperties() << QStringLiteral("strict");
 }
-    
+
+void QUmlProfileApplicationObject::unsetStrict()
+{
+    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("strict"));
+}
+
 QT_END_NAMESPACE
 

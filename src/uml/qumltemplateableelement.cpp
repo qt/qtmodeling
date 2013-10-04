@@ -95,7 +95,7 @@ void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *o
         removeOwnedElement(_ownedTemplateSignature);
 
         _ownedTemplateSignature = ownedTemplateSignature;
-        if (ownedTemplateSignature->asQObject() && this->asQObject())
+        if (ownedTemplateSignature && ownedTemplateSignature->asQObject() && this->asQObject())
             QObject::connect(ownedTemplateSignature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedTemplateSignature()));
         ownedTemplateSignature->asQObject()->setParent(this->asQObject());
 
@@ -122,7 +122,7 @@ void QUmlTemplateableElement::addTemplateBinding(QUmlTemplateBinding *templateBi
 
     if (!_templateBinding.contains(templateBinding)) {
         _templateBinding.insert(templateBinding);
-        if (templateBinding->asQObject() && this->asQObject())
+        if (templateBinding && templateBinding->asQObject() && this->asQObject())
             QObject::connect(templateBinding->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTemplateBinding(QObject *)));
         templateBinding->asQObject()->setParent(this->asQObject());
 

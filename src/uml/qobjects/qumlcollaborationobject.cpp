@@ -108,7 +108,10 @@ const QSet<QObject *> QUmlCollaborationObject::ownedElement() const
 
 QObject *QUmlCollaborationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -128,12 +131,18 @@ QString QUmlCollaborationObject::name() const
 
 QObject *QUmlCollaborationObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlCollaborationObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlCollaborationObject::qualifiedName() const
@@ -194,7 +203,10 @@ const QSet<QObject *> QUmlCollaborationObject::packageImport() const
 
 QObject *QUmlCollaborationObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -207,7 +219,10 @@ QtUml::VisibilityKind QUmlCollaborationObject::visibility() const
 
 QObject *QUmlCollaborationObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -305,7 +320,10 @@ bool QUmlCollaborationObject::isFinalSpecialization() const
 
 QObject *QUmlCollaborationObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlCollaborationObject::ownedUseCase() const
@@ -334,7 +352,10 @@ const QSet<QObject *> QUmlCollaborationObject::redefinedClassifier() const
 
 QObject *QUmlCollaborationObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlCollaborationObject::substitution() const
@@ -347,7 +368,10 @@ const QSet<QObject *> QUmlCollaborationObject::substitution() const
 
 QObject *QUmlCollaborationObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlCollaborationObject::useCase() const
@@ -396,7 +420,10 @@ const QSet<QObject *> QUmlCollaborationObject::role() const
 
 QObject *QUmlCollaborationObject::classifierBehavior() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->classifierBehavior()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->classifierBehavior())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->classifierBehavior()->asQObject();
 }
 
 const QSet<QObject *> QUmlCollaborationObject::interfaceRealization() const
@@ -645,7 +672,7 @@ void QUmlCollaborationObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setName(name);
 }
-    
+
 void QUmlCollaborationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -660,7 +687,7 @@ void QUmlCollaborationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlCollaborationObject::addElementImport(QObject *elementImport)
 {
@@ -733,8 +760,14 @@ void QUmlCollaborationObject::setOwningTemplateParameter(QObject *owningTemplate
 void QUmlCollaborationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlCollaborationObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlCollaborationObject::setPackage(QObject *package)
@@ -747,8 +780,14 @@ void QUmlCollaborationObject::setPackage(QObject *package)
 void QUmlCollaborationObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlCollaborationObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlCollaborationObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -846,13 +885,25 @@ void QUmlCollaborationObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlCollaborationObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlCollaborationObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlCollaborationObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlCollaborationObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlCollaborationObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));

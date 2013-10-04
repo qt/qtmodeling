@@ -94,7 +94,10 @@ const QSet<QObject *> QUmlControlFlowObject::ownedElement() const
 
 QObject *QUmlControlFlowObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -114,12 +117,18 @@ QString QUmlControlFlowObject::name() const
 
 QObject *QUmlControlFlowObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlControlFlowObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlControlFlowObject::qualifiedName() const
@@ -159,12 +168,18 @@ const QSet<QObject *> QUmlControlFlowObject::redefinitionContext() const
 
 QObject *QUmlControlFlowObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->activity()->asQObject();
 }
 
 QObject *QUmlControlFlowObject::guard() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->guard()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->guard())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->guard()->asQObject();
 }
 
 const QSet<QObject *> QUmlControlFlowObject::inGroup() const
@@ -185,12 +200,18 @@ const QSet<QObject *> QUmlControlFlowObject::inPartition() const
 
 QObject *QUmlControlFlowObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->inStructuredNode()->asQObject();
 }
 
 QObject *QUmlControlFlowObject::interrupts() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->interrupts()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->interrupts())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->interrupts()->asQObject();
 }
 
 const QSet<QObject *> QUmlControlFlowObject::redefinedEdge() const
@@ -203,17 +224,26 @@ const QSet<QObject *> QUmlControlFlowObject::redefinedEdge() const
 
 QObject *QUmlControlFlowObject::source() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->source()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->source())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->source()->asQObject();
 }
 
 QObject *QUmlControlFlowObject::target() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->target()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->target())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->target()->asQObject();
 }
 
 QObject *QUmlControlFlowObject::weight() const
 {
-    return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->weight()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->weight())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->weight()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -314,7 +344,7 @@ void QUmlControlFlowObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->setName(name);
 }
-    
+
 void QUmlControlFlowObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -329,19 +359,25 @@ void QUmlControlFlowObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlControlFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlControlFlowObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlControlFlowObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlControlFlowObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

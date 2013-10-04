@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlAcceptEventActionObject::ownedElement() const
 
 QObject *QUmlAcceptEventActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlAcceptEventActionObject::name() const
 
 QObject *QUmlAcceptEventActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlAcceptEventActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlAcceptEventActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlAcceptEventActionObject::redefinitionContext() const
 
 QObject *QUmlAcceptEventActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlAcceptEventActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlAcceptEventActionObject::inPartition() const
 
 QObject *QUmlAcceptEventActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlAcceptEventActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlAcceptEventActionObject::handler() const
 
 QObject *QUmlAcceptEventActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlAcceptEventActionObject::input() const
@@ -394,7 +412,7 @@ void QUmlAcceptEventActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->setName(name);
 }
-    
+
 void QUmlAcceptEventActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -409,19 +427,25 @@ void QUmlAcceptEventActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlAcceptEventActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlAcceptEventActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlAcceptEventActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlAcceptEventActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -546,8 +570,14 @@ void QUmlAcceptEventActionObject::removeInput(QObject *input)
 void QUmlAcceptEventActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlAcceptEventActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlAcceptEventActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -583,8 +613,14 @@ void QUmlAcceptEventActionObject::removeOutput(QObject *output)
 void QUmlAcceptEventActionObject::setUnmarshall(bool isUnmarshall)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->setUnmarshall(isUnmarshall);
+    qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->modifiedResettableProperties() << QStringLiteral("unmarshall");
 }
-    
+
+void QUmlAcceptEventActionObject::unsetUnmarshall()
+{
+    qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("unmarshall"));
+}
+
 void QUmlAcceptEventActionObject::addResult(QObject *result)
 {
     qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->addResult(qmodelingobjectproperty_cast<QUmlOutputPin *>(result));

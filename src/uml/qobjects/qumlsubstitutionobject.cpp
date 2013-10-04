@@ -88,19 +88,28 @@ const QSet<QObject *> QUmlSubstitutionObject::ownedElement() const
 
 QObject *QUmlSubstitutionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlSubstitutionObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlSubstitutionObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -120,12 +129,18 @@ QString QUmlSubstitutionObject::name() const
 
 QObject *QUmlSubstitutionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlSubstitutionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlSubstitutionObject::qualifiedName() const
@@ -189,19 +204,28 @@ const QSet<QObject *> QUmlSubstitutionObject::supplier() const
 
 QObject *QUmlSubstitutionObject::mapping() const
 {
-    return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->mapping()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->mapping())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->mapping()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Substitution]
 
 QObject *QUmlSubstitutionObject::contract() const
 {
-    return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->contract()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->contract())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->contract()->asQObject();
 }
 
 QObject *QUmlSubstitutionObject::substitutingClassifier() const
 {
-    return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->substitutingClassifier()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->substitutingClassifier())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->substitutingClassifier()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -314,7 +338,7 @@ void QUmlSubstitutionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->setName(name);
 }
-    
+
 void QUmlSubstitutionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -329,13 +353,19 @@ void QUmlSubstitutionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlSubstitutionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlSubstitutionObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlSubstitutionObject::addRelatedElement(QObject *relatedElement)

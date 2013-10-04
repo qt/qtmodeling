@@ -84,7 +84,8 @@ QUmlReduceAction::QUmlReduceAction(bool createQObject) :
 QUmlReduceAction::~QUmlReduceAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -153,7 +154,7 @@ void QUmlReduceAction::setCollection(QUmlInputPin *collection)
         removeInput(_collection);
 
         _collection = collection;
-        if (collection->asQObject() && this->asQObject())
+        if (collection && collection->asQObject() && this->asQObject())
             QObject::connect(collection->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setCollection()));
         collection->asQObject()->setParent(this->asQObject());
 
@@ -199,7 +200,7 @@ void QUmlReduceAction::setReducer(QUmlBehavior *reducer)
 
     if (_reducer != reducer) {
         _reducer = reducer;
-        if (reducer->asQObject() && this->asQObject())
+        if (reducer && reducer->asQObject() && this->asQObject())
             QObject::connect(reducer->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReducer()));
     }
 }
@@ -223,7 +224,7 @@ void QUmlReduceAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
         result->asQObject()->setParent(this->asQObject());
 

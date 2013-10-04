@@ -90,7 +90,8 @@ QUmlCollaboration::QUmlCollaboration(bool createQObject)
 QUmlCollaboration::~QUmlCollaboration()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -174,7 +175,7 @@ void QUmlCollaboration::addCollaborationRole(QUmlConnectableElement *collaborati
 
     if (!_collaborationRole.contains(collaborationRole)) {
         _collaborationRole.insert(collaborationRole);
-        if (collaborationRole->asQObject() && this->asQObject())
+        if (collaborationRole && collaborationRole->asQObject() && this->asQObject())
             QObject::connect(collaborationRole->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCollaborationRole(QObject *)));
 
         // Adjust subsetted properties

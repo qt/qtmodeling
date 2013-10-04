@@ -87,7 +87,10 @@ const QSet<QObject *> QUmlLiteralStringObject::ownedElement() const
 
 QObject *QUmlLiteralStringObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -107,12 +110,18 @@ QString QUmlLiteralStringObject::name() const
 
 QObject *QUmlLiteralStringObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlLiteralStringObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlLiteralStringObject::qualifiedName() const
@@ -123,19 +132,28 @@ QString QUmlLiteralStringObject::qualifiedName() const
 
 QObject *QUmlLiteralStringObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlLiteralStringObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlLiteralStringObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -289,7 +307,7 @@ void QUmlLiteralStringObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->setName(name);
 }
-    
+
 void QUmlLiteralStringObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -304,7 +322,7 @@ void QUmlLiteralStringObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlLiteralStringObject::setType(QObject *type)
 {
@@ -328,14 +346,20 @@ void QUmlLiteralStringObject::setTemplateParameter(QObject *templateParameter)
 void QUmlLiteralStringObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlLiteralStringObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [LiteralString]
 
 void QUmlLiteralStringObject::setValue(QString value)
 {
     qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->setValue(value);
 }
-    
+
 QT_END_NAMESPACE
 

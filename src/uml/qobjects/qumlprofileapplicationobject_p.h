@@ -71,7 +71,7 @@ class Q_UML_EXPORT QUmlProfileApplicationObject : public QObject
     // Properties [ProfileApplication]
     Q_PROPERTY(QObject * appliedProfile READ appliedProfile)
     Q_PROPERTY(QObject * applyingPackage READ applyingPackage)
-    Q_PROPERTY(bool isStrict READ isStrict)
+    Q_PROPERTY(bool isStrict READ isStrict RESET unsetStrict)
 
 public:
     Q_INVOKABLE explicit QUmlProfileApplicationObject(QUmlProfileApplication *qModelingObject);
@@ -121,6 +121,7 @@ public Q_SLOTS:
     void setAppliedProfile(QObject *appliedProfile = 0);
     void setApplyingPackage(QObject *applyingPackage = 0);
     void setStrict(bool isStrict);
+    void unsetStrict();
 };
 
 QT_END_NAMESPACE

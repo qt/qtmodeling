@@ -72,7 +72,8 @@ QUmlExtend::QUmlExtend(bool createQObject) :
 QUmlExtend::~QUmlExtend()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -120,7 +121,7 @@ void QUmlExtend::setCondition(QUmlConstraint *condition)
         removeOwnedElement(_condition);
 
         _condition = condition;
-        if (condition->asQObject() && this->asQObject())
+        if (condition && condition->asQObject() && this->asQObject())
             QObject::connect(condition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setCondition()));
         condition->asQObject()->setParent(this->asQObject());
 
@@ -150,7 +151,7 @@ void QUmlExtend::setExtendedCase(QUmlUseCase *extendedCase)
         removeTarget(_extendedCase);
 
         _extendedCase = extendedCase;
-        if (extendedCase->asQObject() && this->asQObject())
+        if (extendedCase && extendedCase->asQObject() && this->asQObject())
             QObject::connect(extendedCase->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExtendedCase()));
 
         // Adjust subsetted properties
@@ -179,7 +180,7 @@ void QUmlExtend::setExtension(QUmlUseCase *extension)
         removeSource(_extension);
 
         _extension = extension;
-        if (extension->asQObject() && this->asQObject())
+        if (extension && extension->asQObject() && this->asQObject())
             QObject::connect(extension->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExtension()));
 
         // Adjust subsetted properties
@@ -206,7 +207,7 @@ void QUmlExtend::addExtensionLocation(QUmlExtensionPoint *extensionLocation)
 
     if (!_extensionLocation.contains(extensionLocation)) {
         _extensionLocation.append(extensionLocation);
-        if (extensionLocation->asQObject() && this->asQObject())
+        if (extensionLocation && extensionLocation->asQObject() && this->asQObject())
             QObject::connect(extensionLocation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtensionLocation(QObject *)));
     }
 }

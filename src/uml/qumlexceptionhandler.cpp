@@ -67,7 +67,8 @@ QUmlExceptionHandler::QUmlExceptionHandler(bool createQObject) :
 QUmlExceptionHandler::~QUmlExceptionHandler()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -106,7 +107,7 @@ void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 
     if (_exceptionInput != exceptionInput) {
         _exceptionInput = exceptionInput;
-        if (exceptionInput->asQObject() && this->asQObject())
+        if (exceptionInput && exceptionInput->asQObject() && this->asQObject())
             QObject::connect(exceptionInput->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExceptionInput()));
     }
 }
@@ -127,7 +128,7 @@ void QUmlExceptionHandler::addExceptionType(QUmlClassifier *exceptionType)
 
     if (!_exceptionType.contains(exceptionType)) {
         _exceptionType.insert(exceptionType);
-        if (exceptionType->asQObject() && this->asQObject())
+        if (exceptionType && exceptionType->asQObject() && this->asQObject())
             QObject::connect(exceptionType->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExceptionType(QObject *)));
     }
 }
@@ -157,7 +158,7 @@ void QUmlExceptionHandler::setHandlerBody(QUmlExecutableNode *handlerBody)
 
     if (_handlerBody != handlerBody) {
         _handlerBody = handlerBody;
-        if (handlerBody->asQObject() && this->asQObject())
+        if (handlerBody && handlerBody->asQObject() && this->asQObject())
             QObject::connect(handlerBody->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setHandlerBody()));
     }
 }
@@ -180,7 +181,7 @@ void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
         // Adjust subsetted properties
 
         _protectedNode = protectedNode;
-        if (protectedNode->asQObject() && this->asQObject())
+        if (protectedNode && protectedNode->asQObject() && this->asQObject())
             QObject::connect(protectedNode->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setProtectedNode()));
 
         // Adjust subsetted properties

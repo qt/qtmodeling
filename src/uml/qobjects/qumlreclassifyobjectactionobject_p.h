@@ -68,11 +68,11 @@ class Q_UML_EXPORT QUmlReclassifyObjectActionObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
@@ -90,15 +90,15 @@ class Q_UML_EXPORT QUmlReclassifyObjectActionObject : public QObject
     Q_PROPERTY(QSet<QObject *> handler READ handler)
 
     // Properties [Action]
-    Q_PROPERTY(QObject * context READ context)
+    Q_PROPERTY(QObject * context READ context STORED false)
     Q_PROPERTY(QList<QObject *> input READ input)
-    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant)
+    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant RESET unsetLocallyReentrant)
     Q_PROPERTY(QSet<QObject *> localPostcondition READ localPostcondition)
     Q_PROPERTY(QSet<QObject *> localPrecondition READ localPrecondition)
     Q_PROPERTY(QList<QObject *> output READ output)
 
     // Properties [ReclassifyObjectAction]
-    Q_PROPERTY(bool isReplaceAll READ isReplaceAll)
+    Q_PROPERTY(bool isReplaceAll READ isReplaceAll RESET unsetReplaceAll)
     Q_PROPERTY(QSet<QObject *> newClassifier READ newClassifier)
     Q_PROPERTY(QObject * object READ object)
     Q_PROPERTY(QSet<QObject *> oldClassifier READ oldClassifier)
@@ -186,6 +186,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -216,6 +217,7 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addInput(QObject *input);
     void Q_DECL_HIDDEN removeInput(QObject *input);
     void setLocallyReentrant(bool isLocallyReentrant);
+    void unsetLocallyReentrant();
     void addLocalPostcondition(QObject *localPostcondition);
     void removeLocalPostcondition(QObject *localPostcondition);
     void addLocalPrecondition(QObject *localPrecondition);
@@ -225,6 +227,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [ReclassifyObjectAction]
     void setReplaceAll(bool isReplaceAll);
+    void unsetReplaceAll();
     void addNewClassifier(QObject *newClassifier);
     void removeNewClassifier(QObject *newClassifier);
     void setObject(QObject *object = 0);

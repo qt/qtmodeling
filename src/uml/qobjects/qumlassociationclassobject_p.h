@@ -68,11 +68,11 @@ class Q_UML_EXPORT QUmlAssociationClassObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
     Q_PROPERTY(QSet<QObject *> member READ member)
     Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
     Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
@@ -82,13 +82,13 @@ class Q_UML_EXPORT QUmlAssociationClassObject : public QObject
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [Type]
     Q_PROPERTY(QObject * package READ package)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
@@ -100,8 +100,8 @@ class Q_UML_EXPORT QUmlAssociationClassObject : public QObject
     Q_PROPERTY(QSet<QObject *> collaborationUse READ collaborationUse)
     Q_PROPERTY(QSet<QObject *> feature READ feature)
     Q_PROPERTY(QSet<QObject *> generalization READ generalization)
-    Q_PROPERTY(QSet<QObject *> inheritedMember READ inheritedMember)
-    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization)
+    Q_PROPERTY(QSet<QObject *> inheritedMember READ inheritedMember STORED false)
+    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization RESET unsetFinalSpecialization)
     Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature)
     Q_PROPERTY(QSet<QObject *> ownedUseCase READ ownedUseCase)
     Q_PROPERTY(QSet<QObject *> powertypeExtent READ powertypeExtent)
@@ -113,11 +113,11 @@ class Q_UML_EXPORT QUmlAssociationClassObject : public QObject
 
     // Properties [StructuredClassifier]
     Q_PROPERTY(QSet<QObject *> ownedConnector READ ownedConnector)
-    Q_PROPERTY(QSet<QObject *> part READ part)
+    Q_PROPERTY(QSet<QObject *> part READ part STORED false)
     Q_PROPERTY(QSet<QObject *> role READ role)
 
     // Properties [EncapsulatedClassifier]
-    Q_PROPERTY(QSet<QObject *> ownedPort READ ownedPort)
+    Q_PROPERTY(QSet<QObject *> ownedPort READ ownedPort STORED false)
 
     // Properties [BehavioredClassifier]
     Q_PROPERTY(QObject * classifierBehavior READ classifierBehavior)
@@ -125,21 +125,21 @@ class Q_UML_EXPORT QUmlAssociationClassObject : public QObject
     Q_PROPERTY(QSet<QObject *> ownedBehavior READ ownedBehavior)
 
     // Properties [Class]
-    Q_PROPERTY(QSet<QObject *> extension READ extension)
-    Q_PROPERTY(bool isAbstract READ isAbstract)
-    Q_PROPERTY(bool isActive READ isActive)
+    Q_PROPERTY(QSet<QObject *> extension READ extension STORED false)
+    Q_PROPERTY(bool isAbstract READ isAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool isActive READ isActive RESET unsetActive)
     Q_PROPERTY(QList<QObject *> nestedClassifier READ nestedClassifier)
     Q_PROPERTY(QList<QObject *> ownedAttribute READ ownedAttribute)
     Q_PROPERTY(QList<QObject *> ownedOperation READ ownedOperation)
     Q_PROPERTY(QSet<QObject *> ownedReception READ ownedReception)
-    Q_PROPERTY(QSet<QObject *> superClass READ superClass)
+    Q_PROPERTY(QSet<QObject *> superClass READ superClass STORED false)
 
     // Properties [Relationship]
     Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElement)
 
     // Properties [Association]
-    Q_PROPERTY(QList<QObject *> endType READ endType)
-    Q_PROPERTY(bool isDerived READ isDerived)
+    Q_PROPERTY(QList<QObject *> endType READ endType STORED false)
+    Q_PROPERTY(bool isDerived READ isDerived RESET unsetDerived)
     Q_PROPERTY(QList<QObject *> memberEnd READ memberEnd)
     Q_PROPERTY(QSet<QObject *> navigableOwnedEnd READ navigableOwnedEnd)
     Q_PROPERTY(QList<QObject *> ownedEnd READ ownedEnd)
@@ -312,12 +312,14 @@ public Q_SLOTS:
 
     // Slots for owned attributes [PackageableElement]
     void setVisibility(QtUml::VisibilityKind visibility);
+    void unsetVisibility();
 
     // Slots for owned attributes [Type]
     void setPackage(QObject *package = 0);
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -339,6 +341,7 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addInheritedMember(QObject *inheritedMember);
     void Q_DECL_HIDDEN removeInheritedMember(QObject *inheritedMember);
     void setFinalSpecialization(bool isFinalSpecialization);
+    void unsetFinalSpecialization();
     void setOwnedTemplateSignature(QObject *ownedTemplateSignature = 0);
     void addOwnedUseCase(QObject *ownedUseCase);
     void removeOwnedUseCase(QObject *ownedUseCase);
@@ -376,7 +379,9 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addExtension(QObject *extension);
     void Q_DECL_HIDDEN removeExtension(QObject *extension);
     void setAbstract(bool isAbstract);
+    void unsetAbstract();
     void setActive(bool isActive);
+    void unsetActive();
     void addNestedClassifier(QObject *nestedClassifier);
     void removeNestedClassifier(QObject *nestedClassifier);
     void addOwnedAttribute(QObject *ownedAttribute);
@@ -396,6 +401,7 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addEndType(QObject *endType);
     void Q_DECL_HIDDEN removeEndType(QObject *endType);
     void setDerived(bool isDerived);
+    void unsetDerived();
     void addMemberEnd(QObject *memberEnd);
     void removeMemberEnd(QObject *memberEnd);
     void addNavigableOwnedEnd(QObject *navigableOwnedEnd);

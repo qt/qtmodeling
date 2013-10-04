@@ -78,7 +78,10 @@ const QSet<QObject *> QUmlCommentObject::ownedElement() const
 
 QObject *QUmlCommentObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlComment *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlComment *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlComment *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Comment]
@@ -154,6 +157,6 @@ void QUmlCommentObject::setBody(QString body)
 {
     qmodelingobjectproperty_cast<QUmlComment *>(this)->setBody(body);
 }
-    
+
 QT_END_NAMESPACE
 

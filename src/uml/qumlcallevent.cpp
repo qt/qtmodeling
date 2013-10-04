@@ -70,7 +70,8 @@ QUmlCallEvent::QUmlCallEvent(bool createQObject) :
 QUmlCallEvent::~QUmlCallEvent()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -113,7 +114,7 @@ void QUmlCallEvent::setOperation(QUmlOperation *operation)
 
     if (_operation != operation) {
         _operation = operation;
-        if (operation->asQObject() && this->asQObject())
+        if (operation && operation->asQObject() && this->asQObject())
             QObject::connect(operation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOperation()));
     }
 }

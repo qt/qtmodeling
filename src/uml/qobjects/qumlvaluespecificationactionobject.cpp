@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlValueSpecificationActionObject::ownedElement() const
 
 QObject *QUmlValueSpecificationActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlValueSpecificationActionObject::name() const
 
 QObject *QUmlValueSpecificationActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlValueSpecificationActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlValueSpecificationActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlValueSpecificationActionObject::redefinitionContext() 
 
 QObject *QUmlValueSpecificationActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlValueSpecificationActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlValueSpecificationActionObject::inPartition() const
 
 QObject *QUmlValueSpecificationActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlValueSpecificationActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlValueSpecificationActionObject::handler() const
 
 QObject *QUmlValueSpecificationActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlValueSpecificationActionObject::input() const
@@ -277,12 +295,18 @@ const QList<QObject *> QUmlValueSpecificationActionObject::output() const
 
 QObject *QUmlValueSpecificationActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->result()->asQObject();
 }
 
 QObject *QUmlValueSpecificationActionObject::value() const
 {
-    return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->value()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->value())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->value()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -383,7 +407,7 @@ void QUmlValueSpecificationActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->setName(name);
 }
-    
+
 void QUmlValueSpecificationActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -398,19 +422,25 @@ void QUmlValueSpecificationActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlValueSpecificationActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlValueSpecificationActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlValueSpecificationActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlValueSpecificationActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -535,8 +565,14 @@ void QUmlValueSpecificationActionObject::removeInput(QObject *input)
 void QUmlValueSpecificationActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlValueSpecificationActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlValueSpecificationActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

@@ -90,7 +90,8 @@ QUmlExtension::QUmlExtension(bool createQObject) :
 QUmlExtension::~QUmlExtension()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -217,7 +218,7 @@ void QUmlExtension::setOwnedEnd(QUmlExtensionEnd *ownedEnd)
 
     if (_ownedEnd != ownedEnd) {
         _ownedEnd = ownedEnd;
-        if (ownedEnd->asQObject() && this->asQObject())
+        if (ownedEnd && ownedEnd->asQObject() && this->asQObject())
             QObject::connect(ownedEnd->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedEnd()));
         ownedEnd->asQObject()->setParent(this->asQObject());
     }

@@ -73,7 +73,8 @@ QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(bool createQO
 QUmlActionExecutionSpecification::~QUmlActionExecutionSpecification()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -124,7 +125,7 @@ void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
 
     if (_action != action) {
         _action = action;
-        if (action->asQObject() && this->asQObject())
+        if (action && action->asQObject() && this->asQObject())
             QObject::connect(action->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAction()));
     }
 }

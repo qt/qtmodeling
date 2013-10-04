@@ -82,7 +82,8 @@ QUmlReplyAction::QUmlReplyAction(bool createQObject) :
 QUmlReplyAction::~QUmlReplyAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -147,7 +148,7 @@ void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 
     if (_replyToCall != replyToCall) {
         _replyToCall = replyToCall;
-        if (replyToCall->asQObject() && this->asQObject())
+        if (replyToCall && replyToCall->asQObject() && this->asQObject())
             QObject::connect(replyToCall->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReplyToCall()));
     }
 }
@@ -168,7 +169,7 @@ void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
 
     if (!_replyValue.contains(replyValue)) {
         _replyValue.insert(replyValue);
-        if (replyValue->asQObject() && this->asQObject())
+        if (replyValue && replyValue->asQObject() && this->asQObject())
             QObject::connect(replyValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeReplyValue(QObject *)));
         replyValue->asQObject()->setParent(this->asQObject());
 
@@ -210,7 +211,7 @@ void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
         removeInput(_returnInformation);
 
         _returnInformation = returnInformation;
-        if (returnInformation->asQObject() && this->asQObject())
+        if (returnInformation && returnInformation->asQObject() && this->asQObject())
             QObject::connect(returnInformation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReturnInformation()));
         returnInformation->asQObject()->setParent(this->asQObject());
 

@@ -101,7 +101,10 @@ const QSet<QObject *> QUmlPortObject::ownedElement() const
 
 QObject *QUmlPortObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -121,12 +124,18 @@ QString QUmlPortObject::name() const
 
 QObject *QUmlPortObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlPortObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlPortObject::qualifiedName() const
@@ -143,7 +152,10 @@ QtUml::VisibilityKind QUmlPortObject::visibility() const
 
 QObject *QUmlPortObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [MultiplicityElement]
@@ -165,7 +177,10 @@ int QUmlPortObject::lower() const
 
 QObject *QUmlPortObject::lowerValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->lowerValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->lowerValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->lowerValue()->asQObject();
 }
 
 int QUmlPortObject::upper() const
@@ -175,7 +190,10 @@ int QUmlPortObject::upper() const
 
 QObject *QUmlPortObject::upperValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->upperValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->upperValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->upperValue()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -220,7 +238,10 @@ bool QUmlPortObject::isStatic() const
 
 QObject *QUmlPortObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [ConnectableElement]
 
@@ -234,7 +255,10 @@ const QList<QObject *> QUmlPortObject::end() const
 
 QObject *QUmlPortObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [DeploymentTarget]
@@ -264,22 +288,34 @@ QtUml::AggregationKind QUmlPortObject::aggregation() const
 
 QObject *QUmlPortObject::association() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->association()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->association())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->association()->asQObject();
 }
 
 QObject *QUmlPortObject::associationEnd() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->associationEnd()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->associationEnd())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->associationEnd()->asQObject();
 }
 
 QObject *QUmlPortObject::class_() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->class_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->class_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->class_()->asQObject();
 }
 
 QObject *QUmlPortObject::datatype() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->datatype()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->datatype())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->datatype()->asQObject();
 }
 
 QString QUmlPortObject::default_() const
@@ -289,12 +325,18 @@ QString QUmlPortObject::default_() const
 
 QObject *QUmlPortObject::defaultValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->defaultValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->defaultValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->defaultValue()->asQObject();
 }
 
 QObject *QUmlPortObject::interface_() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->interface_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->interface_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->interface_()->asQObject();
 }
 
 bool QUmlPortObject::isComposite() const
@@ -324,12 +366,18 @@ bool QUmlPortObject::isReadOnly() const
 
 QObject *QUmlPortObject::opposite() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->opposite()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->opposite())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->opposite()->asQObject();
 }
 
 QObject *QUmlPortObject::owningAssociation() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->owningAssociation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->owningAssociation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->owningAssociation()->asQObject();
 }
 
 const QList<QObject *> QUmlPortObject::qualifier() const
@@ -375,7 +423,10 @@ bool QUmlPortObject::isService() const
 
 QObject *QUmlPortObject::protocol() const
 {
-    return qmodelingobjectproperty_cast<QUmlPort *>(this)->protocol()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPort *>(this)->protocol())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPort *>(this)->protocol()->asQObject();
 }
 
 const QSet<QObject *> QUmlPortObject::provided() const
@@ -569,7 +620,7 @@ void QUmlPortObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setName(name);
 }
-    
+
 void QUmlPortObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -584,12 +635,12 @@ void QUmlPortObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlPortObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlPortObject::setType(QObject *type)
@@ -602,18 +653,36 @@ void QUmlPortObject::setType(QObject *type)
 void QUmlPortObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setOrdered(isOrdered);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
-    
+
+void QUmlPortObject::unsetOrdered()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordered"));
+}
+
 void QUmlPortObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setUnique(isUnique);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
-    
+
+void QUmlPortObject::unsetUnique()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("unique"));
+}
+
 void QUmlPortObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setLower(lower);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
-    
+
+void QUmlPortObject::unsetLower()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("lower"));
+}
+
 void QUmlPortObject::setLowerValue(QObject *lowerValue)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setLowerValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(lowerValue));
@@ -622,8 +691,14 @@ void QUmlPortObject::setLowerValue(QObject *lowerValue)
 void QUmlPortObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setUpper(upper);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
-    
+
+void QUmlPortObject::unsetUpper()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("upper"));
+}
+
 void QUmlPortObject::setUpperValue(QObject *upperValue)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setUpperValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(upperValue));
@@ -634,8 +709,14 @@ void QUmlPortObject::setUpperValue(QObject *upperValue)
 void QUmlPortObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlPortObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlPortObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -671,8 +752,14 @@ void QUmlPortObject::removeFeaturingClassifier(QObject *featuringClassifier)
 void QUmlPortObject::setStatic(bool isStatic)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setStatic(isStatic);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("static");
 }
-    
+
+void QUmlPortObject::unsetStatic()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("static"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlPortObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
@@ -723,8 +810,14 @@ void QUmlPortObject::removeDeployment(QObject *deployment)
 void QUmlPortObject::setAggregation(QtUml::AggregationKind aggregation)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setAggregation(aggregation);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("aggregation");
 }
-    
+
+void QUmlPortObject::unsetAggregation()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("aggregation"));
+}
+
 void QUmlPortObject::setAssociation(QObject *association)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setAssociation(qmodelingobjectproperty_cast<QUmlAssociation *>(association));
@@ -749,7 +842,7 @@ void QUmlPortObject::setDefault(QString default_)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setDefault(default_);
 }
-    
+
 void QUmlPortObject::setDefaultValue(QObject *defaultValue)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setDefaultValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(defaultValue));
@@ -763,28 +856,58 @@ void QUmlPortObject::setInterface(QObject *interface_)
 void QUmlPortObject::setComposite(bool isComposite)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setComposite(isComposite);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("composite");
 }
-    
+
+void QUmlPortObject::unsetComposite()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("composite"));
+}
+
 void QUmlPortObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setDerived(isDerived);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
-    
+
+void QUmlPortObject::unsetDerived()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("derived"));
+}
+
 void QUmlPortObject::setDerivedUnion(bool isDerivedUnion)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setDerivedUnion(isDerivedUnion);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("derivedUnion");
 }
-    
+
+void QUmlPortObject::unsetDerivedUnion()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("derivedUnion"));
+}
+
 void QUmlPortObject::setID(bool isID)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setID(isID);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("iD");
 }
-    
+
+void QUmlPortObject::unsetID()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("iD"));
+}
+
 void QUmlPortObject::setReadOnly(bool isReadOnly)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setReadOnly(isReadOnly);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("readOnly");
 }
-    
+
+void QUmlPortObject::unsetReadOnly()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("readOnly"));
+}
+
 void QUmlPortObject::setOpposite(QObject *opposite)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setOpposite(qmodelingobjectproperty_cast<QUmlProperty *>(opposite));
@@ -830,18 +953,36 @@ void QUmlPortObject::removeSubsettedProperty(QObject *subsettedProperty)
 void QUmlPortObject::setBehavior(bool isBehavior)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setBehavior(isBehavior);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("behavior");
 }
-    
+
+void QUmlPortObject::unsetBehavior()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("behavior"));
+}
+
 void QUmlPortObject::setConjugated(bool isConjugated)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setConjugated(isConjugated);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("conjugated");
 }
-    
+
+void QUmlPortObject::unsetConjugated()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("conjugated"));
+}
+
 void QUmlPortObject::setService(bool isService)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setService(isService);
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("service");
 }
-    
+
+void QUmlPortObject::unsetService()
+{
+    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("service"));
+}
+
 void QUmlPortObject::setProtocol(QObject *protocol)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setProtocol(qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(protocol));

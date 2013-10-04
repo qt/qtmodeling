@@ -89,7 +89,10 @@ const QSet<QObject *> QUmlMessageOccurrenceSpecificationObject::ownedElement() c
 
 QObject *QUmlMessageOccurrenceSpecificationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,12 +112,18 @@ QString QUmlMessageOccurrenceSpecificationObject::name() const
 
 QObject *QUmlMessageOccurrenceSpecificationObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlMessageOccurrenceSpecificationObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlMessageOccurrenceSpecificationObject::qualifiedName() const
@@ -131,12 +140,18 @@ QtUml::VisibilityKind QUmlMessageOccurrenceSpecificationObject::visibility() con
 
 QObject *QUmlMessageOccurrenceSpecificationObject::enclosingInteraction() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->enclosingInteraction()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->enclosingInteraction())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->enclosingInteraction()->asQObject();
 }
 
 QObject *QUmlMessageOccurrenceSpecificationObject::enclosingOperand() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->enclosingOperand()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->enclosingOperand())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->enclosingOperand()->asQObject();
 }
 
 const QSet<QObject *> QUmlMessageOccurrenceSpecificationObject::generalOrdering() const
@@ -151,7 +166,10 @@ const QSet<QObject *> QUmlMessageOccurrenceSpecificationObject::generalOrdering(
 
 QObject *QUmlMessageOccurrenceSpecificationObject::covered() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->covered()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->covered())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->covered()->asQObject();
 }
 
 const QSet<QObject *> QUmlMessageOccurrenceSpecificationObject::toAfter() const
@@ -174,7 +192,10 @@ const QSet<QObject *> QUmlMessageOccurrenceSpecificationObject::toBefore() const
 
 QObject *QUmlMessageOccurrenceSpecificationObject::message() const
 {
-    return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->message()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->message())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->message()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -263,7 +284,7 @@ void QUmlMessageOccurrenceSpecificationObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->setName(name);
 }
-    
+
 void QUmlMessageOccurrenceSpecificationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -278,12 +299,12 @@ void QUmlMessageOccurrenceSpecificationObject::setQualifiedName(QString qualifie
 {
     qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlMessageOccurrenceSpecificationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlMessageOccurrenceSpecification *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlMessageOccurrenceSpecificationObject::setEnclosingInteraction(QObject *enclosingInteraction)

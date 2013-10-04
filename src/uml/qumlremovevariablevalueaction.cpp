@@ -82,7 +82,8 @@ QUmlRemoveVariableValueAction::QUmlRemoveVariableValueAction(bool createQObject)
 QUmlRemoveVariableValueAction::~QUmlRemoveVariableValueAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -170,7 +171,7 @@ void QUmlRemoveVariableValueAction::setRemoveAt(QUmlInputPin *removeAt)
         removeInput(_removeAt);
 
         _removeAt = removeAt;
-        if (removeAt->asQObject() && this->asQObject())
+        if (removeAt && removeAt->asQObject() && this->asQObject())
             QObject::connect(removeAt->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRemoveAt()));
         removeAt->asQObject()->setParent(this->asQObject());
 

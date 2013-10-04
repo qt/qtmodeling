@@ -82,7 +82,8 @@ QUmlExpansionNode::QUmlExpansionNode(bool createQObject) :
 QUmlExpansionNode::~QUmlExpansionNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -148,7 +149,7 @@ void QUmlExpansionNode::setRegionAsInput(QUmlExpansionRegion *regionAsInput)
 
     if (_regionAsInput != regionAsInput) {
         _regionAsInput = regionAsInput;
-        if (regionAsInput->asQObject() && this->asQObject())
+        if (regionAsInput && regionAsInput->asQObject() && this->asQObject())
             QObject::connect(regionAsInput->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRegionAsInput()));
     }
 }
@@ -169,7 +170,7 @@ void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
 
     if (_regionAsOutput != regionAsOutput) {
         _regionAsOutput = regionAsOutput;
-        if (regionAsOutput->asQObject() && this->asQObject())
+        if (regionAsOutput && regionAsOutput->asQObject() && this->asQObject())
             QObject::connect(regionAsOutput->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRegionAsOutput()));
     }
 }

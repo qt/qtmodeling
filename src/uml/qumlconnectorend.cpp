@@ -67,7 +67,8 @@ QUmlConnectorEnd::QUmlConnectorEnd(bool createQObject) :
 QUmlConnectorEnd::~QUmlConnectorEnd()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -132,7 +133,7 @@ void QUmlConnectorEnd::setPartWithPort(QUmlProperty *partWithPort)
 
     if (_partWithPort != partWithPort) {
         _partWithPort = partWithPort;
-        if (partWithPort->asQObject() && this->asQObject())
+        if (partWithPort && partWithPort->asQObject() && this->asQObject())
             QObject::connect(partWithPort->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPartWithPort()));
     }
 }
@@ -153,7 +154,7 @@ void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
 
     if (_role != role) {
         _role = role;
-        if (role->asQObject() && this->asQObject())
+        if (role && role->asQObject() && this->asQObject())
             QObject::connect(role->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRole()));
     }
 }

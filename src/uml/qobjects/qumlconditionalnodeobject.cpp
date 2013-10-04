@@ -102,7 +102,10 @@ const QSet<QObject *> QUmlConditionalNodeObject::ownedElement() const
 
 QObject *QUmlConditionalNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -122,12 +125,18 @@ QString QUmlConditionalNodeObject::name() const
 
 QObject *QUmlConditionalNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlConditionalNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlConditionalNodeObject::qualifiedName() const
@@ -191,7 +200,10 @@ const QSet<QObject *> QUmlConditionalNodeObject::inPartition() const
 
 QObject *QUmlConditionalNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlConditionalNodeObject::incoming() const
@@ -232,7 +244,10 @@ const QSet<QObject *> QUmlConditionalNodeObject::handler() const
 
 QObject *QUmlConditionalNodeObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlConditionalNodeObject::input() const
@@ -350,14 +365,20 @@ const QSet<QObject *> QUmlConditionalNodeObject::subgroup() const
 
 QObject *QUmlConditionalNodeObject::superGroup() const
 {
-    return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->superGroup()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->superGroup())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->superGroup()->asQObject();
 }
 
 // OWNED ATTRIBUTES [StructuredActivityNode]
 
 QObject *QUmlConditionalNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlConditionalNodeObject::edge() const
@@ -557,7 +578,7 @@ void QUmlConditionalNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setName(name);
 }
-    
+
 void QUmlConditionalNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -572,19 +593,25 @@ void QUmlConditionalNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlConditionalNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlConditionalNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlConditionalNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlConditionalNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -704,8 +731,14 @@ void QUmlConditionalNodeObject::removeInput(QObject *input)
 void QUmlConditionalNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlConditionalNodeObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlConditionalNodeObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -855,8 +888,14 @@ void QUmlConditionalNodeObject::removeEdge(QObject *edge)
 void QUmlConditionalNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setMustIsolate(mustIsolate);
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("mustIsolate");
 }
-    
+
+void QUmlConditionalNodeObject::unsetMustIsolate()
+{
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("mustIsolate"));
+}
+
 void QUmlConditionalNodeObject::addNode(QObject *node)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->addNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(node));
@@ -902,13 +941,25 @@ void QUmlConditionalNodeObject::removeClause(QObject *clause)
 void QUmlConditionalNodeObject::setAssured(bool isAssured)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setAssured(isAssured);
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("assured");
 }
-    
+
+void QUmlConditionalNodeObject::unsetAssured()
+{
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("assured"));
+}
+
 void QUmlConditionalNodeObject::setDeterminate(bool isDeterminate)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setDeterminate(isDeterminate);
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("determinate");
 }
-    
+
+void QUmlConditionalNodeObject::unsetDeterminate()
+{
+    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("determinate"));
+}
+
 void QUmlConditionalNodeObject::addResult(QObject *result)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->addResult(qmodelingobjectproperty_cast<QUmlOutputPin *>(result));

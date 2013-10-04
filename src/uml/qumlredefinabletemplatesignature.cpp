@@ -72,7 +72,8 @@ QUmlRedefinableTemplateSignature::QUmlRedefinableTemplateSignature(bool createQO
 QUmlRedefinableTemplateSignature::~QUmlRedefinableTemplateSignature()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -123,7 +124,7 @@ void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
         removeRedefinitionContext(_classifier);
 
         _classifier = classifier;
-        if (classifier->asQObject() && this->asQObject())
+        if (classifier && classifier->asQObject() && this->asQObject())
             QObject::connect(classifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setClassifier()));
 
         // Adjust subsetted properties
@@ -149,7 +150,7 @@ void QUmlRedefinableTemplateSignature::addExtendedSignature(QUmlRedefinableTempl
 
     if (!_extendedSignature.contains(extendedSignature)) {
         _extendedSignature.insert(extendedSignature);
-        if (extendedSignature->asQObject() && this->asQObject())
+        if (extendedSignature && extendedSignature->asQObject() && this->asQObject())
             QObject::connect(extendedSignature->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtendedSignature(QObject *)));
 
         // Adjust subsetted properties

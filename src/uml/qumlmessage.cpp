@@ -76,7 +76,8 @@ QUmlMessage::QUmlMessage(bool createQObject) :
 QUmlMessage::~QUmlMessage()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -126,7 +127,7 @@ void QUmlMessage::addArgument(QUmlValueSpecification *argument)
 
     if (!_argument.contains(argument)) {
         _argument.append(argument);
-        if (argument->asQObject() && this->asQObject())
+        if (argument && argument->asQObject() && this->asQObject())
             QObject::connect(argument->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeArgument(QObject *)));
         argument->asQObject()->setParent(this->asQObject());
 
@@ -165,7 +166,7 @@ void QUmlMessage::setConnector(QUmlConnector *connector)
 
     if (_connector != connector) {
         _connector = connector;
-        if (connector->asQObject() && this->asQObject())
+        if (connector && connector->asQObject() && this->asQObject())
             QObject::connect(connector->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setConnector()));
     }
 }
@@ -188,7 +189,7 @@ void QUmlMessage::setInteraction(QUmlInteraction *interaction)
         // Adjust subsetted properties
 
         _interaction = interaction;
-        if (interaction->asQObject() && this->asQObject())
+        if (interaction && interaction->asQObject() && this->asQObject())
             QObject::connect(interaction->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInteraction()));
 
         // Adjust subsetted properties
@@ -255,7 +256,7 @@ void QUmlMessage::setReceiveEvent(QUmlMessageEnd *receiveEvent)
 
     if (_receiveEvent != receiveEvent) {
         _receiveEvent = receiveEvent;
-        if (receiveEvent->asQObject() && this->asQObject())
+        if (receiveEvent && receiveEvent->asQObject() && this->asQObject())
             QObject::connect(receiveEvent->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReceiveEvent()));
     }
 }
@@ -276,7 +277,7 @@ void QUmlMessage::setSendEvent(QUmlMessageEnd *sendEvent)
 
     if (_sendEvent != sendEvent) {
         _sendEvent = sendEvent;
-        if (sendEvent->asQObject() && this->asQObject())
+        if (sendEvent && sendEvent->asQObject() && this->asQObject())
             QObject::connect(sendEvent->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSendEvent()));
     }
 }
@@ -297,7 +298,7 @@ void QUmlMessage::setSignature(QUmlNamedElement *signature)
 
     if (_signature != signature) {
         _signature = signature;
-        if (signature->asQObject() && this->asQObject())
+        if (signature && signature->asQObject() && this->asQObject())
             QObject::connect(signature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSignature()));
     }
 }

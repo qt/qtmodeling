@@ -74,7 +74,8 @@ QUmlInterfaceRealization::QUmlInterfaceRealization(bool createQObject) :
 QUmlInterfaceRealization::~QUmlInterfaceRealization()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -128,7 +129,7 @@ void QUmlInterfaceRealization::setContract(QUmlInterface *contract)
         removeSupplier(_contract);
 
         _contract = contract;
-        if (contract->asQObject() && this->asQObject())
+        if (contract && contract->asQObject() && this->asQObject())
             QObject::connect(contract->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setContract()));
 
         // Adjust subsetted properties
@@ -157,7 +158,7 @@ void QUmlInterfaceRealization::setImplementingClassifier(QUmlBehavioredClassifie
         removeClient(_implementingClassifier);
 
         _implementingClassifier = implementingClassifier;
-        if (implementingClassifier->asQObject() && this->asQObject())
+        if (implementingClassifier && implementingClassifier->asQObject() && this->asQObject())
             QObject::connect(implementingClassifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setImplementingClassifier()));
 
         // Adjust subsetted properties

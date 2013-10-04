@@ -105,7 +105,8 @@ QUmlProtocolStateMachine::QUmlProtocolStateMachine(bool createQObject) :
 QUmlProtocolStateMachine::~QUmlProtocolStateMachine()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -215,7 +216,7 @@ void QUmlProtocolStateMachine::addConformance(QUmlProtocolConformance *conforman
 
     if (!_conformance.contains(conformance)) {
         _conformance.insert(conformance);
-        if (conformance->asQObject() && this->asQObject())
+        if (conformance && conformance->asQObject() && this->asQObject())
             QObject::connect(conformance->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConformance(QObject *)));
         conformance->asQObject()->setParent(this->asQObject());
 

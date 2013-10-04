@@ -69,7 +69,8 @@ QUmlInclude::QUmlInclude(bool createQObject) :
 QUmlInclude::~QUmlInclude()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -113,7 +114,7 @@ void QUmlInclude::setAddition(QUmlUseCase *addition)
         removeTarget(_addition);
 
         _addition = addition;
-        if (addition->asQObject() && this->asQObject())
+        if (addition && addition->asQObject() && this->asQObject())
             QObject::connect(addition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAddition()));
 
         // Adjust subsetted properties
@@ -142,7 +143,7 @@ void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
         removeSource(_includingCase);
 
         _includingCase = includingCase;
-        if (includingCase->asQObject() && this->asQObject())
+        if (includingCase && includingCase->asQObject() && this->asQObject())
             QObject::connect(includingCase->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setIncludingCase()));
 
         // Adjust subsetted properties

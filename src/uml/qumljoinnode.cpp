@@ -78,7 +78,8 @@ QUmlJoinNode::QUmlJoinNode(bool createQObject) :
 QUmlJoinNode::~QUmlJoinNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -137,7 +138,7 @@ void QUmlJoinNode::setCombineDuplicate(bool isCombineDuplicate)
 }
 
 /*!
-    A specification giving the conditions under which the join with emit a token. Default is "and".
+    A specification giving the conditions under which the join with emit a token. Default is 'and'.
  */
 QUmlValueSpecification *QUmlJoinNode::joinSpec() const
 {
@@ -155,7 +156,7 @@ void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
         removeOwnedElement(_joinSpec);
 
         _joinSpec = joinSpec;
-        if (joinSpec->asQObject() && this->asQObject())
+        if (joinSpec && joinSpec->asQObject() && this->asQObject())
             QObject::connect(joinSpec->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setJoinSpec()));
         joinSpec->asQObject()->setParent(this->asQObject());
 
@@ -175,7 +176,7 @@ void QUmlJoinNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::DocumentationRole] = QStringLiteral("A specification giving the conditions under which the join with emit a token. Default is \"and\".");
+    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::DocumentationRole] = QStringLiteral("A specification giving the conditions under which the join with emit a token. Default is 'and'.");
     QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
     QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::OppositeEndRole] = QStringLiteral("");

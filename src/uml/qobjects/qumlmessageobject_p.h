@@ -68,15 +68,15 @@ class Q_UML_EXPORT QUmlMessageObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [Message]
     Q_PROPERTY(QList<QObject *> argument READ argument)
     Q_PROPERTY(QObject * connector READ connector)
     Q_PROPERTY(QObject * interaction READ interaction)
-    Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind)
-    Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort)
+    Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind RESET unsetMessageKind STORED false)
+    Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort RESET unsetMessageSort)
     Q_PROPERTY(QObject * receiveEvent READ receiveEvent)
     Q_PROPERTY(QObject * sendEvent READ sendEvent)
     Q_PROPERTY(QObject * signature READ signature)
@@ -142,7 +142,9 @@ public Q_SLOTS:
     void setConnector(QObject *connector = 0);
     void setInteraction(QObject *interaction = 0);
     void Q_DECL_HIDDEN setMessageKind(QtUml::MessageKind messageKind);
+    void unsetMessageKind();
     void setMessageSort(QtUml::MessageSort messageSort);
+    void unsetMessageSort();
     void setReceiveEvent(QObject *receiveEvent = 0);
     void setSendEvent(QObject *sendEvent = 0);
     void setSignature(QObject *signature = 0);

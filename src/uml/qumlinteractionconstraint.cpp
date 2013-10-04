@@ -72,7 +72,8 @@ QUmlInteractionConstraint::QUmlInteractionConstraint(bool createQObject) :
 QUmlInteractionConstraint::~QUmlInteractionConstraint()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -126,7 +127,7 @@ void QUmlInteractionConstraint::setMaxint(QUmlValueSpecification *maxint)
         removeOwnedElement(_maxint);
 
         _maxint = maxint;
-        if (maxint->asQObject() && this->asQObject())
+        if (maxint && maxint->asQObject() && this->asQObject())
             QObject::connect(maxint->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMaxint()));
         maxint->asQObject()->setParent(this->asQObject());
 
@@ -156,7 +157,7 @@ void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
         removeOwnedElement(_minint);
 
         _minint = minint;
-        if (minint->asQObject() && this->asQObject())
+        if (minint && minint->asQObject() && this->asQObject())
             QObject::connect(minint->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMinint()));
         minint->asQObject()->setParent(this->asQObject());
 

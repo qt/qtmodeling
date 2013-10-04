@@ -73,7 +73,7 @@ class Q_UML_EXPORT QUmlPackageImportObject : public QObject
     // Properties [PackageImport]
     Q_PROPERTY(QObject * importedPackage READ importedPackage)
     Q_PROPERTY(QObject * importingNamespace READ importingNamespace)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
 public:
     Q_INVOKABLE explicit QUmlPackageImportObject(QUmlPackageImport *qModelingObject);
@@ -123,6 +123,7 @@ public Q_SLOTS:
     void setImportedPackage(QObject *importedPackage = 0);
     void setImportingNamespace(QObject *importingNamespace = 0);
     void setVisibility(QtUml::VisibilityKind visibility);
+    void unsetVisibility();
 };
 
 QT_END_NAMESPACE

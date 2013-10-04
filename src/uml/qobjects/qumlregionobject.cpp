@@ -94,7 +94,10 @@ const QSet<QObject *> QUmlRegionObject::ownedElement() const
 
 QObject *QUmlRegionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlRegion *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRegion *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRegion *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -114,12 +117,18 @@ QString QUmlRegionObject::name() const
 
 QObject *QUmlRegionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlRegion *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRegion *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRegion *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlRegionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlRegion *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRegion *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRegion *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlRegionObject::qualifiedName() const
@@ -200,22 +209,34 @@ const QSet<QObject *> QUmlRegionObject::packageImport() const
 
 QObject *QUmlRegionObject::extendedRegion() const
 {
-    return qmodelingobjectproperty_cast<QUmlRegion *>(this)->extendedRegion()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRegion *>(this)->extendedRegion())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRegion *>(this)->extendedRegion()->asQObject();
 }
 
 QObject *QUmlRegionObject::redefinitionContext() const
 {
-    return qmodelingobjectproperty_cast<QUmlRegion *>(this)->redefinitionContext()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRegion *>(this)->redefinitionContext())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRegion *>(this)->redefinitionContext()->asQObject();
 }
 
 QObject *QUmlRegionObject::state() const
 {
-    return qmodelingobjectproperty_cast<QUmlRegion *>(this)->state()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRegion *>(this)->state())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRegion *>(this)->state()->asQObject();
 }
 
 QObject *QUmlRegionObject::stateMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlRegion *>(this)->stateMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRegion *>(this)->stateMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRegion *>(this)->stateMachine()->asQObject();
 }
 
 const QSet<QObject *> QUmlRegionObject::subvertex() const
@@ -321,7 +342,10 @@ bool QUmlRegionObject::belongsToPSM() const
 
 QObject *QUmlRegionObject::containingStateMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlRegion *>(this)->containingStateMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRegion *>(this)->containingStateMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRegion *>(this)->containingStateMachine()->asQObject();
 }
 
 bool QUmlRegionObject::isConsistentWith(QObject *redefinee) const
@@ -377,7 +401,7 @@ void QUmlRegionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlRegion *>(this)->setName(name);
 }
-    
+
 void QUmlRegionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlRegion *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -392,19 +416,25 @@ void QUmlRegionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlRegion *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlRegion *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlRegionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlRegion *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlRegion *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlRegionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlRegion *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlRegionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlRegion *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

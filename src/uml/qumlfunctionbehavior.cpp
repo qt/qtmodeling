@@ -100,7 +100,8 @@ QUmlFunctionBehavior::QUmlFunctionBehavior(bool createQObject) :
 QUmlFunctionBehavior::~QUmlFunctionBehavior()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -181,8 +182,10 @@ QModelingObject *QUmlFunctionBehavior::clone() const
         c->addRedefinedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QUmlBehavioralFeature *>(specification()->clone()));
-//    c->setBody(body());
-//    c->setLanguage(language());
+    foreach (QString element, body())
+        c->addBody(element);
+    foreach (QString element, language())
+        c->addLanguage(element);
     return c;
 }
 

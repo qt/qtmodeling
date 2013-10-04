@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlClearVariableActionObject::ownedElement() const
 
 QObject *QUmlClearVariableActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlClearVariableActionObject::name() const
 
 QObject *QUmlClearVariableActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlClearVariableActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlClearVariableActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlClearVariableActionObject::redefinitionContext() const
 
 QObject *QUmlClearVariableActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlClearVariableActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlClearVariableActionObject::inPartition() const
 
 QObject *QUmlClearVariableActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlClearVariableActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlClearVariableActionObject::handler() const
 
 QObject *QUmlClearVariableActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlClearVariableActionObject::input() const
@@ -277,7 +295,10 @@ const QList<QObject *> QUmlClearVariableActionObject::output() const
 
 QObject *QUmlClearVariableActionObject::variable() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->variable()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->variable())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->variable()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -378,7 +399,7 @@ void QUmlClearVariableActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->setName(name);
 }
-    
+
 void QUmlClearVariableActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -393,19 +414,25 @@ void QUmlClearVariableActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlClearVariableActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlClearVariableActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlClearVariableActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlClearVariableActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -530,8 +557,14 @@ void QUmlClearVariableActionObject::removeInput(QObject *input)
 void QUmlClearVariableActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlClearVariableActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlClearVariableActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

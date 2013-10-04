@@ -99,7 +99,10 @@ const QSet<QObject *> QUmlPropertyObject::ownedElement() const
 
 QObject *QUmlPropertyObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -127,7 +130,10 @@ QObject *QUmlPropertyObject::nameExpression() const
 
 QObject *QUmlPropertyObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlPropertyObject::qualifiedName() const
@@ -144,7 +150,10 @@ QtUml::VisibilityKind QUmlPropertyObject::visibility() const
 
 QObject *QUmlPropertyObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlProperty *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProperty *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProperty *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [MultiplicityElement]
@@ -560,7 +569,7 @@ void QUmlPropertyObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setName(name);
 }
-    
+
 void QUmlPropertyObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -575,12 +584,12 @@ void QUmlPropertyObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlPropertyObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlPropertyObject::setType(QObject *type)
@@ -593,18 +602,36 @@ void QUmlPropertyObject::setType(QObject *type)
 void QUmlPropertyObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setOrdered(isOrdered);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
-    
+
+void QUmlPropertyObject::unsetOrdered()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordered"));
+}
+
 void QUmlPropertyObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setUnique(isUnique);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
-    
+
+void QUmlPropertyObject::unsetUnique()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("unique"));
+}
+
 void QUmlPropertyObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setLower(lower);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
-    
+
+void QUmlPropertyObject::unsetLower()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("lower"));
+}
+
 void QUmlPropertyObject::setLowerValue(QObject *lowerValue)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setLowerValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(lowerValue));
@@ -613,8 +640,14 @@ void QUmlPropertyObject::setLowerValue(QObject *lowerValue)
 void QUmlPropertyObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setUpper(upper);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
-    
+
+void QUmlPropertyObject::unsetUpper()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("upper"));
+}
+
 void QUmlPropertyObject::setUpperValue(QObject *upperValue)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setUpperValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(upperValue));
@@ -625,8 +658,14 @@ void QUmlPropertyObject::setUpperValue(QObject *upperValue)
 void QUmlPropertyObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlPropertyObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlPropertyObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -662,8 +701,14 @@ void QUmlPropertyObject::removeFeaturingClassifier(QObject *featuringClassifier)
 void QUmlPropertyObject::setStatic(bool isStatic)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setStatic(isStatic);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("static");
 }
-    
+
+void QUmlPropertyObject::unsetStatic()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("static"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [ParameterableElement]
 
 void QUmlPropertyObject::setOwningTemplateParameter(QObject *owningTemplateParameter)
@@ -714,8 +759,14 @@ void QUmlPropertyObject::removeDeployment(QObject *deployment)
 void QUmlPropertyObject::setAggregation(QtUml::AggregationKind aggregation)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setAggregation(aggregation);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("aggregation");
 }
-    
+
+void QUmlPropertyObject::unsetAggregation()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("aggregation"));
+}
+
 void QUmlPropertyObject::setAssociation(QObject *association)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setAssociation(qmodelingobjectproperty_cast<QUmlAssociation *>(association));
@@ -740,7 +791,7 @@ void QUmlPropertyObject::setDefault(QString default_)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setDefault(default_);
 }
-    
+
 void QUmlPropertyObject::setDefaultValue(QObject *defaultValue)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setDefaultValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(defaultValue));
@@ -754,28 +805,58 @@ void QUmlPropertyObject::setInterface(QObject *interface_)
 void QUmlPropertyObject::setComposite(bool isComposite)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setComposite(isComposite);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("composite");
 }
-    
+
+void QUmlPropertyObject::unsetComposite()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("composite"));
+}
+
 void QUmlPropertyObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setDerived(isDerived);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
-    
+
+void QUmlPropertyObject::unsetDerived()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("derived"));
+}
+
 void QUmlPropertyObject::setDerivedUnion(bool isDerivedUnion)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setDerivedUnion(isDerivedUnion);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("derivedUnion");
 }
-    
+
+void QUmlPropertyObject::unsetDerivedUnion()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("derivedUnion"));
+}
+
 void QUmlPropertyObject::setID(bool isID)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setID(isID);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("iD");
 }
-    
+
+void QUmlPropertyObject::unsetID()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("iD"));
+}
+
 void QUmlPropertyObject::setReadOnly(bool isReadOnly)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setReadOnly(isReadOnly);
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties() << QStringLiteral("readOnly");
 }
-    
+
+void QUmlPropertyObject::unsetReadOnly()
+{
+    qmodelingobjectproperty_cast<QUmlProperty *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("readOnly"));
+}
+
 void QUmlPropertyObject::setOpposite(QObject *opposite)
 {
     qmodelingobjectproperty_cast<QUmlProperty *>(this)->setOpposite(qmodelingobjectproperty_cast<QUmlProperty *>(opposite));

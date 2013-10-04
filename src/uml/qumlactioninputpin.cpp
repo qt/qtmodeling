@@ -83,7 +83,8 @@ QUmlActionInputPin::QUmlActionInputPin(bool createQObject) :
 QUmlActionInputPin::~QUmlActionInputPin()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -157,7 +158,7 @@ void QUmlActionInputPin::setFromAction(QUmlAction *fromAction)
         removeOwnedElement(_fromAction);
 
         _fromAction = fromAction;
-        if (fromAction->asQObject() && this->asQObject())
+        if (fromAction && fromAction->asQObject() && this->asQObject())
             QObject::connect(fromAction->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setFromAction()));
         fromAction->asQObject()->setParent(this->asQObject());
 

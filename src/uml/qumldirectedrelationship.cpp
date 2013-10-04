@@ -84,7 +84,7 @@ void QUmlDirectedRelationship::addSource(QUmlElement *source)
 
     if (!_source.contains(source)) {
         _source.insert(source);
-        if (source->asQObject() && this->asQObject())
+        if (source && source->asQObject() && this->asQObject())
             QObject::connect(source->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSource(QObject *)));
 
         // Adjust subsetted properties
@@ -120,7 +120,7 @@ void QUmlDirectedRelationship::addTarget(QUmlElement *target)
 
     if (!_target.contains(target)) {
         _target.insert(target);
-        if (target->asQObject() && this->asQObject())
+        if (target && target->asQObject() && this->asQObject())
             QObject::connect(target->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTarget(QObject *)));
 
         // Adjust subsetted properties

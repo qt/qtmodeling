@@ -82,14 +82,20 @@ const QSet<QObject *> QUmlLinkEndCreationDataObject::ownedElement() const
 
 QObject *QUmlLinkEndCreationDataObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [LinkEndData]
 
 QObject *QUmlLinkEndCreationDataObject::end() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->end()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->end())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->end()->asQObject();
 }
 
 const QSet<QObject *> QUmlLinkEndCreationDataObject::qualifier() const
@@ -102,14 +108,20 @@ const QSet<QObject *> QUmlLinkEndCreationDataObject::qualifier() const
 
 QObject *QUmlLinkEndCreationDataObject::value() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->value()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->value())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->value()->asQObject();
 }
 
 // OWNED ATTRIBUTES [LinkEndCreationData]
 
 QObject *QUmlLinkEndCreationDataObject::insertAt() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->insertAt()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->insertAt())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->insertAt()->asQObject();
 }
 
 bool QUmlLinkEndCreationDataObject::isReplaceAll() const
@@ -191,7 +203,13 @@ void QUmlLinkEndCreationDataObject::setInsertAt(QObject *insertAt)
 void QUmlLinkEndCreationDataObject::setReplaceAll(bool isReplaceAll)
 {
     qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->setReplaceAll(isReplaceAll);
+    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->modifiedResettableProperties() << QStringLiteral("replaceAll");
 }
-    
+
+void QUmlLinkEndCreationDataObject::unsetReplaceAll()
+{
+    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("replaceAll"));
+}
+
 QT_END_NAMESPACE
 

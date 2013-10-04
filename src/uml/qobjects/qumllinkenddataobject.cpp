@@ -82,14 +82,20 @@ const QSet<QObject *> QUmlLinkEndDataObject::ownedElement() const
 
 QObject *QUmlLinkEndDataObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndData *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndData *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndData *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [LinkEndData]
 
 QObject *QUmlLinkEndDataObject::end() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndData *>(this)->end()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndData *>(this)->end())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndData *>(this)->end()->asQObject();
 }
 
 const QSet<QObject *> QUmlLinkEndDataObject::qualifier() const
@@ -102,7 +108,10 @@ const QSet<QObject *> QUmlLinkEndDataObject::qualifier() const
 
 QObject *QUmlLinkEndDataObject::value() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndData *>(this)->value()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndData *>(this)->value())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndData *>(this)->value()->asQObject();
 }
 
 // OPERATIONS [Element]

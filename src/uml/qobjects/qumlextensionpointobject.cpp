@@ -87,7 +87,10 @@ const QSet<QObject *> QUmlExtensionPointObject::ownedElement() const
 
 QObject *QUmlExtensionPointObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -107,12 +110,18 @@ QString QUmlExtensionPointObject::name() const
 
 QObject *QUmlExtensionPointObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlExtensionPointObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlExtensionPointObject::qualifiedName() const
@@ -152,7 +161,10 @@ const QSet<QObject *> QUmlExtensionPointObject::redefinitionContext() const
 
 QObject *QUmlExtensionPointObject::useCase() const
 {
-    return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->useCase()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->useCase())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->useCase()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -253,7 +265,7 @@ void QUmlExtensionPointObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setName(name);
 }
-    
+
 void QUmlExtensionPointObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -268,19 +280,25 @@ void QUmlExtensionPointObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlExtensionPointObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlExtensionPointObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlExtensionPointObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlExtensionPointObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

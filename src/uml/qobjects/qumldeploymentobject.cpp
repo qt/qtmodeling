@@ -89,19 +89,28 @@ const QSet<QObject *> QUmlDeploymentObject::ownedElement() const
 
 QObject *QUmlDeploymentObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDeployment *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlDeploymentObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDeployment *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlDeploymentObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDeployment *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -121,12 +130,18 @@ QString QUmlDeploymentObject::name() const
 
 QObject *QUmlDeploymentObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDeployment *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlDeploymentObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDeployment *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlDeploymentObject::qualifiedName() const
@@ -206,7 +221,10 @@ const QSet<QObject *> QUmlDeploymentObject::deployedArtifact() const
 
 QObject *QUmlDeploymentObject::location() const
 {
-    return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->location()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDeployment *>(this)->location())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->location()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -319,7 +337,7 @@ void QUmlDeploymentObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlDeployment *>(this)->setName(name);
 }
-    
+
 void QUmlDeploymentObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlDeployment *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -334,13 +352,19 @@ void QUmlDeploymentObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlDeployment *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlDeploymentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDeployment *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlDeployment *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlDeploymentObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlDeployment *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlDeploymentObject::addRelatedElement(QObject *relatedElement)

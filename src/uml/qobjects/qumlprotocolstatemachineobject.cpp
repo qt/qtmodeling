@@ -122,7 +122,10 @@ const QSet<QObject *> QUmlProtocolStateMachineObject::ownedElement() const
 
 QObject *QUmlProtocolStateMachineObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -142,12 +145,18 @@ QString QUmlProtocolStateMachineObject::name() const
 
 QObject *QUmlProtocolStateMachineObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlProtocolStateMachineObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlProtocolStateMachineObject::qualifiedName() const
@@ -208,7 +217,10 @@ const QSet<QObject *> QUmlProtocolStateMachineObject::packageImport() const
 
 QObject *QUmlProtocolStateMachineObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -221,7 +233,10 @@ QtUml::VisibilityKind QUmlProtocolStateMachineObject::visibility() const
 
 QObject *QUmlProtocolStateMachineObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -306,7 +321,10 @@ bool QUmlProtocolStateMachineObject::isFinalSpecialization() const
 
 QObject *QUmlProtocolStateMachineObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlProtocolStateMachineObject::ownedUseCase() const
@@ -335,7 +353,10 @@ const QSet<QObject *> QUmlProtocolStateMachineObject::redefinedClassifier() cons
 
 QObject *QUmlProtocolStateMachineObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlProtocolStateMachineObject::substitution() const
@@ -348,7 +369,10 @@ const QSet<QObject *> QUmlProtocolStateMachineObject::substitution() const
 
 QObject *QUmlProtocolStateMachineObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlProtocolStateMachineObject::useCase() const
@@ -399,7 +423,10 @@ const QSet<QObject *> QUmlProtocolStateMachineObject::ownedPort() const
 
 QObject *QUmlProtocolStateMachineObject::classifierBehavior() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->classifierBehavior()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->classifierBehavior())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->classifierBehavior()->asQObject();
 }
 
 const QSet<QObject *> QUmlProtocolStateMachineObject::interfaceRealization() const
@@ -482,7 +509,10 @@ const QSet<QObject *> QUmlProtocolStateMachineObject::superClass() const
 
 QObject *QUmlProtocolStateMachineObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->context()->asQObject();
 }
 
 bool QUmlProtocolStateMachineObject::isReentrant() const
@@ -524,7 +554,10 @@ const QSet<QObject *> QUmlProtocolStateMachineObject::precondition() const
 
 QObject *QUmlProtocolStateMachineObject::specification() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->specification()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->specification())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->specification()->asQObject();
 }
 
 // OWNED ATTRIBUTES [StateMachine]
@@ -743,7 +776,10 @@ QSet<QObject *> QUmlProtocolStateMachineObject::inherit(QSet<QObject *> inhs) co
 
 QObject *QUmlProtocolStateMachineObject::LCA(QObject *s1, QObject *s2) const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->LCA(qmodelingobjectproperty_cast<QUmlState *>(s1), qmodelingobjectproperty_cast<QUmlState *>(s2))->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->LCA(qmodelingobjectproperty_cast<QUmlState *>(s1), qmodelingobjectproperty_cast<QUmlState *>(s2)))
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->LCA(qmodelingobjectproperty_cast<QUmlState *>(s1), qmodelingobjectproperty_cast<QUmlState *>(s2))->asQObject();
 }
 
 bool QUmlProtocolStateMachineObject::ancestor(QObject *s1, QObject *s2) const
@@ -804,7 +840,7 @@ void QUmlProtocolStateMachineObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setName(name);
 }
-    
+
 void QUmlProtocolStateMachineObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -819,7 +855,7 @@ void QUmlProtocolStateMachineObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlProtocolStateMachineObject::addElementImport(QObject *elementImport)
 {
@@ -892,8 +928,14 @@ void QUmlProtocolStateMachineObject::setOwningTemplateParameter(QObject *owningT
 void QUmlProtocolStateMachineObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlProtocolStateMachineObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlProtocolStateMachineObject::setPackage(QObject *package)
@@ -906,8 +948,14 @@ void QUmlProtocolStateMachineObject::setPackage(QObject *package)
 void QUmlProtocolStateMachineObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlProtocolStateMachineObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlProtocolStateMachineObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -995,8 +1043,14 @@ void QUmlProtocolStateMachineObject::removeInheritedMember(QObject *inheritedMem
 void QUmlProtocolStateMachineObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlProtocolStateMachineObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlProtocolStateMachineObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
@@ -1148,13 +1202,25 @@ void QUmlProtocolStateMachineObject::removeExtension(QObject *extension)
 void QUmlProtocolStateMachineObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlProtocolStateMachineObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlProtocolStateMachineObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setActive(isActive);
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
-    
+
+void QUmlProtocolStateMachineObject::unsetActive()
+{
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("active"));
+}
+
 void QUmlProtocolStateMachineObject::addNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->addNestedClassifier(qmodelingobjectproperty_cast<QUmlClassifier *>(nestedClassifier));
@@ -1215,8 +1281,14 @@ void QUmlProtocolStateMachineObject::setContext(QObject *context)
 void QUmlProtocolStateMachineObject::setReentrant(bool isReentrant)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setReentrant(isReentrant);
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("reentrant");
 }
-    
+
+void QUmlProtocolStateMachineObject::unsetReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("reentrant"));
+}
+
 void QUmlProtocolStateMachineObject::addOwnedParameter(QObject *ownedParameter)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->addOwnedParameter(qmodelingobjectproperty_cast<QUmlParameter *>(ownedParameter));

@@ -81,7 +81,10 @@ const QSet<QObject *> QUmlElementImportObject::ownedElement() const
 
 QObject *QUmlElementImportObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlElementImport *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -121,12 +124,18 @@ QString QUmlElementImportObject::alias() const
 
 QObject *QUmlElementImportObject::importedElement() const
 {
-    return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importedElement()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importedElement())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importedElement()->asQObject();
 }
 
 QObject *QUmlElementImportObject::importingNamespace() const
 {
-    return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importingNamespace()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importingNamespace())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlElementImport *>(this)->importingNamespace()->asQObject();
 }
 
 QtUml::VisibilityKind QUmlElementImportObject::visibility() const
@@ -223,7 +232,7 @@ void QUmlElementImportObject::setAlias(QString alias)
 {
     qmodelingobjectproperty_cast<QUmlElementImport *>(this)->setAlias(alias);
 }
-    
+
 void QUmlElementImportObject::setImportedElement(QObject *importedElement)
 {
     qmodelingobjectproperty_cast<QUmlElementImport *>(this)->setImportedElement(qmodelingobjectproperty_cast<QUmlPackageableElement *>(importedElement));
@@ -237,7 +246,13 @@ void QUmlElementImportObject::setImportingNamespace(QObject *importingNamespace)
 void QUmlElementImportObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlElementImport *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlElementImportObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlElementImport *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 QT_END_NAMESPACE
 

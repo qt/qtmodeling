@@ -93,7 +93,10 @@ const QSet<QObject *> QUmlFlowFinalNodeObject::ownedElement() const
 
 QObject *QUmlFlowFinalNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -113,12 +116,18 @@ QString QUmlFlowFinalNodeObject::name() const
 
 QObject *QUmlFlowFinalNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlFlowFinalNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlFlowFinalNodeObject::qualifiedName() const
@@ -158,7 +167,10 @@ const QSet<QObject *> QUmlFlowFinalNodeObject::redefinitionContext() const
 
 QObject *QUmlFlowFinalNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlFlowFinalNodeObject::inGroup() const
@@ -187,7 +199,10 @@ const QSet<QObject *> QUmlFlowFinalNodeObject::inPartition() const
 
 QObject *QUmlFlowFinalNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlFlowFinalNodeObject::incoming() const
@@ -312,7 +327,7 @@ void QUmlFlowFinalNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->setName(name);
 }
-    
+
 void QUmlFlowFinalNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -327,19 +342,25 @@ void QUmlFlowFinalNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlFlowFinalNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlFlowFinalNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlFlowFinalNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlFlowFinalNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlFlowFinalNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

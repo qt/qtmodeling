@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlDataStoreNodeObject::ownedElement() const
 
 QObject *QUmlDataStoreNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlDataStoreNodeObject::name() const
 
 QObject *QUmlDataStoreNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlDataStoreNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlDataStoreNodeObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlDataStoreNodeObject::redefinitionContext() const
 
 QObject *QUmlDataStoreNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlDataStoreNodeObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlDataStoreNodeObject::inPartition() const
 
 QObject *QUmlDataStoreNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlDataStoreNodeObject::incoming() const
@@ -222,7 +237,10 @@ const QSet<QObject *> QUmlDataStoreNodeObject::redefinedNode() const
 
 QObject *QUmlDataStoreNodeObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ObjectNode]
@@ -247,12 +265,18 @@ QtUml::ObjectNodeOrderingKind QUmlDataStoreNodeObject::ordering() const
 
 QObject *QUmlDataStoreNodeObject::selection() const
 {
-    return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->selection()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->selection())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->selection()->asQObject();
 }
 
 QObject *QUmlDataStoreNodeObject::upperBound() const
 {
-    return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->upperBound()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->upperBound())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->upperBound()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -353,7 +377,7 @@ void QUmlDataStoreNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setName(name);
 }
-    
+
 void QUmlDataStoreNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -368,19 +392,25 @@ void QUmlDataStoreNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlDataStoreNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlDataStoreNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlDataStoreNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlDataStoreNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -495,13 +525,25 @@ void QUmlDataStoreNodeObject::removeInState(QObject *inState)
 void QUmlDataStoreNodeObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setControlType(isControlType);
+    qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
-    
+
+void QUmlDataStoreNodeObject::unsetControlType()
+{
+    qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("controlType"));
+}
+
 void QUmlDataStoreNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setOrdering(ordering);
+    qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
-    
+
+void QUmlDataStoreNodeObject::unsetOrdering()
+{
+    qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordering"));
+}
+
 void QUmlDataStoreNodeObject::setSelection(QObject *selection)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setSelection(qmodelingobjectproperty_cast<QUmlBehavior *>(selection));

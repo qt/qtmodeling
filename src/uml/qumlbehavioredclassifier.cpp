@@ -162,7 +162,7 @@ void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBeh
         removeOwnedBehavior(_classifierBehavior);
 
         _classifierBehavior = classifierBehavior;
-        if (classifierBehavior->asQObject() && this->asQObject())
+        if (classifierBehavior && classifierBehavior->asQObject() && this->asQObject())
             QObject::connect(classifierBehavior->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setClassifierBehavior()));
 
         // Adjust subsetted properties
@@ -188,7 +188,7 @@ void QUmlBehavioredClassifier::addInterfaceRealization(QUmlInterfaceRealization 
 
     if (!_interfaceRealization.contains(interfaceRealization)) {
         _interfaceRealization.insert(interfaceRealization);
-        if (interfaceRealization->asQObject() && this->asQObject())
+        if (interfaceRealization && interfaceRealization->asQObject() && this->asQObject())
             QObject::connect(interfaceRealization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInterfaceRealization(QObject *)));
         interfaceRealization->asQObject()->setParent(this->asQObject());
 
@@ -239,7 +239,7 @@ void QUmlBehavioredClassifier::addOwnedBehavior(QUmlBehavior *ownedBehavior)
 
     if (!_ownedBehavior.contains(ownedBehavior)) {
         _ownedBehavior.insert(ownedBehavior);
-        if (ownedBehavior->asQObject() && this->asQObject())
+        if (ownedBehavior && ownedBehavior->asQObject() && this->asQObject())
             QObject::connect(ownedBehavior->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedBehavior(QObject *)));
         ownedBehavior->asQObject()->setParent(this->asQObject());
 

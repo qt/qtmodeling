@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlValuePinObject::ownedElement() const
 
 QObject *QUmlValuePinObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [MultiplicityElement]
@@ -120,7 +123,10 @@ int QUmlValuePinObject::lower() const
 
 QObject *QUmlValuePinObject::lowerValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->lowerValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->lowerValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->lowerValue()->asQObject();
 }
 
 int QUmlValuePinObject::upper() const
@@ -130,7 +136,10 @@ int QUmlValuePinObject::upper() const
 
 QObject *QUmlValuePinObject::upperValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->upperValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->upperValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->upperValue()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -150,12 +159,18 @@ QString QUmlValuePinObject::name() const
 
 QObject *QUmlValuePinObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlValuePinObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlValuePinObject::qualifiedName() const
@@ -195,7 +210,10 @@ const QSet<QObject *> QUmlValuePinObject::redefinitionContext() const
 
 QObject *QUmlValuePinObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlValuePinObject::inGroup() const
@@ -224,7 +242,10 @@ const QSet<QObject *> QUmlValuePinObject::inPartition() const
 
 QObject *QUmlValuePinObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlValuePinObject::incoming() const
@@ -255,7 +276,10 @@ const QSet<QObject *> QUmlValuePinObject::redefinedNode() const
 
 QObject *QUmlValuePinObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ObjectNode]
@@ -280,12 +304,18 @@ QtUml::ObjectNodeOrderingKind QUmlValuePinObject::ordering() const
 
 QObject *QUmlValuePinObject::selection() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->selection()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->selection())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->selection()->asQObject();
 }
 
 QObject *QUmlValuePinObject::upperBound() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->upperBound()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->upperBound())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->upperBound()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Pin]
@@ -299,7 +329,10 @@ bool QUmlValuePinObject::isControl() const
 
 QObject *QUmlValuePinObject::value() const
 {
-    return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->value()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlValuePin *>(this)->value())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlValuePin *>(this)->value()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -426,18 +459,36 @@ void QUmlValuePinObject::setOwner(QObject *owner)
 void QUmlValuePinObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setOrdered(isOrdered);
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
-    
+
+void QUmlValuePinObject::unsetOrdered()
+{
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordered"));
+}
+
 void QUmlValuePinObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setUnique(isUnique);
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
-    
+
+void QUmlValuePinObject::unsetUnique()
+{
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("unique"));
+}
+
 void QUmlValuePinObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setLower(lower);
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
-    
+
+void QUmlValuePinObject::unsetLower()
+{
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("lower"));
+}
+
 void QUmlValuePinObject::setLowerValue(QObject *lowerValue)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setLowerValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(lowerValue));
@@ -446,8 +497,14 @@ void QUmlValuePinObject::setLowerValue(QObject *lowerValue)
 void QUmlValuePinObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setUpper(upper);
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
-    
+
+void QUmlValuePinObject::unsetUpper()
+{
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("upper"));
+}
+
 void QUmlValuePinObject::setUpperValue(QObject *upperValue)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setUpperValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(upperValue));
@@ -469,7 +526,7 @@ void QUmlValuePinObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setName(name);
 }
-    
+
 void QUmlValuePinObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -484,19 +541,25 @@ void QUmlValuePinObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlValuePinObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlValuePinObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlValuePinObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlValuePinObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -611,13 +674,25 @@ void QUmlValuePinObject::removeInState(QObject *inState)
 void QUmlValuePinObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setControlType(isControlType);
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
-    
+
+void QUmlValuePinObject::unsetControlType()
+{
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("controlType"));
+}
+
 void QUmlValuePinObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setOrdering(ordering);
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
-    
+
+void QUmlValuePinObject::unsetOrdering()
+{
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordering"));
+}
+
 void QUmlValuePinObject::setSelection(QObject *selection)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setSelection(qmodelingobjectproperty_cast<QUmlBehavior *>(selection));
@@ -633,8 +708,14 @@ void QUmlValuePinObject::setUpperBound(QObject *upperBound)
 void QUmlValuePinObject::setControl(bool isControl)
 {
     qmodelingobjectproperty_cast<QUmlValuePin *>(this)->setControl(isControl);
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties() << QStringLiteral("control");
 }
-    
+
+void QUmlValuePinObject::unsetControl()
+{
+    qmodelingobjectproperty_cast<QUmlValuePin *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("control"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [ValuePin]
 
 void QUmlValuePinObject::setValue(QObject *value)

@@ -79,7 +79,8 @@ QUmlRegion::QUmlRegion(bool createQObject) :
 QUmlRegion::~QUmlRegion()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -136,7 +137,7 @@ void QUmlRegion::setExtendedRegion(QUmlRegion *extendedRegion)
         removeRedefinedElement(_extendedRegion);
 
         _extendedRegion = extendedRegion;
-        if (extendedRegion->asQObject() && this->asQObject())
+        if (extendedRegion && extendedRegion->asQObject() && this->asQObject())
             QObject::connect(extendedRegion->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExtendedRegion()));
 
         // Adjust subsetted properties
@@ -188,7 +189,7 @@ void QUmlRegion::setState(QUmlState *state)
         // Adjust subsetted properties
 
         _state = state;
-        if (state->asQObject() && this->asQObject())
+        if (state && state->asQObject() && this->asQObject())
             QObject::connect(state->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setState()));
 
         // Adjust subsetted properties
@@ -214,7 +215,7 @@ void QUmlRegion::setStateMachine(QUmlStateMachine *stateMachine)
         // Adjust subsetted properties
 
         _stateMachine = stateMachine;
-        if (stateMachine->asQObject() && this->asQObject())
+        if (stateMachine && stateMachine->asQObject() && this->asQObject())
             QObject::connect(stateMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setStateMachine()));
 
         // Adjust subsetted properties
@@ -238,7 +239,7 @@ void QUmlRegion::addSubvertex(QUmlVertex *subvertex)
 
     if (!_subvertex.contains(subvertex)) {
         _subvertex.insert(subvertex);
-        if (subvertex->asQObject() && this->asQObject())
+        if (subvertex && subvertex->asQObject() && this->asQObject())
             QObject::connect(subvertex->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubvertex(QObject *)));
         subvertex->asQObject()->setParent(this->asQObject());
 
@@ -287,7 +288,7 @@ void QUmlRegion::addTransition(QUmlTransition *transition)
 
     if (!_transition.contains(transition)) {
         _transition.insert(transition);
-        if (transition->asQObject() && this->asQObject())
+        if (transition && transition->asQObject() && this->asQObject())
             QObject::connect(transition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTransition(QObject *)));
         transition->asQObject()->setParent(this->asQObject());
 

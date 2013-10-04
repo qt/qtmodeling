@@ -81,7 +81,8 @@ QUmlObjectFlow::QUmlObjectFlow(bool createQObject) :
 QUmlObjectFlow::~QUmlObjectFlow()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -181,7 +182,7 @@ void QUmlObjectFlow::setSelection(QUmlBehavior *selection)
 
     if (_selection != selection) {
         _selection = selection;
-        if (selection->asQObject() && this->asQObject())
+        if (selection && selection->asQObject() && this->asQObject())
             QObject::connect(selection->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSelection()));
     }
 }
@@ -202,7 +203,7 @@ void QUmlObjectFlow::setTransformation(QUmlBehavior *transformation)
 
     if (_transformation != transformation) {
         _transformation = transformation;
-        if (transformation->asQObject() && this->asQObject())
+        if (transformation && transformation->asQObject() && this->asQObject())
             QObject::connect(transformation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTransformation()));
     }
 }

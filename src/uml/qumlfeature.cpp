@@ -100,7 +100,7 @@ void QUmlFeature::addFeaturingClassifier(QUmlClassifier *featuringClassifier)
 
     if (!_featuringClassifier.contains(featuringClassifier)) {
         _featuringClassifier.insert(featuringClassifier);
-        if (featuringClassifier->asQObject() && this->asQObject())
+        if (featuringClassifier && featuringClassifier->asQObject() && this->asQObject())
             QObject::connect(featuringClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFeaturingClassifier(QObject *)));
 
         // Adjust opposite properties

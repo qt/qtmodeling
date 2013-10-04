@@ -104,7 +104,10 @@ const QSet<QObject *> QUmlSignalObject::ownedElement() const
 
 QObject *QUmlSignalObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignal *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignal *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignal *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -124,12 +127,18 @@ QString QUmlSignalObject::name() const
 
 QObject *QUmlSignalObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignal *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignal *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignal *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlSignalObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignal *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignal *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignal *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlSignalObject::qualifiedName() const
@@ -190,7 +199,10 @@ const QSet<QObject *> QUmlSignalObject::packageImport() const
 
 QObject *QUmlSignalObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignal *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignal *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignal *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -203,7 +215,10 @@ QtUml::VisibilityKind QUmlSignalObject::visibility() const
 
 QObject *QUmlSignalObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignal *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignal *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignal *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -301,7 +316,10 @@ bool QUmlSignalObject::isFinalSpecialization() const
 
 QObject *QUmlSignalObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignal *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignal *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignal *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlSignalObject::ownedUseCase() const
@@ -330,7 +348,10 @@ const QSet<QObject *> QUmlSignalObject::redefinedClassifier() const
 
 QObject *QUmlSignalObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignal *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignal *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignal *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlSignalObject::substitution() const
@@ -343,7 +364,10 @@ const QSet<QObject *> QUmlSignalObject::substitution() const
 
 QObject *QUmlSignalObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlSignal *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSignal *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSignal *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlSignalObject::useCase() const
@@ -584,7 +608,7 @@ void QUmlSignalObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setName(name);
 }
-    
+
 void QUmlSignalObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -599,7 +623,7 @@ void QUmlSignalObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlSignalObject::addElementImport(QObject *elementImport)
 {
@@ -672,8 +696,14 @@ void QUmlSignalObject::setOwningTemplateParameter(QObject *owningTemplateParamet
 void QUmlSignalObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlSignalObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlSignalObject::setPackage(QObject *package)
@@ -686,8 +716,14 @@ void QUmlSignalObject::setPackage(QObject *package)
 void QUmlSignalObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlSignalObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlSignalObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -785,13 +821,25 @@ void QUmlSignalObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlSignalObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlSignalObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlSignalObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlSignalObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlSignalObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));

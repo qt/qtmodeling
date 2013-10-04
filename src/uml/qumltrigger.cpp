@@ -69,7 +69,8 @@ QUmlTrigger::QUmlTrigger(bool createQObject) :
 QUmlTrigger::~QUmlTrigger()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -110,7 +111,7 @@ void QUmlTrigger::setEvent(QUmlEvent *event)
 
     if (_event != event) {
         _event = event;
-        if (event->asQObject() && this->asQObject())
+        if (event && event->asQObject() && this->asQObject())
             QObject::connect(event->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEvent()));
     }
 }
@@ -131,7 +132,7 @@ void QUmlTrigger::addPort(QUmlPort *port)
 
     if (!_port.contains(port)) {
         _port.insert(port);
-        if (port->asQObject() && this->asQObject())
+        if (port && port->asQObject() && this->asQObject())
             QObject::connect(port->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePort(QObject *)));
     }
 }

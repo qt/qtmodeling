@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlAcceptCallActionObject::ownedElement() const
 
 QObject *QUmlAcceptCallActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlAcceptCallActionObject::name() const
 
 QObject *QUmlAcceptCallActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlAcceptCallActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlAcceptCallActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlAcceptCallActionObject::redefinitionContext() const
 
 QObject *QUmlAcceptCallActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlAcceptCallActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlAcceptCallActionObject::inPartition() const
 
 QObject *QUmlAcceptCallActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlAcceptCallActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlAcceptCallActionObject::handler() const
 
 QObject *QUmlAcceptCallActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlAcceptCallActionObject::input() const
@@ -300,7 +318,10 @@ const QSet<QObject *> QUmlAcceptCallActionObject::trigger() const
 
 QObject *QUmlAcceptCallActionObject::returnInformation() const
 {
-    return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->returnInformation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->returnInformation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->returnInformation()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -401,7 +422,7 @@ void QUmlAcceptCallActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setName(name);
 }
-    
+
 void QUmlAcceptCallActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -416,19 +437,25 @@ void QUmlAcceptCallActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlAcceptCallActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlAcceptCallActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlAcceptCallActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlAcceptCallActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -553,8 +580,14 @@ void QUmlAcceptCallActionObject::removeInput(QObject *input)
 void QUmlAcceptCallActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlAcceptCallActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlAcceptCallActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -590,8 +623,14 @@ void QUmlAcceptCallActionObject::removeOutput(QObject *output)
 void QUmlAcceptCallActionObject::setUnmarshall(bool isUnmarshall)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setUnmarshall(isUnmarshall);
+    qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->modifiedResettableProperties() << QStringLiteral("unmarshall");
 }
-    
+
+void QUmlAcceptCallActionObject::unsetUnmarshall()
+{
+    qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("unmarshall"));
+}
+
 void QUmlAcceptCallActionObject::addResult(QObject *result)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->addResult(qmodelingobjectproperty_cast<QUmlOutputPin *>(result));

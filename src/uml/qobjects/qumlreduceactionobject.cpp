@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlReduceActionObject::ownedElement() const
 
 QObject *QUmlReduceActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlReduceActionObject::name() const
 
 QObject *QUmlReduceActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlReduceActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlReduceActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlReduceActionObject::redefinitionContext() const
 
 QObject *QUmlReduceActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlReduceActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlReduceActionObject::inPartition() const
 
 QObject *QUmlReduceActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlReduceActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlReduceActionObject::handler() const
 
 QObject *QUmlReduceActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlReduceActionObject::input() const
@@ -277,7 +295,10 @@ const QList<QObject *> QUmlReduceActionObject::output() const
 
 QObject *QUmlReduceActionObject::collection() const
 {
-    return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->collection()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->collection())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->collection()->asQObject();
 }
 
 bool QUmlReduceActionObject::isOrdered() const
@@ -287,12 +308,18 @@ bool QUmlReduceActionObject::isOrdered() const
 
 QObject *QUmlReduceActionObject::reducer() const
 {
-    return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->reducer()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->reducer())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->reducer()->asQObject();
 }
 
 QObject *QUmlReduceActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->result()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -393,7 +420,7 @@ void QUmlReduceActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setName(name);
 }
-    
+
 void QUmlReduceActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -408,19 +435,25 @@ void QUmlReduceActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlReduceActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReduceActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlReduceActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlReduceActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -545,8 +578,14 @@ void QUmlReduceActionObject::removeInput(QObject *input)
 void QUmlReduceActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlReduceActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlReduceActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -587,8 +626,14 @@ void QUmlReduceActionObject::setCollection(QObject *collection)
 void QUmlReduceActionObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setOrdered(isOrdered);
+    qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
-    
+
+void QUmlReduceActionObject::unsetOrdered()
+{
+    qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordered"));
+}
+
 void QUmlReduceActionObject::setReducer(QObject *reducer)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setReducer(qmodelingobjectproperty_cast<QUmlBehavior *>(reducer));

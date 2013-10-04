@@ -82,7 +82,8 @@ QUmlSendObjectAction::QUmlSendObjectAction(bool createQObject) :
 QUmlSendObjectAction::~QUmlSendObjectAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -147,7 +148,7 @@ void QUmlSendObjectAction::setRequest(QUmlInputPin *request)
 
     if (_request != request) {
         _request = request;
-        if (request->asQObject() && this->asQObject())
+        if (request && request->asQObject() && this->asQObject())
             QObject::connect(request->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRequest()));
         request->asQObject()->setParent(this->asQObject());
     }
@@ -172,7 +173,7 @@ void QUmlSendObjectAction::setTarget(QUmlInputPin *target)
         removeInput(_target);
 
         _target = target;
-        if (target->asQObject() && this->asQObject())
+        if (target && target->asQObject() && this->asQObject())
             QObject::connect(target->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTarget()));
         target->asQObject()->setParent(this->asQObject());
 

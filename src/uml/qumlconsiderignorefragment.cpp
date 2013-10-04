@@ -72,7 +72,8 @@ QUmlConsiderIgnoreFragment::QUmlConsiderIgnoreFragment(bool createQObject) :
 QUmlConsiderIgnoreFragment::~QUmlConsiderIgnoreFragment()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -124,7 +125,7 @@ void QUmlConsiderIgnoreFragment::addMessage(QUmlNamedElement *message)
 
     if (!_message.contains(message)) {
         _message.insert(message);
-        if (message->asQObject() && this->asQObject())
+        if (message && message->asQObject() && this->asQObject())
             QObject::connect(message->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMessage(QObject *)));
     }
 }

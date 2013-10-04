@@ -114,7 +114,7 @@ void QUmlExecutionSpecification::setFinish(QUmlOccurrenceSpecification *finish)
 
     if (_finish != finish) {
         _finish = finish;
-        if (finish->asQObject() && this->asQObject())
+        if (finish && finish->asQObject() && this->asQObject())
             QObject::connect(finish->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setFinish()));
     }
 }
@@ -135,7 +135,7 @@ void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
 
     if (_start != start) {
         _start = start;
-        if (start->asQObject() && this->asQObject())
+        if (start && start->asQObject() && this->asQObject())
             QObject::connect(start->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setStart()));
     }
 }

@@ -137,7 +137,7 @@ void QUmlObjectNode::addInState(QUmlState *inState)
 
     if (!_inState.contains(inState)) {
         _inState.insert(inState);
-        if (inState->asQObject() && this->asQObject())
+        if (inState && inState->asQObject() && this->asQObject())
             QObject::connect(inState->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInState(QObject *)));
     }
 }
@@ -205,7 +205,7 @@ void QUmlObjectNode::setSelection(QUmlBehavior *selection)
 
     if (_selection != selection) {
         _selection = selection;
-        if (selection->asQObject() && this->asQObject())
+        if (selection && selection->asQObject() && this->asQObject())
             QObject::connect(selection->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSelection()));
     }
 }
@@ -229,7 +229,7 @@ void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
         removeOwnedElement(_upperBound);
 
         _upperBound = upperBound;
-        if (upperBound->asQObject() && this->asQObject())
+        if (upperBound && upperBound->asQObject() && this->asQObject())
             QObject::connect(upperBound->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setUpperBound()));
         upperBound->asQObject()->setParent(this->asQObject());
 

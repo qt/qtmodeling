@@ -103,7 +103,7 @@ void QUmlVertex::setContainer(QUmlRegion *container)
         // Adjust subsetted properties
 
         _container = container;
-        if (container->asQObject() && this->asQObject())
+        if (container && container->asQObject() && this->asQObject())
             QObject::connect(container->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setContainer()));
 
         // Adjust subsetted properties

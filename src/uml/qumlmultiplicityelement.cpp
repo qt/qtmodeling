@@ -160,7 +160,7 @@ void QUmlMultiplicityElement::setLowerValue(QUmlValueSpecification *lowerValue)
         removeOwnedElement(_lowerValue);
 
         _lowerValue = lowerValue;
-        if (lowerValue->asQObject() && this->asQObject())
+        if (lowerValue && lowerValue->asQObject() && this->asQObject())
             QObject::connect(lowerValue->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setLowerValue()));
         lowerValue->asQObject()->setParent(this->asQObject());
 
@@ -214,7 +214,7 @@ void QUmlMultiplicityElement::setUpperValue(QUmlValueSpecification *upperValue)
         removeOwnedElement(_upperValue);
 
         _upperValue = upperValue;
-        if (upperValue->asQObject() && this->asQObject())
+        if (upperValue && upperValue->asQObject() && this->asQObject())
             QObject::connect(upperValue->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setUpperValue()));
         upperValue->asQObject()->setParent(this->asQObject());
 

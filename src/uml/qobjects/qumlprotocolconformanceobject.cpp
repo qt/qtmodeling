@@ -80,7 +80,10 @@ const QSet<QObject *> QUmlProtocolConformanceObject::ownedElement() const
 
 QObject *QUmlProtocolConformanceObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -115,12 +118,18 @@ const QSet<QObject *> QUmlProtocolConformanceObject::target() const
 
 QObject *QUmlProtocolConformanceObject::generalMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->generalMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->generalMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->generalMachine()->asQObject();
 }
 
 QObject *QUmlProtocolConformanceObject::specificMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->specificMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->specificMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->specificMachine()->asQObject();
 }
 
 // OPERATIONS [Element]

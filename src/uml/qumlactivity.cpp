@@ -107,7 +107,8 @@ QUmlActivity::QUmlActivity(bool createQObject) :
 QUmlActivity::~QUmlActivity()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -223,7 +224,7 @@ void QUmlActivity::addEdge(QUmlActivityEdge *edge)
 
     if (!_edge.contains(edge)) {
         _edge.insert(edge);
-        if (edge->asQObject() && this->asQObject())
+        if (edge && edge->asQObject() && this->asQObject())
             QObject::connect(edge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEdge(QObject *)));
         edge->asQObject()->setParent(this->asQObject());
 
@@ -272,7 +273,7 @@ void QUmlActivity::addGroup(QUmlActivityGroup *group)
 
     if (!_group.contains(group)) {
         _group.insert(group);
-        if (group->asQObject() && this->asQObject())
+        if (group && group->asQObject() && this->asQObject())
             QObject::connect(group->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeGroup(QObject *)));
         group->asQObject()->setParent(this->asQObject());
 
@@ -359,7 +360,7 @@ void QUmlActivity::addNode(QUmlActivityNode *node)
 
     if (!_node.contains(node)) {
         _node.insert(node);
-        if (node->asQObject() && this->asQObject())
+        if (node && node->asQObject() && this->asQObject())
             QObject::connect(node->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNode(QObject *)));
         node->asQObject()->setParent(this->asQObject());
 
@@ -408,7 +409,7 @@ void QUmlActivity::addPartition(QUmlActivityPartition *partition)
 
     if (!_partition.contains(partition)) {
         _partition.insert(partition);
-        if (partition->asQObject() && this->asQObject())
+        if (partition && partition->asQObject() && this->asQObject())
             QObject::connect(partition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePartition(QObject *)));
 
         // Adjust subsetted properties
@@ -444,7 +445,7 @@ void QUmlActivity::addStructuredNode(QUmlStructuredActivityNode *structuredNode)
 
     if (!_structuredNode.contains(structuredNode)) {
         _structuredNode.insert(structuredNode);
-        if (structuredNode->asQObject() && this->asQObject())
+        if (structuredNode && structuredNode->asQObject() && this->asQObject())
             QObject::connect(structuredNode->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeStructuredNode(QObject *)));
         structuredNode->asQObject()->setParent(this->asQObject());
 
@@ -495,7 +496,7 @@ void QUmlActivity::addVariable(QUmlVariable *variable)
 
     if (!_variable.contains(variable)) {
         _variable.insert(variable);
-        if (variable->asQObject() && this->asQObject())
+        if (variable && variable->asQObject() && this->asQObject())
             QObject::connect(variable->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeVariable(QObject *)));
         variable->asQObject()->setParent(this->asQObject());
 

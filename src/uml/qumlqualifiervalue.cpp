@@ -65,7 +65,8 @@ QUmlQualifierValue::QUmlQualifierValue(bool createQObject) :
 QUmlQualifierValue::~QUmlQualifierValue()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -100,7 +101,7 @@ void QUmlQualifierValue::setQualifier(QUmlProperty *qualifier)
 
     if (_qualifier != qualifier) {
         _qualifier = qualifier;
-        if (qualifier->asQObject() && this->asQObject())
+        if (qualifier && qualifier->asQObject() && this->asQObject())
             QObject::connect(qualifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setQualifier()));
     }
 }
@@ -121,7 +122,7 @@ void QUmlQualifierValue::setValue(QUmlInputPin *value)
 
     if (_value != value) {
         _value = value;
-        if (value->asQObject() && this->asQObject())
+        if (value && value->asQObject() && this->asQObject())
             QObject::connect(value->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setValue()));
     }
 }

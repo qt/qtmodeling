@@ -67,7 +67,8 @@ QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter(bool createQObj
 QUmlClassifierTemplateParameter::~QUmlClassifierTemplateParameter()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -130,7 +131,7 @@ void QUmlClassifierTemplateParameter::addConstrainingClassifier(QUmlClassifier *
 
     if (!_constrainingClassifier.contains(constrainingClassifier)) {
         _constrainingClassifier.insert(constrainingClassifier);
-        if (constrainingClassifier->asQObject() && this->asQObject())
+        if (constrainingClassifier && constrainingClassifier->asQObject() && this->asQObject())
             QObject::connect(constrainingClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConstrainingClassifier(QObject *)));
     }
 }
@@ -160,7 +161,7 @@ void QUmlClassifierTemplateParameter::setParameteredElement(QUmlClassifier *para
 
     if (_parameteredElement != parameteredElement) {
         _parameteredElement = parameteredElement;
-        if (parameteredElement->asQObject() && this->asQObject())
+        if (parameteredElement && parameteredElement->asQObject() && this->asQObject())
             QObject::connect(parameteredElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setParameteredElement()));
     }
 }

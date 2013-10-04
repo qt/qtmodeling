@@ -71,7 +71,8 @@ QUmlInstanceValue::QUmlInstanceValue(bool createQObject) :
 QUmlInstanceValue::~QUmlInstanceValue()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -116,7 +117,7 @@ void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 
     if (_instance != instance) {
         _instance = instance;
-        if (instance->asQObject() && this->asQObject())
+        if (instance && instance->asQObject() && this->asQObject())
             QObject::connect(instance->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInstance()));
     }
 }

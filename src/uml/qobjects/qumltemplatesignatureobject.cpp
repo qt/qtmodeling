@@ -81,7 +81,10 @@ const QSet<QObject *> QUmlTemplateSignatureObject::ownedElement() const
 
 QObject *QUmlTemplateSignatureObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [TemplateSignature]
@@ -104,7 +107,10 @@ const QList<QObject *> QUmlTemplateSignatureObject::parameter() const
 
 QObject *QUmlTemplateSignatureObject::template_() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->template_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->template_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->template_()->asQObject();
 }
 
 // OPERATIONS [Element]

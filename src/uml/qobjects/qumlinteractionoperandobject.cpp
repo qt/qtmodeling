@@ -93,7 +93,10 @@ const QSet<QObject *> QUmlInteractionOperandObject::ownedElement() const
 
 QObject *QUmlInteractionOperandObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -113,12 +116,18 @@ QString QUmlInteractionOperandObject::name() const
 
 QObject *QUmlInteractionOperandObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlInteractionOperandObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlInteractionOperandObject::qualifiedName() const
@@ -143,12 +152,18 @@ const QSet<QObject *> QUmlInteractionOperandObject::covered() const
 
 QObject *QUmlInteractionOperandObject::enclosingInteraction() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->enclosingInteraction()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->enclosingInteraction())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->enclosingInteraction()->asQObject();
 }
 
 QObject *QUmlInteractionOperandObject::enclosingOperand() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->enclosingOperand()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->enclosingOperand())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->enclosingOperand()->asQObject();
 }
 
 const QSet<QObject *> QUmlInteractionOperandObject::generalOrdering() const
@@ -221,7 +236,10 @@ const QList<QObject *> QUmlInteractionOperandObject::fragment() const
 
 QObject *QUmlInteractionOperandObject::guard() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->guard()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->guard())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->guard()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -344,7 +362,7 @@ void QUmlInteractionOperandObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->setName(name);
 }
-    
+
 void QUmlInteractionOperandObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -359,12 +377,12 @@ void QUmlInteractionOperandObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlInteractionOperandObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInteractionOperand *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlInteractionOperandObject::addCovered(QObject *covered)

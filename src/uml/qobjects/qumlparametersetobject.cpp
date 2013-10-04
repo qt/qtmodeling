@@ -86,7 +86,10 @@ const QSet<QObject *> QUmlParameterSetObject::ownedElement() const
 
 QObject *QUmlParameterSetObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -106,12 +109,18 @@ QString QUmlParameterSetObject::name() const
 
 QObject *QUmlParameterSetObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlParameterSetObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlParameterSetObject::qualifiedName() const
@@ -228,7 +237,7 @@ void QUmlParameterSetObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->setName(name);
 }
-    
+
 void QUmlParameterSetObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -243,12 +252,12 @@ void QUmlParameterSetObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlParameterSetObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [ParameterSet]
 
 void QUmlParameterSetObject::addCondition(QObject *condition)

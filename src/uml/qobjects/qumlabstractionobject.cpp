@@ -87,19 +87,28 @@ const QSet<QObject *> QUmlAbstractionObject::ownedElement() const
 
 QObject *QUmlAbstractionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlAbstractionObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlAbstractionObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -119,12 +128,18 @@ QString QUmlAbstractionObject::name() const
 
 QObject *QUmlAbstractionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlAbstractionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlAbstractionObject::qualifiedName() const
@@ -188,7 +203,10 @@ const QSet<QObject *> QUmlAbstractionObject::supplier() const
 
 QObject *QUmlAbstractionObject::mapping() const
 {
-    return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->mapping()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->mapping())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->mapping()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -301,7 +319,7 @@ void QUmlAbstractionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->setName(name);
 }
-    
+
 void QUmlAbstractionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -316,13 +334,19 @@ void QUmlAbstractionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlAbstractionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlAbstractionObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlAbstractionObject::addRelatedElement(QObject *relatedElement)

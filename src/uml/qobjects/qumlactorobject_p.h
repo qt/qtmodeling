@@ -68,11 +68,11 @@ class Q_UML_EXPORT QUmlActorObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
     Q_PROPERTY(QSet<QObject *> member READ member)
     Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
     Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
@@ -82,13 +82,13 @@ class Q_UML_EXPORT QUmlActorObject : public QObject
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [Type]
     Q_PROPERTY(QObject * package READ package)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
@@ -99,11 +99,11 @@ class Q_UML_EXPORT QUmlActorObject : public QObject
     Q_PROPERTY(QSet<QObject *> attribute READ attribute)
     Q_PROPERTY(QSet<QObject *> collaborationUse READ collaborationUse)
     Q_PROPERTY(QSet<QObject *> feature READ feature)
-    Q_PROPERTY(QSet<QObject *> general READ general)
+    Q_PROPERTY(QSet<QObject *> general READ general STORED false)
     Q_PROPERTY(QSet<QObject *> generalization READ generalization)
-    Q_PROPERTY(QSet<QObject *> inheritedMember READ inheritedMember)
-    Q_PROPERTY(bool isAbstract READ isAbstract)
-    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization)
+    Q_PROPERTY(QSet<QObject *> inheritedMember READ inheritedMember STORED false)
+    Q_PROPERTY(bool isAbstract READ isAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization RESET unsetFinalSpecialization)
     Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature)
     Q_PROPERTY(QSet<QObject *> ownedUseCase READ ownedUseCase)
     Q_PROPERTY(QSet<QObject *> powertypeExtent READ powertypeExtent)
@@ -258,12 +258,14 @@ public Q_SLOTS:
 
     // Slots for owned attributes [PackageableElement]
     void setVisibility(QtUml::VisibilityKind visibility);
+    void unsetVisibility();
 
     // Slots for owned attributes [Type]
     void setPackage(QObject *package = 0);
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -287,7 +289,9 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addInheritedMember(QObject *inheritedMember);
     void Q_DECL_HIDDEN removeInheritedMember(QObject *inheritedMember);
     void setAbstract(bool isAbstract);
+    void unsetAbstract();
     void setFinalSpecialization(bool isFinalSpecialization);
+    void unsetFinalSpecialization();
     void setOwnedTemplateSignature(QObject *ownedTemplateSignature = 0);
     void addOwnedUseCase(QObject *ownedUseCase);
     void removeOwnedUseCase(QObject *ownedUseCase);

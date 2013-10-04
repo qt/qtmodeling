@@ -70,7 +70,8 @@ QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(bool createQObj
 QUmlInterruptibleActivityRegion::~QUmlInterruptibleActivityRegion()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -113,7 +114,7 @@ void QUmlInterruptibleActivityRegion::addInterruptingEdge(QUmlActivityEdge *inte
 
     if (!_interruptingEdge.contains(interruptingEdge)) {
         _interruptingEdge.insert(interruptingEdge);
-        if (interruptingEdge->asQObject() && this->asQObject())
+        if (interruptingEdge && interruptingEdge->asQObject() && this->asQObject())
             QObject::connect(interruptingEdge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInterruptingEdge(QObject *)));
 
         // Adjust opposite properties
@@ -153,7 +154,7 @@ void QUmlInterruptibleActivityRegion::addNode(QUmlActivityNode *node)
 
     if (!_node.contains(node)) {
         _node.insert(node);
-        if (node->asQObject() && this->asQObject())
+        if (node && node->asQObject() && this->asQObject())
             QObject::connect(node->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNode(QObject *)));
 
         // Adjust subsetted properties

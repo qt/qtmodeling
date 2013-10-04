@@ -68,16 +68,16 @@ class Q_UML_EXPORT QUmlRegionObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
     Q_PROPERTY(QSet<QObject *> member READ member)
     Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
     Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
@@ -85,7 +85,7 @@ class Q_UML_EXPORT QUmlRegionObject : public QObject
 
     // Properties [Region]
     Q_PROPERTY(QObject * extendedRegion READ extendedRegion)
-    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
     Q_PROPERTY(QObject * state READ state)
     Q_PROPERTY(QObject * stateMachine READ stateMachine)
     Q_PROPERTY(QSet<QObject *> subvertex READ subvertex)
@@ -172,6 +172,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
 

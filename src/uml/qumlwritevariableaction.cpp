@@ -139,7 +139,7 @@ void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
         removeInput(_value);
 
         _value = value;
-        if (value->asQObject() && this->asQObject())
+        if (value && value->asQObject() && this->asQObject())
             QObject::connect(value->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setValue()));
         value->asQObject()->setParent(this->asQObject());
 

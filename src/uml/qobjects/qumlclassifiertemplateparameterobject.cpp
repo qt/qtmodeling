@@ -82,29 +82,44 @@ const QSet<QObject *> QUmlClassifierTemplateParameterObject::ownedElement() cons
 
 QObject *QUmlClassifierTemplateParameterObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [TemplateParameter]
 
 QObject *QUmlClassifierTemplateParameterObject::default_() const
 {
-    return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->default_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->default_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->default_()->asQObject();
 }
 
 QObject *QUmlClassifierTemplateParameterObject::ownedDefault() const
 {
-    return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedDefault()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedDefault())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedDefault()->asQObject();
 }
 
 QObject *QUmlClassifierTemplateParameterObject::ownedParameteredElement() const
 {
-    return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedParameteredElement()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedParameteredElement())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedParameteredElement()->asQObject();
 }
 
 QObject *QUmlClassifierTemplateParameterObject::signature() const
 {
-    return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->signature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->signature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->signature()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ClassifierTemplateParameter]
@@ -124,7 +139,10 @@ const QSet<QObject *> QUmlClassifierTemplateParameterObject::constrainingClassif
 
 QObject *QUmlClassifierTemplateParameterObject::parameteredElement() const
 {
-    return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->parameteredElement()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->parameteredElement())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->parameteredElement()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -196,8 +214,14 @@ void QUmlClassifierTemplateParameterObject::setSignature(QObject *signature)
 void QUmlClassifierTemplateParameterObject::setAllowSubstitutable(bool allowSubstitutable)
 {
     qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->setAllowSubstitutable(allowSubstitutable);
+    qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->modifiedResettableProperties() << QStringLiteral("allowSubstitutable");
 }
-    
+
+void QUmlClassifierTemplateParameterObject::unsetAllowSubstitutable()
+{
+    qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("allowSubstitutable"));
+}
+
 void QUmlClassifierTemplateParameterObject::addConstrainingClassifier(QObject *constrainingClassifier)
 {
     qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->addConstrainingClassifier(qmodelingobjectproperty_cast<QUmlClassifier *>(constrainingClassifier));

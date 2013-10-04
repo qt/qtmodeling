@@ -81,7 +81,8 @@ QUmlReadVariableAction::QUmlReadVariableAction(bool createQObject) :
 QUmlReadVariableAction::~QUmlReadVariableAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -147,7 +148,7 @@ void QUmlReadVariableAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
         result->asQObject()->setParent(this->asQObject());
 

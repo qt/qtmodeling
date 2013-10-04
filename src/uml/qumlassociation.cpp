@@ -87,7 +87,8 @@ QUmlAssociation::QUmlAssociation(bool createQObject) :
 QUmlAssociation::~QUmlAssociation()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -227,7 +228,7 @@ void QUmlAssociation::addMemberEnd(QUmlProperty *memberEnd)
 
     if (!_memberEnd.contains(memberEnd)) {
         _memberEnd.append(memberEnd);
-        if (memberEnd->asQObject() && this->asQObject())
+        if (memberEnd && memberEnd->asQObject() && this->asQObject())
             QObject::connect(memberEnd->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMemberEnd(QObject *)));
 
         // Adjust subsetted properties
@@ -273,7 +274,7 @@ void QUmlAssociation::addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 
     if (!_navigableOwnedEnd.contains(navigableOwnedEnd)) {
         _navigableOwnedEnd.insert(navigableOwnedEnd);
-        if (navigableOwnedEnd->asQObject() && this->asQObject())
+        if (navigableOwnedEnd && navigableOwnedEnd->asQObject() && this->asQObject())
             QObject::connect(navigableOwnedEnd->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNavigableOwnedEnd(QObject *)));
 
         // Adjust subsetted properties
@@ -309,7 +310,7 @@ void QUmlAssociation::addOwnedEnd(QUmlProperty *ownedEnd)
 
     if (!_ownedEnd.contains(ownedEnd)) {
         _ownedEnd.append(ownedEnd);
-        if (ownedEnd->asQObject() && this->asQObject())
+        if (ownedEnd && ownedEnd->asQObject() && this->asQObject())
             QObject::connect(ownedEnd->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedEnd(QObject *)));
         ownedEnd->asQObject()->setParent(this->asQObject());
 

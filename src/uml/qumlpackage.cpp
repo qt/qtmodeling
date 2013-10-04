@@ -490,13 +490,13 @@ void QUmlPackage::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("nestedPackage")][QtModeling::DocumentationRole] = QStringLiteral("References the packaged elements that are Packages.");
     QModelingObject::propertyDataHash[QStringLiteral("nestedPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("nestedPackage")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Package-packagedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("nestedPackage")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedPackage")][QtModeling::OppositeEndRole] = QStringLiteral("Package-nestingPackage");
 
     QModelingObject::propertyDataHash[QStringLiteral("nestingPackage")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("nestingPackage")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("nestingPackage")][QtModeling::DocumentationRole] = QStringLiteral("References the Package that owns this Package.");
     QModelingObject::propertyDataHash[QStringLiteral("nestingPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("nestingPackage")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_packagedElement_owningPackage-owningPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("nestingPackage")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("nestingPackage")][QtModeling::OppositeEndRole] = QStringLiteral("Package-nestedPackage");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedStereotype")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("ownedStereotype")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedStereotype")][QtModeling::DocumentationRole] = QStringLiteral("References the Stereotypes that are owned by the Package");

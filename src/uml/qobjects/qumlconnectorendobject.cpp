@@ -83,7 +83,10 @@ const QSet<QObject *> QUmlConnectorEndObject::ownedElement() const
 
 QObject *QUmlConnectorEndObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [MultiplicityElement]
@@ -105,7 +108,10 @@ int QUmlConnectorEndObject::lower() const
 
 QObject *QUmlConnectorEndObject::lowerValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->lowerValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->lowerValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->lowerValue()->asQObject();
 }
 
 int QUmlConnectorEndObject::upper() const
@@ -115,24 +121,36 @@ int QUmlConnectorEndObject::upper() const
 
 QObject *QUmlConnectorEndObject::upperValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->upperValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->upperValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->upperValue()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ConnectorEnd]
 
 QObject *QUmlConnectorEndObject::definingEnd() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->definingEnd()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->definingEnd())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->definingEnd()->asQObject();
 }
 
 QObject *QUmlConnectorEndObject::partWithPort() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->partWithPort()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->partWithPort())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->partWithPort()->asQObject();
 }
 
 QObject *QUmlConnectorEndObject::role() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->role()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->role())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->role()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -219,18 +237,36 @@ void QUmlConnectorEndObject::setOwner(QObject *owner)
 void QUmlConnectorEndObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setOrdered(isOrdered);
+    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
-    
+
+void QUmlConnectorEndObject::unsetOrdered()
+{
+    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordered"));
+}
+
 void QUmlConnectorEndObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setUnique(isUnique);
+    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
-    
+
+void QUmlConnectorEndObject::unsetUnique()
+{
+    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("unique"));
+}
+
 void QUmlConnectorEndObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setLower(lower);
+    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
-    
+
+void QUmlConnectorEndObject::unsetLower()
+{
+    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("lower"));
+}
+
 void QUmlConnectorEndObject::setLowerValue(QObject *lowerValue)
 {
     qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setLowerValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(lowerValue));
@@ -239,8 +275,14 @@ void QUmlConnectorEndObject::setLowerValue(QObject *lowerValue)
 void QUmlConnectorEndObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setUpper(upper);
+    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
-    
+
+void QUmlConnectorEndObject::unsetUpper()
+{
+    qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("upper"));
+}
+
 void QUmlConnectorEndObject::setUpperValue(QObject *upperValue)
 {
     qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->setUpperValue(qmodelingobjectproperty_cast<QUmlValueSpecification *>(upperValue));

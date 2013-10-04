@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlReclassifyObjectActionObject::ownedElement() const
 
 QObject *QUmlReclassifyObjectActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlReclassifyObjectActionObject::name() const
 
 QObject *QUmlReclassifyObjectActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlReclassifyObjectActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlReclassifyObjectActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlReclassifyObjectActionObject::redefinitionContext() co
 
 QObject *QUmlReclassifyObjectActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlReclassifyObjectActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlReclassifyObjectActionObject::inPartition() const
 
 QObject *QUmlReclassifyObjectActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlReclassifyObjectActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlReclassifyObjectActionObject::handler() const
 
 QObject *QUmlReclassifyObjectActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlReclassifyObjectActionObject::input() const
@@ -289,7 +307,10 @@ const QSet<QObject *> QUmlReclassifyObjectActionObject::newClassifier() const
 
 QObject *QUmlReclassifyObjectActionObject::object() const
 {
-    return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->object()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->object())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->object()->asQObject();
 }
 
 const QSet<QObject *> QUmlReclassifyObjectActionObject::oldClassifier() const
@@ -398,7 +419,7 @@ void QUmlReclassifyObjectActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setName(name);
 }
-    
+
 void QUmlReclassifyObjectActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -413,19 +434,25 @@ void QUmlReclassifyObjectActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlReclassifyObjectActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReclassifyObjectActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlReclassifyObjectActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlReclassifyObjectActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -550,8 +577,14 @@ void QUmlReclassifyObjectActionObject::removeInput(QObject *input)
 void QUmlReclassifyObjectActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlReclassifyObjectActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlReclassifyObjectActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -587,8 +620,14 @@ void QUmlReclassifyObjectActionObject::removeOutput(QObject *output)
 void QUmlReclassifyObjectActionObject::setReplaceAll(bool isReplaceAll)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setReplaceAll(isReplaceAll);
+    qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("replaceAll");
 }
-    
+
+void QUmlReclassifyObjectActionObject::unsetReplaceAll()
+{
+    qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("replaceAll"));
+}
+
 void QUmlReclassifyObjectActionObject::addNewClassifier(QObject *newClassifier)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->addNewClassifier(qmodelingobjectproperty_cast<QUmlClassifier *>(newClassifier));

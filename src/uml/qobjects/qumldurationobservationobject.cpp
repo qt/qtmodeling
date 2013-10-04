@@ -86,19 +86,28 @@ const QSet<QObject *> QUmlDurationObservationObject::ownedElement() const
 
 QObject *QUmlDurationObservationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlDurationObservationObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlDurationObservationObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +127,18 @@ QString QUmlDurationObservationObject::name() const
 
 QObject *QUmlDurationObservationObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlDurationObservationObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlDurationObservationObject::qualifiedName() const
@@ -141,7 +156,10 @@ QtUml::VisibilityKind QUmlDurationObservationObject::visibility() const
 
 QObject *QUmlDurationObservationObject::event() const
 {
-    return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->event()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->event())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->event()->asQObject();
 }
 
 bool QUmlDurationObservationObject::firstEvent() const
@@ -259,7 +277,7 @@ void QUmlDurationObservationObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->setName(name);
 }
-    
+
 void QUmlDurationObservationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -274,13 +292,19 @@ void QUmlDurationObservationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlDurationObservationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlDurationObservationObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [DurationObservation]
 
 void QUmlDurationObservationObject::setEvent(QObject *event)
@@ -292,6 +316,6 @@ void QUmlDurationObservationObject::setFirstEvent(bool firstEvent)
 {
     qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->setFirstEvent(firstEvent);
 }
-    
+
 QT_END_NAMESPACE
 

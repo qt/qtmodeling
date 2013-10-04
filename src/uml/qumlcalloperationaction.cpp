@@ -83,7 +83,8 @@ QUmlCallOperationAction::QUmlCallOperationAction(bool createQObject) :
 QUmlCallOperationAction::~QUmlCallOperationAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -153,7 +154,7 @@ void QUmlCallOperationAction::setOperation(QUmlOperation *operation)
 
     if (_operation != operation) {
         _operation = operation;
-        if (operation->asQObject() && this->asQObject())
+        if (operation && operation->asQObject() && this->asQObject())
             QObject::connect(operation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOperation()));
     }
 }
@@ -177,7 +178,7 @@ void QUmlCallOperationAction::setTarget(QUmlInputPin *target)
         removeInput(_target);
 
         _target = target;
-        if (target->asQObject() && this->asQObject())
+        if (target && target->asQObject() && this->asQObject())
             QObject::connect(target->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTarget()));
         target->asQObject()->setParent(this->asQObject());
 

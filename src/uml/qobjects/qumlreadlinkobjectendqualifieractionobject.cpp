@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlReadLinkObjectEndQualifierActionObject::ownedElement()
 
 QObject *QUmlReadLinkObjectEndQualifierActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlReadLinkObjectEndQualifierActionObject::name() const
 
 QObject *QUmlReadLinkObjectEndQualifierActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlReadLinkObjectEndQualifierActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlReadLinkObjectEndQualifierActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlReadLinkObjectEndQualifierActionObject::redefinitionCo
 
 QObject *QUmlReadLinkObjectEndQualifierActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadLinkObjectEndQualifierActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlReadLinkObjectEndQualifierActionObject::inPartition() 
 
 QObject *QUmlReadLinkObjectEndQualifierActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadLinkObjectEndQualifierActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlReadLinkObjectEndQualifierActionObject::handler() cons
 
 QObject *QUmlReadLinkObjectEndQualifierActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlReadLinkObjectEndQualifierActionObject::input() const
@@ -277,17 +295,26 @@ const QList<QObject *> QUmlReadLinkObjectEndQualifierActionObject::output() cons
 
 QObject *QUmlReadLinkObjectEndQualifierActionObject::object() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->object()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->object())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->object()->asQObject();
 }
 
 QObject *QUmlReadLinkObjectEndQualifierActionObject::qualifier() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->qualifier()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->qualifier())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->qualifier()->asQObject();
 }
 
 QObject *QUmlReadLinkObjectEndQualifierActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->result()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -388,7 +415,7 @@ void QUmlReadLinkObjectEndQualifierActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->setName(name);
 }
-    
+
 void QUmlReadLinkObjectEndQualifierActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -403,19 +430,25 @@ void QUmlReadLinkObjectEndQualifierActionObject::setQualifiedName(QString qualif
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlReadLinkObjectEndQualifierActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReadLinkObjectEndQualifierActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlReadLinkObjectEndQualifierActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlReadLinkObjectEndQualifierActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -540,8 +573,14 @@ void QUmlReadLinkObjectEndQualifierActionObject::removeInput(QObject *input)
 void QUmlReadLinkObjectEndQualifierActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlReadLinkObjectEndQualifierActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlReadLinkObjectEndQualifierActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

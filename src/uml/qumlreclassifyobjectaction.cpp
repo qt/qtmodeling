@@ -81,7 +81,8 @@ QUmlReclassifyObjectAction::QUmlReclassifyObjectAction(bool createQObject) :
 QUmlReclassifyObjectAction::~QUmlReclassifyObjectAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -166,7 +167,7 @@ void QUmlReclassifyObjectAction::addNewClassifier(QUmlClassifier *newClassifier)
 
     if (!_newClassifier.contains(newClassifier)) {
         _newClassifier.insert(newClassifier);
-        if (newClassifier->asQObject() && this->asQObject())
+        if (newClassifier && newClassifier->asQObject() && this->asQObject())
             QObject::connect(newClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNewClassifier(QObject *)));
     }
 }
@@ -199,7 +200,7 @@ void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object->asQObject() && this->asQObject())
+        if (object && object->asQObject() && this->asQObject())
             QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
         object->asQObject()->setParent(this->asQObject());
 
@@ -226,7 +227,7 @@ void QUmlReclassifyObjectAction::addOldClassifier(QUmlClassifier *oldClassifier)
 
     if (!_oldClassifier.contains(oldClassifier)) {
         _oldClassifier.insert(oldClassifier);
-        if (oldClassifier->asQObject() && this->asQObject())
+        if (oldClassifier && oldClassifier->asQObject() && this->asQObject())
             QObject::connect(oldClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOldClassifier(QObject *)));
     }
 }

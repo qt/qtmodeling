@@ -99,7 +99,8 @@ QUmlComponent::QUmlComponent(bool createQObject) :
 QUmlComponent::~QUmlComponent()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -178,7 +179,7 @@ QModelingObject *QUmlComponent::clone() const
 // OWNED ATTRIBUTES
 
 /*!
-    isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., «specification», «focus», «subsystem»).
+    isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., specification, focus, subsystem).
  */
 bool QUmlComponent::isIndirectlyInstantiated() const
 {
@@ -212,7 +213,7 @@ void QUmlComponent::addPackagedElement(QUmlPackageableElement *packagedElement)
 
     if (!_packagedElement.contains(packagedElement)) {
         _packagedElement.insert(packagedElement);
-        if (packagedElement->asQObject() && this->asQObject())
+        if (packagedElement && packagedElement->asQObject() && this->asQObject())
             QObject::connect(packagedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePackagedElement(QObject *)));
         packagedElement->asQObject()->setParent(this->asQObject());
 
@@ -287,7 +288,7 @@ void QUmlComponent::addRealization(QUmlComponentRealization *realization)
 
     if (!_realization.contains(realization)) {
         _realization.insert(realization);
-        if (realization->asQObject() && this->asQObject())
+        if (realization && realization->asQObject() && this->asQObject())
             QObject::connect(realization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealization(QObject *)));
         realization->asQObject()->setParent(this->asQObject());
 
@@ -383,7 +384,7 @@ QSet<QUmlInterface *> QUmlComponent::usedInterfaces(QUmlClassifier *classifier) 
 void QUmlComponent::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("isIndirectlyInstantiated")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isIndirectlyInstantiated")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isIndirectlyInstantiated")][QtModeling::DocumentationRole] = QStringLiteral("isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., <<specification>>, <<focus>>, <<subsystem>>).");
+    QModelingObject::propertyDataHash[QStringLiteral("isIndirectlyInstantiated")][QtModeling::DocumentationRole] = QStringLiteral("isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., specification, focus, subsystem).");
     QModelingObject::propertyDataHash[QStringLiteral("isIndirectlyInstantiated")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isIndirectlyInstantiated")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isIndirectlyInstantiated")][QtModeling::OppositeEndRole] = QStringLiteral("");

@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlUnmarshallActionObject::ownedElement() const
 
 QObject *QUmlUnmarshallActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlUnmarshallActionObject::name() const
 
 QObject *QUmlUnmarshallActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlUnmarshallActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlUnmarshallActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlUnmarshallActionObject::redefinitionContext() const
 
 QObject *QUmlUnmarshallActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlUnmarshallActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlUnmarshallActionObject::inPartition() const
 
 QObject *QUmlUnmarshallActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlUnmarshallActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlUnmarshallActionObject::handler() const
 
 QObject *QUmlUnmarshallActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlUnmarshallActionObject::input() const
@@ -276,7 +294,10 @@ const QList<QObject *> QUmlUnmarshallActionObject::output() const
 
 QObject *QUmlUnmarshallActionObject::object() const
 {
-    return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->object()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->object())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->object()->asQObject();
 }
 
 const QSet<QObject *> QUmlUnmarshallActionObject::result() const
@@ -289,7 +310,10 @@ const QSet<QObject *> QUmlUnmarshallActionObject::result() const
 
 QObject *QUmlUnmarshallActionObject::unmarshallType() const
 {
-    return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->unmarshallType()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->unmarshallType())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->unmarshallType()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -390,7 +414,7 @@ void QUmlUnmarshallActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->setName(name);
 }
-    
+
 void QUmlUnmarshallActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -405,19 +429,25 @@ void QUmlUnmarshallActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlUnmarshallActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlUnmarshallActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlUnmarshallActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlUnmarshallActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -542,8 +572,14 @@ void QUmlUnmarshallActionObject::removeInput(QObject *input)
 void QUmlUnmarshallActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlUnmarshallActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlUnmarshallActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

@@ -89,7 +89,10 @@ const QSet<QObject *> QUmlConnectorObject::ownedElement() const
 
 QObject *QUmlConnectorObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnector *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnector *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnector *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,12 +112,18 @@ QString QUmlConnectorObject::name() const
 
 QObject *QUmlConnectorObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnector *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnector *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnector *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlConnectorObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnector *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnector *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnector *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlConnectorObject::qualifiedName() const
@@ -198,7 +207,10 @@ const QSet<QObject *> QUmlConnectorObject::redefinedConnector() const
 
 QObject *QUmlConnectorObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnector *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnector *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnector *>(this)->type()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -299,7 +311,7 @@ void QUmlConnectorObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->setName(name);
 }
-    
+
 void QUmlConnectorObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -314,19 +326,25 @@ void QUmlConnectorObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlConnectorObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlConnectorObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlConnector *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlConnectorObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlConnector *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlConnectorObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -362,8 +380,14 @@ void QUmlConnectorObject::removeFeaturingClassifier(QObject *featuringClassifier
 void QUmlConnectorObject::setStatic(bool isStatic)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->setStatic(isStatic);
+    qmodelingobjectproperty_cast<QUmlConnector *>(this)->modifiedResettableProperties() << QStringLiteral("static");
 }
-    
+
+void QUmlConnectorObject::unsetStatic()
+{
+    qmodelingobjectproperty_cast<QUmlConnector *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("static"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Connector]
 
 void QUmlConnectorObject::addContract(QObject *contract)
@@ -390,7 +414,7 @@ void QUmlConnectorObject::setKind(QtUml::ConnectorKind kind)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->setKind(kind);
 }
-    
+
 void QUmlConnectorObject::addRedefinedConnector(QObject *redefinedConnector)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->addRedefinedConnector(qmodelingobjectproperty_cast<QUmlConnector *>(redefinedConnector));

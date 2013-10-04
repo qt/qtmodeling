@@ -117,7 +117,7 @@ void QUmlRedefinableElement::addRedefinedElement(QUmlRedefinableElement *redefin
 
     if (!_redefinedElement.contains(redefinedElement)) {
         _redefinedElement.insert(redefinedElement);
-        if (redefinedElement->asQObject() && this->asQObject())
+        if (redefinedElement && redefinedElement->asQObject() && this->asQObject())
             QObject::connect(redefinedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedElement(QObject *)));
     }
 }
@@ -147,7 +147,7 @@ void QUmlRedefinableElement::addRedefinitionContext(QUmlClassifier *redefinition
 
     if (!_redefinitionContext.contains(redefinitionContext)) {
         _redefinitionContext.insert(redefinitionContext);
-        if (redefinitionContext->asQObject() && this->asQObject())
+        if (redefinitionContext && redefinitionContext->asQObject() && this->asQObject())
             QObject::connect(redefinitionContext->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinitionContext(QObject *)));
     }
 }

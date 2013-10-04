@@ -88,7 +88,10 @@ const QSet<QObject *> QUmlInterruptibleActivityRegionObject::ownedElement() cons
 
 QObject *QUmlInterruptibleActivityRegionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -108,12 +111,18 @@ QString QUmlInterruptibleActivityRegionObject::name() const
 
 QObject *QUmlInterruptibleActivityRegionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlInterruptibleActivityRegionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlInterruptibleActivityRegionObject::qualifiedName() const
@@ -146,7 +155,10 @@ const QSet<QObject *> QUmlInterruptibleActivityRegionObject::containedNode() con
 
 QObject *QUmlInterruptibleActivityRegionObject::inActivity() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->inActivity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->inActivity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->inActivity()->asQObject();
 }
 
 const QSet<QObject *> QUmlInterruptibleActivityRegionObject::subgroup() const
@@ -159,7 +171,10 @@ const QSet<QObject *> QUmlInterruptibleActivityRegionObject::subgroup() const
 
 QObject *QUmlInterruptibleActivityRegionObject::superGroup() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->superGroup()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->superGroup())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->superGroup()->asQObject();
 }
 
 // OWNED ATTRIBUTES [InterruptibleActivityRegion]
@@ -266,7 +281,7 @@ void QUmlInterruptibleActivityRegionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setName(name);
 }
-    
+
 void QUmlInterruptibleActivityRegionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -281,12 +296,12 @@ void QUmlInterruptibleActivityRegionObject::setQualifiedName(QString qualifiedNa
 {
     qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlInterruptibleActivityRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInterruptibleActivityRegion *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [ActivityGroup]
 
 void QUmlInterruptibleActivityRegionObject::addContainedEdge(QObject *containedEdge)

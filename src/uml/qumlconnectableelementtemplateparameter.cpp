@@ -66,7 +66,8 @@ QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter
 QUmlConnectableElementTemplateParameter::~QUmlConnectableElementTemplateParameter()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -107,7 +108,7 @@ void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnecta
 
     if (_parameteredElement != parameteredElement) {
         _parameteredElement = parameteredElement;
-        if (parameteredElement->asQObject() && this->asQObject())
+        if (parameteredElement && parameteredElement->asQObject() && this->asQObject())
             QObject::connect(parameteredElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setParameteredElement()));
     }
 }

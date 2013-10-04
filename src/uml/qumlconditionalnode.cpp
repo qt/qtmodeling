@@ -87,7 +87,8 @@ QUmlConditionalNode::QUmlConditionalNode(bool createQObject) :
 QUmlConditionalNode::~QUmlConditionalNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -167,7 +168,7 @@ void QUmlConditionalNode::addClause(QUmlClause *clause)
 
     if (!_clause.contains(clause)) {
         _clause.insert(clause);
-        if (clause->asQObject() && this->asQObject())
+        if (clause && clause->asQObject() && this->asQObject())
             QObject::connect(clause->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClause(QObject *)));
         clause->asQObject()->setParent(this->asQObject());
 
@@ -244,7 +245,7 @@ void QUmlConditionalNode::addResult(QUmlOutputPin *result)
 
     if (!_result.contains(result)) {
         _result.append(result);
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
         result->asQObject()->setParent(this->asQObject());
     }

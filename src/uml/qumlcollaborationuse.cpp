@@ -68,7 +68,8 @@ QUmlCollaborationUse::QUmlCollaborationUse(bool createQObject) :
 QUmlCollaborationUse::~QUmlCollaborationUse()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -109,7 +110,7 @@ void QUmlCollaborationUse::addRoleBinding(QUmlDependency *roleBinding)
 
     if (!_roleBinding.contains(roleBinding)) {
         _roleBinding.insert(roleBinding);
-        if (roleBinding->asQObject() && this->asQObject())
+        if (roleBinding && roleBinding->asQObject() && this->asQObject())
             QObject::connect(roleBinding->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRoleBinding(QObject *)));
         roleBinding->asQObject()->setParent(this->asQObject());
 
@@ -148,7 +149,7 @@ void QUmlCollaborationUse::setType(QUmlCollaboration *type)
 
     if (_type != type) {
         _type = type;
-        if (type->asQObject() && this->asQObject())
+        if (type && type->asQObject() && this->asQObject())
             QObject::connect(type->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setType()));
     }
 }

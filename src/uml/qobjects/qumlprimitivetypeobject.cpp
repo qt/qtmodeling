@@ -105,7 +105,10 @@ const QSet<QObject *> QUmlPrimitiveTypeObject::ownedElement() const
 
 QObject *QUmlPrimitiveTypeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -213,7 +216,10 @@ QtUml::VisibilityKind QUmlPrimitiveTypeObject::visibility() const
 
 QObject *QUmlPrimitiveTypeObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -613,7 +619,7 @@ void QUmlPrimitiveTypeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->setName(name);
 }
-    
+
 void QUmlPrimitiveTypeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -628,7 +634,7 @@ void QUmlPrimitiveTypeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlPrimitiveTypeObject::addElementImport(QObject *elementImport)
 {
@@ -701,8 +707,14 @@ void QUmlPrimitiveTypeObject::setOwningTemplateParameter(QObject *owningTemplate
 void QUmlPrimitiveTypeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlPrimitiveTypeObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlPrimitiveTypeObject::setPackage(QObject *package)
@@ -715,8 +727,14 @@ void QUmlPrimitiveTypeObject::setPackage(QObject *package)
 void QUmlPrimitiveTypeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlPrimitiveTypeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlPrimitiveTypeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -814,13 +832,25 @@ void QUmlPrimitiveTypeObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlPrimitiveTypeObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlPrimitiveTypeObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlPrimitiveTypeObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlPrimitiveTypeObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlPrimitiveTypeObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlPrimitiveType *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));

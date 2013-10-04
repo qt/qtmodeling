@@ -102,14 +102,20 @@ const QSet<QObject *> QUmlOperationObject::ownedElement() const
 
 QObject *QUmlOperationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [TemplateableElement]
 
 QObject *QUmlOperationObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlOperationObject::templateBinding() const
@@ -137,12 +143,18 @@ QString QUmlOperationObject::name() const
 
 QObject *QUmlOperationObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlOperationObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlOperationObject::qualifiedName() const
@@ -274,28 +286,43 @@ const QSet<QObject *> QUmlOperationObject::ownedParameterSet() const
 
 QObject *QUmlOperationObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [Operation]
 
 QObject *QUmlOperationObject::bodyCondition() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->bodyCondition()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->bodyCondition())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->bodyCondition()->asQObject();
 }
 
 QObject *QUmlOperationObject::class_() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->class_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->class_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->class_()->asQObject();
 }
 
 QObject *QUmlOperationObject::datatype() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->datatype()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->datatype())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->datatype()->asQObject();
 }
 
 QObject *QUmlOperationObject::interface_() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->interface_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->interface_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->interface_()->asQObject();
 }
 
 bool QUmlOperationObject::isOrdered() const
@@ -360,12 +387,18 @@ const QSet<QObject *> QUmlOperationObject::redefinedOperation() const
 
 QObject *QUmlOperationObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->templateParameter()->asQObject();
 }
 
 QObject *QUmlOperationObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlOperation *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOperation *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOperation *>(this)->type()->asQObject();
 }
 
 int QUmlOperationObject::upper() const
@@ -561,7 +594,7 @@ void QUmlOperationObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setName(name);
 }
-    
+
 void QUmlOperationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -576,12 +609,12 @@ void QUmlOperationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlOperationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlOperationObject::addElementImport(QObject *elementImport)
@@ -649,8 +682,14 @@ void QUmlOperationObject::removePackageImport(QObject *packageImport)
 void QUmlOperationObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlOperationObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlOperationObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -686,20 +725,38 @@ void QUmlOperationObject::removeFeaturingClassifier(QObject *featuringClassifier
 void QUmlOperationObject::setStatic(bool isStatic)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setStatic(isStatic);
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("static");
 }
-    
+
+void QUmlOperationObject::unsetStatic()
+{
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("static"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [BehavioralFeature]
 
 void QUmlOperationObject::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setConcurrency(concurrency);
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("concurrency");
 }
-    
+
+void QUmlOperationObject::unsetConcurrency()
+{
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("concurrency"));
+}
+
 void QUmlOperationObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlOperationObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlOperationObject::addMethod(QObject *method)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->addMethod(qmodelingobjectproperty_cast<QUmlBehavior *>(method));
@@ -750,23 +807,47 @@ void QUmlOperationObject::setInterface(QObject *interface_)
 void QUmlOperationObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setOrdered(isOrdered);
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
-    
+
+void QUmlOperationObject::unsetOrdered()
+{
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordered"));
+}
+
 void QUmlOperationObject::setQuery(bool isQuery)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setQuery(isQuery);
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("query");
 }
-    
+
+void QUmlOperationObject::unsetQuery()
+{
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("query"));
+}
+
 void QUmlOperationObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setUnique(isUnique);
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
-    
+
+void QUmlOperationObject::unsetUnique()
+{
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("unique"));
+}
+
 void QUmlOperationObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setLower(lower);
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
-    
+
+void QUmlOperationObject::unsetLower()
+{
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("lower"));
+}
+
 void QUmlOperationObject::addOwnedParameter(QObject *ownedParameter)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->addOwnedParameter(qmodelingobjectproperty_cast<QUmlParameter *>(ownedParameter));
@@ -830,7 +911,13 @@ void QUmlOperationObject::setType(QObject *type)
 void QUmlOperationObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setUpper(upper);
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
-    
+
+void QUmlOperationObject::unsetUpper()
+{
+    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("upper"));
+}
+
 QT_END_NAMESPACE
 

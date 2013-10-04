@@ -99,7 +99,10 @@ const QSet<QObject *> QUmlSendSignalActionObject::ownedElement() const
 
 QObject *QUmlSendSignalActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -119,12 +122,18 @@ QString QUmlSendSignalActionObject::name() const
 
 QObject *QUmlSendSignalActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlSendSignalActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlSendSignalActionObject::qualifiedName() const
@@ -164,7 +173,10 @@ const QSet<QObject *> QUmlSendSignalActionObject::redefinitionContext() const
 
 QObject *QUmlSendSignalActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlSendSignalActionObject::inGroup() const
@@ -193,7 +205,10 @@ const QSet<QObject *> QUmlSendSignalActionObject::inPartition() const
 
 QObject *QUmlSendSignalActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlSendSignalActionObject::incoming() const
@@ -234,7 +249,10 @@ const QSet<QObject *> QUmlSendSignalActionObject::handler() const
 
 QObject *QUmlSendSignalActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlSendSignalActionObject::input() const
@@ -286,19 +304,28 @@ const QList<QObject *> QUmlSendSignalActionObject::argument() const
 
 QObject *QUmlSendSignalActionObject::onPort() const
 {
-    return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->onPort()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->onPort())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->onPort()->asQObject();
 }
 
 // OWNED ATTRIBUTES [SendSignalAction]
 
 QObject *QUmlSendSignalActionObject::signal() const
 {
-    return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->signal()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->signal())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->signal()->asQObject();
 }
 
 QObject *QUmlSendSignalActionObject::target() const
 {
-    return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->target()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->target())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->target()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -399,7 +426,7 @@ void QUmlSendSignalActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->setName(name);
 }
-    
+
 void QUmlSendSignalActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -414,19 +441,25 @@ void QUmlSendSignalActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlSendSignalActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlSendSignalActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlSendSignalActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlSendSignalActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -551,8 +584,14 @@ void QUmlSendSignalActionObject::removeInput(QObject *input)
 void QUmlSendSignalActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlSendSignalActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlSendSignalActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

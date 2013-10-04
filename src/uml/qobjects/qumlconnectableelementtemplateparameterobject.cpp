@@ -82,36 +82,54 @@ const QSet<QObject *> QUmlConnectableElementTemplateParameterObject::ownedElemen
 
 QObject *QUmlConnectableElementTemplateParameterObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [TemplateParameter]
 
 QObject *QUmlConnectableElementTemplateParameterObject::default_() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->default_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->default_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->default_()->asQObject();
 }
 
 QObject *QUmlConnectableElementTemplateParameterObject::ownedDefault() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedDefault()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedDefault())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedDefault()->asQObject();
 }
 
 QObject *QUmlConnectableElementTemplateParameterObject::ownedParameteredElement() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedParameteredElement()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedParameteredElement())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedParameteredElement()->asQObject();
 }
 
 QObject *QUmlConnectableElementTemplateParameterObject::signature() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->signature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->signature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->signature()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ConnectableElementTemplateParameter]
 
 QObject *QUmlConnectableElementTemplateParameterObject::parameteredElement() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->parameteredElement()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->parameteredElement())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->parameteredElement()->asQObject();
 }
 
 // OPERATIONS [Element]

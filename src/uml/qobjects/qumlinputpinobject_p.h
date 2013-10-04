@@ -64,11 +64,11 @@ class Q_UML_EXPORT QUmlInputPinObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique)
-    Q_PROPERTY(int lower READ lower)
+    Q_PROPERTY(bool isOrdered READ isOrdered RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower RESET unsetLower STORED false)
     Q_PROPERTY(QObject * lowerValue READ lowerValue)
-    Q_PROPERTY(int upper READ upper)
+    Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
     Q_PROPERTY(QObject * upperValue READ upperValue)
 
     // Properties [NamedElement]
@@ -76,11 +76,11 @@ class Q_UML_EXPORT QUmlInputPinObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
@@ -99,13 +99,13 @@ class Q_UML_EXPORT QUmlInputPinObject : public QObject
 
     // Properties [ObjectNode]
     Q_PROPERTY(QSet<QObject *> inState READ inState)
-    Q_PROPERTY(bool isControlType READ isControlType)
-    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering)
+    Q_PROPERTY(bool isControlType READ isControlType RESET unsetControlType)
+    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering RESET unsetOrdering)
     Q_PROPERTY(QObject * selection READ selection)
     Q_PROPERTY(QObject * upperBound READ upperBound)
 
     // Properties [Pin]
-    Q_PROPERTY(bool isControl READ isControl)
+    Q_PROPERTY(bool isControl READ isControl RESET unsetControl)
 
 public:
     Q_INVOKABLE explicit QUmlInputPinObject(QUmlInputPin *qModelingObject);
@@ -194,10 +194,14 @@ public Q_SLOTS:
 
     // Slots for owned attributes [MultiplicityElement]
     void setOrdered(bool isOrdered);
+    void unsetOrdered();
     void setUnique(bool isUnique);
+    void unsetUnique();
     void setLower(int lower);
+    void unsetLower();
     void setLowerValue(QObject *lowerValue = 0);
     void setUpper(int upper);
+    void unsetUpper();
     void setUpperValue(QObject *upperValue = 0);
 
     // Slots for owned attributes [NamedElement]
@@ -211,6 +215,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -239,12 +244,15 @@ public Q_SLOTS:
     void addInState(QObject *inState);
     void removeInState(QObject *inState);
     void setControlType(bool isControlType);
+    void unsetControlType();
     void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
+    void unsetOrdering();
     void setSelection(QObject *selection = 0);
     void setUpperBound(QObject *upperBound = 0);
 
     // Slots for owned attributes [Pin]
     void setControl(bool isControl);
+    void unsetControl();
 };
 
 QT_END_NAMESPACE

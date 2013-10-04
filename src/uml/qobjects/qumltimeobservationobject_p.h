@@ -72,14 +72,14 @@ class Q_UML_EXPORT QUmlTimeObservationObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [TimeObservation]
     Q_PROPERTY(QObject * event READ event)
-    Q_PROPERTY(bool firstEvent READ firstEvent)
+    Q_PROPERTY(bool firstEvent READ firstEvent RESET unsetFirstEvent)
 
 public:
     Q_INVOKABLE explicit QUmlTimeObservationObject(QUmlTimeObservation *qModelingObject);
@@ -145,10 +145,12 @@ public Q_SLOTS:
 
     // Slots for owned attributes [PackageableElement]
     void setVisibility(QtUml::VisibilityKind visibility);
+    void unsetVisibility();
 
     // Slots for owned attributes [TimeObservation]
     void setEvent(QObject *event = 0);
     void setFirstEvent(bool firstEvent);
+    void unsetFirstEvent();
 };
 
 QT_END_NAMESPACE

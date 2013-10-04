@@ -88,19 +88,28 @@ const QSet<QObject *> QUmlManifestationObject::ownedElement() const
 
 QObject *QUmlManifestationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlManifestation *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlManifestationObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlManifestation *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlManifestationObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlManifestation *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -120,12 +129,18 @@ QString QUmlManifestationObject::name() const
 
 QObject *QUmlManifestationObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlManifestation *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlManifestationObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlManifestation *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlManifestationObject::qualifiedName() const
@@ -189,14 +204,20 @@ const QSet<QObject *> QUmlManifestationObject::supplier() const
 
 QObject *QUmlManifestationObject::mapping() const
 {
-    return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->mapping()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlManifestation *>(this)->mapping())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->mapping()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Manifestation]
 
 QObject *QUmlManifestationObject::utilizedElement() const
 {
-    return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->utilizedElement()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlManifestation *>(this)->utilizedElement())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->utilizedElement()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -309,7 +330,7 @@ void QUmlManifestationObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlManifestation *>(this)->setName(name);
 }
-    
+
 void QUmlManifestationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlManifestation *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -324,13 +345,19 @@ void QUmlManifestationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlManifestation *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlManifestationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlManifestation *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlManifestation *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlManifestationObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlManifestation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlManifestationObject::addRelatedElement(QObject *relatedElement)

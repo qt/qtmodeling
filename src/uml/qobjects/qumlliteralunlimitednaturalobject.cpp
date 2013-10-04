@@ -87,7 +87,10 @@ const QSet<QObject *> QUmlLiteralUnlimitedNaturalObject::ownedElement() const
 
 QObject *QUmlLiteralUnlimitedNaturalObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -107,12 +110,18 @@ QString QUmlLiteralUnlimitedNaturalObject::name() const
 
 QObject *QUmlLiteralUnlimitedNaturalObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlLiteralUnlimitedNaturalObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlLiteralUnlimitedNaturalObject::qualifiedName() const
@@ -123,19 +132,28 @@ QString QUmlLiteralUnlimitedNaturalObject::qualifiedName() const
 
 QObject *QUmlLiteralUnlimitedNaturalObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlLiteralUnlimitedNaturalObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlLiteralUnlimitedNaturalObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -288,7 +306,7 @@ void QUmlLiteralUnlimitedNaturalObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->setName(name);
 }
-    
+
 void QUmlLiteralUnlimitedNaturalObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -303,7 +321,7 @@ void QUmlLiteralUnlimitedNaturalObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlLiteralUnlimitedNaturalObject::setType(QObject *type)
 {
@@ -327,14 +345,26 @@ void QUmlLiteralUnlimitedNaturalObject::setTemplateParameter(QObject *templatePa
 void QUmlLiteralUnlimitedNaturalObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlLiteralUnlimitedNaturalObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [LiteralUnlimitedNatural]
 
 void QUmlLiteralUnlimitedNaturalObject::setValue(int value)
 {
     qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->setValue(value);
+    qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->modifiedResettableProperties() << QStringLiteral("value");
 }
-    
+
+void QUmlLiteralUnlimitedNaturalObject::unsetValue()
+{
+    qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("value"));
+}
+
 QT_END_NAMESPACE
 

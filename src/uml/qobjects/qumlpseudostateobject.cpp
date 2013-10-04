@@ -88,7 +88,10 @@ const QSet<QObject *> QUmlPseudostateObject::ownedElement() const
 
 QObject *QUmlPseudostateObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -108,12 +111,18 @@ QString QUmlPseudostateObject::name() const
 
 QObject *QUmlPseudostateObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlPseudostateObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlPseudostateObject::qualifiedName() const
@@ -130,7 +139,10 @@ QtUml::VisibilityKind QUmlPseudostateObject::visibility() const
 
 QObject *QUmlPseudostateObject::container() const
 {
-    return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->container()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->container())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->container()->asQObject();
 }
 
 const QSet<QObject *> QUmlPseudostateObject::incoming() const
@@ -158,12 +170,18 @@ QtUml::PseudostateKind QUmlPseudostateObject::kind() const
 
 QObject *QUmlPseudostateObject::state() const
 {
-    return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->state()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->state())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->state()->asQObject();
 }
 
 QObject *QUmlPseudostateObject::stateMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->stateMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->stateMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->stateMachine()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -213,7 +231,10 @@ QString QUmlPseudostateObject::separator() const
 
 QObject *QUmlPseudostateObject::containingStateMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->containingStateMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->containingStateMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->containingStateMachine()->asQObject();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
@@ -259,7 +280,7 @@ void QUmlPseudostateObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->setName(name);
 }
-    
+
 void QUmlPseudostateObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -274,12 +295,12 @@ void QUmlPseudostateObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlPseudostateObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Vertex]
 
 void QUmlPseudostateObject::setContainer(QObject *container)
@@ -312,8 +333,14 @@ void QUmlPseudostateObject::removeOutgoing(QObject *outgoing)
 void QUmlPseudostateObject::setKind(QtUml::PseudostateKind kind)
 {
     qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->setKind(kind);
+    qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->modifiedResettableProperties() << QStringLiteral("kind");
 }
-    
+
+void QUmlPseudostateObject::unsetKind()
+{
+    qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("kind"));
+}
+
 void QUmlPseudostateObject::setState(QObject *state)
 {
     qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->setState(qmodelingobjectproperty_cast<QUmlState *>(state));

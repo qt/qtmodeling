@@ -99,7 +99,10 @@ const QSet<QObject *> QUmlReadLinkActionObject::ownedElement() const
 
 QObject *QUmlReadLinkActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -119,12 +122,18 @@ QString QUmlReadLinkActionObject::name() const
 
 QObject *QUmlReadLinkActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlReadLinkActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlReadLinkActionObject::qualifiedName() const
@@ -164,7 +173,10 @@ const QSet<QObject *> QUmlReadLinkActionObject::redefinitionContext() const
 
 QObject *QUmlReadLinkActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadLinkActionObject::inGroup() const
@@ -193,7 +205,10 @@ const QSet<QObject *> QUmlReadLinkActionObject::inPartition() const
 
 QObject *QUmlReadLinkActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadLinkActionObject::incoming() const
@@ -234,7 +249,10 @@ const QSet<QObject *> QUmlReadLinkActionObject::handler() const
 
 QObject *QUmlReadLinkActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlReadLinkActionObject::input() const
@@ -296,7 +314,10 @@ const QSet<QObject *> QUmlReadLinkActionObject::inputValue() const
 
 QObject *QUmlReadLinkActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->result()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -358,7 +379,10 @@ bool QUmlReadLinkActionObject::isRedefinitionContextValid(QObject *redefined) co
 
 QObject *QUmlReadLinkActionObject::association() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->association()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->association())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->association()->asQObject();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
@@ -404,7 +428,7 @@ void QUmlReadLinkActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->setName(name);
 }
-    
+
 void QUmlReadLinkActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -419,19 +443,25 @@ void QUmlReadLinkActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlReadLinkActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReadLinkActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlReadLinkActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlReadLinkActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -556,8 +586,14 @@ void QUmlReadLinkActionObject::removeInput(QObject *input)
 void QUmlReadLinkActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlReadLinkActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlReadLinkActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

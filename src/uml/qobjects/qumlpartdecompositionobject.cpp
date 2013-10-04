@@ -91,7 +91,10 @@ const QSet<QObject *> QUmlPartDecompositionObject::ownedElement() const
 
 QObject *QUmlPartDecompositionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -111,12 +114,18 @@ QString QUmlPartDecompositionObject::name() const
 
 QObject *QUmlPartDecompositionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlPartDecompositionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlPartDecompositionObject::qualifiedName() const
@@ -141,12 +150,18 @@ const QSet<QObject *> QUmlPartDecompositionObject::covered() const
 
 QObject *QUmlPartDecompositionObject::enclosingInteraction() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingInteraction()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingInteraction())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingInteraction()->asQObject();
 }
 
 QObject *QUmlPartDecompositionObject::enclosingOperand() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingOperand()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingOperand())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingOperand()->asQObject();
 }
 
 const QSet<QObject *> QUmlPartDecompositionObject::generalOrdering() const
@@ -177,17 +192,26 @@ const QList<QObject *> QUmlPartDecompositionObject::argument() const
 
 QObject *QUmlPartDecompositionObject::refersTo() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->refersTo()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->refersTo())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->refersTo()->asQObject();
 }
 
 QObject *QUmlPartDecompositionObject::returnValue() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValue()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValue())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValue()->asQObject();
 }
 
 QObject *QUmlPartDecompositionObject::returnValueRecipient() const
 {
-    return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValueRecipient()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValueRecipient())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->returnValueRecipient()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -276,7 +300,7 @@ void QUmlPartDecompositionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setName(name);
 }
-    
+
 void QUmlPartDecompositionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -291,12 +315,12 @@ void QUmlPartDecompositionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlPartDecompositionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlPartDecompositionObject::addCovered(QObject *covered)

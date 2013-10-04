@@ -66,7 +66,8 @@ QUmlLinkEndData::QUmlLinkEndData(bool createQObject) :
 QUmlLinkEndData::~QUmlLinkEndData()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -88,7 +89,7 @@ QModelingObject *QUmlLinkEndData::clone() const
 // OWNED ATTRIBUTES
 
 /*!
-    Association end for which this link-end data specifies values.
+    Association end for which this link-end data specifies values.
  */
 QUmlProperty *QUmlLinkEndData::end() const
 {
@@ -103,7 +104,7 @@ void QUmlLinkEndData::setEnd(QUmlProperty *end)
 
     if (_end != end) {
         _end = end;
-        if (end->asQObject() && this->asQObject())
+        if (end && end->asQObject() && this->asQObject())
             QObject::connect(end->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEnd()));
     }
 }
@@ -124,7 +125,7 @@ void QUmlLinkEndData::addQualifier(QUmlQualifierValue *qualifier)
 
     if (!_qualifier.contains(qualifier)) {
         _qualifier.insert(qualifier);
-        if (qualifier->asQObject() && this->asQObject())
+        if (qualifier && qualifier->asQObject() && this->asQObject())
             QObject::connect(qualifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeQualifier(QObject *)));
         qualifier->asQObject()->setParent(this->asQObject());
 
@@ -163,7 +164,7 @@ void QUmlLinkEndData::setValue(QUmlInputPin *value)
 
     if (_value != value) {
         _value = value;
-        if (value->asQObject() && this->asQObject())
+        if (value && value->asQObject() && this->asQObject())
             QObject::connect(value->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setValue()));
     }
 }

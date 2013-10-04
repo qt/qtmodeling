@@ -87,7 +87,8 @@ QUmlDataType::QUmlDataType(bool createQObject)
 QUmlDataType::~QUmlDataType()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -163,7 +164,7 @@ void QUmlDataType::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.append(ownedAttribute);
-        if (ownedAttribute->asQObject() && this->asQObject())
+        if (ownedAttribute && ownedAttribute->asQObject() && this->asQObject())
             QObject::connect(ownedAttribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedAttribute(QObject *)));
         ownedAttribute->asQObject()->setParent(this->asQObject());
 
@@ -214,7 +215,7 @@ void QUmlDataType::addOwnedOperation(QUmlOperation *ownedOperation)
 
     if (!_ownedOperation.contains(ownedOperation)) {
         _ownedOperation.append(ownedOperation);
-        if (ownedOperation->asQObject() && this->asQObject())
+        if (ownedOperation && ownedOperation->asQObject() && this->asQObject())
             QObject::connect(ownedOperation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedOperation(QObject *)));
         ownedOperation->asQObject()->setParent(this->asQObject());
 

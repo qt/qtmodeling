@@ -132,7 +132,7 @@ void QUmlActivityEdge::setActivity(QUmlActivity *activity)
         // Adjust subsetted properties
 
         _activity = activity;
-        if (activity->asQObject() && this->asQObject())
+        if (activity && activity->asQObject() && this->asQObject())
             QObject::connect(activity->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setActivity()));
 
         // Adjust subsetted properties
@@ -159,7 +159,7 @@ void QUmlActivityEdge::setGuard(QUmlValueSpecification *guard)
         removeOwnedElement(_guard);
 
         _guard = guard;
-        if (guard->asQObject() && this->asQObject())
+        if (guard && guard->asQObject() && this->asQObject())
             QObject::connect(guard->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setGuard()));
         guard->asQObject()->setParent(this->asQObject());
 
@@ -186,7 +186,7 @@ void QUmlActivityEdge::addInGroup(QUmlActivityGroup *inGroup)
 
     if (!_inGroup.contains(inGroup)) {
         _inGroup.insert(inGroup);
-        if (inGroup->asQObject() && this->asQObject())
+        if (inGroup && inGroup->asQObject() && this->asQObject())
             QObject::connect(inGroup->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInGroup(QObject *)));
 
         // Adjust opposite properties
@@ -226,7 +226,7 @@ void QUmlActivityEdge::addInPartition(QUmlActivityPartition *inPartition)
 
     if (!_inPartition.contains(inPartition)) {
         _inPartition.insert(inPartition);
-        if (inPartition->asQObject() && this->asQObject())
+        if (inPartition && inPartition->asQObject() && this->asQObject())
             QObject::connect(inPartition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInPartition(QObject *)));
 
         // Adjust subsetted properties
@@ -275,7 +275,7 @@ void QUmlActivityEdge::setInStructuredNode(QUmlStructuredActivityNode *inStructu
         removeInGroup(_inStructuredNode);
 
         _inStructuredNode = inStructuredNode;
-        if (inStructuredNode->asQObject() && this->asQObject())
+        if (inStructuredNode && inStructuredNode->asQObject() && this->asQObject())
             QObject::connect(inStructuredNode->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInStructuredNode()));
 
         // Adjust subsetted properties
@@ -302,7 +302,7 @@ void QUmlActivityEdge::setInterrupts(QUmlInterruptibleActivityRegion *interrupts
 
     if (_interrupts != interrupts) {
         _interrupts = interrupts;
-        if (interrupts->asQObject() && this->asQObject())
+        if (interrupts && interrupts->asQObject() && this->asQObject())
             QObject::connect(interrupts->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInterrupts()));
     }
 }
@@ -323,7 +323,7 @@ void QUmlActivityEdge::addRedefinedEdge(QUmlActivityEdge *redefinedEdge)
 
     if (!_redefinedEdge.contains(redefinedEdge)) {
         _redefinedEdge.insert(redefinedEdge);
-        if (redefinedEdge->asQObject() && this->asQObject())
+        if (redefinedEdge && redefinedEdge->asQObject() && this->asQObject())
             QObject::connect(redefinedEdge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedEdge(QObject *)));
 
         // Adjust subsetted properties
@@ -359,7 +359,7 @@ void QUmlActivityEdge::setSource(QUmlActivityNode *source)
 
     if (_source != source) {
         _source = source;
-        if (source->asQObject() && this->asQObject())
+        if (source && source->asQObject() && this->asQObject())
             QObject::connect(source->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSource()));
     }
 }
@@ -380,7 +380,7 @@ void QUmlActivityEdge::setTarget(QUmlActivityNode *target)
 
     if (_target != target) {
         _target = target;
-        if (target->asQObject() && this->asQObject())
+        if (target && target->asQObject() && this->asQObject())
             QObject::connect(target->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTarget()));
     }
 }
@@ -404,7 +404,7 @@ void QUmlActivityEdge::setWeight(QUmlValueSpecification *weight)
         removeOwnedElement(_weight);
 
         _weight = weight;
-        if (weight->asQObject() && this->asQObject())
+        if (weight && weight->asQObject() && this->asQObject())
             QObject::connect(weight->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setWeight()));
         weight->asQObject()->setParent(this->asQObject());
 

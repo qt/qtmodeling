@@ -87,7 +87,10 @@ const QSet<QObject *> QUmlLiteralBooleanObject::ownedElement() const
 
 QObject *QUmlLiteralBooleanObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -107,12 +110,18 @@ QString QUmlLiteralBooleanObject::name() const
 
 QObject *QUmlLiteralBooleanObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlLiteralBooleanObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlLiteralBooleanObject::qualifiedName() const
@@ -123,19 +132,28 @@ QString QUmlLiteralBooleanObject::qualifiedName() const
 
 QObject *QUmlLiteralBooleanObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlLiteralBooleanObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlLiteralBooleanObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -289,7 +307,7 @@ void QUmlLiteralBooleanObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->setName(name);
 }
-    
+
 void QUmlLiteralBooleanObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -304,7 +322,7 @@ void QUmlLiteralBooleanObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlLiteralBooleanObject::setType(QObject *type)
 {
@@ -328,14 +346,26 @@ void QUmlLiteralBooleanObject::setTemplateParameter(QObject *templateParameter)
 void QUmlLiteralBooleanObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlLiteralBooleanObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [LiteralBoolean]
 
 void QUmlLiteralBooleanObject::setValue(bool value)
 {
     qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->setValue(value);
+    qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->modifiedResettableProperties() << QStringLiteral("value");
 }
-    
+
+void QUmlLiteralBooleanObject::unsetValue()
+{
+    qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("value"));
+}
+
 QT_END_NAMESPACE
 

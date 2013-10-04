@@ -79,7 +79,8 @@ QUmlOpaqueAction::QUmlOpaqueAction(bool createQObject)
 QUmlOpaqueAction::~QUmlOpaqueAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -117,10 +118,12 @@ QModelingObject *QUmlOpaqueAction::clone() const
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlConstraint *element, localPrecondition())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-//    c->setBody(body());
+    foreach (QString element, body())
+        c->addBody(element);
     foreach (QUmlInputPin *element, inputValue())
         c->addInputValue(dynamic_cast<QUmlInputPin *>(element->clone()));
-//    c->setLanguage(language());
+    foreach (QString element, language())
+        c->addLanguage(element);
     foreach (QUmlOutputPin *element, outputValue())
         c->addOutputValue(dynamic_cast<QUmlOutputPin *>(element->clone()));
     return c;
@@ -172,7 +175,7 @@ void QUmlOpaqueAction::addInputValue(QUmlInputPin *inputValue)
 
     if (!_inputValue.contains(inputValue)) {
         _inputValue.insert(inputValue);
-        if (inputValue->asQObject() && this->asQObject())
+        if (inputValue && inputValue->asQObject() && this->asQObject())
             QObject::connect(inputValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInputValue(QObject *)));
         inputValue->asQObject()->setParent(this->asQObject());
 
@@ -239,7 +242,7 @@ void QUmlOpaqueAction::addOutputValue(QUmlOutputPin *outputValue)
 
     if (!_outputValue.contains(outputValue)) {
         _outputValue.insert(outputValue);
-        if (outputValue->asQObject() && this->asQObject())
+        if (outputValue && outputValue->asQObject() && this->asQObject())
             QObject::connect(outputValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOutputValue(QObject *)));
         outputValue->asQObject()->setParent(this->asQObject());
 

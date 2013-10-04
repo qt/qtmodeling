@@ -38,9 +38,9 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#include <QtWrappedObjects/QXmiReader>
-#include <QtWrappedObjects/QXmiWriter>
-#include <QtWrappedObjects/QtWrappedObjects>
+#include <QtModeling/QXmiReader>
+#include <QtModeling/QXmiWriter>
+#include <QtModeling/QtModeling>
 
 int main ()
 {

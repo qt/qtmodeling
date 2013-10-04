@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlClearAssociationActionObject::ownedElement() const
 
 QObject *QUmlClearAssociationActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlClearAssociationActionObject::name() const
 
 QObject *QUmlClearAssociationActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlClearAssociationActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlClearAssociationActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlClearAssociationActionObject::redefinitionContext() co
 
 QObject *QUmlClearAssociationActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlClearAssociationActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlClearAssociationActionObject::inPartition() const
 
 QObject *QUmlClearAssociationActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlClearAssociationActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlClearAssociationActionObject::handler() const
 
 QObject *QUmlClearAssociationActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlClearAssociationActionObject::input() const
@@ -277,12 +295,18 @@ const QList<QObject *> QUmlClearAssociationActionObject::output() const
 
 QObject *QUmlClearAssociationActionObject::association() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->association()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->association())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->association()->asQObject();
 }
 
 QObject *QUmlClearAssociationActionObject::object() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->object()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->object())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->object()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -383,7 +407,7 @@ void QUmlClearAssociationActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->setName(name);
 }
-    
+
 void QUmlClearAssociationActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -398,19 +422,25 @@ void QUmlClearAssociationActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlClearAssociationActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlClearAssociationActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlClearAssociationActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlClearAssociationActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -535,8 +565,14 @@ void QUmlClearAssociationActionObject::removeInput(QObject *input)
 void QUmlClearAssociationActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlClearAssociationActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlClearAssociationActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

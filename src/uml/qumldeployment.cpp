@@ -73,7 +73,8 @@ QUmlDeployment::QUmlDeployment(bool createQObject) :
 QUmlDeployment::~QUmlDeployment()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -124,7 +125,7 @@ void QUmlDeployment::addConfiguration(QUmlDeploymentSpecification *configuration
 
     if (!_configuration.contains(configuration)) {
         _configuration.insert(configuration);
-        if (configuration->asQObject() && this->asQObject())
+        if (configuration && configuration->asQObject() && this->asQObject())
             QObject::connect(configuration->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConfiguration(QObject *)));
         configuration->asQObject()->setParent(this->asQObject());
 
@@ -173,7 +174,7 @@ void QUmlDeployment::addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
 
     if (!_deployedArtifact.contains(deployedArtifact)) {
         _deployedArtifact.insert(deployedArtifact);
-        if (deployedArtifact->asQObject() && this->asQObject())
+        if (deployedArtifact && deployedArtifact->asQObject() && this->asQObject())
             QObject::connect(deployedArtifact->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeDeployedArtifact(QObject *)));
 
         // Adjust subsetted properties
@@ -212,7 +213,7 @@ void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
         removeClient(_location);
 
         _location = location;
-        if (location->asQObject() && this->asQObject())
+        if (location && location->asQObject() && this->asQObject())
             QObject::connect(location->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setLocation()));
 
         // Adjust subsetted properties

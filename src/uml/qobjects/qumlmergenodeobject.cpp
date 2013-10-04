@@ -93,7 +93,10 @@ const QSet<QObject *> QUmlMergeNodeObject::ownedElement() const
 
 QObject *QUmlMergeNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -113,12 +116,18 @@ QString QUmlMergeNodeObject::name() const
 
 QObject *QUmlMergeNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlMergeNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlMergeNodeObject::qualifiedName() const
@@ -158,7 +167,10 @@ const QSet<QObject *> QUmlMergeNodeObject::redefinitionContext() const
 
 QObject *QUmlMergeNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlMergeNodeObject::inGroup() const
@@ -187,7 +199,10 @@ const QSet<QObject *> QUmlMergeNodeObject::inPartition() const
 
 QObject *QUmlMergeNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlMergeNodeObject::incoming() const
@@ -312,7 +327,7 @@ void QUmlMergeNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->setName(name);
 }
-    
+
 void QUmlMergeNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -327,19 +342,25 @@ void QUmlMergeNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlMergeNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlMergeNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlMergeNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlMergeNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

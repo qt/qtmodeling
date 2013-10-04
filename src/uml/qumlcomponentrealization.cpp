@@ -73,7 +73,8 @@ QUmlComponentRealization::QUmlComponentRealization(bool createQObject) :
 QUmlComponentRealization::~QUmlComponentRealization()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -127,7 +128,7 @@ void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
         removeSupplier(_abstraction);
 
         _abstraction = abstraction;
-        if (abstraction->asQObject() && this->asQObject())
+        if (abstraction && abstraction->asQObject() && this->asQObject())
             QObject::connect(abstraction->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAbstraction()));
 
         // Adjust subsetted properties
@@ -154,7 +155,7 @@ void QUmlComponentRealization::addRealizingClassifier(QUmlClassifier *realizingC
 
     if (!_realizingClassifier.contains(realizingClassifier)) {
         _realizingClassifier.insert(realizingClassifier);
-        if (realizingClassifier->asQObject() && this->asQObject())
+        if (realizingClassifier && realizingClassifier->asQObject() && this->asQObject())
             QObject::connect(realizingClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealizingClassifier(QObject *)));
 
         // Adjust subsetted properties

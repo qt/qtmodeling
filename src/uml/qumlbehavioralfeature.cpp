@@ -163,7 +163,7 @@ void QUmlBehavioralFeature::addMethod(QUmlBehavior *method)
 
     if (!_method.contains(method)) {
         _method.insert(method);
-        if (method->asQObject() && this->asQObject())
+        if (method && method->asQObject() && this->asQObject())
             QObject::connect(method->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMethod(QObject *)));
 
         // Adjust opposite properties
@@ -203,7 +203,7 @@ void QUmlBehavioralFeature::addOwnedParameter(QUmlParameter *ownedParameter)
 
     if (!_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.append(ownedParameter);
-        if (ownedParameter->asQObject() && this->asQObject())
+        if (ownedParameter && ownedParameter->asQObject() && this->asQObject())
             QObject::connect(ownedParameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameter(QObject *)));
         ownedParameter->asQObject()->setParent(this->asQObject());
 
@@ -242,7 +242,7 @@ void QUmlBehavioralFeature::addOwnedParameterSet(QUmlParameterSet *ownedParamete
 
     if (!_ownedParameterSet.contains(ownedParameterSet)) {
         _ownedParameterSet.insert(ownedParameterSet);
-        if (ownedParameterSet->asQObject() && this->asQObject())
+        if (ownedParameterSet && ownedParameterSet->asQObject() && this->asQObject())
             QObject::connect(ownedParameterSet->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameterSet(QObject *)));
         ownedParameterSet->asQObject()->setParent(this->asQObject());
 
@@ -281,7 +281,7 @@ void QUmlBehavioralFeature::addRaisedException(QUmlType *raisedException)
 
     if (!_raisedException.contains(raisedException)) {
         _raisedException.insert(raisedException);
-        if (raisedException->asQObject() && this->asQObject())
+        if (raisedException && raisedException->asQObject() && this->asQObject())
             QObject::connect(raisedException->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRaisedException(QObject *)));
     }
 }

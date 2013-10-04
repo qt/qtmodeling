@@ -93,7 +93,10 @@ const QSet<QObject *> QUmlActivityFinalNodeObject::ownedElement() const
 
 QObject *QUmlActivityFinalNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -113,12 +116,18 @@ QString QUmlActivityFinalNodeObject::name() const
 
 QObject *QUmlActivityFinalNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlActivityFinalNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlActivityFinalNodeObject::qualifiedName() const
@@ -158,7 +167,10 @@ const QSet<QObject *> QUmlActivityFinalNodeObject::redefinitionContext() const
 
 QObject *QUmlActivityFinalNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlActivityFinalNodeObject::inGroup() const
@@ -187,7 +199,10 @@ const QSet<QObject *> QUmlActivityFinalNodeObject::inPartition() const
 
 QObject *QUmlActivityFinalNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlActivityFinalNodeObject::incoming() const
@@ -312,7 +327,7 @@ void QUmlActivityFinalNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->setName(name);
 }
-    
+
 void QUmlActivityFinalNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -327,19 +342,25 @@ void QUmlActivityFinalNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlActivityFinalNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlActivityFinalNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlActivityFinalNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlActivityFinalNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

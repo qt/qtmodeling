@@ -82,7 +82,8 @@ QUmlDestroyObjectAction::QUmlDestroyObjectAction(bool createQObject) :
 QUmlDestroyObjectAction::~QUmlDestroyObjectAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -186,7 +187,7 @@ void QUmlDestroyObjectAction::setTarget(QUmlInputPin *target)
         removeInput(_target);
 
         _target = target;
-        if (target->asQObject() && this->asQObject())
+        if (target && target->asQObject() && this->asQObject())
             QObject::connect(target->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTarget()));
         target->asQObject()->setParent(this->asQObject());
 

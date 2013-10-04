@@ -385,7 +385,7 @@ void Q${namespace}${originalClassName}Object::set${attributeName}(${qtType}${qtA
 {
     qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName}(qmodelingobjectproperty_cast<${originalQtType}>(${qtAttribute}));
 [%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
-    _modifiedResettableProperties << QStringLiteral("${attributeName.remove("^Is").lcfirst}");
+    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->modifiedResettableProperties() << QStringLiteral("${attributeName.remove("^Is").lcfirst}");
 [%- END %]
 }
 
@@ -394,15 +394,15 @@ void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(
 {
     qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName.remove("^Is")}(${qtAttribute});
 [%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
-    _modifiedResettableProperties << QStringLiteral("${attributeName.remove("^Is").lcfirst}");
+    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->modifiedResettableProperties() << QStringLiteral("${attributeName.remove("^Is").lcfirst}");
 [%- END %]
 }
 
     [%- END -%]
     [%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
-void unset${qtAttribute.remove("^is").ucfirst}()
+void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").ucfirst}()
 {
-    _modifiedResettableProperties.removeAll(QStringLiteral("${attributeName.remove("^Is").lcfirst}"));
+    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("${attributeName.remove("^Is").lcfirst}"));
 }
 
     [%- END -%]
@@ -442,17 +442,17 @@ void unset${qtAttribute.remove("^is").ucfirst}()
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
     [%- IF qtType.match("QList|QSet") %]
-    foreach (${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}element, ${attributeName}())
+    foreach (${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}element, ${qtAttribute}())
         [%- IF qtType.match('\*') %]
         c->add${attributeName.ucfirst}(dynamic_cast<${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}>(element->clone()));
         [%- ELSE %]
         c->add${attributeName.ucfirst}(element);
         [%- END -%]
     [%- ELSIF qtType.match('\*') %]
-    if (${attributeName}())
-        c->set${attributeName.ucfirst}(dynamic_cast<${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}>(${attributeName}()->clone()));
+    if (${qtAttribute}())
+        c->set${attributeName.ucfirst}(dynamic_cast<${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}>(${qtAttribute}()->clone()));
     [%- ELSE %]
-    c->set${attributeName.ucfirst.remove("^Is")}(${attributeName}());
+    c->set${attributeName.ucfirst.remove("^Is")}(${qtAttribute}());
     [%- END -%]
 [%- END %]
 [%- END -%]

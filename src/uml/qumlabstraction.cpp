@@ -71,7 +71,8 @@ QUmlAbstraction::QUmlAbstraction(bool createQObject) :
 QUmlAbstraction::~QUmlAbstraction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -121,7 +122,7 @@ void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
         removeOwnedElement(_mapping);
 
         _mapping = mapping;
-        if (mapping->asQObject() && this->asQObject())
+        if (mapping && mapping->asQObject() && this->asQObject())
             QObject::connect(mapping->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMapping()));
         mapping->asQObject()->setParent(this->asQObject());
 

@@ -67,7 +67,8 @@ QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQObject) :
 QUmlLinkEndCreationData::~QUmlLinkEndCreationData()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -107,7 +108,7 @@ void QUmlLinkEndCreationData::setInsertAt(QUmlInputPin *insertAt)
 
     if (_insertAt != insertAt) {
         _insertAt = insertAt;
-        if (insertAt->asQObject() && this->asQObject())
+        if (insertAt && insertAt->asQObject() && this->asQObject())
             QObject::connect(insertAt->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInsertAt()));
     }
 }

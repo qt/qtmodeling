@@ -73,7 +73,8 @@ QUmlInformationFlow::QUmlInformationFlow(bool createQObject)
 QUmlInformationFlow::~QUmlInformationFlow()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -128,7 +129,7 @@ void QUmlInformationFlow::addConveyed(QUmlClassifier *conveyed)
 
     if (!_conveyed.contains(conveyed)) {
         _conveyed.insert(conveyed);
-        if (conveyed->asQObject() && this->asQObject())
+        if (conveyed && conveyed->asQObject() && this->asQObject())
             QObject::connect(conveyed->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConveyed(QObject *)));
     }
 }
@@ -158,7 +159,7 @@ void QUmlInformationFlow::addInformationSource(QUmlNamedElement *informationSour
 
     if (!_informationSource.contains(informationSource)) {
         _informationSource.insert(informationSource);
-        if (informationSource->asQObject() && this->asQObject())
+        if (informationSource && informationSource->asQObject() && this->asQObject())
             QObject::connect(informationSource->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInformationSource(QObject *)));
 
         // Adjust subsetted properties
@@ -194,7 +195,7 @@ void QUmlInformationFlow::addInformationTarget(QUmlNamedElement *informationTarg
 
     if (!_informationTarget.contains(informationTarget)) {
         _informationTarget.insert(informationTarget);
-        if (informationTarget->asQObject() && this->asQObject())
+        if (informationTarget && informationTarget->asQObject() && this->asQObject())
             QObject::connect(informationTarget->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInformationTarget(QObject *)));
 
         // Adjust subsetted properties
@@ -230,7 +231,7 @@ void QUmlInformationFlow::addRealization(QUmlRelationship *realization)
 
     if (!_realization.contains(realization)) {
         _realization.insert(realization);
-        if (realization->asQObject() && this->asQObject())
+        if (realization && realization->asQObject() && this->asQObject())
             QObject::connect(realization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealization(QObject *)));
     }
 }
@@ -260,7 +261,7 @@ void QUmlInformationFlow::addRealizingActivityEdge(QUmlActivityEdge *realizingAc
 
     if (!_realizingActivityEdge.contains(realizingActivityEdge)) {
         _realizingActivityEdge.insert(realizingActivityEdge);
-        if (realizingActivityEdge->asQObject() && this->asQObject())
+        if (realizingActivityEdge && realizingActivityEdge->asQObject() && this->asQObject())
             QObject::connect(realizingActivityEdge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealizingActivityEdge(QObject *)));
     }
 }
@@ -290,7 +291,7 @@ void QUmlInformationFlow::addRealizingConnector(QUmlConnector *realizingConnecto
 
     if (!_realizingConnector.contains(realizingConnector)) {
         _realizingConnector.insert(realizingConnector);
-        if (realizingConnector->asQObject() && this->asQObject())
+        if (realizingConnector && realizingConnector->asQObject() && this->asQObject())
             QObject::connect(realizingConnector->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealizingConnector(QObject *)));
     }
 }
@@ -320,7 +321,7 @@ void QUmlInformationFlow::addRealizingMessage(QUmlMessage *realizingMessage)
 
     if (!_realizingMessage.contains(realizingMessage)) {
         _realizingMessage.insert(realizingMessage);
-        if (realizingMessage->asQObject() && this->asQObject())
+        if (realizingMessage && realizingMessage->asQObject() && this->asQObject())
             QObject::connect(realizingMessage->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealizingMessage(QObject *)));
     }
 }

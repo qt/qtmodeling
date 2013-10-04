@@ -246,7 +246,7 @@ void QUmlBehavior::addOwnedParameter(QUmlParameter *ownedParameter)
 
     if (!_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.append(ownedParameter);
-        if (ownedParameter->asQObject() && this->asQObject())
+        if (ownedParameter && ownedParameter->asQObject() && this->asQObject())
             QObject::connect(ownedParameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameter(QObject *)));
         ownedParameter->asQObject()->setParent(this->asQObject());
 
@@ -285,7 +285,7 @@ void QUmlBehavior::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 
     if (!_ownedParameterSet.contains(ownedParameterSet)) {
         _ownedParameterSet.insert(ownedParameterSet);
-        if (ownedParameterSet->asQObject() && this->asQObject())
+        if (ownedParameterSet && ownedParameterSet->asQObject() && this->asQObject())
             QObject::connect(ownedParameterSet->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameterSet(QObject *)));
         ownedParameterSet->asQObject()->setParent(this->asQObject());
 
@@ -324,7 +324,7 @@ void QUmlBehavior::addPostcondition(QUmlConstraint *postcondition)
 
     if (!_postcondition.contains(postcondition)) {
         _postcondition.insert(postcondition);
-        if (postcondition->asQObject() && this->asQObject())
+        if (postcondition && postcondition->asQObject() && this->asQObject())
             QObject::connect(postcondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePostcondition(QObject *)));
         postcondition->asQObject()->setParent(this->asQObject());
 
@@ -363,7 +363,7 @@ void QUmlBehavior::addPrecondition(QUmlConstraint *precondition)
 
     if (!_precondition.contains(precondition)) {
         _precondition.insert(precondition);
-        if (precondition->asQObject() && this->asQObject())
+        if (precondition && precondition->asQObject() && this->asQObject())
             QObject::connect(precondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePrecondition(QObject *)));
         precondition->asQObject()->setParent(this->asQObject());
 
@@ -402,7 +402,7 @@ void QUmlBehavior::addRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 
     if (!_redefinedBehavior.contains(redefinedBehavior)) {
         _redefinedBehavior.insert(redefinedBehavior);
-        if (redefinedBehavior->asQObject() && this->asQObject())
+        if (redefinedBehavior && redefinedBehavior->asQObject() && this->asQObject())
             QObject::connect(redefinedBehavior->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedBehavior(QObject *)));
 
         // Adjust subsetted properties
@@ -438,7 +438,7 @@ void QUmlBehavior::setSpecification(QUmlBehavioralFeature *specification)
 
     if (_specification != specification) {
         _specification = specification;
-        if (specification->asQObject() && this->asQObject())
+        if (specification && specification->asQObject() && this->asQObject())
             QObject::connect(specification->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecification()));
     }
 }

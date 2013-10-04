@@ -88,7 +88,8 @@ QUmlArtifact::QUmlArtifact(bool createQObject)
 QUmlArtifact::~QUmlArtifact()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -188,7 +189,7 @@ void QUmlArtifact::addManifestation(QUmlManifestation *manifestation)
 
     if (!_manifestation.contains(manifestation)) {
         _manifestation.insert(manifestation);
-        if (manifestation->asQObject() && this->asQObject())
+        if (manifestation && manifestation->asQObject() && this->asQObject())
             QObject::connect(manifestation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeManifestation(QObject *)));
         manifestation->asQObject()->setParent(this->asQObject());
 
@@ -229,7 +230,7 @@ void QUmlArtifact::addNestedArtifact(QUmlArtifact *nestedArtifact)
 
     if (!_nestedArtifact.contains(nestedArtifact)) {
         _nestedArtifact.insert(nestedArtifact);
-        if (nestedArtifact->asQObject() && this->asQObject())
+        if (nestedArtifact && nestedArtifact->asQObject() && this->asQObject())
             QObject::connect(nestedArtifact->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNestedArtifact(QObject *)));
         nestedArtifact->asQObject()->setParent(this->asQObject());
 
@@ -268,7 +269,7 @@ void QUmlArtifact::addOwnedAttribute(QUmlProperty *ownedAttribute)
 
     if (!_ownedAttribute.contains(ownedAttribute)) {
         _ownedAttribute.append(ownedAttribute);
-        if (ownedAttribute->asQObject() && this->asQObject())
+        if (ownedAttribute && ownedAttribute->asQObject() && this->asQObject())
             QObject::connect(ownedAttribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedAttribute(QObject *)));
         ownedAttribute->asQObject()->setParent(this->asQObject());
 
@@ -309,7 +310,7 @@ void QUmlArtifact::addOwnedOperation(QUmlOperation *ownedOperation)
 
     if (!_ownedOperation.contains(ownedOperation)) {
         _ownedOperation.append(ownedOperation);
-        if (ownedOperation->asQObject() && this->asQObject())
+        if (ownedOperation && ownedOperation->asQObject() && this->asQObject())
             QObject::connect(ownedOperation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedOperation(QObject *)));
         ownedOperation->asQObject()->setParent(this->asQObject());
 

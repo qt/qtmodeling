@@ -73,7 +73,8 @@ QUmlGeneralizationSet::QUmlGeneralizationSet(bool createQObject) :
 QUmlGeneralizationSet::~QUmlGeneralizationSet()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -120,7 +121,7 @@ void QUmlGeneralizationSet::addGeneralization(QUmlGeneralization *generalization
 
     if (!_generalization.contains(generalization)) {
         _generalization.insert(generalization);
-        if (generalization->asQObject() && this->asQObject())
+        if (generalization && generalization->asQObject() && this->asQObject())
             QObject::connect(generalization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeGeneralization(QObject *)));
 
         // Adjust opposite properties
@@ -198,7 +199,7 @@ void QUmlGeneralizationSet::setPowertype(QUmlClassifier *powertype)
 
     if (_powertype != powertype) {
         _powertype = powertype;
-        if (powertype->asQObject() && this->asQObject())
+        if (powertype && powertype->asQObject() && this->asQObject())
             QObject::connect(powertype->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPowertype()));
     }
 }

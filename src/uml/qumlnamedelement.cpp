@@ -96,7 +96,7 @@ void QUmlNamedElement::addClientDependency(QUmlDependency *clientDependency)
 
     if (!_clientDependency.contains(clientDependency)) {
         _clientDependency.insert(clientDependency);
-        if (clientDependency->asQObject() && this->asQObject())
+        if (clientDependency && clientDependency->asQObject() && this->asQObject())
             QObject::connect(clientDependency->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClientDependency(QObject *)));
 
         // Adjust opposite properties
@@ -158,7 +158,7 @@ void QUmlNamedElement::setNameExpression(QUmlStringExpression *nameExpression)
         removeOwnedElement(_nameExpression);
 
         _nameExpression = nameExpression;
-        if (nameExpression->asQObject() && this->asQObject())
+        if (nameExpression && nameExpression->asQObject() && this->asQObject())
             QObject::connect(nameExpression->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setNameExpression()));
         nameExpression->asQObject()->setParent(this->asQObject());
 

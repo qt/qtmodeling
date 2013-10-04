@@ -89,7 +89,8 @@ QUmlEnumeration::QUmlEnumeration(bool createQObject) :
 QUmlEnumeration::~QUmlEnumeration()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -167,7 +168,7 @@ void QUmlEnumeration::addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 
     if (!_ownedLiteral.contains(ownedLiteral)) {
         _ownedLiteral.append(ownedLiteral);
-        if (ownedLiteral->asQObject() && this->asQObject())
+        if (ownedLiteral && ownedLiteral->asQObject() && this->asQObject())
             QObject::connect(ownedLiteral->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedLiteral(QObject *)));
         ownedLiteral->asQObject()->setParent(this->asQObject());
 

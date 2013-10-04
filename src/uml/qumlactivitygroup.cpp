@@ -102,7 +102,7 @@ void QUmlActivityGroup::addContainedEdge(QUmlActivityEdge *containedEdge)
 
     if (!_containedEdge.contains(containedEdge)) {
         _containedEdge.insert(containedEdge);
-        if (containedEdge->asQObject() && this->asQObject())
+        if (containedEdge && containedEdge->asQObject() && this->asQObject())
             QObject::connect(containedEdge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeContainedEdge(QObject *)));
 
         // Adjust opposite properties
@@ -142,7 +142,7 @@ void QUmlActivityGroup::addContainedNode(QUmlActivityNode *containedNode)
 
     if (!_containedNode.contains(containedNode)) {
         _containedNode.insert(containedNode);
-        if (containedNode->asQObject() && this->asQObject())
+        if (containedNode && containedNode->asQObject() && this->asQObject())
             QObject::connect(containedNode->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeContainedNode(QObject *)));
 
         // Adjust opposite properties
@@ -184,7 +184,7 @@ void QUmlActivityGroup::setInActivity(QUmlActivity *inActivity)
         // Adjust subsetted properties
 
         _inActivity = inActivity;
-        if (inActivity->asQObject() && this->asQObject())
+        if (inActivity && inActivity->asQObject() && this->asQObject())
             QObject::connect(inActivity->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInActivity()));
 
         // Adjust subsetted properties
@@ -208,7 +208,7 @@ void QUmlActivityGroup::addSubgroup(QUmlActivityGroup *subgroup)
 
     if (!_subgroup.contains(subgroup)) {
         _subgroup.insert(subgroup);
-        if (subgroup->asQObject() && this->asQObject())
+        if (subgroup && subgroup->asQObject() && this->asQObject())
             QObject::connect(subgroup->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubgroup(QObject *)));
         subgroup->asQObject()->setParent(this->asQObject());
 
@@ -249,7 +249,7 @@ void QUmlActivityGroup::setSuperGroup(QUmlActivityGroup *superGroup)
         // Adjust subsetted properties
 
         _superGroup = superGroup;
-        if (superGroup->asQObject() && this->asQObject())
+        if (superGroup && superGroup->asQObject() && this->asQObject())
             QObject::connect(superGroup->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSuperGroup()));
 
         // Adjust subsetted properties
@@ -281,13 +281,13 @@ void QUmlActivityGroup::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::DocumentationRole] = QStringLiteral("Groups immediately contained in the group.");
     QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-superGroup");
 
     QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::IsDerivedUnionRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::DocumentationRole] = QStringLiteral("Group immediately containing the group.");
     QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-subgroup");
 
 }
 

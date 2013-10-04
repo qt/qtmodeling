@@ -407,7 +407,7 @@ void Q${namespace}${className}::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::AggregationRole] = QStringLiteral("composite");
 [%- ELSE %]
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::AggregationRole] = QStringLiteral("none");
-[%- END -%]
+[%- END %]
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::IsDerivedUnionRole] = [% IF attribute.findvalue("@isDerivedUnion") == "true" %]true[% ELSE %]false[% END %];
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::DocumentationRole] = QStringLiteral("${attribute.findvalue("ownedComment/body/text()")}");
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("${attribute.findvalue("@redefinedProperty")}");

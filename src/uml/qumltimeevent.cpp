@@ -71,7 +71,8 @@ QUmlTimeEvent::QUmlTimeEvent(bool createQObject) :
 QUmlTimeEvent::~QUmlTimeEvent()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -137,7 +138,7 @@ void QUmlTimeEvent::setWhen(QUmlTimeExpression *when)
         removeOwnedElement(_when);
 
         _when = when;
-        if (when->asQObject() && this->asQObject())
+        if (when && when->asQObject() && this->asQObject())
             QObject::connect(when->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setWhen()));
         when->asQObject()->setParent(this->asQObject());
 

@@ -87,7 +87,10 @@ const QSet<QObject *> QUmlLiteralRealObject::ownedElement() const
 
 QObject *QUmlLiteralRealObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -107,12 +110,18 @@ QString QUmlLiteralRealObject::name() const
 
 QObject *QUmlLiteralRealObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlLiteralRealObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlLiteralRealObject::qualifiedName() const
@@ -123,19 +132,28 @@ QString QUmlLiteralRealObject::qualifiedName() const
 
 QObject *QUmlLiteralRealObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlLiteralRealObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlLiteralRealObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -289,7 +307,7 @@ void QUmlLiteralRealObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->setName(name);
 }
-    
+
 void QUmlLiteralRealObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -304,7 +322,7 @@ void QUmlLiteralRealObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlLiteralRealObject::setType(QObject *type)
 {
@@ -328,14 +346,20 @@ void QUmlLiteralRealObject::setTemplateParameter(QObject *templateParameter)
 void QUmlLiteralRealObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlLiteralRealObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [LiteralReal]
 
 void QUmlLiteralRealObject::setValue(double value)
 {
     qmodelingobjectproperty_cast<QUmlLiteralReal *>(this)->setValue(value);
 }
-    
+
 QT_END_NAMESPACE
 

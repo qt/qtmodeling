@@ -87,19 +87,28 @@ const QSet<QObject *> QUmlConstraintObject::ownedElement() const
 
 QObject *QUmlConstraintObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlConstraintObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlConstraintObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -119,12 +128,18 @@ QString QUmlConstraintObject::name() const
 
 QObject *QUmlConstraintObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlConstraintObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlConstraintObject::qualifiedName() const
@@ -150,12 +165,18 @@ const QList<QObject *> QUmlConstraintObject::constrainedElement() const
 
 QObject *QUmlConstraintObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->context()->asQObject();
 }
 
 QObject *QUmlConstraintObject::specification() const
 {
-    return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->specification()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConstraint *>(this)->specification())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->specification()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -268,7 +289,7 @@ void QUmlConstraintObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setName(name);
 }
-    
+
 void QUmlConstraintObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -283,13 +304,19 @@ void QUmlConstraintObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlConstraint *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlConstraintObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlConstraint *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Constraint]
 
 void QUmlConstraintObject::addConstrainedElement(QObject *constrainedElement)

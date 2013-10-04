@@ -66,7 +66,8 @@ QUmlProfileApplication::QUmlProfileApplication(bool createQObject) :
 QUmlProfileApplication::~QUmlProfileApplication()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -105,7 +106,7 @@ void QUmlProfileApplication::setAppliedProfile(QUmlProfile *appliedProfile)
         removeTarget(_appliedProfile);
 
         _appliedProfile = appliedProfile;
-        if (appliedProfile->asQObject() && this->asQObject())
+        if (appliedProfile && appliedProfile->asQObject() && this->asQObject())
             QObject::connect(appliedProfile->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAppliedProfile()));
 
         // Adjust subsetted properties
@@ -134,7 +135,7 @@ void QUmlProfileApplication::setApplyingPackage(QUmlPackage *applyingPackage)
         removeSource(_applyingPackage);
 
         _applyingPackage = applyingPackage;
-        if (applyingPackage->asQObject() && this->asQObject())
+        if (applyingPackage && applyingPackage->asQObject() && this->asQObject())
             QObject::connect(applyingPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setApplyingPackage()));
 
         // Adjust subsetted properties

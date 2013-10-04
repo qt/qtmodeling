@@ -69,7 +69,8 @@ QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQObject) :
 QUmlGeneralOrdering::~QUmlGeneralOrdering()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -110,7 +111,7 @@ void QUmlGeneralOrdering::setAfter(QUmlOccurrenceSpecification *after)
 
     if (_after != after) {
         _after = after;
-        if (after->asQObject() && this->asQObject())
+        if (after && after->asQObject() && this->asQObject())
             QObject::connect(after->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAfter()));
     }
 }
@@ -131,7 +132,7 @@ void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
 
     if (_before != before) {
         _before = before;
-        if (before->asQObject() && this->asQObject())
+        if (before && before->asQObject() && this->asQObject())
             QObject::connect(before->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBefore()));
     }
 }

@@ -89,7 +89,10 @@ const QSet<QObject *> QUmlStateInvariantObject::ownedElement() const
 
 QObject *QUmlStateInvariantObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,12 +112,18 @@ QString QUmlStateInvariantObject::name() const
 
 QObject *QUmlStateInvariantObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlStateInvariantObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlStateInvariantObject::qualifiedName() const
@@ -131,12 +140,18 @@ QtUml::VisibilityKind QUmlStateInvariantObject::visibility() const
 
 QObject *QUmlStateInvariantObject::enclosingInteraction() const
 {
-    return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->enclosingInteraction()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->enclosingInteraction())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->enclosingInteraction()->asQObject();
 }
 
 QObject *QUmlStateInvariantObject::enclosingOperand() const
 {
-    return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->enclosingOperand()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->enclosingOperand())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->enclosingOperand()->asQObject();
 }
 
 const QSet<QObject *> QUmlStateInvariantObject::generalOrdering() const
@@ -151,12 +166,18 @@ const QSet<QObject *> QUmlStateInvariantObject::generalOrdering() const
 
 QObject *QUmlStateInvariantObject::covered() const
 {
-    return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->covered()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->covered())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->covered()->asQObject();
 }
 
 QObject *QUmlStateInvariantObject::invariant() const
 {
-    return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->invariant()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->invariant())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->invariant()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -245,7 +266,7 @@ void QUmlStateInvariantObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->setName(name);
 }
-    
+
 void QUmlStateInvariantObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -260,12 +281,12 @@ void QUmlStateInvariantObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlStateInvariantObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlStateInvariantObject::setEnclosingInteraction(QObject *enclosingInteraction)

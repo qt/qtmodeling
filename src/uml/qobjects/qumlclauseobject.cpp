@@ -81,7 +81,10 @@ const QSet<QObject *> QUmlClauseObject::ownedElement() const
 
 QObject *QUmlClauseObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlClause *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClause *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClause *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Clause]
@@ -104,7 +107,10 @@ const QList<QObject *> QUmlClauseObject::bodyOutput() const
 
 QObject *QUmlClauseObject::decider() const
 {
-    return qmodelingobjectproperty_cast<QUmlClause *>(this)->decider()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClause *>(this)->decider())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClause *>(this)->decider()->asQObject();
 }
 
 const QSet<QObject *> QUmlClauseObject::predecessorClause() const

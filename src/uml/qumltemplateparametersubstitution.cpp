@@ -68,7 +68,8 @@ QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool create
 QUmlTemplateParameterSubstitution::~QUmlTemplateParameterSubstitution()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -107,7 +108,7 @@ void QUmlTemplateParameterSubstitution::setActual(QUmlParameterableElement *actu
 
     if (_actual != actual) {
         _actual = actual;
-        if (actual->asQObject() && this->asQObject())
+        if (actual && actual->asQObject() && this->asQObject())
             QObject::connect(actual->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setActual()));
     }
 }
@@ -128,7 +129,7 @@ void QUmlTemplateParameterSubstitution::setFormal(QUmlTemplateParameter *formal)
 
     if (_formal != formal) {
         _formal = formal;
-        if (formal->asQObject() && this->asQObject())
+        if (formal && formal->asQObject() && this->asQObject())
             QObject::connect(formal->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setFormal()));
     }
 }
@@ -152,7 +153,7 @@ void QUmlTemplateParameterSubstitution::setOwnedActual(QUmlParameterableElement 
         removeOwnedElement(_ownedActual);
 
         _ownedActual = ownedActual;
-        if (ownedActual->asQObject() && this->asQObject())
+        if (ownedActual && ownedActual->asQObject() && this->asQObject())
             QObject::connect(ownedActual->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedActual()));
         ownedActual->asQObject()->setParent(this->asQObject());
 
@@ -182,7 +183,7 @@ void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *
         // Adjust subsetted properties
 
         _templateBinding = templateBinding;
-        if (templateBinding->asQObject() && this->asQObject())
+        if (templateBinding && templateBinding->asQObject() && this->asQObject())
             QObject::connect(templateBinding->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateBinding()));
 
         // Adjust subsetted properties

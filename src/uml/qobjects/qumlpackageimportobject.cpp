@@ -81,7 +81,10 @@ const QSet<QObject *> QUmlPackageImportObject::ownedElement() const
 
 QObject *QUmlPackageImportObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -116,12 +119,18 @@ const QSet<QObject *> QUmlPackageImportObject::target() const
 
 QObject *QUmlPackageImportObject::importedPackage() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->importedPackage()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->importedPackage())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->importedPackage()->asQObject();
 }
 
 QObject *QUmlPackageImportObject::importingNamespace() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->importingNamespace()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->importingNamespace())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->importingNamespace()->asQObject();
 }
 
 QtUml::VisibilityKind QUmlPackageImportObject::visibility() const
@@ -220,7 +229,13 @@ void QUmlPackageImportObject::setImportingNamespace(QObject *importingNamespace)
 void QUmlPackageImportObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlPackageImportObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 QT_END_NAMESPACE
 

@@ -122,7 +122,7 @@ void QUmlExecutableNode::addHandler(QUmlExceptionHandler *handler)
 
     if (!_handler.contains(handler)) {
         _handler.insert(handler);
-        if (handler->asQObject() && this->asQObject())
+        if (handler && handler->asQObject() && this->asQObject())
             QObject::connect(handler->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeHandler(QObject *)));
         handler->asQObject()->setParent(this->asQObject());
 

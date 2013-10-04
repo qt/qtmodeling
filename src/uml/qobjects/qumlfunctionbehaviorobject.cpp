@@ -117,7 +117,10 @@ const QSet<QObject *> QUmlFunctionBehaviorObject::ownedElement() const
 
 QObject *QUmlFunctionBehaviorObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -137,12 +140,18 @@ QString QUmlFunctionBehaviorObject::name() const
 
 QObject *QUmlFunctionBehaviorObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlFunctionBehaviorObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlFunctionBehaviorObject::qualifiedName() const
@@ -203,7 +212,10 @@ const QSet<QObject *> QUmlFunctionBehaviorObject::packageImport() const
 
 QObject *QUmlFunctionBehaviorObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -216,7 +228,10 @@ QtUml::VisibilityKind QUmlFunctionBehaviorObject::visibility() const
 
 QObject *QUmlFunctionBehaviorObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -301,7 +316,10 @@ bool QUmlFunctionBehaviorObject::isFinalSpecialization() const
 
 QObject *QUmlFunctionBehaviorObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlFunctionBehaviorObject::ownedUseCase() const
@@ -330,7 +348,10 @@ const QSet<QObject *> QUmlFunctionBehaviorObject::redefinedClassifier() const
 
 QObject *QUmlFunctionBehaviorObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlFunctionBehaviorObject::substitution() const
@@ -343,7 +364,10 @@ const QSet<QObject *> QUmlFunctionBehaviorObject::substitution() const
 
 QObject *QUmlFunctionBehaviorObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlFunctionBehaviorObject::useCase() const
@@ -394,7 +418,10 @@ const QSet<QObject *> QUmlFunctionBehaviorObject::ownedPort() const
 
 QObject *QUmlFunctionBehaviorObject::classifierBehavior() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->classifierBehavior()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->classifierBehavior())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->classifierBehavior()->asQObject();
 }
 
 const QSet<QObject *> QUmlFunctionBehaviorObject::interfaceRealization() const
@@ -477,7 +504,10 @@ const QSet<QObject *> QUmlFunctionBehaviorObject::superClass() const
 
 QObject *QUmlFunctionBehaviorObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->context()->asQObject();
 }
 
 bool QUmlFunctionBehaviorObject::isReentrant() const
@@ -527,7 +557,10 @@ const QSet<QObject *> QUmlFunctionBehaviorObject::redefinedBehavior() const
 
 QObject *QUmlFunctionBehaviorObject::specification() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->specification()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->specification())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->specification()->asQObject();
 }
 
 // OWNED ATTRIBUTES [OpaqueBehavior]
@@ -764,7 +797,7 @@ void QUmlFunctionBehaviorObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setName(name);
 }
-    
+
 void QUmlFunctionBehaviorObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -779,7 +812,7 @@ void QUmlFunctionBehaviorObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlFunctionBehaviorObject::addElementImport(QObject *elementImport)
 {
@@ -852,8 +885,14 @@ void QUmlFunctionBehaviorObject::setOwningTemplateParameter(QObject *owningTempl
 void QUmlFunctionBehaviorObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlFunctionBehaviorObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlFunctionBehaviorObject::setPackage(QObject *package)
@@ -866,8 +905,14 @@ void QUmlFunctionBehaviorObject::setPackage(QObject *package)
 void QUmlFunctionBehaviorObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlFunctionBehaviorObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlFunctionBehaviorObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -955,8 +1000,14 @@ void QUmlFunctionBehaviorObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlFunctionBehaviorObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlFunctionBehaviorObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlFunctionBehaviorObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
@@ -1108,13 +1159,25 @@ void QUmlFunctionBehaviorObject::removeExtension(QObject *extension)
 void QUmlFunctionBehaviorObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlFunctionBehaviorObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlFunctionBehaviorObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setActive(isActive);
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
-    
+
+void QUmlFunctionBehaviorObject::unsetActive()
+{
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("active"));
+}
+
 void QUmlFunctionBehaviorObject::addNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->addNestedClassifier(qmodelingobjectproperty_cast<QUmlClassifier *>(nestedClassifier));
@@ -1175,8 +1238,14 @@ void QUmlFunctionBehaviorObject::setContext(QObject *context)
 void QUmlFunctionBehaviorObject::setReentrant(bool isReentrant)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setReentrant(isReentrant);
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("reentrant");
 }
-    
+
+void QUmlFunctionBehaviorObject::unsetReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("reentrant"));
+}
+
 void QUmlFunctionBehaviorObject::addOwnedParameter(QObject *ownedParameter)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->addOwnedParameter(qmodelingobjectproperty_cast<QUmlParameter *>(ownedParameter));

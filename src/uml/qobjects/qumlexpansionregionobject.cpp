@@ -102,7 +102,10 @@ const QSet<QObject *> QUmlExpansionRegionObject::ownedElement() const
 
 QObject *QUmlExpansionRegionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -122,12 +125,18 @@ QString QUmlExpansionRegionObject::name() const
 
 QObject *QUmlExpansionRegionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlExpansionRegionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlExpansionRegionObject::qualifiedName() const
@@ -191,7 +200,10 @@ const QSet<QObject *> QUmlExpansionRegionObject::inPartition() const
 
 QObject *QUmlExpansionRegionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlExpansionRegionObject::incoming() const
@@ -232,7 +244,10 @@ const QSet<QObject *> QUmlExpansionRegionObject::handler() const
 
 QObject *QUmlExpansionRegionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlExpansionRegionObject::input() const
@@ -350,14 +365,20 @@ const QSet<QObject *> QUmlExpansionRegionObject::subgroup() const
 
 QObject *QUmlExpansionRegionObject::superGroup() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->superGroup()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->superGroup())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->superGroup()->asQObject();
 }
 
 // OWNED ATTRIBUTES [StructuredActivityNode]
 
 QObject *QUmlExpansionRegionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlExpansionRegionObject::edge() const
@@ -560,7 +581,7 @@ void QUmlExpansionRegionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setName(name);
 }
-    
+
 void QUmlExpansionRegionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -575,19 +596,25 @@ void QUmlExpansionRegionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlExpansionRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlExpansionRegionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlExpansionRegionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlExpansionRegionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -707,8 +734,14 @@ void QUmlExpansionRegionObject::removeInput(QObject *input)
 void QUmlExpansionRegionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlExpansionRegionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlExpansionRegionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -858,8 +891,14 @@ void QUmlExpansionRegionObject::removeEdge(QObject *edge)
 void QUmlExpansionRegionObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setMustIsolate(mustIsolate);
+    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties() << QStringLiteral("mustIsolate");
 }
-    
+
+void QUmlExpansionRegionObject::unsetMustIsolate()
+{
+    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("mustIsolate"));
+}
+
 void QUmlExpansionRegionObject::addNode(QObject *node)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->addNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(node));
@@ -915,8 +954,14 @@ void QUmlExpansionRegionObject::removeInputElement(QObject *inputElement)
 void QUmlExpansionRegionObject::setMode(QtUml::ExpansionKind mode)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setMode(mode);
+    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties() << QStringLiteral("mode");
 }
-    
+
+void QUmlExpansionRegionObject::unsetMode()
+{
+    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("mode"));
+}
+
 void QUmlExpansionRegionObject::addOutputElement(QObject *outputElement)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->addOutputElement(qmodelingobjectproperty_cast<QUmlExpansionNode *>(outputElement));

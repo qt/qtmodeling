@@ -87,19 +87,28 @@ const QSet<QObject *> QUmlChangeEventObject::ownedElement() const
 
 QObject *QUmlChangeEventObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlChangeEventObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlChangeEventObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -119,12 +128,18 @@ QString QUmlChangeEventObject::name() const
 
 QObject *QUmlChangeEventObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlChangeEventObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlChangeEventObject::qualifiedName() const
@@ -142,7 +157,10 @@ QtUml::VisibilityKind QUmlChangeEventObject::visibility() const
 
 QObject *QUmlChangeEventObject::changeExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->changeExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->changeExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->changeExpression()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -255,7 +273,7 @@ void QUmlChangeEventObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->setName(name);
 }
-    
+
 void QUmlChangeEventObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -270,13 +288,19 @@ void QUmlChangeEventObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlChangeEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlChangeEventObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [ChangeEvent]
 
 void QUmlChangeEventObject::setChangeExpression(QObject *changeExpression)

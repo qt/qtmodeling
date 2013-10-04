@@ -82,7 +82,10 @@ const QSet<QObject *> QUmlTemplateBindingObject::ownedElement() const
 
 QObject *QUmlTemplateBindingObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -117,7 +120,10 @@ const QSet<QObject *> QUmlTemplateBindingObject::target() const
 
 QObject *QUmlTemplateBindingObject::boundElement() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->boundElement()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->boundElement())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->boundElement()->asQObject();
 }
 
 const QSet<QObject *> QUmlTemplateBindingObject::parameterSubstitution() const
@@ -130,7 +136,10 @@ const QSet<QObject *> QUmlTemplateBindingObject::parameterSubstitution() const
 
 QObject *QUmlTemplateBindingObject::signature() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->signature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->signature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->signature()->asQObject();
 }
 
 // OPERATIONS [Element]

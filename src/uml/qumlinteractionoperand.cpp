@@ -76,7 +76,8 @@ QUmlInteractionOperand::QUmlInteractionOperand(bool createQObject) :
 QUmlInteractionOperand::~QUmlInteractionOperand()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -131,7 +132,7 @@ void QUmlInteractionOperand::addFragment(QUmlInteractionFragment *fragment)
 
     if (!_fragment.contains(fragment)) {
         _fragment.append(fragment);
-        if (fragment->asQObject() && this->asQObject())
+        if (fragment && fragment->asQObject() && this->asQObject())
             QObject::connect(fragment->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFragment(QObject *)));
         fragment->asQObject()->setParent(this->asQObject());
 
@@ -183,7 +184,7 @@ void QUmlInteractionOperand::setGuard(QUmlInteractionConstraint *guard)
         removeOwnedElement(_guard);
 
         _guard = guard;
-        if (guard->asQObject() && this->asQObject())
+        if (guard && guard->asQObject() && this->asQObject())
             QObject::connect(guard->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setGuard()));
         guard->asQObject()->setParent(this->asQObject());
 

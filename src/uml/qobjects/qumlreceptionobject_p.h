@@ -68,29 +68,29 @@ class Q_UML_EXPORT QUmlReceptionObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
     Q_PROPERTY(QSet<QObject *> member READ member)
     Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
     Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
     Q_PROPERTY(QSet<QObject *> packageImport READ packageImport)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
     // Properties [Feature]
     Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifier)
-    Q_PROPERTY(bool isStatic READ isStatic)
+    Q_PROPERTY(bool isStatic READ isStatic RESET unsetStatic)
 
     // Properties [BehavioralFeature]
-    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency)
-    Q_PROPERTY(bool isAbstract READ isAbstract)
+    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency RESET unsetConcurrency)
+    Q_PROPERTY(bool isAbstract READ isAbstract RESET unsetAbstract)
     Q_PROPERTY(QSet<QObject *> method READ method)
     Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameter)
     Q_PROPERTY(QSet<QObject *> ownedParameterSet READ ownedParameterSet)
@@ -200,6 +200,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -209,10 +210,13 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addFeaturingClassifier(QObject *featuringClassifier);
     void Q_DECL_HIDDEN removeFeaturingClassifier(QObject *featuringClassifier);
     void setStatic(bool isStatic);
+    void unsetStatic();
 
     // Slots for owned attributes [BehavioralFeature]
     void setConcurrency(QtUml::CallConcurrencyKind concurrency);
+    void unsetConcurrency();
     void setAbstract(bool isAbstract);
+    void unsetAbstract();
     void addMethod(QObject *method);
     void removeMethod(QObject *method);
     void addOwnedParameter(QObject *ownedParameter);

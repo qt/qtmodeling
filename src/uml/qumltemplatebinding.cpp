@@ -66,7 +66,8 @@ QUmlTemplateBinding::QUmlTemplateBinding(bool createQObject) :
 QUmlTemplateBinding::~QUmlTemplateBinding()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -106,7 +107,7 @@ void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
         removeSource(_boundElement);
 
         _boundElement = boundElement;
-        if (boundElement->asQObject() && this->asQObject())
+        if (boundElement && boundElement->asQObject() && this->asQObject())
             QObject::connect(boundElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBoundElement()));
 
         // Adjust subsetted properties
@@ -133,7 +134,7 @@ void QUmlTemplateBinding::addParameterSubstitution(QUmlTemplateParameterSubstitu
 
     if (!_parameterSubstitution.contains(parameterSubstitution)) {
         _parameterSubstitution.insert(parameterSubstitution);
-        if (parameterSubstitution->asQObject() && this->asQObject())
+        if (parameterSubstitution && parameterSubstitution->asQObject() && this->asQObject())
             QObject::connect(parameterSubstitution->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameterSubstitution(QObject *)));
         parameterSubstitution->asQObject()->setParent(this->asQObject());
 
@@ -185,7 +186,7 @@ void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
         removeTarget(_signature);
 
         _signature = signature;
-        if (signature->asQObject() && this->asQObject())
+        if (signature && signature->asQObject() && this->asQObject())
             QObject::connect(signature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSignature()));
 
         // Adjust subsetted properties

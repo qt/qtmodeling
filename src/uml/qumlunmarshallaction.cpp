@@ -81,7 +81,8 @@ QUmlUnmarshallAction::QUmlUnmarshallAction(bool createQObject) :
 QUmlUnmarshallAction::~QUmlUnmarshallAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -149,7 +150,7 @@ void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object->asQObject() && this->asQObject())
+        if (object && object->asQObject() && this->asQObject())
             QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
         object->asQObject()->setParent(this->asQObject());
 
@@ -176,7 +177,7 @@ void QUmlUnmarshallAction::addResult(QUmlOutputPin *result)
 
     if (!_result.contains(result)) {
         _result.insert(result);
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
         result->asQObject()->setParent(this->asQObject());
 
@@ -215,7 +216,7 @@ void QUmlUnmarshallAction::setUnmarshallType(QUmlClassifier *unmarshallType)
 
     if (_unmarshallType != unmarshallType) {
         _unmarshallType = unmarshallType;
-        if (unmarshallType->asQObject() && this->asQObject())
+        if (unmarshallType && unmarshallType->asQObject() && this->asQObject())
             QObject::connect(unmarshallType->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setUnmarshallType()));
     }
 }

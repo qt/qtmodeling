@@ -72,7 +72,8 @@ QUmlConnector::QUmlConnector(bool createQObject) :
 QUmlConnector::~QUmlConnector()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -119,7 +120,7 @@ void QUmlConnector::addContract(QUmlBehavior *contract)
 
     if (!_contract.contains(contract)) {
         _contract.insert(contract);
-        if (contract->asQObject() && this->asQObject())
+        if (contract && contract->asQObject() && this->asQObject())
             QObject::connect(contract->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeContract(QObject *)));
     }
 }
@@ -149,7 +150,7 @@ void QUmlConnector::addEnd(QUmlConnectorEnd *end)
 
     if (!_end.contains(end)) {
         _end.append(end);
-        if (end->asQObject() && this->asQObject())
+        if (end && end->asQObject() && this->asQObject())
             QObject::connect(end->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEnd(QObject *)));
         end->asQObject()->setParent(this->asQObject());
 
@@ -212,7 +213,7 @@ void QUmlConnector::addRedefinedConnector(QUmlConnector *redefinedConnector)
 
     if (!_redefinedConnector.contains(redefinedConnector)) {
         _redefinedConnector.insert(redefinedConnector);
-        if (redefinedConnector->asQObject() && this->asQObject())
+        if (redefinedConnector && redefinedConnector->asQObject() && this->asQObject())
             QObject::connect(redefinedConnector->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedConnector(QObject *)));
 
         // Adjust subsetted properties
@@ -248,7 +249,7 @@ void QUmlConnector::setType(QUmlAssociation *type)
 
     if (_type != type) {
         _type = type;
-        if (type->asQObject() && this->asQObject())
+        if (type && type->asQObject() && this->asQObject())
             QObject::connect(type->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setType()));
     }
 }

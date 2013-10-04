@@ -68,28 +68,28 @@ class Q_UML_EXPORT QUmlPortObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [TypedElement]
     Q_PROPERTY(QObject * type READ type)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique)
-    Q_PROPERTY(int lower READ lower)
+    Q_PROPERTY(bool isOrdered READ isOrdered RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower RESET unsetLower STORED false)
     Q_PROPERTY(QObject * lowerValue READ lowerValue)
-    Q_PROPERTY(int upper READ upper)
+    Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
     Q_PROPERTY(QObject * upperValue READ upperValue)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
     // Properties [Feature]
     Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifier)
-    Q_PROPERTY(bool isStatic READ isStatic)
+    Q_PROPERTY(bool isStatic READ isStatic RESET unsetStatic)
 
     // Properties [StructuralFeature]
 
@@ -97,41 +97,41 @@ class Q_UML_EXPORT QUmlPortObject : public QObject
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
 
     // Properties [ConnectableElement]
-    Q_PROPERTY(QList<QObject *> end READ end)
+    Q_PROPERTY(QList<QObject *> end READ end STORED false)
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
 
     // Properties [DeploymentTarget]
-    Q_PROPERTY(QSet<QObject *> deployedElement READ deployedElement)
+    Q_PROPERTY(QSet<QObject *> deployedElement READ deployedElement STORED false)
     Q_PROPERTY(QSet<QObject *> deployment READ deployment)
 
     // Properties [Property]
-    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation)
+    Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation RESET unsetAggregation)
     Q_PROPERTY(QObject * association READ association)
     Q_PROPERTY(QObject * associationEnd READ associationEnd)
     Q_PROPERTY(QObject * class_ READ class_)
     Q_PROPERTY(QObject * datatype READ datatype)
-    Q_PROPERTY(QString default_ READ default_)
+    Q_PROPERTY(QString default_ READ default_ STORED false)
     Q_PROPERTY(QObject * defaultValue READ defaultValue)
     Q_PROPERTY(QObject * interface_ READ interface_)
-    Q_PROPERTY(bool isComposite READ isComposite)
-    Q_PROPERTY(bool isDerived READ isDerived)
-    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion)
-    Q_PROPERTY(bool isID READ isID)
-    Q_PROPERTY(bool isReadOnly READ isReadOnly)
-    Q_PROPERTY(QObject * opposite READ opposite)
+    Q_PROPERTY(bool isComposite READ isComposite RESET unsetComposite STORED false)
+    Q_PROPERTY(bool isDerived READ isDerived RESET unsetDerived)
+    Q_PROPERTY(bool isDerivedUnion READ isDerivedUnion RESET unsetDerivedUnion)
+    Q_PROPERTY(bool isID READ isID RESET unsetID)
+    Q_PROPERTY(bool isReadOnly READ isReadOnly RESET unsetReadOnly)
+    Q_PROPERTY(QObject * opposite READ opposite STORED false)
     Q_PROPERTY(QObject * owningAssociation READ owningAssociation)
     Q_PROPERTY(QList<QObject *> qualifier READ qualifier)
     Q_PROPERTY(QSet<QObject *> redefinedProperty READ redefinedProperty)
     Q_PROPERTY(QSet<QObject *> subsettedProperty READ subsettedProperty)
 
     // Properties [Port]
-    Q_PROPERTY(bool isBehavior READ isBehavior)
-    Q_PROPERTY(bool isConjugated READ isConjugated)
-    Q_PROPERTY(bool isService READ isService)
+    Q_PROPERTY(bool isBehavior READ isBehavior RESET unsetBehavior)
+    Q_PROPERTY(bool isConjugated READ isConjugated RESET unsetConjugated)
+    Q_PROPERTY(bool isService READ isService RESET unsetService)
     Q_PROPERTY(QObject * protocol READ protocol)
-    Q_PROPERTY(QSet<QObject *> provided READ provided)
+    Q_PROPERTY(QSet<QObject *> provided READ provided STORED false)
     Q_PROPERTY(QSet<QObject *> redefinedPort READ redefinedPort)
-    Q_PROPERTY(QSet<QObject *> required READ required)
+    Q_PROPERTY(QSet<QObject *> required READ required STORED false)
 
 public:
     Q_INVOKABLE explicit QUmlPortObject(QUmlPort *qModelingObject);
@@ -267,14 +267,19 @@ public Q_SLOTS:
 
     // Slots for owned attributes [MultiplicityElement]
     void setOrdered(bool isOrdered);
+    void unsetOrdered();
     void setUnique(bool isUnique);
+    void unsetUnique();
     void setLower(int lower);
+    void unsetLower();
     void setLowerValue(QObject *lowerValue = 0);
     void setUpper(int upper);
+    void unsetUpper();
     void setUpperValue(QObject *upperValue = 0);
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -284,6 +289,7 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addFeaturingClassifier(QObject *featuringClassifier);
     void Q_DECL_HIDDEN removeFeaturingClassifier(QObject *featuringClassifier);
     void setStatic(bool isStatic);
+    void unsetStatic();
 
     // Slots for owned attributes [StructuralFeature]
 
@@ -303,6 +309,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [Property]
     void setAggregation(QtUml::AggregationKind aggregation);
+    void unsetAggregation();
     void setAssociation(QObject *association = 0);
     void setAssociationEnd(QObject *associationEnd = 0);
     void setClass(QObject *class_ = 0);
@@ -311,10 +318,15 @@ public Q_SLOTS:
     void setDefaultValue(QObject *defaultValue = 0);
     void setInterface(QObject *interface_ = 0);
     void setComposite(bool isComposite);
+    void unsetComposite();
     void setDerived(bool isDerived);
+    void unsetDerived();
     void setDerivedUnion(bool isDerivedUnion);
+    void unsetDerivedUnion();
     void setID(bool isID);
+    void unsetID();
     void setReadOnly(bool isReadOnly);
+    void unsetReadOnly();
     void setOpposite(QObject *opposite = 0);
     void setOwningAssociation(QObject *owningAssociation = 0);
     void addQualifier(QObject *qualifier);
@@ -326,8 +338,11 @@ public Q_SLOTS:
 
     // Slots for owned attributes [Port]
     void setBehavior(bool isBehavior);
+    void unsetBehavior();
     void setConjugated(bool isConjugated);
+    void unsetConjugated();
     void setService(bool isService);
+    void unsetService();
     void setProtocol(QObject *protocol = 0);
     void Q_DECL_HIDDEN addProvided(QObject *provided);
     void Q_DECL_HIDDEN removeProvided(QObject *provided);

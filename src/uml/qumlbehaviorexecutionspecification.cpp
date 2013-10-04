@@ -73,7 +73,8 @@ QUmlBehaviorExecutionSpecification::QUmlBehaviorExecutionSpecification(bool crea
 QUmlBehaviorExecutionSpecification::~QUmlBehaviorExecutionSpecification()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -124,7 +125,7 @@ void QUmlBehaviorExecutionSpecification::setBehavior(QUmlBehavior *behavior)
 
     if (_behavior != behavior) {
         _behavior = behavior;
-        if (behavior->asQObject() && this->asQObject())
+        if (behavior && behavior->asQObject() && this->asQObject())
             QObject::connect(behavior->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBehavior()));
     }
 }

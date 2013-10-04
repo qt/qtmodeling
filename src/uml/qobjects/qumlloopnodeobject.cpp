@@ -102,7 +102,10 @@ const QSet<QObject *> QUmlLoopNodeObject::ownedElement() const
 
 QObject *QUmlLoopNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -122,12 +125,18 @@ QString QUmlLoopNodeObject::name() const
 
 QObject *QUmlLoopNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlLoopNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlLoopNodeObject::qualifiedName() const
@@ -191,7 +200,10 @@ const QSet<QObject *> QUmlLoopNodeObject::inPartition() const
 
 QObject *QUmlLoopNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlLoopNodeObject::incoming() const
@@ -232,7 +244,10 @@ const QSet<QObject *> QUmlLoopNodeObject::handler() const
 
 QObject *QUmlLoopNodeObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlLoopNodeObject::input() const
@@ -350,14 +365,20 @@ const QSet<QObject *> QUmlLoopNodeObject::subgroup() const
 
 QObject *QUmlLoopNodeObject::superGroup() const
 {
-    return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->superGroup()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->superGroup())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->superGroup()->asQObject();
 }
 
 // OWNED ATTRIBUTES [StructuredActivityNode]
 
 QObject *QUmlLoopNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlLoopNodeObject::edge() const
@@ -409,7 +430,10 @@ const QSet<QObject *> QUmlLoopNodeObject::bodyPart() const
 
 QObject *QUmlLoopNodeObject::decider() const
 {
-    return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->decider()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->decider())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->decider()->asQObject();
 }
 
 bool QUmlLoopNodeObject::isTestedFirst() const
@@ -589,7 +613,7 @@ void QUmlLoopNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setName(name);
 }
-    
+
 void QUmlLoopNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -604,19 +628,25 @@ void QUmlLoopNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlLoopNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlLoopNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlLoopNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlLoopNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -736,8 +766,14 @@ void QUmlLoopNodeObject::removeInput(QObject *input)
 void QUmlLoopNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlLoopNodeObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlLoopNodeObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -887,8 +923,14 @@ void QUmlLoopNodeObject::removeEdge(QObject *edge)
 void QUmlLoopNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setMustIsolate(mustIsolate);
+    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties() << QStringLiteral("mustIsolate");
 }
-    
+
+void QUmlLoopNodeObject::unsetMustIsolate()
+{
+    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("mustIsolate"));
+}
+
 void QUmlLoopNodeObject::addNode(QObject *node)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->addNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(node));
@@ -939,8 +981,14 @@ void QUmlLoopNodeObject::setDecider(QObject *decider)
 void QUmlLoopNodeObject::setTestedFirst(bool isTestedFirst)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setTestedFirst(isTestedFirst);
+    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties() << QStringLiteral("testedFirst");
 }
-    
+
+void QUmlLoopNodeObject::unsetTestedFirst()
+{
+    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("testedFirst"));
+}
+
 void QUmlLoopNodeObject::addLoopVariable(QObject *loopVariable)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->addLoopVariable(qmodelingobjectproperty_cast<QUmlOutputPin *>(loopVariable));

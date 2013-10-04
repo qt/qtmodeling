@@ -140,7 +140,7 @@ void QUmlStructuralFeatureAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object->asQObject() && this->asQObject())
+        if (object && object->asQObject() && this->asQObject())
             QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
         object->asQObject()->setParent(this->asQObject());
 
@@ -167,7 +167,7 @@ void QUmlStructuralFeatureAction::setStructuralFeature(QUmlStructuralFeature *st
 
     if (_structuralFeature != structuralFeature) {
         _structuralFeature = structuralFeature;
-        if (structuralFeature->asQObject() && this->asQObject())
+        if (structuralFeature && structuralFeature->asQObject() && this->asQObject())
             QObject::connect(structuralFeature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setStructuralFeature()));
     }
 }

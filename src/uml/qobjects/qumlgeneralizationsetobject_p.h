@@ -72,15 +72,15 @@ class Q_UML_EXPORT QUmlGeneralizationSetObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [GeneralizationSet]
     Q_PROPERTY(QSet<QObject *> generalization READ generalization)
-    Q_PROPERTY(bool isCovering READ isCovering)
-    Q_PROPERTY(bool isDisjoint READ isDisjoint)
+    Q_PROPERTY(bool isCovering READ isCovering RESET unsetCovering)
+    Q_PROPERTY(bool isDisjoint READ isDisjoint RESET unsetDisjoint)
     Q_PROPERTY(QObject * powertype READ powertype)
 
 public:
@@ -149,12 +149,15 @@ public Q_SLOTS:
 
     // Slots for owned attributes [PackageableElement]
     void setVisibility(QtUml::VisibilityKind visibility);
+    void unsetVisibility();
 
     // Slots for owned attributes [GeneralizationSet]
     void addGeneralization(QObject *generalization);
     void removeGeneralization(QObject *generalization);
     void setCovering(bool isCovering);
+    void unsetCovering();
     void setDisjoint(bool isDisjoint);
+    void unsetDisjoint();
     void setPowertype(QObject *powertype = 0);
 };
 

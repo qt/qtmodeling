@@ -68,16 +68,16 @@ class Q_UML_EXPORT QUmlProtocolTransitionObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
     Q_PROPERTY(QSet<QObject *> member READ member)
     Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
     Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
@@ -87,9 +87,9 @@ class Q_UML_EXPORT QUmlProtocolTransitionObject : public QObject
     Q_PROPERTY(QObject * container READ container)
     Q_PROPERTY(QObject * effect READ effect)
     Q_PROPERTY(QObject * guard READ guard)
-    Q_PROPERTY(QtUml::TransitionKind kind READ kind)
+    Q_PROPERTY(QtUml::TransitionKind kind READ kind RESET unsetKind)
     Q_PROPERTY(QObject * redefinedTransition READ redefinedTransition)
-    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
     Q_PROPERTY(QObject * source READ source)
     Q_PROPERTY(QObject * target READ target)
     Q_PROPERTY(QSet<QObject *> trigger READ trigger)
@@ -97,7 +97,7 @@ class Q_UML_EXPORT QUmlProtocolTransitionObject : public QObject
     // Properties [ProtocolTransition]
     Q_PROPERTY(QObject * postCondition READ postCondition)
     Q_PROPERTY(QObject * preCondition READ preCondition)
-    Q_PROPERTY(QSet<QObject *> referred READ referred)
+    Q_PROPERTY(QSet<QObject *> referred READ referred STORED false)
 
 public:
     Q_INVOKABLE explicit QUmlProtocolTransitionObject(QUmlProtocolTransition *qModelingObject);
@@ -187,6 +187,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
 
@@ -209,6 +210,7 @@ public Q_SLOTS:
     void setEffect(QObject *effect = 0);
     void setGuard(QObject *guard = 0);
     void setKind(QtUml::TransitionKind kind);
+    void unsetKind();
     void setRedefinedTransition(QObject *redefinedTransition = 0);
     void Q_DECL_HIDDEN setRedefinitionContext(QObject *redefinitionContext = 0);
     void setSource(QObject *source = 0);

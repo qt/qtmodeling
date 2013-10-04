@@ -74,7 +74,8 @@ QUmlInstanceSpecification::QUmlInstanceSpecification(bool createQObject) :
 QUmlInstanceSpecification::~QUmlInstanceSpecification()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -123,7 +124,7 @@ void QUmlInstanceSpecification::addClassifier(QUmlClassifier *classifier)
 
     if (!_classifier.contains(classifier)) {
         _classifier.insert(classifier);
-        if (classifier->asQObject() && this->asQObject())
+        if (classifier && classifier->asQObject() && this->asQObject())
             QObject::connect(classifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClassifier(QObject *)));
     }
 }
@@ -153,7 +154,7 @@ void QUmlInstanceSpecification::addSlot(QUmlSlot *slot_)
 
     if (!_slot_.contains(slot_)) {
         _slot_.insert(slot_);
-        if (slot_->asQObject() && this->asQObject())
+        if (slot_ && slot_->asQObject() && this->asQObject())
             QObject::connect(slot_->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSlot(QObject *)));
         slot_->asQObject()->setParent(this->asQObject());
 
@@ -205,7 +206,7 @@ void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specifi
         removeOwnedElement(_specification);
 
         _specification = specification;
-        if (specification->asQObject() && this->asQObject())
+        if (specification && specification->asQObject() && this->asQObject())
             QObject::connect(specification->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecification()));
         specification->asQObject()->setParent(this->asQObject());
 

@@ -81,7 +81,8 @@ QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(bool createQObject)
 QUmlStartObjectBehaviorAction::~QUmlStartObjectBehaviorAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -152,7 +153,7 @@ void QUmlStartObjectBehaviorAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object->asQObject() && this->asQObject())
+        if (object && object->asQObject() && this->asQObject())
             QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
         object->asQObject()->setParent(this->asQObject());
 

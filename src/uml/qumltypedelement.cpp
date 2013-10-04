@@ -99,7 +99,7 @@ void QUmlTypedElement::setType(QUmlType *type)
 
     if (_type != type) {
         _type = type;
-        if (type->asQObject() && this->asQObject())
+        if (type && type->asQObject() && this->asQObject())
             QObject::connect(type->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setType()));
     }
 }

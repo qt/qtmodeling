@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlTestIdentityActionObject::ownedElement() const
 
 QObject *QUmlTestIdentityActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlTestIdentityActionObject::name() const
 
 QObject *QUmlTestIdentityActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlTestIdentityActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlTestIdentityActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlTestIdentityActionObject::redefinitionContext() const
 
 QObject *QUmlTestIdentityActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlTestIdentityActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlTestIdentityActionObject::inPartition() const
 
 QObject *QUmlTestIdentityActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlTestIdentityActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlTestIdentityActionObject::handler() const
 
 QObject *QUmlTestIdentityActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlTestIdentityActionObject::input() const
@@ -276,17 +294,26 @@ const QList<QObject *> QUmlTestIdentityActionObject::output() const
 
 QObject *QUmlTestIdentityActionObject::first() const
 {
-    return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->first()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->first())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->first()->asQObject();
 }
 
 QObject *QUmlTestIdentityActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->result()->asQObject();
 }
 
 QObject *QUmlTestIdentityActionObject::second() const
 {
-    return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->second()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->second())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->second()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -387,7 +414,7 @@ void QUmlTestIdentityActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->setName(name);
 }
-    
+
 void QUmlTestIdentityActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -402,19 +429,25 @@ void QUmlTestIdentityActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlTestIdentityActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlTestIdentityActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlTestIdentityActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlTestIdentityActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -539,8 +572,14 @@ void QUmlTestIdentityActionObject::removeInput(QObject *input)
 void QUmlTestIdentityActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlTestIdentityActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlTestIdentityActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

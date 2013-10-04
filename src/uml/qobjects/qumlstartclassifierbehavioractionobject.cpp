@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlStartClassifierBehaviorActionObject::ownedElement() co
 
 QObject *QUmlStartClassifierBehaviorActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlStartClassifierBehaviorActionObject::name() const
 
 QObject *QUmlStartClassifierBehaviorActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlStartClassifierBehaviorActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlStartClassifierBehaviorActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlStartClassifierBehaviorActionObject::redefinitionConte
 
 QObject *QUmlStartClassifierBehaviorActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlStartClassifierBehaviorActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlStartClassifierBehaviorActionObject::inPartition() con
 
 QObject *QUmlStartClassifierBehaviorActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlStartClassifierBehaviorActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlStartClassifierBehaviorActionObject::handler() const
 
 QObject *QUmlStartClassifierBehaviorActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlStartClassifierBehaviorActionObject::input() const
@@ -276,7 +294,10 @@ const QList<QObject *> QUmlStartClassifierBehaviorActionObject::output() const
 
 QObject *QUmlStartClassifierBehaviorActionObject::object() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->object()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->object())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->object()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -377,7 +398,7 @@ void QUmlStartClassifierBehaviorActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setName(name);
 }
-    
+
 void QUmlStartClassifierBehaviorActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -392,19 +413,25 @@ void QUmlStartClassifierBehaviorActionObject::setQualifiedName(QString qualified
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlStartClassifierBehaviorActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlStartClassifierBehaviorActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlStartClassifierBehaviorActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlStartClassifierBehaviorActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -529,8 +556,14 @@ void QUmlStartClassifierBehaviorActionObject::removeInput(QObject *input)
 void QUmlStartClassifierBehaviorActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlStartClassifierBehaviorActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlStartClassifierBehaviorActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

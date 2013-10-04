@@ -81,7 +81,10 @@ const QSet<QObject *> QUmlGeneralizationObject::ownedElement() const
 
 QObject *QUmlGeneralizationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -116,7 +119,10 @@ const QSet<QObject *> QUmlGeneralizationObject::target() const
 
 QObject *QUmlGeneralizationObject::general() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->general()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->general())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->general()->asQObject();
 }
 
 const QSet<QObject *> QUmlGeneralizationObject::generalizationSet() const
@@ -134,7 +140,10 @@ bool QUmlGeneralizationObject::isSubstitutable() const
 
 QObject *QUmlGeneralizationObject::specific() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->specific()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->specific())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->specific()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -233,8 +242,14 @@ void QUmlGeneralizationObject::removeGeneralizationSet(QObject *generalizationSe
 void QUmlGeneralizationObject::setSubstitutable(bool isSubstitutable)
 {
     qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->setSubstitutable(isSubstitutable);
+    qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->modifiedResettableProperties() << QStringLiteral("substitutable");
 }
-    
+
+void QUmlGeneralizationObject::unsetSubstitutable()
+{
+    qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("substitutable"));
+}
+
 void QUmlGeneralizationObject::setSpecific(QObject *specific)
 {
     qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->setSpecific(qmodelingobjectproperty_cast<QUmlClassifier *>(specific));

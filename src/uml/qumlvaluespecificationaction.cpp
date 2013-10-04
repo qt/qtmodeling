@@ -82,7 +82,8 @@ QUmlValueSpecificationAction::QUmlValueSpecificationAction(bool createQObject) :
 QUmlValueSpecificationAction::~QUmlValueSpecificationAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -148,7 +149,7 @@ void QUmlValueSpecificationAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
         result->asQObject()->setParent(this->asQObject());
 
@@ -178,7 +179,7 @@ void QUmlValueSpecificationAction::setValue(QUmlValueSpecification *value)
         removeOwnedElement(_value);
 
         _value = value;
-        if (value->asQObject() && this->asQObject())
+        if (value && value->asQObject() && this->asQObject())
             QObject::connect(value->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setValue()));
         value->asQObject()->setParent(this->asQObject());
 

@@ -115,7 +115,10 @@ const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedElement() const
 
 QObject *QUmlExecutionEnvironmentObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -135,12 +138,18 @@ QString QUmlExecutionEnvironmentObject::name() const
 
 QObject *QUmlExecutionEnvironmentObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlExecutionEnvironmentObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlExecutionEnvironmentObject::qualifiedName() const
@@ -201,7 +210,10 @@ const QSet<QObject *> QUmlExecutionEnvironmentObject::packageImport() const
 
 QObject *QUmlExecutionEnvironmentObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -214,7 +226,10 @@ QtUml::VisibilityKind QUmlExecutionEnvironmentObject::visibility() const
 
 QObject *QUmlExecutionEnvironmentObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -299,7 +314,10 @@ bool QUmlExecutionEnvironmentObject::isFinalSpecialization() const
 
 QObject *QUmlExecutionEnvironmentObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedUseCase() const
@@ -328,7 +346,10 @@ const QSet<QObject *> QUmlExecutionEnvironmentObject::redefinedClassifier() cons
 
 QObject *QUmlExecutionEnvironmentObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlExecutionEnvironmentObject::substitution() const
@@ -341,7 +362,10 @@ const QSet<QObject *> QUmlExecutionEnvironmentObject::substitution() const
 
 QObject *QUmlExecutionEnvironmentObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlExecutionEnvironmentObject::useCase() const
@@ -392,7 +416,10 @@ const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedPort() const
 
 QObject *QUmlExecutionEnvironmentObject::classifierBehavior() const
 {
-    return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->classifierBehavior()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->classifierBehavior())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->classifierBehavior()->asQObject();
 }
 
 const QSet<QObject *> QUmlExecutionEnvironmentObject::interfaceRealization() const
@@ -721,7 +748,7 @@ void QUmlExecutionEnvironmentObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setName(name);
 }
-    
+
 void QUmlExecutionEnvironmentObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -736,7 +763,7 @@ void QUmlExecutionEnvironmentObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlExecutionEnvironmentObject::addElementImport(QObject *elementImport)
 {
@@ -809,8 +836,14 @@ void QUmlExecutionEnvironmentObject::setOwningTemplateParameter(QObject *owningT
 void QUmlExecutionEnvironmentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlExecutionEnvironmentObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlExecutionEnvironmentObject::setPackage(QObject *package)
@@ -823,8 +856,14 @@ void QUmlExecutionEnvironmentObject::setPackage(QObject *package)
 void QUmlExecutionEnvironmentObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlExecutionEnvironmentObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlExecutionEnvironmentObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -912,8 +951,14 @@ void QUmlExecutionEnvironmentObject::removeInheritedMember(QObject *inheritedMem
 void QUmlExecutionEnvironmentObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlExecutionEnvironmentObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlExecutionEnvironmentObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
@@ -1065,13 +1110,25 @@ void QUmlExecutionEnvironmentObject::removeExtension(QObject *extension)
 void QUmlExecutionEnvironmentObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlExecutionEnvironmentObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlExecutionEnvironmentObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setActive(isActive);
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
-    
+
+void QUmlExecutionEnvironmentObject::unsetActive()
+{
+    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("active"));
+}
+
 void QUmlExecutionEnvironmentObject::addNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->addNestedClassifier(qmodelingobjectproperty_cast<QUmlClassifier *>(nestedClassifier));

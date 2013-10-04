@@ -74,7 +74,8 @@ QUmlDurationInterval::QUmlDurationInterval(bool createQObject) :
 QUmlDurationInterval::~QUmlDurationInterval()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -121,7 +122,7 @@ void QUmlDurationInterval::setMax(QUmlDuration *max)
 
     if (_max != max) {
         _max = max;
-        if (max->asQObject() && this->asQObject())
+        if (max && max->asQObject() && this->asQObject())
             QObject::connect(max->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMax()));
     }
 }
@@ -142,7 +143,7 @@ void QUmlDurationInterval::setMin(QUmlDuration *min)
 
     if (_min != min) {
         _min = min;
-        if (min->asQObject() && this->asQObject())
+        if (min && min->asQObject() && this->asQObject())
             QObject::connect(min->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMin()));
     }
 }

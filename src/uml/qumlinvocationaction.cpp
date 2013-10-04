@@ -136,7 +136,7 @@ void QUmlInvocationAction::addArgument(QUmlInputPin *argument)
 
     if (!_argument.contains(argument)) {
         _argument.append(argument);
-        if (argument->asQObject() && this->asQObject())
+        if (argument && argument->asQObject() && this->asQObject())
             QObject::connect(argument->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeArgument(QObject *)));
         argument->asQObject()->setParent(this->asQObject());
 
@@ -175,7 +175,7 @@ void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
 
     if (_onPort != onPort) {
         _onPort = onPort;
-        if (onPort->asQObject() && this->asQObject())
+        if (onPort && onPort->asQObject() && this->asQObject())
             QObject::connect(onPort->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOnPort()));
     }
 }

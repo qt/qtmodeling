@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlReadExtentActionObject::ownedElement() const
 
 QObject *QUmlReadExtentActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlReadExtentActionObject::name() const
 
 QObject *QUmlReadExtentActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlReadExtentActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlReadExtentActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlReadExtentActionObject::redefinitionContext() const
 
 QObject *QUmlReadExtentActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadExtentActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlReadExtentActionObject::inPartition() const
 
 QObject *QUmlReadExtentActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadExtentActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlReadExtentActionObject::handler() const
 
 QObject *QUmlReadExtentActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlReadExtentActionObject::input() const
@@ -276,12 +294,18 @@ const QList<QObject *> QUmlReadExtentActionObject::output() const
 
 QObject *QUmlReadExtentActionObject::classifier() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->classifier()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->classifier())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->classifier()->asQObject();
 }
 
 QObject *QUmlReadExtentActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->result()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -382,7 +406,7 @@ void QUmlReadExtentActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->setName(name);
 }
-    
+
 void QUmlReadExtentActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -397,19 +421,25 @@ void QUmlReadExtentActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlReadExtentActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReadExtentActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlReadExtentActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlReadExtentActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -534,8 +564,14 @@ void QUmlReadExtentActionObject::removeInput(QObject *input)
 void QUmlReadExtentActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlReadExtentActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlReadExtentActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

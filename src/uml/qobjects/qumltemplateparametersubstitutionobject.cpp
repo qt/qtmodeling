@@ -82,29 +82,44 @@ const QSet<QObject *> QUmlTemplateParameterSubstitutionObject::ownedElement() co
 
 QObject *QUmlTemplateParameterSubstitutionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [TemplateParameterSubstitution]
 
 QObject *QUmlTemplateParameterSubstitutionObject::actual() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->actual()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->actual())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->actual()->asQObject();
 }
 
 QObject *QUmlTemplateParameterSubstitutionObject::formal() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->formal()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->formal())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->formal()->asQObject();
 }
 
 QObject *QUmlTemplateParameterSubstitutionObject::ownedActual() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->ownedActual()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->ownedActual())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->ownedActual()->asQObject();
 }
 
 QObject *QUmlTemplateParameterSubstitutionObject::templateBinding() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->templateBinding()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->templateBinding())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameterSubstitution *>(this)->templateBinding()->asQObject();
 }
 
 // OPERATIONS [Element]

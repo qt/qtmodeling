@@ -68,11 +68,11 @@ class Q_UML_EXPORT QUmlExpansionRegionObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
@@ -89,16 +89,16 @@ class Q_UML_EXPORT QUmlExpansionRegionObject : public QObject
     Q_PROPERTY(QSet<QObject *> handler READ handler)
 
     // Properties [Action]
-    Q_PROPERTY(QObject * context READ context)
+    Q_PROPERTY(QObject * context READ context STORED false)
     Q_PROPERTY(QList<QObject *> input READ input)
-    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant)
+    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant RESET unsetLocallyReentrant)
     Q_PROPERTY(QSet<QObject *> localPostcondition READ localPostcondition)
     Q_PROPERTY(QSet<QObject *> localPrecondition READ localPrecondition)
     Q_PROPERTY(QList<QObject *> output READ output)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
     Q_PROPERTY(QSet<QObject *> member READ member)
     Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
     Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
@@ -113,7 +113,7 @@ class Q_UML_EXPORT QUmlExpansionRegionObject : public QObject
     // Properties [StructuredActivityNode]
     Q_PROPERTY(QObject * activity READ activity)
     Q_PROPERTY(QSet<QObject *> edge READ edge)
-    Q_PROPERTY(bool mustIsolate READ mustIsolate)
+    Q_PROPERTY(bool mustIsolate READ mustIsolate RESET unsetMustIsolate)
     Q_PROPERTY(QSet<QObject *> node READ node)
     Q_PROPERTY(QSet<QObject *> structuredNodeInput READ structuredNodeInput)
     Q_PROPERTY(QSet<QObject *> structuredNodeOutput READ structuredNodeOutput)
@@ -121,7 +121,7 @@ class Q_UML_EXPORT QUmlExpansionRegionObject : public QObject
 
     // Properties [ExpansionRegion]
     Q_PROPERTY(QSet<QObject *> inputElement READ inputElement)
-    Q_PROPERTY(QtUml::ExpansionKind mode READ mode)
+    Q_PROPERTY(QtUml::ExpansionKind mode READ mode RESET unsetMode)
     Q_PROPERTY(QSet<QObject *> outputElement READ outputElement)
 
 public:
@@ -234,6 +234,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -263,6 +264,7 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addInput(QObject *input);
     void Q_DECL_HIDDEN removeInput(QObject *input);
     void setLocallyReentrant(bool isLocallyReentrant);
+    void unsetLocallyReentrant();
     void addLocalPostcondition(QObject *localPostcondition);
     void removeLocalPostcondition(QObject *localPostcondition);
     void addLocalPrecondition(QObject *localPrecondition);
@@ -298,6 +300,7 @@ public Q_SLOTS:
     void addEdge(QObject *edge);
     void removeEdge(QObject *edge);
     void setMustIsolate(bool mustIsolate);
+    void unsetMustIsolate();
     void addNode(QObject *node);
     void removeNode(QObject *node);
     void addStructuredNodeInput(QObject *structuredNodeInput);
@@ -311,6 +314,7 @@ public Q_SLOTS:
     void addInputElement(QObject *inputElement);
     void removeInputElement(QObject *inputElement);
     void setMode(QtUml::ExpansionKind mode);
+    void unsetMode();
     void addOutputElement(QObject *outputElement);
     void removeOutputElement(QObject *outputElement);
 };

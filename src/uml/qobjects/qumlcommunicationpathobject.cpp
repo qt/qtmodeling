@@ -104,7 +104,10 @@ const QSet<QObject *> QUmlCommunicationPathObject::ownedElement() const
 
 QObject *QUmlCommunicationPathObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -124,12 +127,18 @@ QString QUmlCommunicationPathObject::name() const
 
 QObject *QUmlCommunicationPathObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlCommunicationPathObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlCommunicationPathObject::qualifiedName() const
@@ -190,7 +199,10 @@ const QSet<QObject *> QUmlCommunicationPathObject::packageImport() const
 
 QObject *QUmlCommunicationPathObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -203,7 +215,10 @@ QtUml::VisibilityKind QUmlCommunicationPathObject::visibility() const
 
 QObject *QUmlCommunicationPathObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -301,7 +316,10 @@ bool QUmlCommunicationPathObject::isFinalSpecialization() const
 
 QObject *QUmlCommunicationPathObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlCommunicationPathObject::ownedUseCase() const
@@ -330,7 +348,10 @@ const QSet<QObject *> QUmlCommunicationPathObject::redefinedClassifier() const
 
 QObject *QUmlCommunicationPathObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlCommunicationPathObject::substitution() const
@@ -343,7 +364,10 @@ const QSet<QObject *> QUmlCommunicationPathObject::substitution() const
 
 QObject *QUmlCommunicationPathObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlCommunicationPathObject::useCase() const
@@ -623,7 +647,7 @@ void QUmlCommunicationPathObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setName(name);
 }
-    
+
 void QUmlCommunicationPathObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -638,7 +662,7 @@ void QUmlCommunicationPathObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlCommunicationPathObject::addElementImport(QObject *elementImport)
 {
@@ -711,8 +735,14 @@ void QUmlCommunicationPathObject::setOwningTemplateParameter(QObject *owningTemp
 void QUmlCommunicationPathObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlCommunicationPathObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlCommunicationPathObject::setPackage(QObject *package)
@@ -725,8 +755,14 @@ void QUmlCommunicationPathObject::setPackage(QObject *package)
 void QUmlCommunicationPathObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlCommunicationPathObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlCommunicationPathObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -824,13 +860,25 @@ void QUmlCommunicationPathObject::removeInheritedMember(QObject *inheritedMember
 void QUmlCommunicationPathObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlCommunicationPathObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlCommunicationPathObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlCommunicationPathObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlCommunicationPathObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
@@ -923,8 +971,14 @@ void QUmlCommunicationPathObject::removeEndType(QObject *endType)
 void QUmlCommunicationPathObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setDerived(isDerived);
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
-    
+
+void QUmlCommunicationPathObject::unsetDerived()
+{
+    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("derived"));
+}
+
 void QUmlCommunicationPathObject::addMemberEnd(QObject *memberEnd)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->addMemberEnd(qmodelingobjectproperty_cast<QUmlProperty *>(memberEnd));

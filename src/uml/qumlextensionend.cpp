@@ -85,7 +85,8 @@ QUmlExtensionEnd::QUmlExtensionEnd(bool createQObject) :
 QUmlExtensionEnd::~QUmlExtensionEnd()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -187,7 +188,7 @@ void QUmlExtensionEnd::setType(QUmlStereotype *type)
 
     if (_type != type) {
         _type = type;
-        if (type->asQObject() && this->asQObject())
+        if (type && type->asQObject() && this->asQObject())
             QObject::connect(type->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setType()));
     }
 }

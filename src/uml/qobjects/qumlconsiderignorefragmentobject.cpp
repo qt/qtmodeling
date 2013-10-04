@@ -89,7 +89,10 @@ const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::ownedElement() const
 
 QObject *QUmlConsiderIgnoreFragmentObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,12 +112,18 @@ QString QUmlConsiderIgnoreFragmentObject::name() const
 
 QObject *QUmlConsiderIgnoreFragmentObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlConsiderIgnoreFragmentObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlConsiderIgnoreFragmentObject::qualifiedName() const
@@ -139,12 +148,18 @@ const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::covered() const
 
 QObject *QUmlConsiderIgnoreFragmentObject::enclosingInteraction() const
 {
-    return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->enclosingInteraction()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->enclosingInteraction())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->enclosingInteraction()->asQObject();
 }
 
 QObject *QUmlConsiderIgnoreFragmentObject::enclosingOperand() const
 {
-    return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->enclosingOperand()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->enclosingOperand())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->enclosingOperand()->asQObject();
 }
 
 const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::generalOrdering() const
@@ -274,7 +289,7 @@ void QUmlConsiderIgnoreFragmentObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->setName(name);
 }
-    
+
 void QUmlConsiderIgnoreFragmentObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -289,12 +304,12 @@ void QUmlConsiderIgnoreFragmentObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlConsiderIgnoreFragmentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlConsiderIgnoreFragmentObject::addCovered(QObject *covered)
@@ -342,8 +357,14 @@ void QUmlConsiderIgnoreFragmentObject::removeCfragmentGate(QObject *cfragmentGat
 void QUmlConsiderIgnoreFragmentObject::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
     qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->setInteractionOperator(interactionOperator);
+    qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->modifiedResettableProperties() << QStringLiteral("interactionOperator");
 }
-    
+
+void QUmlConsiderIgnoreFragmentObject::unsetInteractionOperator()
+{
+    qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("interactionOperator"));
+}
+
 void QUmlConsiderIgnoreFragmentObject::addOperand(QObject *operand)
 {
     qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->addOperand(qmodelingobjectproperty_cast<QUmlInteractionOperand *>(operand));

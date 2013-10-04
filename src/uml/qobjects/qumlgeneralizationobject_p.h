@@ -71,7 +71,7 @@ class Q_UML_EXPORT QUmlGeneralizationObject : public QObject
     // Properties [Generalization]
     Q_PROPERTY(QObject * general READ general)
     Q_PROPERTY(QSet<QObject *> generalizationSet READ generalizationSet)
-    Q_PROPERTY(bool isSubstitutable READ isSubstitutable)
+    Q_PROPERTY(bool isSubstitutable READ isSubstitutable RESET unsetSubstitutable)
     Q_PROPERTY(QObject * specific READ specific)
 
 public:
@@ -124,6 +124,7 @@ public Q_SLOTS:
     void addGeneralizationSet(QObject *generalizationSet);
     void removeGeneralizationSet(QObject *generalizationSet);
     void setSubstitutable(bool isSubstitutable);
+    void unsetSubstitutable();
     void setSpecific(QObject *specific = 0);
 };
 

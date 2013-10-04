@@ -124,7 +124,10 @@ const QSet<QObject *> QUmlInteractionObject::ownedElement() const
 
 QObject *QUmlInteractionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -144,12 +147,18 @@ QString QUmlInteractionObject::name() const
 
 QObject *QUmlInteractionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlInteractionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlInteractionObject::qualifiedName() const
@@ -210,7 +219,10 @@ const QSet<QObject *> QUmlInteractionObject::packageImport() const
 
 QObject *QUmlInteractionObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -223,7 +235,10 @@ QtUml::VisibilityKind QUmlInteractionObject::visibility() const
 
 QObject *QUmlInteractionObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -308,7 +323,10 @@ bool QUmlInteractionObject::isFinalSpecialization() const
 
 QObject *QUmlInteractionObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlInteractionObject::ownedUseCase() const
@@ -337,7 +355,10 @@ const QSet<QObject *> QUmlInteractionObject::redefinedClassifier() const
 
 QObject *QUmlInteractionObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlInteractionObject::substitution() const
@@ -350,7 +371,10 @@ const QSet<QObject *> QUmlInteractionObject::substitution() const
 
 QObject *QUmlInteractionObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlInteractionObject::useCase() const
@@ -401,7 +425,10 @@ const QSet<QObject *> QUmlInteractionObject::ownedPort() const
 
 QObject *QUmlInteractionObject::classifierBehavior() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->classifierBehavior()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->classifierBehavior())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->classifierBehavior()->asQObject();
 }
 
 const QSet<QObject *> QUmlInteractionObject::interfaceRealization() const
@@ -484,7 +511,10 @@ const QSet<QObject *> QUmlInteractionObject::superClass() const
 
 QObject *QUmlInteractionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->context()->asQObject();
 }
 
 bool QUmlInteractionObject::isReentrant() const
@@ -534,7 +564,10 @@ const QSet<QObject *> QUmlInteractionObject::redefinedBehavior() const
 
 QObject *QUmlInteractionObject::specification() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->specification()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->specification())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->specification()->asQObject();
 }
 
 // OWNED ATTRIBUTES [InteractionFragment]
@@ -549,12 +582,18 @@ const QSet<QObject *> QUmlInteractionObject::covered() const
 
 QObject *QUmlInteractionObject::enclosingInteraction() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->enclosingInteraction()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->enclosingInteraction())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->enclosingInteraction()->asQObject();
 }
 
 QObject *QUmlInteractionObject::enclosingOperand() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->enclosingOperand()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteraction *>(this)->enclosingOperand())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->enclosingOperand()->asQObject();
 }
 
 const QSet<QObject *> QUmlInteractionObject::generalOrdering() const
@@ -829,7 +868,7 @@ void QUmlInteractionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setName(name);
 }
-    
+
 void QUmlInteractionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -844,7 +883,7 @@ void QUmlInteractionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlInteractionObject::addElementImport(QObject *elementImport)
 {
@@ -917,8 +956,14 @@ void QUmlInteractionObject::setOwningTemplateParameter(QObject *owningTemplatePa
 void QUmlInteractionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlInteractionObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlInteractionObject::setPackage(QObject *package)
@@ -931,8 +976,14 @@ void QUmlInteractionObject::setPackage(QObject *package)
 void QUmlInteractionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlInteractionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlInteractionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -1020,8 +1071,14 @@ void QUmlInteractionObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlInteractionObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlInteractionObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlInteractionObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
@@ -1173,13 +1230,25 @@ void QUmlInteractionObject::removeExtension(QObject *extension)
 void QUmlInteractionObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlInteractionObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlInteractionObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setActive(isActive);
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
-    
+
+void QUmlInteractionObject::unsetActive()
+{
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("active"));
+}
+
 void QUmlInteractionObject::addNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->addNestedClassifier(qmodelingobjectproperty_cast<QUmlClassifier *>(nestedClassifier));
@@ -1240,8 +1309,14 @@ void QUmlInteractionObject::setContext(QObject *context)
 void QUmlInteractionObject::setReentrant(bool isReentrant)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setReentrant(isReentrant);
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("reentrant");
 }
-    
+
+void QUmlInteractionObject::unsetReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("reentrant"));
+}
+
 void QUmlInteractionObject::addOwnedParameter(QObject *ownedParameter)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->addOwnedParameter(qmodelingobjectproperty_cast<QUmlParameter *>(ownedParameter));

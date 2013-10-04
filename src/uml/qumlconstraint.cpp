@@ -71,7 +71,8 @@ QUmlConstraint::QUmlConstraint(bool createQObject) :
 QUmlConstraint::~QUmlConstraint()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -118,7 +119,7 @@ void QUmlConstraint::addConstrainedElement(QUmlElement *constrainedElement)
 
     if (!_constrainedElement.contains(constrainedElement)) {
         _constrainedElement.append(constrainedElement);
-        if (constrainedElement->asQObject() && this->asQObject())
+        if (constrainedElement && constrainedElement->asQObject() && this->asQObject())
             QObject::connect(constrainedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConstrainedElement(QObject *)));
     }
 }
@@ -150,7 +151,7 @@ void QUmlConstraint::setContext(QUmlNamespace *context)
         // Adjust subsetted properties
 
         _context = context;
-        if (context->asQObject() && this->asQObject())
+        if (context && context->asQObject() && this->asQObject())
             QObject::connect(context->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setContext()));
 
         // Adjust subsetted properties
@@ -177,7 +178,7 @@ void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
         removeOwnedElement(_specification);
 
         _specification = specification;
-        if (specification->asQObject() && this->asQObject())
+        if (specification && specification->asQObject() && this->asQObject())
             QObject::connect(specification->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecification()));
         specification->asQObject()->setParent(this->asQObject());
 

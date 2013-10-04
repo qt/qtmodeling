@@ -84,7 +84,8 @@ QUmlStructuredActivityNode::QUmlStructuredActivityNode(bool createQObject) :
 QUmlStructuredActivityNode::~QUmlStructuredActivityNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -160,7 +161,7 @@ void QUmlStructuredActivityNode::setActivity(QUmlActivity *activity)
 
     if (_activity != activity) {
         _activity = activity;
-        if (activity->asQObject() && this->asQObject())
+        if (activity && activity->asQObject() && this->asQObject())
             QObject::connect(activity->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setActivity()));
     }
 }
@@ -181,7 +182,7 @@ void QUmlStructuredActivityNode::addEdge(QUmlActivityEdge *edge)
 
     if (!_edge.contains(edge)) {
         _edge.insert(edge);
-        if (edge->asQObject() && this->asQObject())
+        if (edge && edge->asQObject() && this->asQObject())
             QObject::connect(edge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEdge(QObject *)));
         edge->asQObject()->setParent(this->asQObject());
 
@@ -251,7 +252,7 @@ void QUmlStructuredActivityNode::addNode(QUmlActivityNode *node)
 
     if (!_node.contains(node)) {
         _node.insert(node);
-        if (node->asQObject() && this->asQObject())
+        if (node && node->asQObject() && this->asQObject())
             QObject::connect(node->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNode(QObject *)));
         node->asQObject()->setParent(this->asQObject());
 
@@ -299,7 +300,7 @@ void QUmlStructuredActivityNode::addStructuredNodeInput(QUmlInputPin *structured
 
     if (!_structuredNodeInput.contains(structuredNodeInput)) {
         _structuredNodeInput.insert(structuredNodeInput);
-        if (structuredNodeInput->asQObject() && this->asQObject())
+        if (structuredNodeInput && structuredNodeInput->asQObject() && this->asQObject())
             QObject::connect(structuredNodeInput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeStructuredNodeInput(QObject *)));
         structuredNodeInput->asQObject()->setParent(this->asQObject());
 
@@ -335,7 +336,7 @@ void QUmlStructuredActivityNode::addStructuredNodeOutput(QUmlOutputPin *structur
 
     if (!_structuredNodeOutput.contains(structuredNodeOutput)) {
         _structuredNodeOutput.insert(structuredNodeOutput);
-        if (structuredNodeOutput->asQObject() && this->asQObject())
+        if (structuredNodeOutput && structuredNodeOutput->asQObject() && this->asQObject())
             QObject::connect(structuredNodeOutput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeStructuredNodeOutput(QObject *)));
         structuredNodeOutput->asQObject()->setParent(this->asQObject());
 
@@ -374,7 +375,7 @@ void QUmlStructuredActivityNode::addVariable(QUmlVariable *variable)
 
     if (!_variable.contains(variable)) {
         _variable.insert(variable);
-        if (variable->asQObject() && this->asQObject())
+        if (variable && variable->asQObject() && this->asQObject())
             QObject::connect(variable->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeVariable(QObject *)));
         variable->asQObject()->setParent(this->asQObject());
 

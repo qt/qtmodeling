@@ -137,7 +137,6 @@ QString QUmlPackageObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlPackage *>(this)->qualifiedName();
 }
-
 // OWNED ATTRIBUTES [Namespace]
 
 const QSet<QObject *> QUmlPackageObject::elementImport() const
@@ -471,7 +470,7 @@ void QUmlPackageObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlPackage *>(this)->setName(name);
 }
-    
+
 void QUmlPackageObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlPackage *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -486,7 +485,7 @@ void QUmlPackageObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlPackage *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlPackageObject::addElementImport(QObject *elementImport)
 {
@@ -565,8 +564,14 @@ void QUmlPackageObject::setTemplateParameter(QObject *templateParameter)
 void QUmlPackageObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlPackage *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlPackage *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlPackageObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlPackage *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
 
 void QUmlPackageObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
@@ -590,7 +595,7 @@ void QUmlPackageObject::setURI(QString URI)
 {
     qmodelingobjectproperty_cast<QUmlPackage *>(this)->setURI(URI);
 }
-    
+
 void QUmlPackageObject::addNestedPackage(QObject *nestedPackage)
 {
     qmodelingobjectproperty_cast<QUmlPackage *>(this)->addNestedPackage(qmodelingobjectproperty_cast<QUmlPackage *>(nestedPackage));

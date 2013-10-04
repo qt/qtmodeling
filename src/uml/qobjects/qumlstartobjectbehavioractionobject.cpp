@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlStartObjectBehaviorActionObject::ownedElement() const
 
 QObject *QUmlStartObjectBehaviorActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlStartObjectBehaviorActionObject::name() const
 
 QObject *QUmlStartObjectBehaviorActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlStartObjectBehaviorActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlStartObjectBehaviorActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlStartObjectBehaviorActionObject::redefinitionContext()
 
 QObject *QUmlStartObjectBehaviorActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlStartObjectBehaviorActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlStartObjectBehaviorActionObject::inPartition() const
 
 QObject *QUmlStartObjectBehaviorActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlStartObjectBehaviorActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlStartObjectBehaviorActionObject::handler() const
 
 QObject *QUmlStartObjectBehaviorActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlStartObjectBehaviorActionObject::input() const
@@ -285,7 +303,10 @@ const QList<QObject *> QUmlStartObjectBehaviorActionObject::argument() const
 
 QObject *QUmlStartObjectBehaviorActionObject::onPort() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->onPort()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->onPort())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->onPort()->asQObject();
 }
 
 // OWNED ATTRIBUTES [CallAction]
@@ -307,7 +328,10 @@ const QList<QObject *> QUmlStartObjectBehaviorActionObject::result() const
 
 QObject *QUmlStartObjectBehaviorActionObject::object() const
 {
-    return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->object()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->object())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->object()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -408,7 +432,7 @@ void QUmlStartObjectBehaviorActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setName(name);
 }
-    
+
 void QUmlStartObjectBehaviorActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -423,19 +447,25 @@ void QUmlStartObjectBehaviorActionObject::setQualifiedName(QString qualifiedName
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlStartObjectBehaviorActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlStartObjectBehaviorActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlStartObjectBehaviorActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlStartObjectBehaviorActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -560,8 +590,14 @@ void QUmlStartObjectBehaviorActionObject::removeInput(QObject *input)
 void QUmlStartObjectBehaviorActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlStartObjectBehaviorActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlStartObjectBehaviorActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -614,8 +650,14 @@ void QUmlStartObjectBehaviorActionObject::setOnPort(QObject *onPort)
 void QUmlStartObjectBehaviorActionObject::setSynchronous(bool isSynchronous)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setSynchronous(isSynchronous);
+    qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("synchronous");
 }
-    
+
+void QUmlStartObjectBehaviorActionObject::unsetSynchronous()
+{
+    qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("synchronous"));
+}
+
 void QUmlStartObjectBehaviorActionObject::addResult(QObject *result)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->addResult(qmodelingobjectproperty_cast<QUmlOutputPin *>(result));

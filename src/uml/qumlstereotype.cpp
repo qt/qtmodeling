@@ -98,7 +98,8 @@ QUmlStereotype::QUmlStereotype(bool createQObject) :
 QUmlStereotype::~QUmlStereotype()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -189,7 +190,7 @@ void QUmlStereotype::addIcon(QUmlImage *icon)
 
     if (!_icon.contains(icon)) {
         _icon.insert(icon);
-        if (icon->asQObject() && this->asQObject())
+        if (icon && icon->asQObject() && this->asQObject())
             QObject::connect(icon->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeIcon(QObject *)));
         icon->asQObject()->setParent(this->asQObject());
 

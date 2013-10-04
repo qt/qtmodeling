@@ -104,7 +104,10 @@ const QSet<QObject *> QUmlAssociationObject::ownedElement() const
 
 QObject *QUmlAssociationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAssociation *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -124,12 +127,18 @@ QString QUmlAssociationObject::name() const
 
 QObject *QUmlAssociationObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAssociation *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlAssociationObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAssociation *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlAssociationObject::qualifiedName() const
@@ -190,7 +199,10 @@ const QSet<QObject *> QUmlAssociationObject::packageImport() const
 
 QObject *QUmlAssociationObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAssociation *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -203,7 +215,10 @@ QtUml::VisibilityKind QUmlAssociationObject::visibility() const
 
 QObject *QUmlAssociationObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAssociation *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -301,7 +316,10 @@ bool QUmlAssociationObject::isFinalSpecialization() const
 
 QObject *QUmlAssociationObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAssociation *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlAssociationObject::ownedUseCase() const
@@ -330,7 +348,10 @@ const QSet<QObject *> QUmlAssociationObject::redefinedClassifier() const
 
 QObject *QUmlAssociationObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAssociation *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlAssociationObject::substitution() const
@@ -343,7 +364,10 @@ const QSet<QObject *> QUmlAssociationObject::substitution() const
 
 QObject *QUmlAssociationObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAssociation *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAssociation *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlAssociationObject::useCase() const
@@ -623,7 +647,7 @@ void QUmlAssociationObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setName(name);
 }
-    
+
 void QUmlAssociationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -638,7 +662,7 @@ void QUmlAssociationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlAssociationObject::addElementImport(QObject *elementImport)
 {
@@ -711,8 +735,14 @@ void QUmlAssociationObject::setOwningTemplateParameter(QObject *owningTemplatePa
 void QUmlAssociationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlAssociationObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlAssociationObject::setPackage(QObject *package)
@@ -725,8 +755,14 @@ void QUmlAssociationObject::setPackage(QObject *package)
 void QUmlAssociationObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlAssociationObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlAssociationObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -824,13 +860,25 @@ void QUmlAssociationObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlAssociationObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlAssociationObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlAssociationObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlAssociationObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlAssociationObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
@@ -923,8 +971,14 @@ void QUmlAssociationObject::removeEndType(QObject *endType)
 void QUmlAssociationObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setDerived(isDerived);
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
-    
+
+void QUmlAssociationObject::unsetDerived()
+{
+    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("derived"));
+}
+
 void QUmlAssociationObject::addMemberEnd(QObject *memberEnd)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->addMemberEnd(qmodelingobjectproperty_cast<QUmlProperty *>(memberEnd));

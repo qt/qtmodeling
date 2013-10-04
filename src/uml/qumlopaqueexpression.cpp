@@ -72,7 +72,8 @@ QUmlOpaqueExpression::QUmlOpaqueExpression(bool createQObject) :
 QUmlOpaqueExpression::~QUmlOpaqueExpression()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -96,8 +97,10 @@ QModelingObject *QUmlOpaqueExpression::clone() const
     c->setVisibility(visibility());
     if (behavior())
         c->setBehavior(dynamic_cast<QUmlBehavior *>(behavior()->clone()));
-//    c->setBody(body());
-//    c->setLanguage(language());
+    foreach (QString element, body())
+        c->addBody(element);
+    foreach (QString element, language())
+        c->addLanguage(element);
     return c;
 }
 
@@ -119,7 +122,7 @@ void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 
     if (_behavior != behavior) {
         _behavior = behavior;
-        if (behavior->asQObject() && this->asQObject())
+        if (behavior && behavior->asQObject() && this->asQObject())
             QObject::connect(behavior->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBehavior()));
     }
 }

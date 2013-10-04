@@ -93,7 +93,8 @@ QUmlProperty::QUmlProperty(bool createQObject) :
 QUmlProperty::~QUmlProperty()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -190,7 +191,7 @@ void QUmlProperty::setAssociation(QUmlAssociation *association)
 
     if (_association != association) {
         _association = association;
-        if (association->asQObject() && this->asQObject())
+        if (association && association->asQObject() && this->asQObject())
             QObject::connect(association->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAssociation()));
     }
 }
@@ -213,7 +214,7 @@ void QUmlProperty::setAssociationEnd(QUmlProperty *associationEnd)
         // Adjust subsetted properties
 
         _associationEnd = associationEnd;
-        if (associationEnd->asQObject() && this->asQObject())
+        if (associationEnd && associationEnd->asQObject() && this->asQObject())
             QObject::connect(associationEnd->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setAssociationEnd()));
 
         // Adjust subsetted properties
@@ -222,7 +223,7 @@ void QUmlProperty::setAssociationEnd(QUmlProperty *associationEnd)
 }
 
 /*!
-    References the Class that owns the Property.References the Class that owns the Property.
+    References the Class that owns the Property.References the Class that owns the Property.
  */
 QUmlClass *QUmlProperty::class_() const
 {
@@ -265,7 +266,7 @@ void QUmlProperty::setDatatype(QUmlDataType *datatype)
         // Adjust subsetted properties
 
         _datatype = datatype;
-        if (datatype->asQObject() && this->asQObject())
+        if (datatype && datatype->asQObject() && this->asQObject())
             QObject::connect(datatype->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDatatype()));
 
         // Adjust subsetted properties
@@ -316,7 +317,7 @@ void QUmlProperty::setDefaultValue(QUmlValueSpecification *defaultValue)
         removeOwnedElement(_defaultValue);
 
         _defaultValue = defaultValue;
-        if (defaultValue->asQObject() && this->asQObject())
+        if (defaultValue && defaultValue->asQObject() && this->asQObject())
             QObject::connect(defaultValue->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDefaultValue()));
         defaultValue->asQObject()->setParent(this->asQObject());
 
@@ -345,7 +346,7 @@ void QUmlProperty::setInterface(QUmlInterface *interface_)
         // Adjust subsetted properties
 
         _interface_ = interface_;
-        if (interface_->asQObject() && this->asQObject())
+        if (interface_ && interface_->asQObject() && this->asQObject())
             QObject::connect(interface_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInterface()));
 
         // Adjust subsetted properties
@@ -497,7 +498,7 @@ void QUmlProperty::setOwningAssociation(QUmlAssociation *owningAssociation)
         removeRedefinitionContext(_owningAssociation);
 
         _owningAssociation = owningAssociation;
-        if (owningAssociation->asQObject() && this->asQObject())
+        if (owningAssociation && owningAssociation->asQObject() && this->asQObject())
             QObject::connect(owningAssociation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwningAssociation()));
 
         // Adjust subsetted properties
@@ -528,7 +529,7 @@ void QUmlProperty::addQualifier(QUmlProperty *qualifier)
 
     if (!_qualifier.contains(qualifier)) {
         _qualifier.append(qualifier);
-        if (qualifier->asQObject() && this->asQObject())
+        if (qualifier && qualifier->asQObject() && this->asQObject())
             QObject::connect(qualifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeQualifier(QObject *)));
         qualifier->asQObject()->setParent(this->asQObject());
 
@@ -567,7 +568,7 @@ void QUmlProperty::addRedefinedProperty(QUmlProperty *redefinedProperty)
 
     if (!_redefinedProperty.contains(redefinedProperty)) {
         _redefinedProperty.insert(redefinedProperty);
-        if (redefinedProperty->asQObject() && this->asQObject())
+        if (redefinedProperty && redefinedProperty->asQObject() && this->asQObject())
             QObject::connect(redefinedProperty->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedProperty(QObject *)));
 
         // Adjust subsetted properties
@@ -603,7 +604,7 @@ void QUmlProperty::addSubsettedProperty(QUmlProperty *subsettedProperty)
 
     if (!_subsettedProperty.contains(subsettedProperty)) {
         _subsettedProperty.insert(subsettedProperty);
-        if (subsettedProperty->asQObject() && this->asQObject())
+        if (subsettedProperty && subsettedProperty->asQObject() && this->asQObject())
             QObject::connect(subsettedProperty->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubsettedProperty(QObject *)));
     }
 }
@@ -690,10 +691,10 @@ void QUmlProperty::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("associationEnd")][QtModeling::DocumentationRole] = QStringLiteral("Designates the optional association end that owns a qualifier attribute.");
     QModelingObject::propertyDataHash[QStringLiteral("associationEnd")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("associationEnd")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("associationEnd")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("associationEnd")][QtModeling::OppositeEndRole] = QStringLiteral("Property-qualifier");
 
     QModelingObject::propertyDataHash[QStringLiteral("class")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("class")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("class")][QtModeling::DocumentationRole] = QStringLiteral("References the Class that owns the Property.References the Class that owns the Property.");
+    QModelingObject::propertyDataHash[QStringLiteral("class")][QtModeling::DocumentationRole] = QStringLiteral("References the Class that owns the Property.References the Class that owns the Property.");
     QModelingObject::propertyDataHash[QStringLiteral("class")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("class")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_attribute_classifier-classifier A_ownedAttribute_structuredClassifier-structuredClassifier NamedElement-namespace");
     QModelingObject::propertyDataHash[QStringLiteral("class")][QtModeling::OppositeEndRole] = QStringLiteral("Class-ownedAttribute");
@@ -768,7 +769,7 @@ void QUmlProperty::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.");
     QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("Property-associationEnd");
 
     QModelingObject::propertyDataHash[QStringLiteral("redefinedProperty")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("redefinedProperty")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedProperty")][QtModeling::DocumentationRole] = QStringLiteral("References the properties that are redefined by this property.");

@@ -72,7 +72,8 @@ QUmlManifestation::QUmlManifestation(bool createQObject) :
 QUmlManifestation::~QUmlManifestation()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -124,7 +125,7 @@ void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedEleme
         removeSupplier(_utilizedElement);
 
         _utilizedElement = utilizedElement;
-        if (utilizedElement->asQObject() && this->asQObject())
+        if (utilizedElement && utilizedElement->asQObject() && this->asQObject())
             QObject::connect(utilizedElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setUtilizedElement()));
 
         // Adjust subsetted properties

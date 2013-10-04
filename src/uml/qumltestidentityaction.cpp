@@ -82,7 +82,8 @@ QUmlTestIdentityAction::QUmlTestIdentityAction(bool createQObject) :
 QUmlTestIdentityAction::~QUmlTestIdentityAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -150,7 +151,7 @@ void QUmlTestIdentityAction::setFirst(QUmlInputPin *first)
         removeInput(_first);
 
         _first = first;
-        if (first->asQObject() && this->asQObject())
+        if (first && first->asQObject() && this->asQObject())
             QObject::connect(first->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setFirst()));
         first->asQObject()->setParent(this->asQObject());
 
@@ -180,7 +181,7 @@ void QUmlTestIdentityAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
         result->asQObject()->setParent(this->asQObject());
 
@@ -210,7 +211,7 @@ void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
         removeInput(_second);
 
         _second = second;
-        if (second->asQObject() && this->asQObject())
+        if (second && second->asQObject() && this->asQObject())
             QObject::connect(second->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSecond()));
         second->asQObject()->setParent(this->asQObject());
 

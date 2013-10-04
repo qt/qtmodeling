@@ -85,7 +85,10 @@ const QSet<QObject *> QUmlGeneralOrderingObject::ownedElement() const
 
 QObject *QUmlGeneralOrderingObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -105,12 +108,18 @@ QString QUmlGeneralOrderingObject::name() const
 
 QObject *QUmlGeneralOrderingObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlGeneralOrderingObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlGeneralOrderingObject::qualifiedName() const
@@ -127,12 +136,18 @@ QtUml::VisibilityKind QUmlGeneralOrderingObject::visibility() const
 
 QObject *QUmlGeneralOrderingObject::after() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->after()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->after())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->after()->asQObject();
 }
 
 QObject *QUmlGeneralOrderingObject::before() const
 {
-    return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->before()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->before())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->before()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -221,7 +236,7 @@ void QUmlGeneralOrderingObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->setName(name);
 }
-    
+
 void QUmlGeneralOrderingObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -236,12 +251,12 @@ void QUmlGeneralOrderingObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlGeneralOrderingObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [GeneralOrdering]
 
 void QUmlGeneralOrderingObject::setAfter(QObject *after)

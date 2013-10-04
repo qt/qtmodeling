@@ -95,7 +95,10 @@ const QSet<QObject *> QUmlReceptionObject::ownedElement() const
 
 QObject *QUmlReceptionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReception *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReception *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -115,12 +118,18 @@ QString QUmlReceptionObject::name() const
 
 QObject *QUmlReceptionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReception *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReception *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlReceptionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReception *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReception *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlReceptionObject::qualifiedName() const
@@ -269,7 +278,10 @@ const QSet<QObject *> QUmlReceptionObject::raisedException() const
 
 QObject *QUmlReceptionObject::signal() const
 {
-    return qmodelingobjectproperty_cast<QUmlReception *>(this)->signal()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReception *>(this)->signal())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReception *>(this)->signal()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -406,7 +418,7 @@ void QUmlReceptionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->setName(name);
 }
-    
+
 void QUmlReceptionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -421,12 +433,12 @@ void QUmlReceptionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlReceptionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlReceptionObject::addElementImport(QObject *elementImport)
@@ -494,8 +506,14 @@ void QUmlReceptionObject::removePackageImport(QObject *packageImport)
 void QUmlReceptionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlReceptionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlReceptionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -531,20 +549,38 @@ void QUmlReceptionObject::removeFeaturingClassifier(QObject *featuringClassifier
 void QUmlReceptionObject::setStatic(bool isStatic)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->setStatic(isStatic);
+    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties() << QStringLiteral("static");
 }
-    
+
+void QUmlReceptionObject::unsetStatic()
+{
+    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("static"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [BehavioralFeature]
 
 void QUmlReceptionObject::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->setConcurrency(concurrency);
+    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties() << QStringLiteral("concurrency");
 }
-    
+
+void QUmlReceptionObject::unsetConcurrency()
+{
+    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("concurrency"));
+}
+
 void QUmlReceptionObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlReceptionObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlReception *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlReceptionObject::addMethod(QObject *method)
 {
     qmodelingobjectproperty_cast<QUmlReception *>(this)->addMethod(qmodelingobjectproperty_cast<QUmlBehavior *>(method));

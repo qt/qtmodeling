@@ -87,7 +87,10 @@ const QSet<QObject *> QUmlLiteralNullObject::ownedElement() const
 
 QObject *QUmlLiteralNullObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -107,12 +110,18 @@ QString QUmlLiteralNullObject::name() const
 
 QObject *QUmlLiteralNullObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlLiteralNullObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlLiteralNullObject::qualifiedName() const
@@ -123,19 +132,28 @@ QString QUmlLiteralNullObject::qualifiedName() const
 
 QObject *QUmlLiteralNullObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlLiteralNullObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlLiteralNullObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -282,7 +300,7 @@ void QUmlLiteralNullObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->setName(name);
 }
-    
+
 void QUmlLiteralNullObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -297,7 +315,7 @@ void QUmlLiteralNullObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlLiteralNullObject::setType(QObject *type)
 {
@@ -321,7 +339,13 @@ void QUmlLiteralNullObject::setTemplateParameter(QObject *templateParameter)
 void QUmlLiteralNullObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlLiteralNullObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlLiteralNull *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 QT_END_NAMESPACE
 

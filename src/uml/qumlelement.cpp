@@ -84,7 +84,7 @@ void QUmlElement::addOwnedComment(QUmlComment *ownedComment)
 
     if (!_ownedComment.contains(ownedComment)) {
         _ownedComment.insert(ownedComment);
-        if (ownedComment->asQObject() && this->asQObject())
+        if (ownedComment && ownedComment->asQObject() && this->asQObject())
             QObject::connect(ownedComment->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedComment(QObject *)));
         ownedComment->asQObject()->setParent(this->asQObject());
 
@@ -123,7 +123,7 @@ void QUmlElement::addOwnedElement(QUmlElement *ownedElement)
 
     if (!_ownedElement.contains(ownedElement)) {
         _ownedElement.insert(ownedElement);
-        if (ownedElement->asQObject() && this->asQObject())
+        if (ownedElement && ownedElement->asQObject() && this->asQObject())
             QObject::connect(ownedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedElement(QObject *)));
         ownedElement->asQObject()->setParent(this->asQObject());
     }

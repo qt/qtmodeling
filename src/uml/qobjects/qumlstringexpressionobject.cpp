@@ -89,7 +89,10 @@ const QSet<QObject *> QUmlStringExpressionObject::ownedElement() const
 
 QObject *QUmlStringExpressionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,12 +112,18 @@ QString QUmlStringExpressionObject::name() const
 
 QObject *QUmlStringExpressionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlStringExpressionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlStringExpressionObject::qualifiedName() const
@@ -125,19 +134,28 @@ QString QUmlStringExpressionObject::qualifiedName() const
 
 QObject *QUmlStringExpressionObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlStringExpressionObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlStringExpressionObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -166,7 +184,10 @@ QString QUmlStringExpressionObject::symbol() const
 
 QObject *QUmlStringExpressionObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlStringExpressionObject::templateBinding() const
@@ -181,7 +202,10 @@ const QSet<QObject *> QUmlStringExpressionObject::templateBinding() const
 
 QObject *QUmlStringExpressionObject::owningExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningExpression()->asQObject();
 }
 
 const QSet<QObject *> QUmlStringExpressionObject::subExpression() const
@@ -344,7 +368,7 @@ void QUmlStringExpressionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setName(name);
 }
-    
+
 void QUmlStringExpressionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -359,7 +383,7 @@ void QUmlStringExpressionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlStringExpressionObject::setType(QObject *type)
 {
@@ -383,8 +407,14 @@ void QUmlStringExpressionObject::setTemplateParameter(QObject *templateParameter
 void QUmlStringExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlStringExpressionObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Expression]
 
 void QUmlStringExpressionObject::addOperand(QObject *operand)
@@ -401,7 +431,7 @@ void QUmlStringExpressionObject::setSymbol(QString symbol)
 {
     qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->setSymbol(symbol);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [TemplateableElement]
 
 void QUmlStringExpressionObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)

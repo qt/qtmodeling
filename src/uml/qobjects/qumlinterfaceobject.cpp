@@ -107,7 +107,10 @@ const QSet<QObject *> QUmlInterfaceObject::ownedElement() const
 
 QObject *QUmlInterfaceObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterface *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterface *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterface *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -127,12 +130,18 @@ QString QUmlInterfaceObject::name() const
 
 QObject *QUmlInterfaceObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterface *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterface *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterface *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlInterfaceObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterface *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterface *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterface *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlInterfaceObject::qualifiedName() const
@@ -193,7 +202,10 @@ const QSet<QObject *> QUmlInterfaceObject::packageImport() const
 
 QObject *QUmlInterfaceObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterface *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterface *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterface *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -206,7 +218,10 @@ QtUml::VisibilityKind QUmlInterfaceObject::visibility() const
 
 QObject *QUmlInterfaceObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterface *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterface *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterface *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -304,7 +319,10 @@ bool QUmlInterfaceObject::isFinalSpecialization() const
 
 QObject *QUmlInterfaceObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterface *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterface *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterface *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlInterfaceObject::ownedUseCase() const
@@ -333,7 +351,10 @@ const QSet<QObject *> QUmlInterfaceObject::redefinedClassifier() const
 
 QObject *QUmlInterfaceObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterface *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterface *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterface *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlInterfaceObject::substitution() const
@@ -346,7 +367,10 @@ const QSet<QObject *> QUmlInterfaceObject::substitution() const
 
 QObject *QUmlInterfaceObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterface *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterface *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterface *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlInterfaceObject::useCase() const
@@ -393,7 +417,10 @@ const QSet<QObject *> QUmlInterfaceObject::ownedReception() const
 
 QObject *QUmlInterfaceObject::protocol() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterface *>(this)->protocol()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterface *>(this)->protocol())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterface *>(this)->protocol()->asQObject();
 }
 
 const QSet<QObject *> QUmlInterfaceObject::redefinedInterface() const
@@ -624,7 +651,7 @@ void QUmlInterfaceObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInterface *>(this)->setName(name);
 }
-    
+
 void QUmlInterfaceObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInterface *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -639,7 +666,7 @@ void QUmlInterfaceObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInterface *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlInterfaceObject::addElementImport(QObject *elementImport)
 {
@@ -712,8 +739,14 @@ void QUmlInterfaceObject::setOwningTemplateParameter(QObject *owningTemplatePara
 void QUmlInterfaceObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInterface *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlInterface *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlInterfaceObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlInterface *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlInterfaceObject::setPackage(QObject *package)
@@ -726,8 +759,14 @@ void QUmlInterfaceObject::setPackage(QObject *package)
 void QUmlInterfaceObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlInterface *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlInterface *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlInterfaceObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlInterface *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlInterfaceObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlInterface *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -825,13 +864,25 @@ void QUmlInterfaceObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlInterfaceObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlInterface *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlInterface *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlInterfaceObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlInterface *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlInterfaceObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlInterface *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlInterface *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlInterfaceObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlInterface *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlInterfaceObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlInterface *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));

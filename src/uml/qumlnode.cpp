@@ -97,7 +97,8 @@ QUmlNode::QUmlNode(bool createQObject) :
 QUmlNode::~QUmlNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -190,7 +191,7 @@ void QUmlNode::addNestedNode(QUmlNode *nestedNode)
 
     if (!_nestedNode.contains(nestedNode)) {
         _nestedNode.insert(nestedNode);
-        if (nestedNode->asQObject() && this->asQObject())
+        if (nestedNode && nestedNode->asQObject() && this->asQObject())
             QObject::connect(nestedNode->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNestedNode(QObject *)));
         nestedNode->asQObject()->setParent(this->asQObject());
 

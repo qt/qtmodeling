@@ -68,11 +68,11 @@ class Q_UML_EXPORT QUmlObjectFlowObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
@@ -89,8 +89,8 @@ class Q_UML_EXPORT QUmlObjectFlowObject : public QObject
     Q_PROPERTY(QObject * weight READ weight)
 
     // Properties [ObjectFlow]
-    Q_PROPERTY(bool isMulticast READ isMulticast)
-    Q_PROPERTY(bool isMultireceive READ isMultireceive)
+    Q_PROPERTY(bool isMulticast READ isMulticast RESET unsetMulticast)
+    Q_PROPERTY(bool isMultireceive READ isMultireceive RESET unsetMultireceive)
     Q_PROPERTY(QObject * selection READ selection)
     Q_PROPERTY(QObject * transformation READ transformation)
 
@@ -168,6 +168,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -190,7 +191,9 @@ public Q_SLOTS:
 
     // Slots for owned attributes [ObjectFlow]
     void setMulticast(bool isMulticast);
+    void unsetMulticast();
     void setMultireceive(bool isMultireceive);
+    void unsetMultireceive();
     void setSelection(QObject *selection = 0);
     void setTransformation(QObject *transformation = 0);
 };

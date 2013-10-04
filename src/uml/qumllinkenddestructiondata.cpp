@@ -67,7 +67,8 @@ QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(bool createQObject) :
 QUmlLinkEndDestructionData::~QUmlLinkEndDestructionData()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -107,7 +108,7 @@ void QUmlLinkEndDestructionData::setDestroyAt(QUmlInputPin *destroyAt)
 
     if (_destroyAt != destroyAt) {
         _destroyAt = destroyAt;
-        if (destroyAt->asQObject() && this->asQObject())
+        if (destroyAt && destroyAt->asQObject() && this->asQObject())
             QObject::connect(destroyAt->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDestroyAt()));
     }
 }

@@ -99,7 +99,7 @@ void QUmlMessageEnd::setMessage(QUmlMessage *message)
 
     if (_message != message) {
         _message = message;
-        if (message->asQObject() && this->asQObject())
+        if (message && message->asQObject() && this->asQObject())
             QObject::connect(message->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMessage()));
     }
 }

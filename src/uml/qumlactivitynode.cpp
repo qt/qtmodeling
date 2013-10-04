@@ -122,7 +122,7 @@ void QUmlActivityNode::setActivity(QUmlActivity *activity)
         // Adjust subsetted properties
 
         _activity = activity;
-        if (activity->asQObject() && this->asQObject())
+        if (activity && activity->asQObject() && this->asQObject())
             QObject::connect(activity->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setActivity()));
 
         // Adjust subsetted properties
@@ -146,7 +146,7 @@ void QUmlActivityNode::addInGroup(QUmlActivityGroup *inGroup)
 
     if (!_inGroup.contains(inGroup)) {
         _inGroup.insert(inGroup);
-        if (inGroup->asQObject() && this->asQObject())
+        if (inGroup && inGroup->asQObject() && this->asQObject())
             QObject::connect(inGroup->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInGroup(QObject *)));
 
         // Adjust opposite properties
@@ -186,7 +186,7 @@ void QUmlActivityNode::addInInterruptibleRegion(QUmlInterruptibleActivityRegion 
 
     if (!_inInterruptibleRegion.contains(inInterruptibleRegion)) {
         _inInterruptibleRegion.insert(inInterruptibleRegion);
-        if (inInterruptibleRegion->asQObject() && this->asQObject())
+        if (inInterruptibleRegion && inInterruptibleRegion->asQObject() && this->asQObject())
             QObject::connect(inInterruptibleRegion->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInInterruptibleRegion(QObject *)));
 
         // Adjust subsetted properties
@@ -232,7 +232,7 @@ void QUmlActivityNode::addInPartition(QUmlActivityPartition *inPartition)
 
     if (!_inPartition.contains(inPartition)) {
         _inPartition.insert(inPartition);
-        if (inPartition->asQObject() && this->asQObject())
+        if (inPartition && inPartition->asQObject() && this->asQObject())
             QObject::connect(inPartition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInPartition(QObject *)));
 
         // Adjust subsetted properties
@@ -281,7 +281,7 @@ void QUmlActivityNode::setInStructuredNode(QUmlStructuredActivityNode *inStructu
         removeInGroup(_inStructuredNode);
 
         _inStructuredNode = inStructuredNode;
-        if (inStructuredNode->asQObject() && this->asQObject())
+        if (inStructuredNode && inStructuredNode->asQObject() && this->asQObject())
             QObject::connect(inStructuredNode->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInStructuredNode()));
 
         // Adjust subsetted properties
@@ -308,7 +308,7 @@ void QUmlActivityNode::addIncoming(QUmlActivityEdge *incoming)
 
     if (!_incoming.contains(incoming)) {
         _incoming.insert(incoming);
-        if (incoming->asQObject() && this->asQObject())
+        if (incoming && incoming->asQObject() && this->asQObject())
             QObject::connect(incoming->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeIncoming(QObject *)));
 
         // Adjust opposite properties
@@ -348,7 +348,7 @@ void QUmlActivityNode::addOutgoing(QUmlActivityEdge *outgoing)
 
     if (!_outgoing.contains(outgoing)) {
         _outgoing.insert(outgoing);
-        if (outgoing->asQObject() && this->asQObject())
+        if (outgoing && outgoing->asQObject() && this->asQObject())
             QObject::connect(outgoing->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOutgoing(QObject *)));
 
         // Adjust opposite properties
@@ -388,7 +388,7 @@ void QUmlActivityNode::addRedefinedNode(QUmlActivityNode *redefinedNode)
 
     if (!_redefinedNode.contains(redefinedNode)) {
         _redefinedNode.insert(redefinedNode);
-        if (redefinedNode->asQObject() && this->asQObject())
+        if (redefinedNode && redefinedNode->asQObject() && this->asQObject())
             QObject::connect(redefinedNode->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedNode(QObject *)));
 
         // Adjust subsetted properties

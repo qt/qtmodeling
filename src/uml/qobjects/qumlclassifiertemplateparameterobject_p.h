@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlClassifierTemplateParameterObject : public QObject
     Q_PROPERTY(QObject * signature READ signature)
 
     // Properties [ClassifierTemplateParameter]
-    Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable)
+    Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable RESET unsetAllowSubstitutable)
     Q_PROPERTY(QSet<QObject *> constrainingClassifier READ constrainingClassifier)
     Q_PROPERTY(QObject * parameteredElement READ parameteredElement)
 
@@ -113,6 +113,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [ClassifierTemplateParameter]
     void setAllowSubstitutable(bool allowSubstitutable);
+    void unsetAllowSubstitutable();
     void addConstrainingClassifier(QObject *constrainingClassifier);
     void removeConstrainingClassifier(QObject *constrainingClassifier);
     void setParameteredElement(QObject *parameteredElement = 0);

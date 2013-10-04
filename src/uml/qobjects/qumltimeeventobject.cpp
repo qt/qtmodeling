@@ -87,19 +87,28 @@ const QSet<QObject *> QUmlTimeEventObject::ownedElement() const
 
 QObject *QUmlTimeEventObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlTimeEventObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlTimeEventObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -119,12 +128,18 @@ QString QUmlTimeEventObject::name() const
 
 QObject *QUmlTimeEventObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlTimeEventObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlTimeEventObject::qualifiedName() const
@@ -147,7 +162,10 @@ bool QUmlTimeEventObject::isRelative() const
 
 QObject *QUmlTimeEventObject::when() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->when()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->when())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->when()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -260,7 +278,7 @@ void QUmlTimeEventObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->setName(name);
 }
-    
+
 void QUmlTimeEventObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -275,20 +293,32 @@ void QUmlTimeEventObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlTimeEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlTimeEventObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [TimeEvent]
 
 void QUmlTimeEventObject::setRelative(bool isRelative)
 {
     qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->setRelative(isRelative);
+    qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->modifiedResettableProperties() << QStringLiteral("relative");
 }
-    
+
+void QUmlTimeEventObject::unsetRelative()
+{
+    qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("relative"));
+}
+
 void QUmlTimeEventObject::setWhen(QObject *when)
 {
     qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->setWhen(qmodelingobjectproperty_cast<QUmlTimeExpression *>(when));

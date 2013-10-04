@@ -69,7 +69,8 @@ QUmlDurationObservation::QUmlDurationObservation(bool createQObject) :
 QUmlDurationObservation::~QUmlDurationObservation()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -113,7 +114,7 @@ void QUmlDurationObservation::setEvent(QUmlNamedElement *event)
 
     if (_event != event) {
         _event = event;
-        if (event->asQObject() && this->asQObject())
+        if (event && event->asQObject() && this->asQObject())
             QObject::connect(event->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEvent()));
     }
 }

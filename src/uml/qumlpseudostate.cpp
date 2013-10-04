@@ -73,7 +73,8 @@ QUmlPseudostate::QUmlPseudostate(bool createQObject) :
 QUmlPseudostate::~QUmlPseudostate()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -138,7 +139,7 @@ void QUmlPseudostate::setState(QUmlState *state)
         // Adjust subsetted properties
 
         _state = state;
-        if (state->asQObject() && this->asQObject())
+        if (state && state->asQObject() && this->asQObject())
             QObject::connect(state->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setState()));
 
         // Adjust subsetted properties
@@ -164,7 +165,7 @@ void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
         // Adjust subsetted properties
 
         _stateMachine = stateMachine;
-        if (stateMachine->asQObject() && this->asQObject())
+        if (stateMachine && stateMachine->asQObject() && this->asQObject())
             QObject::connect(stateMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setStateMachine()));
 
         // Adjust subsetted properties

@@ -82,7 +82,8 @@ QUmlProtocolTransition::QUmlProtocolTransition(bool createQObject) :
 QUmlProtocolTransition::~QUmlProtocolTransition()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -148,7 +149,7 @@ void QUmlProtocolTransition::setPostCondition(QUmlConstraint *postCondition)
         removeOwnedRule(_postCondition);
 
         _postCondition = postCondition;
-        if (postCondition->asQObject() && this->asQObject())
+        if (postCondition && postCondition->asQObject() && this->asQObject())
             QObject::connect(postCondition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPostCondition()));
         postCondition->asQObject()->setParent(this->asQObject());
 
@@ -177,7 +178,7 @@ void QUmlProtocolTransition::setPreCondition(QUmlConstraint *preCondition)
         // Adjust subsetted properties
 
         _preCondition = preCondition;
-        if (preCondition->asQObject() && this->asQObject())
+        if (preCondition && preCondition->asQObject() && this->asQObject())
             QObject::connect(preCondition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setPreCondition()));
         preCondition->asQObject()->setParent(this->asQObject());
 

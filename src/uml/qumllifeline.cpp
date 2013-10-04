@@ -75,7 +75,8 @@ QUmlLifeline::QUmlLifeline(bool createQObject) :
 QUmlLifeline::~QUmlLifeline()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -122,7 +123,7 @@ void QUmlLifeline::addCoveredBy(QUmlInteractionFragment *coveredBy)
 
     if (!_coveredBy.contains(coveredBy)) {
         _coveredBy.insert(coveredBy);
-        if (coveredBy->asQObject() && this->asQObject())
+        if (coveredBy && coveredBy->asQObject() && this->asQObject())
             QObject::connect(coveredBy->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCoveredBy(QObject *)));
 
         // Adjust opposite properties
@@ -162,7 +163,7 @@ void QUmlLifeline::setDecomposedAs(QUmlPartDecomposition *decomposedAs)
 
     if (_decomposedAs != decomposedAs) {
         _decomposedAs = decomposedAs;
-        if (decomposedAs->asQObject() && this->asQObject())
+        if (decomposedAs && decomposedAs->asQObject() && this->asQObject())
             QObject::connect(decomposedAs->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecomposedAs()));
     }
 }
@@ -185,7 +186,7 @@ void QUmlLifeline::setInteraction(QUmlInteraction *interaction)
         // Adjust subsetted properties
 
         _interaction = interaction;
-        if (interaction->asQObject() && this->asQObject())
+        if (interaction && interaction->asQObject() && this->asQObject())
             QObject::connect(interaction->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInteraction()));
 
         // Adjust subsetted properties
@@ -209,7 +210,7 @@ void QUmlLifeline::setRepresents(QUmlConnectableElement *represents)
 
     if (_represents != represents) {
         _represents = represents;
-        if (represents->asQObject() && this->asQObject())
+        if (represents && represents->asQObject() && this->asQObject())
             QObject::connect(represents->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRepresents()));
     }
 }
@@ -233,7 +234,7 @@ void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
         removeOwnedElement(_selector);
 
         _selector = selector;
-        if (selector->asQObject() && this->asQObject())
+        if (selector && selector->asQObject() && this->asQObject())
             QObject::connect(selector->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSelector()));
         selector->asQObject()->setParent(this->asQObject());
 

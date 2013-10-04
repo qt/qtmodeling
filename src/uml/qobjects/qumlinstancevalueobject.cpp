@@ -88,7 +88,10 @@ const QSet<QObject *> QUmlInstanceValueObject::ownedElement() const
 
 QObject *QUmlInstanceValueObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -108,12 +111,18 @@ QString QUmlInstanceValueObject::name() const
 
 QObject *QUmlInstanceValueObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlInstanceValueObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlInstanceValueObject::qualifiedName() const
@@ -124,19 +133,28 @@ QString QUmlInstanceValueObject::qualifiedName() const
 
 QObject *QUmlInstanceValueObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlInstanceValueObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlInstanceValueObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -150,7 +168,10 @@ QtUml::VisibilityKind QUmlInstanceValueObject::visibility() const
 
 QObject *QUmlInstanceValueObject::instance() const
 {
-    return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->instance()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->instance())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->instance()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -288,7 +309,7 @@ void QUmlInstanceValueObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->setName(name);
 }
-    
+
 void QUmlInstanceValueObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -303,7 +324,7 @@ void QUmlInstanceValueObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlInstanceValueObject::setType(QObject *type)
 {
@@ -327,8 +348,14 @@ void QUmlInstanceValueObject::setTemplateParameter(QObject *templateParameter)
 void QUmlInstanceValueObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlInstanceValueObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [InstanceValue]
 
 void QUmlInstanceValueObject::setInstance(QObject *instance)

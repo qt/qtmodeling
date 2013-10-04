@@ -90,7 +90,8 @@ QUmlOperation::QUmlOperation(bool createQObject) :
 QUmlOperation::~QUmlOperation()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -171,7 +172,7 @@ void QUmlOperation::setBodyCondition(QUmlConstraint *bodyCondition)
         removeOwnedRule(_bodyCondition);
 
         _bodyCondition = bodyCondition;
-        if (bodyCondition->asQObject() && this->asQObject())
+        if (bodyCondition && bodyCondition->asQObject() && this->asQObject())
             QObject::connect(bodyCondition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setBodyCondition()));
         bodyCondition->asQObject()->setParent(this->asQObject());
 
@@ -202,7 +203,7 @@ void QUmlOperation::setClass(QUmlClass *class_)
         removeRedefinitionContext(_class_);
 
         _class_ = class_;
-        if (class_->asQObject() && this->asQObject())
+        if (class_ && class_->asQObject() && this->asQObject())
             QObject::connect(class_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setClass()));
 
         // Adjust subsetted properties
@@ -236,7 +237,7 @@ void QUmlOperation::setDatatype(QUmlDataType *datatype)
         removeRedefinitionContext(_datatype);
 
         _datatype = datatype;
-        if (datatype->asQObject() && this->asQObject())
+        if (datatype && datatype->asQObject() && this->asQObject())
             QObject::connect(datatype->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDatatype()));
 
         // Adjust subsetted properties
@@ -270,7 +271,7 @@ void QUmlOperation::setInterface(QUmlInterface *interface_)
         removeRedefinitionContext(_interface_);
 
         _interface_ = interface_;
-        if (interface_->asQObject() && this->asQObject())
+        if (interface_ && interface_->asQObject() && this->asQObject())
             QObject::connect(interface_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInterface()));
 
         // Adjust subsetted properties
@@ -391,7 +392,7 @@ void QUmlOperation::addOwnedParameter(QUmlParameter *ownedParameter)
 
     if (!_ownedParameter.contains(ownedParameter)) {
         _ownedParameter.append(ownedParameter);
-        if (ownedParameter->asQObject() && this->asQObject())
+        if (ownedParameter && ownedParameter->asQObject() && this->asQObject())
             QObject::connect(ownedParameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameter(QObject *)));
         ownedParameter->asQObject()->setParent(this->asQObject());
 
@@ -434,7 +435,7 @@ void QUmlOperation::addPostcondition(QUmlConstraint *postcondition)
 
     if (!_postcondition.contains(postcondition)) {
         _postcondition.insert(postcondition);
-        if (postcondition->asQObject() && this->asQObject())
+        if (postcondition && postcondition->asQObject() && this->asQObject())
             QObject::connect(postcondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePostcondition(QObject *)));
         postcondition->asQObject()->setParent(this->asQObject());
 
@@ -473,7 +474,7 @@ void QUmlOperation::addPrecondition(QUmlConstraint *precondition)
 
     if (!_precondition.contains(precondition)) {
         _precondition.insert(precondition);
-        if (precondition->asQObject() && this->asQObject())
+        if (precondition && precondition->asQObject() && this->asQObject())
             QObject::connect(precondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePrecondition(QObject *)));
         precondition->asQObject()->setParent(this->asQObject());
 
@@ -512,7 +513,7 @@ void QUmlOperation::addRaisedException(QUmlType *raisedException)
 
     if (!_raisedException.contains(raisedException)) {
         _raisedException.insert(raisedException);
-        if (raisedException->asQObject() && this->asQObject())
+        if (raisedException && raisedException->asQObject() && this->asQObject())
             QObject::connect(raisedException->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRaisedException(QObject *)));
     }
 }
@@ -542,7 +543,7 @@ void QUmlOperation::addRedefinedOperation(QUmlOperation *redefinedOperation)
 
     if (!_redefinedOperation.contains(redefinedOperation)) {
         _redefinedOperation.insert(redefinedOperation);
-        if (redefinedOperation->asQObject() && this->asQObject())
+        if (redefinedOperation && redefinedOperation->asQObject() && this->asQObject())
             QObject::connect(redefinedOperation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedOperation(QObject *)));
 
         // Adjust subsetted properties
@@ -578,7 +579,7 @@ void QUmlOperation::setTemplateParameter(QUmlOperationTemplateParameter *templat
 
     if (_templateParameter != templateParameter) {
         _templateParameter = templateParameter;
-        if (templateParameter->asQObject() && this->asQObject())
+        if (templateParameter && templateParameter->asQObject() && this->asQObject())
             QObject::connect(templateParameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTemplateParameter()));
     }
 }

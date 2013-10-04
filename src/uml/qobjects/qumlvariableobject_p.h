@@ -64,11 +64,11 @@ class Q_UML_EXPORT QUmlVariableObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique)
-    Q_PROPERTY(int lower READ lower)
+    Q_PROPERTY(bool isOrdered READ isOrdered RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower RESET unsetLower STORED false)
     Q_PROPERTY(QObject * lowerValue READ lowerValue)
-    Q_PROPERTY(int upper READ upper)
+    Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
     Q_PROPERTY(QObject * upperValue READ upperValue)
 
     // Properties [NamedElement]
@@ -76,7 +76,7 @@ class Q_UML_EXPORT QUmlVariableObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [TypedElement]
@@ -86,7 +86,7 @@ class Q_UML_EXPORT QUmlVariableObject : public QObject
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
 
     // Properties [ConnectableElement]
-    Q_PROPERTY(QList<QObject *> end READ end)
+    Q_PROPERTY(QList<QObject *> end READ end STORED false)
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
 
     // Properties [Variable]
@@ -169,10 +169,14 @@ public Q_SLOTS:
 
     // Slots for owned attributes [MultiplicityElement]
     void setOrdered(bool isOrdered);
+    void unsetOrdered();
     void setUnique(bool isUnique);
+    void unsetUnique();
     void setLower(int lower);
+    void unsetLower();
     void setLowerValue(QObject *lowerValue = 0);
     void setUpper(int upper);
+    void unsetUpper();
     void setUpperValue(QObject *upperValue = 0);
 
     // Slots for owned attributes [NamedElement]

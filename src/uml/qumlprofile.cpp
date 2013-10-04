@@ -79,7 +79,8 @@ QUmlProfile::QUmlProfile(bool createQObject) :
 QUmlProfile::~QUmlProfile()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -143,7 +144,7 @@ void QUmlProfile::addMetaclassReference(QUmlElementImport *metaclassReference)
 
     if (!_metaclassReference.contains(metaclassReference)) {
         _metaclassReference.insert(metaclassReference);
-        if (metaclassReference->asQObject() && this->asQObject())
+        if (metaclassReference && metaclassReference->asQObject() && this->asQObject())
             QObject::connect(metaclassReference->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMetaclassReference(QObject *)));
         metaclassReference->asQObject()->setParent(this->asQObject());
 
@@ -182,7 +183,7 @@ void QUmlProfile::addMetamodelReference(QUmlPackageImport *metamodelReference)
 
     if (!_metamodelReference.contains(metamodelReference)) {
         _metamodelReference.insert(metamodelReference);
-        if (metamodelReference->asQObject() && this->asQObject())
+        if (metamodelReference && metamodelReference->asQObject() && this->asQObject())
             QObject::connect(metamodelReference->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMetamodelReference(QObject *)));
         metamodelReference->asQObject()->setParent(this->asQObject());
 

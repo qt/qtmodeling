@@ -88,7 +88,10 @@ const QSet<QObject *> QUmlIntervalObject::ownedElement() const
 
 QObject *QUmlIntervalObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterval *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterval *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterval *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -108,12 +111,18 @@ QString QUmlIntervalObject::name() const
 
 QObject *QUmlIntervalObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterval *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterval *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterval *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlIntervalObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterval *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterval *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterval *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlIntervalObject::qualifiedName() const
@@ -124,19 +133,28 @@ QString QUmlIntervalObject::qualifiedName() const
 
 QObject *QUmlIntervalObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterval *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterval *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterval *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlIntervalObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterval *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterval *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterval *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlIntervalObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterval *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterval *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterval *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -150,12 +168,18 @@ QtUml::VisibilityKind QUmlIntervalObject::visibility() const
 
 QObject *QUmlIntervalObject::max() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterval *>(this)->max()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterval *>(this)->max())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterval *>(this)->max()->asQObject();
 }
 
 QObject *QUmlIntervalObject::min() const
 {
-    return qmodelingobjectproperty_cast<QUmlInterval *>(this)->min()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInterval *>(this)->min())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInterval *>(this)->min()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -293,7 +317,7 @@ void QUmlIntervalObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInterval *>(this)->setName(name);
 }
-    
+
 void QUmlIntervalObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInterval *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -308,7 +332,7 @@ void QUmlIntervalObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInterval *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlIntervalObject::setType(QObject *type)
 {
@@ -332,8 +356,14 @@ void QUmlIntervalObject::setTemplateParameter(QObject *templateParameter)
 void QUmlIntervalObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInterval *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlInterval *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlIntervalObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlInterval *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Interval]
 
 void QUmlIntervalObject::setMax(QObject *max)

@@ -82,7 +82,8 @@ QUmlAcceptCallAction::QUmlAcceptCallAction(bool createQObject) :
 QUmlAcceptCallAction::~QUmlAcceptCallAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -151,7 +152,7 @@ void QUmlAcceptCallAction::setReturnInformation(QUmlOutputPin *returnInformation
         removeOutput(_returnInformation);
 
         _returnInformation = returnInformation;
-        if (returnInformation->asQObject() && this->asQObject())
+        if (returnInformation && returnInformation->asQObject() && this->asQObject())
             QObject::connect(returnInformation->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReturnInformation()));
         returnInformation->asQObject()->setParent(this->asQObject());
 

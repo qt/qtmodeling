@@ -74,7 +74,7 @@ class Q_UML_EXPORT QUmlElementImportObject : public QObject
     Q_PROPERTY(QString alias READ alias)
     Q_PROPERTY(QObject * importedElement READ importedElement)
     Q_PROPERTY(QObject * importingNamespace READ importingNamespace)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
 public:
     Q_INVOKABLE explicit QUmlElementImportObject(QUmlElementImport *qModelingObject);
@@ -129,6 +129,7 @@ public Q_SLOTS:
     void setImportedElement(QObject *importedElement = 0);
     void setImportingNamespace(QObject *importingNamespace = 0);
     void setVisibility(QtUml::VisibilityKind visibility);
+    void unsetVisibility();
 };
 
 QT_END_NAMESPACE

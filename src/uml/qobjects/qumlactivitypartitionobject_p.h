@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlActivityPartitionObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [ActivityGroup]
@@ -80,8 +80,8 @@ class Q_UML_EXPORT QUmlActivityPartitionObject : public QObject
 
     // Properties [ActivityPartition]
     Q_PROPERTY(QSet<QObject *> edge READ edge)
-    Q_PROPERTY(bool isDimension READ isDimension)
-    Q_PROPERTY(bool isExternal READ isExternal)
+    Q_PROPERTY(bool isDimension READ isDimension RESET unsetDimension)
+    Q_PROPERTY(bool isExternal READ isExternal RESET unsetExternal)
     Q_PROPERTY(QSet<QObject *> node READ node)
     Q_PROPERTY(QObject * represents READ represents)
     Q_PROPERTY(QSet<QObject *> subpartition READ subpartition)
@@ -162,7 +162,9 @@ public Q_SLOTS:
     void addEdge(QObject *edge);
     void removeEdge(QObject *edge);
     void setDimension(bool isDimension);
+    void unsetDimension();
     void setExternal(bool isExternal);
+    void unsetExternal();
     void addNode(QObject *node);
     void removeNode(QObject *node);
     void setRepresents(QObject *represents = 0);

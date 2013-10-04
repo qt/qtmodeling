@@ -83,7 +83,8 @@ QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool 
 QUmlReadLinkObjectEndQualifierAction::~QUmlReadLinkObjectEndQualifierAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -151,7 +152,7 @@ void QUmlReadLinkObjectEndQualifierAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object->asQObject() && this->asQObject())
+        if (object && object->asQObject() && this->asQObject())
             QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
         object->asQObject()->setParent(this->asQObject());
 
@@ -178,7 +179,7 @@ void QUmlReadLinkObjectEndQualifierAction::setQualifier(QUmlProperty *qualifier)
 
     if (_qualifier != qualifier) {
         _qualifier = qualifier;
-        if (qualifier->asQObject() && this->asQObject())
+        if (qualifier && qualifier->asQObject() && this->asQObject())
             QObject::connect(qualifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setQualifier()));
     }
 }
@@ -202,7 +203,7 @@ void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
         result->asQObject()->setParent(this->asQObject());
 

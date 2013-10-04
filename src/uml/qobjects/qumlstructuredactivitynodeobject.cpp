@@ -100,7 +100,10 @@ const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedElement() const
 
 QObject *QUmlStructuredActivityNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -120,12 +123,18 @@ QString QUmlStructuredActivityNodeObject::name() const
 
 QObject *QUmlStructuredActivityNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlStructuredActivityNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlStructuredActivityNodeObject::qualifiedName() const
@@ -189,7 +198,10 @@ const QSet<QObject *> QUmlStructuredActivityNodeObject::inPartition() const
 
 QObject *QUmlStructuredActivityNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlStructuredActivityNodeObject::incoming() const
@@ -230,7 +242,10 @@ const QSet<QObject *> QUmlStructuredActivityNodeObject::handler() const
 
 QObject *QUmlStructuredActivityNodeObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlStructuredActivityNodeObject::input() const
@@ -348,14 +363,20 @@ const QSet<QObject *> QUmlStructuredActivityNodeObject::subgroup() const
 
 QObject *QUmlStructuredActivityNodeObject::superGroup() const
 {
-    return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->superGroup()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->superGroup())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->superGroup()->asQObject();
 }
 
 // OWNED ATTRIBUTES [StructuredActivityNode]
 
 QObject *QUmlStructuredActivityNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlStructuredActivityNodeObject::edge() const
@@ -535,7 +556,7 @@ void QUmlStructuredActivityNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setName(name);
 }
-    
+
 void QUmlStructuredActivityNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -550,19 +571,25 @@ void QUmlStructuredActivityNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlStructuredActivityNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlStructuredActivityNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlStructuredActivityNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlStructuredActivityNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -682,8 +709,14 @@ void QUmlStructuredActivityNodeObject::removeInput(QObject *input)
 void QUmlStructuredActivityNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlStructuredActivityNodeObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlStructuredActivityNodeObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -833,8 +866,14 @@ void QUmlStructuredActivityNodeObject::removeEdge(QObject *edge)
 void QUmlStructuredActivityNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setMustIsolate(mustIsolate);
+    qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->modifiedResettableProperties() << QStringLiteral("mustIsolate");
 }
-    
+
+void QUmlStructuredActivityNodeObject::unsetMustIsolate()
+{
+    qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("mustIsolate"));
+}
+
 void QUmlStructuredActivityNodeObject::addNode(QObject *node)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->addNode(qmodelingobjectproperty_cast<QUmlActivityNode *>(node));

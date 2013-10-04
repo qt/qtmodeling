@@ -89,7 +89,10 @@ const QSet<QObject *> QUmlTimeExpressionObject::ownedElement() const
 
 QObject *QUmlTimeExpressionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,12 +112,18 @@ QString QUmlTimeExpressionObject::name() const
 
 QObject *QUmlTimeExpressionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlTimeExpressionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlTimeExpressionObject::qualifiedName() const
@@ -125,19 +134,28 @@ QString QUmlTimeExpressionObject::qualifiedName() const
 
 QObject *QUmlTimeExpressionObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlTimeExpressionObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlTimeExpressionObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -151,7 +169,10 @@ QtUml::VisibilityKind QUmlTimeExpressionObject::visibility() const
 
 QObject *QUmlTimeExpressionObject::expr() const
 {
-    return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->expr()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->expr())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->expr()->asQObject();
 }
 
 const QSet<QObject *> QUmlTimeExpressionObject::observation() const
@@ -297,7 +318,7 @@ void QUmlTimeExpressionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->setName(name);
 }
-    
+
 void QUmlTimeExpressionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -312,7 +333,7 @@ void QUmlTimeExpressionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlTimeExpressionObject::setType(QObject *type)
 {
@@ -336,8 +357,14 @@ void QUmlTimeExpressionObject::setTemplateParameter(QObject *templateParameter)
 void QUmlTimeExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlTimeExpressionObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [TimeExpression]
 
 void QUmlTimeExpressionObject::setExpr(QObject *expr)

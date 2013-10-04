@@ -85,7 +85,10 @@ const QSet<QObject *> QUmlIncludeObject::ownedElement() const
 
 QObject *QUmlIncludeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInclude *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInclude *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInclude *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -133,12 +136,18 @@ QString QUmlIncludeObject::name() const
 
 QObject *QUmlIncludeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInclude *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInclude *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInclude *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlIncludeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInclude *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInclude *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInclude *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlIncludeObject::qualifiedName() const
@@ -155,12 +164,18 @@ QtUml::VisibilityKind QUmlIncludeObject::visibility() const
 
 QObject *QUmlIncludeObject::addition() const
 {
-    return qmodelingobjectproperty_cast<QUmlInclude *>(this)->addition()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInclude *>(this)->addition())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInclude *>(this)->addition()->asQObject();
 }
 
 QObject *QUmlIncludeObject::includingCase() const
 {
-    return qmodelingobjectproperty_cast<QUmlInclude *>(this)->includingCase()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInclude *>(this)->includingCase())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInclude *>(this)->includingCase()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -283,7 +298,7 @@ void QUmlIncludeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInclude *>(this)->setName(name);
 }
-    
+
 void QUmlIncludeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInclude *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -298,12 +313,12 @@ void QUmlIncludeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInclude *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlIncludeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInclude *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Include]
 
 void QUmlIncludeObject::setAddition(QObject *addition)

@@ -85,7 +85,8 @@ QUmlSequenceNode::QUmlSequenceNode(bool createQObject) :
 QUmlSequenceNode::~QUmlSequenceNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -161,7 +162,7 @@ void QUmlSequenceNode::addExecutableNode(QUmlExecutableNode *executableNode)
 
     if (!_executableNode.contains(executableNode)) {
         _executableNode.append(executableNode);
-        if (executableNode->asQObject() && this->asQObject())
+        if (executableNode && executableNode->asQObject() && this->asQObject())
             QObject::connect(executableNode->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExecutableNode(QObject *)));
         executableNode->asQObject()->setParent(this->asQObject());
     }

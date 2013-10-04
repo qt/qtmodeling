@@ -64,7 +64,8 @@ QUmlProtocolConformance::QUmlProtocolConformance(bool createQObject) :
 QUmlProtocolConformance::~QUmlProtocolConformance()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -102,7 +103,7 @@ void QUmlProtocolConformance::setGeneralMachine(QUmlProtocolStateMachine *genera
         removeTarget(_generalMachine);
 
         _generalMachine = generalMachine;
-        if (generalMachine->asQObject() && this->asQObject())
+        if (generalMachine && generalMachine->asQObject() && this->asQObject())
             QObject::connect(generalMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setGeneralMachine()));
 
         // Adjust subsetted properties
@@ -131,7 +132,7 @@ void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *speci
         removeSource(_specificMachine);
 
         _specificMachine = specificMachine;
-        if (specificMachine->asQObject() && this->asQObject())
+        if (specificMachine && specificMachine->asQObject() && this->asQObject())
             QObject::connect(specificMachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSpecificMachine()));
 
         // Adjust subsetted properties

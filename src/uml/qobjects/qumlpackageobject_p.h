@@ -68,11 +68,11 @@ class Q_UML_EXPORT QUmlPackageObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
     Q_PROPERTY(QSet<QObject *> member READ member)
     Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
     Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
@@ -83,7 +83,7 @@ class Q_UML_EXPORT QUmlPackageObject : public QObject
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [TemplateableElement]
     Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature)
@@ -91,10 +91,10 @@ class Q_UML_EXPORT QUmlPackageObject : public QObject
 
     // Properties [Package]
     Q_PROPERTY(QString URI READ URI)
-    Q_PROPERTY(QSet<QObject *> nestedPackage READ nestedPackage)
+    Q_PROPERTY(QSet<QObject *> nestedPackage READ nestedPackage STORED false)
     Q_PROPERTY(QObject * nestingPackage READ nestingPackage)
-    Q_PROPERTY(QSet<QObject *> ownedStereotype READ ownedStereotype)
-    Q_PROPERTY(QSet<QObject *> ownedType READ ownedType)
+    Q_PROPERTY(QSet<QObject *> ownedStereotype READ ownedStereotype STORED false)
+    Q_PROPERTY(QSet<QObject *> ownedType READ ownedType STORED false)
     Q_PROPERTY(QSet<QObject *> packageMerge READ packageMerge)
     Q_PROPERTY(QSet<QObject *> packagedElement READ packagedElement)
     Q_PROPERTY(QSet<QObject *> profileApplication READ profileApplication)
@@ -211,6 +211,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [PackageableElement]
     void setVisibility(QtUml::VisibilityKind visibility);
+    void unsetVisibility();
 
     // Slots for owned attributes [TemplateableElement]
     void setOwnedTemplateSignature(QObject *ownedTemplateSignature = 0);

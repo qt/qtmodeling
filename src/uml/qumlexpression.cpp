@@ -70,7 +70,8 @@ QUmlExpression::QUmlExpression(bool createQObject)
 QUmlExpression::~QUmlExpression()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -116,7 +117,7 @@ void QUmlExpression::addOperand(QUmlValueSpecification *operand)
 
     if (!_operand.contains(operand)) {
         _operand.append(operand);
-        if (operand->asQObject() && this->asQObject())
+        if (operand && operand->asQObject() && this->asQObject())
             QObject::connect(operand->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOperand(QObject *)));
         operand->asQObject()->setParent(this->asQObject());
 

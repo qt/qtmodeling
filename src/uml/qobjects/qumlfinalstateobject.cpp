@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlFinalStateObject::ownedElement() const
 
 QObject *QUmlFinalStateObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlFinalStateObject::name() const
 
 QObject *QUmlFinalStateObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlFinalStateObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlFinalStateObject::qualifiedName() const
@@ -204,7 +213,10 @@ const QSet<QObject *> QUmlFinalStateObject::redefinedElement() const
 
 QObject *QUmlFinalStateObject::container() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->container()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->container())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->container()->asQObject();
 }
 
 const QSet<QObject *> QUmlFinalStateObject::incoming() const
@@ -251,17 +263,26 @@ const QSet<QObject *> QUmlFinalStateObject::deferrableTrigger() const
 
 QObject *QUmlFinalStateObject::doActivity() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->doActivity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->doActivity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->doActivity()->asQObject();
 }
 
 QObject *QUmlFinalStateObject::entry() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->entry()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->entry())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->entry()->asQObject();
 }
 
 QObject *QUmlFinalStateObject::exit() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->exit()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->exit())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->exit()->asQObject();
 }
 
 bool QUmlFinalStateObject::isComposite() const
@@ -286,12 +307,18 @@ bool QUmlFinalStateObject::isSubmachineState() const
 
 QObject *QUmlFinalStateObject::redefinedState() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->redefinedState()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->redefinedState())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->redefinedState()->asQObject();
 }
 
 QObject *QUmlFinalStateObject::redefinitionContext() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->redefinitionContext()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->redefinitionContext())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->redefinitionContext()->asQObject();
 }
 
 const QSet<QObject *> QUmlFinalStateObject::region() const
@@ -304,12 +331,18 @@ const QSet<QObject *> QUmlFinalStateObject::region() const
 
 QObject *QUmlFinalStateObject::stateInvariant() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->stateInvariant()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->stateInvariant())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->stateInvariant()->asQObject();
 }
 
 QObject *QUmlFinalStateObject::submachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->submachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->submachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->submachine()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -395,7 +428,10 @@ bool QUmlFinalStateObject::membersAreDistinguishable() const
 
 QObject *QUmlFinalStateObject::containingStateMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->containingStateMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlFinalState *>(this)->containingStateMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlFinalState *>(this)->containingStateMachine()->asQObject();
 }
 
 bool QUmlFinalStateObject::isConsistentWith(QObject *redefinee) const
@@ -451,7 +487,7 @@ void QUmlFinalStateObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setName(name);
 }
-    
+
 void QUmlFinalStateObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -466,12 +502,12 @@ void QUmlFinalStateObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlFinalStateObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlFinalStateObject::addElementImport(QObject *elementImport)
@@ -539,8 +575,14 @@ void QUmlFinalStateObject::removePackageImport(QObject *packageImport)
 void QUmlFinalStateObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlFinalStateObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlFinalStateObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -627,23 +669,47 @@ void QUmlFinalStateObject::setExit(QObject *exit)
 void QUmlFinalStateObject::setComposite(bool isComposite)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setComposite(isComposite);
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("composite");
 }
-    
+
+void QUmlFinalStateObject::unsetComposite()
+{
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("composite"));
+}
+
 void QUmlFinalStateObject::setOrthogonal(bool isOrthogonal)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setOrthogonal(isOrthogonal);
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("orthogonal");
 }
-    
+
+void QUmlFinalStateObject::unsetOrthogonal()
+{
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("orthogonal"));
+}
+
 void QUmlFinalStateObject::setSimple(bool isSimple)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setSimple(isSimple);
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("simple");
 }
-    
+
+void QUmlFinalStateObject::unsetSimple()
+{
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("simple"));
+}
+
 void QUmlFinalStateObject::setSubmachineState(bool isSubmachineState)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setSubmachineState(isSubmachineState);
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("submachineState");
 }
-    
+
+void QUmlFinalStateObject::unsetSubmachineState()
+{
+    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("submachineState"));
+}
+
 void QUmlFinalStateObject::setRedefinedState(QObject *redefinedState)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setRedefinedState(qmodelingobjectproperty_cast<QUmlState *>(redefinedState));

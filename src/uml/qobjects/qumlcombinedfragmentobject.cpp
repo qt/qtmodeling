@@ -89,7 +89,10 @@ const QSet<QObject *> QUmlCombinedFragmentObject::ownedElement() const
 
 QObject *QUmlCombinedFragmentObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,12 +112,18 @@ QString QUmlCombinedFragmentObject::name() const
 
 QObject *QUmlCombinedFragmentObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlCombinedFragmentObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlCombinedFragmentObject::qualifiedName() const
@@ -139,12 +148,18 @@ const QSet<QObject *> QUmlCombinedFragmentObject::covered() const
 
 QObject *QUmlCombinedFragmentObject::enclosingInteraction() const
 {
-    return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->enclosingInteraction()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->enclosingInteraction())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->enclosingInteraction()->asQObject();
 }
 
 QObject *QUmlCombinedFragmentObject::enclosingOperand() const
 {
-    return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->enclosingOperand()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->enclosingOperand())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->enclosingOperand()->asQObject();
 }
 
 const QSet<QObject *> QUmlCombinedFragmentObject::generalOrdering() const
@@ -264,7 +279,7 @@ void QUmlCombinedFragmentObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->setName(name);
 }
-    
+
 void QUmlCombinedFragmentObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -279,12 +294,12 @@ void QUmlCombinedFragmentObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlCombinedFragmentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [InteractionFragment]
 
 void QUmlCombinedFragmentObject::addCovered(QObject *covered)
@@ -332,8 +347,14 @@ void QUmlCombinedFragmentObject::removeCfragmentGate(QObject *cfragmentGate)
 void QUmlCombinedFragmentObject::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
     qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->setInteractionOperator(interactionOperator);
+    qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->modifiedResettableProperties() << QStringLiteral("interactionOperator");
 }
-    
+
+void QUmlCombinedFragmentObject::unsetInteractionOperator()
+{
+    qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("interactionOperator"));
+}
+
 void QUmlCombinedFragmentObject::addOperand(QObject *operand)
 {
     qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->addOperand(qmodelingobjectproperty_cast<QUmlInteractionOperand *>(operand));

@@ -80,6 +80,11 @@ public:
         return propertyDataHash[QString::fromLatin1(metaProperty.name())][role];
     }
 
+    QStringList &modifiedResettableProperties()
+    {
+        return _modifiedResettableProperties;
+    }
+
 protected:
     QModelingObject() : deletingFromQObject(false), _qObject(0) {}
     QPointer<QObject> _qObject;

@@ -86,7 +86,10 @@ const QSet<QObject *> QUmlTriggerObject::ownedElement() const
 
 QObject *QUmlTriggerObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTrigger *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -106,12 +109,18 @@ QString QUmlTriggerObject::name() const
 
 QObject *QUmlTriggerObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTrigger *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlTriggerObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTrigger *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlTriggerObject::qualifiedName() const
@@ -128,7 +137,10 @@ QtUml::VisibilityKind QUmlTriggerObject::visibility() const
 
 QObject *QUmlTriggerObject::event() const
 {
-    return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->event()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTrigger *>(this)->event())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->event()->asQObject();
 }
 
 const QSet<QObject *> QUmlTriggerObject::port() const
@@ -225,7 +237,7 @@ void QUmlTriggerObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setName(name);
 }
-    
+
 void QUmlTriggerObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -240,12 +252,12 @@ void QUmlTriggerObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlTriggerObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTrigger *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Trigger]
 
 void QUmlTriggerObject::setEvent(QObject *event)

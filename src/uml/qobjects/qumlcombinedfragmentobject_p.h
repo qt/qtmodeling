@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlCombinedFragmentObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [InteractionFragment]
@@ -79,7 +79,7 @@ class Q_UML_EXPORT QUmlCombinedFragmentObject : public QObject
 
     // Properties [CombinedFragment]
     Q_PROPERTY(QSet<QObject *> cfragmentGate READ cfragmentGate)
-    Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator)
+    Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator RESET unsetInteractionOperator)
     Q_PROPERTY(QList<QObject *> operand READ operand)
 
 public:
@@ -150,6 +150,7 @@ public Q_SLOTS:
     void addCfragmentGate(QObject *cfragmentGate);
     void removeCfragmentGate(QObject *cfragmentGate);
     void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
+    void unsetInteractionOperator();
     void addOperand(QObject *operand);
     void removeOperand(QObject *operand);
 };

@@ -109,7 +109,7 @@ void QUmlInteractionFragment::addCovered(QUmlLifeline *covered)
 
     if (!_covered.contains(covered)) {
         _covered.insert(covered);
-        if (covered->asQObject() && this->asQObject())
+        if (covered && covered->asQObject() && this->asQObject())
             QObject::connect(covered->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCovered(QObject *)));
 
         // Adjust opposite properties
@@ -151,7 +151,7 @@ void QUmlInteractionFragment::setEnclosingInteraction(QUmlInteraction *enclosing
         // Adjust subsetted properties
 
         _enclosingInteraction = enclosingInteraction;
-        if (enclosingInteraction->asQObject() && this->asQObject())
+        if (enclosingInteraction && enclosingInteraction->asQObject() && this->asQObject())
             QObject::connect(enclosingInteraction->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEnclosingInteraction()));
 
         // Adjust subsetted properties
@@ -177,7 +177,7 @@ void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclos
         // Adjust subsetted properties
 
         _enclosingOperand = enclosingOperand;
-        if (enclosingOperand->asQObject() && this->asQObject())
+        if (enclosingOperand && enclosingOperand->asQObject() && this->asQObject())
             QObject::connect(enclosingOperand->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEnclosingOperand()));
 
         // Adjust subsetted properties
@@ -201,7 +201,7 @@ void QUmlInteractionFragment::addGeneralOrdering(QUmlGeneralOrdering *generalOrd
 
     if (!_generalOrdering.contains(generalOrdering)) {
         _generalOrdering.insert(generalOrdering);
-        if (generalOrdering->asQObject() && this->asQObject())
+        if (generalOrdering && generalOrdering->asQObject() && this->asQObject())
             QObject::connect(generalOrdering->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeGeneralOrdering(QObject *)));
         generalOrdering->asQObject()->setParent(this->asQObject());
 

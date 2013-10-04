@@ -87,7 +87,8 @@ QUmlLoopNode::QUmlLoopNode(bool createQObject) :
 QUmlLoopNode::~QUmlLoopNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -176,7 +177,7 @@ void QUmlLoopNode::addBodyOutput(QUmlOutputPin *bodyOutput)
 
     if (!_bodyOutput.contains(bodyOutput)) {
         _bodyOutput.append(bodyOutput);
-        if (bodyOutput->asQObject() && this->asQObject())
+        if (bodyOutput && bodyOutput->asQObject() && this->asQObject())
             QObject::connect(bodyOutput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyOutput(QObject *)));
     }
 }
@@ -206,7 +207,7 @@ void QUmlLoopNode::addBodyPart(QUmlExecutableNode *bodyPart)
 
     if (!_bodyPart.contains(bodyPart)) {
         _bodyPart.insert(bodyPart);
-        if (bodyPart->asQObject() && this->asQObject())
+        if (bodyPart && bodyPart->asQObject() && this->asQObject())
             QObject::connect(bodyPart->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyPart(QObject *)));
     }
 }
@@ -236,7 +237,7 @@ void QUmlLoopNode::setDecider(QUmlOutputPin *decider)
 
     if (_decider != decider) {
         _decider = decider;
-        if (decider->asQObject() && this->asQObject())
+        if (decider && decider->asQObject() && this->asQObject())
             QObject::connect(decider->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDecider()));
     }
 }
@@ -276,7 +277,7 @@ void QUmlLoopNode::addLoopVariable(QUmlOutputPin *loopVariable)
 
     if (!_loopVariable.contains(loopVariable)) {
         _loopVariable.append(loopVariable);
-        if (loopVariable->asQObject() && this->asQObject())
+        if (loopVariable && loopVariable->asQObject() && this->asQObject())
             QObject::connect(loopVariable->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLoopVariable(QObject *)));
     }
 }
@@ -306,7 +307,7 @@ void QUmlLoopNode::addLoopVariableInput(QUmlInputPin *loopVariableInput)
 
     if (!_loopVariableInput.contains(loopVariableInput)) {
         _loopVariableInput.append(loopVariableInput);
-        if (loopVariableInput->asQObject() && this->asQObject())
+        if (loopVariableInput && loopVariableInput->asQObject() && this->asQObject())
             QObject::connect(loopVariableInput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLoopVariableInput(QObject *)));
         loopVariableInput->asQObject()->setParent(this->asQObject());
     }
@@ -339,7 +340,7 @@ void QUmlLoopNode::addResult(QUmlOutputPin *result)
 
     if (!_result.contains(result)) {
         _result.append(result);
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
         result->asQObject()->setParent(this->asQObject());
     }
@@ -372,7 +373,7 @@ void QUmlLoopNode::addSetupPart(QUmlExecutableNode *setupPart)
 
     if (!_setupPart.contains(setupPart)) {
         _setupPart.insert(setupPart);
-        if (setupPart->asQObject() && this->asQObject())
+        if (setupPart && setupPart->asQObject() && this->asQObject())
             QObject::connect(setupPart->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSetupPart(QObject *)));
     }
 }
@@ -402,7 +403,7 @@ void QUmlLoopNode::addTest(QUmlExecutableNode *test)
 
     if (!_test.contains(test)) {
         _test.insert(test);
-        if (test->asQObject() && this->asQObject())
+        if (test && test->asQObject() && this->asQObject())
             QObject::connect(test->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTest(QObject *)));
     }
 }

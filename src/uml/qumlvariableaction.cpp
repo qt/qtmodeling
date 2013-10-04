@@ -134,7 +134,7 @@ void QUmlVariableAction::setVariable(QUmlVariable *variable)
 
     if (_variable != variable) {
         _variable = variable;
-        if (variable->asQObject() && this->asQObject())
+        if (variable && variable->asQObject() && this->asQObject())
             QObject::connect(variable->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setVariable()));
     }
 }

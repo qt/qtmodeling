@@ -64,7 +64,8 @@ QUmlPackageMerge::QUmlPackageMerge(bool createQObject) :
 QUmlPackageMerge::~QUmlPackageMerge()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -102,7 +103,7 @@ void QUmlPackageMerge::setMergedPackage(QUmlPackage *mergedPackage)
         removeTarget(_mergedPackage);
 
         _mergedPackage = mergedPackage;
-        if (mergedPackage->asQObject() && this->asQObject())
+        if (mergedPackage && mergedPackage->asQObject() && this->asQObject())
             QObject::connect(mergedPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setMergedPackage()));
 
         // Adjust subsetted properties
@@ -131,7 +132,7 @@ void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
         removeSource(_receivingPackage);
 
         _receivingPackage = receivingPackage;
-        if (receivingPackage->asQObject() && this->asQObject())
+        if (receivingPackage && receivingPackage->asQObject() && this->asQObject())
             QObject::connect(receivingPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReceivingPackage()));
 
         // Adjust subsetted properties

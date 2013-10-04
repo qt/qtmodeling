@@ -88,7 +88,8 @@ QUmlPort::QUmlPort(bool createQObject) :
 QUmlPort::~QUmlPort()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -230,7 +231,7 @@ void QUmlPort::setProtocol(QUmlProtocolStateMachine *protocol)
 
     if (_protocol != protocol) {
         _protocol = protocol;
-        if (protocol->asQObject() && this->asQObject())
+        if (protocol && protocol->asQObject() && this->asQObject())
             QObject::connect(protocol->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setProtocol()));
     }
 }
@@ -287,7 +288,7 @@ void QUmlPort::addRedefinedPort(QUmlPort *redefinedPort)
 
     if (!_redefinedPort.contains(redefinedPort)) {
         _redefinedPort.insert(redefinedPort);
-        if (redefinedPort->asQObject() && this->asQObject())
+        if (redefinedPort && redefinedPort->asQObject() && this->asQObject())
             QObject::connect(redefinedPort->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedPort(QObject *)));
 
         // Adjust subsetted properties

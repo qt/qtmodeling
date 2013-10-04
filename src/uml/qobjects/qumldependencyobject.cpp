@@ -85,19 +85,28 @@ const QSet<QObject *> QUmlDependencyObject::ownedElement() const
 
 QObject *QUmlDependencyObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlDependency *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDependency *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDependency *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlDependencyObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlDependency *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDependency *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDependency *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlDependencyObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlDependency *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDependency *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDependency *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +126,18 @@ QString QUmlDependencyObject::name() const
 
 QObject *QUmlDependencyObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlDependency *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDependency *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDependency *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlDependencyObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlDependency *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDependency *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDependency *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlDependencyObject::qualifiedName() const
@@ -292,7 +307,7 @@ void QUmlDependencyObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlDependency *>(this)->setName(name);
 }
-    
+
 void QUmlDependencyObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlDependency *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -307,13 +322,19 @@ void QUmlDependencyObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlDependency *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlDependencyObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDependency *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlDependency *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlDependencyObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlDependency *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Relationship]
 
 void QUmlDependencyObject::addRelatedElement(QObject *relatedElement)

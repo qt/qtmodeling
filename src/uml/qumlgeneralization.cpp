@@ -66,7 +66,8 @@ QUmlGeneralization::QUmlGeneralization(bool createQObject) :
 QUmlGeneralization::~QUmlGeneralization()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -133,7 +134,7 @@ void QUmlGeneralization::addGeneralizationSet(QUmlGeneralizationSet *generalizat
 
     if (!_generalizationSet.contains(generalizationSet)) {
         _generalizationSet.insert(generalizationSet);
-        if (generalizationSet->asQObject() && this->asQObject())
+        if (generalizationSet && generalizationSet->asQObject() && this->asQObject())
             QObject::connect(generalizationSet->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeGeneralizationSet(QObject *)));
 
         // Adjust opposite properties

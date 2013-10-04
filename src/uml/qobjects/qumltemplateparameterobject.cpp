@@ -81,34 +81,52 @@ const QSet<QObject *> QUmlTemplateParameterObject::ownedElement() const
 
 QObject *QUmlTemplateParameterObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [TemplateParameter]
 
 QObject *QUmlTemplateParameterObject::default_() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->default_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->default_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->default_()->asQObject();
 }
 
 QObject *QUmlTemplateParameterObject::ownedDefault() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedDefault()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedDefault())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedDefault()->asQObject();
 }
 
 QObject *QUmlTemplateParameterObject::ownedParameteredElement() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedParameteredElement()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedParameteredElement())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedParameteredElement()->asQObject();
 }
 
 QObject *QUmlTemplateParameterObject::parameteredElement() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->parameteredElement()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->parameteredElement())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->parameteredElement()->asQObject();
 }
 
 QObject *QUmlTemplateParameterObject::signature() const
 {
-    return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->signature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->signature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->signature()->asQObject();
 }
 
 // OPERATIONS [Element]

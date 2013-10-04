@@ -84,7 +84,8 @@ QUmlTransition::QUmlTransition(bool createQObject) :
 QUmlTransition::~QUmlTransition()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -145,7 +146,7 @@ void QUmlTransition::setContainer(QUmlRegion *container)
         // Adjust subsetted properties
 
         _container = container;
-        if (container->asQObject() && this->asQObject())
+        if (container && container->asQObject() && this->asQObject())
             QObject::connect(container->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setContainer()));
 
         // Adjust subsetted properties
@@ -172,7 +173,7 @@ void QUmlTransition::setEffect(QUmlBehavior *effect)
         removeOwnedElement(_effect);
 
         _effect = effect;
-        if (effect->asQObject() && this->asQObject())
+        if (effect && effect->asQObject() && this->asQObject())
             QObject::connect(effect->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEffect()));
         effect->asQObject()->setParent(this->asQObject());
 
@@ -202,7 +203,7 @@ void QUmlTransition::setGuard(QUmlConstraint *guard)
         removeOwnedRule(_guard);
 
         _guard = guard;
-        if (guard->asQObject() && this->asQObject())
+        if (guard && guard->asQObject() && this->asQObject())
             QObject::connect(guard->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setGuard()));
         guard->asQObject()->setParent(this->asQObject());
 
@@ -251,7 +252,7 @@ void QUmlTransition::setRedefinedTransition(QUmlTransition *redefinedTransition)
         removeRedefinedElement(_redefinedTransition);
 
         _redefinedTransition = redefinedTransition;
-        if (redefinedTransition->asQObject() && this->asQObject())
+        if (redefinedTransition && redefinedTransition->asQObject() && this->asQObject())
             QObject::connect(redefinedTransition->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRedefinedTransition()));
 
         // Adjust subsetted properties
@@ -301,7 +302,7 @@ void QUmlTransition::setSource(QUmlVertex *source)
 
     if (_source != source) {
         _source = source;
-        if (source->asQObject() && this->asQObject())
+        if (source && source->asQObject() && this->asQObject())
             QObject::connect(source->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSource()));
     }
 }
@@ -322,7 +323,7 @@ void QUmlTransition::setTarget(QUmlVertex *target)
 
     if (_target != target) {
         _target = target;
-        if (target->asQObject() && this->asQObject())
+        if (target && target->asQObject() && this->asQObject())
             QObject::connect(target->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setTarget()));
     }
 }
@@ -343,7 +344,7 @@ void QUmlTransition::addTrigger(QUmlTrigger *trigger)
 
     if (!_trigger.contains(trigger)) {
         _trigger.insert(trigger);
-        if (trigger->asQObject() && this->asQObject())
+        if (trigger && trigger->asQObject() && this->asQObject())
             QObject::connect(trigger->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTrigger(QObject *)));
         trigger->asQObject()->setParent(this->asQObject());
 

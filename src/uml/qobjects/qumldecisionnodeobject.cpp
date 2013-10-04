@@ -95,7 +95,10 @@ const QSet<QObject *> QUmlDecisionNodeObject::ownedElement() const
 
 QObject *QUmlDecisionNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -115,12 +118,18 @@ QString QUmlDecisionNodeObject::name() const
 
 QObject *QUmlDecisionNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlDecisionNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlDecisionNodeObject::qualifiedName() const
@@ -160,7 +169,10 @@ const QSet<QObject *> QUmlDecisionNodeObject::redefinitionContext() const
 
 QObject *QUmlDecisionNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlDecisionNodeObject::inGroup() const
@@ -189,7 +201,10 @@ const QSet<QObject *> QUmlDecisionNodeObject::inPartition() const
 
 QObject *QUmlDecisionNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlDecisionNodeObject::incoming() const
@@ -220,12 +235,18 @@ const QSet<QObject *> QUmlDecisionNodeObject::redefinedNode() const
 
 QObject *QUmlDecisionNodeObject::decisionInput() const
 {
-    return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->decisionInput()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->decisionInput())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->decisionInput()->asQObject();
 }
 
 QObject *QUmlDecisionNodeObject::decisionInputFlow() const
 {
-    return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->decisionInputFlow()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->decisionInputFlow())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->decisionInputFlow()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -326,7 +347,7 @@ void QUmlDecisionNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->setName(name);
 }
-    
+
 void QUmlDecisionNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -341,19 +362,25 @@ void QUmlDecisionNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlDecisionNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlDecisionNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlDecisionNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlDecisionNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

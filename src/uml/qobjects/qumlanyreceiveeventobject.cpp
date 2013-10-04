@@ -86,19 +86,28 @@ const QSet<QObject *> QUmlAnyReceiveEventObject::ownedElement() const
 
 QObject *QUmlAnyReceiveEventObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlAnyReceiveEventObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlAnyReceiveEventObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +127,18 @@ QString QUmlAnyReceiveEventObject::name() const
 
 QObject *QUmlAnyReceiveEventObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlAnyReceiveEventObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlAnyReceiveEventObject::qualifiedName() const
@@ -247,7 +262,7 @@ void QUmlAnyReceiveEventObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setName(name);
 }
-    
+
 void QUmlAnyReceiveEventObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -262,12 +277,18 @@ void QUmlAnyReceiveEventObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlAnyReceiveEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlAnyReceiveEventObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 QT_END_NAMESPACE
 

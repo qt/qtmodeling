@@ -72,7 +72,8 @@ QUmlCombinedFragment::QUmlCombinedFragment(bool createQObject) :
 QUmlCombinedFragment::~QUmlCombinedFragment()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -122,7 +123,7 @@ void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
 
     if (!_cfragmentGate.contains(cfragmentGate)) {
         _cfragmentGate.insert(cfragmentGate);
-        if (cfragmentGate->asQObject() && this->asQObject())
+        if (cfragmentGate && cfragmentGate->asQObject() && this->asQObject())
             QObject::connect(cfragmentGate->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCfragmentGate(QObject *)));
         cfragmentGate->asQObject()->setParent(this->asQObject());
 
@@ -180,7 +181,7 @@ void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
 
     if (!_operand.contains(operand)) {
         _operand.append(operand);
-        if (operand->asQObject() && this->asQObject())
+        if (operand && operand->asQObject() && this->asQObject())
             QObject::connect(operand->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOperand(QObject *)));
         operand->asQObject()->setParent(this->asQObject());
 

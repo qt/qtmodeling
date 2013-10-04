@@ -68,16 +68,16 @@ class Q_UML_EXPORT QUmlPseudostateObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [Vertex]
     Q_PROPERTY(QObject * container READ container)
-    Q_PROPERTY(QSet<QObject *> incoming READ incoming)
-    Q_PROPERTY(QSet<QObject *> outgoing READ outgoing)
+    Q_PROPERTY(QSet<QObject *> incoming READ incoming STORED false)
+    Q_PROPERTY(QSet<QObject *> outgoing READ outgoing STORED false)
 
     // Properties [Pseudostate]
-    Q_PROPERTY(QtUml::PseudostateKind kind READ kind)
+    Q_PROPERTY(QtUml::PseudostateKind kind READ kind RESET unsetKind)
     Q_PROPERTY(QObject * state READ state)
     Q_PROPERTY(QObject * stateMachine READ stateMachine)
 
@@ -148,6 +148,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [Pseudostate]
     void setKind(QtUml::PseudostateKind kind);
+    void unsetKind();
     void setState(QObject *state = 0);
     void setStateMachine(QObject *stateMachine = 0);
 };

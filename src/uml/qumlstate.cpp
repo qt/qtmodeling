@@ -85,7 +85,8 @@ QUmlState::QUmlState(bool createQObject) :
 QUmlState::~QUmlState()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -151,7 +152,7 @@ void QUmlState::addConnection(QUmlConnectionPointReference *connection)
 
     if (!_connection.contains(connection)) {
         _connection.insert(connection);
-        if (connection->asQObject() && this->asQObject())
+        if (connection && connection->asQObject() && this->asQObject())
             QObject::connect(connection->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConnection(QObject *)));
         connection->asQObject()->setParent(this->asQObject());
 
@@ -200,7 +201,7 @@ void QUmlState::addConnectionPoint(QUmlPseudostate *connectionPoint)
 
     if (!_connectionPoint.contains(connectionPoint)) {
         _connectionPoint.insert(connectionPoint);
-        if (connectionPoint->asQObject() && this->asQObject())
+        if (connectionPoint && connectionPoint->asQObject() && this->asQObject())
             QObject::connect(connectionPoint->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConnectionPoint(QObject *)));
         connectionPoint->asQObject()->setParent(this->asQObject());
 
@@ -249,7 +250,7 @@ void QUmlState::addDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 
     if (!_deferrableTrigger.contains(deferrableTrigger)) {
         _deferrableTrigger.insert(deferrableTrigger);
-        if (deferrableTrigger->asQObject() && this->asQObject())
+        if (deferrableTrigger && deferrableTrigger->asQObject() && this->asQObject())
             QObject::connect(deferrableTrigger->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeDeferrableTrigger(QObject *)));
         deferrableTrigger->asQObject()->setParent(this->asQObject());
 
@@ -291,7 +292,7 @@ void QUmlState::setDoActivity(QUmlBehavior *doActivity)
         removeOwnedElement(_doActivity);
 
         _doActivity = doActivity;
-        if (doActivity->asQObject() && this->asQObject())
+        if (doActivity && doActivity->asQObject() && this->asQObject())
             QObject::connect(doActivity->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDoActivity()));
         doActivity->asQObject()->setParent(this->asQObject());
 
@@ -321,7 +322,7 @@ void QUmlState::setEntry(QUmlBehavior *entry)
         removeOwnedElement(_entry);
 
         _entry = entry;
-        if (entry->asQObject() && this->asQObject())
+        if (entry && entry->asQObject() && this->asQObject())
             QObject::connect(entry->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setEntry()));
         entry->asQObject()->setParent(this->asQObject());
 
@@ -351,7 +352,7 @@ void QUmlState::setExit(QUmlBehavior *exit)
         removeOwnedElement(_exit);
 
         _exit = exit;
-        if (exit->asQObject() && this->asQObject())
+        if (exit && exit->asQObject() && this->asQObject())
             QObject::connect(exit->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExit()));
         exit->asQObject()->setParent(this->asQObject());
 
@@ -477,7 +478,7 @@ void QUmlState::setRedefinedState(QUmlState *redefinedState)
         removeRedefinedElement(_redefinedState);
 
         _redefinedState = redefinedState;
-        if (redefinedState->asQObject() && this->asQObject())
+        if (redefinedState && redefinedState->asQObject() && this->asQObject())
             QObject::connect(redefinedState->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRedefinedState()));
 
         // Adjust subsetted properties
@@ -527,7 +528,7 @@ void QUmlState::addRegion(QUmlRegion *region)
 
     if (!_region.contains(region)) {
         _region.insert(region);
-        if (region->asQObject() && this->asQObject())
+        if (region && region->asQObject() && this->asQObject())
             QObject::connect(region->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRegion(QObject *)));
         region->asQObject()->setParent(this->asQObject());
 
@@ -579,7 +580,7 @@ void QUmlState::setStateInvariant(QUmlConstraint *stateInvariant)
         removeOwnedRule(_stateInvariant);
 
         _stateInvariant = stateInvariant;
-        if (stateInvariant->asQObject() && this->asQObject())
+        if (stateInvariant && stateInvariant->asQObject() && this->asQObject())
             QObject::connect(stateInvariant->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setStateInvariant()));
         stateInvariant->asQObject()->setParent(this->asQObject());
 
@@ -606,7 +607,7 @@ void QUmlState::setSubmachine(QUmlStateMachine *submachine)
 
     if (_submachine != submachine) {
         _submachine = submachine;
-        if (submachine->asQObject() && this->asQObject())
+        if (submachine && submachine->asQObject() && this->asQObject())
             QObject::connect(submachine->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSubmachine()));
     }
 }

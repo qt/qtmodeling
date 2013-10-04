@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlStateObject::ownedElement() const
 
 QObject *QUmlStateObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlStateObject::name() const
 
 QObject *QUmlStateObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlStateObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlStateObject::qualifiedName() const
@@ -203,7 +212,10 @@ const QSet<QObject *> QUmlStateObject::redefinedElement() const
 
 QObject *QUmlStateObject::container() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->container()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->container())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->container()->asQObject();
 }
 
 const QSet<QObject *> QUmlStateObject::incoming() const
@@ -250,17 +262,26 @@ const QSet<QObject *> QUmlStateObject::deferrableTrigger() const
 
 QObject *QUmlStateObject::doActivity() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->doActivity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->doActivity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->doActivity()->asQObject();
 }
 
 QObject *QUmlStateObject::entry() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->entry()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->entry())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->entry()->asQObject();
 }
 
 QObject *QUmlStateObject::exit() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->exit()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->exit())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->exit()->asQObject();
 }
 
 bool QUmlStateObject::isComposite() const
@@ -285,12 +306,18 @@ bool QUmlStateObject::isSubmachineState() const
 
 QObject *QUmlStateObject::redefinedState() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->redefinedState()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->redefinedState())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->redefinedState()->asQObject();
 }
 
 QObject *QUmlStateObject::redefinitionContext() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->redefinitionContext()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->redefinitionContext())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->redefinitionContext()->asQObject();
 }
 
 const QSet<QObject *> QUmlStateObject::region() const
@@ -303,12 +330,18 @@ const QSet<QObject *> QUmlStateObject::region() const
 
 QObject *QUmlStateObject::stateInvariant() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->stateInvariant()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->stateInvariant())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->stateInvariant()->asQObject();
 }
 
 QObject *QUmlStateObject::submachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->submachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->submachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->submachine()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -394,7 +427,10 @@ bool QUmlStateObject::membersAreDistinguishable() const
 
 QObject *QUmlStateObject::containingStateMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlState *>(this)->containingStateMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlState *>(this)->containingStateMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlState *>(this)->containingStateMachine()->asQObject();
 }
 
 bool QUmlStateObject::isConsistentWith(QObject *redefinee) const
@@ -450,7 +486,7 @@ void QUmlStateObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setName(name);
 }
-    
+
 void QUmlStateObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -465,12 +501,12 @@ void QUmlStateObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlStateObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlStateObject::addElementImport(QObject *elementImport)
@@ -538,8 +574,14 @@ void QUmlStateObject::removePackageImport(QObject *packageImport)
 void QUmlStateObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlStateObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlStateObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -626,23 +668,47 @@ void QUmlStateObject::setExit(QObject *exit)
 void QUmlStateObject::setComposite(bool isComposite)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setComposite(isComposite);
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties() << QStringLiteral("composite");
 }
-    
+
+void QUmlStateObject::unsetComposite()
+{
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("composite"));
+}
+
 void QUmlStateObject::setOrthogonal(bool isOrthogonal)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setOrthogonal(isOrthogonal);
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties() << QStringLiteral("orthogonal");
 }
-    
+
+void QUmlStateObject::unsetOrthogonal()
+{
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("orthogonal"));
+}
+
 void QUmlStateObject::setSimple(bool isSimple)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setSimple(isSimple);
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties() << QStringLiteral("simple");
 }
-    
+
+void QUmlStateObject::unsetSimple()
+{
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("simple"));
+}
+
 void QUmlStateObject::setSubmachineState(bool isSubmachineState)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setSubmachineState(isSubmachineState);
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties() << QStringLiteral("submachineState");
 }
-    
+
+void QUmlStateObject::unsetSubmachineState()
+{
+    qmodelingobjectproperty_cast<QUmlState *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("submachineState"));
+}
+
 void QUmlStateObject::setRedefinedState(QObject *redefinedState)
 {
     qmodelingobjectproperty_cast<QUmlState *>(this)->setRedefinedState(qmodelingobjectproperty_cast<QUmlState *>(redefinedState));

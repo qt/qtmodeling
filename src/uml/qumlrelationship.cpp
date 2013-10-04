@@ -84,7 +84,7 @@ void QUmlRelationship::addRelatedElement(QUmlElement *relatedElement)
 
     if (!_relatedElement.contains(relatedElement)) {
         _relatedElement.insert(relatedElement);
-        if (relatedElement->asQObject() && this->asQObject())
+        if (relatedElement && relatedElement->asQObject() && this->asQObject())
             QObject::connect(relatedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRelatedElement(QObject *)));
     }
 }

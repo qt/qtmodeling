@@ -89,7 +89,10 @@ const QSet<QObject *> QUmlConnectionPointReferenceObject::ownedElement() const
 
 QObject *QUmlConnectionPointReferenceObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,12 +112,18 @@ QString QUmlConnectionPointReferenceObject::name() const
 
 QObject *QUmlConnectionPointReferenceObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlConnectionPointReferenceObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlConnectionPointReferenceObject::qualifiedName() const
@@ -131,7 +140,10 @@ QtUml::VisibilityKind QUmlConnectionPointReferenceObject::visibility() const
 
 QObject *QUmlConnectionPointReferenceObject::container() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->container()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->container())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->container()->asQObject();
 }
 
 const QSet<QObject *> QUmlConnectionPointReferenceObject::incoming() const
@@ -170,7 +182,10 @@ const QSet<QObject *> QUmlConnectionPointReferenceObject::exit() const
 
 QObject *QUmlConnectionPointReferenceObject::state() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->state()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->state())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->state()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -220,7 +235,10 @@ QString QUmlConnectionPointReferenceObject::separator() const
 
 QObject *QUmlConnectionPointReferenceObject::containingStateMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->containingStateMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->containingStateMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->containingStateMachine()->asQObject();
 }
 
 // SLOTS FOR OWNED ATTRIBUTES [Element]
@@ -266,7 +284,7 @@ void QUmlConnectionPointReferenceObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->setName(name);
 }
-    
+
 void QUmlConnectionPointReferenceObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -281,12 +299,12 @@ void QUmlConnectionPointReferenceObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlConnectionPointReferenceObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [Vertex]
 
 void QUmlConnectionPointReferenceObject::setContainer(QObject *container)

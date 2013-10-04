@@ -87,19 +87,28 @@ const QSet<QObject *> QUmlInteractionConstraintObject::ownedElement() const
 
 QObject *QUmlInteractionConstraintObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlInteractionConstraintObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlInteractionConstraintObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -119,12 +128,18 @@ QString QUmlInteractionConstraintObject::name() const
 
 QObject *QUmlInteractionConstraintObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlInteractionConstraintObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlInteractionConstraintObject::qualifiedName() const
@@ -150,24 +165,36 @@ const QList<QObject *> QUmlInteractionConstraintObject::constrainedElement() con
 
 QObject *QUmlInteractionConstraintObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->context()->asQObject();
 }
 
 QObject *QUmlInteractionConstraintObject::specification() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->specification()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->specification())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->specification()->asQObject();
 }
 
 // OWNED ATTRIBUTES [InteractionConstraint]
 
 QObject *QUmlInteractionConstraintObject::maxint() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->maxint()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->maxint())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->maxint()->asQObject();
 }
 
 QObject *QUmlInteractionConstraintObject::minint() const
 {
-    return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->minint()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->minint())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->minint()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -280,7 +307,7 @@ void QUmlInteractionConstraintObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->setName(name);
 }
-    
+
 void QUmlInteractionConstraintObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -295,13 +322,19 @@ void QUmlInteractionConstraintObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlInteractionConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlInteractionConstraintObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Constraint]
 
 void QUmlInteractionConstraintObject::addConstrainedElement(QObject *constrainedElement)

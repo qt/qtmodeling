@@ -70,7 +70,8 @@ QUmlChangeEvent::QUmlChangeEvent(bool createQObject) :
 QUmlChangeEvent::~QUmlChangeEvent()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -116,7 +117,7 @@ void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpressi
         removeOwnedElement(_changeExpression);
 
         _changeExpression = changeExpression;
-        if (changeExpression->asQObject() && this->asQObject())
+        if (changeExpression && changeExpression->asQObject() && this->asQObject())
             QObject::connect(changeExpression->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setChangeExpression()));
         changeExpression->asQObject()->setParent(this->asQObject());
 

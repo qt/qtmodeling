@@ -93,7 +93,10 @@ const QSet<QObject *> QUmlForkNodeObject::ownedElement() const
 
 QObject *QUmlForkNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlForkNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -113,12 +116,18 @@ QString QUmlForkNodeObject::name() const
 
 QObject *QUmlForkNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlForkNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlForkNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlForkNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlForkNodeObject::qualifiedName() const
@@ -158,7 +167,10 @@ const QSet<QObject *> QUmlForkNodeObject::redefinitionContext() const
 
 QObject *QUmlForkNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlForkNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlForkNodeObject::inGroup() const
@@ -187,7 +199,10 @@ const QSet<QObject *> QUmlForkNodeObject::inPartition() const
 
 QObject *QUmlForkNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlForkNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlForkNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlForkNodeObject::incoming() const
@@ -312,7 +327,7 @@ void QUmlForkNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlForkNode *>(this)->setName(name);
 }
-    
+
 void QUmlForkNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlForkNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -327,19 +342,25 @@ void QUmlForkNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlForkNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlForkNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlForkNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlForkNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlForkNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlForkNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlForkNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlForkNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlForkNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlForkNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

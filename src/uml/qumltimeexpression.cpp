@@ -72,7 +72,8 @@ QUmlTimeExpression::QUmlTimeExpression(bool createQObject) :
 QUmlTimeExpression::~QUmlTimeExpression()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -122,7 +123,7 @@ void QUmlTimeExpression::setExpr(QUmlValueSpecification *expr)
         removeOwnedElement(_expr);
 
         _expr = expr;
-        if (expr->asQObject() && this->asQObject())
+        if (expr && expr->asQObject() && this->asQObject())
             QObject::connect(expr->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExpr()));
         expr->asQObject()->setParent(this->asQObject());
 
@@ -149,7 +150,7 @@ void QUmlTimeExpression::addObservation(QUmlObservation *observation)
 
     if (!_observation.contains(observation)) {
         _observation.insert(observation);
-        if (observation->asQObject() && this->asQObject())
+        if (observation && observation->asQObject() && this->asQObject())
             QObject::connect(observation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeObservation(QObject *)));
     }
 }

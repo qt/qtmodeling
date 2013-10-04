@@ -93,7 +93,10 @@ const QSet<QObject *> QUmlInitialNodeObject::ownedElement() const
 
 QObject *QUmlInitialNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -113,12 +116,18 @@ QString QUmlInitialNodeObject::name() const
 
 QObject *QUmlInitialNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlInitialNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlInitialNodeObject::qualifiedName() const
@@ -158,7 +167,10 @@ const QSet<QObject *> QUmlInitialNodeObject::redefinitionContext() const
 
 QObject *QUmlInitialNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlInitialNodeObject::inGroup() const
@@ -187,7 +199,10 @@ const QSet<QObject *> QUmlInitialNodeObject::inPartition() const
 
 QObject *QUmlInitialNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlInitialNodeObject::incoming() const
@@ -312,7 +327,7 @@ void QUmlInitialNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->setName(name);
 }
-    
+
 void QUmlInitialNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -327,19 +342,25 @@ void QUmlInitialNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlInitialNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlInitialNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlInitialNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlInitialNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

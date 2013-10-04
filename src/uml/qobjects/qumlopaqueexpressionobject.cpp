@@ -89,7 +89,10 @@ const QSet<QObject *> QUmlOpaqueExpressionObject::ownedElement() const
 
 QObject *QUmlOpaqueExpressionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -109,12 +112,18 @@ QString QUmlOpaqueExpressionObject::name() const
 
 QObject *QUmlOpaqueExpressionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlOpaqueExpressionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlOpaqueExpressionObject::qualifiedName() const
@@ -125,19 +134,28 @@ QString QUmlOpaqueExpressionObject::qualifiedName() const
 
 QObject *QUmlOpaqueExpressionObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlOpaqueExpressionObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlOpaqueExpressionObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -151,7 +169,10 @@ QtUml::VisibilityKind QUmlOpaqueExpressionObject::visibility() const
 
 QObject *QUmlOpaqueExpressionObject::behavior() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->behavior()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->behavior())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->behavior()->asQObject();
 }
 
 const QList<QString> QUmlOpaqueExpressionObject::body() const
@@ -166,7 +187,10 @@ const QList<QString> QUmlOpaqueExpressionObject::language() const
 
 QObject *QUmlOpaqueExpressionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->result()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -326,7 +350,7 @@ void QUmlOpaqueExpressionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setName(name);
 }
-    
+
 void QUmlOpaqueExpressionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -341,7 +365,7 @@ void QUmlOpaqueExpressionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlOpaqueExpressionObject::setType(QObject *type)
 {
@@ -365,8 +389,14 @@ void QUmlOpaqueExpressionObject::setTemplateParameter(QObject *templateParameter
 void QUmlOpaqueExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlOpaqueExpressionObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [OpaqueExpression]
 
 void QUmlOpaqueExpressionObject::setBehavior(QObject *behavior)

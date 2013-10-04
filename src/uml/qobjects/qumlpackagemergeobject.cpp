@@ -80,7 +80,10 @@ const QSet<QObject *> QUmlPackageMergeObject::ownedElement() const
 
 QObject *QUmlPackageMergeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -115,12 +118,18 @@ const QSet<QObject *> QUmlPackageMergeObject::target() const
 
 QObject *QUmlPackageMergeObject::mergedPackage() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->mergedPackage()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->mergedPackage())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->mergedPackage()->asQObject();
 }
 
 QObject *QUmlPackageMergeObject::receivingPackage() const
 {
-    return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->receivingPackage()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->receivingPackage())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->receivingPackage()->asQObject();
 }
 
 // OPERATIONS [Element]

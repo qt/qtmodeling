@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlActivityParameterNodeObject::ownedElement() const
 
 QObject *QUmlActivityParameterNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlActivityParameterNodeObject::name() const
 
 QObject *QUmlActivityParameterNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlActivityParameterNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlActivityParameterNodeObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlActivityParameterNodeObject::redefinitionContext() con
 
 QObject *QUmlActivityParameterNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlActivityParameterNodeObject::inPartition() const
 
 QObject *QUmlActivityParameterNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlActivityParameterNodeObject::incoming() const
@@ -223,7 +238,10 @@ const QSet<QObject *> QUmlActivityParameterNodeObject::redefinedNode() const
 
 QObject *QUmlActivityParameterNodeObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ObjectNode]
@@ -248,19 +266,28 @@ QtUml::ObjectNodeOrderingKind QUmlActivityParameterNodeObject::ordering() const
 
 QObject *QUmlActivityParameterNodeObject::selection() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->selection()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->selection())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->selection()->asQObject();
 }
 
 QObject *QUmlActivityParameterNodeObject::upperBound() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->upperBound()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->upperBound())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->upperBound()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ActivityParameterNode]
 
 QObject *QUmlActivityParameterNodeObject::parameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->parameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->parameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->parameter()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -361,7 +388,7 @@ void QUmlActivityParameterNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setName(name);
 }
-    
+
 void QUmlActivityParameterNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -376,19 +403,25 @@ void QUmlActivityParameterNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlActivityParameterNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlActivityParameterNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlActivityParameterNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlActivityParameterNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -503,13 +536,25 @@ void QUmlActivityParameterNodeObject::removeInState(QObject *inState)
 void QUmlActivityParameterNodeObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setControlType(isControlType);
+    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
-    
+
+void QUmlActivityParameterNodeObject::unsetControlType()
+{
+    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("controlType"));
+}
+
 void QUmlActivityParameterNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setOrdering(ordering);
+    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
-    
+
+void QUmlActivityParameterNodeObject::unsetOrdering()
+{
+    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordering"));
+}
+
 void QUmlActivityParameterNodeObject::setSelection(QObject *selection)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setSelection(qmodelingobjectproperty_cast<QUmlBehavior *>(selection));

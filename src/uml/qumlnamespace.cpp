@@ -104,7 +104,7 @@ void QUmlNamespace::addElementImport(QUmlElementImport *elementImport)
 
     if (!_elementImport.contains(elementImport)) {
         _elementImport.insert(elementImport);
-        if (elementImport->asQObject() && this->asQObject())
+        if (elementImport && elementImport->asQObject() && this->asQObject())
             QObject::connect(elementImport->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeElementImport(QObject *)));
         elementImport->asQObject()->setParent(this->asQObject());
 
@@ -199,7 +199,7 @@ void QUmlNamespace::addMember(QUmlNamedElement *member)
 
     if (!_member.contains(member)) {
         _member.insert(member);
-        if (member->asQObject() && this->asQObject())
+        if (member && member->asQObject() && this->asQObject())
             QObject::connect(member->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMember(QObject *)));
     }
 }
@@ -229,7 +229,7 @@ void QUmlNamespace::addOwnedMember(QUmlNamedElement *ownedMember)
 
     if (!_ownedMember.contains(ownedMember)) {
         _ownedMember.insert(ownedMember);
-        if (ownedMember->asQObject() && this->asQObject())
+        if (ownedMember && ownedMember->asQObject() && this->asQObject())
             QObject::connect(ownedMember->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedMember(QObject *)));
         ownedMember->asQObject()->setParent(this->asQObject());
 
@@ -280,7 +280,7 @@ void QUmlNamespace::addOwnedRule(QUmlConstraint *ownedRule)
 
     if (!_ownedRule.contains(ownedRule)) {
         _ownedRule.insert(ownedRule);
-        if (ownedRule->asQObject() && this->asQObject())
+        if (ownedRule && ownedRule->asQObject() && this->asQObject())
             QObject::connect(ownedRule->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedRule(QObject *)));
         ownedRule->asQObject()->setParent(this->asQObject());
 
@@ -329,7 +329,7 @@ void QUmlNamespace::addPackageImport(QUmlPackageImport *packageImport)
 
     if (!_packageImport.contains(packageImport)) {
         _packageImport.insert(packageImport);
-        if (packageImport->asQObject() && this->asQObject())
+        if (packageImport && packageImport->asQObject() && this->asQObject())
             QObject::connect(packageImport->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePackageImport(QObject *)));
         packageImport->asQObject()->setParent(this->asQObject());
 

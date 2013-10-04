@@ -85,7 +85,10 @@ const QSet<QObject *> QUmlGateObject::ownedElement() const
 
 QObject *QUmlGateObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGate *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGate *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -105,12 +108,18 @@ QString QUmlGateObject::name() const
 
 QObject *QUmlGateObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGate *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGate *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlGateObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGate *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGate *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlGateObject::qualifiedName() const
@@ -127,7 +136,10 @@ QtUml::VisibilityKind QUmlGateObject::visibility() const
 
 QObject *QUmlGateObject::message() const
 {
-    return qmodelingobjectproperty_cast<QUmlGate *>(this)->message()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlGate *>(this)->message())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlGate *>(this)->message()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -216,7 +228,7 @@ void QUmlGateObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlGate *>(this)->setName(name);
 }
-    
+
 void QUmlGateObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlGate *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -231,12 +243,12 @@ void QUmlGateObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlGate *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlGateObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlGate *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [MessageEnd]
 
 void QUmlGateObject::setMessage(QObject *message)

@@ -79,7 +79,10 @@ const QSet<QObject *> QUmlImageObject::ownedElement() const
 
 QObject *QUmlImageObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlImage *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlImage *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlImage *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Image]
@@ -147,16 +150,16 @@ void QUmlImageObject::setContent(QString content)
 {
     qmodelingobjectproperty_cast<QUmlImage *>(this)->setContent(content);
 }
-    
+
 void QUmlImageObject::setFormat(QString format)
 {
     qmodelingobjectproperty_cast<QUmlImage *>(this)->setFormat(format);
 }
-    
+
 void QUmlImageObject::setLocation(QString location)
 {
     qmodelingobjectproperty_cast<QUmlImage *>(this)->setLocation(location);
 }
-    
+
 QT_END_NAMESPACE
 

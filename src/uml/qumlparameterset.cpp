@@ -68,7 +68,8 @@ QUmlParameterSet::QUmlParameterSet(bool createQObject)
 QUmlParameterSet::~QUmlParameterSet()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -109,7 +110,7 @@ void QUmlParameterSet::addCondition(QUmlConstraint *condition)
 
     if (!_condition.contains(condition)) {
         _condition.insert(condition);
-        if (condition->asQObject() && this->asQObject())
+        if (condition && condition->asQObject() && this->asQObject())
             QObject::connect(condition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCondition(QObject *)));
         condition->asQObject()->setParent(this->asQObject());
 
@@ -148,7 +149,7 @@ void QUmlParameterSet::addParameter(QUmlParameter *parameter)
 
     if (!_parameter.contains(parameter)) {
         _parameter.insert(parameter);
-        if (parameter->asQObject() && this->asQObject())
+        if (parameter && parameter->asQObject() && this->asQObject())
             QObject::connect(parameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameter(QObject *)));
 
         // Adjust opposite properties

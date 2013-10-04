@@ -91,7 +91,10 @@ const QSet<QObject *> QUmlInformationFlowObject::ownedElement() const
 
 QObject *QUmlInformationFlowObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [Relationship]
@@ -126,12 +129,18 @@ const QSet<QObject *> QUmlInformationFlowObject::target() const
 
 QObject *QUmlInformationFlowObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlInformationFlowObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -151,12 +160,18 @@ QString QUmlInformationFlowObject::name() const
 
 QObject *QUmlInformationFlowObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlInformationFlowObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlInformationFlowObject::qualifiedName() const
@@ -372,7 +387,7 @@ void QUmlInformationFlowObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->setName(name);
 }
-    
+
 void QUmlInformationFlowObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -387,13 +402,19 @@ void QUmlInformationFlowObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
+// SLOTS FOR OWNED ATTRIBUTES [PackageableElement]
 
 void QUmlInformationFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlInformationFlowObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [InformationFlow]
 
 void QUmlInformationFlowObject::addConveyed(QObject *conveyed)

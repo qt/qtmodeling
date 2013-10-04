@@ -78,7 +78,8 @@ QUmlVariable::QUmlVariable(bool createQObject) :
 QUmlVariable::~QUmlVariable()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -133,7 +134,7 @@ void QUmlVariable::setActivityScope(QUmlActivity *activityScope)
         // Adjust subsetted properties
 
         _activityScope = activityScope;
-        if (activityScope->asQObject() && this->asQObject())
+        if (activityScope && activityScope->asQObject() && this->asQObject())
             QObject::connect(activityScope->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setActivityScope()));
 
         // Adjust subsetted properties
@@ -159,7 +160,7 @@ void QUmlVariable::setScope(QUmlStructuredActivityNode *scope)
         // Adjust subsetted properties
 
         _scope = scope;
-        if (scope->asQObject() && this->asQObject())
+        if (scope && scope->asQObject() && this->asQObject())
             QObject::connect(scope->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setScope()));
 
         // Adjust subsetted properties

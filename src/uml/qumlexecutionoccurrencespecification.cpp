@@ -73,7 +73,8 @@ QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(bool 
 QUmlExecutionOccurrenceSpecification::~QUmlExecutionOccurrenceSpecification()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -124,7 +125,7 @@ void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecificati
 
     if (_execution != execution) {
         _execution = execution;
-        if (execution->asQObject() && this->asQObject())
+        if (execution && execution->asQObject() && this->asQObject())
             QObject::connect(execution->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setExecution()));
     }
 }

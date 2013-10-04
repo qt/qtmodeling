@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlLinkEndCreationDataObject : public QObject
 
     // Properties [LinkEndCreationData]
     Q_PROPERTY(QObject * insertAt READ insertAt)
-    Q_PROPERTY(bool isReplaceAll READ isReplaceAll)
+    Q_PROPERTY(bool isReplaceAll READ isReplaceAll RESET unsetReplaceAll)
 
 public:
     Q_INVOKABLE explicit QUmlLinkEndCreationDataObject(QUmlLinkEndCreationData *qModelingObject);
@@ -110,6 +110,7 @@ public Q_SLOTS:
     // Slots for owned attributes [LinkEndCreationData]
     void setInsertAt(QObject *insertAt = 0);
     void setReplaceAll(bool isReplaceAll);
+    void unsetReplaceAll();
 };
 
 QT_END_NAMESPACE

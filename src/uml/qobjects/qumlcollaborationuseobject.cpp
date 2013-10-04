@@ -85,7 +85,10 @@ const QSet<QObject *> QUmlCollaborationUseObject::ownedElement() const
 
 QObject *QUmlCollaborationUseObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -105,12 +108,18 @@ QString QUmlCollaborationUseObject::name() const
 
 QObject *QUmlCollaborationUseObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlCollaborationUseObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlCollaborationUseObject::qualifiedName() const
@@ -135,7 +144,10 @@ const QSet<QObject *> QUmlCollaborationUseObject::roleBinding() const
 
 QObject *QUmlCollaborationUseObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->type()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -224,7 +236,7 @@ void QUmlCollaborationUseObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->setName(name);
 }
-    
+
 void QUmlCollaborationUseObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -239,12 +251,12 @@ void QUmlCollaborationUseObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlCollaborationUseObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlCollaborationUse *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [CollaborationUse]
 
 void QUmlCollaborationUseObject::addRoleBinding(QObject *roleBinding)

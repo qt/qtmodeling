@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlRemoveStructuralFeatureValueActionObject::ownedElement
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlRemoveStructuralFeatureValueActionObject::name() const
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlRemoveStructuralFeatureValueActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlRemoveStructuralFeatureValueActionObject::redefinition
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlRemoveStructuralFeatureValueActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlRemoveStructuralFeatureValueActionObject::inPartition(
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlRemoveStructuralFeatureValueActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlRemoveStructuralFeatureValueActionObject::handler() co
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlRemoveStructuralFeatureValueActionObject::input() const
@@ -277,24 +295,36 @@ const QList<QObject *> QUmlRemoveStructuralFeatureValueActionObject::output() co
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::object() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->object()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->object())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->object()->asQObject();
 }
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::structuralFeature() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->structuralFeature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->structuralFeature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->structuralFeature()->asQObject();
 }
 
 // OWNED ATTRIBUTES [WriteStructuralFeatureAction]
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->result()->asQObject();
 }
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::value() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->value()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->value())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->value()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RemoveStructuralFeatureValueAction]
@@ -306,7 +336,10 @@ bool QUmlRemoveStructuralFeatureValueActionObject::isRemoveDuplicates() const
 
 QObject *QUmlRemoveStructuralFeatureValueActionObject::removeAt() const
 {
-    return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeAt()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeAt())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->removeAt()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -407,7 +440,7 @@ void QUmlRemoveStructuralFeatureValueActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setName(name);
 }
-    
+
 void QUmlRemoveStructuralFeatureValueActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -422,19 +455,25 @@ void QUmlRemoveStructuralFeatureValueActionObject::setQualifiedName(QString qual
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlRemoveStructuralFeatureValueActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlRemoveStructuralFeatureValueActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlRemoveStructuralFeatureValueActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlRemoveStructuralFeatureValueActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -559,8 +598,14 @@ void QUmlRemoveStructuralFeatureValueActionObject::removeInput(QObject *input)
 void QUmlRemoveStructuralFeatureValueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlRemoveStructuralFeatureValueActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlRemoveStructuralFeatureValueActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));
@@ -620,8 +665,14 @@ void QUmlRemoveStructuralFeatureValueActionObject::setValue(QObject *value)
 void QUmlRemoveStructuralFeatureValueActionObject::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setRemoveDuplicates(isRemoveDuplicates);
+    qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("removeDuplicates");
 }
-    
+
+void QUmlRemoveStructuralFeatureValueActionObject::unsetRemoveDuplicates()
+{
+    qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("removeDuplicates"));
+}
+
 void QUmlRemoveStructuralFeatureValueActionObject::setRemoveAt(QObject *removeAt)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setRemoveAt(qmodelingobjectproperty_cast<QUmlInputPin *>(removeAt));

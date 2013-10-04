@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlClearStructuralFeatureActionObject::ownedElement() con
 
 QObject *QUmlClearStructuralFeatureActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlClearStructuralFeatureActionObject::name() const
 
 QObject *QUmlClearStructuralFeatureActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlClearStructuralFeatureActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlClearStructuralFeatureActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlClearStructuralFeatureActionObject::redefinitionContex
 
 QObject *QUmlClearStructuralFeatureActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlClearStructuralFeatureActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlClearStructuralFeatureActionObject::inPartition() cons
 
 QObject *QUmlClearStructuralFeatureActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlClearStructuralFeatureActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlClearStructuralFeatureActionObject::handler() const
 
 QObject *QUmlClearStructuralFeatureActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlClearStructuralFeatureActionObject::input() const
@@ -277,19 +295,28 @@ const QList<QObject *> QUmlClearStructuralFeatureActionObject::output() const
 
 QObject *QUmlClearStructuralFeatureActionObject::object() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->object()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->object())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->object()->asQObject();
 }
 
 QObject *QUmlClearStructuralFeatureActionObject::structuralFeature() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->structuralFeature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->structuralFeature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->structuralFeature()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ClearStructuralFeatureAction]
 
 QObject *QUmlClearStructuralFeatureActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->result()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -390,7 +417,7 @@ void QUmlClearStructuralFeatureActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->setName(name);
 }
-    
+
 void QUmlClearStructuralFeatureActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -405,19 +432,25 @@ void QUmlClearStructuralFeatureActionObject::setQualifiedName(QString qualifiedN
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlClearStructuralFeatureActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlClearStructuralFeatureActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlClearStructuralFeatureActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlClearStructuralFeatureActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -542,8 +575,14 @@ void QUmlClearStructuralFeatureActionObject::removeInput(QObject *input)
 void QUmlClearStructuralFeatureActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlClearStructuralFeatureActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlClearStructuralFeatureActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

@@ -70,7 +70,8 @@ QUmlExtensionPoint::QUmlExtensionPoint(bool createQObject) :
 QUmlExtensionPoint::~QUmlExtensionPoint()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -112,7 +113,7 @@ void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
         // Adjust subsetted properties
 
         _useCase = useCase;
-        if (useCase->asQObject() && this->asQObject())
+        if (useCase && useCase->asQObject() && this->asQObject())
             QObject::connect(useCase->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setUseCase()));
 
         // Adjust subsetted properties

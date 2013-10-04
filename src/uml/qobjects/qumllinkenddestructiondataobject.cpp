@@ -82,14 +82,20 @@ const QSet<QObject *> QUmlLinkEndDestructionDataObject::ownedElement() const
 
 QObject *QUmlLinkEndDestructionDataObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [LinkEndData]
 
 QObject *QUmlLinkEndDestructionDataObject::end() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->end()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->end())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->end()->asQObject();
 }
 
 const QSet<QObject *> QUmlLinkEndDestructionDataObject::qualifier() const
@@ -102,14 +108,20 @@ const QSet<QObject *> QUmlLinkEndDestructionDataObject::qualifier() const
 
 QObject *QUmlLinkEndDestructionDataObject::value() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->value()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->value())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->value()->asQObject();
 }
 
 // OWNED ATTRIBUTES [LinkEndDestructionData]
 
 QObject *QUmlLinkEndDestructionDataObject::destroyAt() const
 {
-    return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->destroyAt()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->destroyAt())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->destroyAt()->asQObject();
 }
 
 bool QUmlLinkEndDestructionDataObject::isDestroyDuplicates() const
@@ -191,7 +203,13 @@ void QUmlLinkEndDestructionDataObject::setDestroyAt(QObject *destroyAt)
 void QUmlLinkEndDestructionDataObject::setDestroyDuplicates(bool isDestroyDuplicates)
 {
     qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->setDestroyDuplicates(isDestroyDuplicates);
+    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->modifiedResettableProperties() << QStringLiteral("destroyDuplicates");
 }
-    
+
+void QUmlLinkEndDestructionDataObject::unsetDestroyDuplicates()
+{
+    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("destroyDuplicates"));
+}
+
 QT_END_NAMESPACE
 

@@ -68,11 +68,11 @@ class Q_UML_EXPORT QUmlDataStoreNodeObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
@@ -91,8 +91,8 @@ class Q_UML_EXPORT QUmlDataStoreNodeObject : public QObject
 
     // Properties [ObjectNode]
     Q_PROPERTY(QSet<QObject *> inState READ inState)
-    Q_PROPERTY(bool isControlType READ isControlType)
-    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering)
+    Q_PROPERTY(bool isControlType READ isControlType RESET unsetControlType)
+    Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering RESET unsetOrdering)
     Q_PROPERTY(QObject * selection READ selection)
     Q_PROPERTY(QObject * upperBound READ upperBound)
 
@@ -172,6 +172,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -200,7 +201,9 @@ public Q_SLOTS:
     void addInState(QObject *inState);
     void removeInState(QObject *inState);
     void setControlType(bool isControlType);
+    void unsetControlType();
     void setOrdering(QtUml::ObjectNodeOrderingKind ordering);
+    void unsetOrdering();
     void setSelection(QObject *selection = 0);
     void setUpperBound(QObject *upperBound = 0);
 };

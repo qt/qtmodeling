@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlExpansionNodeObject::ownedElement() const
 
 QObject *QUmlExpansionNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlExpansionNodeObject::name() const
 
 QObject *QUmlExpansionNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlExpansionNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlExpansionNodeObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlExpansionNodeObject::redefinitionContext() const
 
 QObject *QUmlExpansionNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlExpansionNodeObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlExpansionNodeObject::inPartition() const
 
 QObject *QUmlExpansionNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlExpansionNodeObject::incoming() const
@@ -223,7 +238,10 @@ const QSet<QObject *> QUmlExpansionNodeObject::redefinedNode() const
 
 QObject *QUmlExpansionNodeObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ObjectNode]
@@ -248,24 +266,36 @@ QtUml::ObjectNodeOrderingKind QUmlExpansionNodeObject::ordering() const
 
 QObject *QUmlExpansionNodeObject::selection() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->selection()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->selection())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->selection()->asQObject();
 }
 
 QObject *QUmlExpansionNodeObject::upperBound() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->upperBound()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->upperBound())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->upperBound()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ExpansionNode]
 
 QObject *QUmlExpansionNodeObject::regionAsInput() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->regionAsInput()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->regionAsInput())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->regionAsInput()->asQObject();
 }
 
 QObject *QUmlExpansionNodeObject::regionAsOutput() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->regionAsOutput()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->regionAsOutput())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->regionAsOutput()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -366,7 +396,7 @@ void QUmlExpansionNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setName(name);
 }
-    
+
 void QUmlExpansionNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -381,19 +411,25 @@ void QUmlExpansionNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlExpansionNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlExpansionNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlExpansionNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlExpansionNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -508,13 +544,25 @@ void QUmlExpansionNodeObject::removeInState(QObject *inState)
 void QUmlExpansionNodeObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setControlType(isControlType);
+    qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
-    
+
+void QUmlExpansionNodeObject::unsetControlType()
+{
+    qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("controlType"));
+}
+
 void QUmlExpansionNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setOrdering(ordering);
+    qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
-    
+
+void QUmlExpansionNodeObject::unsetOrdering()
+{
+    qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("ordering"));
+}
+
 void QUmlExpansionNodeObject::setSelection(QObject *selection)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setSelection(qmodelingobjectproperty_cast<QUmlBehavior *>(selection));

@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlReadVariableActionObject::ownedElement() const
 
 QObject *QUmlReadVariableActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlReadVariableActionObject::name() const
 
 QObject *QUmlReadVariableActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlReadVariableActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlReadVariableActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlReadVariableActionObject::redefinitionContext() const
 
 QObject *QUmlReadVariableActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadVariableActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlReadVariableActionObject::inPartition() const
 
 QObject *QUmlReadVariableActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadVariableActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlReadVariableActionObject::handler() const
 
 QObject *QUmlReadVariableActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlReadVariableActionObject::input() const
@@ -277,14 +295,20 @@ const QList<QObject *> QUmlReadVariableActionObject::output() const
 
 QObject *QUmlReadVariableActionObject::variable() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->variable()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->variable())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->variable()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ReadVariableAction]
 
 QObject *QUmlReadVariableActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->result()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -385,7 +409,7 @@ void QUmlReadVariableActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->setName(name);
 }
-    
+
 void QUmlReadVariableActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -400,19 +424,25 @@ void QUmlReadVariableActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlReadVariableActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReadVariableActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlReadVariableActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlReadVariableActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -537,8 +567,14 @@ void QUmlReadVariableActionObject::removeInput(QObject *input)
 void QUmlReadVariableActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlReadVariableActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlReadVariableActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlReadVariableAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

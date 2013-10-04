@@ -106,7 +106,10 @@ const QSet<QObject *> QUmlEnumerationObject::ownedElement() const
 
 QObject *QUmlEnumerationObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -203,7 +206,6 @@ QObject *QUmlEnumerationObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->owningTemplateParameter()->asQObject();
 }
-
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlEnumerationObject::visibility() const
@@ -628,7 +630,7 @@ void QUmlEnumerationObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setName(name);
 }
-    
+
 void QUmlEnumerationObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -643,7 +645,6 @@ void QUmlEnumerationObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setQualifiedName(qualifiedName);
 }
-
 // SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlEnumerationObject::addElementImport(QObject *elementImport)
@@ -717,8 +718,14 @@ void QUmlEnumerationObject::setOwningTemplateParameter(QObject *owningTemplatePa
 void QUmlEnumerationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlEnumerationObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlEnumerationObject::setPackage(QObject *package)
@@ -731,8 +738,14 @@ void QUmlEnumerationObject::setPackage(QObject *package)
 void QUmlEnumerationObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlEnumerationObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlEnumerationObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -830,13 +843,25 @@ void QUmlEnumerationObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlEnumerationObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlEnumerationObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlEnumerationObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlEnumerationObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlEnumerationObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));

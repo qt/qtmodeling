@@ -82,7 +82,8 @@ QUmlDestroyLinkAction::QUmlDestroyLinkAction(bool createQObject)
 QUmlDestroyLinkAction::~QUmlDestroyLinkAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -145,7 +146,7 @@ void QUmlDestroyLinkAction::addEndData(QUmlLinkEndDestructionData *endData)
 
     if (!_endData.contains(endData)) {
         _endData.insert(endData);
-        if (endData->asQObject() && this->asQObject())
+        if (endData && endData->asQObject() && this->asQObject())
             QObject::connect(endData->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEndData(QObject *)));
         endData->asQObject()->setParent(this->asQObject());
     }

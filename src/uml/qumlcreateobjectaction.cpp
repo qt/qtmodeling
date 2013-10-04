@@ -81,7 +81,8 @@ QUmlCreateObjectAction::QUmlCreateObjectAction(bool createQObject) :
 QUmlCreateObjectAction::~QUmlCreateObjectAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -144,7 +145,7 @@ void QUmlCreateObjectAction::setClassifier(QUmlClassifier *classifier)
 
     if (_classifier != classifier) {
         _classifier = classifier;
-        if (classifier->asQObject() && this->asQObject())
+        if (classifier && classifier->asQObject() && this->asQObject())
             QObject::connect(classifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setClassifier()));
     }
 }
@@ -168,7 +169,7 @@ void QUmlCreateObjectAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
         result->asQObject()->setParent(this->asQObject());
 

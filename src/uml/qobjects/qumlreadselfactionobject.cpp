@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlReadSelfActionObject::ownedElement() const
 
 QObject *QUmlReadSelfActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlReadSelfActionObject::name() const
 
 QObject *QUmlReadSelfActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlReadSelfActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlReadSelfActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlReadSelfActionObject::redefinitionContext() const
 
 QObject *QUmlReadSelfActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadSelfActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlReadSelfActionObject::inPartition() const
 
 QObject *QUmlReadSelfActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlReadSelfActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlReadSelfActionObject::handler() const
 
 QObject *QUmlReadSelfActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlReadSelfActionObject::input() const
@@ -276,7 +294,10 @@ const QList<QObject *> QUmlReadSelfActionObject::output() const
 
 QObject *QUmlReadSelfActionObject::result() const
 {
-    return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->result()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->result())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->result()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -377,7 +398,7 @@ void QUmlReadSelfActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->setName(name);
 }
-    
+
 void QUmlReadSelfActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -392,19 +413,25 @@ void QUmlReadSelfActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlReadSelfActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReadSelfActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlReadSelfActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlReadSelfActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -529,8 +556,14 @@ void QUmlReadSelfActionObject::removeInput(QObject *input)
 void QUmlReadSelfActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlReadSelfActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlReadSelfActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

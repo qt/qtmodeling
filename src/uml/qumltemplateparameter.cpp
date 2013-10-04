@@ -68,7 +68,8 @@ QUmlTemplateParameter::QUmlTemplateParameter(bool createQObject) :
 QUmlTemplateParameter::~QUmlTemplateParameter()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -109,7 +110,7 @@ void QUmlTemplateParameter::setDefault(QUmlParameterableElement *default_)
 
     if (_default_ != default_) {
         _default_ = default_;
-        if (default_->asQObject() && this->asQObject())
+        if (default_ && default_->asQObject() && this->asQObject())
             QObject::connect(default_->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDefault()));
     }
 }
@@ -133,7 +134,7 @@ void QUmlTemplateParameter::setOwnedDefault(QUmlParameterableElement *ownedDefau
         removeOwnedElement(_ownedDefault);
 
         _ownedDefault = ownedDefault;
-        if (ownedDefault->asQObject() && this->asQObject())
+        if (ownedDefault && ownedDefault->asQObject() && this->asQObject())
             QObject::connect(ownedDefault->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedDefault()));
         ownedDefault->asQObject()->setParent(this->asQObject());
 
@@ -164,7 +165,7 @@ void QUmlTemplateParameter::setOwnedParameteredElement(QUmlParameterableElement 
         removeOwnedElement(_ownedParameteredElement);
 
         _ownedParameteredElement = ownedParameteredElement;
-        if (ownedParameteredElement->asQObject() && this->asQObject())
+        if (ownedParameteredElement && ownedParameteredElement->asQObject() && this->asQObject())
             QObject::connect(ownedParameteredElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwnedParameteredElement()));
         ownedParameteredElement->asQObject()->setParent(this->asQObject());
 
@@ -192,7 +193,7 @@ void QUmlTemplateParameter::setParameteredElement(QUmlParameterableElement *para
 
     if (_parameteredElement != parameteredElement) {
         _parameteredElement = parameteredElement;
-        if (parameteredElement->asQObject() && this->asQObject())
+        if (parameteredElement && parameteredElement->asQObject() && this->asQObject())
             QObject::connect(parameteredElement->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setParameteredElement()));
     }
 }
@@ -215,7 +216,7 @@ void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)
         // Adjust subsetted properties
 
         _signature = signature;
-        if (signature->asQObject() && this->asQObject())
+        if (signature && signature->asQObject() && this->asQObject())
             QObject::connect(signature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setSignature()));
 
         // Adjust subsetted properties

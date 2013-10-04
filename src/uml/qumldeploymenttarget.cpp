@@ -135,7 +135,7 @@ void QUmlDeploymentTarget::addDeployment(QUmlDeployment *deployment)
 
     if (!_deployment.contains(deployment)) {
         _deployment.insert(deployment);
-        if (deployment->asQObject() && this->asQObject())
+        if (deployment && deployment->asQObject() && this->asQObject())
             QObject::connect(deployment->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeDeployment(QObject *)));
         deployment->asQObject()->setParent(this->asQObject());
 

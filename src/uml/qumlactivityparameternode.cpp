@@ -81,7 +81,8 @@ QUmlActivityParameterNode::QUmlActivityParameterNode(bool createQObject) :
 QUmlActivityParameterNode::~QUmlActivityParameterNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -145,7 +146,7 @@ void QUmlActivityParameterNode::setParameter(QUmlParameter *parameter)
 
     if (_parameter != parameter) {
         _parameter = parameter;
-        if (parameter->asQObject() && this->asQObject())
+        if (parameter && parameter->asQObject() && this->asQObject())
             QObject::connect(parameter->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setParameter()));
     }
 }

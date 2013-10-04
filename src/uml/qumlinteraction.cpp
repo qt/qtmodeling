@@ -106,7 +106,8 @@ QUmlInteraction::QUmlInteraction(bool createQObject)
 QUmlInteraction::~QUmlInteraction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -226,7 +227,7 @@ void QUmlInteraction::addAction(QUmlAction *action)
 
     if (!_action.contains(action)) {
         _action.insert(action);
-        if (action->asQObject() && this->asQObject())
+        if (action && action->asQObject() && this->asQObject())
             QObject::connect(action->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeAction(QObject *)));
         action->asQObject()->setParent(this->asQObject());
 
@@ -265,7 +266,7 @@ void QUmlInteraction::addFormalGate(QUmlGate *formalGate)
 
     if (!_formalGate.contains(formalGate)) {
         _formalGate.insert(formalGate);
-        if (formalGate->asQObject() && this->asQObject())
+        if (formalGate && formalGate->asQObject() && this->asQObject())
             QObject::connect(formalGate->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFormalGate(QObject *)));
         formalGate->asQObject()->setParent(this->asQObject());
 
@@ -304,7 +305,7 @@ void QUmlInteraction::addFragment(QUmlInteractionFragment *fragment)
 
     if (!_fragment.contains(fragment)) {
         _fragment.append(fragment);
-        if (fragment->asQObject() && this->asQObject())
+        if (fragment && fragment->asQObject() && this->asQObject())
             QObject::connect(fragment->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFragment(QObject *)));
         fragment->asQObject()->setParent(this->asQObject());
 
@@ -353,7 +354,7 @@ void QUmlInteraction::addLifeline(QUmlLifeline *lifeline)
 
     if (!_lifeline.contains(lifeline)) {
         _lifeline.insert(lifeline);
-        if (lifeline->asQObject() && this->asQObject())
+        if (lifeline && lifeline->asQObject() && this->asQObject())
             QObject::connect(lifeline->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLifeline(QObject *)));
         lifeline->asQObject()->setParent(this->asQObject());
 
@@ -402,7 +403,7 @@ void QUmlInteraction::addMessage(QUmlMessage *message)
 
     if (!_message.contains(message)) {
         _message.insert(message);
-        if (message->asQObject() && this->asQObject())
+        if (message && message->asQObject() && this->asQObject())
             QObject::connect(message->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMessage(QObject *)));
         message->asQObject()->setParent(this->asQObject());
 

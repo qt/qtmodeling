@@ -71,7 +71,8 @@ QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool createQObject) :
 QUmlOccurrenceSpecification::~QUmlOccurrenceSpecification()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -120,7 +121,7 @@ void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 
     if (_covered != covered) {
         _covered = covered;
-        if (covered->asQObject() && this->asQObject())
+        if (covered && covered->asQObject() && this->asQObject())
             QObject::connect(covered->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setCovered()));
     }
 }
@@ -141,7 +142,7 @@ void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
 
     if (!_toAfter.contains(toAfter)) {
         _toAfter.insert(toAfter);
-        if (toAfter->asQObject() && this->asQObject())
+        if (toAfter && toAfter->asQObject() && this->asQObject())
             QObject::connect(toAfter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeToAfter(QObject *)));
 
         // Adjust opposite properties
@@ -181,7 +182,7 @@ void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
 
     if (!_toBefore.contains(toBefore)) {
         _toBefore.insert(toBefore);
-        if (toBefore->asQObject() && this->asQObject())
+        if (toBefore && toBefore->asQObject() && this->asQObject())
             QObject::connect(toBefore->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeToBefore(QObject *)));
 
         // Adjust opposite properties

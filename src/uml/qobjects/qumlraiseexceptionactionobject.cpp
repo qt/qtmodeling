@@ -97,7 +97,10 @@ const QSet<QObject *> QUmlRaiseExceptionActionObject::ownedElement() const
 
 QObject *QUmlRaiseExceptionActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -117,12 +120,18 @@ QString QUmlRaiseExceptionActionObject::name() const
 
 QObject *QUmlRaiseExceptionActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlRaiseExceptionActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlRaiseExceptionActionObject::qualifiedName() const
@@ -162,7 +171,10 @@ const QSet<QObject *> QUmlRaiseExceptionActionObject::redefinitionContext() cons
 
 QObject *QUmlRaiseExceptionActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlRaiseExceptionActionObject::inGroup() const
@@ -191,7 +203,10 @@ const QSet<QObject *> QUmlRaiseExceptionActionObject::inPartition() const
 
 QObject *QUmlRaiseExceptionActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlRaiseExceptionActionObject::incoming() const
@@ -232,7 +247,10 @@ const QSet<QObject *> QUmlRaiseExceptionActionObject::handler() const
 
 QObject *QUmlRaiseExceptionActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlRaiseExceptionActionObject::input() const
@@ -276,7 +294,10 @@ const QList<QObject *> QUmlRaiseExceptionActionObject::output() const
 
 QObject *QUmlRaiseExceptionActionObject::exception() const
 {
-    return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->exception()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->exception())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->exception()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -377,7 +398,7 @@ void QUmlRaiseExceptionActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->setName(name);
 }
-    
+
 void QUmlRaiseExceptionActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -392,19 +413,25 @@ void QUmlRaiseExceptionActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlRaiseExceptionActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlRaiseExceptionActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlRaiseExceptionActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlRaiseExceptionActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -529,8 +556,14 @@ void QUmlRaiseExceptionActionObject::removeInput(QObject *input)
 void QUmlRaiseExceptionActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlRaiseExceptionActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlRaiseExceptionActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

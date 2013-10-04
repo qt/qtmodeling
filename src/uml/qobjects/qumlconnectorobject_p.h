@@ -68,22 +68,22 @@ class Q_UML_EXPORT QUmlConnectorObject : public QObject
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
-    Q_PROPERTY(QString qualifiedName READ qualifiedName)
+    Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
 
     // Properties [Feature]
     Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifier)
-    Q_PROPERTY(bool isStatic READ isStatic)
+    Q_PROPERTY(bool isStatic READ isStatic RESET unsetStatic)
 
     // Properties [Connector]
     Q_PROPERTY(QSet<QObject *> contract READ contract)
     Q_PROPERTY(QList<QObject *> end READ end)
-    Q_PROPERTY(QtUml::ConnectorKind kind READ kind)
+    Q_PROPERTY(QtUml::ConnectorKind kind READ kind STORED false)
     Q_PROPERTY(QSet<QObject *> redefinedConnector READ redefinedConnector)
     Q_PROPERTY(QObject * type READ type)
 
@@ -154,6 +154,7 @@ public Q_SLOTS:
 
     // Slots for owned attributes [RedefinableElement]
     void setLeaf(bool isLeaf);
+    void unsetLeaf();
     void Q_DECL_HIDDEN addRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN removeRedefinedElement(QObject *redefinedElement);
     void Q_DECL_HIDDEN addRedefinitionContext(QObject *redefinitionContext);
@@ -163,6 +164,7 @@ public Q_SLOTS:
     void Q_DECL_HIDDEN addFeaturingClassifier(QObject *featuringClassifier);
     void Q_DECL_HIDDEN removeFeaturingClassifier(QObject *featuringClassifier);
     void setStatic(bool isStatic);
+    void unsetStatic();
 
     // Slots for owned attributes [Connector]
     void addContract(QObject *contract);

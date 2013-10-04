@@ -66,7 +66,8 @@ QUmlPackageImport::QUmlPackageImport(bool createQObject) :
 QUmlPackageImport::~QUmlPackageImport()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -105,7 +106,7 @@ void QUmlPackageImport::setImportedPackage(QUmlPackage *importedPackage)
         removeTarget(_importedPackage);
 
         _importedPackage = importedPackage;
-        if (importedPackage->asQObject() && this->asQObject())
+        if (importedPackage && importedPackage->asQObject() && this->asQObject())
             QObject::connect(importedPackage->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setImportedPackage()));
 
         // Adjust subsetted properties
@@ -134,7 +135,7 @@ void QUmlPackageImport::setImportingNamespace(QUmlNamespace *importingNamespace)
         removeSource(_importingNamespace);
 
         _importingNamespace = importingNamespace;
-        if (importingNamespace->asQObject() && this->asQObject())
+        if (importingNamespace && importingNamespace->asQObject() && this->asQObject())
             QObject::connect(importingNamespace->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setImportingNamespace()));
 
         // Adjust subsetted properties

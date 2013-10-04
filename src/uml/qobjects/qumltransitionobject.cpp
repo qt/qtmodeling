@@ -95,7 +95,10 @@ const QSet<QObject *> QUmlTransitionObject::ownedElement() const
 
 QObject *QUmlTransitionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -115,12 +118,18 @@ QString QUmlTransitionObject::name() const
 
 QObject *QUmlTransitionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlTransitionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlTransitionObject::qualifiedName() const
@@ -201,17 +210,26 @@ const QSet<QObject *> QUmlTransitionObject::packageImport() const
 
 QObject *QUmlTransitionObject::container() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->container()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->container())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->container()->asQObject();
 }
 
 QObject *QUmlTransitionObject::effect() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->effect()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->effect())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->effect()->asQObject();
 }
 
 QObject *QUmlTransitionObject::guard() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->guard()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->guard())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->guard()->asQObject();
 }
 
 QtUml::TransitionKind QUmlTransitionObject::kind() const
@@ -221,22 +239,34 @@ QtUml::TransitionKind QUmlTransitionObject::kind() const
 
 QObject *QUmlTransitionObject::redefinedTransition() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->redefinedTransition()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->redefinedTransition())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->redefinedTransition()->asQObject();
 }
 
 QObject *QUmlTransitionObject::redefinitionContext() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->redefinitionContext()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->redefinitionContext())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->redefinitionContext()->asQObject();
 }
 
 QObject *QUmlTransitionObject::source() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->source()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->source())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->source()->asQObject();
 }
 
 QObject *QUmlTransitionObject::target() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->target()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->target())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->target()->asQObject();
 }
 
 const QSet<QObject *> QUmlTransitionObject::trigger() const
@@ -335,7 +365,10 @@ bool QUmlTransitionObject::membersAreDistinguishable() const
 
 QObject *QUmlTransitionObject::containingStateMachine() const
 {
-    return qmodelingobjectproperty_cast<QUmlTransition *>(this)->containingStateMachine()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlTransition *>(this)->containingStateMachine())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlTransition *>(this)->containingStateMachine()->asQObject();
 }
 
 bool QUmlTransitionObject::isConsistentWith(QObject *redefinee) const
@@ -386,7 +419,7 @@ void QUmlTransitionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->setName(name);
 }
-    
+
 void QUmlTransitionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -401,19 +434,25 @@ void QUmlTransitionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlTransitionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlTransitionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlTransition *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlTransitionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlTransition *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlTransitionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -505,8 +544,14 @@ void QUmlTransitionObject::setGuard(QObject *guard)
 void QUmlTransitionObject::setKind(QtUml::TransitionKind kind)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->setKind(kind);
+    qmodelingobjectproperty_cast<QUmlTransition *>(this)->modifiedResettableProperties() << QStringLiteral("kind");
 }
-    
+
+void QUmlTransitionObject::unsetKind()
+{
+    qmodelingobjectproperty_cast<QUmlTransition *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("kind"));
+}
+
 void QUmlTransitionObject::setRedefinedTransition(QObject *redefinedTransition)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->setRedefinedTransition(qmodelingobjectproperty_cast<QUmlTransition *>(redefinedTransition));

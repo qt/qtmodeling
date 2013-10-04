@@ -88,7 +88,10 @@ const QSet<QObject *> QUmlExpressionObject::ownedElement() const
 
 QObject *QUmlExpressionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpression *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpression *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpression *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -108,12 +111,18 @@ QString QUmlExpressionObject::name() const
 
 QObject *QUmlExpressionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpression *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpression *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpression *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlExpressionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpression *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpression *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpression *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlExpressionObject::qualifiedName() const
@@ -124,19 +133,28 @@ QString QUmlExpressionObject::qualifiedName() const
 
 QObject *QUmlExpressionObject::type() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpression *>(this)->type()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpression *>(this)->type())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpression *>(this)->type()->asQObject();
 }
 
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlExpressionObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpression *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpression *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpression *>(this)->owningTemplateParameter()->asQObject();
 }
 
 QObject *QUmlExpressionObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlExpression *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlExpression *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlExpression *>(this)->templateParameter()->asQObject();
 }
 
 // OWNED ATTRIBUTES [PackageableElement]
@@ -296,7 +314,7 @@ void QUmlExpressionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlExpression *>(this)->setName(name);
 }
-    
+
 void QUmlExpressionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlExpression *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -311,7 +329,7 @@ void QUmlExpressionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlExpression *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [TypedElement]
+// SLOTS FOR OWNED ATTRIBUTES [TypedElement]
 
 void QUmlExpressionObject::setType(QObject *type)
 {
@@ -335,8 +353,14 @@ void QUmlExpressionObject::setTemplateParameter(QObject *templateParameter)
 void QUmlExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlExpression *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlExpression *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlExpressionObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlExpression *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Expression]
 
 void QUmlExpressionObject::addOperand(QObject *operand)
@@ -353,6 +377,6 @@ void QUmlExpressionObject::setSymbol(QString symbol)
 {
     qmodelingobjectproperty_cast<QUmlExpression *>(this)->setSymbol(symbol);
 }
-    
+
 QT_END_NAMESPACE
 

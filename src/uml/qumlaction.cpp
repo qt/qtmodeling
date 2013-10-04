@@ -155,7 +155,7 @@ void QUmlAction::addInput(QUmlInputPin *input)
 
     if (!_input.contains(input)) {
         _input.append(input);
-        if (input->asQObject() && this->asQObject())
+        if (input && input->asQObject() && this->asQObject())
             QObject::connect(input->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInput(QObject *)));
         input->asQObject()->setParent(this->asQObject());
 
@@ -213,7 +213,7 @@ void QUmlAction::addLocalPostcondition(QUmlConstraint *localPostcondition)
 
     if (!_localPostcondition.contains(localPostcondition)) {
         _localPostcondition.insert(localPostcondition);
-        if (localPostcondition->asQObject() && this->asQObject())
+        if (localPostcondition && localPostcondition->asQObject() && this->asQObject())
             QObject::connect(localPostcondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLocalPostcondition(QObject *)));
         localPostcondition->asQObject()->setParent(this->asQObject());
 
@@ -252,7 +252,7 @@ void QUmlAction::addLocalPrecondition(QUmlConstraint *localPrecondition)
 
     if (!_localPrecondition.contains(localPrecondition)) {
         _localPrecondition.insert(localPrecondition);
-        if (localPrecondition->asQObject() && this->asQObject())
+        if (localPrecondition && localPrecondition->asQObject() && this->asQObject())
             QObject::connect(localPrecondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLocalPrecondition(QObject *)));
         localPrecondition->asQObject()->setParent(this->asQObject());
 
@@ -291,7 +291,7 @@ void QUmlAction::addOutput(QUmlOutputPin *output)
 
     if (!_output.contains(output)) {
         _output.append(output);
-        if (output->asQObject() && this->asQObject())
+        if (output && output->asQObject() && this->asQObject())
             QObject::connect(output->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOutput(QObject *)));
         output->asQObject()->setParent(this->asQObject());
 

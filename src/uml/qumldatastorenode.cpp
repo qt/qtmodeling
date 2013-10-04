@@ -80,7 +80,8 @@ QUmlDataStoreNode::QUmlDataStoreNode(bool createQObject) :
 QUmlDataStoreNode::~QUmlDataStoreNode()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }

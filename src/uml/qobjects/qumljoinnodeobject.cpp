@@ -94,7 +94,10 @@ const QSet<QObject *> QUmlJoinNodeObject::ownedElement() const
 
 QObject *QUmlJoinNodeObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -114,12 +117,18 @@ QString QUmlJoinNodeObject::name() const
 
 QObject *QUmlJoinNodeObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlJoinNodeObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlJoinNodeObject::qualifiedName() const
@@ -159,7 +168,10 @@ const QSet<QObject *> QUmlJoinNodeObject::redefinitionContext() const
 
 QObject *QUmlJoinNodeObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlJoinNodeObject::inGroup() const
@@ -188,7 +200,10 @@ const QSet<QObject *> QUmlJoinNodeObject::inPartition() const
 
 QObject *QUmlJoinNodeObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlJoinNodeObject::incoming() const
@@ -224,7 +239,10 @@ bool QUmlJoinNodeObject::isCombineDuplicate() const
 
 QObject *QUmlJoinNodeObject::joinSpec() const
 {
-    return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->joinSpec()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->joinSpec())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->joinSpec()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -325,7 +343,7 @@ void QUmlJoinNodeObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->setName(name);
 }
-    
+
 void QUmlJoinNodeObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -340,19 +358,25 @@ void QUmlJoinNodeObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlJoinNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlJoinNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlJoinNodeObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlJoinNodeObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -450,8 +474,14 @@ void QUmlJoinNodeObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlJoinNodeObject::setCombineDuplicate(bool isCombineDuplicate)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->setCombineDuplicate(isCombineDuplicate);
+    qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->modifiedResettableProperties() << QStringLiteral("combineDuplicate");
 }
-    
+
+void QUmlJoinNodeObject::unsetCombineDuplicate()
+{
+    qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("combineDuplicate"));
+}
+
 void QUmlJoinNodeObject::setJoinSpec(QObject *joinSpec)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->setJoinSpec(qmodelingobjectproperty_cast<QUmlValueSpecification *>(joinSpec));

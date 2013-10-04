@@ -115,7 +115,10 @@ const QSet<QObject *> QUmlDeviceObject::ownedElement() const
 
 QObject *QUmlDeviceObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlDevice *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDevice *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDevice *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -135,12 +138,18 @@ QString QUmlDeviceObject::name() const
 
 QObject *QUmlDeviceObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlDevice *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDevice *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDevice *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlDeviceObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlDevice *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDevice *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDevice *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlDeviceObject::qualifiedName() const
@@ -201,7 +210,10 @@ const QSet<QObject *> QUmlDeviceObject::packageImport() const
 
 QObject *QUmlDeviceObject::owningTemplateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlDevice *>(this)->owningTemplateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDevice *>(this)->owningTemplateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDevice *>(this)->owningTemplateParameter()->asQObject();
 }
 // OWNED ATTRIBUTES [PackageableElement]
 
@@ -214,7 +226,10 @@ QtUml::VisibilityKind QUmlDeviceObject::visibility() const
 
 QObject *QUmlDeviceObject::package() const
 {
-    return qmodelingobjectproperty_cast<QUmlDevice *>(this)->package()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDevice *>(this)->package())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDevice *>(this)->package()->asQObject();
 }
 
 // OWNED ATTRIBUTES [RedefinableElement]
@@ -299,7 +314,10 @@ bool QUmlDeviceObject::isFinalSpecialization() const
 
 QObject *QUmlDeviceObject::ownedTemplateSignature() const
 {
-    return qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedTemplateSignature()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedTemplateSignature())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedTemplateSignature()->asQObject();
 }
 
 const QSet<QObject *> QUmlDeviceObject::ownedUseCase() const
@@ -328,7 +346,10 @@ const QSet<QObject *> QUmlDeviceObject::redefinedClassifier() const
 
 QObject *QUmlDeviceObject::representation() const
 {
-    return qmodelingobjectproperty_cast<QUmlDevice *>(this)->representation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDevice *>(this)->representation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDevice *>(this)->representation()->asQObject();
 }
 
 const QSet<QObject *> QUmlDeviceObject::substitution() const
@@ -341,7 +362,10 @@ const QSet<QObject *> QUmlDeviceObject::substitution() const
 
 QObject *QUmlDeviceObject::templateParameter() const
 {
-    return qmodelingobjectproperty_cast<QUmlDevice *>(this)->templateParameter()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDevice *>(this)->templateParameter())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDevice *>(this)->templateParameter()->asQObject();
 }
 
 const QSet<QObject *> QUmlDeviceObject::useCase() const
@@ -392,7 +416,10 @@ const QSet<QObject *> QUmlDeviceObject::ownedPort() const
 
 QObject *QUmlDeviceObject::classifierBehavior() const
 {
-    return qmodelingobjectproperty_cast<QUmlDevice *>(this)->classifierBehavior()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlDevice *>(this)->classifierBehavior())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlDevice *>(this)->classifierBehavior()->asQObject();
 }
 
 const QSet<QObject *> QUmlDeviceObject::interfaceRealization() const
@@ -721,7 +748,7 @@ void QUmlDeviceObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setName(name);
 }
-    
+
 void QUmlDeviceObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -736,7 +763,7 @@ void QUmlDeviceObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setQualifiedName(qualifiedName);
 }
-    // SLOTS FOR OWNED ATTRIBUTES [Namespace]
+// SLOTS FOR OWNED ATTRIBUTES [Namespace]
 
 void QUmlDeviceObject::addElementImport(QObject *elementImport)
 {
@@ -809,8 +836,14 @@ void QUmlDeviceObject::setOwningTemplateParameter(QObject *owningTemplateParamet
 void QUmlDeviceObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setVisibility(visibility);
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
-    
+
+void QUmlDeviceObject::unsetVisibility()
+{
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("visibility"));
+}
+
 // SLOTS FOR OWNED ATTRIBUTES [Type]
 
 void QUmlDeviceObject::setPackage(QObject *package)
@@ -823,8 +856,14 @@ void QUmlDeviceObject::setPackage(QObject *package)
 void QUmlDeviceObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlDeviceObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlDeviceObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -912,8 +951,14 @@ void QUmlDeviceObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlDeviceObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setFinalSpecialization(isFinalSpecialization);
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
-    
+
+void QUmlDeviceObject::unsetFinalSpecialization()
+{
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("finalSpecialization"));
+}
+
 void QUmlDeviceObject::setOwnedTemplateSignature(QObject *ownedTemplateSignature)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setOwnedTemplateSignature(qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature));
@@ -1065,13 +1110,25 @@ void QUmlDeviceObject::removeExtension(QObject *extension)
 void QUmlDeviceObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setAbstract(isAbstract);
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
-    
+
+void QUmlDeviceObject::unsetAbstract()
+{
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("abstract"));
+}
+
 void QUmlDeviceObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setActive(isActive);
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
-    
+
+void QUmlDeviceObject::unsetActive()
+{
+    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("active"));
+}
+
 void QUmlDeviceObject::addNestedClassifier(QObject *nestedClassifier)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->addNestedClassifier(qmodelingobjectproperty_cast<QUmlClassifier *>(nestedClassifier));

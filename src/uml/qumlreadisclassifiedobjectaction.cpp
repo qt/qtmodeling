@@ -83,7 +83,8 @@ QUmlReadIsClassifiedObjectAction::QUmlReadIsClassifiedObjectAction(bool createQO
 QUmlReadIsClassifiedObjectAction::~QUmlReadIsClassifiedObjectAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -149,7 +150,7 @@ void QUmlReadIsClassifiedObjectAction::setClassifier(QUmlClassifier *classifier)
 
     if (_classifier != classifier) {
         _classifier = classifier;
-        if (classifier->asQObject() && this->asQObject())
+        if (classifier && classifier->asQObject() && this->asQObject())
             QObject::connect(classifier->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setClassifier()));
     }
 }
@@ -192,7 +193,7 @@ void QUmlReadIsClassifiedObjectAction::setObject(QUmlInputPin *object)
         removeInput(_object);
 
         _object = object;
-        if (object->asQObject() && this->asQObject())
+        if (object && object->asQObject() && this->asQObject())
             QObject::connect(object->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setObject()));
         object->asQObject()->setParent(this->asQObject());
 
@@ -222,7 +223,7 @@ void QUmlReadIsClassifiedObjectAction::setResult(QUmlOutputPin *result)
         removeOutput(_result);
 
         _result = result;
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setResult()));
         result->asQObject()->setParent(this->asQObject());
 

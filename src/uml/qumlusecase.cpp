@@ -90,7 +90,8 @@ QUmlUseCase::QUmlUseCase(bool createQObject)
 QUmlUseCase::~QUmlUseCase()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -176,7 +177,7 @@ void QUmlUseCase::addExtend(QUmlExtend *extend)
 
     if (!_extend.contains(extend)) {
         _extend.insert(extend);
-        if (extend->asQObject() && this->asQObject())
+        if (extend && extend->asQObject() && this->asQObject())
             QObject::connect(extend->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtend(QObject *)));
         extend->asQObject()->setParent(this->asQObject());
 
@@ -225,7 +226,7 @@ void QUmlUseCase::addExtensionPoint(QUmlExtensionPoint *extensionPoint)
 
     if (!_extensionPoint.contains(extensionPoint)) {
         _extensionPoint.insert(extensionPoint);
-        if (extensionPoint->asQObject() && this->asQObject())
+        if (extensionPoint && extensionPoint->asQObject() && this->asQObject())
             QObject::connect(extensionPoint->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtensionPoint(QObject *)));
         extensionPoint->asQObject()->setParent(this->asQObject());
 
@@ -274,7 +275,7 @@ void QUmlUseCase::addInclude(QUmlInclude *include)
 
     if (!_include.contains(include)) {
         _include.insert(include);
-        if (include->asQObject() && this->asQObject())
+        if (include && include->asQObject() && this->asQObject())
             QObject::connect(include->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInclude(QObject *)));
         include->asQObject()->setParent(this->asQObject());
 
@@ -323,7 +324,7 @@ void QUmlUseCase::addSubject(QUmlClassifier *subject)
 
     if (!_subject.contains(subject)) {
         _subject.insert(subject);
-        if (subject->asQObject() && this->asQObject())
+        if (subject && subject->asQObject() && this->asQObject())
             QObject::connect(subject->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubject(QObject *)));
 
         // Adjust opposite properties

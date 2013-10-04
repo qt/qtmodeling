@@ -88,7 +88,10 @@ const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::ownedElement() con
 
 QObject *QUmlRedefinableTemplateSignatureObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [TemplateSignature]
@@ -111,7 +114,10 @@ const QList<QObject *> QUmlRedefinableTemplateSignatureObject::parameter() const
 
 QObject *QUmlRedefinableTemplateSignatureObject::template_() const
 {
-    return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->template_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->template_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->template_()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -131,12 +137,18 @@ QString QUmlRedefinableTemplateSignatureObject::name() const
 
 QObject *QUmlRedefinableTemplateSignatureObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlRedefinableTemplateSignatureObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlRedefinableTemplateSignatureObject::qualifiedName() const
@@ -176,7 +188,10 @@ const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::redefinitionContex
 
 QObject *QUmlRedefinableTemplateSignatureObject::classifier() const
 {
-    return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->classifier()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->classifier())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->classifier()->asQObject();
 }
 
 const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::extendedSignature() const
@@ -322,7 +337,7 @@ void QUmlRedefinableTemplateSignatureObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setName(name);
 }
-    
+
 void QUmlRedefinableTemplateSignatureObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -337,19 +352,25 @@ void QUmlRedefinableTemplateSignatureObject::setQualifiedName(QString qualifiedN
 {
     qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlRedefinableTemplateSignatureObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlRedefinableTemplateSignatureObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlRedefinableTemplateSignatureObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlRedefinableTemplateSignatureObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));

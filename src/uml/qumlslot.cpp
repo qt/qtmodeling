@@ -66,7 +66,8 @@ QUmlSlot::QUmlSlot(bool createQObject) :
 QUmlSlot::~QUmlSlot()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -103,7 +104,7 @@ void QUmlSlot::setDefiningFeature(QUmlStructuralFeature *definingFeature)
 
     if (_definingFeature != definingFeature) {
         _definingFeature = definingFeature;
-        if (definingFeature->asQObject() && this->asQObject())
+        if (definingFeature && definingFeature->asQObject() && this->asQObject())
             QObject::connect(definingFeature->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDefiningFeature()));
     }
 }
@@ -126,7 +127,7 @@ void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
         // Adjust subsetted properties
 
         _owningInstance = owningInstance;
-        if (owningInstance->asQObject() && this->asQObject())
+        if (owningInstance && owningInstance->asQObject() && this->asQObject())
             QObject::connect(owningInstance->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setOwningInstance()));
 
         // Adjust subsetted properties
@@ -150,7 +151,7 @@ void QUmlSlot::addValue(QUmlValueSpecification *value)
 
     if (!_value.contains(value)) {
         _value.append(value);
-        if (value->asQObject() && this->asQObject())
+        if (value && value->asQObject() && this->asQObject())
             QObject::connect(value->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeValue(QObject *)));
         value->asQObject()->setParent(this->asQObject());
 

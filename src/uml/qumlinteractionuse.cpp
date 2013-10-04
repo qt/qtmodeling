@@ -76,7 +76,8 @@ QUmlInteractionUse::QUmlInteractionUse(bool createQObject) :
 QUmlInteractionUse::~QUmlInteractionUse()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -131,7 +132,7 @@ void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
 
     if (!_actualGate.contains(actualGate)) {
         _actualGate.insert(actualGate);
-        if (actualGate->asQObject() && this->asQObject())
+        if (actualGate && actualGate->asQObject() && this->asQObject())
             QObject::connect(actualGate->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeActualGate(QObject *)));
         actualGate->asQObject()->setParent(this->asQObject());
 
@@ -170,7 +171,7 @@ void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
 
     if (!_argument.contains(argument)) {
         _argument.append(argument);
-        if (argument->asQObject() && this->asQObject())
+        if (argument && argument->asQObject() && this->asQObject())
             QObject::connect(argument->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeArgument(QObject *)));
         argument->asQObject()->setParent(this->asQObject());
 
@@ -209,7 +210,7 @@ void QUmlInteractionUse::setRefersTo(QUmlInteraction *refersTo)
 
     if (_refersTo != refersTo) {
         _refersTo = refersTo;
-        if (refersTo->asQObject() && this->asQObject())
+        if (refersTo && refersTo->asQObject() && this->asQObject())
             QObject::connect(refersTo->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setRefersTo()));
     }
 }
@@ -233,7 +234,7 @@ void QUmlInteractionUse::setReturnValue(QUmlValueSpecification *returnValue)
         removeOwnedElement(_returnValue);
 
         _returnValue = returnValue;
-        if (returnValue->asQObject() && this->asQObject())
+        if (returnValue && returnValue->asQObject() && this->asQObject())
             QObject::connect(returnValue->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReturnValue()));
         returnValue->asQObject()->setParent(this->asQObject());
 
@@ -260,7 +261,7 @@ void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipi
 
     if (_returnValueRecipient != returnValueRecipient) {
         _returnValueRecipient = returnValueRecipient;
-        if (returnValueRecipient->asQObject() && this->asQObject())
+        if (returnValueRecipient && returnValueRecipient->asQObject() && this->asQObject())
             QObject::connect(returnValueRecipient->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setReturnValueRecipient()));
     }
 }

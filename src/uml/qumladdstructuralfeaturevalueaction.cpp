@@ -82,7 +82,8 @@ QUmlAddStructuralFeatureValueAction::QUmlAddStructuralFeatureValueAction(bool cr
 QUmlAddStructuralFeatureValueAction::~QUmlAddStructuralFeatureValueAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -155,7 +156,7 @@ void QUmlAddStructuralFeatureValueAction::setInsertAt(QUmlInputPin *insertAt)
         removeInput(_insertAt);
 
         _insertAt = insertAt;
-        if (insertAt->asQObject() && this->asQObject())
+        if (insertAt && insertAt->asQObject() && this->asQObject())
             QObject::connect(insertAt->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setInsertAt()));
         insertAt->asQObject()->setParent(this->asQObject());
 

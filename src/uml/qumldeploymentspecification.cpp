@@ -92,7 +92,8 @@ QUmlDeploymentSpecification::QUmlDeploymentSpecification(bool createQObject) :
 QUmlDeploymentSpecification::~QUmlDeploymentSpecification()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -179,7 +180,7 @@ void QUmlDeploymentSpecification::setDeployment(QUmlDeployment *deployment)
         // Adjust subsetted properties
 
         _deployment = deployment;
-        if (deployment->asQObject() && this->asQObject())
+        if (deployment && deployment->asQObject() && this->asQObject())
             QObject::connect(deployment->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(setDeployment()));
 
         // Adjust subsetted properties

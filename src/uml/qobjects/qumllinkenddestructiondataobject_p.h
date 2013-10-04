@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlLinkEndDestructionDataObject : public QObject
 
     // Properties [LinkEndDestructionData]
     Q_PROPERTY(QObject * destroyAt READ destroyAt)
-    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates)
+    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates RESET unsetDestroyDuplicates)
 
 public:
     Q_INVOKABLE explicit QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *qModelingObject);
@@ -110,6 +110,7 @@ public Q_SLOTS:
     // Slots for owned attributes [LinkEndDestructionData]
     void setDestroyAt(QObject *destroyAt = 0);
     void setDestroyDuplicates(bool isDestroyDuplicates);
+    void unsetDestroyDuplicates();
 };
 
 QT_END_NAMESPACE

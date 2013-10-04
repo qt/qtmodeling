@@ -98,7 +98,10 @@ const QSet<QObject *> QUmlReplyActionObject::ownedElement() const
 
 QObject *QUmlReplyActionObject::owner() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->owner()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->owner())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->owner()->asQObject();
 }
 
 // OWNED ATTRIBUTES [NamedElement]
@@ -118,12 +121,18 @@ QString QUmlReplyActionObject::name() const
 
 QObject *QUmlReplyActionObject::nameExpression() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->nameExpression()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->nameExpression())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->nameExpression()->asQObject();
 }
 
 QObject *QUmlReplyActionObject::namespace_() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->namespace_()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->namespace_())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->namespace_()->asQObject();
 }
 
 QString QUmlReplyActionObject::qualifiedName() const
@@ -163,7 +172,10 @@ const QSet<QObject *> QUmlReplyActionObject::redefinitionContext() const
 
 QObject *QUmlReplyActionObject::activity() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->activity()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->activity())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->activity()->asQObject();
 }
 
 const QSet<QObject *> QUmlReplyActionObject::inGroup() const
@@ -192,7 +204,10 @@ const QSet<QObject *> QUmlReplyActionObject::inPartition() const
 
 QObject *QUmlReplyActionObject::inStructuredNode() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->inStructuredNode()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->inStructuredNode())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->inStructuredNode()->asQObject();
 }
 
 const QSet<QObject *> QUmlReplyActionObject::incoming() const
@@ -233,7 +248,10 @@ const QSet<QObject *> QUmlReplyActionObject::handler() const
 
 QObject *QUmlReplyActionObject::context() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->context()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->context())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->context()->asQObject();
 }
 
 const QList<QObject *> QUmlReplyActionObject::input() const
@@ -277,7 +295,10 @@ const QList<QObject *> QUmlReplyActionObject::output() const
 
 QObject *QUmlReplyActionObject::replyToCall() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->replyToCall()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->replyToCall())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->replyToCall()->asQObject();
 }
 
 const QSet<QObject *> QUmlReplyActionObject::replyValue() const
@@ -290,7 +311,10 @@ const QSet<QObject *> QUmlReplyActionObject::replyValue() const
 
 QObject *QUmlReplyActionObject::returnInformation() const
 {
-    return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->returnInformation()->asQObject();
+    if (!qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->returnInformation())
+        return 0;
+    else
+        return qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->returnInformation()->asQObject();
 }
 
 // OPERATIONS [Element]
@@ -391,7 +415,7 @@ void QUmlReplyActionObject::setName(QString name)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setName(name);
 }
-    
+
 void QUmlReplyActionObject::setNameExpression(QObject *nameExpression)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setNameExpression(qmodelingobjectproperty_cast<QUmlStringExpression *>(nameExpression));
@@ -406,19 +430,25 @@ void QUmlReplyActionObject::setQualifiedName(QString qualifiedName)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setQualifiedName(qualifiedName);
 }
-    
+
 void QUmlReplyActionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setVisibility(visibility);
 }
-    
+
 // SLOTS FOR OWNED ATTRIBUTES [RedefinableElement]
 
 void QUmlReplyActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setLeaf(isLeaf);
+    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
-    
+
+void QUmlReplyActionObject::unsetLeaf()
+{
+    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("leaf"));
+}
+
 void QUmlReplyActionObject::addRedefinedElement(QObject *redefinedElement)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addRedefinedElement(qmodelingobjectproperty_cast<QUmlRedefinableElement *>(redefinedElement));
@@ -543,8 +573,14 @@ void QUmlReplyActionObject::removeInput(QObject *input)
 void QUmlReplyActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setLocallyReentrant(isLocallyReentrant);
+    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
-    
+
+void QUmlReplyActionObject::unsetLocallyReentrant()
+{
+    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->modifiedResettableProperties().removeAll(QStringLiteral("locallyReentrant"));
+}
+
 void QUmlReplyActionObject::addLocalPostcondition(QObject *localPostcondition)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->addLocalPostcondition(qmodelingobjectproperty_cast<QUmlConstraint *>(localPostcondition));

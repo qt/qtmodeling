@@ -60,7 +60,8 @@ QUmlComment::QUmlComment(bool createQObject)
 QUmlComment::~QUmlComment()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -94,7 +95,7 @@ void QUmlComment::addAnnotatedElement(QUmlElement *annotatedElement)
 
     if (!_annotatedElement.contains(annotatedElement)) {
         _annotatedElement.insert(annotatedElement);
-        if (annotatedElement->asQObject() && this->asQObject())
+        if (annotatedElement && annotatedElement->asQObject() && this->asQObject())
             QObject::connect(annotatedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeAnnotatedElement(QObject *)));
     }
 }

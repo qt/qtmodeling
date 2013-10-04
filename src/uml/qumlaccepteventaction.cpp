@@ -81,7 +81,8 @@ QUmlAcceptEventAction::QUmlAcceptEventAction(bool createQObject) :
 QUmlAcceptEventAction::~QUmlAcceptEventAction()
 {
     if (!deletingFromQObject) {
-        _qObject->setProperty("deletingFromModelingObject", true);
+        if (_qObject)
+            _qObject->setProperty("deletingFromModelingObject", true);
         delete _qObject;
     }
 }
@@ -164,7 +165,7 @@ void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
 
     if (!_result.contains(result)) {
         _result.insert(result);
-        if (result->asQObject() && this->asQObject())
+        if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
         result->asQObject()->setParent(this->asQObject());
 
@@ -203,7 +204,7 @@ void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
 
     if (!_trigger.contains(trigger)) {
         _trigger.insert(trigger);
-        if (trigger->asQObject() && this->asQObject())
+        if (trigger && trigger->asQObject() && this->asQObject())
             QObject::connect(trigger->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTrigger(QObject *)));
         trigger->asQObject()->setParent(this->asQObject());
 
