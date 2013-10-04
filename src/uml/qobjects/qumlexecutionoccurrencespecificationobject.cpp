@@ -58,7 +58,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlExecutionOccurrenceSpecificationObject::QUmlExecutionOccurrenceSpecificationObject(QUmlExecutionOccurrenceSpecification *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlExecutionOccurrenceSpecificationObject::~QUmlExecutionOccurrenceSpecificationObject()

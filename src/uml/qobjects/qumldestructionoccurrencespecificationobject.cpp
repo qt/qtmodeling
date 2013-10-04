@@ -58,7 +58,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDestructionOccurrenceSpecificationObject::QUmlDestructionOccurrenceSpecificationObject(QUmlDestructionOccurrenceSpecification *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDestructionOccurrenceSpecificationObject::~QUmlDestructionOccurrenceSpecificationObject()

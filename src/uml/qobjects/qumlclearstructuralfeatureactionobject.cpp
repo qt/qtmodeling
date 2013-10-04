@@ -67,7 +67,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlClearStructuralFeatureActionObject::QUmlClearStructuralFeatureActionObject(QUmlClearStructuralFeatureAction *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlClearStructuralFeatureActionObject::~QUmlClearStructuralFeatureActionObject()

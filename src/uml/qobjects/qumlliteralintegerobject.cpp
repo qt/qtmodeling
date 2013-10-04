@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlLiteralIntegerObject::QUmlLiteralIntegerObject(QUmlLiteralInteger *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlLiteralIntegerObject::~QUmlLiteralIntegerObject()

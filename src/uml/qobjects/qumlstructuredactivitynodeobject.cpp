@@ -69,7 +69,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlStructuredActivityNodeObject::QUmlStructuredActivityNodeObject(QUmlStructuredActivityNode *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlStructuredActivityNodeObject::~QUmlStructuredActivityNodeObject()

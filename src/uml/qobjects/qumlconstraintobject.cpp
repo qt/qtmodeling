@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlConstraintObject::QUmlConstraintObject(QUmlConstraint *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlConstraintObject::~QUmlConstraintObject()

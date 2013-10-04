@@ -66,7 +66,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlTestIdentityActionObject::QUmlTestIdentityActionObject(QUmlTestIdentityAction *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlTestIdentityActionObject::~QUmlTestIdentityActionObject()

@@ -68,7 +68,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlActionInputPinObject::QUmlActionInputPinObject(QUmlActionInputPin *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlActionInputPinObject::~QUmlActionInputPinObject()

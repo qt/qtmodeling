@@ -82,7 +82,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlAssociationClassObject::QUmlAssociationClassObject(QUmlAssociationClass *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlAssociationClassObject::~QUmlAssociationClassObject()

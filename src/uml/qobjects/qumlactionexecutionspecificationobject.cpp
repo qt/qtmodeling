@@ -59,7 +59,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlActionExecutionSpecificationObject::QUmlActionExecutionSpecificationObject(QUmlActionExecutionSpecification *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlActionExecutionSpecificationObject::~QUmlActionExecutionSpecificationObject()

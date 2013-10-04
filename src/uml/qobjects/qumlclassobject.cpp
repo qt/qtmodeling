@@ -81,7 +81,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlClassObject::QUmlClassObject(QUmlClass *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlClassObject::~QUmlClassObject()
@@ -805,7 +805,6 @@ void QUmlClassObject::setOwningTemplateParameter(QObject *owningTemplateParamete
 void QUmlClassObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlClass *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlClass *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlClassObject::unsetVisibility()
@@ -825,7 +824,6 @@ void QUmlClassObject::setPackage(QObject *package)
 void QUmlClassObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlClass *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlClass *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlClassObject::unsetLeaf()
@@ -920,7 +918,6 @@ void QUmlClassObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlClassObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlClass *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlClass *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlClassObject::unsetFinalSpecialization()
@@ -1079,7 +1076,6 @@ void QUmlClassObject::removeExtension(QObject *extension)
 void QUmlClassObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlClass *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlClass *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlClassObject::unsetAbstract()
@@ -1090,7 +1086,6 @@ void QUmlClassObject::unsetAbstract()
 void QUmlClassObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlClass *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlClass *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlClassObject::unsetActive()

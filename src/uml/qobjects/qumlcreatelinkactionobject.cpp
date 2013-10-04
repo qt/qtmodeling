@@ -69,7 +69,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlCreateLinkActionObject::QUmlCreateLinkActionObject(QUmlCreateLinkAction *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlCreateLinkActionObject::~QUmlCreateLinkActionObject()

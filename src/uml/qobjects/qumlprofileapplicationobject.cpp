@@ -50,7 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlProfileApplicationObject::QUmlProfileApplicationObject(QUmlProfileApplication *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlProfileApplicationObject::~QUmlProfileApplicationObject()

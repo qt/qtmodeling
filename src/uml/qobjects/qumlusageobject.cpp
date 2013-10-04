@@ -55,7 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlUsageObject::QUmlUsageObject(QUmlUsage *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlUsageObject::~QUmlUsageObject()

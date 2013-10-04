@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlLiteralUnlimitedNaturalObject::QUmlLiteralUnlimitedNaturalObject(QUmlLiteralUnlimitedNatural *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlLiteralUnlimitedNaturalObject::~QUmlLiteralUnlimitedNaturalObject()

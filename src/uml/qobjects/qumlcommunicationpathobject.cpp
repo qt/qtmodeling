@@ -73,7 +73,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlCommunicationPathObject::QUmlCommunicationPathObject(QUmlCommunicationPath *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlCommunicationPathObject::~QUmlCommunicationPathObject()

@@ -91,7 +91,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlProtocolStateMachineObject::QUmlProtocolStateMachineObject(QUmlProtocolStateMachine *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlProtocolStateMachineObject::~QUmlProtocolStateMachineObject()

@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDependencyObject::QUmlDependencyObject(QUmlDependency *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDependencyObject::~QUmlDependencyObject()

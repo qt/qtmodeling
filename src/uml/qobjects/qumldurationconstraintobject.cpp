@@ -58,7 +58,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDurationConstraintObject::QUmlDurationConstraintObject(QUmlDurationConstraint *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDurationConstraintObject::~QUmlDurationConstraintObject()

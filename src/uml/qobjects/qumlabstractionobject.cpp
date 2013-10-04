@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlAbstractionObject::QUmlAbstractionObject(QUmlAbstraction *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlAbstractionObject::~QUmlAbstractionObject()

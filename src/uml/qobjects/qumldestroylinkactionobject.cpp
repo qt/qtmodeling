@@ -69,7 +69,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDestroyLinkActionObject::QUmlDestroyLinkActionObject(QUmlDestroyLinkAction *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDestroyLinkActionObject::~QUmlDestroyLinkActionObject()

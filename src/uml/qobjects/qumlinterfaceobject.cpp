@@ -76,7 +76,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlInterfaceObject::QUmlInterfaceObject(QUmlInterface *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlInterfaceObject::~QUmlInterfaceObject()

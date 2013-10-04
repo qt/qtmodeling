@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlSlotObject::QUmlSlotObject(QUmlSlot *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlSlotObject::~QUmlSlotObject()

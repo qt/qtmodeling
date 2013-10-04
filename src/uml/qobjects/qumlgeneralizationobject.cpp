@@ -50,7 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlGeneralizationObject::QUmlGeneralizationObject(QUmlGeneralization *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlGeneralizationObject::~QUmlGeneralizationObject()

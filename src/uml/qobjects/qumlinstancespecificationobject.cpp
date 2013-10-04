@@ -60,7 +60,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlInstanceSpecificationObject::QUmlInstanceSpecificationObject(QUmlInstanceSpecification *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlInstanceSpecificationObject::~QUmlInstanceSpecificationObject()

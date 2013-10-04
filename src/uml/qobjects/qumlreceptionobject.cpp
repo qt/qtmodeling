@@ -64,7 +64,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlReceptionObject::QUmlReceptionObject(QUmlReception *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlReceptionObject::~QUmlReceptionObject()

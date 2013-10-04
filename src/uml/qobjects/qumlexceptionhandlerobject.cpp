@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlExceptionHandlerObject::QUmlExceptionHandlerObject(QUmlExceptionHandler *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlExceptionHandlerObject::~QUmlExceptionHandlerObject()

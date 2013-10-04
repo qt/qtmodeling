@@ -62,6 +62,7 @@ int main ()
     QUmlClass *class_ = new QUmlClass;
     class_->setName("Student");
     class_->setAbstract(false);
+    class_->setFinalSpecialization(true);
     class_->setVisibility(QtUml::VisibilityKindPackage);
 
     QUmlProperty *property = new QUmlProperty;

@@ -58,7 +58,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlStateInvariantObject::QUmlStateInvariantObject(QUmlStateInvariant *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlStateInvariantObject::~QUmlStateInvariantObject()

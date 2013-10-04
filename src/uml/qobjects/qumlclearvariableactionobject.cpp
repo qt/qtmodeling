@@ -67,7 +67,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlClearVariableActionObject::QUmlClearVariableActionObject(QUmlClearVariableAction *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlClearVariableActionObject::~QUmlClearVariableActionObject()

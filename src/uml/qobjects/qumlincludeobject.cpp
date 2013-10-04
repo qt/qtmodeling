@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlIncludeObject::QUmlIncludeObject(QUmlInclude *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlIncludeObject::~QUmlIncludeObject()

@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QMODELINGBASE_H
-#define QMODELINGBASE_H
+#ifndef QMODELINGOBJECT_H
+#define QMODELINGOBJECT_H
 
 #include <QtModeling/QtModelingGlobal>
 #include <QtModeling/QtModelingNamespace>
@@ -80,7 +80,7 @@ public:
         return propertyDataHash[QString::fromLatin1(metaProperty.name())][role];
     }
 
-    QStringList &modifiedResettableProperties()
+    inline QStringList &modifiedResettableProperties()
     {
         return _modifiedResettableProperties;
     }
@@ -93,10 +93,21 @@ protected:
     virtual void setPropertyData() = 0;
 };
 
+inline QModelingObject *qModelingObject(const QObject *object)
+{
+    return object ? object->property("modelingObject").value<QModelingObject *>():0;
+}
+
+template<class T>
+inline T qmodelingobjectproperty_cast(const QObject *object)
+{
+    return object ? dynamic_cast<T>(qModelingObject(object)):T();
+}
+
 QT_END_NAMESPACE
 
 Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QModelingObject) *)
 
 QT_END_HEADER
 
-#endif // QMODELINGBASE_H
+#endif // QMODELINGOBJECT_H

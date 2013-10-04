@@ -77,7 +77,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDeploymentSpecificationObject::QUmlDeploymentSpecificationObject(QUmlDeploymentSpecification *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDeploymentSpecificationObject::~QUmlDeploymentSpecificationObject()

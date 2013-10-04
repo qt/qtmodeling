@@ -66,7 +66,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlUnmarshallActionObject::QUmlUnmarshallActionObject(QUmlUnmarshallAction *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlUnmarshallActionObject::~QUmlUnmarshallActionObject()

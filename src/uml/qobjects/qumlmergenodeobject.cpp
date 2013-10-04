@@ -62,7 +62,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlMergeNodeObject::QUmlMergeNodeObject(QUmlMergeNode *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlMergeNodeObject::~QUmlMergeNodeObject()

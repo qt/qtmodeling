@@ -57,7 +57,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlRedefinableTemplateSignatureObject::QUmlRedefinableTemplateSignatureObject(QUmlRedefinableTemplateSignature *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlRedefinableTemplateSignatureObject::~QUmlRedefinableTemplateSignatureObject()

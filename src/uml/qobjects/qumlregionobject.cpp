@@ -63,7 +63,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlRegionObject::QUmlRegionObject(QUmlRegion *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlRegionObject::~QUmlRegionObject()

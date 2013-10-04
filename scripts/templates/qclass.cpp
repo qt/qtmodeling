@@ -332,6 +332,9 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
         // <derived-code>
         [%- ELSE %]
         _${qtAttribute} = ${qtAttribute};
+[%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
+        _modifiedResettableProperties << QStringLiteral("${attributeName.lcfirst}");
+[%- END %]
             [%- IF qtType.match('\*') %]
         if (${qtAttribute} && ${qtAttribute}->asQObject() && this->asQObject())
             QObject::connect(${qtAttribute}->asQObject(), SIGNAL(destroyed()), this->asQObject(), SLOT(set${attributeName}()));

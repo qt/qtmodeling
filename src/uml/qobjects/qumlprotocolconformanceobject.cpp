@@ -49,7 +49,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlProtocolConformanceObject::QUmlProtocolConformanceObject(QUmlProtocolConformance *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlProtocolConformanceObject::~QUmlProtocolConformanceObject()

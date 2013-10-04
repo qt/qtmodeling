@@ -48,7 +48,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlImageObject::QUmlImageObject(QUmlImage *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlImageObject::~QUmlImageObject()

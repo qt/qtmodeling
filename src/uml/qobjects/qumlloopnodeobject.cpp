@@ -71,7 +71,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlLoopNodeObject::QUmlLoopNodeObject(QUmlLoopNode *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlLoopNodeObject::~QUmlLoopNodeObject()

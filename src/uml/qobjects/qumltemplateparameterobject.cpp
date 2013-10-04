@@ -50,7 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlTemplateParameterObject::QUmlTemplateParameterObject(QUmlTemplateParameter *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlTemplateParameterObject::~QUmlTemplateParameterObject()

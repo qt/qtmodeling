@@ -232,6 +232,7 @@ void QUmlClass::setAbstract(bool isAbstract)
 
     if (_isAbstract != isAbstract) {
         _isAbstract = isAbstract;
+        _modifiedResettableProperties << QStringLiteral("isAbstract");
     }
 }
 
@@ -251,6 +252,7 @@ void QUmlClass::setActive(bool isActive)
 
     if (_isActive != isActive) {
         _isActive = isActive;
+        _modifiedResettableProperties << QStringLiteral("isActive");
     }
 }
 
@@ -487,49 +489,57 @@ QSet<QUmlNamedElement *> QUmlClass::inherit(QSet<QUmlNamedElement *> inhs) const
 
 void QUmlClass::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::DocumentationRole] = QStringLiteral("References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.");
     QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::OppositeEndRole] = QStringLiteral("Extension-metaclass");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::DocumentationRole] = QStringLiteral("If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.True when a class is abstract.");
     QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Classifier-isAbstract");
     QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::DocumentationRole] = QStringLiteral("Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class.");
     QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::DocumentationRole] = QStringLiteral("References all the Classifiers that are defined (nested) within the Class.");
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes (i.e. the properties) owned by the class.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredClassifier-ownedAttribute");
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("Property-class");
 
-    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::DocumentationRole] = QStringLiteral("The operations owned by the class.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-class");
 
-    QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::DocumentationRole] = QStringLiteral("Receptions that objects of this class are willing to accept.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature Namespace-ownedMember");
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::DocumentationRole] = QStringLiteral("This gives the superclasses of a class.");
     QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Classifier-general");
     QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

@@ -77,7 +77,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlCollaborationObject::QUmlCollaborationObject(QUmlCollaboration *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlCollaborationObject::~QUmlCollaborationObject()

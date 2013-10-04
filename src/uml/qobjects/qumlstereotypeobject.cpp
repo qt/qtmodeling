@@ -84,7 +84,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlStereotypeObject::QUmlStereotypeObject(QUmlStereotype *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlStereotypeObject::~QUmlStereotypeObject()

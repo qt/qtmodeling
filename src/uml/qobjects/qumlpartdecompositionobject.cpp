@@ -60,7 +60,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlPartDecompositionObject::QUmlPartDecompositionObject(QUmlPartDecomposition *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlPartDecompositionObject::~QUmlPartDecompositionObject()

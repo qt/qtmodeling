@@ -58,7 +58,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDurationIntervalObject::QUmlDurationIntervalObject(QUmlDurationInterval *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDurationIntervalObject::~QUmlDurationIntervalObject()

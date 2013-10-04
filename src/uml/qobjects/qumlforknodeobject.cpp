@@ -62,7 +62,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlForkNodeObject::QUmlForkNodeObject(QUmlForkNode *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlForkNodeObject::~QUmlForkNodeObject()

@@ -43,6 +43,7 @@
 
 #include <QtCore/QtGlobal>
 #include <QtCore/QVariant>
+
 #include <QtScript/QScriptValue>
 #include <QtScript/QScriptEngine>
 #include <QtScript/QScriptValueIterator>
@@ -60,14 +61,6 @@ QT_BEGIN_NAMESPACE
 #endif
 
 QT_END_NAMESPACE
-
-class QModelingObject;
-
-template<class T>
-T qmodelingobjectproperty_cast(const QObject *object)
-{
-    return object ? object->property("modelingObject").value<T>():T();
-}
 
 template <class T>
 QScriptValue qSetToScriptValue(QScriptEngine *engine, const QSet<T *> &elements)

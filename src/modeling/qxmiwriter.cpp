@@ -212,15 +212,15 @@ void QXmiWriter::writeObject(QObject *modelingObject, QString elementName)
                 d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), value);
         }
         else if (metaProperty.type() == QVariant::Bool) {
-            //if (!metaProperty.isResettable() || (metaProperty.isResettable() && modelingObject->isPropertyModified(metaProperty)))
+            if (!metaProperty.isResettable() || (metaProperty.isResettable() && qModelingObject(modelingObject) && qModelingObject(modelingObject)->isPropertyModified(metaProperty)))
                 d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), QString::fromLatin1(variant.toBool() ? "true":"false"));
         }
         else if (metaProperty.isEnumType()) {
-            //if (!metaProperty.isResettable() || (metaProperty.isResettable() && modelingObject->isPropertyModified(metaProperty))) {
+            if (!metaProperty.isResettable() || (metaProperty.isResettable() && qModelingObject(modelingObject) && qModelingObject(modelingObject)->isPropertyModified(metaProperty))) {
                 QMetaEnum metaEnum = metaProperty.enumerator();
                 if (!QString::fromLatin1(metaEnum.key(variant.toInt())).isEmpty())
                     d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), QString::fromLatin1(metaEnum.key(variant.toInt())).toLower().remove(QString::fromLatin1(metaProperty.name())));
-            //}
+            }
         }
     }
 

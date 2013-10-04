@@ -86,7 +86,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlOpaqueBehaviorObject::QUmlOpaqueBehaviorObject(QUmlOpaqueBehavior *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlOpaqueBehaviorObject::~QUmlOpaqueBehaviorObject()

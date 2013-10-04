@@ -66,7 +66,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDataStoreNodeObject::QUmlDataStoreNodeObject(QUmlDataStoreNode *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDataStoreNodeObject::~QUmlDataStoreNodeObject()

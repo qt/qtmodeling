@@ -66,7 +66,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDestroyObjectActionObject::QUmlDestroyObjectActionObject(QUmlDestroyObjectAction *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDestroyObjectActionObject::~QUmlDestroyObjectActionObject()

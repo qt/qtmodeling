@@ -52,7 +52,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlConnectorEndObject::QUmlConnectorEndObject(QUmlConnectorEnd *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlConnectorEndObject::~QUmlConnectorEndObject()

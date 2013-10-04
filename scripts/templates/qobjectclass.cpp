@@ -55,7 +55,7 @@ QT_BEGIN_NAMESPACE
 
 Q${namespace}${className}Object::Q${namespace}${className}Object(Q${namespace}${className} *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 [%- IF class.findvalue("@isAbstract") != "true" %]

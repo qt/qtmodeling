@@ -71,7 +71,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlConditionalNodeObject::QUmlConditionalNodeObject(QUmlConditionalNode *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlConditionalNodeObject::~QUmlConditionalNodeObject()

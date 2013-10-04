@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlChangeEventObject::QUmlChangeEventObject(QUmlChangeEvent *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlChangeEventObject::~QUmlChangeEventObject()

@@ -55,7 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlAnyReceiveEventObject::QUmlAnyReceiveEventObject(QUmlAnyReceiveEvent *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlAnyReceiveEventObject::~QUmlAnyReceiveEventObject()

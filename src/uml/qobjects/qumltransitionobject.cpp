@@ -64,7 +64,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlTransitionObject::QUmlTransitionObject(QUmlTransition *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlTransitionObject::~QUmlTransitionObject()

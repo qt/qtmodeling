@@ -68,7 +68,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlCallBehaviorActionObject::QUmlCallBehaviorActionObject(QUmlCallBehaviorAction *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlCallBehaviorActionObject::~QUmlCallBehaviorActionObject()

@@ -84,7 +84,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDeviceObject::QUmlDeviceObject(QUmlDevice *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDeviceObject::~QUmlDeviceObject()

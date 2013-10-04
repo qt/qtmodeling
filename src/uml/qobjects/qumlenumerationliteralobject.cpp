@@ -61,7 +61,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlEnumerationLiteralObject::QUmlEnumerationLiteralObject(QUmlEnumerationLiteral *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlEnumerationLiteralObject::~QUmlEnumerationLiteralObject()

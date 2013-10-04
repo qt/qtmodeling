@@ -50,7 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlPackageImportObject::QUmlPackageImportObject(QUmlPackageImport *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlPackageImportObject::~QUmlPackageImportObject()

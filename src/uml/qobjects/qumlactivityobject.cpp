@@ -92,7 +92,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlActivityObject::QUmlActivityObject(QUmlActivity *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlActivityObject::~QUmlActivityObject()

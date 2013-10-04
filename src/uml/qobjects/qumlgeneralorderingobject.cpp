@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlGeneralOrderingObject::QUmlGeneralOrderingObject(QUmlGeneralOrdering *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlGeneralOrderingObject::~QUmlGeneralOrderingObject()

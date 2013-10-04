@@ -55,7 +55,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlDurationObservationObject::QUmlDurationObservationObject(QUmlDurationObservation *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlDurationObservationObject::~QUmlDurationObservationObject()

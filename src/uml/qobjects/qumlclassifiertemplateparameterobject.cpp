@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlClassifierTemplateParameterObject::QUmlClassifierTemplateParameterObject(QUmlClassifierTemplateParameter *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlClassifierTemplateParameterObject::~QUmlClassifierTemplateParameterObject()

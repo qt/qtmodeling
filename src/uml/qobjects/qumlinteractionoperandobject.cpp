@@ -62,7 +62,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlInteractionOperandObject::QUmlInteractionOperandObject(QUmlInteractionOperand *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlInteractionOperandObject::~QUmlInteractionOperandObject()

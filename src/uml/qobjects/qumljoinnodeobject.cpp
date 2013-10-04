@@ -63,7 +63,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlJoinNodeObject::QUmlJoinNodeObject(QUmlJoinNode *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlJoinNodeObject::~QUmlJoinNodeObject()

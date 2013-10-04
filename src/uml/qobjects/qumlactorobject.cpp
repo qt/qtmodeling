@@ -75,7 +75,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlActorObject::QUmlActorObject(QUmlActor *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlActorObject::~QUmlActorObject()

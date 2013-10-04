@@ -384,18 +384,12 @@ void Q${namespace}${originalClassName}Object::remove${attributeName}(${originalQ
 void Q${namespace}${originalClassName}Object::set${attributeName}(${qtType}${qtAttribute})
 {
     qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName}(qmodelingobjectproperty_cast<${originalQtType}>(${qtAttribute}));
-[%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
-    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->modifiedResettableProperties() << QStringLiteral("${attributeName.remove("^Is").lcfirst}");
-[%- END %]
 }
 
     [%- ELSE %]
 void Q${namespace}${originalClassName}Object::set${attributeName.remove("^Is")}(${qtType}${qtAttribute})
 {
     qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->set${attributeName.remove("^Is")}(${qtAttribute});
-[%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
-    qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->modifiedResettableProperties() << QStringLiteral("${attributeName.remove("^Is").lcfirst}");
-[%- END %]
 }
 
     [%- END -%]

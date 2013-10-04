@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlLiteralStringObject::QUmlLiteralStringObject(QUmlLiteralString *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlLiteralStringObject::~QUmlLiteralStringObject()

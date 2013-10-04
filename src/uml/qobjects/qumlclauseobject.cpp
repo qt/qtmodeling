@@ -50,7 +50,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlClauseObject::QUmlClauseObject(QUmlClause *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlClauseObject::~QUmlClauseObject()

@@ -47,7 +47,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlCommentObject::QUmlCommentObject(QUmlComment *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlCommentObject::~QUmlCommentObject()

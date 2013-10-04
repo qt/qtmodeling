@@ -73,7 +73,7 @@ QT_BEGIN_NAMESPACE
 
 QUmlSignalObject::QUmlSignalObject(QUmlSignal *qModelingObject)
 {
-    setProperty("modelingObject", QVariant::fromValue(qModelingObject));
+    setProperty("modelingObject", QVariant::fromValue(static_cast<QModelingObject *>(qModelingObject)));
 }
 
 QUmlSignalObject::~QUmlSignalObject()
