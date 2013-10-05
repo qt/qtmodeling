@@ -390,7 +390,6 @@ void QUmlParameterObject::setOwner(QObject *owner)
 void QUmlParameterObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlParameter *>(this)->setOrdered(isOrdered);
-    qmodelingobjectproperty_cast<QUmlParameter *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
 
 void QUmlParameterObject::unsetOrdered()
@@ -401,7 +400,6 @@ void QUmlParameterObject::unsetOrdered()
 void QUmlParameterObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlParameter *>(this)->setUnique(isUnique);
-    qmodelingobjectproperty_cast<QUmlParameter *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
 
 void QUmlParameterObject::unsetUnique()
@@ -412,7 +410,6 @@ void QUmlParameterObject::unsetUnique()
 void QUmlParameterObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlParameter *>(this)->setLower(lower);
-    qmodelingobjectproperty_cast<QUmlParameter *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
 
 void QUmlParameterObject::unsetLower()
@@ -428,7 +425,6 @@ void QUmlParameterObject::setLowerValue(QObject *lowerValue)
 void QUmlParameterObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlParameter *>(this)->setUpper(upper);
-    qmodelingobjectproperty_cast<QUmlParameter *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
 
 void QUmlParameterObject::unsetUpper()
@@ -523,7 +519,6 @@ void QUmlParameterObject::setDefaultValue(QObject *defaultValue)
 void QUmlParameterObject::setDirection(QtUml::ParameterDirectionKind direction)
 {
     qmodelingobjectproperty_cast<QUmlParameter *>(this)->setDirection(direction);
-    qmodelingobjectproperty_cast<QUmlParameter *>(this)->modifiedResettableProperties() << QStringLiteral("direction");
 }
 
 void QUmlParameterObject::unsetDirection()
@@ -539,7 +534,6 @@ void QUmlParameterObject::setEffect(QtUml::ParameterEffectKind effect)
 void QUmlParameterObject::setException(bool isException)
 {
     qmodelingobjectproperty_cast<QUmlParameter *>(this)->setException(isException);
-    qmodelingobjectproperty_cast<QUmlParameter *>(this)->modifiedResettableProperties() << QStringLiteral("exception");
 }
 
 void QUmlParameterObject::unsetException()
@@ -550,7 +544,6 @@ void QUmlParameterObject::unsetException()
 void QUmlParameterObject::setStream(bool isStream)
 {
     qmodelingobjectproperty_cast<QUmlParameter *>(this)->setStream(isStream);
-    qmodelingobjectproperty_cast<QUmlParameter *>(this)->modifiedResettableProperties() << QStringLiteral("stream");
 }
 
 void QUmlParameterObject::unsetStream()

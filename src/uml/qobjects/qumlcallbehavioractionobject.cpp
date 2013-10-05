@@ -459,7 +459,6 @@ void QUmlCallBehaviorActionObject::setVisibility(QtUml::VisibilityKind visibilit
 void QUmlCallBehaviorActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlCallBehaviorActionObject::unsetLeaf()
@@ -591,7 +590,6 @@ void QUmlCallBehaviorActionObject::removeInput(QObject *input)
 void QUmlCallBehaviorActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlCallBehaviorActionObject::unsetLocallyReentrant()
@@ -651,7 +649,6 @@ void QUmlCallBehaviorActionObject::setOnPort(QObject *onPort)
 void QUmlCallBehaviorActionObject::setSynchronous(bool isSynchronous)
 {
     qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->setSynchronous(isSynchronous);
-    qmodelingobjectproperty_cast<QUmlCallBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("synchronous");
 }
 
 void QUmlCallBehaviorActionObject::unsetSynchronous()

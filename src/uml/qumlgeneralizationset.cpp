@@ -161,6 +161,7 @@ void QUmlGeneralizationSet::setCovering(bool isCovering)
 
     if (_isCovering != isCovering) {
         _isCovering = isCovering;
+        _modifiedResettableProperties << QStringLiteral("isCovering");
     }
 }
 
@@ -180,6 +181,7 @@ void QUmlGeneralizationSet::setDisjoint(bool isDisjoint)
 
     if (_isDisjoint != isDisjoint) {
         _isDisjoint = isDisjoint;
+        _modifiedResettableProperties << QStringLiteral("isDisjoint");
     }
 }
 
@@ -206,25 +208,29 @@ void QUmlGeneralizationSet::setPowertype(QUmlClassifier *powertype)
 
 void QUmlGeneralizationSet::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("generalization")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("generalization")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("generalization")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("generalization")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("generalization")][QtModeling::DocumentationRole] = QStringLiteral("Designates the instances of Generalization which are members of a given GeneralizationSet.");
     QModelingObject::propertyDataHash[QStringLiteral("generalization")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("generalization")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("generalization")][QtModeling::OppositeEndRole] = QStringLiteral("Generalization-generalizationSet");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isCovering")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isCovering")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isCovering")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isCovering")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isCovering")][QtModeling::DocumentationRole] = QStringLiteral("Indicates (via the associated Generalizations) whether or not the set of specific Classifiers are covering for a particular general classifier. When isCovering is true, every instance of a particular general Classifier is also an instance of at least one of its specific Classifiers for the GeneralizationSet. When isCovering is false, there are one or more instances of the particular general Classifier that are not instances of at least one of its specific Classifiers defined for the GeneralizationSet.");
     QModelingObject::propertyDataHash[QStringLiteral("isCovering")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isCovering")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isCovering")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isDisjoint")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isDisjoint")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isDisjoint")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isDisjoint")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isDisjoint")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether or not the set of specific Classifiers in a Generalization relationship have instance in common. If isDisjoint is true, the specific Classifiers for a particular GeneralizationSet have no members in common; that is, their intersection is empty. If isDisjoint is false, the specific Classifiers in a particular GeneralizationSet have one or more members in common; that is, their intersection is not empty. For example, Person could have two Generalization relationships, each with the different specific Classifier: Manager or Staff. This would be disjoint because every instance of Person must either be a Manager or Staff. In contrast, Person could have two Generalization relationships involving two specific (and non-covering) Classifiers: Sales Person and Manager. This GeneralizationSet would not be disjoint because there are instances of Person which can be a Sales Person and a Manager.");
     QModelingObject::propertyDataHash[QStringLiteral("isDisjoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isDisjoint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isDisjoint")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("powertype")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("powertype")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("powertype")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("powertype")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("powertype")][QtModeling::DocumentationRole] = QStringLiteral("Designates the Classifier that is defined as the power type for the associated GeneralizationSet.");
     QModelingObject::propertyDataHash[QStringLiteral("powertype")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("powertype")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

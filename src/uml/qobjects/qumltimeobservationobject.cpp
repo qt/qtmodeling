@@ -297,7 +297,6 @@ void QUmlTimeObservationObject::setQualifiedName(QString qualifiedName)
 void QUmlTimeObservationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlTimeObservationObject::unsetVisibility()
@@ -315,7 +314,6 @@ void QUmlTimeObservationObject::setEvent(QObject *event)
 void QUmlTimeObservationObject::setFirstEvent(bool firstEvent)
 {
     qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->setFirstEvent(firstEvent);
-    qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->modifiedResettableProperties() << QStringLiteral("firstEvent");
 }
 
 void QUmlTimeObservationObject::unsetFirstEvent()

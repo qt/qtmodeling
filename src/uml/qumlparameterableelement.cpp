@@ -148,13 +148,15 @@ bool QUmlParameterableElement::isTemplateParameter() const
 
 void QUmlParameterableElement::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("owningTemplateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("owningTemplateParameter")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("owningTemplateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("owningTemplateParameter")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("owningTemplateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The formal template parameter that owns this element.");
     QModelingObject::propertyDataHash[QStringLiteral("owningTemplateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("owningTemplateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter Element-owner");
     QModelingObject::propertyDataHash[QStringLiteral("owningTemplateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateParameter-ownedParameteredElement");
 
-    QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The template parameter that exposes this element as a formal parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

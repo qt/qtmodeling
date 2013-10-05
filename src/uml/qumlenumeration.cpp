@@ -203,7 +203,8 @@ void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 
 void QUmlEnumeration::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of literals for this Enumeration.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");

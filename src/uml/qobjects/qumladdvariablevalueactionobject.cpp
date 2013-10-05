@@ -450,7 +450,6 @@ void QUmlAddVariableValueActionObject::setVisibility(QtUml::VisibilityKind visib
 void QUmlAddVariableValueActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlAddVariableValueActionObject::unsetLeaf()
@@ -582,7 +581,6 @@ void QUmlAddVariableValueActionObject::removeInput(QObject *input)
 void QUmlAddVariableValueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlAddVariableValueActionObject::unsetLocallyReentrant()
@@ -644,7 +642,6 @@ void QUmlAddVariableValueActionObject::setInsertAt(QObject *insertAt)
 void QUmlAddVariableValueActionObject::setReplaceAll(bool isReplaceAll)
 {
     qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->setReplaceAll(isReplaceAll);
-    qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("replaceAll");
 }
 
 void QUmlAddVariableValueActionObject::unsetReplaceAll()

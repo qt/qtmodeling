@@ -718,7 +718,6 @@ void QUmlEnumerationObject::setOwningTemplateParameter(QObject *owningTemplatePa
 void QUmlEnumerationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlEnumerationObject::unsetVisibility()
@@ -738,7 +737,6 @@ void QUmlEnumerationObject::setPackage(QObject *package)
 void QUmlEnumerationObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlEnumerationObject::unsetLeaf()
@@ -843,7 +841,6 @@ void QUmlEnumerationObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlEnumerationObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlEnumerationObject::unsetAbstract()
@@ -854,7 +851,6 @@ void QUmlEnumerationObject::unsetAbstract()
 void QUmlEnumerationObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlEnumeration *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlEnumerationObject::unsetFinalSpecialization()

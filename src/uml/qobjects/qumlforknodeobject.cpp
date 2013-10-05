@@ -353,7 +353,6 @@ void QUmlForkNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlForkNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlForkNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlForkNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlForkNodeObject::unsetLeaf()

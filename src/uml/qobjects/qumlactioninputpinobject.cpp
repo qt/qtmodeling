@@ -460,7 +460,6 @@ void QUmlActionInputPinObject::setOwner(QObject *owner)
 void QUmlActionInputPinObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->setOrdered(isOrdered);
-    qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
 
 void QUmlActionInputPinObject::unsetOrdered()
@@ -471,7 +470,6 @@ void QUmlActionInputPinObject::unsetOrdered()
 void QUmlActionInputPinObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->setUnique(isUnique);
-    qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
 
 void QUmlActionInputPinObject::unsetUnique()
@@ -482,7 +480,6 @@ void QUmlActionInputPinObject::unsetUnique()
 void QUmlActionInputPinObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->setLower(lower);
-    qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
 
 void QUmlActionInputPinObject::unsetLower()
@@ -498,7 +495,6 @@ void QUmlActionInputPinObject::setLowerValue(QObject *lowerValue)
 void QUmlActionInputPinObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->setUpper(upper);
-    qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
 
 void QUmlActionInputPinObject::unsetUpper()
@@ -553,7 +549,6 @@ void QUmlActionInputPinObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlActionInputPinObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlActionInputPinObject::unsetLeaf()
@@ -675,7 +670,6 @@ void QUmlActionInputPinObject::removeInState(QObject *inState)
 void QUmlActionInputPinObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->setControlType(isControlType);
-    qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
 
 void QUmlActionInputPinObject::unsetControlType()
@@ -686,7 +680,6 @@ void QUmlActionInputPinObject::unsetControlType()
 void QUmlActionInputPinObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->setOrdering(ordering);
-    qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
 
 void QUmlActionInputPinObject::unsetOrdering()
@@ -709,7 +702,6 @@ void QUmlActionInputPinObject::setUpperBound(QObject *upperBound)
 void QUmlActionInputPinObject::setControl(bool isControl)
 {
     qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->setControl(isControl);
-    qmodelingobjectproperty_cast<QUmlActionInputPin *>(this)->modifiedResettableProperties() << QStringLiteral("control");
 }
 
 void QUmlActionInputPinObject::unsetControl()

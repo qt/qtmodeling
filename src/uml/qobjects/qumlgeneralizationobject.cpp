@@ -242,7 +242,6 @@ void QUmlGeneralizationObject::removeGeneralizationSet(QObject *generalizationSe
 void QUmlGeneralizationObject::setSubstitutable(bool isSubstitutable)
 {
     qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->setSubstitutable(isSubstitutable);
-    qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->modifiedResettableProperties() << QStringLiteral("substitutable");
 }
 
 void QUmlGeneralizationObject::unsetSubstitutable()

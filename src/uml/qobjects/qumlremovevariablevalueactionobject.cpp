@@ -450,7 +450,6 @@ void QUmlRemoveVariableValueActionObject::setVisibility(QtUml::VisibilityKind vi
 void QUmlRemoveVariableValueActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlRemoveVariableValueActionObject::unsetLeaf()
@@ -582,7 +581,6 @@ void QUmlRemoveVariableValueActionObject::removeInput(QObject *input)
 void QUmlRemoveVariableValueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlRemoveVariableValueActionObject::unsetLocallyReentrant()
@@ -639,7 +637,6 @@ void QUmlRemoveVariableValueActionObject::setValue(QObject *value)
 void QUmlRemoveVariableValueActionObject::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->setRemoveDuplicates(isRemoveDuplicates);
-    qmodelingobjectproperty_cast<QUmlRemoveVariableValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("removeDuplicates");
 }
 
 void QUmlRemoveVariableValueActionObject::unsetRemoveDuplicates()

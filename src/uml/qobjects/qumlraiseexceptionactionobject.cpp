@@ -424,7 +424,6 @@ void QUmlRaiseExceptionActionObject::setVisibility(QtUml::VisibilityKind visibil
 void QUmlRaiseExceptionActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlRaiseExceptionActionObject::unsetLeaf()
@@ -556,7 +555,6 @@ void QUmlRaiseExceptionActionObject::removeInput(QObject *input)
 void QUmlRaiseExceptionActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlRaiseExceptionActionObject::unsetLocallyReentrant()

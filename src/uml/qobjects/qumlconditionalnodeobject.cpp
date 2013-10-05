@@ -604,7 +604,6 @@ void QUmlConditionalNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlConditionalNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlConditionalNodeObject::unsetLeaf()
@@ -731,7 +730,6 @@ void QUmlConditionalNodeObject::removeInput(QObject *input)
 void QUmlConditionalNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlConditionalNodeObject::unsetLocallyReentrant()
@@ -888,7 +886,6 @@ void QUmlConditionalNodeObject::removeEdge(QObject *edge)
 void QUmlConditionalNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setMustIsolate(mustIsolate);
-    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("mustIsolate");
 }
 
 void QUmlConditionalNodeObject::unsetMustIsolate()
@@ -941,7 +938,6 @@ void QUmlConditionalNodeObject::removeClause(QObject *clause)
 void QUmlConditionalNodeObject::setAssured(bool isAssured)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setAssured(isAssured);
-    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("assured");
 }
 
 void QUmlConditionalNodeObject::unsetAssured()
@@ -952,7 +948,6 @@ void QUmlConditionalNodeObject::unsetAssured()
 void QUmlConditionalNodeObject::setDeterminate(bool isDeterminate)
 {
     qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->setDeterminate(isDeterminate);
-    qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->modifiedResettableProperties() << QStringLiteral("determinate");
 }
 
 void QUmlConditionalNodeObject::unsetDeterminate()

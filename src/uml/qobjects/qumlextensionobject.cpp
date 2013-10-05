@@ -761,7 +761,6 @@ void QUmlExtensionObject::setOwningTemplateParameter(QObject *owningTemplatePara
 void QUmlExtensionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlExtension *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlExtension *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlExtensionObject::unsetVisibility()
@@ -781,7 +780,6 @@ void QUmlExtensionObject::setPackage(QObject *package)
 void QUmlExtensionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExtension *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlExtension *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlExtensionObject::unsetLeaf()
@@ -886,7 +884,6 @@ void QUmlExtensionObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlExtensionObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlExtension *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlExtension *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlExtensionObject::unsetAbstract()
@@ -897,7 +894,6 @@ void QUmlExtensionObject::unsetAbstract()
 void QUmlExtensionObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlExtension *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlExtension *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlExtensionObject::unsetFinalSpecialization()
@@ -997,7 +993,6 @@ void QUmlExtensionObject::removeEndType(QObject *endType)
 void QUmlExtensionObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlExtension *>(this)->setDerived(isDerived);
-    qmodelingobjectproperty_cast<QUmlExtension *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
 
 void QUmlExtensionObject::unsetDerived()
@@ -1029,7 +1024,6 @@ void QUmlExtensionObject::removeNavigableOwnedEnd(QObject *navigableOwnedEnd)
 void QUmlExtensionObject::setRequired(bool isRequired)
 {
     qmodelingobjectproperty_cast<QUmlExtension *>(this)->setRequired(isRequired);
-    qmodelingobjectproperty_cast<QUmlExtension *>(this)->modifiedResettableProperties() << QStringLiteral("required");
 }
 
 void QUmlExtensionObject::unsetRequired()

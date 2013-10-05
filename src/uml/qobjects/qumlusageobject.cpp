@@ -328,7 +328,6 @@ void QUmlUsageObject::setQualifiedName(QString qualifiedName)
 void QUmlUsageObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlUsage *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlUsage *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlUsageObject::unsetVisibility()

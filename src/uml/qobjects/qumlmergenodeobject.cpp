@@ -353,7 +353,6 @@ void QUmlMergeNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlMergeNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlMergeNodeObject::unsetLeaf()

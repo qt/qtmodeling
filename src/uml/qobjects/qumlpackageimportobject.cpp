@@ -229,7 +229,6 @@ void QUmlPackageImportObject::setImportingNamespace(QObject *importingNamespace)
 void QUmlPackageImportObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlPackageImportObject::unsetVisibility()

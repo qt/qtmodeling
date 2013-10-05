@@ -586,7 +586,6 @@ void QUmlSequenceNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlSequenceNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlSequenceNodeObject::unsetLeaf()
@@ -713,7 +712,6 @@ void QUmlSequenceNodeObject::removeInput(QObject *input)
 void QUmlSequenceNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlSequenceNodeObject::unsetLocallyReentrant()
@@ -870,7 +868,6 @@ void QUmlSequenceNodeObject::removeEdge(QObject *edge)
 void QUmlSequenceNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->setMustIsolate(mustIsolate);
-    qmodelingobjectproperty_cast<QUmlSequenceNode *>(this)->modifiedResettableProperties() << QStringLiteral("mustIsolate");
 }
 
 void QUmlSequenceNodeObject::unsetMustIsolate()

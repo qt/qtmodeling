@@ -298,7 +298,6 @@ void QUmlTimeEventObject::setQualifiedName(QString qualifiedName)
 void QUmlTimeEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlTimeEventObject::unsetVisibility()
@@ -311,7 +310,6 @@ void QUmlTimeEventObject::unsetVisibility()
 void QUmlTimeEventObject::setRelative(bool isRelative)
 {
     qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->setRelative(isRelative);
-    qmodelingobjectproperty_cast<QUmlTimeEvent *>(this)->modifiedResettableProperties() << QStringLiteral("relative");
 }
 
 void QUmlTimeEventObject::unsetRelative()

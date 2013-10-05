@@ -365,7 +365,6 @@ void QUmlVariableObject::setOwner(QObject *owner)
 void QUmlVariableObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlVariable *>(this)->setOrdered(isOrdered);
-    qmodelingobjectproperty_cast<QUmlVariable *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
 
 void QUmlVariableObject::unsetOrdered()
@@ -376,7 +375,6 @@ void QUmlVariableObject::unsetOrdered()
 void QUmlVariableObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlVariable *>(this)->setUnique(isUnique);
-    qmodelingobjectproperty_cast<QUmlVariable *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
 
 void QUmlVariableObject::unsetUnique()
@@ -387,7 +385,6 @@ void QUmlVariableObject::unsetUnique()
 void QUmlVariableObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlVariable *>(this)->setLower(lower);
-    qmodelingobjectproperty_cast<QUmlVariable *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
 
 void QUmlVariableObject::unsetLower()
@@ -403,7 +400,6 @@ void QUmlVariableObject::setLowerValue(QObject *lowerValue)
 void QUmlVariableObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlVariable *>(this)->setUpper(upper);
-    qmodelingobjectproperty_cast<QUmlVariable *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
 
 void QUmlVariableObject::unsetUpper()

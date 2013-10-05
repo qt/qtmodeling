@@ -203,7 +203,6 @@ void QUmlLinkEndCreationDataObject::setInsertAt(QObject *insertAt)
 void QUmlLinkEndCreationDataObject::setReplaceAll(bool isReplaceAll)
 {
     qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->setReplaceAll(isReplaceAll);
-    qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->modifiedResettableProperties() << QStringLiteral("replaceAll");
 }
 
 void QUmlLinkEndCreationDataObject::unsetReplaceAll()

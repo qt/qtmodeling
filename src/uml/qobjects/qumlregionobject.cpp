@@ -427,7 +427,6 @@ void QUmlRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlRegionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlRegion *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlRegion *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlRegionObject::unsetLeaf()

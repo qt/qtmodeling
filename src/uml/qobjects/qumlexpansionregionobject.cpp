@@ -607,7 +607,6 @@ void QUmlExpansionRegionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlExpansionRegionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlExpansionRegionObject::unsetLeaf()
@@ -734,7 +733,6 @@ void QUmlExpansionRegionObject::removeInput(QObject *input)
 void QUmlExpansionRegionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlExpansionRegionObject::unsetLocallyReentrant()
@@ -891,7 +889,6 @@ void QUmlExpansionRegionObject::removeEdge(QObject *edge)
 void QUmlExpansionRegionObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setMustIsolate(mustIsolate);
-    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties() << QStringLiteral("mustIsolate");
 }
 
 void QUmlExpansionRegionObject::unsetMustIsolate()
@@ -954,7 +951,6 @@ void QUmlExpansionRegionObject::removeInputElement(QObject *inputElement)
 void QUmlExpansionRegionObject::setMode(QtUml::ExpansionKind mode)
 {
     qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->setMode(mode);
-    qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->modifiedResettableProperties() << QStringLiteral("mode");
 }
 
 void QUmlExpansionRegionObject::unsetMode()

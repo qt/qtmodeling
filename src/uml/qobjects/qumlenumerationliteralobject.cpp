@@ -342,7 +342,6 @@ void QUmlEnumerationLiteralObject::setTemplateParameter(QObject *templateParamet
 void QUmlEnumerationLiteralObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlEnumerationLiteralObject::unsetVisibility()

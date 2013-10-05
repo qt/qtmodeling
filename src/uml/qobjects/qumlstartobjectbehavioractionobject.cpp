@@ -458,7 +458,6 @@ void QUmlStartObjectBehaviorActionObject::setVisibility(QtUml::VisibilityKind vi
 void QUmlStartObjectBehaviorActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlStartObjectBehaviorActionObject::unsetLeaf()
@@ -590,7 +589,6 @@ void QUmlStartObjectBehaviorActionObject::removeInput(QObject *input)
 void QUmlStartObjectBehaviorActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlStartObjectBehaviorActionObject::unsetLocallyReentrant()
@@ -650,7 +648,6 @@ void QUmlStartObjectBehaviorActionObject::setOnPort(QObject *onPort)
 void QUmlStartObjectBehaviorActionObject::setSynchronous(bool isSynchronous)
 {
     qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->setSynchronous(isSynchronous);
-    qmodelingobjectproperty_cast<QUmlStartObjectBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("synchronous");
 }
 
 void QUmlStartObjectBehaviorActionObject::unsetSynchronous()

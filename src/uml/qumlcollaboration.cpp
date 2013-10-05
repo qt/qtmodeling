@@ -197,7 +197,8 @@ void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collabor
 
 void QUmlCollaboration::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::DocumentationRole] = QStringLiteral("References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.");
     QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("StructuredClassifier-role");

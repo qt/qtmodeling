@@ -357,7 +357,6 @@ void QUmlConsiderIgnoreFragmentObject::removeCfragmentGate(QObject *cfragmentGat
 void QUmlConsiderIgnoreFragmentObject::setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator)
 {
     qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->setInteractionOperator(interactionOperator);
-    qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->modifiedResettableProperties() << QStringLiteral("interactionOperator");
 }
 
 void QUmlConsiderIgnoreFragmentObject::unsetInteractionOperator()

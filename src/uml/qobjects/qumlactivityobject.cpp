@@ -939,7 +939,6 @@ void QUmlActivityObject::setOwningTemplateParameter(QObject *owningTemplateParam
 void QUmlActivityObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlActivity *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlActivity *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlActivityObject::unsetVisibility()
@@ -959,7 +958,6 @@ void QUmlActivityObject::setPackage(QObject *package)
 void QUmlActivityObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlActivity *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlActivity *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlActivityObject::unsetLeaf()
@@ -1054,7 +1052,6 @@ void QUmlActivityObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlActivityObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlActivity *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlActivity *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlActivityObject::unsetFinalSpecialization()
@@ -1213,7 +1210,6 @@ void QUmlActivityObject::removeExtension(QObject *extension)
 void QUmlActivityObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlActivity *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlActivity *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlActivityObject::unsetAbstract()
@@ -1224,7 +1220,6 @@ void QUmlActivityObject::unsetAbstract()
 void QUmlActivityObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlActivity *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlActivity *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlActivityObject::unsetActive()
@@ -1292,7 +1287,6 @@ void QUmlActivityObject::setContext(QObject *context)
 void QUmlActivityObject::setReentrant(bool isReentrant)
 {
     qmodelingobjectproperty_cast<QUmlActivity *>(this)->setReentrant(isReentrant);
-    qmodelingobjectproperty_cast<QUmlActivity *>(this)->modifiedResettableProperties() << QStringLiteral("reentrant");
 }
 
 void QUmlActivityObject::unsetReentrant()
@@ -1380,7 +1374,6 @@ void QUmlActivityObject::removeGroup(QObject *group)
 void QUmlActivityObject::setReadOnly(bool isReadOnly)
 {
     qmodelingobjectproperty_cast<QUmlActivity *>(this)->setReadOnly(isReadOnly);
-    qmodelingobjectproperty_cast<QUmlActivity *>(this)->modifiedResettableProperties() << QStringLiteral("readOnly");
 }
 
 void QUmlActivityObject::unsetReadOnly()
@@ -1391,7 +1384,6 @@ void QUmlActivityObject::unsetReadOnly()
 void QUmlActivityObject::setSingleExecution(bool isSingleExecution)
 {
     qmodelingobjectproperty_cast<QUmlActivity *>(this)->setSingleExecution(isSingleExecution);
-    qmodelingobjectproperty_cast<QUmlActivity *>(this)->modifiedResettableProperties() << QStringLiteral("singleExecution");
 }
 
 void QUmlActivityObject::unsetSingleExecution()

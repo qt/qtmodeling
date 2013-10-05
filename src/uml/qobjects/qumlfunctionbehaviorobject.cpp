@@ -885,7 +885,6 @@ void QUmlFunctionBehaviorObject::setOwningTemplateParameter(QObject *owningTempl
 void QUmlFunctionBehaviorObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlFunctionBehaviorObject::unsetVisibility()
@@ -905,7 +904,6 @@ void QUmlFunctionBehaviorObject::setPackage(QObject *package)
 void QUmlFunctionBehaviorObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlFunctionBehaviorObject::unsetLeaf()
@@ -1000,7 +998,6 @@ void QUmlFunctionBehaviorObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlFunctionBehaviorObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlFunctionBehaviorObject::unsetFinalSpecialization()
@@ -1159,7 +1156,6 @@ void QUmlFunctionBehaviorObject::removeExtension(QObject *extension)
 void QUmlFunctionBehaviorObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlFunctionBehaviorObject::unsetAbstract()
@@ -1170,7 +1166,6 @@ void QUmlFunctionBehaviorObject::unsetAbstract()
 void QUmlFunctionBehaviorObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlFunctionBehaviorObject::unsetActive()
@@ -1238,7 +1233,6 @@ void QUmlFunctionBehaviorObject::setContext(QObject *context)
 void QUmlFunctionBehaviorObject::setReentrant(bool isReentrant)
 {
     qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->setReentrant(isReentrant);
-    qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("reentrant");
 }
 
 void QUmlFunctionBehaviorObject::unsetReentrant()

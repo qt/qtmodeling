@@ -639,7 +639,6 @@ void QUmlLoopNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlLoopNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlLoopNodeObject::unsetLeaf()
@@ -766,7 +765,6 @@ void QUmlLoopNodeObject::removeInput(QObject *input)
 void QUmlLoopNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlLoopNodeObject::unsetLocallyReentrant()
@@ -923,7 +921,6 @@ void QUmlLoopNodeObject::removeEdge(QObject *edge)
 void QUmlLoopNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setMustIsolate(mustIsolate);
-    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties() << QStringLiteral("mustIsolate");
 }
 
 void QUmlLoopNodeObject::unsetMustIsolate()
@@ -981,7 +978,6 @@ void QUmlLoopNodeObject::setDecider(QObject *decider)
 void QUmlLoopNodeObject::setTestedFirst(bool isTestedFirst)
 {
     qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->setTestedFirst(isTestedFirst);
-    qmodelingobjectproperty_cast<QUmlLoopNode *>(this)->modifiedResettableProperties() << QStringLiteral("testedFirst");
 }
 
 void QUmlLoopNodeObject::unsetTestedFirst()

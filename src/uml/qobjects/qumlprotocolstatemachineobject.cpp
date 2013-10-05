@@ -928,7 +928,6 @@ void QUmlProtocolStateMachineObject::setOwningTemplateParameter(QObject *owningT
 void QUmlProtocolStateMachineObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlProtocolStateMachineObject::unsetVisibility()
@@ -948,7 +947,6 @@ void QUmlProtocolStateMachineObject::setPackage(QObject *package)
 void QUmlProtocolStateMachineObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlProtocolStateMachineObject::unsetLeaf()
@@ -1043,7 +1041,6 @@ void QUmlProtocolStateMachineObject::removeInheritedMember(QObject *inheritedMem
 void QUmlProtocolStateMachineObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlProtocolStateMachineObject::unsetFinalSpecialization()
@@ -1202,7 +1199,6 @@ void QUmlProtocolStateMachineObject::removeExtension(QObject *extension)
 void QUmlProtocolStateMachineObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlProtocolStateMachineObject::unsetAbstract()
@@ -1213,7 +1209,6 @@ void QUmlProtocolStateMachineObject::unsetAbstract()
 void QUmlProtocolStateMachineObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlProtocolStateMachineObject::unsetActive()
@@ -1281,7 +1276,6 @@ void QUmlProtocolStateMachineObject::setContext(QObject *context)
 void QUmlProtocolStateMachineObject::setReentrant(bool isReentrant)
 {
     qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->setReentrant(isReentrant);
-    qmodelingobjectproperty_cast<QUmlProtocolStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("reentrant");
 }
 
 void QUmlProtocolStateMachineObject::unsetReentrant()

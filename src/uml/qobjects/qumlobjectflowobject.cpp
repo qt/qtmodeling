@@ -399,7 +399,6 @@ void QUmlObjectFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlObjectFlowObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlObjectFlowObject::unsetLeaf()
@@ -499,7 +498,6 @@ void QUmlObjectFlowObject::setWeight(QObject *weight)
 void QUmlObjectFlowObject::setMulticast(bool isMulticast)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setMulticast(isMulticast);
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties() << QStringLiteral("multicast");
 }
 
 void QUmlObjectFlowObject::unsetMulticast()
@@ -510,7 +508,6 @@ void QUmlObjectFlowObject::unsetMulticast()
 void QUmlObjectFlowObject::setMultireceive(bool isMultireceive)
 {
     qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->setMultireceive(isMultireceive);
-    qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->modifiedResettableProperties() << QStringLiteral("multireceive");
 }
 
 void QUmlObjectFlowObject::unsetMultireceive()

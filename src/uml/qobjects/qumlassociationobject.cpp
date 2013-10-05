@@ -735,7 +735,6 @@ void QUmlAssociationObject::setOwningTemplateParameter(QObject *owningTemplatePa
 void QUmlAssociationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlAssociationObject::unsetVisibility()
@@ -755,7 +754,6 @@ void QUmlAssociationObject::setPackage(QObject *package)
 void QUmlAssociationObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlAssociationObject::unsetLeaf()
@@ -860,7 +858,6 @@ void QUmlAssociationObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlAssociationObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlAssociationObject::unsetAbstract()
@@ -871,7 +868,6 @@ void QUmlAssociationObject::unsetAbstract()
 void QUmlAssociationObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlAssociationObject::unsetFinalSpecialization()
@@ -971,7 +967,6 @@ void QUmlAssociationObject::removeEndType(QObject *endType)
 void QUmlAssociationObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlAssociation *>(this)->setDerived(isDerived);
-    qmodelingobjectproperty_cast<QUmlAssociation *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
 
 void QUmlAssociationObject::unsetDerived()

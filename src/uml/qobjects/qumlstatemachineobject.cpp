@@ -916,7 +916,6 @@ void QUmlStateMachineObject::setOwningTemplateParameter(QObject *owningTemplateP
 void QUmlStateMachineObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlStateMachineObject::unsetVisibility()
@@ -936,7 +935,6 @@ void QUmlStateMachineObject::setPackage(QObject *package)
 void QUmlStateMachineObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlStateMachineObject::unsetLeaf()
@@ -1031,7 +1029,6 @@ void QUmlStateMachineObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlStateMachineObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlStateMachineObject::unsetFinalSpecialization()
@@ -1190,7 +1187,6 @@ void QUmlStateMachineObject::removeExtension(QObject *extension)
 void QUmlStateMachineObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlStateMachineObject::unsetAbstract()
@@ -1201,7 +1197,6 @@ void QUmlStateMachineObject::unsetAbstract()
 void QUmlStateMachineObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlStateMachineObject::unsetActive()
@@ -1269,7 +1264,6 @@ void QUmlStateMachineObject::setContext(QObject *context)
 void QUmlStateMachineObject::setReentrant(bool isReentrant)
 {
     qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->setReentrant(isReentrant);
-    qmodelingobjectproperty_cast<QUmlStateMachine *>(this)->modifiedResettableProperties() << QStringLiteral("reentrant");
 }
 
 void QUmlStateMachineObject::unsetReentrant()

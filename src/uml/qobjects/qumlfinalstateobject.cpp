@@ -575,7 +575,6 @@ void QUmlFinalStateObject::removePackageImport(QObject *packageImport)
 void QUmlFinalStateObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlFinalStateObject::unsetLeaf()
@@ -669,7 +668,6 @@ void QUmlFinalStateObject::setExit(QObject *exit)
 void QUmlFinalStateObject::setComposite(bool isComposite)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setComposite(isComposite);
-    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("composite");
 }
 
 void QUmlFinalStateObject::unsetComposite()
@@ -680,7 +678,6 @@ void QUmlFinalStateObject::unsetComposite()
 void QUmlFinalStateObject::setOrthogonal(bool isOrthogonal)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setOrthogonal(isOrthogonal);
-    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("orthogonal");
 }
 
 void QUmlFinalStateObject::unsetOrthogonal()
@@ -691,7 +688,6 @@ void QUmlFinalStateObject::unsetOrthogonal()
 void QUmlFinalStateObject::setSimple(bool isSimple)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setSimple(isSimple);
-    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("simple");
 }
 
 void QUmlFinalStateObject::unsetSimple()
@@ -702,7 +698,6 @@ void QUmlFinalStateObject::unsetSimple()
 void QUmlFinalStateObject::setSubmachineState(bool isSubmachineState)
 {
     qmodelingobjectproperty_cast<QUmlFinalState *>(this)->setSubmachineState(isSubmachineState);
-    qmodelingobjectproperty_cast<QUmlFinalState *>(this)->modifiedResettableProperties() << QStringLiteral("submachineState");
 }
 
 void QUmlFinalStateObject::unsetSubmachineState()

@@ -424,7 +424,6 @@ void QUmlReadSelfActionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlReadSelfActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlReadSelfActionObject::unsetLeaf()
@@ -556,7 +555,6 @@ void QUmlReadSelfActionObject::removeInput(QObject *input)
 void QUmlReadSelfActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlReadSelfAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlReadSelfActionObject::unsetLocallyReentrant()

@@ -836,7 +836,6 @@ void QUmlExecutionEnvironmentObject::setOwningTemplateParameter(QObject *owningT
 void QUmlExecutionEnvironmentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlExecutionEnvironmentObject::unsetVisibility()
@@ -856,7 +855,6 @@ void QUmlExecutionEnvironmentObject::setPackage(QObject *package)
 void QUmlExecutionEnvironmentObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlExecutionEnvironmentObject::unsetLeaf()
@@ -951,7 +949,6 @@ void QUmlExecutionEnvironmentObject::removeInheritedMember(QObject *inheritedMem
 void QUmlExecutionEnvironmentObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlExecutionEnvironmentObject::unsetFinalSpecialization()
@@ -1110,7 +1107,6 @@ void QUmlExecutionEnvironmentObject::removeExtension(QObject *extension)
 void QUmlExecutionEnvironmentObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlExecutionEnvironmentObject::unsetAbstract()
@@ -1121,7 +1117,6 @@ void QUmlExecutionEnvironmentObject::unsetAbstract()
 void QUmlExecutionEnvironmentObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlExecutionEnvironmentObject::unsetActive()

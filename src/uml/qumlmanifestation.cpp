@@ -137,7 +137,8 @@ void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedEleme
 
 void QUmlManifestation::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::DocumentationRole] = QStringLiteral("The model element that is utilized in the manifestation in an Artifact.");
     QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("utilizedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier");

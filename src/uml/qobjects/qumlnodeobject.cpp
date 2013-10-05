@@ -835,7 +835,6 @@ void QUmlNodeObject::setOwningTemplateParameter(QObject *owningTemplateParameter
 void QUmlNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlNode *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlNode *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlNodeObject::unsetVisibility()
@@ -855,7 +854,6 @@ void QUmlNodeObject::setPackage(QObject *package)
 void QUmlNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlNodeObject::unsetLeaf()
@@ -950,7 +948,6 @@ void QUmlNodeObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlNodeObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlNode *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlNode *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlNodeObject::unsetFinalSpecialization()
@@ -1109,7 +1106,6 @@ void QUmlNodeObject::removeExtension(QObject *extension)
 void QUmlNodeObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlNode *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlNode *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlNodeObject::unsetAbstract()
@@ -1120,7 +1116,6 @@ void QUmlNodeObject::unsetAbstract()
 void QUmlNodeObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlNode *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlNode *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlNodeObject::unsetActive()

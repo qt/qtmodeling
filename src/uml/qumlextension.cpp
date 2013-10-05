@@ -238,19 +238,22 @@ QUmlProperty *QUmlExtension::metaclassEnd() const
 
 void QUmlExtension::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("isRequired")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isRequired")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isRequired")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isRequired")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isRequired")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false.");
     QModelingObject::propertyDataHash[QStringLiteral("isRequired")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isRequired")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isRequired")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("metaclass")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("metaclass")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("metaclass")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("metaclass")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("metaclass")][QtModeling::DocumentationRole] = QStringLiteral("References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd.");
     QModelingObject::propertyDataHash[QStringLiteral("metaclass")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("metaclass")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("metaclass")][QtModeling::OppositeEndRole] = QStringLiteral("Class-extension");
 
-    QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::DocumentationRole] = QStringLiteral("References the end of the extension that is typed by a Stereotype.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Association-ownedEnd");
     QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

@@ -582,7 +582,6 @@ void QUmlProfileObject::setTemplateParameter(QObject *templateParameter)
 void QUmlProfileObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlProfile *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlProfile *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlProfileObject::unsetVisibility()

@@ -452,7 +452,6 @@ void QUmlSendSignalActionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlSendSignalActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlSendSignalActionObject::unsetLeaf()
@@ -584,7 +583,6 @@ void QUmlSendSignalActionObject::removeInput(QObject *input)
 void QUmlSendSignalActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlSendSignalActionObject::unsetLocallyReentrant()

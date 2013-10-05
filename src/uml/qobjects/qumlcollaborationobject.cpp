@@ -760,7 +760,6 @@ void QUmlCollaborationObject::setOwningTemplateParameter(QObject *owningTemplate
 void QUmlCollaborationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlCollaborationObject::unsetVisibility()
@@ -780,7 +779,6 @@ void QUmlCollaborationObject::setPackage(QObject *package)
 void QUmlCollaborationObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlCollaborationObject::unsetLeaf()
@@ -885,7 +883,6 @@ void QUmlCollaborationObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlCollaborationObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlCollaborationObject::unsetAbstract()
@@ -896,7 +893,6 @@ void QUmlCollaborationObject::unsetAbstract()
 void QUmlCollaborationObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlCollaborationObject::unsetFinalSpecialization()

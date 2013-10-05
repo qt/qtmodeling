@@ -865,7 +865,6 @@ void QUmlComponentObject::setOwningTemplateParameter(QObject *owningTemplatePara
 void QUmlComponentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlComponent *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlComponent *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlComponentObject::unsetVisibility()
@@ -885,7 +884,6 @@ void QUmlComponentObject::setPackage(QObject *package)
 void QUmlComponentObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlComponent *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlComponent *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlComponentObject::unsetLeaf()
@@ -980,7 +978,6 @@ void QUmlComponentObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlComponentObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlComponent *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlComponent *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlComponentObject::unsetFinalSpecialization()
@@ -1139,7 +1136,6 @@ void QUmlComponentObject::removeExtension(QObject *extension)
 void QUmlComponentObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlComponent *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlComponent *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlComponentObject::unsetAbstract()
@@ -1150,7 +1146,6 @@ void QUmlComponentObject::unsetAbstract()
 void QUmlComponentObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlComponent *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlComponent *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlComponentObject::unsetActive()
@@ -1213,7 +1208,6 @@ void QUmlComponentObject::removeSuperClass(QObject *superClass)
 void QUmlComponentObject::setIndirectlyInstantiated(bool isIndirectlyInstantiated)
 {
     qmodelingobjectproperty_cast<QUmlComponent *>(this)->setIndirectlyInstantiated(isIndirectlyInstantiated);
-    qmodelingobjectproperty_cast<QUmlComponent *>(this)->modifiedResettableProperties() << QStringLiteral("indirectlyInstantiated");
 }
 
 void QUmlComponentObject::unsetIndirectlyInstantiated()

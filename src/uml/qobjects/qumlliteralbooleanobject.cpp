@@ -346,7 +346,6 @@ void QUmlLiteralBooleanObject::setTemplateParameter(QObject *templateParameter)
 void QUmlLiteralBooleanObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlLiteralBooleanObject::unsetVisibility()
@@ -359,7 +358,6 @@ void QUmlLiteralBooleanObject::unsetVisibility()
 void QUmlLiteralBooleanObject::setValue(bool value)
 {
     qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->setValue(value);
-    qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->modifiedResettableProperties() << QStringLiteral("value");
 }
 
 void QUmlLiteralBooleanObject::unsetValue()

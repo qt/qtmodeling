@@ -362,25 +362,29 @@ QSet<QUmlUseCase *> QUmlUseCase::allIncludedUseCases() const
 
 void QUmlUseCase::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::DocumentationRole] = QStringLiteral("References the Extend relationships owned by this use case.");
     QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Namespace-ownedMember");
     QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::OppositeEndRole] = QStringLiteral("Extend-extension");
 
-    QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::DocumentationRole] = QStringLiteral("References the ExtensionPoints owned by the use case.");
     QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
     QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::OppositeEndRole] = QStringLiteral("ExtensionPoint-useCase");
 
-    QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::DocumentationRole] = QStringLiteral("References the Include relationships owned by this use case.");
     QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Namespace-ownedMember");
     QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::OppositeEndRole] = QStringLiteral("Include-includingCase");
 
-    QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::DocumentationRole] = QStringLiteral("References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.");
     QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

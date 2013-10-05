@@ -118,12 +118,14 @@ void QUmlContinuation::setSetting(bool setting)
 
     if (_setting != setting) {
         _setting = setting;
+        _modifiedResettableProperties << QStringLiteral("setting");
     }
 }
 
 void QUmlContinuation::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::DocumentationRole] = QStringLiteral("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
     QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

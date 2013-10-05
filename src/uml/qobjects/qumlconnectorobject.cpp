@@ -337,7 +337,6 @@ void QUmlConnectorObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlConnectorObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlConnector *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlConnectorObject::unsetLeaf()
@@ -380,7 +379,6 @@ void QUmlConnectorObject::removeFeaturingClassifier(QObject *featuringClassifier
 void QUmlConnectorObject::setStatic(bool isStatic)
 {
     qmodelingobjectproperty_cast<QUmlConnector *>(this)->setStatic(isStatic);
-    qmodelingobjectproperty_cast<QUmlConnector *>(this)->modifiedResettableProperties() << QStringLiteral("static");
 }
 
 void QUmlConnectorObject::unsetStatic()

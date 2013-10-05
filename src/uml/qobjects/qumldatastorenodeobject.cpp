@@ -403,7 +403,6 @@ void QUmlDataStoreNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlDataStoreNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlDataStoreNodeObject::unsetLeaf()
@@ -525,7 +524,6 @@ void QUmlDataStoreNodeObject::removeInState(QObject *inState)
 void QUmlDataStoreNodeObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setControlType(isControlType);
-    qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
 
 void QUmlDataStoreNodeObject::unsetControlType()
@@ -536,7 +534,6 @@ void QUmlDataStoreNodeObject::unsetControlType()
 void QUmlDataStoreNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->setOrdering(ordering);
-    qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
 
 void QUmlDataStoreNodeObject::unsetOrdering()

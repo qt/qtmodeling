@@ -653,7 +653,6 @@ void QUmlPortObject::setType(QObject *type)
 void QUmlPortObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setOrdered(isOrdered);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
 
 void QUmlPortObject::unsetOrdered()
@@ -664,7 +663,6 @@ void QUmlPortObject::unsetOrdered()
 void QUmlPortObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setUnique(isUnique);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
 
 void QUmlPortObject::unsetUnique()
@@ -675,7 +673,6 @@ void QUmlPortObject::unsetUnique()
 void QUmlPortObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setLower(lower);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
 
 void QUmlPortObject::unsetLower()
@@ -691,7 +688,6 @@ void QUmlPortObject::setLowerValue(QObject *lowerValue)
 void QUmlPortObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setUpper(upper);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
 
 void QUmlPortObject::unsetUpper()
@@ -709,7 +705,6 @@ void QUmlPortObject::setUpperValue(QObject *upperValue)
 void QUmlPortObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlPortObject::unsetLeaf()
@@ -752,7 +747,6 @@ void QUmlPortObject::removeFeaturingClassifier(QObject *featuringClassifier)
 void QUmlPortObject::setStatic(bool isStatic)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setStatic(isStatic);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("static");
 }
 
 void QUmlPortObject::unsetStatic()
@@ -810,7 +804,6 @@ void QUmlPortObject::removeDeployment(QObject *deployment)
 void QUmlPortObject::setAggregation(QtUml::AggregationKind aggregation)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setAggregation(aggregation);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("aggregation");
 }
 
 void QUmlPortObject::unsetAggregation()
@@ -856,7 +849,6 @@ void QUmlPortObject::setInterface(QObject *interface_)
 void QUmlPortObject::setComposite(bool isComposite)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setComposite(isComposite);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("composite");
 }
 
 void QUmlPortObject::unsetComposite()
@@ -867,7 +859,6 @@ void QUmlPortObject::unsetComposite()
 void QUmlPortObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setDerived(isDerived);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
 
 void QUmlPortObject::unsetDerived()
@@ -878,7 +869,6 @@ void QUmlPortObject::unsetDerived()
 void QUmlPortObject::setDerivedUnion(bool isDerivedUnion)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setDerivedUnion(isDerivedUnion);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("derivedUnion");
 }
 
 void QUmlPortObject::unsetDerivedUnion()
@@ -889,7 +879,6 @@ void QUmlPortObject::unsetDerivedUnion()
 void QUmlPortObject::setID(bool isID)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setID(isID);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("iD");
 }
 
 void QUmlPortObject::unsetID()
@@ -900,7 +889,6 @@ void QUmlPortObject::unsetID()
 void QUmlPortObject::setReadOnly(bool isReadOnly)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setReadOnly(isReadOnly);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("readOnly");
 }
 
 void QUmlPortObject::unsetReadOnly()
@@ -953,7 +941,6 @@ void QUmlPortObject::removeSubsettedProperty(QObject *subsettedProperty)
 void QUmlPortObject::setBehavior(bool isBehavior)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setBehavior(isBehavior);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("behavior");
 }
 
 void QUmlPortObject::unsetBehavior()
@@ -964,7 +951,6 @@ void QUmlPortObject::unsetBehavior()
 void QUmlPortObject::setConjugated(bool isConjugated)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setConjugated(isConjugated);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("conjugated");
 }
 
 void QUmlPortObject::unsetConjugated()
@@ -975,7 +961,6 @@ void QUmlPortObject::unsetConjugated()
 void QUmlPortObject::setService(bool isService)
 {
     qmodelingobjectproperty_cast<QUmlPort *>(this)->setService(isService);
-    qmodelingobjectproperty_cast<QUmlPort *>(this)->modifiedResettableProperties() << QStringLiteral("service");
 }
 
 void QUmlPortObject::unsetService()

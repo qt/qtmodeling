@@ -582,7 +582,6 @@ void QUmlStructuredActivityNodeObject::setVisibility(QtUml::VisibilityKind visib
 void QUmlStructuredActivityNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlStructuredActivityNodeObject::unsetLeaf()
@@ -709,7 +708,6 @@ void QUmlStructuredActivityNodeObject::removeInput(QObject *input)
 void QUmlStructuredActivityNodeObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlStructuredActivityNodeObject::unsetLocallyReentrant()
@@ -866,7 +864,6 @@ void QUmlStructuredActivityNodeObject::removeEdge(QObject *edge)
 void QUmlStructuredActivityNodeObject::setMustIsolate(bool mustIsolate)
 {
     qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->setMustIsolate(mustIsolate);
-    qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->modifiedResettableProperties() << QStringLiteral("mustIsolate");
 }
 
 void QUmlStructuredActivityNodeObject::unsetMustIsolate()

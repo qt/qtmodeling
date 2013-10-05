@@ -124,7 +124,8 @@ bool QUmlType::conformsTo(QUmlType *other) const
 
 void QUmlType::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the owning package of this classifier, if any.");
     QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_packagedElement_owningPackage-owningPackage");

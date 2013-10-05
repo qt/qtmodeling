@@ -353,7 +353,6 @@ void QUmlActivityFinalNodeObject::setVisibility(QtUml::VisibilityKind visibility
 void QUmlActivityFinalNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlActivityFinalNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlActivityFinalNodeObject::unsetLeaf()

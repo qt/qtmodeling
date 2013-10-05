@@ -353,7 +353,6 @@ void QUmlInitialNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlInitialNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlInitialNodeObject::unsetLeaf()

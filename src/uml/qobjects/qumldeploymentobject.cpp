@@ -357,7 +357,6 @@ void QUmlDeploymentObject::setQualifiedName(QString qualifiedName)
 void QUmlDeploymentObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDeployment *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlDeployment *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlDeploymentObject::unsetVisibility()

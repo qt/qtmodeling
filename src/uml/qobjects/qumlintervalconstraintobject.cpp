@@ -311,7 +311,6 @@ void QUmlIntervalConstraintObject::setQualifiedName(QString qualifiedName)
 void QUmlIntervalConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlIntervalConstraintObject::unsetVisibility()

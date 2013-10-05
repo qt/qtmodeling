@@ -327,7 +327,6 @@ void QUmlInteractionConstraintObject::setQualifiedName(QString qualifiedName)
 void QUmlInteractionConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlInteractionConstraintObject::unsetVisibility()

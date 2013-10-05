@@ -142,12 +142,14 @@ void QUmlPin::setControl(bool isControl)
 
     if (_isControl != isControl) {
         _isControl = isControl;
+        _modifiedResettableProperties << QStringLiteral("isControl");
     }
 }
 
 void QUmlPin::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("isControl")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isControl")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isControl")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isControl")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isControl")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the pins provide data to the actions, or just controls when it executes it.");
     QModelingObject::propertyDataHash[QStringLiteral("isControl")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isControl")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

@@ -317,7 +317,6 @@ void QUmlTimeConstraintObject::setQualifiedName(QString qualifiedName)
 void QUmlTimeConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlTimeConstraintObject::unsetVisibility()
@@ -346,7 +345,6 @@ void QUmlTimeConstraintObject::setContext(QObject *context)
 void QUmlTimeConstraintObject::setFirstEvent(bool firstEvent)
 {
     qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->setFirstEvent(firstEvent);
-    qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->modifiedResettableProperties() << QStringLiteral("firstEvent");
 }
 
 void QUmlTimeConstraintObject::unsetFirstEvent()

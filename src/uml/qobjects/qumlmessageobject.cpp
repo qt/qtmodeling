@@ -327,7 +327,6 @@ void QUmlMessageObject::setInteraction(QObject *interaction)
 void QUmlMessageObject::setMessageKind(QtUml::MessageKind messageKind)
 {
     qmodelingobjectproperty_cast<QUmlMessage *>(this)->setMessageKind(messageKind);
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->modifiedResettableProperties() << QStringLiteral("messageKind");
 }
 
 void QUmlMessageObject::unsetMessageKind()
@@ -338,7 +337,6 @@ void QUmlMessageObject::unsetMessageKind()
 void QUmlMessageObject::setMessageSort(QtUml::MessageSort messageSort)
 {
     qmodelingobjectproperty_cast<QUmlMessage *>(this)->setMessageSort(messageSort);
-    qmodelingobjectproperty_cast<QUmlMessage *>(this)->modifiedResettableProperties() << QStringLiteral("messageSort");
 }
 
 void QUmlMessageObject::unsetMessageSort()

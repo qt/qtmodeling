@@ -885,7 +885,6 @@ void QUmlOpaqueBehaviorObject::setOwningTemplateParameter(QObject *owningTemplat
 void QUmlOpaqueBehaviorObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlOpaqueBehaviorObject::unsetVisibility()
@@ -905,7 +904,6 @@ void QUmlOpaqueBehaviorObject::setPackage(QObject *package)
 void QUmlOpaqueBehaviorObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlOpaqueBehaviorObject::unsetLeaf()
@@ -1000,7 +998,6 @@ void QUmlOpaqueBehaviorObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlOpaqueBehaviorObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlOpaqueBehaviorObject::unsetFinalSpecialization()
@@ -1159,7 +1156,6 @@ void QUmlOpaqueBehaviorObject::removeExtension(QObject *extension)
 void QUmlOpaqueBehaviorObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlOpaqueBehaviorObject::unsetAbstract()
@@ -1170,7 +1166,6 @@ void QUmlOpaqueBehaviorObject::unsetAbstract()
 void QUmlOpaqueBehaviorObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlOpaqueBehaviorObject::unsetActive()
@@ -1238,7 +1233,6 @@ void QUmlOpaqueBehaviorObject::setContext(QObject *context)
 void QUmlOpaqueBehaviorObject::setReentrant(bool isReentrant)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->setReentrant(isReentrant);
-    qmodelingobjectproperty_cast<QUmlOpaqueBehavior *>(this)->modifiedResettableProperties() << QStringLiteral("reentrant");
 }
 
 void QUmlOpaqueBehaviorObject::unsetReentrant()

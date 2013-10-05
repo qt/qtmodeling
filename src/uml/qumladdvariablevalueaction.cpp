@@ -179,18 +179,21 @@ void QUmlAddVariableValueAction::setReplaceAll(bool isReplaceAll)
 
     if (_isReplaceAll != isReplaceAll) {
         _isReplaceAll = isReplaceAll;
+        _modifiedResettableProperties << QStringLiteral("isReplaceAll");
     }
 }
 
 void QUmlAddVariableValueAction::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::DocumentationRole] = QStringLiteral("Gives the position at which to insert a new value or move an existing value in ordered variables. The types is UnlimitedINatural, but the value cannot be zero. This pin is omitted for unordered variables.");
     QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
     QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether existing values of the variable should be removed before adding the new value.");
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

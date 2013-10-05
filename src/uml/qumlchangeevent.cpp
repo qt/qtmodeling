@@ -130,7 +130,8 @@ void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpressi
 
 void QUmlChangeEvent::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::DocumentationRole] = QStringLiteral("A Boolean-valued expression that will result in a change event whenever its value changes from false to true.");
     QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");

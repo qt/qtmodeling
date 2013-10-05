@@ -441,7 +441,6 @@ void QUmlReplyActionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlReplyActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlReplyActionObject::unsetLeaf()
@@ -573,7 +572,6 @@ void QUmlReplyActionObject::removeInput(QObject *input)
 void QUmlReplyActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlReplyAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlReplyActionObject::unsetLocallyReentrant()

@@ -466,7 +466,6 @@ void QUmlAddStructuralFeatureValueActionObject::setVisibility(QtUml::VisibilityK
 void QUmlAddStructuralFeatureValueActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlAddStructuralFeatureValueAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlAddStructuralFeatureValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlAddStructuralFeatureValueActionObject::unsetLeaf()
@@ -598,7 +597,6 @@ void QUmlAddStructuralFeatureValueActionObject::removeInput(QObject *input)
 void QUmlAddStructuralFeatureValueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlAddStructuralFeatureValueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlAddStructuralFeatureValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlAddStructuralFeatureValueActionObject::unsetLocallyReentrant()
@@ -670,7 +668,6 @@ void QUmlAddStructuralFeatureValueActionObject::setInsertAt(QObject *insertAt)
 void QUmlAddStructuralFeatureValueActionObject::setReplaceAll(bool isReplaceAll)
 {
     qmodelingobjectproperty_cast<QUmlAddStructuralFeatureValueAction *>(this)->setReplaceAll(isReplaceAll);
-    qmodelingobjectproperty_cast<QUmlAddStructuralFeatureValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("replaceAll");
 }
 
 void QUmlAddStructuralFeatureValueActionObject::unsetReplaceAll()

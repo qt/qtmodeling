@@ -696,7 +696,6 @@ void QUmlSignalObject::setOwningTemplateParameter(QObject *owningTemplateParamet
 void QUmlSignalObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlSignalObject::unsetVisibility()
@@ -716,7 +715,6 @@ void QUmlSignalObject::setPackage(QObject *package)
 void QUmlSignalObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlSignalObject::unsetLeaf()
@@ -821,7 +819,6 @@ void QUmlSignalObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlSignalObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlSignalObject::unsetAbstract()
@@ -832,7 +829,6 @@ void QUmlSignalObject::unsetAbstract()
 void QUmlSignalObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlSignal *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlSignal *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlSignalObject::unsetFinalSpecialization()

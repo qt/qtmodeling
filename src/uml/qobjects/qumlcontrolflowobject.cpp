@@ -370,7 +370,6 @@ void QUmlControlFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlControlFlowObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlControlFlow *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlControlFlowObject::unsetLeaf()

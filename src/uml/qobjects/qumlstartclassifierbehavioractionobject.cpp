@@ -424,7 +424,6 @@ void QUmlStartClassifierBehaviorActionObject::setVisibility(QtUml::VisibilityKin
 void QUmlStartClassifierBehaviorActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlStartClassifierBehaviorActionObject::unsetLeaf()
@@ -556,7 +555,6 @@ void QUmlStartClassifierBehaviorActionObject::removeInput(QObject *input)
 void QUmlStartClassifierBehaviorActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlStartClassifierBehaviorAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlStartClassifierBehaviorActionObject::unsetLocallyReentrant()

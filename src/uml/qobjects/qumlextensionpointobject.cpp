@@ -291,7 +291,6 @@ void QUmlExtensionPointObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlExtensionPointObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlExtensionPointObject::unsetLeaf()

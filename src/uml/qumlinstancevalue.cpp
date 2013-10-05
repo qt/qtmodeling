@@ -124,7 +124,8 @@ void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 
 void QUmlInstanceValue::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::DocumentationRole] = QStringLiteral("The instance that is the specified value.");
     QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

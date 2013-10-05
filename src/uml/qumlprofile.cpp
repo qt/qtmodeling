@@ -208,13 +208,15 @@ void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference
 
 void QUmlProfile::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::DocumentationRole] = QStringLiteral("References a metaclass that may be extended.");
     QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-elementImport");
     QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::DocumentationRole] = QStringLiteral("References a package containing (directly or indirectly) metaclasses that may be extended.");
     QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-packageImport");

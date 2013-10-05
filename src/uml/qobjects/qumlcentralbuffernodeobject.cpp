@@ -403,7 +403,6 @@ void QUmlCentralBufferNodeObject::setVisibility(QtUml::VisibilityKind visibility
 void QUmlCentralBufferNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlCentralBufferNodeObject::unsetLeaf()
@@ -525,7 +524,6 @@ void QUmlCentralBufferNodeObject::removeInState(QObject *inState)
 void QUmlCentralBufferNodeObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setControlType(isControlType);
-    qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
 
 void QUmlCentralBufferNodeObject::unsetControlType()
@@ -536,7 +534,6 @@ void QUmlCentralBufferNodeObject::unsetControlType()
 void QUmlCentralBufferNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->setOrdering(ordering);
-    qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
 
 void QUmlCentralBufferNodeObject::unsetOrdering()

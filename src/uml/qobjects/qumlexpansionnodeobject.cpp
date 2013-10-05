@@ -422,7 +422,6 @@ void QUmlExpansionNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlExpansionNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlExpansionNodeObject::unsetLeaf()
@@ -544,7 +543,6 @@ void QUmlExpansionNodeObject::removeInState(QObject *inState)
 void QUmlExpansionNodeObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setControlType(isControlType);
-    qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
 
 void QUmlExpansionNodeObject::unsetControlType()
@@ -555,7 +553,6 @@ void QUmlExpansionNodeObject::unsetControlType()
 void QUmlExpansionNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->setOrdering(ordering);
-    qmodelingobjectproperty_cast<QUmlExpansionNode *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
 
 void QUmlExpansionNodeObject::unsetOrdering()

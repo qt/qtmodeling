@@ -836,7 +836,6 @@ void QUmlStereotypeObject::setOwningTemplateParameter(QObject *owningTemplatePar
 void QUmlStereotypeObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlStereotype *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlStereotype *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlStereotypeObject::unsetVisibility()
@@ -856,7 +855,6 @@ void QUmlStereotypeObject::setPackage(QObject *package)
 void QUmlStereotypeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlStereotype *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlStereotype *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlStereotypeObject::unsetLeaf()
@@ -951,7 +949,6 @@ void QUmlStereotypeObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlStereotypeObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlStereotype *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlStereotype *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlStereotypeObject::unsetFinalSpecialization()
@@ -1110,7 +1107,6 @@ void QUmlStereotypeObject::removeExtension(QObject *extension)
 void QUmlStereotypeObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlStereotype *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlStereotype *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlStereotypeObject::unsetAbstract()
@@ -1121,7 +1117,6 @@ void QUmlStereotypeObject::unsetAbstract()
 void QUmlStereotypeObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlStereotype *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlStereotype *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlStereotypeObject::unsetActive()

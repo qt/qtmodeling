@@ -346,7 +346,6 @@ void QUmlLiteralIntegerObject::setTemplateParameter(QObject *templateParameter)
 void QUmlLiteralIntegerObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlLiteralIntegerObject::unsetVisibility()
@@ -359,7 +358,6 @@ void QUmlLiteralIntegerObject::unsetVisibility()
 void QUmlLiteralIntegerObject::setValue(int value)
 {
     qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->setValue(value);
-    qmodelingobjectproperty_cast<QUmlLiteralInteger *>(this)->modifiedResettableProperties() << QStringLiteral("value");
 }
 
 void QUmlLiteralIntegerObject::unsetValue()

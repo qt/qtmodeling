@@ -167,6 +167,7 @@ void QUmlObjectNode::setControlType(bool isControlType)
 
     if (_isControlType != isControlType) {
         _isControlType = isControlType;
+        _modifiedResettableProperties << QStringLiteral("isControlType");
     }
 }
 
@@ -186,6 +187,7 @@ void QUmlObjectNode::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 
     if (_ordering != ordering) {
         _ordering = ordering;
+        _modifiedResettableProperties << QStringLiteral("ordering");
     }
 }
 
@@ -242,31 +244,36 @@ void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
 
 void QUmlObjectNode::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::DocumentationRole] = QStringLiteral("The required states of the object available at this point in the activity.");
     QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the type of the object node is to be treated as control.");
     QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.");
     QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::DocumentationRole] = QStringLiteral("Selects tokens for outgoing edges.");
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::DocumentationRole] = QStringLiteral("The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.");
     QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");

@@ -441,7 +441,6 @@ void QUmlReadLinkObjectEndQualifierActionObject::setVisibility(QtUml::Visibility
 void QUmlReadLinkObjectEndQualifierActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlReadLinkObjectEndQualifierActionObject::unsetLeaf()
@@ -573,7 +572,6 @@ void QUmlReadLinkObjectEndQualifierActionObject::removeInput(QObject *input)
 void QUmlReadLinkObjectEndQualifierActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlReadLinkObjectEndQualifierAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlReadLinkObjectEndQualifierActionObject::unsetLocallyReentrant()

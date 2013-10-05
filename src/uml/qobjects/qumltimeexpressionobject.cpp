@@ -357,7 +357,6 @@ void QUmlTimeExpressionObject::setTemplateParameter(QObject *templateParameter)
 void QUmlTimeExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlTimeExpressionObject::unsetVisibility()

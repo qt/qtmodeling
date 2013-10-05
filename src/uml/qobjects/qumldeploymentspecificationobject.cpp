@@ -749,7 +749,6 @@ void QUmlDeploymentSpecificationObject::setOwningTemplateParameter(QObject *owni
 void QUmlDeploymentSpecificationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlDeploymentSpecificationObject::unsetVisibility()
@@ -769,7 +768,6 @@ void QUmlDeploymentSpecificationObject::setPackage(QObject *package)
 void QUmlDeploymentSpecificationObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlDeploymentSpecificationObject::unsetLeaf()
@@ -874,7 +872,6 @@ void QUmlDeploymentSpecificationObject::removeInheritedMember(QObject *inherited
 void QUmlDeploymentSpecificationObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlDeploymentSpecificationObject::unsetAbstract()
@@ -885,7 +882,6 @@ void QUmlDeploymentSpecificationObject::unsetAbstract()
 void QUmlDeploymentSpecificationObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlDeploymentSpecificationObject::unsetFinalSpecialization()

@@ -564,7 +564,6 @@ void QUmlPackageObject::setTemplateParameter(QObject *templateParameter)
 void QUmlPackageObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlPackage *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlPackage *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlPackageObject::unsetVisibility()

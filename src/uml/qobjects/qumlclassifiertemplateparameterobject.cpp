@@ -214,7 +214,6 @@ void QUmlClassifierTemplateParameterObject::setSignature(QObject *signature)
 void QUmlClassifierTemplateParameterObject::setAllowSubstitutable(bool allowSubstitutable)
 {
     qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->setAllowSubstitutable(allowSubstitutable);
-    qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->modifiedResettableProperties() << QStringLiteral("allowSubstitutable");
 }
 
 void QUmlClassifierTemplateParameterObject::unsetAllowSubstitutable()

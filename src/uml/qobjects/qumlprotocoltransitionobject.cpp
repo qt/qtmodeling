@@ -473,7 +473,6 @@ void QUmlProtocolTransitionObject::setVisibility(QtUml::VisibilityKind visibilit
 void QUmlProtocolTransitionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlProtocolTransitionObject::unsetLeaf()
@@ -572,7 +571,6 @@ void QUmlProtocolTransitionObject::setGuard(QObject *guard)
 void QUmlProtocolTransitionObject::setKind(QtUml::TransitionKind kind)
 {
     qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->setKind(kind);
-    qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->modifiedResettableProperties() << QStringLiteral("kind");
 }
 
 void QUmlProtocolTransitionObject::unsetKind()

@@ -389,7 +389,6 @@ void QUmlOpaqueExpressionObject::setTemplateParameter(QObject *templateParameter
 void QUmlOpaqueExpressionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlOpaqueExpressionObject::unsetVisibility()

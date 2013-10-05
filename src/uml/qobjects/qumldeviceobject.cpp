@@ -836,7 +836,6 @@ void QUmlDeviceObject::setOwningTemplateParameter(QObject *owningTemplateParamet
 void QUmlDeviceObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlDeviceObject::unsetVisibility()
@@ -856,7 +855,6 @@ void QUmlDeviceObject::setPackage(QObject *package)
 void QUmlDeviceObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlDeviceObject::unsetLeaf()
@@ -951,7 +949,6 @@ void QUmlDeviceObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlDeviceObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlDeviceObject::unsetFinalSpecialization()
@@ -1110,7 +1107,6 @@ void QUmlDeviceObject::removeExtension(QObject *extension)
 void QUmlDeviceObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlDeviceObject::unsetAbstract()
@@ -1121,7 +1117,6 @@ void QUmlDeviceObject::unsetAbstract()
 void QUmlDeviceObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlDevice *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlDevice *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlDeviceObject::unsetActive()

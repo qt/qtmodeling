@@ -145,13 +145,15 @@ void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
 
 void QUmlPackageMerge::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::DocumentationRole] = QStringLiteral("References the Package that is to be merged with the receiving package of the PackageMerge.");
     QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
     QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::DocumentationRole] = QStringLiteral("References the Package that is being extended with the contents of the merged package of the PackageMerge.");
     QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");

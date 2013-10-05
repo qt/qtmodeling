@@ -443,7 +443,6 @@ void QUmlClearStructuralFeatureActionObject::setVisibility(QtUml::VisibilityKind
 void QUmlClearStructuralFeatureActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlClearStructuralFeatureActionObject::unsetLeaf()
@@ -575,7 +574,6 @@ void QUmlClearStructuralFeatureActionObject::removeInput(QObject *input)
 void QUmlClearStructuralFeatureActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlClearStructuralFeatureActionObject::unsetLocallyReentrant()

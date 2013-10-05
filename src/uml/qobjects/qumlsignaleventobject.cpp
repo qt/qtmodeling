@@ -293,7 +293,6 @@ void QUmlSignalEventObject::setQualifiedName(QString qualifiedName)
 void QUmlSignalEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlSignalEventObject::unsetVisibility()

@@ -320,7 +320,6 @@ void QUmlContinuationObject::removeGeneralOrdering(QObject *generalOrdering)
 void QUmlContinuationObject::setSetting(bool setting)
 {
     qmodelingobjectproperty_cast<QUmlContinuation *>(this)->setSetting(setting);
-    qmodelingobjectproperty_cast<QUmlContinuation *>(this)->modifiedResettableProperties() << QStringLiteral("setting");
 }
 
 void QUmlContinuationObject::unsetSetting()

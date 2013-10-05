@@ -445,7 +445,6 @@ void QUmlTransitionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlTransitionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlTransition *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlTransitionObject::unsetLeaf()
@@ -544,7 +543,6 @@ void QUmlTransitionObject::setGuard(QObject *guard)
 void QUmlTransitionObject::setKind(QtUml::TransitionKind kind)
 {
     qmodelingobjectproperty_cast<QUmlTransition *>(this)->setKind(kind);
-    qmodelingobjectproperty_cast<QUmlTransition *>(this)->modifiedResettableProperties() << QStringLiteral("kind");
 }
 
 void QUmlTransitionObject::unsetKind()

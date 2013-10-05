@@ -357,7 +357,6 @@ void QUmlTimeIntervalObject::setTemplateParameter(QObject *templateParameter)
 void QUmlTimeIntervalObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlTimeInterval *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlTimeInterval *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlTimeIntervalObject::unsetVisibility()

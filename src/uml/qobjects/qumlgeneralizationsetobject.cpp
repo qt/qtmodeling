@@ -312,7 +312,6 @@ void QUmlGeneralizationSetObject::setQualifiedName(QString qualifiedName)
 void QUmlGeneralizationSetObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlGeneralizationSetObject::unsetVisibility()
@@ -335,7 +334,6 @@ void QUmlGeneralizationSetObject::removeGeneralization(QObject *generalization)
 void QUmlGeneralizationSetObject::setCovering(bool isCovering)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setCovering(isCovering);
-    qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->modifiedResettableProperties() << QStringLiteral("covering");
 }
 
 void QUmlGeneralizationSetObject::unsetCovering()
@@ -346,7 +344,6 @@ void QUmlGeneralizationSetObject::unsetCovering()
 void QUmlGeneralizationSetObject::setDisjoint(bool isDisjoint)
 {
     qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->setDisjoint(isDisjoint);
-    qmodelingobjectproperty_cast<QUmlGeneralizationSet *>(this)->modifiedResettableProperties() << QStringLiteral("disjoint");
 }
 
 void QUmlGeneralizationSetObject::unsetDisjoint()

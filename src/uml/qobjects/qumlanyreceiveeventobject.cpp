@@ -282,7 +282,6 @@ void QUmlAnyReceiveEventObject::setQualifiedName(QString qualifiedName)
 void QUmlAnyReceiveEventObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlAnyReceiveEventObject::unsetVisibility()

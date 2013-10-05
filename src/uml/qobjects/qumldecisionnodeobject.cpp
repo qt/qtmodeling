@@ -373,7 +373,6 @@ void QUmlDecisionNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlDecisionNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlDecisionNodeObject::unsetLeaf()

@@ -346,7 +346,6 @@ void QUmlLiteralStringObject::setTemplateParameter(QObject *templateParameter)
 void QUmlLiteralStringObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlLiteralString *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlLiteralStringObject::unsetVisibility()

@@ -855,7 +855,6 @@ void QUmlAssociationClassObject::setOwningTemplateParameter(QObject *owningTempl
 void QUmlAssociationClassObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlAssociationClassObject::unsetVisibility()
@@ -875,7 +874,6 @@ void QUmlAssociationClassObject::setPackage(QObject *package)
 void QUmlAssociationClassObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlAssociationClassObject::unsetLeaf()
@@ -970,7 +968,6 @@ void QUmlAssociationClassObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlAssociationClassObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlAssociationClassObject::unsetFinalSpecialization()
@@ -1129,7 +1126,6 @@ void QUmlAssociationClassObject::removeExtension(QObject *extension)
 void QUmlAssociationClassObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlAssociationClassObject::unsetAbstract()
@@ -1140,7 +1136,6 @@ void QUmlAssociationClassObject::unsetAbstract()
 void QUmlAssociationClassObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlAssociationClassObject::unsetActive()
@@ -1225,7 +1220,6 @@ void QUmlAssociationClassObject::removeEndType(QObject *endType)
 void QUmlAssociationClassObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->setDerived(isDerived);
-    qmodelingobjectproperty_cast<QUmlAssociationClass *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
 
 void QUmlAssociationClassObject::unsetDerived()

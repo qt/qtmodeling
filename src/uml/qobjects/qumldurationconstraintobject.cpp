@@ -317,7 +317,6 @@ void QUmlDurationConstraintObject::setQualifiedName(QString qualifiedName)
 void QUmlDurationConstraintObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlDurationConstraintObject::unsetVisibility()

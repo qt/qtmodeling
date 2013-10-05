@@ -682,7 +682,6 @@ void QUmlOperationObject::removePackageImport(QObject *packageImport)
 void QUmlOperationObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlOperationObject::unsetLeaf()
@@ -725,7 +724,6 @@ void QUmlOperationObject::removeFeaturingClassifier(QObject *featuringClassifier
 void QUmlOperationObject::setStatic(bool isStatic)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setStatic(isStatic);
-    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("static");
 }
 
 void QUmlOperationObject::unsetStatic()
@@ -738,7 +736,6 @@ void QUmlOperationObject::unsetStatic()
 void QUmlOperationObject::setConcurrency(QtUml::CallConcurrencyKind concurrency)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setConcurrency(concurrency);
-    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("concurrency");
 }
 
 void QUmlOperationObject::unsetConcurrency()
@@ -749,7 +746,6 @@ void QUmlOperationObject::unsetConcurrency()
 void QUmlOperationObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlOperationObject::unsetAbstract()
@@ -807,7 +803,6 @@ void QUmlOperationObject::setInterface(QObject *interface_)
 void QUmlOperationObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setOrdered(isOrdered);
-    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
 
 void QUmlOperationObject::unsetOrdered()
@@ -818,7 +813,6 @@ void QUmlOperationObject::unsetOrdered()
 void QUmlOperationObject::setQuery(bool isQuery)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setQuery(isQuery);
-    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("query");
 }
 
 void QUmlOperationObject::unsetQuery()
@@ -829,7 +823,6 @@ void QUmlOperationObject::unsetQuery()
 void QUmlOperationObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setUnique(isUnique);
-    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
 
 void QUmlOperationObject::unsetUnique()
@@ -840,7 +833,6 @@ void QUmlOperationObject::unsetUnique()
 void QUmlOperationObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setLower(lower);
-    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
 
 void QUmlOperationObject::unsetLower()
@@ -911,7 +903,6 @@ void QUmlOperationObject::setType(QObject *type)
 void QUmlOperationObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlOperation *>(this)->setUpper(upper);
-    qmodelingobjectproperty_cast<QUmlOperation *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
 
 void QUmlOperationObject::unsetUpper()

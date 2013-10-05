@@ -407,7 +407,6 @@ void QUmlInformationFlowObject::setQualifiedName(QString qualifiedName)
 void QUmlInformationFlowObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlInformationFlowObject::unsetVisibility()

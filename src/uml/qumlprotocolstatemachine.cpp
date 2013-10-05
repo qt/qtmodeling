@@ -251,7 +251,8 @@ void QUmlProtocolStateMachine::removeConformance(QUmlProtocolConformance *confor
 
 void QUmlProtocolStateMachine::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::DocumentationRole] = QStringLiteral("Conformance between protocol state machines.");
     QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("conformance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");

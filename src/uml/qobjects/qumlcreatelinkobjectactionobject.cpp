@@ -457,7 +457,6 @@ void QUmlCreateLinkObjectActionObject::setVisibility(QtUml::VisibilityKind visib
 void QUmlCreateLinkObjectActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlCreateLinkObjectAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlCreateLinkObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlCreateLinkObjectActionObject::unsetLeaf()
@@ -589,7 +588,6 @@ void QUmlCreateLinkObjectActionObject::removeInput(QObject *input)
 void QUmlCreateLinkObjectActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlCreateLinkObjectAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlCreateLinkObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlCreateLinkObjectActionObject::unsetLocallyReentrant()

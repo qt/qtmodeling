@@ -339,7 +339,6 @@ void QUmlAbstractionObject::setQualifiedName(QString qualifiedName)
 void QUmlAbstractionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlAbstractionObject::unsetVisibility()

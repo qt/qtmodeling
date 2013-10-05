@@ -425,7 +425,6 @@ void QUmlClearVariableActionObject::setVisibility(QtUml::VisibilityKind visibili
 void QUmlClearVariableActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlClearVariableActionObject::unsetLeaf()
@@ -557,7 +556,6 @@ void QUmlClearVariableActionObject::removeInput(QObject *input)
 void QUmlClearVariableActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlClearVariableAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlClearVariableActionObject::unsetLocallyReentrant()

@@ -144,6 +144,7 @@ void QUmlObjectFlow::setMulticast(bool isMulticast)
 
     if (_isMulticast != isMulticast) {
         _isMulticast = isMulticast;
+        _modifiedResettableProperties << QStringLiteral("isMulticast");
     }
 }
 
@@ -163,6 +164,7 @@ void QUmlObjectFlow::setMultireceive(bool isMultireceive)
 
     if (_isMultireceive != isMultireceive) {
         _isMultireceive = isMultireceive;
+        _modifiedResettableProperties << QStringLiteral("isMultireceive");
     }
 }
 
@@ -210,25 +212,29 @@ void QUmlObjectFlow::setTransformation(QUmlBehavior *transformation)
 
 void QUmlObjectFlow::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("isMulticast")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isMulticast")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isMulticast")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isMulticast")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isMulticast")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the objects in the flow are passed by multicasting.");
     QModelingObject::propertyDataHash[QStringLiteral("isMulticast")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isMulticast")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isMulticast")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isMultireceive")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("isMultireceive")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("isMultireceive")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isMultireceive")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isMultireceive")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the objects in the flow are gathered from respondents to multicasting.");
     QModelingObject::propertyDataHash[QStringLiteral("isMultireceive")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isMultireceive")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("isMultireceive")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::DocumentationRole] = QStringLiteral("Selects tokens from a source object node.");
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("transformation")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("transformation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("transformation")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("transformation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("transformation")][QtModeling::DocumentationRole] = QStringLiteral("Changes or replaces data tokens flowing along edge.");
     QModelingObject::propertyDataHash[QStringLiteral("transformation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("transformation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

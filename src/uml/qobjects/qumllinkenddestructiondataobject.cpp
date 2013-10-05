@@ -203,7 +203,6 @@ void QUmlLinkEndDestructionDataObject::setDestroyAt(QObject *destroyAt)
 void QUmlLinkEndDestructionDataObject::setDestroyDuplicates(bool isDestroyDuplicates)
 {
     qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->setDestroyDuplicates(isDestroyDuplicates);
-    qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->modifiedResettableProperties() << QStringLiteral("destroyDuplicates");
 }
 
 void QUmlLinkEndDestructionDataObject::unsetDestroyDuplicates()

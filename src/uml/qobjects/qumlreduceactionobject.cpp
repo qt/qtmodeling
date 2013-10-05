@@ -446,7 +446,6 @@ void QUmlReduceActionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlReduceActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlReduceActionObject::unsetLeaf()
@@ -578,7 +577,6 @@ void QUmlReduceActionObject::removeInput(QObject *input)
 void QUmlReduceActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlReduceActionObject::unsetLocallyReentrant()
@@ -626,7 +624,6 @@ void QUmlReduceActionObject::setCollection(QObject *collection)
 void QUmlReduceActionObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->setOrdered(isOrdered);
-    qmodelingobjectproperty_cast<QUmlReduceAction *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
 
 void QUmlReduceActionObject::unsetOrdered()

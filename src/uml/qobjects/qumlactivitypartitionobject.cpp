@@ -393,7 +393,6 @@ void QUmlActivityPartitionObject::removeEdge(QObject *edge)
 void QUmlActivityPartitionObject::setDimension(bool isDimension)
 {
     qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setDimension(isDimension);
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->modifiedResettableProperties() << QStringLiteral("dimension");
 }
 
 void QUmlActivityPartitionObject::unsetDimension()
@@ -404,7 +403,6 @@ void QUmlActivityPartitionObject::unsetDimension()
 void QUmlActivityPartitionObject::setExternal(bool isExternal)
 {
     qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->setExternal(isExternal);
-    qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->modifiedResettableProperties() << QStringLiteral("external");
 }
 
 void QUmlActivityPartitionObject::unsetExternal()

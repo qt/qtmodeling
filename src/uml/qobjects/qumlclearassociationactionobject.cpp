@@ -433,7 +433,6 @@ void QUmlClearAssociationActionObject::setVisibility(QtUml::VisibilityKind visib
 void QUmlClearAssociationActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlClearAssociationActionObject::unsetLeaf()
@@ -565,7 +564,6 @@ void QUmlClearAssociationActionObject::removeInput(QObject *input)
 void QUmlClearAssociationActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlClearAssociationActionObject::unsetLocallyReentrant()

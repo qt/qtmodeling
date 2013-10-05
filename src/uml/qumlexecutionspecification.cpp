@@ -142,13 +142,15 @@ void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
 
 void QUmlExecutionSpecification::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::DocumentationRole] = QStringLiteral("References the OccurrenceSpecification that designates the finish of the Action or Behavior.");
     QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::DocumentationRole] = QStringLiteral("References the OccurrenceSpecification that designates the start of the Action or Behavior");
     QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

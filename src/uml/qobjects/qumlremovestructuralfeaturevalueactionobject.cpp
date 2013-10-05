@@ -466,7 +466,6 @@ void QUmlRemoveStructuralFeatureValueActionObject::setVisibility(QtUml::Visibili
 void QUmlRemoveStructuralFeatureValueActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::unsetLeaf()
@@ -598,7 +597,6 @@ void QUmlRemoveStructuralFeatureValueActionObject::removeInput(QObject *input)
 void QUmlRemoveStructuralFeatureValueActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::unsetLocallyReentrant()
@@ -665,7 +663,6 @@ void QUmlRemoveStructuralFeatureValueActionObject::setValue(QObject *value)
 void QUmlRemoveStructuralFeatureValueActionObject::setRemoveDuplicates(bool isRemoveDuplicates)
 {
     qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->setRemoveDuplicates(isRemoveDuplicates);
-    qmodelingobjectproperty_cast<QUmlRemoveStructuralFeatureValueAction *>(this)->modifiedResettableProperties() << QStringLiteral("removeDuplicates");
 }
 
 void QUmlRemoveStructuralFeatureValueActionObject::unsetRemoveDuplicates()

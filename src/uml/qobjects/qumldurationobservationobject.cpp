@@ -297,7 +297,6 @@ void QUmlDurationObservationObject::setQualifiedName(QString qualifiedName)
 void QUmlDurationObservationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlDurationObservation *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlDurationObservationObject::unsetVisibility()

@@ -369,7 +369,6 @@ void QUmlJoinNodeObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlJoinNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlJoinNodeObject::unsetLeaf()
@@ -474,7 +473,6 @@ void QUmlJoinNodeObject::removeRedefinedNode(QObject *redefinedNode)
 void QUmlJoinNodeObject::setCombineDuplicate(bool isCombineDuplicate)
 {
     qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->setCombineDuplicate(isCombineDuplicate);
-    qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->modifiedResettableProperties() << QStringLiteral("combineDuplicate");
 }
 
 void QUmlJoinNodeObject::unsetCombineDuplicate()

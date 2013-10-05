@@ -264,19 +264,22 @@ void QUmlBehavioredClassifier::removeOwnedBehavior(QUmlBehavior *ownedBehavior)
 
 void QUmlBehavioredClassifier::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::DocumentationRole] = QStringLiteral("A behavior specification that specifies the behavior of the classifier itself.");
     QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("BehavioredClassifier-ownedBehavior");
     QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::DocumentationRole] = QStringLiteral("The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.");
     QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement NamedElement-clientDependency");
     QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::OppositeEndRole] = QStringLiteral("InterfaceRealization-implementingClassifier");
 
-    QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::AggregationRole] = QStringLiteral("composite");    QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::DocumentationRole] = QStringLiteral("References behavior specifications owned by a classifier.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");

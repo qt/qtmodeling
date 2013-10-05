@@ -448,7 +448,6 @@ void QUmlAcceptCallActionObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlAcceptCallActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlAcceptCallActionObject::unsetLeaf()
@@ -580,7 +579,6 @@ void QUmlAcceptCallActionObject::removeInput(QObject *input)
 void QUmlAcceptCallActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlAcceptCallActionObject::unsetLocallyReentrant()
@@ -623,7 +621,6 @@ void QUmlAcceptCallActionObject::removeOutput(QObject *output)
 void QUmlAcceptCallActionObject::setUnmarshall(bool isUnmarshall)
 {
     qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->setUnmarshall(isUnmarshall);
-    qmodelingobjectproperty_cast<QUmlAcceptCallAction *>(this)->modifiedResettableProperties() << QStringLiteral("unmarshall");
 }
 
 void QUmlAcceptCallActionObject::unsetUnmarshall()

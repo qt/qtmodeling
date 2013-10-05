@@ -956,7 +956,6 @@ void QUmlInteractionObject::setOwningTemplateParameter(QObject *owningTemplatePa
 void QUmlInteractionObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlInteractionObject::unsetVisibility()
@@ -976,7 +975,6 @@ void QUmlInteractionObject::setPackage(QObject *package)
 void QUmlInteractionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlInteractionObject::unsetLeaf()
@@ -1071,7 +1069,6 @@ void QUmlInteractionObject::removeInheritedMember(QObject *inheritedMember)
 void QUmlInteractionObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlInteractionObject::unsetFinalSpecialization()
@@ -1230,7 +1227,6 @@ void QUmlInteractionObject::removeExtension(QObject *extension)
 void QUmlInteractionObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlInteractionObject::unsetAbstract()
@@ -1241,7 +1237,6 @@ void QUmlInteractionObject::unsetAbstract()
 void QUmlInteractionObject::setActive(bool isActive)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setActive(isActive);
-    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("active");
 }
 
 void QUmlInteractionObject::unsetActive()
@@ -1309,7 +1304,6 @@ void QUmlInteractionObject::setContext(QObject *context)
 void QUmlInteractionObject::setReentrant(bool isReentrant)
 {
     qmodelingobjectproperty_cast<QUmlInteraction *>(this)->setReentrant(isReentrant);
-    qmodelingobjectproperty_cast<QUmlInteraction *>(this)->modifiedResettableProperties() << QStringLiteral("reentrant");
 }
 
 void QUmlInteractionObject::unsetReentrant()

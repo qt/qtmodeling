@@ -447,7 +447,6 @@ void QUmlDestroyLinkActionObject::setVisibility(QtUml::VisibilityKind visibility
 void QUmlDestroyLinkActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlDestroyLinkActionObject::unsetLeaf()
@@ -579,7 +578,6 @@ void QUmlDestroyLinkActionObject::removeInput(QObject *input)
 void QUmlDestroyLinkActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlDestroyLinkAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlDestroyLinkActionObject::unsetLocallyReentrant()

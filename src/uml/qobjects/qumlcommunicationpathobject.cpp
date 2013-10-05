@@ -735,7 +735,6 @@ void QUmlCommunicationPathObject::setOwningTemplateParameter(QObject *owningTemp
 void QUmlCommunicationPathObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlCommunicationPathObject::unsetVisibility()
@@ -755,7 +754,6 @@ void QUmlCommunicationPathObject::setPackage(QObject *package)
 void QUmlCommunicationPathObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlCommunicationPathObject::unsetLeaf()
@@ -860,7 +858,6 @@ void QUmlCommunicationPathObject::removeInheritedMember(QObject *inheritedMember
 void QUmlCommunicationPathObject::setAbstract(bool isAbstract)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setAbstract(isAbstract);
-    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("abstract");
 }
 
 void QUmlCommunicationPathObject::unsetAbstract()
@@ -871,7 +868,6 @@ void QUmlCommunicationPathObject::unsetAbstract()
 void QUmlCommunicationPathObject::setFinalSpecialization(bool isFinalSpecialization)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setFinalSpecialization(isFinalSpecialization);
-    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("finalSpecialization");
 }
 
 void QUmlCommunicationPathObject::unsetFinalSpecialization()
@@ -971,7 +967,6 @@ void QUmlCommunicationPathObject::removeEndType(QObject *endType)
 void QUmlCommunicationPathObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->setDerived(isDerived);
-    qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
 
 void QUmlCommunicationPathObject::unsetDerived()

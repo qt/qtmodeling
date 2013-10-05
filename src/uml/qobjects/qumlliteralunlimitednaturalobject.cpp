@@ -345,7 +345,6 @@ void QUmlLiteralUnlimitedNaturalObject::setTemplateParameter(QObject *templatePa
 void QUmlLiteralUnlimitedNaturalObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlLiteralUnlimitedNaturalObject::unsetVisibility()
@@ -358,7 +357,6 @@ void QUmlLiteralUnlimitedNaturalObject::unsetVisibility()
 void QUmlLiteralUnlimitedNaturalObject::setValue(int value)
 {
     qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->setValue(value);
-    qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->modifiedResettableProperties() << QStringLiteral("value");
 }
 
 void QUmlLiteralUnlimitedNaturalObject::unsetValue()

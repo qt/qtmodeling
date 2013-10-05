@@ -414,7 +414,6 @@ void QUmlActivityParameterNodeObject::setVisibility(QtUml::VisibilityKind visibi
 void QUmlActivityParameterNodeObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlActivityParameterNodeObject::unsetLeaf()
@@ -536,7 +535,6 @@ void QUmlActivityParameterNodeObject::removeInState(QObject *inState)
 void QUmlActivityParameterNodeObject::setControlType(bool isControlType)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setControlType(isControlType);
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties() << QStringLiteral("controlType");
 }
 
 void QUmlActivityParameterNodeObject::unsetControlType()
@@ -547,7 +545,6 @@ void QUmlActivityParameterNodeObject::unsetControlType()
 void QUmlActivityParameterNodeObject::setOrdering(QtUml::ObjectNodeOrderingKind ordering)
 {
     qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->setOrdering(ordering);
-    qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->modifiedResettableProperties() << QStringLiteral("ordering");
 }
 
 void QUmlActivityParameterNodeObject::unsetOrdering()

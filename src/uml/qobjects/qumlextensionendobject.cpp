@@ -599,7 +599,6 @@ void QUmlExtensionEndObject::setVisibility(QtUml::VisibilityKind visibility)
 void QUmlExtensionEndObject::setOrdered(bool isOrdered)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setOrdered(isOrdered);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("ordered");
 }
 
 void QUmlExtensionEndObject::unsetOrdered()
@@ -610,7 +609,6 @@ void QUmlExtensionEndObject::unsetOrdered()
 void QUmlExtensionEndObject::setUnique(bool isUnique)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setUnique(isUnique);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("unique");
 }
 
 void QUmlExtensionEndObject::unsetUnique()
@@ -626,7 +624,6 @@ void QUmlExtensionEndObject::setLowerValue(QObject *lowerValue)
 void QUmlExtensionEndObject::setUpper(int upper)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setUpper(upper);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("upper");
 }
 
 void QUmlExtensionEndObject::unsetUpper()
@@ -644,7 +641,6 @@ void QUmlExtensionEndObject::setUpperValue(QObject *upperValue)
 void QUmlExtensionEndObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlExtensionEndObject::unsetLeaf()
@@ -687,7 +683,6 @@ void QUmlExtensionEndObject::removeFeaturingClassifier(QObject *featuringClassif
 void QUmlExtensionEndObject::setStatic(bool isStatic)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setStatic(isStatic);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("static");
 }
 
 void QUmlExtensionEndObject::unsetStatic()
@@ -745,7 +740,6 @@ void QUmlExtensionEndObject::removeDeployment(QObject *deployment)
 void QUmlExtensionEndObject::setAggregation(QtUml::AggregationKind aggregation)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setAggregation(aggregation);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("aggregation");
 }
 
 void QUmlExtensionEndObject::unsetAggregation()
@@ -791,7 +785,6 @@ void QUmlExtensionEndObject::setInterface(QObject *interface_)
 void QUmlExtensionEndObject::setComposite(bool isComposite)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setComposite(isComposite);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("composite");
 }
 
 void QUmlExtensionEndObject::unsetComposite()
@@ -802,7 +795,6 @@ void QUmlExtensionEndObject::unsetComposite()
 void QUmlExtensionEndObject::setDerived(bool isDerived)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setDerived(isDerived);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("derived");
 }
 
 void QUmlExtensionEndObject::unsetDerived()
@@ -813,7 +805,6 @@ void QUmlExtensionEndObject::unsetDerived()
 void QUmlExtensionEndObject::setDerivedUnion(bool isDerivedUnion)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setDerivedUnion(isDerivedUnion);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("derivedUnion");
 }
 
 void QUmlExtensionEndObject::unsetDerivedUnion()
@@ -824,7 +815,6 @@ void QUmlExtensionEndObject::unsetDerivedUnion()
 void QUmlExtensionEndObject::setID(bool isID)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setID(isID);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("iD");
 }
 
 void QUmlExtensionEndObject::unsetID()
@@ -835,7 +825,6 @@ void QUmlExtensionEndObject::unsetID()
 void QUmlExtensionEndObject::setReadOnly(bool isReadOnly)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setReadOnly(isReadOnly);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("readOnly");
 }
 
 void QUmlExtensionEndObject::unsetReadOnly()
@@ -888,7 +877,6 @@ void QUmlExtensionEndObject::removeSubsettedProperty(QObject *subsettedProperty)
 void QUmlExtensionEndObject::setLower(int lower)
 {
     qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->setLower(lower);
-    qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->modifiedResettableProperties() << QStringLiteral("lower");
 }
 
 void QUmlExtensionEndObject::unsetLower()

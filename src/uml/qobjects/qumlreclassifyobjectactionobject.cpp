@@ -445,7 +445,6 @@ void QUmlReclassifyObjectActionObject::setVisibility(QtUml::VisibilityKind visib
 void QUmlReclassifyObjectActionObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlReclassifyObjectActionObject::unsetLeaf()
@@ -577,7 +576,6 @@ void QUmlReclassifyObjectActionObject::removeInput(QObject *input)
 void QUmlReclassifyObjectActionObject::setLocallyReentrant(bool isLocallyReentrant)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setLocallyReentrant(isLocallyReentrant);
-    qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("locallyReentrant");
 }
 
 void QUmlReclassifyObjectActionObject::unsetLocallyReentrant()
@@ -620,7 +618,6 @@ void QUmlReclassifyObjectActionObject::removeOutput(QObject *output)
 void QUmlReclassifyObjectActionObject::setReplaceAll(bool isReplaceAll)
 {
     qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->setReplaceAll(isReplaceAll);
-    qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->modifiedResettableProperties() << QStringLiteral("replaceAll");
 }
 
 void QUmlReclassifyObjectActionObject::unsetReplaceAll()

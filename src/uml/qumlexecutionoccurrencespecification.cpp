@@ -132,7 +132,8 @@ void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecificati
 
 void QUmlExecutionOccurrenceSpecification::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::AggregationRole] = QStringLiteral("none");    QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::DocumentationRole] = QStringLiteral("References the execution specification describing the execution that is started or finished at this execution event.");
     QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");

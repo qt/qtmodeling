@@ -363,7 +363,6 @@ void QUmlRedefinableTemplateSignatureObject::setVisibility(QtUml::VisibilityKind
 void QUmlRedefinableTemplateSignatureObject::setLeaf(bool isLeaf)
 {
     qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->setLeaf(isLeaf);
-    qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->modifiedResettableProperties() << QStringLiteral("leaf");
 }
 
 void QUmlRedefinableTemplateSignatureObject::unsetLeaf()

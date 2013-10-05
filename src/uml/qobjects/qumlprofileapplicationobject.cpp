@@ -229,7 +229,6 @@ void QUmlProfileApplicationObject::setApplyingPackage(QObject *applyingPackage)
 void QUmlProfileApplicationObject::setStrict(bool isStrict)
 {
     qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->setStrict(isStrict);
-    qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->modifiedResettableProperties() << QStringLiteral("strict");
 }
 
 void QUmlProfileApplicationObject::unsetStrict()

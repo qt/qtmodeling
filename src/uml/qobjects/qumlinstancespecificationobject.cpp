@@ -331,7 +331,6 @@ void QUmlInstanceSpecificationObject::setTemplateParameter(QObject *templatePara
 void QUmlInstanceSpecificationObject::setVisibility(QtUml::VisibilityKind visibility)
 {
     qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->setVisibility(visibility);
-    qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->modifiedResettableProperties() << QStringLiteral("visibility");
 }
 
 void QUmlInstanceSpecificationObject::unsetVisibility()
