@@ -64,18 +64,18 @@ QUmlClassifierTemplateParameterObject::~QUmlClassifierTemplateParameterObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlClassifierTemplateParameterObject::ownedComment() const
+const QSet<QObject *> QUmlClassifierTemplateParameterObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClassifierTemplateParameterObject::ownedElement() const
+const QSet<QObject *> QUmlClassifierTemplateParameterObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -129,10 +129,10 @@ bool QUmlClassifierTemplateParameterObject::allowSubstitutable() const
     return qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->allowSubstitutable();
 }
 
-const QSet<QObject *> QUmlClassifierTemplateParameterObject::constrainingClassifier() const
+const QSet<QObject *> QUmlClassifierTemplateParameterObject::constrainingClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->constrainingClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlClassifierTemplateParameter *>(this)->constrainingClassifiers())
         set.insert(element->asQObject());
     return set;
 }

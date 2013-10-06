@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlInstanceSpecificationObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -78,12 +78,12 @@ class Q_UML_EXPORT QUmlInstanceSpecificationObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [DeploymentTarget]
-    Q_PROPERTY(QSet<QObject *> deployedElement READ deployedElement STORED false)
-    Q_PROPERTY(QSet<QObject *> deployment READ deployment)
+    Q_PROPERTY(QSet<QObject *> deployedElement READ deployedElements STORED false)
+    Q_PROPERTY(QSet<QObject *> deployment READ deployments)
 
     // Properties [InstanceSpecification]
-    Q_PROPERTY(QSet<QObject *> classifier READ classifier)
-    Q_PROPERTY(QSet<QObject *> slot_ READ slot_)
+    Q_PROPERTY(QSet<QObject *> classifier READ classifiers)
+    Q_PROPERTY(QSet<QObject *> slot_ READ slots_)
     Q_PROPERTY(QObject * specification READ specification)
 
 public:
@@ -91,12 +91,12 @@ public:
     virtual ~QUmlInstanceSpecificationObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -110,12 +110,12 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [DeploymentTarget]
-    Q_INVOKABLE const QSet<QObject *> deployedElement() const;
-    Q_INVOKABLE const QSet<QObject *> deployment() const;
+    Q_INVOKABLE const QSet<QObject *> deployedElements() const;
+    Q_INVOKABLE const QSet<QObject *> deployments() const;
 
     // Owned attributes [InstanceSpecification]
-    Q_INVOKABLE const QSet<QObject *> classifier() const;
-    Q_INVOKABLE const QSet<QObject *> slot_() const;
+    Q_INVOKABLE const QSet<QObject *> classifiers() const;
+    Q_INVOKABLE const QSet<QObject *> slots_() const;
     Q_INVOKABLE QObject *specification() const;
 
     // Operations [Element]

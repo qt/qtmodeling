@@ -47,6 +47,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlDeployedArtifact
 
@@ -66,9 +67,9 @@ QUmlDeployedArtifact::~QUmlDeployedArtifact()
 QModelingObject *QUmlDeployedArtifact::clone() const
 {
     QUmlDeployedArtifact *c = new QUmlDeployedArtifact;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())

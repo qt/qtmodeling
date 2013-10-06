@@ -52,6 +52,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlLiteralInteger
 
@@ -79,9 +80,9 @@ QUmlLiteralInteger::~QUmlLiteralInteger()
 QModelingObject *QUmlLiteralInteger::clone() const
 {
     QUmlLiteralInteger *c = new QUmlLiteralInteger;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -144,6 +145,8 @@ bool QUmlLiteralInteger::isComputable() const
 void QUmlLiteralInteger::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralInteger");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified Integer value.");
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

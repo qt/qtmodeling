@@ -59,8 +59,8 @@ class Q_UML_EXPORT QUmlGeneralizationSetObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ParameterableElement]
@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlGeneralizationSetObject : public QObject
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -78,7 +78,7 @@ class Q_UML_EXPORT QUmlGeneralizationSetObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [GeneralizationSet]
-    Q_PROPERTY(QSet<QObject *> generalization READ generalization)
+    Q_PROPERTY(QSet<QObject *> generalization READ generalizations)
     Q_PROPERTY(bool isCovering READ isCovering RESET unsetCovering)
     Q_PROPERTY(bool isDisjoint READ isDisjoint RESET unsetDisjoint)
     Q_PROPERTY(QObject * powertype READ powertype)
@@ -88,8 +88,8 @@ public:
     virtual ~QUmlGeneralizationSetObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [ParameterableElement]
@@ -97,7 +97,7 @@ public:
     Q_INVOKABLE QObject *templateParameter() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -107,7 +107,7 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [GeneralizationSet]
-    Q_INVOKABLE const QSet<QObject *> generalization() const;
+    Q_INVOKABLE const QSet<QObject *> generalizations() const;
     Q_INVOKABLE bool isCovering() const;
     Q_INVOKABLE bool isDisjoint() const;
     Q_INVOKABLE QObject *powertype() const;

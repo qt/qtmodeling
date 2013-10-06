@@ -63,12 +63,12 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlEnumerationLiteral *> ownedLiteral() const;
+    const QList<QUmlEnumerationLiteral *> ownedLiterals() const;
     void addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral);
     void removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral);
 
 protected:
-    QList<QUmlEnumerationLiteral *> _ownedLiteral;
+    QList<QUmlEnumerationLiteral *> _ownedLiterals;
 
     virtual void setPropertyData();
 };

@@ -97,18 +97,18 @@ QUmlExecutionEnvironmentObject::~QUmlExecutionEnvironmentObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedComment() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedElement() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -123,10 +123,10 @@ QObject *QUmlExecutionEnvironmentObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::clientDependency() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -156,52 +156,53 @@ QString QUmlExecutionEnvironmentObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::elementImport() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::importedMember() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::member() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedMember() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedRule() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::packageImport() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -215,6 +216,7 @@ QObject *QUmlExecutionEnvironmentObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlExecutionEnvironmentObject::visibility() const
@@ -239,70 +241,70 @@ bool QUmlExecutionEnvironmentObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::redefinedElement() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::redefinitionContext() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [TemplateableElement]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::templateBinding() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->templateBinding())
+    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->templateBindings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Classifier]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::attribute() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::attributes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->attribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->attributes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::collaborationUse() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::collaborationUses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->collaborationUse())
+    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->collaborationUses())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::feature() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::features() const
 {
     QSet<QObject *> set;
-    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->feature())
+    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->features())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::generalization() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::generalizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->generalization())
+    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->generalizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::inheritedMember() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::inheritedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->inheritedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->inheritedMembers())
         set.insert(element->asQObject());
     return set;
 }
@@ -320,26 +322,26 @@ QObject *QUmlExecutionEnvironmentObject::ownedTemplateSignature() const
         return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedTemplateSignature()->asQObject();
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedUseCase() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedUseCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedUseCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedUseCases())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::powertypeExtent() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::powertypeExtents() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->powertypeExtents())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::redefinedClassifier() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::redefinedClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->redefinedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->redefinedClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -352,10 +354,10 @@ QObject *QUmlExecutionEnvironmentObject::representation() const
         return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->representation()->asQObject();
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::substitution() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::substitutions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->substitution())
+    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->substitutions())
         set.insert(element->asQObject());
     return set;
 }
@@ -368,46 +370,46 @@ QObject *QUmlExecutionEnvironmentObject::templateParameter() const
         return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->templateParameter()->asQObject();
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::useCase() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::useCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->useCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->useCases())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [StructuredClassifier]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedConnector() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedConnectors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedConnector())
+    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedConnectors())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::part() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::parts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->part())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->parts())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::role() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::roles() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->role())
+    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->roles())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [EncapsulatedClassifier]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedPort() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedPorts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedPort())
+    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedPorts())
         set.insert(element->asQObject());
     return set;
 }
@@ -422,28 +424,28 @@ QObject *QUmlExecutionEnvironmentObject::classifierBehavior() const
         return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->classifierBehavior()->asQObject();
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::interfaceRealization() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::interfaceRealizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->interfaceRealizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedBehavior() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedBehaviors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedBehavior())
+    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedBehaviors())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Class]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::extension() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::extensions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExtension *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->extension())
+    foreach (QUmlExtension *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->extensions())
         set.insert(element->asQObject());
     return set;
 }
@@ -458,70 +460,70 @@ bool QUmlExecutionEnvironmentObject::isActive() const
     return qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->isActive();
 }
 
-const QList<QObject *> QUmlExecutionEnvironmentObject::nestedClassifier() const
+const QList<QObject *> QUmlExecutionEnvironmentObject::nestedClassifiers() const
 {
     QList<QObject *> list;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->nestedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->nestedClassifiers())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlExecutionEnvironmentObject::ownedAttribute() const
+const QList<QObject *> QUmlExecutionEnvironmentObject::ownedAttributes() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedAttribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedAttributes())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlExecutionEnvironmentObject::ownedOperation() const
+const QList<QObject *> QUmlExecutionEnvironmentObject::ownedOperations() const
 {
     QList<QObject *> list;
-    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedOperation())
+    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedOperations())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedReception() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::ownedReceptions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlReception *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedReception())
+    foreach (QUmlReception *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->ownedReceptions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::superClass() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::superClasses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClass *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->superClass())
+    foreach (QUmlClass *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->superClasses())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DeploymentTarget]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::deployedElement() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::deployedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->deployedElement())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->deployedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::deployment() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::deployments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->deployment())
+    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->deployments())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Node]
 
-const QSet<QObject *> QUmlExecutionEnvironmentObject::nestedNode() const
+const QSet<QObject *> QUmlExecutionEnvironmentObject::nestedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNode *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->nestedNode())
+    foreach (QUmlNode *element, qmodelingobjectproperty_cast<QUmlExecutionEnvironment *>(this)->nestedNodes())
         set.insert(element->asQObject());
     return set;
 }

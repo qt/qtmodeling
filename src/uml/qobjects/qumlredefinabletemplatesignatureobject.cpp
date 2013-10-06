@@ -70,18 +70,18 @@ QUmlRedefinableTemplateSignatureObject::~QUmlRedefinableTemplateSignatureObject(
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::ownedComment() const
+const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::ownedElement() const
+const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -96,18 +96,18 @@ QObject *QUmlRedefinableTemplateSignatureObject::owner() const
 
 // OWNED ATTRIBUTES [TemplateSignature]
 
-const QList<QObject *> QUmlRedefinableTemplateSignatureObject::ownedParameter() const
+const QList<QObject *> QUmlRedefinableTemplateSignatureObject::ownedParameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->ownedParameter())
+    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->ownedParameters())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlRedefinableTemplateSignatureObject::parameter() const
+const QList<QObject *> QUmlRedefinableTemplateSignatureObject::parameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->parameter())
+    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->parameters())
         list.append(element->asQObject());
     return list;
 }
@@ -122,10 +122,10 @@ QObject *QUmlRedefinableTemplateSignatureObject::template_() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::clientDependency() const
+const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -168,18 +168,18 @@ bool QUmlRedefinableTemplateSignatureObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::redefinedElement() const
+const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::redefinitionContext() const
+const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -194,18 +194,18 @@ QObject *QUmlRedefinableTemplateSignatureObject::classifier() const
         return qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->classifier()->asQObject();
 }
 
-const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::extendedSignature() const
+const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::extendedSignatures() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableTemplateSignature *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->extendedSignature())
+    foreach (QUmlRedefinableTemplateSignature *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->extendedSignatures())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::inheritedParameter() const
+const QSet<QObject *> QUmlRedefinableTemplateSignatureObject::inheritedParameters() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->inheritedParameter())
+    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlRedefinableTemplateSignature *>(this)->inheritedParameters())
         set.insert(element->asQObject());
     return set;
 }

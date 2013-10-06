@@ -65,31 +65,31 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlActivityEdge *> edge() const;
+    const QSet<QUmlActivityEdge *> edges() const;
     void addEdge(QUmlActivityEdge *edge);
     void removeEdge(QUmlActivityEdge *edge);
     bool isDimension() const;
     void setDimension(bool isDimension);
     bool isExternal() const;
     void setExternal(bool isExternal);
-    const QSet<QUmlActivityNode *> node() const;
+    const QSet<QUmlActivityNode *> nodes() const;
     void addNode(QUmlActivityNode *node);
     void removeNode(QUmlActivityNode *node);
     QUmlElement *represents() const;
     void setRepresents(QUmlElement *represents);
-    const QSet<QUmlActivityPartition *> subpartition() const;
+    const QSet<QUmlActivityPartition *> subpartitions() const;
     void addSubpartition(QUmlActivityPartition *subpartition);
     void removeSubpartition(QUmlActivityPartition *subpartition);
     QUmlActivityPartition *superPartition() const;
     void setSuperPartition(QUmlActivityPartition *superPartition);
 
 protected:
-    QSet<QUmlActivityEdge *> _edge;
+    QSet<QUmlActivityEdge *> _edges;
     bool _isDimension;
     bool _isExternal;
-    QSet<QUmlActivityNode *> _node;
+    QSet<QUmlActivityNode *> _nodes;
     QUmlElement *_represents;
-    QSet<QUmlActivityPartition *> _subpartition;
+    QSet<QUmlActivityPartition *> _subpartitions;
     QUmlActivityPartition *_superPartition;
 
     virtual void setPropertyData();

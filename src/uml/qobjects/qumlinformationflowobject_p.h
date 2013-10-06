@@ -59,23 +59,23 @@ class Q_UML_EXPORT QUmlInformationFlowObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElement)
+    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElements)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> source READ source)
-    Q_PROPERTY(QSet<QObject *> target READ target)
+    Q_PROPERTY(QSet<QObject *> source READ sources)
+    Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [ParameterableElement]
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -86,35 +86,35 @@ class Q_UML_EXPORT QUmlInformationFlowObject : public QObject
 
     // Properties [InformationFlow]
     Q_PROPERTY(QSet<QObject *> conveyed READ conveyed)
-    Q_PROPERTY(QSet<QObject *> informationSource READ informationSource)
-    Q_PROPERTY(QSet<QObject *> informationTarget READ informationTarget)
-    Q_PROPERTY(QSet<QObject *> realization READ realization)
-    Q_PROPERTY(QSet<QObject *> realizingActivityEdge READ realizingActivityEdge)
-    Q_PROPERTY(QSet<QObject *> realizingConnector READ realizingConnector)
-    Q_PROPERTY(QSet<QObject *> realizingMessage READ realizingMessage)
+    Q_PROPERTY(QSet<QObject *> informationSource READ informationSources)
+    Q_PROPERTY(QSet<QObject *> informationTarget READ informationTargets)
+    Q_PROPERTY(QSet<QObject *> realization READ realizations)
+    Q_PROPERTY(QSet<QObject *> realizingActivityEdge READ realizingActivityEdges)
+    Q_PROPERTY(QSet<QObject *> realizingConnector READ realizingConnectors)
+    Q_PROPERTY(QSet<QObject *> realizingMessage READ realizingMessages)
 
 public:
     Q_INVOKABLE explicit QUmlInformationFlowObject(QUmlInformationFlow *qModelingObject);
     virtual ~QUmlInformationFlowObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [Relationship]
-    Q_INVOKABLE const QSet<QObject *> relatedElement() const;
+    Q_INVOKABLE const QSet<QObject *> relatedElements() const;
 
     // Owned attributes [DirectedRelationship]
-    Q_INVOKABLE const QSet<QObject *> source() const;
-    Q_INVOKABLE const QSet<QObject *> target() const;
+    Q_INVOKABLE const QSet<QObject *> sources() const;
+    Q_INVOKABLE const QSet<QObject *> targets() const;
 
     // Owned attributes [ParameterableElement]
     Q_INVOKABLE QObject *owningTemplateParameter() const;
     Q_INVOKABLE QObject *templateParameter() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -125,12 +125,12 @@ public:
 
     // Owned attributes [InformationFlow]
     Q_INVOKABLE const QSet<QObject *> conveyed() const;
-    Q_INVOKABLE const QSet<QObject *> informationSource() const;
-    Q_INVOKABLE const QSet<QObject *> informationTarget() const;
-    Q_INVOKABLE const QSet<QObject *> realization() const;
-    Q_INVOKABLE const QSet<QObject *> realizingActivityEdge() const;
-    Q_INVOKABLE const QSet<QObject *> realizingConnector() const;
-    Q_INVOKABLE const QSet<QObject *> realizingMessage() const;
+    Q_INVOKABLE const QSet<QObject *> informationSources() const;
+    Q_INVOKABLE const QSet<QObject *> informationTargets() const;
+    Q_INVOKABLE const QSet<QObject *> realizations() const;
+    Q_INVOKABLE const QSet<QObject *> realizingActivityEdges() const;
+    Q_INVOKABLE const QSet<QObject *> realizingConnectors() const;
+    Q_INVOKABLE const QSet<QObject *> realizingMessages() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

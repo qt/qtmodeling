@@ -80,18 +80,18 @@ QUmlValueSpecificationActionObject::~QUmlValueSpecificationActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::ownedComment() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::ownedElement() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -106,10 +106,10 @@ QObject *QUmlValueSpecificationActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::clientDependency() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -152,18 +152,18 @@ bool QUmlValueSpecificationActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::redefinedElement() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -178,26 +178,26 @@ QObject *QUmlValueSpecificationActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::inGroup() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::inPartition() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -210,36 +210,36 @@ QObject *QUmlValueSpecificationActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::incoming() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::outgoing() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::redefinedNode() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::handler() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -254,10 +254,10 @@ QObject *QUmlValueSpecificationActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlValueSpecificationActionObject::input() const
+const QList<QObject *> QUmlValueSpecificationActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -267,26 +267,26 @@ bool QUmlValueSpecificationActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::localPostcondition() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlValueSpecificationActionObject::localPrecondition() const
+const QSet<QObject *> QUmlValueSpecificationActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlValueSpecificationActionObject::output() const
+const QList<QObject *> QUmlValueSpecificationActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlValueSpecificationAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

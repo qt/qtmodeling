@@ -85,6 +85,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlStateMachine
 
@@ -111,18 +112,18 @@ QUmlStateMachine::~QUmlStateMachine()
 QModelingObject *QUmlStateMachine::clone() const
 {
     QUmlStateMachine *c = new QUmlStateMachine;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -130,65 +131,65 @@ QModelingObject *QUmlStateMachine::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlConnector *element, ownedConnector())
+    foreach (QUmlConnector *element, ownedConnectors())
         c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
     if (classifierBehavior())
         c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
-    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, interfaceRealizations())
         c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
-    foreach (QUmlBehavior *element, ownedBehavior())
+    foreach (QUmlBehavior *element, ownedBehaviors())
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setActive(isActive());
-    foreach (QUmlClassifier *element, nestedClassifier())
+    foreach (QUmlClassifier *element, nestedClassifiers())
         c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlOperation *element, ownedOperation())
+    foreach (QUmlOperation *element, ownedOperations())
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
-    foreach (QUmlReception *element, ownedReception())
+    foreach (QUmlReception *element, ownedReceptions())
         c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
     c->setReentrant(isReentrant());
-    foreach (QUmlParameter *element, ownedParameter())
+    foreach (QUmlParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
-    foreach (QUmlParameterSet *element, ownedParameterSet())
+    foreach (QUmlParameterSet *element, ownedParameterSets())
         c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
-    foreach (QUmlConstraint *element, postcondition())
+    foreach (QUmlConstraint *element, postconditions())
         c->addPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, precondition())
+    foreach (QUmlConstraint *element, preconditions())
         c->addPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QUmlBehavioralFeature *>(specification()->clone()));
-    foreach (QUmlPseudostate *element, connectionPoint())
+    foreach (QUmlPseudostate *element, connectionPoints())
         c->addConnectionPoint(dynamic_cast<QUmlPseudostate *>(element->clone()));
-    foreach (QUmlStateMachine *element, extendedStateMachine())
+    foreach (QUmlStateMachine *element, extendedStateMachines())
         c->addExtendedStateMachine(dynamic_cast<QUmlStateMachine *>(element->clone()));
-    foreach (QUmlRegion *element, region())
+    foreach (QUmlRegion *element, regions())
         c->addRegion(dynamic_cast<QUmlRegion *>(element->clone()));
-    foreach (QUmlState *element, submachineState())
+    foreach (QUmlState *element, submachineStates())
         c->addSubmachineState(dynamic_cast<QUmlState *>(element->clone()));
     return c;
 }
@@ -198,19 +199,19 @@ QModelingObject *QUmlStateMachine::clone() const
 /*!
     The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.
  */
-const QSet<QUmlPseudostate *> QUmlStateMachine::connectionPoint() const
+const QSet<QUmlPseudostate *> QUmlStateMachine::connectionPoints() const
 {
     // This is a read-write association end
 
-    return _connectionPoint;
+    return _connectionPoints;
 }
 
 void QUmlStateMachine::addConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    if (!_connectionPoint.contains(connectionPoint)) {
-        _connectionPoint.insert(connectionPoint);
+    if (!_connectionPoints.contains(connectionPoint)) {
+        _connectionPoints.insert(connectionPoint);
         if (connectionPoint && connectionPoint->asQObject() && this->asQObject())
             QObject::connect(connectionPoint->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConnectionPoint(QObject *)));
         connectionPoint->asQObject()->setParent(this->asQObject());
@@ -229,8 +230,8 @@ void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    if (_connectionPoint.contains(connectionPoint)) {
-        _connectionPoint.remove(connectionPoint);
+    if (_connectionPoints.contains(connectionPoint)) {
+        _connectionPoints.remove(connectionPoint);
         if (connectionPoint->asQObject())
             connectionPoint->asQObject()->setParent(0);
 
@@ -247,19 +248,19 @@ void QUmlStateMachine::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 /*!
     The state machines of which this is an extension.
  */
-const QSet<QUmlStateMachine *> QUmlStateMachine::extendedStateMachine() const
+const QSet<QUmlStateMachine *> QUmlStateMachine::extendedStateMachines() const
 {
     // This is a read-write association end
 
-    return _extendedStateMachine;
+    return _extendedStateMachines;
 }
 
 void QUmlStateMachine::addExtendedStateMachine(QUmlStateMachine *extendedStateMachine)
 {
     // This is a read-write association end
 
-    if (!_extendedStateMachine.contains(extendedStateMachine)) {
-        _extendedStateMachine.insert(extendedStateMachine);
+    if (!_extendedStateMachines.contains(extendedStateMachine)) {
+        _extendedStateMachines.insert(extendedStateMachine);
         if (extendedStateMachine && extendedStateMachine->asQObject() && this->asQObject())
             QObject::connect(extendedStateMachine->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtendedStateMachine(QObject *)));
     }
@@ -269,27 +270,27 @@ void QUmlStateMachine::removeExtendedStateMachine(QUmlStateMachine *extendedStat
 {
     // This is a read-write association end
 
-    if (_extendedStateMachine.contains(extendedStateMachine)) {
-        _extendedStateMachine.remove(extendedStateMachine);
+    if (_extendedStateMachines.contains(extendedStateMachine)) {
+        _extendedStateMachines.remove(extendedStateMachine);
     }
 }
 
 /*!
     The regions owned directly by the state machine.
  */
-const QSet<QUmlRegion *> QUmlStateMachine::region() const
+const QSet<QUmlRegion *> QUmlStateMachine::regions() const
 {
     // This is a read-write association end
 
-    return _region;
+    return _regions;
 }
 
 void QUmlStateMachine::addRegion(QUmlRegion *region)
 {
     // This is a read-write association end
 
-    if (!_region.contains(region)) {
-        _region.insert(region);
+    if (!_regions.contains(region)) {
+        _regions.insert(region);
         if (region && region->asQObject() && this->asQObject())
             QObject::connect(region->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRegion(QObject *)));
         region->asQObject()->setParent(this->asQObject());
@@ -308,8 +309,8 @@ void QUmlStateMachine::removeRegion(QUmlRegion *region)
 {
     // This is a read-write association end
 
-    if (_region.contains(region)) {
-        _region.remove(region);
+    if (_regions.contains(region)) {
+        _regions.remove(region);
         if (region->asQObject())
             region->asQObject()->setParent(0);
 
@@ -326,19 +327,19 @@ void QUmlStateMachine::removeRegion(QUmlRegion *region)
 /*!
     References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.
  */
-const QSet<QUmlState *> QUmlStateMachine::submachineState() const
+const QSet<QUmlState *> QUmlStateMachine::submachineStates() const
 {
     // This is a read-write association end
 
-    return _submachineState;
+    return _submachineStates;
 }
 
 void QUmlStateMachine::addSubmachineState(QUmlState *submachineState)
 {
     // This is a read-write association end
 
-    if (!_submachineState.contains(submachineState)) {
-        _submachineState.insert(submachineState);
+    if (!_submachineStates.contains(submachineState)) {
+        _submachineStates.insert(submachineState);
         if (submachineState && submachineState->asQObject() && this->asQObject())
             QObject::connect(submachineState->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubmachineState(QObject *)));
 
@@ -353,8 +354,8 @@ void QUmlStateMachine::removeSubmachineState(QUmlState *submachineState)
 {
     // This is a read-write association end
 
-    if (_submachineState.contains(submachineState)) {
-        _submachineState.remove(submachineState);
+    if (_submachineStates.contains(submachineState)) {
+        _submachineStates.remove(submachineState);
 
         // Adjust opposite properties
         if (submachineState) {
@@ -414,6 +415,8 @@ bool QUmlStateMachine::isRedefinitionContextValid(QUmlStateMachine *redefined) c
 void QUmlStateMachine::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateMachine");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::DocumentationRole] = QStringLiteral("The connection points defined for this state machine. They represent the interface of the state machine when used as part of submachine state.");
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -421,6 +424,8 @@ void QUmlStateMachine::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::OppositeEndRole] = QStringLiteral("Pseudostate-stateMachine");
 
     QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateMachine");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::DocumentationRole] = QStringLiteral("The state machines of which this is an extension.");
     QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Behavior-redefinedBehavior");
@@ -428,6 +433,8 @@ void QUmlStateMachine::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("extendedStateMachine")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateMachine");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::DocumentationRole] = QStringLiteral("The regions owned directly by the state machine.");
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -435,6 +442,8 @@ void QUmlStateMachine::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::OppositeEndRole] = QStringLiteral("Region-stateMachine");
 
     QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateMachine");
+    QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::DocumentationRole] = QStringLiteral("References the submachine(s) in case of a submachine state. Multiple machines are referenced in case of a concurrent state.");
     QModelingObject::propertyDataHash[QStringLiteral("submachineState")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

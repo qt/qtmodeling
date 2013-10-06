@@ -45,6 +45,7 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateBinding>
 #include <QtUml/QUmlTemplateSignature>
+
 /*!
     \class QUmlTemplateableElement
 
@@ -65,11 +66,11 @@ QUmlTemplateableElement::~QUmlTemplateableElement()
 QModelingObject *QUmlTemplateableElement::clone() const
 {
     QUmlTemplateableElement *c = new QUmlTemplateableElement;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
     return c;
 }
@@ -109,19 +110,19 @@ void QUmlTemplateableElement::setOwnedTemplateSignature(QUmlTemplateSignature *o
 /*!
     The optional bindings from this element to templates.
  */
-const QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBinding() const
+const QSet<QUmlTemplateBinding *> QUmlTemplateableElement::templateBindings() const
 {
     // This is a read-write association end
 
-    return _templateBinding;
+    return _templateBindings;
 }
 
 void QUmlTemplateableElement::addTemplateBinding(QUmlTemplateBinding *templateBinding)
 {
     // This is a read-write association end
 
-    if (!_templateBinding.contains(templateBinding)) {
-        _templateBinding.insert(templateBinding);
+    if (!_templateBindings.contains(templateBinding)) {
+        _templateBindings.insert(templateBinding);
         if (templateBinding && templateBinding->asQObject() && this->asQObject())
             QObject::connect(templateBinding->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTemplateBinding(QObject *)));
         templateBinding->asQObject()->setParent(this->asQObject());
@@ -140,8 +141,8 @@ void QUmlTemplateableElement::removeTemplateBinding(QUmlTemplateBinding *templat
 {
     // This is a read-write association end
 
-    if (_templateBinding.contains(templateBinding)) {
-        _templateBinding.remove(templateBinding);
+    if (_templateBindings.contains(templateBinding)) {
+        _templateBindings.remove(templateBinding);
         if (templateBinding->asQObject())
             templateBinding->asQObject()->setParent(0);
 
@@ -180,6 +181,8 @@ QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements(
 void QUmlTemplateableElement::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("ownedTemplateSignature")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedTemplateSignature")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateableElement");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedTemplateSignature")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedTemplateSignature")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedTemplateSignature")][QtModeling::DocumentationRole] = QStringLiteral("The optional template signature specifying the formal template parameters.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedTemplateSignature")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -187,6 +190,8 @@ void QUmlTemplateableElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedTemplateSignature")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateSignature-template");
 
     QModelingObject::propertyDataHash[QStringLiteral("templateBinding")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("templateBinding")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateableElement");
+    QModelingObject::propertyDataHash[QStringLiteral("templateBinding")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("templateBinding")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("templateBinding")][QtModeling::DocumentationRole] = QStringLiteral("The optional bindings from this element to templates.");
     QModelingObject::propertyDataHash[QStringLiteral("templateBinding")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

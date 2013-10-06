@@ -64,14 +64,14 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlInteractionFragment *> fragment() const;
+    const QList<QUmlInteractionFragment *> fragments() const;
     void addFragment(QUmlInteractionFragment *fragment);
     void removeFragment(QUmlInteractionFragment *fragment);
     QUmlInteractionConstraint *guard() const;
     void setGuard(QUmlInteractionConstraint *guard);
 
 protected:
-    QList<QUmlInteractionFragment *> _fragment;
+    QList<QUmlInteractionFragment *> _fragments;
     QUmlInteractionConstraint *_guard;
 
     virtual void setPropertyData();

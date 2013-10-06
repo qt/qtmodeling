@@ -64,7 +64,7 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlGeneralization *> generalization() const;
+    const QSet<QUmlGeneralization *> generalizations() const;
     void addGeneralization(QUmlGeneralization *generalization);
     void removeGeneralization(QUmlGeneralization *generalization);
     bool isCovering() const;
@@ -75,7 +75,7 @@ public:
     void setPowertype(QUmlClassifier *powertype);
 
 protected:
-    QSet<QUmlGeneralization *> _generalization;
+    QSet<QUmlGeneralization *> _generalizations;
     bool _isCovering;
     bool _isDisjoint;
     QUmlClassifier *_powertype;

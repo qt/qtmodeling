@@ -54,6 +54,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlTimeInterval>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlTimeConstraint
 
@@ -83,19 +84,19 @@ QUmlTimeConstraint::~QUmlTimeConstraint()
 QModelingObject *QUmlTimeConstraint::clone() const
 {
     QUmlTimeConstraint *c = new QUmlTimeConstraint;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlElement *element, constrainedElement())
+    foreach (QUmlElement *element, constrainedElements())
         c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
     if (context())
         c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
@@ -152,6 +153,8 @@ void QUmlTimeConstraint::setSpecification(QUmlTimeInterval *specification)
 void QUmlTimeConstraint::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::DocumentationRole] = QStringLiteral("The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.");
     QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -159,6 +162,8 @@ void QUmlTimeConstraint::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("IntervalConstraint-specification");

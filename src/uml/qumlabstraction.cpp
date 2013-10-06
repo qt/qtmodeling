@@ -52,6 +52,7 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlAbstraction
 
@@ -80,21 +81,21 @@ QUmlAbstraction::~QUmlAbstraction()
 QModelingObject *QUmlAbstraction::clone() const
 {
     QUmlAbstraction *c = new QUmlAbstraction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlNamedElement *element, client())
+    foreach (QUmlNamedElement *element, clients())
         c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, supplier())
+    foreach (QUmlNamedElement *element, suppliers())
         c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     if (mapping())
         c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
@@ -136,6 +137,8 @@ void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
 void QUmlAbstraction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("mapping")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("mapping")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAbstraction");
+    QModelingObject::propertyDataHash[QStringLiteral("mapping")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("mapping")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("mapping")][QtModeling::DocumentationRole] = QStringLiteral("An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.");
     QModelingObject::propertyDataHash[QStringLiteral("mapping")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

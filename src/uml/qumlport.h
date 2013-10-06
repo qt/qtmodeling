@@ -75,7 +75,7 @@ public:
     const QSet<QUmlInterface *> provided() const;
     Q_DECL_HIDDEN void addProvided(QUmlInterface *provided);
     Q_DECL_HIDDEN void removeProvided(QUmlInterface *provided);
-    const QSet<QUmlPort *> redefinedPort() const;
+    const QSet<QUmlPort *> redefinedPorts() const;
     void addRedefinedPort(QUmlPort *redefinedPort);
     void removeRedefinedPort(QUmlPort *redefinedPort);
     const QSet<QUmlInterface *> required() const;
@@ -87,7 +87,7 @@ protected:
     bool _isConjugated;
     bool _isService;
     QUmlProtocolStateMachine *_protocol;
-    QSet<QUmlPort *> _redefinedPort;
+    QSet<QUmlPort *> _redefinedPorts;
 
     virtual void setPropertyData();
 };

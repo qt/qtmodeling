@@ -54,6 +54,7 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlConnector
 
@@ -81,9 +82,9 @@ QUmlConnector::~QUmlConnector()
 QModelingObject *QUmlConnector::clone() const
 {
     QUmlConnector *c = new QUmlConnector;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -91,11 +92,11 @@ QModelingObject *QUmlConnector::clone() const
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
     c->setStatic(isStatic());
-    foreach (QUmlBehavior *element, contract())
+    foreach (QUmlBehavior *element, contracts())
         c->addContract(dynamic_cast<QUmlBehavior *>(element->clone()));
-    foreach (QUmlConnectorEnd *element, end())
+    foreach (QUmlConnectorEnd *element, ends())
         c->addEnd(dynamic_cast<QUmlConnectorEnd *>(element->clone()));
-    foreach (QUmlConnector *element, redefinedConnector())
+    foreach (QUmlConnector *element, redefinedConnectors())
         c->addRedefinedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
     if (type())
         c->setType(dynamic_cast<QUmlAssociation *>(type()->clone()));
@@ -107,19 +108,19 @@ QModelingObject *QUmlConnector::clone() const
 /*!
     The set of Behaviors that specify the valid interaction patterns across the connector.
  */
-const QSet<QUmlBehavior *> QUmlConnector::contract() const
+const QSet<QUmlBehavior *> QUmlConnector::contracts() const
 {
     // This is a read-write association end
 
-    return _contract;
+    return _contracts;
 }
 
 void QUmlConnector::addContract(QUmlBehavior *contract)
 {
     // This is a read-write association end
 
-    if (!_contract.contains(contract)) {
-        _contract.insert(contract);
+    if (!_contracts.contains(contract)) {
+        _contracts.insert(contract);
         if (contract && contract->asQObject() && this->asQObject())
             QObject::connect(contract->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeContract(QObject *)));
     }
@@ -129,27 +130,27 @@ void QUmlConnector::removeContract(QUmlBehavior *contract)
 {
     // This is a read-write association end
 
-    if (_contract.contains(contract)) {
-        _contract.remove(contract);
+    if (_contracts.contains(contract)) {
+        _contracts.remove(contract);
     }
 }
 
 /*!
     A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.
  */
-const QList<QUmlConnectorEnd *> QUmlConnector::end() const
+const QList<QUmlConnectorEnd *> QUmlConnector::ends() const
 {
     // This is a read-write association end
 
-    return _end;
+    return _ends;
 }
 
 void QUmlConnector::addEnd(QUmlConnectorEnd *end)
 {
     // This is a read-write association end
 
-    if (!_end.contains(end)) {
-        _end.append(end);
+    if (!_ends.contains(end)) {
+        _ends.append(end);
         if (end && end->asQObject() && this->asQObject())
             QObject::connect(end->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEnd(QObject *)));
         end->asQObject()->setParent(this->asQObject());
@@ -163,8 +164,8 @@ void QUmlConnector::removeEnd(QUmlConnectorEnd *end)
 {
     // This is a read-write association end
 
-    if (_end.contains(end)) {
-        _end.removeAll(end);
+    if (_ends.contains(end)) {
+        _ends.removeAll(end);
         if (end->asQObject())
             end->asQObject()->setParent(0);
 
@@ -189,7 +190,7 @@ void QUmlConnector::setKind(QtUml::ConnectorKind kind)
 {
     // This is a read-only derived property
 
-    qWarning("UmlConnector::kind(): to be implemented (this is a derived property)");
+    qWarning("UmlConnector::setKind(): to be implemented (this is a derived property)");
     Q_UNUSED(kind);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -200,19 +201,19 @@ void QUmlConnector::setKind(QtUml::ConnectorKind kind)
 /*!
     A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.
  */
-const QSet<QUmlConnector *> QUmlConnector::redefinedConnector() const
+const QSet<QUmlConnector *> QUmlConnector::redefinedConnectors() const
 {
     // This is a read-write association end
 
-    return _redefinedConnector;
+    return _redefinedConnectors;
 }
 
 void QUmlConnector::addRedefinedConnector(QUmlConnector *redefinedConnector)
 {
     // This is a read-write association end
 
-    if (!_redefinedConnector.contains(redefinedConnector)) {
-        _redefinedConnector.insert(redefinedConnector);
+    if (!_redefinedConnectors.contains(redefinedConnector)) {
+        _redefinedConnectors.insert(redefinedConnector);
         if (redefinedConnector && redefinedConnector->asQObject() && this->asQObject())
             QObject::connect(redefinedConnector->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedConnector(QObject *)));
 
@@ -225,8 +226,8 @@ void QUmlConnector::removeRedefinedConnector(QUmlConnector *redefinedConnector)
 {
     // This is a read-write association end
 
-    if (_redefinedConnector.contains(redefinedConnector)) {
-        _redefinedConnector.remove(redefinedConnector);
+    if (_redefinedConnectors.contains(redefinedConnector)) {
+        _redefinedConnectors.remove(redefinedConnector);
 
         // Adjust subsetted properties
         removeRedefinedElement(redefinedConnector);
@@ -257,6 +258,8 @@ void QUmlConnector::setType(QUmlAssociation *type)
 void QUmlConnector::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::DocumentationRole] = QStringLiteral("The set of Behaviors that specify the valid interaction patterns across the connector.");
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -264,6 +267,8 @@ void QUmlConnector::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::DocumentationRole] = QStringLiteral("A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.");
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -271,6 +276,8 @@ void QUmlConnector::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::DocumentationRole] = QStringLiteral("Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.");
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -278,6 +285,8 @@ void QUmlConnector::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("redefinedConnector")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedConnector")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedConnector")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedConnector")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedConnector")][QtModeling::DocumentationRole] = QStringLiteral("A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.");
     QModelingObject::propertyDataHash[QStringLiteral("redefinedConnector")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -285,6 +294,8 @@ void QUmlConnector::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("redefinedConnector")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("An optional association that specifies the link corresponding to this connector.");
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

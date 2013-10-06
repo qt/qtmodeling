@@ -64,16 +64,16 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlConstraint *> condition() const;
+    const QSet<QUmlConstraint *> conditions() const;
     void addCondition(QUmlConstraint *condition);
     void removeCondition(QUmlConstraint *condition);
-    const QSet<QUmlParameter *> parameter() const;
+    const QSet<QUmlParameter *> parameters() const;
     void addParameter(QUmlParameter *parameter);
     void removeParameter(QUmlParameter *parameter);
 
 protected:
-    QSet<QUmlConstraint *> _condition;
-    QSet<QUmlParameter *> _parameter;
+    QSet<QUmlConstraint *> _conditions;
+    QSet<QUmlParameter *> _parameters;
 
     virtual void setPropertyData();
 };

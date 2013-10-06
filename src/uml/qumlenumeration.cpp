@@ -71,6 +71,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlEnumeration
 
@@ -98,18 +99,18 @@ QUmlEnumeration::~QUmlEnumeration()
 QModelingObject *QUmlEnumeration::clone() const
 {
     QUmlEnumeration *c = new QUmlEnumeration;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -117,35 +118,35 @@ QModelingObject *QUmlEnumeration::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlOperation *element, ownedOperation())
+    foreach (QUmlOperation *element, ownedOperations())
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
-    foreach (QUmlEnumerationLiteral *element, ownedLiteral())
+    foreach (QUmlEnumerationLiteral *element, ownedLiterals())
         c->addOwnedLiteral(dynamic_cast<QUmlEnumerationLiteral *>(element->clone()));
     return c;
 }
@@ -155,19 +156,19 @@ QModelingObject *QUmlEnumeration::clone() const
 /*!
     The ordered set of literals for this Enumeration.
  */
-const QList<QUmlEnumerationLiteral *> QUmlEnumeration::ownedLiteral() const
+const QList<QUmlEnumerationLiteral *> QUmlEnumeration::ownedLiterals() const
 {
     // This is a read-write association end
 
-    return _ownedLiteral;
+    return _ownedLiterals;
 }
 
 void QUmlEnumeration::addOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 {
     // This is a read-write association end
 
-    if (!_ownedLiteral.contains(ownedLiteral)) {
-        _ownedLiteral.append(ownedLiteral);
+    if (!_ownedLiterals.contains(ownedLiteral)) {
+        _ownedLiterals.append(ownedLiteral);
         if (ownedLiteral && ownedLiteral->asQObject() && this->asQObject())
             QObject::connect(ownedLiteral->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedLiteral(QObject *)));
         ownedLiteral->asQObject()->setParent(this->asQObject());
@@ -186,8 +187,8 @@ void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 {
     // This is a read-write association end
 
-    if (_ownedLiteral.contains(ownedLiteral)) {
-        _ownedLiteral.removeAll(ownedLiteral);
+    if (_ownedLiterals.contains(ownedLiteral)) {
+        _ownedLiterals.removeAll(ownedLiteral);
         if (ownedLiteral->asQObject())
             ownedLiteral->asQObject()->setParent(0);
 
@@ -204,6 +205,8 @@ void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 void QUmlEnumeration::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEnumeration");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of literals for this Enumeration.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

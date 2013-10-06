@@ -66,6 +66,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlExtensionEnd
 
@@ -94,9 +95,9 @@ QUmlExtensionEnd::~QUmlExtensionEnd()
 QModelingObject *QUmlExtensionEnd::clone() const
 {
     QUmlExtensionEnd *c = new QUmlExtensionEnd;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -114,7 +115,7 @@ QModelingObject *QUmlExtensionEnd::clone() const
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlConnectableElementTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDeployment *element, deployment())
+    foreach (QUmlDeployment *element, deployments())
         c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
     c->setAggregation(aggregation());
     if (association())
@@ -135,11 +136,11 @@ QModelingObject *QUmlExtensionEnd::clone() const
     c->setReadOnly(isReadOnly());
     if (owningAssociation())
         c->setOwningAssociation(dynamic_cast<QUmlAssociation *>(owningAssociation()->clone()));
-    foreach (QUmlProperty *element, qualifier())
+    foreach (QUmlProperty *element, qualifiers())
         c->addQualifier(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlProperty *element, redefinedProperty())
+    foreach (QUmlProperty *element, redefinedProperties())
         c->addRedefinedProperty(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlProperty *element, subsettedProperty())
+    foreach (QUmlProperty *element, subsettedProperties())
         c->addSubsettedProperty(dynamic_cast<QUmlProperty *>(element->clone()));
     if (type())
         c->setType(dynamic_cast<QUmlStereotype *>(type()->clone()));
@@ -164,7 +165,7 @@ void QUmlExtensionEnd::setLower(int lower)
 {
     // This is a read-write derived property
 
-    qWarning("UmlExtensionEnd::lower(): to be implemented (this is a derived property)");
+    qWarning("UmlExtensionEnd::setLower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -208,6 +209,8 @@ int QUmlExtensionEnd::lowerBound() const
 void QUmlExtensionEnd::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.");
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("MultiplicityElement-lower");
@@ -215,6 +218,8 @@ void QUmlExtensionEnd::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.");
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TypedElement-type");

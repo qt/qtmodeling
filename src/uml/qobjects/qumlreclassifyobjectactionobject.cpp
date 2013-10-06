@@ -79,18 +79,18 @@ QUmlReclassifyObjectActionObject::~QUmlReclassifyObjectActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::ownedComment() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::ownedElement() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlReclassifyObjectActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::clientDependency() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlReclassifyObjectActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::redefinedElement() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlReclassifyObjectActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::inGroup() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::inPartition() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,36 +209,36 @@ QObject *QUmlReclassifyObjectActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::incoming() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::outgoing() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::redefinedNode() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::handler() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -253,10 +253,10 @@ QObject *QUmlReclassifyObjectActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlReclassifyObjectActionObject::input() const
+const QList<QObject *> QUmlReclassifyObjectActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -266,26 +266,26 @@ bool QUmlReclassifyObjectActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::localPostcondition() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::localPrecondition() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlReclassifyObjectActionObject::output() const
+const QList<QObject *> QUmlReclassifyObjectActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
@@ -297,10 +297,10 @@ bool QUmlReclassifyObjectActionObject::isReplaceAll() const
     return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->isReplaceAll();
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::newClassifier() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::newClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->newClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->newClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -313,10 +313,10 @@ QObject *QUmlReclassifyObjectActionObject::object() const
         return qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->object()->asQObject();
 }
 
-const QSet<QObject *> QUmlReclassifyObjectActionObject::oldClassifier() const
+const QSet<QObject *> QUmlReclassifyObjectActionObject::oldClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->oldClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReclassifyObjectAction *>(this)->oldClassifiers())
         set.insert(element->asQObject());
     return set;
 }

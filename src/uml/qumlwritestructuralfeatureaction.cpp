@@ -61,6 +61,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlWriteStructuralFeatureAction
 
@@ -82,9 +83,9 @@ QUmlWriteStructuralFeatureAction::~QUmlWriteStructuralFeatureAction()
 QModelingObject *QUmlWriteStructuralFeatureAction::clone() const
 {
     QUmlWriteStructuralFeatureAction *c = new QUmlWriteStructuralFeatureAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -93,24 +94,24 @@ QModelingObject *QUmlWriteStructuralFeatureAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     if (object())
         c->setObject(dynamic_cast<QUmlInputPin *>(object()->clone()));
@@ -188,6 +189,8 @@ void QUmlWriteStructuralFeatureAction::setValue(QUmlInputPin *value)
 void QUmlWriteStructuralFeatureAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlWriteStructuralFeatureAction");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -195,6 +198,8 @@ void QUmlWriteStructuralFeatureAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlWriteStructuralFeatureAction");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Value to be added or removed from the structural feature.");
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

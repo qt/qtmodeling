@@ -52,6 +52,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlLiteralUnlimitedNatural
 
@@ -79,9 +80,9 @@ QUmlLiteralUnlimitedNatural::~QUmlLiteralUnlimitedNatural()
 QModelingObject *QUmlLiteralUnlimitedNatural::clone() const
 {
     QUmlLiteralUnlimitedNatural *c = new QUmlLiteralUnlimitedNatural;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -144,6 +145,8 @@ int QUmlLiteralUnlimitedNatural::unlimitedValue() const
 void QUmlLiteralUnlimitedNatural::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralUnlimitedNatural");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified UnlimitedNatural value.");
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

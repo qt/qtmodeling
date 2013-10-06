@@ -45,6 +45,7 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlProtocolStateMachine>
+
 /*!
     \class QUmlProtocolConformance
 
@@ -73,7 +74,7 @@ QUmlProtocolConformance::~QUmlProtocolConformance()
 QModelingObject *QUmlProtocolConformance::clone() const
 {
     QUmlProtocolConformance *c = new QUmlProtocolConformance;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (generalMachine())
         c->setGeneralMachine(dynamic_cast<QUmlProtocolStateMachine *>(generalMachine()->clone()));
@@ -146,6 +147,8 @@ void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *speci
 void QUmlProtocolConformance::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("generalMachine")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("generalMachine")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolConformance");
+    QModelingObject::propertyDataHash[QStringLiteral("generalMachine")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("generalMachine")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("generalMachine")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the protocol state machine to which the specific state machine conforms.");
     QModelingObject::propertyDataHash[QStringLiteral("generalMachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -153,6 +156,8 @@ void QUmlProtocolConformance::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("generalMachine")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("specificMachine")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("specificMachine")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolConformance");
+    QModelingObject::propertyDataHash[QStringLiteral("specificMachine")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specificMachine")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specificMachine")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the state machine which conforms to the general state machine.");
     QModelingObject::propertyDataHash[QStringLiteral("specificMachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

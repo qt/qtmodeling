@@ -63,17 +63,17 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlPackageableElement *> deployedElement() const;
+    const QSet<QUmlPackageableElement *> deployedElements() const;
     Q_DECL_HIDDEN void addDeployedElement(QUmlPackageableElement *deployedElement);
     Q_DECL_HIDDEN void removeDeployedElement(QUmlPackageableElement *deployedElement);
-    const QSet<QUmlDeployment *> deployment() const;
+    const QSet<QUmlDeployment *> deployments() const;
     void addDeployment(QUmlDeployment *deployment);
     void removeDeployment(QUmlDeployment *deployment);
 
 protected:
     explicit QUmlDeploymentTarget();
 
-    QSet<QUmlDeployment *> _deployment;
+    QSet<QUmlDeployment *> _deployments;
 
     virtual void setPropertyData();
 };

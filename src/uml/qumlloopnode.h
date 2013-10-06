@@ -65,42 +65,42 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlOutputPin *> bodyOutput() const;
+    const QList<QUmlOutputPin *> bodyOutputs() const;
     void addBodyOutput(QUmlOutputPin *bodyOutput);
     void removeBodyOutput(QUmlOutputPin *bodyOutput);
-    const QSet<QUmlExecutableNode *> bodyPart() const;
+    const QSet<QUmlExecutableNode *> bodyParts() const;
     void addBodyPart(QUmlExecutableNode *bodyPart);
     void removeBodyPart(QUmlExecutableNode *bodyPart);
     QUmlOutputPin *decider() const;
     void setDecider(QUmlOutputPin *decider);
     bool isTestedFirst() const;
     void setTestedFirst(bool isTestedFirst);
-    const QList<QUmlOutputPin *> loopVariable() const;
+    const QList<QUmlOutputPin *> loopVariables() const;
     void addLoopVariable(QUmlOutputPin *loopVariable);
     void removeLoopVariable(QUmlOutputPin *loopVariable);
-    const QList<QUmlInputPin *> loopVariableInput() const;
+    const QList<QUmlInputPin *> loopVariableInputs() const;
     void addLoopVariableInput(QUmlInputPin *loopVariableInput);
     void removeLoopVariableInput(QUmlInputPin *loopVariableInput);
-    const QList<QUmlOutputPin *> result() const;
+    const QList<QUmlOutputPin *> results() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
-    const QSet<QUmlExecutableNode *> setupPart() const;
+    const QSet<QUmlExecutableNode *> setupParts() const;
     void addSetupPart(QUmlExecutableNode *setupPart);
     void removeSetupPart(QUmlExecutableNode *setupPart);
-    const QSet<QUmlExecutableNode *> test() const;
+    const QSet<QUmlExecutableNode *> tests() const;
     void addTest(QUmlExecutableNode *test);
     void removeTest(QUmlExecutableNode *test);
 
 protected:
-    QList<QUmlOutputPin *> _bodyOutput;
-    QSet<QUmlExecutableNode *> _bodyPart;
+    QList<QUmlOutputPin *> _bodyOutputs;
+    QSet<QUmlExecutableNode *> _bodyParts;
     QUmlOutputPin *_decider;
     bool _isTestedFirst;
-    QList<QUmlOutputPin *> _loopVariable;
-    QList<QUmlInputPin *> _loopVariableInput;
-    QList<QUmlOutputPin *> _result;
-    QSet<QUmlExecutableNode *> _setupPart;
-    QSet<QUmlExecutableNode *> _test;
+    QList<QUmlOutputPin *> _loopVariables;
+    QList<QUmlInputPin *> _loopVariableInputs;
+    QList<QUmlOutputPin *> _results;
+    QSet<QUmlExecutableNode *> _setupParts;
+    QSet<QUmlExecutableNode *> _tests;
 
     virtual void setPropertyData();
 };

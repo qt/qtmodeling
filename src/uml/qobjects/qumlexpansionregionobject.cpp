@@ -84,18 +84,18 @@ QUmlExpansionRegionObject::~QUmlExpansionRegionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlExpansionRegionObject::ownedComment() const
+const QSet<QObject *> QUmlExpansionRegionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::ownedElement() const
+const QSet<QObject *> QUmlExpansionRegionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -110,10 +110,10 @@ QObject *QUmlExpansionRegionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlExpansionRegionObject::clientDependency() const
+const QSet<QObject *> QUmlExpansionRegionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -156,44 +156,44 @@ bool QUmlExpansionRegionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::redefinedElement() const
+const QSet<QObject *> QUmlExpansionRegionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::redefinitionContext() const
+const QSet<QObject *> QUmlExpansionRegionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ActivityNode]
 
-const QSet<QObject *> QUmlExpansionRegionObject::inGroup() const
+const QSet<QObject *> QUmlExpansionRegionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlExpansionRegionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::inPartition() const
+const QSet<QObject *> QUmlExpansionRegionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -206,36 +206,36 @@ QObject *QUmlExpansionRegionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::incoming() const
+const QSet<QObject *> QUmlExpansionRegionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::outgoing() const
+const QSet<QObject *> QUmlExpansionRegionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::redefinedNode() const
+const QSet<QObject *> QUmlExpansionRegionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlExpansionRegionObject::handler() const
+const QSet<QObject *> QUmlExpansionRegionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -250,10 +250,10 @@ QObject *QUmlExpansionRegionObject::context() const
         return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlExpansionRegionObject::input() const
+const QList<QObject *> QUmlExpansionRegionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -263,102 +263,102 @@ bool QUmlExpansionRegionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::localPostcondition() const
+const QSet<QObject *> QUmlExpansionRegionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::localPrecondition() const
+const QSet<QObject *> QUmlExpansionRegionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlExpansionRegionObject::output() const
+const QList<QObject *> QUmlExpansionRegionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
 
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlExpansionRegionObject::elementImport() const
+const QSet<QObject *> QUmlExpansionRegionObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::importedMember() const
+const QSet<QObject *> QUmlExpansionRegionObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::member() const
+const QSet<QObject *> QUmlExpansionRegionObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::ownedMember() const
+const QSet<QObject *> QUmlExpansionRegionObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::ownedRule() const
+const QSet<QObject *> QUmlExpansionRegionObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::packageImport() const
+const QSet<QObject *> QUmlExpansionRegionObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ActivityGroup]
 
-const QSet<QObject *> QUmlExpansionRegionObject::containedEdge() const
+const QSet<QObject *> QUmlExpansionRegionObject::containedEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->containedEdge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->containedEdges())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::containedNode() const
+const QSet<QObject *> QUmlExpansionRegionObject::containedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->containedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->containedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::subgroup() const
+const QSet<QObject *> QUmlExpansionRegionObject::subgroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->subgroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->subgroups())
         set.insert(element->asQObject());
     return set;
 }
@@ -381,10 +381,10 @@ QObject *QUmlExpansionRegionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::edge() const
+const QSet<QObject *> QUmlExpansionRegionObject::edges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->edge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->edges())
         set.insert(element->asQObject());
     return set;
 }
@@ -394,44 +394,44 @@ bool QUmlExpansionRegionObject::mustIsolate() const
     return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->mustIsolate();
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::node() const
+const QSet<QObject *> QUmlExpansionRegionObject::nodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->node())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->nodes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::structuredNodeInput() const
+const QSet<QObject *> QUmlExpansionRegionObject::structuredNodeInputs() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->structuredNodeInput())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->structuredNodeInputs())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::structuredNodeOutput() const
+const QSet<QObject *> QUmlExpansionRegionObject::structuredNodeOutputs() const
 {
     QSet<QObject *> set;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->structuredNodeOutput())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->structuredNodeOutputs())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::variable() const
+const QSet<QObject *> QUmlExpansionRegionObject::variables() const
 {
     QSet<QObject *> set;
-    foreach (QUmlVariable *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->variable())
+    foreach (QUmlVariable *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->variables())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExpansionRegion]
 
-const QSet<QObject *> QUmlExpansionRegionObject::inputElement() const
+const QSet<QObject *> QUmlExpansionRegionObject::inputElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExpansionNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inputElement())
+    foreach (QUmlExpansionNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->inputElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -441,10 +441,10 @@ QtUml::ExpansionKind QUmlExpansionRegionObject::mode() const
     return qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->mode();
 }
 
-const QSet<QObject *> QUmlExpansionRegionObject::outputElement() const
+const QSet<QObject *> QUmlExpansionRegionObject::outputElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExpansionNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->outputElement())
+    foreach (QUmlExpansionNode *element, qmodelingobjectproperty_cast<QUmlExpansionRegion *>(this)->outputElements())
         set.insert(element->asQObject());
     return set;
 }

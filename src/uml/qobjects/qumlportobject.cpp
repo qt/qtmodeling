@@ -83,18 +83,18 @@ QUmlPortObject::~QUmlPortObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlPortObject::ownedComment() const
+const QSet<QObject *> QUmlPortObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPortObject::ownedElement() const
+const QSet<QObject *> QUmlPortObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -109,10 +109,10 @@ QObject *QUmlPortObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlPortObject::clientDependency() const
+const QSet<QObject *> QUmlPortObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -203,28 +203,28 @@ bool QUmlPortObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlPort *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlPortObject::redefinedElement() const
+const QSet<QObject *> QUmlPortObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPortObject::redefinitionContext() const
+const QSet<QObject *> QUmlPortObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Feature]
 
-const QSet<QObject *> QUmlPortObject::featuringClassifier() const
+const QSet<QObject *> QUmlPortObject::featuringClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->featuringClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->featuringClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -243,12 +243,13 @@ QObject *QUmlPortObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlPort *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [ConnectableElement]
 
-const QList<QObject *> QUmlPortObject::end() const
+const QList<QObject *> QUmlPortObject::ends() const
 {
     QList<QObject *> list;
-    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->end())
+    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->ends())
         list.append(element->asQObject());
     return list;
 }
@@ -263,18 +264,18 @@ QObject *QUmlPortObject::templateParameter() const
 
 // OWNED ATTRIBUTES [DeploymentTarget]
 
-const QSet<QObject *> QUmlPortObject::deployedElement() const
+const QSet<QObject *> QUmlPortObject::deployedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->deployedElement())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->deployedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPortObject::deployment() const
+const QSet<QObject *> QUmlPortObject::deployments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->deployment())
+    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->deployments())
         set.insert(element->asQObject());
     return set;
 }
@@ -380,26 +381,26 @@ QObject *QUmlPortObject::owningAssociation() const
         return qmodelingobjectproperty_cast<QUmlPort *>(this)->owningAssociation()->asQObject();
 }
 
-const QList<QObject *> QUmlPortObject::qualifier() const
+const QList<QObject *> QUmlPortObject::qualifiers() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->qualifier())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->qualifiers())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlPortObject::redefinedProperty() const
+const QSet<QObject *> QUmlPortObject::redefinedProperties() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->redefinedProperty())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->redefinedProperties())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPortObject::subsettedProperty() const
+const QSet<QObject *> QUmlPortObject::subsettedProperties() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->subsettedProperty())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->subsettedProperties())
         set.insert(element->asQObject());
     return set;
 }
@@ -437,10 +438,10 @@ const QSet<QObject *> QUmlPortObject::provided() const
     return set;
 }
 
-const QSet<QObject *> QUmlPortObject::redefinedPort() const
+const QSet<QObject *> QUmlPortObject::redefinedPorts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->redefinedPort())
+    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlPort *>(this)->redefinedPorts())
         set.insert(element->asQObject());
     return set;
 }

@@ -70,19 +70,19 @@ public:
     Q_DECL_HIDDEN void setContext(QUmlBehavioredClassifier *context);
     bool isReentrant() const;
     void setReentrant(bool isReentrant);
-    const QList<QUmlParameter *> ownedParameter() const;
+    const QList<QUmlParameter *> ownedParameters() const;
     void addOwnedParameter(QUmlParameter *ownedParameter);
     void removeOwnedParameter(QUmlParameter *ownedParameter);
-    const QSet<QUmlParameterSet *> ownedParameterSet() const;
+    const QSet<QUmlParameterSet *> ownedParameterSets() const;
     void addOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
     void removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
-    const QSet<QUmlConstraint *> postcondition() const;
+    const QSet<QUmlConstraint *> postconditions() const;
     void addPostcondition(QUmlConstraint *postcondition);
     void removePostcondition(QUmlConstraint *postcondition);
-    const QSet<QUmlConstraint *> precondition() const;
+    const QSet<QUmlConstraint *> preconditions() const;
     void addPrecondition(QUmlConstraint *precondition);
     void removePrecondition(QUmlConstraint *precondition);
-    const QSet<QUmlBehavior *> redefinedBehavior() const;
+    const QSet<QUmlBehavior *> redefinedBehaviors() const;
     void addRedefinedBehavior(QUmlBehavior *redefinedBehavior);
     void removeRedefinedBehavior(QUmlBehavior *redefinedBehavior);
     QUmlBehavioralFeature *specification() const;
@@ -92,11 +92,11 @@ protected:
     explicit QUmlBehavior();
 
     bool _isReentrant;
-    QList<QUmlParameter *> _ownedParameter;
-    QSet<QUmlParameterSet *> _ownedParameterSet;
-    QSet<QUmlConstraint *> _postcondition;
-    QSet<QUmlConstraint *> _precondition;
-    QSet<QUmlBehavior *> _redefinedBehavior;
+    QList<QUmlParameter *> _ownedParameters;
+    QSet<QUmlParameterSet *> _ownedParameterSets;
+    QSet<QUmlConstraint *> _postconditions;
+    QSet<QUmlConstraint *> _preconditions;
+    QSet<QUmlBehavior *> _redefinedBehaviors;
     QUmlBehavioralFeature *_specification;
 
     virtual void setPropertyData();

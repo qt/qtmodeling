@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlStateObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -72,26 +72,26 @@ class Q_UML_EXPORT QUmlStateObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ member)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImport)
+    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> member READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
+    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
 
     // Properties [Vertex]
     Q_PROPERTY(QObject * container READ container)
-    Q_PROPERTY(QSet<QObject *> incoming READ incoming STORED false)
-    Q_PROPERTY(QSet<QObject *> outgoing READ outgoing STORED false)
+    Q_PROPERTY(QSet<QObject *> incoming READ incomings STORED false)
+    Q_PROPERTY(QSet<QObject *> outgoing READ outgoings STORED false)
 
     // Properties [State]
-    Q_PROPERTY(QSet<QObject *> connection READ connection)
-    Q_PROPERTY(QSet<QObject *> connectionPoint READ connectionPoint)
-    Q_PROPERTY(QSet<QObject *> deferrableTrigger READ deferrableTrigger)
+    Q_PROPERTY(QSet<QObject *> connection READ connections)
+    Q_PROPERTY(QSet<QObject *> connectionPoint READ connectionPoints)
+    Q_PROPERTY(QSet<QObject *> deferrableTrigger READ deferrableTriggers)
     Q_PROPERTY(QObject * doActivity READ doActivity)
     Q_PROPERTY(QObject * entry READ entry)
     Q_PROPERTY(QObject * exit READ exit)
@@ -101,7 +101,7 @@ class Q_UML_EXPORT QUmlStateObject : public QObject
     Q_PROPERTY(bool isSubmachineState READ isSubmachineState RESET unsetSubmachineState STORED false)
     Q_PROPERTY(QObject * redefinedState READ redefinedState)
     Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
-    Q_PROPERTY(QSet<QObject *> region READ region)
+    Q_PROPERTY(QSet<QObject *> region READ regions)
     Q_PROPERTY(QObject * stateInvariant READ stateInvariant)
     Q_PROPERTY(QObject * submachine READ submachine)
 
@@ -110,12 +110,12 @@ public:
     virtual ~QUmlStateObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -123,26 +123,26 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [Namespace]
-    Q_INVOKABLE const QSet<QObject *> elementImport() const;
-    Q_INVOKABLE const QSet<QObject *> importedMember() const;
-    Q_INVOKABLE const QSet<QObject *> member() const;
-    Q_INVOKABLE const QSet<QObject *> ownedMember() const;
-    Q_INVOKABLE const QSet<QObject *> ownedRule() const;
-    Q_INVOKABLE const QSet<QObject *> packageImport() const;
+    Q_INVOKABLE const QSet<QObject *> elementImports() const;
+    Q_INVOKABLE const QSet<QObject *> importedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> members() const;
+    Q_INVOKABLE const QSet<QObject *> ownedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> ownedRules() const;
+    Q_INVOKABLE const QSet<QObject *> packageImports() const;
 
     // Owned attributes [RedefinableElement]
     Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedElement() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedElements() const;
 
     // Owned attributes [Vertex]
     Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE const QSet<QObject *> incoming() const;
-    Q_INVOKABLE const QSet<QObject *> outgoing() const;
+    Q_INVOKABLE const QSet<QObject *> incomings() const;
+    Q_INVOKABLE const QSet<QObject *> outgoings() const;
 
     // Owned attributes [State]
-    Q_INVOKABLE const QSet<QObject *> connection() const;
-    Q_INVOKABLE const QSet<QObject *> connectionPoint() const;
-    Q_INVOKABLE const QSet<QObject *> deferrableTrigger() const;
+    Q_INVOKABLE const QSet<QObject *> connections() const;
+    Q_INVOKABLE const QSet<QObject *> connectionPoints() const;
+    Q_INVOKABLE const QSet<QObject *> deferrableTriggers() const;
     Q_INVOKABLE QObject *doActivity() const;
     Q_INVOKABLE QObject *entry() const;
     Q_INVOKABLE QObject *exit() const;
@@ -152,7 +152,7 @@ public:
     Q_INVOKABLE bool isSubmachineState() const;
     Q_INVOKABLE QObject *redefinedState() const;
     Q_INVOKABLE QObject *redefinitionContext() const;
-    Q_INVOKABLE const QSet<QObject *> region() const;
+    Q_INVOKABLE const QSet<QObject *> regions() const;
     Q_INVOKABLE QObject *stateInvariant() const;
     Q_INVOKABLE QObject *submachine() const;
 

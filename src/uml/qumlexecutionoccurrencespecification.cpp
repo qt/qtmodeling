@@ -54,6 +54,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlExecutionOccurrenceSpecification
 
@@ -82,9 +83,9 @@ QUmlExecutionOccurrenceSpecification::~QUmlExecutionOccurrenceSpecification()
 QModelingObject *QUmlExecutionOccurrenceSpecification::clone() const
 {
     QUmlExecutionOccurrenceSpecification *c = new QUmlExecutionOccurrenceSpecification;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -94,13 +95,13 @@ QModelingObject *QUmlExecutionOccurrenceSpecification::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     if (covered())
         c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
-    foreach (QUmlGeneralOrdering *element, toAfter())
+    foreach (QUmlGeneralOrdering *element, toAfters())
         c->addToAfter(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlGeneralOrdering *element, toBefore())
+    foreach (QUmlGeneralOrdering *element, toBefores())
         c->addToBefore(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     if (execution())
         c->setExecution(dynamic_cast<QUmlExecutionSpecification *>(execution()->clone()));
@@ -133,6 +134,8 @@ void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecificati
 void QUmlExecutionOccurrenceSpecification::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutionOccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::DocumentationRole] = QStringLiteral("References the execution specification describing the execution that is started or finished at this execution event.");
     QModelingObject::propertyDataHash[QStringLiteral("execution")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

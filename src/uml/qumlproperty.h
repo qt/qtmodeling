@@ -104,13 +104,13 @@ public:
     void setOpposite(QUmlProperty *opposite);
     QUmlAssociation *owningAssociation() const;
     void setOwningAssociation(QUmlAssociation *owningAssociation);
-    const QList<QUmlProperty *> qualifier() const;
+    const QList<QUmlProperty *> qualifiers() const;
     void addQualifier(QUmlProperty *qualifier);
     void removeQualifier(QUmlProperty *qualifier);
-    const QSet<QUmlProperty *> redefinedProperty() const;
+    const QSet<QUmlProperty *> redefinedProperties() const;
     void addRedefinedProperty(QUmlProperty *redefinedProperty);
     void removeRedefinedProperty(QUmlProperty *redefinedProperty);
-    const QSet<QUmlProperty *> subsettedProperty() const;
+    const QSet<QUmlProperty *> subsettedProperties() const;
     void addSubsettedProperty(QUmlProperty *subsettedProperty);
     void removeSubsettedProperty(QUmlProperty *subsettedProperty);
 
@@ -134,9 +134,9 @@ protected:
     bool _isID;
     bool _isReadOnly;
     QUmlAssociation *_owningAssociation;
-    QList<QUmlProperty *> _qualifier;
-    QSet<QUmlProperty *> _redefinedProperty;
-    QSet<QUmlProperty *> _subsettedProperty;
+    QList<QUmlProperty *> _qualifiers;
+    QSet<QUmlProperty *> _redefinedProperties;
+    QSet<QUmlProperty *> _subsettedProperties;
 
     virtual void setPropertyData();
 };

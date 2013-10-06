@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlInteractionOperandObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -75,18 +75,18 @@ class Q_UML_EXPORT QUmlInteractionOperandObject : public QObject
     Q_PROPERTY(QSet<QObject *> covered READ covered)
     Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction)
     Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand)
-    Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrdering)
+    Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrderings)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ member)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImport)
+    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> member READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [InteractionOperand]
-    Q_PROPERTY(QList<QObject *> fragment READ fragment)
+    Q_PROPERTY(QList<QObject *> fragment READ fragments)
     Q_PROPERTY(QObject * guard READ guard)
 
 public:
@@ -94,12 +94,12 @@ public:
     virtual ~QUmlInteractionOperandObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -110,18 +110,18 @@ public:
     Q_INVOKABLE const QSet<QObject *> covered() const;
     Q_INVOKABLE QObject *enclosingInteraction() const;
     Q_INVOKABLE QObject *enclosingOperand() const;
-    Q_INVOKABLE const QSet<QObject *> generalOrdering() const;
+    Q_INVOKABLE const QSet<QObject *> generalOrderings() const;
 
     // Owned attributes [Namespace]
-    Q_INVOKABLE const QSet<QObject *> elementImport() const;
-    Q_INVOKABLE const QSet<QObject *> importedMember() const;
-    Q_INVOKABLE const QSet<QObject *> member() const;
-    Q_INVOKABLE const QSet<QObject *> ownedMember() const;
-    Q_INVOKABLE const QSet<QObject *> ownedRule() const;
-    Q_INVOKABLE const QSet<QObject *> packageImport() const;
+    Q_INVOKABLE const QSet<QObject *> elementImports() const;
+    Q_INVOKABLE const QSet<QObject *> importedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> members() const;
+    Q_INVOKABLE const QSet<QObject *> ownedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> ownedRules() const;
+    Q_INVOKABLE const QSet<QObject *> packageImports() const;
 
     // Owned attributes [InteractionOperand]
-    Q_INVOKABLE const QList<QObject *> fragment() const;
+    Q_INVOKABLE const QList<QObject *> fragments() const;
     Q_INVOKABLE QObject *guard() const;
 
     // Operations [Element]

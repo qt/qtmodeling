@@ -59,6 +59,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlVariable
 
@@ -87,7 +88,7 @@ QUmlVariable::~QUmlVariable()
 QModelingObject *QUmlVariable::clone() const
 {
     QUmlVariable *c = new QUmlVariable;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     c->setOrdered(isOrdered());
     c->setUnique(isUnique());
@@ -95,7 +96,7 @@ QModelingObject *QUmlVariable::clone() const
         c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
     if (upperValue())
         c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -184,6 +185,8 @@ bool QUmlVariable::isAccessibleBy(QUmlAction *a) const
 void QUmlVariable::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("activityScope")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("activityScope")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVariable");
+    QModelingObject::propertyDataHash[QStringLiteral("activityScope")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("activityScope")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("activityScope")][QtModeling::DocumentationRole] = QStringLiteral("An activity that owns the variable.");
     QModelingObject::propertyDataHash[QStringLiteral("activityScope")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -191,6 +194,8 @@ void QUmlVariable::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("activityScope")][QtModeling::OppositeEndRole] = QStringLiteral("Activity-variable");
 
     QModelingObject::propertyDataHash[QStringLiteral("scope")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("scope")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVariable");
+    QModelingObject::propertyDataHash[QStringLiteral("scope")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("scope")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("scope")][QtModeling::DocumentationRole] = QStringLiteral("A structured activity node that owns the variable.");
     QModelingObject::propertyDataHash[QStringLiteral("scope")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

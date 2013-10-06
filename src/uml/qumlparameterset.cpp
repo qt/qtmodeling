@@ -51,6 +51,7 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlParameter>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlParameterSet
 
@@ -77,17 +78,17 @@ QUmlParameterSet::~QUmlParameterSet()
 QModelingObject *QUmlParameterSet::clone() const
 {
     QUmlParameterSet *c = new QUmlParameterSet;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlConstraint *element, condition())
+    foreach (QUmlConstraint *element, conditions())
         c->addCondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlParameter *element, parameter())
+    foreach (QUmlParameter *element, parameters())
         c->addParameter(dynamic_cast<QUmlParameter *>(element->clone()));
     return c;
 }
@@ -97,19 +98,19 @@ QModelingObject *QUmlParameterSet::clone() const
 /*!
     Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.
  */
-const QSet<QUmlConstraint *> QUmlParameterSet::condition() const
+const QSet<QUmlConstraint *> QUmlParameterSet::conditions() const
 {
     // This is a read-write association end
 
-    return _condition;
+    return _conditions;
 }
 
 void QUmlParameterSet::addCondition(QUmlConstraint *condition)
 {
     // This is a read-write association end
 
-    if (!_condition.contains(condition)) {
-        _condition.insert(condition);
+    if (!_conditions.contains(condition)) {
+        _conditions.insert(condition);
         if (condition && condition->asQObject() && this->asQObject())
             QObject::connect(condition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCondition(QObject *)));
         condition->asQObject()->setParent(this->asQObject());
@@ -123,8 +124,8 @@ void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 {
     // This is a read-write association end
 
-    if (_condition.contains(condition)) {
-        _condition.remove(condition);
+    if (_conditions.contains(condition)) {
+        _conditions.remove(condition);
         if (condition->asQObject())
             condition->asQObject()->setParent(0);
 
@@ -136,19 +137,19 @@ void QUmlParameterSet::removeCondition(QUmlConstraint *condition)
 /*!
     Parameters in the parameter set.
  */
-const QSet<QUmlParameter *> QUmlParameterSet::parameter() const
+const QSet<QUmlParameter *> QUmlParameterSet::parameters() const
 {
     // This is a read-write association end
 
-    return _parameter;
+    return _parameters;
 }
 
 void QUmlParameterSet::addParameter(QUmlParameter *parameter)
 {
     // This is a read-write association end
 
-    if (!_parameter.contains(parameter)) {
-        _parameter.insert(parameter);
+    if (!_parameters.contains(parameter)) {
+        _parameters.insert(parameter);
         if (parameter && parameter->asQObject() && this->asQObject())
             QObject::connect(parameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameter(QObject *)));
 
@@ -163,8 +164,8 @@ void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
 {
     // This is a read-write association end
 
-    if (_parameter.contains(parameter)) {
-        _parameter.remove(parameter);
+    if (_parameters.contains(parameter)) {
+        _parameters.remove(parameter);
 
         // Adjust opposite properties
         if (parameter) {
@@ -176,6 +177,8 @@ void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
 void QUmlParameterSet::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterSet");
+    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.");
     QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -183,6 +186,8 @@ void QUmlParameterSet::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterSet");
+    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::DocumentationRole] = QStringLiteral("Parameters in the parameter set.");
     QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -56,6 +56,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlInstanceSpecification
 
@@ -83,9 +84,9 @@ QUmlInstanceSpecification::~QUmlInstanceSpecification()
 QModelingObject *QUmlInstanceSpecification::clone() const
 {
     QUmlInstanceSpecification *c = new QUmlInstanceSpecification;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -95,11 +96,11 @@ QModelingObject *QUmlInstanceSpecification::clone() const
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlDeployment *element, deployment())
+    foreach (QUmlDeployment *element, deployments())
         c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
-    foreach (QUmlClassifier *element, classifier())
+    foreach (QUmlClassifier *element, classifiers())
         c->addClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
-    foreach (QUmlSlot *element, slot_())
+    foreach (QUmlSlot *element, slots_())
         c->addSlot(dynamic_cast<QUmlSlot *>(element->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QUmlValueSpecification *>(specification()->clone()));
@@ -111,19 +112,19 @@ QModelingObject *QUmlInstanceSpecification::clone() const
 /*!
     The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.
  */
-const QSet<QUmlClassifier *> QUmlInstanceSpecification::classifier() const
+const QSet<QUmlClassifier *> QUmlInstanceSpecification::classifiers() const
 {
     // This is a read-write association end
 
-    return _classifier;
+    return _classifiers;
 }
 
 void QUmlInstanceSpecification::addClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
 
-    if (!_classifier.contains(classifier)) {
-        _classifier.insert(classifier);
+    if (!_classifiers.contains(classifier)) {
+        _classifiers.insert(classifier);
         if (classifier && classifier->asQObject() && this->asQObject())
             QObject::connect(classifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClassifier(QObject *)));
     }
@@ -133,27 +134,27 @@ void QUmlInstanceSpecification::removeClassifier(QUmlClassifier *classifier)
 {
     // This is a read-write association end
 
-    if (_classifier.contains(classifier)) {
-        _classifier.remove(classifier);
+    if (_classifiers.contains(classifier)) {
+        _classifiers.remove(classifier);
     }
 }
 
 /*!
     A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.
  */
-const QSet<QUmlSlot *> QUmlInstanceSpecification::slot_() const
+const QSet<QUmlSlot *> QUmlInstanceSpecification::slots_() const
 {
     // This is a read-write association end
 
-    return _slot_;
+    return _slots_;
 }
 
 void QUmlInstanceSpecification::addSlot(QUmlSlot *slot_)
 {
     // This is a read-write association end
 
-    if (!_slot_.contains(slot_)) {
-        _slot_.insert(slot_);
+    if (!_slots_.contains(slot_)) {
+        _slots_.insert(slot_);
         if (slot_ && slot_->asQObject() && this->asQObject())
             QObject::connect(slot_->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSlot(QObject *)));
         slot_->asQObject()->setParent(this->asQObject());
@@ -172,8 +173,8 @@ void QUmlInstanceSpecification::removeSlot(QUmlSlot *slot_)
 {
     // This is a read-write association end
 
-    if (_slot_.contains(slot_)) {
-        _slot_.remove(slot_);
+    if (_slots_.contains(slot_)) {
+        _slots_.remove(slot_);
         if (slot_->asQObject())
             slot_->asQObject()->setParent(0);
 
@@ -220,6 +221,8 @@ void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specifi
 void QUmlInstanceSpecification::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.");
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -227,6 +230,8 @@ void QUmlInstanceSpecification::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("slot")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("slot")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("slot")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("slot")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("slot")][QtModeling::DocumentationRole] = QStringLiteral("A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.");
     QModelingObject::propertyDataHash[QStringLiteral("slot")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -234,6 +239,8 @@ void QUmlInstanceSpecification::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("slot")][QtModeling::OppositeEndRole] = QStringLiteral("Slot-owningInstance");
 
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A specification of how to compute, derive, or construct the instance.");
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

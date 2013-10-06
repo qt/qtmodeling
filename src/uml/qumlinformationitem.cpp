@@ -69,6 +69,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlInformationItem
 
@@ -95,18 +96,18 @@ QUmlInformationItem::~QUmlInformationItem()
 QModelingObject *QUmlInformationItem::clone() const
 {
     QUmlInformationItem *c = new QUmlInformationItem;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -114,29 +115,29 @@ QModelingObject *QUmlInformationItem::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
     foreach (QUmlClassifier *element, represented())
         c->addRepresented(dynamic_cast<QUmlClassifier *>(element->clone()));
@@ -178,6 +179,8 @@ void QUmlInformationItem::removeRepresented(QUmlClassifier *represented)
 void QUmlInformationItem::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationItem");
+    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::DocumentationRole] = QStringLiteral("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
     QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

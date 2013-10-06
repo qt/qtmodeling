@@ -75,18 +75,18 @@ QUmlParameterObject::~QUmlParameterObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlParameterObject::ownedComment() const
+const QSet<QObject *> QUmlParameterObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlParameterObject::ownedElement() const
+const QSet<QObject *> QUmlParameterObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -139,10 +139,10 @@ QObject *QUmlParameterObject::upperValue() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlParameterObject::clientDependency() const
+const QSet<QObject *> QUmlParameterObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -197,12 +197,13 @@ QObject *QUmlParameterObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlParameter *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [ConnectableElement]
 
-const QList<QObject *> QUmlParameterObject::end() const
+const QList<QObject *> QUmlParameterObject::ends() const
 {
     QList<QObject *> list;
-    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->end())
+    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->ends())
         list.append(element->asQObject());
     return list;
 }
@@ -258,10 +259,10 @@ QObject *QUmlParameterObject::operation() const
         return qmodelingobjectproperty_cast<QUmlParameter *>(this)->operation()->asQObject();
 }
 
-const QSet<QObject *> QUmlParameterObject::parameterSet() const
+const QSet<QObject *> QUmlParameterObject::parameterSets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlParameterSet *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->parameterSet())
+    foreach (QUmlParameterSet *element, qmodelingobjectproperty_cast<QUmlParameter *>(this)->parameterSets())
         set.insert(element->asQObject());
     return set;
 }

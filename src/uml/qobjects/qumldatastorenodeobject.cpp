@@ -79,18 +79,18 @@ QUmlDataStoreNodeObject::~QUmlDataStoreNodeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlDataStoreNodeObject::ownedComment() const
+const QSet<QObject *> QUmlDataStoreNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDataStoreNodeObject::ownedElement() const
+const QSet<QObject *> QUmlDataStoreNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlDataStoreNodeObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlDataStoreNodeObject::clientDependency() const
+const QSet<QObject *> QUmlDataStoreNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlDataStoreNodeObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlDataStoreNodeObject::redefinedElement() const
+const QSet<QObject *> QUmlDataStoreNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDataStoreNodeObject::redefinitionContext() const
+const QSet<QObject *> QUmlDataStoreNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlDataStoreNodeObject::activity() const
         return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlDataStoreNodeObject::inGroup() const
+const QSet<QObject *> QUmlDataStoreNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDataStoreNodeObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlDataStoreNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDataStoreNodeObject::inPartition() const
+const QSet<QObject *> QUmlDataStoreNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,26 +209,26 @@ QObject *QUmlDataStoreNodeObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlDataStoreNodeObject::incoming() const
+const QSet<QObject *> QUmlDataStoreNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDataStoreNodeObject::outgoing() const
+const QSet<QObject *> QUmlDataStoreNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDataStoreNodeObject::redefinedNode() const
+const QSet<QObject *> QUmlDataStoreNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
@@ -245,10 +245,10 @@ QObject *QUmlDataStoreNodeObject::type() const
 
 // OWNED ATTRIBUTES [ObjectNode]
 
-const QSet<QObject *> QUmlDataStoreNodeObject::inState() const
+const QSet<QObject *> QUmlDataStoreNodeObject::inStates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inState())
+    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlDataStoreNode *>(this)->inStates())
         set.insert(element->asQObject());
     return set;
 }

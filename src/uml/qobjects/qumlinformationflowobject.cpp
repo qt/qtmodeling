@@ -73,18 +73,18 @@ QUmlInformationFlowObject::~QUmlInformationFlowObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlInformationFlowObject::ownedComment() const
+const QSet<QObject *> QUmlInformationFlowObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInformationFlowObject::ownedElement() const
+const QSet<QObject *> QUmlInformationFlowObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -99,28 +99,28 @@ QObject *QUmlInformationFlowObject::owner() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlInformationFlowObject::relatedElement() const
+const QSet<QObject *> QUmlInformationFlowObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlInformationFlowObject::source() const
+const QSet<QObject *> QUmlInformationFlowObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInformationFlowObject::target() const
+const QSet<QObject *> QUmlInformationFlowObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
@@ -145,10 +145,10 @@ QObject *QUmlInformationFlowObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlInformationFlowObject::clientDependency() const
+const QSet<QObject *> QUmlInformationFlowObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -178,6 +178,7 @@ QString QUmlInformationFlowObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlInformationFlowObject::visibility() const
@@ -195,50 +196,50 @@ const QSet<QObject *> QUmlInformationFlowObject::conveyed() const
     return set;
 }
 
-const QSet<QObject *> QUmlInformationFlowObject::informationSource() const
+const QSet<QObject *> QUmlInformationFlowObject::informationSources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->informationSource())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->informationSources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInformationFlowObject::informationTarget() const
+const QSet<QObject *> QUmlInformationFlowObject::informationTargets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->informationTarget())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->informationTargets())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInformationFlowObject::realization() const
+const QSet<QObject *> QUmlInformationFlowObject::realizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRelationship *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->realization())
+    foreach (QUmlRelationship *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->realizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInformationFlowObject::realizingActivityEdge() const
+const QSet<QObject *> QUmlInformationFlowObject::realizingActivityEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->realizingActivityEdge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->realizingActivityEdges())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInformationFlowObject::realizingConnector() const
+const QSet<QObject *> QUmlInformationFlowObject::realizingConnectors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->realizingConnector())
+    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->realizingConnectors())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInformationFlowObject::realizingMessage() const
+const QSet<QObject *> QUmlInformationFlowObject::realizingMessages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlMessage *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->realizingMessage())
+    foreach (QUmlMessage *element, qmodelingobjectproperty_cast<QUmlInformationFlow *>(this)->realizingMessages())
         set.insert(element->asQObject());
     return set;
 }

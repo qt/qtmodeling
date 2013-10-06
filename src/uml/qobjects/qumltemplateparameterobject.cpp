@@ -63,18 +63,18 @@ QUmlTemplateParameterObject::~QUmlTemplateParameterObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlTemplateParameterObject::ownedComment() const
+const QSet<QObject *> QUmlTemplateParameterObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTemplateParameterObject::ownedElement() const
+const QSet<QObject *> QUmlTemplateParameterObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateParameter *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }

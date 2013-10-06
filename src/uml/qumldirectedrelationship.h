@@ -62,18 +62,18 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlElement *> source() const;
+    const QSet<QUmlElement *> sources() const;
     Q_DECL_HIDDEN void addSource(QUmlElement *source);
     Q_DECL_HIDDEN void removeSource(QUmlElement *source);
-    const QSet<QUmlElement *> target() const;
+    const QSet<QUmlElement *> targets() const;
     Q_DECL_HIDDEN void addTarget(QUmlElement *target);
     Q_DECL_HIDDEN void removeTarget(QUmlElement *target);
 
 protected:
     explicit QUmlDirectedRelationship();
 
-    QSet<QUmlElement *> _source;
-    QSet<QUmlElement *> _target;
+    QSet<QUmlElement *> _sources;
+    QSet<QUmlElement *> _targets;
 
     virtual void setPropertyData();
 };

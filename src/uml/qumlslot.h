@@ -69,14 +69,14 @@ public:
     void setDefiningFeature(QUmlStructuralFeature *definingFeature);
     QUmlInstanceSpecification *owningInstance() const;
     void setOwningInstance(QUmlInstanceSpecification *owningInstance);
-    const QList<QUmlValueSpecification *> value() const;
+    const QList<QUmlValueSpecification *> values() const;
     void addValue(QUmlValueSpecification *value);
     void removeValue(QUmlValueSpecification *value);
 
 protected:
     QUmlStructuralFeature *_definingFeature;
     QUmlInstanceSpecification *_owningInstance;
-    QList<QUmlValueSpecification *> _value;
+    QList<QUmlValueSpecification *> _values;
 
     virtual void setPropertyData();
 };

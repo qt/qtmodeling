@@ -54,6 +54,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlCombinedFragment
 
@@ -81,9 +82,9 @@ QUmlCombinedFragment::~QUmlCombinedFragment()
 QModelingObject *QUmlCombinedFragment::clone() const
 {
     QUmlCombinedFragment *c = new QUmlCombinedFragment;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -95,12 +96,12 @@ QModelingObject *QUmlCombinedFragment::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlGate *element, cfragmentGate())
+    foreach (QUmlGate *element, cfragmentGates())
         c->addCfragmentGate(dynamic_cast<QUmlGate *>(element->clone()));
     c->setInteractionOperator(interactionOperator());
-    foreach (QUmlInteractionOperand *element, operand())
+    foreach (QUmlInteractionOperand *element, operands())
         c->addOperand(dynamic_cast<QUmlInteractionOperand *>(element->clone()));
     return c;
 }
@@ -110,19 +111,19 @@ QModelingObject *QUmlCombinedFragment::clone() const
 /*!
     Specifies the gates that form the interface between this CombinedFragment and its surroundings
  */
-const QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGate() const
+const QSet<QUmlGate *> QUmlCombinedFragment::cfragmentGates() const
 {
     // This is a read-write association end
 
-    return _cfragmentGate;
+    return _cfragmentGates;
 }
 
 void QUmlCombinedFragment::addCfragmentGate(QUmlGate *cfragmentGate)
 {
     // This is a read-write association end
 
-    if (!_cfragmentGate.contains(cfragmentGate)) {
-        _cfragmentGate.insert(cfragmentGate);
+    if (!_cfragmentGates.contains(cfragmentGate)) {
+        _cfragmentGates.insert(cfragmentGate);
         if (cfragmentGate && cfragmentGate->asQObject() && this->asQObject())
             QObject::connect(cfragmentGate->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCfragmentGate(QObject *)));
         cfragmentGate->asQObject()->setParent(this->asQObject());
@@ -136,8 +137,8 @@ void QUmlCombinedFragment::removeCfragmentGate(QUmlGate *cfragmentGate)
 {
     // This is a read-write association end
 
-    if (_cfragmentGate.contains(cfragmentGate)) {
-        _cfragmentGate.remove(cfragmentGate);
+    if (_cfragmentGates.contains(cfragmentGate)) {
+        _cfragmentGates.remove(cfragmentGate);
         if (cfragmentGate->asQObject())
             cfragmentGate->asQObject()->setParent(0);
 
@@ -169,19 +170,19 @@ void QUmlCombinedFragment::setInteractionOperator(QtUml::InteractionOperatorKind
 /*!
     The set of operands of the combined fragment.
  */
-const QList<QUmlInteractionOperand *> QUmlCombinedFragment::operand() const
+const QList<QUmlInteractionOperand *> QUmlCombinedFragment::operands() const
 {
     // This is a read-write association end
 
-    return _operand;
+    return _operands;
 }
 
 void QUmlCombinedFragment::addOperand(QUmlInteractionOperand *operand)
 {
     // This is a read-write association end
 
-    if (!_operand.contains(operand)) {
-        _operand.append(operand);
+    if (!_operands.contains(operand)) {
+        _operands.append(operand);
         if (operand && operand->asQObject() && this->asQObject())
             QObject::connect(operand->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOperand(QObject *)));
         operand->asQObject()->setParent(this->asQObject());
@@ -195,8 +196,8 @@ void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
 {
     // This is a read-write association end
 
-    if (_operand.contains(operand)) {
-        _operand.removeAll(operand);
+    if (_operands.contains(operand)) {
+        _operands.removeAll(operand);
         if (operand->asQObject())
             operand->asQObject()->setParent(0);
 
@@ -208,6 +209,8 @@ void QUmlCombinedFragment::removeOperand(QUmlInteractionOperand *operand)
 void QUmlCombinedFragment::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCombinedFragment");
+    QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the gates that form the interface between this CombinedFragment and its surroundings");
     QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -215,6 +218,8 @@ void QUmlCombinedFragment::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("cfragmentGate")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCombinedFragment");
+    QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the operation which defines the semantics of this combination of InteractionFragments.");
     QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -222,6 +227,8 @@ void QUmlCombinedFragment::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("interactionOperator")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCombinedFragment");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::DocumentationRole] = QStringLiteral("The set of operands of the combined fragment.");
     QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -79,18 +79,18 @@ QUmlOpaqueActionObject::~QUmlOpaqueActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlOpaqueActionObject::ownedComment() const
+const QSet<QObject *> QUmlOpaqueActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::ownedElement() const
+const QSet<QObject *> QUmlOpaqueActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlOpaqueActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlOpaqueActionObject::clientDependency() const
+const QSet<QObject *> QUmlOpaqueActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlOpaqueActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::redefinedElement() const
+const QSet<QObject *> QUmlOpaqueActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlOpaqueActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlOpaqueActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::inGroup() const
+const QSet<QObject *> QUmlOpaqueActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlOpaqueActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::inPartition() const
+const QSet<QObject *> QUmlOpaqueActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,36 +209,36 @@ QObject *QUmlOpaqueActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::incoming() const
+const QSet<QObject *> QUmlOpaqueActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::outgoing() const
+const QSet<QObject *> QUmlOpaqueActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::redefinedNode() const
+const QSet<QObject *> QUmlOpaqueActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlOpaqueActionObject::handler() const
+const QSet<QObject *> QUmlOpaqueActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -253,10 +253,10 @@ QObject *QUmlOpaqueActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlOpaqueActionObject::input() const
+const QList<QObject *> QUmlOpaqueActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -266,54 +266,54 @@ bool QUmlOpaqueActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::localPostcondition() const
+const QSet<QObject *> QUmlOpaqueActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::localPrecondition() const
+const QSet<QObject *> QUmlOpaqueActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlOpaqueActionObject::output() const
+const QList<QObject *> QUmlOpaqueActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
 
 // OWNED ATTRIBUTES [OpaqueAction]
 
-const QList<QString> QUmlOpaqueActionObject::body() const
+const QList<QString> QUmlOpaqueActionObject::bodies() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->body();
+    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->bodies();
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::inputValue() const
+const QSet<QObject *> QUmlOpaqueActionObject::inputValues() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inputValue())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->inputValues())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QString> QUmlOpaqueActionObject::language() const
+const QList<QString> QUmlOpaqueActionObject::languages() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->language();
+    return qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->languages();
 }
 
-const QSet<QObject *> QUmlOpaqueActionObject::outputValue() const
+const QSet<QObject *> QUmlOpaqueActionObject::outputValues() const
 {
     QSet<QObject *> set;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->outputValue())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlOpaqueAction *>(this)->outputValues())
         set.insert(element->asQObject());
     return set;
 }

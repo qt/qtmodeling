@@ -67,7 +67,7 @@ public:
     const QSet<QUmlLinkEndData *> endData() const;
     void addEndData(QUmlLinkEndData *endData);
     void removeEndData(QUmlLinkEndData *endData);
-    const QSet<QUmlInputPin *> inputValue() const;
+    const QSet<QUmlInputPin *> inputValues() const;
     void addInputValue(QUmlInputPin *inputValue);
     void removeInputValue(QUmlInputPin *inputValue);
 
@@ -78,7 +78,7 @@ protected:
     explicit QUmlLinkAction();
 
     QSet<QUmlLinkEndData *> _endData;
-    QSet<QUmlInputPin *> _inputValue;
+    QSet<QUmlInputPin *> _inputValues;
 
     virtual void setPropertyData();
 };

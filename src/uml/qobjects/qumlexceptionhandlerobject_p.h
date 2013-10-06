@@ -57,13 +57,13 @@ class Q_UML_EXPORT QUmlExceptionHandlerObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ExceptionHandler]
     Q_PROPERTY(QObject * exceptionInput READ exceptionInput)
-    Q_PROPERTY(QSet<QObject *> exceptionType READ exceptionType)
+    Q_PROPERTY(QSet<QObject *> exceptionType READ exceptionTypes)
     Q_PROPERTY(QObject * handlerBody READ handlerBody)
     Q_PROPERTY(QObject * protectedNode READ protectedNode)
 
@@ -72,13 +72,13 @@ public:
     virtual ~QUmlExceptionHandlerObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [ExceptionHandler]
     Q_INVOKABLE QObject *exceptionInput() const;
-    Q_INVOKABLE const QSet<QObject *> exceptionType() const;
+    Q_INVOKABLE const QSet<QObject *> exceptionTypes() const;
     Q_INVOKABLE QObject *handlerBody() const;
     Q_INVOKABLE QObject *protectedNode() const;
 

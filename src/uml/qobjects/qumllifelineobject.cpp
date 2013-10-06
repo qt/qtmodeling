@@ -71,18 +71,18 @@ QUmlLifelineObject::~QUmlLifelineObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlLifelineObject::ownedComment() const
+const QSet<QObject *> QUmlLifelineObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlLifelineObject::ownedElement() const
+const QSet<QObject *> QUmlLifelineObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlLifelineObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlLifelineObject::clientDependency() const
+const QSet<QObject *> QUmlLifelineObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlLifeline *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }

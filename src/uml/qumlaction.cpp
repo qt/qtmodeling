@@ -60,6 +60,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlAction
 
@@ -80,9 +81,9 @@ QUmlAction::~QUmlAction()
 QModelingObject *QUmlAction::clone() const
 {
     QUmlAction *c = new QUmlAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -91,24 +92,24 @@ QModelingObject *QUmlAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     return c;
 }
@@ -131,7 +132,7 @@ void QUmlAction::setContext(QUmlClassifier *context)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlAction::context(): to be implemented (this is a derived association end)");
+    qWarning("UmlAction::setContext(): to be implemented (this is a derived association end)");
     Q_UNUSED(context);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -142,19 +143,19 @@ void QUmlAction::setContext(QUmlClassifier *context)
 /*!
     The ordered set of input pins connected to the Action. These are among the total set of inputs.
  */
-const QList<QUmlInputPin *> QUmlAction::input() const
+const QList<QUmlInputPin *> QUmlAction::inputs() const
 {
     // This is a read-only derived union association end
 
-    return _input;
+    return _inputs;
 }
 
 void QUmlAction::addInput(QUmlInputPin *input)
 {
     // This is a read-only derived union association end
 
-    if (!_input.contains(input)) {
-        _input.append(input);
+    if (!_inputs.contains(input)) {
+        _inputs.append(input);
         if (input && input->asQObject() && this->asQObject())
             QObject::connect(input->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInput(QObject *)));
         input->asQObject()->setParent(this->asQObject());
@@ -168,8 +169,8 @@ void QUmlAction::removeInput(QUmlInputPin *input)
 {
     // This is a read-only derived union association end
 
-    if (_input.contains(input)) {
-        _input.removeAll(input);
+    if (_inputs.contains(input)) {
+        _inputs.removeAll(input);
         if (input->asQObject())
             input->asQObject()->setParent(0);
 
@@ -201,19 +202,19 @@ void QUmlAction::setLocallyReentrant(bool isLocallyReentrant)
 /*!
     Constraint that must be satisfied when executed is completed.
  */
-const QSet<QUmlConstraint *> QUmlAction::localPostcondition() const
+const QSet<QUmlConstraint *> QUmlAction::localPostconditions() const
 {
     // This is a read-write association end
 
-    return _localPostcondition;
+    return _localPostconditions;
 }
 
 void QUmlAction::addLocalPostcondition(QUmlConstraint *localPostcondition)
 {
     // This is a read-write association end
 
-    if (!_localPostcondition.contains(localPostcondition)) {
-        _localPostcondition.insert(localPostcondition);
+    if (!_localPostconditions.contains(localPostcondition)) {
+        _localPostconditions.insert(localPostcondition);
         if (localPostcondition && localPostcondition->asQObject() && this->asQObject())
             QObject::connect(localPostcondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLocalPostcondition(QObject *)));
         localPostcondition->asQObject()->setParent(this->asQObject());
@@ -227,8 +228,8 @@ void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 {
     // This is a read-write association end
 
-    if (_localPostcondition.contains(localPostcondition)) {
-        _localPostcondition.remove(localPostcondition);
+    if (_localPostconditions.contains(localPostcondition)) {
+        _localPostconditions.remove(localPostcondition);
         if (localPostcondition->asQObject())
             localPostcondition->asQObject()->setParent(0);
 
@@ -240,19 +241,19 @@ void QUmlAction::removeLocalPostcondition(QUmlConstraint *localPostcondition)
 /*!
     Constraint that must be satisfied when execution is started.
  */
-const QSet<QUmlConstraint *> QUmlAction::localPrecondition() const
+const QSet<QUmlConstraint *> QUmlAction::localPreconditions() const
 {
     // This is a read-write association end
 
-    return _localPrecondition;
+    return _localPreconditions;
 }
 
 void QUmlAction::addLocalPrecondition(QUmlConstraint *localPrecondition)
 {
     // This is a read-write association end
 
-    if (!_localPrecondition.contains(localPrecondition)) {
-        _localPrecondition.insert(localPrecondition);
+    if (!_localPreconditions.contains(localPrecondition)) {
+        _localPreconditions.insert(localPrecondition);
         if (localPrecondition && localPrecondition->asQObject() && this->asQObject())
             QObject::connect(localPrecondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLocalPrecondition(QObject *)));
         localPrecondition->asQObject()->setParent(this->asQObject());
@@ -266,8 +267,8 @@ void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 {
     // This is a read-write association end
 
-    if (_localPrecondition.contains(localPrecondition)) {
-        _localPrecondition.remove(localPrecondition);
+    if (_localPreconditions.contains(localPrecondition)) {
+        _localPreconditions.remove(localPrecondition);
         if (localPrecondition->asQObject())
             localPrecondition->asQObject()->setParent(0);
 
@@ -279,19 +280,19 @@ void QUmlAction::removeLocalPrecondition(QUmlConstraint *localPrecondition)
 /*!
     The ordered set of output pins connected to the Action. The action places its results onto pins in this set.
  */
-const QList<QUmlOutputPin *> QUmlAction::output() const
+const QList<QUmlOutputPin *> QUmlAction::outputs() const
 {
     // This is a read-only derived union association end
 
-    return _output;
+    return _outputs;
 }
 
 void QUmlAction::addOutput(QUmlOutputPin *output)
 {
     // This is a read-only derived union association end
 
-    if (!_output.contains(output)) {
-        _output.append(output);
+    if (!_outputs.contains(output)) {
+        _outputs.append(output);
         if (output && output->asQObject() && this->asQObject())
             QObject::connect(output->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOutput(QObject *)));
         output->asQObject()->setParent(this->asQObject());
@@ -305,8 +306,8 @@ void QUmlAction::removeOutput(QUmlOutputPin *output)
 {
     // This is a read-only derived union association end
 
-    if (_output.contains(output)) {
-        _output.removeAll(output);
+    if (_outputs.contains(output)) {
+        _outputs.removeAll(output);
         if (output->asQObject())
             output->asQObject()->setParent(0);
 
@@ -318,6 +319,8 @@ void QUmlAction::removeOutput(QUmlOutputPin *output)
 void QUmlAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("The classifier that owns the behavior of which this action is a part.");
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -325,6 +328,8 @@ void QUmlAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::IsDerivedUnionRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of input pins connected to the Action. These are among the total set of inputs.");
     QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -332,6 +337,8 @@ void QUmlAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::DocumentationRole] = QStringLiteral("If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.");
     QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -339,6 +346,8 @@ void QUmlAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that must be satisfied when executed is completed.");
     QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -346,6 +355,8 @@ void QUmlAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that must be satisfied when execution is started.");
     QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -353,6 +364,8 @@ void QUmlAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::IsDerivedUnionRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of output pins connected to the Action. The action places its results onto pins in this set.");
     QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

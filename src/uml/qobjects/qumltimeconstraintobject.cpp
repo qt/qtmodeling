@@ -71,18 +71,18 @@ QUmlTimeConstraintObject::~QUmlTimeConstraintObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlTimeConstraintObject::ownedComment() const
+const QSet<QObject *> QUmlTimeConstraintObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTimeConstraintObject::ownedElement() const
+const QSet<QObject *> QUmlTimeConstraintObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -115,10 +115,10 @@ QObject *QUmlTimeConstraintObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlTimeConstraintObject::clientDependency() const
+const QSet<QObject *> QUmlTimeConstraintObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -148,6 +148,7 @@ QString QUmlTimeConstraintObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlTimeConstraintObject::visibility() const
@@ -157,10 +158,10 @@ QtUml::VisibilityKind QUmlTimeConstraintObject::visibility() const
 
 // OWNED ATTRIBUTES [Constraint]
 
-const QList<QObject *> QUmlTimeConstraintObject::constrainedElement() const
+const QList<QObject *> QUmlTimeConstraintObject::constrainedElements() const
 {
     QList<QObject *> list;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->constrainedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->constrainedElements())
         list.append(element->asQObject());
     return list;
 }
@@ -172,6 +173,7 @@ QObject *QUmlTimeConstraintObject::context() const
     else
         return qmodelingobjectproperty_cast<QUmlTimeConstraint *>(this)->context()->asQObject();
 }
+
 // OWNED ATTRIBUTES [TimeConstraint]
 
 bool QUmlTimeConstraintObject::firstEvent() const

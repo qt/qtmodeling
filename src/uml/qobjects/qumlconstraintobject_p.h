@@ -59,8 +59,8 @@ class Q_UML_EXPORT QUmlConstraintObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ParameterableElement]
@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlConstraintObject : public QObject
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -78,7 +78,7 @@ class Q_UML_EXPORT QUmlConstraintObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
 
     // Properties [Constraint]
-    Q_PROPERTY(QList<QObject *> constrainedElement READ constrainedElement)
+    Q_PROPERTY(QList<QObject *> constrainedElement READ constrainedElements)
     Q_PROPERTY(QObject * context READ context)
     Q_PROPERTY(QObject * specification READ specification)
 
@@ -87,8 +87,8 @@ public:
     virtual ~QUmlConstraintObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [ParameterableElement]
@@ -96,7 +96,7 @@ public:
     Q_INVOKABLE QObject *templateParameter() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -106,7 +106,7 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [Constraint]
-    Q_INVOKABLE const QList<QObject *> constrainedElement() const;
+    Q_INVOKABLE const QList<QObject *> constrainedElements() const;
     Q_INVOKABLE QObject *context() const;
     Q_INVOKABLE QObject *specification() const;
 

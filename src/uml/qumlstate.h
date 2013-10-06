@@ -72,13 +72,13 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlConnectionPointReference *> connection() const;
+    const QSet<QUmlConnectionPointReference *> connections() const;
     void addConnection(QUmlConnectionPointReference *connection);
     void removeConnection(QUmlConnectionPointReference *connection);
-    const QSet<QUmlPseudostate *> connectionPoint() const;
+    const QSet<QUmlPseudostate *> connectionPoints() const;
     void addConnectionPoint(QUmlPseudostate *connectionPoint);
     void removeConnectionPoint(QUmlPseudostate *connectionPoint);
-    const QSet<QUmlTrigger *> deferrableTrigger() const;
+    const QSet<QUmlTrigger *> deferrableTriggers() const;
     void addDeferrableTrigger(QUmlTrigger *deferrableTrigger);
     void removeDeferrableTrigger(QUmlTrigger *deferrableTrigger);
     QUmlBehavior *doActivity() const;
@@ -99,7 +99,7 @@ public:
     void setRedefinedState(QUmlState *redefinedState);
     QUmlClassifier *redefinitionContext() const;
     Q_DECL_HIDDEN void setRedefinitionContext(QUmlClassifier *redefinitionContext);
-    const QSet<QUmlRegion *> region() const;
+    const QSet<QUmlRegion *> regions() const;
     void addRegion(QUmlRegion *region);
     void removeRegion(QUmlRegion *region);
     QUmlConstraint *stateInvariant() const;
@@ -113,14 +113,14 @@ public:
     bool isRedefinitionContextValid(QUmlState *redefined) const;
 
 protected:
-    QSet<QUmlConnectionPointReference *> _connection;
-    QSet<QUmlPseudostate *> _connectionPoint;
-    QSet<QUmlTrigger *> _deferrableTrigger;
+    QSet<QUmlConnectionPointReference *> _connections;
+    QSet<QUmlPseudostate *> _connectionPoints;
+    QSet<QUmlTrigger *> _deferrableTriggers;
     QUmlBehavior *_doActivity;
     QUmlBehavior *_entry;
     QUmlBehavior *_exit;
     QUmlState *_redefinedState;
-    QSet<QUmlRegion *> _region;
+    QSet<QUmlRegion *> _regions;
     QUmlConstraint *_stateInvariant;
     QUmlStateMachine *_submachine;
 

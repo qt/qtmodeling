@@ -59,8 +59,8 @@ class Q_UML_EXPORT QUmlActionInputPinObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [MultiplicityElement]
@@ -72,7 +72,7 @@ class Q_UML_EXPORT QUmlActionInputPinObject : public QObject
     Q_PROPERTY(QObject * upperValue READ upperValue)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -81,24 +81,24 @@ class Q_UML_EXPORT QUmlActionInputPinObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [ActivityNode]
     Q_PROPERTY(QObject * activity READ activity)
-    Q_PROPERTY(QSet<QObject *> inGroup READ inGroup)
-    Q_PROPERTY(QSet<QObject *> inInterruptibleRegion READ inInterruptibleRegion)
-    Q_PROPERTY(QSet<QObject *> inPartition READ inPartition)
+    Q_PROPERTY(QSet<QObject *> inGroup READ inGroups)
+    Q_PROPERTY(QSet<QObject *> inInterruptibleRegion READ inInterruptibleRegions)
+    Q_PROPERTY(QSet<QObject *> inPartition READ inPartitions)
     Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode)
-    Q_PROPERTY(QSet<QObject *> incoming READ incoming)
-    Q_PROPERTY(QSet<QObject *> outgoing READ outgoing)
-    Q_PROPERTY(QSet<QObject *> redefinedNode READ redefinedNode)
+    Q_PROPERTY(QSet<QObject *> incoming READ incomings)
+    Q_PROPERTY(QSet<QObject *> outgoing READ outgoings)
+    Q_PROPERTY(QSet<QObject *> redefinedNode READ redefinedNodes)
 
     // Properties [TypedElement]
     Q_PROPERTY(QObject * type READ type)
 
     // Properties [ObjectNode]
-    Q_PROPERTY(QSet<QObject *> inState READ inState)
+    Q_PROPERTY(QSet<QObject *> inState READ inStates)
     Q_PROPERTY(bool isControlType READ isControlType RESET unsetControlType)
     Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering RESET unsetOrdering)
     Q_PROPERTY(QObject * selection READ selection)
@@ -115,8 +115,8 @@ public:
     virtual ~QUmlActionInputPinObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [MultiplicityElement]
@@ -128,7 +128,7 @@ public:
     Q_INVOKABLE QObject *upperValue() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -137,24 +137,24 @@ public:
 
     // Owned attributes [RedefinableElement]
     Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedElement() const;
-    Q_INVOKABLE const QSet<QObject *> redefinitionContext() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedElements() const;
+    Q_INVOKABLE const QSet<QObject *> redefinitionContexts() const;
 
     // Owned attributes [ActivityNode]
     Q_INVOKABLE QObject *activity() const;
-    Q_INVOKABLE const QSet<QObject *> inGroup() const;
-    Q_INVOKABLE const QSet<QObject *> inInterruptibleRegion() const;
-    Q_INVOKABLE const QSet<QObject *> inPartition() const;
+    Q_INVOKABLE const QSet<QObject *> inGroups() const;
+    Q_INVOKABLE const QSet<QObject *> inInterruptibleRegions() const;
+    Q_INVOKABLE const QSet<QObject *> inPartitions() const;
     Q_INVOKABLE QObject *inStructuredNode() const;
-    Q_INVOKABLE const QSet<QObject *> incoming() const;
-    Q_INVOKABLE const QSet<QObject *> outgoing() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedNode() const;
+    Q_INVOKABLE const QSet<QObject *> incomings() const;
+    Q_INVOKABLE const QSet<QObject *> outgoings() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedNodes() const;
 
     // Owned attributes [TypedElement]
     Q_INVOKABLE QObject *type() const;
 
     // Owned attributes [ObjectNode]
-    Q_INVOKABLE const QSet<QObject *> inState() const;
+    Q_INVOKABLE const QSet<QObject *> inStates() const;
     Q_INVOKABLE bool isControlType() const;
     Q_INVOKABLE QtUml::ObjectNodeOrderingKind ordering() const;
     Q_INVOKABLE QObject *selection() const;

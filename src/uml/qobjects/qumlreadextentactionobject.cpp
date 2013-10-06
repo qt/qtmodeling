@@ -79,18 +79,18 @@ QUmlReadExtentActionObject::~QUmlReadExtentActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlReadExtentActionObject::ownedComment() const
+const QSet<QObject *> QUmlReadExtentActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::ownedElement() const
+const QSet<QObject *> QUmlReadExtentActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlReadExtentActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlReadExtentActionObject::clientDependency() const
+const QSet<QObject *> QUmlReadExtentActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlReadExtentActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::redefinedElement() const
+const QSet<QObject *> QUmlReadExtentActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlReadExtentActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlReadExtentActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::inGroup() const
+const QSet<QObject *> QUmlReadExtentActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlReadExtentActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::inPartition() const
+const QSet<QObject *> QUmlReadExtentActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,36 +209,36 @@ QObject *QUmlReadExtentActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::incoming() const
+const QSet<QObject *> QUmlReadExtentActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::outgoing() const
+const QSet<QObject *> QUmlReadExtentActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::redefinedNode() const
+const QSet<QObject *> QUmlReadExtentActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlReadExtentActionObject::handler() const
+const QSet<QObject *> QUmlReadExtentActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -253,10 +253,10 @@ QObject *QUmlReadExtentActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlReadExtentActionObject::input() const
+const QList<QObject *> QUmlReadExtentActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -266,26 +266,26 @@ bool QUmlReadExtentActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::localPostcondition() const
+const QSet<QObject *> QUmlReadExtentActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadExtentActionObject::localPrecondition() const
+const QSet<QObject *> QUmlReadExtentActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlReadExtentActionObject::output() const
+const QList<QObject *> QUmlReadExtentActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReadExtentAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

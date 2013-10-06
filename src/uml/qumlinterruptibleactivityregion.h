@@ -64,16 +64,16 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlActivityEdge *> interruptingEdge() const;
+    const QSet<QUmlActivityEdge *> interruptingEdges() const;
     void addInterruptingEdge(QUmlActivityEdge *interruptingEdge);
     void removeInterruptingEdge(QUmlActivityEdge *interruptingEdge);
-    const QSet<QUmlActivityNode *> node() const;
+    const QSet<QUmlActivityNode *> nodes() const;
     void addNode(QUmlActivityNode *node);
     void removeNode(QUmlActivityNode *node);
 
 protected:
-    QSet<QUmlActivityEdge *> _interruptingEdge;
-    QSet<QUmlActivityNode *> _node;
+    QSet<QUmlActivityEdge *> _interruptingEdges;
+    QSet<QUmlActivityNode *> _nodes;
 
     virtual void setPropertyData();
 };

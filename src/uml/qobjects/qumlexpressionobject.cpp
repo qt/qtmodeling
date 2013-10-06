@@ -70,18 +70,18 @@ QUmlExpressionObject::~QUmlExpressionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlExpressionObject::ownedComment() const
+const QSet<QObject *> QUmlExpressionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExpression *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExpression *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExpressionObject::ownedElement() const
+const QSet<QObject *> QUmlExpressionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExpression *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExpression *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -96,10 +96,10 @@ QObject *QUmlExpressionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlExpressionObject::clientDependency() const
+const QSet<QObject *> QUmlExpressionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExpression *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExpression *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -129,6 +129,7 @@ QString QUmlExpressionObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlExpression *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlExpressionObject::type() const
@@ -166,10 +167,10 @@ QtUml::VisibilityKind QUmlExpressionObject::visibility() const
 
 // OWNED ATTRIBUTES [Expression]
 
-const QList<QObject *> QUmlExpressionObject::operand() const
+const QList<QObject *> QUmlExpressionObject::operands() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlExpression *>(this)->operand())
+    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlExpression *>(this)->operands())
         list.append(element->asQObject());
     return list;
 }

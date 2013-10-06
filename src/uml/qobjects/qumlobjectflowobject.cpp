@@ -77,18 +77,18 @@ QUmlObjectFlowObject::~QUmlObjectFlowObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlObjectFlowObject::ownedComment() const
+const QSet<QObject *> QUmlObjectFlowObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlObjectFlowObject::ownedElement() const
+const QSet<QObject *> QUmlObjectFlowObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -103,10 +103,10 @@ QObject *QUmlObjectFlowObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlObjectFlowObject::clientDependency() const
+const QSet<QObject *> QUmlObjectFlowObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -149,18 +149,18 @@ bool QUmlObjectFlowObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlObjectFlowObject::redefinedElement() const
+const QSet<QObject *> QUmlObjectFlowObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlObjectFlowObject::redefinitionContext() const
+const QSet<QObject *> QUmlObjectFlowObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -183,18 +183,18 @@ QObject *QUmlObjectFlowObject::guard() const
         return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->guard()->asQObject();
 }
 
-const QSet<QObject *> QUmlObjectFlowObject::inGroup() const
+const QSet<QObject *> QUmlObjectFlowObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlObjectFlowObject::inPartition() const
+const QSet<QObject *> QUmlObjectFlowObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -215,10 +215,10 @@ QObject *QUmlObjectFlowObject::interrupts() const
         return qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->interrupts()->asQObject();
 }
 
-const QSet<QObject *> QUmlObjectFlowObject::redefinedEdge() const
+const QSet<QObject *> QUmlObjectFlowObject::redefinedEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->redefinedEdge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlObjectFlow *>(this)->redefinedEdges())
         set.insert(element->asQObject());
     return set;
 }

@@ -69,26 +69,26 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlExtension *> extension() const;
+    const QSet<QUmlExtension *> extensions() const;
     Q_DECL_HIDDEN void addExtension(QUmlExtension *extension);
     Q_DECL_HIDDEN void removeExtension(QUmlExtension *extension);
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
     bool isActive() const;
     void setActive(bool isActive);
-    const QList<QUmlClassifier *> nestedClassifier() const;
+    const QList<QUmlClassifier *> nestedClassifiers() const;
     void addNestedClassifier(QUmlClassifier *nestedClassifier);
     void removeNestedClassifier(QUmlClassifier *nestedClassifier);
-    const QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttributes() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QList<QUmlOperation *> ownedOperation() const;
+    const QList<QUmlOperation *> ownedOperations() const;
     void addOwnedOperation(QUmlOperation *ownedOperation);
     void removeOwnedOperation(QUmlOperation *ownedOperation);
-    const QSet<QUmlReception *> ownedReception() const;
+    const QSet<QUmlReception *> ownedReceptions() const;
     void addOwnedReception(QUmlReception *ownedReception);
     void removeOwnedReception(QUmlReception *ownedReception);
-    const QSet<QUmlClass *> superClass() const;
+    const QSet<QUmlClass *> superClasses() const;
     void addSuperClass(QUmlClass *superClass);
     void removeSuperClass(QUmlClass *superClass);
 
@@ -98,10 +98,10 @@ public:
 protected:
     bool _isAbstract;
     bool _isActive;
-    QList<QUmlClassifier *> _nestedClassifier;
-    QList<QUmlProperty *> _ownedAttribute;
-    QList<QUmlOperation *> _ownedOperation;
-    QSet<QUmlReception *> _ownedReception;
+    QList<QUmlClassifier *> _nestedClassifiers;
+    QList<QUmlProperty *> _ownedAttributes;
+    QList<QUmlOperation *> _ownedOperations;
+    QSet<QUmlReception *> _ownedReceptions;
 
     virtual void setPropertyData();
 };

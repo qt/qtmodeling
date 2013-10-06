@@ -66,7 +66,7 @@ public:
     // Owned attributes
     QUmlTemplateSignature *ownedTemplateSignature() const;
     void setOwnedTemplateSignature(QUmlTemplateSignature *ownedTemplateSignature);
-    const QSet<QUmlTemplateBinding *> templateBinding() const;
+    const QSet<QUmlTemplateBinding *> templateBindings() const;
     void addTemplateBinding(QUmlTemplateBinding *templateBinding);
     void removeTemplateBinding(QUmlTemplateBinding *templateBinding);
 
@@ -78,7 +78,7 @@ protected:
     explicit QUmlTemplateableElement();
 
     QUmlTemplateSignature *_ownedTemplateSignature;
-    QSet<QUmlTemplateBinding *> _templateBinding;
+    QSet<QUmlTemplateBinding *> _templateBindings;
 
     virtual void setPropertyData();
 };

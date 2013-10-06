@@ -62,6 +62,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlLinkAction
 
@@ -81,9 +82,9 @@ QUmlLinkAction::~QUmlLinkAction()
 QModelingObject *QUmlLinkAction::clone() const
 {
     QUmlLinkAction *c = new QUmlLinkAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -92,28 +93,28 @@ QModelingObject *QUmlLinkAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     foreach (QUmlLinkEndData *element, endData())
         c->addEndData(dynamic_cast<QUmlLinkEndData *>(element->clone()));
-    foreach (QUmlInputPin *element, inputValue())
+    foreach (QUmlInputPin *element, inputValues())
         c->addInputValue(dynamic_cast<QUmlInputPin *>(element->clone()));
     return c;
 }
@@ -162,19 +163,19 @@ void QUmlLinkAction::removeEndData(QUmlLinkEndData *endData)
 /*!
     Pins taking end objects and qualifier values as input.
  */
-const QSet<QUmlInputPin *> QUmlLinkAction::inputValue() const
+const QSet<QUmlInputPin *> QUmlLinkAction::inputValues() const
 {
     // This is a read-write association end
 
-    return _inputValue;
+    return _inputValues;
 }
 
 void QUmlLinkAction::addInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
 
-    if (!_inputValue.contains(inputValue)) {
-        _inputValue.insert(inputValue);
+    if (!_inputValues.contains(inputValue)) {
+        _inputValues.insert(inputValue);
         if (inputValue && inputValue->asQObject() && this->asQObject())
             QObject::connect(inputValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInputValue(QObject *)));
         inputValue->asQObject()->setParent(this->asQObject());
@@ -188,8 +189,8 @@ void QUmlLinkAction::removeInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
 
-    if (_inputValue.contains(inputValue)) {
-        _inputValue.remove(inputValue);
+    if (_inputValues.contains(inputValue)) {
+        _inputValues.remove(inputValue);
         if (inputValue->asQObject())
             inputValue->asQObject()->setParent(0);
 
@@ -213,6 +214,8 @@ QUmlAssociation *QUmlLinkAction::association() const
 void QUmlLinkAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkAction");
+    QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::DocumentationRole] = QStringLiteral("Data identifying one end of a link by the objects on its ends and qualifiers.");
     QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -220,6 +223,8 @@ void QUmlLinkAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("endData")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkAction");
+    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::DocumentationRole] = QStringLiteral("Pins taking end objects and qualifier values as input.");
     QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

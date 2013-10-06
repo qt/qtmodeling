@@ -68,38 +68,38 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlActivityEdge *> edge() const;
+    const QSet<QUmlActivityEdge *> edges() const;
     void addEdge(QUmlActivityEdge *edge);
     void removeEdge(QUmlActivityEdge *edge);
-    const QSet<QUmlActivityGroup *> group() const;
+    const QSet<QUmlActivityGroup *> groups() const;
     void addGroup(QUmlActivityGroup *group);
     void removeGroup(QUmlActivityGroup *group);
     bool isReadOnly() const;
     void setReadOnly(bool isReadOnly);
     bool isSingleExecution() const;
     void setSingleExecution(bool isSingleExecution);
-    const QSet<QUmlActivityNode *> node() const;
+    const QSet<QUmlActivityNode *> nodes() const;
     void addNode(QUmlActivityNode *node);
     void removeNode(QUmlActivityNode *node);
-    const QSet<QUmlActivityPartition *> partition() const;
+    const QSet<QUmlActivityPartition *> partitions() const;
     void addPartition(QUmlActivityPartition *partition);
     void removePartition(QUmlActivityPartition *partition);
-    const QSet<QUmlStructuredActivityNode *> structuredNode() const;
+    const QSet<QUmlStructuredActivityNode *> structuredNodes() const;
     void addStructuredNode(QUmlStructuredActivityNode *structuredNode);
     void removeStructuredNode(QUmlStructuredActivityNode *structuredNode);
-    const QSet<QUmlVariable *> variable() const;
+    const QSet<QUmlVariable *> variables() const;
     void addVariable(QUmlVariable *variable);
     void removeVariable(QUmlVariable *variable);
 
 protected:
-    QSet<QUmlActivityEdge *> _edge;
-    QSet<QUmlActivityGroup *> _group;
+    QSet<QUmlActivityEdge *> _edges;
+    QSet<QUmlActivityGroup *> _groups;
     bool _isReadOnly;
     bool _isSingleExecution;
-    QSet<QUmlActivityNode *> _node;
-    QSet<QUmlActivityPartition *> _partition;
-    QSet<QUmlStructuredActivityNode *> _structuredNode;
-    QSet<QUmlVariable *> _variable;
+    QSet<QUmlActivityNode *> _nodes;
+    QSet<QUmlActivityPartition *> _partitions;
+    QSet<QUmlStructuredActivityNode *> _structuredNodes;
+    QSet<QUmlVariable *> _variables;
 
     virtual void setPropertyData();
 };

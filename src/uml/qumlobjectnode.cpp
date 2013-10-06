@@ -60,6 +60,7 @@
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlObjectNode
 
@@ -83,9 +84,9 @@ QUmlObjectNode::~QUmlObjectNode()
 QModelingObject *QUmlObjectNode::clone() const
 {
     QUmlObjectNode *c = new QUmlObjectNode;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -94,21 +95,21 @@ QModelingObject *QUmlObjectNode::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     if (type())
         c->setType(dynamic_cast<QUmlType *>(type()->clone()));
-    foreach (QUmlState *element, inState())
+    foreach (QUmlState *element, inStates())
         c->addInState(dynamic_cast<QUmlState *>(element->clone()));
     c->setControlType(isControlType());
     c->setOrdering(ordering());
@@ -124,19 +125,19 @@ QModelingObject *QUmlObjectNode::clone() const
 /*!
     The required states of the object available at this point in the activity.
  */
-const QSet<QUmlState *> QUmlObjectNode::inState() const
+const QSet<QUmlState *> QUmlObjectNode::inStates() const
 {
     // This is a read-write association end
 
-    return _inState;
+    return _inStates;
 }
 
 void QUmlObjectNode::addInState(QUmlState *inState)
 {
     // This is a read-write association end
 
-    if (!_inState.contains(inState)) {
-        _inState.insert(inState);
+    if (!_inStates.contains(inState)) {
+        _inStates.insert(inState);
         if (inState && inState->asQObject() && this->asQObject())
             QObject::connect(inState->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInState(QObject *)));
     }
@@ -146,8 +147,8 @@ void QUmlObjectNode::removeInState(QUmlState *inState)
 {
     // This is a read-write association end
 
-    if (_inState.contains(inState)) {
-        _inState.remove(inState);
+    if (_inStates.contains(inState)) {
+        _inStates.remove(inState);
     }
 }
 
@@ -245,6 +246,8 @@ void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
 void QUmlObjectNode::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectNode");
+    QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::DocumentationRole] = QStringLiteral("The required states of the object available at this point in the activity.");
     QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -252,6 +255,8 @@ void QUmlObjectNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("inState")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectNode");
+    QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the type of the object node is to be treated as control.");
     QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -259,6 +264,8 @@ void QUmlObjectNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isControlType")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectNode");
+    QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the object node.");
     QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -266,6 +273,8 @@ void QUmlObjectNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ordering")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectNode");
+    QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::DocumentationRole] = QStringLiteral("Selects tokens for outgoing edges.");
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -273,6 +282,8 @@ void QUmlObjectNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("selection")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectNode");
+    QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::DocumentationRole] = QStringLiteral("The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is reached.");
     QModelingObject::propertyDataHash[QStringLiteral("upperBound")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

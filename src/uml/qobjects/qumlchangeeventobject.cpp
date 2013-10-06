@@ -69,18 +69,18 @@ QUmlChangeEventObject::~QUmlChangeEventObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlChangeEventObject::ownedComment() const
+const QSet<QObject *> QUmlChangeEventObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlChangeEventObject::ownedElement() const
+const QSet<QObject *> QUmlChangeEventObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -113,10 +113,10 @@ QObject *QUmlChangeEventObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlChangeEventObject::clientDependency() const
+const QSet<QObject *> QUmlChangeEventObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -146,6 +146,7 @@ QString QUmlChangeEventObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlChangeEvent *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlChangeEventObject::visibility() const

@@ -63,6 +63,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlReadLinkObjectEndAction
 
@@ -92,9 +93,9 @@ QUmlReadLinkObjectEndAction::~QUmlReadLinkObjectEndAction()
 QModelingObject *QUmlReadLinkObjectEndAction::clone() const
 {
     QUmlReadLinkObjectEndAction *c = new QUmlReadLinkObjectEndAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -103,24 +104,24 @@ QModelingObject *QUmlReadLinkObjectEndAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     if (end())
         c->setEnd(dynamic_cast<QUmlProperty *>(end()->clone()));
@@ -217,6 +218,8 @@ void QUmlReadLinkObjectEndAction::setResult(QUmlOutputPin *result)
 void QUmlReadLinkObjectEndAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndAction");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::DocumentationRole] = QStringLiteral("Link end to be read.");
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -224,6 +227,8 @@ void QUmlReadLinkObjectEndAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndAction");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Gives the input pin from which the link object is obtained.");
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -231,6 +236,8 @@ void QUmlReadLinkObjectEndAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndAction");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Pin where the result value is placed.");
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

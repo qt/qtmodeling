@@ -52,6 +52,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlConnectableElement
 
@@ -72,9 +73,9 @@ QUmlConnectableElement::~QUmlConnectableElement()
 QModelingObject *QUmlConnectableElement::clone() const
 {
     QUmlConnectableElement *c = new QUmlConnectableElement;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -94,11 +95,11 @@ QModelingObject *QUmlConnectableElement::clone() const
 /*!
     Denotes a set of connector ends that attaches to this connectable element.
  */
-const QList<QUmlConnectorEnd *> QUmlConnectableElement::end() const
+const QList<QUmlConnectorEnd *> QUmlConnectableElement::ends() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlConnectableElement::end(): to be implemented (this is a derived association end)");
+    qWarning("UmlConnectableElement::ends(): to be implemented (this is a derived association end)");
 
     return QList<QUmlConnectorEnd *>();
 }
@@ -107,7 +108,7 @@ void QUmlConnectableElement::addEnd(QUmlConnectorEnd *end)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlConnectableElement::end(): to be implemented (this is a derived association end)");
+    qWarning("UmlConnectableElement::addEnd(): to be implemented (this is a derived association end)");
     Q_UNUSED(end);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -124,7 +125,7 @@ void QUmlConnectableElement::removeEnd(QUmlConnectorEnd *end)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlConnectableElement::end(): to be implemented (this is a derived association end)");
+    qWarning("UmlConnectableElement::removeEnd(): to be implemented (this is a derived association end)");
     Q_UNUSED(end);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -161,6 +162,8 @@ void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplate
 void QUmlConnectableElement::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElement");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::DocumentationRole] = QStringLiteral("Denotes a set of connector ends that attaches to this connectable element.");
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -168,6 +171,8 @@ void QUmlConnectableElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectorEnd-role");
 
     QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElement");
+    QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The ConnectableElementTemplateParameter for this ConnectableElement parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter");

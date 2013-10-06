@@ -57,34 +57,34 @@ class Q_UML_EXPORT QUmlClauseObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Clause]
-    Q_PROPERTY(QSet<QObject *> body READ body)
-    Q_PROPERTY(QList<QObject *> bodyOutput READ bodyOutput)
+    Q_PROPERTY(QSet<QObject *> body READ bodies)
+    Q_PROPERTY(QList<QObject *> bodyOutput READ bodyOutputs)
     Q_PROPERTY(QObject * decider READ decider)
-    Q_PROPERTY(QSet<QObject *> predecessorClause READ predecessorClause)
-    Q_PROPERTY(QSet<QObject *> successorClause READ successorClause)
-    Q_PROPERTY(QSet<QObject *> test READ test)
+    Q_PROPERTY(QSet<QObject *> predecessorClause READ predecessorClauses)
+    Q_PROPERTY(QSet<QObject *> successorClause READ successorClauses)
+    Q_PROPERTY(QSet<QObject *> test READ tests)
 
 public:
     Q_INVOKABLE explicit QUmlClauseObject(QUmlClause *qModelingObject);
     virtual ~QUmlClauseObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [Clause]
-    Q_INVOKABLE const QSet<QObject *> body() const;
-    Q_INVOKABLE const QList<QObject *> bodyOutput() const;
+    Q_INVOKABLE const QSet<QObject *> bodies() const;
+    Q_INVOKABLE const QList<QObject *> bodyOutputs() const;
     Q_INVOKABLE QObject *decider() const;
-    Q_INVOKABLE const QSet<QObject *> predecessorClause() const;
-    Q_INVOKABLE const QSet<QObject *> successorClause() const;
-    Q_INVOKABLE const QSet<QObject *> test() const;
+    Q_INVOKABLE const QSet<QObject *> predecessorClauses() const;
+    Q_INVOKABLE const QSet<QObject *> successorClauses() const;
+    Q_INVOKABLE const QSet<QObject *> tests() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

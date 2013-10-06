@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlPropertyObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -84,11 +84,11 @@ class Q_UML_EXPORT QUmlPropertyObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [Feature]
-    Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifier)
+    Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifiers)
     Q_PROPERTY(bool isStatic READ isStatic RESET unsetStatic)
 
     // Properties [StructuralFeature]
@@ -97,12 +97,12 @@ class Q_UML_EXPORT QUmlPropertyObject : public QObject
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
 
     // Properties [ConnectableElement]
-    Q_PROPERTY(QList<QObject *> end READ end STORED false)
+    Q_PROPERTY(QList<QObject *> end READ ends STORED false)
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
 
     // Properties [DeploymentTarget]
-    Q_PROPERTY(QSet<QObject *> deployedElement READ deployedElement STORED false)
-    Q_PROPERTY(QSet<QObject *> deployment READ deployment)
+    Q_PROPERTY(QSet<QObject *> deployedElement READ deployedElements STORED false)
+    Q_PROPERTY(QSet<QObject *> deployment READ deployments)
 
     // Properties [Property]
     Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation RESET unsetAggregation)
@@ -120,21 +120,21 @@ class Q_UML_EXPORT QUmlPropertyObject : public QObject
     Q_PROPERTY(bool isReadOnly READ isReadOnly RESET unsetReadOnly)
     Q_PROPERTY(QObject * opposite READ opposite STORED false)
     Q_PROPERTY(QObject * owningAssociation READ owningAssociation)
-    Q_PROPERTY(QList<QObject *> qualifier READ qualifier)
-    Q_PROPERTY(QSet<QObject *> redefinedProperty READ redefinedProperty)
-    Q_PROPERTY(QSet<QObject *> subsettedProperty READ subsettedProperty)
+    Q_PROPERTY(QList<QObject *> qualifier READ qualifiers)
+    Q_PROPERTY(QSet<QObject *> redefinedProperty READ redefinedProperties)
+    Q_PROPERTY(QSet<QObject *> subsettedProperty READ subsettedProperties)
 
 public:
     Q_INVOKABLE explicit QUmlPropertyObject(QUmlProperty *qModelingObject);
     virtual ~QUmlPropertyObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -154,11 +154,11 @@ public:
 
     // Owned attributes [RedefinableElement]
     Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedElement() const;
-    Q_INVOKABLE const QSet<QObject *> redefinitionContext() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedElements() const;
+    Q_INVOKABLE const QSet<QObject *> redefinitionContexts() const;
 
     // Owned attributes [Feature]
-    Q_INVOKABLE const QSet<QObject *> featuringClassifier() const;
+    Q_INVOKABLE const QSet<QObject *> featuringClassifiers() const;
     Q_INVOKABLE bool isStatic() const;
 
     // Owned attributes [StructuralFeature]
@@ -167,12 +167,12 @@ public:
     Q_INVOKABLE QObject *owningTemplateParameter() const;
 
     // Owned attributes [ConnectableElement]
-    Q_INVOKABLE const QList<QObject *> end() const;
+    Q_INVOKABLE const QList<QObject *> ends() const;
     Q_INVOKABLE QObject *templateParameter() const;
 
     // Owned attributes [DeploymentTarget]
-    Q_INVOKABLE const QSet<QObject *> deployedElement() const;
-    Q_INVOKABLE const QSet<QObject *> deployment() const;
+    Q_INVOKABLE const QSet<QObject *> deployedElements() const;
+    Q_INVOKABLE const QSet<QObject *> deployments() const;
 
     // Owned attributes [Property]
     Q_INVOKABLE QtUml::AggregationKind aggregation() const;
@@ -190,9 +190,9 @@ public:
     Q_INVOKABLE bool isReadOnly() const;
     Q_INVOKABLE QObject *opposite() const;
     Q_INVOKABLE QObject *owningAssociation() const;
-    Q_INVOKABLE const QList<QObject *> qualifier() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedProperty() const;
-    Q_INVOKABLE const QSet<QObject *> subsettedProperty() const;
+    Q_INVOKABLE const QList<QObject *> qualifiers() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedProperties() const;
+    Q_INVOKABLE const QSet<QObject *> subsettedProperties() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

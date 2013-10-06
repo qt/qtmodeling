@@ -65,10 +65,10 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttributes() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QList<QUmlOperation *> ownedOperation() const;
+    const QList<QUmlOperation *> ownedOperations() const;
     void addOwnedOperation(QUmlOperation *ownedOperation);
     void removeOwnedOperation(QUmlOperation *ownedOperation);
 
@@ -76,8 +76,8 @@ public:
     QSet<QUmlNamedElement *> inherit(QSet<QUmlNamedElement *> inhs) const;
 
 protected:
-    QList<QUmlProperty *> _ownedAttribute;
-    QList<QUmlOperation *> _ownedOperation;
+    QList<QUmlProperty *> _ownedAttributes;
+    QList<QUmlOperation *> _ownedOperations;
 
     virtual void setPropertyData();
 };

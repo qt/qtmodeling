@@ -46,6 +46,7 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
+
 /*!
     \class QUmlTemplateParameter
 
@@ -77,7 +78,7 @@ QUmlTemplateParameter::~QUmlTemplateParameter()
 QModelingObject *QUmlTemplateParameter::clone() const
 {
     QUmlTemplateParameter *c = new QUmlTemplateParameter;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (default_())
         c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
@@ -227,6 +228,8 @@ void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)
 void QUmlTemplateParameter::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::DocumentationRole] = QStringLiteral("The element that is the default for this formal template parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -234,6 +237,8 @@ void QUmlTemplateParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedDefault")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedDefault")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedDefault")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedDefault")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedDefault")][QtModeling::DocumentationRole] = QStringLiteral("The element that is owned by this template parameter for the purpose of providing a default.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedDefault")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -241,6 +246,8 @@ void QUmlTemplateParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedDefault")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameteredElement")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedParameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedParameteredElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameteredElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The element that is owned by this template parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -248,6 +255,8 @@ void QUmlTemplateParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("ParameterableElement-owningTemplateParameter");
 
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The element exposed by this template parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -255,6 +264,8 @@ void QUmlTemplateParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("ParameterableElement-templateParameter");
 
     QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::DocumentationRole] = QStringLiteral("The template signature that owns this template parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -68,25 +68,25 @@ public:
     // Owned attributes
     QString fileName() const;
     void setFileName(QString fileName);
-    const QSet<QUmlManifestation *> manifestation() const;
+    const QSet<QUmlManifestation *> manifestations() const;
     void addManifestation(QUmlManifestation *manifestation);
     void removeManifestation(QUmlManifestation *manifestation);
-    const QSet<QUmlArtifact *> nestedArtifact() const;
+    const QSet<QUmlArtifact *> nestedArtifacts() const;
     void addNestedArtifact(QUmlArtifact *nestedArtifact);
     void removeNestedArtifact(QUmlArtifact *nestedArtifact);
-    const QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttributes() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QList<QUmlOperation *> ownedOperation() const;
+    const QList<QUmlOperation *> ownedOperations() const;
     void addOwnedOperation(QUmlOperation *ownedOperation);
     void removeOwnedOperation(QUmlOperation *ownedOperation);
 
 protected:
     QString _fileName;
-    QSet<QUmlManifestation *> _manifestation;
-    QSet<QUmlArtifact *> _nestedArtifact;
-    QList<QUmlProperty *> _ownedAttribute;
-    QList<QUmlOperation *> _ownedOperation;
+    QSet<QUmlManifestation *> _manifestations;
+    QSet<QUmlArtifact *> _nestedArtifacts;
+    QList<QUmlProperty *> _ownedAttributes;
+    QList<QUmlOperation *> _ownedOperations;
 
     virtual void setPropertyData();
 };

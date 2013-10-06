@@ -63,12 +63,12 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlExecutableNode *> executableNode() const;
+    const QList<QUmlExecutableNode *> executableNodes() const;
     void addExecutableNode(QUmlExecutableNode *executableNode);
     void removeExecutableNode(QUmlExecutableNode *executableNode);
 
 protected:
-    QList<QUmlExecutableNode *> _executableNode;
+    QList<QUmlExecutableNode *> _executableNodes;
 
     virtual void setPropertyData();
 };

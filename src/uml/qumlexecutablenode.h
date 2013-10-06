@@ -62,14 +62,14 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlExceptionHandler *> handler() const;
+    const QSet<QUmlExceptionHandler *> handlers() const;
     void addHandler(QUmlExceptionHandler *handler);
     void removeHandler(QUmlExceptionHandler *handler);
 
 protected:
     explicit QUmlExecutableNode();
 
-    QSet<QUmlExceptionHandler *> _handler;
+    QSet<QUmlExceptionHandler *> _handlers;
 
     virtual void setPropertyData();
 };

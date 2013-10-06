@@ -73,18 +73,18 @@ QUmlPartDecompositionObject::~QUmlPartDecompositionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlPartDecompositionObject::ownedComment() const
+const QSet<QObject *> QUmlPartDecompositionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPartDecompositionObject::ownedElement() const
+const QSet<QObject *> QUmlPartDecompositionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -99,10 +99,10 @@ QObject *QUmlPartDecompositionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlPartDecompositionObject::clientDependency() const
+const QSet<QObject *> QUmlPartDecompositionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -164,28 +164,28 @@ QObject *QUmlPartDecompositionObject::enclosingOperand() const
         return qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->enclosingOperand()->asQObject();
 }
 
-const QSet<QObject *> QUmlPartDecompositionObject::generalOrdering() const
+const QSet<QObject *> QUmlPartDecompositionObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->generalOrdering())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->generalOrderings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [InteractionUse]
 
-const QSet<QObject *> QUmlPartDecompositionObject::actualGate() const
+const QSet<QObject *> QUmlPartDecompositionObject::actualGates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->actualGate())
+    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->actualGates())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlPartDecompositionObject::argument() const
+const QList<QObject *> QUmlPartDecompositionObject::arguments() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->argument())
+    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlPartDecomposition *>(this)->arguments())
         list.append(element->asQObject());
     return list;
 }

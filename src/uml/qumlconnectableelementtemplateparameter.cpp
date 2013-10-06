@@ -47,6 +47,7 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
+
 /*!
     \class QUmlConnectableElementTemplateParameter
 
@@ -75,7 +76,7 @@ QUmlConnectableElementTemplateParameter::~QUmlConnectableElementTemplateParamete
 QModelingObject *QUmlConnectableElementTemplateParameter::clone() const
 {
     QUmlConnectableElementTemplateParameter *c = new QUmlConnectableElementTemplateParameter;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (default_())
         c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
@@ -116,6 +117,8 @@ void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnecta
 void QUmlConnectableElementTemplateParameter::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElementTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The ConnectableElement for this template parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateParameter-parameteredElement");

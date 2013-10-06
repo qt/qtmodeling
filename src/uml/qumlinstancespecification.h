@@ -67,18 +67,18 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlClassifier *> classifier() const;
+    const QSet<QUmlClassifier *> classifiers() const;
     void addClassifier(QUmlClassifier *classifier);
     void removeClassifier(QUmlClassifier *classifier);
-    const QSet<QUmlSlot *> slot_() const;
+    const QSet<QUmlSlot *> slots_() const;
     void addSlot(QUmlSlot *slot_);
     void removeSlot(QUmlSlot *slot_);
     QUmlValueSpecification *specification() const;
     void setSpecification(QUmlValueSpecification *specification);
 
 protected:
-    QSet<QUmlClassifier *> _classifier;
-    QSet<QUmlSlot *> _slot_;
+    QSet<QUmlClassifier *> _classifiers;
+    QSet<QUmlSlot *> _slots_;
     QUmlValueSpecification *_specification;
 
     virtual void setPropertyData();

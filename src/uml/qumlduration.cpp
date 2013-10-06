@@ -54,6 +54,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlDuration
 
@@ -81,9 +82,9 @@ QUmlDuration::~QUmlDuration()
 QModelingObject *QUmlDuration::clone() const
 {
     QUmlDuration *c = new QUmlDuration;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -97,7 +98,7 @@ QModelingObject *QUmlDuration::clone() const
     c->setVisibility(visibility());
     if (expr())
         c->setExpr(dynamic_cast<QUmlValueSpecification *>(expr()->clone()));
-    foreach (QUmlObservation *element, observation())
+    foreach (QUmlObservation *element, observations())
         c->addObservation(dynamic_cast<QUmlObservation *>(element->clone()));
     return c;
 }
@@ -137,19 +138,19 @@ void QUmlDuration::setExpr(QUmlValueSpecification *expr)
 /*!
     Refers to the time and duration observations that are involved in expr.
  */
-const QSet<QUmlObservation *> QUmlDuration::observation() const
+const QSet<QUmlObservation *> QUmlDuration::observations() const
 {
     // This is a read-write association end
 
-    return _observation;
+    return _observations;
 }
 
 void QUmlDuration::addObservation(QUmlObservation *observation)
 {
     // This is a read-write association end
 
-    if (!_observation.contains(observation)) {
-        _observation.insert(observation);
+    if (!_observations.contains(observation)) {
+        _observations.insert(observation);
         if (observation && observation->asQObject() && this->asQObject())
             QObject::connect(observation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeObservation(QObject *)));
     }
@@ -159,14 +160,16 @@ void QUmlDuration::removeObservation(QUmlObservation *observation)
 {
     // This is a read-write association end
 
-    if (_observation.contains(observation)) {
-        _observation.remove(observation);
+    if (_observations.contains(observation)) {
+        _observations.remove(observation);
     }
 }
 
 void QUmlDuration::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDuration");
+    QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::DocumentationRole] = QStringLiteral("The value of the Duration.");
     QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -174,6 +177,8 @@ void QUmlDuration::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("expr")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDuration");
+    QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the time and duration observations that are involved in expr.");
     QModelingObject::propertyDataHash[QStringLiteral("observation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

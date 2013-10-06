@@ -50,6 +50,7 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlInclude
 
@@ -78,9 +79,9 @@ QUmlInclude::~QUmlInclude()
 QModelingObject *QUmlInclude::clone() const
 {
     QUmlInclude *c = new QUmlInclude;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -157,6 +158,8 @@ void QUmlInclude::setIncludingCase(QUmlUseCase *includingCase)
 void QUmlInclude::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInclude");
+    QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that is to be included.");
     QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -164,6 +167,8 @@ void QUmlInclude::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("addition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInclude");
+    QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::DocumentationRole] = QStringLiteral("References the use case which will include the addition and owns the include relationship.");
     QModelingObject::propertyDataHash[QStringLiteral("includingCase")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

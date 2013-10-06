@@ -69,18 +69,18 @@ QUmlAbstractionObject::~QUmlAbstractionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlAbstractionObject::ownedComment() const
+const QSet<QObject *> QUmlAbstractionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAbstractionObject::ownedElement() const
+const QSet<QObject *> QUmlAbstractionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -113,10 +113,10 @@ QObject *QUmlAbstractionObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlAbstractionObject::clientDependency() const
+const QSet<QObject *> QUmlAbstractionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -146,6 +146,7 @@ QString QUmlAbstractionObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlAbstractionObject::visibility() const
@@ -155,46 +156,46 @@ QtUml::VisibilityKind QUmlAbstractionObject::visibility() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlAbstractionObject::relatedElement() const
+const QSet<QObject *> QUmlAbstractionObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlAbstractionObject::source() const
+const QSet<QObject *> QUmlAbstractionObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAbstractionObject::target() const
+const QSet<QObject *> QUmlAbstractionObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Dependency]
 
-const QSet<QObject *> QUmlAbstractionObject::client() const
+const QSet<QObject *> QUmlAbstractionObject::clients() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->client())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->clients())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAbstractionObject::supplier() const
+const QSet<QObject *> QUmlAbstractionObject::suppliers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->supplier())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlAbstraction *>(this)->suppliers())
         set.insert(element->asQObject());
     return set;
 }

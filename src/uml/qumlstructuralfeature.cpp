@@ -52,6 +52,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlStructuralFeature
 
@@ -72,9 +73,9 @@ QUmlStructuralFeature::~QUmlStructuralFeature()
 QModelingObject *QUmlStructuralFeature::clone() const
 {
     QUmlStructuralFeature *c = new QUmlStructuralFeature;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -119,6 +120,8 @@ void QUmlStructuralFeature::setReadOnly(bool isReadOnly)
 void QUmlStructuralFeature::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("isReadOnly")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isReadOnly")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuralFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("isReadOnly")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isReadOnly")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isReadOnly")][QtModeling::DocumentationRole] = QStringLiteral("States whether the feature's value may be modified by a client.");
     QModelingObject::propertyDataHash[QStringLiteral("isReadOnly")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

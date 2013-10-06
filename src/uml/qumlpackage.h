@@ -72,24 +72,24 @@ public:
     // Owned attributes
     QString URI() const;
     void setURI(QString URI);
-    const QSet<QUmlPackage *> nestedPackage() const;
+    const QSet<QUmlPackage *> nestedPackages() const;
     void addNestedPackage(QUmlPackage *nestedPackage);
     void removeNestedPackage(QUmlPackage *nestedPackage);
     QUmlPackage *nestingPackage() const;
     void setNestingPackage(QUmlPackage *nestingPackage);
-    const QSet<QUmlStereotype *> ownedStereotype() const;
+    const QSet<QUmlStereotype *> ownedStereotypes() const;
     Q_DECL_HIDDEN void addOwnedStereotype(QUmlStereotype *ownedStereotype);
     Q_DECL_HIDDEN void removeOwnedStereotype(QUmlStereotype *ownedStereotype);
-    const QSet<QUmlType *> ownedType() const;
+    const QSet<QUmlType *> ownedTypes() const;
     void addOwnedType(QUmlType *ownedType);
     void removeOwnedType(QUmlType *ownedType);
-    const QSet<QUmlPackageMerge *> packageMerge() const;
+    const QSet<QUmlPackageMerge *> packageMerges() const;
     void addPackageMerge(QUmlPackageMerge *packageMerge);
     void removePackageMerge(QUmlPackageMerge *packageMerge);
-    const QSet<QUmlPackageableElement *> packagedElement() const;
+    const QSet<QUmlPackageableElement *> packagedElements() const;
     void addPackagedElement(QUmlPackageableElement *packagedElement);
     void removePackagedElement(QUmlPackageableElement *packagedElement);
-    const QSet<QUmlProfileApplication *> profileApplication() const;
+    const QSet<QUmlProfileApplication *> profileApplications() const;
     void addProfileApplication(QUmlProfileApplication *profileApplication);
     void removeProfileApplication(QUmlProfileApplication *profileApplication);
 
@@ -103,9 +103,9 @@ public:
 protected:
     QString _URI;
     QUmlPackage *_nestingPackage;
-    QSet<QUmlPackageMerge *> _packageMerge;
-    QSet<QUmlPackageableElement *> _packagedElement;
-    QSet<QUmlProfileApplication *> _profileApplication;
+    QSet<QUmlPackageMerge *> _packageMerges;
+    QSet<QUmlPackageableElement *> _packagedElements;
+    QSet<QUmlProfileApplication *> _profileApplications;
 
     virtual void setPropertyData();
 };

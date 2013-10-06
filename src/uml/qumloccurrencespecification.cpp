@@ -53,6 +53,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlOccurrenceSpecification
 
@@ -80,9 +81,9 @@ QUmlOccurrenceSpecification::~QUmlOccurrenceSpecification()
 QModelingObject *QUmlOccurrenceSpecification::clone() const
 {
     QUmlOccurrenceSpecification *c = new QUmlOccurrenceSpecification;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -92,13 +93,13 @@ QModelingObject *QUmlOccurrenceSpecification::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     if (covered())
         c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
-    foreach (QUmlGeneralOrdering *element, toAfter())
+    foreach (QUmlGeneralOrdering *element, toAfters())
         c->addToAfter(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlGeneralOrdering *element, toBefore())
+    foreach (QUmlGeneralOrdering *element, toBefores())
         c->addToBefore(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     return c;
 }
@@ -129,19 +130,19 @@ void QUmlOccurrenceSpecification::setCovered(QUmlLifeline *covered)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification
  */
-const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfter() const
+const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toAfters() const
 {
     // This is a read-write association end
 
-    return _toAfter;
+    return _toAfters;
 }
 
 void QUmlOccurrenceSpecification::addToAfter(QUmlGeneralOrdering *toAfter)
 {
     // This is a read-write association end
 
-    if (!_toAfter.contains(toAfter)) {
-        _toAfter.insert(toAfter);
+    if (!_toAfters.contains(toAfter)) {
+        _toAfters.insert(toAfter);
         if (toAfter && toAfter->asQObject() && this->asQObject())
             QObject::connect(toAfter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeToAfter(QObject *)));
 
@@ -156,8 +157,8 @@ void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
 {
     // This is a read-write association end
 
-    if (_toAfter.contains(toAfter)) {
-        _toAfter.remove(toAfter);
+    if (_toAfters.contains(toAfter)) {
+        _toAfters.remove(toAfter);
 
         // Adjust opposite properties
         if (toAfter) {
@@ -169,19 +170,19 @@ void QUmlOccurrenceSpecification::removeToAfter(QUmlGeneralOrdering *toAfter)
 /*!
     References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification
  */
-const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefore() const
+const QSet<QUmlGeneralOrdering *> QUmlOccurrenceSpecification::toBefores() const
 {
     // This is a read-write association end
 
-    return _toBefore;
+    return _toBefores;
 }
 
 void QUmlOccurrenceSpecification::addToBefore(QUmlGeneralOrdering *toBefore)
 {
     // This is a read-write association end
 
-    if (!_toBefore.contains(toBefore)) {
-        _toBefore.insert(toBefore);
+    if (!_toBefores.contains(toBefore)) {
+        _toBefores.insert(toBefore);
         if (toBefore && toBefore->asQObject() && this->asQObject())
             QObject::connect(toBefore->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeToBefore(QObject *)));
 
@@ -196,8 +197,8 @@ void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
 {
     // This is a read-write association end
 
-    if (_toBefore.contains(toBefore)) {
-        _toBefore.remove(toBefore);
+    if (_toBefores.contains(toBefore)) {
+        _toBefores.remove(toBefore);
 
         // Adjust opposite properties
         if (toBefore) {
@@ -209,6 +210,8 @@ void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
 void QUmlOccurrenceSpecification::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::DocumentationRole] = QStringLiteral("References the Lifeline on which the OccurrenceSpecification appears.");
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InteractionFragment-covered");
@@ -216,6 +219,8 @@ void QUmlOccurrenceSpecification::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("toAfter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("toAfter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("toAfter")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("toAfter")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("toAfter")][QtModeling::DocumentationRole] = QStringLiteral("References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification");
     QModelingObject::propertyDataHash[QStringLiteral("toAfter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -223,6 +228,8 @@ void QUmlOccurrenceSpecification::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("toAfter")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralOrdering-before");
 
     QModelingObject::propertyDataHash[QStringLiteral("toBefore")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("toBefore")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("toBefore")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("toBefore")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("toBefore")][QtModeling::DocumentationRole] = QStringLiteral("References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification");
     QModelingObject::propertyDataHash[QStringLiteral("toBefore")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -67,10 +67,10 @@ public:
     // Owned attributes
     QUmlClassifier *classifier() const;
     void setClassifier(QUmlClassifier *classifier);
-    const QSet<QUmlRedefinableTemplateSignature *> extendedSignature() const;
+    const QSet<QUmlRedefinableTemplateSignature *> extendedSignatures() const;
     void addExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
     void removeExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature);
-    const QSet<QUmlTemplateParameter *> inheritedParameter() const;
+    const QSet<QUmlTemplateParameter *> inheritedParameters() const;
     Q_DECL_HIDDEN void addInheritedParameter(QUmlTemplateParameter *inheritedParameter);
     Q_DECL_HIDDEN void removeInheritedParameter(QUmlTemplateParameter *inheritedParameter);
 
@@ -79,7 +79,7 @@ public:
 
 protected:
     QUmlClassifier *_classifier;
-    QSet<QUmlRedefinableTemplateSignature *> _extendedSignature;
+    QSet<QUmlRedefinableTemplateSignature *> _extendedSignatures;
 
     virtual void setPropertyData();
 };

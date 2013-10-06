@@ -52,6 +52,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlConstraint
 
@@ -80,19 +81,19 @@ QUmlConstraint::~QUmlConstraint()
 QModelingObject *QUmlConstraint::clone() const
 {
     QUmlConstraint *c = new QUmlConstraint;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlElement *element, constrainedElement())
+    foreach (QUmlElement *element, constrainedElements())
         c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
     if (context())
         c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
@@ -106,19 +107,19 @@ QModelingObject *QUmlConstraint::clone() const
 /*!
     The ordered set of Elements referenced by this Constraint.
  */
-const QList<QUmlElement *> QUmlConstraint::constrainedElement() const
+const QList<QUmlElement *> QUmlConstraint::constrainedElements() const
 {
     // This is a read-write association end
 
-    return _constrainedElement;
+    return _constrainedElements;
 }
 
 void QUmlConstraint::addConstrainedElement(QUmlElement *constrainedElement)
 {
     // This is a read-write association end
 
-    if (!_constrainedElement.contains(constrainedElement)) {
-        _constrainedElement.append(constrainedElement);
+    if (!_constrainedElements.contains(constrainedElement)) {
+        _constrainedElements.append(constrainedElement);
         if (constrainedElement && constrainedElement->asQObject() && this->asQObject())
             QObject::connect(constrainedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConstrainedElement(QObject *)));
     }
@@ -128,8 +129,8 @@ void QUmlConstraint::removeConstrainedElement(QUmlElement *constrainedElement)
 {
     // This is a read-write association end
 
-    if (_constrainedElement.contains(constrainedElement)) {
-        _constrainedElement.removeAll(constrainedElement);
+    if (_constrainedElements.contains(constrainedElement)) {
+        _constrainedElements.removeAll(constrainedElement);
     }
 }
 
@@ -192,6 +193,8 @@ void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
 void QUmlConstraint::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of Elements referenced by this Constraint.");
     QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -199,6 +202,8 @@ void QUmlConstraint::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the namespace that owns the NamedElement.");
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -206,6 +211,8 @@ void QUmlConstraint::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("Namespace-ownedRule");
 
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

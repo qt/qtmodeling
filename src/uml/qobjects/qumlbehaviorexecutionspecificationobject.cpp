@@ -72,18 +72,18 @@ QUmlBehaviorExecutionSpecificationObject::~QUmlBehaviorExecutionSpecificationObj
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlBehaviorExecutionSpecificationObject::ownedComment() const
+const QSet<QObject *> QUmlBehaviorExecutionSpecificationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlBehaviorExecutionSpecificationObject::ownedElement() const
+const QSet<QObject *> QUmlBehaviorExecutionSpecificationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -98,10 +98,10 @@ QObject *QUmlBehaviorExecutionSpecificationObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlBehaviorExecutionSpecificationObject::clientDependency() const
+const QSet<QObject *> QUmlBehaviorExecutionSpecificationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -163,10 +163,10 @@ QObject *QUmlBehaviorExecutionSpecificationObject::enclosingOperand() const
         return qmodelingobjectproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->enclosingOperand()->asQObject();
 }
 
-const QSet<QObject *> QUmlBehaviorExecutionSpecificationObject::generalOrdering() const
+const QSet<QObject *> QUmlBehaviorExecutionSpecificationObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->generalOrdering())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlBehaviorExecutionSpecification *>(this)->generalOrderings())
         set.insert(element->asQObject());
     return set;
 }

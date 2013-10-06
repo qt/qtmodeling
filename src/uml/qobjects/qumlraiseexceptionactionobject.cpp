@@ -79,18 +79,18 @@ QUmlRaiseExceptionActionObject::~QUmlRaiseExceptionActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::ownedComment() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::ownedElement() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlRaiseExceptionActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::clientDependency() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlRaiseExceptionActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::redefinedElement() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlRaiseExceptionActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::inGroup() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::inPartition() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,36 +209,36 @@ QObject *QUmlRaiseExceptionActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::incoming() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::outgoing() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::redefinedNode() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::handler() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -253,10 +253,10 @@ QObject *QUmlRaiseExceptionActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlRaiseExceptionActionObject::input() const
+const QList<QObject *> QUmlRaiseExceptionActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -266,26 +266,26 @@ bool QUmlRaiseExceptionActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::localPostcondition() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRaiseExceptionActionObject::localPrecondition() const
+const QSet<QObject *> QUmlRaiseExceptionActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlRaiseExceptionActionObject::output() const
+const QList<QObject *> QUmlRaiseExceptionActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlRaiseExceptionAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

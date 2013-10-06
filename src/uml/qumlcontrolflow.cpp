@@ -59,6 +59,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlControlFlow
 
@@ -85,9 +86,9 @@ QUmlControlFlow::~QUmlControlFlow()
 QModelingObject *QUmlControlFlow::clone() const
 {
     QUmlControlFlow *c = new QUmlControlFlow;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -98,13 +99,13 @@ QModelingObject *QUmlControlFlow::clone() const
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
     if (guard())
         c->setGuard(dynamic_cast<QUmlValueSpecification *>(guard()->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
     if (interrupts())
         c->setInterrupts(dynamic_cast<QUmlInterruptibleActivityRegion *>(interrupts()->clone()));
-    foreach (QUmlActivityEdge *element, redefinedEdge())
+    foreach (QUmlActivityEdge *element, redefinedEdges())
         c->addRedefinedEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
     if (source())
         c->setSource(dynamic_cast<QUmlActivityNode *>(source()->clone()));

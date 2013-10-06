@@ -60,19 +60,19 @@ int main ()
 
     QUmlComment *c4 = dynamic_cast<QUmlComment *>(c1->clone());
     qDebug() << "c1 body:" << c4->body();
-    foreach (QUmlComment *comment, c1->ownedComment())
+    foreach (QUmlComment *comment, c1->ownedComments())
         qDebug() << "c1 owned comment body:" << comment->body();
     qDebug() << "c4 body:" << c4->body();
-    foreach (QUmlComment *comment, c4->ownedComment())
+    foreach (QUmlComment *comment, c4->ownedComments())
         qDebug() << "c4 owned comment body:" << comment->body();
 
     //c1->removeOwnedComment(c3);
     qDebug() << "c3's parent:" << c3->asQObject()->parent();
 
-    qDebug() << "Comment size:" << c1->ownedComment().size();
+    qDebug() << "Comment size:" << c1->ownedComments().size();
     delete c2;
     //c1->removeOwnedComment(c2);
-    qDebug() << "Comment size:" << c1->ownedComment().size();
+    qDebug() << "Comment size:" << c1->ownedComments().size();
     foreach(QObject *c, c1->asQObject()->property("ownedComment").value< QSet<QObject *> >())
         qDebug() << c->objectName();
 

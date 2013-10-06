@@ -53,6 +53,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlRedefinableTemplateSignature
 
@@ -81,15 +82,15 @@ QUmlRedefinableTemplateSignature::~QUmlRedefinableTemplateSignature()
 QModelingObject *QUmlRedefinableTemplateSignature::clone() const
 {
     QUmlRedefinableTemplateSignature *c = new QUmlRedefinableTemplateSignature;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlTemplateParameter *element, ownedParameter())
+    foreach (QUmlTemplateParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlTemplateParameter *>(element->clone()));
-    foreach (QUmlTemplateParameter *element, parameter())
+    foreach (QUmlTemplateParameter *element, parameters())
         c->addParameter(dynamic_cast<QUmlTemplateParameter *>(element->clone()));
     if (template_())
         c->setTemplate(dynamic_cast<QUmlTemplateableElement *>(template_()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -98,7 +99,7 @@ QModelingObject *QUmlRedefinableTemplateSignature::clone() const
     c->setLeaf(isLeaf());
     if (classifier())
         c->setClassifier(dynamic_cast<QUmlClassifier *>(classifier()->clone()));
-    foreach (QUmlRedefinableTemplateSignature *element, extendedSignature())
+    foreach (QUmlRedefinableTemplateSignature *element, extendedSignatures())
         c->addExtendedSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(element->clone()));
     return c;
 }
@@ -137,19 +138,19 @@ void QUmlRedefinableTemplateSignature::setClassifier(QUmlClassifier *classifier)
 /*!
     The template signature that is extended by this template signature.
  */
-const QSet<QUmlRedefinableTemplateSignature *> QUmlRedefinableTemplateSignature::extendedSignature() const
+const QSet<QUmlRedefinableTemplateSignature *> QUmlRedefinableTemplateSignature::extendedSignatures() const
 {
     // This is a read-write association end
 
-    return _extendedSignature;
+    return _extendedSignatures;
 }
 
 void QUmlRedefinableTemplateSignature::addExtendedSignature(QUmlRedefinableTemplateSignature *extendedSignature)
 {
     // This is a read-write association end
 
-    if (!_extendedSignature.contains(extendedSignature)) {
-        _extendedSignature.insert(extendedSignature);
+    if (!_extendedSignatures.contains(extendedSignature)) {
+        _extendedSignatures.insert(extendedSignature);
         if (extendedSignature && extendedSignature->asQObject() && this->asQObject())
             QObject::connect(extendedSignature->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtendedSignature(QObject *)));
 
@@ -162,8 +163,8 @@ void QUmlRedefinableTemplateSignature::removeExtendedSignature(QUmlRedefinableTe
 {
     // This is a read-write association end
 
-    if (_extendedSignature.contains(extendedSignature)) {
-        _extendedSignature.remove(extendedSignature);
+    if (_extendedSignatures.contains(extendedSignature)) {
+        _extendedSignatures.remove(extendedSignature);
 
         // Adjust subsetted properties
         removeRedefinedElement(extendedSignature);
@@ -173,11 +174,11 @@ void QUmlRedefinableTemplateSignature::removeExtendedSignature(QUmlRedefinableTe
 /*!
     The formal template parameters of the extendedSignature.
  */
-const QSet<QUmlTemplateParameter *> QUmlRedefinableTemplateSignature::inheritedParameter() const
+const QSet<QUmlTemplateParameter *> QUmlRedefinableTemplateSignature::inheritedParameters() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlRedefinableTemplateSignature::inheritedParameter(): to be implemented (this is a derived association end)");
+    qWarning("UmlRedefinableTemplateSignature::inheritedParameters(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlTemplateParameter *>();
 }
@@ -186,7 +187,7 @@ void QUmlRedefinableTemplateSignature::addInheritedParameter(QUmlTemplateParamet
 {
     // This is a read-only derived association end
 
-    qWarning("UmlRedefinableTemplateSignature::inheritedParameter(): to be implemented (this is a derived association end)");
+    qWarning("UmlRedefinableTemplateSignature::addInheritedParameter(): to be implemented (this is a derived association end)");
     Q_UNUSED(inheritedParameter);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -201,7 +202,7 @@ void QUmlRedefinableTemplateSignature::removeInheritedParameter(QUmlTemplatePara
 {
     // This is a read-only derived association end
 
-    qWarning("UmlRedefinableTemplateSignature::inheritedParameter(): to be implemented (this is a derived association end)");
+    qWarning("UmlRedefinableTemplateSignature::removeInheritedParameter(): to be implemented (this is a derived association end)");
     Q_UNUSED(inheritedParameter);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -228,6 +229,8 @@ bool QUmlRedefinableTemplateSignature::isConsistentWith(QUmlRedefinableElement *
 void QUmlRedefinableTemplateSignature::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRedefinableTemplateSignature");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifier that owns this template signature.");
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateSignature-template");
@@ -235,6 +238,8 @@ void QUmlRedefinableTemplateSignature::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-ownedTemplateSignature");
 
     QModelingObject::propertyDataHash[QStringLiteral("extendedSignature")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedSignature")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRedefinableTemplateSignature");
+    QModelingObject::propertyDataHash[QStringLiteral("extendedSignature")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extendedSignature")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extendedSignature")][QtModeling::DocumentationRole] = QStringLiteral("The template signature that is extended by this template signature.");
     QModelingObject::propertyDataHash[QStringLiteral("extendedSignature")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -242,6 +247,8 @@ void QUmlRedefinableTemplateSignature::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("extendedSignature")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("inheritedParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("inheritedParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRedefinableTemplateSignature");
+    QModelingObject::propertyDataHash[QStringLiteral("inheritedParameter")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("inheritedParameter")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inheritedParameter")][QtModeling::DocumentationRole] = QStringLiteral("The formal template parameters of the extendedSignature.");
     QModelingObject::propertyDataHash[QStringLiteral("inheritedParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

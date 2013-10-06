@@ -66,31 +66,31 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlClassifier *> nestedClassifier() const;
+    const QList<QUmlClassifier *> nestedClassifiers() const;
     void addNestedClassifier(QUmlClassifier *nestedClassifier);
     void removeNestedClassifier(QUmlClassifier *nestedClassifier);
-    const QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttributes() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QList<QUmlOperation *> ownedOperation() const;
+    const QList<QUmlOperation *> ownedOperations() const;
     void addOwnedOperation(QUmlOperation *ownedOperation);
     void removeOwnedOperation(QUmlOperation *ownedOperation);
-    const QSet<QUmlReception *> ownedReception() const;
+    const QSet<QUmlReception *> ownedReceptions() const;
     void addOwnedReception(QUmlReception *ownedReception);
     void removeOwnedReception(QUmlReception *ownedReception);
     QUmlProtocolStateMachine *protocol() const;
     void setProtocol(QUmlProtocolStateMachine *protocol);
-    const QSet<QUmlInterface *> redefinedInterface() const;
+    const QSet<QUmlInterface *> redefinedInterfaces() const;
     void addRedefinedInterface(QUmlInterface *redefinedInterface);
     void removeRedefinedInterface(QUmlInterface *redefinedInterface);
 
 protected:
-    QList<QUmlClassifier *> _nestedClassifier;
-    QList<QUmlProperty *> _ownedAttribute;
-    QList<QUmlOperation *> _ownedOperation;
-    QSet<QUmlReception *> _ownedReception;
+    QList<QUmlClassifier *> _nestedClassifiers;
+    QList<QUmlProperty *> _ownedAttributes;
+    QList<QUmlOperation *> _ownedOperations;
+    QSet<QUmlReception *> _ownedReceptions;
     QUmlProtocolStateMachine *_protocol;
-    QSet<QUmlInterface *> _redefinedInterface;
+    QSet<QUmlInterface *> _redefinedInterfaces;
 
     virtual void setPropertyData();
 };

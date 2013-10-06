@@ -70,18 +70,18 @@ QUmlManifestationObject::~QUmlManifestationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlManifestationObject::ownedComment() const
+const QSet<QObject *> QUmlManifestationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlManifestationObject::ownedElement() const
+const QSet<QObject *> QUmlManifestationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -114,10 +114,10 @@ QObject *QUmlManifestationObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlManifestationObject::clientDependency() const
+const QSet<QObject *> QUmlManifestationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -147,6 +147,7 @@ QString QUmlManifestationObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlManifestation *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlManifestationObject::visibility() const
@@ -156,46 +157,46 @@ QtUml::VisibilityKind QUmlManifestationObject::visibility() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlManifestationObject::relatedElement() const
+const QSet<QObject *> QUmlManifestationObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlManifestationObject::source() const
+const QSet<QObject *> QUmlManifestationObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlManifestationObject::target() const
+const QSet<QObject *> QUmlManifestationObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Dependency]
 
-const QSet<QObject *> QUmlManifestationObject::client() const
+const QSet<QObject *> QUmlManifestationObject::clients() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->client())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->clients())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlManifestationObject::supplier() const
+const QSet<QObject *> QUmlManifestationObject::suppliers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->supplier())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlManifestation *>(this)->suppliers())
         set.insert(element->asQObject());
     return set;
 }

@@ -67,6 +67,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
+
 /*!
     \class QUmlSequenceNode
 
@@ -94,52 +95,52 @@ QUmlSequenceNode::~QUmlSequenceNode()
 QModelingObject *QUmlSequenceNode::clone() const
 {
     QUmlSequenceNode *c = new QUmlSequenceNode;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlActivityEdge *element, edge())
+    foreach (QUmlActivityEdge *element, edges())
         c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
     c->setMustIsolate(mustIsolate());
-    foreach (QUmlInputPin *element, structuredNodeInput())
+    foreach (QUmlInputPin *element, structuredNodeInputs())
         c->addStructuredNodeInput(dynamic_cast<QUmlInputPin *>(element->clone()));
-    foreach (QUmlOutputPin *element, structuredNodeOutput())
+    foreach (QUmlOutputPin *element, structuredNodeOutputs())
         c->addStructuredNodeOutput(dynamic_cast<QUmlOutputPin *>(element->clone()));
-    foreach (QUmlVariable *element, variable())
+    foreach (QUmlVariable *element, variables())
         c->addVariable(dynamic_cast<QUmlVariable *>(element->clone()));
-    foreach (QUmlExecutableNode *element, executableNode())
+    foreach (QUmlExecutableNode *element, executableNodes())
         c->addExecutableNode(dynamic_cast<QUmlExecutableNode *>(element->clone()));
     return c;
 }
@@ -149,19 +150,19 @@ QModelingObject *QUmlSequenceNode::clone() const
 /*!
     An ordered set of executable nodes.
  */
-const QList<QUmlExecutableNode *> QUmlSequenceNode::executableNode() const
+const QList<QUmlExecutableNode *> QUmlSequenceNode::executableNodes() const
 {
     // This is a read-write association end
 
-    return _executableNode;
+    return _executableNodes;
 }
 
 void QUmlSequenceNode::addExecutableNode(QUmlExecutableNode *executableNode)
 {
     // This is a read-write association end
 
-    if (!_executableNode.contains(executableNode)) {
-        _executableNode.append(executableNode);
+    if (!_executableNodes.contains(executableNode)) {
+        _executableNodes.append(executableNode);
         if (executableNode && executableNode->asQObject() && this->asQObject())
             QObject::connect(executableNode->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExecutableNode(QObject *)));
         executableNode->asQObject()->setParent(this->asQObject());
@@ -172,8 +173,8 @@ void QUmlSequenceNode::removeExecutableNode(QUmlExecutableNode *executableNode)
 {
     // This is a read-write association end
 
-    if (_executableNode.contains(executableNode)) {
-        _executableNode.removeAll(executableNode);
+    if (_executableNodes.contains(executableNode)) {
+        _executableNodes.removeAll(executableNode);
         if (executableNode->asQObject())
             executableNode->asQObject()->setParent(0);
     }
@@ -182,6 +183,8 @@ void QUmlSequenceNode::removeExecutableNode(QUmlExecutableNode *executableNode)
 void QUmlSequenceNode::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSequenceNode");
+    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::DocumentationRole] = QStringLiteral("An ordered set of executable nodes.");
     QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-node");

@@ -82,18 +82,18 @@ QUmlCreateLinkActionObject::~QUmlCreateLinkActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlCreateLinkActionObject::ownedComment() const
+const QSet<QObject *> QUmlCreateLinkActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::ownedElement() const
+const QSet<QObject *> QUmlCreateLinkActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -108,10 +108,10 @@ QObject *QUmlCreateLinkActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlCreateLinkActionObject::clientDependency() const
+const QSet<QObject *> QUmlCreateLinkActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -154,18 +154,18 @@ bool QUmlCreateLinkActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::redefinedElement() const
+const QSet<QObject *> QUmlCreateLinkActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlCreateLinkActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -180,26 +180,26 @@ QObject *QUmlCreateLinkActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::inGroup() const
+const QSet<QObject *> QUmlCreateLinkActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlCreateLinkActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::inPartition() const
+const QSet<QObject *> QUmlCreateLinkActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -212,36 +212,36 @@ QObject *QUmlCreateLinkActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::incoming() const
+const QSet<QObject *> QUmlCreateLinkActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::outgoing() const
+const QSet<QObject *> QUmlCreateLinkActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::redefinedNode() const
+const QSet<QObject *> QUmlCreateLinkActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlCreateLinkActionObject::handler() const
+const QSet<QObject *> QUmlCreateLinkActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -256,10 +256,10 @@ QObject *QUmlCreateLinkActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlCreateLinkActionObject::input() const
+const QList<QObject *> QUmlCreateLinkActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -269,36 +269,36 @@ bool QUmlCreateLinkActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::localPostcondition() const
+const QSet<QObject *> QUmlCreateLinkActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCreateLinkActionObject::localPrecondition() const
+const QSet<QObject *> QUmlCreateLinkActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlCreateLinkActionObject::output() const
+const QList<QObject *> QUmlCreateLinkActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
 
 // OWNED ATTRIBUTES [LinkAction]
 
-const QSet<QObject *> QUmlCreateLinkActionObject::inputValue() const
+const QSet<QObject *> QUmlCreateLinkActionObject::inputValues() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inputValue())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCreateLinkAction *>(this)->inputValues())
         set.insert(element->asQObject());
     return set;
 }

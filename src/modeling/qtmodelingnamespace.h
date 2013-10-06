@@ -61,15 +61,14 @@ class Q_MODELING_EXPORT QtModeling : public QObject
 public:
     enum MetaPropertyDataRole
     {
-        MetaObjectRole = 0,
-        WrappedObjectRole,
         AggregationRole,
         OppositeEndRole,
         DocumentationRole,
         RedefinedPropertiesRole,
         SubsettedPropertiesRole,
         IsDerivedUnionRole,
-        GroupRole,
+        IsDerivedRole,
+        PropertyClassRole,
         UserRole = 0x0100
     };
 

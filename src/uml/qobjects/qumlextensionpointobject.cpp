@@ -69,18 +69,18 @@ QUmlExtensionPointObject::~QUmlExtensionPointObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlExtensionPointObject::ownedComment() const
+const QSet<QObject *> QUmlExtensionPointObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExtensionPointObject::ownedElement() const
+const QSet<QObject *> QUmlExtensionPointObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -95,10 +95,10 @@ QObject *QUmlExtensionPointObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlExtensionPointObject::clientDependency() const
+const QSet<QObject *> QUmlExtensionPointObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -141,18 +141,18 @@ bool QUmlExtensionPointObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlExtensionPointObject::redefinedElement() const
+const QSet<QObject *> QUmlExtensionPointObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExtensionPointObject::redefinitionContext() const
+const QSet<QObject *> QUmlExtensionPointObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExtensionPoint *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }

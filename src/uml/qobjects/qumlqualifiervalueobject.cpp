@@ -63,18 +63,18 @@ QUmlQualifierValueObject::~QUmlQualifierValueObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlQualifierValueObject::ownedComment() const
+const QSet<QObject *> QUmlQualifierValueObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlQualifierValueObject::ownedElement() const
+const QSet<QObject *> QUmlQualifierValueObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlQualifierValue *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }

@@ -71,18 +71,18 @@ QUmlComponentRealizationObject::~QUmlComponentRealizationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlComponentRealizationObject::ownedComment() const
+const QSet<QObject *> QUmlComponentRealizationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlComponentRealizationObject::ownedElement() const
+const QSet<QObject *> QUmlComponentRealizationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -115,10 +115,10 @@ QObject *QUmlComponentRealizationObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlComponentRealizationObject::clientDependency() const
+const QSet<QObject *> QUmlComponentRealizationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -148,6 +148,7 @@ QString QUmlComponentRealizationObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlComponentRealizationObject::visibility() const
@@ -157,46 +158,46 @@ QtUml::VisibilityKind QUmlComponentRealizationObject::visibility() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlComponentRealizationObject::relatedElement() const
+const QSet<QObject *> QUmlComponentRealizationObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlComponentRealizationObject::source() const
+const QSet<QObject *> QUmlComponentRealizationObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlComponentRealizationObject::target() const
+const QSet<QObject *> QUmlComponentRealizationObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Dependency]
 
-const QSet<QObject *> QUmlComponentRealizationObject::client() const
+const QSet<QObject *> QUmlComponentRealizationObject::clients() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->client())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->clients())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlComponentRealizationObject::supplier() const
+const QSet<QObject *> QUmlComponentRealizationObject::suppliers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->supplier())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->suppliers())
         set.insert(element->asQObject());
     return set;
 }
@@ -221,10 +222,10 @@ QObject *QUmlComponentRealizationObject::abstraction() const
         return qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->abstraction()->asQObject();
 }
 
-const QSet<QObject *> QUmlComponentRealizationObject::realizingClassifier() const
+const QSet<QObject *> QUmlComponentRealizationObject::realizingClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->realizingClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlComponentRealization *>(this)->realizingClassifiers())
         set.insert(element->asQObject());
     return set;
 }

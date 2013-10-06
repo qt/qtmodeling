@@ -55,6 +55,7 @@
 #include <QtUml/QUmlOccurrenceSpecification>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlBehaviorExecutionSpecification
 
@@ -82,9 +83,9 @@ QUmlBehaviorExecutionSpecification::~QUmlBehaviorExecutionSpecification()
 QModelingObject *QUmlBehaviorExecutionSpecification::clone() const
 {
     QUmlBehaviorExecutionSpecification *c = new QUmlBehaviorExecutionSpecification;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -96,7 +97,7 @@ QModelingObject *QUmlBehaviorExecutionSpecification::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     if (finish())
         c->setFinish(dynamic_cast<QUmlOccurrenceSpecification *>(finish()->clone()));
@@ -133,6 +134,8 @@ void QUmlBehaviorExecutionSpecification::setBehavior(QUmlBehavior *behavior)
 void QUmlBehaviorExecutionSpecification::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehaviorExecutionSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::DocumentationRole] = QStringLiteral("Behavior whose execution is occurring.");
     QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

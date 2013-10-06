@@ -47,6 +47,7 @@
 #include <QtUml/QUmlInstanceSpecification>
 #include <QtUml/QUmlStructuralFeature>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlSlot
 
@@ -75,13 +76,13 @@ QUmlSlot::~QUmlSlot()
 QModelingObject *QUmlSlot::clone() const
 {
     QUmlSlot *c = new QUmlSlot;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (definingFeature())
         c->setDefiningFeature(dynamic_cast<QUmlStructuralFeature *>(definingFeature()->clone()));
     if (owningInstance())
         c->setOwningInstance(dynamic_cast<QUmlInstanceSpecification *>(owningInstance()->clone()));
-    foreach (QUmlValueSpecification *element, value())
+    foreach (QUmlValueSpecification *element, values())
         c->addValue(dynamic_cast<QUmlValueSpecification *>(element->clone()));
     return c;
 }
@@ -138,19 +139,19 @@ void QUmlSlot::setOwningInstance(QUmlInstanceSpecification *owningInstance)
 /*!
     The value or values corresponding to the defining feature for the owning instance specification.
  */
-const QList<QUmlValueSpecification *> QUmlSlot::value() const
+const QList<QUmlValueSpecification *> QUmlSlot::values() const
 {
     // This is a read-write association end
 
-    return _value;
+    return _values;
 }
 
 void QUmlSlot::addValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end
 
-    if (!_value.contains(value)) {
-        _value.append(value);
+    if (!_values.contains(value)) {
+        _values.append(value);
         if (value && value->asQObject() && this->asQObject())
             QObject::connect(value->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeValue(QObject *)));
         value->asQObject()->setParent(this->asQObject());
@@ -164,8 +165,8 @@ void QUmlSlot::removeValue(QUmlValueSpecification *value)
 {
     // This is a read-write association end
 
-    if (_value.contains(value)) {
-        _value.removeAll(value);
+    if (_values.contains(value)) {
+        _values.removeAll(value);
         if (value->asQObject())
             value->asQObject()->setParent(0);
 
@@ -177,6 +178,8 @@ void QUmlSlot::removeValue(QUmlValueSpecification *value)
 void QUmlSlot::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("definingFeature")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("definingFeature")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSlot");
+    QModelingObject::propertyDataHash[QStringLiteral("definingFeature")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("definingFeature")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("definingFeature")][QtModeling::DocumentationRole] = QStringLiteral("The structural feature that specifies the values that may be held by the slot.");
     QModelingObject::propertyDataHash[QStringLiteral("definingFeature")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -184,6 +187,8 @@ void QUmlSlot::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("definingFeature")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("owningInstance")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("owningInstance")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSlot");
+    QModelingObject::propertyDataHash[QStringLiteral("owningInstance")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("owningInstance")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("owningInstance")][QtModeling::DocumentationRole] = QStringLiteral("The instance specification that owns this slot.");
     QModelingObject::propertyDataHash[QStringLiteral("owningInstance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -191,6 +196,8 @@ void QUmlSlot::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("owningInstance")][QtModeling::OppositeEndRole] = QStringLiteral("InstanceSpecification-slot");
 
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSlot");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The value or values corresponding to the defining feature for the owning instance specification.");
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

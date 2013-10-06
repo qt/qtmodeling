@@ -54,6 +54,7 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlComponentRealization
 
@@ -82,27 +83,27 @@ QUmlComponentRealization::~QUmlComponentRealization()
 QModelingObject *QUmlComponentRealization::clone() const
 {
     QUmlComponentRealization *c = new QUmlComponentRealization;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlNamedElement *element, client())
+    foreach (QUmlNamedElement *element, clients())
         c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, supplier())
+    foreach (QUmlNamedElement *element, suppliers())
         c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     if (mapping())
         c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
     if (abstraction())
         c->setAbstraction(dynamic_cast<QUmlComponent *>(abstraction()->clone()));
-    foreach (QUmlClassifier *element, realizingClassifier())
+    foreach (QUmlClassifier *element, realizingClassifiers())
         c->addRealizingClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     return c;
 }
@@ -142,19 +143,19 @@ void QUmlComponentRealization::setAbstraction(QUmlComponent *abstraction)
 /*!
     The classifiers that are involved in the implementation of the Component that owns this Realization.
  */
-const QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifier() const
+const QSet<QUmlClassifier *> QUmlComponentRealization::realizingClassifiers() const
 {
     // This is a read-write association end
 
-    return _realizingClassifier;
+    return _realizingClassifiers;
 }
 
 void QUmlComponentRealization::addRealizingClassifier(QUmlClassifier *realizingClassifier)
 {
     // This is a read-write association end
 
-    if (!_realizingClassifier.contains(realizingClassifier)) {
-        _realizingClassifier.insert(realizingClassifier);
+    if (!_realizingClassifiers.contains(realizingClassifier)) {
+        _realizingClassifiers.insert(realizingClassifier);
         if (realizingClassifier && realizingClassifier->asQObject() && this->asQObject())
             QObject::connect(realizingClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealizingClassifier(QObject *)));
 
@@ -167,8 +168,8 @@ void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizi
 {
     // This is a read-write association end
 
-    if (_realizingClassifier.contains(realizingClassifier)) {
-        _realizingClassifier.remove(realizingClassifier);
+    if (_realizingClassifiers.contains(realizingClassifier)) {
+        _realizingClassifiers.remove(realizingClassifier);
 
         // Adjust subsetted properties
         removeClient(realizingClassifier);
@@ -178,6 +179,8 @@ void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizi
 void QUmlComponentRealization::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("abstraction")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("abstraction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponentRealization");
+    QModelingObject::propertyDataHash[QStringLiteral("abstraction")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("abstraction")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("abstraction")][QtModeling::DocumentationRole] = QStringLiteral("The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.");
     QModelingObject::propertyDataHash[QStringLiteral("abstraction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -185,6 +188,8 @@ void QUmlComponentRealization::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("abstraction")][QtModeling::OppositeEndRole] = QStringLiteral("Component-realization");
 
     QModelingObject::propertyDataHash[QStringLiteral("realizingClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("realizingClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponentRealization");
+    QModelingObject::propertyDataHash[QStringLiteral("realizingClassifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realizingClassifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realizingClassifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifiers that are involved in the implementation of the Component that owns this Realization.");
     QModelingObject::propertyDataHash[QStringLiteral("realizingClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

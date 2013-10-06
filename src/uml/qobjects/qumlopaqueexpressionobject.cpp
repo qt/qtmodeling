@@ -71,18 +71,18 @@ QUmlOpaqueExpressionObject::~QUmlOpaqueExpressionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlOpaqueExpressionObject::ownedComment() const
+const QSet<QObject *> QUmlOpaqueExpressionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOpaqueExpressionObject::ownedElement() const
+const QSet<QObject *> QUmlOpaqueExpressionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlOpaqueExpressionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlOpaqueExpressionObject::clientDependency() const
+const QSet<QObject *> QUmlOpaqueExpressionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -130,6 +130,7 @@ QString QUmlOpaqueExpressionObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlOpaqueExpressionObject::type() const
@@ -175,14 +176,14 @@ QObject *QUmlOpaqueExpressionObject::behavior() const
         return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->behavior()->asQObject();
 }
 
-const QList<QString> QUmlOpaqueExpressionObject::body() const
+const QList<QString> QUmlOpaqueExpressionObject::bodies() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->body();
+    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->bodies();
 }
 
-const QList<QString> QUmlOpaqueExpressionObject::language() const
+const QList<QString> QUmlOpaqueExpressionObject::languages() const
 {
-    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->language();
+    return qmodelingobjectproperty_cast<QUmlOpaqueExpression *>(this)->languages();
 }
 
 QObject *QUmlOpaqueExpressionObject::result() const

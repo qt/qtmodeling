@@ -80,18 +80,18 @@ QUmlClearStructuralFeatureActionObject::~QUmlClearStructuralFeatureActionObject(
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::ownedComment() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::ownedElement() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -106,10 +106,10 @@ QObject *QUmlClearStructuralFeatureActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::clientDependency() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -152,18 +152,18 @@ bool QUmlClearStructuralFeatureActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::redefinedElement() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -178,26 +178,26 @@ QObject *QUmlClearStructuralFeatureActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::inGroup() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::inPartition() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -210,36 +210,36 @@ QObject *QUmlClearStructuralFeatureActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::incoming() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::outgoing() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::redefinedNode() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::handler() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -254,10 +254,10 @@ QObject *QUmlClearStructuralFeatureActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlClearStructuralFeatureActionObject::input() const
+const QList<QObject *> QUmlClearStructuralFeatureActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -267,26 +267,26 @@ bool QUmlClearStructuralFeatureActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::localPostcondition() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearStructuralFeatureActionObject::localPrecondition() const
+const QSet<QObject *> QUmlClearStructuralFeatureActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlClearStructuralFeatureActionObject::output() const
+const QList<QObject *> QUmlClearStructuralFeatureActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlClearStructuralFeatureAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

@@ -71,6 +71,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlArtifact
 
@@ -97,18 +98,18 @@ QUmlArtifact::~QUmlArtifact()
 QModelingObject *QUmlArtifact::clone() const
 {
     QUmlArtifact *c = new QUmlArtifact;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -116,38 +117,38 @@ QModelingObject *QUmlArtifact::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
     c->setFileName(fileName());
-    foreach (QUmlManifestation *element, manifestation())
+    foreach (QUmlManifestation *element, manifestations())
         c->addManifestation(dynamic_cast<QUmlManifestation *>(element->clone()));
-    foreach (QUmlArtifact *element, nestedArtifact())
+    foreach (QUmlArtifact *element, nestedArtifacts())
         c->addNestedArtifact(dynamic_cast<QUmlArtifact *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlOperation *element, ownedOperation())
+    foreach (QUmlOperation *element, ownedOperations())
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
     return c;
 }
@@ -176,19 +177,19 @@ void QUmlArtifact::setFileName(QString fileName)
 /*!
     The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.
  */
-const QSet<QUmlManifestation *> QUmlArtifact::manifestation() const
+const QSet<QUmlManifestation *> QUmlArtifact::manifestations() const
 {
     // This is a read-write association end
 
-    return _manifestation;
+    return _manifestations;
 }
 
 void QUmlArtifact::addManifestation(QUmlManifestation *manifestation)
 {
     // This is a read-write association end
 
-    if (!_manifestation.contains(manifestation)) {
-        _manifestation.insert(manifestation);
+    if (!_manifestations.contains(manifestation)) {
+        _manifestations.insert(manifestation);
         if (manifestation && manifestation->asQObject() && this->asQObject())
             QObject::connect(manifestation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeManifestation(QObject *)));
         manifestation->asQObject()->setParent(this->asQObject());
@@ -203,8 +204,8 @@ void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
 {
     // This is a read-write association end
 
-    if (_manifestation.contains(manifestation)) {
-        _manifestation.remove(manifestation);
+    if (_manifestations.contains(manifestation)) {
+        _manifestations.remove(manifestation);
         if (manifestation->asQObject())
             manifestation->asQObject()->setParent(0);
 
@@ -217,19 +218,19 @@ void QUmlArtifact::removeManifestation(QUmlManifestation *manifestation)
 /*!
     The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.
  */
-const QSet<QUmlArtifact *> QUmlArtifact::nestedArtifact() const
+const QSet<QUmlArtifact *> QUmlArtifact::nestedArtifacts() const
 {
     // This is a read-write association end
 
-    return _nestedArtifact;
+    return _nestedArtifacts;
 }
 
 void QUmlArtifact::addNestedArtifact(QUmlArtifact *nestedArtifact)
 {
     // This is a read-write association end
 
-    if (!_nestedArtifact.contains(nestedArtifact)) {
-        _nestedArtifact.insert(nestedArtifact);
+    if (!_nestedArtifacts.contains(nestedArtifact)) {
+        _nestedArtifacts.insert(nestedArtifact);
         if (nestedArtifact && nestedArtifact->asQObject() && this->asQObject())
             QObject::connect(nestedArtifact->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNestedArtifact(QObject *)));
         nestedArtifact->asQObject()->setParent(this->asQObject());
@@ -243,8 +244,8 @@ void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
 {
     // This is a read-write association end
 
-    if (_nestedArtifact.contains(nestedArtifact)) {
-        _nestedArtifact.remove(nestedArtifact);
+    if (_nestedArtifacts.contains(nestedArtifact)) {
+        _nestedArtifacts.remove(nestedArtifact);
         if (nestedArtifact->asQObject())
             nestedArtifact->asQObject()->setParent(0);
 
@@ -256,19 +257,19 @@ void QUmlArtifact::removeNestedArtifact(QUmlArtifact *nestedArtifact)
 /*!
     The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-const QList<QUmlProperty *> QUmlArtifact::ownedAttribute() const
+const QList<QUmlProperty *> QUmlArtifact::ownedAttributes() const
 {
     // This is a read-write association end
 
-    return _ownedAttribute;
+    return _ownedAttributes;
 }
 
 void QUmlArtifact::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
+    if (!_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.append(ownedAttribute);
         if (ownedAttribute && ownedAttribute->asQObject() && this->asQObject())
             QObject::connect(ownedAttribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedAttribute(QObject *)));
         ownedAttribute->asQObject()->setParent(this->asQObject());
@@ -283,8 +284,8 @@ void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
+    if (_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.removeAll(ownedAttribute);
         if (ownedAttribute->asQObject())
             ownedAttribute->asQObject()->setParent(0);
 
@@ -297,19 +298,19 @@ void QUmlArtifact::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 /*!
     The Operations defined for the Artifact. The association is a specialization of the ownedMember association.
  */
-const QList<QUmlOperation *> QUmlArtifact::ownedOperation() const
+const QList<QUmlOperation *> QUmlArtifact::ownedOperations() const
 {
     // This is a read-write association end
 
-    return _ownedOperation;
+    return _ownedOperations;
 }
 
 void QUmlArtifact::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    if (!_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.append(ownedOperation);
+    if (!_ownedOperations.contains(ownedOperation)) {
+        _ownedOperations.append(ownedOperation);
         if (ownedOperation && ownedOperation->asQObject() && this->asQObject())
             QObject::connect(ownedOperation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedOperation(QObject *)));
         ownedOperation->asQObject()->setParent(this->asQObject());
@@ -324,8 +325,8 @@ void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    if (_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.removeAll(ownedOperation);
+    if (_ownedOperations.contains(ownedOperation)) {
+        _ownedOperations.removeAll(ownedOperation);
         if (ownedOperation->asQObject())
             ownedOperation->asQObject()->setParent(0);
 
@@ -338,6 +339,8 @@ void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
 void QUmlArtifact::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::DocumentationRole] = QStringLiteral("A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.");
     QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -345,6 +348,8 @@ void QUmlArtifact::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::DocumentationRole] = QStringLiteral("The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.");
     QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -352,6 +357,8 @@ void QUmlArtifact::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::DocumentationRole] = QStringLiteral("The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.");
     QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -359,6 +366,8 @@ void QUmlArtifact::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -366,6 +375,8 @@ void QUmlArtifact::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::DocumentationRole] = QStringLiteral("The Operations defined for the Artifact. The association is a specialization of the ownedMember association.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

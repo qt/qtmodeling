@@ -71,18 +71,18 @@ QUmlConnectionPointReferenceObject::~QUmlConnectionPointReferenceObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlConnectionPointReferenceObject::ownedComment() const
+const QSet<QObject *> QUmlConnectionPointReferenceObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConnectionPointReferenceObject::ownedElement() const
+const QSet<QObject *> QUmlConnectionPointReferenceObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlConnectionPointReferenceObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlConnectionPointReferenceObject::clientDependency() const
+const QSet<QObject *> QUmlConnectionPointReferenceObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -146,36 +146,36 @@ QObject *QUmlConnectionPointReferenceObject::container() const
         return qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->container()->asQObject();
 }
 
-const QSet<QObject *> QUmlConnectionPointReferenceObject::incoming() const
+const QSet<QObject *> QUmlConnectionPointReferenceObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->incoming())
+    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConnectionPointReferenceObject::outgoing() const
+const QSet<QObject *> QUmlConnectionPointReferenceObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->outgoing())
+    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ConnectionPointReference]
 
-const QSet<QObject *> QUmlConnectionPointReferenceObject::entry() const
+const QSet<QObject *> QUmlConnectionPointReferenceObject::entries() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPseudostate *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->entry())
+    foreach (QUmlPseudostate *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->entries())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConnectionPointReferenceObject::exit() const
+const QSet<QObject *> QUmlConnectionPointReferenceObject::exits() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPseudostate *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->exit())
+    foreach (QUmlPseudostate *element, qmodelingobjectproperty_cast<QUmlConnectionPointReference *>(this)->exits())
         set.insert(element->asQObject());
     return set;
 }

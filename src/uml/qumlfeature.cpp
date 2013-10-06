@@ -49,6 +49,7 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlFeature
 
@@ -69,9 +70,9 @@ QUmlFeature::~QUmlFeature()
 QModelingObject *QUmlFeature::clone() const
 {
     QUmlFeature *c = new QUmlFeature;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -87,19 +88,19 @@ QModelingObject *QUmlFeature::clone() const
 /*!
     The Classifiers that have this Feature as a feature.
  */
-const QSet<QUmlClassifier *> QUmlFeature::featuringClassifier() const
+const QSet<QUmlClassifier *> QUmlFeature::featuringClassifiers() const
 {
     // This is a read-only derived union association end
 
-    return _featuringClassifier;
+    return _featuringClassifiers;
 }
 
 void QUmlFeature::addFeaturingClassifier(QUmlClassifier *featuringClassifier)
 {
     // This is a read-only derived union association end
 
-    if (!_featuringClassifier.contains(featuringClassifier)) {
-        _featuringClassifier.insert(featuringClassifier);
+    if (!_featuringClassifiers.contains(featuringClassifier)) {
+        _featuringClassifiers.insert(featuringClassifier);
         if (featuringClassifier && featuringClassifier->asQObject() && this->asQObject())
             QObject::connect(featuringClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFeaturingClassifier(QObject *)));
 
@@ -114,8 +115,8 @@ void QUmlFeature::removeFeaturingClassifier(QUmlClassifier *featuringClassifier)
 {
     // This is a read-only derived union association end
 
-    if (_featuringClassifier.contains(featuringClassifier)) {
-        _featuringClassifier.remove(featuringClassifier);
+    if (_featuringClassifiers.contains(featuringClassifier)) {
+        _featuringClassifiers.remove(featuringClassifier);
 
         // Adjust opposite properties
         if (featuringClassifier) {
@@ -147,6 +148,8 @@ void QUmlFeature::setStatic(bool isStatic)
 void QUmlFeature::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::IsDerivedUnionRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::DocumentationRole] = QStringLiteral("The Classifiers that have this Feature as a feature.");
     QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -154,6 +157,8 @@ void QUmlFeature::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-feature");
 
     QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).");
     QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -72,33 +72,33 @@ public:
     const QSet<QUmlClassifier *> conveyed() const;
     void addConveyed(QUmlClassifier *conveyed);
     void removeConveyed(QUmlClassifier *conveyed);
-    const QSet<QUmlNamedElement *> informationSource() const;
+    const QSet<QUmlNamedElement *> informationSources() const;
     void addInformationSource(QUmlNamedElement *informationSource);
     void removeInformationSource(QUmlNamedElement *informationSource);
-    const QSet<QUmlNamedElement *> informationTarget() const;
+    const QSet<QUmlNamedElement *> informationTargets() const;
     void addInformationTarget(QUmlNamedElement *informationTarget);
     void removeInformationTarget(QUmlNamedElement *informationTarget);
-    const QSet<QUmlRelationship *> realization() const;
+    const QSet<QUmlRelationship *> realizations() const;
     void addRealization(QUmlRelationship *realization);
     void removeRealization(QUmlRelationship *realization);
-    const QSet<QUmlActivityEdge *> realizingActivityEdge() const;
+    const QSet<QUmlActivityEdge *> realizingActivityEdges() const;
     void addRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge);
     void removeRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge);
-    const QSet<QUmlConnector *> realizingConnector() const;
+    const QSet<QUmlConnector *> realizingConnectors() const;
     void addRealizingConnector(QUmlConnector *realizingConnector);
     void removeRealizingConnector(QUmlConnector *realizingConnector);
-    const QSet<QUmlMessage *> realizingMessage() const;
+    const QSet<QUmlMessage *> realizingMessages() const;
     void addRealizingMessage(QUmlMessage *realizingMessage);
     void removeRealizingMessage(QUmlMessage *realizingMessage);
 
 protected:
     QSet<QUmlClassifier *> _conveyed;
-    QSet<QUmlNamedElement *> _informationSource;
-    QSet<QUmlNamedElement *> _informationTarget;
-    QSet<QUmlRelationship *> _realization;
-    QSet<QUmlActivityEdge *> _realizingActivityEdge;
-    QSet<QUmlConnector *> _realizingConnector;
-    QSet<QUmlMessage *> _realizingMessage;
+    QSet<QUmlNamedElement *> _informationSources;
+    QSet<QUmlNamedElement *> _informationTargets;
+    QSet<QUmlRelationship *> _realizations;
+    QSet<QUmlActivityEdge *> _realizingActivityEdges;
+    QSet<QUmlConnector *> _realizingConnectors;
+    QSet<QUmlMessage *> _realizingMessages;
 
     virtual void setPropertyData();
 };

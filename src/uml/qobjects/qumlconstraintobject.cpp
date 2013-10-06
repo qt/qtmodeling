@@ -69,18 +69,18 @@ QUmlConstraintObject::~QUmlConstraintObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlConstraintObject::ownedComment() const
+const QSet<QObject *> QUmlConstraintObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConstraintObject::ownedElement() const
+const QSet<QObject *> QUmlConstraintObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -113,10 +113,10 @@ QObject *QUmlConstraintObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlConstraintObject::clientDependency() const
+const QSet<QObject *> QUmlConstraintObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -146,6 +146,7 @@ QString QUmlConstraintObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlConstraint *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlConstraintObject::visibility() const
@@ -155,10 +156,10 @@ QtUml::VisibilityKind QUmlConstraintObject::visibility() const
 
 // OWNED ATTRIBUTES [Constraint]
 
-const QList<QObject *> QUmlConstraintObject::constrainedElement() const
+const QList<QObject *> QUmlConstraintObject::constrainedElements() const
 {
     QList<QObject *> list;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->constrainedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConstraint *>(this)->constrainedElements())
         list.append(element->asQObject());
     return list;
 }

@@ -64,18 +64,18 @@ QUmlLinkEndCreationDataObject::~QUmlLinkEndCreationDataObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlLinkEndCreationDataObject::ownedComment() const
+const QSet<QObject *> QUmlLinkEndCreationDataObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlLinkEndCreationDataObject::ownedElement() const
+const QSet<QObject *> QUmlLinkEndCreationDataObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -98,10 +98,10 @@ QObject *QUmlLinkEndCreationDataObject::end() const
         return qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->end()->asQObject();
 }
 
-const QSet<QObject *> QUmlLinkEndCreationDataObject::qualifier() const
+const QSet<QObject *> QUmlLinkEndCreationDataObject::qualifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlQualifierValue *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->qualifier())
+    foreach (QUmlQualifierValue *element, qmodelingobjectproperty_cast<QUmlLinkEndCreationData *>(this)->qualifiers())
         set.insert(element->asQObject());
     return set;
 }

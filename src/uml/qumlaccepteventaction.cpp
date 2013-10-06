@@ -63,6 +63,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlTrigger>
+
 /*!
     \class QUmlAcceptEventAction
 
@@ -90,9 +91,9 @@ QUmlAcceptEventAction::~QUmlAcceptEventAction()
 QModelingObject *QUmlAcceptEventAction::clone() const
 {
     QUmlAcceptEventAction *c = new QUmlAcceptEventAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -101,29 +102,29 @@ QModelingObject *QUmlAcceptEventAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     c->setUnmarshall(isUnmarshall());
-    foreach (QUmlOutputPin *element, result())
+    foreach (QUmlOutputPin *element, results())
         c->addResult(dynamic_cast<QUmlOutputPin *>(element->clone()));
-    foreach (QUmlTrigger *element, trigger())
+    foreach (QUmlTrigger *element, triggers())
         c->addTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
     return c;
 }
@@ -153,19 +154,19 @@ void QUmlAcceptEventAction::setUnmarshall(bool isUnmarshall)
 /*!
     Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.
  */
-const QSet<QUmlOutputPin *> QUmlAcceptEventAction::result() const
+const QSet<QUmlOutputPin *> QUmlAcceptEventAction::results() const
 {
     // This is a read-write association end
 
-    return _result;
+    return _results;
 }
 
 void QUmlAcceptEventAction::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    if (!_result.contains(result)) {
-        _result.insert(result);
+    if (!_results.contains(result)) {
+        _results.insert(result);
         if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
         result->asQObject()->setParent(this->asQObject());
@@ -179,8 +180,8 @@ void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    if (_result.contains(result)) {
-        _result.remove(result);
+    if (_results.contains(result)) {
+        _results.remove(result);
         if (result->asQObject())
             result->asQObject()->setParent(0);
 
@@ -192,19 +193,19 @@ void QUmlAcceptEventAction::removeResult(QUmlOutputPin *result)
 /*!
     The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.
  */
-const QSet<QUmlTrigger *> QUmlAcceptEventAction::trigger() const
+const QSet<QUmlTrigger *> QUmlAcceptEventAction::triggers() const
 {
     // This is a read-write association end
 
-    return _trigger;
+    return _triggers;
 }
 
 void QUmlAcceptEventAction::addTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
 
-    if (!_trigger.contains(trigger)) {
-        _trigger.insert(trigger);
+    if (!_triggers.contains(trigger)) {
+        _triggers.insert(trigger);
         if (trigger && trigger->asQObject() && this->asQObject())
             QObject::connect(trigger->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTrigger(QObject *)));
         trigger->asQObject()->setParent(this->asQObject());
@@ -218,8 +219,8 @@ void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
 
-    if (_trigger.contains(trigger)) {
-        _trigger.remove(trigger);
+    if (_triggers.contains(trigger)) {
+        _triggers.remove(trigger);
         if (trigger->asQObject())
             trigger->asQObject()->setParent(0);
 
@@ -231,6 +232,8 @@ void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
 void QUmlAcceptEventAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("isUnmarshall")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isUnmarshall")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
+    QModelingObject::propertyDataHash[QStringLiteral("isUnmarshall")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isUnmarshall")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isUnmarshall")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.");
     QModelingObject::propertyDataHash[QStringLiteral("isUnmarshall")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -238,6 +241,8 @@ void QUmlAcceptEventAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isUnmarshall")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.");
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -245,6 +250,8 @@ void QUmlAcceptEventAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
+    QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::DocumentationRole] = QStringLiteral("The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.");
     QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

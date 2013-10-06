@@ -65,26 +65,26 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlType *> endType() const;
+    const QList<QUmlType *> endTypes() const;
     Q_DECL_HIDDEN void addEndType(QUmlType *endType);
     Q_DECL_HIDDEN void removeEndType(QUmlType *endType);
     bool isDerived() const;
     void setDerived(bool isDerived);
-    const QList<QUmlProperty *> memberEnd() const;
+    const QList<QUmlProperty *> memberEnds() const;
     void addMemberEnd(QUmlProperty *memberEnd);
     void removeMemberEnd(QUmlProperty *memberEnd);
-    const QSet<QUmlProperty *> navigableOwnedEnd() const;
+    const QSet<QUmlProperty *> navigableOwnedEnds() const;
     void addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd);
     void removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd);
-    const QList<QUmlProperty *> ownedEnd() const;
+    const QList<QUmlProperty *> ownedEnds() const;
     void addOwnedEnd(QUmlProperty *ownedEnd);
     void removeOwnedEnd(QUmlProperty *ownedEnd);
 
 protected:
     bool _isDerived;
-    QList<QUmlProperty *> _memberEnd;
-    QSet<QUmlProperty *> _navigableOwnedEnd;
-    QList<QUmlProperty *> _ownedEnd;
+    QList<QUmlProperty *> _memberEnds;
+    QSet<QUmlProperty *> _navigableOwnedEnds;
+    QList<QUmlProperty *> _ownedEnds;
 
     virtual void setPropertyData();
 };

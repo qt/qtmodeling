@@ -59,19 +59,19 @@ class Q_UML_EXPORT QUmlIncludeObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElement)
+    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElements)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> source READ source)
-    Q_PROPERTY(QSet<QObject *> target READ target)
+    Q_PROPERTY(QSet<QObject *> source READ sources)
+    Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -87,19 +87,19 @@ public:
     virtual ~QUmlIncludeObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [Relationship]
-    Q_INVOKABLE const QSet<QObject *> relatedElement() const;
+    Q_INVOKABLE const QSet<QObject *> relatedElements() const;
 
     // Owned attributes [DirectedRelationship]
-    Q_INVOKABLE const QSet<QObject *> source() const;
-    Q_INVOKABLE const QSet<QObject *> target() const;
+    Q_INVOKABLE const QSet<QObject *> sources() const;
+    Q_INVOKABLE const QSet<QObject *> targets() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;

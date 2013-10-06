@@ -63,6 +63,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
 #include <QtUml/QUmlTrigger>
+
 /*!
     \class QUmlFinalState
 
@@ -90,28 +91,28 @@ QUmlFinalState::~QUmlFinalState()
 QModelingObject *QUmlFinalState::clone() const
 {
     QUmlFinalState *c = new QUmlFinalState;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     c->setLeaf(isLeaf());
     if (container())
         c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
-    foreach (QUmlConnectionPointReference *element, connection())
+    foreach (QUmlConnectionPointReference *element, connections())
         c->addConnection(dynamic_cast<QUmlConnectionPointReference *>(element->clone()));
-    foreach (QUmlPseudostate *element, connectionPoint())
+    foreach (QUmlPseudostate *element, connectionPoints())
         c->addConnectionPoint(dynamic_cast<QUmlPseudostate *>(element->clone()));
-    foreach (QUmlTrigger *element, deferrableTrigger())
+    foreach (QUmlTrigger *element, deferrableTriggers())
         c->addDeferrableTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
     if (doActivity())
         c->setDoActivity(dynamic_cast<QUmlBehavior *>(doActivity()->clone()));
@@ -121,7 +122,7 @@ QModelingObject *QUmlFinalState::clone() const
         c->setExit(dynamic_cast<QUmlBehavior *>(exit()->clone()));
     if (redefinedState())
         c->setRedefinedState(dynamic_cast<QUmlState *>(redefinedState()->clone()));
-    foreach (QUmlRegion *element, region())
+    foreach (QUmlRegion *element, regions())
         c->addRegion(dynamic_cast<QUmlRegion *>(element->clone()));
     if (stateInvariant())
         c->setStateInvariant(dynamic_cast<QUmlConstraint *>(stateInvariant()->clone()));

@@ -86,18 +86,18 @@ QUmlCommunicationPathObject::~QUmlCommunicationPathObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlCommunicationPathObject::ownedComment() const
+const QSet<QObject *> QUmlCommunicationPathObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::ownedElement() const
+const QSet<QObject *> QUmlCommunicationPathObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -112,10 +112,10 @@ QObject *QUmlCommunicationPathObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlCommunicationPathObject::clientDependency() const
+const QSet<QObject *> QUmlCommunicationPathObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -145,52 +145,53 @@ QString QUmlCommunicationPathObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlCommunicationPathObject::elementImport() const
+const QSet<QObject *> QUmlCommunicationPathObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::importedMember() const
+const QSet<QObject *> QUmlCommunicationPathObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::member() const
+const QSet<QObject *> QUmlCommunicationPathObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::ownedMember() const
+const QSet<QObject *> QUmlCommunicationPathObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::ownedRule() const
+const QSet<QObject *> QUmlCommunicationPathObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::packageImport() const
+const QSet<QObject *> QUmlCommunicationPathObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -204,6 +205,7 @@ QObject *QUmlCommunicationPathObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlCommunicationPathObject::visibility() const
@@ -228,78 +230,78 @@ bool QUmlCommunicationPathObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::redefinedElement() const
+const QSet<QObject *> QUmlCommunicationPathObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::redefinitionContext() const
+const QSet<QObject *> QUmlCommunicationPathObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [TemplateableElement]
 
-const QSet<QObject *> QUmlCommunicationPathObject::templateBinding() const
+const QSet<QObject *> QUmlCommunicationPathObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->templateBinding())
+    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->templateBindings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Classifier]
 
-const QSet<QObject *> QUmlCommunicationPathObject::attribute() const
+const QSet<QObject *> QUmlCommunicationPathObject::attributes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->attribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->attributes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::collaborationUse() const
+const QSet<QObject *> QUmlCommunicationPathObject::collaborationUses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->collaborationUse())
+    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->collaborationUses())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::feature() const
+const QSet<QObject *> QUmlCommunicationPathObject::features() const
 {
     QSet<QObject *> set;
-    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->feature())
+    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->features())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::general() const
+const QSet<QObject *> QUmlCommunicationPathObject::generals() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->general())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->generals())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::generalization() const
+const QSet<QObject *> QUmlCommunicationPathObject::generalizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->generalization())
+    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->generalizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::inheritedMember() const
+const QSet<QObject *> QUmlCommunicationPathObject::inheritedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->inheritedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->inheritedMembers())
         set.insert(element->asQObject());
     return set;
 }
@@ -322,26 +324,26 @@ QObject *QUmlCommunicationPathObject::ownedTemplateSignature() const
         return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedTemplateSignature()->asQObject();
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::ownedUseCase() const
+const QSet<QObject *> QUmlCommunicationPathObject::ownedUseCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedUseCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedUseCases())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::powertypeExtent() const
+const QSet<QObject *> QUmlCommunicationPathObject::powertypeExtents() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->powertypeExtents())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::redefinedClassifier() const
+const QSet<QObject *> QUmlCommunicationPathObject::redefinedClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->redefinedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->redefinedClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -354,10 +356,10 @@ QObject *QUmlCommunicationPathObject::representation() const
         return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->representation()->asQObject();
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::substitution() const
+const QSet<QObject *> QUmlCommunicationPathObject::substitutions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->substitution())
+    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->substitutions())
         set.insert(element->asQObject());
     return set;
 }
@@ -370,30 +372,30 @@ QObject *QUmlCommunicationPathObject::templateParameter() const
         return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->templateParameter()->asQObject();
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::useCase() const
+const QSet<QObject *> QUmlCommunicationPathObject::useCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->useCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->useCases())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlCommunicationPathObject::relatedElement() const
+const QSet<QObject *> QUmlCommunicationPathObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Association]
 
-const QList<QObject *> QUmlCommunicationPathObject::endType() const
+const QList<QObject *> QUmlCommunicationPathObject::endTypes() const
 {
     QList<QObject *> list;
-    foreach (QUmlType *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->endType())
+    foreach (QUmlType *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->endTypes())
         list.append(element->asQObject());
     return list;
 }
@@ -403,26 +405,26 @@ bool QUmlCommunicationPathObject::isDerived() const
     return qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->isDerived();
 }
 
-const QList<QObject *> QUmlCommunicationPathObject::memberEnd() const
+const QList<QObject *> QUmlCommunicationPathObject::memberEnds() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->memberEnd())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->memberEnds())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlCommunicationPathObject::navigableOwnedEnd() const
+const QSet<QObject *> QUmlCommunicationPathObject::navigableOwnedEnds() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->navigableOwnedEnd())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->navigableOwnedEnds())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlCommunicationPathObject::ownedEnd() const
+const QList<QObject *> QUmlCommunicationPathObject::ownedEnds() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedEnd())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCommunicationPath *>(this)->ownedEnds())
         list.append(element->asQObject());
     return list;
 }

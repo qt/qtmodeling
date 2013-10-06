@@ -66,10 +66,10 @@ public:
     // Owned attributes
     QUmlRegion *container() const;
     void setContainer(QUmlRegion *container);
-    const QSet<QUmlTransition *> incoming() const;
+    const QSet<QUmlTransition *> incomings() const;
     Q_DECL_HIDDEN void addIncoming(QUmlTransition *incoming);
     Q_DECL_HIDDEN void removeIncoming(QUmlTransition *incoming);
-    const QSet<QUmlTransition *> outgoing() const;
+    const QSet<QUmlTransition *> outgoings() const;
     Q_DECL_HIDDEN void addOutgoing(QUmlTransition *outgoing);
     Q_DECL_HIDDEN void removeOutgoing(QUmlTransition *outgoing);
 

@@ -51,6 +51,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlInteractionFragment
 
@@ -72,9 +73,9 @@ QUmlInteractionFragment::~QUmlInteractionFragment()
 QModelingObject *QUmlInteractionFragment::clone() const
 {
     QUmlInteractionFragment *c = new QUmlInteractionFragment;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -86,7 +87,7 @@ QModelingObject *QUmlInteractionFragment::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     return c;
 }
@@ -188,19 +189,19 @@ void QUmlInteractionFragment::setEnclosingOperand(QUmlInteractionOperand *enclos
 /*!
     The general ordering relationships contained in this fragment.
  */
-const QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrdering() const
+const QSet<QUmlGeneralOrdering *> QUmlInteractionFragment::generalOrderings() const
 {
     // This is a read-write association end
 
-    return _generalOrdering;
+    return _generalOrderings;
 }
 
 void QUmlInteractionFragment::addGeneralOrdering(QUmlGeneralOrdering *generalOrdering)
 {
     // This is a read-write association end
 
-    if (!_generalOrdering.contains(generalOrdering)) {
-        _generalOrdering.insert(generalOrdering);
+    if (!_generalOrderings.contains(generalOrdering)) {
+        _generalOrderings.insert(generalOrdering);
         if (generalOrdering && generalOrdering->asQObject() && this->asQObject())
             QObject::connect(generalOrdering->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeGeneralOrdering(QObject *)));
         generalOrdering->asQObject()->setParent(this->asQObject());
@@ -214,8 +215,8 @@ void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *general
 {
     // This is a read-write association end
 
-    if (_generalOrdering.contains(generalOrdering)) {
-        _generalOrdering.remove(generalOrdering);
+    if (_generalOrderings.contains(generalOrdering)) {
+        _generalOrderings.remove(generalOrdering);
         if (generalOrdering->asQObject())
             generalOrdering->asQObject()->setParent(0);
 
@@ -227,6 +228,8 @@ void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *general
 void QUmlInteractionFragment::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionFragment");
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::DocumentationRole] = QStringLiteral("References the Lifelines that the InteractionFragment involves.");
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -234,6 +237,8 @@ void QUmlInteractionFragment::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::OppositeEndRole] = QStringLiteral("Lifeline-coveredBy");
 
     QModelingObject::propertyDataHash[QStringLiteral("enclosingInteraction")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("enclosingInteraction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionFragment");
+    QModelingObject::propertyDataHash[QStringLiteral("enclosingInteraction")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("enclosingInteraction")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("enclosingInteraction")][QtModeling::DocumentationRole] = QStringLiteral("The Interaction enclosing this InteractionFragment.");
     QModelingObject::propertyDataHash[QStringLiteral("enclosingInteraction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -241,6 +246,8 @@ void QUmlInteractionFragment::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("enclosingInteraction")][QtModeling::OppositeEndRole] = QStringLiteral("Interaction-fragment");
 
     QModelingObject::propertyDataHash[QStringLiteral("enclosingOperand")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("enclosingOperand")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionFragment");
+    QModelingObject::propertyDataHash[QStringLiteral("enclosingOperand")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("enclosingOperand")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("enclosingOperand")][QtModeling::DocumentationRole] = QStringLiteral("The operand enclosing this InteractionFragment (they may nest recursively)");
     QModelingObject::propertyDataHash[QStringLiteral("enclosingOperand")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -248,6 +255,8 @@ void QUmlInteractionFragment::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("enclosingOperand")][QtModeling::OppositeEndRole] = QStringLiteral("InteractionOperand-fragment");
 
     QModelingObject::propertyDataHash[QStringLiteral("generalOrdering")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("generalOrdering")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionFragment");
+    QModelingObject::propertyDataHash[QStringLiteral("generalOrdering")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("generalOrdering")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("generalOrdering")][QtModeling::DocumentationRole] = QStringLiteral("The general ordering relationships contained in this fragment.");
     QModelingObject::propertyDataHash[QStringLiteral("generalOrdering")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

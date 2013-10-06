@@ -80,18 +80,18 @@ QUmlReadStructuralFeatureActionObject::~QUmlReadStructuralFeatureActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::ownedComment() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::ownedElement() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -106,10 +106,10 @@ QObject *QUmlReadStructuralFeatureActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::clientDependency() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -152,18 +152,18 @@ bool QUmlReadStructuralFeatureActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::redefinedElement() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -178,26 +178,26 @@ QObject *QUmlReadStructuralFeatureActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::inGroup() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::inPartition() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -210,36 +210,36 @@ QObject *QUmlReadStructuralFeatureActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::incoming() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::outgoing() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::redefinedNode() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::handler() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -254,10 +254,10 @@ QObject *QUmlReadStructuralFeatureActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlReadStructuralFeatureActionObject::input() const
+const QList<QObject *> QUmlReadStructuralFeatureActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -267,26 +267,26 @@ bool QUmlReadStructuralFeatureActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::localPostcondition() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadStructuralFeatureActionObject::localPrecondition() const
+const QSet<QObject *> QUmlReadStructuralFeatureActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlReadStructuralFeatureActionObject::output() const
+const QList<QObject *> QUmlReadStructuralFeatureActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReadStructuralFeatureAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

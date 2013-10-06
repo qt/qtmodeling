@@ -64,14 +64,14 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlDependency *> roleBinding() const;
+    const QSet<QUmlDependency *> roleBindings() const;
     void addRoleBinding(QUmlDependency *roleBinding);
     void removeRoleBinding(QUmlDependency *roleBinding);
     QUmlCollaboration *type() const;
     void setType(QUmlCollaboration *type);
 
 protected:
-    QSet<QUmlDependency *> _roleBinding;
+    QSet<QUmlDependency *> _roleBindings;
     QUmlCollaboration *_type;
 
     virtual void setPropertyData();

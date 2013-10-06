@@ -49,6 +49,7 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlDeploymentTarget
 
@@ -68,15 +69,15 @@ QUmlDeploymentTarget::~QUmlDeploymentTarget()
 QModelingObject *QUmlDeploymentTarget::clone() const
 {
     QUmlDeploymentTarget *c = new QUmlDeploymentTarget;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlDeployment *element, deployment())
+    foreach (QUmlDeployment *element, deployments())
         c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
     return c;
 }
@@ -86,11 +87,11 @@ QModelingObject *QUmlDeploymentTarget::clone() const
 /*!
     The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.
  */
-const QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElement() const
+const QSet<QUmlPackageableElement *> QUmlDeploymentTarget::deployedElements() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlDeploymentTarget::deployedElement(): to be implemented (this is a derived association end)");
+    qWarning("UmlDeploymentTarget::deployedElements(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlPackageableElement *>();
 }
@@ -99,7 +100,7 @@ void QUmlDeploymentTarget::addDeployedElement(QUmlPackageableElement *deployedEl
 {
     // This is a read-only derived association end
 
-    qWarning("UmlDeploymentTarget::deployedElement(): to be implemented (this is a derived association end)");
+    qWarning("UmlDeploymentTarget::addDeployedElement(): to be implemented (this is a derived association end)");
     Q_UNUSED(deployedElement);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -111,7 +112,7 @@ void QUmlDeploymentTarget::removeDeployedElement(QUmlPackageableElement *deploye
 {
     // This is a read-only derived association end
 
-    qWarning("UmlDeploymentTarget::deployedElement(): to be implemented (this is a derived association end)");
+    qWarning("UmlDeploymentTarget::removeDeployedElement(): to be implemented (this is a derived association end)");
     Q_UNUSED(deployedElement);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -122,19 +123,19 @@ void QUmlDeploymentTarget::removeDeployedElement(QUmlPackageableElement *deploye
 /*!
     The set of Deployments for a DeploymentTarget.
  */
-const QSet<QUmlDeployment *> QUmlDeploymentTarget::deployment() const
+const QSet<QUmlDeployment *> QUmlDeploymentTarget::deployments() const
 {
     // This is a read-write association end
 
-    return _deployment;
+    return _deployments;
 }
 
 void QUmlDeploymentTarget::addDeployment(QUmlDeployment *deployment)
 {
     // This is a read-write association end
 
-    if (!_deployment.contains(deployment)) {
-        _deployment.insert(deployment);
+    if (!_deployments.contains(deployment)) {
+        _deployments.insert(deployment);
         if (deployment && deployment->asQObject() && this->asQObject())
             QObject::connect(deployment->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeDeployment(QObject *)));
         deployment->asQObject()->setParent(this->asQObject());
@@ -154,8 +155,8 @@ void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
 {
     // This is a read-write association end
 
-    if (_deployment.contains(deployment)) {
-        _deployment.remove(deployment);
+    if (_deployments.contains(deployment)) {
+        _deployments.remove(deployment);
         if (deployment->asQObject())
             deployment->asQObject()->setParent(0);
 
@@ -173,6 +174,8 @@ void QUmlDeploymentTarget::removeDeployment(QUmlDeployment *deployment)
 void QUmlDeploymentTarget::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeploymentTarget");
+    QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::DocumentationRole] = QStringLiteral("The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget.");
     QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -180,6 +183,8 @@ void QUmlDeploymentTarget::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("deployedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeploymentTarget");
+    QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::DocumentationRole] = QStringLiteral("The set of Deployments for a DeploymentTarget.");
     QModelingObject::propertyDataHash[QStringLiteral("deployment")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -71,18 +71,18 @@ QUmlDurationConstraintObject::~QUmlDurationConstraintObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlDurationConstraintObject::ownedComment() const
+const QSet<QObject *> QUmlDurationConstraintObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDurationConstraintObject::ownedElement() const
+const QSet<QObject *> QUmlDurationConstraintObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -115,10 +115,10 @@ QObject *QUmlDurationConstraintObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlDurationConstraintObject::clientDependency() const
+const QSet<QObject *> QUmlDurationConstraintObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -148,6 +148,7 @@ QString QUmlDurationConstraintObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlDurationConstraintObject::visibility() const
@@ -157,10 +158,10 @@ QtUml::VisibilityKind QUmlDurationConstraintObject::visibility() const
 
 // OWNED ATTRIBUTES [Constraint]
 
-const QList<QObject *> QUmlDurationConstraintObject::constrainedElement() const
+const QList<QObject *> QUmlDurationConstraintObject::constrainedElements() const
 {
     QList<QObject *> list;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->constrainedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->constrainedElements())
         list.append(element->asQObject());
     return list;
 }
@@ -172,6 +173,7 @@ QObject *QUmlDurationConstraintObject::context() const
     else
         return qmodelingobjectproperty_cast<QUmlDurationConstraint *>(this)->context()->asQObject();
 }
+
 // OWNED ATTRIBUTES [DurationConstraint]
 
 bool QUmlDurationConstraintObject::firstEvent() const

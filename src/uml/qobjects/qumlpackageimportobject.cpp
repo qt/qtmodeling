@@ -63,18 +63,18 @@ QUmlPackageImportObject::~QUmlPackageImportObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlPackageImportObject::ownedComment() const
+const QSet<QObject *> QUmlPackageImportObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageImportObject::ownedElement() const
+const QSet<QObject *> QUmlPackageImportObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -89,28 +89,28 @@ QObject *QUmlPackageImportObject::owner() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlPackageImportObject::relatedElement() const
+const QSet<QObject *> QUmlPackageImportObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlPackageImportObject::source() const
+const QSet<QObject *> QUmlPackageImportObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageImportObject::target() const
+const QSet<QObject *> QUmlPackageImportObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageImport *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }

@@ -67,7 +67,7 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlDependency *> clientDependency() const;
+    const QSet<QUmlDependency *> clientDependencies() const;
     void addClientDependency(QUmlDependency *clientDependency);
     void removeClientDependency(QUmlDependency *clientDependency);
     QString name() const;
@@ -90,7 +90,7 @@ public:
 protected:
     explicit QUmlNamedElement();
 
-    QSet<QUmlDependency *> _clientDependency;
+    QSet<QUmlDependency *> _clientDependencies;
     QString _name;
     QUmlStringExpression *_nameExpression;
     QUmlNamespace *_namespace_;

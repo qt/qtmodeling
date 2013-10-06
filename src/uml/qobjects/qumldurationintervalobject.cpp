@@ -71,18 +71,18 @@ QUmlDurationIntervalObject::~QUmlDurationIntervalObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlDurationIntervalObject::ownedComment() const
+const QSet<QObject *> QUmlDurationIntervalObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDurationIntervalObject::ownedElement() const
+const QSet<QObject *> QUmlDurationIntervalObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlDurationIntervalObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlDurationIntervalObject::clientDependency() const
+const QSet<QObject *> QUmlDurationIntervalObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -130,6 +130,7 @@ QString QUmlDurationIntervalObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlDurationInterval *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlDurationIntervalObject::type() const

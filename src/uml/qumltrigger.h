@@ -66,13 +66,13 @@ public:
     // Owned attributes
     QUmlEvent *event() const;
     void setEvent(QUmlEvent *event);
-    const QSet<QUmlPort *> port() const;
+    const QSet<QUmlPort *> ports() const;
     void addPort(QUmlPort *port);
     void removePort(QUmlPort *port);
 
 protected:
     QUmlEvent *_event;
-    QSet<QUmlPort *> _port;
+    QSet<QUmlPort *> _ports;
 
     virtual void setPropertyData();
 };

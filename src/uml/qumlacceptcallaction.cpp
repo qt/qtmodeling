@@ -63,6 +63,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlTrigger>
+
 /*!
     \class QUmlAcceptCallAction
 
@@ -91,9 +92,9 @@ QUmlAcceptCallAction::~QUmlAcceptCallAction()
 QModelingObject *QUmlAcceptCallAction::clone() const
 {
     QUmlAcceptCallAction *c = new QUmlAcceptCallAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -102,29 +103,29 @@ QModelingObject *QUmlAcceptCallAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     c->setUnmarshall(isUnmarshall());
-    foreach (QUmlOutputPin *element, result())
+    foreach (QUmlOutputPin *element, results())
         c->addResult(dynamic_cast<QUmlOutputPin *>(element->clone()));
-    foreach (QUmlTrigger *element, trigger())
+    foreach (QUmlTrigger *element, triggers())
         c->addTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
     if (returnInformation())
         c->setReturnInformation(dynamic_cast<QUmlOutputPin *>(returnInformation()->clone()));
@@ -166,6 +167,8 @@ void QUmlAcceptCallAction::setReturnInformation(QUmlOutputPin *returnInformation
 void QUmlAcceptCallAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptCallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::DocumentationRole] = QStringLiteral("Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.");
     QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

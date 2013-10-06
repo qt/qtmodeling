@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlRegionObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -73,35 +73,35 @@ class Q_UML_EXPORT QUmlRegionObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
+    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ member)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImport)
+    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> member READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [Region]
     Q_PROPERTY(QObject * extendedRegion READ extendedRegion)
     Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
     Q_PROPERTY(QObject * state READ state)
     Q_PROPERTY(QObject * stateMachine READ stateMachine)
-    Q_PROPERTY(QSet<QObject *> subvertex READ subvertex)
-    Q_PROPERTY(QSet<QObject *> transition READ transition)
+    Q_PROPERTY(QSet<QObject *> subvertex READ subvertices)
+    Q_PROPERTY(QSet<QObject *> transition READ transitions)
 
 public:
     Q_INVOKABLE explicit QUmlRegionObject(QUmlRegion *qModelingObject);
     virtual ~QUmlRegionObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -110,23 +110,23 @@ public:
 
     // Owned attributes [RedefinableElement]
     Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedElement() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedElements() const;
 
     // Owned attributes [Namespace]
-    Q_INVOKABLE const QSet<QObject *> elementImport() const;
-    Q_INVOKABLE const QSet<QObject *> importedMember() const;
-    Q_INVOKABLE const QSet<QObject *> member() const;
-    Q_INVOKABLE const QSet<QObject *> ownedMember() const;
-    Q_INVOKABLE const QSet<QObject *> ownedRule() const;
-    Q_INVOKABLE const QSet<QObject *> packageImport() const;
+    Q_INVOKABLE const QSet<QObject *> elementImports() const;
+    Q_INVOKABLE const QSet<QObject *> importedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> members() const;
+    Q_INVOKABLE const QSet<QObject *> ownedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> ownedRules() const;
+    Q_INVOKABLE const QSet<QObject *> packageImports() const;
 
     // Owned attributes [Region]
     Q_INVOKABLE QObject *extendedRegion() const;
     Q_INVOKABLE QObject *redefinitionContext() const;
     Q_INVOKABLE QObject *state() const;
     Q_INVOKABLE QObject *stateMachine() const;
-    Q_INVOKABLE const QSet<QObject *> subvertex() const;
-    Q_INVOKABLE const QSet<QObject *> transition() const;
+    Q_INVOKABLE const QSet<QObject *> subvertices() const;
+    Q_INVOKABLE const QSet<QObject *> transitions() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

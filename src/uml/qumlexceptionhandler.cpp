@@ -47,6 +47,7 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlExecutableNode>
 #include <QtUml/QUmlObjectNode>
+
 /*!
     \class QUmlExceptionHandler
 
@@ -76,11 +77,11 @@ QUmlExceptionHandler::~QUmlExceptionHandler()
 QModelingObject *QUmlExceptionHandler::clone() const
 {
     QUmlExceptionHandler *c = new QUmlExceptionHandler;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (exceptionInput())
         c->setExceptionInput(dynamic_cast<QUmlObjectNode *>(exceptionInput()->clone()));
-    foreach (QUmlClassifier *element, exceptionType())
+    foreach (QUmlClassifier *element, exceptionTypes())
         c->addExceptionType(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (handlerBody())
         c->setHandlerBody(dynamic_cast<QUmlExecutableNode *>(handlerBody()->clone()));
@@ -115,19 +116,19 @@ void QUmlExceptionHandler::setExceptionInput(QUmlObjectNode *exceptionInput)
 /*!
     The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.
  */
-const QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionType() const
+const QSet<QUmlClassifier *> QUmlExceptionHandler::exceptionTypes() const
 {
     // This is a read-write association end
 
-    return _exceptionType;
+    return _exceptionTypes;
 }
 
 void QUmlExceptionHandler::addExceptionType(QUmlClassifier *exceptionType)
 {
     // This is a read-write association end
 
-    if (!_exceptionType.contains(exceptionType)) {
-        _exceptionType.insert(exceptionType);
+    if (!_exceptionTypes.contains(exceptionType)) {
+        _exceptionTypes.insert(exceptionType);
         if (exceptionType && exceptionType->asQObject() && this->asQObject())
             QObject::connect(exceptionType->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExceptionType(QObject *)));
     }
@@ -137,8 +138,8 @@ void QUmlExceptionHandler::removeExceptionType(QUmlClassifier *exceptionType)
 {
     // This is a read-write association end
 
-    if (_exceptionType.contains(exceptionType)) {
-        _exceptionType.remove(exceptionType);
+    if (_exceptionTypes.contains(exceptionType)) {
+        _exceptionTypes.remove(exceptionType);
     }
 }
 
@@ -192,6 +193,8 @@ void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
 void QUmlExceptionHandler::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("exceptionInput")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("exceptionInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExceptionHandler");
+    QModelingObject::propertyDataHash[QStringLiteral("exceptionInput")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("exceptionInput")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("exceptionInput")][QtModeling::DocumentationRole] = QStringLiteral("An object node within the handler body. When the handler catches an exception, the exception token is placed in this node, causing the body to execute.");
     QModelingObject::propertyDataHash[QStringLiteral("exceptionInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -199,6 +202,8 @@ void QUmlExceptionHandler::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("exceptionInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("exceptionType")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("exceptionType")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExceptionHandler");
+    QModelingObject::propertyDataHash[QStringLiteral("exceptionType")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("exceptionType")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("exceptionType")][QtModeling::DocumentationRole] = QStringLiteral("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.");
     QModelingObject::propertyDataHash[QStringLiteral("exceptionType")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -206,6 +211,8 @@ void QUmlExceptionHandler::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("exceptionType")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("handlerBody")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("handlerBody")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExceptionHandler");
+    QModelingObject::propertyDataHash[QStringLiteral("handlerBody")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("handlerBody")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("handlerBody")][QtModeling::DocumentationRole] = QStringLiteral("A node that is executed if the handler satisfies an uncaught exception.");
     QModelingObject::propertyDataHash[QStringLiteral("handlerBody")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -213,6 +220,8 @@ void QUmlExceptionHandler::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("handlerBody")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("protectedNode")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("protectedNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExceptionHandler");
+    QModelingObject::propertyDataHash[QStringLiteral("protectedNode")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("protectedNode")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("protectedNode")][QtModeling::DocumentationRole] = QStringLiteral("The node protected by the handler. The handler is examined if an exception propagates to the outside of the node.");
     QModelingObject::propertyDataHash[QStringLiteral("protectedNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -50,6 +50,7 @@
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
+
 /*!
     \class QUmlVertex
 
@@ -70,9 +71,9 @@ QUmlVertex::~QUmlVertex()
 QModelingObject *QUmlVertex::clone() const
 {
     QUmlVertex *c = new QUmlVertex;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -114,11 +115,11 @@ void QUmlVertex::setContainer(QUmlRegion *container)
 /*!
     Specifies the transitions entering this vertex.
  */
-const QSet<QUmlTransition *> QUmlVertex::incoming() const
+const QSet<QUmlTransition *> QUmlVertex::incomings() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::incoming(): to be implemented (this is a derived association end)");
+    qWarning("UmlVertex::incomings(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlTransition *>();
 }
@@ -127,7 +128,7 @@ void QUmlVertex::addIncoming(QUmlTransition *incoming)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::incoming(): to be implemented (this is a derived association end)");
+    qWarning("UmlVertex::addIncoming(): to be implemented (this is a derived association end)");
     Q_UNUSED(incoming);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -144,7 +145,7 @@ void QUmlVertex::removeIncoming(QUmlTransition *incoming)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::incoming(): to be implemented (this is a derived association end)");
+    qWarning("UmlVertex::removeIncoming(): to be implemented (this is a derived association end)");
     Q_UNUSED(incoming);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -160,11 +161,11 @@ void QUmlVertex::removeIncoming(QUmlTransition *incoming)
 /*!
     Specifies the transitions departing from this vertex.
  */
-const QSet<QUmlTransition *> QUmlVertex::outgoing() const
+const QSet<QUmlTransition *> QUmlVertex::outgoings() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::outgoing(): to be implemented (this is a derived association end)");
+    qWarning("UmlVertex::outgoings(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlTransition *>();
 }
@@ -173,7 +174,7 @@ void QUmlVertex::addOutgoing(QUmlTransition *outgoing)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::outgoing(): to be implemented (this is a derived association end)");
+    qWarning("UmlVertex::addOutgoing(): to be implemented (this is a derived association end)");
     Q_UNUSED(outgoing);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -190,7 +191,7 @@ void QUmlVertex::removeOutgoing(QUmlTransition *outgoing)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlVertex::outgoing(): to be implemented (this is a derived association end)");
+    qWarning("UmlVertex::removeOutgoing(): to be implemented (this is a derived association end)");
     Q_UNUSED(outgoing);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -218,6 +219,8 @@ QUmlStateMachine *QUmlVertex::containingStateMachine() const
 void QUmlVertex::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVertex");
+    QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::DocumentationRole] = QStringLiteral("The region that contains this vertex.");
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -225,6 +228,8 @@ void QUmlVertex::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::OppositeEndRole] = QStringLiteral("Region-subvertex");
 
     QModelingObject::propertyDataHash[QStringLiteral("incoming")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("incoming")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVertex");
+    QModelingObject::propertyDataHash[QStringLiteral("incoming")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("incoming")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("incoming")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the transitions entering this vertex.");
     QModelingObject::propertyDataHash[QStringLiteral("incoming")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -232,6 +237,8 @@ void QUmlVertex::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("incoming")][QtModeling::OppositeEndRole] = QStringLiteral("Transition-target");
 
     QModelingObject::propertyDataHash[QStringLiteral("outgoing")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("outgoing")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVertex");
+    QModelingObject::propertyDataHash[QStringLiteral("outgoing")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("outgoing")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("outgoing")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the transitions departing from this vertex.");
     QModelingObject::propertyDataHash[QStringLiteral("outgoing")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

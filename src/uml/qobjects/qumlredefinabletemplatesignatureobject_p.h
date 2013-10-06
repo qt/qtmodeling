@@ -59,17 +59,17 @@ class Q_UML_EXPORT QUmlRedefinableTemplateSignatureObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [TemplateSignature]
-    Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameter)
-    Q_PROPERTY(QList<QObject *> parameter READ parameter)
+    Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameters)
+    Q_PROPERTY(QList<QObject *> parameter READ parameters)
     Q_PROPERTY(QObject * template_ READ template_)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -78,30 +78,30 @@ class Q_UML_EXPORT QUmlRedefinableTemplateSignatureObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [RedefinableTemplateSignature]
     Q_PROPERTY(QObject * classifier READ classifier)
-    Q_PROPERTY(QSet<QObject *> extendedSignature READ extendedSignature)
-    Q_PROPERTY(QSet<QObject *> inheritedParameter READ inheritedParameter STORED false)
+    Q_PROPERTY(QSet<QObject *> extendedSignature READ extendedSignatures)
+    Q_PROPERTY(QSet<QObject *> inheritedParameter READ inheritedParameters STORED false)
 
 public:
     Q_INVOKABLE explicit QUmlRedefinableTemplateSignatureObject(QUmlRedefinableTemplateSignature *qModelingObject);
     virtual ~QUmlRedefinableTemplateSignatureObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [TemplateSignature]
-    Q_INVOKABLE const QList<QObject *> ownedParameter() const;
-    Q_INVOKABLE const QList<QObject *> parameter() const;
+    Q_INVOKABLE const QList<QObject *> ownedParameters() const;
+    Q_INVOKABLE const QList<QObject *> parameters() const;
     Q_INVOKABLE QObject *template_() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -110,13 +110,13 @@ public:
 
     // Owned attributes [RedefinableElement]
     Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedElement() const;
-    Q_INVOKABLE const QSet<QObject *> redefinitionContext() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedElements() const;
+    Q_INVOKABLE const QSet<QObject *> redefinitionContexts() const;
 
     // Owned attributes [RedefinableTemplateSignature]
     Q_INVOKABLE QObject *classifier() const;
-    Q_INVOKABLE const QSet<QObject *> extendedSignature() const;
-    Q_INVOKABLE const QSet<QObject *> inheritedParameter() const;
+    Q_INVOKABLE const QSet<QObject *> extendedSignatures() const;
+    Q_INVOKABLE const QSet<QObject *> inheritedParameters() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

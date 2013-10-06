@@ -57,12 +57,12 @@ class Q_UML_EXPORT QUmlCommentObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Comment]
-    Q_PROPERTY(QSet<QObject *> annotatedElement READ annotatedElement)
+    Q_PROPERTY(QSet<QObject *> annotatedElement READ annotatedElements)
     Q_PROPERTY(QString body READ body)
 
 public:
@@ -70,12 +70,12 @@ public:
     virtual ~QUmlCommentObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [Comment]
-    Q_INVOKABLE const QSet<QObject *> annotatedElement() const;
+    Q_INVOKABLE const QSet<QObject *> annotatedElements() const;
     Q_INVOKABLE QString body() const;
 
     // Operations [Element]

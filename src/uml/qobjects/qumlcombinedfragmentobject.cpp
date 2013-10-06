@@ -71,18 +71,18 @@ QUmlCombinedFragmentObject::~QUmlCombinedFragmentObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlCombinedFragmentObject::ownedComment() const
+const QSet<QObject *> QUmlCombinedFragmentObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCombinedFragmentObject::ownedElement() const
+const QSet<QObject *> QUmlCombinedFragmentObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlCombinedFragmentObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlCombinedFragmentObject::clientDependency() const
+const QSet<QObject *> QUmlCombinedFragmentObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -162,20 +162,20 @@ QObject *QUmlCombinedFragmentObject::enclosingOperand() const
         return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->enclosingOperand()->asQObject();
 }
 
-const QSet<QObject *> QUmlCombinedFragmentObject::generalOrdering() const
+const QSet<QObject *> QUmlCombinedFragmentObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->generalOrdering())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->generalOrderings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [CombinedFragment]
 
-const QSet<QObject *> QUmlCombinedFragmentObject::cfragmentGate() const
+const QSet<QObject *> QUmlCombinedFragmentObject::cfragmentGates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->cfragmentGate())
+    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->cfragmentGates())
         set.insert(element->asQObject());
     return set;
 }
@@ -185,10 +185,10 @@ QtUml::InteractionOperatorKind QUmlCombinedFragmentObject::interactionOperator()
     return qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->interactionOperator();
 }
 
-const QList<QObject *> QUmlCombinedFragmentObject::operand() const
+const QList<QObject *> QUmlCombinedFragmentObject::operands() const
 {
     QList<QObject *> list;
-    foreach (QUmlInteractionOperand *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->operand())
+    foreach (QUmlInteractionOperand *element, qmodelingobjectproperty_cast<QUmlCombinedFragment *>(this)->operands())
         list.append(element->asQObject());
     return list;
 }

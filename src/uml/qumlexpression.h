@@ -61,14 +61,14 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlValueSpecification *> operand() const;
+    const QList<QUmlValueSpecification *> operands() const;
     void addOperand(QUmlValueSpecification *operand);
     void removeOperand(QUmlValueSpecification *operand);
     QString symbol() const;
     void setSymbol(QString symbol);
 
 protected:
-    QList<QUmlValueSpecification *> _operand;
+    QList<QUmlValueSpecification *> _operands;
     QString _symbol;
 
     virtual void setPropertyData();

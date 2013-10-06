@@ -52,6 +52,7 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlCallEvent
 
@@ -79,13 +80,13 @@ QUmlCallEvent::~QUmlCallEvent()
 QModelingObject *QUmlCallEvent::clone() const
 {
     QUmlCallEvent *c = new QUmlCallEvent;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -122,6 +123,8 @@ void QUmlCallEvent::setOperation(QUmlOperation *operation)
 void QUmlCallEvent::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallEvent");
+    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("Designates the operation whose invocation raised the call event.");
     QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

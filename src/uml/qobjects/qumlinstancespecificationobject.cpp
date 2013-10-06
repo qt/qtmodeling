@@ -73,18 +73,18 @@ QUmlInstanceSpecificationObject::~QUmlInstanceSpecificationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlInstanceSpecificationObject::ownedComment() const
+const QSet<QObject *> QUmlInstanceSpecificationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInstanceSpecificationObject::ownedElement() const
+const QSet<QObject *> QUmlInstanceSpecificationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -99,10 +99,10 @@ QObject *QUmlInstanceSpecificationObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlInstanceSpecificationObject::clientDependency() const
+const QSet<QObject *> QUmlInstanceSpecificationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -132,6 +132,7 @@ QString QUmlInstanceSpecificationObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlInstanceSpecificationObject::owningTemplateParameter() const
@@ -159,36 +160,36 @@ QtUml::VisibilityKind QUmlInstanceSpecificationObject::visibility() const
 
 // OWNED ATTRIBUTES [DeploymentTarget]
 
-const QSet<QObject *> QUmlInstanceSpecificationObject::deployedElement() const
+const QSet<QObject *> QUmlInstanceSpecificationObject::deployedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->deployedElement())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->deployedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInstanceSpecificationObject::deployment() const
+const QSet<QObject *> QUmlInstanceSpecificationObject::deployments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->deployment())
+    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->deployments())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [InstanceSpecification]
 
-const QSet<QObject *> QUmlInstanceSpecificationObject::classifier() const
+const QSet<QObject *> QUmlInstanceSpecificationObject::classifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->classifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->classifiers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInstanceSpecificationObject::slot_() const
+const QSet<QObject *> QUmlInstanceSpecificationObject::slots_() const
 {
     QSet<QObject *> set;
-    foreach (QUmlSlot *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->slot_())
+    foreach (QUmlSlot *element, qmodelingobjectproperty_cast<QUmlInstanceSpecification *>(this)->slots_())
         set.insert(element->asQObject());
     return set;
 }

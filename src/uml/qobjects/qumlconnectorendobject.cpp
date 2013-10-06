@@ -65,18 +65,18 @@ QUmlConnectorEndObject::~QUmlConnectorEndObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlConnectorEndObject::ownedComment() const
+const QSet<QObject *> QUmlConnectorEndObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConnectorEndObject::ownedElement() const
+const QSet<QObject *> QUmlConnectorEndObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnectorEnd *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }

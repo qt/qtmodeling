@@ -67,6 +67,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
+
 /*!
     \class QUmlLoopNode
 
@@ -96,65 +97,65 @@ QUmlLoopNode::~QUmlLoopNode()
 QModelingObject *QUmlLoopNode::clone() const
 {
     QUmlLoopNode *c = new QUmlLoopNode;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlActivityEdge *element, edge())
+    foreach (QUmlActivityEdge *element, edges())
         c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
     c->setMustIsolate(mustIsolate());
-    foreach (QUmlActivityNode *element, node())
+    foreach (QUmlActivityNode *element, nodes())
         c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlVariable *element, variable())
+    foreach (QUmlVariable *element, variables())
         c->addVariable(dynamic_cast<QUmlVariable *>(element->clone()));
-    foreach (QUmlOutputPin *element, bodyOutput())
+    foreach (QUmlOutputPin *element, bodyOutputs())
         c->addBodyOutput(dynamic_cast<QUmlOutputPin *>(element->clone()));
-    foreach (QUmlExecutableNode *element, bodyPart())
+    foreach (QUmlExecutableNode *element, bodyParts())
         c->addBodyPart(dynamic_cast<QUmlExecutableNode *>(element->clone()));
     if (decider())
         c->setDecider(dynamic_cast<QUmlOutputPin *>(decider()->clone()));
     c->setTestedFirst(isTestedFirst());
-    foreach (QUmlOutputPin *element, loopVariable())
+    foreach (QUmlOutputPin *element, loopVariables())
         c->addLoopVariable(dynamic_cast<QUmlOutputPin *>(element->clone()));
-    foreach (QUmlInputPin *element, loopVariableInput())
+    foreach (QUmlInputPin *element, loopVariableInputs())
         c->addLoopVariableInput(dynamic_cast<QUmlInputPin *>(element->clone()));
-    foreach (QUmlOutputPin *element, result())
+    foreach (QUmlOutputPin *element, results())
         c->addResult(dynamic_cast<QUmlOutputPin *>(element->clone()));
-    foreach (QUmlExecutableNode *element, setupPart())
+    foreach (QUmlExecutableNode *element, setupParts())
         c->addSetupPart(dynamic_cast<QUmlExecutableNode *>(element->clone()));
-    foreach (QUmlExecutableNode *element, test())
+    foreach (QUmlExecutableNode *element, tests())
         c->addTest(dynamic_cast<QUmlExecutableNode *>(element->clone()));
     return c;
 }
@@ -164,19 +165,19 @@ QModelingObject *QUmlLoopNode::clone() const
 /*!
     A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.
  */
-const QList<QUmlOutputPin *> QUmlLoopNode::bodyOutput() const
+const QList<QUmlOutputPin *> QUmlLoopNode::bodyOutputs() const
 {
     // This is a read-write association end
 
-    return _bodyOutput;
+    return _bodyOutputs;
 }
 
 void QUmlLoopNode::addBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
 
-    if (!_bodyOutput.contains(bodyOutput)) {
-        _bodyOutput.append(bodyOutput);
+    if (!_bodyOutputs.contains(bodyOutput)) {
+        _bodyOutputs.append(bodyOutput);
         if (bodyOutput && bodyOutput->asQObject() && this->asQObject())
             QObject::connect(bodyOutput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyOutput(QObject *)));
     }
@@ -186,27 +187,27 @@ void QUmlLoopNode::removeBodyOutput(QUmlOutputPin *bodyOutput)
 {
     // This is a read-write association end
 
-    if (_bodyOutput.contains(bodyOutput)) {
-        _bodyOutput.removeAll(bodyOutput);
+    if (_bodyOutputs.contains(bodyOutput)) {
+        _bodyOutputs.removeAll(bodyOutput);
     }
 }
 
 /*!
     The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.
  */
-const QSet<QUmlExecutableNode *> QUmlLoopNode::bodyPart() const
+const QSet<QUmlExecutableNode *> QUmlLoopNode::bodyParts() const
 {
     // This is a read-write association end
 
-    return _bodyPart;
+    return _bodyParts;
 }
 
 void QUmlLoopNode::addBodyPart(QUmlExecutableNode *bodyPart)
 {
     // This is a read-write association end
 
-    if (!_bodyPart.contains(bodyPart)) {
-        _bodyPart.insert(bodyPart);
+    if (!_bodyParts.contains(bodyPart)) {
+        _bodyParts.insert(bodyPart);
         if (bodyPart && bodyPart->asQObject() && this->asQObject())
             QObject::connect(bodyPart->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeBodyPart(QObject *)));
     }
@@ -216,8 +217,8 @@ void QUmlLoopNode::removeBodyPart(QUmlExecutableNode *bodyPart)
 {
     // This is a read-write association end
 
-    if (_bodyPart.contains(bodyPart)) {
-        _bodyPart.remove(bodyPart);
+    if (_bodyParts.contains(bodyPart)) {
+        _bodyParts.remove(bodyPart);
     }
 }
 
@@ -265,19 +266,19 @@ void QUmlLoopNode::setTestedFirst(bool isTestedFirst)
 /*!
     A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.
  */
-const QList<QUmlOutputPin *> QUmlLoopNode::loopVariable() const
+const QList<QUmlOutputPin *> QUmlLoopNode::loopVariables() const
 {
     // This is a read-write association end
 
-    return _loopVariable;
+    return _loopVariables;
 }
 
 void QUmlLoopNode::addLoopVariable(QUmlOutputPin *loopVariable)
 {
     // This is a read-write association end
 
-    if (!_loopVariable.contains(loopVariable)) {
-        _loopVariable.append(loopVariable);
+    if (!_loopVariables.contains(loopVariable)) {
+        _loopVariables.append(loopVariable);
         if (loopVariable && loopVariable->asQObject() && this->asQObject())
             QObject::connect(loopVariable->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLoopVariable(QObject *)));
     }
@@ -287,27 +288,27 @@ void QUmlLoopNode::removeLoopVariable(QUmlOutputPin *loopVariable)
 {
     // This is a read-write association end
 
-    if (_loopVariable.contains(loopVariable)) {
-        _loopVariable.removeAll(loopVariable);
+    if (_loopVariables.contains(loopVariable)) {
+        _loopVariables.removeAll(loopVariable);
     }
 }
 
 /*!
     A list of values that are moved into the loop variable pins before the first iteration of the loop.
  */
-const QList<QUmlInputPin *> QUmlLoopNode::loopVariableInput() const
+const QList<QUmlInputPin *> QUmlLoopNode::loopVariableInputs() const
 {
     // This is a read-write association end
 
-    return _loopVariableInput;
+    return _loopVariableInputs;
 }
 
 void QUmlLoopNode::addLoopVariableInput(QUmlInputPin *loopVariableInput)
 {
     // This is a read-write association end
 
-    if (!_loopVariableInput.contains(loopVariableInput)) {
-        _loopVariableInput.append(loopVariableInput);
+    if (!_loopVariableInputs.contains(loopVariableInput)) {
+        _loopVariableInputs.append(loopVariableInput);
         if (loopVariableInput && loopVariableInput->asQObject() && this->asQObject())
             QObject::connect(loopVariableInput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLoopVariableInput(QObject *)));
         loopVariableInput->asQObject()->setParent(this->asQObject());
@@ -318,8 +319,8 @@ void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
 {
     // This is a read-write association end
 
-    if (_loopVariableInput.contains(loopVariableInput)) {
-        _loopVariableInput.removeAll(loopVariableInput);
+    if (_loopVariableInputs.contains(loopVariableInput)) {
+        _loopVariableInputs.removeAll(loopVariableInput);
         if (loopVariableInput->asQObject())
             loopVariableInput->asQObject()->setParent(0);
     }
@@ -328,19 +329,19 @@ void QUmlLoopNode::removeLoopVariableInput(QUmlInputPin *loopVariableInput)
 /*!
     A list of output pins that constitute the data flow output of the entire loop.
  */
-const QList<QUmlOutputPin *> QUmlLoopNode::result() const
+const QList<QUmlOutputPin *> QUmlLoopNode::results() const
 {
     // This is a read-write association end
 
-    return _result;
+    return _results;
 }
 
 void QUmlLoopNode::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    if (!_result.contains(result)) {
-        _result.append(result);
+    if (!_results.contains(result)) {
+        _results.append(result);
         if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
         result->asQObject()->setParent(this->asQObject());
@@ -351,8 +352,8 @@ void QUmlLoopNode::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    if (_result.contains(result)) {
-        _result.removeAll(result);
+    if (_results.contains(result)) {
+        _results.removeAll(result);
         if (result->asQObject())
             result->asQObject()->setParent(0);
     }
@@ -361,19 +362,19 @@ void QUmlLoopNode::removeResult(QUmlOutputPin *result)
 /*!
     The set of nodes and edges that initialize values or perform other setup computations for the loop.
  */
-const QSet<QUmlExecutableNode *> QUmlLoopNode::setupPart() const
+const QSet<QUmlExecutableNode *> QUmlLoopNode::setupParts() const
 {
     // This is a read-write association end
 
-    return _setupPart;
+    return _setupParts;
 }
 
 void QUmlLoopNode::addSetupPart(QUmlExecutableNode *setupPart)
 {
     // This is a read-write association end
 
-    if (!_setupPart.contains(setupPart)) {
-        _setupPart.insert(setupPart);
+    if (!_setupParts.contains(setupPart)) {
+        _setupParts.insert(setupPart);
         if (setupPart && setupPart->asQObject() && this->asQObject())
             QObject::connect(setupPart->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSetupPart(QObject *)));
     }
@@ -383,27 +384,27 @@ void QUmlLoopNode::removeSetupPart(QUmlExecutableNode *setupPart)
 {
     // This is a read-write association end
 
-    if (_setupPart.contains(setupPart)) {
-        _setupPart.remove(setupPart);
+    if (_setupParts.contains(setupPart)) {
+        _setupParts.remove(setupPart);
     }
 }
 
 /*!
     The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.
  */
-const QSet<QUmlExecutableNode *> QUmlLoopNode::test() const
+const QSet<QUmlExecutableNode *> QUmlLoopNode::tests() const
 {
     // This is a read-write association end
 
-    return _test;
+    return _tests;
 }
 
 void QUmlLoopNode::addTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end
 
-    if (!_test.contains(test)) {
-        _test.insert(test);
+    if (!_tests.contains(test)) {
+        _tests.insert(test);
         if (test && test->asQObject() && this->asQObject())
             QObject::connect(test->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTest(QObject *)));
     }
@@ -413,14 +414,16 @@ void QUmlLoopNode::removeTest(QUmlExecutableNode *test)
 {
     // This is a read-write association end
 
-    if (_test.contains(test)) {
-        _test.remove(test);
+    if (_tests.contains(test)) {
+        _tests.remove(test);
     }
 }
 
 void QUmlLoopNode::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.");
     QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -428,6 +431,8 @@ void QUmlLoopNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("bodyPart")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("bodyPart")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("bodyPart")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("bodyPart")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("bodyPart")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.");
     QModelingObject::propertyDataHash[QStringLiteral("bodyPart")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -435,6 +440,8 @@ void QUmlLoopNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("bodyPart")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::DocumentationRole] = QStringLiteral("An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.");
     QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -442,6 +449,8 @@ void QUmlLoopNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isTestedFirst")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isTestedFirst")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("isTestedFirst")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isTestedFirst")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isTestedFirst")][QtModeling::DocumentationRole] = QStringLiteral("If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.");
     QModelingObject::propertyDataHash[QStringLiteral("isTestedFirst")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -449,6 +458,8 @@ void QUmlLoopNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isTestedFirst")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("loopVariable")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("loopVariable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("loopVariable")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("loopVariable")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("loopVariable")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.");
     QModelingObject::propertyDataHash[QStringLiteral("loopVariable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -456,6 +467,8 @@ void QUmlLoopNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("loopVariable")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("loopVariableInput")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("loopVariableInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("loopVariableInput")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("loopVariableInput")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("loopVariableInput")][QtModeling::DocumentationRole] = QStringLiteral("A list of values that are moved into the loop variable pins before the first iteration of the loop.");
     QModelingObject::propertyDataHash[QStringLiteral("loopVariableInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeInput");
@@ -463,6 +476,8 @@ void QUmlLoopNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("loopVariableInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that constitute the data flow output of the entire loop.");
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeOutput");
@@ -470,6 +485,8 @@ void QUmlLoopNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("setupPart")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("setupPart")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("setupPart")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("setupPart")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("setupPart")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes and edges that initialize values or perform other setup computations for the loop.");
     QModelingObject::propertyDataHash[QStringLiteral("setupPart")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -477,6 +494,8 @@ void QUmlLoopNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("setupPart")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.");
     QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlTriggerObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -73,19 +73,19 @@ class Q_UML_EXPORT QUmlTriggerObject : public QObject
 
     // Properties [Trigger]
     Q_PROPERTY(QObject * event READ event)
-    Q_PROPERTY(QSet<QObject *> port READ port)
+    Q_PROPERTY(QSet<QObject *> port READ ports)
 
 public:
     Q_INVOKABLE explicit QUmlTriggerObject(QUmlTrigger *qModelingObject);
     virtual ~QUmlTriggerObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -94,7 +94,7 @@ public:
 
     // Owned attributes [Trigger]
     Q_INVOKABLE QObject *event() const;
-    Q_INVOKABLE const QSet<QObject *> port() const;
+    Q_INVOKABLE const QSet<QObject *> ports() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

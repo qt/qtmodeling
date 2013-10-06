@@ -67,18 +67,18 @@ QUmlIncludeObject::~QUmlIncludeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlIncludeObject::ownedComment() const
+const QSet<QObject *> QUmlIncludeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlIncludeObject::ownedElement() const
+const QSet<QObject *> QUmlIncludeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -93,38 +93,38 @@ QObject *QUmlIncludeObject::owner() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlIncludeObject::relatedElement() const
+const QSet<QObject *> QUmlIncludeObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlIncludeObject::source() const
+const QSet<QObject *> QUmlIncludeObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlIncludeObject::target() const
+const QSet<QObject *> QUmlIncludeObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlIncludeObject::clientDependency() const
+const QSet<QObject *> QUmlIncludeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInclude *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }

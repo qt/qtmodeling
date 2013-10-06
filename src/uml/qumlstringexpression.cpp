@@ -54,6 +54,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlStringExpression
 
@@ -82,9 +83,9 @@ QUmlStringExpression::~QUmlStringExpression()
 QModelingObject *QUmlStringExpression::clone() const
 {
     QUmlStringExpression *c = new QUmlStringExpression;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -96,16 +97,16 @@ QModelingObject *QUmlStringExpression::clone() const
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlValueSpecification *element, operand())
+    foreach (QUmlValueSpecification *element, operands())
         c->addOperand(dynamic_cast<QUmlValueSpecification *>(element->clone()));
     c->setSymbol(symbol());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
     if (owningExpression())
         c->setOwningExpression(dynamic_cast<QUmlStringExpression *>(owningExpression()->clone()));
-    foreach (QUmlStringExpression *element, subExpression())
+    foreach (QUmlStringExpression *element, subExpressions())
         c->addSubExpression(dynamic_cast<QUmlStringExpression *>(element->clone()));
     return c;
 }
@@ -141,19 +142,19 @@ void QUmlStringExpression::setOwningExpression(QUmlStringExpression *owningExpre
 /*!
     The StringExpressions that constitute this StringExpression.
  */
-const QSet<QUmlStringExpression *> QUmlStringExpression::subExpression() const
+const QSet<QUmlStringExpression *> QUmlStringExpression::subExpressions() const
 {
     // This is a read-write association end
 
-    return _subExpression;
+    return _subExpressions;
 }
 
 void QUmlStringExpression::addSubExpression(QUmlStringExpression *subExpression)
 {
     // This is a read-write association end
 
-    if (!_subExpression.contains(subExpression)) {
-        _subExpression.insert(subExpression);
+    if (!_subExpressions.contains(subExpression)) {
+        _subExpressions.insert(subExpression);
         if (subExpression && subExpression->asQObject() && this->asQObject())
             QObject::connect(subExpression->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubExpression(QObject *)));
         subExpression->asQObject()->setParent(this->asQObject());
@@ -167,8 +168,8 @@ void QUmlStringExpression::removeSubExpression(QUmlStringExpression *subExpressi
 {
     // This is a read-write association end
 
-    if (_subExpression.contains(subExpression)) {
-        _subExpression.remove(subExpression);
+    if (_subExpressions.contains(subExpression)) {
+        _subExpressions.remove(subExpression);
         if (subExpression->asQObject())
             subExpression->asQObject()->setParent(0);
 
@@ -192,6 +193,8 @@ QString QUmlStringExpression::stringValue() const
 void QUmlStringExpression::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStringExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::DocumentationRole] = QStringLiteral("The string expression of which this expression is a substring.");
     QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -199,6 +202,8 @@ void QUmlStringExpression::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::OppositeEndRole] = QStringLiteral("StringExpression-subExpression");
 
     QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStringExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::DocumentationRole] = QStringLiteral("The StringExpressions that constitute this StringExpression.");
     QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

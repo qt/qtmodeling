@@ -65,7 +65,7 @@ public:
     // Owned attributes
     bool allowSubstitutable() const;
     void setAllowSubstitutable(bool allowSubstitutable);
-    const QSet<QUmlClassifier *> constrainingClassifier() const;
+    const QSet<QUmlClassifier *> constrainingClassifiers() const;
     void addConstrainingClassifier(QUmlClassifier *constrainingClassifier);
     void removeConstrainingClassifier(QUmlClassifier *constrainingClassifier);
     QUmlClassifier *parameteredElement() const;
@@ -73,7 +73,7 @@ public:
 
 protected:
     bool _allowSubstitutable;
-    QSet<QUmlClassifier *> _constrainingClassifier;
+    QSet<QUmlClassifier *> _constrainingClassifiers;
     QUmlClassifier *_parameteredElement;
 
     virtual void setPropertyData();

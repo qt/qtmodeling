@@ -47,6 +47,7 @@
 #include <QtUml/QUmlTemplateableElement>
 #include <QtUml/QUmlTemplateParameterSubstitution>
 #include <QtUml/QUmlTemplateSignature>
+
 /*!
     \class QUmlTemplateBinding
 
@@ -75,11 +76,11 @@ QUmlTemplateBinding::~QUmlTemplateBinding()
 QModelingObject *QUmlTemplateBinding::clone() const
 {
     QUmlTemplateBinding *c = new QUmlTemplateBinding;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (boundElement())
         c->setBoundElement(dynamic_cast<QUmlTemplateableElement *>(boundElement()->clone()));
-    foreach (QUmlTemplateParameterSubstitution *element, parameterSubstitution())
+    foreach (QUmlTemplateParameterSubstitution *element, parameterSubstitutions())
         c->addParameterSubstitution(dynamic_cast<QUmlTemplateParameterSubstitution *>(element->clone()));
     if (signature())
         c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
@@ -121,19 +122,19 @@ void QUmlTemplateBinding::setBoundElement(QUmlTemplateableElement *boundElement)
 /*!
     The parameter substitutions owned by this template binding.
  */
-const QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitution() const
+const QSet<QUmlTemplateParameterSubstitution *> QUmlTemplateBinding::parameterSubstitutions() const
 {
     // This is a read-write association end
 
-    return _parameterSubstitution;
+    return _parameterSubstitutions;
 }
 
 void QUmlTemplateBinding::addParameterSubstitution(QUmlTemplateParameterSubstitution *parameterSubstitution)
 {
     // This is a read-write association end
 
-    if (!_parameterSubstitution.contains(parameterSubstitution)) {
-        _parameterSubstitution.insert(parameterSubstitution);
+    if (!_parameterSubstitutions.contains(parameterSubstitution)) {
+        _parameterSubstitutions.insert(parameterSubstitution);
         if (parameterSubstitution && parameterSubstitution->asQObject() && this->asQObject())
             QObject::connect(parameterSubstitution->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameterSubstitution(QObject *)));
         parameterSubstitution->asQObject()->setParent(this->asQObject());
@@ -152,8 +153,8 @@ void QUmlTemplateBinding::removeParameterSubstitution(QUmlTemplateParameterSubst
 {
     // This is a read-write association end
 
-    if (_parameterSubstitution.contains(parameterSubstitution)) {
-        _parameterSubstitution.remove(parameterSubstitution);
+    if (_parameterSubstitutions.contains(parameterSubstitution)) {
+        _parameterSubstitutions.remove(parameterSubstitution);
         if (parameterSubstitution->asQObject())
             parameterSubstitution->asQObject()->setParent(0);
 
@@ -199,6 +200,8 @@ void QUmlTemplateBinding::setSignature(QUmlTemplateSignature *signature)
 void QUmlTemplateBinding::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("boundElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("boundElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateBinding");
+    QModelingObject::propertyDataHash[QStringLiteral("boundElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("boundElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("boundElement")][QtModeling::DocumentationRole] = QStringLiteral("The element that is bound by this binding.");
     QModelingObject::propertyDataHash[QStringLiteral("boundElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -206,6 +209,8 @@ void QUmlTemplateBinding::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("boundElement")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateableElement-templateBinding");
 
     QModelingObject::propertyDataHash[QStringLiteral("parameterSubstitution")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("parameterSubstitution")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateBinding");
+    QModelingObject::propertyDataHash[QStringLiteral("parameterSubstitution")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameterSubstitution")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameterSubstitution")][QtModeling::DocumentationRole] = QStringLiteral("The parameter substitutions owned by this template binding.");
     QModelingObject::propertyDataHash[QStringLiteral("parameterSubstitution")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -213,6 +218,8 @@ void QUmlTemplateBinding::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("parameterSubstitution")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateParameterSubstitution-templateBinding");
 
     QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateBinding");
+    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::DocumentationRole] = QStringLiteral("The template signature for the template that is the target of the binding.");
     QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

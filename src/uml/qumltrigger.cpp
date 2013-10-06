@@ -51,6 +51,7 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlPort>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlTrigger
 
@@ -78,9 +79,9 @@ QUmlTrigger::~QUmlTrigger()
 QModelingObject *QUmlTrigger::clone() const
 {
     QUmlTrigger *c = new QUmlTrigger;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -88,7 +89,7 @@ QModelingObject *QUmlTrigger::clone() const
     c->setVisibility(visibility());
     if (event())
         c->setEvent(dynamic_cast<QUmlEvent *>(event()->clone()));
-    foreach (QUmlPort *element, port())
+    foreach (QUmlPort *element, ports())
         c->addPort(dynamic_cast<QUmlPort *>(element->clone()));
     return c;
 }
@@ -119,19 +120,19 @@ void QUmlTrigger::setEvent(QUmlEvent *event)
 /*!
     A optional port of the receiver object on which the behavioral feature is invoked.
  */
-const QSet<QUmlPort *> QUmlTrigger::port() const
+const QSet<QUmlPort *> QUmlTrigger::ports() const
 {
     // This is a read-write association end
 
-    return _port;
+    return _ports;
 }
 
 void QUmlTrigger::addPort(QUmlPort *port)
 {
     // This is a read-write association end
 
-    if (!_port.contains(port)) {
-        _port.insert(port);
+    if (!_ports.contains(port)) {
+        _ports.insert(port);
         if (port && port->asQObject() && this->asQObject())
             QObject::connect(port->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePort(QObject *)));
     }
@@ -141,14 +142,16 @@ void QUmlTrigger::removePort(QUmlPort *port)
 {
     // This is a read-write association end
 
-    if (_port.contains(port)) {
-        _port.remove(port);
+    if (_ports.contains(port)) {
+        _ports.remove(port);
     }
 }
 
 void QUmlTrigger::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTrigger");
+    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::DocumentationRole] = QStringLiteral("The event that causes the trigger.");
     QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -156,6 +159,8 @@ void QUmlTrigger::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTrigger");
+    QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
     QModelingObject::propertyDataHash[QStringLiteral("port")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

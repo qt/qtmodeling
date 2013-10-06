@@ -52,6 +52,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlExtensionPoint
 
@@ -79,9 +80,9 @@ QUmlExtensionPoint::~QUmlExtensionPoint()
 QModelingObject *QUmlExtensionPoint::clone() const
 {
     QUmlExtensionPoint *c = new QUmlExtensionPoint;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -124,6 +125,8 @@ void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
 void QUmlExtensionPoint::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionPoint");
+    QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that owns this extension point.");
     QModelingObject::propertyDataHash[QStringLiteral("useCase")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

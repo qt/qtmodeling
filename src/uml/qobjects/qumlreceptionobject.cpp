@@ -77,18 +77,18 @@ QUmlReceptionObject::~QUmlReceptionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlReceptionObject::ownedComment() const
+const QSet<QObject *> QUmlReceptionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReceptionObject::ownedElement() const
+const QSet<QObject *> QUmlReceptionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -103,10 +103,10 @@ QObject *QUmlReceptionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlReceptionObject::clientDependency() const
+const QSet<QObject *> QUmlReceptionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -144,50 +144,50 @@ QtUml::VisibilityKind QUmlReceptionObject::visibility() const
 
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlReceptionObject::elementImport() const
+const QSet<QObject *> QUmlReceptionObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReceptionObject::importedMember() const
+const QSet<QObject *> QUmlReceptionObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReceptionObject::member() const
+const QSet<QObject *> QUmlReceptionObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReceptionObject::ownedMember() const
+const QSet<QObject *> QUmlReceptionObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReceptionObject::ownedRule() const
+const QSet<QObject *> QUmlReceptionObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReceptionObject::packageImport() const
+const QSet<QObject *> QUmlReceptionObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -199,28 +199,28 @@ bool QUmlReceptionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlReception *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlReceptionObject::redefinedElement() const
+const QSet<QObject *> QUmlReceptionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReceptionObject::redefinitionContext() const
+const QSet<QObject *> QUmlReceptionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Feature]
 
-const QSet<QObject *> QUmlReceptionObject::featuringClassifier() const
+const QSet<QObject *> QUmlReceptionObject::featuringClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->featuringClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->featuringClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -242,34 +242,34 @@ bool QUmlReceptionObject::isAbstract() const
     return qmodelingobjectproperty_cast<QUmlReception *>(this)->isAbstract();
 }
 
-const QSet<QObject *> QUmlReceptionObject::method() const
+const QSet<QObject *> QUmlReceptionObject::methods() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->method())
+    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->methods())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlReceptionObject::ownedParameter() const
+const QList<QObject *> QUmlReceptionObject::ownedParameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlParameter *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedParameter())
+    foreach (QUmlParameter *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedParameters())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlReceptionObject::ownedParameterSet() const
+const QSet<QObject *> QUmlReceptionObject::ownedParameterSets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlParameterSet *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedParameterSet())
+    foreach (QUmlParameterSet *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->ownedParameterSets())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReceptionObject::raisedException() const
+const QSet<QObject *> QUmlReceptionObject::raisedExceptions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlType *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->raisedException())
+    foreach (QUmlType *element, qmodelingobjectproperty_cast<QUmlReception *>(this)->raisedExceptions())
         set.insert(element->asQObject());
     return set;
 }

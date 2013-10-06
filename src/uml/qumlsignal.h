@@ -63,12 +63,12 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttributes() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
 
 protected:
-    QList<QUmlProperty *> _ownedAttribute;
+    QList<QUmlProperty *> _ownedAttributes;
 
     virtual void setPropertyData();
 };

@@ -66,13 +66,13 @@ public:
     // Owned attributes
     QUmlComponent *abstraction() const;
     void setAbstraction(QUmlComponent *abstraction);
-    const QSet<QUmlClassifier *> realizingClassifier() const;
+    const QSet<QUmlClassifier *> realizingClassifiers() const;
     void addRealizingClassifier(QUmlClassifier *realizingClassifier);
     void removeRealizingClassifier(QUmlClassifier *realizingClassifier);
 
 protected:
     QUmlComponent *_abstraction;
-    QSet<QUmlClassifier *> _realizingClassifier;
+    QSet<QUmlClassifier *> _realizingClassifiers;
 
     virtual void setPropertyData();
 };

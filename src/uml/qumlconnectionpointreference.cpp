@@ -54,6 +54,7 @@
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
+
 /*!
     \class QUmlConnectionPointReference
 
@@ -81,9 +82,9 @@ QUmlConnectionPointReference::~QUmlConnectionPointReference()
 QModelingObject *QUmlConnectionPointReference::clone() const
 {
     QUmlConnectionPointReference *c = new QUmlConnectionPointReference;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -91,9 +92,9 @@ QModelingObject *QUmlConnectionPointReference::clone() const
     c->setVisibility(visibility());
     if (container())
         c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
-    foreach (QUmlPseudostate *element, entry())
+    foreach (QUmlPseudostate *element, entries())
         c->addEntry(dynamic_cast<QUmlPseudostate *>(element->clone()));
-    foreach (QUmlPseudostate *element, exit())
+    foreach (QUmlPseudostate *element, exits())
         c->addExit(dynamic_cast<QUmlPseudostate *>(element->clone()));
     if (state())
         c->setState(dynamic_cast<QUmlState *>(state()->clone()));
@@ -105,19 +106,19 @@ QModelingObject *QUmlConnectionPointReference::clone() const
 /*!
     The entryPoint kind pseudo states corresponding to this connection point.
  */
-const QSet<QUmlPseudostate *> QUmlConnectionPointReference::entry() const
+const QSet<QUmlPseudostate *> QUmlConnectionPointReference::entries() const
 {
     // This is a read-write association end
 
-    return _entry;
+    return _entries;
 }
 
 void QUmlConnectionPointReference::addEntry(QUmlPseudostate *entry)
 {
     // This is a read-write association end
 
-    if (!_entry.contains(entry)) {
-        _entry.insert(entry);
+    if (!_entries.contains(entry)) {
+        _entries.insert(entry);
         if (entry && entry->asQObject() && this->asQObject())
             QObject::connect(entry->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEntry(QObject *)));
     }
@@ -127,27 +128,27 @@ void QUmlConnectionPointReference::removeEntry(QUmlPseudostate *entry)
 {
     // This is a read-write association end
 
-    if (_entry.contains(entry)) {
-        _entry.remove(entry);
+    if (_entries.contains(entry)) {
+        _entries.remove(entry);
     }
 }
 
 /*!
     The exitPoints kind pseudo states corresponding to this connection point.
  */
-const QSet<QUmlPseudostate *> QUmlConnectionPointReference::exit() const
+const QSet<QUmlPseudostate *> QUmlConnectionPointReference::exits() const
 {
     // This is a read-write association end
 
-    return _exit;
+    return _exits;
 }
 
 void QUmlConnectionPointReference::addExit(QUmlPseudostate *exit)
 {
     // This is a read-write association end
 
-    if (!_exit.contains(exit)) {
-        _exit.insert(exit);
+    if (!_exits.contains(exit)) {
+        _exits.insert(exit);
         if (exit && exit->asQObject() && this->asQObject())
             QObject::connect(exit->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExit(QObject *)));
     }
@@ -157,8 +158,8 @@ void QUmlConnectionPointReference::removeExit(QUmlPseudostate *exit)
 {
     // This is a read-write association end
 
-    if (_exit.contains(exit)) {
-        _exit.remove(exit);
+    if (_exits.contains(exit)) {
+        _exits.remove(exit);
     }
 }
 
@@ -191,6 +192,8 @@ void QUmlConnectionPointReference::setState(QUmlState *state)
 void QUmlConnectionPointReference::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
+    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::DocumentationRole] = QStringLiteral("The entryPoint kind pseudo states corresponding to this connection point.");
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -198,6 +201,8 @@ void QUmlConnectionPointReference::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
+    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::DocumentationRole] = QStringLiteral("The exitPoints kind pseudo states corresponding to this connection point.");
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -205,6 +210,8 @@ void QUmlConnectionPointReference::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
+    QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::DocumentationRole] = QStringLiteral("The State in which the connection point refreshens are defined.");
     QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -66,10 +66,10 @@ public:
     // Owned attributes
     QUmlBehavior *behavior() const;
     void setBehavior(QUmlBehavior *behavior);
-    const QList<QString> body() const;
+    const QList<QString> bodies() const;
     void addBody(QString body);
     void removeBody(QString body);
-    const QList<QString> language() const;
+    const QList<QString> languages() const;
     void addLanguage(QString language);
     void removeLanguage(QString language);
     QUmlParameter *result() const;
@@ -83,8 +83,8 @@ public:
 
 protected:
     QUmlBehavior *_behavior;
-    QList<QString> _body;
-    QList<QString> _language;
+    QList<QString> _bodies;
+    QList<QString> _languages;
 
     virtual void setPropertyData();
 };

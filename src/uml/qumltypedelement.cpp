@@ -48,6 +48,7 @@
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlTypedElement
 
@@ -68,9 +69,9 @@ QUmlTypedElement::~QUmlTypedElement()
 QModelingObject *QUmlTypedElement::clone() const
 {
     QUmlTypedElement *c = new QUmlTypedElement;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -107,6 +108,8 @@ void QUmlTypedElement::setType(QUmlType *type)
 void QUmlTypedElement::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTypedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.The type of the TypedElement.");
     QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

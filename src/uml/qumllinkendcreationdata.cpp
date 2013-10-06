@@ -47,6 +47,7 @@
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlQualifierValue>
+
 /*!
     \class QUmlLinkEndCreationData
 
@@ -76,11 +77,11 @@ QUmlLinkEndCreationData::~QUmlLinkEndCreationData()
 QModelingObject *QUmlLinkEndCreationData::clone() const
 {
     QUmlLinkEndCreationData *c = new QUmlLinkEndCreationData;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (end())
         c->setEnd(dynamic_cast<QUmlProperty *>(end()->clone()));
-    foreach (QUmlQualifierValue *element, qualifier())
+    foreach (QUmlQualifierValue *element, qualifiers())
         c->addQualifier(dynamic_cast<QUmlQualifierValue *>(element->clone()));
     if (value())
         c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
@@ -136,6 +137,8 @@ void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
 void QUmlLinkEndCreationData::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndCreationData");
+    QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::DocumentationRole] = QStringLiteral("Specifies where the new link should be inserted for ordered association ends, or where an existing link should be moved to. The type of the input is UnlimitedNatural, but the input cannot be zero. This pin is omitted for association ends that are not ordered.");
     QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -143,6 +146,8 @@ void QUmlLinkEndCreationData::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("insertAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndCreationData");
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether the existing links emanating from the object on this end should be destroyed before creating a new link.");
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

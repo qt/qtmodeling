@@ -71,18 +71,18 @@ QUmlStringExpressionObject::~QUmlStringExpressionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlStringExpressionObject::ownedComment() const
+const QSet<QObject *> QUmlStringExpressionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStringExpressionObject::ownedElement() const
+const QSet<QObject *> QUmlStringExpressionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlStringExpressionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlStringExpressionObject::clientDependency() const
+const QSet<QObject *> QUmlStringExpressionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -130,6 +130,7 @@ QString QUmlStringExpressionObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlStringExpressionObject::type() const
@@ -167,10 +168,10 @@ QtUml::VisibilityKind QUmlStringExpressionObject::visibility() const
 
 // OWNED ATTRIBUTES [Expression]
 
-const QList<QObject *> QUmlStringExpressionObject::operand() const
+const QList<QObject *> QUmlStringExpressionObject::operands() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->operand())
+    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->operands())
         list.append(element->asQObject());
     return list;
 }
@@ -190,10 +191,10 @@ QObject *QUmlStringExpressionObject::ownedTemplateSignature() const
         return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->ownedTemplateSignature()->asQObject();
 }
 
-const QSet<QObject *> QUmlStringExpressionObject::templateBinding() const
+const QSet<QObject *> QUmlStringExpressionObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->templateBinding())
+    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->templateBindings())
         set.insert(element->asQObject());
     return set;
 }
@@ -208,10 +209,10 @@ QObject *QUmlStringExpressionObject::owningExpression() const
         return qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->owningExpression()->asQObject();
 }
 
-const QSet<QObject *> QUmlStringExpressionObject::subExpression() const
+const QSet<QObject *> QUmlStringExpressionObject::subExpressions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlStringExpression *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->subExpression())
+    foreach (QUmlStringExpression *element, qmodelingobjectproperty_cast<QUmlStringExpression *>(this)->subExpressions())
         set.insert(element->asQObject());
     return set;
 }

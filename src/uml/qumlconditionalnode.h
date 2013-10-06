@@ -64,22 +64,22 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlClause *> clause() const;
+    const QSet<QUmlClause *> clauses() const;
     void addClause(QUmlClause *clause);
     void removeClause(QUmlClause *clause);
     bool isAssured() const;
     void setAssured(bool isAssured);
     bool isDeterminate() const;
     void setDeterminate(bool isDeterminate);
-    const QList<QUmlOutputPin *> result() const;
+    const QList<QUmlOutputPin *> results() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
 
 protected:
-    QSet<QUmlClause *> _clause;
+    QSet<QUmlClause *> _clauses;
     bool _isAssured;
     bool _isDeterminate;
-    QList<QUmlOutputPin *> _result;
+    QList<QUmlOutputPin *> _results;
 
     virtual void setPropertyData();
 };

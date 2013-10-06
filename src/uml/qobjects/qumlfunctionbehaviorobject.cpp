@@ -99,18 +99,18 @@ QUmlFunctionBehaviorObject::~QUmlFunctionBehaviorObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedComment() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedElement() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -125,10 +125,10 @@ QObject *QUmlFunctionBehaviorObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::clientDependency() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -158,52 +158,53 @@ QString QUmlFunctionBehaviorObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::elementImport() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::importedMember() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::member() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedMember() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedRule() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::packageImport() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -217,6 +218,7 @@ QObject *QUmlFunctionBehaviorObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlFunctionBehaviorObject::visibility() const
@@ -241,70 +243,70 @@ bool QUmlFunctionBehaviorObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::redefinedElement() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::redefinitionContext() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [TemplateableElement]
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::templateBinding() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->templateBinding())
+    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->templateBindings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Classifier]
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::attribute() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::attributes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->attribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->attributes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::collaborationUse() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::collaborationUses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->collaborationUse())
+    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->collaborationUses())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::feature() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::features() const
 {
     QSet<QObject *> set;
-    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->feature())
+    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->features())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::generalization() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::generalizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->generalization())
+    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->generalizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::inheritedMember() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::inheritedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->inheritedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->inheritedMembers())
         set.insert(element->asQObject());
     return set;
 }
@@ -322,26 +324,26 @@ QObject *QUmlFunctionBehaviorObject::ownedTemplateSignature() const
         return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedTemplateSignature()->asQObject();
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedUseCase() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedUseCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedUseCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedUseCases())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::powertypeExtent() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::powertypeExtents() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->powertypeExtents())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::redefinedClassifier() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::redefinedClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->redefinedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->redefinedClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -354,10 +356,10 @@ QObject *QUmlFunctionBehaviorObject::representation() const
         return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->representation()->asQObject();
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::substitution() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::substitutions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->substitution())
+    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->substitutions())
         set.insert(element->asQObject());
     return set;
 }
@@ -370,46 +372,46 @@ QObject *QUmlFunctionBehaviorObject::templateParameter() const
         return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->templateParameter()->asQObject();
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::useCase() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::useCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->useCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->useCases())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [StructuredClassifier]
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedConnector() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedConnectors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedConnector())
+    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedConnectors())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::part() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::parts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->part())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->parts())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::role() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::roles() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->role())
+    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->roles())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [EncapsulatedClassifier]
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedPort() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedPorts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedPort())
+    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedPorts())
         set.insert(element->asQObject());
     return set;
 }
@@ -424,28 +426,28 @@ QObject *QUmlFunctionBehaviorObject::classifierBehavior() const
         return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->classifierBehavior()->asQObject();
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::interfaceRealization() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::interfaceRealizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->interfaceRealizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedBehavior() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedBehaviors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedBehavior())
+    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedBehaviors())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Class]
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::extension() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::extensions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExtension *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->extension())
+    foreach (QUmlExtension *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->extensions())
         set.insert(element->asQObject());
     return set;
 }
@@ -460,42 +462,42 @@ bool QUmlFunctionBehaviorObject::isActive() const
     return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->isActive();
 }
 
-const QList<QObject *> QUmlFunctionBehaviorObject::nestedClassifier() const
+const QList<QObject *> QUmlFunctionBehaviorObject::nestedClassifiers() const
 {
     QList<QObject *> list;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->nestedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->nestedClassifiers())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlFunctionBehaviorObject::ownedAttribute() const
+const QList<QObject *> QUmlFunctionBehaviorObject::ownedAttributes() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedAttribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedAttributes())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlFunctionBehaviorObject::ownedOperation() const
+const QList<QObject *> QUmlFunctionBehaviorObject::ownedOperations() const
 {
     QList<QObject *> list;
-    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedOperation())
+    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedOperations())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedReception() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedReceptions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlReception *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedReception())
+    foreach (QUmlReception *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedReceptions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::superClass() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::superClasses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClass *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->superClass())
+    foreach (QUmlClass *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->superClasses())
         set.insert(element->asQObject());
     return set;
 }
@@ -515,42 +517,42 @@ bool QUmlFunctionBehaviorObject::isReentrant() const
     return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->isReentrant();
 }
 
-const QList<QObject *> QUmlFunctionBehaviorObject::ownedParameter() const
+const QList<QObject *> QUmlFunctionBehaviorObject::ownedParameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlParameter *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedParameter())
+    foreach (QUmlParameter *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedParameters())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::ownedParameterSet() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::ownedParameterSets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlParameterSet *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedParameterSet())
+    foreach (QUmlParameterSet *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->ownedParameterSets())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::postcondition() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::postconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->postcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->postconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::precondition() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::preconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->precondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->preconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlFunctionBehaviorObject::redefinedBehavior() const
+const QSet<QObject *> QUmlFunctionBehaviorObject::redefinedBehaviors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->redefinedBehavior())
+    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->redefinedBehaviors())
         set.insert(element->asQObject());
     return set;
 }
@@ -565,14 +567,14 @@ QObject *QUmlFunctionBehaviorObject::specification() const
 
 // OWNED ATTRIBUTES [OpaqueBehavior]
 
-const QList<QString> QUmlFunctionBehaviorObject::body() const
+const QList<QString> QUmlFunctionBehaviorObject::bodies() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->body();
+    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->bodies();
 }
 
-const QList<QString> QUmlFunctionBehaviorObject::language() const
+const QList<QString> QUmlFunctionBehaviorObject::languages() const
 {
-    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->language();
+    return qmodelingobjectproperty_cast<QUmlFunctionBehavior *>(this)->languages();
 }
 
 // OPERATIONS [Element]

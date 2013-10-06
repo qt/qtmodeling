@@ -50,6 +50,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlValueSpecification
 
@@ -69,9 +70,9 @@ QUmlValueSpecification::~QUmlValueSpecification()
 QModelingObject *QUmlValueSpecification::clone() const
 {
     QUmlValueSpecification *c = new QUmlValueSpecification;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())

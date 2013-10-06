@@ -69,18 +69,18 @@ QUmlExtendObject::~QUmlExtendObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlExtendObject::ownedComment() const
+const QSet<QObject *> QUmlExtendObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExtendObject::ownedElement() const
+const QSet<QObject *> QUmlExtendObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -95,38 +95,38 @@ QObject *QUmlExtendObject::owner() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlExtendObject::relatedElement() const
+const QSet<QObject *> QUmlExtendObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlExtendObject::source() const
+const QSet<QObject *> QUmlExtendObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExtendObject::target() const
+const QSet<QObject *> QUmlExtendObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlExtendObject::clientDependency() const
+const QSet<QObject *> QUmlExtendObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -188,10 +188,10 @@ QObject *QUmlExtendObject::extension() const
         return qmodelingobjectproperty_cast<QUmlExtend *>(this)->extension()->asQObject();
 }
 
-const QList<QObject *> QUmlExtendObject::extensionLocation() const
+const QList<QObject *> QUmlExtendObject::extensionLocations() const
 {
     QList<QObject *> list;
-    foreach (QUmlExtensionPoint *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->extensionLocation())
+    foreach (QUmlExtensionPoint *element, qmodelingobjectproperty_cast<QUmlExtend *>(this)->extensionLocations())
         list.append(element->asQObject());
     return list;
 }

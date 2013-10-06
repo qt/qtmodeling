@@ -65,19 +65,19 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlExpansionNode *> inputElement() const;
+    const QSet<QUmlExpansionNode *> inputElements() const;
     void addInputElement(QUmlExpansionNode *inputElement);
     void removeInputElement(QUmlExpansionNode *inputElement);
     QtUml::ExpansionKind mode() const;
     void setMode(QtUml::ExpansionKind mode);
-    const QSet<QUmlExpansionNode *> outputElement() const;
+    const QSet<QUmlExpansionNode *> outputElements() const;
     void addOutputElement(QUmlExpansionNode *outputElement);
     void removeOutputElement(QUmlExpansionNode *outputElement);
 
 protected:
-    QSet<QUmlExpansionNode *> _inputElement;
+    QSet<QUmlExpansionNode *> _inputElements;
     QtUml::ExpansionKind _mode;
-    QSet<QUmlExpansionNode *> _outputElement;
+    QSet<QUmlExpansionNode *> _outputElements;
 
     virtual void setPropertyData();
 };

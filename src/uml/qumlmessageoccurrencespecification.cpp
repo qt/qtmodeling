@@ -54,6 +54,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlMessageOccurrenceSpecification
 
@@ -81,9 +82,9 @@ QUmlMessageOccurrenceSpecification::~QUmlMessageOccurrenceSpecification()
 QModelingObject *QUmlMessageOccurrenceSpecification::clone() const
 {
     QUmlMessageOccurrenceSpecification *c = new QUmlMessageOccurrenceSpecification;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -93,13 +94,13 @@ QModelingObject *QUmlMessageOccurrenceSpecification::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     if (covered())
         c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
-    foreach (QUmlGeneralOrdering *element, toAfter())
+    foreach (QUmlGeneralOrdering *element, toAfters())
         c->addToAfter(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlGeneralOrdering *element, toBefore())
+    foreach (QUmlGeneralOrdering *element, toBefores())
         c->addToBefore(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     if (message())
         c->setMessage(dynamic_cast<QUmlMessage *>(message()->clone()));

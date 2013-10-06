@@ -62,10 +62,10 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlComment *> ownedComment() const;
+    const QSet<QUmlComment *> ownedComments() const;
     void addOwnedComment(QUmlComment *ownedComment);
     void removeOwnedComment(QUmlComment *ownedComment);
-    const QSet<QUmlElement *> ownedElement() const;
+    const QSet<QUmlElement *> ownedElements() const;
     Q_DECL_HIDDEN void addOwnedElement(QUmlElement *ownedElement);
     Q_DECL_HIDDEN void removeOwnedElement(QUmlElement *ownedElement);
     QUmlElement *owner() const;
@@ -78,8 +78,8 @@ public:
 protected:
     explicit QUmlElement();
 
-    QSet<QUmlComment *> _ownedComment;
-    QSet<QUmlElement *> _ownedElement;
+    QSet<QUmlComment *> _ownedComments;
+    QSet<QUmlElement *> _ownedElements;
     QUmlElement *_owner;
 
     virtual void setPropertyData();

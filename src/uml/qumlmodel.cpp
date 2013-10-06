@@ -62,6 +62,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlModel
 
@@ -89,18 +90,18 @@ QUmlModel::~QUmlModel()
 QModelingObject *QUmlModel::clone() const
 {
     QUmlModel *c = new QUmlModel;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -109,16 +110,16 @@ QModelingObject *QUmlModel::clone() const
     c->setVisibility(visibility());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
     c->setURI(URI());
     if (nestingPackage())
         c->setNestingPackage(dynamic_cast<QUmlPackage *>(nestingPackage()->clone()));
-    foreach (QUmlPackageMerge *element, packageMerge())
+    foreach (QUmlPackageMerge *element, packageMerges())
         c->addPackageMerge(dynamic_cast<QUmlPackageMerge *>(element->clone()));
-    foreach (QUmlPackageableElement *element, packagedElement())
+    foreach (QUmlPackageableElement *element, packagedElements())
         c->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(element->clone()));
-    foreach (QUmlProfileApplication *element, profileApplication())
+    foreach (QUmlProfileApplication *element, profileApplications())
         c->addProfileApplication(dynamic_cast<QUmlProfileApplication *>(element->clone()));
     c->setViewpoint(viewpoint());
     return c;
@@ -148,6 +149,8 @@ void QUmlModel::setViewpoint(QString viewpoint)
 void QUmlModel::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlModel");
+    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::DocumentationRole] = QStringLiteral("The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).");
     QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -76,18 +76,18 @@ QUmlRegionObject::~QUmlRegionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlRegionObject::ownedComment() const
+const QSet<QObject *> QUmlRegionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRegionObject::ownedElement() const
+const QSet<QObject *> QUmlRegionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -102,10 +102,10 @@ QObject *QUmlRegionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlRegionObject::clientDependency() const
+const QSet<QObject *> QUmlRegionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -148,59 +148,60 @@ bool QUmlRegionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlRegion *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlRegionObject::redefinedElement() const
+const QSet<QObject *> QUmlRegionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlRegionObject::elementImport() const
+const QSet<QObject *> QUmlRegionObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRegionObject::importedMember() const
+const QSet<QObject *> QUmlRegionObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRegionObject::member() const
+const QSet<QObject *> QUmlRegionObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRegionObject::ownedMember() const
+const QSet<QObject *> QUmlRegionObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRegionObject::ownedRule() const
+const QSet<QObject *> QUmlRegionObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRegionObject::packageImport() const
+const QSet<QObject *> QUmlRegionObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -239,18 +240,18 @@ QObject *QUmlRegionObject::stateMachine() const
         return qmodelingobjectproperty_cast<QUmlRegion *>(this)->stateMachine()->asQObject();
 }
 
-const QSet<QObject *> QUmlRegionObject::subvertex() const
+const QSet<QObject *> QUmlRegionObject::subvertices() const
 {
     QSet<QObject *> set;
-    foreach (QUmlVertex *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->subvertex())
+    foreach (QUmlVertex *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->subvertices())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlRegionObject::transition() const
+const QSet<QObject *> QUmlRegionObject::transitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->transition())
+    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlRegion *>(this)->transitions())
         set.insert(element->asQObject());
     return set;
 }

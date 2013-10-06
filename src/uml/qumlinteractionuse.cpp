@@ -56,6 +56,7 @@
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlInteractionUse
 
@@ -85,9 +86,9 @@ QUmlInteractionUse::~QUmlInteractionUse()
 QModelingObject *QUmlInteractionUse::clone() const
 {
     QUmlInteractionUse *c = new QUmlInteractionUse;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -99,11 +100,11 @@ QModelingObject *QUmlInteractionUse::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlGate *element, actualGate())
+    foreach (QUmlGate *element, actualGates())
         c->addActualGate(dynamic_cast<QUmlGate *>(element->clone()));
-    foreach (QUmlValueSpecification *element, argument())
+    foreach (QUmlValueSpecification *element, arguments())
         c->addArgument(dynamic_cast<QUmlValueSpecification *>(element->clone()));
     if (refersTo())
         c->setRefersTo(dynamic_cast<QUmlInteraction *>(refersTo()->clone()));
@@ -119,19 +120,19 @@ QModelingObject *QUmlInteractionUse::clone() const
 /*!
     The actual gates of the InteractionUse
  */
-const QSet<QUmlGate *> QUmlInteractionUse::actualGate() const
+const QSet<QUmlGate *> QUmlInteractionUse::actualGates() const
 {
     // This is a read-write association end
 
-    return _actualGate;
+    return _actualGates;
 }
 
 void QUmlInteractionUse::addActualGate(QUmlGate *actualGate)
 {
     // This is a read-write association end
 
-    if (!_actualGate.contains(actualGate)) {
-        _actualGate.insert(actualGate);
+    if (!_actualGates.contains(actualGate)) {
+        _actualGates.insert(actualGate);
         if (actualGate && actualGate->asQObject() && this->asQObject())
             QObject::connect(actualGate->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeActualGate(QObject *)));
         actualGate->asQObject()->setParent(this->asQObject());
@@ -145,8 +146,8 @@ void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 {
     // This is a read-write association end
 
-    if (_actualGate.contains(actualGate)) {
-        _actualGate.remove(actualGate);
+    if (_actualGates.contains(actualGate)) {
+        _actualGates.remove(actualGate);
         if (actualGate->asQObject())
             actualGate->asQObject()->setParent(0);
 
@@ -158,19 +159,19 @@ void QUmlInteractionUse::removeActualGate(QUmlGate *actualGate)
 /*!
     The actual arguments of the Interaction
  */
-const QList<QUmlValueSpecification *> QUmlInteractionUse::argument() const
+const QList<QUmlValueSpecification *> QUmlInteractionUse::arguments() const
 {
     // This is a read-write association end
 
-    return _argument;
+    return _arguments;
 }
 
 void QUmlInteractionUse::addArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
 
-    if (!_argument.contains(argument)) {
-        _argument.append(argument);
+    if (!_arguments.contains(argument)) {
+        _arguments.append(argument);
         if (argument && argument->asQObject() && this->asQObject())
             QObject::connect(argument->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeArgument(QObject *)));
         argument->asQObject()->setParent(this->asQObject());
@@ -184,8 +185,8 @@ void QUmlInteractionUse::removeArgument(QUmlValueSpecification *argument)
 {
     // This is a read-write association end
 
-    if (_argument.contains(argument)) {
-        _argument.removeAll(argument);
+    if (_arguments.contains(argument)) {
+        _arguments.removeAll(argument);
         if (argument->asQObject())
             argument->asQObject()->setParent(0);
 
@@ -269,6 +270,8 @@ void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipi
 void QUmlInteractionUse::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("actualGate")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("actualGate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
+    QModelingObject::propertyDataHash[QStringLiteral("actualGate")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("actualGate")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("actualGate")][QtModeling::DocumentationRole] = QStringLiteral("The actual gates of the InteractionUse");
     QModelingObject::propertyDataHash[QStringLiteral("actualGate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -276,6 +279,8 @@ void QUmlInteractionUse::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("actualGate")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
+    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::DocumentationRole] = QStringLiteral("The actual arguments of the Interaction");
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -283,6 +288,8 @@ void QUmlInteractionUse::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("refersTo")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("refersTo")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
+    QModelingObject::propertyDataHash[QStringLiteral("refersTo")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("refersTo")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("refersTo")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the Interaction that defines its meaning");
     QModelingObject::propertyDataHash[QStringLiteral("refersTo")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -290,6 +297,8 @@ void QUmlInteractionUse::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("refersTo")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("returnValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("returnValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
+    QModelingObject::propertyDataHash[QStringLiteral("returnValue")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("returnValue")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("returnValue")][QtModeling::DocumentationRole] = QStringLiteral("The value of the executed Interaction.");
     QModelingObject::propertyDataHash[QStringLiteral("returnValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -297,6 +306,8 @@ void QUmlInteractionUse::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("returnValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("returnValueRecipient")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("returnValueRecipient")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
+    QModelingObject::propertyDataHash[QStringLiteral("returnValueRecipient")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("returnValueRecipient")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("returnValueRecipient")][QtModeling::DocumentationRole] = QStringLiteral("The recipient of the return value.");
     QModelingObject::propertyDataHash[QStringLiteral("returnValueRecipient")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

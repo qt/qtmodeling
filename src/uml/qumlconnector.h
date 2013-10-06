@@ -67,24 +67,24 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlBehavior *> contract() const;
+    const QSet<QUmlBehavior *> contracts() const;
     void addContract(QUmlBehavior *contract);
     void removeContract(QUmlBehavior *contract);
-    const QList<QUmlConnectorEnd *> end() const;
+    const QList<QUmlConnectorEnd *> ends() const;
     void addEnd(QUmlConnectorEnd *end);
     void removeEnd(QUmlConnectorEnd *end);
     QtUml::ConnectorKind kind() const;
     Q_DECL_HIDDEN void setKind(QtUml::ConnectorKind kind);
-    const QSet<QUmlConnector *> redefinedConnector() const;
+    const QSet<QUmlConnector *> redefinedConnectors() const;
     void addRedefinedConnector(QUmlConnector *redefinedConnector);
     void removeRedefinedConnector(QUmlConnector *redefinedConnector);
     QUmlAssociation *type() const;
     void setType(QUmlAssociation *type);
 
 protected:
-    QSet<QUmlBehavior *> _contract;
-    QList<QUmlConnectorEnd *> _end;
-    QSet<QUmlConnector *> _redefinedConnector;
+    QSet<QUmlBehavior *> _contracts;
+    QList<QUmlConnectorEnd *> _ends;
+    QSet<QUmlConnector *> _redefinedConnectors;
     QUmlAssociation *_type;
 
     virtual void setPropertyData();

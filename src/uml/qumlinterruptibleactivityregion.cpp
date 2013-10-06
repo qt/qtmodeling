@@ -53,6 +53,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlInterruptibleActivityRegion
 
@@ -79,9 +80,9 @@ QUmlInterruptibleActivityRegion::~QUmlInterruptibleActivityRegion()
 QModelingObject *QUmlInterruptibleActivityRegion::clone() const
 {
     QUmlInterruptibleActivityRegion *c = new QUmlInterruptibleActivityRegion;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -89,9 +90,9 @@ QModelingObject *QUmlInterruptibleActivityRegion::clone() const
     c->setVisibility(visibility());
     if (inActivity())
         c->setInActivity(dynamic_cast<QUmlActivity *>(inActivity()->clone()));
-    foreach (QUmlActivityEdge *element, interruptingEdge())
+    foreach (QUmlActivityEdge *element, interruptingEdges())
         c->addInterruptingEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, node())
+    foreach (QUmlActivityNode *element, nodes())
         c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     return c;
 }
@@ -101,19 +102,19 @@ QModelingObject *QUmlInterruptibleActivityRegion::clone() const
 /*!
     The edges leaving the region that will abort other tokens flowing in the region.
  */
-const QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdge() const
+const QSet<QUmlActivityEdge *> QUmlInterruptibleActivityRegion::interruptingEdges() const
 {
     // This is a read-write association end
 
-    return _interruptingEdge;
+    return _interruptingEdges;
 }
 
 void QUmlInterruptibleActivityRegion::addInterruptingEdge(QUmlActivityEdge *interruptingEdge)
 {
     // This is a read-write association end
 
-    if (!_interruptingEdge.contains(interruptingEdge)) {
-        _interruptingEdge.insert(interruptingEdge);
+    if (!_interruptingEdges.contains(interruptingEdge)) {
+        _interruptingEdges.insert(interruptingEdge);
         if (interruptingEdge && interruptingEdge->asQObject() && this->asQObject())
             QObject::connect(interruptingEdge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInterruptingEdge(QObject *)));
 
@@ -128,8 +129,8 @@ void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *i
 {
     // This is a read-write association end
 
-    if (_interruptingEdge.contains(interruptingEdge)) {
-        _interruptingEdge.remove(interruptingEdge);
+    if (_interruptingEdges.contains(interruptingEdge)) {
+        _interruptingEdges.remove(interruptingEdge);
 
         // Adjust opposite properties
         if (interruptingEdge) {
@@ -141,19 +142,19 @@ void QUmlInterruptibleActivityRegion::removeInterruptingEdge(QUmlActivityEdge *i
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::node() const
+const QSet<QUmlActivityNode *> QUmlInterruptibleActivityRegion::nodes() const
 {
     // This is a read-write association end
 
-    return _node;
+    return _nodes;
 }
 
 void QUmlInterruptibleActivityRegion::addNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    if (!_node.contains(node)) {
-        _node.insert(node);
+    if (!_nodes.contains(node)) {
+        _nodes.insert(node);
         if (node && node->asQObject() && this->asQObject())
             QObject::connect(node->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNode(QObject *)));
 
@@ -171,8 +172,8 @@ void QUmlInterruptibleActivityRegion::removeNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    if (_node.contains(node)) {
-        _node.remove(node);
+    if (_nodes.contains(node)) {
+        _nodes.remove(node);
 
         // Adjust subsetted properties
         removeContainedNode(node);
@@ -187,6 +188,8 @@ void QUmlInterruptibleActivityRegion::removeNode(QUmlActivityNode *node)
 void QUmlInterruptibleActivityRegion::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterruptibleActivityRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::DocumentationRole] = QStringLiteral("The edges leaving the region that will abort other tokens flowing in the region.");
     QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -194,6 +197,8 @@ void QUmlInterruptibleActivityRegion::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-interrupts");
 
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterruptibleActivityRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::DocumentationRole] = QStringLiteral("Nodes immediately contained in the group.");
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

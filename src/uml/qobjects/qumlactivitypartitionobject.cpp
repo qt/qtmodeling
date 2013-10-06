@@ -70,18 +70,18 @@ QUmlActivityPartitionObject::~QUmlActivityPartitionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlActivityPartitionObject::ownedComment() const
+const QSet<QObject *> QUmlActivityPartitionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlActivityPartitionObject::ownedElement() const
+const QSet<QObject *> QUmlActivityPartitionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -96,10 +96,10 @@ QObject *QUmlActivityPartitionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlActivityPartitionObject::clientDependency() const
+const QSet<QObject *> QUmlActivityPartitionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -137,18 +137,18 @@ QtUml::VisibilityKind QUmlActivityPartitionObject::visibility() const
 
 // OWNED ATTRIBUTES [ActivityGroup]
 
-const QSet<QObject *> QUmlActivityPartitionObject::containedEdge() const
+const QSet<QObject *> QUmlActivityPartitionObject::containedEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->containedEdge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->containedEdges())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlActivityPartitionObject::containedNode() const
+const QSet<QObject *> QUmlActivityPartitionObject::containedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->containedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->containedNodes())
         set.insert(element->asQObject());
     return set;
 }
@@ -161,10 +161,10 @@ QObject *QUmlActivityPartitionObject::inActivity() const
         return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->inActivity()->asQObject();
 }
 
-const QSet<QObject *> QUmlActivityPartitionObject::subgroup() const
+const QSet<QObject *> QUmlActivityPartitionObject::subgroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->subgroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->subgroups())
         set.insert(element->asQObject());
     return set;
 }
@@ -179,10 +179,10 @@ QObject *QUmlActivityPartitionObject::superGroup() const
 
 // OWNED ATTRIBUTES [ActivityPartition]
 
-const QSet<QObject *> QUmlActivityPartitionObject::edge() const
+const QSet<QObject *> QUmlActivityPartitionObject::edges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->edge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->edges())
         set.insert(element->asQObject());
     return set;
 }
@@ -197,10 +197,10 @@ bool QUmlActivityPartitionObject::isExternal() const
     return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->isExternal();
 }
 
-const QSet<QObject *> QUmlActivityPartitionObject::node() const
+const QSet<QObject *> QUmlActivityPartitionObject::nodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->node())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->nodes())
         set.insert(element->asQObject());
     return set;
 }
@@ -213,10 +213,10 @@ QObject *QUmlActivityPartitionObject::represents() const
         return qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->represents()->asQObject();
 }
 
-const QSet<QObject *> QUmlActivityPartitionObject::subpartition() const
+const QSet<QObject *> QUmlActivityPartitionObject::subpartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->subpartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlActivityPartition *>(this)->subpartitions())
         set.insert(element->asQObject());
     return set;
 }

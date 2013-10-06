@@ -70,18 +70,18 @@ QUmlInstanceValueObject::~QUmlInstanceValueObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlInstanceValueObject::ownedComment() const
+const QSet<QObject *> QUmlInstanceValueObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInstanceValueObject::ownedElement() const
+const QSet<QObject *> QUmlInstanceValueObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -96,10 +96,10 @@ QObject *QUmlInstanceValueObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlInstanceValueObject::clientDependency() const
+const QSet<QObject *> QUmlInstanceValueObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -129,6 +129,7 @@ QString QUmlInstanceValueObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlInstanceValue *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlInstanceValueObject::type() const

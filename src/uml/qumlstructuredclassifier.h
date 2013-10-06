@@ -64,25 +64,25 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlProperty *> ownedAttribute() const;
+    const QList<QUmlProperty *> ownedAttributes() const;
     void addOwnedAttribute(QUmlProperty *ownedAttribute);
     void removeOwnedAttribute(QUmlProperty *ownedAttribute);
-    const QSet<QUmlConnector *> ownedConnector() const;
+    const QSet<QUmlConnector *> ownedConnectors() const;
     void addOwnedConnector(QUmlConnector *ownedConnector);
     void removeOwnedConnector(QUmlConnector *ownedConnector);
-    const QSet<QUmlProperty *> part() const;
+    const QSet<QUmlProperty *> parts() const;
     Q_DECL_HIDDEN void addPart(QUmlProperty *part);
     Q_DECL_HIDDEN void removePart(QUmlProperty *part);
-    const QSet<QUmlConnectableElement *> role() const;
+    const QSet<QUmlConnectableElement *> roles() const;
     Q_DECL_HIDDEN void addRole(QUmlConnectableElement *role);
     Q_DECL_HIDDEN void removeRole(QUmlConnectableElement *role);
 
 protected:
     explicit QUmlStructuredClassifier();
 
-    QList<QUmlProperty *> _ownedAttribute;
-    QSet<QUmlConnector *> _ownedConnector;
-    QSet<QUmlConnectableElement *> _role;
+    QList<QUmlProperty *> _ownedAttributes;
+    QSet<QUmlConnector *> _ownedConnectors;
+    QSet<QUmlConnectableElement *> _roles;
 
     virtual void setPropertyData();
 };

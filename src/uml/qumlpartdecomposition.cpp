@@ -56,6 +56,7 @@
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlPartDecomposition
 
@@ -83,9 +84,9 @@ QUmlPartDecomposition::~QUmlPartDecomposition()
 QModelingObject *QUmlPartDecomposition::clone() const
 {
     QUmlPartDecomposition *c = new QUmlPartDecomposition;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -97,11 +98,11 @@ QModelingObject *QUmlPartDecomposition::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlGate *element, actualGate())
+    foreach (QUmlGate *element, actualGates())
         c->addActualGate(dynamic_cast<QUmlGate *>(element->clone()));
-    foreach (QUmlValueSpecification *element, argument())
+    foreach (QUmlValueSpecification *element, arguments())
         c->addArgument(dynamic_cast<QUmlValueSpecification *>(element->clone()));
     if (refersTo())
         c->setRefersTo(dynamic_cast<QUmlInteraction *>(refersTo()->clone()));

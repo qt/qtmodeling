@@ -63,7 +63,7 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlInputPin *> argument() const;
+    const QList<QUmlInputPin *> arguments() const;
     void addArgument(QUmlInputPin *argument);
     void removeArgument(QUmlInputPin *argument);
     QUmlPort *onPort() const;
@@ -72,7 +72,7 @@ public:
 protected:
     explicit QUmlInvocationAction();
 
-    QList<QUmlInputPin *> _argument;
+    QList<QUmlInputPin *> _arguments;
     QUmlPort *_onPort;
 
     virtual void setPropertyData();

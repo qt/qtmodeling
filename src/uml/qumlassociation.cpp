@@ -69,6 +69,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlAssociation
 
@@ -96,18 +97,18 @@ QUmlAssociation::~QUmlAssociation()
 QModelingObject *QUmlAssociation::clone() const
 {
     QUmlAssociation *c = new QUmlAssociation;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -115,36 +116,36 @@ QModelingObject *QUmlAssociation::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
     c->setDerived(isDerived());
-    foreach (QUmlProperty *element, memberEnd())
+    foreach (QUmlProperty *element, memberEnds())
         c->addMemberEnd(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlProperty *element, navigableOwnedEnd())
+    foreach (QUmlProperty *element, navigableOwnedEnds())
         c->addNavigableOwnedEnd(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlProperty *element, ownedEnd())
+    foreach (QUmlProperty *element, ownedEnds())
         c->addOwnedEnd(dynamic_cast<QUmlProperty *>(element->clone()));
     return c;
 }
@@ -154,11 +155,11 @@ QModelingObject *QUmlAssociation::clone() const
 /*!
     References the classifiers that are used as types of the ends of the association.
  */
-const QList<QUmlType *> QUmlAssociation::endType() const
+const QList<QUmlType *> QUmlAssociation::endTypes() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlAssociation::endType(): to be implemented (this is a derived association end)");
+    qWarning("UmlAssociation::endTypes(): to be implemented (this is a derived association end)");
 
     return QList<QUmlType *>();
 }
@@ -167,7 +168,7 @@ void QUmlAssociation::addEndType(QUmlType *endType)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlAssociation::endType(): to be implemented (this is a derived association end)");
+    qWarning("UmlAssociation::addEndType(): to be implemented (this is a derived association end)");
     Q_UNUSED(endType);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -182,7 +183,7 @@ void QUmlAssociation::removeEndType(QUmlType *endType)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlAssociation::endType(): to be implemented (this is a derived association end)");
+    qWarning("UmlAssociation::removeEndType(): to be implemented (this is a derived association end)");
     Q_UNUSED(endType);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -216,19 +217,19 @@ void QUmlAssociation::setDerived(bool isDerived)
 /*!
     Each end represents participation of instances of the classifier connected to the end in links of the association.
  */
-const QList<QUmlProperty *> QUmlAssociation::memberEnd() const
+const QList<QUmlProperty *> QUmlAssociation::memberEnds() const
 {
     // This is a read-write association end
 
-    return _memberEnd;
+    return _memberEnds;
 }
 
 void QUmlAssociation::addMemberEnd(QUmlProperty *memberEnd)
 {
     // This is a read-write association end
 
-    if (!_memberEnd.contains(memberEnd)) {
-        _memberEnd.append(memberEnd);
+    if (!_memberEnds.contains(memberEnd)) {
+        _memberEnds.append(memberEnd);
         if (memberEnd && memberEnd->asQObject() && this->asQObject())
             QObject::connect(memberEnd->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMemberEnd(QObject *)));
 
@@ -246,8 +247,8 @@ void QUmlAssociation::removeMemberEnd(QUmlProperty *memberEnd)
 {
     // This is a read-write association end
 
-    if (_memberEnd.contains(memberEnd)) {
-        _memberEnd.removeAll(memberEnd);
+    if (_memberEnds.contains(memberEnd)) {
+        _memberEnds.removeAll(memberEnd);
 
         // Adjust subsetted properties
         removeMember(memberEnd);
@@ -262,19 +263,19 @@ void QUmlAssociation::removeMemberEnd(QUmlProperty *memberEnd)
 /*!
     The navigable ends that are owned by the association itself.
  */
-const QSet<QUmlProperty *> QUmlAssociation::navigableOwnedEnd() const
+const QSet<QUmlProperty *> QUmlAssociation::navigableOwnedEnds() const
 {
     // This is a read-write association end
 
-    return _navigableOwnedEnd;
+    return _navigableOwnedEnds;
 }
 
 void QUmlAssociation::addNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 {
     // This is a read-write association end
 
-    if (!_navigableOwnedEnd.contains(navigableOwnedEnd)) {
-        _navigableOwnedEnd.insert(navigableOwnedEnd);
+    if (!_navigableOwnedEnds.contains(navigableOwnedEnd)) {
+        _navigableOwnedEnds.insert(navigableOwnedEnd);
         if (navigableOwnedEnd && navigableOwnedEnd->asQObject() && this->asQObject())
             QObject::connect(navigableOwnedEnd->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNavigableOwnedEnd(QObject *)));
 
@@ -287,8 +288,8 @@ void QUmlAssociation::removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 {
     // This is a read-write association end
 
-    if (_navigableOwnedEnd.contains(navigableOwnedEnd)) {
-        _navigableOwnedEnd.remove(navigableOwnedEnd);
+    if (_navigableOwnedEnds.contains(navigableOwnedEnd)) {
+        _navigableOwnedEnds.remove(navigableOwnedEnd);
 
         // Adjust subsetted properties
         removeOwnedEnd(navigableOwnedEnd);
@@ -298,19 +299,19 @@ void QUmlAssociation::removeNavigableOwnedEnd(QUmlProperty *navigableOwnedEnd)
 /*!
     The ends that are owned by the association itself.
  */
-const QList<QUmlProperty *> QUmlAssociation::ownedEnd() const
+const QList<QUmlProperty *> QUmlAssociation::ownedEnds() const
 {
     // This is a read-write association end
 
-    return _ownedEnd;
+    return _ownedEnds;
 }
 
 void QUmlAssociation::addOwnedEnd(QUmlProperty *ownedEnd)
 {
     // This is a read-write association end
 
-    if (!_ownedEnd.contains(ownedEnd)) {
-        _ownedEnd.append(ownedEnd);
+    if (!_ownedEnds.contains(ownedEnd)) {
+        _ownedEnds.append(ownedEnd);
         if (ownedEnd && ownedEnd->asQObject() && this->asQObject())
             QObject::connect(ownedEnd->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedEnd(QObject *)));
         ownedEnd->asQObject()->setParent(this->asQObject());
@@ -331,8 +332,8 @@ void QUmlAssociation::removeOwnedEnd(QUmlProperty *ownedEnd)
 {
     // This is a read-write association end
 
-    if (_ownedEnd.contains(ownedEnd)) {
-        _ownedEnd.removeAll(ownedEnd);
+    if (_ownedEnds.contains(ownedEnd)) {
+        _ownedEnds.removeAll(ownedEnd);
         if (ownedEnd->asQObject())
             ownedEnd->asQObject()->setParent(0);
 
@@ -351,6 +352,8 @@ void QUmlAssociation::removeOwnedEnd(QUmlProperty *ownedEnd)
 void QUmlAssociation::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("endType")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("endType")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAssociation");
+    QModelingObject::propertyDataHash[QStringLiteral("endType")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("endType")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("endType")][QtModeling::DocumentationRole] = QStringLiteral("References the classifiers that are used as types of the ends of the association.");
     QModelingObject::propertyDataHash[QStringLiteral("endType")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -358,6 +361,8 @@ void QUmlAssociation::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("endType")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isDerived")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isDerived")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAssociation");
+    QModelingObject::propertyDataHash[QStringLiteral("isDerived")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isDerived")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isDerived")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether the association is derived from other model elements such as other associations or constraints.");
     QModelingObject::propertyDataHash[QStringLiteral("isDerived")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -365,6 +370,8 @@ void QUmlAssociation::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isDerived")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("memberEnd")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("memberEnd")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAssociation");
+    QModelingObject::propertyDataHash[QStringLiteral("memberEnd")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("memberEnd")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("memberEnd")][QtModeling::DocumentationRole] = QStringLiteral("Each end represents participation of instances of the classifier connected to the end in links of the association.");
     QModelingObject::propertyDataHash[QStringLiteral("memberEnd")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -372,6 +379,8 @@ void QUmlAssociation::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("memberEnd")][QtModeling::OppositeEndRole] = QStringLiteral("Property-association");
 
     QModelingObject::propertyDataHash[QStringLiteral("navigableOwnedEnd")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("navigableOwnedEnd")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAssociation");
+    QModelingObject::propertyDataHash[QStringLiteral("navigableOwnedEnd")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("navigableOwnedEnd")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("navigableOwnedEnd")][QtModeling::DocumentationRole] = QStringLiteral("The navigable ends that are owned by the association itself.");
     QModelingObject::propertyDataHash[QStringLiteral("navigableOwnedEnd")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -379,6 +388,8 @@ void QUmlAssociation::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("navigableOwnedEnd")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAssociation");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::DocumentationRole] = QStringLiteral("The ends that are owned by the association itself.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedEnd")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

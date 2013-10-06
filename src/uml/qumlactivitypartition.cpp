@@ -53,6 +53,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlActivityPartition
 
@@ -83,9 +84,9 @@ QUmlActivityPartition::~QUmlActivityPartition()
 QModelingObject *QUmlActivityPartition::clone() const
 {
     QUmlActivityPartition *c = new QUmlActivityPartition;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -93,15 +94,15 @@ QModelingObject *QUmlActivityPartition::clone() const
     c->setVisibility(visibility());
     if (inActivity())
         c->setInActivity(dynamic_cast<QUmlActivity *>(inActivity()->clone()));
-    foreach (QUmlActivityEdge *element, edge())
+    foreach (QUmlActivityEdge *element, edges())
         c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
     c->setDimension(isDimension());
     c->setExternal(isExternal());
-    foreach (QUmlActivityNode *element, node())
+    foreach (QUmlActivityNode *element, nodes())
         c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     if (represents())
         c->setRepresents(dynamic_cast<QUmlElement *>(represents()->clone()));
-    foreach (QUmlActivityPartition *element, subpartition())
+    foreach (QUmlActivityPartition *element, subpartitions())
         c->addSubpartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (superPartition())
         c->setSuperPartition(dynamic_cast<QUmlActivityPartition *>(superPartition()->clone()));
@@ -113,19 +114,19 @@ QModelingObject *QUmlActivityPartition::clone() const
 /*!
     Edges immediately contained in the group.
  */
-const QSet<QUmlActivityEdge *> QUmlActivityPartition::edge() const
+const QSet<QUmlActivityEdge *> QUmlActivityPartition::edges() const
 {
     // This is a read-write association end
 
-    return _edge;
+    return _edges;
 }
 
 void QUmlActivityPartition::addEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
 
-    if (!_edge.contains(edge)) {
-        _edge.insert(edge);
+    if (!_edges.contains(edge)) {
+        _edges.insert(edge);
         if (edge && edge->asQObject() && this->asQObject())
             QObject::connect(edge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEdge(QObject *)));
 
@@ -143,8 +144,8 @@ void QUmlActivityPartition::removeEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
 
-    if (_edge.contains(edge)) {
-        _edge.remove(edge);
+    if (_edges.contains(edge)) {
+        _edges.remove(edge);
 
         // Adjust subsetted properties
         removeContainedEdge(edge);
@@ -199,19 +200,19 @@ void QUmlActivityPartition::setExternal(bool isExternal)
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QUmlActivityNode *> QUmlActivityPartition::node() const
+const QSet<QUmlActivityNode *> QUmlActivityPartition::nodes() const
 {
     // This is a read-write association end
 
-    return _node;
+    return _nodes;
 }
 
 void QUmlActivityPartition::addNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    if (!_node.contains(node)) {
-        _node.insert(node);
+    if (!_nodes.contains(node)) {
+        _nodes.insert(node);
         if (node && node->asQObject() && this->asQObject())
             QObject::connect(node->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNode(QObject *)));
 
@@ -229,8 +230,8 @@ void QUmlActivityPartition::removeNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    if (_node.contains(node)) {
-        _node.remove(node);
+    if (_nodes.contains(node)) {
+        _nodes.remove(node);
 
         // Adjust subsetted properties
         removeContainedNode(node);
@@ -266,19 +267,19 @@ void QUmlActivityPartition::setRepresents(QUmlElement *represents)
 /*!
     Partitions immediately contained in the partition.
  */
-const QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartition() const
+const QSet<QUmlActivityPartition *> QUmlActivityPartition::subpartitions() const
 {
     // This is a read-write association end
 
-    return _subpartition;
+    return _subpartitions;
 }
 
 void QUmlActivityPartition::addSubpartition(QUmlActivityPartition *subpartition)
 {
     // This is a read-write association end
 
-    if (!_subpartition.contains(subpartition)) {
-        _subpartition.insert(subpartition);
+    if (!_subpartitions.contains(subpartition)) {
+        _subpartitions.insert(subpartition);
         if (subpartition && subpartition->asQObject() && this->asQObject())
             QObject::connect(subpartition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubpartition(QObject *)));
         subpartition->asQObject()->setParent(this->asQObject());
@@ -292,8 +293,8 @@ void QUmlActivityPartition::removeSubpartition(QUmlActivityPartition *subpartiti
 {
     // This is a read-write association end
 
-    if (_subpartition.contains(subpartition)) {
-        _subpartition.remove(subpartition);
+    if (_subpartitions.contains(subpartition)) {
+        _subpartitions.remove(subpartition);
         if (subpartition->asQObject())
             subpartition->asQObject()->setParent(0);
 
@@ -331,6 +332,8 @@ void QUmlActivityPartition::setSuperPartition(QUmlActivityPartition *superPartit
 void QUmlActivityPartition::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityPartition");
+    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::DocumentationRole] = QStringLiteral("Edges immediately contained in the group.");
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -338,6 +341,8 @@ void QUmlActivityPartition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-inPartition");
 
     QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityPartition");
+    QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the partition groups other partitions along a dimension.");
     QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -345,6 +350,8 @@ void QUmlActivityPartition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isDimension")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityPartition");
+    QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the partition represents an entity to which the partitioning structure does not apply.");
     QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -352,6 +359,8 @@ void QUmlActivityPartition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isExternal")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityPartition");
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::DocumentationRole] = QStringLiteral("Nodes immediately contained in the group.");
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -359,6 +368,8 @@ void QUmlActivityPartition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-inPartition");
 
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityPartition");
+    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::DocumentationRole] = QStringLiteral("An element constraining behaviors invoked by nodes in the partition.");
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -366,6 +377,8 @@ void QUmlActivityPartition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityPartition");
+    QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::DocumentationRole] = QStringLiteral("Partitions immediately contained in the partition.");
     QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -373,6 +386,8 @@ void QUmlActivityPartition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("subpartition")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityPartition-superPartition");
 
     QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityPartition");
+    QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::DocumentationRole] = QStringLiteral("Partition immediately containing the partition.");
     QModelingObject::propertyDataHash[QStringLiteral("superPartition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -53,6 +53,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlContinuation
 
@@ -80,9 +81,9 @@ QUmlContinuation::~QUmlContinuation()
 QModelingObject *QUmlContinuation::clone() const
 {
     QUmlContinuation *c = new QUmlContinuation;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -94,7 +95,7 @@ QModelingObject *QUmlContinuation::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     c->setSetting(setting());
     return c;
@@ -125,6 +126,8 @@ void QUmlContinuation::setSetting(bool setting)
 void QUmlContinuation::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlContinuation");
+    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::DocumentationRole] = QStringLiteral("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
     QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

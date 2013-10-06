@@ -43,6 +43,7 @@
 #include "private/qumlcommentobject_p.h"
 
 #include <QtUml/QUmlElement>
+
 /*!
     \class QUmlComment
 
@@ -69,9 +70,9 @@ QUmlComment::~QUmlComment()
 QModelingObject *QUmlComment::clone() const
 {
     QUmlComment *c = new QUmlComment;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlElement *element, annotatedElement())
+    foreach (QUmlElement *element, annotatedElements())
         c->addAnnotatedElement(dynamic_cast<QUmlElement *>(element->clone()));
     c->setBody(body());
     return c;
@@ -82,19 +83,19 @@ QModelingObject *QUmlComment::clone() const
 /*!
     References the Element(s) being commented.
  */
-const QSet<QUmlElement *> QUmlComment::annotatedElement() const
+const QSet<QUmlElement *> QUmlComment::annotatedElements() const
 {
     // This is a read-write association end
 
-    return _annotatedElement;
+    return _annotatedElements;
 }
 
 void QUmlComment::addAnnotatedElement(QUmlElement *annotatedElement)
 {
     // This is a read-write association end
 
-    if (!_annotatedElement.contains(annotatedElement)) {
-        _annotatedElement.insert(annotatedElement);
+    if (!_annotatedElements.contains(annotatedElement)) {
+        _annotatedElements.insert(annotatedElement);
         if (annotatedElement && annotatedElement->asQObject() && this->asQObject())
             QObject::connect(annotatedElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeAnnotatedElement(QObject *)));
     }
@@ -104,8 +105,8 @@ void QUmlComment::removeAnnotatedElement(QUmlElement *annotatedElement)
 {
     // This is a read-write association end
 
-    if (_annotatedElement.contains(annotatedElement)) {
-        _annotatedElement.remove(annotatedElement);
+    if (_annotatedElements.contains(annotatedElement)) {
+        _annotatedElements.remove(annotatedElement);
     }
 }
 
@@ -131,6 +132,8 @@ void QUmlComment::setBody(QString body)
 void QUmlComment::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("annotatedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("annotatedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComment");
+    QModelingObject::propertyDataHash[QStringLiteral("annotatedElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("annotatedElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("annotatedElement")][QtModeling::DocumentationRole] = QStringLiteral("References the Element(s) being commented.");
     QModelingObject::propertyDataHash[QStringLiteral("annotatedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -138,6 +141,8 @@ void QUmlComment::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("annotatedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComment");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a string that is the comment.");
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

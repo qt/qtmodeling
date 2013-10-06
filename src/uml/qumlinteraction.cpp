@@ -89,6 +89,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlInteraction
 
@@ -115,18 +116,18 @@ QUmlInteraction::~QUmlInteraction()
 QModelingObject *QUmlInteraction::clone() const
 {
     QUmlInteraction *c = new QUmlInteraction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -134,57 +135,57 @@ QModelingObject *QUmlInteraction::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlConnector *element, ownedConnector())
+    foreach (QUmlConnector *element, ownedConnectors())
         c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
     if (classifierBehavior())
         c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
-    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, interfaceRealizations())
         c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
-    foreach (QUmlBehavior *element, ownedBehavior())
+    foreach (QUmlBehavior *element, ownedBehaviors())
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setActive(isActive());
-    foreach (QUmlClassifier *element, nestedClassifier())
+    foreach (QUmlClassifier *element, nestedClassifiers())
         c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlOperation *element, ownedOperation())
+    foreach (QUmlOperation *element, ownedOperations())
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
-    foreach (QUmlReception *element, ownedReception())
+    foreach (QUmlReception *element, ownedReceptions())
         c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
     c->setReentrant(isReentrant());
-    foreach (QUmlParameter *element, ownedParameter())
+    foreach (QUmlParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
-    foreach (QUmlParameterSet *element, ownedParameterSet())
+    foreach (QUmlParameterSet *element, ownedParameterSets())
         c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
-    foreach (QUmlConstraint *element, postcondition())
+    foreach (QUmlConstraint *element, postconditions())
         c->addPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, precondition())
+    foreach (QUmlConstraint *element, preconditions())
         c->addPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlBehavior *element, redefinedBehavior())
+    foreach (QUmlBehavior *element, redefinedBehaviors())
         c->addRedefinedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QUmlBehavioralFeature *>(specification()->clone()));
@@ -194,17 +195,17 @@ QModelingObject *QUmlInteraction::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlAction *element, action())
+    foreach (QUmlAction *element, actions())
         c->addAction(dynamic_cast<QUmlAction *>(element->clone()));
-    foreach (QUmlGate *element, formalGate())
+    foreach (QUmlGate *element, formalGates())
         c->addFormalGate(dynamic_cast<QUmlGate *>(element->clone()));
-    foreach (QUmlInteractionFragment *element, fragment())
+    foreach (QUmlInteractionFragment *element, fragments())
         c->addFragment(dynamic_cast<QUmlInteractionFragment *>(element->clone()));
-    foreach (QUmlLifeline *element, lifeline())
+    foreach (QUmlLifeline *element, lifelines())
         c->addLifeline(dynamic_cast<QUmlLifeline *>(element->clone()));
-    foreach (QUmlMessage *element, message())
+    foreach (QUmlMessage *element, messages())
         c->addMessage(dynamic_cast<QUmlMessage *>(element->clone()));
     return c;
 }
@@ -214,19 +215,19 @@ QModelingObject *QUmlInteraction::clone() const
 /*!
     Actions owned by the Interaction.
  */
-const QSet<QUmlAction *> QUmlInteraction::action() const
+const QSet<QUmlAction *> QUmlInteraction::actions() const
 {
     // This is a read-write association end
 
-    return _action;
+    return _actions;
 }
 
 void QUmlInteraction::addAction(QUmlAction *action)
 {
     // This is a read-write association end
 
-    if (!_action.contains(action)) {
-        _action.insert(action);
+    if (!_actions.contains(action)) {
+        _actions.insert(action);
         if (action && action->asQObject() && this->asQObject())
             QObject::connect(action->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeAction(QObject *)));
         action->asQObject()->setParent(this->asQObject());
@@ -240,8 +241,8 @@ void QUmlInteraction::removeAction(QUmlAction *action)
 {
     // This is a read-write association end
 
-    if (_action.contains(action)) {
-        _action.remove(action);
+    if (_actions.contains(action)) {
+        _actions.remove(action);
         if (action->asQObject())
             action->asQObject()->setParent(0);
 
@@ -253,19 +254,19 @@ void QUmlInteraction::removeAction(QUmlAction *action)
 /*!
     Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.
  */
-const QSet<QUmlGate *> QUmlInteraction::formalGate() const
+const QSet<QUmlGate *> QUmlInteraction::formalGates() const
 {
     // This is a read-write association end
 
-    return _formalGate;
+    return _formalGates;
 }
 
 void QUmlInteraction::addFormalGate(QUmlGate *formalGate)
 {
     // This is a read-write association end
 
-    if (!_formalGate.contains(formalGate)) {
-        _formalGate.insert(formalGate);
+    if (!_formalGates.contains(formalGate)) {
+        _formalGates.insert(formalGate);
         if (formalGate && formalGate->asQObject() && this->asQObject())
             QObject::connect(formalGate->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFormalGate(QObject *)));
         formalGate->asQObject()->setParent(this->asQObject());
@@ -279,8 +280,8 @@ void QUmlInteraction::removeFormalGate(QUmlGate *formalGate)
 {
     // This is a read-write association end
 
-    if (_formalGate.contains(formalGate)) {
-        _formalGate.remove(formalGate);
+    if (_formalGates.contains(formalGate)) {
+        _formalGates.remove(formalGate);
         if (formalGate->asQObject())
             formalGate->asQObject()->setParent(0);
 
@@ -292,19 +293,19 @@ void QUmlInteraction::removeFormalGate(QUmlGate *formalGate)
 /*!
     The ordered set of fragments in the Interaction.
  */
-const QList<QUmlInteractionFragment *> QUmlInteraction::fragment() const
+const QList<QUmlInteractionFragment *> QUmlInteraction::fragments() const
 {
     // This is a read-write association end
 
-    return _fragment;
+    return _fragments;
 }
 
 void QUmlInteraction::addFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    if (!_fragment.contains(fragment)) {
-        _fragment.append(fragment);
+    if (!_fragments.contains(fragment)) {
+        _fragments.append(fragment);
         if (fragment && fragment->asQObject() && this->asQObject())
             QObject::connect(fragment->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFragment(QObject *)));
         fragment->asQObject()->setParent(this->asQObject());
@@ -323,8 +324,8 @@ void QUmlInteraction::removeFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    if (_fragment.contains(fragment)) {
-        _fragment.removeAll(fragment);
+    if (_fragments.contains(fragment)) {
+        _fragments.removeAll(fragment);
         if (fragment->asQObject())
             fragment->asQObject()->setParent(0);
 
@@ -341,19 +342,19 @@ void QUmlInteraction::removeFragment(QUmlInteractionFragment *fragment)
 /*!
     Specifies the participants in this Interaction.
  */
-const QSet<QUmlLifeline *> QUmlInteraction::lifeline() const
+const QSet<QUmlLifeline *> QUmlInteraction::lifelines() const
 {
     // This is a read-write association end
 
-    return _lifeline;
+    return _lifelines;
 }
 
 void QUmlInteraction::addLifeline(QUmlLifeline *lifeline)
 {
     // This is a read-write association end
 
-    if (!_lifeline.contains(lifeline)) {
-        _lifeline.insert(lifeline);
+    if (!_lifelines.contains(lifeline)) {
+        _lifelines.insert(lifeline);
         if (lifeline && lifeline->asQObject() && this->asQObject())
             QObject::connect(lifeline->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeLifeline(QObject *)));
         lifeline->asQObject()->setParent(this->asQObject());
@@ -372,8 +373,8 @@ void QUmlInteraction::removeLifeline(QUmlLifeline *lifeline)
 {
     // This is a read-write association end
 
-    if (_lifeline.contains(lifeline)) {
-        _lifeline.remove(lifeline);
+    if (_lifelines.contains(lifeline)) {
+        _lifelines.remove(lifeline);
         if (lifeline->asQObject())
             lifeline->asQObject()->setParent(0);
 
@@ -390,19 +391,19 @@ void QUmlInteraction::removeLifeline(QUmlLifeline *lifeline)
 /*!
     The Messages contained in this Interaction.
  */
-const QSet<QUmlMessage *> QUmlInteraction::message() const
+const QSet<QUmlMessage *> QUmlInteraction::messages() const
 {
     // This is a read-write association end
 
-    return _message;
+    return _messages;
 }
 
 void QUmlInteraction::addMessage(QUmlMessage *message)
 {
     // This is a read-write association end
 
-    if (!_message.contains(message)) {
-        _message.insert(message);
+    if (!_messages.contains(message)) {
+        _messages.insert(message);
         if (message && message->asQObject() && this->asQObject())
             QObject::connect(message->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMessage(QObject *)));
         message->asQObject()->setParent(this->asQObject());
@@ -421,8 +422,8 @@ void QUmlInteraction::removeMessage(QUmlMessage *message)
 {
     // This is a read-write association end
 
-    if (_message.contains(message)) {
-        _message.remove(message);
+    if (_messages.contains(message)) {
+        _messages.remove(message);
         if (message->asQObject())
             message->asQObject()->setParent(0);
 
@@ -439,6 +440,8 @@ void QUmlInteraction::removeMessage(QUmlMessage *message)
 void QUmlInteraction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::DocumentationRole] = QStringLiteral("Actions owned by the Interaction.");
     QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -446,6 +449,8 @@ void QUmlInteraction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("formalGate")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("formalGate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("formalGate")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("formalGate")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("formalGate")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.");
     QModelingObject::propertyDataHash[QStringLiteral("formalGate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -453,6 +458,8 @@ void QUmlInteraction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("formalGate")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of fragments in the Interaction.");
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -460,6 +467,8 @@ void QUmlInteraction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::OppositeEndRole] = QStringLiteral("InteractionFragment-enclosingInteraction");
 
     QModelingObject::propertyDataHash[QStringLiteral("lifeline")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("lifeline")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("lifeline")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("lifeline")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("lifeline")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the participants in this Interaction.");
     QModelingObject::propertyDataHash[QStringLiteral("lifeline")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -467,6 +476,8 @@ void QUmlInteraction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("lifeline")][QtModeling::OppositeEndRole] = QStringLiteral("Lifeline-interaction");
 
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::DocumentationRole] = QStringLiteral("The Messages contained in this Interaction.");
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

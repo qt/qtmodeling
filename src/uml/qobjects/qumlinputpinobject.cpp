@@ -80,18 +80,18 @@ QUmlInputPinObject::~QUmlInputPinObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlInputPinObject::ownedComment() const
+const QSet<QObject *> QUmlInputPinObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInputPinObject::ownedElement() const
+const QSet<QObject *> QUmlInputPinObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -144,10 +144,10 @@ QObject *QUmlInputPinObject::upperValue() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlInputPinObject::clientDependency() const
+const QSet<QObject *> QUmlInputPinObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -190,18 +190,18 @@ bool QUmlInputPinObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlInputPinObject::redefinedElement() const
+const QSet<QObject *> QUmlInputPinObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInputPinObject::redefinitionContext() const
+const QSet<QObject *> QUmlInputPinObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -216,26 +216,26 @@ QObject *QUmlInputPinObject::activity() const
         return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlInputPinObject::inGroup() const
+const QSet<QObject *> QUmlInputPinObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInputPinObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlInputPinObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInputPinObject::inPartition() const
+const QSet<QObject *> QUmlInputPinObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -248,26 +248,26 @@ QObject *QUmlInputPinObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlInputPinObject::incoming() const
+const QSet<QObject *> QUmlInputPinObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInputPinObject::outgoing() const
+const QSet<QObject *> QUmlInputPinObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInputPinObject::redefinedNode() const
+const QSet<QObject *> QUmlInputPinObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
@@ -284,10 +284,10 @@ QObject *QUmlInputPinObject::type() const
 
 // OWNED ATTRIBUTES [ObjectNode]
 
-const QSet<QObject *> QUmlInputPinObject::inState() const
+const QSet<QObject *> QUmlInputPinObject::inStates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inState())
+    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlInputPin *>(this)->inStates())
         set.insert(element->asQObject());
     return set;
 }

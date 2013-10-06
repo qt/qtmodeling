@@ -68,18 +68,18 @@ QUmlTimeObservationObject::~QUmlTimeObservationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlTimeObservationObject::ownedComment() const
+const QSet<QObject *> QUmlTimeObservationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTimeObservationObject::ownedElement() const
+const QSet<QObject *> QUmlTimeObservationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -112,10 +112,10 @@ QObject *QUmlTimeObservationObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlTimeObservationObject::clientDependency() const
+const QSet<QObject *> QUmlTimeObservationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -145,6 +145,7 @@ QString QUmlTimeObservationObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlTimeObservation *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlTimeObservationObject::visibility() const

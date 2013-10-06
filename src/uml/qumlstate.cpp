@@ -62,6 +62,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
 #include <QtUml/QUmlTrigger>
+
 /*!
     \class QUmlState
 
@@ -94,28 +95,28 @@ QUmlState::~QUmlState()
 QModelingObject *QUmlState::clone() const
 {
     QUmlState *c = new QUmlState;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     c->setLeaf(isLeaf());
     if (container())
         c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
-    foreach (QUmlConnectionPointReference *element, connection())
+    foreach (QUmlConnectionPointReference *element, connections())
         c->addConnection(dynamic_cast<QUmlConnectionPointReference *>(element->clone()));
-    foreach (QUmlPseudostate *element, connectionPoint())
+    foreach (QUmlPseudostate *element, connectionPoints())
         c->addConnectionPoint(dynamic_cast<QUmlPseudostate *>(element->clone()));
-    foreach (QUmlTrigger *element, deferrableTrigger())
+    foreach (QUmlTrigger *element, deferrableTriggers())
         c->addDeferrableTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
     if (doActivity())
         c->setDoActivity(dynamic_cast<QUmlBehavior *>(doActivity()->clone()));
@@ -125,7 +126,7 @@ QModelingObject *QUmlState::clone() const
         c->setExit(dynamic_cast<QUmlBehavior *>(exit()->clone()));
     if (redefinedState())
         c->setRedefinedState(dynamic_cast<QUmlState *>(redefinedState()->clone()));
-    foreach (QUmlRegion *element, region())
+    foreach (QUmlRegion *element, regions())
         c->addRegion(dynamic_cast<QUmlRegion *>(element->clone()));
     if (stateInvariant())
         c->setStateInvariant(dynamic_cast<QUmlConstraint *>(stateInvariant()->clone()));
@@ -139,19 +140,19 @@ QModelingObject *QUmlState::clone() const
 /*!
     The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.
  */
-const QSet<QUmlConnectionPointReference *> QUmlState::connection() const
+const QSet<QUmlConnectionPointReference *> QUmlState::connections() const
 {
     // This is a read-write association end
 
-    return _connection;
+    return _connections;
 }
 
 void QUmlState::addConnection(QUmlConnectionPointReference *connection)
 {
     // This is a read-write association end
 
-    if (!_connection.contains(connection)) {
-        _connection.insert(connection);
+    if (!_connections.contains(connection)) {
+        _connections.insert(connection);
         if (connection && connection->asQObject() && this->asQObject())
             QObject::connect(connection->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConnection(QObject *)));
         connection->asQObject()->setParent(this->asQObject());
@@ -170,8 +171,8 @@ void QUmlState::removeConnection(QUmlConnectionPointReference *connection)
 {
     // This is a read-write association end
 
-    if (_connection.contains(connection)) {
-        _connection.remove(connection);
+    if (_connections.contains(connection)) {
+        _connections.remove(connection);
         if (connection->asQObject())
             connection->asQObject()->setParent(0);
 
@@ -188,19 +189,19 @@ void QUmlState::removeConnection(QUmlConnectionPointReference *connection)
 /*!
     The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.
  */
-const QSet<QUmlPseudostate *> QUmlState::connectionPoint() const
+const QSet<QUmlPseudostate *> QUmlState::connectionPoints() const
 {
     // This is a read-write association end
 
-    return _connectionPoint;
+    return _connectionPoints;
 }
 
 void QUmlState::addConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    if (!_connectionPoint.contains(connectionPoint)) {
-        _connectionPoint.insert(connectionPoint);
+    if (!_connectionPoints.contains(connectionPoint)) {
+        _connectionPoints.insert(connectionPoint);
         if (connectionPoint && connectionPoint->asQObject() && this->asQObject())
             QObject::connect(connectionPoint->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConnectionPoint(QObject *)));
         connectionPoint->asQObject()->setParent(this->asQObject());
@@ -219,8 +220,8 @@ void QUmlState::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 {
     // This is a read-write association end
 
-    if (_connectionPoint.contains(connectionPoint)) {
-        _connectionPoint.remove(connectionPoint);
+    if (_connectionPoints.contains(connectionPoint)) {
+        _connectionPoints.remove(connectionPoint);
         if (connectionPoint->asQObject())
             connectionPoint->asQObject()->setParent(0);
 
@@ -237,19 +238,19 @@ void QUmlState::removeConnectionPoint(QUmlPseudostate *connectionPoint)
 /*!
     A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.
  */
-const QSet<QUmlTrigger *> QUmlState::deferrableTrigger() const
+const QSet<QUmlTrigger *> QUmlState::deferrableTriggers() const
 {
     // This is a read-write association end
 
-    return _deferrableTrigger;
+    return _deferrableTriggers;
 }
 
 void QUmlState::addDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 {
     // This is a read-write association end
 
-    if (!_deferrableTrigger.contains(deferrableTrigger)) {
-        _deferrableTrigger.insert(deferrableTrigger);
+    if (!_deferrableTriggers.contains(deferrableTrigger)) {
+        _deferrableTriggers.insert(deferrableTrigger);
         if (deferrableTrigger && deferrableTrigger->asQObject() && this->asQObject())
             QObject::connect(deferrableTrigger->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeDeferrableTrigger(QObject *)));
         deferrableTrigger->asQObject()->setParent(this->asQObject());
@@ -263,8 +264,8 @@ void QUmlState::removeDeferrableTrigger(QUmlTrigger *deferrableTrigger)
 {
     // This is a read-write association end
 
-    if (_deferrableTrigger.contains(deferrableTrigger)) {
-        _deferrableTrigger.remove(deferrableTrigger);
+    if (_deferrableTriggers.contains(deferrableTrigger)) {
+        _deferrableTriggers.remove(deferrableTrigger);
         if (deferrableTrigger->asQObject())
             deferrableTrigger->asQObject()->setParent(0);
 
@@ -379,7 +380,7 @@ void QUmlState::setComposite(bool isComposite)
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::isComposite(): to be implemented (this is a derived property)");
+    qWarning("UmlState::setComposite(): to be implemented (this is a derived property)");
     Q_UNUSED(isComposite);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -403,7 +404,7 @@ void QUmlState::setOrthogonal(bool isOrthogonal)
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::isOrthogonal(): to be implemented (this is a derived property)");
+    qWarning("UmlState::setOrthogonal(): to be implemented (this is a derived property)");
     Q_UNUSED(isOrthogonal);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -427,7 +428,7 @@ void QUmlState::setSimple(bool isSimple)
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::isSimple(): to be implemented (this is a derived property)");
+    qWarning("UmlState::setSimple(): to be implemented (this is a derived property)");
     Q_UNUSED(isSimple);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -451,7 +452,7 @@ void QUmlState::setSubmachineState(bool isSubmachineState)
 {
     // This is a read-only derived property
 
-    qWarning("UmlState::isSubmachineState(): to be implemented (this is a derived property)");
+    qWarning("UmlState::setSubmachineState(): to be implemented (this is a derived property)");
     Q_UNUSED(isSubmachineState);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -504,7 +505,7 @@ void QUmlState::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlState::redefinitionContext(): to be implemented (this is a derived association end)");
+    qWarning("UmlState::setRedefinitionContext(): to be implemented (this is a derived association end)");
     Q_UNUSED(redefinitionContext);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -515,19 +516,19 @@ void QUmlState::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 /*!
     The regions owned directly by the state.
  */
-const QSet<QUmlRegion *> QUmlState::region() const
+const QSet<QUmlRegion *> QUmlState::regions() const
 {
     // This is a read-write association end
 
-    return _region;
+    return _regions;
 }
 
 void QUmlState::addRegion(QUmlRegion *region)
 {
     // This is a read-write association end
 
-    if (!_region.contains(region)) {
-        _region.insert(region);
+    if (!_regions.contains(region)) {
+        _regions.insert(region);
         if (region && region->asQObject() && this->asQObject())
             QObject::connect(region->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRegion(QObject *)));
         region->asQObject()->setParent(this->asQObject());
@@ -546,8 +547,8 @@ void QUmlState::removeRegion(QUmlRegion *region)
 {
     // This is a read-write association end
 
-    if (_region.contains(region)) {
-        _region.remove(region);
+    if (_regions.contains(region)) {
+        _regions.remove(region);
         if (region->asQObject())
             region->asQObject()->setParent(0);
 
@@ -649,6 +650,8 @@ bool QUmlState::isRedefinitionContextValid(QUmlState *redefined) const
 void QUmlState::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::DocumentationRole] = QStringLiteral("The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.");
     QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -656,6 +659,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("connection")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectionPointReference-state");
 
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::DocumentationRole] = QStringLiteral("The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.");
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -663,6 +668,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("connectionPoint")][QtModeling::OppositeEndRole] = QStringLiteral("Pseudostate-state");
 
     QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::DocumentationRole] = QStringLiteral("A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.");
     QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -670,6 +677,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("deferrableTrigger")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::DocumentationRole] = QStringLiteral("An optional behavior that is executed while being in the state. The execution starts when this state is entered, and stops either by itself, or when the state is exited, whichever comes first.");
     QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -677,6 +686,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("doActivity")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::DocumentationRole] = QStringLiteral("An optional behavior that is executed whenever this state is entered regardless of the transition taken to reach the state. If defined, entry actions are always executed to completion prior to any internal behavior or transitions performed within the state.");
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -684,6 +695,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("entry")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::DocumentationRole] = QStringLiteral("An optional behavior that is executed whenever this state is exited regardless of which transition was taken out of the state. If defined, exit actions are always executed to completion only after all internal activities and transition actions have completed execution.");
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -691,6 +704,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("exit")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::DocumentationRole] = QStringLiteral("A state with isComposite=true is said to be a composite state. A composite state is a state that contains at least one region.");
     QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -698,6 +713,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isComposite")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::DocumentationRole] = QStringLiteral("A state with isOrthogonal=true is said to be an orthogonal composite state. An orthogonal composite state contains two or more regions.");
     QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -705,6 +722,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isOrthogonal")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::DocumentationRole] = QStringLiteral("A state with isSimple=true is said to be a simple state. A simple state does not have any regions and it does not refer to any submachine state machine.");
     QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -712,6 +731,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isSimple")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::DocumentationRole] = QStringLiteral("A state with isSubmachineState=true is said to be a submachine state. Such a state refers to a state machine (submachine).");
     QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -719,6 +740,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isSubmachineState")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::DocumentationRole] = QStringLiteral("The state of which this state is a redefinition.");
     QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -726,6 +749,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("redefinedState")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::DocumentationRole] = QStringLiteral("References the classifier in which context this element may be redefined.");
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("RedefinableElement-redefinitionContext");
@@ -733,6 +758,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::DocumentationRole] = QStringLiteral("The regions owned directly by the state.");
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -740,6 +767,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("region")][QtModeling::OppositeEndRole] = QStringLiteral("Region-state");
 
     QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::DocumentationRole] = QStringLiteral("Specifies conditions that are always true when this state is the current state. In protocol state machines, state invariants are additional conditions to the preconditions of the outgoing transitions, and to the postcondition of the incoming transitions.");
     QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -747,6 +776,8 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("stateInvariant")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::DocumentationRole] = QStringLiteral("The state machine that is to be inserted in place of the (submachine) state.");
     QModelingObject::propertyDataHash[QStringLiteral("submachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

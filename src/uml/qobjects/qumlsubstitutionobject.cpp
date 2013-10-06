@@ -70,18 +70,18 @@ QUmlSubstitutionObject::~QUmlSubstitutionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlSubstitutionObject::ownedComment() const
+const QSet<QObject *> QUmlSubstitutionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSubstitutionObject::ownedElement() const
+const QSet<QObject *> QUmlSubstitutionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -114,10 +114,10 @@ QObject *QUmlSubstitutionObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlSubstitutionObject::clientDependency() const
+const QSet<QObject *> QUmlSubstitutionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -147,6 +147,7 @@ QString QUmlSubstitutionObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlSubstitutionObject::visibility() const
@@ -156,46 +157,46 @@ QtUml::VisibilityKind QUmlSubstitutionObject::visibility() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlSubstitutionObject::relatedElement() const
+const QSet<QObject *> QUmlSubstitutionObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlSubstitutionObject::source() const
+const QSet<QObject *> QUmlSubstitutionObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSubstitutionObject::target() const
+const QSet<QObject *> QUmlSubstitutionObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Dependency]
 
-const QSet<QObject *> QUmlSubstitutionObject::client() const
+const QSet<QObject *> QUmlSubstitutionObject::clients() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->client())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->clients())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSubstitutionObject::supplier() const
+const QSet<QObject *> QUmlSubstitutionObject::suppliers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->supplier())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlSubstitution *>(this)->suppliers())
         set.insert(element->asQObject());
     return set;
 }

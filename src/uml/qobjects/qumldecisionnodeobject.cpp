@@ -77,18 +77,18 @@ QUmlDecisionNodeObject::~QUmlDecisionNodeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlDecisionNodeObject::ownedComment() const
+const QSet<QObject *> QUmlDecisionNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDecisionNodeObject::ownedElement() const
+const QSet<QObject *> QUmlDecisionNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -103,10 +103,10 @@ QObject *QUmlDecisionNodeObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlDecisionNodeObject::clientDependency() const
+const QSet<QObject *> QUmlDecisionNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -149,18 +149,18 @@ bool QUmlDecisionNodeObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlDecisionNodeObject::redefinedElement() const
+const QSet<QObject *> QUmlDecisionNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDecisionNodeObject::redefinitionContext() const
+const QSet<QObject *> QUmlDecisionNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -175,26 +175,26 @@ QObject *QUmlDecisionNodeObject::activity() const
         return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlDecisionNodeObject::inGroup() const
+const QSet<QObject *> QUmlDecisionNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDecisionNodeObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlDecisionNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDecisionNodeObject::inPartition() const
+const QSet<QObject *> QUmlDecisionNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -207,26 +207,26 @@ QObject *QUmlDecisionNodeObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlDecisionNodeObject::incoming() const
+const QSet<QObject *> QUmlDecisionNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDecisionNodeObject::outgoing() const
+const QSet<QObject *> QUmlDecisionNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDecisionNodeObject::redefinedNode() const
+const QSet<QObject *> QUmlDecisionNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlDecisionNode *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }

@@ -71,6 +71,26 @@ ${attributeName}
     [%- END -%]
 [%- END -%]
 [%- END -%]
+[%- MACRO PLURALFORM(attributeName, attribute) BLOCK -%]
+[%- SET return = attributeName -%]
+[%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" &&
+    !((attributeName.match('^to')) && attributeName.substr(3, 1) == attributeName.substr(3, 1).upper) &&
+    attributeName != 'provided' &&
+    attributeName != 'required' &&
+    attributeName != 'endData' &&
+    attributeName != 'conveyed' &&
+    attributeName != 'covered' &&
+    attributeName != 'coveredBy' &&
+    attributeName != 'conformance' &&
+    attributeName != 'referred' &&
+    attributeName != 'represented' -%]
+[%- SET return = return.replace('_$', '').replace('y$', 'ie').replace('ss$', 'sse').replace('ex$', 'ice').replace('x$', 'ce').replace('$', 's') -%]
+[%- IF attributeName.match('_$') and !return.match('_$') -%][%- SET return = return.replace('$', '_') -%][%- END -%]
+${return}
+[%- ELSE -%]
+${attributeName}
+[%- END -%]
+[%- END -%]
 [%- MACRO GENERATE_QPROPERTIES(class, visitedClasses, redefinedProperties) BLOCK -%]
 [%- FOREACH parent IN class.findnodes("generalization") -%]
     [%- SET parentName = parent.findvalue("@general") -%]
@@ -90,7 +110,7 @@ ${attributeName}
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") %]
-    Q_PROPERTY(${qtType.trim} ${qtAttribute} READ ${qtAttribute}[% IF attribute.findvalue("defaultValue/@xmi:type") != "" %] RESET unset${qtAttribute.remove("^is").ucfirst}[% END %][% IF attribute.findvalue("@isDerived") == "true" and attribute.findvalue("@isDerivedUnion") != "true" %] STORED false[% END %])
+    Q_PROPERTY(${qtType.trim} ${qtAttribute} READ ${PLURALFORM(qtAttribute, attribute)}[% IF attribute.findvalue("defaultValue/@xmi:type") != "" %] RESET unset${qtAttribute.remove("^is").ucfirst}[% END %][% IF attribute.findvalue("@isDerived") == "true" and attribute.findvalue("@isDerivedUnion") != "true" %] STORED false[% END %])
 [%- END %]
 [%- END -%]
 [%- MACRO GENERATE_ATTRIBUTES(class, visitedClasses, redefinedProperties) BLOCK -%]
@@ -114,7 +134,7 @@ ${attributeName}
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
     [%- IF qtType.match("QList|QSet") %]
-    Q_INVOKABLE const ${qtType}${qtAttribute}() const;
+    Q_INVOKABLE const ${qtType}${PLURALFORM(qtAttribute, attribute)}() const;
     [%- ELSIF qtType.match('\*$') %]
     Q_INVOKABLE ${qtType}${qtAttribute}() const;
     [%- ELSE %]
@@ -212,32 +232,31 @@ ${parameter.findvalue("@name")}
     [%- IF found == "false" -%]
 // OWNED ATTRIBUTES [${className}]
 
-[%- SET found = "true" -%]
+[% SET found = "true" -%]
 [% END -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") -%]
     [%- SET originalQtType = QT_TYPE(namespace, attribute, "true") -%]
     [%- SET derived = attribute.findvalue("@isDerived") -%]
     [%- SET derivedUnion = attribute.findvalue("@isDerivedUnion") %]
-[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${originalClassName}Object::${qtAttribute}() const
+    [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
+[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${originalClassName}Object::${PLURALFORM(qtAttribute, attribute)}() const
 {
     [%- IF qtType.match("QList|QSet") && !qtType.match("QString") %]
     ${qtType}[% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
-    foreach (Q${originalQtType.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}())
+    foreach (Q${originalQtType.remove("QList<").remove("QSet<").remove(">").trim.remove("^Q")}element, qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}())
         [% IF qtType.match("QList") %]list[% ELSE %]set[% END %].[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](element->asQObject());
     return [% IF qtType.match("QList") %]list[% ELSE %]set[% END %];
     [%- ELSIF qtType.match('\*$') %]
-    if (!qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}())
+    if (!qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}())
         return 0;
     else
-        return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}()->asQObject();
+        return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}()->asQObject();
     [%- ELSE %]
-    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${qtAttribute}();
+    return qmodelingobjectproperty_cast<Q${namespace}${originalClassName} *>(this)->${PLURALFORM(qtAttribute, attribute)}();
     [%- END %]
 }
 
-[%- IF loop.last %]
 [% END -%]
-[%- END -%]
 [%- END -%]
 [%- MACRO GENERATE_CPP_OPERATIONS(originalClassName, class, visitedClasses, redefinedOperations) BLOCK -%]
 [%- FOREACH parent IN class.findnodes("generalization") -%]
@@ -436,7 +455,7 @@ void Q${namespace}${originalClassName}Object::unset${qtAttribute.remove("^is").u
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
     [%- IF qtType.match("QList|QSet") %]
-    foreach (${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}element, ${qtAttribute}())
+    foreach (${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}element, ${PLURALFORM(qtAttribute, attribute)}())
         [%- IF qtType.match('\*') %]
         c->add${attributeName.ucfirst}(dynamic_cast<${qtType.remove("QList<").remove("QSet<").remove(">").replace('\* ', '*')}>(element->clone()));
         [%- ELSE %]

@@ -47,6 +47,7 @@
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
+
 /*!
     \class QUmlClassifierTemplateParameter
 
@@ -76,7 +77,7 @@ QUmlClassifierTemplateParameter::~QUmlClassifierTemplateParameter()
 QModelingObject *QUmlClassifierTemplateParameter::clone() const
 {
     QUmlClassifierTemplateParameter *c = new QUmlClassifierTemplateParameter;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (default_())
         c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
@@ -87,7 +88,7 @@ QModelingObject *QUmlClassifierTemplateParameter::clone() const
     if (signature())
         c->setSignature(dynamic_cast<QUmlTemplateSignature *>(signature()->clone()));
     c->setAllowSubstitutable(allowSubstitutable());
-    foreach (QUmlClassifier *element, constrainingClassifier())
+    foreach (QUmlClassifier *element, constrainingClassifiers())
         c->addConstrainingClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (parameteredElement())
         c->setParameteredElement(dynamic_cast<QUmlClassifier *>(parameteredElement()->clone()));
@@ -119,19 +120,19 @@ void QUmlClassifierTemplateParameter::setAllowSubstitutable(bool allowSubstituta
 /*!
     The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.
  */
-const QSet<QUmlClassifier *> QUmlClassifierTemplateParameter::constrainingClassifier() const
+const QSet<QUmlClassifier *> QUmlClassifierTemplateParameter::constrainingClassifiers() const
 {
     // This is a read-write association end
 
-    return _constrainingClassifier;
+    return _constrainingClassifiers;
 }
 
 void QUmlClassifierTemplateParameter::addConstrainingClassifier(QUmlClassifier *constrainingClassifier)
 {
     // This is a read-write association end
 
-    if (!_constrainingClassifier.contains(constrainingClassifier)) {
-        _constrainingClassifier.insert(constrainingClassifier);
+    if (!_constrainingClassifiers.contains(constrainingClassifier)) {
+        _constrainingClassifiers.insert(constrainingClassifier);
         if (constrainingClassifier && constrainingClassifier->asQObject() && this->asQObject())
             QObject::connect(constrainingClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConstrainingClassifier(QObject *)));
     }
@@ -141,8 +142,8 @@ void QUmlClassifierTemplateParameter::removeConstrainingClassifier(QUmlClassifie
 {
     // This is a read-write association end
 
-    if (_constrainingClassifier.contains(constrainingClassifier)) {
-        _constrainingClassifier.remove(constrainingClassifier);
+    if (_constrainingClassifiers.contains(constrainingClassifier)) {
+        _constrainingClassifiers.remove(constrainingClassifier);
     }
 }
 
@@ -170,6 +171,8 @@ void QUmlClassifierTemplateParameter::setParameteredElement(QUmlClassifier *para
 void QUmlClassifierTemplateParameter::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("allowSubstitutable")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("allowSubstitutable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifierTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("allowSubstitutable")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("allowSubstitutable")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("allowSubstitutable")][QtModeling::DocumentationRole] = QStringLiteral("Constrains the required relationship between an actual parameter and the parameteredElement for this formal parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("allowSubstitutable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -177,6 +180,8 @@ void QUmlClassifierTemplateParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("allowSubstitutable")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("constrainingClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("constrainingClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifierTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("constrainingClassifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("constrainingClassifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("constrainingClassifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifiers that constrain the argument that can be used for the parameter. If the allowSubstitutable attribute is true, then any classifier that is compatible with this constraining classifier can be substituted; otherwise, it must be either this classifier or one of its subclasses. If this property is empty, there are no constraints on the classifier that can be used as an argument.");
     QModelingObject::propertyDataHash[QStringLiteral("constrainingClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -184,6 +189,8 @@ void QUmlClassifierTemplateParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("constrainingClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClassifierTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The parameterable classifier for this template parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateParameter-parameteredElement");

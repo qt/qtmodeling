@@ -61,6 +61,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlProfile
 
@@ -88,18 +89,18 @@ QUmlProfile::~QUmlProfile()
 QModelingObject *QUmlProfile::clone() const
 {
     QUmlProfile *c = new QUmlProfile;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -108,20 +109,20 @@ QModelingObject *QUmlProfile::clone() const
     c->setVisibility(visibility());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
     c->setURI(URI());
     if (nestingPackage())
         c->setNestingPackage(dynamic_cast<QUmlPackage *>(nestingPackage()->clone()));
-    foreach (QUmlPackageMerge *element, packageMerge())
+    foreach (QUmlPackageMerge *element, packageMerges())
         c->addPackageMerge(dynamic_cast<QUmlPackageMerge *>(element->clone()));
-    foreach (QUmlPackageableElement *element, packagedElement())
+    foreach (QUmlPackageableElement *element, packagedElements())
         c->addPackagedElement(dynamic_cast<QUmlPackageableElement *>(element->clone()));
-    foreach (QUmlProfileApplication *element, profileApplication())
+    foreach (QUmlProfileApplication *element, profileApplications())
         c->addProfileApplication(dynamic_cast<QUmlProfileApplication *>(element->clone()));
-    foreach (QUmlElementImport *element, metaclassReference())
+    foreach (QUmlElementImport *element, metaclassReferences())
         c->addMetaclassReference(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlPackageImport *element, metamodelReference())
+    foreach (QUmlPackageImport *element, metamodelReferences())
         c->addMetamodelReference(dynamic_cast<QUmlPackageImport *>(element->clone()));
     return c;
 }
@@ -131,19 +132,19 @@ QModelingObject *QUmlProfile::clone() const
 /*!
     References a metaclass that may be extended.
  */
-const QSet<QUmlElementImport *> QUmlProfile::metaclassReference() const
+const QSet<QUmlElementImport *> QUmlProfile::metaclassReferences() const
 {
     // This is a read-write association end
 
-    return _metaclassReference;
+    return _metaclassReferences;
 }
 
 void QUmlProfile::addMetaclassReference(QUmlElementImport *metaclassReference)
 {
     // This is a read-write association end
 
-    if (!_metaclassReference.contains(metaclassReference)) {
-        _metaclassReference.insert(metaclassReference);
+    if (!_metaclassReferences.contains(metaclassReference)) {
+        _metaclassReferences.insert(metaclassReference);
         if (metaclassReference && metaclassReference->asQObject() && this->asQObject())
             QObject::connect(metaclassReference->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMetaclassReference(QObject *)));
         metaclassReference->asQObject()->setParent(this->asQObject());
@@ -157,8 +158,8 @@ void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference
 {
     // This is a read-write association end
 
-    if (_metaclassReference.contains(metaclassReference)) {
-        _metaclassReference.remove(metaclassReference);
+    if (_metaclassReferences.contains(metaclassReference)) {
+        _metaclassReferences.remove(metaclassReference);
         if (metaclassReference->asQObject())
             metaclassReference->asQObject()->setParent(0);
 
@@ -170,19 +171,19 @@ void QUmlProfile::removeMetaclassReference(QUmlElementImport *metaclassReference
 /*!
     References a package containing (directly or indirectly) metaclasses that may be extended.
  */
-const QSet<QUmlPackageImport *> QUmlProfile::metamodelReference() const
+const QSet<QUmlPackageImport *> QUmlProfile::metamodelReferences() const
 {
     // This is a read-write association end
 
-    return _metamodelReference;
+    return _metamodelReferences;
 }
 
 void QUmlProfile::addMetamodelReference(QUmlPackageImport *metamodelReference)
 {
     // This is a read-write association end
 
-    if (!_metamodelReference.contains(metamodelReference)) {
-        _metamodelReference.insert(metamodelReference);
+    if (!_metamodelReferences.contains(metamodelReference)) {
+        _metamodelReferences.insert(metamodelReference);
         if (metamodelReference && metamodelReference->asQObject() && this->asQObject())
             QObject::connect(metamodelReference->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMetamodelReference(QObject *)));
         metamodelReference->asQObject()->setParent(this->asQObject());
@@ -196,8 +197,8 @@ void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference
 {
     // This is a read-write association end
 
-    if (_metamodelReference.contains(metamodelReference)) {
-        _metamodelReference.remove(metamodelReference);
+    if (_metamodelReferences.contains(metamodelReference)) {
+        _metamodelReferences.remove(metamodelReference);
         if (metamodelReference->asQObject())
             metamodelReference->asQObject()->setParent(0);
 
@@ -209,6 +210,8 @@ void QUmlProfile::removeMetamodelReference(QUmlPackageImport *metamodelReference
 void QUmlProfile::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProfile");
+    QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::DocumentationRole] = QStringLiteral("References a metaclass that may be extended.");
     QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -216,6 +219,8 @@ void QUmlProfile::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("metaclassReference")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProfile");
+    QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::DocumentationRole] = QStringLiteral("References a package containing (directly or indirectly) metaclasses that may be extended.");
     QModelingObject::propertyDataHash[QStringLiteral("metamodelReference")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

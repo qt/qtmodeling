@@ -82,7 +82,7 @@ public:
     void setStream(bool isStream);
     QUmlOperation *operation() const;
     void setOperation(QUmlOperation *operation);
-    const QSet<QUmlParameterSet *> parameterSet() const;
+    const QSet<QUmlParameterSet *> parameterSets() const;
     void addParameterSet(QUmlParameterSet *parameterSet);
     void removeParameterSet(QUmlParameterSet *parameterSet);
 
@@ -93,7 +93,7 @@ protected:
     bool _isException;
     bool _isStream;
     QUmlOperation *_operation;
-    QSet<QUmlParameterSet *> _parameterSet;
+    QSet<QUmlParameterSet *> _parameterSets;
 
     virtual void setPropertyData();
 };

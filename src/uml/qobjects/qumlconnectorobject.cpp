@@ -71,18 +71,18 @@ QUmlConnectorObject::~QUmlConnectorObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlConnectorObject::ownedComment() const
+const QSet<QObject *> QUmlConnectorObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConnectorObject::ownedElement() const
+const QSet<QObject *> QUmlConnectorObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlConnectorObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlConnectorObject::clientDependency() const
+const QSet<QObject *> QUmlConnectorObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -143,28 +143,28 @@ bool QUmlConnectorObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlConnector *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlConnectorObject::redefinedElement() const
+const QSet<QObject *> QUmlConnectorObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConnectorObject::redefinitionContext() const
+const QSet<QObject *> QUmlConnectorObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Feature]
 
-const QSet<QObject *> QUmlConnectorObject::featuringClassifier() const
+const QSet<QObject *> QUmlConnectorObject::featuringClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->featuringClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->featuringClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -176,18 +176,18 @@ bool QUmlConnectorObject::isStatic() const
 
 // OWNED ATTRIBUTES [Connector]
 
-const QSet<QObject *> QUmlConnectorObject::contract() const
+const QSet<QObject *> QUmlConnectorObject::contracts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->contract())
+    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->contracts())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlConnectorObject::end() const
+const QList<QObject *> QUmlConnectorObject::ends() const
 {
     QList<QObject *> list;
-    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->end())
+    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->ends())
         list.append(element->asQObject());
     return list;
 }
@@ -197,10 +197,10 @@ QtUml::ConnectorKind QUmlConnectorObject::kind() const
     return qmodelingobjectproperty_cast<QUmlConnector *>(this)->kind();
 }
 
-const QSet<QObject *> QUmlConnectorObject::redefinedConnector() const
+const QSet<QObject *> QUmlConnectorObject::redefinedConnectors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->redefinedConnector())
+    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlConnector *>(this)->redefinedConnectors())
         set.insert(element->asQObject());
     return set;
 }

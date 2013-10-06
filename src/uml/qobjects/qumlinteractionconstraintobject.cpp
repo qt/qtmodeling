@@ -69,18 +69,18 @@ QUmlInteractionConstraintObject::~QUmlInteractionConstraintObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlInteractionConstraintObject::ownedComment() const
+const QSet<QObject *> QUmlInteractionConstraintObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionConstraintObject::ownedElement() const
+const QSet<QObject *> QUmlInteractionConstraintObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -113,10 +113,10 @@ QObject *QUmlInteractionConstraintObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlInteractionConstraintObject::clientDependency() const
+const QSet<QObject *> QUmlInteractionConstraintObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -146,6 +146,7 @@ QString QUmlInteractionConstraintObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlInteractionConstraintObject::visibility() const
@@ -155,10 +156,10 @@ QtUml::VisibilityKind QUmlInteractionConstraintObject::visibility() const
 
 // OWNED ATTRIBUTES [Constraint]
 
-const QList<QObject *> QUmlInteractionConstraintObject::constrainedElement() const
+const QList<QObject *> QUmlInteractionConstraintObject::constrainedElements() const
 {
     QList<QObject *> list;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->constrainedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteractionConstraint *>(this)->constrainedElements())
         list.append(element->asQObject());
     return list;
 }

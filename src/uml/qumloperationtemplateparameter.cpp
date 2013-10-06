@@ -47,6 +47,7 @@
 #include <QtUml/QUmlOperation>
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlTemplateSignature>
+
 /*!
     \class QUmlOperationTemplateParameter
 
@@ -75,7 +76,7 @@ QUmlOperationTemplateParameter::~QUmlOperationTemplateParameter()
 QModelingObject *QUmlOperationTemplateParameter::clone() const
 {
     QUmlOperationTemplateParameter *c = new QUmlOperationTemplateParameter;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (default_())
         c->setDefault(dynamic_cast<QUmlParameterableElement *>(default_()->clone()));
@@ -116,6 +117,8 @@ void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parame
 void QUmlOperationTemplateParameter::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperationTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The operation for this template parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateParameter-parameteredElement");

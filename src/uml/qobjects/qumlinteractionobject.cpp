@@ -106,18 +106,18 @@ QUmlInteractionObject::~QUmlInteractionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlInteractionObject::ownedComment() const
+const QSet<QObject *> QUmlInteractionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::ownedElement() const
+const QSet<QObject *> QUmlInteractionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -132,10 +132,10 @@ QObject *QUmlInteractionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlInteractionObject::clientDependency() const
+const QSet<QObject *> QUmlInteractionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -165,52 +165,53 @@ QString QUmlInteractionObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlInteractionObject::elementImport() const
+const QSet<QObject *> QUmlInteractionObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::importedMember() const
+const QSet<QObject *> QUmlInteractionObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::member() const
+const QSet<QObject *> QUmlInteractionObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::ownedMember() const
+const QSet<QObject *> QUmlInteractionObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::ownedRule() const
+const QSet<QObject *> QUmlInteractionObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::packageImport() const
+const QSet<QObject *> QUmlInteractionObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -224,6 +225,7 @@ QObject *QUmlInteractionObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlInteractionObject::visibility() const
@@ -248,70 +250,70 @@ bool QUmlInteractionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlInteractionObject::redefinedElement() const
+const QSet<QObject *> QUmlInteractionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::redefinitionContext() const
+const QSet<QObject *> QUmlInteractionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [TemplateableElement]
 
-const QSet<QObject *> QUmlInteractionObject::templateBinding() const
+const QSet<QObject *> QUmlInteractionObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->templateBinding())
+    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->templateBindings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Classifier]
 
-const QSet<QObject *> QUmlInteractionObject::attribute() const
+const QSet<QObject *> QUmlInteractionObject::attributes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->attribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->attributes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::collaborationUse() const
+const QSet<QObject *> QUmlInteractionObject::collaborationUses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->collaborationUse())
+    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->collaborationUses())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::feature() const
+const QSet<QObject *> QUmlInteractionObject::features() const
 {
     QSet<QObject *> set;
-    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->feature())
+    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->features())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::generalization() const
+const QSet<QObject *> QUmlInteractionObject::generalizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->generalization())
+    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->generalizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::inheritedMember() const
+const QSet<QObject *> QUmlInteractionObject::inheritedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->inheritedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->inheritedMembers())
         set.insert(element->asQObject());
     return set;
 }
@@ -329,26 +331,26 @@ QObject *QUmlInteractionObject::ownedTemplateSignature() const
         return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedTemplateSignature()->asQObject();
 }
 
-const QSet<QObject *> QUmlInteractionObject::ownedUseCase() const
+const QSet<QObject *> QUmlInteractionObject::ownedUseCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedUseCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedUseCases())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::powertypeExtent() const
+const QSet<QObject *> QUmlInteractionObject::powertypeExtents() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->powertypeExtents())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::redefinedClassifier() const
+const QSet<QObject *> QUmlInteractionObject::redefinedClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->redefinedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->redefinedClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -361,10 +363,10 @@ QObject *QUmlInteractionObject::representation() const
         return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->representation()->asQObject();
 }
 
-const QSet<QObject *> QUmlInteractionObject::substitution() const
+const QSet<QObject *> QUmlInteractionObject::substitutions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->substitution())
+    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->substitutions())
         set.insert(element->asQObject());
     return set;
 }
@@ -377,46 +379,46 @@ QObject *QUmlInteractionObject::templateParameter() const
         return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->templateParameter()->asQObject();
 }
 
-const QSet<QObject *> QUmlInteractionObject::useCase() const
+const QSet<QObject *> QUmlInteractionObject::useCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->useCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->useCases())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [StructuredClassifier]
 
-const QSet<QObject *> QUmlInteractionObject::ownedConnector() const
+const QSet<QObject *> QUmlInteractionObject::ownedConnectors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedConnector())
+    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedConnectors())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::part() const
+const QSet<QObject *> QUmlInteractionObject::parts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->part())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->parts())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::role() const
+const QSet<QObject *> QUmlInteractionObject::roles() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->role())
+    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->roles())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [EncapsulatedClassifier]
 
-const QSet<QObject *> QUmlInteractionObject::ownedPort() const
+const QSet<QObject *> QUmlInteractionObject::ownedPorts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedPort())
+    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedPorts())
         set.insert(element->asQObject());
     return set;
 }
@@ -431,28 +433,28 @@ QObject *QUmlInteractionObject::classifierBehavior() const
         return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->classifierBehavior()->asQObject();
 }
 
-const QSet<QObject *> QUmlInteractionObject::interfaceRealization() const
+const QSet<QObject *> QUmlInteractionObject::interfaceRealizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->interfaceRealizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::ownedBehavior() const
+const QSet<QObject *> QUmlInteractionObject::ownedBehaviors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedBehavior())
+    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedBehaviors())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Class]
 
-const QSet<QObject *> QUmlInteractionObject::extension() const
+const QSet<QObject *> QUmlInteractionObject::extensions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExtension *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->extension())
+    foreach (QUmlExtension *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->extensions())
         set.insert(element->asQObject());
     return set;
 }
@@ -467,42 +469,42 @@ bool QUmlInteractionObject::isActive() const
     return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->isActive();
 }
 
-const QList<QObject *> QUmlInteractionObject::nestedClassifier() const
+const QList<QObject *> QUmlInteractionObject::nestedClassifiers() const
 {
     QList<QObject *> list;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->nestedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->nestedClassifiers())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlInteractionObject::ownedAttribute() const
+const QList<QObject *> QUmlInteractionObject::ownedAttributes() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedAttribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedAttributes())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlInteractionObject::ownedOperation() const
+const QList<QObject *> QUmlInteractionObject::ownedOperations() const
 {
     QList<QObject *> list;
-    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedOperation())
+    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedOperations())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlInteractionObject::ownedReception() const
+const QSet<QObject *> QUmlInteractionObject::ownedReceptions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlReception *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedReception())
+    foreach (QUmlReception *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedReceptions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::superClass() const
+const QSet<QObject *> QUmlInteractionObject::superClasses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClass *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->superClass())
+    foreach (QUmlClass *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->superClasses())
         set.insert(element->asQObject());
     return set;
 }
@@ -522,42 +524,42 @@ bool QUmlInteractionObject::isReentrant() const
     return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->isReentrant();
 }
 
-const QList<QObject *> QUmlInteractionObject::ownedParameter() const
+const QList<QObject *> QUmlInteractionObject::ownedParameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlParameter *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedParameter())
+    foreach (QUmlParameter *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedParameters())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlInteractionObject::ownedParameterSet() const
+const QSet<QObject *> QUmlInteractionObject::ownedParameterSets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlParameterSet *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedParameterSet())
+    foreach (QUmlParameterSet *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->ownedParameterSets())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::postcondition() const
+const QSet<QObject *> QUmlInteractionObject::postconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->postcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->postconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::precondition() const
+const QSet<QObject *> QUmlInteractionObject::preconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->precondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->preconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::redefinedBehavior() const
+const QSet<QObject *> QUmlInteractionObject::redefinedBehaviors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->redefinedBehavior())
+    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->redefinedBehaviors())
         set.insert(element->asQObject());
     return set;
 }
@@ -596,52 +598,52 @@ QObject *QUmlInteractionObject::enclosingOperand() const
         return qmodelingobjectproperty_cast<QUmlInteraction *>(this)->enclosingOperand()->asQObject();
 }
 
-const QSet<QObject *> QUmlInteractionObject::generalOrdering() const
+const QSet<QObject *> QUmlInteractionObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->generalOrdering())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->generalOrderings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Interaction]
 
-const QSet<QObject *> QUmlInteractionObject::action() const
+const QSet<QObject *> QUmlInteractionObject::actions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlAction *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->action())
+    foreach (QUmlAction *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->actions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::formalGate() const
+const QSet<QObject *> QUmlInteractionObject::formalGates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->formalGate())
+    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->formalGates())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlInteractionObject::fragment() const
+const QList<QObject *> QUmlInteractionObject::fragments() const
 {
     QList<QObject *> list;
-    foreach (QUmlInteractionFragment *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->fragment())
+    foreach (QUmlInteractionFragment *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->fragments())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlInteractionObject::lifeline() const
+const QSet<QObject *> QUmlInteractionObject::lifelines() const
 {
     QSet<QObject *> set;
-    foreach (QUmlLifeline *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->lifeline())
+    foreach (QUmlLifeline *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->lifelines())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionObject::message() const
+const QSet<QObject *> QUmlInteractionObject::messages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlMessage *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->message())
+    foreach (QUmlMessage *element, qmodelingobjectproperty_cast<QUmlInteraction *>(this)->messages())
         set.insert(element->asQObject());
     return set;
 }

@@ -54,6 +54,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlConsiderIgnoreFragment
 
@@ -81,9 +82,9 @@ QUmlConsiderIgnoreFragment::~QUmlConsiderIgnoreFragment()
 QModelingObject *QUmlConsiderIgnoreFragment::clone() const
 {
     QUmlConsiderIgnoreFragment *c = new QUmlConsiderIgnoreFragment;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -95,14 +96,14 @@ QModelingObject *QUmlConsiderIgnoreFragment::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlGate *element, cfragmentGate())
+    foreach (QUmlGate *element, cfragmentGates())
         c->addCfragmentGate(dynamic_cast<QUmlGate *>(element->clone()));
     c->setInteractionOperator(interactionOperator());
-    foreach (QUmlInteractionOperand *element, operand())
+    foreach (QUmlInteractionOperand *element, operands())
         c->addOperand(dynamic_cast<QUmlInteractionOperand *>(element->clone()));
-    foreach (QUmlNamedElement *element, message())
+    foreach (QUmlNamedElement *element, messages())
         c->addMessage(dynamic_cast<QUmlNamedElement *>(element->clone()));
     return c;
 }
@@ -112,19 +113,19 @@ QModelingObject *QUmlConsiderIgnoreFragment::clone() const
 /*!
     The set of messages that apply to this fragment
  */
-const QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::message() const
+const QSet<QUmlNamedElement *> QUmlConsiderIgnoreFragment::messages() const
 {
     // This is a read-write association end
 
-    return _message;
+    return _messages;
 }
 
 void QUmlConsiderIgnoreFragment::addMessage(QUmlNamedElement *message)
 {
     // This is a read-write association end
 
-    if (!_message.contains(message)) {
-        _message.insert(message);
+    if (!_messages.contains(message)) {
+        _messages.insert(message);
         if (message && message->asQObject() && this->asQObject())
             QObject::connect(message->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMessage(QObject *)));
     }
@@ -134,14 +135,16 @@ void QUmlConsiderIgnoreFragment::removeMessage(QUmlNamedElement *message)
 {
     // This is a read-write association end
 
-    if (_message.contains(message)) {
-        _message.remove(message);
+    if (_messages.contains(message)) {
+        _messages.remove(message);
     }
 }
 
 void QUmlConsiderIgnoreFragment::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConsiderIgnoreFragment");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::DocumentationRole] = QStringLiteral("The set of messages that apply to this fragment");
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

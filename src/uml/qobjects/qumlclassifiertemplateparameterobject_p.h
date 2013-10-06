@@ -57,8 +57,8 @@ class Q_UML_EXPORT QUmlClassifierTemplateParameterObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [TemplateParameter]
@@ -69,7 +69,7 @@ class Q_UML_EXPORT QUmlClassifierTemplateParameterObject : public QObject
 
     // Properties [ClassifierTemplateParameter]
     Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable RESET unsetAllowSubstitutable)
-    Q_PROPERTY(QSet<QObject *> constrainingClassifier READ constrainingClassifier)
+    Q_PROPERTY(QSet<QObject *> constrainingClassifier READ constrainingClassifiers)
     Q_PROPERTY(QObject * parameteredElement READ parameteredElement)
 
 public:
@@ -77,8 +77,8 @@ public:
     virtual ~QUmlClassifierTemplateParameterObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [TemplateParameter]
@@ -89,7 +89,7 @@ public:
 
     // Owned attributes [ClassifierTemplateParameter]
     Q_INVOKABLE bool allowSubstitutable() const;
-    Q_INVOKABLE const QSet<QObject *> constrainingClassifier() const;
+    Q_INVOKABLE const QSet<QObject *> constrainingClassifiers() const;
     Q_INVOKABLE QObject *parameteredElement() const;
 
     // Operations [Element]

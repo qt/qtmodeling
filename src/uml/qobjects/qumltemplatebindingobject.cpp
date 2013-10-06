@@ -64,18 +64,18 @@ QUmlTemplateBindingObject::~QUmlTemplateBindingObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlTemplateBindingObject::ownedComment() const
+const QSet<QObject *> QUmlTemplateBindingObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTemplateBindingObject::ownedElement() const
+const QSet<QObject *> QUmlTemplateBindingObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -90,28 +90,28 @@ QObject *QUmlTemplateBindingObject::owner() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlTemplateBindingObject::relatedElement() const
+const QSet<QObject *> QUmlTemplateBindingObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlTemplateBindingObject::source() const
+const QSet<QObject *> QUmlTemplateBindingObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTemplateBindingObject::target() const
+const QSet<QObject *> QUmlTemplateBindingObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
@@ -126,10 +126,10 @@ QObject *QUmlTemplateBindingObject::boundElement() const
         return qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->boundElement()->asQObject();
 }
 
-const QSet<QObject *> QUmlTemplateBindingObject::parameterSubstitution() const
+const QSet<QObject *> QUmlTemplateBindingObject::parameterSubstitutions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateParameterSubstitution *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->parameterSubstitution())
+    foreach (QUmlTemplateParameterSubstitution *element, qmodelingobjectproperty_cast<QUmlTemplateBinding *>(this)->parameterSubstitutions())
         set.insert(element->asQObject());
     return set;
 }

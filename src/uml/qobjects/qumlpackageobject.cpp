@@ -78,18 +78,18 @@ QUmlPackageObject::~QUmlPackageObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlPackageObject::ownedComment() const
+const QSet<QObject *> QUmlPackageObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::ownedElement() const
+const QSet<QObject *> QUmlPackageObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -104,10 +104,10 @@ QObject *QUmlPackageObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlPackageObject::clientDependency() const
+const QSet<QObject *> QUmlPackageObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -137,52 +137,53 @@ QString QUmlPackageObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlPackage *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlPackageObject::elementImport() const
+const QSet<QObject *> QUmlPackageObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::importedMember() const
+const QSet<QObject *> QUmlPackageObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::member() const
+const QSet<QObject *> QUmlPackageObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::ownedMember() const
+const QSet<QObject *> QUmlPackageObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::ownedRule() const
+const QSet<QObject *> QUmlPackageObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::packageImport() const
+const QSet<QObject *> QUmlPackageObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -222,10 +223,10 @@ QObject *QUmlPackageObject::ownedTemplateSignature() const
         return qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedTemplateSignature()->asQObject();
 }
 
-const QSet<QObject *> QUmlPackageObject::templateBinding() const
+const QSet<QObject *> QUmlPackageObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->templateBinding())
+    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->templateBindings())
         set.insert(element->asQObject());
     return set;
 }
@@ -237,10 +238,10 @@ QString QUmlPackageObject::URI() const
     return qmodelingobjectproperty_cast<QUmlPackage *>(this)->URI();
 }
 
-const QSet<QObject *> QUmlPackageObject::nestedPackage() const
+const QSet<QObject *> QUmlPackageObject::nestedPackages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->nestedPackage())
+    foreach (QUmlPackage *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->nestedPackages())
         set.insert(element->asQObject());
     return set;
 }
@@ -253,42 +254,42 @@ QObject *QUmlPackageObject::nestingPackage() const
         return qmodelingobjectproperty_cast<QUmlPackage *>(this)->nestingPackage()->asQObject();
 }
 
-const QSet<QObject *> QUmlPackageObject::ownedStereotype() const
+const QSet<QObject *> QUmlPackageObject::ownedStereotypes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlStereotype *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedStereotype())
+    foreach (QUmlStereotype *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedStereotypes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::ownedType() const
+const QSet<QObject *> QUmlPackageObject::ownedTypes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlType *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedType())
+    foreach (QUmlType *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->ownedTypes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::packageMerge() const
+const QSet<QObject *> QUmlPackageObject::packageMerges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageMerge *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->packageMerge())
+    foreach (QUmlPackageMerge *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->packageMerges())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::packagedElement() const
+const QSet<QObject *> QUmlPackageObject::packagedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->packagedElement())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->packagedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageObject::profileApplication() const
+const QSet<QObject *> QUmlPackageObject::profileApplications() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProfileApplication *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->profileApplication())
+    foreach (QUmlProfileApplication *element, qmodelingobjectproperty_cast<QUmlPackage *>(this)->profileApplications())
         set.insert(element->asQObject());
     return set;
 }

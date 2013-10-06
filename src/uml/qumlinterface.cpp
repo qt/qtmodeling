@@ -72,6 +72,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlInterface
 
@@ -99,18 +100,18 @@ QUmlInterface::~QUmlInterface()
 QModelingObject *QUmlInterface::clone() const
 {
     QUmlInterface *c = new QUmlInterface;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -118,41 +119,41 @@ QModelingObject *QUmlInterface::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlClassifier *element, nestedClassifier())
+    foreach (QUmlClassifier *element, nestedClassifiers())
         c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlOperation *element, ownedOperation())
+    foreach (QUmlOperation *element, ownedOperations())
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
-    foreach (QUmlReception *element, ownedReception())
+    foreach (QUmlReception *element, ownedReceptions())
         c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
     if (protocol())
         c->setProtocol(dynamic_cast<QUmlProtocolStateMachine *>(protocol()->clone()));
-    foreach (QUmlInterface *element, redefinedInterface())
+    foreach (QUmlInterface *element, redefinedInterfaces())
         c->addRedefinedInterface(dynamic_cast<QUmlInterface *>(element->clone()));
     return c;
 }
@@ -162,19 +163,19 @@ QModelingObject *QUmlInterface::clone() const
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-const QList<QUmlClassifier *> QUmlInterface::nestedClassifier() const
+const QList<QUmlClassifier *> QUmlInterface::nestedClassifiers() const
 {
     // This is a read-write association end
 
-    return _nestedClassifier;
+    return _nestedClassifiers;
 }
 
 void QUmlInterface::addNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
 
-    if (!_nestedClassifier.contains(nestedClassifier)) {
-        _nestedClassifier.append(nestedClassifier);
+    if (!_nestedClassifiers.contains(nestedClassifier)) {
+        _nestedClassifiers.append(nestedClassifier);
         if (nestedClassifier && nestedClassifier->asQObject() && this->asQObject())
             QObject::connect(nestedClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNestedClassifier(QObject *)));
         nestedClassifier->asQObject()->setParent(this->asQObject());
@@ -188,8 +189,8 @@ void QUmlInterface::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
 
-    if (_nestedClassifier.contains(nestedClassifier)) {
-        _nestedClassifier.removeAll(nestedClassifier);
+    if (_nestedClassifiers.contains(nestedClassifier)) {
+        _nestedClassifiers.removeAll(nestedClassifier);
         if (nestedClassifier->asQObject())
             nestedClassifier->asQObject()->setParent(0);
 
@@ -201,19 +202,19 @@ void QUmlInterface::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-const QList<QUmlProperty *> QUmlInterface::ownedAttribute() const
+const QList<QUmlProperty *> QUmlInterface::ownedAttributes() const
 {
     // This is a read-write association end
 
-    return _ownedAttribute;
+    return _ownedAttributes;
 }
 
 void QUmlInterface::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
+    if (!_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.append(ownedAttribute);
         if (ownedAttribute && ownedAttribute->asQObject() && this->asQObject())
             QObject::connect(ownedAttribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedAttribute(QObject *)));
         ownedAttribute->asQObject()->setParent(this->asQObject());
@@ -233,8 +234,8 @@ void QUmlInterface::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
+    if (_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.removeAll(ownedAttribute);
         if (ownedAttribute->asQObject())
             ownedAttribute->asQObject()->setParent(0);
 
@@ -252,19 +253,19 @@ void QUmlInterface::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 /*!
     The operations owned by the class.
  */
-const QList<QUmlOperation *> QUmlInterface::ownedOperation() const
+const QList<QUmlOperation *> QUmlInterface::ownedOperations() const
 {
     // This is a read-write association end
 
-    return _ownedOperation;
+    return _ownedOperations;
 }
 
 void QUmlInterface::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    if (!_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.append(ownedOperation);
+    if (!_ownedOperations.contains(ownedOperation)) {
+        _ownedOperations.append(ownedOperation);
         if (ownedOperation && ownedOperation->asQObject() && this->asQObject())
             QObject::connect(ownedOperation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedOperation(QObject *)));
         ownedOperation->asQObject()->setParent(this->asQObject());
@@ -284,8 +285,8 @@ void QUmlInterface::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    if (_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.removeAll(ownedOperation);
+    if (_ownedOperations.contains(ownedOperation)) {
+        _ownedOperations.removeAll(ownedOperation);
         if (ownedOperation->asQObject())
             ownedOperation->asQObject()->setParent(0);
 
@@ -303,19 +304,19 @@ void QUmlInterface::removeOwnedOperation(QUmlOperation *ownedOperation)
 /*!
     Receptions that objects providing this interface are willing to accept.
  */
-const QSet<QUmlReception *> QUmlInterface::ownedReception() const
+const QSet<QUmlReception *> QUmlInterface::ownedReceptions() const
 {
     // This is a read-write association end
 
-    return _ownedReception;
+    return _ownedReceptions;
 }
 
 void QUmlInterface::addOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
 
-    if (!_ownedReception.contains(ownedReception)) {
-        _ownedReception.insert(ownedReception);
+    if (!_ownedReceptions.contains(ownedReception)) {
+        _ownedReceptions.insert(ownedReception);
         if (ownedReception && ownedReception->asQObject() && this->asQObject())
             QObject::connect(ownedReception->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedReception(QObject *)));
         ownedReception->asQObject()->setParent(this->asQObject());
@@ -330,8 +331,8 @@ void QUmlInterface::removeOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
 
-    if (_ownedReception.contains(ownedReception)) {
-        _ownedReception.remove(ownedReception);
+    if (_ownedReceptions.contains(ownedReception)) {
+        _ownedReceptions.remove(ownedReception);
         if (ownedReception->asQObject())
             ownedReception->asQObject()->setParent(0);
 
@@ -374,19 +375,19 @@ void QUmlInterface::setProtocol(QUmlProtocolStateMachine *protocol)
 /*!
     References all the Interfaces redefined by this Interface.
  */
-const QSet<QUmlInterface *> QUmlInterface::redefinedInterface() const
+const QSet<QUmlInterface *> QUmlInterface::redefinedInterfaces() const
 {
     // This is a read-write association end
 
-    return _redefinedInterface;
+    return _redefinedInterfaces;
 }
 
 void QUmlInterface::addRedefinedInterface(QUmlInterface *redefinedInterface)
 {
     // This is a read-write association end
 
-    if (!_redefinedInterface.contains(redefinedInterface)) {
-        _redefinedInterface.insert(redefinedInterface);
+    if (!_redefinedInterfaces.contains(redefinedInterface)) {
+        _redefinedInterfaces.insert(redefinedInterface);
         if (redefinedInterface && redefinedInterface->asQObject() && this->asQObject())
             QObject::connect(redefinedInterface->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedInterface(QObject *)));
 
@@ -399,8 +400,8 @@ void QUmlInterface::removeRedefinedInterface(QUmlInterface *redefinedInterface)
 {
     // This is a read-write association end
 
-    if (_redefinedInterface.contains(redefinedInterface)) {
-        _redefinedInterface.remove(redefinedInterface);
+    if (_redefinedInterfaces.contains(redefinedInterface)) {
+        _redefinedInterfaces.remove(redefinedInterface);
 
         // Adjust subsetted properties
         removeRedefinedClassifier(redefinedInterface);
@@ -410,6 +411,8 @@ void QUmlInterface::removeRedefinedInterface(QUmlInterface *redefinedInterface)
 void QUmlInterface::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::DocumentationRole] = QStringLiteral("References all the Classifiers that are defined (nested) within the Class.");
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -417,6 +420,8 @@ void QUmlInterface::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes (i.e. the properties) owned by the class.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -424,6 +429,8 @@ void QUmlInterface::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("Property-interface");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::DocumentationRole] = QStringLiteral("The operations owned by the class.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -431,6 +438,8 @@ void QUmlInterface::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-interface");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::DocumentationRole] = QStringLiteral("Receptions that objects providing this interface are willing to accept.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -438,6 +447,8 @@ void QUmlInterface::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::DocumentationRole] = QStringLiteral("References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.");
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -445,6 +456,8 @@ void QUmlInterface::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("redefinedInterface")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedInterface")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedInterface")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedInterface")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedInterface")][QtModeling::DocumentationRole] = QStringLiteral("References all the Interfaces redefined by this Interface.");
     QModelingObject::propertyDataHash[QStringLiteral("redefinedInterface")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

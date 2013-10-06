@@ -54,6 +54,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlOpaqueExpression
 
@@ -81,9 +82,9 @@ QUmlOpaqueExpression::~QUmlOpaqueExpression()
 QModelingObject *QUmlOpaqueExpression::clone() const
 {
     QUmlOpaqueExpression *c = new QUmlOpaqueExpression;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -97,9 +98,9 @@ QModelingObject *QUmlOpaqueExpression::clone() const
     c->setVisibility(visibility());
     if (behavior())
         c->setBehavior(dynamic_cast<QUmlBehavior *>(behavior()->clone()));
-    foreach (QString element, body())
+    foreach (QString element, bodies())
         c->addBody(element);
-    foreach (QString element, language())
+    foreach (QString element, languages())
         c->addLanguage(element);
     return c;
 }
@@ -130,19 +131,19 @@ void QUmlOpaqueExpression::setBehavior(QUmlBehavior *behavior)
 /*!
     The text of the expression, possibly in multiple languages.
  */
-const QList<QString> QUmlOpaqueExpression::body() const
+const QList<QString> QUmlOpaqueExpression::bodies() const
 {
     // This is a read-write property
 
-    return _body;
+    return _bodies;
 }
 
 void QUmlOpaqueExpression::addBody(QString body)
 {
     // This is a read-write property
 
-    if (!_body.contains(body)) {
-        _body.append(body);
+    if (!_bodies.contains(body)) {
+        _bodies.append(body);
     }
 }
 
@@ -150,27 +151,27 @@ void QUmlOpaqueExpression::removeBody(QString body)
 {
     // This is a read-write property
 
-    if (_body.contains(body)) {
-        _body.removeAll(body);
+    if (_bodies.contains(body)) {
+        _bodies.removeAll(body);
     }
 }
 
 /*!
     Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.
  */
-const QList<QString> QUmlOpaqueExpression::language() const
+const QList<QString> QUmlOpaqueExpression::languages() const
 {
     // This is a read-write property
 
-    return _language;
+    return _languages;
 }
 
 void QUmlOpaqueExpression::addLanguage(QString language)
 {
     // This is a read-write property
 
-    if (!_language.contains(language)) {
-        _language.append(language);
+    if (!_languages.contains(language)) {
+        _languages.append(language);
     }
 }
 
@@ -178,8 +179,8 @@ void QUmlOpaqueExpression::removeLanguage(QString language)
 {
     // This is a read-write property
 
-    if (_language.contains(language)) {
-        _language.removeAll(language);
+    if (_languages.contains(language)) {
+        _languages.removeAll(language);
     }
 }
 
@@ -199,7 +200,7 @@ void QUmlOpaqueExpression::setResult(QUmlParameter *result)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlOpaqueExpression::result(): to be implemented (this is a derived association end)");
+    qWarning("UmlOpaqueExpression::setResult(): to be implemented (this is a derived association end)");
     Q_UNUSED(result);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -252,6 +253,8 @@ int QUmlOpaqueExpression::value() const
 void QUmlOpaqueExpression::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the behavior of the opaque expression.");
     QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -259,6 +262,8 @@ void QUmlOpaqueExpression::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("The text of the expression, possibly in multiple languages.");
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -266,6 +271,8 @@ void QUmlOpaqueExpression::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the languages. If the languages are unspecified, they might be implicit from the expression body or the context. Languages are matched to body strings by order.");
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -273,6 +280,8 @@ void QUmlOpaqueExpression::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Restricts an opaque expression to return exactly one return result. When the invocation of the opaque expression completes, a single set of values is returned to its owner. This association is derived from the single return result parameter of the associated behavior.");
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

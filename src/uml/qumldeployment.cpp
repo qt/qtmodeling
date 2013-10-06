@@ -54,6 +54,7 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlDeployment
 
@@ -82,25 +83,25 @@ QUmlDeployment::~QUmlDeployment()
 QModelingObject *QUmlDeployment::clone() const
 {
     QUmlDeployment *c = new QUmlDeployment;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlNamedElement *element, client())
+    foreach (QUmlNamedElement *element, clients())
         c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, supplier())
+    foreach (QUmlNamedElement *element, suppliers())
         c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlDeploymentSpecification *element, configuration())
+    foreach (QUmlDeploymentSpecification *element, configurations())
         c->addConfiguration(dynamic_cast<QUmlDeploymentSpecification *>(element->clone()));
-    foreach (QUmlDeployedArtifact *element, deployedArtifact())
+    foreach (QUmlDeployedArtifact *element, deployedArtifacts())
         c->addDeployedArtifact(dynamic_cast<QUmlDeployedArtifact *>(element->clone()));
     if (location())
         c->setLocation(dynamic_cast<QUmlDeploymentTarget *>(location()->clone()));
@@ -112,19 +113,19 @@ QModelingObject *QUmlDeployment::clone() const
 /*!
     The specification of properties that parameterize the deployment and execution of one or more Artifacts.
  */
-const QSet<QUmlDeploymentSpecification *> QUmlDeployment::configuration() const
+const QSet<QUmlDeploymentSpecification *> QUmlDeployment::configurations() const
 {
     // This is a read-write association end
 
-    return _configuration;
+    return _configurations;
 }
 
 void QUmlDeployment::addConfiguration(QUmlDeploymentSpecification *configuration)
 {
     // This is a read-write association end
 
-    if (!_configuration.contains(configuration)) {
-        _configuration.insert(configuration);
+    if (!_configurations.contains(configuration)) {
+        _configurations.insert(configuration);
         if (configuration && configuration->asQObject() && this->asQObject())
             QObject::connect(configuration->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeConfiguration(QObject *)));
         configuration->asQObject()->setParent(this->asQObject());
@@ -143,8 +144,8 @@ void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configurat
 {
     // This is a read-write association end
 
-    if (_configuration.contains(configuration)) {
-        _configuration.remove(configuration);
+    if (_configurations.contains(configuration)) {
+        _configurations.remove(configuration);
         if (configuration->asQObject())
             configuration->asQObject()->setParent(0);
 
@@ -161,19 +162,19 @@ void QUmlDeployment::removeConfiguration(QUmlDeploymentSpecification *configurat
 /*!
     The Artifacts that are deployed onto a Node. This association specializes the supplier association.
  */
-const QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifact() const
+const QSet<QUmlDeployedArtifact *> QUmlDeployment::deployedArtifacts() const
 {
     // This is a read-write association end
 
-    return _deployedArtifact;
+    return _deployedArtifacts;
 }
 
 void QUmlDeployment::addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact)
 {
     // This is a read-write association end
 
-    if (!_deployedArtifact.contains(deployedArtifact)) {
-        _deployedArtifact.insert(deployedArtifact);
+    if (!_deployedArtifacts.contains(deployedArtifact)) {
+        _deployedArtifacts.insert(deployedArtifact);
         if (deployedArtifact && deployedArtifact->asQObject() && this->asQObject())
             QObject::connect(deployedArtifact->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeDeployedArtifact(QObject *)));
 
@@ -186,8 +187,8 @@ void QUmlDeployment::removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifa
 {
     // This is a read-write association end
 
-    if (_deployedArtifact.contains(deployedArtifact)) {
-        _deployedArtifact.remove(deployedArtifact);
+    if (_deployedArtifacts.contains(deployedArtifact)) {
+        _deployedArtifacts.remove(deployedArtifact);
 
         // Adjust subsetted properties
         removeSupplier(deployedArtifact);
@@ -227,6 +228,8 @@ void QUmlDeployment::setLocation(QUmlDeploymentTarget *location)
 void QUmlDeployment::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("configuration")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("configuration")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeployment");
+    QModelingObject::propertyDataHash[QStringLiteral("configuration")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("configuration")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("configuration")][QtModeling::DocumentationRole] = QStringLiteral("The specification of properties that parameterize the deployment and execution of one or more Artifacts.");
     QModelingObject::propertyDataHash[QStringLiteral("configuration")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -234,6 +237,8 @@ void QUmlDeployment::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("configuration")][QtModeling::OppositeEndRole] = QStringLiteral("DeploymentSpecification-deployment");
 
     QModelingObject::propertyDataHash[QStringLiteral("deployedArtifact")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("deployedArtifact")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeployment");
+    QModelingObject::propertyDataHash[QStringLiteral("deployedArtifact")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("deployedArtifact")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("deployedArtifact")][QtModeling::DocumentationRole] = QStringLiteral("The Artifacts that are deployed onto a Node. This association specializes the supplier association.");
     QModelingObject::propertyDataHash[QStringLiteral("deployedArtifact")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -241,6 +246,8 @@ void QUmlDeployment::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("deployedArtifact")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeployment");
+    QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::DocumentationRole] = QStringLiteral("The DeployedTarget which is the target of a Deployment.");
     QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

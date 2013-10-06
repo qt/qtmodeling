@@ -48,6 +48,7 @@
 #include <QtUml/QUmlMultiplicityElement>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlConnectorEnd
 
@@ -76,7 +77,7 @@ QUmlConnectorEnd::~QUmlConnectorEnd()
 QModelingObject *QUmlConnectorEnd::clone() const
 {
     QUmlConnectorEnd *c = new QUmlConnectorEnd;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     c->setOrdered(isOrdered());
     c->setUnique(isUnique());
@@ -109,7 +110,7 @@ void QUmlConnectorEnd::setDefiningEnd(QUmlProperty *definingEnd)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlConnectorEnd::definingEnd(): to be implemented (this is a derived association end)");
+    qWarning("UmlConnectorEnd::setDefiningEnd(): to be implemented (this is a derived association end)");
     Q_UNUSED(definingEnd);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -162,6 +163,8 @@ void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
 void QUmlConnectorEnd::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("definingEnd")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("definingEnd")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectorEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("definingEnd")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("definingEnd")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("definingEnd")][QtModeling::DocumentationRole] = QStringLiteral("A derived association referencing the corresponding association end on the association which types the connector owing this connector end. This association is derived by selecting the association end at the same place in the ordering of association ends as this connector end.");
     QModelingObject::propertyDataHash[QStringLiteral("definingEnd")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -169,6 +172,8 @@ void QUmlConnectorEnd::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("definingEnd")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("partWithPort")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("partWithPort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectorEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("partWithPort")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("partWithPort")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("partWithPort")][QtModeling::DocumentationRole] = QStringLiteral("Indicates the role of the internal structure of a classifier with the port to which the connector end is attached.");
     QModelingObject::propertyDataHash[QStringLiteral("partWithPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -176,6 +181,8 @@ void QUmlConnectorEnd::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("partWithPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectorEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::DocumentationRole] = QStringLiteral("The connectable element attached at this connector end. When an instance of the containing classifier is created, a link may (depending on the multiplicities) be created to an instance of the classifier that types this connectable element.");
     QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

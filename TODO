@@ -1,0 +1,4 @@
+- Use plural form for multi-values attribute names
+- Generate metamodel implementation for XMI
+- Investigate how to prevent upperBound operation conflicting with upperBound property accessor
+- Make a final decision about handling of UML metamodel multiple inheritance and dread diamonds

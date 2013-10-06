@@ -77,6 +77,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlClass
 
@@ -105,18 +106,18 @@ QUmlClass::~QUmlClass()
 QModelingObject *QUmlClass::clone() const
 {
     QUmlClass *c = new QUmlClass;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -124,46 +125,46 @@ QModelingObject *QUmlClass::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlConnector *element, ownedConnector())
+    foreach (QUmlConnector *element, ownedConnectors())
         c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
     if (classifierBehavior())
         c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
-    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, interfaceRealizations())
         c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
-    foreach (QUmlBehavior *element, ownedBehavior())
+    foreach (QUmlBehavior *element, ownedBehaviors())
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setActive(isActive());
-    foreach (QUmlClassifier *element, nestedClassifier())
+    foreach (QUmlClassifier *element, nestedClassifiers())
         c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlOperation *element, ownedOperation())
+    foreach (QUmlOperation *element, ownedOperations())
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
-    foreach (QUmlReception *element, ownedReception())
+    foreach (QUmlReception *element, ownedReceptions())
         c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
     return c;
 }
@@ -173,11 +174,11 @@ QModelingObject *QUmlClass::clone() const
 /*!
     References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.
  */
-const QSet<QUmlExtension *> QUmlClass::extension() const
+const QSet<QUmlExtension *> QUmlClass::extensions() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlClass::extension(): to be implemented (this is a derived association end)");
+    qWarning("UmlClass::extensions(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlExtension *>();
 }
@@ -186,7 +187,7 @@ void QUmlClass::addExtension(QUmlExtension *extension)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlClass::extension(): to be implemented (this is a derived association end)");
+    qWarning("UmlClass::addExtension(): to be implemented (this is a derived association end)");
     Q_UNUSED(extension);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -203,7 +204,7 @@ void QUmlClass::removeExtension(QUmlExtension *extension)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlClass::extension(): to be implemented (this is a derived association end)");
+    qWarning("UmlClass::removeExtension(): to be implemented (this is a derived association end)");
     Q_UNUSED(extension);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -259,19 +260,19 @@ void QUmlClass::setActive(bool isActive)
 /*!
     References all the Classifiers that are defined (nested) within the Class.
  */
-const QList<QUmlClassifier *> QUmlClass::nestedClassifier() const
+const QList<QUmlClassifier *> QUmlClass::nestedClassifiers() const
 {
     // This is a read-write association end
 
-    return _nestedClassifier;
+    return _nestedClassifiers;
 }
 
 void QUmlClass::addNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
 
-    if (!_nestedClassifier.contains(nestedClassifier)) {
-        _nestedClassifier.append(nestedClassifier);
+    if (!_nestedClassifiers.contains(nestedClassifier)) {
+        _nestedClassifiers.append(nestedClassifier);
         if (nestedClassifier && nestedClassifier->asQObject() && this->asQObject())
             QObject::connect(nestedClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNestedClassifier(QObject *)));
         nestedClassifier->asQObject()->setParent(this->asQObject());
@@ -285,8 +286,8 @@ void QUmlClass::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 {
     // This is a read-write association end
 
-    if (_nestedClassifier.contains(nestedClassifier)) {
-        _nestedClassifier.removeAll(nestedClassifier);
+    if (_nestedClassifiers.contains(nestedClassifier)) {
+        _nestedClassifiers.removeAll(nestedClassifier);
         if (nestedClassifier->asQObject())
             nestedClassifier->asQObject()->setParent(0);
 
@@ -298,19 +299,19 @@ void QUmlClass::removeNestedClassifier(QUmlClassifier *nestedClassifier)
 /*!
     The attributes (i.e. the properties) owned by the class.
  */
-const QList<QUmlProperty *> QUmlClass::ownedAttribute() const
+const QList<QUmlProperty *> QUmlClass::ownedAttributes() const
 {
     // This is a read-write association end
 
-    return _ownedAttribute;
+    return _ownedAttributes;
 }
 
 void QUmlClass::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
+    if (!_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.append(ownedAttribute);
         if (ownedAttribute && ownedAttribute->asQObject() && this->asQObject())
             QObject::connect(ownedAttribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedAttribute(QObject *)));
         ownedAttribute->asQObject()->setParent(this->asQObject());
@@ -330,8 +331,8 @@ void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
+    if (_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.removeAll(ownedAttribute);
         if (ownedAttribute->asQObject())
             ownedAttribute->asQObject()->setParent(0);
 
@@ -349,19 +350,19 @@ void QUmlClass::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 /*!
     The operations owned by the class.
  */
-const QList<QUmlOperation *> QUmlClass::ownedOperation() const
+const QList<QUmlOperation *> QUmlClass::ownedOperations() const
 {
     // This is a read-write association end
 
-    return _ownedOperation;
+    return _ownedOperations;
 }
 
 void QUmlClass::addOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    if (!_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.append(ownedOperation);
+    if (!_ownedOperations.contains(ownedOperation)) {
+        _ownedOperations.append(ownedOperation);
         if (ownedOperation && ownedOperation->asQObject() && this->asQObject())
             QObject::connect(ownedOperation->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedOperation(QObject *)));
         ownedOperation->asQObject()->setParent(this->asQObject());
@@ -381,8 +382,8 @@ void QUmlClass::removeOwnedOperation(QUmlOperation *ownedOperation)
 {
     // This is a read-write association end
 
-    if (_ownedOperation.contains(ownedOperation)) {
-        _ownedOperation.removeAll(ownedOperation);
+    if (_ownedOperations.contains(ownedOperation)) {
+        _ownedOperations.removeAll(ownedOperation);
         if (ownedOperation->asQObject())
             ownedOperation->asQObject()->setParent(0);
 
@@ -400,19 +401,19 @@ void QUmlClass::removeOwnedOperation(QUmlOperation *ownedOperation)
 /*!
     Receptions that objects of this class are willing to accept.
  */
-const QSet<QUmlReception *> QUmlClass::ownedReception() const
+const QSet<QUmlReception *> QUmlClass::ownedReceptions() const
 {
     // This is a read-write association end
 
-    return _ownedReception;
+    return _ownedReceptions;
 }
 
 void QUmlClass::addOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
 
-    if (!_ownedReception.contains(ownedReception)) {
-        _ownedReception.insert(ownedReception);
+    if (!_ownedReceptions.contains(ownedReception)) {
+        _ownedReceptions.insert(ownedReception);
         if (ownedReception && ownedReception->asQObject() && this->asQObject())
             QObject::connect(ownedReception->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedReception(QObject *)));
         ownedReception->asQObject()->setParent(this->asQObject());
@@ -427,8 +428,8 @@ void QUmlClass::removeOwnedReception(QUmlReception *ownedReception)
 {
     // This is a read-write association end
 
-    if (_ownedReception.contains(ownedReception)) {
-        _ownedReception.remove(ownedReception);
+    if (_ownedReceptions.contains(ownedReception)) {
+        _ownedReceptions.remove(ownedReception);
         if (ownedReception->asQObject())
             ownedReception->asQObject()->setParent(0);
 
@@ -441,11 +442,11 @@ void QUmlClass::removeOwnedReception(QUmlReception *ownedReception)
 /*!
     This gives the superclasses of a class.
  */
-const QSet<QUmlClass *> QUmlClass::superClass() const
+const QSet<QUmlClass *> QUmlClass::superClasses() const
 {
     // This is a read-write derived association end
 
-    qWarning("UmlClass::superClass(): to be implemented (this is a derived association end)");
+    qWarning("UmlClass::superClasses(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlClass *>();
 }
@@ -454,7 +455,7 @@ void QUmlClass::addSuperClass(QUmlClass *superClass)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlClass::superClass(): to be implemented (this is a derived association end)");
+    qWarning("UmlClass::addSuperClass(): to be implemented (this is a derived association end)");
     Q_UNUSED(superClass);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -466,7 +467,7 @@ void QUmlClass::removeSuperClass(QUmlClass *superClass)
 {
     // This is a read-write derived association end
 
-    qWarning("UmlClass::superClass(): to be implemented (this is a derived association end)");
+    qWarning("UmlClass::removeSuperClass(): to be implemented (this is a derived association end)");
     Q_UNUSED(superClass);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -490,6 +491,8 @@ QSet<QUmlNamedElement *> QUmlClass::inherit(QSet<QUmlNamedElement *> inhs) const
 void QUmlClass::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClass");
+    QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::DocumentationRole] = QStringLiteral("References the Extensions that specify additional properties of the metaclass. The property is derived from the extensions whose memberEnds are typed by the Class.");
     QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -497,6 +500,8 @@ void QUmlClass::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("extension")][QtModeling::OppositeEndRole] = QStringLiteral("Extension-metaclass");
 
     QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClass");
+    QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::DocumentationRole] = QStringLiteral("If true, the Classifier does not provide a complete declaration and can typically not be instantiated. An abstract classifier is intended to be used by other classifiers e.g. as the target of general metarelationships or generalization relationships.True when a class is abstract.");
     QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Classifier-isAbstract");
@@ -504,6 +509,8 @@ void QUmlClass::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isAbstract")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClass");
+    QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::DocumentationRole] = QStringLiteral("Determines whether an object specified by this class is active or not. If true, then the owning class is referred to as an active class. If false, then such a class is referred to as a passive class.");
     QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -511,6 +518,8 @@ void QUmlClass::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isActive")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClass");
+    QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::DocumentationRole] = QStringLiteral("References all the Classifiers that are defined (nested) within the Class.");
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -518,6 +527,8 @@ void QUmlClass::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("nestedClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClass");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes (i.e. the properties) owned by the class.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredClassifier-ownedAttribute");
@@ -525,6 +536,8 @@ void QUmlClass::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("Property-class");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClass");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::DocumentationRole] = QStringLiteral("The operations owned by the class.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -532,6 +545,8 @@ void QUmlClass::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-class");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClass");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::DocumentationRole] = QStringLiteral("Receptions that objects of this class are willing to accept.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -539,6 +554,8 @@ void QUmlClass::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedReception")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClass");
+    QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::DocumentationRole] = QStringLiteral("This gives the superclasses of a class.");
     QModelingObject::propertyDataHash[QStringLiteral("superClass")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Classifier-general");

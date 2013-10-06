@@ -79,18 +79,18 @@ QUmlUnmarshallActionObject::~QUmlUnmarshallActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlUnmarshallActionObject::ownedComment() const
+const QSet<QObject *> QUmlUnmarshallActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::ownedElement() const
+const QSet<QObject *> QUmlUnmarshallActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlUnmarshallActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlUnmarshallActionObject::clientDependency() const
+const QSet<QObject *> QUmlUnmarshallActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlUnmarshallActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::redefinedElement() const
+const QSet<QObject *> QUmlUnmarshallActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlUnmarshallActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlUnmarshallActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::inGroup() const
+const QSet<QObject *> QUmlUnmarshallActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlUnmarshallActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::inPartition() const
+const QSet<QObject *> QUmlUnmarshallActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,36 +209,36 @@ QObject *QUmlUnmarshallActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::incoming() const
+const QSet<QObject *> QUmlUnmarshallActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::outgoing() const
+const QSet<QObject *> QUmlUnmarshallActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::redefinedNode() const
+const QSet<QObject *> QUmlUnmarshallActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlUnmarshallActionObject::handler() const
+const QSet<QObject *> QUmlUnmarshallActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -253,10 +253,10 @@ QObject *QUmlUnmarshallActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlUnmarshallActionObject::input() const
+const QList<QObject *> QUmlUnmarshallActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -266,26 +266,26 @@ bool QUmlUnmarshallActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::localPostcondition() const
+const QSet<QObject *> QUmlUnmarshallActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::localPrecondition() const
+const QSet<QObject *> QUmlUnmarshallActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlUnmarshallActionObject::output() const
+const QList<QObject *> QUmlUnmarshallActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
@@ -300,10 +300,10 @@ QObject *QUmlUnmarshallActionObject::object() const
         return qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->object()->asQObject();
 }
 
-const QSet<QObject *> QUmlUnmarshallActionObject::result() const
+const QSet<QObject *> QUmlUnmarshallActionObject::results() const
 {
     QSet<QObject *> set;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->result())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlUnmarshallAction *>(this)->results())
         set.insert(element->asQObject());
     return set;
 }

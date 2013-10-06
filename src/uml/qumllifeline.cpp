@@ -54,6 +54,7 @@
 #include <QtUml/QUmlPartDecomposition>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlLifeline
 
@@ -84,9 +85,9 @@ QUmlLifeline::~QUmlLifeline()
 QModelingObject *QUmlLifeline::clone() const
 {
     QUmlLifeline *c = new QUmlLifeline;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -248,6 +249,8 @@ void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
 void QUmlLifeline::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("coveredBy")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("coveredBy")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLifeline");
+    QModelingObject::propertyDataHash[QStringLiteral("coveredBy")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("coveredBy")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("coveredBy")][QtModeling::DocumentationRole] = QStringLiteral("References the InteractionFragments in which this Lifeline takes part.");
     QModelingObject::propertyDataHash[QStringLiteral("coveredBy")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -255,6 +258,8 @@ void QUmlLifeline::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("coveredBy")][QtModeling::OppositeEndRole] = QStringLiteral("InteractionFragment-covered");
 
     QModelingObject::propertyDataHash[QStringLiteral("decomposedAs")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("decomposedAs")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLifeline");
+    QModelingObject::propertyDataHash[QStringLiteral("decomposedAs")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("decomposedAs")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("decomposedAs")][QtModeling::DocumentationRole] = QStringLiteral("References the Interaction that represents the decomposition.");
     QModelingObject::propertyDataHash[QStringLiteral("decomposedAs")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -262,6 +267,8 @@ void QUmlLifeline::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("decomposedAs")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLifeline");
+    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::DocumentationRole] = QStringLiteral("References the Interaction enclosing this Lifeline.");
     QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -269,6 +276,8 @@ void QUmlLifeline::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::OppositeEndRole] = QStringLiteral("Interaction-lifeline");
 
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLifeline");
+    QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::DocumentationRole] = QStringLiteral("References the ConnectableElement within the classifier that contains the enclosing interaction.");
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -276,6 +285,8 @@ void QUmlLifeline::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("represents")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("selector")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("selector")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLifeline");
+    QModelingObject::propertyDataHash[QStringLiteral("selector")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("selector")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("selector")][QtModeling::DocumentationRole] = QStringLiteral("If the referenced ConnectableElement is multivalued, then this specifies the specific individual part within that set.");
     QModelingObject::propertyDataHash[QStringLiteral("selector")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

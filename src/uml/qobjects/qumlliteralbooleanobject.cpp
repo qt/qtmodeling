@@ -69,18 +69,18 @@ QUmlLiteralBooleanObject::~QUmlLiteralBooleanObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlLiteralBooleanObject::ownedComment() const
+const QSet<QObject *> QUmlLiteralBooleanObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlLiteralBooleanObject::ownedElement() const
+const QSet<QObject *> QUmlLiteralBooleanObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -95,10 +95,10 @@ QObject *QUmlLiteralBooleanObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlLiteralBooleanObject::clientDependency() const
+const QSet<QObject *> QUmlLiteralBooleanObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -128,6 +128,7 @@ QString QUmlLiteralBooleanObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlLiteralBoolean *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlLiteralBooleanObject::type() const

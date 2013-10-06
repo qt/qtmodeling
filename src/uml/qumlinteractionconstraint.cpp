@@ -52,6 +52,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlInteractionConstraint
 
@@ -81,19 +82,19 @@ QUmlInteractionConstraint::~QUmlInteractionConstraint()
 QModelingObject *QUmlInteractionConstraint::clone() const
 {
     QUmlInteractionConstraint *c = new QUmlInteractionConstraint;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlElement *element, constrainedElement())
+    foreach (QUmlElement *element, constrainedElements())
         c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
     if (context())
         c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
@@ -171,6 +172,8 @@ void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
 void QUmlInteractionConstraint::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::DocumentationRole] = QStringLiteral("The maximum number of iterations of a loop");
     QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -178,6 +181,8 @@ void QUmlInteractionConstraint::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::DocumentationRole] = QStringLiteral("The minimum number of iterations of a loop");
     QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

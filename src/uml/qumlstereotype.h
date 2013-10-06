@@ -64,7 +64,7 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlImage *> icon() const;
+    const QSet<QUmlImage *> icons() const;
     void addIcon(QUmlImage *icon);
     void removeIcon(QUmlImage *icon);
     QUmlProfile *profile() const;
@@ -74,7 +74,7 @@ public:
     QUmlProfile *containingProfile() const;
 
 protected:
-    QSet<QUmlImage *> _icon;
+    QSet<QUmlImage *> _icons;
 
     virtual void setPropertyData();
 };

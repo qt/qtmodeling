@@ -97,18 +97,18 @@ QUmlDeviceObject::~QUmlDeviceObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlDeviceObject::ownedComment() const
+const QSet<QObject *> QUmlDeviceObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::ownedElement() const
+const QSet<QObject *> QUmlDeviceObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -123,10 +123,10 @@ QObject *QUmlDeviceObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlDeviceObject::clientDependency() const
+const QSet<QObject *> QUmlDeviceObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -156,52 +156,53 @@ QString QUmlDeviceObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlDevice *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlDeviceObject::elementImport() const
+const QSet<QObject *> QUmlDeviceObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::importedMember() const
+const QSet<QObject *> QUmlDeviceObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::member() const
+const QSet<QObject *> QUmlDeviceObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::ownedMember() const
+const QSet<QObject *> QUmlDeviceObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::ownedRule() const
+const QSet<QObject *> QUmlDeviceObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::packageImport() const
+const QSet<QObject *> QUmlDeviceObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -215,6 +216,7 @@ QObject *QUmlDeviceObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlDevice *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlDeviceObject::visibility() const
@@ -239,70 +241,70 @@ bool QUmlDeviceObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlDevice *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlDeviceObject::redefinedElement() const
+const QSet<QObject *> QUmlDeviceObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::redefinitionContext() const
+const QSet<QObject *> QUmlDeviceObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [TemplateableElement]
 
-const QSet<QObject *> QUmlDeviceObject::templateBinding() const
+const QSet<QObject *> QUmlDeviceObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->templateBinding())
+    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->templateBindings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Classifier]
 
-const QSet<QObject *> QUmlDeviceObject::attribute() const
+const QSet<QObject *> QUmlDeviceObject::attributes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->attribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->attributes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::collaborationUse() const
+const QSet<QObject *> QUmlDeviceObject::collaborationUses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->collaborationUse())
+    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->collaborationUses())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::feature() const
+const QSet<QObject *> QUmlDeviceObject::features() const
 {
     QSet<QObject *> set;
-    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->feature())
+    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->features())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::generalization() const
+const QSet<QObject *> QUmlDeviceObject::generalizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->generalization())
+    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->generalizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::inheritedMember() const
+const QSet<QObject *> QUmlDeviceObject::inheritedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->inheritedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->inheritedMembers())
         set.insert(element->asQObject());
     return set;
 }
@@ -320,26 +322,26 @@ QObject *QUmlDeviceObject::ownedTemplateSignature() const
         return qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedTemplateSignature()->asQObject();
 }
 
-const QSet<QObject *> QUmlDeviceObject::ownedUseCase() const
+const QSet<QObject *> QUmlDeviceObject::ownedUseCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedUseCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedUseCases())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::powertypeExtent() const
+const QSet<QObject *> QUmlDeviceObject::powertypeExtents() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->powertypeExtents())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::redefinedClassifier() const
+const QSet<QObject *> QUmlDeviceObject::redefinedClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->redefinedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->redefinedClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -352,10 +354,10 @@ QObject *QUmlDeviceObject::representation() const
         return qmodelingobjectproperty_cast<QUmlDevice *>(this)->representation()->asQObject();
 }
 
-const QSet<QObject *> QUmlDeviceObject::substitution() const
+const QSet<QObject *> QUmlDeviceObject::substitutions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->substitution())
+    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->substitutions())
         set.insert(element->asQObject());
     return set;
 }
@@ -368,46 +370,46 @@ QObject *QUmlDeviceObject::templateParameter() const
         return qmodelingobjectproperty_cast<QUmlDevice *>(this)->templateParameter()->asQObject();
 }
 
-const QSet<QObject *> QUmlDeviceObject::useCase() const
+const QSet<QObject *> QUmlDeviceObject::useCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->useCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->useCases())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [StructuredClassifier]
 
-const QSet<QObject *> QUmlDeviceObject::ownedConnector() const
+const QSet<QObject *> QUmlDeviceObject::ownedConnectors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedConnector())
+    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedConnectors())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::part() const
+const QSet<QObject *> QUmlDeviceObject::parts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->part())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->parts())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::role() const
+const QSet<QObject *> QUmlDeviceObject::roles() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->role())
+    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->roles())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [EncapsulatedClassifier]
 
-const QSet<QObject *> QUmlDeviceObject::ownedPort() const
+const QSet<QObject *> QUmlDeviceObject::ownedPorts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedPort())
+    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedPorts())
         set.insert(element->asQObject());
     return set;
 }
@@ -422,28 +424,28 @@ QObject *QUmlDeviceObject::classifierBehavior() const
         return qmodelingobjectproperty_cast<QUmlDevice *>(this)->classifierBehavior()->asQObject();
 }
 
-const QSet<QObject *> QUmlDeviceObject::interfaceRealization() const
+const QSet<QObject *> QUmlDeviceObject::interfaceRealizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->interfaceRealizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::ownedBehavior() const
+const QSet<QObject *> QUmlDeviceObject::ownedBehaviors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedBehavior())
+    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedBehaviors())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Class]
 
-const QSet<QObject *> QUmlDeviceObject::extension() const
+const QSet<QObject *> QUmlDeviceObject::extensions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExtension *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->extension())
+    foreach (QUmlExtension *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->extensions())
         set.insert(element->asQObject());
     return set;
 }
@@ -458,70 +460,70 @@ bool QUmlDeviceObject::isActive() const
     return qmodelingobjectproperty_cast<QUmlDevice *>(this)->isActive();
 }
 
-const QList<QObject *> QUmlDeviceObject::nestedClassifier() const
+const QList<QObject *> QUmlDeviceObject::nestedClassifiers() const
 {
     QList<QObject *> list;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->nestedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->nestedClassifiers())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlDeviceObject::ownedAttribute() const
+const QList<QObject *> QUmlDeviceObject::ownedAttributes() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedAttribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedAttributes())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlDeviceObject::ownedOperation() const
+const QList<QObject *> QUmlDeviceObject::ownedOperations() const
 {
     QList<QObject *> list;
-    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedOperation())
+    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedOperations())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlDeviceObject::ownedReception() const
+const QSet<QObject *> QUmlDeviceObject::ownedReceptions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlReception *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedReception())
+    foreach (QUmlReception *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->ownedReceptions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::superClass() const
+const QSet<QObject *> QUmlDeviceObject::superClasses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClass *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->superClass())
+    foreach (QUmlClass *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->superClasses())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DeploymentTarget]
 
-const QSet<QObject *> QUmlDeviceObject::deployedElement() const
+const QSet<QObject *> QUmlDeviceObject::deployedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->deployedElement())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->deployedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeviceObject::deployment() const
+const QSet<QObject *> QUmlDeviceObject::deployments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->deployment())
+    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->deployments())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Node]
 
-const QSet<QObject *> QUmlDeviceObject::nestedNode() const
+const QSet<QObject *> QUmlDeviceObject::nestedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNode *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->nestedNode())
+    foreach (QUmlNode *element, qmodelingobjectproperty_cast<QUmlDevice *>(this)->nestedNodes())
         set.insert(element->asQObject());
     return set;
 }

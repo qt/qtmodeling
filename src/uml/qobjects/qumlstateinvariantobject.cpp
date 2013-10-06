@@ -71,18 +71,18 @@ QUmlStateInvariantObject::~QUmlStateInvariantObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlStateInvariantObject::ownedComment() const
+const QSet<QObject *> QUmlStateInvariantObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStateInvariantObject::ownedElement() const
+const QSet<QObject *> QUmlStateInvariantObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlStateInvariantObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlStateInvariantObject::clientDependency() const
+const QSet<QObject *> QUmlStateInvariantObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -154,10 +154,10 @@ QObject *QUmlStateInvariantObject::enclosingOperand() const
         return qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->enclosingOperand()->asQObject();
 }
 
-const QSet<QObject *> QUmlStateInvariantObject::generalOrdering() const
+const QSet<QObject *> QUmlStateInvariantObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->generalOrdering())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlStateInvariant *>(this)->generalOrderings())
         set.insert(element->asQObject());
     return set;
 }

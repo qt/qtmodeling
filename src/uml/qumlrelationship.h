@@ -60,14 +60,14 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlElement *> relatedElement() const;
+    const QSet<QUmlElement *> relatedElements() const;
     Q_DECL_HIDDEN void addRelatedElement(QUmlElement *relatedElement);
     Q_DECL_HIDDEN void removeRelatedElement(QUmlElement *relatedElement);
 
 protected:
     explicit QUmlRelationship();
 
-    QSet<QUmlElement *> _relatedElement;
+    QSet<QUmlElement *> _relatedElements;
 
     virtual void setPropertyData();
 };

@@ -54,6 +54,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlStateInvariant
 
@@ -82,9 +83,9 @@ QUmlStateInvariant::~QUmlStateInvariant()
 QModelingObject *QUmlStateInvariant::clone() const
 {
     QUmlStateInvariant *c = new QUmlStateInvariant;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -94,7 +95,7 @@ QModelingObject *QUmlStateInvariant::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     if (covered())
         c->setCovered(dynamic_cast<QUmlLifeline *>(covered()->clone()));
@@ -159,6 +160,8 @@ void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
 void QUmlStateInvariant::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateInvariant");
+    QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::DocumentationRole] = QStringLiteral("References the Lifeline on which the StateInvariant appears.");
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InteractionFragment-covered");
@@ -166,6 +169,8 @@ void QUmlStateInvariant::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("covered")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStateInvariant");
+    QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::DocumentationRole] = QStringLiteral("A Constraint that should hold at runtime for this StateInvariant");
     QModelingObject::propertyDataHash[QStringLiteral("invariant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

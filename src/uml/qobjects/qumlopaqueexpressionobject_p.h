@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlOpaqueExpressionObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -82,8 +82,8 @@ class Q_UML_EXPORT QUmlOpaqueExpressionObject : public QObject
 
     // Properties [OpaqueExpression]
     Q_PROPERTY(QObject * behavior READ behavior)
-    Q_PROPERTY(QList<QString> body READ body)
-    Q_PROPERTY(QList<QString> language READ language)
+    Q_PROPERTY(QList<QString> body READ bodies)
+    Q_PROPERTY(QList<QString> language READ languages)
     Q_PROPERTY(QObject * result READ result STORED false)
 
 public:
@@ -91,12 +91,12 @@ public:
     virtual ~QUmlOpaqueExpressionObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -114,8 +114,8 @@ public:
 
     // Owned attributes [OpaqueExpression]
     Q_INVOKABLE QObject *behavior() const;
-    Q_INVOKABLE const QList<QString> body() const;
-    Q_INVOKABLE const QList<QString> language() const;
+    Q_INVOKABLE const QList<QString> bodies() const;
+    Q_INVOKABLE const QList<QString> languages() const;
     Q_INVOKABLE QObject *result() const;
 
     // Operations [Element]

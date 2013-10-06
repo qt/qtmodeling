@@ -69,18 +69,18 @@ QUmlLiteralUnlimitedNaturalObject::~QUmlLiteralUnlimitedNaturalObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlLiteralUnlimitedNaturalObject::ownedComment() const
+const QSet<QObject *> QUmlLiteralUnlimitedNaturalObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlLiteralUnlimitedNaturalObject::ownedElement() const
+const QSet<QObject *> QUmlLiteralUnlimitedNaturalObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -95,10 +95,10 @@ QObject *QUmlLiteralUnlimitedNaturalObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlLiteralUnlimitedNaturalObject::clientDependency() const
+const QSet<QObject *> QUmlLiteralUnlimitedNaturalObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -128,6 +128,7 @@ QString QUmlLiteralUnlimitedNaturalObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlLiteralUnlimitedNatural *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlLiteralUnlimitedNaturalObject::type() const

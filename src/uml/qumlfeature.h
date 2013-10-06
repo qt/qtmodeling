@@ -62,7 +62,7 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlClassifier *> featuringClassifier() const;
+    const QSet<QUmlClassifier *> featuringClassifiers() const;
     Q_DECL_HIDDEN void addFeaturingClassifier(QUmlClassifier *featuringClassifier);
     Q_DECL_HIDDEN void removeFeaturingClassifier(QUmlClassifier *featuringClassifier);
     bool isStatic() const;
@@ -71,7 +71,7 @@ public:
 protected:
     explicit QUmlFeature();
 
-    QSet<QUmlClassifier *> _featuringClassifier;
+    QSet<QUmlClassifier *> _featuringClassifiers;
     bool _isStatic;
 
     virtual void setPropertyData();

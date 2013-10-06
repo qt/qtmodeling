@@ -74,18 +74,18 @@ QUmlEnumerationLiteralObject::~QUmlEnumerationLiteralObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlEnumerationLiteralObject::ownedComment() const
+const QSet<QObject *> QUmlEnumerationLiteralObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlEnumerationLiteralObject::ownedElement() const
+const QSet<QObject *> QUmlEnumerationLiteralObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -100,10 +100,10 @@ QObject *QUmlEnumerationLiteralObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlEnumerationLiteralObject::clientDependency() const
+const QSet<QObject *> QUmlEnumerationLiteralObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -133,6 +133,7 @@ QString QUmlEnumerationLiteralObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [ParameterableElement]
 
 QObject *QUmlEnumerationLiteralObject::owningTemplateParameter() const
@@ -160,28 +161,28 @@ QtUml::VisibilityKind QUmlEnumerationLiteralObject::visibility() const
 
 // OWNED ATTRIBUTES [DeploymentTarget]
 
-const QSet<QObject *> QUmlEnumerationLiteralObject::deployedElement() const
+const QSet<QObject *> QUmlEnumerationLiteralObject::deployedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->deployedElement())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->deployedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlEnumerationLiteralObject::deployment() const
+const QSet<QObject *> QUmlEnumerationLiteralObject::deployments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->deployment())
+    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->deployments())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [InstanceSpecification]
 
-const QSet<QObject *> QUmlEnumerationLiteralObject::slot_() const
+const QSet<QObject *> QUmlEnumerationLiteralObject::slots_() const
 {
     QSet<QObject *> set;
-    foreach (QUmlSlot *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->slot_())
+    foreach (QUmlSlot *element, qmodelingobjectproperty_cast<QUmlEnumerationLiteral *>(this)->slots_())
         set.insert(element->asQObject());
     return set;
 }

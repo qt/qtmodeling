@@ -53,6 +53,7 @@
 #include <QtUml/QUmlStateMachine>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTransition>
+
 /*!
     \class QUmlPseudostate
 
@@ -82,9 +83,9 @@ QUmlPseudostate::~QUmlPseudostate()
 QModelingObject *QUmlPseudostate::clone() const
 {
     QUmlPseudostate *c = new QUmlPseudostate;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -177,6 +178,8 @@ void QUmlPseudostate::setStateMachine(QUmlStateMachine *stateMachine)
 void QUmlPseudostate::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPseudostate");
+    QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::DocumentationRole] = QStringLiteral("Determines the precise type of the Pseudostate and can be one of: entryPoint, exitPoint, initial, deepHistory, shallowHistory, join, fork, junction, terminate or choice.");
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -184,6 +187,8 @@ void QUmlPseudostate::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPseudostate");
+    QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::DocumentationRole] = QStringLiteral("The State that owns this pseudostate and in which it appears.");
     QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -191,6 +196,8 @@ void QUmlPseudostate::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("state")][QtModeling::OppositeEndRole] = QStringLiteral("State-connectionPoint");
 
     QModelingObject::propertyDataHash[QStringLiteral("stateMachine")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("stateMachine")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPseudostate");
+    QModelingObject::propertyDataHash[QStringLiteral("stateMachine")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("stateMachine")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("stateMachine")][QtModeling::DocumentationRole] = QStringLiteral("The StateMachine in which this Pseudostate is defined. This only applies to Pseudostates of the kind entryPoint or exitPoint.");
     QModelingObject::propertyDataHash[QStringLiteral("stateMachine")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

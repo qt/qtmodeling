@@ -42,6 +42,7 @@
 
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlElement>
+
 /*!
     \class QUmlDirectedRelationship
 
@@ -61,7 +62,7 @@ QUmlDirectedRelationship::~QUmlDirectedRelationship()
 QModelingObject *QUmlDirectedRelationship::clone() const
 {
     QUmlDirectedRelationship *c = new QUmlDirectedRelationship;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     return c;
 }
@@ -71,19 +72,19 @@ QModelingObject *QUmlDirectedRelationship::clone() const
 /*!
     Specifies the sources of the DirectedRelationship.
  */
-const QSet<QUmlElement *> QUmlDirectedRelationship::source() const
+const QSet<QUmlElement *> QUmlDirectedRelationship::sources() const
 {
     // This is a read-only derived union association end
 
-    return _source;
+    return _sources;
 }
 
 void QUmlDirectedRelationship::addSource(QUmlElement *source)
 {
     // This is a read-only derived union association end
 
-    if (!_source.contains(source)) {
-        _source.insert(source);
+    if (!_sources.contains(source)) {
+        _sources.insert(source);
         if (source && source->asQObject() && this->asQObject())
             QObject::connect(source->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSource(QObject *)));
 
@@ -96,8 +97,8 @@ void QUmlDirectedRelationship::removeSource(QUmlElement *source)
 {
     // This is a read-only derived union association end
 
-    if (_source.contains(source)) {
-        _source.remove(source);
+    if (_sources.contains(source)) {
+        _sources.remove(source);
 
         // Adjust subsetted properties
         removeRelatedElement(source);
@@ -107,19 +108,19 @@ void QUmlDirectedRelationship::removeSource(QUmlElement *source)
 /*!
     Specifies the targets of the DirectedRelationship.
  */
-const QSet<QUmlElement *> QUmlDirectedRelationship::target() const
+const QSet<QUmlElement *> QUmlDirectedRelationship::targets() const
 {
     // This is a read-only derived union association end
 
-    return _target;
+    return _targets;
 }
 
 void QUmlDirectedRelationship::addTarget(QUmlElement *target)
 {
     // This is a read-only derived union association end
 
-    if (!_target.contains(target)) {
-        _target.insert(target);
+    if (!_targets.contains(target)) {
+        _targets.insert(target);
         if (target && target->asQObject() && this->asQObject())
             QObject::connect(target->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTarget(QObject *)));
 
@@ -132,8 +133,8 @@ void QUmlDirectedRelationship::removeTarget(QUmlElement *target)
 {
     // This is a read-only derived union association end
 
-    if (_target.contains(target)) {
-        _target.remove(target);
+    if (_targets.contains(target)) {
+        _targets.remove(target);
 
         // Adjust subsetted properties
         removeRelatedElement(target);
@@ -143,6 +144,8 @@ void QUmlDirectedRelationship::removeTarget(QUmlElement *target)
 void QUmlDirectedRelationship::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDirectedRelationship");
+    QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::IsDerivedUnionRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the sources of the DirectedRelationship.");
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -150,6 +153,8 @@ void QUmlDirectedRelationship::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDirectedRelationship");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the targets of the DirectedRelationship.");
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

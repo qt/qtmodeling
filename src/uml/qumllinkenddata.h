@@ -67,7 +67,7 @@ public:
     // Owned attributes
     QUmlProperty *end() const;
     void setEnd(QUmlProperty *end);
-    const QSet<QUmlQualifierValue *> qualifier() const;
+    const QSet<QUmlQualifierValue *> qualifiers() const;
     void addQualifier(QUmlQualifierValue *qualifier);
     void removeQualifier(QUmlQualifierValue *qualifier);
     QUmlInputPin *value() const;
@@ -75,7 +75,7 @@ public:
 
 protected:
     QUmlProperty *_end;
-    QSet<QUmlQualifierValue *> _qualifier;
+    QSet<QUmlQualifierValue *> _qualifiers;
     QUmlInputPin *_value;
 
     virtual void setPropertyData();

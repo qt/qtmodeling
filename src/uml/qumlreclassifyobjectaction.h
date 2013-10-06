@@ -66,20 +66,20 @@ public:
     // Owned attributes
     bool isReplaceAll() const;
     void setReplaceAll(bool isReplaceAll);
-    const QSet<QUmlClassifier *> newClassifier() const;
+    const QSet<QUmlClassifier *> newClassifiers() const;
     void addNewClassifier(QUmlClassifier *newClassifier);
     void removeNewClassifier(QUmlClassifier *newClassifier);
     QUmlInputPin *object() const;
     void setObject(QUmlInputPin *object);
-    const QSet<QUmlClassifier *> oldClassifier() const;
+    const QSet<QUmlClassifier *> oldClassifiers() const;
     void addOldClassifier(QUmlClassifier *oldClassifier);
     void removeOldClassifier(QUmlClassifier *oldClassifier);
 
 protected:
     bool _isReplaceAll;
-    QSet<QUmlClassifier *> _newClassifier;
+    QSet<QUmlClassifier *> _newClassifiers;
     QUmlInputPin *_object;
-    QSet<QUmlClassifier *> _oldClassifier;
+    QSet<QUmlClassifier *> _oldClassifiers;
 
     virtual void setPropertyData();
 };

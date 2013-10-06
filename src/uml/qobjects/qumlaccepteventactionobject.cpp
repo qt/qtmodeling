@@ -80,18 +80,18 @@ QUmlAcceptEventActionObject::~QUmlAcceptEventActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlAcceptEventActionObject::ownedComment() const
+const QSet<QObject *> QUmlAcceptEventActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::ownedElement() const
+const QSet<QObject *> QUmlAcceptEventActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -106,10 +106,10 @@ QObject *QUmlAcceptEventActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlAcceptEventActionObject::clientDependency() const
+const QSet<QObject *> QUmlAcceptEventActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -152,18 +152,18 @@ bool QUmlAcceptEventActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::redefinedElement() const
+const QSet<QObject *> QUmlAcceptEventActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlAcceptEventActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -178,26 +178,26 @@ QObject *QUmlAcceptEventActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::inGroup() const
+const QSet<QObject *> QUmlAcceptEventActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlAcceptEventActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::inPartition() const
+const QSet<QObject *> QUmlAcceptEventActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -210,36 +210,36 @@ QObject *QUmlAcceptEventActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::incoming() const
+const QSet<QObject *> QUmlAcceptEventActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::outgoing() const
+const QSet<QObject *> QUmlAcceptEventActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::redefinedNode() const
+const QSet<QObject *> QUmlAcceptEventActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlAcceptEventActionObject::handler() const
+const QSet<QObject *> QUmlAcceptEventActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -254,10 +254,10 @@ QObject *QUmlAcceptEventActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlAcceptEventActionObject::input() const
+const QList<QObject *> QUmlAcceptEventActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -267,26 +267,26 @@ bool QUmlAcceptEventActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::localPostcondition() const
+const QSet<QObject *> QUmlAcceptEventActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::localPrecondition() const
+const QSet<QObject *> QUmlAcceptEventActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlAcceptEventActionObject::output() const
+const QList<QObject *> QUmlAcceptEventActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
@@ -298,18 +298,18 @@ bool QUmlAcceptEventActionObject::isUnmarshall() const
     return qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->isUnmarshall();
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::result() const
+const QSet<QObject *> QUmlAcceptEventActionObject::results() const
 {
     QSet<QObject *> set;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->result())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->results())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAcceptEventActionObject::trigger() const
+const QSet<QObject *> QUmlAcceptEventActionObject::triggers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTrigger *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->trigger())
+    foreach (QUmlTrigger *element, qmodelingobjectproperty_cast<QUmlAcceptEventAction *>(this)->triggers())
         set.insert(element->asQObject());
     return set;
 }

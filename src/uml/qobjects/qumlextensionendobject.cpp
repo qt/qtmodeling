@@ -83,18 +83,18 @@ QUmlExtensionEndObject::~QUmlExtensionEndObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlExtensionEndObject::ownedComment() const
+const QSet<QObject *> QUmlExtensionEndObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExtensionEndObject::ownedElement() const
+const QSet<QObject *> QUmlExtensionEndObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -109,10 +109,10 @@ QObject *QUmlExtensionEndObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlExtensionEndObject::clientDependency() const
+const QSet<QObject *> QUmlExtensionEndObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -188,28 +188,28 @@ bool QUmlExtensionEndObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlExtensionEndObject::redefinedElement() const
+const QSet<QObject *> QUmlExtensionEndObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExtensionEndObject::redefinitionContext() const
+const QSet<QObject *> QUmlExtensionEndObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Feature]
 
-const QSet<QObject *> QUmlExtensionEndObject::featuringClassifier() const
+const QSet<QObject *> QUmlExtensionEndObject::featuringClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->featuringClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->featuringClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -228,12 +228,13 @@ QObject *QUmlExtensionEndObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [ConnectableElement]
 
-const QList<QObject *> QUmlExtensionEndObject::end() const
+const QList<QObject *> QUmlExtensionEndObject::ends() const
 {
     QList<QObject *> list;
-    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->end())
+    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->ends())
         list.append(element->asQObject());
     return list;
 }
@@ -248,18 +249,18 @@ QObject *QUmlExtensionEndObject::templateParameter() const
 
 // OWNED ATTRIBUTES [DeploymentTarget]
 
-const QSet<QObject *> QUmlExtensionEndObject::deployedElement() const
+const QSet<QObject *> QUmlExtensionEndObject::deployedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->deployedElement())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->deployedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExtensionEndObject::deployment() const
+const QSet<QObject *> QUmlExtensionEndObject::deployments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->deployment())
+    foreach (QUmlDeployment *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->deployments())
         set.insert(element->asQObject());
     return set;
 }
@@ -365,26 +366,26 @@ QObject *QUmlExtensionEndObject::owningAssociation() const
         return qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->owningAssociation()->asQObject();
 }
 
-const QList<QObject *> QUmlExtensionEndObject::qualifier() const
+const QList<QObject *> QUmlExtensionEndObject::qualifiers() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->qualifier())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->qualifiers())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlExtensionEndObject::redefinedProperty() const
+const QSet<QObject *> QUmlExtensionEndObject::redefinedProperties() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->redefinedProperty())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->redefinedProperties())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExtensionEndObject::subsettedProperty() const
+const QSet<QObject *> QUmlExtensionEndObject::subsettedProperties() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->subsettedProperty())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlExtensionEnd *>(this)->subsettedProperties())
         set.insert(element->asQObject());
     return set;
 }

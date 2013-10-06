@@ -52,6 +52,7 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlRealization
 
@@ -79,21 +80,21 @@ QUmlRealization::~QUmlRealization()
 QModelingObject *QUmlRealization::clone() const
 {
     QUmlRealization *c = new QUmlRealization;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlNamedElement *element, client())
+    foreach (QUmlNamedElement *element, clients())
         c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, supplier())
+    foreach (QUmlNamedElement *element, suppliers())
         c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     if (mapping())
         c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));

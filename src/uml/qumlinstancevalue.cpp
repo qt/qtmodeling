@@ -53,6 +53,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlInstanceValue
 
@@ -80,9 +81,9 @@ QUmlInstanceValue::~QUmlInstanceValue()
 QModelingObject *QUmlInstanceValue::clone() const
 {
     QUmlInstanceValue *c = new QUmlInstanceValue;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -125,6 +126,8 @@ void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 void QUmlInstanceValue::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceValue");
+    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::DocumentationRole] = QStringLiteral("The instance that is the specified value.");
     QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

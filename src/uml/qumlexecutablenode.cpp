@@ -57,6 +57,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlExecutableNode
 
@@ -76,9 +77,9 @@ QUmlExecutableNode::~QUmlExecutableNode()
 QModelingObject *QUmlExecutableNode::clone() const
 {
     QUmlExecutableNode *c = new QUmlExecutableNode;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -87,19 +88,19 @@ QModelingObject *QUmlExecutableNode::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     return c;
 }
@@ -109,19 +110,19 @@ QModelingObject *QUmlExecutableNode::clone() const
 /*!
     A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.
  */
-const QSet<QUmlExceptionHandler *> QUmlExecutableNode::handler() const
+const QSet<QUmlExceptionHandler *> QUmlExecutableNode::handlers() const
 {
     // This is a read-write association end
 
-    return _handler;
+    return _handlers;
 }
 
 void QUmlExecutableNode::addHandler(QUmlExceptionHandler *handler)
 {
     // This is a read-write association end
 
-    if (!_handler.contains(handler)) {
-        _handler.insert(handler);
+    if (!_handlers.contains(handler)) {
+        _handlers.insert(handler);
         if (handler && handler->asQObject() && this->asQObject())
             QObject::connect(handler->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeHandler(QObject *)));
         handler->asQObject()->setParent(this->asQObject());
@@ -140,8 +141,8 @@ void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
 {
     // This is a read-write association end
 
-    if (_handler.contains(handler)) {
-        _handler.remove(handler);
+    if (_handlers.contains(handler)) {
+        _handlers.remove(handler);
         if (handler->asQObject())
             handler->asQObject()->setParent(0);
 
@@ -158,6 +159,8 @@ void QUmlExecutableNode::removeHandler(QUmlExceptionHandler *handler)
 void QUmlExecutableNode::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutableNode");
+    QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::DocumentationRole] = QStringLiteral("A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable node.");
     QModelingObject::propertyDataHash[QStringLiteral("handler")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

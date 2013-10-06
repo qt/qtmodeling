@@ -70,18 +70,18 @@ QUmlIntervalObject::~QUmlIntervalObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlIntervalObject::ownedComment() const
+const QSet<QObject *> QUmlIntervalObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInterval *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInterval *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlIntervalObject::ownedElement() const
+const QSet<QObject *> QUmlIntervalObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInterval *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInterval *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -96,10 +96,10 @@ QObject *QUmlIntervalObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlIntervalObject::clientDependency() const
+const QSet<QObject *> QUmlIntervalObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInterval *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInterval *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -129,6 +129,7 @@ QString QUmlIntervalObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlInterval *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlIntervalObject::type() const

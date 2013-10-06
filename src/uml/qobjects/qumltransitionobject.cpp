@@ -77,18 +77,18 @@ QUmlTransitionObject::~QUmlTransitionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlTransitionObject::ownedComment() const
+const QSet<QObject *> QUmlTransitionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTransitionObject::ownedElement() const
+const QSet<QObject *> QUmlTransitionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -103,10 +103,10 @@ QObject *QUmlTransitionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlTransitionObject::clientDependency() const
+const QSet<QObject *> QUmlTransitionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -149,59 +149,60 @@ bool QUmlTransitionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlTransition *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlTransitionObject::redefinedElement() const
+const QSet<QObject *> QUmlTransitionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlTransitionObject::elementImport() const
+const QSet<QObject *> QUmlTransitionObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTransitionObject::importedMember() const
+const QSet<QObject *> QUmlTransitionObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTransitionObject::member() const
+const QSet<QObject *> QUmlTransitionObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTransitionObject::ownedMember() const
+const QSet<QObject *> QUmlTransitionObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTransitionObject::ownedRule() const
+const QSet<QObject *> QUmlTransitionObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTransitionObject::packageImport() const
+const QSet<QObject *> QUmlTransitionObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -269,10 +270,10 @@ QObject *QUmlTransitionObject::target() const
         return qmodelingobjectproperty_cast<QUmlTransition *>(this)->target()->asQObject();
 }
 
-const QSet<QObject *> QUmlTransitionObject::trigger() const
+const QSet<QObject *> QUmlTransitionObject::triggers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTrigger *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->trigger())
+    foreach (QUmlTrigger *element, qmodelingobjectproperty_cast<QUmlTransition *>(this)->triggers())
         set.insert(element->asQObject());
     return set;
 }

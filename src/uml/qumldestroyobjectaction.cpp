@@ -62,6 +62,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlDestroyObjectAction
 
@@ -91,9 +92,9 @@ QUmlDestroyObjectAction::~QUmlDestroyObjectAction()
 QModelingObject *QUmlDestroyObjectAction::clone() const
 {
     QUmlDestroyObjectAction *c = new QUmlDestroyObjectAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -102,24 +103,24 @@ QModelingObject *QUmlDestroyObjectAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     c->setDestroyLinks(isDestroyLinks());
     c->setDestroyOwnedObjects(isDestroyOwnedObjects());
@@ -203,6 +204,8 @@ void QUmlDestroyObjectAction::setTarget(QUmlInputPin *target)
 void QUmlDestroyObjectAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDestroyObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether links in which the object participates are destroyed along with the object.");
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -210,6 +213,8 @@ void QUmlDestroyObjectAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyLinks")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDestroyObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether objects owned by the object are destroyed along with the object.");
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -217,6 +222,8 @@ void QUmlDestroyObjectAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isDestroyOwnedObjects")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDestroyObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("The input pin providing the object to be destroyed.");
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

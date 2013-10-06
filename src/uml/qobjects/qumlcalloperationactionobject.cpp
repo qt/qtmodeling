@@ -81,18 +81,18 @@ QUmlCallOperationActionObject::~QUmlCallOperationActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlCallOperationActionObject::ownedComment() const
+const QSet<QObject *> QUmlCallOperationActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::ownedElement() const
+const QSet<QObject *> QUmlCallOperationActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -107,10 +107,10 @@ QObject *QUmlCallOperationActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlCallOperationActionObject::clientDependency() const
+const QSet<QObject *> QUmlCallOperationActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -153,18 +153,18 @@ bool QUmlCallOperationActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::redefinedElement() const
+const QSet<QObject *> QUmlCallOperationActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlCallOperationActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -179,26 +179,26 @@ QObject *QUmlCallOperationActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::inGroup() const
+const QSet<QObject *> QUmlCallOperationActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlCallOperationActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::inPartition() const
+const QSet<QObject *> QUmlCallOperationActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -211,36 +211,36 @@ QObject *QUmlCallOperationActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::incoming() const
+const QSet<QObject *> QUmlCallOperationActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::outgoing() const
+const QSet<QObject *> QUmlCallOperationActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::redefinedNode() const
+const QSet<QObject *> QUmlCallOperationActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlCallOperationActionObject::handler() const
+const QSet<QObject *> QUmlCallOperationActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -255,10 +255,10 @@ QObject *QUmlCallOperationActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlCallOperationActionObject::input() const
+const QList<QObject *> QUmlCallOperationActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -268,36 +268,36 @@ bool QUmlCallOperationActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::localPostcondition() const
+const QSet<QObject *> QUmlCallOperationActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCallOperationActionObject::localPrecondition() const
+const QSet<QObject *> QUmlCallOperationActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlCallOperationActionObject::output() const
+const QList<QObject *> QUmlCallOperationActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
 
 // OWNED ATTRIBUTES [InvocationAction]
 
-const QList<QObject *> QUmlCallOperationActionObject::argument() const
+const QList<QObject *> QUmlCallOperationActionObject::arguments() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->argument())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->arguments())
         list.append(element->asQObject());
     return list;
 }
@@ -317,10 +317,10 @@ bool QUmlCallOperationActionObject::isSynchronous() const
     return qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->isSynchronous();
 }
 
-const QList<QObject *> QUmlCallOperationActionObject::result() const
+const QList<QObject *> QUmlCallOperationActionObject::results() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->result())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlCallOperationAction *>(this)->results())
         list.append(element->asQObject());
     return list;
 }

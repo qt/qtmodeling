@@ -62,18 +62,18 @@ QUmlPackageMergeObject::~QUmlPackageMergeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlPackageMergeObject::ownedComment() const
+const QSet<QObject *> QUmlPackageMergeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageMergeObject::ownedElement() const
+const QSet<QObject *> QUmlPackageMergeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -88,28 +88,28 @@ QObject *QUmlPackageMergeObject::owner() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlPackageMergeObject::relatedElement() const
+const QSet<QObject *> QUmlPackageMergeObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlPackageMergeObject::source() const
+const QSet<QObject *> QUmlPackageMergeObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPackageMergeObject::target() const
+const QSet<QObject *> QUmlPackageMergeObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPackageMerge *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }

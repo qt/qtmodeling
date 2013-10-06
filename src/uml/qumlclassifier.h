@@ -74,22 +74,22 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlProperty *> attribute() const;
+    const QSet<QUmlProperty *> attributes() const;
     Q_DECL_HIDDEN void addAttribute(QUmlProperty *attribute);
     Q_DECL_HIDDEN void removeAttribute(QUmlProperty *attribute);
-    const QSet<QUmlCollaborationUse *> collaborationUse() const;
+    const QSet<QUmlCollaborationUse *> collaborationUses() const;
     void addCollaborationUse(QUmlCollaborationUse *collaborationUse);
     void removeCollaborationUse(QUmlCollaborationUse *collaborationUse);
-    const QSet<QUmlFeature *> feature() const;
+    const QSet<QUmlFeature *> features() const;
     Q_DECL_HIDDEN void addFeature(QUmlFeature *feature);
     Q_DECL_HIDDEN void removeFeature(QUmlFeature *feature);
-    const QSet<QUmlClassifier *> general() const;
+    const QSet<QUmlClassifier *> generals() const;
     void addGeneral(QUmlClassifier *general);
     void removeGeneral(QUmlClassifier *general);
-    const QSet<QUmlGeneralization *> generalization() const;
+    const QSet<QUmlGeneralization *> generalizations() const;
     void addGeneralization(QUmlGeneralization *generalization);
     void removeGeneralization(QUmlGeneralization *generalization);
-    const QSet<QUmlNamedElement *> inheritedMember() const;
+    const QSet<QUmlNamedElement *> inheritedMembers() const;
     Q_DECL_HIDDEN void addInheritedMember(QUmlNamedElement *inheritedMember);
     Q_DECL_HIDDEN void removeInheritedMember(QUmlNamedElement *inheritedMember);
     bool isAbstract() const;
@@ -98,23 +98,23 @@ public:
     void setFinalSpecialization(bool isFinalSpecialization);
     QUmlRedefinableTemplateSignature *ownedTemplateSignature() const;
     void setOwnedTemplateSignature(QUmlRedefinableTemplateSignature *ownedTemplateSignature);
-    const QSet<QUmlUseCase *> ownedUseCase() const;
+    const QSet<QUmlUseCase *> ownedUseCases() const;
     void addOwnedUseCase(QUmlUseCase *ownedUseCase);
     void removeOwnedUseCase(QUmlUseCase *ownedUseCase);
-    const QSet<QUmlGeneralizationSet *> powertypeExtent() const;
+    const QSet<QUmlGeneralizationSet *> powertypeExtents() const;
     void addPowertypeExtent(QUmlGeneralizationSet *powertypeExtent);
     void removePowertypeExtent(QUmlGeneralizationSet *powertypeExtent);
-    const QSet<QUmlClassifier *> redefinedClassifier() const;
+    const QSet<QUmlClassifier *> redefinedClassifiers() const;
     void addRedefinedClassifier(QUmlClassifier *redefinedClassifier);
     void removeRedefinedClassifier(QUmlClassifier *redefinedClassifier);
     QUmlCollaborationUse *representation() const;
     void setRepresentation(QUmlCollaborationUse *representation);
-    const QSet<QUmlSubstitution *> substitution() const;
+    const QSet<QUmlSubstitution *> substitutions() const;
     void addSubstitution(QUmlSubstitution *substitution);
     void removeSubstitution(QUmlSubstitution *substitution);
     QUmlClassifierTemplateParameter *templateParameter() const;
     void setTemplateParameter(QUmlClassifierTemplateParameter *templateParameter);
-    const QSet<QUmlUseCase *> useCase() const;
+    const QSet<QUmlUseCase *> useCases() const;
     void addUseCase(QUmlUseCase *useCase);
     void removeUseCase(QUmlUseCase *useCase);
 
@@ -132,20 +132,20 @@ public:
 protected:
     explicit QUmlClassifier();
 
-    QSet<QUmlProperty *> _attribute;
-    QSet<QUmlCollaborationUse *> _collaborationUse;
-    QSet<QUmlFeature *> _feature;
-    QSet<QUmlGeneralization *> _generalization;
+    QSet<QUmlProperty *> _attributes;
+    QSet<QUmlCollaborationUse *> _collaborationUses;
+    QSet<QUmlFeature *> _features;
+    QSet<QUmlGeneralization *> _generalizations;
     bool _isAbstract;
     bool _isFinalSpecialization;
     QUmlRedefinableTemplateSignature *_ownedTemplateSignature;
-    QSet<QUmlUseCase *> _ownedUseCase;
-    QSet<QUmlGeneralizationSet *> _powertypeExtent;
-    QSet<QUmlClassifier *> _redefinedClassifier;
+    QSet<QUmlUseCase *> _ownedUseCases;
+    QSet<QUmlGeneralizationSet *> _powertypeExtents;
+    QSet<QUmlClassifier *> _redefinedClassifiers;
     QUmlCollaborationUse *_representation;
-    QSet<QUmlSubstitution *> _substitution;
+    QSet<QUmlSubstitution *> _substitutions;
     QUmlClassifierTemplateParameter *_templateParameter;
-    QSet<QUmlUseCase *> _useCase;
+    QSet<QUmlUseCase *> _useCases;
 
     virtual void setPropertyData();
 };

@@ -72,7 +72,7 @@ public:
     void setExtendedCase(QUmlUseCase *extendedCase);
     QUmlUseCase *extension() const;
     void setExtension(QUmlUseCase *extension);
-    const QList<QUmlExtensionPoint *> extensionLocation() const;
+    const QList<QUmlExtensionPoint *> extensionLocations() const;
     void addExtensionLocation(QUmlExtensionPoint *extensionLocation);
     void removeExtensionLocation(QUmlExtensionPoint *extensionLocation);
 
@@ -80,7 +80,7 @@ protected:
     QUmlConstraint *_condition;
     QUmlUseCase *_extendedCase;
     QUmlUseCase *_extension;
-    QList<QUmlExtensionPoint *> _extensionLocation;
+    QList<QUmlExtensionPoint *> _extensionLocations;
 
     virtual void setPropertyData();
 };

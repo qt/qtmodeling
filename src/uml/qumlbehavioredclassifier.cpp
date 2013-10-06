@@ -69,6 +69,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlBehavioredClassifier
 
@@ -89,18 +90,18 @@ QUmlBehavioredClassifier::~QUmlBehavioredClassifier()
 QModelingObject *QUmlBehavioredClassifier::clone() const
 {
     QUmlBehavioredClassifier *c = new QUmlBehavioredClassifier;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -108,35 +109,35 @@ QModelingObject *QUmlBehavioredClassifier::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
     if (classifierBehavior())
         c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
-    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, interfaceRealizations())
         c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
-    foreach (QUmlBehavior *element, ownedBehavior())
+    foreach (QUmlBehavior *element, ownedBehaviors())
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     return c;
 }
@@ -175,19 +176,19 @@ void QUmlBehavioredClassifier::setClassifierBehavior(QUmlBehavior *classifierBeh
 /*!
     The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.
  */
-const QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealization() const
+const QSet<QUmlInterfaceRealization *> QUmlBehavioredClassifier::interfaceRealizations() const
 {
     // This is a read-write association end
 
-    return _interfaceRealization;
+    return _interfaceRealizations;
 }
 
 void QUmlBehavioredClassifier::addInterfaceRealization(QUmlInterfaceRealization *interfaceRealization)
 {
     // This is a read-write association end
 
-    if (!_interfaceRealization.contains(interfaceRealization)) {
-        _interfaceRealization.insert(interfaceRealization);
+    if (!_interfaceRealizations.contains(interfaceRealization)) {
+        _interfaceRealizations.insert(interfaceRealization);
         if (interfaceRealization && interfaceRealization->asQObject() && this->asQObject())
             QObject::connect(interfaceRealization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInterfaceRealization(QObject *)));
         interfaceRealization->asQObject()->setParent(this->asQObject());
@@ -207,8 +208,8 @@ void QUmlBehavioredClassifier::removeInterfaceRealization(QUmlInterfaceRealizati
 {
     // This is a read-write association end
 
-    if (_interfaceRealization.contains(interfaceRealization)) {
-        _interfaceRealization.remove(interfaceRealization);
+    if (_interfaceRealizations.contains(interfaceRealization)) {
+        _interfaceRealizations.remove(interfaceRealization);
         if (interfaceRealization->asQObject())
             interfaceRealization->asQObject()->setParent(0);
 
@@ -226,19 +227,19 @@ void QUmlBehavioredClassifier::removeInterfaceRealization(QUmlInterfaceRealizati
 /*!
     References behavior specifications owned by a classifier.
  */
-const QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehavior() const
+const QSet<QUmlBehavior *> QUmlBehavioredClassifier::ownedBehaviors() const
 {
     // This is a read-write association end
 
-    return _ownedBehavior;
+    return _ownedBehaviors;
 }
 
 void QUmlBehavioredClassifier::addOwnedBehavior(QUmlBehavior *ownedBehavior)
 {
     // This is a read-write association end
 
-    if (!_ownedBehavior.contains(ownedBehavior)) {
-        _ownedBehavior.insert(ownedBehavior);
+    if (!_ownedBehaviors.contains(ownedBehavior)) {
+        _ownedBehaviors.insert(ownedBehavior);
         if (ownedBehavior && ownedBehavior->asQObject() && this->asQObject())
             QObject::connect(ownedBehavior->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedBehavior(QObject *)));
         ownedBehavior->asQObject()->setParent(this->asQObject());
@@ -252,8 +253,8 @@ void QUmlBehavioredClassifier::removeOwnedBehavior(QUmlBehavior *ownedBehavior)
 {
     // This is a read-write association end
 
-    if (_ownedBehavior.contains(ownedBehavior)) {
-        _ownedBehavior.remove(ownedBehavior);
+    if (_ownedBehaviors.contains(ownedBehavior)) {
+        _ownedBehaviors.remove(ownedBehavior);
         if (ownedBehavior->asQObject())
             ownedBehavior->asQObject()->setParent(0);
 
@@ -265,6 +266,8 @@ void QUmlBehavioredClassifier::removeOwnedBehavior(QUmlBehavior *ownedBehavior)
 void QUmlBehavioredClassifier::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::DocumentationRole] = QStringLiteral("A behavior specification that specifies the behavior of the classifier itself.");
     QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -272,6 +275,8 @@ void QUmlBehavioredClassifier::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("classifierBehavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::DocumentationRole] = QStringLiteral("The set of InterfaceRealizations owned by the BehavioredClassifier. Interface realizations reference the Interfaces of which the BehavioredClassifier is an implementation.");
     QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -279,6 +284,8 @@ void QUmlBehavioredClassifier::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("interfaceRealization")][QtModeling::OppositeEndRole] = QStringLiteral("InterfaceRealization-implementingClassifier");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::DocumentationRole] = QStringLiteral("References behavior specifications owned by a classifier.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedBehavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

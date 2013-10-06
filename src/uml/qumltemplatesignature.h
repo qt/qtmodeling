@@ -64,18 +64,18 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlTemplateParameter *> ownedParameter() const;
+    const QList<QUmlTemplateParameter *> ownedParameters() const;
     void addOwnedParameter(QUmlTemplateParameter *ownedParameter);
     void removeOwnedParameter(QUmlTemplateParameter *ownedParameter);
-    const QList<QUmlTemplateParameter *> parameter() const;
+    const QList<QUmlTemplateParameter *> parameters() const;
     void addParameter(QUmlTemplateParameter *parameter);
     void removeParameter(QUmlTemplateParameter *parameter);
     QUmlTemplateableElement *template_() const;
     void setTemplate(QUmlTemplateableElement *template_);
 
 protected:
-    QList<QUmlTemplateParameter *> _ownedParameter;
-    QList<QUmlTemplateParameter *> _parameter;
+    QList<QUmlTemplateParameter *> _ownedParameters;
+    QList<QUmlTemplateParameter *> _parameters;
     QUmlTemplateableElement *_template_;
 
     virtual void setPropertyData();

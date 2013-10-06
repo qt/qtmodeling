@@ -57,13 +57,13 @@ class Q_UML_EXPORT QUmlLinkEndDestructionDataObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [LinkEndData]
     Q_PROPERTY(QObject * end READ end)
-    Q_PROPERTY(QSet<QObject *> qualifier READ qualifier)
+    Q_PROPERTY(QSet<QObject *> qualifier READ qualifiers)
     Q_PROPERTY(QObject * value READ value)
 
     // Properties [LinkEndDestructionData]
@@ -75,13 +75,13 @@ public:
     virtual ~QUmlLinkEndDestructionDataObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [LinkEndData]
     Q_INVOKABLE QObject *end() const;
-    Q_INVOKABLE const QSet<QObject *> qualifier() const;
+    Q_INVOKABLE const QSet<QObject *> qualifiers() const;
     Q_INVOKABLE QObject *value() const;
 
     // Owned attributes [LinkEndDestructionData]

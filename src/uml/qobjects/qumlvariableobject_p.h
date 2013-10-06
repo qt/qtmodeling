@@ -59,8 +59,8 @@ class Q_UML_EXPORT QUmlVariableObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [MultiplicityElement]
@@ -72,7 +72,7 @@ class Q_UML_EXPORT QUmlVariableObject : public QObject
     Q_PROPERTY(QObject * upperValue READ upperValue)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -86,7 +86,7 @@ class Q_UML_EXPORT QUmlVariableObject : public QObject
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
 
     // Properties [ConnectableElement]
-    Q_PROPERTY(QList<QObject *> end READ end STORED false)
+    Q_PROPERTY(QList<QObject *> end READ ends STORED false)
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
 
     // Properties [Variable]
@@ -98,8 +98,8 @@ public:
     virtual ~QUmlVariableObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [MultiplicityElement]
@@ -111,7 +111,7 @@ public:
     Q_INVOKABLE QObject *upperValue() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -125,7 +125,7 @@ public:
     Q_INVOKABLE QObject *owningTemplateParameter() const;
 
     // Owned attributes [ConnectableElement]
-    Q_INVOKABLE const QList<QObject *> end() const;
+    Q_INVOKABLE const QList<QObject *> ends() const;
     Q_INVOKABLE QObject *templateParameter() const;
 
     // Owned attributes [Variable]

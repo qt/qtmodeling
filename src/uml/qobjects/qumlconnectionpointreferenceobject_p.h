@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlConnectionPointReferenceObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -73,12 +73,12 @@ class Q_UML_EXPORT QUmlConnectionPointReferenceObject : public QObject
 
     // Properties [Vertex]
     Q_PROPERTY(QObject * container READ container)
-    Q_PROPERTY(QSet<QObject *> incoming READ incoming STORED false)
-    Q_PROPERTY(QSet<QObject *> outgoing READ outgoing STORED false)
+    Q_PROPERTY(QSet<QObject *> incoming READ incomings STORED false)
+    Q_PROPERTY(QSet<QObject *> outgoing READ outgoings STORED false)
 
     // Properties [ConnectionPointReference]
-    Q_PROPERTY(QSet<QObject *> entry READ entry)
-    Q_PROPERTY(QSet<QObject *> exit READ exit)
+    Q_PROPERTY(QSet<QObject *> entry READ entries)
+    Q_PROPERTY(QSet<QObject *> exit READ exits)
     Q_PROPERTY(QObject * state READ state)
 
 public:
@@ -86,12 +86,12 @@ public:
     virtual ~QUmlConnectionPointReferenceObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -100,12 +100,12 @@ public:
 
     // Owned attributes [Vertex]
     Q_INVOKABLE QObject *container() const;
-    Q_INVOKABLE const QSet<QObject *> incoming() const;
-    Q_INVOKABLE const QSet<QObject *> outgoing() const;
+    Q_INVOKABLE const QSet<QObject *> incomings() const;
+    Q_INVOKABLE const QSet<QObject *> outgoings() const;
 
     // Owned attributes [ConnectionPointReference]
-    Q_INVOKABLE const QSet<QObject *> entry() const;
-    Q_INVOKABLE const QSet<QObject *> exit() const;
+    Q_INVOKABLE const QSet<QObject *> entries() const;
+    Q_INVOKABLE const QSet<QObject *> exits() const;
     Q_INVOKABLE QObject *state() const;
 
     // Operations [Element]

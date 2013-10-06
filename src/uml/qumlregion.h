@@ -76,10 +76,10 @@ public:
     void setState(QUmlState *state);
     QUmlStateMachine *stateMachine() const;
     void setStateMachine(QUmlStateMachine *stateMachine);
-    const QSet<QUmlVertex *> subvertex() const;
+    const QSet<QUmlVertex *> subvertices() const;
     void addSubvertex(QUmlVertex *subvertex);
     void removeSubvertex(QUmlVertex *subvertex);
-    const QSet<QUmlTransition *> transition() const;
+    const QSet<QUmlTransition *> transitions() const;
     void addTransition(QUmlTransition *transition);
     void removeTransition(QUmlTransition *transition);
 
@@ -93,8 +93,8 @@ protected:
     QUmlRegion *_extendedRegion;
     QUmlState *_state;
     QUmlStateMachine *_stateMachine;
-    QSet<QUmlVertex *> _subvertex;
-    QSet<QUmlTransition *> _transition;
+    QSet<QUmlVertex *> _subvertices;
+    QSet<QUmlTransition *> _transitions;
 
     virtual void setPropertyData();
 };

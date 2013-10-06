@@ -64,7 +64,7 @@ public:
     // Owned attributes
     bool isSynchronous() const;
     void setSynchronous(bool isSynchronous);
-    const QList<QUmlOutputPin *> result() const;
+    const QList<QUmlOutputPin *> results() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
 
@@ -72,7 +72,7 @@ protected:
     explicit QUmlCallAction();
 
     bool _isSynchronous;
-    QList<QUmlOutputPin *> _result;
+    QList<QUmlOutputPin *> _results;
 
     virtual void setPropertyData();
 };

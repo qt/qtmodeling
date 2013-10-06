@@ -63,18 +63,18 @@ QUmlProfileApplicationObject::~QUmlProfileApplicationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlProfileApplicationObject::ownedComment() const
+const QSet<QObject *> QUmlProfileApplicationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProfileApplicationObject::ownedElement() const
+const QSet<QObject *> QUmlProfileApplicationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -89,28 +89,28 @@ QObject *QUmlProfileApplicationObject::owner() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlProfileApplicationObject::relatedElement() const
+const QSet<QObject *> QUmlProfileApplicationObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlProfileApplicationObject::source() const
+const QSet<QObject *> QUmlProfileApplicationObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProfileApplicationObject::target() const
+const QSet<QObject *> QUmlProfileApplicationObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProfileApplication *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }

@@ -63,18 +63,18 @@ QUmlGeneralizationObject::~QUmlGeneralizationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlGeneralizationObject::ownedComment() const
+const QSet<QObject *> QUmlGeneralizationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlGeneralizationObject::ownedElement() const
+const QSet<QObject *> QUmlGeneralizationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -89,28 +89,28 @@ QObject *QUmlGeneralizationObject::owner() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlGeneralizationObject::relatedElement() const
+const QSet<QObject *> QUmlGeneralizationObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlGeneralizationObject::source() const
+const QSet<QObject *> QUmlGeneralizationObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlGeneralizationObject::target() const
+const QSet<QObject *> QUmlGeneralizationObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
@@ -125,10 +125,10 @@ QObject *QUmlGeneralizationObject::general() const
         return qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->general()->asQObject();
 }
 
-const QSet<QObject *> QUmlGeneralizationObject::generalizationSet() const
+const QSet<QObject *> QUmlGeneralizationObject::generalizationSets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->generalizationSet())
+    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlGeneralization *>(this)->generalizationSets())
         set.insert(element->asQObject());
     return set;
 }

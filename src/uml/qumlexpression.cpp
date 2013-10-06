@@ -53,6 +53,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlExpression
 
@@ -79,9 +80,9 @@ QUmlExpression::~QUmlExpression()
 QModelingObject *QUmlExpression::clone() const
 {
     QUmlExpression *c = new QUmlExpression;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -93,7 +94,7 @@ QModelingObject *QUmlExpression::clone() const
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlValueSpecification *element, operand())
+    foreach (QUmlValueSpecification *element, operands())
         c->addOperand(dynamic_cast<QUmlValueSpecification *>(element->clone()));
     c->setSymbol(symbol());
     return c;
@@ -104,19 +105,19 @@ QModelingObject *QUmlExpression::clone() const
 /*!
     Specifies a sequence of operands.
  */
-const QList<QUmlValueSpecification *> QUmlExpression::operand() const
+const QList<QUmlValueSpecification *> QUmlExpression::operands() const
 {
     // This is a read-write association end
 
-    return _operand;
+    return _operands;
 }
 
 void QUmlExpression::addOperand(QUmlValueSpecification *operand)
 {
     // This is a read-write association end
 
-    if (!_operand.contains(operand)) {
-        _operand.append(operand);
+    if (!_operands.contains(operand)) {
+        _operands.append(operand);
         if (operand && operand->asQObject() && this->asQObject())
             QObject::connect(operand->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOperand(QObject *)));
         operand->asQObject()->setParent(this->asQObject());
@@ -130,8 +131,8 @@ void QUmlExpression::removeOperand(QUmlValueSpecification *operand)
 {
     // This is a read-write association end
 
-    if (_operand.contains(operand)) {
-        _operand.removeAll(operand);
+    if (_operands.contains(operand)) {
+        _operands.removeAll(operand);
         if (operand->asQObject())
             operand->asQObject()->setParent(0);
 
@@ -162,6 +163,8 @@ void QUmlExpression::setSymbol(QString symbol)
 void QUmlExpression::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a sequence of operands.");
     QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -169,6 +172,8 @@ void QUmlExpression::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("operand")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::DocumentationRole] = QStringLiteral("The symbol associated with the node in the expression tree.");
     QModelingObject::propertyDataHash[QStringLiteral("symbol")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

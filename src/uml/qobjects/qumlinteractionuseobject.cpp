@@ -73,18 +73,18 @@ QUmlInteractionUseObject::~QUmlInteractionUseObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlInteractionUseObject::ownedComment() const
+const QSet<QObject *> QUmlInteractionUseObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInteractionUseObject::ownedElement() const
+const QSet<QObject *> QUmlInteractionUseObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -99,10 +99,10 @@ QObject *QUmlInteractionUseObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlInteractionUseObject::clientDependency() const
+const QSet<QObject *> QUmlInteractionUseObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -164,28 +164,28 @@ QObject *QUmlInteractionUseObject::enclosingOperand() const
         return qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->enclosingOperand()->asQObject();
 }
 
-const QSet<QObject *> QUmlInteractionUseObject::generalOrdering() const
+const QSet<QObject *> QUmlInteractionUseObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->generalOrdering())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->generalOrderings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [InteractionUse]
 
-const QSet<QObject *> QUmlInteractionUseObject::actualGate() const
+const QSet<QObject *> QUmlInteractionUseObject::actualGates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->actualGate())
+    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->actualGates())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlInteractionUseObject::argument() const
+const QList<QObject *> QUmlInteractionUseObject::arguments() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->argument())
+    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlInteractionUse *>(this)->arguments())
         list.append(element->asQObject());
     return list;
 }

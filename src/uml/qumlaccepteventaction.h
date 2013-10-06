@@ -66,17 +66,17 @@ public:
     // Owned attributes
     bool isUnmarshall() const;
     void setUnmarshall(bool isUnmarshall);
-    const QSet<QUmlOutputPin *> result() const;
+    const QSet<QUmlOutputPin *> results() const;
     void addResult(QUmlOutputPin *result);
     void removeResult(QUmlOutputPin *result);
-    const QSet<QUmlTrigger *> trigger() const;
+    const QSet<QUmlTrigger *> triggers() const;
     void addTrigger(QUmlTrigger *trigger);
     void removeTrigger(QUmlTrigger *trigger);
 
 protected:
     bool _isUnmarshall;
-    QSet<QUmlOutputPin *> _result;
-    QSet<QUmlTrigger *> _trigger;
+    QSet<QUmlOutputPin *> _results;
+    QSet<QUmlTrigger *> _triggers;
 
     virtual void setPropertyData();
 };

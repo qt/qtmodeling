@@ -69,18 +69,18 @@ QUmlSignalEventObject::~QUmlSignalEventObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlSignalEventObject::ownedComment() const
+const QSet<QObject *> QUmlSignalEventObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSignalEventObject::ownedElement() const
+const QSet<QObject *> QUmlSignalEventObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -113,10 +113,10 @@ QObject *QUmlSignalEventObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlSignalEventObject::clientDependency() const
+const QSet<QObject *> QUmlSignalEventObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -146,6 +146,7 @@ QString QUmlSignalEventObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlSignalEvent *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlSignalEventObject::visibility() const

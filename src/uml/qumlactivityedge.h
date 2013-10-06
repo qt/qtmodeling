@@ -72,17 +72,17 @@ public:
     void setActivity(QUmlActivity *activity);
     QUmlValueSpecification *guard() const;
     void setGuard(QUmlValueSpecification *guard);
-    const QSet<QUmlActivityGroup *> inGroup() const;
+    const QSet<QUmlActivityGroup *> inGroups() const;
     Q_DECL_HIDDEN void addInGroup(QUmlActivityGroup *inGroup);
     Q_DECL_HIDDEN void removeInGroup(QUmlActivityGroup *inGroup);
-    const QSet<QUmlActivityPartition *> inPartition() const;
+    const QSet<QUmlActivityPartition *> inPartitions() const;
     void addInPartition(QUmlActivityPartition *inPartition);
     void removeInPartition(QUmlActivityPartition *inPartition);
     QUmlStructuredActivityNode *inStructuredNode() const;
     void setInStructuredNode(QUmlStructuredActivityNode *inStructuredNode);
     QUmlInterruptibleActivityRegion *interrupts() const;
     void setInterrupts(QUmlInterruptibleActivityRegion *interrupts);
-    const QSet<QUmlActivityEdge *> redefinedEdge() const;
+    const QSet<QUmlActivityEdge *> redefinedEdges() const;
     void addRedefinedEdge(QUmlActivityEdge *redefinedEdge);
     void removeRedefinedEdge(QUmlActivityEdge *redefinedEdge);
     QUmlActivityNode *source() const;
@@ -97,11 +97,11 @@ protected:
 
     QUmlActivity *_activity;
     QUmlValueSpecification *_guard;
-    QSet<QUmlActivityGroup *> _inGroup;
-    QSet<QUmlActivityPartition *> _inPartition;
+    QSet<QUmlActivityGroup *> _inGroups;
+    QSet<QUmlActivityPartition *> _inPartitions;
     QUmlStructuredActivityNode *_inStructuredNode;
     QUmlInterruptibleActivityRegion *_interrupts;
-    QSet<QUmlActivityEdge *> _redefinedEdge;
+    QSet<QUmlActivityEdge *> _redefinedEdges;
     QUmlActivityNode *_source;
     QUmlActivityNode *_target;
     QUmlValueSpecification *_weight;

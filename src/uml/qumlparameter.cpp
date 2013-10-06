@@ -58,6 +58,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlParameter
 
@@ -89,7 +90,7 @@ QUmlParameter::~QUmlParameter()
 QModelingObject *QUmlParameter::clone() const
 {
     QUmlParameter *c = new QUmlParameter;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     c->setOrdered(isOrdered());
     c->setUnique(isUnique());
@@ -97,7 +98,7 @@ QModelingObject *QUmlParameter::clone() const
         c->setLowerValue(dynamic_cast<QUmlValueSpecification *>(lowerValue()->clone()));
     if (upperValue())
         c->setUpperValue(dynamic_cast<QUmlValueSpecification *>(upperValue()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -117,7 +118,7 @@ QModelingObject *QUmlParameter::clone() const
     c->setStream(isStream());
     if (operation())
         c->setOperation(dynamic_cast<QUmlOperation *>(operation()->clone()));
-    foreach (QUmlParameterSet *element, parameterSet())
+    foreach (QUmlParameterSet *element, parameterSets())
         c->addParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
     return c;
 }
@@ -140,7 +141,7 @@ void QUmlParameter::setDefault(QString default_)
 {
     // This is a read-write derived property
 
-    qWarning("UmlParameter::default_(): to be implemented (this is a derived property)");
+    qWarning("UmlParameter::setDefault(): to be implemented (this is a derived property)");
     Q_UNUSED(default_);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -281,19 +282,19 @@ void QUmlParameter::setOperation(QUmlOperation *operation)
 /*!
     The parameter sets containing the parameter. See ParameterSet.
  */
-const QSet<QUmlParameterSet *> QUmlParameter::parameterSet() const
+const QSet<QUmlParameterSet *> QUmlParameter::parameterSets() const
 {
     // This is a read-write association end
 
-    return _parameterSet;
+    return _parameterSets;
 }
 
 void QUmlParameter::addParameterSet(QUmlParameterSet *parameterSet)
 {
     // This is a read-write association end
 
-    if (!_parameterSet.contains(parameterSet)) {
-        _parameterSet.insert(parameterSet);
+    if (!_parameterSets.contains(parameterSet)) {
+        _parameterSets.insert(parameterSet);
         if (parameterSet && parameterSet->asQObject() && this->asQObject())
             QObject::connect(parameterSet->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeParameterSet(QObject *)));
 
@@ -308,8 +309,8 @@ void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
 {
     // This is a read-write association end
 
-    if (_parameterSet.contains(parameterSet)) {
-        _parameterSet.remove(parameterSet);
+    if (_parameterSets.contains(parameterSet)) {
+        _parameterSets.remove(parameterSet);
 
         // Adjust opposite properties
         if (parameterSet) {
@@ -321,6 +322,8 @@ void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
 void QUmlParameter::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a String that represents a value to be used when no argument is supplied for the Parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -328,6 +331,8 @@ void QUmlParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("default")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("defaultValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("defaultValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("defaultValue")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("defaultValue")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("defaultValue")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a ValueSpecification that represents a value to be used when no argument is supplied for the Parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("defaultValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -335,6 +340,8 @@ void QUmlParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("defaultValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("direction")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("direction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("direction")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("direction")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("direction")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether a parameter is being sent into or out of a behavioral element.");
     QModelingObject::propertyDataHash[QStringLiteral("direction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -342,6 +349,8 @@ void QUmlParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("direction")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the effect that the owner of the parameter has on values passed in or out of the parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -349,6 +358,8 @@ void QUmlParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isException")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isException")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("isException")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isException")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isException")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether an output parameter may emit a value to the exclusion of the other outputs.");
     QModelingObject::propertyDataHash[QStringLiteral("isException")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -356,6 +367,8 @@ void QUmlParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isException")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isStream")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isStream")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("isStream")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isStream")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isStream")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether an input parameter may accept values while its behavior is executing, or whether an output parameter post values while the behavior is executing.");
     QModelingObject::propertyDataHash[QStringLiteral("isStream")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -363,6 +376,8 @@ void QUmlParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isStream")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("References the Operation owning this parameter.");
     QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -370,6 +385,8 @@ void QUmlParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-ownedParameter");
 
     QModelingObject::propertyDataHash[QStringLiteral("parameterSet")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("parameterSet")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("parameterSet")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameterSet")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("parameterSet")][QtModeling::DocumentationRole] = QStringLiteral("The parameter sets containing the parameter. See ParameterSet.");
     QModelingObject::propertyDataHash[QStringLiteral("parameterSet")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -64,7 +64,7 @@ public:
     // Owned attributes
     QUmlStringExpression *owningExpression() const;
     void setOwningExpression(QUmlStringExpression *owningExpression);
-    const QSet<QUmlStringExpression *> subExpression() const;
+    const QSet<QUmlStringExpression *> subExpressions() const;
     void addSubExpression(QUmlStringExpression *subExpression);
     void removeSubExpression(QUmlStringExpression *subExpression);
 
@@ -73,7 +73,7 @@ public:
 
 protected:
     QUmlStringExpression *_owningExpression;
-    QSet<QUmlStringExpression *> _subExpression;
+    QSet<QUmlStringExpression *> _subExpressions;
 
     virtual void setPropertyData();
 };

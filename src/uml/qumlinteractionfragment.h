@@ -72,7 +72,7 @@ public:
     void setEnclosingInteraction(QUmlInteraction *enclosingInteraction);
     QUmlInteractionOperand *enclosingOperand() const;
     void setEnclosingOperand(QUmlInteractionOperand *enclosingOperand);
-    const QSet<QUmlGeneralOrdering *> generalOrdering() const;
+    const QSet<QUmlGeneralOrdering *> generalOrderings() const;
     void addGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
     void removeGeneralOrdering(QUmlGeneralOrdering *generalOrdering);
 
@@ -82,7 +82,7 @@ protected:
     QSet<QUmlLifeline *> _covered;
     QUmlInteraction *_enclosingInteraction;
     QUmlInteractionOperand *_enclosingOperand;
-    QSet<QUmlGeneralOrdering *> _generalOrdering;
+    QSet<QUmlGeneralOrdering *> _generalOrderings;
 
     virtual void setPropertyData();
 };

@@ -57,20 +57,20 @@ class Q_UML_EXPORT QUmlGeneralizationObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElement)
+    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElements)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> source READ source)
-    Q_PROPERTY(QSet<QObject *> target READ target)
+    Q_PROPERTY(QSet<QObject *> source READ sources)
+    Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [Generalization]
     Q_PROPERTY(QObject * general READ general)
-    Q_PROPERTY(QSet<QObject *> generalizationSet READ generalizationSet)
+    Q_PROPERTY(QSet<QObject *> generalizationSet READ generalizationSets)
     Q_PROPERTY(bool isSubstitutable READ isSubstitutable RESET unsetSubstitutable)
     Q_PROPERTY(QObject * specific READ specific)
 
@@ -79,20 +79,20 @@ public:
     virtual ~QUmlGeneralizationObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [Relationship]
-    Q_INVOKABLE const QSet<QObject *> relatedElement() const;
+    Q_INVOKABLE const QSet<QObject *> relatedElements() const;
 
     // Owned attributes [DirectedRelationship]
-    Q_INVOKABLE const QSet<QObject *> source() const;
-    Q_INVOKABLE const QSet<QObject *> target() const;
+    Q_INVOKABLE const QSet<QObject *> sources() const;
+    Q_INVOKABLE const QSet<QObject *> targets() const;
 
     // Owned attributes [Generalization]
     Q_INVOKABLE QObject *general() const;
-    Q_INVOKABLE const QSet<QObject *> generalizationSet() const;
+    Q_INVOKABLE const QSet<QObject *> generalizationSets() const;
     Q_INVOKABLE bool isSubstitutable() const;
     Q_INVOKABLE QObject *specific() const;
 

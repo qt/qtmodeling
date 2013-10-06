@@ -70,18 +70,18 @@ QUmlPseudostateObject::~QUmlPseudostateObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlPseudostateObject::ownedComment() const
+const QSet<QObject *> QUmlPseudostateObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPseudostateObject::ownedElement() const
+const QSet<QObject *> QUmlPseudostateObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -96,10 +96,10 @@ QObject *QUmlPseudostateObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlPseudostateObject::clientDependency() const
+const QSet<QObject *> QUmlPseudostateObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -145,18 +145,18 @@ QObject *QUmlPseudostateObject::container() const
         return qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->container()->asQObject();
 }
 
-const QSet<QObject *> QUmlPseudostateObject::incoming() const
+const QSet<QObject *> QUmlPseudostateObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->incoming())
+    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlPseudostateObject::outgoing() const
+const QSet<QObject *> QUmlPseudostateObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->outgoing())
+    foreach (QUmlTransition *element, qmodelingobjectproperty_cast<QUmlPseudostate *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }

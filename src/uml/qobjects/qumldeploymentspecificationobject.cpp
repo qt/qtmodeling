@@ -90,18 +90,18 @@ QUmlDeploymentSpecificationObject::~QUmlDeploymentSpecificationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedComment() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedElement() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -116,10 +116,10 @@ QObject *QUmlDeploymentSpecificationObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::clientDependency() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -149,52 +149,53 @@ QString QUmlDeploymentSpecificationObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::elementImport() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::importedMember() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::member() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedMember() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedRule() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::packageImport() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -208,6 +209,7 @@ QObject *QUmlDeploymentSpecificationObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlDeploymentSpecificationObject::visibility() const
@@ -232,78 +234,78 @@ bool QUmlDeploymentSpecificationObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::redefinedElement() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::redefinitionContext() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [TemplateableElement]
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::templateBinding() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->templateBinding())
+    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->templateBindings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Classifier]
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::attribute() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::attributes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->attribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->attributes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::collaborationUse() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::collaborationUses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->collaborationUse())
+    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->collaborationUses())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::feature() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::features() const
 {
     QSet<QObject *> set;
-    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->feature())
+    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->features())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::general() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::generals() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->general())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->generals())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::generalization() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::generalizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->generalization())
+    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->generalizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::inheritedMember() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::inheritedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->inheritedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->inheritedMembers())
         set.insert(element->asQObject());
     return set;
 }
@@ -326,26 +328,26 @@ QObject *QUmlDeploymentSpecificationObject::ownedTemplateSignature() const
         return qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedTemplateSignature()->asQObject();
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedUseCase() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::ownedUseCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedUseCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedUseCases())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::powertypeExtent() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::powertypeExtents() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->powertypeExtents())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::redefinedClassifier() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::redefinedClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->redefinedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->redefinedClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -358,10 +360,10 @@ QObject *QUmlDeploymentSpecificationObject::representation() const
         return qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->representation()->asQObject();
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::substitution() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::substitutions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->substitution())
+    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->substitutions())
         set.insert(element->asQObject());
     return set;
 }
@@ -374,10 +376,10 @@ QObject *QUmlDeploymentSpecificationObject::templateParameter() const
         return qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->templateParameter()->asQObject();
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::useCase() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::useCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->useCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->useCases())
         set.insert(element->asQObject());
     return set;
 }
@@ -389,34 +391,34 @@ QString QUmlDeploymentSpecificationObject::fileName() const
     return qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->fileName();
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::manifestation() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::manifestations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlManifestation *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->manifestation())
+    foreach (QUmlManifestation *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->manifestations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentSpecificationObject::nestedArtifact() const
+const QSet<QObject *> QUmlDeploymentSpecificationObject::nestedArtifacts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlArtifact *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->nestedArtifact())
+    foreach (QUmlArtifact *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->nestedArtifacts())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlDeploymentSpecificationObject::ownedAttribute() const
+const QList<QObject *> QUmlDeploymentSpecificationObject::ownedAttributes() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedAttribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedAttributes())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlDeploymentSpecificationObject::ownedOperation() const
+const QList<QObject *> QUmlDeploymentSpecificationObject::ownedOperations() const
 {
     QList<QObject *> list;
-    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedOperation())
+    foreach (QUmlOperation *element, qmodelingobjectproperty_cast<QUmlDeploymentSpecification *>(this)->ownedOperations())
         list.append(element->asQObject());
     return list;
 }

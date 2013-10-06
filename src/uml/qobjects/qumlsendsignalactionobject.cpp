@@ -81,18 +81,18 @@ QUmlSendSignalActionObject::~QUmlSendSignalActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlSendSignalActionObject::ownedComment() const
+const QSet<QObject *> QUmlSendSignalActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::ownedElement() const
+const QSet<QObject *> QUmlSendSignalActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -107,10 +107,10 @@ QObject *QUmlSendSignalActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlSendSignalActionObject::clientDependency() const
+const QSet<QObject *> QUmlSendSignalActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -153,18 +153,18 @@ bool QUmlSendSignalActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::redefinedElement() const
+const QSet<QObject *> QUmlSendSignalActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlSendSignalActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -179,26 +179,26 @@ QObject *QUmlSendSignalActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::inGroup() const
+const QSet<QObject *> QUmlSendSignalActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlSendSignalActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::inPartition() const
+const QSet<QObject *> QUmlSendSignalActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -211,36 +211,36 @@ QObject *QUmlSendSignalActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::incoming() const
+const QSet<QObject *> QUmlSendSignalActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::outgoing() const
+const QSet<QObject *> QUmlSendSignalActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::redefinedNode() const
+const QSet<QObject *> QUmlSendSignalActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlSendSignalActionObject::handler() const
+const QSet<QObject *> QUmlSendSignalActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -255,10 +255,10 @@ QObject *QUmlSendSignalActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlSendSignalActionObject::input() const
+const QList<QObject *> QUmlSendSignalActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -268,36 +268,36 @@ bool QUmlSendSignalActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::localPostcondition() const
+const QSet<QObject *> QUmlSendSignalActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSendSignalActionObject::localPrecondition() const
+const QSet<QObject *> QUmlSendSignalActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlSendSignalActionObject::output() const
+const QList<QObject *> QUmlSendSignalActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
 
 // OWNED ATTRIBUTES [InvocationAction]
 
-const QList<QObject *> QUmlSendSignalActionObject::argument() const
+const QList<QObject *> QUmlSendSignalActionObject::arguments() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->argument())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlSendSignalAction *>(this)->arguments())
         list.append(element->asQObject());
     return list;
 }

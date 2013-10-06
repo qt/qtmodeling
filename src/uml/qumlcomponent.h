@@ -68,13 +68,13 @@ public:
     // Owned attributes
     bool isIndirectlyInstantiated() const;
     void setIndirectlyInstantiated(bool isIndirectlyInstantiated);
-    const QSet<QUmlPackageableElement *> packagedElement() const;
+    const QSet<QUmlPackageableElement *> packagedElements() const;
     void addPackagedElement(QUmlPackageableElement *packagedElement);
     void removePackagedElement(QUmlPackageableElement *packagedElement);
     const QSet<QUmlInterface *> provided() const;
     Q_DECL_HIDDEN void addProvided(QUmlInterface *provided);
     Q_DECL_HIDDEN void removeProvided(QUmlInterface *provided);
-    const QSet<QUmlComponentRealization *> realization() const;
+    const QSet<QUmlComponentRealization *> realizations() const;
     void addRealization(QUmlComponentRealization *realization);
     void removeRealization(QUmlComponentRealization *realization);
     const QSet<QUmlInterface *> required() const;
@@ -87,8 +87,8 @@ public:
 
 protected:
     bool _isIndirectlyInstantiated;
-    QSet<QUmlPackageableElement *> _packagedElement;
-    QSet<QUmlComponentRealization *> _realization;
+    QSet<QUmlPackageableElement *> _packagedElements;
+    QSet<QUmlComponentRealization *> _realizations;
 
     virtual void setPropertyData();
 };

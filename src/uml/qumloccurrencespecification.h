@@ -66,17 +66,17 @@ public:
     // Owned attributes
     QUmlLifeline *covered() const;
     void setCovered(QUmlLifeline *covered);
-    const QSet<QUmlGeneralOrdering *> toAfter() const;
+    const QSet<QUmlGeneralOrdering *> toAfters() const;
     void addToAfter(QUmlGeneralOrdering *toAfter);
     void removeToAfter(QUmlGeneralOrdering *toAfter);
-    const QSet<QUmlGeneralOrdering *> toBefore() const;
+    const QSet<QUmlGeneralOrdering *> toBefores() const;
     void addToBefore(QUmlGeneralOrdering *toBefore);
     void removeToBefore(QUmlGeneralOrdering *toBefore);
 
 protected:
     QUmlLifeline *_covered;
-    QSet<QUmlGeneralOrdering *> _toAfter;
-    QSet<QUmlGeneralOrdering *> _toBefore;
+    QSet<QUmlGeneralOrdering *> _toAfters;
+    QSet<QUmlGeneralOrdering *> _toBefores;
 
     virtual void setPropertyData();
 };

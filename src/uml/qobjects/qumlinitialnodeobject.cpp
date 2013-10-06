@@ -75,18 +75,18 @@ QUmlInitialNodeObject::~QUmlInitialNodeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlInitialNodeObject::ownedComment() const
+const QSet<QObject *> QUmlInitialNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInitialNodeObject::ownedElement() const
+const QSet<QObject *> QUmlInitialNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -101,10 +101,10 @@ QObject *QUmlInitialNodeObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlInitialNodeObject::clientDependency() const
+const QSet<QObject *> QUmlInitialNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -147,18 +147,18 @@ bool QUmlInitialNodeObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlInitialNodeObject::redefinedElement() const
+const QSet<QObject *> QUmlInitialNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInitialNodeObject::redefinitionContext() const
+const QSet<QObject *> QUmlInitialNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -173,26 +173,26 @@ QObject *QUmlInitialNodeObject::activity() const
         return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlInitialNodeObject::inGroup() const
+const QSet<QObject *> QUmlInitialNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInitialNodeObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlInitialNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInitialNodeObject::inPartition() const
+const QSet<QObject *> QUmlInitialNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -205,26 +205,26 @@ QObject *QUmlInitialNodeObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlInitialNodeObject::incoming() const
+const QSet<QObject *> QUmlInitialNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInitialNodeObject::outgoing() const
+const QSet<QObject *> QUmlInitialNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlInitialNodeObject::redefinedNode() const
+const QSet<QObject *> QUmlInitialNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlInitialNode *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }

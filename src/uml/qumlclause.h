@@ -64,31 +64,31 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlExecutableNode *> body() const;
+    const QSet<QUmlExecutableNode *> bodies() const;
     void addBody(QUmlExecutableNode *body);
     void removeBody(QUmlExecutableNode *body);
-    const QList<QUmlOutputPin *> bodyOutput() const;
+    const QList<QUmlOutputPin *> bodyOutputs() const;
     void addBodyOutput(QUmlOutputPin *bodyOutput);
     void removeBodyOutput(QUmlOutputPin *bodyOutput);
     QUmlOutputPin *decider() const;
     void setDecider(QUmlOutputPin *decider);
-    const QSet<QUmlClause *> predecessorClause() const;
+    const QSet<QUmlClause *> predecessorClauses() const;
     void addPredecessorClause(QUmlClause *predecessorClause);
     void removePredecessorClause(QUmlClause *predecessorClause);
-    const QSet<QUmlClause *> successorClause() const;
+    const QSet<QUmlClause *> successorClauses() const;
     void addSuccessorClause(QUmlClause *successorClause);
     void removeSuccessorClause(QUmlClause *successorClause);
-    const QSet<QUmlExecutableNode *> test() const;
+    const QSet<QUmlExecutableNode *> tests() const;
     void addTest(QUmlExecutableNode *test);
     void removeTest(QUmlExecutableNode *test);
 
 protected:
-    QSet<QUmlExecutableNode *> _body;
-    QList<QUmlOutputPin *> _bodyOutput;
+    QSet<QUmlExecutableNode *> _bodies;
+    QList<QUmlOutputPin *> _bodyOutputs;
     QUmlOutputPin *_decider;
-    QSet<QUmlClause *> _predecessorClause;
-    QSet<QUmlClause *> _successorClause;
-    QSet<QUmlExecutableNode *> _test;
+    QSet<QUmlClause *> _predecessorClauses;
+    QSet<QUmlClause *> _successorClauses;
+    QSet<QUmlExecutableNode *> _tests;
 
     virtual void setPropertyData();
 };

@@ -82,6 +82,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlOpaqueBehavior
 
@@ -108,18 +109,18 @@ QUmlOpaqueBehavior::~QUmlOpaqueBehavior()
 QModelingObject *QUmlOpaqueBehavior::clone() const
 {
     QUmlOpaqueBehavior *c = new QUmlOpaqueBehavior;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -127,63 +128,63 @@ QModelingObject *QUmlOpaqueBehavior::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlConnector *element, ownedConnector())
+    foreach (QUmlConnector *element, ownedConnectors())
         c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
     if (classifierBehavior())
         c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
-    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, interfaceRealizations())
         c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
-    foreach (QUmlBehavior *element, ownedBehavior())
+    foreach (QUmlBehavior *element, ownedBehaviors())
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setActive(isActive());
-    foreach (QUmlClassifier *element, nestedClassifier())
+    foreach (QUmlClassifier *element, nestedClassifiers())
         c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlOperation *element, ownedOperation())
+    foreach (QUmlOperation *element, ownedOperations())
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
-    foreach (QUmlReception *element, ownedReception())
+    foreach (QUmlReception *element, ownedReceptions())
         c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
     c->setReentrant(isReentrant());
-    foreach (QUmlParameter *element, ownedParameter())
+    foreach (QUmlParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
-    foreach (QUmlParameterSet *element, ownedParameterSet())
+    foreach (QUmlParameterSet *element, ownedParameterSets())
         c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
-    foreach (QUmlConstraint *element, postcondition())
+    foreach (QUmlConstraint *element, postconditions())
         c->addPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, precondition())
+    foreach (QUmlConstraint *element, preconditions())
         c->addPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlBehavior *element, redefinedBehavior())
+    foreach (QUmlBehavior *element, redefinedBehaviors())
         c->addRedefinedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QUmlBehavioralFeature *>(specification()->clone()));
-    foreach (QString element, body())
+    foreach (QString element, bodies())
         c->addBody(element);
-    foreach (QString element, language())
+    foreach (QString element, languages())
         c->addLanguage(element);
     return c;
 }
@@ -193,19 +194,19 @@ QModelingObject *QUmlOpaqueBehavior::clone() const
 /*!
     Specifies the behavior in one or more languages.
  */
-const QList<QString> QUmlOpaqueBehavior::body() const
+const QList<QString> QUmlOpaqueBehavior::bodies() const
 {
     // This is a read-write property
 
-    return _body;
+    return _bodies;
 }
 
 void QUmlOpaqueBehavior::addBody(QString body)
 {
     // This is a read-write property
 
-    if (!_body.contains(body)) {
-        _body.append(body);
+    if (!_bodies.contains(body)) {
+        _bodies.append(body);
     }
 }
 
@@ -213,27 +214,27 @@ void QUmlOpaqueBehavior::removeBody(QString body)
 {
     // This is a read-write property
 
-    if (_body.contains(body)) {
-        _body.removeAll(body);
+    if (_bodies.contains(body)) {
+        _bodies.removeAll(body);
     }
 }
 
 /*!
     Languages the body strings use in the same order as the body strings.
  */
-const QList<QString> QUmlOpaqueBehavior::language() const
+const QList<QString> QUmlOpaqueBehavior::languages() const
 {
     // This is a read-write property
 
-    return _language;
+    return _languages;
 }
 
 void QUmlOpaqueBehavior::addLanguage(QString language)
 {
     // This is a read-write property
 
-    if (!_language.contains(language)) {
-        _language.append(language);
+    if (!_languages.contains(language)) {
+        _languages.append(language);
     }
 }
 
@@ -241,14 +242,16 @@ void QUmlOpaqueBehavior::removeLanguage(QString language)
 {
     // This is a read-write property
 
-    if (_language.contains(language)) {
-        _language.removeAll(language);
+    if (_languages.contains(language)) {
+        _languages.removeAll(language);
     }
 }
 
 void QUmlOpaqueBehavior::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the behavior in one or more languages.");
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -256,6 +259,8 @@ void QUmlOpaqueBehavior::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::DocumentationRole] = QStringLiteral("Languages the body strings use in the same order as the body strings.");
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

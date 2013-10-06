@@ -70,18 +70,18 @@ QUmlMessageObject::~QUmlMessageObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlMessageObject::ownedComment() const
+const QSet<QObject *> QUmlMessageObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlMessageObject::ownedElement() const
+const QSet<QObject *> QUmlMessageObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -96,10 +96,10 @@ QObject *QUmlMessageObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlMessageObject::clientDependency() const
+const QSet<QObject *> QUmlMessageObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -137,10 +137,10 @@ QtUml::VisibilityKind QUmlMessageObject::visibility() const
 
 // OWNED ATTRIBUTES [Message]
 
-const QList<QObject *> QUmlMessageObject::argument() const
+const QList<QObject *> QUmlMessageObject::arguments() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->argument())
+    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlMessage *>(this)->arguments())
         list.append(element->asQObject());
     return list;
 }

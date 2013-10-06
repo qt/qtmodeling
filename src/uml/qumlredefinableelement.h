@@ -64,10 +64,10 @@ public:
     // Owned attributes
     bool isLeaf() const;
     void setLeaf(bool isLeaf);
-    const QSet<QUmlRedefinableElement *> redefinedElement() const;
+    const QSet<QUmlRedefinableElement *> redefinedElements() const;
     Q_DECL_HIDDEN void addRedefinedElement(QUmlRedefinableElement *redefinedElement);
     Q_DECL_HIDDEN void removeRedefinedElement(QUmlRedefinableElement *redefinedElement);
-    const QSet<QUmlClassifier *> redefinitionContext() const;
+    const QSet<QUmlClassifier *> redefinitionContexts() const;
     Q_DECL_HIDDEN void addRedefinitionContext(QUmlClassifier *redefinitionContext);
     Q_DECL_HIDDEN void removeRedefinitionContext(QUmlClassifier *redefinitionContext);
 
@@ -79,8 +79,8 @@ protected:
     explicit QUmlRedefinableElement();
 
     bool _isLeaf;
-    QSet<QUmlRedefinableElement *> _redefinedElement;
-    QSet<QUmlClassifier *> _redefinitionContext;
+    QSet<QUmlRedefinableElement *> _redefinedElements;
+    QSet<QUmlClassifier *> _redefinitionContexts;
 
     virtual void setPropertyData();
 };

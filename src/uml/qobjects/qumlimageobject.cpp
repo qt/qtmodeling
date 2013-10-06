@@ -61,18 +61,18 @@ QUmlImageObject::~QUmlImageObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlImageObject::ownedComment() const
+const QSet<QObject *> QUmlImageObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlImage *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlImage *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlImageObject::ownedElement() const
+const QSet<QObject *> QUmlImageObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlImage *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlImage *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }

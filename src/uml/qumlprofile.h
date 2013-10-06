@@ -64,16 +64,16 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlElementImport *> metaclassReference() const;
+    const QSet<QUmlElementImport *> metaclassReferences() const;
     void addMetaclassReference(QUmlElementImport *metaclassReference);
     void removeMetaclassReference(QUmlElementImport *metaclassReference);
-    const QSet<QUmlPackageImport *> metamodelReference() const;
+    const QSet<QUmlPackageImport *> metamodelReferences() const;
     void addMetamodelReference(QUmlPackageImport *metamodelReference);
     void removeMetamodelReference(QUmlPackageImport *metamodelReference);
 
 protected:
-    QSet<QUmlElementImport *> _metaclassReference;
-    QSet<QUmlPackageImport *> _metamodelReference;
+    QSet<QUmlElementImport *> _metaclassReferences;
+    QSet<QUmlPackageImport *> _metamodelReferences;
 
     virtual void setPropertyData();
 };

@@ -64,15 +64,15 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlActivityEdge *> containedEdge() const;
+    const QSet<QUmlActivityEdge *> containedEdges() const;
     Q_DECL_HIDDEN void addContainedEdge(QUmlActivityEdge *containedEdge);
     Q_DECL_HIDDEN void removeContainedEdge(QUmlActivityEdge *containedEdge);
-    const QSet<QUmlActivityNode *> containedNode() const;
+    const QSet<QUmlActivityNode *> containedNodes() const;
     Q_DECL_HIDDEN void addContainedNode(QUmlActivityNode *containedNode);
     Q_DECL_HIDDEN void removeContainedNode(QUmlActivityNode *containedNode);
     QUmlActivity *inActivity() const;
     void setInActivity(QUmlActivity *inActivity);
-    const QSet<QUmlActivityGroup *> subgroup() const;
+    const QSet<QUmlActivityGroup *> subgroups() const;
     Q_DECL_HIDDEN void addSubgroup(QUmlActivityGroup *subgroup);
     Q_DECL_HIDDEN void removeSubgroup(QUmlActivityGroup *subgroup);
     QUmlActivityGroup *superGroup() const;
@@ -81,10 +81,10 @@ public:
 protected:
     explicit QUmlActivityGroup();
 
-    QSet<QUmlActivityEdge *> _containedEdge;
-    QSet<QUmlActivityNode *> _containedNode;
+    QSet<QUmlActivityEdge *> _containedEdges;
+    QSet<QUmlActivityNode *> _containedNodes;
     QUmlActivity *_inActivity;
-    QSet<QUmlActivityGroup *> _subgroup;
+    QSet<QUmlActivityGroup *> _subgroups;
     QUmlActivityGroup *_superGroup;
 
     virtual void setPropertyData();

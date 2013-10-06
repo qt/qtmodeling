@@ -63,6 +63,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlTrigger>
+
 /*!
     \class QUmlReplyAction
 
@@ -91,9 +92,9 @@ QUmlReplyAction::~QUmlReplyAction()
 QModelingObject *QUmlReplyAction::clone() const
 {
     QUmlReplyAction *c = new QUmlReplyAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -102,28 +103,28 @@ QModelingObject *QUmlReplyAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     if (replyToCall())
         c->setReplyToCall(dynamic_cast<QUmlTrigger *>(replyToCall()->clone()));
-    foreach (QUmlInputPin *element, replyValue())
+    foreach (QUmlInputPin *element, replyValues())
         c->addReplyValue(dynamic_cast<QUmlInputPin *>(element->clone()));
     if (returnInformation())
         c->setReturnInformation(dynamic_cast<QUmlInputPin *>(returnInformation()->clone()));
@@ -156,19 +157,19 @@ void QUmlReplyAction::setReplyToCall(QUmlTrigger *replyToCall)
 /*!
     A list of pins containing the reply values of the operation. These values are returned to the caller.
  */
-const QSet<QUmlInputPin *> QUmlReplyAction::replyValue() const
+const QSet<QUmlInputPin *> QUmlReplyAction::replyValues() const
 {
     // This is a read-write association end
 
-    return _replyValue;
+    return _replyValues;
 }
 
 void QUmlReplyAction::addReplyValue(QUmlInputPin *replyValue)
 {
     // This is a read-write association end
 
-    if (!_replyValue.contains(replyValue)) {
-        _replyValue.insert(replyValue);
+    if (!_replyValues.contains(replyValue)) {
+        _replyValues.insert(replyValue);
         if (replyValue && replyValue->asQObject() && this->asQObject())
             QObject::connect(replyValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeReplyValue(QObject *)));
         replyValue->asQObject()->setParent(this->asQObject());
@@ -182,8 +183,8 @@ void QUmlReplyAction::removeReplyValue(QUmlInputPin *replyValue)
 {
     // This is a read-write association end
 
-    if (_replyValue.contains(replyValue)) {
-        _replyValue.remove(replyValue);
+    if (_replyValues.contains(replyValue)) {
+        _replyValues.remove(replyValue);
         if (replyValue->asQObject())
             replyValue->asQObject()->setParent(0);
 
@@ -225,6 +226,8 @@ void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
 void QUmlReplyAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("replyToCall")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("replyToCall")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
+    QModelingObject::propertyDataHash[QStringLiteral("replyToCall")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("replyToCall")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("replyToCall")][QtModeling::DocumentationRole] = QStringLiteral("The trigger specifying the operation whose call is being replied to.");
     QModelingObject::propertyDataHash[QStringLiteral("replyToCall")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -232,6 +235,8 @@ void QUmlReplyAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("replyToCall")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("replyValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("replyValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
+    QModelingObject::propertyDataHash[QStringLiteral("replyValue")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("replyValue")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("replyValue")][QtModeling::DocumentationRole] = QStringLiteral("A list of pins containing the reply values of the operation. These values are returned to the caller.");
     QModelingObject::propertyDataHash[QStringLiteral("replyValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -239,6 +244,8 @@ void QUmlReplyAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("replyValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
+    QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::DocumentationRole] = QStringLiteral("A pin containing the return information value produced by an earlier AcceptCallAction.");
     QModelingObject::propertyDataHash[QStringLiteral("returnInformation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

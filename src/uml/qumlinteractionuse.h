@@ -66,10 +66,10 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlGate *> actualGate() const;
+    const QSet<QUmlGate *> actualGates() const;
     void addActualGate(QUmlGate *actualGate);
     void removeActualGate(QUmlGate *actualGate);
-    const QList<QUmlValueSpecification *> argument() const;
+    const QList<QUmlValueSpecification *> arguments() const;
     void addArgument(QUmlValueSpecification *argument);
     void removeArgument(QUmlValueSpecification *argument);
     QUmlInteraction *refersTo() const;
@@ -80,8 +80,8 @@ public:
     void setReturnValueRecipient(QUmlProperty *returnValueRecipient);
 
 protected:
-    QSet<QUmlGate *> _actualGate;
-    QList<QUmlValueSpecification *> _argument;
+    QSet<QUmlGate *> _actualGates;
+    QList<QUmlValueSpecification *> _arguments;
     QUmlInteraction *_refersTo;
     QUmlValueSpecification *_returnValue;
     QUmlProperty *_returnValueRecipient;

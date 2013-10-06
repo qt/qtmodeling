@@ -80,18 +80,18 @@ QUmlAddVariableValueActionObject::~QUmlAddVariableValueActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::ownedComment() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::ownedElement() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -106,10 +106,10 @@ QObject *QUmlAddVariableValueActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::clientDependency() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -152,18 +152,18 @@ bool QUmlAddVariableValueActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::redefinedElement() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -178,26 +178,26 @@ QObject *QUmlAddVariableValueActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::inGroup() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::inPartition() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -210,36 +210,36 @@ QObject *QUmlAddVariableValueActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::incoming() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::outgoing() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::redefinedNode() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::handler() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -254,10 +254,10 @@ QObject *QUmlAddVariableValueActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlAddVariableValueActionObject::input() const
+const QList<QObject *> QUmlAddVariableValueActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -267,26 +267,26 @@ bool QUmlAddVariableValueActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::localPostcondition() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAddVariableValueActionObject::localPrecondition() const
+const QSet<QObject *> QUmlAddVariableValueActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlAddVariableValueActionObject::output() const
+const QList<QObject *> QUmlAddVariableValueActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlAddVariableValueAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

@@ -62,18 +62,18 @@ QUmlProtocolConformanceObject::~QUmlProtocolConformanceObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlProtocolConformanceObject::ownedComment() const
+const QSet<QObject *> QUmlProtocolConformanceObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProtocolConformanceObject::ownedElement() const
+const QSet<QObject *> QUmlProtocolConformanceObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -88,28 +88,28 @@ QObject *QUmlProtocolConformanceObject::owner() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlProtocolConformanceObject::relatedElement() const
+const QSet<QObject *> QUmlProtocolConformanceObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlProtocolConformanceObject::source() const
+const QSet<QObject *> QUmlProtocolConformanceObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProtocolConformanceObject::target() const
+const QSet<QObject *> QUmlProtocolConformanceObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolConformance *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }

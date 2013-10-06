@@ -67,7 +67,7 @@ public:
     // Owned attributes
     QUmlObjectNode *exceptionInput() const;
     void setExceptionInput(QUmlObjectNode *exceptionInput);
-    const QSet<QUmlClassifier *> exceptionType() const;
+    const QSet<QUmlClassifier *> exceptionTypes() const;
     void addExceptionType(QUmlClassifier *exceptionType);
     void removeExceptionType(QUmlClassifier *exceptionType);
     QUmlExecutableNode *handlerBody() const;
@@ -77,7 +77,7 @@ public:
 
 protected:
     QUmlObjectNode *_exceptionInput;
-    QSet<QUmlClassifier *> _exceptionType;
+    QSet<QUmlClassifier *> _exceptionTypes;
     QUmlExecutableNode *_handlerBody;
     QUmlExecutableNode *_protectedNode;
 

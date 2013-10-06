@@ -64,12 +64,12 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlConnectableElement *> collaborationRole() const;
+    const QSet<QUmlConnectableElement *> collaborationRoles() const;
     void addCollaborationRole(QUmlConnectableElement *collaborationRole);
     void removeCollaborationRole(QUmlConnectableElement *collaborationRole);
 
 protected:
-    QSet<QUmlConnectableElement *> _collaborationRole;
+    QSet<QUmlConnectableElement *> _collaborationRoles;
 
     virtual void setPropertyData();
 };

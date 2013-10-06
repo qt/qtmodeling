@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlMessageObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -72,7 +72,7 @@ class Q_UML_EXPORT QUmlMessageObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [Message]
-    Q_PROPERTY(QList<QObject *> argument READ argument)
+    Q_PROPERTY(QList<QObject *> argument READ arguments)
     Q_PROPERTY(QObject * connector READ connector)
     Q_PROPERTY(QObject * interaction READ interaction)
     Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind RESET unsetMessageKind STORED false)
@@ -86,12 +86,12 @@ public:
     virtual ~QUmlMessageObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -99,7 +99,7 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [Message]
-    Q_INVOKABLE const QList<QObject *> argument() const;
+    Q_INVOKABLE const QList<QObject *> arguments() const;
     Q_INVOKABLE QObject *connector() const;
     Q_INVOKABLE QObject *interaction() const;
     Q_INVOKABLE QtUml::MessageKind messageKind() const;

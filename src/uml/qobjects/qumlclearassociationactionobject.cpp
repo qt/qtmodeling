@@ -80,18 +80,18 @@ QUmlClearAssociationActionObject::~QUmlClearAssociationActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlClearAssociationActionObject::ownedComment() const
+const QSet<QObject *> QUmlClearAssociationActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::ownedElement() const
+const QSet<QObject *> QUmlClearAssociationActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -106,10 +106,10 @@ QObject *QUmlClearAssociationActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlClearAssociationActionObject::clientDependency() const
+const QSet<QObject *> QUmlClearAssociationActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -152,18 +152,18 @@ bool QUmlClearAssociationActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::redefinedElement() const
+const QSet<QObject *> QUmlClearAssociationActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlClearAssociationActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -178,26 +178,26 @@ QObject *QUmlClearAssociationActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::inGroup() const
+const QSet<QObject *> QUmlClearAssociationActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlClearAssociationActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::inPartition() const
+const QSet<QObject *> QUmlClearAssociationActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -210,36 +210,36 @@ QObject *QUmlClearAssociationActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::incoming() const
+const QSet<QObject *> QUmlClearAssociationActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::outgoing() const
+const QSet<QObject *> QUmlClearAssociationActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::redefinedNode() const
+const QSet<QObject *> QUmlClearAssociationActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlClearAssociationActionObject::handler() const
+const QSet<QObject *> QUmlClearAssociationActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -254,10 +254,10 @@ QObject *QUmlClearAssociationActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlClearAssociationActionObject::input() const
+const QList<QObject *> QUmlClearAssociationActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -267,26 +267,26 @@ bool QUmlClearAssociationActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::localPostcondition() const
+const QSet<QObject *> QUmlClearAssociationActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClearAssociationActionObject::localPrecondition() const
+const QSet<QObject *> QUmlClearAssociationActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlClearAssociationActionObject::output() const
+const QList<QObject *> QUmlClearAssociationActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlClearAssociationAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

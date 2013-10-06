@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlCombinedFragmentObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -75,24 +75,24 @@ class Q_UML_EXPORT QUmlCombinedFragmentObject : public QObject
     Q_PROPERTY(QSet<QObject *> covered READ covered)
     Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction)
     Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand)
-    Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrdering)
+    Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrderings)
 
     // Properties [CombinedFragment]
-    Q_PROPERTY(QSet<QObject *> cfragmentGate READ cfragmentGate)
+    Q_PROPERTY(QSet<QObject *> cfragmentGate READ cfragmentGates)
     Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator RESET unsetInteractionOperator)
-    Q_PROPERTY(QList<QObject *> operand READ operand)
+    Q_PROPERTY(QList<QObject *> operand READ operands)
 
 public:
     Q_INVOKABLE explicit QUmlCombinedFragmentObject(QUmlCombinedFragment *qModelingObject);
     virtual ~QUmlCombinedFragmentObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -103,12 +103,12 @@ public:
     Q_INVOKABLE const QSet<QObject *> covered() const;
     Q_INVOKABLE QObject *enclosingInteraction() const;
     Q_INVOKABLE QObject *enclosingOperand() const;
-    Q_INVOKABLE const QSet<QObject *> generalOrdering() const;
+    Q_INVOKABLE const QSet<QObject *> generalOrderings() const;
 
     // Owned attributes [CombinedFragment]
-    Q_INVOKABLE const QSet<QObject *> cfragmentGate() const;
+    Q_INVOKABLE const QSet<QObject *> cfragmentGates() const;
     Q_INVOKABLE QtUml::InteractionOperatorKind interactionOperator() const;
-    Q_INVOKABLE const QList<QObject *> operand() const;
+    Q_INVOKABLE const QList<QObject *> operands() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

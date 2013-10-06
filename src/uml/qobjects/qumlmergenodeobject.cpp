@@ -75,18 +75,18 @@ QUmlMergeNodeObject::~QUmlMergeNodeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlMergeNodeObject::ownedComment() const
+const QSet<QObject *> QUmlMergeNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlMergeNodeObject::ownedElement() const
+const QSet<QObject *> QUmlMergeNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -101,10 +101,10 @@ QObject *QUmlMergeNodeObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlMergeNodeObject::clientDependency() const
+const QSet<QObject *> QUmlMergeNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -147,18 +147,18 @@ bool QUmlMergeNodeObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlMergeNodeObject::redefinedElement() const
+const QSet<QObject *> QUmlMergeNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlMergeNodeObject::redefinitionContext() const
+const QSet<QObject *> QUmlMergeNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -173,26 +173,26 @@ QObject *QUmlMergeNodeObject::activity() const
         return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlMergeNodeObject::inGroup() const
+const QSet<QObject *> QUmlMergeNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlMergeNodeObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlMergeNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlMergeNodeObject::inPartition() const
+const QSet<QObject *> QUmlMergeNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -205,26 +205,26 @@ QObject *QUmlMergeNodeObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlMergeNodeObject::incoming() const
+const QSet<QObject *> QUmlMergeNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlMergeNodeObject::outgoing() const
+const QSet<QObject *> QUmlMergeNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlMergeNodeObject::redefinedNode() const
+const QSet<QObject *> QUmlMergeNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlMergeNode *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }

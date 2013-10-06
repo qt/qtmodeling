@@ -61,6 +61,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlInvocationAction
 
@@ -81,9 +82,9 @@ QUmlInvocationAction::~QUmlInvocationAction()
 QModelingObject *QUmlInvocationAction::clone() const
 {
     QUmlInvocationAction *c = new QUmlInvocationAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -92,26 +93,26 @@ QModelingObject *QUmlInvocationAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlInputPin *element, argument())
+    foreach (QUmlInputPin *element, arguments())
         c->addArgument(dynamic_cast<QUmlInputPin *>(element->clone()));
     if (onPort())
         c->setOnPort(dynamic_cast<QUmlPort *>(onPort()->clone()));
@@ -123,19 +124,19 @@ QModelingObject *QUmlInvocationAction::clone() const
 /*!
     Specification of the ordered set of argument values that appears during execution.
  */
-const QList<QUmlInputPin *> QUmlInvocationAction::argument() const
+const QList<QUmlInputPin *> QUmlInvocationAction::arguments() const
 {
     // This is a read-write association end
 
-    return _argument;
+    return _arguments;
 }
 
 void QUmlInvocationAction::addArgument(QUmlInputPin *argument)
 {
     // This is a read-write association end
 
-    if (!_argument.contains(argument)) {
-        _argument.append(argument);
+    if (!_arguments.contains(argument)) {
+        _arguments.append(argument);
         if (argument && argument->asQObject() && this->asQObject())
             QObject::connect(argument->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeArgument(QObject *)));
         argument->asQObject()->setParent(this->asQObject());
@@ -149,8 +150,8 @@ void QUmlInvocationAction::removeArgument(QUmlInputPin *argument)
 {
     // This is a read-write association end
 
-    if (_argument.contains(argument)) {
-        _argument.removeAll(argument);
+    if (_arguments.contains(argument)) {
+        _arguments.removeAll(argument);
         if (argument->asQObject())
             argument->asQObject()->setParent(0);
 
@@ -183,6 +184,8 @@ void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
 void QUmlInvocationAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInvocationAction");
+    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::DocumentationRole] = QStringLiteral("Specification of the ordered set of argument values that appears during execution.");
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -190,6 +193,8 @@ void QUmlInvocationAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInvocationAction");
+    QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
     QModelingObject::propertyDataHash[QStringLiteral("onPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

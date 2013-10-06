@@ -66,19 +66,19 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlGate *> cfragmentGate() const;
+    const QSet<QUmlGate *> cfragmentGates() const;
     void addCfragmentGate(QUmlGate *cfragmentGate);
     void removeCfragmentGate(QUmlGate *cfragmentGate);
     QtUml::InteractionOperatorKind interactionOperator() const;
     void setInteractionOperator(QtUml::InteractionOperatorKind interactionOperator);
-    const QList<QUmlInteractionOperand *> operand() const;
+    const QList<QUmlInteractionOperand *> operands() const;
     void addOperand(QUmlInteractionOperand *operand);
     void removeOperand(QUmlInteractionOperand *operand);
 
 protected:
-    QSet<QUmlGate *> _cfragmentGate;
+    QSet<QUmlGate *> _cfragmentGates;
     QtUml::InteractionOperatorKind _interactionOperator;
-    QList<QUmlInteractionOperand *> _operand;
+    QList<QUmlInteractionOperand *> _operands;
 
     virtual void setPropertyData();
 };

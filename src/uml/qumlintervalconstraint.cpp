@@ -53,6 +53,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlIntervalConstraint
 
@@ -81,19 +82,19 @@ QUmlIntervalConstraint::~QUmlIntervalConstraint()
 QModelingObject *QUmlIntervalConstraint::clone() const
 {
     QUmlIntervalConstraint *c = new QUmlIntervalConstraint;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlElement *element, constrainedElement())
+    foreach (QUmlElement *element, constrainedElements())
         c->addConstrainedElement(dynamic_cast<QUmlElement *>(element->clone()));
     if (context())
         c->setContext(dynamic_cast<QUmlNamespace *>(context()->clone()));
@@ -129,6 +130,8 @@ void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
 void QUmlIntervalConstraint::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlIntervalConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Constraint-specification");

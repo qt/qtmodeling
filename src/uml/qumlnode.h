@@ -62,12 +62,12 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlNode *> nestedNode() const;
+    const QSet<QUmlNode *> nestedNodes() const;
     void addNestedNode(QUmlNode *nestedNode);
     void removeNestedNode(QUmlNode *nestedNode);
 
 protected:
-    QSet<QUmlNode *> _nestedNode;
+    QSet<QUmlNode *> _nestedNodes;
 
     virtual void setPropertyData();
 };

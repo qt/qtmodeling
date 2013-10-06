@@ -76,18 +76,18 @@ QUmlJoinNodeObject::~QUmlJoinNodeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlJoinNodeObject::ownedComment() const
+const QSet<QObject *> QUmlJoinNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlJoinNodeObject::ownedElement() const
+const QSet<QObject *> QUmlJoinNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -102,10 +102,10 @@ QObject *QUmlJoinNodeObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlJoinNodeObject::clientDependency() const
+const QSet<QObject *> QUmlJoinNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -148,18 +148,18 @@ bool QUmlJoinNodeObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlJoinNodeObject::redefinedElement() const
+const QSet<QObject *> QUmlJoinNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlJoinNodeObject::redefinitionContext() const
+const QSet<QObject *> QUmlJoinNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -174,26 +174,26 @@ QObject *QUmlJoinNodeObject::activity() const
         return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlJoinNodeObject::inGroup() const
+const QSet<QObject *> QUmlJoinNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlJoinNodeObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlJoinNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlJoinNodeObject::inPartition() const
+const QSet<QObject *> QUmlJoinNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -206,26 +206,26 @@ QObject *QUmlJoinNodeObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlJoinNodeObject::incoming() const
+const QSet<QObject *> QUmlJoinNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlJoinNodeObject::outgoing() const
+const QSet<QObject *> QUmlJoinNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlJoinNodeObject::redefinedNode() const
+const QSet<QObject *> QUmlJoinNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlJoinNode *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }

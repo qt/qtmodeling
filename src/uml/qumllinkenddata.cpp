@@ -47,6 +47,7 @@
 #include <QtUml/QUmlInputPin>
 #include <QtUml/QUmlProperty>
 #include <QtUml/QUmlQualifierValue>
+
 /*!
     \class QUmlLinkEndData
 
@@ -75,11 +76,11 @@ QUmlLinkEndData::~QUmlLinkEndData()
 QModelingObject *QUmlLinkEndData::clone() const
 {
     QUmlLinkEndData *c = new QUmlLinkEndData;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (end())
         c->setEnd(dynamic_cast<QUmlProperty *>(end()->clone()));
-    foreach (QUmlQualifierValue *element, qualifier())
+    foreach (QUmlQualifierValue *element, qualifiers())
         c->addQualifier(dynamic_cast<QUmlQualifierValue *>(element->clone()));
     if (value())
         c->setValue(dynamic_cast<QUmlInputPin *>(value()->clone()));
@@ -112,19 +113,19 @@ void QUmlLinkEndData::setEnd(QUmlProperty *end)
 /*!
     List of qualifier values
  */
-const QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifier() const
+const QSet<QUmlQualifierValue *> QUmlLinkEndData::qualifiers() const
 {
     // This is a read-write association end
 
-    return _qualifier;
+    return _qualifiers;
 }
 
 void QUmlLinkEndData::addQualifier(QUmlQualifierValue *qualifier)
 {
     // This is a read-write association end
 
-    if (!_qualifier.contains(qualifier)) {
-        _qualifier.insert(qualifier);
+    if (!_qualifiers.contains(qualifier)) {
+        _qualifiers.insert(qualifier);
         if (qualifier && qualifier->asQObject() && this->asQObject())
             QObject::connect(qualifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeQualifier(QObject *)));
         qualifier->asQObject()->setParent(this->asQObject());
@@ -138,8 +139,8 @@ void QUmlLinkEndData::removeQualifier(QUmlQualifierValue *qualifier)
 {
     // This is a read-write association end
 
-    if (_qualifier.contains(qualifier)) {
-        _qualifier.remove(qualifier);
+    if (_qualifiers.contains(qualifier)) {
+        _qualifiers.remove(qualifier);
         if (qualifier->asQObject())
             qualifier->asQObject()->setParent(0);
 
@@ -172,6 +173,8 @@ void QUmlLinkEndData::setValue(QUmlInputPin *value)
 void QUmlLinkEndData::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndData");
+    QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::DocumentationRole] = QStringLiteral("Association end for which this link-end data specifies values.");
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -179,6 +182,8 @@ void QUmlLinkEndData::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("end")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndData");
+    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("List of qualifier values");
     QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -186,6 +191,8 @@ void QUmlLinkEndData::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndData");
+    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Input pin that provides the specified object for the given end. This pin is omitted if the link-end data specifies an 'open' end for reading.");
     QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

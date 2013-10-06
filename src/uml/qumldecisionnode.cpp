@@ -60,6 +60,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlDecisionNode
 
@@ -88,9 +89,9 @@ QUmlDecisionNode::~QUmlDecisionNode()
 QModelingObject *QUmlDecisionNode::clone() const
 {
     QUmlDecisionNode *c = new QUmlDecisionNode;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -99,17 +100,17 @@ QModelingObject *QUmlDecisionNode::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
     if (decisionInput())
         c->setDecisionInput(dynamic_cast<QUmlBehavior *>(decisionInput()->clone()));
@@ -165,6 +166,8 @@ void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
 void QUmlDecisionNode::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDecisionNode");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::DocumentationRole] = QStringLiteral("Provides input to guard specifications on edges outgoing from the decision node.");
     QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -172,6 +175,8 @@ void QUmlDecisionNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDecisionNode");
+    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::DocumentationRole] = QStringLiteral("An additional edge incoming to the decision node that provides a decision input value.");
     QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -52,6 +52,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlChangeEvent
 
@@ -79,13 +80,13 @@ QUmlChangeEvent::~QUmlChangeEvent()
 QModelingObject *QUmlChangeEvent::clone() const
 {
     QUmlChangeEvent *c = new QUmlChangeEvent;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -131,6 +132,8 @@ void QUmlChangeEvent::setChangeExpression(QUmlValueSpecification *changeExpressi
 void QUmlChangeEvent::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlChangeEvent");
+    QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::DocumentationRole] = QStringLiteral("A Boolean-valued expression that will result in a change event whenever its value changes from false to true.");
     QModelingObject::propertyDataHash[QStringLiteral("changeExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

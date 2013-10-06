@@ -68,7 +68,7 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlValueSpecification *> argument() const;
+    const QList<QUmlValueSpecification *> arguments() const;
     void addArgument(QUmlValueSpecification *argument);
     void removeArgument(QUmlValueSpecification *argument);
     QUmlConnector *connector() const;
@@ -87,7 +87,7 @@ public:
     void setSignature(QUmlNamedElement *signature);
 
 protected:
-    QList<QUmlValueSpecification *> _argument;
+    QList<QUmlValueSpecification *> _arguments;
     QUmlConnector *_connector;
     QUmlInteraction *_interaction;
     QtUml::MessageSort _messageSort;

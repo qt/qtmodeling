@@ -81,18 +81,18 @@ QUmlReadLinkActionObject::~QUmlReadLinkActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlReadLinkActionObject::ownedComment() const
+const QSet<QObject *> QUmlReadLinkActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::ownedElement() const
+const QSet<QObject *> QUmlReadLinkActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -107,10 +107,10 @@ QObject *QUmlReadLinkActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlReadLinkActionObject::clientDependency() const
+const QSet<QObject *> QUmlReadLinkActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -153,18 +153,18 @@ bool QUmlReadLinkActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::redefinedElement() const
+const QSet<QObject *> QUmlReadLinkActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlReadLinkActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -179,26 +179,26 @@ QObject *QUmlReadLinkActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::inGroup() const
+const QSet<QObject *> QUmlReadLinkActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlReadLinkActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::inPartition() const
+const QSet<QObject *> QUmlReadLinkActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -211,36 +211,36 @@ QObject *QUmlReadLinkActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::incoming() const
+const QSet<QObject *> QUmlReadLinkActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::outgoing() const
+const QSet<QObject *> QUmlReadLinkActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::redefinedNode() const
+const QSet<QObject *> QUmlReadLinkActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlReadLinkActionObject::handler() const
+const QSet<QObject *> QUmlReadLinkActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -255,10 +255,10 @@ QObject *QUmlReadLinkActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlReadLinkActionObject::input() const
+const QList<QObject *> QUmlReadLinkActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -268,26 +268,26 @@ bool QUmlReadLinkActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::localPostcondition() const
+const QSet<QObject *> QUmlReadLinkActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::localPrecondition() const
+const QSet<QObject *> QUmlReadLinkActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlReadLinkActionObject::output() const
+const QList<QObject *> QUmlReadLinkActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
@@ -302,10 +302,10 @@ const QSet<QObject *> QUmlReadLinkActionObject::endData() const
     return set;
 }
 
-const QSet<QObject *> QUmlReadLinkActionObject::inputValue() const
+const QSet<QObject *> QUmlReadLinkActionObject::inputValues() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inputValue())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadLinkAction *>(this)->inputValues())
         set.insert(element->asQObject());
     return set;
 }

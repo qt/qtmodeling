@@ -79,18 +79,18 @@ QUmlReadIsClassifiedObjectActionObject::~QUmlReadIsClassifiedObjectActionObject(
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::ownedComment() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::ownedElement() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlReadIsClassifiedObjectActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::clientDependency() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlReadIsClassifiedObjectActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::redefinedElement() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlReadIsClassifiedObjectActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::inGroup() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::inPartition() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,36 +209,36 @@ QObject *QUmlReadIsClassifiedObjectActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::incoming() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::outgoing() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::redefinedNode() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::handler() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -253,10 +253,10 @@ QObject *QUmlReadIsClassifiedObjectActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlReadIsClassifiedObjectActionObject::input() const
+const QList<QObject *> QUmlReadIsClassifiedObjectActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -266,26 +266,26 @@ bool QUmlReadIsClassifiedObjectActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::localPostcondition() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::localPrecondition() const
+const QSet<QObject *> QUmlReadIsClassifiedObjectActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlReadIsClassifiedObjectActionObject::output() const
+const QList<QObject *> QUmlReadIsClassifiedObjectActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlReadIsClassifiedObjectAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

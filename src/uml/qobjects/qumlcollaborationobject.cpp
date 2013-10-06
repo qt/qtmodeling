@@ -90,18 +90,18 @@ QUmlCollaborationObject::~QUmlCollaborationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlCollaborationObject::ownedComment() const
+const QSet<QObject *> QUmlCollaborationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::ownedElement() const
+const QSet<QObject *> QUmlCollaborationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -116,10 +116,10 @@ QObject *QUmlCollaborationObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlCollaborationObject::clientDependency() const
+const QSet<QObject *> QUmlCollaborationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -149,52 +149,53 @@ QString QUmlCollaborationObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlCollaborationObject::elementImport() const
+const QSet<QObject *> QUmlCollaborationObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::importedMember() const
+const QSet<QObject *> QUmlCollaborationObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::member() const
+const QSet<QObject *> QUmlCollaborationObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::ownedMember() const
+const QSet<QObject *> QUmlCollaborationObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::ownedRule() const
+const QSet<QObject *> QUmlCollaborationObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::packageImport() const
+const QSet<QObject *> QUmlCollaborationObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -208,6 +209,7 @@ QObject *QUmlCollaborationObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlCollaborationObject::visibility() const
@@ -232,78 +234,78 @@ bool QUmlCollaborationObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlCollaborationObject::redefinedElement() const
+const QSet<QObject *> QUmlCollaborationObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::redefinitionContext() const
+const QSet<QObject *> QUmlCollaborationObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [TemplateableElement]
 
-const QSet<QObject *> QUmlCollaborationObject::templateBinding() const
+const QSet<QObject *> QUmlCollaborationObject::templateBindings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->templateBinding())
+    foreach (QUmlTemplateBinding *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->templateBindings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Classifier]
 
-const QSet<QObject *> QUmlCollaborationObject::attribute() const
+const QSet<QObject *> QUmlCollaborationObject::attributes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->attribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->attributes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::collaborationUse() const
+const QSet<QObject *> QUmlCollaborationObject::collaborationUses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->collaborationUse())
+    foreach (QUmlCollaborationUse *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->collaborationUses())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::feature() const
+const QSet<QObject *> QUmlCollaborationObject::features() const
 {
     QSet<QObject *> set;
-    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->feature())
+    foreach (QUmlFeature *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->features())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::general() const
+const QSet<QObject *> QUmlCollaborationObject::generals() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->general())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->generals())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::generalization() const
+const QSet<QObject *> QUmlCollaborationObject::generalizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->generalization())
+    foreach (QUmlGeneralization *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->generalizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::inheritedMember() const
+const QSet<QObject *> QUmlCollaborationObject::inheritedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->inheritedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->inheritedMembers())
         set.insert(element->asQObject());
     return set;
 }
@@ -326,26 +328,26 @@ QObject *QUmlCollaborationObject::ownedTemplateSignature() const
         return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedTemplateSignature()->asQObject();
 }
 
-const QSet<QObject *> QUmlCollaborationObject::ownedUseCase() const
+const QSet<QObject *> QUmlCollaborationObject::ownedUseCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedUseCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedUseCases())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::powertypeExtent() const
+const QSet<QObject *> QUmlCollaborationObject::powertypeExtents() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->powertypeExtents())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::redefinedClassifier() const
+const QSet<QObject *> QUmlCollaborationObject::redefinedClassifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->redefinedClassifier())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->redefinedClassifiers())
         set.insert(element->asQObject());
     return set;
 }
@@ -358,10 +360,10 @@ QObject *QUmlCollaborationObject::representation() const
         return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->representation()->asQObject();
 }
 
-const QSet<QObject *> QUmlCollaborationObject::substitution() const
+const QSet<QObject *> QUmlCollaborationObject::substitutions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->substitution())
+    foreach (QUmlSubstitution *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->substitutions())
         set.insert(element->asQObject());
     return set;
 }
@@ -374,44 +376,44 @@ QObject *QUmlCollaborationObject::templateParameter() const
         return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->templateParameter()->asQObject();
 }
 
-const QSet<QObject *> QUmlCollaborationObject::useCase() const
+const QSet<QObject *> QUmlCollaborationObject::useCases() const
 {
     QSet<QObject *> set;
-    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->useCase())
+    foreach (QUmlUseCase *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->useCases())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [StructuredClassifier]
 
-const QList<QObject *> QUmlCollaborationObject::ownedAttribute() const
+const QList<QObject *> QUmlCollaborationObject::ownedAttributes() const
 {
     QList<QObject *> list;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedAttribute())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedAttributes())
         list.append(element->asQObject());
     return list;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::ownedConnector() const
+const QSet<QObject *> QUmlCollaborationObject::ownedConnectors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedConnector())
+    foreach (QUmlConnector *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedConnectors())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::part() const
+const QSet<QObject *> QUmlCollaborationObject::parts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->part())
+    foreach (QUmlProperty *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->parts())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::role() const
+const QSet<QObject *> QUmlCollaborationObject::roles() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->role())
+    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->roles())
         set.insert(element->asQObject());
     return set;
 }
@@ -426,28 +428,28 @@ QObject *QUmlCollaborationObject::classifierBehavior() const
         return qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->classifierBehavior()->asQObject();
 }
 
-const QSet<QObject *> QUmlCollaborationObject::interfaceRealization() const
+const QSet<QObject *> QUmlCollaborationObject::interfaceRealizations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->interfaceRealizations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCollaborationObject::ownedBehavior() const
+const QSet<QObject *> QUmlCollaborationObject::ownedBehaviors() const
 {
     QSet<QObject *> set;
-    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedBehavior())
+    foreach (QUmlBehavior *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->ownedBehaviors())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Collaboration]
 
-const QSet<QObject *> QUmlCollaborationObject::collaborationRole() const
+const QSet<QObject *> QUmlCollaborationObject::collaborationRoles() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->collaborationRole())
+    foreach (QUmlConnectableElement *element, qmodelingobjectproperty_cast<QUmlCollaboration *>(this)->collaborationRoles())
         set.insert(element->asQObject());
     return set;
 }

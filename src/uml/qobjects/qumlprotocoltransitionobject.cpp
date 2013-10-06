@@ -79,18 +79,18 @@ QUmlProtocolTransitionObject::~QUmlProtocolTransitionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlProtocolTransitionObject::ownedComment() const
+const QSet<QObject *> QUmlProtocolTransitionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProtocolTransitionObject::ownedElement() const
+const QSet<QObject *> QUmlProtocolTransitionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlProtocolTransitionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlProtocolTransitionObject::clientDependency() const
+const QSet<QObject *> QUmlProtocolTransitionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,59 +151,60 @@ bool QUmlProtocolTransitionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlProtocolTransitionObject::redefinedElement() const
+const QSet<QObject *> QUmlProtocolTransitionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
+
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlProtocolTransitionObject::elementImport() const
+const QSet<QObject *> QUmlProtocolTransitionObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProtocolTransitionObject::importedMember() const
+const QSet<QObject *> QUmlProtocolTransitionObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProtocolTransitionObject::member() const
+const QSet<QObject *> QUmlProtocolTransitionObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProtocolTransitionObject::ownedMember() const
+const QSet<QObject *> QUmlProtocolTransitionObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProtocolTransitionObject::ownedRule() const
+const QSet<QObject *> QUmlProtocolTransitionObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlProtocolTransitionObject::packageImport() const
+const QSet<QObject *> QUmlProtocolTransitionObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
@@ -271,10 +272,10 @@ QObject *QUmlProtocolTransitionObject::target() const
         return qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->target()->asQObject();
 }
 
-const QSet<QObject *> QUmlProtocolTransitionObject::trigger() const
+const QSet<QObject *> QUmlProtocolTransitionObject::triggers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlTrigger *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->trigger())
+    foreach (QUmlTrigger *element, qmodelingobjectproperty_cast<QUmlProtocolTransition *>(this)->triggers())
         set.insert(element->asQObject());
     return set;
 }

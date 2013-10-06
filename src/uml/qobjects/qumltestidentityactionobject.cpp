@@ -79,18 +79,18 @@ QUmlTestIdentityActionObject::~QUmlTestIdentityActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlTestIdentityActionObject::ownedComment() const
+const QSet<QObject *> QUmlTestIdentityActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::ownedElement() const
+const QSet<QObject *> QUmlTestIdentityActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlTestIdentityActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlTestIdentityActionObject::clientDependency() const
+const QSet<QObject *> QUmlTestIdentityActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlTestIdentityActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::redefinedElement() const
+const QSet<QObject *> QUmlTestIdentityActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlTestIdentityActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlTestIdentityActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::inGroup() const
+const QSet<QObject *> QUmlTestIdentityActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlTestIdentityActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::inPartition() const
+const QSet<QObject *> QUmlTestIdentityActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,36 +209,36 @@ QObject *QUmlTestIdentityActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::incoming() const
+const QSet<QObject *> QUmlTestIdentityActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::outgoing() const
+const QSet<QObject *> QUmlTestIdentityActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::redefinedNode() const
+const QSet<QObject *> QUmlTestIdentityActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlTestIdentityActionObject::handler() const
+const QSet<QObject *> QUmlTestIdentityActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -253,10 +253,10 @@ QObject *QUmlTestIdentityActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlTestIdentityActionObject::input() const
+const QList<QObject *> QUmlTestIdentityActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -266,26 +266,26 @@ bool QUmlTestIdentityActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::localPostcondition() const
+const QSet<QObject *> QUmlTestIdentityActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTestIdentityActionObject::localPrecondition() const
+const QSet<QObject *> QUmlTestIdentityActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlTestIdentityActionObject::output() const
+const QList<QObject *> QUmlTestIdentityActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlTestIdentityAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

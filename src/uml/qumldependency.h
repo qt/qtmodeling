@@ -64,16 +64,16 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlNamedElement *> client() const;
+    const QSet<QUmlNamedElement *> clients() const;
     void addClient(QUmlNamedElement *client);
     void removeClient(QUmlNamedElement *client);
-    const QSet<QUmlNamedElement *> supplier() const;
+    const QSet<QUmlNamedElement *> suppliers() const;
     void addSupplier(QUmlNamedElement *supplier);
     void removeSupplier(QUmlNamedElement *supplier);
 
 protected:
-    QSet<QUmlNamedElement *> _client;
-    QSet<QUmlNamedElement *> _supplier;
+    QSet<QUmlNamedElement *> _clients;
+    QSet<QUmlNamedElement *> _suppliers;
 
     virtual void setPropertyData();
 };

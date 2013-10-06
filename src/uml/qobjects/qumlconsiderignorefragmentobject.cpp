@@ -71,18 +71,18 @@ QUmlConsiderIgnoreFragmentObject::~QUmlConsiderIgnoreFragmentObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::ownedComment() const
+const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::ownedElement() const
+const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlConsiderIgnoreFragmentObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::clientDependency() const
+const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -162,20 +162,20 @@ QObject *QUmlConsiderIgnoreFragmentObject::enclosingOperand() const
         return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->enclosingOperand()->asQObject();
 }
 
-const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::generalOrdering() const
+const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->generalOrdering())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->generalOrderings())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [CombinedFragment]
 
-const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::cfragmentGate() const
+const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::cfragmentGates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->cfragmentGate())
+    foreach (QUmlGate *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->cfragmentGates())
         set.insert(element->asQObject());
     return set;
 }
@@ -185,20 +185,20 @@ QtUml::InteractionOperatorKind QUmlConsiderIgnoreFragmentObject::interactionOper
     return qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->interactionOperator();
 }
 
-const QList<QObject *> QUmlConsiderIgnoreFragmentObject::operand() const
+const QList<QObject *> QUmlConsiderIgnoreFragmentObject::operands() const
 {
     QList<QObject *> list;
-    foreach (QUmlInteractionOperand *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->operand())
+    foreach (QUmlInteractionOperand *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->operands())
         list.append(element->asQObject());
     return list;
 }
 
 // OWNED ATTRIBUTES [ConsiderIgnoreFragment]
 
-const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::message() const
+const QSet<QObject *> QUmlConsiderIgnoreFragmentObject::messages() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->message())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlConsiderIgnoreFragment *>(this)->messages())
         set.insert(element->asQObject());
     return set;
 }

@@ -43,6 +43,7 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlMultiplicityElement
 
@@ -66,7 +67,7 @@ QUmlMultiplicityElement::~QUmlMultiplicityElement()
 QModelingObject *QUmlMultiplicityElement::clone() const
 {
     QUmlMultiplicityElement *c = new QUmlMultiplicityElement;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     c->setOrdered(isOrdered());
     c->setUnique(isUnique());
@@ -135,7 +136,7 @@ void QUmlMultiplicityElement::setLower(int lower)
 {
     // This is a read-write derived property
 
-    qWarning("UmlMultiplicityElement::lower(): to be implemented (this is a derived property)");
+    qWarning("UmlMultiplicityElement::setLower(): to be implemented (this is a derived property)");
     Q_UNUSED(lower);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -189,7 +190,7 @@ void QUmlMultiplicityElement::setUpper(int upper)
 {
     // This is a read-write derived property
 
-    qWarning("UmlMultiplicityElement::upper(): to be implemented (this is a derived property)");
+    qWarning("UmlMultiplicityElement::setUpper(): to be implemented (this is a derived property)");
     Q_UNUSED(upper);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -307,6 +308,8 @@ int QUmlMultiplicityElement::lowerBound() const
 void QUmlMultiplicityElement::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::DocumentationRole] = QStringLiteral("For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.");
     QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -314,6 +317,8 @@ void QUmlMultiplicityElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::DocumentationRole] = QStringLiteral("For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.");
     QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -321,6 +326,8 @@ void QUmlMultiplicityElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the lower bound of the multiplicity interval.");
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -328,6 +335,8 @@ void QUmlMultiplicityElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::DocumentationRole] = QStringLiteral("The specification of the lower bound for this multiplicity.");
     QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -335,6 +344,8 @@ void QUmlMultiplicityElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the upper bound of the multiplicity interval.");
     QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -342,6 +353,8 @@ void QUmlMultiplicityElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::DocumentationRole] = QStringLiteral("The specification of the upper bound for this multiplicity.");
     QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

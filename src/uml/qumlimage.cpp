@@ -44,6 +44,7 @@
 
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlElement>
+
 /*!
     \class QUmlImage
 
@@ -70,7 +71,7 @@ QUmlImage::~QUmlImage()
 QModelingObject *QUmlImage::clone() const
 {
     QUmlImage *c = new QUmlImage;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     c->setContent(content());
     c->setFormat(format());
@@ -140,6 +141,8 @@ void QUmlImage::setLocation(QString location)
 void QUmlImage::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("content")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("content")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlImage");
+    QModelingObject::propertyDataHash[QStringLiteral("content")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("content")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("content")][QtModeling::DocumentationRole] = QStringLiteral("This contains the serialization of the image according to the format. The value could represent a bitmap, image such as a GIF file, or drawing 'instructions' using a standard such as Scalable Vector Graphic (SVG) (which is XML based).");
     QModelingObject::propertyDataHash[QStringLiteral("content")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -147,6 +150,8 @@ void QUmlImage::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("content")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("format")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("format")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlImage");
+    QModelingObject::propertyDataHash[QStringLiteral("format")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("format")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("format")][QtModeling::DocumentationRole] = QStringLiteral("This indicates the format of the content - which is how the string content should be interpreted. The following values are reserved: SVG, GIF, PNG, JPG, WMF, EMF, BMP. In addition the prefix 'MIME: ' is also reserved. This option can be used as an alternative to express the reserved values above, for example 'SVG' could instead be expressed as 'MIME: image/svg+xml'.");
     QModelingObject::propertyDataHash[QStringLiteral("format")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -154,6 +159,8 @@ void QUmlImage::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("format")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlImage");
+    QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::DocumentationRole] = QStringLiteral("This contains a location that can be used by a tool to locate the image as an alternative to embedding it in the stereotype.");
     QModelingObject::propertyDataHash[QStringLiteral("location")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

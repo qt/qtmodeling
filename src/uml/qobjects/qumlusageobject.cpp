@@ -68,18 +68,18 @@ QUmlUsageObject::~QUmlUsageObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlUsageObject::ownedComment() const
+const QSet<QObject *> QUmlUsageObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUsageObject::ownedElement() const
+const QSet<QObject *> QUmlUsageObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -112,10 +112,10 @@ QObject *QUmlUsageObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlUsageObject::clientDependency() const
+const QSet<QObject *> QUmlUsageObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -145,6 +145,7 @@ QString QUmlUsageObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlUsage *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlUsageObject::visibility() const
@@ -154,46 +155,46 @@ QtUml::VisibilityKind QUmlUsageObject::visibility() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlUsageObject::relatedElement() const
+const QSet<QObject *> QUmlUsageObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlUsageObject::source() const
+const QSet<QObject *> QUmlUsageObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUsageObject::target() const
+const QSet<QObject *> QUmlUsageObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Dependency]
 
-const QSet<QObject *> QUmlUsageObject::client() const
+const QSet<QObject *> QUmlUsageObject::clients() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->client())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->clients())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlUsageObject::supplier() const
+const QSet<QObject *> QUmlUsageObject::suppliers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->supplier())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlUsage *>(this)->suppliers())
         set.insert(element->asQObject());
     return set;
 }

@@ -61,14 +61,14 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlElement *> annotatedElement() const;
+    const QSet<QUmlElement *> annotatedElements() const;
     void addAnnotatedElement(QUmlElement *annotatedElement);
     void removeAnnotatedElement(QUmlElement *annotatedElement);
     QString body() const;
     void setBody(QString body);
 
 protected:
-    QSet<QUmlElement *> _annotatedElement;
+    QSet<QUmlElement *> _annotatedElements;
     QString _body;
 
     virtual void setPropertyData();

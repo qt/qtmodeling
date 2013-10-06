@@ -57,6 +57,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlEnumerationLiteral
 
@@ -85,9 +86,9 @@ QUmlEnumerationLiteral::~QUmlEnumerationLiteral()
 QModelingObject *QUmlEnumerationLiteral::clone() const
 {
     QUmlEnumerationLiteral *c = new QUmlEnumerationLiteral;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -97,9 +98,9 @@ QModelingObject *QUmlEnumerationLiteral::clone() const
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlDeployment *element, deployment())
+    foreach (QUmlDeployment *element, deployments())
         c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
-    foreach (QUmlSlot *element, slot_())
+    foreach (QUmlSlot *element, slots_())
         c->addSlot(dynamic_cast<QUmlSlot *>(element->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QUmlValueSpecification *>(specification()->clone()));
@@ -126,7 +127,7 @@ void QUmlEnumerationLiteral::setClassifier(QUmlEnumeration *classifier)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlEnumerationLiteral::classifier(): to be implemented (this is a derived association end)");
+    qWarning("UmlEnumerationLiteral::setClassifier(): to be implemented (this is a derived association end)");
     Q_UNUSED(classifier);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -163,6 +164,8 @@ void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
 void QUmlEnumerationLiteral::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEnumerationLiteral");
+    QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifier of this EnumerationLiteral derived to be equal to its enumeration.");
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InstanceSpecification-classifier");
@@ -170,6 +173,8 @@ void QUmlEnumerationLiteral::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEnumerationLiteral");
+    QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::DocumentationRole] = QStringLiteral("The Enumeration that this EnumerationLiteral is a member of.");
     QModelingObject::propertyDataHash[QStringLiteral("enumeration")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

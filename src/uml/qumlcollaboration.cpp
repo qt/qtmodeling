@@ -73,6 +73,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlCollaboration
 
@@ -99,18 +100,18 @@ QUmlCollaboration::~QUmlCollaboration()
 QModelingObject *QUmlCollaboration::clone() const
 {
     QUmlCollaboration *c = new QUmlCollaboration;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -118,41 +119,41 @@ QModelingObject *QUmlCollaboration::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlConnector *element, ownedConnector())
+    foreach (QUmlConnector *element, ownedConnectors())
         c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
     if (classifierBehavior())
         c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
-    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, interfaceRealizations())
         c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
-    foreach (QUmlBehavior *element, ownedBehavior())
+    foreach (QUmlBehavior *element, ownedBehaviors())
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
-    foreach (QUmlConnectableElement *element, collaborationRole())
+    foreach (QUmlConnectableElement *element, collaborationRoles())
         c->addCollaborationRole(dynamic_cast<QUmlConnectableElement *>(element->clone()));
     return c;
 }
@@ -162,19 +163,19 @@ QModelingObject *QUmlCollaboration::clone() const
 /*!
     References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.
  */
-const QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRole() const
+const QSet<QUmlConnectableElement *> QUmlCollaboration::collaborationRoles() const
 {
     // This is a read-write association end
 
-    return _collaborationRole;
+    return _collaborationRoles;
 }
 
 void QUmlCollaboration::addCollaborationRole(QUmlConnectableElement *collaborationRole)
 {
     // This is a read-write association end
 
-    if (!_collaborationRole.contains(collaborationRole)) {
-        _collaborationRole.insert(collaborationRole);
+    if (!_collaborationRoles.contains(collaborationRole)) {
+        _collaborationRoles.insert(collaborationRole);
         if (collaborationRole && collaborationRole->asQObject() && this->asQObject())
             QObject::connect(collaborationRole->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeCollaborationRole(QObject *)));
 
@@ -187,8 +188,8 @@ void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collabor
 {
     // This is a read-write association end
 
-    if (_collaborationRole.contains(collaborationRole)) {
-        _collaborationRole.remove(collaborationRole);
+    if (_collaborationRoles.contains(collaborationRole)) {
+        _collaborationRoles.remove(collaborationRole);
 
         // Adjust subsetted properties
         removeRole(collaborationRole);
@@ -198,6 +199,8 @@ void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collabor
 void QUmlCollaboration::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCollaboration");
+    QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::DocumentationRole] = QStringLiteral("References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.");
     QModelingObject::propertyDataHash[QStringLiteral("collaborationRole")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

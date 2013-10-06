@@ -66,6 +66,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlPort
 
@@ -97,9 +98,9 @@ QUmlPort::~QUmlPort()
 QModelingObject *QUmlPort::clone() const
 {
     QUmlPort *c = new QUmlPort;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -119,7 +120,7 @@ QModelingObject *QUmlPort::clone() const
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlConnectableElementTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDeployment *element, deployment())
+    foreach (QUmlDeployment *element, deployments())
         c->addDeployment(dynamic_cast<QUmlDeployment *>(element->clone()));
     c->setAggregation(aggregation());
     if (association())
@@ -140,18 +141,18 @@ QModelingObject *QUmlPort::clone() const
     c->setReadOnly(isReadOnly());
     if (owningAssociation())
         c->setOwningAssociation(dynamic_cast<QUmlAssociation *>(owningAssociation()->clone()));
-    foreach (QUmlProperty *element, qualifier())
+    foreach (QUmlProperty *element, qualifiers())
         c->addQualifier(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlProperty *element, redefinedProperty())
+    foreach (QUmlProperty *element, redefinedProperties())
         c->addRedefinedProperty(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlProperty *element, subsettedProperty())
+    foreach (QUmlProperty *element, subsettedProperties())
         c->addSubsettedProperty(dynamic_cast<QUmlProperty *>(element->clone()));
     c->setBehavior(isBehavior());
     c->setConjugated(isConjugated());
     c->setService(isService());
     if (protocol())
         c->setProtocol(dynamic_cast<QUmlProtocolStateMachine *>(protocol()->clone()));
-    foreach (QUmlPort *element, redefinedPort())
+    foreach (QUmlPort *element, redefinedPorts())
         c->addRedefinedPort(dynamic_cast<QUmlPort *>(element->clone()));
     return c;
 }
@@ -255,7 +256,7 @@ void QUmlPort::addProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::provided(): to be implemented (this is a derived association end)");
+    qWarning("UmlPort::addProvided(): to be implemented (this is a derived association end)");
     Q_UNUSED(provided);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -267,7 +268,7 @@ void QUmlPort::removeProvided(QUmlInterface *provided)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::provided(): to be implemented (this is a derived association end)");
+    qWarning("UmlPort::removeProvided(): to be implemented (this is a derived association end)");
     Q_UNUSED(provided);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -278,19 +279,19 @@ void QUmlPort::removeProvided(QUmlInterface *provided)
 /*!
     A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.
  */
-const QSet<QUmlPort *> QUmlPort::redefinedPort() const
+const QSet<QUmlPort *> QUmlPort::redefinedPorts() const
 {
     // This is a read-write association end
 
-    return _redefinedPort;
+    return _redefinedPorts;
 }
 
 void QUmlPort::addRedefinedPort(QUmlPort *redefinedPort)
 {
     // This is a read-write association end
 
-    if (!_redefinedPort.contains(redefinedPort)) {
-        _redefinedPort.insert(redefinedPort);
+    if (!_redefinedPorts.contains(redefinedPort)) {
+        _redefinedPorts.insert(redefinedPort);
         if (redefinedPort && redefinedPort->asQObject() && this->asQObject())
             QObject::connect(redefinedPort->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedPort(QObject *)));
 
@@ -303,8 +304,8 @@ void QUmlPort::removeRedefinedPort(QUmlPort *redefinedPort)
 {
     // This is a read-write association end
 
-    if (_redefinedPort.contains(redefinedPort)) {
-        _redefinedPort.remove(redefinedPort);
+    if (_redefinedPorts.contains(redefinedPort)) {
+        _redefinedPorts.remove(redefinedPort);
 
         // Adjust subsetted properties
         removeRedefinedProperty(redefinedPort);
@@ -327,7 +328,7 @@ void QUmlPort::addRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::required(): to be implemented (this is a derived association end)");
+    qWarning("UmlPort::addRequired(): to be implemented (this is a derived association end)");
     Q_UNUSED(required);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -339,7 +340,7 @@ void QUmlPort::removeRequired(QUmlInterface *required)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlPort::required(): to be implemented (this is a derived association end)");
+    qWarning("UmlPort::removeRequired(): to be implemented (this is a derived association end)");
     Q_UNUSED(required);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -350,6 +351,8 @@ void QUmlPort::removeRequired(QUmlInterface *required)
 void QUmlPort::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("isBehavior")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isBehavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPort");
+    QModelingObject::propertyDataHash[QStringLiteral("isBehavior")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isBehavior")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isBehavior")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether requests arriving at this port are sent to the classifier behavior of this classifier. Such ports are referred to as behavior port. Any invocation of a behavioral feature targeted at a behavior port will be handled by the instance of the owning classifier itself, rather than by any instances that this classifier may contain.");
     QModelingObject::propertyDataHash[QStringLiteral("isBehavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -357,6 +360,8 @@ void QUmlPort::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isBehavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isConjugated")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isConjugated")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPort");
+    QModelingObject::propertyDataHash[QStringLiteral("isConjugated")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isConjugated")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isConjugated")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the way that the provided and required interfaces are derived from the Port’s Type. The default value is false.");
     QModelingObject::propertyDataHash[QStringLiteral("isConjugated")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -364,6 +369,8 @@ void QUmlPort::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isConjugated")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isService")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isService")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPort");
+    QModelingObject::propertyDataHash[QStringLiteral("isService")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isService")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isService")][QtModeling::DocumentationRole] = QStringLiteral("If true indicates that this port is used to provide the published functionality of a classifier; if false, this port is used to implement the classifier but is not part of the essential externally-visible functionality of the classifier and can, therefore, be altered or deleted along with the internal implementation of the classifier and other properties that are considered part of its implementation.");
     QModelingObject::propertyDataHash[QStringLiteral("isService")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -371,6 +378,8 @@ void QUmlPort::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isService")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPort");
+    QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::DocumentationRole] = QStringLiteral("References an optional protocol state machine which describes valid interactions at this interaction point.");
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -378,6 +387,8 @@ void QUmlPort::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("protocol")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("provided")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("provided")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPort");
+    QModelingObject::propertyDataHash[QStringLiteral("provided")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("provided")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("provided")][QtModeling::DocumentationRole] = QStringLiteral("References the interfaces specifying the set of operations and receptions that the classifier offers to its environment via this port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface. If isConjugated is true, it is derived as the union of the sets of interfaces used by the type of the port and its supertypes.");
     QModelingObject::propertyDataHash[QStringLiteral("provided")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -385,6 +396,8 @@ void QUmlPort::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("provided")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("redefinedPort")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedPort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPort");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedPort")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedPort")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedPort")][QtModeling::DocumentationRole] = QStringLiteral("A port may be redefined when its containing classifier is specialized. The redefining port may have additional interfaces to those that are associated with the redefined port or it may replace an interface by one of its subtypes.");
     QModelingObject::propertyDataHash[QStringLiteral("redefinedPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -392,6 +405,8 @@ void QUmlPort::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("redefinedPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("required")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("required")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPort");
+    QModelingObject::propertyDataHash[QStringLiteral("required")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("required")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("required")][QtModeling::DocumentationRole] = QStringLiteral("References the interfaces specifying the set of operations and receptions that the classifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of interfaces used by the type of the port and its supertypes. If isConjugated is true, it is derived as the union of the sets of interfaces realized by the type of the port and its supertypes, or directly from the type of the port if the port is typed by an interface.");
     QModelingObject::propertyDataHash[QStringLiteral("required")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

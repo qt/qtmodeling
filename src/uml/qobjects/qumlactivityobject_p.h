@@ -59,24 +59,24 @@ class Q_UML_EXPORT QUmlActivityObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ member)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImport)
+    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> member READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [ParameterableElement]
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
@@ -89,94 +89,94 @@ class Q_UML_EXPORT QUmlActivityObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [TemplateableElement]
-    Q_PROPERTY(QSet<QObject *> templateBinding READ templateBinding)
+    Q_PROPERTY(QSet<QObject *> templateBinding READ templateBindings)
 
     // Properties [Classifier]
-    Q_PROPERTY(QSet<QObject *> attribute READ attribute)
-    Q_PROPERTY(QSet<QObject *> collaborationUse READ collaborationUse)
-    Q_PROPERTY(QSet<QObject *> feature READ feature)
-    Q_PROPERTY(QSet<QObject *> generalization READ generalization)
-    Q_PROPERTY(QSet<QObject *> inheritedMember READ inheritedMember STORED false)
+    Q_PROPERTY(QSet<QObject *> attribute READ attributes)
+    Q_PROPERTY(QSet<QObject *> collaborationUse READ collaborationUses)
+    Q_PROPERTY(QSet<QObject *> feature READ features)
+    Q_PROPERTY(QSet<QObject *> generalization READ generalizations)
+    Q_PROPERTY(QSet<QObject *> inheritedMember READ inheritedMembers STORED false)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization RESET unsetFinalSpecialization)
     Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature)
-    Q_PROPERTY(QSet<QObject *> ownedUseCase READ ownedUseCase)
-    Q_PROPERTY(QSet<QObject *> powertypeExtent READ powertypeExtent)
-    Q_PROPERTY(QSet<QObject *> redefinedClassifier READ redefinedClassifier)
+    Q_PROPERTY(QSet<QObject *> ownedUseCase READ ownedUseCases)
+    Q_PROPERTY(QSet<QObject *> powertypeExtent READ powertypeExtents)
+    Q_PROPERTY(QSet<QObject *> redefinedClassifier READ redefinedClassifiers)
     Q_PROPERTY(QObject * representation READ representation)
-    Q_PROPERTY(QSet<QObject *> substitution READ substitution)
+    Q_PROPERTY(QSet<QObject *> substitution READ substitutions)
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
-    Q_PROPERTY(QSet<QObject *> useCase READ useCase)
+    Q_PROPERTY(QSet<QObject *> useCase READ useCases)
 
     // Properties [StructuredClassifier]
-    Q_PROPERTY(QSet<QObject *> ownedConnector READ ownedConnector)
-    Q_PROPERTY(QSet<QObject *> part READ part STORED false)
-    Q_PROPERTY(QSet<QObject *> role READ role)
+    Q_PROPERTY(QSet<QObject *> ownedConnector READ ownedConnectors)
+    Q_PROPERTY(QSet<QObject *> part READ parts STORED false)
+    Q_PROPERTY(QSet<QObject *> role READ roles)
 
     // Properties [EncapsulatedClassifier]
-    Q_PROPERTY(QSet<QObject *> ownedPort READ ownedPort STORED false)
+    Q_PROPERTY(QSet<QObject *> ownedPort READ ownedPorts STORED false)
 
     // Properties [BehavioredClassifier]
     Q_PROPERTY(QObject * classifierBehavior READ classifierBehavior)
-    Q_PROPERTY(QSet<QObject *> interfaceRealization READ interfaceRealization)
-    Q_PROPERTY(QSet<QObject *> ownedBehavior READ ownedBehavior)
+    Q_PROPERTY(QSet<QObject *> interfaceRealization READ interfaceRealizations)
+    Q_PROPERTY(QSet<QObject *> ownedBehavior READ ownedBehaviors)
 
     // Properties [Class]
-    Q_PROPERTY(QSet<QObject *> extension READ extension STORED false)
+    Q_PROPERTY(QSet<QObject *> extension READ extensions STORED false)
     Q_PROPERTY(bool isAbstract READ isAbstract RESET unsetAbstract)
     Q_PROPERTY(bool isActive READ isActive RESET unsetActive)
-    Q_PROPERTY(QList<QObject *> nestedClassifier READ nestedClassifier)
-    Q_PROPERTY(QList<QObject *> ownedAttribute READ ownedAttribute)
-    Q_PROPERTY(QList<QObject *> ownedOperation READ ownedOperation)
-    Q_PROPERTY(QSet<QObject *> ownedReception READ ownedReception)
-    Q_PROPERTY(QSet<QObject *> superClass READ superClass STORED false)
+    Q_PROPERTY(QList<QObject *> nestedClassifier READ nestedClassifiers)
+    Q_PROPERTY(QList<QObject *> ownedAttribute READ ownedAttributes)
+    Q_PROPERTY(QList<QObject *> ownedOperation READ ownedOperations)
+    Q_PROPERTY(QSet<QObject *> ownedReception READ ownedReceptions)
+    Q_PROPERTY(QSet<QObject *> superClass READ superClasses STORED false)
 
     // Properties [Behavior]
     Q_PROPERTY(QObject * context READ context STORED false)
     Q_PROPERTY(bool isReentrant READ isReentrant RESET unsetReentrant)
-    Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameter)
-    Q_PROPERTY(QSet<QObject *> ownedParameterSet READ ownedParameterSet)
-    Q_PROPERTY(QSet<QObject *> postcondition READ postcondition)
-    Q_PROPERTY(QSet<QObject *> precondition READ precondition)
-    Q_PROPERTY(QSet<QObject *> redefinedBehavior READ redefinedBehavior)
+    Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameters)
+    Q_PROPERTY(QSet<QObject *> ownedParameterSet READ ownedParameterSets)
+    Q_PROPERTY(QSet<QObject *> postcondition READ postconditions)
+    Q_PROPERTY(QSet<QObject *> precondition READ preconditions)
+    Q_PROPERTY(QSet<QObject *> redefinedBehavior READ redefinedBehaviors)
     Q_PROPERTY(QObject * specification READ specification)
 
     // Properties [Activity]
-    Q_PROPERTY(QSet<QObject *> edge READ edge)
-    Q_PROPERTY(QSet<QObject *> group READ group)
+    Q_PROPERTY(QSet<QObject *> edge READ edges)
+    Q_PROPERTY(QSet<QObject *> group READ groups)
     Q_PROPERTY(bool isReadOnly READ isReadOnly RESET unsetReadOnly)
     Q_PROPERTY(bool isSingleExecution READ isSingleExecution RESET unsetSingleExecution)
-    Q_PROPERTY(QSet<QObject *> node READ node)
-    Q_PROPERTY(QSet<QObject *> partition READ partition)
-    Q_PROPERTY(QSet<QObject *> structuredNode READ structuredNode)
-    Q_PROPERTY(QSet<QObject *> variable READ variable)
+    Q_PROPERTY(QSet<QObject *> node READ nodes)
+    Q_PROPERTY(QSet<QObject *> partition READ partitions)
+    Q_PROPERTY(QSet<QObject *> structuredNode READ structuredNodes)
+    Q_PROPERTY(QSet<QObject *> variable READ variables)
 
 public:
     Q_INVOKABLE explicit QUmlActivityObject(QUmlActivity *qModelingObject);
     virtual ~QUmlActivityObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
     Q_INVOKABLE QString qualifiedName() const;
 
     // Owned attributes [Namespace]
-    Q_INVOKABLE const QSet<QObject *> elementImport() const;
-    Q_INVOKABLE const QSet<QObject *> importedMember() const;
-    Q_INVOKABLE const QSet<QObject *> member() const;
-    Q_INVOKABLE const QSet<QObject *> ownedMember() const;
-    Q_INVOKABLE const QSet<QObject *> ownedRule() const;
-    Q_INVOKABLE const QSet<QObject *> packageImport() const;
+    Q_INVOKABLE const QSet<QObject *> elementImports() const;
+    Q_INVOKABLE const QSet<QObject *> importedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> members() const;
+    Q_INVOKABLE const QSet<QObject *> ownedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> ownedRules() const;
+    Q_INVOKABLE const QSet<QObject *> packageImports() const;
 
     // Owned attributes [ParameterableElement]
     Q_INVOKABLE QObject *owningTemplateParameter() const;
@@ -189,70 +189,70 @@ public:
 
     // Owned attributes [RedefinableElement]
     Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedElement() const;
-    Q_INVOKABLE const QSet<QObject *> redefinitionContext() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedElements() const;
+    Q_INVOKABLE const QSet<QObject *> redefinitionContexts() const;
 
     // Owned attributes [TemplateableElement]
-    Q_INVOKABLE const QSet<QObject *> templateBinding() const;
+    Q_INVOKABLE const QSet<QObject *> templateBindings() const;
 
     // Owned attributes [Classifier]
-    Q_INVOKABLE const QSet<QObject *> attribute() const;
-    Q_INVOKABLE const QSet<QObject *> collaborationUse() const;
-    Q_INVOKABLE const QSet<QObject *> feature() const;
-    Q_INVOKABLE const QSet<QObject *> generalization() const;
-    Q_INVOKABLE const QSet<QObject *> inheritedMember() const;
+    Q_INVOKABLE const QSet<QObject *> attributes() const;
+    Q_INVOKABLE const QSet<QObject *> collaborationUses() const;
+    Q_INVOKABLE const QSet<QObject *> features() const;
+    Q_INVOKABLE const QSet<QObject *> generalizations() const;
+    Q_INVOKABLE const QSet<QObject *> inheritedMembers() const;
     Q_INVOKABLE bool isFinalSpecialization() const;
     Q_INVOKABLE QObject *ownedTemplateSignature() const;
-    Q_INVOKABLE const QSet<QObject *> ownedUseCase() const;
-    Q_INVOKABLE const QSet<QObject *> powertypeExtent() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedClassifier() const;
+    Q_INVOKABLE const QSet<QObject *> ownedUseCases() const;
+    Q_INVOKABLE const QSet<QObject *> powertypeExtents() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedClassifiers() const;
     Q_INVOKABLE QObject *representation() const;
-    Q_INVOKABLE const QSet<QObject *> substitution() const;
+    Q_INVOKABLE const QSet<QObject *> substitutions() const;
     Q_INVOKABLE QObject *templateParameter() const;
-    Q_INVOKABLE const QSet<QObject *> useCase() const;
+    Q_INVOKABLE const QSet<QObject *> useCases() const;
 
     // Owned attributes [StructuredClassifier]
-    Q_INVOKABLE const QSet<QObject *> ownedConnector() const;
-    Q_INVOKABLE const QSet<QObject *> part() const;
-    Q_INVOKABLE const QSet<QObject *> role() const;
+    Q_INVOKABLE const QSet<QObject *> ownedConnectors() const;
+    Q_INVOKABLE const QSet<QObject *> parts() const;
+    Q_INVOKABLE const QSet<QObject *> roles() const;
 
     // Owned attributes [EncapsulatedClassifier]
-    Q_INVOKABLE const QSet<QObject *> ownedPort() const;
+    Q_INVOKABLE const QSet<QObject *> ownedPorts() const;
 
     // Owned attributes [BehavioredClassifier]
     Q_INVOKABLE QObject *classifierBehavior() const;
-    Q_INVOKABLE const QSet<QObject *> interfaceRealization() const;
-    Q_INVOKABLE const QSet<QObject *> ownedBehavior() const;
+    Q_INVOKABLE const QSet<QObject *> interfaceRealizations() const;
+    Q_INVOKABLE const QSet<QObject *> ownedBehaviors() const;
 
     // Owned attributes [Class]
-    Q_INVOKABLE const QSet<QObject *> extension() const;
+    Q_INVOKABLE const QSet<QObject *> extensions() const;
     Q_INVOKABLE bool isAbstract() const;
     Q_INVOKABLE bool isActive() const;
-    Q_INVOKABLE const QList<QObject *> nestedClassifier() const;
-    Q_INVOKABLE const QList<QObject *> ownedAttribute() const;
-    Q_INVOKABLE const QList<QObject *> ownedOperation() const;
-    Q_INVOKABLE const QSet<QObject *> ownedReception() const;
-    Q_INVOKABLE const QSet<QObject *> superClass() const;
+    Q_INVOKABLE const QList<QObject *> nestedClassifiers() const;
+    Q_INVOKABLE const QList<QObject *> ownedAttributes() const;
+    Q_INVOKABLE const QList<QObject *> ownedOperations() const;
+    Q_INVOKABLE const QSet<QObject *> ownedReceptions() const;
+    Q_INVOKABLE const QSet<QObject *> superClasses() const;
 
     // Owned attributes [Behavior]
     Q_INVOKABLE QObject *context() const;
     Q_INVOKABLE bool isReentrant() const;
-    Q_INVOKABLE const QList<QObject *> ownedParameter() const;
-    Q_INVOKABLE const QSet<QObject *> ownedParameterSet() const;
-    Q_INVOKABLE const QSet<QObject *> postcondition() const;
-    Q_INVOKABLE const QSet<QObject *> precondition() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedBehavior() const;
+    Q_INVOKABLE const QList<QObject *> ownedParameters() const;
+    Q_INVOKABLE const QSet<QObject *> ownedParameterSets() const;
+    Q_INVOKABLE const QSet<QObject *> postconditions() const;
+    Q_INVOKABLE const QSet<QObject *> preconditions() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedBehaviors() const;
     Q_INVOKABLE QObject *specification() const;
 
     // Owned attributes [Activity]
-    Q_INVOKABLE const QSet<QObject *> edge() const;
-    Q_INVOKABLE const QSet<QObject *> group() const;
+    Q_INVOKABLE const QSet<QObject *> edges() const;
+    Q_INVOKABLE const QSet<QObject *> groups() const;
     Q_INVOKABLE bool isReadOnly() const;
     Q_INVOKABLE bool isSingleExecution() const;
-    Q_INVOKABLE const QSet<QObject *> node() const;
-    Q_INVOKABLE const QSet<QObject *> partition() const;
-    Q_INVOKABLE const QSet<QObject *> structuredNode() const;
-    Q_INVOKABLE const QSet<QObject *> variable() const;
+    Q_INVOKABLE const QSet<QObject *> nodes() const;
+    Q_INVOKABLE const QSet<QObject *> partitions() const;
+    Q_INVOKABLE const QSet<QObject *> structuredNodes() const;
+    Q_INVOKABLE const QSet<QObject *> variables() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

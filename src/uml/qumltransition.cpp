@@ -60,6 +60,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTrigger>
 #include <QtUml/QUmlVertex>
+
 /*!
     \class QUmlTransition
 
@@ -93,20 +94,20 @@ QUmlTransition::~QUmlTransition()
 QModelingObject *QUmlTransition::clone() const
 {
     QUmlTransition *c = new QUmlTransition;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (container())
         c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
@@ -121,7 +122,7 @@ QModelingObject *QUmlTransition::clone() const
         c->setSource(dynamic_cast<QUmlVertex *>(source()->clone()));
     if (target())
         c->setTarget(dynamic_cast<QUmlVertex *>(target()->clone()));
-    foreach (QUmlTrigger *element, trigger())
+    foreach (QUmlTrigger *element, triggers())
         c->addTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
     return c;
 }
@@ -279,7 +280,7 @@ void QUmlTransition::setRedefinitionContext(QUmlClassifier *redefinitionContext)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlTransition::redefinitionContext(): to be implemented (this is a derived association end)");
+    qWarning("UmlTransition::setRedefinitionContext(): to be implemented (this is a derived association end)");
     Q_UNUSED(redefinitionContext);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -332,19 +333,19 @@ void QUmlTransition::setTarget(QUmlVertex *target)
 /*!
     Specifies the triggers that may fire the transition.
  */
-const QSet<QUmlTrigger *> QUmlTransition::trigger() const
+const QSet<QUmlTrigger *> QUmlTransition::triggers() const
 {
     // This is a read-write association end
 
-    return _trigger;
+    return _triggers;
 }
 
 void QUmlTransition::addTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
 
-    if (!_trigger.contains(trigger)) {
-        _trigger.insert(trigger);
+    if (!_triggers.contains(trigger)) {
+        _triggers.insert(trigger);
         if (trigger && trigger->asQObject() && this->asQObject())
             QObject::connect(trigger->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeTrigger(QObject *)));
         trigger->asQObject()->setParent(this->asQObject());
@@ -358,8 +359,8 @@ void QUmlTransition::removeTrigger(QUmlTrigger *trigger)
 {
     // This is a read-write association end
 
-    if (_trigger.contains(trigger)) {
-        _trigger.remove(trigger);
+    if (_triggers.contains(trigger)) {
+        _triggers.remove(trigger);
         if (trigger->asQObject())
             trigger->asQObject()->setParent(0);
 
@@ -394,6 +395,8 @@ bool QUmlTransition::isConsistentWith(QUmlRedefinableElement *redefinee) const
 void QUmlTransition::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::DocumentationRole] = QStringLiteral("Designates the region that owns this transition.");
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -401,6 +404,8 @@ void QUmlTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("container")][QtModeling::OppositeEndRole] = QStringLiteral("Region-transition");
 
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::DocumentationRole] = QStringLiteral("Specifies an optional behavior to be performed when the transition fires.");
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -408,6 +413,8 @@ void QUmlTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("effect")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::DocumentationRole] = QStringLiteral("A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be enabled, otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with side effects are ill formed.");
     QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -415,6 +422,8 @@ void QUmlTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::DocumentationRole] = QStringLiteral("Indicates the precise type of the transition.");
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -422,6 +431,8 @@ void QUmlTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("kind")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("redefinedTransition")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedTransition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedTransition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedTransition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedTransition")][QtModeling::DocumentationRole] = QStringLiteral("The transition that is redefined by this transition.");
     QModelingObject::propertyDataHash[QStringLiteral("redefinedTransition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -429,6 +440,8 @@ void QUmlTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("redefinedTransition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::DocumentationRole] = QStringLiteral("References the classifier in which context this element may be redefined.");
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("RedefinableElement-redefinitionContext");
@@ -436,6 +449,8 @@ void QUmlTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("redefinitionContext")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::DocumentationRole] = QStringLiteral("Designates the originating vertex (state or pseudostate) of the transition.");
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -443,6 +458,8 @@ void QUmlTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("source")][QtModeling::OppositeEndRole] = QStringLiteral("Vertex-outgoing");
 
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("Designates the target vertex that is reached when the transition is taken.");
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -450,6 +467,8 @@ void QUmlTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("Vertex-incoming");
 
     QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the triggers that may fire the transition.");
     QModelingObject::propertyDataHash[QStringLiteral("trigger")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

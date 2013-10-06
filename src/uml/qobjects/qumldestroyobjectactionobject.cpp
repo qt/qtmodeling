@@ -79,18 +79,18 @@ QUmlDestroyObjectActionObject::~QUmlDestroyObjectActionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::ownedComment() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::ownedElement() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlDestroyObjectActionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::clientDependency() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlDestroyObjectActionObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::redefinedElement() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::redefinitionContext() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlDestroyObjectActionObject::activity() const
         return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::inGroup() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::inPartition() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,36 +209,36 @@ QObject *QUmlDestroyObjectActionObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::incoming() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::outgoing() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::redefinedNode() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::handler() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -253,10 +253,10 @@ QObject *QUmlDestroyObjectActionObject::context() const
         return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlDestroyObjectActionObject::input() const
+const QList<QObject *> QUmlDestroyObjectActionObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -266,26 +266,26 @@ bool QUmlDestroyObjectActionObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::localPostcondition() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDestroyObjectActionObject::localPrecondition() const
+const QSet<QObject *> QUmlDestroyObjectActionObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlDestroyObjectActionObject::output() const
+const QList<QObject *> QUmlDestroyObjectActionObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlDestroyObjectAction *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }

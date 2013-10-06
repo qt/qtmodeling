@@ -67,16 +67,16 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlPseudostate *> connectionPoint() const;
+    const QSet<QUmlPseudostate *> connectionPoints() const;
     void addConnectionPoint(QUmlPseudostate *connectionPoint);
     void removeConnectionPoint(QUmlPseudostate *connectionPoint);
-    const QSet<QUmlStateMachine *> extendedStateMachine() const;
+    const QSet<QUmlStateMachine *> extendedStateMachines() const;
     void addExtendedStateMachine(QUmlStateMachine *extendedStateMachine);
     void removeExtendedStateMachine(QUmlStateMachine *extendedStateMachine);
-    const QSet<QUmlRegion *> region() const;
+    const QSet<QUmlRegion *> regions() const;
     void addRegion(QUmlRegion *region);
     void removeRegion(QUmlRegion *region);
-    const QSet<QUmlState *> submachineState() const;
+    const QSet<QUmlState *> submachineStates() const;
     void addSubmachineState(QUmlState *submachineState);
     void removeSubmachineState(QUmlState *submachineState);
 
@@ -87,10 +87,10 @@ public:
     bool isRedefinitionContextValid(QUmlStateMachine *redefined) const;
 
 protected:
-    QSet<QUmlPseudostate *> _connectionPoint;
-    QSet<QUmlStateMachine *> _extendedStateMachine;
-    QSet<QUmlRegion *> _region;
-    QSet<QUmlState *> _submachineState;
+    QSet<QUmlPseudostate *> _connectionPoints;
+    QSet<QUmlStateMachine *> _extendedStateMachines;
+    QSet<QUmlRegion *> _regions;
+    QSet<QUmlState *> _submachineStates;
 
     virtual void setPropertyData();
 };

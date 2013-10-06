@@ -67,29 +67,29 @@ public:
     // Owned attributes
     QUmlClassifier *context() const;
     Q_DECL_HIDDEN void setContext(QUmlClassifier *context);
-    const QList<QUmlInputPin *> input() const;
+    const QList<QUmlInputPin *> inputs() const;
     Q_DECL_HIDDEN void addInput(QUmlInputPin *input);
     Q_DECL_HIDDEN void removeInput(QUmlInputPin *input);
     bool isLocallyReentrant() const;
     void setLocallyReentrant(bool isLocallyReentrant);
-    const QSet<QUmlConstraint *> localPostcondition() const;
+    const QSet<QUmlConstraint *> localPostconditions() const;
     void addLocalPostcondition(QUmlConstraint *localPostcondition);
     void removeLocalPostcondition(QUmlConstraint *localPostcondition);
-    const QSet<QUmlConstraint *> localPrecondition() const;
+    const QSet<QUmlConstraint *> localPreconditions() const;
     void addLocalPrecondition(QUmlConstraint *localPrecondition);
     void removeLocalPrecondition(QUmlConstraint *localPrecondition);
-    const QList<QUmlOutputPin *> output() const;
+    const QList<QUmlOutputPin *> outputs() const;
     Q_DECL_HIDDEN void addOutput(QUmlOutputPin *output);
     Q_DECL_HIDDEN void removeOutput(QUmlOutputPin *output);
 
 protected:
     explicit QUmlAction();
 
-    QList<QUmlInputPin *> _input;
+    QList<QUmlInputPin *> _inputs;
     bool _isLocallyReentrant;
-    QSet<QUmlConstraint *> _localPostcondition;
-    QSet<QUmlConstraint *> _localPrecondition;
-    QList<QUmlOutputPin *> _output;
+    QSet<QUmlConstraint *> _localPostconditions;
+    QSet<QUmlConstraint *> _localPreconditions;
+    QList<QUmlOutputPin *> _outputs;
 
     virtual void setPropertyData();
 };

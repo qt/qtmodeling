@@ -67,18 +67,18 @@ QUmlGeneralOrderingObject::~QUmlGeneralOrderingObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlGeneralOrderingObject::ownedComment() const
+const QSet<QObject *> QUmlGeneralOrderingObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlGeneralOrderingObject::ownedElement() const
+const QSet<QObject *> QUmlGeneralOrderingObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -93,10 +93,10 @@ QObject *QUmlGeneralOrderingObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlGeneralOrderingObject::clientDependency() const
+const QSet<QObject *> QUmlGeneralOrderingObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlGeneralOrdering *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }

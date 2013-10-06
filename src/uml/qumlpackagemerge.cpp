@@ -45,6 +45,7 @@
 #include <QtUml/QUmlComment>
 #include <QtUml/QUmlElement>
 #include <QtUml/QUmlPackage>
+
 /*!
     \class QUmlPackageMerge
 
@@ -73,7 +74,7 @@ QUmlPackageMerge::~QUmlPackageMerge()
 QModelingObject *QUmlPackageMerge::clone() const
 {
     QUmlPackageMerge *c = new QUmlPackageMerge;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (mergedPackage())
         c->setMergedPackage(dynamic_cast<QUmlPackage *>(mergedPackage()->clone()));
@@ -146,6 +147,8 @@ void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
 void QUmlPackageMerge::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackageMerge");
+    QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::DocumentationRole] = QStringLiteral("References the Package that is to be merged with the receiving package of the PackageMerge.");
     QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -153,6 +156,8 @@ void QUmlPackageMerge::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("mergedPackage")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPackageMerge");
+    QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::DocumentationRole] = QStringLiteral("References the Package that is being extended with the contents of the merged package of the PackageMerge.");
     QModelingObject::propertyDataHash[QStringLiteral("receivingPackage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

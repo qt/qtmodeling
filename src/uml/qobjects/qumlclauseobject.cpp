@@ -63,18 +63,18 @@ QUmlClauseObject::~QUmlClauseObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlClauseObject::ownedComment() const
+const QSet<QObject *> QUmlClauseObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClauseObject::ownedElement() const
+const QSet<QObject *> QUmlClauseObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -89,18 +89,18 @@ QObject *QUmlClauseObject::owner() const
 
 // OWNED ATTRIBUTES [Clause]
 
-const QSet<QObject *> QUmlClauseObject::body() const
+const QSet<QObject *> QUmlClauseObject::bodies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExecutableNode *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->body())
+    foreach (QUmlExecutableNode *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->bodies())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlClauseObject::bodyOutput() const
+const QList<QObject *> QUmlClauseObject::bodyOutputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->bodyOutput())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->bodyOutputs())
         list.append(element->asQObject());
     return list;
 }
@@ -113,26 +113,26 @@ QObject *QUmlClauseObject::decider() const
         return qmodelingobjectproperty_cast<QUmlClause *>(this)->decider()->asQObject();
 }
 
-const QSet<QObject *> QUmlClauseObject::predecessorClause() const
+const QSet<QObject *> QUmlClauseObject::predecessorClauses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClause *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->predecessorClause())
+    foreach (QUmlClause *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->predecessorClauses())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClauseObject::successorClause() const
+const QSet<QObject *> QUmlClauseObject::successorClauses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClause *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->successorClause())
+    foreach (QUmlClause *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->successorClauses())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlClauseObject::test() const
+const QSet<QObject *> QUmlClauseObject::tests() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExecutableNode *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->test())
+    foreach (QUmlExecutableNode *element, qmodelingobjectproperty_cast<QUmlClause *>(this)->tests())
         set.insert(element->asQObject());
     return set;
 }

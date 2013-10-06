@@ -54,6 +54,7 @@
 #include <QtUml/QUmlTimeExpression>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlTimeInterval
 
@@ -83,9 +84,9 @@ QUmlTimeInterval::~QUmlTimeInterval()
 QModelingObject *QUmlTimeInterval::clone() const
 {
     QUmlTimeInterval *c = new QUmlTimeInterval;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -151,6 +152,8 @@ void QUmlTimeInterval::setMin(QUmlTimeExpression *min)
 void QUmlTimeInterval::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeInterval");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the TimeExpression denoting the maximum value of the range.");
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-max");
@@ -158,6 +161,8 @@ void QUmlTimeInterval::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeInterval");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the TimeExpression denoting the minimum value of the range.");
     QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-min");

@@ -88,7 +88,7 @@ public:
     void setSource(QUmlVertex *source);
     QUmlVertex *target() const;
     void setTarget(QUmlVertex *target);
-    const QSet<QUmlTrigger *> trigger() const;
+    const QSet<QUmlTrigger *> triggers() const;
     void addTrigger(QUmlTrigger *trigger);
     void removeTrigger(QUmlTrigger *trigger);
 
@@ -104,7 +104,7 @@ protected:
     QUmlTransition *_redefinedTransition;
     QUmlVertex *_source;
     QUmlVertex *_target;
-    QSet<QUmlTrigger *> _trigger;
+    QSet<QUmlTrigger *> _triggers;
 
     virtual void setPropertyData();
 };

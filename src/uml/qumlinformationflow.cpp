@@ -56,6 +56,7 @@
 #include <QtUml/QUmlRelationship>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlInformationFlow
 
@@ -82,13 +83,13 @@ QUmlInformationFlow::~QUmlInformationFlow()
 QModelingObject *QUmlInformationFlow::clone() const
 {
     QUmlInformationFlow *c = new QUmlInformationFlow;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -96,17 +97,17 @@ QModelingObject *QUmlInformationFlow::clone() const
     c->setVisibility(visibility());
     foreach (QUmlClassifier *element, conveyed())
         c->addConveyed(dynamic_cast<QUmlClassifier *>(element->clone()));
-    foreach (QUmlNamedElement *element, informationSource())
+    foreach (QUmlNamedElement *element, informationSources())
         c->addInformationSource(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, informationTarget())
+    foreach (QUmlNamedElement *element, informationTargets())
         c->addInformationTarget(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlRelationship *element, realization())
+    foreach (QUmlRelationship *element, realizations())
         c->addRealization(dynamic_cast<QUmlRelationship *>(element->clone()));
-    foreach (QUmlActivityEdge *element, realizingActivityEdge())
+    foreach (QUmlActivityEdge *element, realizingActivityEdges())
         c->addRealizingActivityEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlConnector *element, realizingConnector())
+    foreach (QUmlConnector *element, realizingConnectors())
         c->addRealizingConnector(dynamic_cast<QUmlConnector *>(element->clone()));
-    foreach (QUmlMessage *element, realizingMessage())
+    foreach (QUmlMessage *element, realizingMessages())
         c->addRealizingMessage(dynamic_cast<QUmlMessage *>(element->clone()));
     return c;
 }
@@ -146,19 +147,19 @@ void QUmlInformationFlow::removeConveyed(QUmlClassifier *conveyed)
 /*!
     Defines from which source the conveyed InformationItems are initiated.
  */
-const QSet<QUmlNamedElement *> QUmlInformationFlow::informationSource() const
+const QSet<QUmlNamedElement *> QUmlInformationFlow::informationSources() const
 {
     // This is a read-write association end
 
-    return _informationSource;
+    return _informationSources;
 }
 
 void QUmlInformationFlow::addInformationSource(QUmlNamedElement *informationSource)
 {
     // This is a read-write association end
 
-    if (!_informationSource.contains(informationSource)) {
-        _informationSource.insert(informationSource);
+    if (!_informationSources.contains(informationSource)) {
+        _informationSources.insert(informationSource);
         if (informationSource && informationSource->asQObject() && this->asQObject())
             QObject::connect(informationSource->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInformationSource(QObject *)));
 
@@ -171,8 +172,8 @@ void QUmlInformationFlow::removeInformationSource(QUmlNamedElement *informationS
 {
     // This is a read-write association end
 
-    if (_informationSource.contains(informationSource)) {
-        _informationSource.remove(informationSource);
+    if (_informationSources.contains(informationSource)) {
+        _informationSources.remove(informationSource);
 
         // Adjust subsetted properties
         removeSource(informationSource);
@@ -182,19 +183,19 @@ void QUmlInformationFlow::removeInformationSource(QUmlNamedElement *informationS
 /*!
     Defines to which target the conveyed InformationItems are directed.
  */
-const QSet<QUmlNamedElement *> QUmlInformationFlow::informationTarget() const
+const QSet<QUmlNamedElement *> QUmlInformationFlow::informationTargets() const
 {
     // This is a read-write association end
 
-    return _informationTarget;
+    return _informationTargets;
 }
 
 void QUmlInformationFlow::addInformationTarget(QUmlNamedElement *informationTarget)
 {
     // This is a read-write association end
 
-    if (!_informationTarget.contains(informationTarget)) {
-        _informationTarget.insert(informationTarget);
+    if (!_informationTargets.contains(informationTarget)) {
+        _informationTargets.insert(informationTarget);
         if (informationTarget && informationTarget->asQObject() && this->asQObject())
             QObject::connect(informationTarget->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInformationTarget(QObject *)));
 
@@ -207,8 +208,8 @@ void QUmlInformationFlow::removeInformationTarget(QUmlNamedElement *informationT
 {
     // This is a read-write association end
 
-    if (_informationTarget.contains(informationTarget)) {
-        _informationTarget.remove(informationTarget);
+    if (_informationTargets.contains(informationTarget)) {
+        _informationTargets.remove(informationTarget);
 
         // Adjust subsetted properties
         removeTarget(informationTarget);
@@ -218,19 +219,19 @@ void QUmlInformationFlow::removeInformationTarget(QUmlNamedElement *informationT
 /*!
     Determines which Relationship will realize the specified flow
  */
-const QSet<QUmlRelationship *> QUmlInformationFlow::realization() const
+const QSet<QUmlRelationship *> QUmlInformationFlow::realizations() const
 {
     // This is a read-write association end
 
-    return _realization;
+    return _realizations;
 }
 
 void QUmlInformationFlow::addRealization(QUmlRelationship *realization)
 {
     // This is a read-write association end
 
-    if (!_realization.contains(realization)) {
-        _realization.insert(realization);
+    if (!_realizations.contains(realization)) {
+        _realizations.insert(realization);
         if (realization && realization->asQObject() && this->asQObject())
             QObject::connect(realization->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealization(QObject *)));
     }
@@ -240,27 +241,27 @@ void QUmlInformationFlow::removeRealization(QUmlRelationship *realization)
 {
     // This is a read-write association end
 
-    if (_realization.contains(realization)) {
-        _realization.remove(realization);
+    if (_realizations.contains(realization)) {
+        _realizations.remove(realization);
     }
 }
 
 /*!
     Determines which ActivityEdges will realize the specified flow.
  */
-const QSet<QUmlActivityEdge *> QUmlInformationFlow::realizingActivityEdge() const
+const QSet<QUmlActivityEdge *> QUmlInformationFlow::realizingActivityEdges() const
 {
     // This is a read-write association end
 
-    return _realizingActivityEdge;
+    return _realizingActivityEdges;
 }
 
 void QUmlInformationFlow::addRealizingActivityEdge(QUmlActivityEdge *realizingActivityEdge)
 {
     // This is a read-write association end
 
-    if (!_realizingActivityEdge.contains(realizingActivityEdge)) {
-        _realizingActivityEdge.insert(realizingActivityEdge);
+    if (!_realizingActivityEdges.contains(realizingActivityEdge)) {
+        _realizingActivityEdges.insert(realizingActivityEdge);
         if (realizingActivityEdge && realizingActivityEdge->asQObject() && this->asQObject())
             QObject::connect(realizingActivityEdge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealizingActivityEdge(QObject *)));
     }
@@ -270,27 +271,27 @@ void QUmlInformationFlow::removeRealizingActivityEdge(QUmlActivityEdge *realizin
 {
     // This is a read-write association end
 
-    if (_realizingActivityEdge.contains(realizingActivityEdge)) {
-        _realizingActivityEdge.remove(realizingActivityEdge);
+    if (_realizingActivityEdges.contains(realizingActivityEdge)) {
+        _realizingActivityEdges.remove(realizingActivityEdge);
     }
 }
 
 /*!
     Determines which Connectors will realize the specified flow.
  */
-const QSet<QUmlConnector *> QUmlInformationFlow::realizingConnector() const
+const QSet<QUmlConnector *> QUmlInformationFlow::realizingConnectors() const
 {
     // This is a read-write association end
 
-    return _realizingConnector;
+    return _realizingConnectors;
 }
 
 void QUmlInformationFlow::addRealizingConnector(QUmlConnector *realizingConnector)
 {
     // This is a read-write association end
 
-    if (!_realizingConnector.contains(realizingConnector)) {
-        _realizingConnector.insert(realizingConnector);
+    if (!_realizingConnectors.contains(realizingConnector)) {
+        _realizingConnectors.insert(realizingConnector);
         if (realizingConnector && realizingConnector->asQObject() && this->asQObject())
             QObject::connect(realizingConnector->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealizingConnector(QObject *)));
     }
@@ -300,27 +301,27 @@ void QUmlInformationFlow::removeRealizingConnector(QUmlConnector *realizingConne
 {
     // This is a read-write association end
 
-    if (_realizingConnector.contains(realizingConnector)) {
-        _realizingConnector.remove(realizingConnector);
+    if (_realizingConnectors.contains(realizingConnector)) {
+        _realizingConnectors.remove(realizingConnector);
     }
 }
 
 /*!
     Determines which Messages will realize the specified flow.
  */
-const QSet<QUmlMessage *> QUmlInformationFlow::realizingMessage() const
+const QSet<QUmlMessage *> QUmlInformationFlow::realizingMessages() const
 {
     // This is a read-write association end
 
-    return _realizingMessage;
+    return _realizingMessages;
 }
 
 void QUmlInformationFlow::addRealizingMessage(QUmlMessage *realizingMessage)
 {
     // This is a read-write association end
 
-    if (!_realizingMessage.contains(realizingMessage)) {
-        _realizingMessage.insert(realizingMessage);
+    if (!_realizingMessages.contains(realizingMessage)) {
+        _realizingMessages.insert(realizingMessage);
         if (realizingMessage && realizingMessage->asQObject() && this->asQObject())
             QObject::connect(realizingMessage->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRealizingMessage(QObject *)));
     }
@@ -330,14 +331,16 @@ void QUmlInformationFlow::removeRealizingMessage(QUmlMessage *realizingMessage)
 {
     // This is a read-write association end
 
-    if (_realizingMessage.contains(realizingMessage)) {
-        _realizingMessage.remove(realizingMessage);
+    if (_realizingMessages.contains(realizingMessage)) {
+        _realizingMessages.remove(realizingMessage);
     }
 }
 
 void QUmlInformationFlow::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("conveyed")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("conveyed")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationFlow");
+    QModelingObject::propertyDataHash[QStringLiteral("conveyed")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("conveyed")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("conveyed")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the information items that may circulate on this information flow.");
     QModelingObject::propertyDataHash[QStringLiteral("conveyed")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -345,6 +348,8 @@ void QUmlInformationFlow::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("conveyed")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("informationSource")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("informationSource")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationFlow");
+    QModelingObject::propertyDataHash[QStringLiteral("informationSource")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("informationSource")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("informationSource")][QtModeling::DocumentationRole] = QStringLiteral("Defines from which source the conveyed InformationItems are initiated.");
     QModelingObject::propertyDataHash[QStringLiteral("informationSource")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -352,6 +357,8 @@ void QUmlInformationFlow::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("informationSource")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("informationTarget")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("informationTarget")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationFlow");
+    QModelingObject::propertyDataHash[QStringLiteral("informationTarget")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("informationTarget")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("informationTarget")][QtModeling::DocumentationRole] = QStringLiteral("Defines to which target the conveyed InformationItems are directed.");
     QModelingObject::propertyDataHash[QStringLiteral("informationTarget")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -359,6 +366,8 @@ void QUmlInformationFlow::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("informationTarget")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("realization")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("realization")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationFlow");
+    QModelingObject::propertyDataHash[QStringLiteral("realization")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realization")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realization")][QtModeling::DocumentationRole] = QStringLiteral("Determines which Relationship will realize the specified flow");
     QModelingObject::propertyDataHash[QStringLiteral("realization")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -366,6 +375,8 @@ void QUmlInformationFlow::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("realization")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("realizingActivityEdge")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("realizingActivityEdge")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationFlow");
+    QModelingObject::propertyDataHash[QStringLiteral("realizingActivityEdge")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realizingActivityEdge")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realizingActivityEdge")][QtModeling::DocumentationRole] = QStringLiteral("Determines which ActivityEdges will realize the specified flow.");
     QModelingObject::propertyDataHash[QStringLiteral("realizingActivityEdge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -373,6 +384,8 @@ void QUmlInformationFlow::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("realizingActivityEdge")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("realizingConnector")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("realizingConnector")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationFlow");
+    QModelingObject::propertyDataHash[QStringLiteral("realizingConnector")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realizingConnector")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realizingConnector")][QtModeling::DocumentationRole] = QStringLiteral("Determines which Connectors will realize the specified flow.");
     QModelingObject::propertyDataHash[QStringLiteral("realizingConnector")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -380,6 +393,8 @@ void QUmlInformationFlow::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("realizingConnector")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("realizingMessage")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("realizingMessage")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationFlow");
+    QModelingObject::propertyDataHash[QStringLiteral("realizingMessage")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realizingMessage")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("realizingMessage")][QtModeling::DocumentationRole] = QStringLiteral("Determines which Messages will realize the specified flow.");
     QModelingObject::propertyDataHash[QStringLiteral("realizingMessage")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

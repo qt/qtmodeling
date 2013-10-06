@@ -53,6 +53,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlValueSpecification>
+
 /*!
     \class QUmlInterval
 
@@ -81,9 +82,9 @@ QUmlInterval::~QUmlInterval()
 QModelingObject *QUmlInterval::clone() const
 {
     QUmlInterval *c = new QUmlInterval;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -149,6 +150,8 @@ void QUmlInterval::setMin(QUmlValueSpecification *min)
 void QUmlInterval::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterval");
+    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the ValueSpecification denoting the maximum value of the range.");
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -156,6 +159,8 @@ void QUmlInterval::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterval");
+    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the ValueSpecification denoting the minimum value of the range.");
     QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

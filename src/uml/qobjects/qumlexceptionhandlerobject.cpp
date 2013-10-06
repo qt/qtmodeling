@@ -64,18 +64,18 @@ QUmlExceptionHandlerObject::~QUmlExceptionHandlerObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlExceptionHandlerObject::ownedComment() const
+const QSet<QObject *> QUmlExceptionHandlerObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlExceptionHandlerObject::ownedElement() const
+const QSet<QObject *> QUmlExceptionHandlerObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -98,10 +98,10 @@ QObject *QUmlExceptionHandlerObject::exceptionInput() const
         return qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->exceptionInput()->asQObject();
 }
 
-const QSet<QObject *> QUmlExceptionHandlerObject::exceptionType() const
+const QSet<QObject *> QUmlExceptionHandlerObject::exceptionTypes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->exceptionType())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlExceptionHandler *>(this)->exceptionTypes())
         set.insert(element->asQObject());
     return set;
 }

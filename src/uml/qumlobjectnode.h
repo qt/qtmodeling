@@ -67,7 +67,7 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlState *> inState() const;
+    const QSet<QUmlState *> inStates() const;
     void addInState(QUmlState *inState);
     void removeInState(QUmlState *inState);
     bool isControlType() const;
@@ -82,7 +82,7 @@ public:
 protected:
     explicit QUmlObjectNode();
 
-    QSet<QUmlState *> _inState;
+    QSet<QUmlState *> _inStates;
     bool _isControlType;
     QtUml::ObjectNodeOrderingKind _ordering;
     QUmlBehavior *_selection;

@@ -65,22 +65,22 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlElementImport *> elementImport() const;
+    const QSet<QUmlElementImport *> elementImports() const;
     void addElementImport(QUmlElementImport *elementImport);
     void removeElementImport(QUmlElementImport *elementImport);
-    const QSet<QUmlPackageableElement *> importedMember() const;
+    const QSet<QUmlPackageableElement *> importedMembers() const;
     Q_DECL_HIDDEN void addImportedMember(QUmlPackageableElement *importedMember);
     Q_DECL_HIDDEN void removeImportedMember(QUmlPackageableElement *importedMember);
-    const QSet<QUmlNamedElement *> member() const;
+    const QSet<QUmlNamedElement *> members() const;
     Q_DECL_HIDDEN void addMember(QUmlNamedElement *member);
     Q_DECL_HIDDEN void removeMember(QUmlNamedElement *member);
-    const QSet<QUmlNamedElement *> ownedMember() const;
+    const QSet<QUmlNamedElement *> ownedMembers() const;
     Q_DECL_HIDDEN void addOwnedMember(QUmlNamedElement *ownedMember);
     Q_DECL_HIDDEN void removeOwnedMember(QUmlNamedElement *ownedMember);
-    const QSet<QUmlConstraint *> ownedRule() const;
+    const QSet<QUmlConstraint *> ownedRules() const;
     void addOwnedRule(QUmlConstraint *ownedRule);
     void removeOwnedRule(QUmlConstraint *ownedRule);
-    const QSet<QUmlPackageImport *> packageImport() const;
+    const QSet<QUmlPackageImport *> packageImports() const;
     void addPackageImport(QUmlPackageImport *packageImport);
     void removePackageImport(QUmlPackageImport *packageImport);
 
@@ -93,11 +93,11 @@ public:
 protected:
     explicit QUmlNamespace();
 
-    QSet<QUmlElementImport *> _elementImport;
-    QSet<QUmlNamedElement *> _member;
-    QSet<QUmlNamedElement *> _ownedMember;
-    QSet<QUmlConstraint *> _ownedRule;
-    QSet<QUmlPackageImport *> _packageImport;
+    QSet<QUmlElementImport *> _elementImports;
+    QSet<QUmlNamedElement *> _members;
+    QSet<QUmlNamedElement *> _ownedMembers;
+    QSet<QUmlConstraint *> _ownedRules;
+    QSet<QUmlPackageImport *> _packageImports;
 
     virtual void setPropertyData();
 };

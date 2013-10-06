@@ -72,32 +72,32 @@ public:
     // Owned attributes
     QUmlActivity *activity() const;
     void setActivity(QUmlActivity *activity);
-    const QSet<QUmlActivityEdge *> edge() const;
+    const QSet<QUmlActivityEdge *> edges() const;
     void addEdge(QUmlActivityEdge *edge);
     void removeEdge(QUmlActivityEdge *edge);
     bool mustIsolate() const;
     void setMustIsolate(bool mustIsolate);
-    const QSet<QUmlActivityNode *> node() const;
+    const QSet<QUmlActivityNode *> nodes() const;
     void addNode(QUmlActivityNode *node);
     void removeNode(QUmlActivityNode *node);
-    const QSet<QUmlInputPin *> structuredNodeInput() const;
+    const QSet<QUmlInputPin *> structuredNodeInputs() const;
     void addStructuredNodeInput(QUmlInputPin *structuredNodeInput);
     void removeStructuredNodeInput(QUmlInputPin *structuredNodeInput);
-    const QSet<QUmlOutputPin *> structuredNodeOutput() const;
+    const QSet<QUmlOutputPin *> structuredNodeOutputs() const;
     void addStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput);
     void removeStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput);
-    const QSet<QUmlVariable *> variable() const;
+    const QSet<QUmlVariable *> variables() const;
     void addVariable(QUmlVariable *variable);
     void removeVariable(QUmlVariable *variable);
 
 protected:
     QUmlActivity *_activity;
-    QSet<QUmlActivityEdge *> _edge;
+    QSet<QUmlActivityEdge *> _edges;
     bool _mustIsolate;
-    QSet<QUmlActivityNode *> _node;
-    QSet<QUmlInputPin *> _structuredNodeInput;
-    QSet<QUmlOutputPin *> _structuredNodeOutput;
-    QSet<QUmlVariable *> _variable;
+    QSet<QUmlActivityNode *> _nodes;
+    QSet<QUmlInputPin *> _structuredNodeInputs;
+    QSet<QUmlOutputPin *> _structuredNodeOutputs;
+    QSet<QUmlVariable *> _variables;
 
     virtual void setPropertyData();
 };

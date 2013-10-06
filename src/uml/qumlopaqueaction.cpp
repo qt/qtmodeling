@@ -62,6 +62,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlOpaqueAction
 
@@ -88,9 +89,9 @@ QUmlOpaqueAction::~QUmlOpaqueAction()
 QModelingObject *QUmlOpaqueAction::clone() const
 {
     QUmlOpaqueAction *c = new QUmlOpaqueAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -99,32 +100,32 @@ QModelingObject *QUmlOpaqueAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QString element, body())
+    foreach (QString element, bodies())
         c->addBody(element);
-    foreach (QUmlInputPin *element, inputValue())
+    foreach (QUmlInputPin *element, inputValues())
         c->addInputValue(dynamic_cast<QUmlInputPin *>(element->clone()));
-    foreach (QString element, language())
+    foreach (QString element, languages())
         c->addLanguage(element);
-    foreach (QUmlOutputPin *element, outputValue())
+    foreach (QUmlOutputPin *element, outputValues())
         c->addOutputValue(dynamic_cast<QUmlOutputPin *>(element->clone()));
     return c;
 }
@@ -134,19 +135,19 @@ QModelingObject *QUmlOpaqueAction::clone() const
 /*!
     Specifies the action in one or more languages.
  */
-const QList<QString> QUmlOpaqueAction::body() const
+const QList<QString> QUmlOpaqueAction::bodies() const
 {
     // This is a read-write property
 
-    return _body;
+    return _bodies;
 }
 
 void QUmlOpaqueAction::addBody(QString body)
 {
     // This is a read-write property
 
-    if (!_body.contains(body)) {
-        _body.append(body);
+    if (!_bodies.contains(body)) {
+        _bodies.append(body);
     }
 }
 
@@ -154,27 +155,27 @@ void QUmlOpaqueAction::removeBody(QString body)
 {
     // This is a read-write property
 
-    if (_body.contains(body)) {
-        _body.removeAll(body);
+    if (_bodies.contains(body)) {
+        _bodies.removeAll(body);
     }
 }
 
 /*!
     Provides input to the action.
  */
-const QSet<QUmlInputPin *> QUmlOpaqueAction::inputValue() const
+const QSet<QUmlInputPin *> QUmlOpaqueAction::inputValues() const
 {
     // This is a read-write association end
 
-    return _inputValue;
+    return _inputValues;
 }
 
 void QUmlOpaqueAction::addInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
 
-    if (!_inputValue.contains(inputValue)) {
-        _inputValue.insert(inputValue);
+    if (!_inputValues.contains(inputValue)) {
+        _inputValues.insert(inputValue);
         if (inputValue && inputValue->asQObject() && this->asQObject())
             QObject::connect(inputValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInputValue(QObject *)));
         inputValue->asQObject()->setParent(this->asQObject());
@@ -188,8 +189,8 @@ void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
 {
     // This is a read-write association end
 
-    if (_inputValue.contains(inputValue)) {
-        _inputValue.remove(inputValue);
+    if (_inputValues.contains(inputValue)) {
+        _inputValues.remove(inputValue);
         if (inputValue->asQObject())
             inputValue->asQObject()->setParent(0);
 
@@ -201,19 +202,19 @@ void QUmlOpaqueAction::removeInputValue(QUmlInputPin *inputValue)
 /*!
     Languages the body strings use, in the same order as the body strings
  */
-const QList<QString> QUmlOpaqueAction::language() const
+const QList<QString> QUmlOpaqueAction::languages() const
 {
     // This is a read-write property
 
-    return _language;
+    return _languages;
 }
 
 void QUmlOpaqueAction::addLanguage(QString language)
 {
     // This is a read-write property
 
-    if (!_language.contains(language)) {
-        _language.append(language);
+    if (!_languages.contains(language)) {
+        _languages.append(language);
     }
 }
 
@@ -221,27 +222,27 @@ void QUmlOpaqueAction::removeLanguage(QString language)
 {
     // This is a read-write property
 
-    if (_language.contains(language)) {
-        _language.removeAll(language);
+    if (_languages.contains(language)) {
+        _languages.removeAll(language);
     }
 }
 
 /*!
     Takes output from the action.
  */
-const QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValue() const
+const QSet<QUmlOutputPin *> QUmlOpaqueAction::outputValues() const
 {
     // This is a read-write association end
 
-    return _outputValue;
+    return _outputValues;
 }
 
 void QUmlOpaqueAction::addOutputValue(QUmlOutputPin *outputValue)
 {
     // This is a read-write association end
 
-    if (!_outputValue.contains(outputValue)) {
-        _outputValue.insert(outputValue);
+    if (!_outputValues.contains(outputValue)) {
+        _outputValues.insert(outputValue);
         if (outputValue && outputValue->asQObject() && this->asQObject())
             QObject::connect(outputValue->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOutputValue(QObject *)));
         outputValue->asQObject()->setParent(this->asQObject());
@@ -255,8 +256,8 @@ void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
 {
     // This is a read-write association end
 
-    if (_outputValue.contains(outputValue)) {
-        _outputValue.remove(outputValue);
+    if (_outputValues.contains(outputValue)) {
+        _outputValues.remove(outputValue);
         if (outputValue->asQObject())
             outputValue->asQObject()->setParent(0);
 
@@ -268,6 +269,8 @@ void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
 void QUmlOpaqueAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the action in one or more languages.");
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -275,6 +278,8 @@ void QUmlOpaqueAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::DocumentationRole] = QStringLiteral("Provides input to the action.");
     QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -282,6 +287,8 @@ void QUmlOpaqueAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("inputValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::DocumentationRole] = QStringLiteral("Languages the body strings use, in the same order as the body strings");
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -289,6 +296,8 @@ void QUmlOpaqueAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("language")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("outputValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("outputValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("outputValue")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("outputValue")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("outputValue")][QtModeling::DocumentationRole] = QStringLiteral("Takes output from the action.");
     QModelingObject::propertyDataHash[QStringLiteral("outputValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -52,6 +52,7 @@
 #include <QtUml/QUmlOccurrenceSpecification>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlExecutionSpecification
 
@@ -73,9 +74,9 @@ QUmlExecutionSpecification::~QUmlExecutionSpecification()
 QModelingObject *QUmlExecutionSpecification::clone() const
 {
     QUmlExecutionSpecification *c = new QUmlExecutionSpecification;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -87,7 +88,7 @@ QModelingObject *QUmlExecutionSpecification::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
     if (finish())
         c->setFinish(dynamic_cast<QUmlOccurrenceSpecification *>(finish()->clone()));
@@ -143,6 +144,8 @@ void QUmlExecutionSpecification::setStart(QUmlOccurrenceSpecification *start)
 void QUmlExecutionSpecification::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutionSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::DocumentationRole] = QStringLiteral("References the OccurrenceSpecification that designates the finish of the Action or Behavior.");
     QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -150,6 +153,8 @@ void QUmlExecutionSpecification::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("finish")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutionSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::DocumentationRole] = QStringLiteral("References the OccurrenceSpecification that designates the start of the Action or Behavior");
     QModelingObject::propertyDataHash[QStringLiteral("start")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -53,6 +53,7 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlSubstitution
 
@@ -82,21 +83,21 @@ QUmlSubstitution::~QUmlSubstitution()
 QModelingObject *QUmlSubstitution::clone() const
 {
     QUmlSubstitution *c = new QUmlSubstitution;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlNamedElement *element, client())
+    foreach (QUmlNamedElement *element, clients())
         c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, supplier())
+    foreach (QUmlNamedElement *element, suppliers())
         c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     if (mapping())
         c->setMapping(dynamic_cast<QUmlOpaqueExpression *>(mapping()->clone()));
@@ -171,6 +172,8 @@ void QUmlSubstitution::setSubstitutingClassifier(QUmlClassifier *substitutingCla
 void QUmlSubstitution::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSubstitution");
+    QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::DocumentationRole] = QStringLiteral("The contract with which the substituting classifier complies.");
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -178,6 +181,8 @@ void QUmlSubstitution::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("contract")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSubstitution");
+    QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::DocumentationRole] = QStringLiteral("Instances of the substituting classifier are runtime substitutable where instances of the contract classifier are expected.");
     QModelingObject::propertyDataHash[QStringLiteral("substitutingClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

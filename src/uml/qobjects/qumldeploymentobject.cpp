@@ -71,18 +71,18 @@ QUmlDeploymentObject::~QUmlDeploymentObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlDeploymentObject::ownedComment() const
+const QSet<QObject *> QUmlDeploymentObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentObject::ownedElement() const
+const QSet<QObject *> QUmlDeploymentObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -115,10 +115,10 @@ QObject *QUmlDeploymentObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlDeploymentObject::clientDependency() const
+const QSet<QObject *> QUmlDeploymentObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -148,6 +148,7 @@ QString QUmlDeploymentObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlDeployment *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlDeploymentObject::visibility() const
@@ -157,64 +158,64 @@ QtUml::VisibilityKind QUmlDeploymentObject::visibility() const
 
 // OWNED ATTRIBUTES [Relationship]
 
-const QSet<QObject *> QUmlDeploymentObject::relatedElement() const
+const QSet<QObject *> QUmlDeploymentObject::relatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->relatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->relatedElements())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [DirectedRelationship]
 
-const QSet<QObject *> QUmlDeploymentObject::source() const
+const QSet<QObject *> QUmlDeploymentObject::sources() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->source())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->sources())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentObject::target() const
+const QSet<QObject *> QUmlDeploymentObject::targets() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->target())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->targets())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Dependency]
 
-const QSet<QObject *> QUmlDeploymentObject::client() const
+const QSet<QObject *> QUmlDeploymentObject::clients() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->client())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->clients())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentObject::supplier() const
+const QSet<QObject *> QUmlDeploymentObject::suppliers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->supplier())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->suppliers())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [Deployment]
 
-const QSet<QObject *> QUmlDeploymentObject::configuration() const
+const QSet<QObject *> QUmlDeploymentObject::configurations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDeploymentSpecification *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->configuration())
+    foreach (QUmlDeploymentSpecification *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->configurations())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDeploymentObject::deployedArtifact() const
+const QSet<QObject *> QUmlDeploymentObject::deployedArtifacts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDeployedArtifact *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->deployedArtifact())
+    foreach (QUmlDeployedArtifact *element, qmodelingobjectproperty_cast<QUmlDeployment *>(this)->deployedArtifacts())
         set.insert(element->asQObject());
     return set;
 }

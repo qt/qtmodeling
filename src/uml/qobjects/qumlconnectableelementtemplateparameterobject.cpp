@@ -64,18 +64,18 @@ QUmlConnectableElementTemplateParameterObject::~QUmlConnectableElementTemplatePa
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlConnectableElementTemplateParameterObject::ownedComment() const
+const QSet<QObject *> QUmlConnectableElementTemplateParameterObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConnectableElementTemplateParameterObject::ownedElement() const
+const QSet<QObject *> QUmlConnectableElementTemplateParameterObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConnectableElementTemplateParameter *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }

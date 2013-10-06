@@ -80,18 +80,18 @@ QUmlActivityParameterNodeObject::~QUmlActivityParameterNodeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::ownedComment() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::ownedElement() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -106,10 +106,10 @@ QObject *QUmlActivityParameterNodeObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::clientDependency() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -152,18 +152,18 @@ bool QUmlActivityParameterNodeObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::redefinedElement() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::redefinitionContext() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -178,26 +178,26 @@ QObject *QUmlActivityParameterNodeObject::activity() const
         return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::inGroup() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::inPartition() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -210,26 +210,26 @@ QObject *QUmlActivityParameterNodeObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::incoming() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::outgoing() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::redefinedNode() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
@@ -246,10 +246,10 @@ QObject *QUmlActivityParameterNodeObject::type() const
 
 // OWNED ATTRIBUTES [ObjectNode]
 
-const QSet<QObject *> QUmlActivityParameterNodeObject::inState() const
+const QSet<QObject *> QUmlActivityParameterNodeObject::inStates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inState())
+    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlActivityParameterNode *>(this)->inStates())
         set.insert(element->asQObject());
     return set;
 }

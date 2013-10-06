@@ -73,7 +73,7 @@ int main ()
 
     // Show profile's owned stereotypes
     qDebug() << "Owned stereotypes:";
-    foreach (QUmlStereotype *ownedStereotype, profile->ownedStereotype())
+    foreach (QUmlStereotype *ownedStereotype, profile->ownedStereotypes())
         qDebug() << "    " << ownedStereotype->name();
 
     // Adding attribute to stereotype
@@ -86,7 +86,7 @@ int main ()
 
     // Create UML meta-model element import
     QUmlElementImport *elementImport = new QUmlElementImport;
-    elementImport->setImportedElement(umlModel->packagedElement().toList().first());
+    elementImport->setImportedElement(umlModel->packagedElements().toList().first());
 
     // Add meta-class reference to profile
     profile->addMetaclassReference(elementImport);
@@ -94,13 +94,13 @@ int main ()
 
     // Show profile's data
     qDebug() << "Profile members:";
-    foreach (QUmlNamedElement *namedElement, profile->member())
+    foreach (QUmlNamedElement *namedElement, profile->members())
         qDebug() << "    " << namedElement->name();
     qDebug() << "Profile owned members:";
-    foreach (QUmlNamedElement *namedElement, profile->ownedMember())
+    foreach (QUmlNamedElement *namedElement, profile->ownedMembers())
         qDebug() << "    " << namedElement->name();
     qDebug() << "Profile imported members:";
-    foreach (QUmlPackageableElement *importedMember, profile->importedMember())
+    foreach (QUmlPackageableElement *importedMember, profile->importedMembers())
         qDebug() << "    " << importedMember->name();
 
     // Create extension

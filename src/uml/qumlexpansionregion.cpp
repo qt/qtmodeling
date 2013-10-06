@@ -67,6 +67,7 @@
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
 #include <QtUml/QUmlVariable>
+
 /*!
     \class QUmlExpansionRegion
 
@@ -95,57 +96,57 @@ QUmlExpansionRegion::~QUmlExpansionRegion()
 QModelingObject *QUmlExpansionRegion::clone() const
 {
     QUmlExpansionRegion *c = new QUmlExpansionRegion;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlActivityEdge *element, edge())
+    foreach (QUmlActivityEdge *element, edges())
         c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
     c->setMustIsolate(mustIsolate());
-    foreach (QUmlActivityNode *element, node())
+    foreach (QUmlActivityNode *element, nodes())
         c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlInputPin *element, structuredNodeInput())
+    foreach (QUmlInputPin *element, structuredNodeInputs())
         c->addStructuredNodeInput(dynamic_cast<QUmlInputPin *>(element->clone()));
-    foreach (QUmlOutputPin *element, structuredNodeOutput())
+    foreach (QUmlOutputPin *element, structuredNodeOutputs())
         c->addStructuredNodeOutput(dynamic_cast<QUmlOutputPin *>(element->clone()));
-    foreach (QUmlVariable *element, variable())
+    foreach (QUmlVariable *element, variables())
         c->addVariable(dynamic_cast<QUmlVariable *>(element->clone()));
-    foreach (QUmlExpansionNode *element, inputElement())
+    foreach (QUmlExpansionNode *element, inputElements())
         c->addInputElement(dynamic_cast<QUmlExpansionNode *>(element->clone()));
     c->setMode(mode());
-    foreach (QUmlExpansionNode *element, outputElement())
+    foreach (QUmlExpansionNode *element, outputElements())
         c->addOutputElement(dynamic_cast<QUmlExpansionNode *>(element->clone()));
     return c;
 }
@@ -155,19 +156,19 @@ QModelingObject *QUmlExpansionRegion::clone() const
 /*!
     An object node that holds a separate element of the input collection during each of the multiple executions of the region.
  */
-const QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElement() const
+const QSet<QUmlExpansionNode *> QUmlExpansionRegion::inputElements() const
 {
     // This is a read-write association end
 
-    return _inputElement;
+    return _inputElements;
 }
 
 void QUmlExpansionRegion::addInputElement(QUmlExpansionNode *inputElement)
 {
     // This is a read-write association end
 
-    if (!_inputElement.contains(inputElement)) {
-        _inputElement.insert(inputElement);
+    if (!_inputElements.contains(inputElement)) {
+        _inputElements.insert(inputElement);
         if (inputElement && inputElement->asQObject() && this->asQObject())
             QObject::connect(inputElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInputElement(QObject *)));
 
@@ -182,8 +183,8 @@ void QUmlExpansionRegion::removeInputElement(QUmlExpansionNode *inputElement)
 {
     // This is a read-write association end
 
-    if (_inputElement.contains(inputElement)) {
-        _inputElement.remove(inputElement);
+    if (_inputElements.contains(inputElement)) {
+        _inputElements.remove(inputElement);
 
         // Adjust opposite properties
         if (inputElement) {
@@ -215,19 +216,19 @@ void QUmlExpansionRegion::setMode(QtUml::ExpansionKind mode)
 /*!
     An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.
  */
-const QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElement() const
+const QSet<QUmlExpansionNode *> QUmlExpansionRegion::outputElements() const
 {
     // This is a read-write association end
 
-    return _outputElement;
+    return _outputElements;
 }
 
 void QUmlExpansionRegion::addOutputElement(QUmlExpansionNode *outputElement)
 {
     // This is a read-write association end
 
-    if (!_outputElement.contains(outputElement)) {
-        _outputElement.insert(outputElement);
+    if (!_outputElements.contains(outputElement)) {
+        _outputElements.insert(outputElement);
         if (outputElement && outputElement->asQObject() && this->asQObject())
             QObject::connect(outputElement->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOutputElement(QObject *)));
 
@@ -242,8 +243,8 @@ void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
 {
     // This is a read-write association end
 
-    if (_outputElement.contains(outputElement)) {
-        _outputElement.remove(outputElement);
+    if (_outputElements.contains(outputElement)) {
+        _outputElements.remove(outputElement);
 
         // Adjust opposite properties
         if (outputElement) {
@@ -255,6 +256,8 @@ void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
 void QUmlExpansionRegion::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("inputElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("inputElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("inputElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inputElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("inputElement")][QtModeling::DocumentationRole] = QStringLiteral("An object node that holds a separate element of the input collection during each of the multiple executions of the region.");
     QModelingObject::propertyDataHash[QStringLiteral("inputElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -262,6 +265,8 @@ void QUmlExpansionRegion::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("inputElement")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionNode-regionAsInput");
 
     QModelingObject::propertyDataHash[QStringLiteral("mode")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("mode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("mode")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("mode")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("mode")][QtModeling::DocumentationRole] = QStringLiteral("The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution");
     QModelingObject::propertyDataHash[QStringLiteral("mode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -269,6 +274,8 @@ void QUmlExpansionRegion::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("mode")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("outputElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("outputElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("outputElement")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("outputElement")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("outputElement")][QtModeling::DocumentationRole] = QStringLiteral("An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.");
     QModelingObject::propertyDataHash[QStringLiteral("outputElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -60,18 +60,18 @@ QUmlCommentObject::~QUmlCommentObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlCommentObject::ownedComment() const
+const QSet<QObject *> QUmlCommentObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCommentObject::ownedElement() const
+const QSet<QObject *> QUmlCommentObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -86,10 +86,10 @@ QObject *QUmlCommentObject::owner() const
 
 // OWNED ATTRIBUTES [Comment]
 
-const QSet<QObject *> QUmlCommentObject::annotatedElement() const
+const QSet<QObject *> QUmlCommentObject::annotatedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->annotatedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlComment *>(this)->annotatedElements())
         set.insert(element->asQObject());
     return set;
 }

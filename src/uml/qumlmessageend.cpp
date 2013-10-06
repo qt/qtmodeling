@@ -48,6 +48,7 @@
 #include <QtUml/QUmlNamespace>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlMessageEnd
 
@@ -68,9 +69,9 @@ QUmlMessageEnd::~QUmlMessageEnd()
 QModelingObject *QUmlMessageEnd::clone() const
 {
     QUmlMessageEnd *c = new QUmlMessageEnd;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -107,6 +108,8 @@ void QUmlMessageEnd::setMessage(QUmlMessage *message)
 void QUmlMessageEnd::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessageEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::DocumentationRole] = QStringLiteral("References a Message.");
     QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

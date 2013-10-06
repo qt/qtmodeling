@@ -58,6 +58,7 @@
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlInteractionOperand
 
@@ -85,9 +86,9 @@ QUmlInteractionOperand::~QUmlInteractionOperand()
 QModelingObject *QUmlInteractionOperand::clone() const
 {
     QUmlInteractionOperand *c = new QUmlInteractionOperand;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -99,15 +100,15 @@ QModelingObject *QUmlInteractionOperand::clone() const
         c->setEnclosingInteraction(dynamic_cast<QUmlInteraction *>(enclosingInteraction()->clone()));
     if (enclosingOperand())
         c->setEnclosingOperand(dynamic_cast<QUmlInteractionOperand *>(enclosingOperand()->clone()));
-    foreach (QUmlGeneralOrdering *element, generalOrdering())
+    foreach (QUmlGeneralOrdering *element, generalOrderings())
         c->addGeneralOrdering(dynamic_cast<QUmlGeneralOrdering *>(element->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
-    foreach (QUmlInteractionFragment *element, fragment())
+    foreach (QUmlInteractionFragment *element, fragments())
         c->addFragment(dynamic_cast<QUmlInteractionFragment *>(element->clone()));
     if (guard())
         c->setGuard(dynamic_cast<QUmlInteractionConstraint *>(guard()->clone()));
@@ -119,19 +120,19 @@ QModelingObject *QUmlInteractionOperand::clone() const
 /*!
     The fragments of the operand.
  */
-const QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragment() const
+const QList<QUmlInteractionFragment *> QUmlInteractionOperand::fragments() const
 {
     // This is a read-write association end
 
-    return _fragment;
+    return _fragments;
 }
 
 void QUmlInteractionOperand::addFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    if (!_fragment.contains(fragment)) {
-        _fragment.append(fragment);
+    if (!_fragments.contains(fragment)) {
+        _fragments.append(fragment);
         if (fragment && fragment->asQObject() && this->asQObject())
             QObject::connect(fragment->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeFragment(QObject *)));
         fragment->asQObject()->setParent(this->asQObject());
@@ -150,8 +151,8 @@ void QUmlInteractionOperand::removeFragment(QUmlInteractionFragment *fragment)
 {
     // This is a read-write association end
 
-    if (_fragment.contains(fragment)) {
-        _fragment.removeAll(fragment);
+    if (_fragments.contains(fragment)) {
+        _fragments.removeAll(fragment);
         if (fragment->asQObject())
             fragment->asQObject()->setParent(0);
 
@@ -198,6 +199,8 @@ void QUmlInteractionOperand::setGuard(QUmlInteractionConstraint *guard)
 void QUmlInteractionOperand::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionOperand");
+    QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::DocumentationRole] = QStringLiteral("The fragments of the operand.");
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -205,6 +208,8 @@ void QUmlInteractionOperand::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("fragment")][QtModeling::OppositeEndRole] = QStringLiteral("InteractionFragment-enclosingOperand");
 
     QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionOperand");
+    QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::DocumentationRole] = QStringLiteral("Constraint of the operand.");
     QModelingObject::propertyDataHash[QStringLiteral("guard")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

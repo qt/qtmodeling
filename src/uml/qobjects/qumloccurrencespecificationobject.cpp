@@ -70,18 +70,18 @@ QUmlOccurrenceSpecificationObject::~QUmlOccurrenceSpecificationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlOccurrenceSpecificationObject::ownedComment() const
+const QSet<QObject *> QUmlOccurrenceSpecificationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOccurrenceSpecificationObject::ownedElement() const
+const QSet<QObject *> QUmlOccurrenceSpecificationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -96,10 +96,10 @@ QObject *QUmlOccurrenceSpecificationObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlOccurrenceSpecificationObject::clientDependency() const
+const QSet<QObject *> QUmlOccurrenceSpecificationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -153,10 +153,10 @@ QObject *QUmlOccurrenceSpecificationObject::enclosingOperand() const
         return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->enclosingOperand()->asQObject();
 }
 
-const QSet<QObject *> QUmlOccurrenceSpecificationObject::generalOrdering() const
+const QSet<QObject *> QUmlOccurrenceSpecificationObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->generalOrdering())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->generalOrderings())
         set.insert(element->asQObject());
     return set;
 }
@@ -171,18 +171,18 @@ QObject *QUmlOccurrenceSpecificationObject::covered() const
         return qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->covered()->asQObject();
 }
 
-const QSet<QObject *> QUmlOccurrenceSpecificationObject::toAfter() const
+const QSet<QObject *> QUmlOccurrenceSpecificationObject::toAfters() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->toAfter())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->toAfters())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlOccurrenceSpecificationObject::toBefore() const
+const QSet<QObject *> QUmlOccurrenceSpecificationObject::toBefores() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->toBefore())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlOccurrenceSpecification *>(this)->toBefores())
         set.insert(element->asQObject());
     return set;
 }

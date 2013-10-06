@@ -84,18 +84,18 @@ QUmlConditionalNodeObject::~QUmlConditionalNodeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlConditionalNodeObject::ownedComment() const
+const QSet<QObject *> QUmlConditionalNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::ownedElement() const
+const QSet<QObject *> QUmlConditionalNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -110,10 +110,10 @@ QObject *QUmlConditionalNodeObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlConditionalNodeObject::clientDependency() const
+const QSet<QObject *> QUmlConditionalNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -156,44 +156,44 @@ bool QUmlConditionalNodeObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::redefinedElement() const
+const QSet<QObject *> QUmlConditionalNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::redefinitionContext() const
+const QSet<QObject *> QUmlConditionalNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ActivityNode]
 
-const QSet<QObject *> QUmlConditionalNodeObject::inGroup() const
+const QSet<QObject *> QUmlConditionalNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlConditionalNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::inPartition() const
+const QSet<QObject *> QUmlConditionalNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -206,36 +206,36 @@ QObject *QUmlConditionalNodeObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::incoming() const
+const QSet<QObject *> QUmlConditionalNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::outgoing() const
+const QSet<QObject *> QUmlConditionalNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::redefinedNode() const
+const QSet<QObject *> QUmlConditionalNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlConditionalNodeObject::handler() const
+const QSet<QObject *> QUmlConditionalNodeObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -250,10 +250,10 @@ QObject *QUmlConditionalNodeObject::context() const
         return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlConditionalNodeObject::input() const
+const QList<QObject *> QUmlConditionalNodeObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -263,102 +263,102 @@ bool QUmlConditionalNodeObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::localPostcondition() const
+const QSet<QObject *> QUmlConditionalNodeObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::localPrecondition() const
+const QSet<QObject *> QUmlConditionalNodeObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlConditionalNodeObject::output() const
+const QList<QObject *> QUmlConditionalNodeObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
 
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlConditionalNodeObject::elementImport() const
+const QSet<QObject *> QUmlConditionalNodeObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::importedMember() const
+const QSet<QObject *> QUmlConditionalNodeObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::member() const
+const QSet<QObject *> QUmlConditionalNodeObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::ownedMember() const
+const QSet<QObject *> QUmlConditionalNodeObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::ownedRule() const
+const QSet<QObject *> QUmlConditionalNodeObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::packageImport() const
+const QSet<QObject *> QUmlConditionalNodeObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ActivityGroup]
 
-const QSet<QObject *> QUmlConditionalNodeObject::containedEdge() const
+const QSet<QObject *> QUmlConditionalNodeObject::containedEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->containedEdge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->containedEdges())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::containedNode() const
+const QSet<QObject *> QUmlConditionalNodeObject::containedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->containedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->containedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::subgroup() const
+const QSet<QObject *> QUmlConditionalNodeObject::subgroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->subgroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->subgroups())
         set.insert(element->asQObject());
     return set;
 }
@@ -381,10 +381,10 @@ QObject *QUmlConditionalNodeObject::activity() const
         return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::edge() const
+const QSet<QObject *> QUmlConditionalNodeObject::edges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->edge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->edges())
         set.insert(element->asQObject());
     return set;
 }
@@ -394,36 +394,36 @@ bool QUmlConditionalNodeObject::mustIsolate() const
     return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->mustIsolate();
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::node() const
+const QSet<QObject *> QUmlConditionalNodeObject::nodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->node())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->nodes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::structuredNodeInput() const
+const QSet<QObject *> QUmlConditionalNodeObject::structuredNodeInputs() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->structuredNodeInput())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->structuredNodeInputs())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlConditionalNodeObject::variable() const
+const QSet<QObject *> QUmlConditionalNodeObject::variables() const
 {
     QSet<QObject *> set;
-    foreach (QUmlVariable *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->variable())
+    foreach (QUmlVariable *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->variables())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ConditionalNode]
 
-const QSet<QObject *> QUmlConditionalNodeObject::clause() const
+const QSet<QObject *> QUmlConditionalNodeObject::clauses() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClause *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->clause())
+    foreach (QUmlClause *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->clauses())
         set.insert(element->asQObject());
     return set;
 }
@@ -438,10 +438,10 @@ bool QUmlConditionalNodeObject::isDeterminate() const
     return qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->isDeterminate();
 }
 
-const QList<QObject *> QUmlConditionalNodeObject::result() const
+const QList<QObject *> QUmlConditionalNodeObject::results() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->result())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlConditionalNode *>(this)->results())
         list.append(element->asQObject());
     return list;
 }

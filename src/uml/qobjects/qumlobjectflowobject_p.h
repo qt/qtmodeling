@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlObjectFlowObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -73,17 +73,17 @@ class Q_UML_EXPORT QUmlObjectFlowObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [ActivityEdge]
     Q_PROPERTY(QObject * activity READ activity)
     Q_PROPERTY(QObject * guard READ guard)
-    Q_PROPERTY(QSet<QObject *> inGroup READ inGroup)
-    Q_PROPERTY(QSet<QObject *> inPartition READ inPartition)
+    Q_PROPERTY(QSet<QObject *> inGroup READ inGroups)
+    Q_PROPERTY(QSet<QObject *> inPartition READ inPartitions)
     Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode)
     Q_PROPERTY(QObject * interrupts READ interrupts)
-    Q_PROPERTY(QSet<QObject *> redefinedEdge READ redefinedEdge)
+    Q_PROPERTY(QSet<QObject *> redefinedEdge READ redefinedEdges)
     Q_PROPERTY(QObject * source READ source)
     Q_PROPERTY(QObject * target READ target)
     Q_PROPERTY(QObject * weight READ weight)
@@ -99,12 +99,12 @@ public:
     virtual ~QUmlObjectFlowObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -113,17 +113,17 @@ public:
 
     // Owned attributes [RedefinableElement]
     Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedElement() const;
-    Q_INVOKABLE const QSet<QObject *> redefinitionContext() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedElements() const;
+    Q_INVOKABLE const QSet<QObject *> redefinitionContexts() const;
 
     // Owned attributes [ActivityEdge]
     Q_INVOKABLE QObject *activity() const;
     Q_INVOKABLE QObject *guard() const;
-    Q_INVOKABLE const QSet<QObject *> inGroup() const;
-    Q_INVOKABLE const QSet<QObject *> inPartition() const;
+    Q_INVOKABLE const QSet<QObject *> inGroups() const;
+    Q_INVOKABLE const QSet<QObject *> inPartitions() const;
     Q_INVOKABLE QObject *inStructuredNode() const;
     Q_INVOKABLE QObject *interrupts() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedEdge() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedEdges() const;
     Q_INVOKABLE QObject *source() const;
     Q_INVOKABLE QObject *target() const;
     Q_INVOKABLE QObject *weight() const;

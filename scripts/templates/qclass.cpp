@@ -59,6 +59,7 @@
 [%- IF loop.last %]
 [% END -%]
 [%- END -%]
+
 /*!
     \class Q${namespace}${className}
 
@@ -162,12 +163,12 @@ QModelingObject *Q${namespace}${className}::clone() const
     ${documentation}
  */
 [%- END %]
-[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${className}::${qtAttribute}() const
+[% IF qtType.match("QList|QSet") %]const [% END %]${qtType}Q${namespace}${className}::${PLURALFORM(qtAttribute, attribute)}() const
 {
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
 
     [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
-    qWarning("${namespace}${className}::${qtAttribute}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    qWarning("${namespace}${className}::${PLURALFORM(qtAttribute, attribute)}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
 
     [%- IF qtType.match('\*$') %]
     return 0;
@@ -175,7 +176,7 @@ QModelingObject *Q${namespace}${className}::clone() const
     return ${qtType.trim}();
     [%- END %]
     [%- ELSE %]
-    return _${qtAttribute};
+    return _${PLURALFORM(qtAttribute, attribute)};
     [%- END %]
 }
     [%- SET attributeName = attribute.findvalue("@name").ucfirst %]
@@ -186,14 +187,14 @@ void Q${namespace}${className}::add${attributeName}(${qtType.remove("QSet<").rem
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
 
     [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
-    qWarning("${namespace}${className}::${qtAttribute}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    qWarning("${namespace}${className}::add${attributeName}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
     Q_UNUSED(${qtAttribute});
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
     [%- ELSE %]
-    if (!_${qtAttribute}.contains(${qtAttribute})) {
-        _${qtAttribute}.[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](${qtAttribute});
+    if (!_${PLURALFORM(qtAttribute, attribute)}.contains(${qtAttribute})) {
+        _${PLURALFORM(qtAttribute, attribute)}.[% IF qtType.match("QList") %]append[% ELSE %]insert[% END %](${qtAttribute});
         [%- IF qtType.match('\*') %]
         if (${qtAttribute} && ${qtAttribute}->asQObject() && this->asQObject())
             QObject::connect(${qtAttribute}->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(remove${attributeName}(QObject *)));
@@ -247,14 +248,14 @@ void Q${namespace}${className}::remove${attributeName}(${qtType.remove("QSet<").
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
 
     [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
-    qWarning("${namespace}${className}::${qtAttribute}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    qWarning("${namespace}${className}::remove${attributeName}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
     Q_UNUSED(${qtAttribute});
 
     if (false /* <derivedexclusion-criteria> */) {
         // <derived-code>
     [%- ELSE %]
-    if (_${qtAttribute}.contains(${qtAttribute})) {
-        _${qtAttribute}.[% IF qtType.match("QList") %]removeAll[% ELSE %]remove[% END %](${qtAttribute});
+    if (_${PLURALFORM(qtAttribute, attribute)}.contains(${qtAttribute})) {
+        _${PLURALFORM(qtAttribute, attribute)}.[% IF qtType.match("QList") %]removeAll[% ELSE %]remove[% END %](${qtAttribute});
         [%- IF attribute.findvalue("@aggregation") == "composite" %]
         if (${qtAttribute}->asQObject())
             ${qtAttribute}->asQObject()->setParent(0);
@@ -306,12 +307,12 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
     // This is a [% IF readOnly == "" || readOnly == "false" %]read-write[% ELSE %]read-only[% END %][% IF derived == "true" %] derived[% END %][% IF derivedUnion == "true" %] union[% END %] [% IF association != "" %]association end[% ELSE %]property[% END %]
 
     [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
-    qWarning("${namespace}${className}::${qtAttribute}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
+    qWarning("${namespace}${className}::set${attributeName.remove("^Is")}(): to be implemented (this is a derived [% IF association != "" %]association end[% ELSE %]property[% END %])");
     Q_UNUSED(${qtAttribute});
 
     if (false /* <derivedexclusion-criteria> */) {
     [%- ELSE %]
-    if (_${qtAttribute} != ${qtAttribute}) {
+    if (_${PLURALFORM(qtAttribute, attribute)} != ${qtAttribute}) {
     [%- END %]
         [%- found = "false" -%]
         [%- FOREACH subsettedPropertyName = attribute.findvalue("@subsettedProperty").split(" ") -%]
@@ -322,7 +323,7 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
                     [%- found = "true" -%]
                 [%- END -%]
                     [%- IF subsettedProperty.findvalue("upperValue/@value") == "*" %]
-        [% IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]// [% END %]remove${subsettedPropertyName.split('-').1.ucfirst}([%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]/* <derived-code> */[% ELSE %]_${qtAttribute}[% END %]);
+        [% IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]// [% END %]remove${subsettedPropertyName.split('-').1.ucfirst}([%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]/* <derived-code> */[% ELSE %]_${PLURALFORM(qtAttribute, attribute)}[% END %]);
                     [%- END -%]
             [%- END %]
         [%- END %]
@@ -331,7 +332,7 @@ void Q${namespace}${className}::set${attributeName.remove("^Is")}([% IF !qtType.
         [%- IF derived == "true" && (derivedUnion == "false" || derivedUnion == "") %]
         // <derived-code>
         [%- ELSE %]
-        _${qtAttribute} = ${qtAttribute};
+        _${PLURALFORM(qtAttribute, attribute)} = ${qtAttribute};
 [%- IF attribute.findvalue("defaultValue/@xmi:type") != "" %]
         _modifiedResettableProperties << QStringLiteral("${attributeName.lcfirst}");
 [%- END %]
@@ -411,6 +412,8 @@ void Q${namespace}${className}::setPropertyData()
 [%- ELSE %]
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::AggregationRole] = QStringLiteral("none");
 [%- END %]
+    QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::PropertyClassRole] = QStringLiteral("Q${namespace}${className}");
+    QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::IsDerivedRole] = [% IF attribute.findvalue("@isDerived") == "true" %]true[% ELSE %]false[% END %];
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::IsDerivedUnionRole] = [% IF attribute.findvalue("@isDerivedUnion") == "true" %]true[% ELSE %]false[% END %];
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::DocumentationRole] = QStringLiteral("${attribute.findvalue("ownedComment/body/text()")}");
     QModelingObject::propertyDataHash[QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("${attribute.findvalue("@redefinedProperty")}");

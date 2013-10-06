@@ -70,18 +70,18 @@ QUmlIntervalConstraintObject::~QUmlIntervalConstraintObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlIntervalConstraintObject::ownedComment() const
+const QSet<QObject *> QUmlIntervalConstraintObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlIntervalConstraintObject::ownedElement() const
+const QSet<QObject *> QUmlIntervalConstraintObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -114,10 +114,10 @@ QObject *QUmlIntervalConstraintObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlIntervalConstraintObject::clientDependency() const
+const QSet<QObject *> QUmlIntervalConstraintObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -147,6 +147,7 @@ QString QUmlIntervalConstraintObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlIntervalConstraintObject::visibility() const
@@ -156,10 +157,10 @@ QtUml::VisibilityKind QUmlIntervalConstraintObject::visibility() const
 
 // OWNED ATTRIBUTES [Constraint]
 
-const QList<QObject *> QUmlIntervalConstraintObject::constrainedElement() const
+const QList<QObject *> QUmlIntervalConstraintObject::constrainedElements() const
 {
     QList<QObject *> list;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->constrainedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->constrainedElements())
         list.append(element->asQObject());
     return list;
 }
@@ -171,6 +172,7 @@ QObject *QUmlIntervalConstraintObject::context() const
     else
         return qmodelingobjectproperty_cast<QUmlIntervalConstraint *>(this)->context()->asQObject();
 }
+
 // OWNED ATTRIBUTES [IntervalConstraint]
 
 QObject *QUmlIntervalConstraintObject::specification() const

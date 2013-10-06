@@ -66,16 +66,16 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlExtend *> extend() const;
+    const QSet<QUmlExtend *> extends() const;
     void addExtend(QUmlExtend *extend);
     void removeExtend(QUmlExtend *extend);
-    const QSet<QUmlExtensionPoint *> extensionPoint() const;
+    const QSet<QUmlExtensionPoint *> extensionPoints() const;
     void addExtensionPoint(QUmlExtensionPoint *extensionPoint);
     void removeExtensionPoint(QUmlExtensionPoint *extensionPoint);
-    const QSet<QUmlInclude *> include() const;
+    const QSet<QUmlInclude *> includes() const;
     void addInclude(QUmlInclude *include);
     void removeInclude(QUmlInclude *include);
-    const QSet<QUmlClassifier *> subject() const;
+    const QSet<QUmlClassifier *> subjects() const;
     void addSubject(QUmlClassifier *subject);
     void removeSubject(QUmlClassifier *subject);
 
@@ -83,10 +83,10 @@ public:
     QSet<QUmlUseCase *> allIncludedUseCases() const;
 
 protected:
-    QSet<QUmlExtend *> _extend;
-    QSet<QUmlExtensionPoint *> _extensionPoint;
-    QSet<QUmlInclude *> _include;
-    QSet<QUmlClassifier *> _subject;
+    QSet<QUmlExtend *> _extends;
+    QSet<QUmlExtensionPoint *> _extensionPoints;
+    QSet<QUmlInclude *> _includes;
+    QSet<QUmlClassifier *> _subjects;
 
     virtual void setPropertyData();
 };

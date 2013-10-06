@@ -64,18 +64,18 @@ QUmlLinkEndDestructionDataObject::~QUmlLinkEndDestructionDataObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlLinkEndDestructionDataObject::ownedComment() const
+const QSet<QObject *> QUmlLinkEndDestructionDataObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlLinkEndDestructionDataObject::ownedElement() const
+const QSet<QObject *> QUmlLinkEndDestructionDataObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -98,10 +98,10 @@ QObject *QUmlLinkEndDestructionDataObject::end() const
         return qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->end()->asQObject();
 }
 
-const QSet<QObject *> QUmlLinkEndDestructionDataObject::qualifier() const
+const QSet<QObject *> QUmlLinkEndDestructionDataObject::qualifiers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlQualifierValue *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->qualifier())
+    foreach (QUmlQualifierValue *element, qmodelingobjectproperty_cast<QUmlLinkEndDestructionData *>(this)->qualifiers())
         set.insert(element->asQObject());
     return set;
 }

@@ -68,18 +68,18 @@ QUmlAnyReceiveEventObject::~QUmlAnyReceiveEventObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlAnyReceiveEventObject::ownedComment() const
+const QSet<QObject *> QUmlAnyReceiveEventObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlAnyReceiveEventObject::ownedElement() const
+const QSet<QObject *> QUmlAnyReceiveEventObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -112,10 +112,10 @@ QObject *QUmlAnyReceiveEventObject::templateParameter() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlAnyReceiveEventObject::clientDependency() const
+const QSet<QObject *> QUmlAnyReceiveEventObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -145,6 +145,7 @@ QString QUmlAnyReceiveEventObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlAnyReceiveEvent *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [PackageableElement]
 
 QtUml::VisibilityKind QUmlAnyReceiveEventObject::visibility() const

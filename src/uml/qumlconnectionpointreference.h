@@ -64,18 +64,18 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlPseudostate *> entry() const;
+    const QSet<QUmlPseudostate *> entries() const;
     void addEntry(QUmlPseudostate *entry);
     void removeEntry(QUmlPseudostate *entry);
-    const QSet<QUmlPseudostate *> exit() const;
+    const QSet<QUmlPseudostate *> exits() const;
     void addExit(QUmlPseudostate *exit);
     void removeExit(QUmlPseudostate *exit);
     QUmlState *state() const;
     void setState(QUmlState *state);
 
 protected:
-    QSet<QUmlPseudostate *> _entry;
-    QSet<QUmlPseudostate *> _exit;
+    QSet<QUmlPseudostate *> _entries;
+    QSet<QUmlPseudostate *> _exits;
     QUmlState *_state;
 
     virtual void setPropertyData();

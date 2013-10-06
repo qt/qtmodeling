@@ -71,18 +71,18 @@ QUmlTimeExpressionObject::~QUmlTimeExpressionObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlTimeExpressionObject::ownedComment() const
+const QSet<QObject *> QUmlTimeExpressionObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTimeExpressionObject::ownedElement() const
+const QSet<QObject *> QUmlTimeExpressionObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlTimeExpressionObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlTimeExpressionObject::clientDependency() const
+const QSet<QObject *> QUmlTimeExpressionObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -130,6 +130,7 @@ QString QUmlTimeExpressionObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlTimeExpressionObject::type() const
@@ -175,10 +176,10 @@ QObject *QUmlTimeExpressionObject::expr() const
         return qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->expr()->asQObject();
 }
 
-const QSet<QObject *> QUmlTimeExpressionObject::observation() const
+const QSet<QObject *> QUmlTimeExpressionObject::observations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlObservation *element, qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->observation())
+    foreach (QUmlObservation *element, qmodelingobjectproperty_cast<QUmlTimeExpression *>(this)->observations())
         set.insert(element->asQObject());
     return set;
 }

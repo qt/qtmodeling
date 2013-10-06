@@ -63,18 +63,18 @@ QUmlTemplateSignatureObject::~QUmlTemplateSignatureObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlTemplateSignatureObject::ownedComment() const
+const QSet<QObject *> QUmlTemplateSignatureObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTemplateSignatureObject::ownedElement() const
+const QSet<QObject *> QUmlTemplateSignatureObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -89,18 +89,18 @@ QObject *QUmlTemplateSignatureObject::owner() const
 
 // OWNED ATTRIBUTES [TemplateSignature]
 
-const QList<QObject *> QUmlTemplateSignatureObject::ownedParameter() const
+const QList<QObject *> QUmlTemplateSignatureObject::ownedParameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->ownedParameter())
+    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->ownedParameters())
         list.append(element->asQObject());
     return list;
 }
 
-const QList<QObject *> QUmlTemplateSignatureObject::parameter() const
+const QList<QObject *> QUmlTemplateSignatureObject::parameters() const
 {
     QList<QObject *> list;
-    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->parameter())
+    foreach (QUmlTemplateParameter *element, qmodelingobjectproperty_cast<QUmlTemplateSignature *>(this)->parameters())
         list.append(element->asQObject());
     return list;
 }

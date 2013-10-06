@@ -79,6 +79,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlBehavior
 
@@ -101,18 +102,18 @@ QUmlBehavior::~QUmlBehavior()
 QModelingObject *QUmlBehavior::clone() const
 {
     QUmlBehavior *c = new QUmlBehavior;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -120,57 +121,57 @@ QModelingObject *QUmlBehavior::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlConnector *element, ownedConnector())
+    foreach (QUmlConnector *element, ownedConnectors())
         c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
     if (classifierBehavior())
         c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
-    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, interfaceRealizations())
         c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
-    foreach (QUmlBehavior *element, ownedBehavior())
+    foreach (QUmlBehavior *element, ownedBehaviors())
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setActive(isActive());
-    foreach (QUmlClassifier *element, nestedClassifier())
+    foreach (QUmlClassifier *element, nestedClassifiers())
         c->addNestedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlOperation *element, ownedOperation())
+    foreach (QUmlOperation *element, ownedOperations())
         c->addOwnedOperation(dynamic_cast<QUmlOperation *>(element->clone()));
-    foreach (QUmlReception *element, ownedReception())
+    foreach (QUmlReception *element, ownedReceptions())
         c->addOwnedReception(dynamic_cast<QUmlReception *>(element->clone()));
     c->setReentrant(isReentrant());
-    foreach (QUmlParameter *element, ownedParameter())
+    foreach (QUmlParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
-    foreach (QUmlParameterSet *element, ownedParameterSet())
+    foreach (QUmlParameterSet *element, ownedParameterSets())
         c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
-    foreach (QUmlConstraint *element, postcondition())
+    foreach (QUmlConstraint *element, postconditions())
         c->addPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, precondition())
+    foreach (QUmlConstraint *element, preconditions())
         c->addPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlBehavior *element, redefinedBehavior())
+    foreach (QUmlBehavior *element, redefinedBehaviors())
         c->addRedefinedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
     if (specification())
         c->setSpecification(dynamic_cast<QUmlBehavioralFeature *>(specification()->clone()));
@@ -195,7 +196,7 @@ void QUmlBehavior::setContext(QUmlBehavioredClassifier *context)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlBehavior::context(): to be implemented (this is a derived association end)");
+    qWarning("UmlBehavior::setContext(): to be implemented (this is a derived association end)");
     Q_UNUSED(context);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -234,19 +235,19 @@ void QUmlBehavior::setReentrant(bool isReentrant)
 /*!
     References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.
  */
-const QList<QUmlParameter *> QUmlBehavior::ownedParameter() const
+const QList<QUmlParameter *> QUmlBehavior::ownedParameters() const
 {
     // This is a read-write association end
 
-    return _ownedParameter;
+    return _ownedParameters;
 }
 
 void QUmlBehavior::addOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    if (!_ownedParameter.contains(ownedParameter)) {
-        _ownedParameter.append(ownedParameter);
+    if (!_ownedParameters.contains(ownedParameter)) {
+        _ownedParameters.append(ownedParameter);
         if (ownedParameter && ownedParameter->asQObject() && this->asQObject())
             QObject::connect(ownedParameter->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameter(QObject *)));
         ownedParameter->asQObject()->setParent(this->asQObject());
@@ -260,8 +261,8 @@ void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
 {
     // This is a read-write association end
 
-    if (_ownedParameter.contains(ownedParameter)) {
-        _ownedParameter.removeAll(ownedParameter);
+    if (_ownedParameters.contains(ownedParameter)) {
+        _ownedParameters.removeAll(ownedParameter);
         if (ownedParameter->asQObject())
             ownedParameter->asQObject()->setParent(0);
 
@@ -273,19 +274,19 @@ void QUmlBehavior::removeOwnedParameter(QUmlParameter *ownedParameter)
 /*!
     The ParameterSets owned by this Behavior.
  */
-const QSet<QUmlParameterSet *> QUmlBehavior::ownedParameterSet() const
+const QSet<QUmlParameterSet *> QUmlBehavior::ownedParameterSets() const
 {
     // This is a read-write association end
 
-    return _ownedParameterSet;
+    return _ownedParameterSets;
 }
 
 void QUmlBehavior::addOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
     // This is a read-write association end
 
-    if (!_ownedParameterSet.contains(ownedParameterSet)) {
-        _ownedParameterSet.insert(ownedParameterSet);
+    if (!_ownedParameterSets.contains(ownedParameterSet)) {
+        _ownedParameterSets.insert(ownedParameterSet);
         if (ownedParameterSet && ownedParameterSet->asQObject() && this->asQObject())
             QObject::connect(ownedParameterSet->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedParameterSet(QObject *)));
         ownedParameterSet->asQObject()->setParent(this->asQObject());
@@ -299,8 +300,8 @@ void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 {
     // This is a read-write association end
 
-    if (_ownedParameterSet.contains(ownedParameterSet)) {
-        _ownedParameterSet.remove(ownedParameterSet);
+    if (_ownedParameterSets.contains(ownedParameterSet)) {
+        _ownedParameterSets.remove(ownedParameterSet);
         if (ownedParameterSet->asQObject())
             ownedParameterSet->asQObject()->setParent(0);
 
@@ -312,19 +313,19 @@ void QUmlBehavior::removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet)
 /*!
     An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.
  */
-const QSet<QUmlConstraint *> QUmlBehavior::postcondition() const
+const QSet<QUmlConstraint *> QUmlBehavior::postconditions() const
 {
     // This is a read-write association end
 
-    return _postcondition;
+    return _postconditions;
 }
 
 void QUmlBehavior::addPostcondition(QUmlConstraint *postcondition)
 {
     // This is a read-write association end
 
-    if (!_postcondition.contains(postcondition)) {
-        _postcondition.insert(postcondition);
+    if (!_postconditions.contains(postcondition)) {
+        _postconditions.insert(postcondition);
         if (postcondition && postcondition->asQObject() && this->asQObject())
             QObject::connect(postcondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePostcondition(QObject *)));
         postcondition->asQObject()->setParent(this->asQObject());
@@ -338,8 +339,8 @@ void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
 {
     // This is a read-write association end
 
-    if (_postcondition.contains(postcondition)) {
-        _postcondition.remove(postcondition);
+    if (_postconditions.contains(postcondition)) {
+        _postconditions.remove(postcondition);
         if (postcondition->asQObject())
             postcondition->asQObject()->setParent(0);
 
@@ -351,19 +352,19 @@ void QUmlBehavior::removePostcondition(QUmlConstraint *postcondition)
 /*!
     An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.
  */
-const QSet<QUmlConstraint *> QUmlBehavior::precondition() const
+const QSet<QUmlConstraint *> QUmlBehavior::preconditions() const
 {
     // This is a read-write association end
 
-    return _precondition;
+    return _preconditions;
 }
 
 void QUmlBehavior::addPrecondition(QUmlConstraint *precondition)
 {
     // This is a read-write association end
 
-    if (!_precondition.contains(precondition)) {
-        _precondition.insert(precondition);
+    if (!_preconditions.contains(precondition)) {
+        _preconditions.insert(precondition);
         if (precondition && precondition->asQObject() && this->asQObject())
             QObject::connect(precondition->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePrecondition(QObject *)));
         precondition->asQObject()->setParent(this->asQObject());
@@ -377,8 +378,8 @@ void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
 {
     // This is a read-write association end
 
-    if (_precondition.contains(precondition)) {
-        _precondition.remove(precondition);
+    if (_preconditions.contains(precondition)) {
+        _preconditions.remove(precondition);
         if (precondition->asQObject())
             precondition->asQObject()->setParent(0);
 
@@ -390,19 +391,19 @@ void QUmlBehavior::removePrecondition(QUmlConstraint *precondition)
 /*!
     References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.
  */
-const QSet<QUmlBehavior *> QUmlBehavior::redefinedBehavior() const
+const QSet<QUmlBehavior *> QUmlBehavior::redefinedBehaviors() const
 {
     // This is a read-write association end
 
-    return _redefinedBehavior;
+    return _redefinedBehaviors;
 }
 
 void QUmlBehavior::addRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 {
     // This is a read-write association end
 
-    if (!_redefinedBehavior.contains(redefinedBehavior)) {
-        _redefinedBehavior.insert(redefinedBehavior);
+    if (!_redefinedBehaviors.contains(redefinedBehavior)) {
+        _redefinedBehaviors.insert(redefinedBehavior);
         if (redefinedBehavior && redefinedBehavior->asQObject() && this->asQObject())
             QObject::connect(redefinedBehavior->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRedefinedBehavior(QObject *)));
 
@@ -415,8 +416,8 @@ void QUmlBehavior::removeRedefinedBehavior(QUmlBehavior *redefinedBehavior)
 {
     // This is a read-write association end
 
-    if (_redefinedBehavior.contains(redefinedBehavior)) {
-        _redefinedBehavior.remove(redefinedBehavior);
+    if (_redefinedBehaviors.contains(redefinedBehavior)) {
+        _redefinedBehaviors.remove(redefinedBehavior);
 
         // Adjust subsetted properties
         removeRedefinedClassifier(redefinedBehavior);
@@ -447,6 +448,8 @@ void QUmlBehavior::setSpecification(QUmlBehavioralFeature *specification)
 void QUmlBehavior::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("The classifier that is the context for the execution of the behavior. If the behavior is owned by a BehavioredClassifier, that classifier is the context. Otherwise, the context is the first BehavioredClassifier reached by following the chain of owner relationships. For example, following this algorithm, the context of an entry action in a state machine is the classifier that owns the state machine. The features of the context classifier as well as the elements visible to the context classifier are visible to the behavior.");
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -454,6 +457,8 @@ void QUmlBehavior::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("isReentrant")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isReentrant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("isReentrant")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isReentrant")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isReentrant")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the behavior can be invoked while it is still executing from a previous invocation.");
     QModelingObject::propertyDataHash[QStringLiteral("isReentrant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -461,6 +466,8 @@ void QUmlBehavior::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isReentrant")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameter")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedParameter")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameter")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameter")][QtModeling::DocumentationRole] = QStringLiteral("References a list of parameters to the behavior which describes the order and type of arguments that can be given when the behavior is invoked and of the values which will be returned when the behavior completes its execution.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -468,6 +475,8 @@ void QUmlBehavior::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameter")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameterSet")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedParameterSet")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedParameterSet")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameterSet")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameterSet")][QtModeling::DocumentationRole] = QStringLiteral("The ParameterSets owned by this Behavior.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameterSet")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -475,6 +484,8 @@ void QUmlBehavior::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedParameterSet")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("postcondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("postcondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("postcondition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("postcondition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("postcondition")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints specifying what is fulfilled after the execution of the behavior is completed, if its precondition was fulfilled before its invocation.");
     QModelingObject::propertyDataHash[QStringLiteral("postcondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -482,6 +493,8 @@ void QUmlBehavior::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("postcondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("precondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("precondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("precondition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("precondition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("precondition")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints specifying what must be fulfilled when the behavior is invoked.");
     QModelingObject::propertyDataHash[QStringLiteral("precondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -489,6 +502,8 @@ void QUmlBehavior::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("precondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("redefinedBehavior")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedBehavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("redefinedBehavior")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedBehavior")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("redefinedBehavior")][QtModeling::DocumentationRole] = QStringLiteral("References a behavior that this behavior redefines. A subtype of Behavior may redefine any other subtype of Behavior. If the behavior implements a behavioral feature, it replaces the redefined behavior. If the behavior is a classifier behavior, it extends the redefined behavior.");
     QModelingObject::propertyDataHash[QStringLiteral("redefinedBehavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -496,6 +511,8 @@ void QUmlBehavior::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("redefinedBehavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("Designates a behavioral feature that the behavior implements. The behavioral feature must be owned by the classifier that owns the behavior or be inherited by it. The parameters of the behavioral feature and the implementing behavior must match. A behavior does not need to have a specification, in which case it either is the classifer behavior of a BehavioredClassifier or it can only be invoked by another behavior of the classifier.");
     QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

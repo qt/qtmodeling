@@ -69,6 +69,7 @@
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
 #include <QtUml/QUmlUseCase>
+
 /*!
     \class QUmlStructuredClassifier
 
@@ -88,18 +89,18 @@ QUmlStructuredClassifier::~QUmlStructuredClassifier()
 QModelingObject *QUmlStructuredClassifier::clone() const
 {
     QUmlStructuredClassifier *c = new QUmlStructuredClassifier;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -107,33 +108,33 @@ QModelingObject *QUmlStructuredClassifier::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlProperty *element, ownedAttribute())
+    foreach (QUmlProperty *element, ownedAttributes())
         c->addOwnedAttribute(dynamic_cast<QUmlProperty *>(element->clone()));
-    foreach (QUmlConnector *element, ownedConnector())
+    foreach (QUmlConnector *element, ownedConnectors())
         c->addOwnedConnector(dynamic_cast<QUmlConnector *>(element->clone()));
     return c;
 }
@@ -143,19 +144,19 @@ QModelingObject *QUmlStructuredClassifier::clone() const
 /*!
     References the properties owned by the classifier.
  */
-const QList<QUmlProperty *> QUmlStructuredClassifier::ownedAttribute() const
+const QList<QUmlProperty *> QUmlStructuredClassifier::ownedAttributes() const
 {
     // This is a read-write association end
 
-    return _ownedAttribute;
+    return _ownedAttributes;
 }
 
 void QUmlStructuredClassifier::addOwnedAttribute(QUmlProperty *ownedAttribute)
 {
     // This is a read-write association end
 
-    if (!_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.append(ownedAttribute);
+    if (!_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.append(ownedAttribute);
         if (ownedAttribute && ownedAttribute->asQObject() && this->asQObject())
             QObject::connect(ownedAttribute->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedAttribute(QObject *)));
         ownedAttribute->asQObject()->setParent(this->asQObject());
@@ -171,8 +172,8 @@ void QUmlStructuredClassifier::removeOwnedAttribute(QUmlProperty *ownedAttribute
 {
     // This is a read-write association end
 
-    if (_ownedAttribute.contains(ownedAttribute)) {
-        _ownedAttribute.removeAll(ownedAttribute);
+    if (_ownedAttributes.contains(ownedAttribute)) {
+        _ownedAttributes.removeAll(ownedAttribute);
         if (ownedAttribute->asQObject())
             ownedAttribute->asQObject()->setParent(0);
 
@@ -186,19 +187,19 @@ void QUmlStructuredClassifier::removeOwnedAttribute(QUmlProperty *ownedAttribute
 /*!
     References the connectors owned by the classifier.
  */
-const QSet<QUmlConnector *> QUmlStructuredClassifier::ownedConnector() const
+const QSet<QUmlConnector *> QUmlStructuredClassifier::ownedConnectors() const
 {
     // This is a read-write association end
 
-    return _ownedConnector;
+    return _ownedConnectors;
 }
 
 void QUmlStructuredClassifier::addOwnedConnector(QUmlConnector *ownedConnector)
 {
     // This is a read-write association end
 
-    if (!_ownedConnector.contains(ownedConnector)) {
-        _ownedConnector.insert(ownedConnector);
+    if (!_ownedConnectors.contains(ownedConnector)) {
+        _ownedConnectors.insert(ownedConnector);
         if (ownedConnector && ownedConnector->asQObject() && this->asQObject())
             QObject::connect(ownedConnector->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedConnector(QObject *)));
         ownedConnector->asQObject()->setParent(this->asQObject());
@@ -213,8 +214,8 @@ void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnecto
 {
     // This is a read-write association end
 
-    if (_ownedConnector.contains(ownedConnector)) {
-        _ownedConnector.remove(ownedConnector);
+    if (_ownedConnectors.contains(ownedConnector)) {
+        _ownedConnectors.remove(ownedConnector);
         if (ownedConnector->asQObject())
             ownedConnector->asQObject()->setParent(0);
 
@@ -227,11 +228,11 @@ void QUmlStructuredClassifier::removeOwnedConnector(QUmlConnector *ownedConnecto
 /*!
     References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.
  */
-const QSet<QUmlProperty *> QUmlStructuredClassifier::part() const
+const QSet<QUmlProperty *> QUmlStructuredClassifier::parts() const
 {
     // This is a read-only derived association end
 
-    qWarning("UmlStructuredClassifier::part(): to be implemented (this is a derived association end)");
+    qWarning("UmlStructuredClassifier::parts(): to be implemented (this is a derived association end)");
 
     return QSet<QUmlProperty *>();
 }
@@ -240,7 +241,7 @@ void QUmlStructuredClassifier::addPart(QUmlProperty *part)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlStructuredClassifier::part(): to be implemented (this is a derived association end)");
+    qWarning("UmlStructuredClassifier::addPart(): to be implemented (this is a derived association end)");
     Q_UNUSED(part);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -252,7 +253,7 @@ void QUmlStructuredClassifier::removePart(QUmlProperty *part)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlStructuredClassifier::part(): to be implemented (this is a derived association end)");
+    qWarning("UmlStructuredClassifier::removePart(): to be implemented (this is a derived association end)");
     Q_UNUSED(part);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -263,19 +264,19 @@ void QUmlStructuredClassifier::removePart(QUmlProperty *part)
 /*!
     References the roles that instances may play in this classifier.
  */
-const QSet<QUmlConnectableElement *> QUmlStructuredClassifier::role() const
+const QSet<QUmlConnectableElement *> QUmlStructuredClassifier::roles() const
 {
     // This is a read-only derived union association end
 
-    return _role;
+    return _roles;
 }
 
 void QUmlStructuredClassifier::addRole(QUmlConnectableElement *role)
 {
     // This is a read-only derived union association end
 
-    if (!_role.contains(role)) {
-        _role.insert(role);
+    if (!_roles.contains(role)) {
+        _roles.insert(role);
         if (role && role->asQObject() && this->asQObject())
             QObject::connect(role->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeRole(QObject *)));
 
@@ -288,8 +289,8 @@ void QUmlStructuredClassifier::removeRole(QUmlConnectableElement *role)
 {
     // This is a read-only derived union association end
 
-    if (_role.contains(role)) {
-        _role.remove(role);
+    if (_roles.contains(role)) {
+        _roles.remove(role);
 
         // Adjust subsetted properties
         removeMember(role);
@@ -299,6 +300,8 @@ void QUmlStructuredClassifier::removeRole(QUmlConnectableElement *role)
 void QUmlStructuredClassifier::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("References the properties owned by the classifier.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -306,6 +309,8 @@ void QUmlStructuredClassifier::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedConnector")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedConnector")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedConnector")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedConnector")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedConnector")][QtModeling::DocumentationRole] = QStringLiteral("References the connectors owned by the classifier.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedConnector")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -313,6 +318,8 @@ void QUmlStructuredClassifier::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedConnector")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("part")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("part")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("part")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("part")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("part")][QtModeling::DocumentationRole] = QStringLiteral("References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.");
     QModelingObject::propertyDataHash[QStringLiteral("part")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -320,6 +327,8 @@ void QUmlStructuredClassifier::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("part")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::IsDerivedUnionRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::DocumentationRole] = QStringLiteral("References the roles that instances may play in this classifier.");
     QModelingObject::propertyDataHash[QStringLiteral("role")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

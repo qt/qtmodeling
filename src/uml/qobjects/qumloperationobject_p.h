@@ -59,16 +59,16 @@ class Q_UML_EXPORT QUmlOperationObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [TemplateableElement]
     Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature)
-    Q_PROPERTY(QSet<QObject *> templateBinding READ templateBinding)
+    Q_PROPERTY(QSet<QObject *> templateBinding READ templateBindings)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -76,27 +76,27 @@ class Q_UML_EXPORT QUmlOperationObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ member)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImport)
+    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> member READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElement)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContext)
+    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [Feature]
-    Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifier)
+    Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifiers)
     Q_PROPERTY(bool isStatic READ isStatic RESET unsetStatic)
 
     // Properties [BehavioralFeature]
     Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency RESET unsetConcurrency)
     Q_PROPERTY(bool isAbstract READ isAbstract RESET unsetAbstract)
-    Q_PROPERTY(QSet<QObject *> method READ method)
-    Q_PROPERTY(QSet<QObject *> ownedParameterSet READ ownedParameterSet)
+    Q_PROPERTY(QSet<QObject *> method READ methods)
+    Q_PROPERTY(QSet<QObject *> ownedParameterSet READ ownedParameterSets)
 
     // Properties [ParameterableElement]
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
@@ -110,11 +110,11 @@ class Q_UML_EXPORT QUmlOperationObject : public QObject
     Q_PROPERTY(bool isQuery READ isQuery RESET unsetQuery)
     Q_PROPERTY(bool isUnique READ isUnique RESET unsetUnique STORED false)
     Q_PROPERTY(int lower READ lower RESET unsetLower STORED false)
-    Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameter)
-    Q_PROPERTY(QSet<QObject *> postcondition READ postcondition)
-    Q_PROPERTY(QSet<QObject *> precondition READ precondition)
-    Q_PROPERTY(QSet<QObject *> raisedException READ raisedException)
-    Q_PROPERTY(QSet<QObject *> redefinedOperation READ redefinedOperation)
+    Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameters)
+    Q_PROPERTY(QSet<QObject *> postcondition READ postconditions)
+    Q_PROPERTY(QSet<QObject *> precondition READ preconditions)
+    Q_PROPERTY(QSet<QObject *> raisedException READ raisedExceptions)
+    Q_PROPERTY(QSet<QObject *> redefinedOperation READ redefinedOperations)
     Q_PROPERTY(QObject * templateParameter READ templateParameter)
     Q_PROPERTY(QObject * type READ type STORED false)
     Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
@@ -124,16 +124,16 @@ public:
     virtual ~QUmlOperationObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [TemplateableElement]
     Q_INVOKABLE QObject *ownedTemplateSignature() const;
-    Q_INVOKABLE const QSet<QObject *> templateBinding() const;
+    Q_INVOKABLE const QSet<QObject *> templateBindings() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -141,27 +141,27 @@ public:
     Q_INVOKABLE QtUml::VisibilityKind visibility() const;
 
     // Owned attributes [Namespace]
-    Q_INVOKABLE const QSet<QObject *> elementImport() const;
-    Q_INVOKABLE const QSet<QObject *> importedMember() const;
-    Q_INVOKABLE const QSet<QObject *> member() const;
-    Q_INVOKABLE const QSet<QObject *> ownedMember() const;
-    Q_INVOKABLE const QSet<QObject *> ownedRule() const;
-    Q_INVOKABLE const QSet<QObject *> packageImport() const;
+    Q_INVOKABLE const QSet<QObject *> elementImports() const;
+    Q_INVOKABLE const QSet<QObject *> importedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> members() const;
+    Q_INVOKABLE const QSet<QObject *> ownedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> ownedRules() const;
+    Q_INVOKABLE const QSet<QObject *> packageImports() const;
 
     // Owned attributes [RedefinableElement]
     Q_INVOKABLE bool isLeaf() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedElement() const;
-    Q_INVOKABLE const QSet<QObject *> redefinitionContext() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedElements() const;
+    Q_INVOKABLE const QSet<QObject *> redefinitionContexts() const;
 
     // Owned attributes [Feature]
-    Q_INVOKABLE const QSet<QObject *> featuringClassifier() const;
+    Q_INVOKABLE const QSet<QObject *> featuringClassifiers() const;
     Q_INVOKABLE bool isStatic() const;
 
     // Owned attributes [BehavioralFeature]
     Q_INVOKABLE QtUml::CallConcurrencyKind concurrency() const;
     Q_INVOKABLE bool isAbstract() const;
-    Q_INVOKABLE const QSet<QObject *> method() const;
-    Q_INVOKABLE const QSet<QObject *> ownedParameterSet() const;
+    Q_INVOKABLE const QSet<QObject *> methods() const;
+    Q_INVOKABLE const QSet<QObject *> ownedParameterSets() const;
 
     // Owned attributes [ParameterableElement]
     Q_INVOKABLE QObject *owningTemplateParameter() const;
@@ -175,11 +175,11 @@ public:
     Q_INVOKABLE bool isQuery() const;
     Q_INVOKABLE bool isUnique() const;
     Q_INVOKABLE int lower() const;
-    Q_INVOKABLE const QList<QObject *> ownedParameter() const;
-    Q_INVOKABLE const QSet<QObject *> postcondition() const;
-    Q_INVOKABLE const QSet<QObject *> precondition() const;
-    Q_INVOKABLE const QSet<QObject *> raisedException() const;
-    Q_INVOKABLE const QSet<QObject *> redefinedOperation() const;
+    Q_INVOKABLE const QList<QObject *> ownedParameters() const;
+    Q_INVOKABLE const QSet<QObject *> postconditions() const;
+    Q_INVOKABLE const QSet<QObject *> preconditions() const;
+    Q_INVOKABLE const QSet<QObject *> raisedExceptions() const;
+    Q_INVOKABLE const QSet<QObject *> redefinedOperations() const;
     Q_INVOKABLE QObject *templateParameter() const;
     Q_INVOKABLE QObject *type() const;
     Q_INVOKABLE int upper() const;

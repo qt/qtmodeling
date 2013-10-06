@@ -73,6 +73,7 @@
 #include <QtUml/QUmlTemplateParameter>
 #include <QtUml/QUmlTemplateSignature>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlUseCase
 
@@ -99,18 +100,18 @@ QUmlUseCase::~QUmlUseCase()
 QModelingObject *QUmlUseCase::clone() const
 {
     QUmlUseCase *c = new QUmlUseCase;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
@@ -118,43 +119,43 @@ QModelingObject *QUmlUseCase::clone() const
     if (package())
         c->setPackage(dynamic_cast<QUmlPackage *>(package()->clone()));
     c->setLeaf(isLeaf());
-    foreach (QUmlTemplateBinding *element, templateBinding())
+    foreach (QUmlTemplateBinding *element, templateBindings())
         c->addTemplateBinding(dynamic_cast<QUmlTemplateBinding *>(element->clone()));
-    foreach (QUmlCollaborationUse *element, collaborationUse())
+    foreach (QUmlCollaborationUse *element, collaborationUses())
         c->addCollaborationUse(dynamic_cast<QUmlCollaborationUse *>(element->clone()));
-    foreach (QUmlGeneralization *element, generalization())
+    foreach (QUmlGeneralization *element, generalizations())
         c->addGeneralization(dynamic_cast<QUmlGeneralization *>(element->clone()));
     c->setAbstract(isAbstract());
     c->setFinalSpecialization(isFinalSpecialization());
     if (ownedTemplateSignature())
         c->setOwnedTemplateSignature(dynamic_cast<QUmlRedefinableTemplateSignature *>(ownedTemplateSignature()->clone()));
-    foreach (QUmlUseCase *element, ownedUseCase())
+    foreach (QUmlUseCase *element, ownedUseCases())
         c->addOwnedUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
-    foreach (QUmlGeneralizationSet *element, powertypeExtent())
+    foreach (QUmlGeneralizationSet *element, powertypeExtents())
         c->addPowertypeExtent(dynamic_cast<QUmlGeneralizationSet *>(element->clone()));
-    foreach (QUmlClassifier *element, redefinedClassifier())
+    foreach (QUmlClassifier *element, redefinedClassifiers())
         c->addRedefinedClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (representation())
         c->setRepresentation(dynamic_cast<QUmlCollaborationUse *>(representation()->clone()));
-    foreach (QUmlSubstitution *element, substitution())
+    foreach (QUmlSubstitution *element, substitutions())
         c->addSubstitution(dynamic_cast<QUmlSubstitution *>(element->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlClassifierTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlUseCase *element, useCase())
+    foreach (QUmlUseCase *element, useCases())
         c->addUseCase(dynamic_cast<QUmlUseCase *>(element->clone()));
     if (classifierBehavior())
         c->setClassifierBehavior(dynamic_cast<QUmlBehavior *>(classifierBehavior()->clone()));
-    foreach (QUmlInterfaceRealization *element, interfaceRealization())
+    foreach (QUmlInterfaceRealization *element, interfaceRealizations())
         c->addInterfaceRealization(dynamic_cast<QUmlInterfaceRealization *>(element->clone()));
-    foreach (QUmlBehavior *element, ownedBehavior())
+    foreach (QUmlBehavior *element, ownedBehaviors())
         c->addOwnedBehavior(dynamic_cast<QUmlBehavior *>(element->clone()));
-    foreach (QUmlExtend *element, extend())
+    foreach (QUmlExtend *element, extends())
         c->addExtend(dynamic_cast<QUmlExtend *>(element->clone()));
-    foreach (QUmlExtensionPoint *element, extensionPoint())
+    foreach (QUmlExtensionPoint *element, extensionPoints())
         c->addExtensionPoint(dynamic_cast<QUmlExtensionPoint *>(element->clone()));
-    foreach (QUmlInclude *element, include())
+    foreach (QUmlInclude *element, includes())
         c->addInclude(dynamic_cast<QUmlInclude *>(element->clone()));
-    foreach (QUmlClassifier *element, subject())
+    foreach (QUmlClassifier *element, subjects())
         c->addSubject(dynamic_cast<QUmlClassifier *>(element->clone()));
     return c;
 }
@@ -164,19 +165,19 @@ QModelingObject *QUmlUseCase::clone() const
 /*!
     References the Extend relationships owned by this use case.
  */
-const QSet<QUmlExtend *> QUmlUseCase::extend() const
+const QSet<QUmlExtend *> QUmlUseCase::extends() const
 {
     // This is a read-write association end
 
-    return _extend;
+    return _extends;
 }
 
 void QUmlUseCase::addExtend(QUmlExtend *extend)
 {
     // This is a read-write association end
 
-    if (!_extend.contains(extend)) {
-        _extend.insert(extend);
+    if (!_extends.contains(extend)) {
+        _extends.insert(extend);
         if (extend && extend->asQObject() && this->asQObject())
             QObject::connect(extend->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtend(QObject *)));
         extend->asQObject()->setParent(this->asQObject());
@@ -195,8 +196,8 @@ void QUmlUseCase::removeExtend(QUmlExtend *extend)
 {
     // This is a read-write association end
 
-    if (_extend.contains(extend)) {
-        _extend.remove(extend);
+    if (_extends.contains(extend)) {
+        _extends.remove(extend);
         if (extend->asQObject())
             extend->asQObject()->setParent(0);
 
@@ -213,19 +214,19 @@ void QUmlUseCase::removeExtend(QUmlExtend *extend)
 /*!
     References the ExtensionPoints owned by the use case.
  */
-const QSet<QUmlExtensionPoint *> QUmlUseCase::extensionPoint() const
+const QSet<QUmlExtensionPoint *> QUmlUseCase::extensionPoints() const
 {
     // This is a read-write association end
 
-    return _extensionPoint;
+    return _extensionPoints;
 }
 
 void QUmlUseCase::addExtensionPoint(QUmlExtensionPoint *extensionPoint)
 {
     // This is a read-write association end
 
-    if (!_extensionPoint.contains(extensionPoint)) {
-        _extensionPoint.insert(extensionPoint);
+    if (!_extensionPoints.contains(extensionPoint)) {
+        _extensionPoints.insert(extensionPoint);
         if (extensionPoint && extensionPoint->asQObject() && this->asQObject())
             QObject::connect(extensionPoint->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeExtensionPoint(QObject *)));
         extensionPoint->asQObject()->setParent(this->asQObject());
@@ -244,8 +245,8 @@ void QUmlUseCase::removeExtensionPoint(QUmlExtensionPoint *extensionPoint)
 {
     // This is a read-write association end
 
-    if (_extensionPoint.contains(extensionPoint)) {
-        _extensionPoint.remove(extensionPoint);
+    if (_extensionPoints.contains(extensionPoint)) {
+        _extensionPoints.remove(extensionPoint);
         if (extensionPoint->asQObject())
             extensionPoint->asQObject()->setParent(0);
 
@@ -262,19 +263,19 @@ void QUmlUseCase::removeExtensionPoint(QUmlExtensionPoint *extensionPoint)
 /*!
     References the Include relationships owned by this use case.
  */
-const QSet<QUmlInclude *> QUmlUseCase::include() const
+const QSet<QUmlInclude *> QUmlUseCase::includes() const
 {
     // This is a read-write association end
 
-    return _include;
+    return _includes;
 }
 
 void QUmlUseCase::addInclude(QUmlInclude *include)
 {
     // This is a read-write association end
 
-    if (!_include.contains(include)) {
-        _include.insert(include);
+    if (!_includes.contains(include)) {
+        _includes.insert(include);
         if (include && include->asQObject() && this->asQObject())
             QObject::connect(include->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeInclude(QObject *)));
         include->asQObject()->setParent(this->asQObject());
@@ -293,8 +294,8 @@ void QUmlUseCase::removeInclude(QUmlInclude *include)
 {
     // This is a read-write association end
 
-    if (_include.contains(include)) {
-        _include.remove(include);
+    if (_includes.contains(include)) {
+        _includes.remove(include);
         if (include->asQObject())
             include->asQObject()->setParent(0);
 
@@ -311,19 +312,19 @@ void QUmlUseCase::removeInclude(QUmlInclude *include)
 /*!
     References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.
  */
-const QSet<QUmlClassifier *> QUmlUseCase::subject() const
+const QSet<QUmlClassifier *> QUmlUseCase::subjects() const
 {
     // This is a read-write association end
 
-    return _subject;
+    return _subjects;
 }
 
 void QUmlUseCase::addSubject(QUmlClassifier *subject)
 {
     // This is a read-write association end
 
-    if (!_subject.contains(subject)) {
-        _subject.insert(subject);
+    if (!_subjects.contains(subject)) {
+        _subjects.insert(subject);
         if (subject && subject->asQObject() && this->asQObject())
             QObject::connect(subject->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSubject(QObject *)));
 
@@ -338,8 +339,8 @@ void QUmlUseCase::removeSubject(QUmlClassifier *subject)
 {
     // This is a read-write association end
 
-    if (_subject.contains(subject)) {
-        _subject.remove(subject);
+    if (_subjects.contains(subject)) {
+        _subjects.remove(subject);
 
         // Adjust opposite properties
         if (subject) {
@@ -363,6 +364,8 @@ QSet<QUmlUseCase *> QUmlUseCase::allIncludedUseCases() const
 void QUmlUseCase::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUseCase");
+    QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::DocumentationRole] = QStringLiteral("References the Extend relationships owned by this use case.");
     QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -370,6 +373,8 @@ void QUmlUseCase::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("extend")][QtModeling::OppositeEndRole] = QStringLiteral("Extend-extension");
 
     QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUseCase");
+    QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::DocumentationRole] = QStringLiteral("References the ExtensionPoints owned by the use case.");
     QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -377,6 +382,8 @@ void QUmlUseCase::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("extensionPoint")][QtModeling::OppositeEndRole] = QStringLiteral("ExtensionPoint-useCase");
 
     QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUseCase");
+    QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::DocumentationRole] = QStringLiteral("References the Include relationships owned by this use case.");
     QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -384,6 +391,8 @@ void QUmlUseCase::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("include")][QtModeling::OppositeEndRole] = QStringLiteral("Include-includingCase");
 
     QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUseCase");
+    QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::DocumentationRole] = QStringLiteral("References the subjects to which this use case applies. The subject or its parts realize all the use cases that apply to this subject. Use cases need not be attached to any specific subject, however. The subject may, but need not, own the use cases that apply to it.");
     QModelingObject::propertyDataHash[QStringLiteral("subject")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

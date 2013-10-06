@@ -76,18 +76,18 @@ QUmlVariableObject::~QUmlVariableObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlVariableObject::ownedComment() const
+const QSet<QObject *> QUmlVariableObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlVariable *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlVariable *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlVariableObject::ownedElement() const
+const QSet<QObject *> QUmlVariableObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlVariable *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlVariable *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -140,10 +140,10 @@ QObject *QUmlVariableObject::upperValue() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlVariableObject::clientDependency() const
+const QSet<QObject *> QUmlVariableObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlVariable *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlVariable *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -198,12 +198,13 @@ QObject *QUmlVariableObject::owningTemplateParameter() const
     else
         return qmodelingobjectproperty_cast<QUmlVariable *>(this)->owningTemplateParameter()->asQObject();
 }
+
 // OWNED ATTRIBUTES [ConnectableElement]
 
-const QList<QObject *> QUmlVariableObject::end() const
+const QList<QObject *> QUmlVariableObject::ends() const
 {
     QList<QObject *> list;
-    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlVariable *>(this)->end())
+    foreach (QUmlConnectorEnd *element, qmodelingobjectproperty_cast<QUmlVariable *>(this)->ends())
         list.append(element->asQObject());
     return list;
 }

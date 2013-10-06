@@ -62,6 +62,7 @@
 #include <QtUml/QUmlTransition>
 #include <QtUml/QUmlTrigger>
 #include <QtUml/QUmlVertex>
+
 /*!
     \class QUmlProtocolTransition
 
@@ -91,20 +92,20 @@ QUmlProtocolTransition::~QUmlProtocolTransition()
 QModelingObject *QUmlProtocolTransition::clone() const
 {
     QUmlProtocolTransition *c = new QUmlProtocolTransition;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (container())
         c->setContainer(dynamic_cast<QUmlRegion *>(container()->clone()));
@@ -119,7 +120,7 @@ QModelingObject *QUmlProtocolTransition::clone() const
         c->setSource(dynamic_cast<QUmlVertex *>(source()->clone()));
     if (target())
         c->setTarget(dynamic_cast<QUmlVertex *>(target()->clone()));
-    foreach (QUmlTrigger *element, trigger())
+    foreach (QUmlTrigger *element, triggers())
         c->addTrigger(dynamic_cast<QUmlTrigger *>(element->clone()));
     if (postCondition())
         c->setPostCondition(dynamic_cast<QUmlConstraint *>(postCondition()->clone()));
@@ -203,7 +204,7 @@ void QUmlProtocolTransition::addReferred(QUmlOperation *referred)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
+    qWarning("UmlProtocolTransition::addReferred(): to be implemented (this is a derived association end)");
     Q_UNUSED(referred);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -215,7 +216,7 @@ void QUmlProtocolTransition::removeReferred(QUmlOperation *referred)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlProtocolTransition::referred(): to be implemented (this is a derived association end)");
+    qWarning("UmlProtocolTransition::removeReferred(): to be implemented (this is a derived association end)");
     Q_UNUSED(referred);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -226,6 +227,8 @@ void QUmlProtocolTransition::removeReferred(QUmlOperation *referred)
 void QUmlProtocolTransition::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("postCondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("postCondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("postCondition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("postCondition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("postCondition")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the post condition of the transition which is the condition that should be obtained once the transition is triggered. This post condition is part of the post condition of the operation connected to the transition.");
     QModelingObject::propertyDataHash[QStringLiteral("postCondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -233,6 +236,8 @@ void QUmlProtocolTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("postCondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("preCondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("preCondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("preCondition")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("preCondition")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("preCondition")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the precondition of the transition. It specifies the condition that should be verified before triggering the transition. This guard condition added to the source state will be evaluated as part of the precondition of the operation referred by the transition if any.");
     QModelingObject::propertyDataHash[QStringLiteral("preCondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -240,6 +245,8 @@ void QUmlProtocolTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("preCondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("referred")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("referred")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProtocolTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("referred")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("referred")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("referred")][QtModeling::DocumentationRole] = QStringLiteral("This association refers to the associated operation. It is derived from the operation of the call trigger when applicable.");
     QModelingObject::propertyDataHash[QStringLiteral("referred")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

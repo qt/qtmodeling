@@ -62,12 +62,12 @@ void TestQtUmlContainment::check(QString modelName, QString packageName, int mod
 {
     QCOMPARE(_model->qualifiedName(), modelName);
     QCOMPARE(_package->qualifiedName(), packageName);
-    QCOMPARE(_model->member().size(), modelSize);
-    QCOMPARE(_model->ownedMember().size(), modelSize);
-    QCOMPARE(_model->ownedElement().size(), modelSize);
-    QCOMPARE(_package->member().size(), packageSize);
-    QCOMPARE(_package->ownedMember().size(), packageSize);
-    QCOMPARE(_package->ownedElement().size(), packageSize);
+    QCOMPARE(_model->members().size(), modelSize);
+    QCOMPARE(_model->ownedMembers().size(), modelSize);
+    QCOMPARE(_model->ownedElements().size(), modelSize);
+    QCOMPARE(_package->members().size(), packageSize);
+    QCOMPARE(_package->ownedMembers().size(), packageSize);
+    QCOMPARE(_package->ownedElements().size(), packageSize);
 }
 
 void TestQtUmlContainment::qtumlcontainment()
@@ -102,10 +102,10 @@ void TestQtUmlContainment::qtumlcontainment()
 
     QUmlComment *comment = new QUmlComment;
     _package->addOwnedComment(comment);
-    QCOMPARE(_package->member().size(), 0);
-    QCOMPARE(_package->ownedMember().size(), 0);
-    QCOMPARE(_package->ownedElement().size(), 1);
-    QCOMPARE(_package->ownedComment().size(), 1);
+    QCOMPARE(_package->members().size(), 0);
+    QCOMPARE(_package->ownedMembers().size(), 0);
+    QCOMPARE(_package->ownedElements().size(), 1);
+    QCOMPARE(_package->ownedComments().size(), 1);
 
     delete _model;
     delete _package;

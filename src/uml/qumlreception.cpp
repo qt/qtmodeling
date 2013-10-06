@@ -60,6 +60,7 @@
 #include <QtUml/QUmlSignal>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlType>
+
 /*!
     \class QUmlReception
 
@@ -87,31 +88,31 @@ QUmlReception::~QUmlReception()
 QModelingObject *QUmlReception::clone() const
 {
     QUmlReception *c = new QUmlReception;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     c->setLeaf(isLeaf());
     c->setStatic(isStatic());
     c->setConcurrency(concurrency());
     c->setAbstract(isAbstract());
-    foreach (QUmlBehavior *element, method())
+    foreach (QUmlBehavior *element, methods())
         c->addMethod(dynamic_cast<QUmlBehavior *>(element->clone()));
-    foreach (QUmlParameter *element, ownedParameter())
+    foreach (QUmlParameter *element, ownedParameters())
         c->addOwnedParameter(dynamic_cast<QUmlParameter *>(element->clone()));
-    foreach (QUmlParameterSet *element, ownedParameterSet())
+    foreach (QUmlParameterSet *element, ownedParameterSets())
         c->addOwnedParameterSet(dynamic_cast<QUmlParameterSet *>(element->clone()));
-    foreach (QUmlType *element, raisedException())
+    foreach (QUmlType *element, raisedExceptions())
         c->addRaisedException(dynamic_cast<QUmlType *>(element->clone()));
     if (signal())
         c->setSignal(dynamic_cast<QUmlSignal *>(signal()->clone()));
@@ -144,6 +145,8 @@ void QUmlReception::setSignal(QUmlSignal *signal)
 void QUmlReception::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReception");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The signal that this reception handles.");
     QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

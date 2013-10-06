@@ -79,18 +79,18 @@ QUmlCentralBufferNodeObject::~QUmlCentralBufferNodeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::ownedComment() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::ownedElement() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -105,10 +105,10 @@ QObject *QUmlCentralBufferNodeObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::clientDependency() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -151,18 +151,18 @@ bool QUmlCentralBufferNodeObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::redefinedElement() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::redefinitionContext() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
@@ -177,26 +177,26 @@ QObject *QUmlCentralBufferNodeObject::activity() const
         return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::inGroup() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::inPartition() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -209,26 +209,26 @@ QObject *QUmlCentralBufferNodeObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::incoming() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::outgoing() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::redefinedNode() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
@@ -245,10 +245,10 @@ QObject *QUmlCentralBufferNodeObject::type() const
 
 // OWNED ATTRIBUTES [ObjectNode]
 
-const QSet<QObject *> QUmlCentralBufferNodeObject::inState() const
+const QSet<QObject *> QUmlCentralBufferNodeObject::inStates() const
 {
     QSet<QObject *> set;
-    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inState())
+    foreach (QUmlState *element, qmodelingobjectproperty_cast<QUmlCentralBufferNode *>(this)->inStates())
         set.insert(element->asQObject());
     return set;
 }

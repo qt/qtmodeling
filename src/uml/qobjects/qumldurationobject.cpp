@@ -71,18 +71,18 @@ QUmlDurationObject::~QUmlDurationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlDurationObject::ownedComment() const
+const QSet<QObject *> QUmlDurationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDuration *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlDuration *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlDurationObject::ownedElement() const
+const QSet<QObject *> QUmlDurationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDuration *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlDuration *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -97,10 +97,10 @@ QObject *QUmlDurationObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlDurationObject::clientDependency() const
+const QSet<QObject *> QUmlDurationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDuration *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlDuration *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -130,6 +130,7 @@ QString QUmlDurationObject::qualifiedName() const
 {
     return qmodelingobjectproperty_cast<QUmlDuration *>(this)->qualifiedName();
 }
+
 // OWNED ATTRIBUTES [TypedElement]
 
 QObject *QUmlDurationObject::type() const
@@ -175,10 +176,10 @@ QObject *QUmlDurationObject::expr() const
         return qmodelingobjectproperty_cast<QUmlDuration *>(this)->expr()->asQObject();
 }
 
-const QSet<QObject *> QUmlDurationObject::observation() const
+const QSet<QObject *> QUmlDurationObject::observations() const
 {
     QSet<QObject *> set;
-    foreach (QUmlObservation *element, qmodelingobjectproperty_cast<QUmlDuration *>(this)->observation())
+    foreach (QUmlObservation *element, qmodelingobjectproperty_cast<QUmlDuration *>(this)->observations())
         set.insert(element->asQObject());
     return set;
 }

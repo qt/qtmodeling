@@ -62,7 +62,7 @@ public:
     Q_DECL_HIDDEN QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlPort *> ownedPort() const;
+    const QSet<QUmlPort *> ownedPorts() const;
     Q_DECL_HIDDEN void addOwnedPort(QUmlPort *ownedPort);
     Q_DECL_HIDDEN void removeOwnedPort(QUmlPort *ownedPort);
 

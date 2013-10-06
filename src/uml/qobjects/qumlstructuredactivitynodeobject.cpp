@@ -82,18 +82,18 @@ QUmlStructuredActivityNodeObject::~QUmlStructuredActivityNodeObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedComment() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedElement() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -108,10 +108,10 @@ QObject *QUmlStructuredActivityNodeObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::clientDependency() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -154,44 +154,44 @@ bool QUmlStructuredActivityNodeObject::isLeaf() const
     return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->isLeaf();
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::redefinedElement() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::redefinedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->redefinedElement())
+    foreach (QUmlRedefinableElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->redefinedElements())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::redefinitionContext() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::redefinitionContexts() const
 {
     QSet<QObject *> set;
-    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->redefinitionContext())
+    foreach (QUmlClassifier *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->redefinitionContexts())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ActivityNode]
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::inGroup() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::inGroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inGroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inGroups())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::inInterruptibleRegion() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::inInterruptibleRegions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inInterruptibleRegions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::inPartition() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::inPartitions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inPartition())
+    foreach (QUmlActivityPartition *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inPartitions())
         set.insert(element->asQObject());
     return set;
 }
@@ -204,36 +204,36 @@ QObject *QUmlStructuredActivityNodeObject::inStructuredNode() const
         return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inStructuredNode()->asQObject();
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::incoming() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::incomings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->incoming())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->incomings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::outgoing() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::outgoings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->outgoing())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->outgoings())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::redefinedNode() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::redefinedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->redefinedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->redefinedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ExecutableNode]
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::handler() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::handlers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->handler())
+    foreach (QUmlExceptionHandler *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->handlers())
         set.insert(element->asQObject());
     return set;
 }
@@ -248,10 +248,10 @@ QObject *QUmlStructuredActivityNodeObject::context() const
         return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->context()->asQObject();
 }
 
-const QList<QObject *> QUmlStructuredActivityNodeObject::input() const
+const QList<QObject *> QUmlStructuredActivityNodeObject::inputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->input())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->inputs())
         list.append(element->asQObject());
     return list;
 }
@@ -261,102 +261,102 @@ bool QUmlStructuredActivityNodeObject::isLocallyReentrant() const
     return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->isLocallyReentrant();
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::localPostcondition() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::localPostconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->localPostcondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->localPostconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::localPrecondition() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::localPreconditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->localPrecondition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->localPreconditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QList<QObject *> QUmlStructuredActivityNodeObject::output() const
+const QList<QObject *> QUmlStructuredActivityNodeObject::outputs() const
 {
     QList<QObject *> list;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->output())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->outputs())
         list.append(element->asQObject());
     return list;
 }
 
 // OWNED ATTRIBUTES [Namespace]
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::elementImport() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::elementImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->elementImport())
+    foreach (QUmlElementImport *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->elementImports())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::importedMember() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::importedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->importedMember())
+    foreach (QUmlPackageableElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->importedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::member() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::members() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->member())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->members())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedMember() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedMembers() const
 {
     QSet<QObject *> set;
-    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->ownedMember())
+    foreach (QUmlNamedElement *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->ownedMembers())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedRule() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::ownedRules() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->ownedRule())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->ownedRules())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::packageImport() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::packageImports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->packageImport())
+    foreach (QUmlPackageImport *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->packageImports())
         set.insert(element->asQObject());
     return set;
 }
 
 // OWNED ATTRIBUTES [ActivityGroup]
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::containedEdge() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::containedEdges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->containedEdge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->containedEdges())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::containedNode() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::containedNodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->containedNode())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->containedNodes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::subgroup() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::subgroups() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->subgroup())
+    foreach (QUmlActivityGroup *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->subgroups())
         set.insert(element->asQObject());
     return set;
 }
@@ -379,10 +379,10 @@ QObject *QUmlStructuredActivityNodeObject::activity() const
         return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->activity()->asQObject();
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::edge() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::edges() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->edge())
+    foreach (QUmlActivityEdge *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->edges())
         set.insert(element->asQObject());
     return set;
 }
@@ -392,34 +392,34 @@ bool QUmlStructuredActivityNodeObject::mustIsolate() const
     return qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->mustIsolate();
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::node() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::nodes() const
 {
     QSet<QObject *> set;
-    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->node())
+    foreach (QUmlActivityNode *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->nodes())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::structuredNodeInput() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::structuredNodeInputs() const
 {
     QSet<QObject *> set;
-    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->structuredNodeInput())
+    foreach (QUmlInputPin *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->structuredNodeInputs())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::structuredNodeOutput() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::structuredNodeOutputs() const
 {
     QSet<QObject *> set;
-    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->structuredNodeOutput())
+    foreach (QUmlOutputPin *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->structuredNodeOutputs())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlStructuredActivityNodeObject::variable() const
+const QSet<QObject *> QUmlStructuredActivityNodeObject::variables() const
 {
     QSet<QObject *> set;
-    foreach (QUmlVariable *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->variable())
+    foreach (QUmlVariable *element, qmodelingobjectproperty_cast<QUmlStructuredActivityNode *>(this)->variables())
         set.insert(element->asQObject());
     return set;
 }

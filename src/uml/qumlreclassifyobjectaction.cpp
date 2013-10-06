@@ -62,6 +62,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlReclassifyObjectAction
 
@@ -90,9 +91,9 @@ QUmlReclassifyObjectAction::~QUmlReclassifyObjectAction()
 QModelingObject *QUmlReclassifyObjectAction::clone() const
 {
     QUmlReclassifyObjectAction *c = new QUmlReclassifyObjectAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -101,31 +102,31 @@ QModelingObject *QUmlReclassifyObjectAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     c->setReplaceAll(isReplaceAll());
-    foreach (QUmlClassifier *element, newClassifier())
+    foreach (QUmlClassifier *element, newClassifiers())
         c->addNewClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     if (object())
         c->setObject(dynamic_cast<QUmlInputPin *>(object()->clone()));
-    foreach (QUmlClassifier *element, oldClassifier())
+    foreach (QUmlClassifier *element, oldClassifiers())
         c->addOldClassifier(dynamic_cast<QUmlClassifier *>(element->clone()));
     return c;
 }
@@ -155,19 +156,19 @@ void QUmlReclassifyObjectAction::setReplaceAll(bool isReplaceAll)
 /*!
     A set of classifiers to be added to the classifiers of the object.
  */
-const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifier() const
+const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::newClassifiers() const
 {
     // This is a read-write association end
 
-    return _newClassifier;
+    return _newClassifiers;
 }
 
 void QUmlReclassifyObjectAction::addNewClassifier(QUmlClassifier *newClassifier)
 {
     // This is a read-write association end
 
-    if (!_newClassifier.contains(newClassifier)) {
-        _newClassifier.insert(newClassifier);
+    if (!_newClassifiers.contains(newClassifier)) {
+        _newClassifiers.insert(newClassifier);
         if (newClassifier && newClassifier->asQObject() && this->asQObject())
             QObject::connect(newClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNewClassifier(QObject *)));
     }
@@ -177,8 +178,8 @@ void QUmlReclassifyObjectAction::removeNewClassifier(QUmlClassifier *newClassifi
 {
     // This is a read-write association end
 
-    if (_newClassifier.contains(newClassifier)) {
-        _newClassifier.remove(newClassifier);
+    if (_newClassifiers.contains(newClassifier)) {
+        _newClassifiers.remove(newClassifier);
     }
 }
 
@@ -215,19 +216,19 @@ void QUmlReclassifyObjectAction::setObject(QUmlInputPin *object)
 /*!
     A set of classifiers to be removed from the classifiers of the object.
  */
-const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifier() const
+const QSet<QUmlClassifier *> QUmlReclassifyObjectAction::oldClassifiers() const
 {
     // This is a read-write association end
 
-    return _oldClassifier;
+    return _oldClassifiers;
 }
 
 void QUmlReclassifyObjectAction::addOldClassifier(QUmlClassifier *oldClassifier)
 {
     // This is a read-write association end
 
-    if (!_oldClassifier.contains(oldClassifier)) {
-        _oldClassifier.insert(oldClassifier);
+    if (!_oldClassifiers.contains(oldClassifier)) {
+        _oldClassifiers.insert(oldClassifier);
         if (oldClassifier && oldClassifier->asQObject() && this->asQObject())
             QObject::connect(oldClassifier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOldClassifier(QObject *)));
     }
@@ -237,14 +238,16 @@ void QUmlReclassifyObjectAction::removeOldClassifier(QUmlClassifier *oldClassifi
 {
     // This is a read-write association end
 
-    if (_oldClassifier.contains(oldClassifier)) {
-        _oldClassifier.remove(oldClassifier);
+    if (_oldClassifiers.contains(oldClassifier)) {
+        _oldClassifiers.remove(oldClassifier);
     }
 }
 
 void QUmlReclassifyObjectAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReclassifyObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether existing classifiers should be removed before adding the new classifiers.");
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -252,6 +255,8 @@ void QUmlReclassifyObjectAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isReplaceAll")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("newClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("newClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReclassifyObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("newClassifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("newClassifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("newClassifier")][QtModeling::DocumentationRole] = QStringLiteral("A set of classifiers to be added to the classifiers of the object.");
     QModelingObject::propertyDataHash[QStringLiteral("newClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -259,6 +264,8 @@ void QUmlReclassifyObjectAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("newClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReclassifyObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Holds the object to be reclassified.");
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -266,6 +273,8 @@ void QUmlReclassifyObjectAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("oldClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("oldClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReclassifyObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("oldClassifier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("oldClassifier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("oldClassifier")][QtModeling::DocumentationRole] = QStringLiteral("A set of classifiers to be removed from the classifiers of the object.");
     QModelingObject::propertyDataHash[QStringLiteral("oldClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

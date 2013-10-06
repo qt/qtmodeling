@@ -106,7 +106,7 @@ public:
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- SET readOnly = attribute.findvalue("@isReadOnly") -%]
     [%- SET qtType = QT_TYPE(namespace, attribute) %]
-    [% IF qtType.match("QList|QSet") %]const [% END %]${qtType}${qtAttribute}() const;
+    [% IF qtType.match("QList|QSet") %]const [% END %]${qtType}${PLURALFORM(qtAttribute, attribute)}() const;
     [%- SET attributeName = attribute.findvalue("@name").ucfirst -%]
     [%- IF attribute.findnodes("upperValue").findvalue("@value") == "*" %]
     [% IF readOnly == "true" %]Q_DECL_HIDDEN [% END %]void add${attributeName}([% qtType.remove("QSet<").remove("QList<").replace("> ", " ").replace('\* $', '*') %]${qtAttribute});
@@ -138,7 +138,7 @@ protected:
     explicit Q${namespace}${className}();
 [% END -%]
 [%- FOREACH attribute = class.findnodes("ownedAttribute[(@isDerived=\"false\" or not(@isDerived)) or (@isDerivedUnion and @isDerivedUnion=\"true\")]") %]
-    [% QT_TYPE(namespace, attribute) -%]_[%- QT_ATTRIBUTE(attribute) %];
+    [% QT_TYPE(namespace, attribute) -%]_[%- PLURALFORM(QT_ATTRIBUTE(attribute), attribute) %];
 [%- END %]
 
     virtual void setPropertyData();

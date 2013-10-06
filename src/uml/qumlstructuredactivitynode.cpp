@@ -65,6 +65,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlVariable>
+
 /*!
     \class QUmlStructuredActivityNode
 
@@ -93,52 +94,52 @@ QUmlStructuredActivityNode::~QUmlStructuredActivityNode()
 QModelingObject *QUmlStructuredActivityNode::clone() const
 {
     QUmlStructuredActivityNode *c = new QUmlStructuredActivityNode;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
     c->setLeaf(isLeaf());
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlActivityEdge *element, edge())
+    foreach (QUmlActivityEdge *element, edges())
         c->addEdge(dynamic_cast<QUmlActivityEdge *>(element->clone()));
     c->setMustIsolate(mustIsolate());
-    foreach (QUmlActivityNode *element, node())
+    foreach (QUmlActivityNode *element, nodes())
         c->addNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlInputPin *element, structuredNodeInput())
+    foreach (QUmlInputPin *element, structuredNodeInputs())
         c->addStructuredNodeInput(dynamic_cast<QUmlInputPin *>(element->clone()));
-    foreach (QUmlOutputPin *element, structuredNodeOutput())
+    foreach (QUmlOutputPin *element, structuredNodeOutputs())
         c->addStructuredNodeOutput(dynamic_cast<QUmlOutputPin *>(element->clone()));
-    foreach (QUmlVariable *element, variable())
+    foreach (QUmlVariable *element, variables())
         c->addVariable(dynamic_cast<QUmlVariable *>(element->clone()));
     return c;
 }
@@ -169,19 +170,19 @@ void QUmlStructuredActivityNode::setActivity(QUmlActivity *activity)
 /*!
     Edges immediately contained in the structured node.
  */
-const QSet<QUmlActivityEdge *> QUmlStructuredActivityNode::edge() const
+const QSet<QUmlActivityEdge *> QUmlStructuredActivityNode::edges() const
 {
     // This is a read-write association end
 
-    return _edge;
+    return _edges;
 }
 
 void QUmlStructuredActivityNode::addEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
 
-    if (!_edge.contains(edge)) {
-        _edge.insert(edge);
+    if (!_edges.contains(edge)) {
+        _edges.insert(edge);
         if (edge && edge->asQObject() && this->asQObject())
             QObject::connect(edge->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeEdge(QObject *)));
         edge->asQObject()->setParent(this->asQObject());
@@ -201,8 +202,8 @@ void QUmlStructuredActivityNode::removeEdge(QUmlActivityEdge *edge)
 {
     // This is a read-write association end
 
-    if (_edge.contains(edge)) {
-        _edge.remove(edge);
+    if (_edges.contains(edge)) {
+        _edges.remove(edge);
         if (edge->asQObject())
             edge->asQObject()->setParent(0);
 
@@ -240,19 +241,19 @@ void QUmlStructuredActivityNode::setMustIsolate(bool mustIsolate)
 /*!
     Nodes immediately contained in the group.
  */
-const QSet<QUmlActivityNode *> QUmlStructuredActivityNode::node() const
+const QSet<QUmlActivityNode *> QUmlStructuredActivityNode::nodes() const
 {
     // This is a read-write association end
 
-    return _node;
+    return _nodes;
 }
 
 void QUmlStructuredActivityNode::addNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    if (!_node.contains(node)) {
-        _node.insert(node);
+    if (!_nodes.contains(node)) {
+        _nodes.insert(node);
         if (node && node->asQObject() && this->asQObject())
             QObject::connect(node->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeNode(QObject *)));
         node->asQObject()->setParent(this->asQObject());
@@ -272,8 +273,8 @@ void QUmlStructuredActivityNode::removeNode(QUmlActivityNode *node)
 {
     // This is a read-write association end
 
-    if (_node.contains(node)) {
-        _node.remove(node);
+    if (_nodes.contains(node)) {
+        _nodes.remove(node);
         if (node->asQObject())
             node->asQObject()->setParent(0);
 
@@ -288,19 +289,19 @@ void QUmlStructuredActivityNode::removeNode(QUmlActivityNode *node)
     }
 }
 
-const QSet<QUmlInputPin *> QUmlStructuredActivityNode::structuredNodeInput() const
+const QSet<QUmlInputPin *> QUmlStructuredActivityNode::structuredNodeInputs() const
 {
     // This is a read-write association end
 
-    return _structuredNodeInput;
+    return _structuredNodeInputs;
 }
 
 void QUmlStructuredActivityNode::addStructuredNodeInput(QUmlInputPin *structuredNodeInput)
 {
     // This is a read-write association end
 
-    if (!_structuredNodeInput.contains(structuredNodeInput)) {
-        _structuredNodeInput.insert(structuredNodeInput);
+    if (!_structuredNodeInputs.contains(structuredNodeInput)) {
+        _structuredNodeInputs.insert(structuredNodeInput);
         if (structuredNodeInput && structuredNodeInput->asQObject() && this->asQObject())
             QObject::connect(structuredNodeInput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeStructuredNodeInput(QObject *)));
         structuredNodeInput->asQObject()->setParent(this->asQObject());
@@ -314,8 +315,8 @@ void QUmlStructuredActivityNode::removeStructuredNodeInput(QUmlInputPin *structu
 {
     // This is a read-write association end
 
-    if (_structuredNodeInput.contains(structuredNodeInput)) {
-        _structuredNodeInput.remove(structuredNodeInput);
+    if (_structuredNodeInputs.contains(structuredNodeInput)) {
+        _structuredNodeInputs.remove(structuredNodeInput);
         if (structuredNodeInput->asQObject())
             structuredNodeInput->asQObject()->setParent(0);
 
@@ -324,19 +325,19 @@ void QUmlStructuredActivityNode::removeStructuredNodeInput(QUmlInputPin *structu
     }
 }
 
-const QSet<QUmlOutputPin *> QUmlStructuredActivityNode::structuredNodeOutput() const
+const QSet<QUmlOutputPin *> QUmlStructuredActivityNode::structuredNodeOutputs() const
 {
     // This is a read-write association end
 
-    return _structuredNodeOutput;
+    return _structuredNodeOutputs;
 }
 
 void QUmlStructuredActivityNode::addStructuredNodeOutput(QUmlOutputPin *structuredNodeOutput)
 {
     // This is a read-write association end
 
-    if (!_structuredNodeOutput.contains(structuredNodeOutput)) {
-        _structuredNodeOutput.insert(structuredNodeOutput);
+    if (!_structuredNodeOutputs.contains(structuredNodeOutput)) {
+        _structuredNodeOutputs.insert(structuredNodeOutput);
         if (structuredNodeOutput && structuredNodeOutput->asQObject() && this->asQObject())
             QObject::connect(structuredNodeOutput->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeStructuredNodeOutput(QObject *)));
         structuredNodeOutput->asQObject()->setParent(this->asQObject());
@@ -350,8 +351,8 @@ void QUmlStructuredActivityNode::removeStructuredNodeOutput(QUmlOutputPin *struc
 {
     // This is a read-write association end
 
-    if (_structuredNodeOutput.contains(structuredNodeOutput)) {
-        _structuredNodeOutput.remove(structuredNodeOutput);
+    if (_structuredNodeOutputs.contains(structuredNodeOutput)) {
+        _structuredNodeOutputs.remove(structuredNodeOutput);
         if (structuredNodeOutput->asQObject())
             structuredNodeOutput->asQObject()->setParent(0);
 
@@ -363,19 +364,19 @@ void QUmlStructuredActivityNode::removeStructuredNodeOutput(QUmlOutputPin *struc
 /*!
     A variable defined in the scope of the structured activity node. It has no value and may not be accessed
  */
-const QSet<QUmlVariable *> QUmlStructuredActivityNode::variable() const
+const QSet<QUmlVariable *> QUmlStructuredActivityNode::variables() const
 {
     // This is a read-write association end
 
-    return _variable;
+    return _variables;
 }
 
 void QUmlStructuredActivityNode::addVariable(QUmlVariable *variable)
 {
     // This is a read-write association end
 
-    if (!_variable.contains(variable)) {
-        _variable.insert(variable);
+    if (!_variables.contains(variable)) {
+        _variables.insert(variable);
         if (variable && variable->asQObject() && this->asQObject())
             QObject::connect(variable->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeVariable(QObject *)));
         variable->asQObject()->setParent(this->asQObject());
@@ -394,8 +395,8 @@ void QUmlStructuredActivityNode::removeVariable(QUmlVariable *variable)
 {
     // This is a read-write association end
 
-    if (_variable.contains(variable)) {
-        _variable.remove(variable);
+    if (_variables.contains(variable)) {
+        _variables.remove(variable);
         if (variable->asQObject())
             variable->asQObject()->setParent(0);
 
@@ -412,6 +413,8 @@ void QUmlStructuredActivityNode::removeVariable(QUmlVariable *variable)
 void QUmlStructuredActivityNode::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("activity")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("activity")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("activity")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("activity")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("activity")][QtModeling::DocumentationRole] = QStringLiteral("Activity immediately containing the node.");
     QModelingObject::propertyDataHash[QStringLiteral("activity")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("ActivityGroup-inActivity ActivityNode-activity");
@@ -419,6 +422,8 @@ void QUmlStructuredActivityNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("activity")][QtModeling::OppositeEndRole] = QStringLiteral("Activity-structuredNode");
 
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::DocumentationRole] = QStringLiteral("Edges immediately contained in the structured node.");
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -426,6 +431,8 @@ void QUmlStructuredActivityNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("edge")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-inStructuredNode");
 
     QModelingObject::propertyDataHash[QStringLiteral("mustIsolate")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("mustIsolate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("mustIsolate")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("mustIsolate")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("mustIsolate")][QtModeling::DocumentationRole] = QStringLiteral("If true, then the actions in the node execute in isolation from actions outside the node.");
     QModelingObject::propertyDataHash[QStringLiteral("mustIsolate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -433,6 +440,8 @@ void QUmlStructuredActivityNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("mustIsolate")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::DocumentationRole] = QStringLiteral("Nodes immediately contained in the group.");
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -440,6 +449,8 @@ void QUmlStructuredActivityNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-inStructuredNode");
 
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeInput")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("structuredNodeInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("structuredNodeInput")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeInput")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeInput")][QtModeling::DocumentationRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -447,6 +458,8 @@ void QUmlStructuredActivityNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeOutput")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("structuredNodeOutput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("structuredNodeOutput")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeOutput")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeOutput")][QtModeling::DocumentationRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeOutput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -454,6 +467,8 @@ void QUmlStructuredActivityNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("structuredNodeOutput")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::DocumentationRole] = QStringLiteral("A variable defined in the scope of the structured activity node. It has no value and may not be accessed");
     QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

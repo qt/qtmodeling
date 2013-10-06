@@ -49,6 +49,7 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlType
 
@@ -69,13 +70,13 @@ QUmlType::~QUmlType()
 QModelingObject *QUmlType::clone() const
 {
     QUmlType *c = new QUmlType;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -125,6 +126,8 @@ bool QUmlType::conformsTo(QUmlType *other) const
 void QUmlType::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlType");
+    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the owning package of this classifier, if any.");
     QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

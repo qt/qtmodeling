@@ -64,18 +64,18 @@ QUmlSlotObject::~QUmlSlotObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlSlotObject::ownedComment() const
+const QSet<QObject *> QUmlSlotObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlSlot *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlSlot *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlSlotObject::ownedElement() const
+const QSet<QObject *> QUmlSlotObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSlot *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlSlot *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -106,10 +106,10 @@ QObject *QUmlSlotObject::owningInstance() const
         return qmodelingobjectproperty_cast<QUmlSlot *>(this)->owningInstance()->asQObject();
 }
 
-const QList<QObject *> QUmlSlotObject::value() const
+const QList<QObject *> QUmlSlotObject::values() const
 {
     QList<QObject *> list;
-    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlSlot *>(this)->value())
+    foreach (QUmlValueSpecification *element, qmodelingobjectproperty_cast<QUmlSlot *>(this)->values())
         list.append(element->asQObject());
     return list;
 }

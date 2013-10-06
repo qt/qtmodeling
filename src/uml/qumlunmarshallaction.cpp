@@ -62,6 +62,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlUnmarshallAction
 
@@ -90,9 +91,9 @@ QUmlUnmarshallAction::~QUmlUnmarshallAction()
 QModelingObject *QUmlUnmarshallAction::clone() const
 {
     QUmlUnmarshallAction *c = new QUmlUnmarshallAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -101,28 +102,28 @@ QModelingObject *QUmlUnmarshallAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
     if (object())
         c->setObject(dynamic_cast<QUmlInputPin *>(object()->clone()));
-    foreach (QUmlOutputPin *element, result())
+    foreach (QUmlOutputPin *element, results())
         c->addResult(dynamic_cast<QUmlOutputPin *>(element->clone()));
     if (unmarshallType())
         c->setUnmarshallType(dynamic_cast<QUmlClassifier *>(unmarshallType()->clone()));
@@ -164,19 +165,19 @@ void QUmlUnmarshallAction::setObject(QUmlInputPin *object)
 /*!
     The values of the structural features of the input object.
  */
-const QSet<QUmlOutputPin *> QUmlUnmarshallAction::result() const
+const QSet<QUmlOutputPin *> QUmlUnmarshallAction::results() const
 {
     // This is a read-write association end
 
-    return _result;
+    return _results;
 }
 
 void QUmlUnmarshallAction::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    if (!_result.contains(result)) {
-        _result.insert(result);
+    if (!_results.contains(result)) {
+        _results.insert(result);
         if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
         result->asQObject()->setParent(this->asQObject());
@@ -190,8 +191,8 @@ void QUmlUnmarshallAction::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    if (_result.contains(result)) {
-        _result.remove(result);
+    if (_results.contains(result)) {
+        _results.remove(result);
         if (result->asQObject())
             result->asQObject()->setParent(0);
 
@@ -224,6 +225,8 @@ void QUmlUnmarshallAction::setUnmarshallType(QUmlClassifier *unmarshallType)
 void QUmlUnmarshallAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUnmarshallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("The object to be unmarshalled.");
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -231,6 +234,8 @@ void QUmlUnmarshallAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUnmarshallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("The values of the structural features of the input object.");
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -238,6 +243,8 @@ void QUmlUnmarshallAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUnmarshallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::DocumentationRole] = QStringLiteral("The type of the object to be unmarshalled.");
     QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

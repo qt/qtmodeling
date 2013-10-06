@@ -64,24 +64,24 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QString> body() const;
+    const QList<QString> bodies() const;
     void addBody(QString body);
     void removeBody(QString body);
-    const QSet<QUmlInputPin *> inputValue() const;
+    const QSet<QUmlInputPin *> inputValues() const;
     void addInputValue(QUmlInputPin *inputValue);
     void removeInputValue(QUmlInputPin *inputValue);
-    const QList<QString> language() const;
+    const QList<QString> languages() const;
     void addLanguage(QString language);
     void removeLanguage(QString language);
-    const QSet<QUmlOutputPin *> outputValue() const;
+    const QSet<QUmlOutputPin *> outputValues() const;
     void addOutputValue(QUmlOutputPin *outputValue);
     void removeOutputValue(QUmlOutputPin *outputValue);
 
 protected:
-    QList<QString> _body;
-    QSet<QUmlInputPin *> _inputValue;
-    QList<QString> _language;
-    QSet<QUmlOutputPin *> _outputValue;
+    QList<QString> _bodies;
+    QSet<QUmlInputPin *> _inputValues;
+    QList<QString> _languages;
+    QSet<QUmlOutputPin *> _outputValues;
 
     virtual void setPropertyData();
 };

@@ -68,18 +68,18 @@ QUmlTriggerObject::~QUmlTriggerObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlTriggerObject::ownedComment() const
+const QSet<QObject *> QUmlTriggerObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlTriggerObject::ownedElement() const
+const QSet<QObject *> QUmlTriggerObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -94,10 +94,10 @@ QObject *QUmlTriggerObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlTriggerObject::clientDependency() const
+const QSet<QObject *> QUmlTriggerObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -143,10 +143,10 @@ QObject *QUmlTriggerObject::event() const
         return qmodelingobjectproperty_cast<QUmlTrigger *>(this)->event()->asQObject();
 }
 
-const QSet<QObject *> QUmlTriggerObject::port() const
+const QSet<QObject *> QUmlTriggerObject::ports() const
 {
     QSet<QObject *> set;
-    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->port())
+    foreach (QUmlPort *element, qmodelingobjectproperty_cast<QUmlTrigger *>(this)->ports())
         set.insert(element->asQObject());
     return set;
 }

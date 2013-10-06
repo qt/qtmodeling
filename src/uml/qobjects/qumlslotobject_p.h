@@ -57,28 +57,28 @@ class Q_UML_EXPORT QUmlSlotObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Slot]
     Q_PROPERTY(QObject * definingFeature READ definingFeature)
     Q_PROPERTY(QObject * owningInstance READ owningInstance)
-    Q_PROPERTY(QList<QObject *> value READ value)
+    Q_PROPERTY(QList<QObject *> value READ values)
 
 public:
     Q_INVOKABLE explicit QUmlSlotObject(QUmlSlot *qModelingObject);
     virtual ~QUmlSlotObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [Slot]
     Q_INVOKABLE QObject *definingFeature() const;
     Q_INVOKABLE QObject *owningInstance() const;
-    Q_INVOKABLE const QList<QObject *> value() const;
+    Q_INVOKABLE const QList<QObject *> values() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

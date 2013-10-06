@@ -52,6 +52,7 @@
 #include <QtUml/QUmlSignal>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlSignalEvent
 
@@ -79,13 +80,13 @@ QUmlSignalEvent::~QUmlSignalEvent()
 QModelingObject *QUmlSignalEvent::clone() const
 {
     QUmlSignalEvent *c = new QUmlSignalEvent;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -122,6 +123,8 @@ void QUmlSignalEvent::setSignal(QUmlSignal *signal)
 void QUmlSignalEvent::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSignalEvent");
+    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The specific signal that is associated with this event.");
     QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

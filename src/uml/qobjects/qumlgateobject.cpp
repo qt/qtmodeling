@@ -67,18 +67,18 @@ QUmlGateObject::~QUmlGateObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlGateObject::ownedComment() const
+const QSet<QObject *> QUmlGateObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlGateObject::ownedElement() const
+const QSet<QObject *> QUmlGateObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -93,10 +93,10 @@ QObject *QUmlGateObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlGateObject::clientDependency() const
+const QSet<QObject *> QUmlGateObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlGate *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }

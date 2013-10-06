@@ -59,24 +59,24 @@ class Q_UML_EXPORT QUmlProfileObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImport)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMember STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ member)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMember)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRule)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImport)
+    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> member READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [ParameterableElement]
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
@@ -87,45 +87,45 @@ class Q_UML_EXPORT QUmlProfileObject : public QObject
 
     // Properties [TemplateableElement]
     Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature)
-    Q_PROPERTY(QSet<QObject *> templateBinding READ templateBinding)
+    Q_PROPERTY(QSet<QObject *> templateBinding READ templateBindings)
 
     // Properties [Package]
     Q_PROPERTY(QString URI READ URI)
-    Q_PROPERTY(QSet<QObject *> nestedPackage READ nestedPackage STORED false)
+    Q_PROPERTY(QSet<QObject *> nestedPackage READ nestedPackages STORED false)
     Q_PROPERTY(QObject * nestingPackage READ nestingPackage)
-    Q_PROPERTY(QSet<QObject *> ownedStereotype READ ownedStereotype STORED false)
-    Q_PROPERTY(QSet<QObject *> ownedType READ ownedType STORED false)
-    Q_PROPERTY(QSet<QObject *> packageMerge READ packageMerge)
-    Q_PROPERTY(QSet<QObject *> packagedElement READ packagedElement)
-    Q_PROPERTY(QSet<QObject *> profileApplication READ profileApplication)
+    Q_PROPERTY(QSet<QObject *> ownedStereotype READ ownedStereotypes STORED false)
+    Q_PROPERTY(QSet<QObject *> ownedType READ ownedTypes STORED false)
+    Q_PROPERTY(QSet<QObject *> packageMerge READ packageMerges)
+    Q_PROPERTY(QSet<QObject *> packagedElement READ packagedElements)
+    Q_PROPERTY(QSet<QObject *> profileApplication READ profileApplications)
 
     // Properties [Profile]
-    Q_PROPERTY(QSet<QObject *> metaclassReference READ metaclassReference)
-    Q_PROPERTY(QSet<QObject *> metamodelReference READ metamodelReference)
+    Q_PROPERTY(QSet<QObject *> metaclassReference READ metaclassReferences)
+    Q_PROPERTY(QSet<QObject *> metamodelReference READ metamodelReferences)
 
 public:
     Q_INVOKABLE explicit QUmlProfileObject(QUmlProfile *qModelingObject);
     virtual ~QUmlProfileObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
     Q_INVOKABLE QString qualifiedName() const;
 
     // Owned attributes [Namespace]
-    Q_INVOKABLE const QSet<QObject *> elementImport() const;
-    Q_INVOKABLE const QSet<QObject *> importedMember() const;
-    Q_INVOKABLE const QSet<QObject *> member() const;
-    Q_INVOKABLE const QSet<QObject *> ownedMember() const;
-    Q_INVOKABLE const QSet<QObject *> ownedRule() const;
-    Q_INVOKABLE const QSet<QObject *> packageImport() const;
+    Q_INVOKABLE const QSet<QObject *> elementImports() const;
+    Q_INVOKABLE const QSet<QObject *> importedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> members() const;
+    Q_INVOKABLE const QSet<QObject *> ownedMembers() const;
+    Q_INVOKABLE const QSet<QObject *> ownedRules() const;
+    Q_INVOKABLE const QSet<QObject *> packageImports() const;
 
     // Owned attributes [ParameterableElement]
     Q_INVOKABLE QObject *owningTemplateParameter() const;
@@ -136,21 +136,21 @@ public:
 
     // Owned attributes [TemplateableElement]
     Q_INVOKABLE QObject *ownedTemplateSignature() const;
-    Q_INVOKABLE const QSet<QObject *> templateBinding() const;
+    Q_INVOKABLE const QSet<QObject *> templateBindings() const;
 
     // Owned attributes [Package]
     Q_INVOKABLE QString URI() const;
-    Q_INVOKABLE const QSet<QObject *> nestedPackage() const;
+    Q_INVOKABLE const QSet<QObject *> nestedPackages() const;
     Q_INVOKABLE QObject *nestingPackage() const;
-    Q_INVOKABLE const QSet<QObject *> ownedStereotype() const;
-    Q_INVOKABLE const QSet<QObject *> ownedType() const;
-    Q_INVOKABLE const QSet<QObject *> packageMerge() const;
-    Q_INVOKABLE const QSet<QObject *> packagedElement() const;
-    Q_INVOKABLE const QSet<QObject *> profileApplication() const;
+    Q_INVOKABLE const QSet<QObject *> ownedStereotypes() const;
+    Q_INVOKABLE const QSet<QObject *> ownedTypes() const;
+    Q_INVOKABLE const QSet<QObject *> packageMerges() const;
+    Q_INVOKABLE const QSet<QObject *> packagedElements() const;
+    Q_INVOKABLE const QSet<QObject *> profileApplications() const;
 
     // Owned attributes [Profile]
-    Q_INVOKABLE const QSet<QObject *> metaclassReference() const;
-    Q_INVOKABLE const QSet<QObject *> metamodelReference() const;
+    Q_INVOKABLE const QSet<QObject *> metaclassReferences() const;
+    Q_INVOKABLE const QSet<QObject *> metamodelReferences() const;
 
     // Operations [Element]
     Q_INVOKABLE QSet<QObject *> allOwnedElements() const;

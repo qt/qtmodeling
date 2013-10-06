@@ -63,12 +63,12 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlNamedElement *> message() const;
+    const QSet<QUmlNamedElement *> messages() const;
     void addMessage(QUmlNamedElement *message);
     void removeMessage(QUmlNamedElement *message);
 
 protected:
-    QSet<QUmlNamedElement *> _message;
+    QSet<QUmlNamedElement *> _messages;
 
     virtual void setPropertyData();
 };

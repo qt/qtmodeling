@@ -65,13 +65,13 @@ public:
     // Owned attributes
     QUmlValueSpecification *expr() const;
     void setExpr(QUmlValueSpecification *expr);
-    const QSet<QUmlObservation *> observation() const;
+    const QSet<QUmlObservation *> observations() const;
     void addObservation(QUmlObservation *observation);
     void removeObservation(QUmlObservation *observation);
 
 protected:
     QUmlValueSpecification *_expr;
-    QSet<QUmlObservation *> _observation;
+    QSet<QUmlObservation *> _observations;
 
     virtual void setPropertyData();
 };

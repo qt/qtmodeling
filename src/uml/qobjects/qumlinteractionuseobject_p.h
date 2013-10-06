@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlInteractionUseObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComment)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElement)
+    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependency)
+    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
     Q_PROPERTY(QString name READ name)
     Q_PROPERTY(QObject * nameExpression READ nameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -75,11 +75,11 @@ class Q_UML_EXPORT QUmlInteractionUseObject : public QObject
     Q_PROPERTY(QSet<QObject *> covered READ covered)
     Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction)
     Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand)
-    Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrdering)
+    Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrderings)
 
     // Properties [InteractionUse]
-    Q_PROPERTY(QSet<QObject *> actualGate READ actualGate)
-    Q_PROPERTY(QList<QObject *> argument READ argument)
+    Q_PROPERTY(QSet<QObject *> actualGate READ actualGates)
+    Q_PROPERTY(QList<QObject *> argument READ arguments)
     Q_PROPERTY(QObject * refersTo READ refersTo)
     Q_PROPERTY(QObject * returnValue READ returnValue)
     Q_PROPERTY(QObject * returnValueRecipient READ returnValueRecipient)
@@ -89,12 +89,12 @@ public:
     virtual ~QUmlInteractionUseObject();
 
     // Owned attributes [Element]
-    Q_INVOKABLE const QSet<QObject *> ownedComment() const;
-    Q_INVOKABLE const QSet<QObject *> ownedElement() const;
+    Q_INVOKABLE const QSet<QObject *> ownedComments() const;
+    Q_INVOKABLE const QSet<QObject *> ownedElements() const;
     Q_INVOKABLE QObject *owner() const;
 
     // Owned attributes [NamedElement]
-    Q_INVOKABLE const QSet<QObject *> clientDependency() const;
+    Q_INVOKABLE const QSet<QObject *> clientDependencies() const;
     Q_INVOKABLE QString name() const;
     Q_INVOKABLE QObject *nameExpression() const;
     Q_INVOKABLE QObject *namespace_() const;
@@ -105,11 +105,11 @@ public:
     Q_INVOKABLE const QSet<QObject *> covered() const;
     Q_INVOKABLE QObject *enclosingInteraction() const;
     Q_INVOKABLE QObject *enclosingOperand() const;
-    Q_INVOKABLE const QSet<QObject *> generalOrdering() const;
+    Q_INVOKABLE const QSet<QObject *> generalOrderings() const;
 
     // Owned attributes [InteractionUse]
-    Q_INVOKABLE const QSet<QObject *> actualGate() const;
-    Q_INVOKABLE const QList<QObject *> argument() const;
+    Q_INVOKABLE const QSet<QObject *> actualGates() const;
+    Q_INVOKABLE const QList<QObject *> arguments() const;
     Q_INVOKABLE QObject *refersTo() const;
     Q_INVOKABLE QObject *returnValue() const;
     Q_INVOKABLE QObject *returnValueRecipient() const;

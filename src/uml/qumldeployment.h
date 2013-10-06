@@ -65,18 +65,18 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlDeploymentSpecification *> configuration() const;
+    const QSet<QUmlDeploymentSpecification *> configurations() const;
     void addConfiguration(QUmlDeploymentSpecification *configuration);
     void removeConfiguration(QUmlDeploymentSpecification *configuration);
-    const QSet<QUmlDeployedArtifact *> deployedArtifact() const;
+    const QSet<QUmlDeployedArtifact *> deployedArtifacts() const;
     void addDeployedArtifact(QUmlDeployedArtifact *deployedArtifact);
     void removeDeployedArtifact(QUmlDeployedArtifact *deployedArtifact);
     QUmlDeploymentTarget *location() const;
     void setLocation(QUmlDeploymentTarget *location);
 
 protected:
-    QSet<QUmlDeploymentSpecification *> _configuration;
-    QSet<QUmlDeployedArtifact *> _deployedArtifact;
+    QSet<QUmlDeploymentSpecification *> _configurations;
+    QSet<QUmlDeployedArtifact *> _deployedArtifacts;
     QUmlDeploymentTarget *_location;
 
     virtual void setPropertyData();

@@ -65,10 +65,10 @@ public:
     // Owned attributes
     QUmlBehavior *classifierBehavior() const;
     void setClassifierBehavior(QUmlBehavior *classifierBehavior);
-    const QSet<QUmlInterfaceRealization *> interfaceRealization() const;
+    const QSet<QUmlInterfaceRealization *> interfaceRealizations() const;
     void addInterfaceRealization(QUmlInterfaceRealization *interfaceRealization);
     void removeInterfaceRealization(QUmlInterfaceRealization *interfaceRealization);
-    const QSet<QUmlBehavior *> ownedBehavior() const;
+    const QSet<QUmlBehavior *> ownedBehaviors() const;
     void addOwnedBehavior(QUmlBehavior *ownedBehavior);
     void removeOwnedBehavior(QUmlBehavior *ownedBehavior);
 
@@ -76,8 +76,8 @@ protected:
     explicit QUmlBehavioredClassifier();
 
     QUmlBehavior *_classifierBehavior;
-    QSet<QUmlInterfaceRealization *> _interfaceRealization;
-    QSet<QUmlBehavior *> _ownedBehavior;
+    QSet<QUmlInterfaceRealization *> _interfaceRealizations;
+    QSet<QUmlBehavior *> _ownedBehaviors;
 
     virtual void setPropertyData();
 };

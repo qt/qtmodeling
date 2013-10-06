@@ -61,6 +61,7 @@
 #include <QtUml/QUmlRedefinableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlStructuredActivityNode>
+
 /*!
     \class QUmlCallAction
 
@@ -81,9 +82,9 @@ QUmlCallAction::~QUmlCallAction()
 QModelingObject *QUmlCallAction::clone() const
 {
     QUmlCallAction *c = new QUmlCallAction;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -92,31 +93,31 @@ QModelingObject *QUmlCallAction::clone() const
     c->setLeaf(isLeaf());
     if (activity())
         c->setActivity(dynamic_cast<QUmlActivity *>(activity()->clone()));
-    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegion())
+    foreach (QUmlInterruptibleActivityRegion *element, inInterruptibleRegions())
         c->addInInterruptibleRegion(dynamic_cast<QUmlInterruptibleActivityRegion *>(element->clone()));
-    foreach (QUmlActivityPartition *element, inPartition())
+    foreach (QUmlActivityPartition *element, inPartitions())
         c->addInPartition(dynamic_cast<QUmlActivityPartition *>(element->clone()));
     if (inStructuredNode())
         c->setInStructuredNode(dynamic_cast<QUmlStructuredActivityNode *>(inStructuredNode()->clone()));
-    foreach (QUmlActivityEdge *element, incoming())
+    foreach (QUmlActivityEdge *element, incomings())
         c->addIncoming(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityEdge *element, outgoing())
+    foreach (QUmlActivityEdge *element, outgoings())
         c->addOutgoing(dynamic_cast<QUmlActivityEdge *>(element->clone()));
-    foreach (QUmlActivityNode *element, redefinedNode())
+    foreach (QUmlActivityNode *element, redefinedNodes())
         c->addRedefinedNode(dynamic_cast<QUmlActivityNode *>(element->clone()));
-    foreach (QUmlExceptionHandler *element, handler())
+    foreach (QUmlExceptionHandler *element, handlers())
         c->addHandler(dynamic_cast<QUmlExceptionHandler *>(element->clone()));
     c->setLocallyReentrant(isLocallyReentrant());
-    foreach (QUmlConstraint *element, localPostcondition())
+    foreach (QUmlConstraint *element, localPostconditions())
         c->addLocalPostcondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlConstraint *element, localPrecondition())
+    foreach (QUmlConstraint *element, localPreconditions())
         c->addLocalPrecondition(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlInputPin *element, argument())
+    foreach (QUmlInputPin *element, arguments())
         c->addArgument(dynamic_cast<QUmlInputPin *>(element->clone()));
     if (onPort())
         c->setOnPort(dynamic_cast<QUmlPort *>(onPort()->clone()));
     c->setSynchronous(isSynchronous());
-    foreach (QUmlOutputPin *element, result())
+    foreach (QUmlOutputPin *element, results())
         c->addResult(dynamic_cast<QUmlOutputPin *>(element->clone()));
     return c;
 }
@@ -146,19 +147,19 @@ void QUmlCallAction::setSynchronous(bool isSynchronous)
 /*!
     A list of output pins where the results of performing the invocation are placed.
  */
-const QList<QUmlOutputPin *> QUmlCallAction::result() const
+const QList<QUmlOutputPin *> QUmlCallAction::results() const
 {
     // This is a read-write association end
 
-    return _result;
+    return _results;
 }
 
 void QUmlCallAction::addResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    if (!_result.contains(result)) {
-        _result.append(result);
+    if (!_results.contains(result)) {
+        _results.append(result);
         if (result && result->asQObject() && this->asQObject())
             QObject::connect(result->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeResult(QObject *)));
         result->asQObject()->setParent(this->asQObject());
@@ -172,8 +173,8 @@ void QUmlCallAction::removeResult(QUmlOutputPin *result)
 {
     // This is a read-write association end
 
-    if (_result.contains(result)) {
-        _result.removeAll(result);
+    if (_results.contains(result)) {
+        _results.removeAll(result);
         if (result->asQObject())
             result->asQObject()->setParent(0);
 
@@ -185,6 +186,8 @@ void QUmlCallAction::removeResult(QUmlOutputPin *result)
 void QUmlCallAction::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::DocumentationRole] = QStringLiteral("If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.");
     QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -192,6 +195,8 @@ void QUmlCallAction::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins where the results of performing the invocation are placed.");
     QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -65,7 +65,7 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QList<QUmlElement *> constrainedElement() const;
+    const QList<QUmlElement *> constrainedElements() const;
     void addConstrainedElement(QUmlElement *constrainedElement);
     void removeConstrainedElement(QUmlElement *constrainedElement);
     QUmlNamespace *context() const;
@@ -74,7 +74,7 @@ public:
     void setSpecification(QUmlValueSpecification *specification);
 
 protected:
-    QList<QUmlElement *> _constrainedElement;
+    QList<QUmlElement *> _constrainedElements;
     QUmlNamespace *_context;
     QUmlValueSpecification *_specification;
 

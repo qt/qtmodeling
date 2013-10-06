@@ -73,16 +73,16 @@ public:
     void setConcurrency(QtUml::CallConcurrencyKind concurrency);
     bool isAbstract() const;
     void setAbstract(bool isAbstract);
-    const QSet<QUmlBehavior *> method() const;
+    const QSet<QUmlBehavior *> methods() const;
     void addMethod(QUmlBehavior *method);
     void removeMethod(QUmlBehavior *method);
-    const QList<QUmlParameter *> ownedParameter() const;
+    const QList<QUmlParameter *> ownedParameters() const;
     void addOwnedParameter(QUmlParameter *ownedParameter);
     void removeOwnedParameter(QUmlParameter *ownedParameter);
-    const QSet<QUmlParameterSet *> ownedParameterSet() const;
+    const QSet<QUmlParameterSet *> ownedParameterSets() const;
     void addOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
     void removeOwnedParameterSet(QUmlParameterSet *ownedParameterSet);
-    const QSet<QUmlType *> raisedException() const;
+    const QSet<QUmlType *> raisedExceptions() const;
     void addRaisedException(QUmlType *raisedException);
     void removeRaisedException(QUmlType *raisedException);
 
@@ -94,10 +94,10 @@ protected:
 
     QtUml::CallConcurrencyKind _concurrency;
     bool _isAbstract;
-    QSet<QUmlBehavior *> _method;
-    QList<QUmlParameter *> _ownedParameter;
-    QSet<QUmlParameterSet *> _ownedParameterSet;
-    QSet<QUmlType *> _raisedException;
+    QSet<QUmlBehavior *> _methods;
+    QList<QUmlParameter *> _ownedParameters;
+    QSet<QUmlParameterSet *> _ownedParameterSets;
+    QSet<QUmlType *> _raisedExceptions;
 
     virtual void setPropertyData();
 };

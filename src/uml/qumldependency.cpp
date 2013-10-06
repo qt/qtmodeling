@@ -50,6 +50,7 @@
 #include <QtUml/QUmlParameterableElement>
 #include <QtUml/QUmlStringExpression>
 #include <QtUml/QUmlTemplateParameter>
+
 /*!
     \class QUmlDependency
 
@@ -76,21 +77,21 @@ QUmlDependency::~QUmlDependency()
 QModelingObject *QUmlDependency::clone() const
 {
     QUmlDependency *c = new QUmlDependency;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
     if (owningTemplateParameter())
         c->setOwningTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(owningTemplateParameter()->clone()));
     if (templateParameter())
         c->setTemplateParameter(dynamic_cast<QUmlTemplateParameter *>(templateParameter()->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlNamedElement *element, client())
+    foreach (QUmlNamedElement *element, clients())
         c->addClient(dynamic_cast<QUmlNamedElement *>(element->clone()));
-    foreach (QUmlNamedElement *element, supplier())
+    foreach (QUmlNamedElement *element, suppliers())
         c->addSupplier(dynamic_cast<QUmlNamedElement *>(element->clone()));
     return c;
 }
@@ -100,19 +101,19 @@ QModelingObject *QUmlDependency::clone() const
 /*!
     The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.
  */
-const QSet<QUmlNamedElement *> QUmlDependency::client() const
+const QSet<QUmlNamedElement *> QUmlDependency::clients() const
 {
     // This is a read-write association end
 
-    return _client;
+    return _clients;
 }
 
 void QUmlDependency::addClient(QUmlNamedElement *client)
 {
     // This is a read-write association end
 
-    if (!_client.contains(client)) {
-        _client.insert(client);
+    if (!_clients.contains(client)) {
+        _clients.insert(client);
         if (client && client->asQObject() && this->asQObject())
             QObject::connect(client->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeClient(QObject *)));
 
@@ -130,8 +131,8 @@ void QUmlDependency::removeClient(QUmlNamedElement *client)
 {
     // This is a read-write association end
 
-    if (_client.contains(client)) {
-        _client.remove(client);
+    if (_clients.contains(client)) {
+        _clients.remove(client);
 
         // Adjust subsetted properties
         removeSource(client);
@@ -146,19 +147,19 @@ void QUmlDependency::removeClient(QUmlNamedElement *client)
 /*!
     The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.
  */
-const QSet<QUmlNamedElement *> QUmlDependency::supplier() const
+const QSet<QUmlNamedElement *> QUmlDependency::suppliers() const
 {
     // This is a read-write association end
 
-    return _supplier;
+    return _suppliers;
 }
 
 void QUmlDependency::addSupplier(QUmlNamedElement *supplier)
 {
     // This is a read-write association end
 
-    if (!_supplier.contains(supplier)) {
-        _supplier.insert(supplier);
+    if (!_suppliers.contains(supplier)) {
+        _suppliers.insert(supplier);
         if (supplier && supplier->asQObject() && this->asQObject())
             QObject::connect(supplier->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeSupplier(QObject *)));
 
@@ -171,8 +172,8 @@ void QUmlDependency::removeSupplier(QUmlNamedElement *supplier)
 {
     // This is a read-write association end
 
-    if (_supplier.contains(supplier)) {
-        _supplier.remove(supplier);
+    if (_suppliers.contains(supplier)) {
+        _suppliers.remove(supplier);
 
         // Adjust subsetted properties
         removeTarget(supplier);
@@ -182,6 +183,8 @@ void QUmlDependency::removeSupplier(QUmlNamedElement *supplier)
 void QUmlDependency::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("client")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("client")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDependency");
+    QModelingObject::propertyDataHash[QStringLiteral("client")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("client")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("client")][QtModeling::DocumentationRole] = QStringLiteral("The element(s) dependent on the supplier element(s). In some cases (such as a Trace Abstraction) the assignment of direction (that is, the designation of the client element) is at the discretion of the modeler, and is a stipulation.");
     QModelingObject::propertyDataHash[QStringLiteral("client")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -189,6 +192,8 @@ void QUmlDependency::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("client")][QtModeling::OppositeEndRole] = QStringLiteral("NamedElement-clientDependency");
 
     QModelingObject::propertyDataHash[QStringLiteral("supplier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("supplier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDependency");
+    QModelingObject::propertyDataHash[QStringLiteral("supplier")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("supplier")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("supplier")][QtModeling::DocumentationRole] = QStringLiteral("The element(s) independent of the client element(s), in the same respect and the same dependency relationship. In some directed dependency relationships (such as Refinement Abstractions), a common convention in the domain of class-based OO software is to put the more abstract element in this role. Despite this convention, users of UML may stipulate a sense of dependency suitable for their domain, which makes a more abstract element dependent on that which is more specific.");
     QModelingObject::propertyDataHash[QStringLiteral("supplier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

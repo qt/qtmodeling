@@ -50,6 +50,7 @@
 #include <QtUml/QUmlOccurrenceSpecification>
 #include <QtUml/QUmlPackage>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlGeneralOrdering
 
@@ -78,9 +79,9 @@ QUmlGeneralOrdering::~QUmlGeneralOrdering()
 QModelingObject *QUmlGeneralOrdering::clone() const
 {
     QUmlGeneralOrdering *c = new QUmlGeneralOrdering;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
@@ -140,6 +141,8 @@ void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
 void QUmlGeneralOrdering::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralOrdering");
+    QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::DocumentationRole] = QStringLiteral("The OccurrenceSpecification referenced comes after the OccurrenceSpecification referenced by before.");
     QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -147,6 +150,8 @@ void QUmlGeneralOrdering::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("after")][QtModeling::OppositeEndRole] = QStringLiteral("OccurrenceSpecification-toBefore");
 
     QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralOrdering");
+    QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::DocumentationRole] = QStringLiteral("The OccurrenceSpecification referenced comes before the OccurrenceSpecification referenced by after.");
     QModelingObject::propertyDataHash[QStringLiteral("before")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

@@ -50,6 +50,7 @@
 #include <QtUml/QUmlPackageableElement>
 #include <QtUml/QUmlPackageImport>
 #include <QtUml/QUmlStringExpression>
+
 /*!
     \class QUmlNamespace
 
@@ -69,19 +70,19 @@ QUmlNamespace::~QUmlNamespace()
 QModelingObject *QUmlNamespace::clone() const
 {
     QUmlNamespace *c = new QUmlNamespace;
-    foreach (QUmlComment *element, ownedComment())
+    foreach (QUmlComment *element, ownedComments())
         c->addOwnedComment(dynamic_cast<QUmlComment *>(element->clone()));
-    foreach (QUmlDependency *element, clientDependency())
+    foreach (QUmlDependency *element, clientDependencies())
         c->addClientDependency(dynamic_cast<QUmlDependency *>(element->clone()));
     c->setName(name());
     if (nameExpression())
         c->setNameExpression(dynamic_cast<QUmlStringExpression *>(nameExpression()->clone()));
     c->setVisibility(visibility());
-    foreach (QUmlElementImport *element, elementImport())
+    foreach (QUmlElementImport *element, elementImports())
         c->addElementImport(dynamic_cast<QUmlElementImport *>(element->clone()));
-    foreach (QUmlConstraint *element, ownedRule())
+    foreach (QUmlConstraint *element, ownedRules())
         c->addOwnedRule(dynamic_cast<QUmlConstraint *>(element->clone()));
-    foreach (QUmlPackageImport *element, packageImport())
+    foreach (QUmlPackageImport *element, packageImports())
         c->addPackageImport(dynamic_cast<QUmlPackageImport *>(element->clone()));
     return c;
 }
@@ -91,19 +92,19 @@ QModelingObject *QUmlNamespace::clone() const
 /*!
     References the ElementImports owned by the Namespace.
  */
-const QSet<QUmlElementImport *> QUmlNamespace::elementImport() const
+const QSet<QUmlElementImport *> QUmlNamespace::elementImports() const
 {
     // This is a read-write association end
 
-    return _elementImport;
+    return _elementImports;
 }
 
 void QUmlNamespace::addElementImport(QUmlElementImport *elementImport)
 {
     // This is a read-write association end
 
-    if (!_elementImport.contains(elementImport)) {
-        _elementImport.insert(elementImport);
+    if (!_elementImports.contains(elementImport)) {
+        _elementImports.insert(elementImport);
         if (elementImport && elementImport->asQObject() && this->asQObject())
             QObject::connect(elementImport->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeElementImport(QObject *)));
         elementImport->asQObject()->setParent(this->asQObject());
@@ -122,8 +123,8 @@ void QUmlNamespace::removeElementImport(QUmlElementImport *elementImport)
 {
     // This is a read-write association end
 
-    if (_elementImport.contains(elementImport)) {
-        _elementImport.remove(elementImport);
+    if (_elementImports.contains(elementImport)) {
+        _elementImports.remove(elementImport);
         if (elementImport->asQObject())
             elementImport->asQObject()->setParent(0);
 
@@ -140,16 +141,16 @@ void QUmlNamespace::removeElementImport(QUmlElementImport *elementImport)
 /*!
     References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.
  */
-const QSet<QUmlPackageableElement *> QUmlNamespace::importedMember() const
+const QSet<QUmlPackageableElement *> QUmlNamespace::importedMembers() const
 {
     // This is a read-only derived association end
 
     QSet<QUmlPackageableElement *> importedMembers_;
-    foreach (QUmlElementImport *elementImport, _elementImport)
+    foreach (QUmlElementImport *elementImport, _elementImports)
         importedMembers_.insert(elementImport->importedElement());
-    foreach (QUmlPackageImport *packageImport, _packageImport)
+    foreach (QUmlPackageImport *packageImport, _packageImports)
         if (packageImport->importedPackage())
-            importedMembers_.unite(packageImport->importedPackage()->packagedElement());
+            importedMembers_.unite(packageImport->importedPackage()->packagedElements());
     return importedMembers_;
 }
 
@@ -157,7 +158,7 @@ void QUmlNamespace::addImportedMember(QUmlPackageableElement *importedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlNamespace::importedMember(): to be implemented (this is a derived association end)");
+    qWarning("UmlNamespace::addImportedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(importedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -172,7 +173,7 @@ void QUmlNamespace::removeImportedMember(QUmlPackageableElement *importedMember)
 {
     // This is a read-only derived association end
 
-    qWarning("UmlNamespace::importedMember(): to be implemented (this is a derived association end)");
+    qWarning("UmlNamespace::removeImportedMember(): to be implemented (this is a derived association end)");
     Q_UNUSED(importedMember);
 
     if (false /* <derivedexclusion-criteria> */) {
@@ -186,19 +187,19 @@ void QUmlNamespace::removeImportedMember(QUmlPackageableElement *importedMember)
 /*!
     A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.
  */
-const QSet<QUmlNamedElement *> QUmlNamespace::member() const
+const QSet<QUmlNamedElement *> QUmlNamespace::members() const
 {
     // This is a read-only derived union association end
 
-    return _member;
+    return _members;
 }
 
 void QUmlNamespace::addMember(QUmlNamedElement *member)
 {
     // This is a read-only derived union association end
 
-    if (!_member.contains(member)) {
-        _member.insert(member);
+    if (!_members.contains(member)) {
+        _members.insert(member);
         if (member && member->asQObject() && this->asQObject())
             QObject::connect(member->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeMember(QObject *)));
     }
@@ -208,27 +209,27 @@ void QUmlNamespace::removeMember(QUmlNamedElement *member)
 {
     // This is a read-only derived union association end
 
-    if (_member.contains(member)) {
-        _member.remove(member);
+    if (_members.contains(member)) {
+        _members.remove(member);
     }
 }
 
 /*!
     A collection of NamedElements owned by the Namespace.
  */
-const QSet<QUmlNamedElement *> QUmlNamespace::ownedMember() const
+const QSet<QUmlNamedElement *> QUmlNamespace::ownedMembers() const
 {
     // This is a read-only derived union association end
 
-    return _ownedMember;
+    return _ownedMembers;
 }
 
 void QUmlNamespace::addOwnedMember(QUmlNamedElement *ownedMember)
 {
     // This is a read-only derived union association end
 
-    if (!_ownedMember.contains(ownedMember)) {
-        _ownedMember.insert(ownedMember);
+    if (!_ownedMembers.contains(ownedMember)) {
+        _ownedMembers.insert(ownedMember);
         if (ownedMember && ownedMember->asQObject() && this->asQObject())
             QObject::connect(ownedMember->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedMember(QObject *)));
         ownedMember->asQObject()->setParent(this->asQObject());
@@ -248,8 +249,8 @@ void QUmlNamespace::removeOwnedMember(QUmlNamedElement *ownedMember)
 {
     // This is a read-only derived union association end
 
-    if (_ownedMember.contains(ownedMember)) {
-        _ownedMember.remove(ownedMember);
+    if (_ownedMembers.contains(ownedMember)) {
+        _ownedMembers.remove(ownedMember);
         if (ownedMember->asQObject())
             ownedMember->asQObject()->setParent(0);
 
@@ -267,19 +268,19 @@ void QUmlNamespace::removeOwnedMember(QUmlNamedElement *ownedMember)
 /*!
     Specifies a set of Constraints owned by this Namespace.
  */
-const QSet<QUmlConstraint *> QUmlNamespace::ownedRule() const
+const QSet<QUmlConstraint *> QUmlNamespace::ownedRules() const
 {
     // This is a read-write association end
 
-    return _ownedRule;
+    return _ownedRules;
 }
 
 void QUmlNamespace::addOwnedRule(QUmlConstraint *ownedRule)
 {
     // This is a read-write association end
 
-    if (!_ownedRule.contains(ownedRule)) {
-        _ownedRule.insert(ownedRule);
+    if (!_ownedRules.contains(ownedRule)) {
+        _ownedRules.insert(ownedRule);
         if (ownedRule && ownedRule->asQObject() && this->asQObject())
             QObject::connect(ownedRule->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removeOwnedRule(QObject *)));
         ownedRule->asQObject()->setParent(this->asQObject());
@@ -298,8 +299,8 @@ void QUmlNamespace::removeOwnedRule(QUmlConstraint *ownedRule)
 {
     // This is a read-write association end
 
-    if (_ownedRule.contains(ownedRule)) {
-        _ownedRule.remove(ownedRule);
+    if (_ownedRules.contains(ownedRule)) {
+        _ownedRules.remove(ownedRule);
         if (ownedRule->asQObject())
             ownedRule->asQObject()->setParent(0);
 
@@ -316,19 +317,19 @@ void QUmlNamespace::removeOwnedRule(QUmlConstraint *ownedRule)
 /*!
     References the PackageImports owned by the Namespace.
  */
-const QSet<QUmlPackageImport *> QUmlNamespace::packageImport() const
+const QSet<QUmlPackageImport *> QUmlNamespace::packageImports() const
 {
     // This is a read-write association end
 
-    return _packageImport;
+    return _packageImports;
 }
 
 void QUmlNamespace::addPackageImport(QUmlPackageImport *packageImport)
 {
     // This is a read-write association end
 
-    if (!_packageImport.contains(packageImport)) {
-        _packageImport.insert(packageImport);
+    if (!_packageImports.contains(packageImport)) {
+        _packageImports.insert(packageImport);
         if (packageImport && packageImport->asQObject() && this->asQObject())
             QObject::connect(packageImport->asQObject(), SIGNAL(destroyed(QObject*)), this->asQObject(), SLOT(removePackageImport(QObject *)));
         packageImport->asQObject()->setParent(this->asQObject());
@@ -347,8 +348,8 @@ void QUmlNamespace::removePackageImport(QUmlPackageImport *packageImport)
 {
     // This is a read-write association end
 
-    if (_packageImport.contains(packageImport)) {
-        _packageImport.remove(packageImport);
+    if (_packageImports.contains(packageImport)) {
+        _packageImports.remove(packageImport);
         if (packageImport->asQObject())
             packageImport->asQObject()->setParent(0);
 
@@ -410,6 +411,8 @@ bool QUmlNamespace::membersAreDistinguishable() const
 void QUmlNamespace::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("elementImport")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("elementImport")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("elementImport")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("elementImport")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("elementImport")][QtModeling::DocumentationRole] = QStringLiteral("References the ElementImports owned by the Namespace.");
     QModelingObject::propertyDataHash[QStringLiteral("elementImport")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -417,6 +420,8 @@ void QUmlNamespace::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("elementImport")][QtModeling::OppositeEndRole] = QStringLiteral("ElementImport-importingNamespace");
 
     QModelingObject::propertyDataHash[QStringLiteral("importedMember")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("importedMember")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("importedMember")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("importedMember")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("importedMember")][QtModeling::DocumentationRole] = QStringLiteral("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.");
     QModelingObject::propertyDataHash[QStringLiteral("importedMember")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -424,6 +429,8 @@ void QUmlNamespace::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("importedMember")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("member")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("member")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("member")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("member")][QtModeling::IsDerivedUnionRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("member")][QtModeling::DocumentationRole] = QStringLiteral("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.");
     QModelingObject::propertyDataHash[QStringLiteral("member")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -431,6 +438,8 @@ void QUmlNamespace::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("member")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedMember")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedMember")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedMember")][QtModeling::IsDerivedRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("ownedMember")][QtModeling::IsDerivedUnionRole] = true;
     QModelingObject::propertyDataHash[QStringLiteral("ownedMember")][QtModeling::DocumentationRole] = QStringLiteral("A collection of NamedElements owned by the Namespace.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedMember")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -438,6 +447,8 @@ void QUmlNamespace::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedMember")][QtModeling::OppositeEndRole] = QStringLiteral("NamedElement-namespace");
 
     QModelingObject::propertyDataHash[QStringLiteral("ownedRule")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedRule")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("ownedRule")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedRule")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("ownedRule")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a set of Constraints owned by this Namespace.");
     QModelingObject::propertyDataHash[QStringLiteral("ownedRule")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
@@ -445,6 +456,8 @@ void QUmlNamespace::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("ownedRule")][QtModeling::OppositeEndRole] = QStringLiteral("Constraint-context");
 
     QModelingObject::propertyDataHash[QStringLiteral("packageImport")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("packageImport")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("packageImport")][QtModeling::IsDerivedRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("packageImport")][QtModeling::IsDerivedUnionRole] = false;
     QModelingObject::propertyDataHash[QStringLiteral("packageImport")][QtModeling::DocumentationRole] = QStringLiteral("References the PackageImports owned by the Namespace.");
     QModelingObject::propertyDataHash[QStringLiteral("packageImport")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");

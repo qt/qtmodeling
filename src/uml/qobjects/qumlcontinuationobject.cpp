@@ -70,18 +70,18 @@ QUmlContinuationObject::~QUmlContinuationObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlContinuationObject::ownedComment() const
+const QSet<QObject *> QUmlContinuationObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlContinuationObject::ownedElement() const
+const QSet<QObject *> QUmlContinuationObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -96,10 +96,10 @@ QObject *QUmlContinuationObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlContinuationObject::clientDependency() const
+const QSet<QObject *> QUmlContinuationObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -161,10 +161,10 @@ QObject *QUmlContinuationObject::enclosingOperand() const
         return qmodelingobjectproperty_cast<QUmlContinuation *>(this)->enclosingOperand()->asQObject();
 }
 
-const QSet<QObject *> QUmlContinuationObject::generalOrdering() const
+const QSet<QObject *> QUmlContinuationObject::generalOrderings() const
 {
     QSet<QObject *> set;
-    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->generalOrdering())
+    foreach (QUmlGeneralOrdering *element, qmodelingobjectproperty_cast<QUmlContinuation *>(this)->generalOrderings())
         set.insert(element->asQObject());
     return set;
 }

@@ -68,18 +68,18 @@ QUmlParameterSetObject::~QUmlParameterSetObject()
 
 // OWNED ATTRIBUTES [Element]
 
-const QSet<QObject *> QUmlParameterSetObject::ownedComment() const
+const QSet<QObject *> QUmlParameterSetObject::ownedComments() const
 {
     QSet<QObject *> set;
-    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->ownedComment())
+    foreach (QUmlComment *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->ownedComments())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlParameterSetObject::ownedElement() const
+const QSet<QObject *> QUmlParameterSetObject::ownedElements() const
 {
     QSet<QObject *> set;
-    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->ownedElement())
+    foreach (QUmlElement *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->ownedElements())
         set.insert(element->asQObject());
     return set;
 }
@@ -94,10 +94,10 @@ QObject *QUmlParameterSetObject::owner() const
 
 // OWNED ATTRIBUTES [NamedElement]
 
-const QSet<QObject *> QUmlParameterSetObject::clientDependency() const
+const QSet<QObject *> QUmlParameterSetObject::clientDependencies() const
 {
     QSet<QObject *> set;
-    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->clientDependency())
+    foreach (QUmlDependency *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->clientDependencies())
         set.insert(element->asQObject());
     return set;
 }
@@ -135,18 +135,18 @@ QtUml::VisibilityKind QUmlParameterSetObject::visibility() const
 
 // OWNED ATTRIBUTES [ParameterSet]
 
-const QSet<QObject *> QUmlParameterSetObject::condition() const
+const QSet<QObject *> QUmlParameterSetObject::conditions() const
 {
     QSet<QObject *> set;
-    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->condition())
+    foreach (QUmlConstraint *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->conditions())
         set.insert(element->asQObject());
     return set;
 }
 
-const QSet<QObject *> QUmlParameterSetObject::parameter() const
+const QSet<QObject *> QUmlParameterSetObject::parameters() const
 {
     QSet<QObject *> set;
-    foreach (QUmlParameter *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->parameter())
+    foreach (QUmlParameter *element, qmodelingobjectproperty_cast<QUmlParameterSet *>(this)->parameters())
         set.insert(element->asQObject());
     return set;
 }

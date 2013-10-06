@@ -67,28 +67,28 @@ public:
     QModelingObject *clone() const;
 
     // Owned attributes
-    const QSet<QUmlAction *> action() const;
+    const QSet<QUmlAction *> actions() const;
     void addAction(QUmlAction *action);
     void removeAction(QUmlAction *action);
-    const QSet<QUmlGate *> formalGate() const;
+    const QSet<QUmlGate *> formalGates() const;
     void addFormalGate(QUmlGate *formalGate);
     void removeFormalGate(QUmlGate *formalGate);
-    const QList<QUmlInteractionFragment *> fragment() const;
+    const QList<QUmlInteractionFragment *> fragments() const;
     void addFragment(QUmlInteractionFragment *fragment);
     void removeFragment(QUmlInteractionFragment *fragment);
-    const QSet<QUmlLifeline *> lifeline() const;
+    const QSet<QUmlLifeline *> lifelines() const;
     void addLifeline(QUmlLifeline *lifeline);
     void removeLifeline(QUmlLifeline *lifeline);
-    const QSet<QUmlMessage *> message() const;
+    const QSet<QUmlMessage *> messages() const;
     void addMessage(QUmlMessage *message);
     void removeMessage(QUmlMessage *message);
 
 protected:
-    QSet<QUmlAction *> _action;
-    QSet<QUmlGate *> _formalGate;
-    QList<QUmlInteractionFragment *> _fragment;
-    QSet<QUmlLifeline *> _lifeline;
-    QSet<QUmlMessage *> _message;
+    QSet<QUmlAction *> _actions;
+    QSet<QUmlGate *> _formalGates;
+    QList<QUmlInteractionFragment *> _fragments;
+    QSet<QUmlLifeline *> _lifelines;
+    QSet<QUmlMessage *> _messages;
 
     virtual void setPropertyData();
 };
