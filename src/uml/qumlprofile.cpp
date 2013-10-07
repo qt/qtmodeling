@@ -229,3 +229,36 @@ void QUmlProfile::setPropertyData()
 
 }
 
+void QUmlProfile::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("ownedTemplateSignature")] = QStringLiteral("QUmlTemplateableElement");
+    _classForProperty[QStringLiteral("templateBindings")] = QStringLiteral("QUmlTemplateableElement");
+    _classForProperty[QStringLiteral("URI")] = QStringLiteral("QUmlPackage");
+    _classForProperty[QStringLiteral("nestedPackages")] = QStringLiteral("QUmlPackage");
+    _classForProperty[QStringLiteral("nestingPackage")] = QStringLiteral("QUmlPackage");
+    _classForProperty[QStringLiteral("ownedStereotypes")] = QStringLiteral("QUmlPackage");
+    _classForProperty[QStringLiteral("ownedTypes")] = QStringLiteral("QUmlPackage");
+    _classForProperty[QStringLiteral("packageMerges")] = QStringLiteral("QUmlPackage");
+    _classForProperty[QStringLiteral("packagedElements")] = QStringLiteral("QUmlPackage");
+    _classForProperty[QStringLiteral("profileApplications")] = QStringLiteral("QUmlPackage");
+    _classForProperty[QStringLiteral("metaclassReferences")] = QStringLiteral("QUmlProfile");
+    _classForProperty[QStringLiteral("metamodelReferences")] = QStringLiteral("QUmlProfile");
+}
+

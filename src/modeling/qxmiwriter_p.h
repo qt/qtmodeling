@@ -44,6 +44,8 @@
 #include "qtmodelingglobal.h"
 #include "private/qobject_p.h"
 
+#include <QtModeling/QModelingObject>
+
 #include <QtCore/QStringList>
 #include <QtCore/QXmlStreamWriter>
 
@@ -60,10 +62,10 @@ class Q_MODELING_EXPORT QXmiWriterPrivate : public QObjectPrivate
     Q_DECLARE_PUBLIC(QXmiWriter)
 
 public:
-    explicit QXmiWriterPrivate(QObject *modelingObject);
+    explicit QXmiWriterPrivate(QModelingObject *modelingObject);
     virtual ~QXmiWriterPrivate();
 
-    QObject *modelingObject;
+    QModelingObject *modelingObject;
     QXmlStreamWriter writer;
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > metaModelPlugins;
     QObjectList visitedObjects;

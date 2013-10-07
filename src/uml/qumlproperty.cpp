@@ -88,6 +88,7 @@ QUmlProperty::QUmlProperty(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlPropertyObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -708,14 +709,14 @@ void QUmlProperty::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("associationEnd")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("associationEnd")][QtModeling::OppositeEndRole] = QStringLiteral("Property-qualifier");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class")][QtModeling::DocumentationRole] = QStringLiteral("References the Class that owns the Property.References the Class that owns the Property.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_attribute_classifier-classifier A_ownedAttribute_structuredClassifier-structuredClassifier NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class")][QtModeling::OppositeEndRole] = QStringLiteral("Class-ownedAttribute");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class_")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class_")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class_")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class_")][QtModeling::DocumentationRole] = QStringLiteral("References the Class that owns the Property.References the Class that owns the Property.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_attribute_classifier-classifier A_ownedAttribute_structuredClassifier-structuredClassifier NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("class_")][QtModeling::OppositeEndRole] = QStringLiteral("Class-ownedAttribute");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("datatype")][QtModeling::AggregationRole] = QStringLiteral("none");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("datatype")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
@@ -726,14 +727,14 @@ void QUmlProperty::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("datatype")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_attribute_classifier-classifier NamedElement-namespace");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("datatype")][QtModeling::OppositeEndRole] = QStringLiteral("DataType-ownedAttribute");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a String that represents a value to be used when no argument is supplied for the Property.A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default_")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default_")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default_")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default_")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a String that represents a value to be used when no argument is supplied for the Property.A String that is evaluated to give a default value for the Property when an object of the owning Classifier is instantiated.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("default_")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("defaultValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("defaultValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
@@ -744,14 +745,14 @@ void QUmlProperty::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("defaultValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("defaultValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface")][QtModeling::DocumentationRole] = QStringLiteral("References the Interface that owns the Property");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_attribute_classifier-classifier NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface")][QtModeling::OppositeEndRole] = QStringLiteral("Interface-ownedAttribute");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface_")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface_")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface_")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface_")][QtModeling::DocumentationRole] = QStringLiteral("References the Interface that owns the Property");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_attribute_classifier-classifier NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("interface_")][QtModeling::OppositeEndRole] = QStringLiteral("Interface-ownedAttribute");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("isComposite")][QtModeling::AggregationRole] = QStringLiteral("none");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("isComposite")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
@@ -816,32 +817,80 @@ void QUmlProperty::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("owningAssociation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace Property-association");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("owningAssociation")][QtModeling::OppositeEndRole] = QStringLiteral("Association-ownedEnd");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("Property-associationEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifiers")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifiers")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifiers")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifiers")][QtModeling::DocumentationRole] = QStringLiteral("An optional list of ordered qualifier attributes for the end. If the list is empty, then the Association is not qualified.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("qualifiers")][QtModeling::OppositeEndRole] = QStringLiteral("Property-associationEnd");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperty")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperty")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperty")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperty")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperty")][QtModeling::DocumentationRole] = QStringLiteral("References the properties that are redefined by this property.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperty")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperty")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperty")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperties")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperties")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperties")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperties")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperties")][QtModeling::DocumentationRole] = QStringLiteral("References the properties that are redefined by this property.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperties")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperties")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("redefinedProperties")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperty")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperty")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperty")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperty")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperty")][QtModeling::DocumentationRole] = QStringLiteral("References the properties of which this property is constrained to be a subset.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperty")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperty")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperty")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperties")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperties")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlProperty");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperties")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperties")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperties")][QtModeling::DocumentationRole] = QStringLiteral("References the properties of which this property is constrained to be a subset.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperties")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperties")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlProperty")][QStringLiteral("subsettedProperties")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
+}
+
+void QUmlProperty::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlTypedElement");
+    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("featuringClassifiers")] = QStringLiteral("QUmlFeature");
+    _classForProperty[QStringLiteral("isStatic")] = QStringLiteral("QUmlFeature");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("ends")] = QStringLiteral("QUmlConnectableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlConnectableElement");
+    _classForProperty[QStringLiteral("deployedElements")] = QStringLiteral("QUmlDeploymentTarget");
+    _classForProperty[QStringLiteral("deployments")] = QStringLiteral("QUmlDeploymentTarget");
+    _classForProperty[QStringLiteral("aggregation")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("association")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("associationEnd")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("class_")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("datatype")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("defaultValue")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("interface_")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isComposite")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isDerived")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isDerivedUnion")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isID")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isReadOnly")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("opposite")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("owningAssociation")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("redefinedProperties")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("subsettedProperties")] = QStringLiteral("QUmlProperty");
 }
 

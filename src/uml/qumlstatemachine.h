@@ -93,6 +93,7 @@ protected:
     QSet<QUmlState *> _submachineStates;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

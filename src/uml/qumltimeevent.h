@@ -73,6 +73,7 @@ protected:
     QUmlTimeExpression *_when;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

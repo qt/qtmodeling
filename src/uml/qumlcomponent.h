@@ -91,6 +91,7 @@ protected:
     QSet<QUmlComponentRealization *> _realizations;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

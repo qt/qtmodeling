@@ -370,3 +370,33 @@ void QUmlBehavioralFeature::setPropertyData()
 
 }
 
+void QUmlBehavioralFeature::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("featuringClassifiers")] = QStringLiteral("QUmlFeature");
+    _classForProperty[QStringLiteral("isStatic")] = QStringLiteral("QUmlFeature");
+    _classForProperty[QStringLiteral("concurrency")] = QStringLiteral("QUmlBehavioralFeature");
+    _classForProperty[QStringLiteral("isAbstract")] = QStringLiteral("QUmlBehavioralFeature");
+    _classForProperty[QStringLiteral("methods")] = QStringLiteral("QUmlBehavioralFeature");
+    _classForProperty[QStringLiteral("ownedParameters")] = QStringLiteral("QUmlBehavioralFeature");
+    _classForProperty[QStringLiteral("ownedParameterSets")] = QStringLiteral("QUmlBehavioralFeature");
+    _classForProperty[QStringLiteral("raisedExceptions")] = QStringLiteral("QUmlBehavioralFeature");
+}
+

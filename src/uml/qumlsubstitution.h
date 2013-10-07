@@ -73,6 +73,7 @@ protected:
     QUmlClassifier *_substitutingClassifier;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

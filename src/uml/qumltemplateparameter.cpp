@@ -274,3 +274,15 @@ void QUmlTemplateParameter::setPropertyData()
 
 }
 
+void QUmlTemplateParameter::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("ownedDefault")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("ownedParameteredElement")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("parameteredElement")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlTemplateParameter");
+}
+

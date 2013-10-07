@@ -230,3 +230,14 @@ void QUmlExceptionHandler::setPropertyData()
 
 }
 
+void QUmlExceptionHandler::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("exceptionInput")] = QStringLiteral("QUmlExceptionHandler");
+    _classForProperty[QStringLiteral("exceptionTypes")] = QStringLiteral("QUmlExceptionHandler");
+    _classForProperty[QStringLiteral("handlerBody")] = QStringLiteral("QUmlExceptionHandler");
+    _classForProperty[QStringLiteral("protectedNode")] = QStringLiteral("QUmlExceptionHandler");
+}
+

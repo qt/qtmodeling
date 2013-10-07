@@ -60,6 +60,7 @@
  */
 QUmlNamespace::QUmlNamespace()
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -410,59 +411,78 @@ bool QUmlNamespace::membersAreDistinguishable() const
 
 void QUmlNamespace::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImport")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImport")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImport")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImport")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImport")][QtModeling::DocumentationRole] = QStringLiteral("References the ElementImports owned by the Namespace.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImport")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImport")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImport")][QtModeling::OppositeEndRole] = QStringLiteral("ElementImport-importingNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImports")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImports")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImports")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImports")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImports")][QtModeling::DocumentationRole] = QStringLiteral("References the ElementImports owned by the Namespace.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImports")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImports")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImports")][QtModeling::OppositeEndRole] = QStringLiteral("ElementImport-importingNamespace");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMember")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMember")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMember")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMember")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMember")][QtModeling::DocumentationRole] = QStringLiteral("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMember")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMember")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-member");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMember")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMembers")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMembers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMembers")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMembers")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMembers")][QtModeling::DocumentationRole] = QStringLiteral("References the PackageableElements that are members of this Namespace as a result of either PackageImports or ElementImports.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMembers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMembers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-member");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("importedMembers")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("member")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("member")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("member")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("member")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("member")][QtModeling::DocumentationRole] = QStringLiteral("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("member")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("member")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("member")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("members")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("members")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("members")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("members")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("members")][QtModeling::DocumentationRole] = QStringLiteral("A collection of NamedElements identifiable within the Namespace, either by being owned or by being introduced by importing or inheritance.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("members")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("members")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("members")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMember")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMember")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMember")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMember")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMember")][QtModeling::DocumentationRole] = QStringLiteral("A collection of NamedElements owned by the Namespace.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMember")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMember")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-member Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMember")][QtModeling::OppositeEndRole] = QStringLiteral("NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMembers")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMembers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMembers")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMembers")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMembers")][QtModeling::DocumentationRole] = QStringLiteral("A collection of NamedElements owned by the Namespace.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMembers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMembers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-member Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedMembers")][QtModeling::OppositeEndRole] = QStringLiteral("NamedElement-namespace");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRule")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRule")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRule")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRule")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRule")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a set of Constraints owned by this Namespace.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRule")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRule")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRule")][QtModeling::OppositeEndRole] = QStringLiteral("Constraint-context");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRules")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRules")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRules")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRules")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRules")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a set of Constraints owned by this Namespace.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRules")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRules")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("ownedRules")][QtModeling::OppositeEndRole] = QStringLiteral("Constraint-context");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImport")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImport")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImport")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImport")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImport")][QtModeling::DocumentationRole] = QStringLiteral("References the PackageImports owned by the Namespace.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImport")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImport")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImport")][QtModeling::OppositeEndRole] = QStringLiteral("PackageImport-importingNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::DocumentationRole] = QStringLiteral("References the PackageImports owned by the Namespace.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::OppositeEndRole] = QStringLiteral("PackageImport-importingNamespace");
 
+}
+
+void QUmlNamespace::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
 }
 

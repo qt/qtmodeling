@@ -97,6 +97,7 @@ protected:
     QSet<QUmlTransition *> _transitions;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

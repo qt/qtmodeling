@@ -82,6 +82,7 @@ protected:
     QList<QUmlOutputPin *> _results;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

@@ -93,6 +93,7 @@ protected:
     QSet<QUmlInterface *> _redefinedInterfaces;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

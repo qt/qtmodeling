@@ -156,3 +156,15 @@ void QUmlLinkEndCreationData::setPropertyData()
 
 }
 
+void QUmlLinkEndCreationData::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("insertAt")] = QStringLiteral("QUmlLinkEndCreationData");
+    _classForProperty[QStringLiteral("isReplaceAll")] = QStringLiteral("QUmlLinkEndCreationData");
+}
+

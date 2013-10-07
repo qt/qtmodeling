@@ -74,6 +74,7 @@ protected:
     QUmlValueSpecification *_value;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

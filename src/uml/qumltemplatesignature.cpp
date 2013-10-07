@@ -225,3 +225,13 @@ void QUmlTemplateSignature::setPropertyData()
 
 }
 
+void QUmlTemplateSignature::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedParameters")] = QStringLiteral("QUmlTemplateSignature");
+    _classForProperty[QStringLiteral("parameters")] = QStringLiteral("QUmlTemplateSignature");
+    _classForProperty[QStringLiteral("template_")] = QStringLiteral("QUmlTemplateSignature");
+}
+

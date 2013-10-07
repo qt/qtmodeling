@@ -169,3 +169,13 @@ void QUmlImage::setPropertyData()
 
 }
 
+void QUmlImage::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("content")] = QStringLiteral("QUmlImage");
+    _classForProperty[QStringLiteral("format")] = QStringLiteral("QUmlImage");
+    _classForProperty[QStringLiteral("location")] = QStringLiteral("QUmlImage");
+}
+

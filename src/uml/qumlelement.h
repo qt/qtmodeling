@@ -83,6 +83,7 @@ protected:
     QUmlElement *_owner;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 
 private:
     void allOwnedElements(QSet<QUmlElement *> &allOwnedElements_) const;

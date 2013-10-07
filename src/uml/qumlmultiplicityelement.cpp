@@ -363,3 +363,16 @@ void QUmlMultiplicityElement::setPropertyData()
 
 }
 
+void QUmlMultiplicityElement::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
+}
+

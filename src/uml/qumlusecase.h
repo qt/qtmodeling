@@ -89,6 +89,7 @@ protected:
     QSet<QUmlClassifier *> _subjects;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

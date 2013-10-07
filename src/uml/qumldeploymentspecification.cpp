@@ -258,3 +258,52 @@ void QUmlDeploymentSpecification::setPropertyData()
 
 }
 
+void QUmlDeploymentSpecification::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("package")] = QStringLiteral("QUmlType");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("templateBindings")] = QStringLiteral("QUmlTemplateableElement");
+    _classForProperty[QStringLiteral("attributes")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("collaborationUses")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("features")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("generals")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("generalizations")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("inheritedMembers")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("isAbstract")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("isFinalSpecialization")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("ownedTemplateSignature")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("ownedUseCases")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("powertypeExtents")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("redefinedClassifiers")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("representation")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("substitutions")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("useCases")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("fileName")] = QStringLiteral("QUmlArtifact");
+    _classForProperty[QStringLiteral("manifestations")] = QStringLiteral("QUmlArtifact");
+    _classForProperty[QStringLiteral("nestedArtifacts")] = QStringLiteral("QUmlArtifact");
+    _classForProperty[QStringLiteral("ownedAttributes")] = QStringLiteral("QUmlArtifact");
+    _classForProperty[QStringLiteral("ownedOperations")] = QStringLiteral("QUmlArtifact");
+    _classForProperty[QStringLiteral("deployment")] = QStringLiteral("QUmlDeploymentSpecification");
+    _classForProperty[QStringLiteral("deploymentLocation")] = QStringLiteral("QUmlDeploymentSpecification");
+    _classForProperty[QStringLiteral("executionLocation")] = QStringLiteral("QUmlDeploymentSpecification");
+}
+

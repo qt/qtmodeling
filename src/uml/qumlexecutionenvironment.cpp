@@ -179,3 +179,60 @@ void QUmlExecutionEnvironment::setPropertyData()
 {
 }
 
+void QUmlExecutionEnvironment::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("package")] = QStringLiteral("QUmlType");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("templateBindings")] = QStringLiteral("QUmlTemplateableElement");
+    _classForProperty[QStringLiteral("attributes")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("collaborationUses")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("features")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("generalizations")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("inheritedMembers")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("isFinalSpecialization")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("ownedTemplateSignature")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("ownedUseCases")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("powertypeExtents")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("redefinedClassifiers")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("representation")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("substitutions")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("useCases")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("ownedConnectors")] = QStringLiteral("QUmlStructuredClassifier");
+    _classForProperty[QStringLiteral("parts")] = QStringLiteral("QUmlStructuredClassifier");
+    _classForProperty[QStringLiteral("roles")] = QStringLiteral("QUmlStructuredClassifier");
+    _classForProperty[QStringLiteral("ownedPorts")] = QStringLiteral("QUmlEncapsulatedClassifier");
+    _classForProperty[QStringLiteral("classifierBehavior")] = QStringLiteral("QUmlBehavioredClassifier");
+    _classForProperty[QStringLiteral("interfaceRealizations")] = QStringLiteral("QUmlBehavioredClassifier");
+    _classForProperty[QStringLiteral("ownedBehaviors")] = QStringLiteral("QUmlBehavioredClassifier");
+    _classForProperty[QStringLiteral("extensions")] = QStringLiteral("QUmlClass");
+    _classForProperty[QStringLiteral("isAbstract")] = QStringLiteral("QUmlClass");
+    _classForProperty[QStringLiteral("isActive")] = QStringLiteral("QUmlClass");
+    _classForProperty[QStringLiteral("nestedClassifiers")] = QStringLiteral("QUmlClass");
+    _classForProperty[QStringLiteral("ownedAttributes")] = QStringLiteral("QUmlClass");
+    _classForProperty[QStringLiteral("ownedOperations")] = QStringLiteral("QUmlClass");
+    _classForProperty[QStringLiteral("ownedReceptions")] = QStringLiteral("QUmlClass");
+    _classForProperty[QStringLiteral("superClasses")] = QStringLiteral("QUmlClass");
+    _classForProperty[QStringLiteral("deployedElements")] = QStringLiteral("QUmlDeploymentTarget");
+    _classForProperty[QStringLiteral("deployments")] = QStringLiteral("QUmlDeploymentTarget");
+    _classForProperty[QStringLiteral("nestedNodes")] = QStringLiteral("QUmlNode");
+}
+

@@ -322,3 +322,16 @@ void QUmlClause::setPropertyData()
 
 }
 
+void QUmlClause::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("bodies")] = QStringLiteral("QUmlClause");
+    _classForProperty[QStringLiteral("bodyOutputs")] = QStringLiteral("QUmlClause");
+    _classForProperty[QStringLiteral("decider")] = QStringLiteral("QUmlClause");
+    _classForProperty[QStringLiteral("predecessorClauses")] = QStringLiteral("QUmlClause");
+    _classForProperty[QStringLiteral("successorClauses")] = QStringLiteral("QUmlClause");
+    _classForProperty[QStringLiteral("tests")] = QStringLiteral("QUmlClause");
+}
+

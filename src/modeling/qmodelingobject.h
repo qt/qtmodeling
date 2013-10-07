@@ -80,6 +80,11 @@ public:
         return propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
     }
 
+    inline QString classForProperty(QMetaProperty metaProperty) const
+    {
+        return _classForProperty.value(QString::fromLatin1(metaProperty.name()));
+    }
+
     inline QStringList &modifiedResettableProperties()
     {
         return _modifiedResettableProperties;
@@ -90,7 +95,10 @@ protected:
     QPointer<QObject> _qObject;
     QStringList _modifiedResettableProperties;
     static QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > propertyDataHash;
+    QHash<QString, QString> _classForProperty;
+
     virtual void setPropertyData() = 0;
+    virtual void setClassForProperty() = 0;
 };
 
 inline QModelingObject *qModelingObject(const QObject *object)

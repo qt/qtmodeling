@@ -257,3 +257,25 @@ void QUmlRedefinableTemplateSignature::setPropertyData()
 
 }
 
+void QUmlRedefinableTemplateSignature::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedParameters")] = QStringLiteral("QUmlTemplateSignature");
+    _classForProperty[QStringLiteral("parameters")] = QStringLiteral("QUmlTemplateSignature");
+    _classForProperty[QStringLiteral("template_")] = QStringLiteral("QUmlTemplateSignature");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("classifier")] = QStringLiteral("QUmlRedefinableTemplateSignature");
+    _classForProperty[QStringLiteral("extendedSignatures")] = QStringLiteral("QUmlRedefinableTemplateSignature");
+    _classForProperty[QStringLiteral("inheritedParameters")] = QStringLiteral("QUmlRedefinableTemplateSignature");
+}
+

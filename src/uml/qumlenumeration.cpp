@@ -84,6 +84,7 @@ QUmlEnumeration::QUmlEnumeration(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlEnumerationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -204,14 +205,58 @@ void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 
 void QUmlEnumeration::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEnumeration");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of literals for this Enumeration.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::OppositeEndRole] = QStringLiteral("EnumerationLiteral-enumeration");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiterals")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiterals")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEnumeration");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiterals")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiterals")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiterals")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of literals for this Enumeration.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiterals")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiterals")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiterals")][QtModeling::OppositeEndRole] = QStringLiteral("EnumerationLiteral-enumeration");
 
+}
+
+void QUmlEnumeration::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("package")] = QStringLiteral("QUmlType");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("templateBindings")] = QStringLiteral("QUmlTemplateableElement");
+    _classForProperty[QStringLiteral("attributes")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("collaborationUses")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("features")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("generals")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("generalizations")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("inheritedMembers")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("isAbstract")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("isFinalSpecialization")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("ownedTemplateSignature")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("ownedUseCases")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("powertypeExtents")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("redefinedClassifiers")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("representation")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("substitutions")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("useCases")] = QStringLiteral("QUmlClassifier");
+    _classForProperty[QStringLiteral("ownedAttributes")] = QStringLiteral("QUmlDataType");
+    _classForProperty[QStringLiteral("ownedOperations")] = QStringLiteral("QUmlDataType");
+    _classForProperty[QStringLiteral("ownedLiterals")] = QStringLiteral("QUmlEnumeration");
 }
 

@@ -73,6 +73,7 @@ protected:
     QUmlExpansionRegion *_regionAsOutput;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

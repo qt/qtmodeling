@@ -284,3 +284,53 @@ void QUmlExpansionRegion::setPropertyData()
 
 }
 
+void QUmlExpansionRegion::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("inGroups")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("inInterruptibleRegions")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("inPartitions")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("inStructuredNode")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("handlers")] = QStringLiteral("QUmlExecutableNode");
+    _classForProperty[QStringLiteral("context")] = QStringLiteral("QUmlAction");
+    _classForProperty[QStringLiteral("inputs")] = QStringLiteral("QUmlAction");
+    _classForProperty[QStringLiteral("isLocallyReentrant")] = QStringLiteral("QUmlAction");
+    _classForProperty[QStringLiteral("localPostconditions")] = QStringLiteral("QUmlAction");
+    _classForProperty[QStringLiteral("localPreconditions")] = QStringLiteral("QUmlAction");
+    _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("containedEdges")] = QStringLiteral("QUmlActivityGroup");
+    _classForProperty[QStringLiteral("containedNodes")] = QStringLiteral("QUmlActivityGroup");
+    _classForProperty[QStringLiteral("subgroups")] = QStringLiteral("QUmlActivityGroup");
+    _classForProperty[QStringLiteral("superGroup")] = QStringLiteral("QUmlActivityGroup");
+    _classForProperty[QStringLiteral("activity")] = QStringLiteral("QUmlStructuredActivityNode");
+    _classForProperty[QStringLiteral("edges")] = QStringLiteral("QUmlStructuredActivityNode");
+    _classForProperty[QStringLiteral("mustIsolate")] = QStringLiteral("QUmlStructuredActivityNode");
+    _classForProperty[QStringLiteral("nodes")] = QStringLiteral("QUmlStructuredActivityNode");
+    _classForProperty[QStringLiteral("structuredNodeInputs")] = QStringLiteral("QUmlStructuredActivityNode");
+    _classForProperty[QStringLiteral("structuredNodeOutputs")] = QStringLiteral("QUmlStructuredActivityNode");
+    _classForProperty[QStringLiteral("variables")] = QStringLiteral("QUmlStructuredActivityNode");
+    _classForProperty[QStringLiteral("inputElements")] = QStringLiteral("QUmlExpansionRegion");
+    _classForProperty[QStringLiteral("mode")] = QStringLiteral("QUmlExpansionRegion");
+    _classForProperty[QStringLiteral("outputElements")] = QStringLiteral("QUmlExpansionRegion");
+}
+

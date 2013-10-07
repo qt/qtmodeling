@@ -74,6 +74,7 @@ protected:
     QUmlObjectFlow *_decisionInputFlow;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

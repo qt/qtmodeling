@@ -232,3 +232,14 @@ void QUmlTemplateParameterSubstitution::setPropertyData()
 
 }
 
+void QUmlTemplateParameterSubstitution::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("actual")] = QStringLiteral("QUmlTemplateParameterSubstitution");
+    _classForProperty[QStringLiteral("formal")] = QStringLiteral("QUmlTemplateParameterSubstitution");
+    _classForProperty[QStringLiteral("ownedActual")] = QStringLiteral("QUmlTemplateParameterSubstitution");
+    _classForProperty[QStringLiteral("templateBinding")] = QStringLiteral("QUmlTemplateParameterSubstitution");
+}
+

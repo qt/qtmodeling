@@ -77,6 +77,7 @@ protected:
     bool _isStrict;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

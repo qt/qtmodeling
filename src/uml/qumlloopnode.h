@@ -103,6 +103,7 @@ protected:
     QSet<QUmlExecutableNode *> _tests;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

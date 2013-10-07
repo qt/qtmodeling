@@ -81,6 +81,7 @@ protected:
     QUmlClassifier *_specific;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

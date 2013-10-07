@@ -83,6 +83,7 @@ protected:
     QList<QUmlExtensionPoint *> _extensionLocations;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

@@ -71,6 +71,7 @@ protected:
     bool _isReadOnly;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

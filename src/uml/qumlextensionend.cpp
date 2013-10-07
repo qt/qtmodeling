@@ -228,3 +228,51 @@ void QUmlExtensionEnd::setPropertyData()
 
 }
 
+void QUmlExtensionEnd::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("featuringClassifiers")] = QStringLiteral("QUmlFeature");
+    _classForProperty[QStringLiteral("isStatic")] = QStringLiteral("QUmlFeature");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("ends")] = QStringLiteral("QUmlConnectableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlConnectableElement");
+    _classForProperty[QStringLiteral("deployedElements")] = QStringLiteral("QUmlDeploymentTarget");
+    _classForProperty[QStringLiteral("deployments")] = QStringLiteral("QUmlDeploymentTarget");
+    _classForProperty[QStringLiteral("aggregation")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("association")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("associationEnd")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("class_")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("datatype")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("defaultValue")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("interface_")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isComposite")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isDerived")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isDerivedUnion")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isID")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("isReadOnly")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("opposite")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("owningAssociation")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("redefinedProperties")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("subsettedProperties")] = QStringLiteral("QUmlProperty");
+    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlExtensionEnd");
+    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlExtensionEnd");
+}
+

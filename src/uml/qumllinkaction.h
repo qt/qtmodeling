@@ -81,6 +81,7 @@ protected:
     QSet<QUmlInputPin *> _inputValues;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

@@ -71,6 +71,7 @@ protected:
     QSet<QUmlNamedElement *> _messages;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

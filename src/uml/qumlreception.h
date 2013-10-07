@@ -70,6 +70,7 @@ protected:
     QUmlSignal *_signal;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

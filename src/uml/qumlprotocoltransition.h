@@ -77,6 +77,7 @@ protected:
     QUmlConstraint *_preCondition;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

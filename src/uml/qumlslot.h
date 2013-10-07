@@ -79,6 +79,7 @@ protected:
     QList<QUmlValueSpecification *> _values;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

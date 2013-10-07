@@ -255,3 +255,36 @@ void QUmlProtocolTransition::setPropertyData()
 
 }
 
+void QUmlProtocolTransition::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("container")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("effect")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("guard")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("kind")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("redefinedTransition")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("redefinitionContext")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("source")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("target")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("triggers")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("postCondition")] = QStringLiteral("QUmlProtocolTransition");
+    _classForProperty[QStringLiteral("preCondition")] = QStringLiteral("QUmlProtocolTransition");
+    _classForProperty[QStringLiteral("referred")] = QStringLiteral("QUmlProtocolTransition");
+}
+

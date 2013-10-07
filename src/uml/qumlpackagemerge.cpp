@@ -166,3 +166,15 @@ void QUmlPackageMerge::setPropertyData()
 
 }
 
+void QUmlPackageMerge::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("mergedPackage")] = QStringLiteral("QUmlPackageMerge");
+    _classForProperty[QStringLiteral("receivingPackage")] = QStringLiteral("QUmlPackageMerge");
+}
+

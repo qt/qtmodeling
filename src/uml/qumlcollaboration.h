@@ -72,6 +72,7 @@ protected:
     QSet<QUmlConnectableElement *> _collaborationRoles;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

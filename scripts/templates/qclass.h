@@ -141,6 +141,7 @@ protected:
     [% QT_TYPE(namespace, attribute) -%]_[%- PLURALFORM(QT_ATTRIBUTE(attribute), attribute) %];
 [%- END %]
 
+    virtual void setClassForProperty();
     virtual void setPropertyData();
 };
 

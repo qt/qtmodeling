@@ -81,6 +81,7 @@ protected:
     QSet<QUmlTemplateBinding *> _templateBindings;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

@@ -121,6 +121,7 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
     if (createQObject)
         _qObject = new Q${namespace}${className}Object(this);
 [%- END %]
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -403,22 +404,29 @@ ${parameter.findvalue("@name")}
 }
 [%- END %]
 
+void Q${namespace}${className}::setClassForProperty()
+{
+[%- visitedClasses = [] -%]
+[%- SET_CLASS_FOR_PROPERTY(class, visitedClasses, redefinedProperties) %]
+}
+
 void Q${namespace}${className}::setPropertyData()
 {
 [%- FOREACH attribute = class.findnodes("ownedAttribute") -%]
+[%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
 [%- SET association = attribute.findvalue("@association") -%]
 [%- IF attribute.findvalue("@aggregation") == "composite" %]
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::AggregationRole] = QStringLiteral("composite");
 [%- ELSE %]
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::AggregationRole] = QStringLiteral("none");
 [%- END %]
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::PropertyClassRole] = QStringLiteral("Q${namespace}${className}");
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::IsDerivedRole] = [% IF attribute.findvalue("@isDerived") == "true" %]true[% ELSE %]false[% END %];
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::IsDerivedUnionRole] = [% IF attribute.findvalue("@isDerivedUnion") == "true" %]true[% ELSE %]false[% END %];
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::DocumentationRole] = QStringLiteral("${attribute.findvalue("ownedComment/body/text()")}");
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("${attribute.findvalue("@redefinedProperty")}");
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("${attribute.findvalue("@subsettedProperty")}");
-    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${attribute.findvalue("@name")}")][QtModeling::OppositeEndRole] = QStringLiteral("
+    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::PropertyClassRole] = QStringLiteral("Q${namespace}${className}");
+    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::IsDerivedRole] = [% IF attribute.findvalue("@isDerived") == "true" %]true[% ELSE %]false[% END %];
+    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::IsDerivedUnionRole] = [% IF attribute.findvalue("@isDerivedUnion") == "true" %]true[% ELSE %]false[% END %];
+    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::DocumentationRole] = QStringLiteral("${attribute.findvalue("ownedComment/body/text()")}");
+    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("${attribute.findvalue("@redefinedProperty")}");
+    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("${attribute.findvalue("@subsettedProperty")}");
+    QModelingObject::propertyDataHash[QStringLiteral("Q${namespace}${className}")][QStringLiteral("${PLURALFORM(qtAttribute, attribute)}")][QtModeling::OppositeEndRole] = QStringLiteral("
 [%- IF association != "" -%]
 [%- FOREACH memberEnd = xmi.findvalue("//packagedElement[@xmi:type=\"uml:Association\" and @name=\"${association}\"]/@memberEnd").split(' ') -%]
 [%- NEXT IF memberEnd == className.replace('$', "-${attribute.findvalue(\"@name\")}") -%]

@@ -61,6 +61,7 @@ QUmlGeneralization::QUmlGeneralization(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlGeneralizationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -220,14 +221,14 @@ void QUmlGeneralization::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("general")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("general")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSet")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSet")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralization");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSet")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSet")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSet")][QtModeling::DocumentationRole] = QStringLiteral("Designates a set in which instances of Generalization is considered members.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSet")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSet")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSet")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralizationSet-generalization");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSets")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSets")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralization");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSets")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSets")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSets")][QtModeling::DocumentationRole] = QStringLiteral("Designates a set in which instances of Generalization is considered members.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSets")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSets")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("generalizationSets")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralizationSet-generalization");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("isSubstitutable")][QtModeling::AggregationRole] = QStringLiteral("none");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("isSubstitutable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralization");
@@ -247,5 +248,19 @@ void QUmlGeneralization::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("specific")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("specific")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-generalization");
 
+}
+
+void QUmlGeneralization::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("general")] = QStringLiteral("QUmlGeneralization");
+    _classForProperty[QStringLiteral("generalizationSets")] = QStringLiteral("QUmlGeneralization");
+    _classForProperty[QStringLiteral("isSubstitutable")] = QStringLiteral("QUmlGeneralization");
+    _classForProperty[QStringLiteral("specific")] = QStringLiteral("QUmlGeneralization");
 }
 

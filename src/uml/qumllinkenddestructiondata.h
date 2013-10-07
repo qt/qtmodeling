@@ -73,6 +73,7 @@ protected:
     bool _isDestroyDuplicates;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

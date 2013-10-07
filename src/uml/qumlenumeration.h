@@ -71,6 +71,7 @@ protected:
     QList<QUmlEnumerationLiteral *> _ownedLiterals;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

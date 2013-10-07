@@ -82,6 +82,7 @@ protected:
     QSet<QUmlRedefinableTemplateSignature *> _extendedSignatures;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

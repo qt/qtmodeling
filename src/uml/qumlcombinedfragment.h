@@ -81,6 +81,7 @@ protected:
     QList<QUmlInteractionOperand *> _operands;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

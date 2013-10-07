@@ -72,6 +72,7 @@ protected:
     QString _symbol;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

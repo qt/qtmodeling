@@ -70,6 +70,7 @@ protected:
     QUmlBehavior *_behavior;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

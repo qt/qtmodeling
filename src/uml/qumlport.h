@@ -90,6 +90,7 @@ protected:
     QSet<QUmlPort *> _redefinedPorts;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

@@ -251,3 +251,33 @@ void QUmlObjectFlow::setPropertyData()
 
 }
 
+void QUmlObjectFlow::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("activity")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("guard")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("inGroups")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("inPartitions")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("inStructuredNode")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("interrupts")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("redefinedEdges")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("source")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("target")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("weight")] = QStringLiteral("QUmlActivityEdge");
+    _classForProperty[QStringLiteral("isMulticast")] = QStringLiteral("QUmlObjectFlow");
+    _classForProperty[QStringLiteral("isMultireceive")] = QStringLiteral("QUmlObjectFlow");
+    _classForProperty[QStringLiteral("selection")] = QStringLiteral("QUmlObjectFlow");
+    _classForProperty[QStringLiteral("transformation")] = QStringLiteral("QUmlObjectFlow");
+}
+

@@ -150,3 +150,12 @@ void QUmlQualifierValue::setPropertyData()
 
 }
 
+void QUmlQualifierValue::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("qualifier")] = QStringLiteral("QUmlQualifierValue");
+    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlQualifierValue");
+}
+

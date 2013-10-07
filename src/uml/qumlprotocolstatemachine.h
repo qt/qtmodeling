@@ -71,6 +71,7 @@ protected:
     QSet<QUmlProtocolConformance *> _conformance;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

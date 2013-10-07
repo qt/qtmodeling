@@ -100,6 +100,7 @@ protected:
     QSet<QUmlPackageImport *> _packageImports;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

@@ -93,6 +93,7 @@ protected:
     QUmlValueSpecification *_upperValue;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

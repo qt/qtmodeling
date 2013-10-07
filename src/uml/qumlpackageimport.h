@@ -79,6 +79,7 @@ protected:
     QtUml::VisibilityKind _visibility;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

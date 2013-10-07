@@ -151,3 +151,12 @@ void QUmlComment::setPropertyData()
 
 }
 
+void QUmlComment::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("annotatedElements")] = QStringLiteral("QUmlComment");
+    _classForProperty[QStringLiteral("body")] = QStringLiteral("QUmlComment");
+}
+

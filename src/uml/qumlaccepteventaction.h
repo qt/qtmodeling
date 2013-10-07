@@ -79,6 +79,7 @@ protected:
     QSet<QUmlTrigger *> _triggers;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

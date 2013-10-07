@@ -80,6 +80,7 @@ protected:
     QSet<QUmlBehavior *> _ownedBehaviors;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

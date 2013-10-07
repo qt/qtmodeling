@@ -100,6 +100,7 @@ protected:
     QSet<QUmlVariable *> _variables;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

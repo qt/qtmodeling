@@ -198,3 +198,16 @@ void QUmlPackageImport::setPropertyData()
 
 }
 
+void QUmlPackageImport::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("importedPackage")] = QStringLiteral("QUmlPackageImport");
+    _classForProperty[QStringLiteral("importingNamespace")] = QStringLiteral("QUmlPackageImport");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageImport");
+}
+

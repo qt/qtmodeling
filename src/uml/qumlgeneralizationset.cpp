@@ -247,3 +247,22 @@ void QUmlGeneralizationSet::setPropertyData()
 
 }
 
+void QUmlGeneralizationSet::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("generalizations")] = QStringLiteral("QUmlGeneralizationSet");
+    _classForProperty[QStringLiteral("isCovering")] = QStringLiteral("QUmlGeneralizationSet");
+    _classForProperty[QStringLiteral("isDisjoint")] = QStringLiteral("QUmlGeneralizationSet");
+    _classForProperty[QStringLiteral("powertype")] = QStringLiteral("QUmlGeneralizationSet");
+}
+

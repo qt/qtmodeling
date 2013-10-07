@@ -75,6 +75,7 @@ protected:
     QUmlInteractionConstraint *_guard;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

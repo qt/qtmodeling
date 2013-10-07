@@ -206,3 +206,13 @@ void QUmlSlot::setPropertyData()
 
 }
 
+void QUmlSlot::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("definingFeature")] = QStringLiteral("QUmlSlot");
+    _classForProperty[QStringLiteral("owningInstance")] = QStringLiteral("QUmlSlot");
+    _classForProperty[QStringLiteral("values")] = QStringLiteral("QUmlSlot");
+}
+

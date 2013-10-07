@@ -87,6 +87,7 @@ protected:
     QList<QString> _languages;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

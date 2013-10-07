@@ -70,6 +70,7 @@ protected:
     QUmlInputPin *_object;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

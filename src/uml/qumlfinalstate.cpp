@@ -135,3 +135,42 @@ void QUmlFinalState::setPropertyData()
 {
 }
 
+void QUmlFinalState::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("container")] = QStringLiteral("QUmlVertex");
+    _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlVertex");
+    _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlVertex");
+    _classForProperty[QStringLiteral("connections")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("connectionPoints")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("deferrableTriggers")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("doActivity")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("entry")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("exit")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("isComposite")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("isOrthogonal")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("isSimple")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("isSubmachineState")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("redefinedState")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("redefinitionContext")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("regions")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("stateInvariant")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("submachine")] = QStringLiteral("QUmlState");
+}
+

@@ -92,7 +92,7 @@ int main ()
         return 1;
     }
 
-    QXmiWriter writer(model->asQObject());
+    QXmiWriter writer(model);
     if (writer.writeFile(&file))
         qDebug() << "XMI file saved !";
     else

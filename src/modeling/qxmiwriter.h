@@ -52,7 +52,7 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtModeling)
 
 class QIODevice;
-class QObject;
+class QModelingObject;
 
 class QXmiWriterPrivate;
 
@@ -64,15 +64,15 @@ class Q_MODELING_EXPORT QXmiWriter : public QObject
     Q_DECLARE_PRIVATE(QXmiWriter)
 
 public:
-    explicit QXmiWriter(QObject *modelingObject, QObject *parent = 0);
+    explicit QXmiWriter(QModelingObject *modelingObject, QObject *parent = 0);
     virtual ~QXmiWriter();
 
     bool writeFile(QIODevice *device);
 
 protected:
     void loadPlugins();
-    void populateIdMap(QObject *modelingObject, int index = -1);
-    void writeObject(QObject *modelingObject, QString elementName = QStringLiteral(""));
+    void populateIdMap(QModelingObject *modelingObject, int index = -1);
+    void writeObject(QModelingObject *modelingObject, QString elementName = QStringLiteral(""));
 };
 
 QT_END_NAMESPACE

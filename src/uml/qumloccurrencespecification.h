@@ -79,6 +79,7 @@ protected:
     QSet<QUmlGeneralOrdering *> _toBefores;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

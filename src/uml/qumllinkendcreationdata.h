@@ -73,6 +73,7 @@ protected:
     bool _isReplaceAll;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

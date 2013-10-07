@@ -76,6 +76,7 @@ protected:
     QSet<QUmlActivityNode *> _nodes;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

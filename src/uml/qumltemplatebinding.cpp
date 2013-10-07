@@ -228,3 +228,16 @@ void QUmlTemplateBinding::setPropertyData()
 
 }
 
+void QUmlTemplateBinding::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("boundElement")] = QStringLiteral("QUmlTemplateBinding");
+    _classForProperty[QStringLiteral("parameterSubstitutions")] = QStringLiteral("QUmlTemplateBinding");
+    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlTemplateBinding");
+}
+

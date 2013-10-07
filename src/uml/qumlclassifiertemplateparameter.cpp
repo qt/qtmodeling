@@ -199,3 +199,17 @@ void QUmlClassifierTemplateParameter::setPropertyData()
 
 }
 
+void QUmlClassifierTemplateParameter::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("ownedDefault")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("ownedParameteredElement")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("allowSubstitutable")] = QStringLiteral("QUmlClassifierTemplateParameter");
+    _classForProperty[QStringLiteral("constrainingClassifiers")] = QStringLiteral("QUmlClassifierTemplateParameter");
+    _classForProperty[QStringLiteral("parameteredElement")] = QStringLiteral("QUmlClassifierTemplateParameter");
+}
+

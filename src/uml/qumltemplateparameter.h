@@ -83,6 +83,7 @@ protected:
     QUmlTemplateSignature *_signature;
 
     virtual void setPropertyData();
+    virtual void setClassForProperty();
 };
 
 QT_END_NAMESPACE

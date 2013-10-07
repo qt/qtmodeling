@@ -239,3 +239,17 @@ void QUmlElementImport::setPropertyData()
 
 }
 
+void QUmlElementImport::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("alias")] = QStringLiteral("QUmlElementImport");
+    _classForProperty[QStringLiteral("importedElement")] = QStringLiteral("QUmlElementImport");
+    _classForProperty[QStringLiteral("importingNamespace")] = QStringLiteral("QUmlElementImport");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlElementImport");
+}
+
