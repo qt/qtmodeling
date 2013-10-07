@@ -65,23 +65,23 @@ class Q_UML_EXPORT QUmlLiteralIntegerObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [TypedElement]
-    Q_PROPERTY(QObject * type READ type)
+    Q_PROPERTY(QObject * type READ type WRITE setType)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [LiteralInteger]
-    Q_PROPERTY(int value READ value RESET unsetValue)
+    Q_PROPERTY(int value READ value WRITE setValue RESET unsetValue)
 
 public:
     Q_INVOKABLE explicit QUmlLiteralIntegerObject(QUmlLiteralInteger *qModelingObject);

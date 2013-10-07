@@ -62,8 +62,8 @@ class Q_UML_EXPORT QUmlSlotObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Slot]
-    Q_PROPERTY(QObject * definingFeature READ definingFeature)
-    Q_PROPERTY(QObject * owningInstance READ owningInstance)
+    Q_PROPERTY(QObject * definingFeature READ definingFeature WRITE setDefiningFeature)
+    Q_PROPERTY(QObject * owningInstance READ owningInstance WRITE setOwningInstance)
     Q_PROPERTY(QList<QObject *> value READ values)
 
 public:

@@ -107,14 +107,14 @@ void QUmlTypedElement::setType(QUmlType *type)
 
 void QUmlTypedElement::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTypedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.The type of the TypedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTypedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.The type of the TypedElement.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

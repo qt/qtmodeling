@@ -71,10 +71,10 @@ class Q_UML_EXPORT QUmlElementImportObject : public QObject
     Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [ElementImport]
-    Q_PROPERTY(QString alias READ alias)
-    Q_PROPERTY(QObject * importedElement READ importedElement)
-    Q_PROPERTY(QObject * importingNamespace READ importingNamespace)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
+    Q_PROPERTY(QString alias READ alias WRITE setAlias)
+    Q_PROPERTY(QObject * importedElement READ importedElement WRITE setImportedElement)
+    Q_PROPERTY(QObject * importingNamespace READ importingNamespace WRITE setImportingNamespace)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
 public:
     Q_INVOKABLE explicit QUmlElementImportObject(QUmlElementImport *qModelingObject);

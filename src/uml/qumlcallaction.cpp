@@ -185,23 +185,23 @@ void QUmlCallAction::removeResult(QUmlOutputPin *result)
 
 void QUmlCallAction::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallAction");
-    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::DocumentationRole] = QStringLiteral("If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.");
-    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isSynchronous")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("isSynchronous")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("isSynchronous")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("isSynchronous")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("isSynchronous")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("isSynchronous")][QtModeling::DocumentationRole] = QStringLiteral("If true, the call is synchronous and the caller waits for completion of the invoked behavior. If false, the call is asynchronous and the caller proceeds immediately and does not expect a return values.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("isSynchronous")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("isSynchronous")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("isSynchronous")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallAction");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins where the results of performing the invocation are placed.");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins where the results of performing the invocation are placed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

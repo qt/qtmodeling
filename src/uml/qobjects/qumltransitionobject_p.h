@@ -65,14 +65,14 @@ class Q_UML_EXPORT QUmlTransitionObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
 
     // Properties [Namespace]
@@ -84,14 +84,14 @@ class Q_UML_EXPORT QUmlTransitionObject : public QObject
     Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [Transition]
-    Q_PROPERTY(QObject * container READ container)
-    Q_PROPERTY(QObject * effect READ effect)
-    Q_PROPERTY(QObject * guard READ guard)
-    Q_PROPERTY(QtUml::TransitionKind kind READ kind RESET unsetKind)
-    Q_PROPERTY(QObject * redefinedTransition READ redefinedTransition)
+    Q_PROPERTY(QObject * container READ container WRITE setContainer)
+    Q_PROPERTY(QObject * effect READ effect WRITE setEffect)
+    Q_PROPERTY(QObject * guard READ guard WRITE setGuard)
+    Q_PROPERTY(QtUml::TransitionKind kind READ kind WRITE setKind RESET unsetKind)
+    Q_PROPERTY(QObject * redefinedTransition READ redefinedTransition WRITE setRedefinedTransition)
     Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
-    Q_PROPERTY(QObject * source READ source)
-    Q_PROPERTY(QObject * target READ target)
+    Q_PROPERTY(QObject * source READ source WRITE setSource)
+    Q_PROPERTY(QObject * target READ target WRITE setTarget)
     Q_PROPERTY(QSet<QObject *> trigger READ triggers)
 
 public:

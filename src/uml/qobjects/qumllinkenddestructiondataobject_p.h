@@ -62,13 +62,13 @@ class Q_UML_EXPORT QUmlLinkEndDestructionDataObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [LinkEndData]
-    Q_PROPERTY(QObject * end READ end)
+    Q_PROPERTY(QObject * end READ end WRITE setEnd)
     Q_PROPERTY(QSet<QObject *> qualifier READ qualifiers)
-    Q_PROPERTY(QObject * value READ value)
+    Q_PROPERTY(QObject * value READ value WRITE setValue)
 
     // Properties [LinkEndDestructionData]
-    Q_PROPERTY(QObject * destroyAt READ destroyAt)
-    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates RESET unsetDestroyDuplicates)
+    Q_PROPERTY(QObject * destroyAt READ destroyAt WRITE setDestroyAt)
+    Q_PROPERTY(bool isDestroyDuplicates READ isDestroyDuplicates WRITE setDestroyDuplicates RESET unsetDestroyDuplicates)
 
 public:
     Q_INVOKABLE explicit QUmlLinkEndDestructionDataObject(QUmlLinkEndDestructionData *qModelingObject);

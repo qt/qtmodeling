@@ -224,32 +224,32 @@ void QUmlUnmarshallAction::setUnmarshallType(QUmlClassifier *unmarshallType)
 
 void QUmlUnmarshallAction::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUnmarshallAction");
-    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("The object to be unmarshalled.");
-    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUnmarshallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("The object to be unmarshalled.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUnmarshallAction");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("The values of the structural features of the input object.");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUnmarshallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("The values of the structural features of the input object.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUnmarshallAction");
-    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::DocumentationRole] = QStringLiteral("The type of the object to be unmarshalled.");
-    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("unmarshallType")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("unmarshallType")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("unmarshallType")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlUnmarshallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("unmarshallType")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("unmarshallType")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("unmarshallType")][QtModeling::DocumentationRole] = QStringLiteral("The type of the object to be unmarshalled.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("unmarshallType")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("unmarshallType")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlUnmarshallAction")][QStringLiteral("unmarshallType")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

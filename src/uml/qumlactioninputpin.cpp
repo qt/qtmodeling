@@ -172,14 +172,14 @@ void QUmlActionInputPin::setFromAction(QUmlAction *fromAction)
 
 void QUmlActionInputPin::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("fromAction")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("fromAction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActionInputPin");
-    QModelingObject::propertyDataHash[QStringLiteral("fromAction")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("fromAction")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("fromAction")][QtModeling::DocumentationRole] = QStringLiteral("The action used to provide values.");
-    QModelingObject::propertyDataHash[QStringLiteral("fromAction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("fromAction")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("fromAction")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionInputPin")][QStringLiteral("fromAction")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionInputPin")][QStringLiteral("fromAction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActionInputPin");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionInputPin")][QStringLiteral("fromAction")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionInputPin")][QStringLiteral("fromAction")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionInputPin")][QStringLiteral("fromAction")][QtModeling::DocumentationRole] = QStringLiteral("The action used to provide values.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionInputPin")][QStringLiteral("fromAction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionInputPin")][QStringLiteral("fromAction")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionInputPin")][QStringLiteral("fromAction")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

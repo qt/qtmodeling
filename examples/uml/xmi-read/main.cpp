@@ -40,7 +40,10 @@
 ****************************************************************************/
 #include <QtModeling/QXmiReader>
 #include <QtModeling/QXmiWriter>
-#include <QtModeling/QtModeling>
+#include <QtModeling/QModelingObject>
+
+#include <QtCore/QFile>
+#include <QtCore/QDebug>
 
 int main ()
 {
@@ -52,9 +55,9 @@ int main ()
     }
 
     QXmiReader reader(0, true);
-    QList<QWrappedObject *> rootElements = reader.readFile(&file);
+    QList<QModelingObject *> rootElements = reader.readFile(&file);
     if (!rootElements.isEmpty())
-        qDebug() << "Successfully read object with name" << rootElements.first()->objectName();
+        qDebug() << "Successfully read object with name" << rootElements.first()->asQObject()->objectName();
     if (reader.errorStrings().size() > 0) {
         qDebug() << "Errors:";
         foreach (QString error, reader.errorStrings())
@@ -67,7 +70,7 @@ int main ()
         qDebug() << "Cannot write file !";
         return 1;
     }
-    QXmiWriter writer(rootElements.first());
+    QXmiWriter writer(rootElements.first()->asQObject());
     writer.writeFile(&file2);
 }
 

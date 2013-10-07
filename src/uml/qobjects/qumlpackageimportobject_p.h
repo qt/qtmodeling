@@ -71,9 +71,9 @@ class Q_UML_EXPORT QUmlPackageImportObject : public QObject
     Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [PackageImport]
-    Q_PROPERTY(QObject * importedPackage READ importedPackage)
-    Q_PROPERTY(QObject * importingNamespace READ importingNamespace)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
+    Q_PROPERTY(QObject * importedPackage READ importedPackage WRITE setImportedPackage)
+    Q_PROPERTY(QObject * importingNamespace READ importingNamespace WRITE setImportingNamespace)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
 public:
     Q_INVOKABLE explicit QUmlPackageImportObject(QUmlPackageImport *qModelingObject);

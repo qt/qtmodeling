@@ -260,50 +260,50 @@ void QUmlActivityGroup::setSuperGroup(QUmlActivityGroup *superGroup)
 
 void QUmlActivityGroup::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("containedEdge")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("containedEdge")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
-    QModelingObject::propertyDataHash[QStringLiteral("containedEdge")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("containedEdge")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("containedEdge")][QtModeling::DocumentationRole] = QStringLiteral("Edges immediately contained in the group.");
-    QModelingObject::propertyDataHash[QStringLiteral("containedEdge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("containedEdge")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("containedEdge")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-inGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedEdge")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedEdge")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedEdge")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedEdge")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedEdge")][QtModeling::DocumentationRole] = QStringLiteral("Edges immediately contained in the group.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedEdge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedEdge")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedEdge")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-inGroup");
 
-    QModelingObject::propertyDataHash[QStringLiteral("containedNode")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("containedNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
-    QModelingObject::propertyDataHash[QStringLiteral("containedNode")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("containedNode")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("containedNode")][QtModeling::DocumentationRole] = QStringLiteral("Nodes immediately contained in the group.");
-    QModelingObject::propertyDataHash[QStringLiteral("containedNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("containedNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("containedNode")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-inGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedNode")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedNode")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedNode")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedNode")][QtModeling::DocumentationRole] = QStringLiteral("Nodes immediately contained in the group.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("containedNode")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-inGroup");
 
-    QModelingObject::propertyDataHash[QStringLiteral("inActivity")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("inActivity")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
-    QModelingObject::propertyDataHash[QStringLiteral("inActivity")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("inActivity")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("inActivity")][QtModeling::DocumentationRole] = QStringLiteral("Activity containing the group.");
-    QModelingObject::propertyDataHash[QStringLiteral("inActivity")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("inActivity")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("inActivity")][QtModeling::OppositeEndRole] = QStringLiteral("Activity-group");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("inActivity")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("inActivity")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("inActivity")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("inActivity")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("inActivity")][QtModeling::DocumentationRole] = QStringLiteral("Activity containing the group.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("inActivity")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("inActivity")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("inActivity")][QtModeling::OppositeEndRole] = QStringLiteral("Activity-group");
 
-    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
-    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::DocumentationRole] = QStringLiteral("Groups immediately contained in the group.");
-    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("subgroup")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-superGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("subgroup")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("subgroup")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("subgroup")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("subgroup")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("subgroup")][QtModeling::DocumentationRole] = QStringLiteral("Groups immediately contained in the group.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("subgroup")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("subgroup")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("subgroup")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-superGroup");
 
-    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
-    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::DocumentationRole] = QStringLiteral("Group immediately containing the group.");
-    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("superGroup")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-subgroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("superGroup")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("superGroup")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("superGroup")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("superGroup")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("superGroup")][QtModeling::DocumentationRole] = QStringLiteral("Group immediately containing the group.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("superGroup")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("superGroup")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityGroup")][QStringLiteral("superGroup")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-subgroup");
 
 }
 

@@ -318,59 +318,59 @@ void QUmlAction::removeOutput(QUmlOutputPin *output)
 
 void QUmlAction::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("The classifier that owns the behavior of which this action is a part.");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("The classifier that owns the behavior of which this action is a part.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of input pins connected to the Action. These are among the total set of inputs.");
-    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("input")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("input")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("input")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("input")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("input")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("input")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of input pins connected to the Action. These are among the total set of inputs.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("input")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("input")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("input")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::DocumentationRole] = QStringLiteral("If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.");
-    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isLocallyReentrant")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::DocumentationRole] = QStringLiteral("If true, the action can begin a new, concurrent execution, even if there is already another execution of the action ongoing. If false, the action cannot begin a new execution until any previous execution has completed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("isLocallyReentrant")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that must be satisfied when executed is completed.");
-    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("localPostcondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostcondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostcondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostcondition")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostcondition")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostcondition")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that must be satisfied when executed is completed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostcondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostcondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPostcondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that must be satisfied when execution is started.");
-    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("localPrecondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPrecondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPrecondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPrecondition")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPrecondition")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPrecondition")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that must be satisfied when execution is started.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPrecondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPrecondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("localPrecondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
-    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of output pins connected to the Action. The action places its results onto pins in this set.");
-    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("output")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("output")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("output")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("output")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("output")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("output")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of output pins connected to the Action. The action places its results onto pins in this set.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("output")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("output")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAction")][QStringLiteral("output")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

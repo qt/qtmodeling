@@ -42,7 +42,7 @@
 
 QT_BEGIN_NAMESPACE
 
-QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > QModelingObject::propertyDataHash;
+QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > QModelingObject::propertyDataHash;
 
 QT_END_NAMESPACE
 

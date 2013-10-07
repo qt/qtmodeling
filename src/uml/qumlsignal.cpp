@@ -189,14 +189,14 @@ void QUmlSignal::removeOwnedAttribute(QUmlProperty *ownedAttribute)
 
 void QUmlSignal::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSignal");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes owned by the signal.");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignal")][QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignal")][QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSignal");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignal")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignal")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignal")][QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes owned by the signal.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignal")][QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignal")][QStringLiteral("ownedAttribute")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignal")][QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

@@ -63,7 +63,7 @@ class Q_UML_EXPORT QUmlCommentObject : public QObject
 
     // Properties [Comment]
     Q_PROPERTY(QSet<QObject *> annotatedElement READ annotatedElements)
-    Q_PROPERTY(QString body READ body)
+    Q_PROPERTY(QString body READ body WRITE setBody)
 
 public:
     Q_INVOKABLE explicit QUmlCommentObject(QUmlComment *qModelingObject);

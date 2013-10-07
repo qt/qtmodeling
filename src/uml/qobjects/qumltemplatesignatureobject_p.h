@@ -64,7 +64,7 @@ class Q_UML_EXPORT QUmlTemplateSignatureObject : public QObject
     // Properties [TemplateSignature]
     Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameters)
     Q_PROPERTY(QList<QObject *> parameter READ parameters)
-    Q_PROPERTY(QObject * template_ READ template_)
+    Q_PROPERTY(QObject * template_ READ template_ WRITE setTemplate)
 
 public:
     Q_INVOKABLE explicit QUmlTemplateSignatureObject(QUmlTemplateSignature *qModelingObject);

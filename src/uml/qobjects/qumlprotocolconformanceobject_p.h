@@ -69,8 +69,8 @@ class Q_UML_EXPORT QUmlProtocolConformanceObject : public QObject
     Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [ProtocolConformance]
-    Q_PROPERTY(QObject * generalMachine READ generalMachine)
-    Q_PROPERTY(QObject * specificMachine READ specificMachine)
+    Q_PROPERTY(QObject * generalMachine READ generalMachine WRITE setGeneralMachine)
+    Q_PROPERTY(QObject * specificMachine READ specificMachine WRITE setSpecificMachine)
 
 public:
     Q_INVOKABLE explicit QUmlProtocolConformanceObject(QUmlProtocolConformance *qModelingObject);

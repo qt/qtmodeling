@@ -192,23 +192,23 @@ QString QUmlStringExpression::stringValue() const
 
 void QUmlStringExpression::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStringExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::DocumentationRole] = QStringLiteral("The string expression of which this expression is a substring.");
-    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("owningExpression")][QtModeling::OppositeEndRole] = QStringLiteral("StringExpression-subExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("owningExpression")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("owningExpression")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStringExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("owningExpression")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("owningExpression")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("owningExpression")][QtModeling::DocumentationRole] = QStringLiteral("The string expression of which this expression is a substring.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("owningExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("owningExpression")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("owningExpression")][QtModeling::OppositeEndRole] = QStringLiteral("StringExpression-subExpression");
 
-    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStringExpression");
-    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::DocumentationRole] = QStringLiteral("The StringExpressions that constitute this StringExpression.");
-    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("subExpression")][QtModeling::OppositeEndRole] = QStringLiteral("StringExpression-owningExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("subExpression")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("subExpression")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStringExpression");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("subExpression")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("subExpression")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("subExpression")][QtModeling::DocumentationRole] = QStringLiteral("The StringExpressions that constitute this StringExpression.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("subExpression")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("subExpression")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStringExpression")][QStringLiteral("subExpression")][QtModeling::OppositeEndRole] = QStringLiteral("StringExpression-owningExpression");
 
 }
 

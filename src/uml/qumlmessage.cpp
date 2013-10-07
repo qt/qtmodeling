@@ -307,77 +307,77 @@ void QUmlMessage::setSignature(QUmlNamedElement *signature)
 
 void QUmlMessage::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
-    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::DocumentationRole] = QStringLiteral("The arguments of the Message");
-    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("argument")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::DocumentationRole] = QStringLiteral("The arguments of the Message");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("connector")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("connector")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
-    QModelingObject::propertyDataHash[QStringLiteral("connector")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("connector")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("connector")][QtModeling::DocumentationRole] = QStringLiteral("The Connector on which this Message is sent.");
-    QModelingObject::propertyDataHash[QStringLiteral("connector")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("connector")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("connector")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::DocumentationRole] = QStringLiteral("The Connector on which this Message is sent.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
-    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::DocumentationRole] = QStringLiteral("The enclosing Interaction owning the Message");
-    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("interaction")][QtModeling::OppositeEndRole] = QStringLiteral("Interaction-message");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("interaction")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("interaction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("interaction")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("interaction")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("interaction")][QtModeling::DocumentationRole] = QStringLiteral("The enclosing Interaction owning the Message");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("interaction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("interaction")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("interaction")][QtModeling::OppositeEndRole] = QStringLiteral("Interaction-message");
 
-    QModelingObject::propertyDataHash[QStringLiteral("messageKind")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("messageKind")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
-    QModelingObject::propertyDataHash[QStringLiteral("messageKind")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("messageKind")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("messageKind")][QtModeling::DocumentationRole] = QStringLiteral("The derived kind of the Message (complete, lost, found or unknown)");
-    QModelingObject::propertyDataHash[QStringLiteral("messageKind")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("messageKind")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("messageKind")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageKind")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageKind")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageKind")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageKind")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageKind")][QtModeling::DocumentationRole] = QStringLiteral("The derived kind of the Message (complete, lost, found or unknown)");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageKind")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageKind")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageKind")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("messageSort")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("messageSort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
-    QModelingObject::propertyDataHash[QStringLiteral("messageSort")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("messageSort")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("messageSort")][QtModeling::DocumentationRole] = QStringLiteral("The sort of communication reflected by the Message");
-    QModelingObject::propertyDataHash[QStringLiteral("messageSort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("messageSort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("messageSort")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageSort")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageSort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageSort")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageSort")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageSort")][QtModeling::DocumentationRole] = QStringLiteral("The sort of communication reflected by the Message");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageSort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageSort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("messageSort")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("receiveEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("receiveEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
-    QModelingObject::propertyDataHash[QStringLiteral("receiveEvent")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("receiveEvent")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("receiveEvent")][QtModeling::DocumentationRole] = QStringLiteral("References the Receiving of the Message");
-    QModelingObject::propertyDataHash[QStringLiteral("receiveEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("receiveEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_message_messageEnd-messageEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("receiveEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("receiveEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("receiveEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("receiveEvent")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("receiveEvent")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("receiveEvent")][QtModeling::DocumentationRole] = QStringLiteral("References the Receiving of the Message");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("receiveEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("receiveEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_message_messageEnd-messageEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("receiveEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("sendEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("sendEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
-    QModelingObject::propertyDataHash[QStringLiteral("sendEvent")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("sendEvent")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("sendEvent")][QtModeling::DocumentationRole] = QStringLiteral("References the Sending of the Message.");
-    QModelingObject::propertyDataHash[QStringLiteral("sendEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("sendEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_message_messageEnd-messageEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("sendEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("sendEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("sendEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("sendEvent")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("sendEvent")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("sendEvent")][QtModeling::DocumentationRole] = QStringLiteral("References the Sending of the Message.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("sendEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("sendEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_message_messageEnd-messageEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("sendEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
-    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::DocumentationRole] = QStringLiteral("The signature of the Message is the specification of its content. It refers either an Operation or a Signal.");
-    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("signature")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::DocumentationRole] = QStringLiteral("The signature of the Message is the specification of its content. It refers either an Operation or a Signal.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

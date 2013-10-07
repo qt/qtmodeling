@@ -65,18 +65,18 @@ class Q_UML_EXPORT QUmlLifelineObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Lifeline]
     Q_PROPERTY(QSet<QObject *> coveredBy READ coveredBy)
-    Q_PROPERTY(QObject * decomposedAs READ decomposedAs)
-    Q_PROPERTY(QObject * interaction READ interaction)
-    Q_PROPERTY(QObject * represents READ represents)
-    Q_PROPERTY(QObject * selector READ selector)
+    Q_PROPERTY(QObject * decomposedAs READ decomposedAs WRITE setDecomposedAs)
+    Q_PROPERTY(QObject * interaction READ interaction WRITE setInteraction)
+    Q_PROPERTY(QObject * represents READ represents WRITE setRepresents)
+    Q_PROPERTY(QObject * selector READ selector WRITE setSelector)
 
 public:
     Q_INVOKABLE explicit QUmlLifelineObject(QUmlLifeline *qModelingObject);

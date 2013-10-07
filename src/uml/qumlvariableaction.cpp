@@ -142,14 +142,14 @@ void QUmlVariableAction::setVariable(QUmlVariable *variable)
 
 void QUmlVariableAction::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVariableAction");
-    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::DocumentationRole] = QStringLiteral("Variable to be read.");
-    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("variable")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVariableAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::DocumentationRole] = QStringLiteral("Variable to be read.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

@@ -65,21 +65,21 @@ class Q_UML_EXPORT QUmlMessageObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Message]
     Q_PROPERTY(QList<QObject *> argument READ arguments)
-    Q_PROPERTY(QObject * connector READ connector)
-    Q_PROPERTY(QObject * interaction READ interaction)
+    Q_PROPERTY(QObject * connector READ connector WRITE setConnector)
+    Q_PROPERTY(QObject * interaction READ interaction WRITE setInteraction)
     Q_PROPERTY(QtUml::MessageKind messageKind READ messageKind RESET unsetMessageKind STORED false)
-    Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort RESET unsetMessageSort)
-    Q_PROPERTY(QObject * receiveEvent READ receiveEvent)
-    Q_PROPERTY(QObject * sendEvent READ sendEvent)
-    Q_PROPERTY(QObject * signature READ signature)
+    Q_PROPERTY(QtUml::MessageSort messageSort READ messageSort WRITE setMessageSort RESET unsetMessageSort)
+    Q_PROPERTY(QObject * receiveEvent READ receiveEvent WRITE setReceiveEvent)
+    Q_PROPERTY(QObject * sendEvent READ sendEvent WRITE setSendEvent)
+    Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
 
 public:
     Q_INVOKABLE explicit QUmlMessageObject(QUmlMessage *qModelingObject);

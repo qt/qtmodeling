@@ -62,8 +62,8 @@ class Q_UML_EXPORT QUmlQualifierValueObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [QualifierValue]
-    Q_PROPERTY(QObject * qualifier READ qualifier)
-    Q_PROPERTY(QObject * value READ value)
+    Q_PROPERTY(QObject * qualifier READ qualifier WRITE setQualifier)
+    Q_PROPERTY(QObject * value READ value WRITE setValue)
 
 public:
     Q_INVOKABLE explicit QUmlQualifierValueObject(QUmlQualifierValue *qModelingObject);

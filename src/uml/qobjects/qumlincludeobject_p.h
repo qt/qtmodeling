@@ -72,15 +72,15 @@ class Q_UML_EXPORT QUmlIncludeObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Include]
-    Q_PROPERTY(QObject * addition READ addition)
-    Q_PROPERTY(QObject * includingCase READ includingCase)
+    Q_PROPERTY(QObject * addition READ addition WRITE setAddition)
+    Q_PROPERTY(QObject * includingCase READ includingCase WRITE setIncludingCase)
 
 public:
     Q_INVOKABLE explicit QUmlIncludeObject(QUmlInclude *qModelingObject);

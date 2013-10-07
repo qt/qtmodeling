@@ -65,17 +65,17 @@ class Q_UML_EXPORT QUmlInstanceSpecificationObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [DeploymentTarget]
     Q_PROPERTY(QSet<QObject *> deployedElement READ deployedElements STORED false)
@@ -84,7 +84,7 @@ class Q_UML_EXPORT QUmlInstanceSpecificationObject : public QObject
     // Properties [InstanceSpecification]
     Q_PROPERTY(QSet<QObject *> classifier READ classifiers)
     Q_PROPERTY(QSet<QObject *> slot_ READ slots_)
-    Q_PROPERTY(QObject * specification READ specification)
+    Q_PROPERTY(QObject * specification READ specification WRITE setSpecification)
 
 public:
     Q_INVOKABLE explicit QUmlInstanceSpecificationObject(QUmlInstanceSpecification *qModelingObject);

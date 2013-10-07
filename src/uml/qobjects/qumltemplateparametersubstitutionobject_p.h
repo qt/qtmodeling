@@ -62,10 +62,10 @@ class Q_UML_EXPORT QUmlTemplateParameterSubstitutionObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [TemplateParameterSubstitution]
-    Q_PROPERTY(QObject * actual READ actual)
-    Q_PROPERTY(QObject * formal READ formal)
-    Q_PROPERTY(QObject * ownedActual READ ownedActual)
-    Q_PROPERTY(QObject * templateBinding READ templateBinding)
+    Q_PROPERTY(QObject * actual READ actual WRITE setActual)
+    Q_PROPERTY(QObject * formal READ formal WRITE setFormal)
+    Q_PROPERTY(QObject * ownedActual READ ownedActual WRITE setOwnedActual)
+    Q_PROPERTY(QObject * templateBinding READ templateBinding WRITE setTemplateBinding)
 
 public:
     Q_INVOKABLE explicit QUmlTemplateParameterSubstitutionObject(QUmlTemplateParameterSubstitution *qModelingObject);

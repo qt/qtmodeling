@@ -266,59 +266,59 @@ void QUmlClause::removeTest(QUmlExecutableNode *test)
 
 void QUmlClause::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
-    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.");
-    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("body")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("body")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("body")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("A nested activity fragment that is executed if the test evaluates to true and the clause is chosen over any concurrent clauses that also evaluate to true.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("body")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("body")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
-    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.");
-    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("bodyOutput")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("bodyOutput")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("bodyOutput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("bodyOutput")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("bodyOutput")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("bodyOutput")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins within the body fragment whose values are moved to the result pins of the containing conditional node after execution of the clause body.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("bodyOutput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("bodyOutput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("bodyOutput")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
-    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::DocumentationRole] = QStringLiteral("An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.");
-    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("decider")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("decider")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("decider")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("decider")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("decider")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("decider")][QtModeling::DocumentationRole] = QStringLiteral("An output pin within the test fragment the value of which is examined after execution of the test to determine whether the body should be executed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("decider")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("decider")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("decider")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
-    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::DocumentationRole] = QStringLiteral("A set of clauses whose tests must all evaluate false before the current clause can be tested.");
-    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("predecessorClause")][QtModeling::OppositeEndRole] = QStringLiteral("Clause-successorClause");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("predecessorClause")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("predecessorClause")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("predecessorClause")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("predecessorClause")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("predecessorClause")][QtModeling::DocumentationRole] = QStringLiteral("A set of clauses whose tests must all evaluate false before the current clause can be tested.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("predecessorClause")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("predecessorClause")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("predecessorClause")][QtModeling::OppositeEndRole] = QStringLiteral("Clause-successorClause");
 
-    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
-    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::DocumentationRole] = QStringLiteral("A set of clauses which may not be tested unless the current clause tests false.");
-    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("successorClause")][QtModeling::OppositeEndRole] = QStringLiteral("Clause-predecessorClause");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("successorClause")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("successorClause")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("successorClause")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("successorClause")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("successorClause")][QtModeling::DocumentationRole] = QStringLiteral("A set of clauses which may not be tested unless the current clause tests false.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("successorClause")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("successorClause")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("successorClause")][QtModeling::OppositeEndRole] = QStringLiteral("Clause-predecessorClause");
 
-    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
-    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::DocumentationRole] = QStringLiteral("A nested activity fragment with a designated output pin that specifies the result of the test.");
-    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("test")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("test")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("test")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClause");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("test")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("test")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("test")][QtModeling::DocumentationRole] = QStringLiteral("A nested activity fragment with a designated output pin that specifies the result of the test.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("test")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("test")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClause")][QStringLiteral("test")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

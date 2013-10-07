@@ -75,9 +75,9 @@ public:
         return _modifiedResettableProperties.contains(QString::fromLatin1(metaProperty.name()));
     }
 
-    static inline QVariant propertyData(QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role)
+    static inline QVariant propertyData(QString className, QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role)
     {
-        return propertyDataHash[QString::fromLatin1(metaProperty.name())][role];
+        return propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
     }
 
     inline QStringList &modifiedResettableProperties()
@@ -89,7 +89,7 @@ protected:
     QModelingObject() : deletingFromQObject(false), _qObject(0) {}
     QPointer<QObject> _qObject;
     QStringList _modifiedResettableProperties;
-    static QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > propertyDataHash;
+    static QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > propertyDataHash;
     virtual void setPropertyData() = 0;
 };
 

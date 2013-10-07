@@ -65,19 +65,19 @@ class Q_UML_EXPORT QUmlExtensionPointObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [ExtensionPoint]
-    Q_PROPERTY(QObject * useCase READ useCase)
+    Q_PROPERTY(QObject * useCase READ useCase WRITE setUseCase)
 
 public:
     Q_INVOKABLE explicit QUmlExtensionPointObject(QUmlExtensionPoint *qModelingObject);

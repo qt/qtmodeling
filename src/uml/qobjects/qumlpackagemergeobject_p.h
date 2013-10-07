@@ -69,8 +69,8 @@ class Q_UML_EXPORT QUmlPackageMergeObject : public QObject
     Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [PackageMerge]
-    Q_PROPERTY(QObject * mergedPackage READ mergedPackage)
-    Q_PROPERTY(QObject * receivingPackage READ receivingPackage)
+    Q_PROPERTY(QObject * mergedPackage READ mergedPackage WRITE setMergedPackage)
+    Q_PROPERTY(QObject * receivingPackage READ receivingPackage WRITE setReceivingPackage)
 
 public:
     Q_INVOKABLE explicit QUmlPackageMergeObject(QUmlPackageMerge *qModelingObject);

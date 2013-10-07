@@ -148,14 +148,14 @@ void QXmiWriter::populateIdMap(QObject *modelingObject, int index)
         QMetaProperty metaProperty = metaObject->property(i);
         QString typeName = QString::fromLatin1(metaProperty.typeName());
         QVariant variant = metaProperty.read(modelingObject);
-        QString aggregationRole = QModelingObject::propertyData(metaProperty, QtModeling::AggregationRole).toString();
+        QString aggregationRole = QModelingObject::propertyData(QString::fromLatin1(metaObject->className()).remove(QRegExp(QStringLiteral("Object$"))), metaProperty, QtModeling::AggregationRole).toString();
 
         if (aggregationRole == QStringLiteral("composite"))
-            if (!QModelingObject::propertyData(metaProperty, QtModeling::OppositeEndRole).toString().isEmpty()) {
-                d->blacklistedOppositeEnds << QModelingObject::propertyData(metaProperty, QtModeling::OppositeEndRole).toString().split('-').last();
+            if (!QModelingObject::propertyData(QString::fromLatin1(metaObject->className()).remove(QRegExp(QStringLiteral("Object$"))), metaProperty, QtModeling::OppositeEndRole).toString().isEmpty()) {
+                d->blacklistedOppositeEnds << QModelingObject::propertyData(QString::fromLatin1(metaObject->className()).remove(QRegExp(QStringLiteral("Object$"))), metaProperty, QtModeling::OppositeEndRole).toString().split('-').last();
             }
 
-        if (QModelingObject::propertyData(metaProperty, QtModeling::AggregationRole).toString() != QStringLiteral("composite"))
+        if (QModelingObject::propertyData(QString::fromLatin1(metaObject->className()).remove(QRegExp(QStringLiteral("Object$"))), metaProperty, QtModeling::AggregationRole).toString() != QStringLiteral("composite"))
             continue;
 
         if (typeName.endsWith('*') && qvariant_cast<QObject *>(variant))
@@ -203,7 +203,7 @@ void QXmiWriter::writeObject(QObject *modelingObject, QString elementName)
         QMetaProperty metaProperty = metaObject->property(i);
         QVariant variant = metaProperty.read(modelingObject);
 
-        if (!metaProperty.isStored() || QString::fromLatin1(metaProperty.name()) == QStringLiteral("objectName") || QModelingObject::propertyData(metaProperty, QtModeling::IsDerivedUnionRole).toBool())
+        if (!metaProperty.isStored() || QString::fromLatin1(metaProperty.name()) == QStringLiteral("objectName") || QModelingObject::propertyData(QString::fromLatin1(metaObject->className()).remove(QRegExp(QStringLiteral("Object$"))), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
             continue;
 
         if (metaProperty.type() == QVariant::String) {
@@ -233,10 +233,10 @@ void QXmiWriter::writeObject(QObject *modelingObject, QString elementName)
 
         QString typeName = QString::fromLatin1(metaProperty.typeName());
         QVariant variant = metaProperty.read(modelingObject);
-        QString aggregationRole = QModelingObject::propertyData(metaProperty, QtModeling::AggregationRole).toString();
+        QString aggregationRole = QModelingObject::propertyData(QString::fromLatin1(metaObject->className()).remove(QRegExp(QStringLiteral("Object$"))), metaProperty, QtModeling::AggregationRole).toString();
         QString modifiedPropertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QStringLiteral("_$"))).remove(QRegularExpression(QStringLiteral("s$"))).replace(QRegularExpression(QStringLiteral("ie$")), QStringLiteral("y")).replace(QRegularExpression(QStringLiteral("sse$")), QStringLiteral("ss")).replace(QRegularExpression(QStringLiteral("ice$")), QStringLiteral("ex")).replace(QRegularExpression(QStringLiteral("ce$")), QStringLiteral("x"));
 
-        if (!metaProperty.isStored() || QModelingObject::propertyData(metaProperty, QtModeling::IsDerivedUnionRole).toBool())
+        if (!metaProperty.isStored() || QModelingObject::propertyData(QString::fromLatin1(metaObject->className()).remove(QRegExp(QStringLiteral("Object$"))), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
             continue;
 
         if (typeName.endsWith('*') && qvariant_cast<QObject *>(variant)) {

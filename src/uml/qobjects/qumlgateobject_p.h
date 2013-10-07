@@ -65,14 +65,14 @@ class Q_UML_EXPORT QUmlGateObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [MessageEnd]
-    Q_PROPERTY(QObject * message READ message)
+    Q_PROPERTY(QObject * message READ message WRITE setMessage)
 
 public:
     Q_INVOKABLE explicit QUmlGateObject(QUmlGate *qModelingObject);

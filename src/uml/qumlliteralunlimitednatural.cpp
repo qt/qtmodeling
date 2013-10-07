@@ -144,14 +144,14 @@ int QUmlLiteralUnlimitedNatural::unlimitedValue() const
 
 void QUmlLiteralUnlimitedNatural::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralUnlimitedNatural");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified UnlimitedNatural value.");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralUnlimitedNatural");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified UnlimitedNatural value.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

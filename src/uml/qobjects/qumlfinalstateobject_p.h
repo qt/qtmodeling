@@ -65,11 +65,11 @@ class Q_UML_EXPORT QUmlFinalStateObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
@@ -80,11 +80,11 @@ class Q_UML_EXPORT QUmlFinalStateObject : public QObject
     Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
 
     // Properties [Vertex]
-    Q_PROPERTY(QObject * container READ container)
+    Q_PROPERTY(QObject * container READ container WRITE setContainer)
     Q_PROPERTY(QSet<QObject *> incoming READ incomings STORED false)
     Q_PROPERTY(QSet<QObject *> outgoing READ outgoings STORED false)
 
@@ -92,18 +92,18 @@ class Q_UML_EXPORT QUmlFinalStateObject : public QObject
     Q_PROPERTY(QSet<QObject *> connection READ connections)
     Q_PROPERTY(QSet<QObject *> connectionPoint READ connectionPoints)
     Q_PROPERTY(QSet<QObject *> deferrableTrigger READ deferrableTriggers)
-    Q_PROPERTY(QObject * doActivity READ doActivity)
-    Q_PROPERTY(QObject * entry READ entry)
-    Q_PROPERTY(QObject * exit READ exit)
+    Q_PROPERTY(QObject * doActivity READ doActivity WRITE setDoActivity)
+    Q_PROPERTY(QObject * entry READ entry WRITE setEntry)
+    Q_PROPERTY(QObject * exit READ exit WRITE setExit)
     Q_PROPERTY(bool isComposite READ isComposite RESET unsetComposite STORED false)
     Q_PROPERTY(bool isOrthogonal READ isOrthogonal RESET unsetOrthogonal STORED false)
     Q_PROPERTY(bool isSimple READ isSimple RESET unsetSimple STORED false)
     Q_PROPERTY(bool isSubmachineState READ isSubmachineState RESET unsetSubmachineState STORED false)
-    Q_PROPERTY(QObject * redefinedState READ redefinedState)
+    Q_PROPERTY(QObject * redefinedState READ redefinedState WRITE setRedefinedState)
     Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
     Q_PROPERTY(QSet<QObject *> region READ regions)
-    Q_PROPERTY(QObject * stateInvariant READ stateInvariant)
-    Q_PROPERTY(QObject * submachine READ submachine)
+    Q_PROPERTY(QObject * stateInvariant READ stateInvariant WRITE setStateInvariant)
+    Q_PROPERTY(QObject * submachine READ submachine WRITE setSubmachine)
 
 public:
     Q_INVOKABLE explicit QUmlFinalStateObject(QUmlFinalState *qModelingObject);

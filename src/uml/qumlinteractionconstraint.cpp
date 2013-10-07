@@ -171,23 +171,23 @@ void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
 
 void QUmlInteractionConstraint::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::DocumentationRole] = QStringLiteral("The maximum number of iterations of a loop");
-    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("maxint")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::DocumentationRole] = QStringLiteral("The maximum number of iterations of a loop");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::DocumentationRole] = QStringLiteral("The minimum number of iterations of a loop");
-    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("minint")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::DocumentationRole] = QStringLiteral("The minimum number of iterations of a loop");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

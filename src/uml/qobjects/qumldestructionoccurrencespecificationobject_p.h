@@ -65,24 +65,24 @@ class Q_UML_EXPORT QUmlDestructionOccurrenceSpecificationObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [InteractionFragment]
-    Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction)
-    Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand)
+    Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
+    Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
     Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrderings)
 
     // Properties [OccurrenceSpecification]
-    Q_PROPERTY(QObject * covered READ covered)
+    Q_PROPERTY(QObject * covered READ covered WRITE setCovered)
     Q_PROPERTY(QSet<QObject *> toAfter READ toAfters)
     Q_PROPERTY(QSet<QObject *> toBefore READ toBefores)
 
     // Properties [MessageEnd]
-    Q_PROPERTY(QObject * message READ message)
+    Q_PROPERTY(QObject * message READ message WRITE setMessage)
 
 public:
     Q_INVOKABLE explicit QUmlDestructionOccurrenceSpecificationObject(QUmlDestructionOccurrenceSpecification *qModelingObject);

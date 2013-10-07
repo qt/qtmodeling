@@ -65,20 +65,20 @@ class Q_UML_EXPORT QUmlStateInvariantObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [InteractionFragment]
-    Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction)
-    Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand)
+    Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
+    Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
     Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrderings)
 
     // Properties [StateInvariant]
-    Q_PROPERTY(QObject * covered READ covered)
-    Q_PROPERTY(QObject * invariant READ invariant)
+    Q_PROPERTY(QObject * covered READ covered WRITE setCovered)
+    Q_PROPERTY(QObject * invariant READ invariant WRITE setInvariant)
 
 public:
     Q_INVOKABLE explicit QUmlStateInvariantObject(QUmlStateInvariant *qModelingObject);

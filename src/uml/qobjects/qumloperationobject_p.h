@@ -64,16 +64,16 @@ class Q_UML_EXPORT QUmlOperationObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [TemplateableElement]
-    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature)
+    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
     Q_PROPERTY(QSet<QObject *> templateBinding READ templateBindings)
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Namespace]
     Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
@@ -84,30 +84,30 @@ class Q_UML_EXPORT QUmlOperationObject : public QObject
     Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [Feature]
     Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifiers)
-    Q_PROPERTY(bool isStatic READ isStatic RESET unsetStatic)
+    Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
 
     // Properties [BehavioralFeature]
-    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency RESET unsetConcurrency)
-    Q_PROPERTY(bool isAbstract READ isAbstract RESET unsetAbstract)
+    Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency RESET unsetConcurrency)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(QSet<QObject *> method READ methods)
     Q_PROPERTY(QSet<QObject *> ownedParameterSet READ ownedParameterSets)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     // Properties [Operation]
-    Q_PROPERTY(QObject * bodyCondition READ bodyCondition)
-    Q_PROPERTY(QObject * class_ READ class_)
-    Q_PROPERTY(QObject * datatype READ datatype)
-    Q_PROPERTY(QObject * interface_ READ interface_)
+    Q_PROPERTY(QObject * bodyCondition READ bodyCondition WRITE setBodyCondition)
+    Q_PROPERTY(QObject * class_ READ class_ WRITE setClass)
+    Q_PROPERTY(QObject * datatype READ datatype WRITE setDatatype)
+    Q_PROPERTY(QObject * interface_ READ interface_ WRITE setInterface)
     Q_PROPERTY(bool isOrdered READ isOrdered RESET unsetOrdered STORED false)
-    Q_PROPERTY(bool isQuery READ isQuery RESET unsetQuery)
+    Q_PROPERTY(bool isQuery READ isQuery WRITE setQuery RESET unsetQuery)
     Q_PROPERTY(bool isUnique READ isUnique RESET unsetUnique STORED false)
     Q_PROPERTY(int lower READ lower RESET unsetLower STORED false)
     Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameters)
@@ -115,7 +115,7 @@ class Q_UML_EXPORT QUmlOperationObject : public QObject
     Q_PROPERTY(QSet<QObject *> precondition READ preconditions)
     Q_PROPERTY(QSet<QObject *> raisedException READ raisedExceptions)
     Q_PROPERTY(QSet<QObject *> redefinedOperation READ redefinedOperations)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
     Q_PROPERTY(QObject * type READ type STORED false)
     Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
 

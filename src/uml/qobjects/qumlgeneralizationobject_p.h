@@ -69,10 +69,10 @@ class Q_UML_EXPORT QUmlGeneralizationObject : public QObject
     Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [Generalization]
-    Q_PROPERTY(QObject * general READ general)
+    Q_PROPERTY(QObject * general READ general WRITE setGeneral)
     Q_PROPERTY(QSet<QObject *> generalizationSet READ generalizationSets)
-    Q_PROPERTY(bool isSubstitutable READ isSubstitutable RESET unsetSubstitutable)
-    Q_PROPERTY(QObject * specific READ specific)
+    Q_PROPERTY(bool isSubstitutable READ isSubstitutable WRITE setSubstitutable RESET unsetSubstitutable)
+    Q_PROPERTY(QObject * specific READ specific WRITE setSpecific)
 
 public:
     Q_INVOKABLE explicit QUmlGeneralizationObject(QUmlGeneralization *qModelingObject);

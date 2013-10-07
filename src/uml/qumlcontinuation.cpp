@@ -125,14 +125,14 @@ void QUmlContinuation::setSetting(bool setting)
 
 void QUmlContinuation::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlContinuation");
-    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::DocumentationRole] = QStringLiteral("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
-    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("setting")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlContinuation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::DocumentationRole] = QStringLiteral("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

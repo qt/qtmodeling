@@ -130,23 +130,23 @@ void QUmlQualifierValue::setValue(QUmlInputPin *value)
 
 void QUmlQualifierValue::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlQualifierValue");
-    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("Attribute representing the qualifier for which the value is to be specified.");
-    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlQualifierValue");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("Attribute representing the qualifier for which the value is to be specified.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlQualifierValue");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Input pin from which the specified value for the qualifier is taken.");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlQualifierValue");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Input pin from which the specified value for the qualifier is taken.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

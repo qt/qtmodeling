@@ -65,15 +65,15 @@ class Q_UML_EXPORT QUmlGeneralOrderingObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [GeneralOrdering]
-    Q_PROPERTY(QObject * after READ after)
-    Q_PROPERTY(QObject * before READ before)
+    Q_PROPERTY(QObject * after READ after WRITE setAfter)
+    Q_PROPERTY(QObject * before READ before WRITE setBefore)
 
 public:
     Q_INVOKABLE explicit QUmlGeneralOrderingObject(QUmlGeneralOrdering *qModelingObject);

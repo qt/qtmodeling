@@ -65,8 +65,8 @@ class Q_UML_EXPORT QUmlPackageObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
@@ -79,20 +79,20 @@ class Q_UML_EXPORT QUmlPackageObject : public QObject
     Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [TemplateableElement]
-    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature)
+    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
     Q_PROPERTY(QSet<QObject *> templateBinding READ templateBindings)
 
     // Properties [Package]
-    Q_PROPERTY(QString URI READ URI)
+    Q_PROPERTY(QString URI READ URI WRITE setURI)
     Q_PROPERTY(QSet<QObject *> nestedPackage READ nestedPackages STORED false)
-    Q_PROPERTY(QObject * nestingPackage READ nestingPackage)
+    Q_PROPERTY(QObject * nestingPackage READ nestingPackage WRITE setNestingPackage)
     Q_PROPERTY(QSet<QObject *> ownedStereotype READ ownedStereotypes STORED false)
     Q_PROPERTY(QSet<QObject *> ownedType READ ownedTypes STORED false)
     Q_PROPERTY(QSet<QObject *> packageMerge READ packageMerges)

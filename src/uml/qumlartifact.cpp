@@ -338,50 +338,50 @@ void QUmlArtifact::removeOwnedOperation(QUmlOperation *ownedOperation)
 
 void QUmlArtifact::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::DocumentationRole] = QStringLiteral("A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.");
-    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("fileName")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::DocumentationRole] = QStringLiteral("A concrete name that is used to refer to the Artifact in a physical context. Example: file system name, universal resource locator.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("fileName")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::DocumentationRole] = QStringLiteral("The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.");
-    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement NamedElement-clientDependency");
-    QModelingObject::propertyDataHash[QStringLiteral("manifestation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestation")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestation")][QtModeling::DocumentationRole] = QStringLiteral("The set of model elements that are manifested in the Artifact. That is, these model elements are utilized in the construction (or generation) of the artifact.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement NamedElement-clientDependency");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("manifestation")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::DocumentationRole] = QStringLiteral("The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("nestedArtifact")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifact")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifact")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifact")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifact")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifact")][QtModeling::DocumentationRole] = QStringLiteral("The Artifacts that are defined (nested) within the Artifact. The association is a specialization of the ownedMember association from Namespace to NamedElement.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifact")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifact")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("nestedArtifact")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes or association ends defined for the Artifact. The association is a specialization of the ownedMember association.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttribute")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::DocumentationRole] = QStringLiteral("The Operations defined for the Artifact. The association is a specialization of the ownedMember association.");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedOperation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlArtifact");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperation")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperation")][QtModeling::DocumentationRole] = QStringLiteral("The Operations defined for the Artifact. The association is a specialization of the ownedMember association.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlArtifact")][QStringLiteral("ownedOperation")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

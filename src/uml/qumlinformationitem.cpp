@@ -178,14 +178,14 @@ void QUmlInformationItem::removeRepresented(QUmlClassifier *represented)
 
 void QUmlInformationItem::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationItem");
-    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::DocumentationRole] = QStringLiteral("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
-    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("represented")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInformationItem")][QStringLiteral("represented")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInformationItem")][QStringLiteral("represented")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInformationItem");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInformationItem")][QStringLiteral("represented")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInformationItem")][QStringLiteral("represented")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInformationItem")][QStringLiteral("represented")][QtModeling::DocumentationRole] = QStringLiteral("Determines the classifiers that will specify the structure and nature of the information. An information item represents all its represented classifiers.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInformationItem")][QStringLiteral("represented")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInformationItem")][QStringLiteral("represented")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInformationItem")][QStringLiteral("represented")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

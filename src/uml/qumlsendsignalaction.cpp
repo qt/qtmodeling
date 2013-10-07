@@ -189,23 +189,23 @@ void QUmlSendSignalAction::setTarget(QUmlInputPin *target)
 
 void QUmlSendSignalAction::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSendSignalAction");
-    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The type of signal transmitted to the target object.");
-    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSendSignalAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The type of signal transmitted to the target object.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSendSignalAction");
-    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("The target object to which the signal is sent.");
-    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSendSignalAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("The target object to which the signal is sent.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSendSignalAction")][QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

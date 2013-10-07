@@ -151,23 +151,23 @@ void QUmlDurationInterval::setMin(QUmlDuration *min)
 
 void QUmlDurationInterval::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationInterval");
-    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the Duration denoting the maximum value of the range.");
-    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-max");
-    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("max")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationInterval");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the Duration denoting the maximum value of the range.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-max");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("max")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationInterval");
-    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the Duration denoting the minimum value of the range.");
-    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-min");
-    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("min")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDurationInterval");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the Duration denoting the minimum value of the range.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Interval-min");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationInterval")][QStringLiteral("min")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

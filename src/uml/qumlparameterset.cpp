@@ -176,23 +176,23 @@ void QUmlParameterSet::removeParameter(QUmlParameter *parameter)
 
 void QUmlParameterSet::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterSet");
-    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.");
-    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("condition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("condition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("condition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterSet");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("condition")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("condition")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("condition")][QtModeling::DocumentationRole] = QStringLiteral("Constraint that should be satisfied for the owner of the parameters in an input parameter set to start execution using the values provided for those parameters, or the owner of the parameters in an output parameter set to end execution providing the values for those parameters, if all preconditions and conditions on input parameter sets were satisfied.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("condition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("condition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("condition")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterSet");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::DocumentationRole] = QStringLiteral("Parameters in the parameter set.");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::OppositeEndRole] = QStringLiteral("Parameter-parameterSet");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameterSet");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameter")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameter")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameter")][QtModeling::DocumentationRole] = QStringLiteral("Parameters in the parameter set.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterSet")][QStringLiteral("parameter")][QtModeling::OppositeEndRole] = QStringLiteral("Parameter-parameterSet");
 
 }
 

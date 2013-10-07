@@ -72,16 +72,16 @@ class Q_UML_EXPORT QUmlExtendObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Extend]
-    Q_PROPERTY(QObject * condition READ condition)
-    Q_PROPERTY(QObject * extendedCase READ extendedCase)
-    Q_PROPERTY(QObject * extension READ extension)
+    Q_PROPERTY(QObject * condition READ condition WRITE setCondition)
+    Q_PROPERTY(QObject * extendedCase READ extendedCase WRITE setExtendedCase)
+    Q_PROPERTY(QObject * extension READ extension WRITE setExtension)
     Q_PROPERTY(QList<QObject *> extensionLocation READ extensionLocations)
 
 public:

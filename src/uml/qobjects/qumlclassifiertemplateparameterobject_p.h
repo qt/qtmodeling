@@ -62,15 +62,15 @@ class Q_UML_EXPORT QUmlClassifierTemplateParameterObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [TemplateParameter]
-    Q_PROPERTY(QObject * default_ READ default_)
-    Q_PROPERTY(QObject * ownedDefault READ ownedDefault)
-    Q_PROPERTY(QObject * ownedParameteredElement READ ownedParameteredElement)
-    Q_PROPERTY(QObject * signature READ signature)
+    Q_PROPERTY(QObject * default_ READ default_ WRITE setDefault)
+    Q_PROPERTY(QObject * ownedDefault READ ownedDefault WRITE setOwnedDefault)
+    Q_PROPERTY(QObject * ownedParameteredElement READ ownedParameteredElement WRITE setOwnedParameteredElement)
+    Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
 
     // Properties [ClassifierTemplateParameter]
-    Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable RESET unsetAllowSubstitutable)
+    Q_PROPERTY(bool allowSubstitutable READ allowSubstitutable WRITE setAllowSubstitutable RESET unsetAllowSubstitutable)
     Q_PROPERTY(QSet<QObject *> constrainingClassifier READ constrainingClassifiers)
-    Q_PROPERTY(QObject * parameteredElement READ parameteredElement)
+    Q_PROPERTY(QObject * parameteredElement READ parameteredElement WRITE setParameteredElement)
 
 public:
     Q_INVOKABLE explicit QUmlClassifierTemplateParameterObject(QUmlClassifierTemplateParameter *qModelingObject);

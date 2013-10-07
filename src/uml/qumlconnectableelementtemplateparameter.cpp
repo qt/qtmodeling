@@ -116,14 +116,14 @@ void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnecta
 
 void QUmlConnectableElementTemplateParameter::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElementTemplateParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The ConnectableElement for this template parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateParameter-parameteredElement");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectableElement-templateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElementTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The ConnectableElement for this template parameter.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateParameter-parameteredElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectableElement-templateParameter");
 
 }
 

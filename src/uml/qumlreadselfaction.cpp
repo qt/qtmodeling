@@ -159,14 +159,14 @@ void QUmlReadSelfAction::setResult(QUmlOutputPin *result)
 
 void QUmlReadSelfAction::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadSelfAction");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the hosting object is placed.");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadSelfAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the hosting object is placed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

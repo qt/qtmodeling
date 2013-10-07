@@ -64,34 +64,34 @@ class Q_UML_EXPORT QUmlVariableObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered RESET unsetOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique RESET unsetUnique)
-    Q_PROPERTY(int lower READ lower RESET unsetLower STORED false)
-    Q_PROPERTY(QObject * lowerValue READ lowerValue)
-    Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
-    Q_PROPERTY(QObject * upperValue READ upperValue)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower WRITE setLower RESET unsetLower STORED false)
+    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(int upper READ upper WRITE setUpper RESET unsetUpper STORED false)
+    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue)
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [TypedElement]
-    Q_PROPERTY(QObject * type READ type)
+    Q_PROPERTY(QObject * type READ type WRITE setType)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     // Properties [ConnectableElement]
     Q_PROPERTY(QList<QObject *> end READ ends STORED false)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [Variable]
-    Q_PROPERTY(QObject * activityScope READ activityScope)
-    Q_PROPERTY(QObject * scope READ scope)
+    Q_PROPERTY(QObject * activityScope READ activityScope WRITE setActivityScope)
+    Q_PROPERTY(QObject * scope READ scope WRITE setScope)
 
 public:
     Q_INVOKABLE explicit QUmlVariableObject(QUmlVariable *qModelingObject);

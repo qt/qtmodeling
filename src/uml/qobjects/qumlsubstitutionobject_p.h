@@ -64,18 +64,18 @@ class Q_UML_EXPORT QUmlSubstitutionObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [Relationship]
     Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElements)
@@ -89,11 +89,11 @@ class Q_UML_EXPORT QUmlSubstitutionObject : public QObject
     Q_PROPERTY(QSet<QObject *> supplier READ suppliers)
 
     // Properties [Abstraction]
-    Q_PROPERTY(QObject * mapping READ mapping)
+    Q_PROPERTY(QObject * mapping READ mapping WRITE setMapping)
 
     // Properties [Substitution]
-    Q_PROPERTY(QObject * contract READ contract)
-    Q_PROPERTY(QObject * substitutingClassifier READ substitutingClassifier)
+    Q_PROPERTY(QObject * contract READ contract WRITE setContract)
+    Q_PROPERTY(QObject * substitutingClassifier READ substitutingClassifier WRITE setSubstitutingClassifier)
 
 public:
     Q_INVOKABLE explicit QUmlSubstitutionObject(QUmlSubstitution *qModelingObject);

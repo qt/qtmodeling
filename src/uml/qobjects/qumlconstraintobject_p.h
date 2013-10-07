@@ -64,23 +64,23 @@ class Q_UML_EXPORT QUmlConstraintObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [Constraint]
     Q_PROPERTY(QList<QObject *> constrainedElement READ constrainedElements)
-    Q_PROPERTY(QObject * context READ context)
-    Q_PROPERTY(QObject * specification READ specification)
+    Q_PROPERTY(QObject * context READ context WRITE setContext)
+    Q_PROPERTY(QObject * specification READ specification WRITE setSpecification)
 
 public:
     Q_INVOKABLE explicit QUmlConstraintObject(QUmlConstraint *qModelingObject);

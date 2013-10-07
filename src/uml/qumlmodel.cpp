@@ -148,14 +148,14 @@ void QUmlModel::setViewpoint(QString viewpoint)
 
 void QUmlModel::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlModel");
-    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::DocumentationRole] = QStringLiteral("The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).");
-    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("viewpoint")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlModel")][QStringLiteral("viewpoint")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlModel")][QStringLiteral("viewpoint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlModel");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlModel")][QStringLiteral("viewpoint")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlModel")][QStringLiteral("viewpoint")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlModel")][QStringLiteral("viewpoint")][QtModeling::DocumentationRole] = QStringLiteral("The name of the viewpoint that is expressed by a model (This name may refer to a profile definition).");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlModel")][QStringLiteral("viewpoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlModel")][QStringLiteral("viewpoint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlModel")][QStringLiteral("viewpoint")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

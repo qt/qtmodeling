@@ -64,22 +64,22 @@ class Q_UML_EXPORT QUmlTimeObservationObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [TimeObservation]
-    Q_PROPERTY(QObject * event READ event)
-    Q_PROPERTY(bool firstEvent READ firstEvent RESET unsetFirstEvent)
+    Q_PROPERTY(QObject * event READ event WRITE setEvent)
+    Q_PROPERTY(bool firstEvent READ firstEvent WRITE setFirstEvent RESET unsetFirstEvent)
 
 public:
     Q_INVOKABLE explicit QUmlTimeObservationObject(QUmlTimeObservation *qModelingObject);

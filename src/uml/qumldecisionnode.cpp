@@ -165,23 +165,23 @@ void QUmlDecisionNode::setDecisionInputFlow(QUmlObjectFlow *decisionInputFlow)
 
 void QUmlDecisionNode::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDecisionNode");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::DocumentationRole] = QStringLiteral("Provides input to guard specifications on edges outgoing from the decision node.");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDecisionNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::DocumentationRole] = QStringLiteral("Provides input to guard specifications on edges outgoing from the decision node.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDecisionNode");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::DocumentationRole] = QStringLiteral("An additional edge incoming to the decision node that provides a decision input value.");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("decisionInputFlow")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDecisionNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::DocumentationRole] = QStringLiteral("An additional edge incoming to the decision node that provides a decision input value.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDecisionNode")][QStringLiteral("decisionInputFlow")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

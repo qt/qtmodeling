@@ -143,23 +143,23 @@ void QUmlTimeObservation::setFirstEvent(bool firstEvent)
 
 void QUmlTimeObservation::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeObservation");
-    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::DocumentationRole] = QStringLiteral("The observation is determined by the entering or exiting of the event element during execution.");
-    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("event")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("event")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("event")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeObservation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("event")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("event")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("event")][QtModeling::DocumentationRole] = QStringLiteral("The observation is determined by the entering or exiting of the event element during execution.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("event")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("event")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("event")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeObservation");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::DocumentationRole] = QStringLiteral("The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("firstEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("firstEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeObservation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("firstEvent")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("firstEvent")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("firstEvent")][QtModeling::DocumentationRole] = QStringLiteral("The value of firstEvent is related to event. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters event. If firstEvent is false, then the corresponding observation event is the time instant the execution exits event.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("firstEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("firstEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeObservation")][QStringLiteral("firstEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

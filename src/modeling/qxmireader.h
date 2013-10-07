@@ -57,6 +57,8 @@ class QObject;
 class QScriptEngine;
 class QXmiReaderPrivate;
 
+class QModelingObject;
+
 class Q_MODELING_EXPORT QXmiReader : public QObject
 {
     Q_OBJECT
@@ -68,12 +70,12 @@ public:
     explicit QXmiReader(QScriptEngine *scriptEngine = 0, bool initMetaModel = false, QObject *parent = 0);
     virtual ~QXmiReader();
 
-    QObjectList readFile(QIODevice *device, QString importedId = QString::fromLatin1(""));
+    QList<QModelingObject *> readFile(QIODevice *device, QString importedId = QString::fromLatin1(""));
     QStringList errorStrings() const;
 
 protected:
     void loadPlugins();
-    QObject *createInstance(QString instanceClass, QString instanceName);
+    QModelingObject *createInstance(QString namespaceUri, QString instanceClass, QString instanceName);
 };
 
 QT_END_NAMESPACE

@@ -65,8 +65,8 @@ class Q_UML_EXPORT QUmlDeploymentSpecificationObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
@@ -79,16 +79,16 @@ class Q_UML_EXPORT QUmlDeploymentSpecificationObject : public QObject
     Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [ParameterableElement]
-    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter)
+    Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     // Properties [PackageableElement]
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility RESET unsetVisibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [Type]
-    Q_PROPERTY(QObject * package READ package)
+    Q_PROPERTY(QObject * package READ package WRITE setPackage)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
@@ -102,28 +102,28 @@ class Q_UML_EXPORT QUmlDeploymentSpecificationObject : public QObject
     Q_PROPERTY(QSet<QObject *> general READ generals STORED false)
     Q_PROPERTY(QSet<QObject *> generalization READ generalizations)
     Q_PROPERTY(QSet<QObject *> inheritedMember READ inheritedMembers STORED false)
-    Q_PROPERTY(bool isAbstract READ isAbstract RESET unsetAbstract)
-    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization RESET unsetFinalSpecialization)
-    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature)
+    Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
+    Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
+    Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
     Q_PROPERTY(QSet<QObject *> ownedUseCase READ ownedUseCases)
     Q_PROPERTY(QSet<QObject *> powertypeExtent READ powertypeExtents)
     Q_PROPERTY(QSet<QObject *> redefinedClassifier READ redefinedClassifiers)
-    Q_PROPERTY(QObject * representation READ representation)
+    Q_PROPERTY(QObject * representation READ representation WRITE setRepresentation)
     Q_PROPERTY(QSet<QObject *> substitution READ substitutions)
-    Q_PROPERTY(QObject * templateParameter READ templateParameter)
+    Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
     Q_PROPERTY(QSet<QObject *> useCase READ useCases)
 
     // Properties [Artifact]
-    Q_PROPERTY(QString fileName READ fileName)
+    Q_PROPERTY(QString fileName READ fileName WRITE setFileName)
     Q_PROPERTY(QSet<QObject *> manifestation READ manifestations)
     Q_PROPERTY(QSet<QObject *> nestedArtifact READ nestedArtifacts)
     Q_PROPERTY(QList<QObject *> ownedAttribute READ ownedAttributes)
     Q_PROPERTY(QList<QObject *> ownedOperation READ ownedOperations)
 
     // Properties [DeploymentSpecification]
-    Q_PROPERTY(QObject * deployment READ deployment)
-    Q_PROPERTY(QString deploymentLocation READ deploymentLocation)
-    Q_PROPERTY(QString executionLocation READ executionLocation)
+    Q_PROPERTY(QObject * deployment READ deployment WRITE setDeployment)
+    Q_PROPERTY(QString deploymentLocation READ deploymentLocation WRITE setDeploymentLocation)
+    Q_PROPERTY(QString executionLocation READ executionLocation WRITE setExecutionLocation)
 
 public:
     Q_INVOKABLE explicit QUmlDeploymentSpecificationObject(QUmlDeploymentSpecification *qModelingObject);

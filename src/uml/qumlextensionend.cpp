@@ -208,23 +208,23 @@ int QUmlExtensionEnd::lowerBound() const
 
 void QUmlExtensionEnd::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("MultiplicityElement-lower");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("lower")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("lower")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("MultiplicityElement-lower");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("lower")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TypedElement-type");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("References the type of the ExtensionEnd. Note that this association restricts the possible types of an ExtensionEnd to only be Stereotypes.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TypedElement-type");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionEnd")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

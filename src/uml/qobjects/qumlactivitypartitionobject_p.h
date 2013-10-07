@@ -65,27 +65,27 @@ class Q_UML_EXPORT QUmlActivityPartitionObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [ActivityGroup]
     Q_PROPERTY(QSet<QObject *> containedEdge READ containedEdges)
     Q_PROPERTY(QSet<QObject *> containedNode READ containedNodes)
-    Q_PROPERTY(QObject * inActivity READ inActivity)
+    Q_PROPERTY(QObject * inActivity READ inActivity WRITE setInActivity)
     Q_PROPERTY(QSet<QObject *> subgroup READ subgroups)
     Q_PROPERTY(QObject * superGroup READ superGroup)
 
     // Properties [ActivityPartition]
     Q_PROPERTY(QSet<QObject *> edge READ edges)
-    Q_PROPERTY(bool isDimension READ isDimension RESET unsetDimension)
-    Q_PROPERTY(bool isExternal READ isExternal RESET unsetExternal)
+    Q_PROPERTY(bool isDimension READ isDimension WRITE setDimension RESET unsetDimension)
+    Q_PROPERTY(bool isExternal READ isExternal WRITE setExternal RESET unsetExternal)
     Q_PROPERTY(QSet<QObject *> node READ nodes)
-    Q_PROPERTY(QObject * represents READ represents)
+    Q_PROPERTY(QObject * represents READ represents WRITE setRepresents)
     Q_PROPERTY(QSet<QObject *> subpartition READ subpartitions)
-    Q_PROPERTY(QObject * superPartition READ superPartition)
+    Q_PROPERTY(QObject * superPartition READ superPartition WRITE setSuperPartition)
 
 public:
     Q_INVOKABLE explicit QUmlActivityPartitionObject(QUmlActivityPartition *qModelingObject);

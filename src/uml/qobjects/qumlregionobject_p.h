@@ -65,14 +65,14 @@ class Q_UML_EXPORT QUmlRegionObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
 
     // Properties [Namespace]
@@ -84,10 +84,10 @@ class Q_UML_EXPORT QUmlRegionObject : public QObject
     Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
 
     // Properties [Region]
-    Q_PROPERTY(QObject * extendedRegion READ extendedRegion)
+    Q_PROPERTY(QObject * extendedRegion READ extendedRegion WRITE setExtendedRegion)
     Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
-    Q_PROPERTY(QObject * state READ state)
-    Q_PROPERTY(QObject * stateMachine READ stateMachine)
+    Q_PROPERTY(QObject * state READ state WRITE setState)
+    Q_PROPERTY(QObject * stateMachine READ stateMachine WRITE setStateMachine)
     Q_PROPERTY(QSet<QObject *> subvertex READ subvertices)
     Q_PROPERTY(QSet<QObject *> transition READ transitions)
 

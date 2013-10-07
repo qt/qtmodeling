@@ -110,7 +110,7 @@ ${attributeName}
     [%- SET qtAttribute = QT_ATTRIBUTE(attribute) -%]
     [%- NEXT IF redefinedProperties.grep("^${className}-${qtAttribute}$").size > 0 -%]
     [%- SET qtType = QT_TYPE(namespace, attribute, "false") %]
-    Q_PROPERTY(${qtType.trim} ${qtAttribute} READ ${PLURALFORM(qtAttribute, attribute)}[% IF attribute.findvalue("defaultValue/@xmi:type") != "" %] RESET unset${qtAttribute.remove("^is").ucfirst}[% END %][% IF attribute.findvalue("@isDerived") == "true" and attribute.findvalue("@isDerivedUnion") != "true" %] STORED false[% END %])
+    Q_PROPERTY(${qtType.trim} ${qtAttribute} READ ${PLURALFORM(qtAttribute, attribute)}[% IF attribute.findvalue("@isReadOnly") != "true" and !(attribute.findnodes("upperValue").findvalue("@value") == "*")%] WRITE set${qtAttribute.remove("^is").ucfirst.remove('_$')}[% END %][% IF attribute.findvalue("defaultValue/@xmi:type") != "" %] RESET unset${qtAttribute.remove("^is").ucfirst}[% END %][% IF attribute.findvalue("@isDerived") == "true" and attribute.findvalue("@isDerivedUnion") != "true" %] STORED false[% END %])
 [%- END %]
 [%- END -%]
 [%- MACRO GENERATE_ATTRIBUTES(class, visitedClasses, redefinedProperties) BLOCK -%]

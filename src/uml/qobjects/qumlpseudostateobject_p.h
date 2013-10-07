@@ -65,21 +65,21 @@ class Q_UML_EXPORT QUmlPseudostateObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Vertex]
-    Q_PROPERTY(QObject * container READ container)
+    Q_PROPERTY(QObject * container READ container WRITE setContainer)
     Q_PROPERTY(QSet<QObject *> incoming READ incomings STORED false)
     Q_PROPERTY(QSet<QObject *> outgoing READ outgoings STORED false)
 
     // Properties [Pseudostate]
-    Q_PROPERTY(QtUml::PseudostateKind kind READ kind RESET unsetKind)
-    Q_PROPERTY(QObject * state READ state)
-    Q_PROPERTY(QObject * stateMachine READ stateMachine)
+    Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind RESET unsetKind)
+    Q_PROPERTY(QObject * state READ state WRITE setState)
+    Q_PROPERTY(QObject * stateMachine READ stateMachine WRITE setStateMachine)
 
 public:
     Q_INVOKABLE explicit QUmlPseudostateObject(QUmlPseudostate *qModelingObject);

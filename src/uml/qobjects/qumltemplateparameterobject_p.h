@@ -62,11 +62,11 @@ class Q_UML_EXPORT QUmlTemplateParameterObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [TemplateParameter]
-    Q_PROPERTY(QObject * default_ READ default_)
-    Q_PROPERTY(QObject * ownedDefault READ ownedDefault)
-    Q_PROPERTY(QObject * ownedParameteredElement READ ownedParameteredElement)
-    Q_PROPERTY(QObject * parameteredElement READ parameteredElement)
-    Q_PROPERTY(QObject * signature READ signature)
+    Q_PROPERTY(QObject * default_ READ default_ WRITE setDefault)
+    Q_PROPERTY(QObject * ownedDefault READ ownedDefault WRITE setOwnedDefault)
+    Q_PROPERTY(QObject * ownedParameteredElement READ ownedParameteredElement WRITE setOwnedParameteredElement)
+    Q_PROPERTY(QObject * parameteredElement READ parameteredElement WRITE setParameteredElement)
+    Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
 
 public:
     Q_INVOKABLE explicit QUmlTemplateParameterObject(QUmlTemplateParameter *qModelingObject);

@@ -62,10 +62,10 @@ class Q_UML_EXPORT QUmlExceptionHandlerObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ExceptionHandler]
-    Q_PROPERTY(QObject * exceptionInput READ exceptionInput)
+    Q_PROPERTY(QObject * exceptionInput READ exceptionInput WRITE setExceptionInput)
     Q_PROPERTY(QSet<QObject *> exceptionType READ exceptionTypes)
-    Q_PROPERTY(QObject * handlerBody READ handlerBody)
-    Q_PROPERTY(QObject * protectedNode READ protectedNode)
+    Q_PROPERTY(QObject * handlerBody READ handlerBody WRITE setHandlerBody)
+    Q_PROPERTY(QObject * protectedNode READ protectedNode WRITE setProtectedNode)
 
 public:
     Q_INVOKABLE explicit QUmlExceptionHandlerObject(QUmlExceptionHandler *qModelingObject);

@@ -69,9 +69,9 @@ class Q_UML_EXPORT QUmlProfileApplicationObject : public QObject
     Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [ProfileApplication]
-    Q_PROPERTY(QObject * appliedProfile READ appliedProfile)
-    Q_PROPERTY(QObject * applyingPackage READ applyingPackage)
-    Q_PROPERTY(bool isStrict READ isStrict RESET unsetStrict)
+    Q_PROPERTY(QObject * appliedProfile READ appliedProfile WRITE setAppliedProfile)
+    Q_PROPERTY(QObject * applyingPackage READ applyingPackage WRITE setApplyingPackage)
+    Q_PROPERTY(bool isStrict READ isStrict WRITE setStrict RESET unsetStrict)
 
 public:
     Q_INVOKABLE explicit QUmlProfileApplicationObject(QUmlProfileApplication *qModelingObject);

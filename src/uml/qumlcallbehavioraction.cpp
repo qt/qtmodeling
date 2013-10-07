@@ -159,14 +159,14 @@ void QUmlCallBehaviorAction::setBehavior(QUmlBehavior *behavior)
 
 void QUmlCallBehaviorAction::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallBehaviorAction");
-    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::DocumentationRole] = QStringLiteral("The invoked behavior. It must be capable of accepting and returning control.");
-    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("behavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallBehaviorAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::DocumentationRole] = QStringLiteral("The invoked behavior. It must be capable of accepting and returning control.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

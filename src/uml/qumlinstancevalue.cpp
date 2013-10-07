@@ -125,14 +125,14 @@ void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
 
 void QUmlInstanceValue::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceValue");
-    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::DocumentationRole] = QStringLiteral("The instance that is the specified value.");
-    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("instance")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceValue");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::DocumentationRole] = QStringLiteral("The instance that is the specified value.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

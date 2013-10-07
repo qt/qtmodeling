@@ -152,23 +152,23 @@ void QUmlTimeConstraint::setSpecification(QUmlTimeInterval *specification)
 
 void QUmlTimeConstraint::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::DocumentationRole] = QStringLiteral("The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("firstEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("firstEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("firstEvent")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("firstEvent")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("firstEvent")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("firstEvent")][QtModeling::DocumentationRole] = QStringLiteral("The value of firstEvent is related to constrainedElement. If firstEvent is true, then the corresponding observation event is the first time instant the execution enters constrainedElement. If firstEvent is false, then the corresponding observation event is the last time instant the execution is within constrainedElement.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("firstEvent")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("firstEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("firstEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("IntervalConstraint-specification");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTimeConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("IntervalConstraint-specification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTimeConstraint")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

@@ -204,14 +204,14 @@ void QUmlEnumeration::removeOwnedLiteral(QUmlEnumerationLiteral *ownedLiteral)
 
 void QUmlEnumeration::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEnumeration");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of literals for this Enumeration.");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedLiteral")][QtModeling::OppositeEndRole] = QStringLiteral("EnumerationLiteral-enumeration");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEnumeration");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of literals for this Enumeration.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumeration")][QStringLiteral("ownedLiteral")][QtModeling::OppositeEndRole] = QStringLiteral("EnumerationLiteral-enumeration");
 
 }
 

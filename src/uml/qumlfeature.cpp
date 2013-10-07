@@ -147,23 +147,23 @@ void QUmlFeature::setStatic(bool isStatic)
 
 void QUmlFeature::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::DocumentationRole] = QStringLiteral("The Classifiers that have this Feature as a feature.");
-    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_member_memberNamespace-memberNamespace");
-    QModelingObject::propertyDataHash[QStringLiteral("featuringClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-feature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifier")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifier")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifier")][QtModeling::DocumentationRole] = QStringLiteral("The Classifiers that have this Feature as a feature.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_member_memberNamespace-memberNamespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("featuringClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-feature");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).");
-    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isStatic")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether this feature characterizes individual instances classified by the classifier (false) or the classifier itself (true).");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlFeature")][QStringLiteral("isStatic")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

@@ -125,14 +125,14 @@ bool QUmlType::conformsTo(QUmlType *other) const
 
 void QUmlType::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlType");
-    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the owning package of this classifier, if any.");
-    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_packagedElement_owningPackage-owningPackage");
-    QModelingObject::propertyDataHash[QStringLiteral("package")][QtModeling::OppositeEndRole] = QStringLiteral("Package-ownedType");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlType");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the owning package of this classifier, if any.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_packagedElement_owningPackage-owningPackage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlType")][QStringLiteral("package")][QtModeling::OppositeEndRole] = QStringLiteral("Package-ownedType");
 
 }
 

@@ -65,23 +65,23 @@ class Q_UML_EXPORT QUmlAddStructuralFeatureValueActionObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [ActivityNode]
-    Q_PROPERTY(QObject * activity READ activity)
+    Q_PROPERTY(QObject * activity READ activity WRITE setActivity)
     Q_PROPERTY(QSet<QObject *> inGroup READ inGroups)
     Q_PROPERTY(QSet<QObject *> inInterruptibleRegion READ inInterruptibleRegions)
     Q_PROPERTY(QSet<QObject *> inPartition READ inPartitions)
-    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode)
+    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
     Q_PROPERTY(QSet<QObject *> incoming READ incomings)
     Q_PROPERTY(QSet<QObject *> outgoing READ outgoings)
     Q_PROPERTY(QSet<QObject *> redefinedNode READ redefinedNodes)
@@ -92,22 +92,22 @@ class Q_UML_EXPORT QUmlAddStructuralFeatureValueActionObject : public QObject
     // Properties [Action]
     Q_PROPERTY(QObject * context READ context STORED false)
     Q_PROPERTY(QList<QObject *> input READ inputs)
-    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant RESET unsetLocallyReentrant)
+    Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
     Q_PROPERTY(QSet<QObject *> localPostcondition READ localPostconditions)
     Q_PROPERTY(QSet<QObject *> localPrecondition READ localPreconditions)
     Q_PROPERTY(QList<QObject *> output READ outputs)
 
     // Properties [StructuralFeatureAction]
-    Q_PROPERTY(QObject * object READ object)
-    Q_PROPERTY(QObject * structuralFeature READ structuralFeature)
+    Q_PROPERTY(QObject * object READ object WRITE setObject)
+    Q_PROPERTY(QObject * structuralFeature READ structuralFeature WRITE setStructuralFeature)
 
     // Properties [WriteStructuralFeatureAction]
-    Q_PROPERTY(QObject * result READ result)
-    Q_PROPERTY(QObject * value READ value)
+    Q_PROPERTY(QObject * result READ result WRITE setResult)
+    Q_PROPERTY(QObject * value READ value WRITE setValue)
 
     // Properties [AddStructuralFeatureValueAction]
-    Q_PROPERTY(QObject * insertAt READ insertAt)
-    Q_PROPERTY(bool isReplaceAll READ isReplaceAll RESET unsetReplaceAll)
+    Q_PROPERTY(QObject * insertAt READ insertAt WRITE setInsertAt)
+    Q_PROPERTY(bool isReplaceAll READ isReplaceAll WRITE setReplaceAll RESET unsetReplaceAll)
 
 public:
     Q_INVOKABLE explicit QUmlAddStructuralFeatureValueActionObject(QUmlAddStructuralFeatureValueAction *qModelingObject);

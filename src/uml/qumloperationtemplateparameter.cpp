@@ -116,14 +116,14 @@ void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parame
 
 void QUmlOperationTemplateParameter::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperationTemplateParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The operation for this template parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateParameter-parameteredElement");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("parameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-templateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperationTemplateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::DocumentationRole] = QStringLiteral("The operation for this template parameter.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("TemplateParameter-parameteredElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-templateParameter");
 
 }
 

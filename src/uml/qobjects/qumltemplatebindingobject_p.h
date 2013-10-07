@@ -69,9 +69,9 @@ class Q_UML_EXPORT QUmlTemplateBindingObject : public QObject
     Q_PROPERTY(QSet<QObject *> target READ targets)
 
     // Properties [TemplateBinding]
-    Q_PROPERTY(QObject * boundElement READ boundElement)
+    Q_PROPERTY(QObject * boundElement READ boundElement WRITE setBoundElement)
     Q_PROPERTY(QSet<QObject *> parameterSubstitution READ parameterSubstitutions)
-    Q_PROPERTY(QObject * signature READ signature)
+    Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
 
 public:
     Q_INVOKABLE explicit QUmlTemplateBindingObject(QUmlTemplateBinding *qModelingObject);

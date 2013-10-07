@@ -154,14 +154,14 @@ void QUmlActivityParameterNode::setParameter(QUmlParameter *parameter)
 
 void QUmlActivityParameterNode::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityParameterNode");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::DocumentationRole] = QStringLiteral("The parameter the object node will be accepting or providing values for.");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("parameter")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityParameterNode")][QStringLiteral("parameter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityParameterNode")][QStringLiteral("parameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityParameterNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityParameterNode")][QStringLiteral("parameter")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityParameterNode")][QStringLiteral("parameter")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityParameterNode")][QStringLiteral("parameter")][QtModeling::DocumentationRole] = QStringLiteral("The parameter the object node will be accepting or providing values for.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityParameterNode")][QStringLiteral("parameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityParameterNode")][QStringLiteral("parameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityParameterNode")][QStringLiteral("parameter")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

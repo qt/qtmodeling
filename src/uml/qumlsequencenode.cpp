@@ -182,14 +182,14 @@ void QUmlSequenceNode::removeExecutableNode(QUmlExecutableNode *executableNode)
 
 void QUmlSequenceNode::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSequenceNode");
-    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::DocumentationRole] = QStringLiteral("An ordered set of executable nodes.");
-    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-node");
-    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("executableNode")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSequenceNode")][QStringLiteral("executableNode")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSequenceNode")][QStringLiteral("executableNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSequenceNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSequenceNode")][QStringLiteral("executableNode")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSequenceNode")][QStringLiteral("executableNode")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSequenceNode")][QStringLiteral("executableNode")][QtModeling::DocumentationRole] = QStringLiteral("An ordered set of executable nodes.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSequenceNode")][QStringLiteral("executableNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-node");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSequenceNode")][QStringLiteral("executableNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSequenceNode")][QStringLiteral("executableNode")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

@@ -62,9 +62,9 @@ class Q_UML_EXPORT QUmlLinkEndDataObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [LinkEndData]
-    Q_PROPERTY(QObject * end READ end)
+    Q_PROPERTY(QObject * end READ end WRITE setEnd)
     Q_PROPERTY(QSet<QObject *> qualifier READ qualifiers)
-    Q_PROPERTY(QObject * value READ value)
+    Q_PROPERTY(QObject * value READ value WRITE setValue)
 
 public:
     Q_INVOKABLE explicit QUmlLinkEndDataObject(QUmlLinkEndData *qModelingObject);

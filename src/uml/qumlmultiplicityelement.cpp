@@ -307,59 +307,59 @@ int QUmlMultiplicityElement::lowerBound() const
 
 void QUmlMultiplicityElement::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
-    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::DocumentationRole] = QStringLiteral("For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.");
-    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isOrdered")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isOrdered")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isOrdered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isOrdered")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isOrdered")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isOrdered")][QtModeling::DocumentationRole] = QStringLiteral("For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are sequentially ordered.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isOrdered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isOrdered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isOrdered")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
-    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::DocumentationRole] = QStringLiteral("For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.");
-    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isUnique")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isUnique")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isUnique")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isUnique")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isUnique")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isUnique")][QtModeling::DocumentationRole] = QStringLiteral("For a multivalued multiplicity, this attributes specifies whether the values in an instantiation of this element are unique.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isUnique")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isUnique")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isUnique")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the lower bound of the multiplicity interval.");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lower")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lower")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the lower bound of the multiplicity interval.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lower")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
-    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::DocumentationRole] = QStringLiteral("The specification of the lower bound for this multiplicity.");
-    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("lowerValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lowerValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lowerValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lowerValue")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lowerValue")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lowerValue")][QtModeling::DocumentationRole] = QStringLiteral("The specification of the lower bound for this multiplicity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lowerValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lowerValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("lowerValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
-    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the upper bound of the multiplicity interval.");
-    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("upper")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upper")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upper")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upper")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upper")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upper")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the upper bound of the multiplicity interval.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upper")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upper")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upper")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
-    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::DocumentationRole] = QStringLiteral("The specification of the upper bound for this multiplicity.");
-    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("upperValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMultiplicityElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::DocumentationRole] = QStringLiteral("The specification of the upper bound for this multiplicity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

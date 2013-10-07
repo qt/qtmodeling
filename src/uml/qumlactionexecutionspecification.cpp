@@ -133,14 +133,14 @@ void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
 
 void QUmlActionExecutionSpecification::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActionExecutionSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::DocumentationRole] = QStringLiteral("Action whose execution is occurring.");
-    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("action")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActionExecutionSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::DocumentationRole] = QStringLiteral("Action whose execution is occurring.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

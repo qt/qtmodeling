@@ -62,17 +62,17 @@ class Q_UML_EXPORT QUmlConnectorEndObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [MultiplicityElement]
-    Q_PROPERTY(bool isOrdered READ isOrdered RESET unsetOrdered)
-    Q_PROPERTY(bool isUnique READ isUnique RESET unsetUnique)
-    Q_PROPERTY(int lower READ lower RESET unsetLower STORED false)
-    Q_PROPERTY(QObject * lowerValue READ lowerValue)
-    Q_PROPERTY(int upper READ upper RESET unsetUpper STORED false)
-    Q_PROPERTY(QObject * upperValue READ upperValue)
+    Q_PROPERTY(bool isOrdered READ isOrdered WRITE setOrdered RESET unsetOrdered)
+    Q_PROPERTY(bool isUnique READ isUnique WRITE setUnique RESET unsetUnique)
+    Q_PROPERTY(int lower READ lower WRITE setLower RESET unsetLower STORED false)
+    Q_PROPERTY(QObject * lowerValue READ lowerValue WRITE setLowerValue)
+    Q_PROPERTY(int upper READ upper WRITE setUpper RESET unsetUpper STORED false)
+    Q_PROPERTY(QObject * upperValue READ upperValue WRITE setUpperValue)
 
     // Properties [ConnectorEnd]
     Q_PROPERTY(QObject * definingEnd READ definingEnd STORED false)
-    Q_PROPERTY(QObject * partWithPort READ partWithPort)
-    Q_PROPERTY(QObject * role READ role)
+    Q_PROPERTY(QObject * partWithPort READ partWithPort WRITE setPartWithPort)
+    Q_PROPERTY(QObject * role READ role WRITE setRole)
 
 public:
     Q_INVOKABLE explicit QUmlConnectorEndObject(QUmlConnectorEnd *qModelingObject);

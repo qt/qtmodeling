@@ -65,28 +65,28 @@ class Q_UML_EXPORT QUmlControlFlowObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [RedefinableElement]
-    Q_PROPERTY(bool isLeaf READ isLeaf RESET unsetLeaf)
+    Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
     Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
     Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
 
     // Properties [ActivityEdge]
-    Q_PROPERTY(QObject * activity READ activity)
-    Q_PROPERTY(QObject * guard READ guard)
+    Q_PROPERTY(QObject * activity READ activity WRITE setActivity)
+    Q_PROPERTY(QObject * guard READ guard WRITE setGuard)
     Q_PROPERTY(QSet<QObject *> inGroup READ inGroups)
     Q_PROPERTY(QSet<QObject *> inPartition READ inPartitions)
-    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode)
-    Q_PROPERTY(QObject * interrupts READ interrupts)
+    Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
+    Q_PROPERTY(QObject * interrupts READ interrupts WRITE setInterrupts)
     Q_PROPERTY(QSet<QObject *> redefinedEdge READ redefinedEdges)
-    Q_PROPERTY(QObject * source READ source)
-    Q_PROPERTY(QObject * target READ target)
-    Q_PROPERTY(QObject * weight READ weight)
+    Q_PROPERTY(QObject * source READ source WRITE setSource)
+    Q_PROPERTY(QObject * target READ target WRITE setTarget)
+    Q_PROPERTY(QObject * weight READ weight WRITE setWeight)
 
 public:
     Q_INVOKABLE explicit QUmlControlFlowObject(QUmlControlFlow *qModelingObject);

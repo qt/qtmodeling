@@ -201,41 +201,41 @@ QString QUmlElementImport::getName() const
 
 void QUmlElementImport::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("alias")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("alias")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElementImport");
-    QModelingObject::propertyDataHash[QStringLiteral("alias")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("alias")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("alias")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.");
-    QModelingObject::propertyDataHash[QStringLiteral("alias")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("alias")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("alias")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("alias")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("alias")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElementImport");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("alias")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("alias")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("alias")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the name that should be added to the namespace of the importing package in lieu of the name of the imported packagable element. The aliased name must not clash with any other member name in the importing package. By default, no alias is used.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("alias")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("alias")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("alias")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("importedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("importedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElementImport");
-    QModelingObject::propertyDataHash[QStringLiteral("importedElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("importedElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("importedElement")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the PackageableElement whose name is to be added to a Namespace.");
-    QModelingObject::propertyDataHash[QStringLiteral("importedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("importedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
-    QModelingObject::propertyDataHash[QStringLiteral("importedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElementImport");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importedElement")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importedElement")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importedElement")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the PackageableElement whose name is to be added to a Namespace.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-target");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("importingNamespace")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("importingNamespace")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElementImport");
-    QModelingObject::propertyDataHash[QStringLiteral("importingNamespace")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("importingNamespace")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("importingNamespace")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the Namespace that imports a PackageableElement from another Package.");
-    QModelingObject::propertyDataHash[QStringLiteral("importingNamespace")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("importingNamespace")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");
-    QModelingObject::propertyDataHash[QStringLiteral("importingNamespace")][QtModeling::OppositeEndRole] = QStringLiteral("Namespace-elementImport");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importingNamespace")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importingNamespace")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElementImport");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importingNamespace")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importingNamespace")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importingNamespace")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the Namespace that imports a PackageableElement from another Package.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importingNamespace")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importingNamespace")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("importingNamespace")][QtModeling::OppositeEndRole] = QStringLiteral("Namespace-elementImport");
 
-    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElementImport");
-    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.");
-    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("visibility")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlElementImport");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the visibility of the imported PackageableElement within the importing Package. The default visibility is the same as that of the imported element. If the imported element does not have a visibility, it is possible to add visibility to the element import.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

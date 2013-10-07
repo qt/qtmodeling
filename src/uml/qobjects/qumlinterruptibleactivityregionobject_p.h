@@ -65,16 +65,16 @@ class Q_UML_EXPORT QUmlInterruptibleActivityRegionObject : public QObject
 
     // Properties [NamedElement]
     Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
-    Q_PROPERTY(QString name READ name)
-    Q_PROPERTY(QObject * nameExpression READ nameExpression)
+    Q_PROPERTY(QString name READ name WRITE setName)
+    Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
-    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility)
+    Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [ActivityGroup]
     Q_PROPERTY(QSet<QObject *> containedEdge READ containedEdges)
     Q_PROPERTY(QSet<QObject *> containedNode READ containedNodes)
-    Q_PROPERTY(QObject * inActivity READ inActivity)
+    Q_PROPERTY(QObject * inActivity READ inActivity WRITE setInActivity)
     Q_PROPERTY(QSet<QObject *> subgroup READ subgroups)
     Q_PROPERTY(QObject * superGroup READ superGroup)
 

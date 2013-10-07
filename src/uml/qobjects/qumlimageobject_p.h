@@ -62,9 +62,9 @@ class Q_UML_EXPORT QUmlImageObject : public QObject
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Image]
-    Q_PROPERTY(QString content READ content)
-    Q_PROPERTY(QString format READ format)
-    Q_PROPERTY(QString location READ location)
+    Q_PROPERTY(QString content READ content WRITE setContent)
+    Q_PROPERTY(QString format READ format WRITE setFormat)
+    Q_PROPERTY(QString location READ location WRITE setLocation)
 
 public:
     Q_INVOKABLE explicit QUmlImageObject(QUmlImage *qModelingObject);

@@ -122,14 +122,14 @@ void QUmlCallEvent::setOperation(QUmlOperation *operation)
 
 void QUmlCallEvent::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallEvent");
-    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("Designates the operation whose invocation raised the call event.");
-    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallEvent");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("Designates the operation whose invocation raised the call event.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

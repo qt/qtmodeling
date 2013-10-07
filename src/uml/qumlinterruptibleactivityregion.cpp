@@ -187,23 +187,23 @@ void QUmlInterruptibleActivityRegion::removeNode(QUmlActivityNode *node)
 
 void QUmlInterruptibleActivityRegion::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterruptibleActivityRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::DocumentationRole] = QStringLiteral("The edges leaving the region that will abort other tokens flowing in the region.");
-    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("interruptingEdge")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-interrupts");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("interruptingEdge")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("interruptingEdge")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterruptibleActivityRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("interruptingEdge")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("interruptingEdge")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("interruptingEdge")][QtModeling::DocumentationRole] = QStringLiteral("The edges leaving the region that will abort other tokens flowing in the region.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("interruptingEdge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("interruptingEdge")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("interruptingEdge")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-interrupts");
 
-    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterruptibleActivityRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::DocumentationRole] = QStringLiteral("Nodes immediately contained in the group.");
-    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityGroup-containedNode");
-    QModelingObject::propertyDataHash[QStringLiteral("node")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-inInterruptibleRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("node")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("node")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterruptibleActivityRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("node")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("node")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("node")][QtModeling::DocumentationRole] = QStringLiteral("Nodes immediately contained in the group.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("node")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("node")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityGroup-containedNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterruptibleActivityRegion")][QStringLiteral("node")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-inInterruptibleRegion");
 
 }
 

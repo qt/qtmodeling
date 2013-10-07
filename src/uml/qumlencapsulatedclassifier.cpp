@@ -186,14 +186,14 @@ void QUmlEncapsulatedClassifier::removeOwnedPort(QUmlPort *ownedPort)
 
 void QUmlEncapsulatedClassifier::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEncapsulatedClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::DocumentationRole] = QStringLiteral("References a set of ports that an encapsulated classifier owns.");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("StructuredClassifier-ownedAttribute");
-    QModelingObject::propertyDataHash[QStringLiteral("ownedPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEncapsulatedClassifier")][QStringLiteral("ownedPort")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEncapsulatedClassifier")][QStringLiteral("ownedPort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlEncapsulatedClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEncapsulatedClassifier")][QStringLiteral("ownedPort")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEncapsulatedClassifier")][QStringLiteral("ownedPort")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEncapsulatedClassifier")][QStringLiteral("ownedPort")][QtModeling::DocumentationRole] = QStringLiteral("References a set of ports that an encapsulated classifier owns.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEncapsulatedClassifier")][QStringLiteral("ownedPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEncapsulatedClassifier")][QStringLiteral("ownedPort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("StructuredClassifier-ownedAttribute");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlEncapsulatedClassifier")][QStringLiteral("ownedPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

@@ -136,23 +136,23 @@ void QUmlLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
 
 void QUmlLinkEndDestructionData::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("destroyAt")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("destroyAt")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndDestructionData");
-    QModelingObject::propertyDataHash[QStringLiteral("destroyAt")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("destroyAt")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("destroyAt")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
-    QModelingObject::propertyDataHash[QStringLiteral("destroyAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("destroyAt")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("destroyAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("destroyAt")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("destroyAt")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndDestructionData");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("destroyAt")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("destroyAt")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("destroyAt")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the position of an existing link to be destroyed in ordered nonunique association ends. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("destroyAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("destroyAt")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("destroyAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("isDestroyDuplicates")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("isDestroyDuplicates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndDestructionData");
-    QModelingObject::propertyDataHash[QStringLiteral("isDestroyDuplicates")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isDestroyDuplicates")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isDestroyDuplicates")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether to destroy duplicates of the value in nonunique association ends.");
-    QModelingObject::propertyDataHash[QStringLiteral("isDestroyDuplicates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isDestroyDuplicates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isDestroyDuplicates")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndDestructionData");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether to destroy duplicates of the value in nonunique association ends.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

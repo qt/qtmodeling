@@ -171,23 +171,23 @@ void QUmlJoinNode::setJoinSpec(QUmlValueSpecification *joinSpec)
 
 void QUmlJoinNode::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlJoinNode");
-    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether tokens having objects with the same identity are combined into one by the join.");
-    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("isCombineDuplicate")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlJoinNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether tokens having objects with the same identity are combined into one by the join.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("isCombineDuplicate")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlJoinNode");
-    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::DocumentationRole] = QStringLiteral("A specification giving the conditions under which the join with emit a token. Default is 'and'.");
-    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("joinSpec")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlJoinNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::DocumentationRole] = QStringLiteral("A specification giving the conditions under which the join with emit a token. Default is 'and'.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlJoinNode")][QStringLiteral("joinSpec")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

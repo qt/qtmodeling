@@ -192,32 +192,32 @@ void QUmlConstraint::setSpecification(QUmlValueSpecification *specification)
 
 void QUmlConstraint::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of Elements referenced by this Constraint.");
-    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("constrainedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElement")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElement")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElement")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of Elements referenced by this Constraint.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("constrainedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the namespace that owns the NamedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("Namespace-ownedRule");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the namespace that owns the NamedElement.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("context")][QtModeling::OppositeEndRole] = QStringLiteral("Namespace-ownedRule");
 
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConstraint")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

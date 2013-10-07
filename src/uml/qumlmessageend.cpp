@@ -107,14 +107,14 @@ void QUmlMessageEnd::setMessage(QUmlMessage *message)
 
 void QUmlMessageEnd::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessageEnd");
-    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::DocumentationRole] = QStringLiteral("References a Message.");
-    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("message")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessageEnd");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::DocumentationRole] = QStringLiteral("References a Message.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessageEnd")][QStringLiteral("message")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
 }
 

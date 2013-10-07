@@ -64,7 +64,7 @@ class Q_UML_EXPORT QUmlClauseObject : public QObject
     // Properties [Clause]
     Q_PROPERTY(QSet<QObject *> body READ bodies)
     Q_PROPERTY(QList<QObject *> bodyOutput READ bodyOutputs)
-    Q_PROPERTY(QObject * decider READ decider)
+    Q_PROPERTY(QObject * decider READ decider WRITE setDecider)
     Q_PROPERTY(QSet<QObject *> predecessorClause READ predecessorClauses)
     Q_PROPERTY(QSet<QObject *> successorClause READ successorClauses)
     Q_PROPERTY(QSet<QObject *> test READ tests)
