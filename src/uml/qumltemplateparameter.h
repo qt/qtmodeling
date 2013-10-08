@@ -82,8 +82,8 @@ protected:
     QUmlParameterableElement *_parameteredElement;
     QUmlTemplateSignature *_signature;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

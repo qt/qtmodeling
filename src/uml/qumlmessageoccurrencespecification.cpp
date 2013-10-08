@@ -67,6 +67,7 @@ QUmlMessageOccurrenceSpecification::QUmlMessageOccurrenceSpecification(bool crea
 {
     if (createQObject)
         _qObject = new QUmlMessageOccurrenceSpecificationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -107,10 +108,6 @@ QModelingObject *QUmlMessageOccurrenceSpecification::clone() const
     return c;
 }
 
-void QUmlMessageOccurrenceSpecification::setPropertyData()
-{
-}
-
 void QUmlMessageOccurrenceSpecification::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -129,5 +126,9 @@ void QUmlMessageOccurrenceSpecification::setClassForProperty()
     _classForProperty[QStringLiteral("toAfters")] = QStringLiteral("QUmlOccurrenceSpecification");
     _classForProperty[QStringLiteral("toBefores")] = QStringLiteral("QUmlOccurrenceSpecification");
     _classForProperty[QStringLiteral("message")] = QStringLiteral("QUmlMessageEnd");
+}
+
+void QUmlMessageOccurrenceSpecification::setPropertyData()
+{
 }
 

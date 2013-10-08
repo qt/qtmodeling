@@ -70,6 +70,7 @@ QUmlActivityFinalNode::QUmlActivityFinalNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlActivityFinalNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -111,10 +112,6 @@ QModelingObject *QUmlActivityFinalNode::clone() const
     return c;
 }
 
-void QUmlActivityFinalNode::setPropertyData()
-{
-}
-
 void QUmlActivityFinalNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -137,5 +134,9 @@ void QUmlActivityFinalNode::setClassForProperty()
     _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
+}
+
+void QUmlActivityFinalNode::setPropertyData()
+{
 }
 

@@ -77,6 +77,7 @@ QUmlAcceptCallAction::QUmlAcceptCallAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlAcceptCallActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -164,19 +165,6 @@ void QUmlAcceptCallAction::setReturnInformation(QUmlOutputPin *returnInformation
     }
 }
 
-void QUmlAcceptCallAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptCallAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::DocumentationRole] = QStringLiteral("Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlAcceptCallAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -210,5 +198,18 @@ void QUmlAcceptCallAction::setClassForProperty()
     _classForProperty[QStringLiteral("results")] = QStringLiteral("QUmlAcceptEventAction");
     _classForProperty[QStringLiteral("triggers")] = QStringLiteral("QUmlAcceptEventAction");
     _classForProperty[QStringLiteral("returnInformation")] = QStringLiteral("QUmlAcceptCallAction");
+}
+
+void QUmlAcceptCallAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptCallAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::DocumentationRole] = QStringLiteral("Pin where a value is placed containing sufficient information to perform a subsequent reply and return control to the caller. The contents of this value are opaque. It can be passed and copied but it cannot be manipulated by the model.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptCallAction")][QStringLiteral("returnInformation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

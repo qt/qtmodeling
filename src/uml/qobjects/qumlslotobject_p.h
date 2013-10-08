@@ -57,14 +57,14 @@ class Q_UML_EXPORT QUmlSlotObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Slot]
     Q_PROPERTY(QObject * definingFeature READ definingFeature WRITE setDefiningFeature)
     Q_PROPERTY(QObject * owningInstance READ owningInstance WRITE setOwningInstance)
-    Q_PROPERTY(QList<QObject *> value READ values)
+    Q_PROPERTY(QList<QObject *> values READ values)
 
 public:
     Q_INVOKABLE explicit QUmlSlotObject(QUmlSlot *qModelingObject);

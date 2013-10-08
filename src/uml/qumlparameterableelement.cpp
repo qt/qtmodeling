@@ -55,6 +55,7 @@ QUmlParameterableElement::QUmlParameterableElement() :
     _owningTemplateParameter(0),
     _templateParameter(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -147,6 +148,15 @@ bool QUmlParameterableElement::isTemplateParameter() const
     return bool ();
 }
 
+void QUmlParameterableElement::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
+}
+
 void QUmlParameterableElement::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("owningTemplateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -167,14 +177,5 @@ void QUmlParameterableElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlParameterableElement")][QStringLiteral("templateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateParameter-parameteredElement");
 
-}
-
-void QUmlParameterableElement::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
 }
 

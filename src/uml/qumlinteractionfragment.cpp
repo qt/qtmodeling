@@ -63,6 +63,7 @@ QUmlInteractionFragment::QUmlInteractionFragment() :
     _enclosingInteraction(0),
     _enclosingOperand(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -225,6 +226,23 @@ void QUmlInteractionFragment::removeGeneralOrdering(QUmlGeneralOrdering *general
     }
 }
 
+void QUmlInteractionFragment::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("covered")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("enclosingInteraction")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("enclosingOperand")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("generalOrderings")] = QStringLiteral("QUmlInteractionFragment");
+}
+
 void QUmlInteractionFragment::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -254,31 +272,14 @@ void QUmlInteractionFragment::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("enclosingOperand")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("enclosingOperand")][QtModeling::OppositeEndRole] = QStringLiteral("InteractionOperand-fragment");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrdering")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrdering")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionFragment");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrdering")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrdering")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrdering")][QtModeling::DocumentationRole] = QStringLiteral("The general ordering relationships contained in this fragment.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrdering")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrdering")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrdering")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrderings")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrderings")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionFragment");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrderings")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrderings")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrderings")][QtModeling::DocumentationRole] = QStringLiteral("The general ordering relationships contained in this fragment.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrderings")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrderings")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionFragment")][QStringLiteral("generalOrderings")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlInteractionFragment::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("covered")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("enclosingInteraction")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("enclosingOperand")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("generalOrderings")] = QStringLiteral("QUmlInteractionFragment");
 }
 

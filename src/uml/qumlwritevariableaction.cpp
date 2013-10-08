@@ -72,6 +72,7 @@
 QUmlWriteVariableAction::QUmlWriteVariableAction() :
     _value(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -151,19 +152,6 @@ void QUmlWriteVariableAction::setValue(QUmlInputPin *value)
     }
 }
 
-void QUmlWriteVariableAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlWriteVariableAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Value to be added or removed from the variable.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlWriteVariableAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -195,5 +183,18 @@ void QUmlWriteVariableAction::setClassForProperty()
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("variable")] = QStringLiteral("QUmlVariableAction");
     _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlWriteVariableAction");
+}
+
+void QUmlWriteVariableAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlWriteVariableAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Value to be added or removed from the variable.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteVariableAction")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

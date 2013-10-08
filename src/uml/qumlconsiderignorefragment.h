@@ -70,8 +70,8 @@ public:
 protected:
     QSet<QUmlNamedElement *> _messages;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

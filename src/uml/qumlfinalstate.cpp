@@ -76,6 +76,7 @@ QUmlFinalState::QUmlFinalState(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlFinalStateObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -131,10 +132,6 @@ QModelingObject *QUmlFinalState::clone() const
     return c;
 }
 
-void QUmlFinalState::setPropertyData()
-{
-}
-
 void QUmlFinalState::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -172,5 +169,9 @@ void QUmlFinalState::setClassForProperty()
     _classForProperty[QStringLiteral("regions")] = QStringLiteral("QUmlState");
     _classForProperty[QStringLiteral("stateInvariant")] = QStringLiteral("QUmlState");
     _classForProperty[QStringLiteral("submachine")] = QStringLiteral("QUmlState");
+}
+
+void QUmlFinalState::setPropertyData()
+{
 }
 

@@ -162,6 +162,27 @@ void QUmlEnumerationLiteral::setEnumeration(QUmlEnumeration *enumeration)
     }
 }
 
+void QUmlEnumerationLiteral::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("deployedElements")] = QStringLiteral("QUmlDeploymentTarget");
+    _classForProperty[QStringLiteral("deployments")] = QStringLiteral("QUmlDeploymentTarget");
+    _classForProperty[QStringLiteral("slots_")] = QStringLiteral("QUmlInstanceSpecification");
+    _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlInstanceSpecification");
+    _classForProperty[QStringLiteral("classifier")] = QStringLiteral("QUmlEnumerationLiteral");
+    _classForProperty[QStringLiteral("enumeration")] = QStringLiteral("QUmlEnumerationLiteral");
+}
+
 void QUmlEnumerationLiteral::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -182,26 +203,5 @@ void QUmlEnumerationLiteral::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlEnumerationLiteral")][QStringLiteral("enumeration")][QtModeling::OppositeEndRole] = QStringLiteral("Enumeration-ownedLiteral");
 
-}
-
-void QUmlEnumerationLiteral::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
-    _classForProperty[QStringLiteral("deployedElements")] = QStringLiteral("QUmlDeploymentTarget");
-    _classForProperty[QStringLiteral("deployments")] = QStringLiteral("QUmlDeploymentTarget");
-    _classForProperty[QStringLiteral("slots_")] = QStringLiteral("QUmlInstanceSpecification");
-    _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlInstanceSpecification");
-    _classForProperty[QStringLiteral("classifier")] = QStringLiteral("QUmlEnumerationLiteral");
-    _classForProperty[QStringLiteral("enumeration")] = QStringLiteral("QUmlEnumerationLiteral");
 }
 

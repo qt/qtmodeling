@@ -82,6 +82,7 @@ QUmlConditionalNode::QUmlConditionalNode(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlConditionalNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -265,46 +266,6 @@ void QUmlConditionalNode::removeResult(QUmlOutputPin *result)
     }
 }
 
-void QUmlConditionalNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clause")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clause")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clause")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clause")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clause")][QtModeling::DocumentationRole] = QStringLiteral("Set of clauses composing the conditional.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clause")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clause")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clause")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::DocumentationRole] = QStringLiteral("If true, the modeler asserts that at least one test will succeed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::DocumentationRole] = QStringLiteral("If true, the modeler asserts that at most one test will succeed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that constitute the data flow outputs of the conditional.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeOutput");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlConditionalNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -353,5 +314,45 @@ void QUmlConditionalNode::setClassForProperty()
     _classForProperty[QStringLiteral("isAssured")] = QStringLiteral("QUmlConditionalNode");
     _classForProperty[QStringLiteral("isDeterminate")] = QStringLiteral("QUmlConditionalNode");
     _classForProperty[QStringLiteral("results")] = QStringLiteral("QUmlConditionalNode");
+}
+
+void QUmlConditionalNode::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::DocumentationRole] = QStringLiteral("Set of clauses composing the conditional.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("clauses")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::DocumentationRole] = QStringLiteral("If true, the modeler asserts that at least one test will succeed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isAssured")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::DocumentationRole] = QStringLiteral("If true, the modeler asserts that at most one test will succeed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("isDeterminate")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConditionalNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that constitute the data flow outputs of the conditional.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeOutput");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConditionalNode")][QStringLiteral("results")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

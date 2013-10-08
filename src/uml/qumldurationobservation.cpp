@@ -64,6 +64,7 @@ QUmlDurationObservation::QUmlDurationObservation(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDurationObservationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -139,6 +140,23 @@ void QUmlDurationObservation::setFirstEvent(bool firstEvent)
     }
 }
 
+void QUmlDurationObservation::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("event")] = QStringLiteral("QUmlDurationObservation");
+    _classForProperty[QStringLiteral("firstEvent")] = QStringLiteral("QUmlDurationObservation");
+}
+
 void QUmlDurationObservation::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("event")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -159,22 +177,5 @@ void QUmlDurationObservation::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationObservation")][QStringLiteral("firstEvent")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlDurationObservation::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
-    _classForProperty[QStringLiteral("event")] = QStringLiteral("QUmlDurationObservation");
-    _classForProperty[QStringLiteral("firstEvent")] = QStringLiteral("QUmlDurationObservation");
 }
 

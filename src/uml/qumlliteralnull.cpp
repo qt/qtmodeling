@@ -64,6 +64,7 @@ QUmlLiteralNull::QUmlLiteralNull(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlLiteralNullObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -118,10 +119,6 @@ bool QUmlLiteralNull::isNull() const
     return bool ();
 }
 
-void QUmlLiteralNull::setPropertyData()
-{
-}
-
 void QUmlLiteralNull::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -136,5 +133,9 @@ void QUmlLiteralNull::setClassForProperty()
     _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+}
+
+void QUmlLiteralNull::setPropertyData()
+{
 }
 

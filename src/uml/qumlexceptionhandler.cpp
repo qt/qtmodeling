@@ -62,6 +62,7 @@ QUmlExceptionHandler::QUmlExceptionHandler(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExceptionHandlerObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -190,6 +191,17 @@ void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
     }
 }
 
+void QUmlExceptionHandler::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("exceptionInput")] = QStringLiteral("QUmlExceptionHandler");
+    _classForProperty[QStringLiteral("exceptionTypes")] = QStringLiteral("QUmlExceptionHandler");
+    _classForProperty[QStringLiteral("handlerBody")] = QStringLiteral("QUmlExceptionHandler");
+    _classForProperty[QStringLiteral("protectedNode")] = QStringLiteral("QUmlExceptionHandler");
+}
+
 void QUmlExceptionHandler::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionInput")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -201,14 +213,14 @@ void QUmlExceptionHandler::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionInput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionType")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionType")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExceptionHandler");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionType")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionType")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionType")][QtModeling::DocumentationRole] = QStringLiteral("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionType")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionType")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionType")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionTypes")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionTypes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExceptionHandler");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionTypes")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionTypes")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionTypes")][QtModeling::DocumentationRole] = QStringLiteral("The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set, the handler catches the exception and executes its body.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionTypes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionTypes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("exceptionTypes")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("handlerBody")][QtModeling::AggregationRole] = QStringLiteral("none");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("handlerBody")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExceptionHandler");
@@ -228,16 +240,5 @@ void QUmlExceptionHandler::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("protectedNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExceptionHandler")][QStringLiteral("protectedNode")][QtModeling::OppositeEndRole] = QStringLiteral("ExecutableNode-handler");
 
-}
-
-void QUmlExceptionHandler::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("exceptionInput")] = QStringLiteral("QUmlExceptionHandler");
-    _classForProperty[QStringLiteral("exceptionTypes")] = QStringLiteral("QUmlExceptionHandler");
-    _classForProperty[QStringLiteral("handlerBody")] = QStringLiteral("QUmlExceptionHandler");
-    _classForProperty[QStringLiteral("protectedNode")] = QStringLiteral("QUmlExceptionHandler");
 }
 

@@ -59,17 +59,17 @@ class Q_UML_EXPORT QUmlRedefinableTemplateSignatureObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [TemplateSignature]
-    Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameters)
-    Q_PROPERTY(QList<QObject *> parameter READ parameters)
+    Q_PROPERTY(QList<QObject *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QObject *> parameters READ parameters)
     Q_PROPERTY(QObject * template_ READ template_ WRITE setTemplate)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -78,13 +78,13 @@ class Q_UML_EXPORT QUmlRedefinableTemplateSignatureObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
 
     // Properties [RedefinableTemplateSignature]
     Q_PROPERTY(QObject * classifier READ classifier WRITE setClassifier)
-    Q_PROPERTY(QSet<QObject *> extendedSignature READ extendedSignatures)
-    Q_PROPERTY(QSet<QObject *> inheritedParameter READ inheritedParameters STORED false)
+    Q_PROPERTY(QSet<QObject *> extendedSignatures READ extendedSignatures)
+    Q_PROPERTY(QSet<QObject *> inheritedParameters READ inheritedParameters STORED false)
 
 public:
     Q_INVOKABLE explicit QUmlRedefinableTemplateSignatureObject(QUmlRedefinableTemplateSignature *qModelingObject);

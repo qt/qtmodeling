@@ -64,6 +64,7 @@ QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlGeneralOrderingObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -138,6 +139,21 @@ void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
     }
 }
 
+void QUmlGeneralOrdering::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("after")] = QStringLiteral("QUmlGeneralOrdering");
+    _classForProperty[QStringLiteral("before")] = QStringLiteral("QUmlGeneralOrdering");
+}
+
 void QUmlGeneralOrdering::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("after")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -158,20 +174,5 @@ void QUmlGeneralOrdering::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralOrdering")][QStringLiteral("before")][QtModeling::OppositeEndRole] = QStringLiteral("OccurrenceSpecification-toAfter");
 
-}
-
-void QUmlGeneralOrdering::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("after")] = QStringLiteral("QUmlGeneralOrdering");
-    _classForProperty[QStringLiteral("before")] = QStringLiteral("QUmlGeneralOrdering");
 }
 

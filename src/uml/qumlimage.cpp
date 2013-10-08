@@ -56,6 +56,7 @@ QUmlImage::QUmlImage(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlImageObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -138,6 +139,16 @@ void QUmlImage::setLocation(QString location)
     }
 }
 
+void QUmlImage::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("content")] = QStringLiteral("QUmlImage");
+    _classForProperty[QStringLiteral("format")] = QStringLiteral("QUmlImage");
+    _classForProperty[QStringLiteral("location")] = QStringLiteral("QUmlImage");
+}
+
 void QUmlImage::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("content")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -167,15 +178,5 @@ void QUmlImage::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlImage")][QStringLiteral("location")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlImage::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("content")] = QStringLiteral("QUmlImage");
-    _classForProperty[QStringLiteral("format")] = QStringLiteral("QUmlImage");
-    _classForProperty[QStringLiteral("location")] = QStringLiteral("QUmlImage");
 }
 

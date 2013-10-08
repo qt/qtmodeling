@@ -59,8 +59,8 @@ class Q_UML_EXPORT QUmlGeneralizationSetObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ParameterableElement]
@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlGeneralizationSetObject : public QObject
     Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -78,7 +78,7 @@ class Q_UML_EXPORT QUmlGeneralizationSetObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [GeneralizationSet]
-    Q_PROPERTY(QSet<QObject *> generalization READ generalizations)
+    Q_PROPERTY(QSet<QObject *> generalizations READ generalizations)
     Q_PROPERTY(bool isCovering READ isCovering WRITE setCovering RESET unsetCovering)
     Q_PROPERTY(bool isDisjoint READ isDisjoint WRITE setDisjoint RESET unsetDisjoint)
     Q_PROPERTY(QObject * powertype READ powertype WRITE setPowertype)

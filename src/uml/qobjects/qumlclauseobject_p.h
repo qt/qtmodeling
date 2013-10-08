@@ -57,17 +57,17 @@ class Q_UML_EXPORT QUmlClauseObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Clause]
-    Q_PROPERTY(QSet<QObject *> body READ bodies)
-    Q_PROPERTY(QList<QObject *> bodyOutput READ bodyOutputs)
+    Q_PROPERTY(QSet<QObject *> bodies READ bodies)
+    Q_PROPERTY(QList<QObject *> bodyOutputs READ bodyOutputs)
     Q_PROPERTY(QObject * decider READ decider WRITE setDecider)
-    Q_PROPERTY(QSet<QObject *> predecessorClause READ predecessorClauses)
-    Q_PROPERTY(QSet<QObject *> successorClause READ successorClauses)
-    Q_PROPERTY(QSet<QObject *> test READ tests)
+    Q_PROPERTY(QSet<QObject *> predecessorClauses READ predecessorClauses)
+    Q_PROPERTY(QSet<QObject *> successorClauses READ successorClauses)
+    Q_PROPERTY(QSet<QObject *> tests READ tests)
 
 public:
     Q_INVOKABLE explicit QUmlClauseObject(QUmlClause *qModelingObject);

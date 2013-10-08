@@ -61,6 +61,7 @@ QUmlSlot::QUmlSlot(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlSlotObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -175,6 +176,16 @@ void QUmlSlot::removeValue(QUmlValueSpecification *value)
     }
 }
 
+void QUmlSlot::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("definingFeature")] = QStringLiteral("QUmlSlot");
+    _classForProperty[QStringLiteral("owningInstance")] = QStringLiteral("QUmlSlot");
+    _classForProperty[QStringLiteral("values")] = QStringLiteral("QUmlSlot");
+}
+
 void QUmlSlot::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("definingFeature")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -195,24 +206,14 @@ void QUmlSlot::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("owningInstance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("owningInstance")][QtModeling::OppositeEndRole] = QStringLiteral("InstanceSpecification-slot");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSlot");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The value or values corresponding to the defining feature for the owning instance specification.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("values")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("values")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSlot");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("values")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("values")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("values")][QtModeling::DocumentationRole] = QStringLiteral("The value or values corresponding to the defining feature for the owning instance specification.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("values")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("values")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSlot")][QStringLiteral("values")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlSlot::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("definingFeature")] = QStringLiteral("QUmlSlot");
-    _classForProperty[QStringLiteral("owningInstance")] = QStringLiteral("QUmlSlot");
-    _classForProperty[QStringLiteral("values")] = QStringLiteral("QUmlSlot");
 }
 

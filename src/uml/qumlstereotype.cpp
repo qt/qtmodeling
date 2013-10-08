@@ -93,6 +93,7 @@ QUmlStereotype::QUmlStereotype(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlStereotypeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -250,28 +251,6 @@ QUmlProfile *QUmlStereotype::containingProfile() const
     return 0;
 }
 
-void QUmlStereotype::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icon")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icon")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStereotype");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icon")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icon")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icon")][QtModeling::DocumentationRole] = QStringLiteral("Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icon")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icon")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icon")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStereotype");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::DocumentationRole] = QStringLiteral("The profile that directly or indirectly contains this stereotype.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlStereotype::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -326,5 +305,27 @@ void QUmlStereotype::setClassForProperty()
     _classForProperty[QStringLiteral("superClasses")] = QStringLiteral("QUmlClass");
     _classForProperty[QStringLiteral("icons")] = QStringLiteral("QUmlStereotype");
     _classForProperty[QStringLiteral("profile")] = QStringLiteral("QUmlStereotype");
+}
+
+void QUmlStereotype::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icons")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icons")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStereotype");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icons")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icons")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icons")][QtModeling::DocumentationRole] = QStringLiteral("Stereotype can change the graphical appearance of the extended model element by using attached icons. When this association is not null, it references the location of the icon content to be displayed within diagrams presenting the extended model elements.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icons")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icons")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("icons")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStereotype");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::DocumentationRole] = QStringLiteral("The profile that directly or indirectly contains this stereotype.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStereotype")][QStringLiteral("profile")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

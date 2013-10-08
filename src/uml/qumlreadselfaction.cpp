@@ -75,6 +75,7 @@ QUmlReadSelfAction::QUmlReadSelfAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlReadSelfActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -157,19 +158,6 @@ void QUmlReadSelfAction::setResult(QUmlOutputPin *result)
     }
 }
 
-void QUmlReadSelfAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadSelfAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the hosting object is placed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlReadSelfAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -200,5 +188,18 @@ void QUmlReadSelfAction::setClassForProperty()
     _classForProperty[QStringLiteral("localPreconditions")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("result")] = QStringLiteral("QUmlReadSelfAction");
+}
+
+void QUmlReadSelfAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadSelfAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the hosting object is placed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadSelfAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

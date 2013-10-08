@@ -72,6 +72,7 @@
 QUmlInvocationAction::QUmlInvocationAction() :
     _onPort(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -181,28 +182,6 @@ void QUmlInvocationAction::setOnPort(QUmlPort *onPort)
     }
 }
 
-void QUmlInvocationAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("argument")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("argument")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInvocationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("argument")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("argument")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("argument")][QtModeling::DocumentationRole] = QStringLiteral("Specification of the ordered set of argument values that appears during execution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("argument")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("argument")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("argument")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInvocationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlInvocationAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -234,5 +213,27 @@ void QUmlInvocationAction::setClassForProperty()
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("arguments")] = QStringLiteral("QUmlInvocationAction");
     _classForProperty[QStringLiteral("onPort")] = QStringLiteral("QUmlInvocationAction");
+}
+
+void QUmlInvocationAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInvocationAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::DocumentationRole] = QStringLiteral("Specification of the ordered set of argument values that appears during execution.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("arguments")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInvocationAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInvocationAction")][QStringLiteral("onPort")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

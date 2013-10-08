@@ -75,6 +75,7 @@ QUmlParameter::QUmlParameter(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlParameterObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -319,16 +320,47 @@ void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
     }
 }
 
+void QUmlParameter::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlTypedElement");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("ends")] = QStringLiteral("QUmlConnectableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlConnectableElement");
+    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlParameter");
+    _classForProperty[QStringLiteral("defaultValue")] = QStringLiteral("QUmlParameter");
+    _classForProperty[QStringLiteral("direction")] = QStringLiteral("QUmlParameter");
+    _classForProperty[QStringLiteral("effect")] = QStringLiteral("QUmlParameter");
+    _classForProperty[QStringLiteral("isException")] = QStringLiteral("QUmlParameter");
+    _classForProperty[QStringLiteral("isStream")] = QStringLiteral("QUmlParameter");
+    _classForProperty[QStringLiteral("operation")] = QStringLiteral("QUmlParameter");
+    _classForProperty[QStringLiteral("parameterSets")] = QStringLiteral("QUmlParameter");
+}
+
 void QUmlParameter::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a String that represents a value to be used when no argument is supplied for the Parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::DocumentationRole] = QStringLiteral("Specifies a String that represents a value to be used when no argument is supplied for the Parameter.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("default_")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("defaultValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
@@ -384,45 +416,14 @@ void QUmlParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_ownedParameter_ownerFormalParam-ownerFormalParam");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-ownedParameter");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSet")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSet")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSet")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSet")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSet")][QtModeling::DocumentationRole] = QStringLiteral("The parameter sets containing the parameter. See ParameterSet.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSet")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSet")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSet")][QtModeling::OppositeEndRole] = QStringLiteral("ParameterSet-parameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::DocumentationRole] = QStringLiteral("The parameter sets containing the parameter. See ParameterSet.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlParameter")][QStringLiteral("parameterSets")][QtModeling::OppositeEndRole] = QStringLiteral("ParameterSet-parameter");
 
-}
-
-void QUmlParameter::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlTypedElement");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("ends")] = QStringLiteral("QUmlConnectableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlConnectableElement");
-    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("defaultValue")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("direction")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("effect")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("isException")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("isStream")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("operation")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("parameterSets")] = QStringLiteral("QUmlParameter");
 }
 

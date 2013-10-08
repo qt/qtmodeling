@@ -57,13 +57,13 @@ class Q_UML_EXPORT QUmlTemplateSignatureObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [TemplateSignature]
-    Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameters)
-    Q_PROPERTY(QList<QObject *> parameter READ parameters)
+    Q_PROPERTY(QList<QObject *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QList<QObject *> parameters READ parameters)
     Q_PROPERTY(QObject * template_ READ template_ WRITE setTemplate)
 
 public:

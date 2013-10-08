@@ -67,6 +67,7 @@ QUmlActivityNode::QUmlActivityNode() :
     _activity(0),
     _inStructuredNode(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -409,82 +410,6 @@ void QUmlActivityNode::removeRedefinedNode(QUmlActivityNode *redefinedNode)
     }
 }
 
-void QUmlActivityNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::DocumentationRole] = QStringLiteral("Activity containing the node.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::OppositeEndRole] = QStringLiteral("Activity-node");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroup")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroup")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroup")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroup")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroup")][QtModeling::DocumentationRole] = QStringLiteral("Groups containing the node.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroup")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroup")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroup")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-containedNode");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegion")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegion")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegion")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegion")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegion")][QtModeling::DocumentationRole] = QStringLiteral("Interruptible regions containing the node.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegion")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegion")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityNode-inGroup");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegion")][QtModeling::OppositeEndRole] = QStringLiteral("InterruptibleActivityRegion-node");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartition")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartition")][QtModeling::DocumentationRole] = QStringLiteral("Partitions containing the node.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityNode-inGroup");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartition")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityPartition-node");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::DocumentationRole] = QStringLiteral("Structured activity node containing the node.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityNode-inGroup Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::OppositeEndRole] = QStringLiteral("StructuredActivityNode-node");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incoming")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incoming")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incoming")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incoming")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incoming")][QtModeling::DocumentationRole] = QStringLiteral("Edges that have the node as target.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incoming")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incoming")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incoming")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-target");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoing")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoing")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoing")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoing")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoing")][QtModeling::DocumentationRole] = QStringLiteral("Edges that have the node as source.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoing")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoing")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoing")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-source");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNode")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNode")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNode")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNode")][QtModeling::DocumentationRole] = QStringLiteral("Inherited nodes replaced by this node in a specialization of the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNode")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlActivityNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -507,5 +432,81 @@ void QUmlActivityNode::setClassForProperty()
     _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
+}
+
+void QUmlActivityNode::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::DocumentationRole] = QStringLiteral("Activity containing the node.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("activity")][QtModeling::OppositeEndRole] = QStringLiteral("Activity-node");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroups")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroups")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroups")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroups")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroups")][QtModeling::DocumentationRole] = QStringLiteral("Groups containing the node.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroups")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroups")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inGroups")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-containedNode");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegions")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegions")][QtModeling::DocumentationRole] = QStringLiteral("Interruptible regions containing the node.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityNode-inGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inInterruptibleRegions")][QtModeling::OppositeEndRole] = QStringLiteral("InterruptibleActivityRegion-node");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartitions")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartitions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartitions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartitions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartitions")][QtModeling::DocumentationRole] = QStringLiteral("Partitions containing the node.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartitions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartitions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityNode-inGroup");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inPartitions")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityPartition-node");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::DocumentationRole] = QStringLiteral("Structured activity node containing the node.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("ActivityNode-inGroup Element-owner");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("inStructuredNode")][QtModeling::OppositeEndRole] = QStringLiteral("StructuredActivityNode-node");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incomings")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incomings")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incomings")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incomings")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incomings")][QtModeling::DocumentationRole] = QStringLiteral("Edges that have the node as target.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incomings")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incomings")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("incomings")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-target");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoings")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoings")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoings")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoings")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoings")][QtModeling::DocumentationRole] = QStringLiteral("Edges that have the node as source.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoings")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoings")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("outgoings")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-source");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNodes")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNodes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivityNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNodes")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNodes")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNodes")][QtModeling::DocumentationRole] = QStringLiteral("Inherited nodes replaced by this node in a specialization of the activity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNodes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNodes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivityNode")][QStringLiteral("redefinedNodes")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -91,8 +91,8 @@ protected:
     QSet<QUmlConstraint *> _localPreconditions;
     QList<QUmlOutputPin *> _outputs;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

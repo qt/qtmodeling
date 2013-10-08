@@ -77,6 +77,7 @@ QUmlBroadcastSignalAction::QUmlBroadcastSignalAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlBroadcastSignalActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -154,19 +155,6 @@ void QUmlBroadcastSignalAction::setSignal(QUmlSignal *signal)
     }
 }
 
-void QUmlBroadcastSignalAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBroadcastSignalAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The specification of signal object transmitted to the target objects.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlBroadcastSignalAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -199,5 +187,18 @@ void QUmlBroadcastSignalAction::setClassForProperty()
     _classForProperty[QStringLiteral("arguments")] = QStringLiteral("QUmlInvocationAction");
     _classForProperty[QStringLiteral("onPort")] = QStringLiteral("QUmlInvocationAction");
     _classForProperty[QStringLiteral("signal")] = QStringLiteral("QUmlBroadcastSignalAction");
+}
+
+void QUmlBroadcastSignalAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBroadcastSignalAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The specification of signal object transmitted to the target objects.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBroadcastSignalAction")][QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -75,6 +75,7 @@ QUmlDataStoreNode::QUmlDataStoreNode(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDataStoreNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -126,10 +127,6 @@ QModelingObject *QUmlDataStoreNode::clone() const
     return c;
 }
 
-void QUmlDataStoreNode::setPropertyData()
-{
-}
-
 void QUmlDataStoreNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -158,5 +155,9 @@ void QUmlDataStoreNode::setClassForProperty()
     _classForProperty[QStringLiteral("ordering")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("selection")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("upperBound")] = QStringLiteral("QUmlObjectNode");
+}
+
+void QUmlDataStoreNode::setPropertyData()
+{
 }
 

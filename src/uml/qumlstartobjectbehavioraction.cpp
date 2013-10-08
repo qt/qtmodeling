@@ -76,6 +76,7 @@ QUmlStartObjectBehaviorAction::QUmlStartObjectBehaviorAction(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlStartObjectBehaviorActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -165,19 +166,6 @@ void QUmlStartObjectBehaviorAction::setObject(QUmlInputPin *object)
     }
 }
 
-void QUmlStartObjectBehaviorAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStartObjectBehaviorAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Holds the object which is either a behavior to be started or has a classifier behavior to be started.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlStartObjectBehaviorAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -212,5 +200,18 @@ void QUmlStartObjectBehaviorAction::setClassForProperty()
     _classForProperty[QStringLiteral("isSynchronous")] = QStringLiteral("QUmlCallAction");
     _classForProperty[QStringLiteral("results")] = QStringLiteral("QUmlCallAction");
     _classForProperty[QStringLiteral("object")] = QStringLiteral("QUmlStartObjectBehaviorAction");
+}
+
+void QUmlStartObjectBehaviorAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStartObjectBehaviorAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Holds the object which is either a behavior to be started or has a classifier behavior to be started.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStartObjectBehaviorAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

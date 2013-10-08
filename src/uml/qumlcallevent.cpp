@@ -65,6 +65,7 @@ QUmlCallEvent::QUmlCallEvent(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCallEventObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -120,19 +121,6 @@ void QUmlCallEvent::setOperation(QUmlOperation *operation)
     }
 }
 
-void QUmlCallEvent::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallEvent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("Designates the operation whose invocation raised the call event.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlCallEvent::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -147,5 +135,18 @@ void QUmlCallEvent::setClassForProperty()
     _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
     _classForProperty[QStringLiteral("operation")] = QStringLiteral("QUmlCallEvent");
+}
+
+void QUmlCallEvent::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallEvent");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("Designates the operation whose invocation raised the call event.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallEvent")][QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

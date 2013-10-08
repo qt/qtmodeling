@@ -57,6 +57,7 @@ QUmlMultiplicityElement::QUmlMultiplicityElement() :
     _lowerValue(0),
     _upperValue(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -305,6 +306,19 @@ int QUmlMultiplicityElement::lowerBound() const
 //    return int ();
 //}
 
+void QUmlMultiplicityElement::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
+}
+
 void QUmlMultiplicityElement::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("isOrdered")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -361,18 +375,5 @@ void QUmlMultiplicityElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlMultiplicityElement")][QStringLiteral("upperValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlMultiplicityElement::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
 }
 

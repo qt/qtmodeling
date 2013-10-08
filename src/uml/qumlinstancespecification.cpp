@@ -69,6 +69,7 @@ QUmlInstanceSpecification::QUmlInstanceSpecification(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlInstanceSpecificationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -218,37 +219,6 @@ void QUmlInstanceSpecification::setSpecification(QUmlValueSpecification *specifi
     }
 }
 
-void QUmlInstanceSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slot")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slot")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slot")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slot")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slot")][QtModeling::DocumentationRole] = QStringLiteral("A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slot")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slot")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slot")][QtModeling::OppositeEndRole] = QStringLiteral("Slot-owningInstance");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A specification of how to compute, derive, or construct the instance.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlInstanceSpecification::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -267,5 +237,36 @@ void QUmlInstanceSpecification::setClassForProperty()
     _classForProperty[QStringLiteral("classifiers")] = QStringLiteral("QUmlInstanceSpecification");
     _classForProperty[QStringLiteral("slots_")] = QStringLiteral("QUmlInstanceSpecification");
     _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlInstanceSpecification");
+}
+
+void QUmlInstanceSpecification::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::DocumentationRole] = QStringLiteral("The classifier or classifiers of the represented instance. If multiple classifiers are specified, the instance is classified by all of them.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("classifiers")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::DocumentationRole] = QStringLiteral("A slot giving the value or values of a structural feature of the instance. An instance specification can have one slot per structural feature of its classifiers, including inherited features. It is not necessary to model a slot for each structural feature, in which case the instance specification is a partial description.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("slots_")][QtModeling::OppositeEndRole] = QStringLiteral("Slot-owningInstance");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A specification of how to compute, derive, or construct the instance.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceSpecification")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

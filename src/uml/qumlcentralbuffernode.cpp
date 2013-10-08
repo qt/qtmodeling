@@ -74,6 +74,7 @@ QUmlCentralBufferNode::QUmlCentralBufferNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlCentralBufferNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -125,10 +126,6 @@ QModelingObject *QUmlCentralBufferNode::clone() const
     return c;
 }
 
-void QUmlCentralBufferNode::setPropertyData()
-{
-}
-
 void QUmlCentralBufferNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -157,5 +154,9 @@ void QUmlCentralBufferNode::setClassForProperty()
     _classForProperty[QStringLiteral("ordering")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("selection")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("upperBound")] = QStringLiteral("QUmlObjectNode");
+}
+
+void QUmlCentralBufferNode::setPropertyData()
+{
 }
 

@@ -82,6 +82,7 @@ QUmlCommunicationPath::QUmlCommunicationPath(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCommunicationPathObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -150,10 +151,6 @@ QModelingObject *QUmlCommunicationPath::clone() const
     return c;
 }
 
-void QUmlCommunicationPath::setPropertyData()
-{
-}
-
 void QUmlCommunicationPath::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -199,5 +196,9 @@ void QUmlCommunicationPath::setClassForProperty()
     _classForProperty[QStringLiteral("memberEnds")] = QStringLiteral("QUmlAssociation");
     _classForProperty[QStringLiteral("navigableOwnedEnds")] = QStringLiteral("QUmlAssociation");
     _classForProperty[QStringLiteral("ownedEnds")] = QStringLiteral("QUmlAssociation");
+}
+
+void QUmlCommunicationPath::setPropertyData()
+{
 }
 

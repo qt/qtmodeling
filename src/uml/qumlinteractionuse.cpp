@@ -71,6 +71,7 @@ QUmlInteractionUse::QUmlInteractionUse(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlInteractionUseObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -267,25 +268,47 @@ void QUmlInteractionUse::setReturnValueRecipient(QUmlProperty *returnValueRecipi
     }
 }
 
+void QUmlInteractionUse::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("covered")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("enclosingInteraction")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("enclosingOperand")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("generalOrderings")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("actualGates")] = QStringLiteral("QUmlInteractionUse");
+    _classForProperty[QStringLiteral("arguments")] = QStringLiteral("QUmlInteractionUse");
+    _classForProperty[QStringLiteral("refersTo")] = QStringLiteral("QUmlInteractionUse");
+    _classForProperty[QStringLiteral("returnValue")] = QStringLiteral("QUmlInteractionUse");
+    _classForProperty[QStringLiteral("returnValueRecipient")] = QStringLiteral("QUmlInteractionUse");
+}
+
 void QUmlInteractionUse::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGate")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGate")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGate")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGate")][QtModeling::DocumentationRole] = QStringLiteral("The actual gates of the InteractionUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGate")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::DocumentationRole] = QStringLiteral("The actual gates of the InteractionUse");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("actualGates")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("argument")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("argument")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("argument")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("argument")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("argument")][QtModeling::DocumentationRole] = QStringLiteral("The actual arguments of the Interaction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("argument")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("argument")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("argument")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::DocumentationRole] = QStringLiteral("The actual arguments of the Interaction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("arguments")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::AggregationRole] = QStringLiteral("none");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("refersTo")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionUse");
@@ -314,27 +337,5 @@ void QUmlInteractionUse::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionUse")][QStringLiteral("returnValueRecipient")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlInteractionUse::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("covered")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("enclosingInteraction")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("enclosingOperand")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("generalOrderings")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("actualGates")] = QStringLiteral("QUmlInteractionUse");
-    _classForProperty[QStringLiteral("arguments")] = QStringLiteral("QUmlInteractionUse");
-    _classForProperty[QStringLiteral("refersTo")] = QStringLiteral("QUmlInteractionUse");
-    _classForProperty[QStringLiteral("returnValue")] = QStringLiteral("QUmlInteractionUse");
-    _classForProperty[QStringLiteral("returnValueRecipient")] = QStringLiteral("QUmlInteractionUse");
 }
 

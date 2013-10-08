@@ -138,8 +138,8 @@ protected:
     QSet<QUmlProperty *> _redefinedProperties;
     QSet<QUmlProperty *> _subsettedProperties;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

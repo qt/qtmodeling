@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlFinalStateObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -72,26 +72,26 @@ class Q_UML_EXPORT QUmlFinalStateObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
 
     // Properties [Vertex]
     Q_PROPERTY(QObject * container READ container WRITE setContainer)
-    Q_PROPERTY(QSet<QObject *> incoming READ incomings STORED false)
-    Q_PROPERTY(QSet<QObject *> outgoing READ outgoings STORED false)
+    Q_PROPERTY(QSet<QObject *> incomings READ incomings STORED false)
+    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings STORED false)
 
     // Properties [State]
-    Q_PROPERTY(QSet<QObject *> connection READ connections)
-    Q_PROPERTY(QSet<QObject *> connectionPoint READ connectionPoints)
-    Q_PROPERTY(QSet<QObject *> deferrableTrigger READ deferrableTriggers)
+    Q_PROPERTY(QSet<QObject *> connections READ connections)
+    Q_PROPERTY(QSet<QObject *> connectionPoints READ connectionPoints)
+    Q_PROPERTY(QSet<QObject *> deferrableTriggers READ deferrableTriggers)
     Q_PROPERTY(QObject * doActivity READ doActivity WRITE setDoActivity)
     Q_PROPERTY(QObject * entry READ entry WRITE setEntry)
     Q_PROPERTY(QObject * exit READ exit WRITE setExit)
@@ -101,7 +101,7 @@ class Q_UML_EXPORT QUmlFinalStateObject : public QObject
     Q_PROPERTY(bool isSubmachineState READ isSubmachineState RESET unsetSubmachineState STORED false)
     Q_PROPERTY(QObject * redefinedState READ redefinedState WRITE setRedefinedState)
     Q_PROPERTY(QObject * redefinitionContext READ redefinitionContext STORED false)
-    Q_PROPERTY(QSet<QObject *> region READ regions)
+    Q_PROPERTY(QSet<QObject *> regions READ regions)
     Q_PROPERTY(QObject * stateInvariant READ stateInvariant WRITE setStateInvariant)
     Q_PROPERTY(QObject * submachine READ submachine WRITE setSubmachine)
 

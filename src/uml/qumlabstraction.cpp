@@ -66,6 +66,7 @@ QUmlAbstraction::QUmlAbstraction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlAbstractionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -134,19 +135,6 @@ void QUmlAbstraction::setMapping(QUmlOpaqueExpression *mapping)
     }
 }
 
-void QUmlAbstraction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAbstraction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::DocumentationRole] = QStringLiteral("An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlAbstraction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -166,5 +154,18 @@ void QUmlAbstraction::setClassForProperty()
     _classForProperty[QStringLiteral("clients")] = QStringLiteral("QUmlDependency");
     _classForProperty[QStringLiteral("suppliers")] = QStringLiteral("QUmlDependency");
     _classForProperty[QStringLiteral("mapping")] = QStringLiteral("QUmlAbstraction");
+}
+
+void QUmlAbstraction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAbstraction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::DocumentationRole] = QStringLiteral("An composition of an Expression that states the abstraction relationship between the supplier and the client. In some cases, such as Derivation, it is usually formal and unidirectional; in other cases, such as Trace, it is usually informal and bidirectional. The mapping expression is optional and may be omitted if the precise relationship between the elements is not specified.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAbstraction")][QStringLiteral("mapping")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

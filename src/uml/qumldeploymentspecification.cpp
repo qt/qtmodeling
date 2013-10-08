@@ -87,6 +87,7 @@ QUmlDeploymentSpecification::QUmlDeploymentSpecification(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDeploymentSpecificationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -227,37 +228,6 @@ void QUmlDeploymentSpecification::setExecutionLocation(QString executionLocation
     }
 }
 
-void QUmlDeploymentSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeploymentSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::DocumentationRole] = QStringLiteral("The deployment with which the DeploymentSpecification is associated.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::OppositeEndRole] = QStringLiteral("Deployment-configuration");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeploymentSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::DocumentationRole] = QStringLiteral("The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeploymentSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::DocumentationRole] = QStringLiteral("The location where a component Artifact executes. This may be a local or remote location.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlDeploymentSpecification::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -305,5 +275,36 @@ void QUmlDeploymentSpecification::setClassForProperty()
     _classForProperty[QStringLiteral("deployment")] = QStringLiteral("QUmlDeploymentSpecification");
     _classForProperty[QStringLiteral("deploymentLocation")] = QStringLiteral("QUmlDeploymentSpecification");
     _classForProperty[QStringLiteral("executionLocation")] = QStringLiteral("QUmlDeploymentSpecification");
+}
+
+void QUmlDeploymentSpecification::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeploymentSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::DocumentationRole] = QStringLiteral("The deployment with which the DeploymentSpecification is associated.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deployment")][QtModeling::OppositeEndRole] = QStringLiteral("Deployment-configuration");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeploymentSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::DocumentationRole] = QStringLiteral("The location where an Artifact is deployed onto a Node. This is typically a 'directory' or 'memory address'.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("deploymentLocation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDeploymentSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::DocumentationRole] = QStringLiteral("The location where a component Artifact executes. This may be a local or remote location.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDeploymentSpecification")][QStringLiteral("executionLocation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

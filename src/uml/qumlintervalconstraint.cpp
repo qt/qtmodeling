@@ -67,6 +67,7 @@ QUmlIntervalConstraint::QUmlIntervalConstraint(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlIntervalConstraintObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -127,19 +128,6 @@ void QUmlIntervalConstraint::setSpecification(QUmlInterval *specification)
     }
 }
 
-void QUmlIntervalConstraint::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlIntervalConstraint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Constraint-specification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlIntervalConstraint::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -156,5 +144,18 @@ void QUmlIntervalConstraint::setClassForProperty()
     _classForProperty[QStringLiteral("constrainedElements")] = QStringLiteral("QUmlConstraint");
     _classForProperty[QStringLiteral("context")] = QStringLiteral("QUmlConstraint");
     _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlIntervalConstraint");
+}
+
+void QUmlIntervalConstraint::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlIntervalConstraint");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::DocumentationRole] = QStringLiteral("A condition that must be true when evaluated in order for the constraint to be satisfied.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("Constraint-specification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlIntervalConstraint")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

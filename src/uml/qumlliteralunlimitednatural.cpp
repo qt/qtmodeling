@@ -65,6 +65,7 @@ QUmlLiteralUnlimitedNatural::QUmlLiteralUnlimitedNatural(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLiteralUnlimitedNaturalObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -142,19 +143,6 @@ int QUmlLiteralUnlimitedNatural::unlimitedValue() const
     return int ();
 }
 
-void QUmlLiteralUnlimitedNatural::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralUnlimitedNatural");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified UnlimitedNatural value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlLiteralUnlimitedNatural::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -170,5 +158,18 @@ void QUmlLiteralUnlimitedNatural::setClassForProperty()
     _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
     _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLiteralUnlimitedNatural");
+}
+
+void QUmlLiteralUnlimitedNatural::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralUnlimitedNatural");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified UnlimitedNatural value.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralUnlimitedNatural")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

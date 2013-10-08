@@ -60,6 +60,7 @@
  */
 QUmlLiteralSpecification::QUmlLiteralSpecification()
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -87,10 +88,6 @@ QModelingObject *QUmlLiteralSpecification::clone() const
     return c;
 }
 
-void QUmlLiteralSpecification::setPropertyData()
-{
-}
-
 void QUmlLiteralSpecification::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -105,5 +102,9 @@ void QUmlLiteralSpecification::setClassForProperty()
     _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+}
+
+void QUmlLiteralSpecification::setPropertyData()
+{
 }
 

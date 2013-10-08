@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlReceptionObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -72,29 +72,29 @@ class Q_UML_EXPORT QUmlReceptionObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
 
     // Properties [Feature]
-    Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifiers)
+    Q_PROPERTY(QSet<QObject *> featuringClassifiers READ featuringClassifiers)
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
 
     // Properties [BehavioralFeature]
     Q_PROPERTY(QtUml::CallConcurrencyKind concurrency READ concurrency WRITE setConcurrency RESET unsetConcurrency)
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
-    Q_PROPERTY(QSet<QObject *> method READ methods)
-    Q_PROPERTY(QList<QObject *> ownedParameter READ ownedParameters)
-    Q_PROPERTY(QSet<QObject *> ownedParameterSet READ ownedParameterSets)
-    Q_PROPERTY(QSet<QObject *> raisedException READ raisedExceptions)
+    Q_PROPERTY(QSet<QObject *> methods READ methods)
+    Q_PROPERTY(QList<QObject *> ownedParameters READ ownedParameters)
+    Q_PROPERTY(QSet<QObject *> ownedParameterSets READ ownedParameterSets)
+    Q_PROPERTY(QSet<QObject *> raisedExceptions READ raisedExceptions)
 
     // Properties [Reception]
     Q_PROPERTY(QObject * signal READ signal WRITE setSignal)

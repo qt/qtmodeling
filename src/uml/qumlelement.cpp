@@ -183,6 +183,13 @@ bool QUmlElement::mustBeOwned() const
     return true;
 }
 
+void QUmlElement::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+}
+
 void QUmlElement::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("ownedComments")][QtModeling::AggregationRole] = QStringLiteral("composite");
@@ -212,13 +219,6 @@ void QUmlElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlElement")][QStringLiteral("owner")][QtModeling::OppositeEndRole] = QStringLiteral("Element-ownedElement");
 
-}
-
-void QUmlElement::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
 }
 
 void QUmlElement::allOwnedElements(QSet<QUmlElement *> &allOwnedElements_) const

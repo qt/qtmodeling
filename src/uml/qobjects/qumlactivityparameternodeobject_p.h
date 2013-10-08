@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlActivityParameterNodeObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -73,24 +73,24 @@ class Q_UML_EXPORT QUmlActivityParameterNodeObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
 
     // Properties [ActivityNode]
     Q_PROPERTY(QObject * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QSet<QObject *> inGroup READ inGroups)
-    Q_PROPERTY(QSet<QObject *> inInterruptibleRegion READ inInterruptibleRegions)
-    Q_PROPERTY(QSet<QObject *> inPartition READ inPartitions)
+    Q_PROPERTY(QSet<QObject *> inGroups READ inGroups)
+    Q_PROPERTY(QSet<QObject *> inInterruptibleRegions READ inInterruptibleRegions)
+    Q_PROPERTY(QSet<QObject *> inPartitions READ inPartitions)
     Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QSet<QObject *> incoming READ incomings)
-    Q_PROPERTY(QSet<QObject *> outgoing READ outgoings)
-    Q_PROPERTY(QSet<QObject *> redefinedNode READ redefinedNodes)
+    Q_PROPERTY(QSet<QObject *> incomings READ incomings)
+    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings)
+    Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes)
 
     // Properties [TypedElement]
     Q_PROPERTY(QObject * type READ type WRITE setType)
 
     // Properties [ObjectNode]
-    Q_PROPERTY(QSet<QObject *> inState READ inStates)
+    Q_PROPERTY(QSet<QObject *> inStates READ inStates)
     Q_PROPERTY(bool isControlType READ isControlType WRITE setControlType RESET unsetControlType)
     Q_PROPERTY(QtUml::ObjectNodeOrderingKind ordering READ ordering WRITE setOrdering RESET unsetOrdering)
     Q_PROPERTY(QObject * selection READ selection WRITE setSelection)

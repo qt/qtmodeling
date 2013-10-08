@@ -81,6 +81,7 @@ QUmlExpansionRegion::QUmlExpansionRegion(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExpansionRegionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -253,37 +254,6 @@ void QUmlExpansionRegion::removeOutputElement(QUmlExpansionNode *outputElement)
     }
 }
 
-void QUmlExpansionRegion::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElement")][QtModeling::DocumentationRole] = QStringLiteral("An object node that holds a separate element of the input collection during each of the multiple executions of the region.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElement")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionNode-regionAsInput");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::DocumentationRole] = QStringLiteral("The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionRegion");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElement")][QtModeling::DocumentationRole] = QStringLiteral("An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElement")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionNode-regionAsOutput");
-
-}
-
 void QUmlExpansionRegion::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -332,5 +302,36 @@ void QUmlExpansionRegion::setClassForProperty()
     _classForProperty[QStringLiteral("inputElements")] = QStringLiteral("QUmlExpansionRegion");
     _classForProperty[QStringLiteral("mode")] = QStringLiteral("QUmlExpansionRegion");
     _classForProperty[QStringLiteral("outputElements")] = QStringLiteral("QUmlExpansionRegion");
+}
+
+void QUmlExpansionRegion::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElements")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElements")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElements")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElements")][QtModeling::DocumentationRole] = QStringLiteral("An object node that holds a separate element of the input collection during each of the multiple executions of the region.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("inputElements")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionNode-regionAsInput");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::DocumentationRole] = QStringLiteral("The way in which the executions interact: parallel: all interactions are independent iterative: the interactions occur in order of the elements stream: a stream of values flows into a single execution");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("mode")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElements")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionRegion");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElements")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElements")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElements")][QtModeling::DocumentationRole] = QStringLiteral("An object node that accepts a separate element of the output collection during each of the multiple executions of the region. The values are formed into a collection that is available when the execution of the region is complete.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionRegion")][QStringLiteral("outputElements")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionNode-regionAsOutput");
+
 }
 

@@ -71,8 +71,8 @@ protected:
     QSet<QUmlElement *> _annotatedElements;
     QString _body;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

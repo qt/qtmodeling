@@ -72,6 +72,7 @@
  */
 QUmlWriteLinkAction::QUmlWriteLinkAction()
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -119,10 +120,6 @@ QModelingObject *QUmlWriteLinkAction::clone() const
     return c;
 }
 
-void QUmlWriteLinkAction::setPropertyData()
-{
-}
-
 void QUmlWriteLinkAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -154,5 +151,9 @@ void QUmlWriteLinkAction::setClassForProperty()
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("endData")] = QStringLiteral("QUmlLinkAction");
     _classForProperty[QStringLiteral("inputValues")] = QStringLiteral("QUmlLinkAction");
+}
+
+void QUmlWriteLinkAction::setPropertyData()
+{
 }
 

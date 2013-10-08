@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlLoopNodeObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -73,60 +73,60 @@ class Q_UML_EXPORT QUmlLoopNodeObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
 
     // Properties [ActivityNode]
-    Q_PROPERTY(QSet<QObject *> inGroup READ inGroups)
-    Q_PROPERTY(QSet<QObject *> inInterruptibleRegion READ inInterruptibleRegions)
-    Q_PROPERTY(QSet<QObject *> inPartition READ inPartitions)
+    Q_PROPERTY(QSet<QObject *> inGroups READ inGroups)
+    Q_PROPERTY(QSet<QObject *> inInterruptibleRegions READ inInterruptibleRegions)
+    Q_PROPERTY(QSet<QObject *> inPartitions READ inPartitions)
     Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
-    Q_PROPERTY(QSet<QObject *> incoming READ incomings)
-    Q_PROPERTY(QSet<QObject *> outgoing READ outgoings)
-    Q_PROPERTY(QSet<QObject *> redefinedNode READ redefinedNodes)
+    Q_PROPERTY(QSet<QObject *> incomings READ incomings)
+    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings)
+    Q_PROPERTY(QSet<QObject *> redefinedNodes READ redefinedNodes)
 
     // Properties [ExecutableNode]
-    Q_PROPERTY(QSet<QObject *> handler READ handlers)
+    Q_PROPERTY(QSet<QObject *> handlers READ handlers)
 
     // Properties [Action]
     Q_PROPERTY(QObject * context READ context STORED false)
-    Q_PROPERTY(QList<QObject *> input READ inputs)
+    Q_PROPERTY(QList<QObject *> inputs READ inputs)
     Q_PROPERTY(bool isLocallyReentrant READ isLocallyReentrant WRITE setLocallyReentrant RESET unsetLocallyReentrant)
-    Q_PROPERTY(QSet<QObject *> localPostcondition READ localPostconditions)
-    Q_PROPERTY(QSet<QObject *> localPrecondition READ localPreconditions)
-    Q_PROPERTY(QList<QObject *> output READ outputs)
+    Q_PROPERTY(QSet<QObject *> localPostconditions READ localPostconditions)
+    Q_PROPERTY(QSet<QObject *> localPreconditions READ localPreconditions)
+    Q_PROPERTY(QList<QObject *> outputs READ outputs)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
 
     // Properties [ActivityGroup]
-    Q_PROPERTY(QSet<QObject *> containedEdge READ containedEdges)
-    Q_PROPERTY(QSet<QObject *> containedNode READ containedNodes)
-    Q_PROPERTY(QSet<QObject *> subgroup READ subgroups)
+    Q_PROPERTY(QSet<QObject *> containedEdges READ containedEdges)
+    Q_PROPERTY(QSet<QObject *> containedNodes READ containedNodes)
+    Q_PROPERTY(QSet<QObject *> subgroups READ subgroups)
     Q_PROPERTY(QObject * superGroup READ superGroup)
 
     // Properties [StructuredActivityNode]
     Q_PROPERTY(QObject * activity READ activity WRITE setActivity)
-    Q_PROPERTY(QSet<QObject *> edge READ edges)
+    Q_PROPERTY(QSet<QObject *> edges READ edges)
     Q_PROPERTY(bool mustIsolate READ mustIsolate WRITE setMustIsolate RESET unsetMustIsolate)
-    Q_PROPERTY(QSet<QObject *> node READ nodes)
-    Q_PROPERTY(QSet<QObject *> variable READ variables)
+    Q_PROPERTY(QSet<QObject *> nodes READ nodes)
+    Q_PROPERTY(QSet<QObject *> variables READ variables)
 
     // Properties [LoopNode]
-    Q_PROPERTY(QList<QObject *> bodyOutput READ bodyOutputs)
-    Q_PROPERTY(QSet<QObject *> bodyPart READ bodyParts)
+    Q_PROPERTY(QList<QObject *> bodyOutputs READ bodyOutputs)
+    Q_PROPERTY(QSet<QObject *> bodyParts READ bodyParts)
     Q_PROPERTY(QObject * decider READ decider WRITE setDecider)
     Q_PROPERTY(bool isTestedFirst READ isTestedFirst WRITE setTestedFirst RESET unsetTestedFirst)
-    Q_PROPERTY(QList<QObject *> loopVariable READ loopVariables)
-    Q_PROPERTY(QList<QObject *> loopVariableInput READ loopVariableInputs)
-    Q_PROPERTY(QList<QObject *> result READ results)
-    Q_PROPERTY(QSet<QObject *> setupPart READ setupParts)
-    Q_PROPERTY(QSet<QObject *> test READ tests)
+    Q_PROPERTY(QList<QObject *> loopVariables READ loopVariables)
+    Q_PROPERTY(QList<QObject *> loopVariableInputs READ loopVariableInputs)
+    Q_PROPERTY(QList<QObject *> results READ results)
+    Q_PROPERTY(QSet<QObject *> setupParts READ setupParts)
+    Q_PROPERTY(QSet<QObject *> tests READ tests)
 
 public:
     Q_INVOKABLE explicit QUmlLoopNodeObject(QUmlLoopNode *qModelingObject);

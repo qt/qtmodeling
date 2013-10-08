@@ -75,6 +75,7 @@ QUmlClearVariableAction::QUmlClearVariableAction(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlClearVariableActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -125,10 +126,6 @@ QModelingObject *QUmlClearVariableAction::clone() const
     return c;
 }
 
-void QUmlClearVariableAction::setPropertyData()
-{
-}
-
 void QUmlClearVariableAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -159,5 +156,9 @@ void QUmlClearVariableAction::setClassForProperty()
     _classForProperty[QStringLiteral("localPreconditions")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("variable")] = QStringLiteral("QUmlVariableAction");
+}
+
+void QUmlClearVariableAction::setPropertyData()
+{
 }
 

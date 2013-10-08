@@ -59,23 +59,23 @@ class Q_UML_EXPORT QUmlInformationFlowObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> source READ sources)
-    Q_PROPERTY(QSet<QObject *> target READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources)
+    Q_PROPERTY(QSet<QObject *> targets READ targets)
 
     // Properties [ParameterableElement]
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
     Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -86,12 +86,12 @@ class Q_UML_EXPORT QUmlInformationFlowObject : public QObject
 
     // Properties [InformationFlow]
     Q_PROPERTY(QSet<QObject *> conveyed READ conveyed)
-    Q_PROPERTY(QSet<QObject *> informationSource READ informationSources)
-    Q_PROPERTY(QSet<QObject *> informationTarget READ informationTargets)
-    Q_PROPERTY(QSet<QObject *> realization READ realizations)
-    Q_PROPERTY(QSet<QObject *> realizingActivityEdge READ realizingActivityEdges)
-    Q_PROPERTY(QSet<QObject *> realizingConnector READ realizingConnectors)
-    Q_PROPERTY(QSet<QObject *> realizingMessage READ realizingMessages)
+    Q_PROPERTY(QSet<QObject *> informationSources READ informationSources)
+    Q_PROPERTY(QSet<QObject *> informationTargets READ informationTargets)
+    Q_PROPERTY(QSet<QObject *> realizations READ realizations)
+    Q_PROPERTY(QSet<QObject *> realizingActivityEdges READ realizingActivityEdges)
+    Q_PROPERTY(QSet<QObject *> realizingConnectors READ realizingConnectors)
+    Q_PROPERTY(QSet<QObject *> realizingMessages READ realizingMessages)
 
 public:
     Q_INVOKABLE explicit QUmlInformationFlowObject(QUmlInformationFlow *qModelingObject);

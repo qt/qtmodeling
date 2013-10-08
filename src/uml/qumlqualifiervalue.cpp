@@ -60,6 +60,7 @@ QUmlQualifierValue::QUmlQualifierValue(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlQualifierValueObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -128,6 +129,15 @@ void QUmlQualifierValue::setValue(QUmlInputPin *value)
     }
 }
 
+void QUmlQualifierValue::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("qualifier")] = QStringLiteral("QUmlQualifierValue");
+    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlQualifierValue");
+}
+
 void QUmlQualifierValue::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -148,14 +158,5 @@ void QUmlQualifierValue::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlQualifierValue")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlQualifierValue::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("qualifier")] = QStringLiteral("QUmlQualifierValue");
-    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlQualifierValue");
 }
 

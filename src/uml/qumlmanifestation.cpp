@@ -67,6 +67,7 @@ QUmlManifestation::QUmlManifestation(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlManifestationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -136,19 +137,6 @@ void QUmlManifestation::setUtilizedElement(QUmlPackageableElement *utilizedEleme
     }
 }
 
-void QUmlManifestation::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlManifestation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::DocumentationRole] = QStringLiteral("The model element that is utilized in the manifestation in an Artifact.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlManifestation::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -169,5 +157,18 @@ void QUmlManifestation::setClassForProperty()
     _classForProperty[QStringLiteral("suppliers")] = QStringLiteral("QUmlDependency");
     _classForProperty[QStringLiteral("mapping")] = QStringLiteral("QUmlAbstraction");
     _classForProperty[QStringLiteral("utilizedElement")] = QStringLiteral("QUmlManifestation");
+}
+
+void QUmlManifestation::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlManifestation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::DocumentationRole] = QStringLiteral("The model element that is utilized in the manifestation in an Artifact.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlManifestation")][QStringLiteral("utilizedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

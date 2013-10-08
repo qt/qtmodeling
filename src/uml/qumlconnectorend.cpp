@@ -62,6 +62,7 @@ QUmlConnectorEnd::QUmlConnectorEnd(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlConnectorEndObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -160,6 +161,22 @@ void QUmlConnectorEnd::setRole(QUmlConnectableElement *role)
     }
 }
 
+void QUmlConnectorEnd::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
+    _classForProperty[QStringLiteral("definingEnd")] = QStringLiteral("QUmlConnectorEnd");
+    _classForProperty[QStringLiteral("partWithPort")] = QStringLiteral("QUmlConnectorEnd");
+    _classForProperty[QStringLiteral("role")] = QStringLiteral("QUmlConnectorEnd");
+}
+
 void QUmlConnectorEnd::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("definingEnd")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -189,21 +206,5 @@ void QUmlConnectorEnd::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectorEnd")][QStringLiteral("role")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectableElement-end");
 
-}
-
-void QUmlConnectorEnd::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("definingEnd")] = QStringLiteral("QUmlConnectorEnd");
-    _classForProperty[QStringLiteral("partWithPort")] = QStringLiteral("QUmlConnectorEnd");
-    _classForProperty[QStringLiteral("role")] = QStringLiteral("QUmlConnectorEnd");
 }
 

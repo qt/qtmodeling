@@ -63,6 +63,7 @@ QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool create
 {
     if (createQObject)
         _qObject = new QUmlTemplateParameterSubstitutionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -192,6 +193,17 @@ void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *
     }
 }
 
+void QUmlTemplateParameterSubstitution::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("actual")] = QStringLiteral("QUmlTemplateParameterSubstitution");
+    _classForProperty[QStringLiteral("formal")] = QStringLiteral("QUmlTemplateParameterSubstitution");
+    _classForProperty[QStringLiteral("ownedActual")] = QStringLiteral("QUmlTemplateParameterSubstitution");
+    _classForProperty[QStringLiteral("templateBinding")] = QStringLiteral("QUmlTemplateParameterSubstitution");
+}
+
 void QUmlTemplateParameterSubstitution::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("actual")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -230,16 +242,5 @@ void QUmlTemplateParameterSubstitution::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateParameterSubstitution")][QStringLiteral("templateBinding")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateBinding-parameterSubstitution");
 
-}
-
-void QUmlTemplateParameterSubstitution::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("actual")] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    _classForProperty[QStringLiteral("formal")] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    _classForProperty[QStringLiteral("ownedActual")] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    _classForProperty[QStringLiteral("templateBinding")] = QStringLiteral("QUmlTemplateParameterSubstitution");
 }
 

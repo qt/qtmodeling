@@ -75,8 +75,8 @@ protected:
     QList<QUmlInputPin *> _arguments;
     QUmlPort *_onPort;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

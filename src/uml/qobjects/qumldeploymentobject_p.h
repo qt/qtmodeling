@@ -59,8 +59,8 @@ class Q_UML_EXPORT QUmlDeploymentObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ParameterableElement]
@@ -68,7 +68,7 @@ class Q_UML_EXPORT QUmlDeploymentObject : public QObject
     Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -78,19 +78,19 @@ class Q_UML_EXPORT QUmlDeploymentObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> source READ sources)
-    Q_PROPERTY(QSet<QObject *> target READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources)
+    Q_PROPERTY(QSet<QObject *> targets READ targets)
 
     // Properties [Dependency]
-    Q_PROPERTY(QSet<QObject *> client READ clients)
-    Q_PROPERTY(QSet<QObject *> supplier READ suppliers)
+    Q_PROPERTY(QSet<QObject *> clients READ clients)
+    Q_PROPERTY(QSet<QObject *> suppliers READ suppliers)
 
     // Properties [Deployment]
-    Q_PROPERTY(QSet<QObject *> configuration READ configurations)
-    Q_PROPERTY(QSet<QObject *> deployedArtifact READ deployedArtifacts)
+    Q_PROPERTY(QSet<QObject *> configurations READ configurations)
+    Q_PROPERTY(QSet<QObject *> deployedArtifacts READ deployedArtifacts)
     Q_PROPERTY(QObject * location READ location WRITE setLocation)
 
 public:

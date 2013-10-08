@@ -79,6 +79,7 @@ QUmlTransition::QUmlTransition(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlTransitionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -392,6 +393,36 @@ bool QUmlTransition::isConsistentWith(QUmlRedefinableElement *redefinee) const
     return bool ();
 }
 
+void QUmlTransition::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("container")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("effect")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("guard")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("kind")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("redefinedTransition")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("redefinitionContext")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("source")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("target")] = QStringLiteral("QUmlTransition");
+    _classForProperty[QStringLiteral("triggers")] = QStringLiteral("QUmlTransition");
+}
+
 void QUmlTransition::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("container")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -466,44 +497,14 @@ void QUmlTransition::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("target")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("Vertex-incoming");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("trigger")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("trigger")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("trigger")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("trigger")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("trigger")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the triggers that may fire the transition.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("trigger")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("trigger")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("trigger")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("triggers")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("triggers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTransition");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("triggers")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("triggers")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("triggers")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the triggers that may fire the transition.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("triggers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("triggers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTransition")][QStringLiteral("triggers")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlTransition::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("container")] = QStringLiteral("QUmlTransition");
-    _classForProperty[QStringLiteral("effect")] = QStringLiteral("QUmlTransition");
-    _classForProperty[QStringLiteral("guard")] = QStringLiteral("QUmlTransition");
-    _classForProperty[QStringLiteral("kind")] = QStringLiteral("QUmlTransition");
-    _classForProperty[QStringLiteral("redefinedTransition")] = QStringLiteral("QUmlTransition");
-    _classForProperty[QStringLiteral("redefinitionContext")] = QStringLiteral("QUmlTransition");
-    _classForProperty[QStringLiteral("source")] = QStringLiteral("QUmlTransition");
-    _classForProperty[QStringLiteral("target")] = QStringLiteral("QUmlTransition");
-    _classForProperty[QStringLiteral("triggers")] = QStringLiteral("QUmlTransition");
 }
 

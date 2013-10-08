@@ -59,6 +59,7 @@
 QUmlTypedElement::QUmlTypedElement() :
     _type(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -105,19 +106,6 @@ void QUmlTypedElement::setType(QUmlType *type)
     }
 }
 
-void QUmlTypedElement::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTypedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.The type of the TypedElement.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlTypedElement::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -130,5 +118,18 @@ void QUmlTypedElement::setClassForProperty()
     _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlTypedElement");
+}
+
+void QUmlTypedElement::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTypedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.The type of the TypedElement.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTypedElement")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

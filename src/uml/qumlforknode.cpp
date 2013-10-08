@@ -70,6 +70,7 @@ QUmlForkNode::QUmlForkNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlForkNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -111,10 +112,6 @@ QModelingObject *QUmlForkNode::clone() const
     return c;
 }
 
-void QUmlForkNode::setPropertyData()
-{
-}
-
 void QUmlForkNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -137,5 +134,9 @@ void QUmlForkNode::setClassForProperty()
     _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
+}
+
+void QUmlForkNode::setPropertyData()
+{
 }
 

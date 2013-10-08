@@ -59,6 +59,7 @@ QUmlPackageMerge::QUmlPackageMerge(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlPackageMergeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -144,6 +145,18 @@ void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
     }
 }
 
+void QUmlPackageMerge::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("mergedPackage")] = QStringLiteral("QUmlPackageMerge");
+    _classForProperty[QStringLiteral("receivingPackage")] = QStringLiteral("QUmlPackageMerge");
+}
+
 void QUmlPackageMerge::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("mergedPackage")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -164,17 +177,5 @@ void QUmlPackageMerge::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlPackageMerge")][QStringLiteral("receivingPackage")][QtModeling::OppositeEndRole] = QStringLiteral("Package-packageMerge");
 
-}
-
-void QUmlPackageMerge::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("mergedPackage")] = QStringLiteral("QUmlPackageMerge");
-    _classForProperty[QStringLiteral("receivingPackage")] = QStringLiteral("QUmlPackageMerge");
 }
 

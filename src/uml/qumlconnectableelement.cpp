@@ -63,6 +63,7 @@
 QUmlConnectableElement::QUmlConnectableElement() :
     _templateParameter(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -159,28 +160,6 @@ void QUmlConnectableElement::setTemplateParameter(QUmlConnectableElementTemplate
     }
 }
 
-void QUmlConnectableElement::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("end")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("end")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("end")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("end")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("end")][QtModeling::DocumentationRole] = QStringLiteral("Denotes a set of connector ends that attaches to this connectable element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("end")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("end")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("end")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectorEnd-role");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The ConnectableElementTemplateParameter for this ConnectableElement parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectableElementTemplateParameter-parameteredElement");
-
-}
-
 void QUmlConnectableElement::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -196,5 +175,27 @@ void QUmlConnectableElement::setClassForProperty()
     _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("ends")] = QStringLiteral("QUmlConnectableElement");
     _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlConnectableElement");
+}
+
+void QUmlConnectableElement::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::DocumentationRole] = QStringLiteral("Denotes a set of connector ends that attaches to this connectable element.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("ends")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectorEnd-role");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectableElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The ConnectableElementTemplateParameter for this ConnectableElement parameter.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElement")][QStringLiteral("templateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectableElementTemplateParameter-parameteredElement");
+
 }
 

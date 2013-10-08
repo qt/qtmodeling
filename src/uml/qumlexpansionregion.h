@@ -79,8 +79,8 @@ protected:
     QtUml::ExpansionKind _mode;
     QSet<QUmlExpansionNode *> _outputElements;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

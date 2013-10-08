@@ -94,6 +94,7 @@ QUmlComponent::QUmlComponent(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlComponentObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -383,55 +384,6 @@ QSet<QUmlInterface *> QUmlComponent::usedInterfaces(QUmlClassifier *classifier) 
     return QSet<QUmlInterface *> ();
 }
 
-void QUmlComponent::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::DocumentationRole] = QStringLiteral("isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., specification, focus, subsystem).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElement")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElement")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElement")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElement")][QtModeling::DocumentationRole] = QStringLiteral("The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::DocumentationRole] = QStringLiteral("The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realization")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realization")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realization")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realization")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realization")][QtModeling::DocumentationRole] = QStringLiteral("The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realization")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realization")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_supplier_supplierDependency-supplierDependency Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realization")][QtModeling::OppositeEndRole] = QStringLiteral("ComponentRealization-abstraction");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::DocumentationRole] = QStringLiteral("The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlComponent::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -489,5 +441,54 @@ void QUmlComponent::setClassForProperty()
     _classForProperty[QStringLiteral("provided")] = QStringLiteral("QUmlComponent");
     _classForProperty[QStringLiteral("realizations")] = QStringLiteral("QUmlComponent");
     _classForProperty[QStringLiteral("required")] = QStringLiteral("QUmlComponent");
+}
+
+void QUmlComponent::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::DocumentationRole] = QStringLiteral("isIndirectlyInstantiated : Boolean {default = true} The kind of instantiation that applies to a Component. If false, the component is instantiated as an addressable object. If true, the Component is defined at design-time, but at run-time (or execution-time) an object specified by the Component does not exist, that is, the component is instantiated indirectly, through the instantiation of its realizing classifiers or parts. Several standard stereotypes use this meta attribute (e.g., specification, focus, subsystem).");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("isIndirectlyInstantiated")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::DocumentationRole] = QStringLiteral("The set of PackageableElements that a Component owns. In the namespace of a component, all model elements that are involved in or related to its definition may be owned or imported explicitly. These may include e.g. Classes, Interfaces, Components, Packages, Use cases, Dependencies (e.g. mappings), and Artifacts.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("packagedElements")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::DocumentationRole] = QStringLiteral("The interfaces that the component exposes to its environment. These interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("provided")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::DocumentationRole] = QStringLiteral("The set of Realizations owned by the Component. Realizations reference the Classifiers of which the Component is an abstraction; i.e., that realize its behavior.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_supplier_supplierDependency-supplierDependency Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("realizations")][QtModeling::OppositeEndRole] = QStringLiteral("ComponentRealization-abstraction");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponent");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::DocumentationRole] = QStringLiteral("The interfaces that the component requires from other components in its environment in order to be able to offer its full set of provided functionality. These interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponent")][QStringLiteral("required")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

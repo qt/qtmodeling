@@ -69,8 +69,8 @@ public:
 protected:
     QUmlPackageableElement *_utilizedElement;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

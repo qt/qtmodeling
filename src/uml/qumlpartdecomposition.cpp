@@ -69,6 +69,7 @@ QUmlPartDecomposition::QUmlPartDecomposition(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlPartDecompositionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -113,10 +114,6 @@ QModelingObject *QUmlPartDecomposition::clone() const
     return c;
 }
 
-void QUmlPartDecomposition::setPropertyData()
-{
-}
-
 void QUmlPartDecomposition::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -137,5 +134,9 @@ void QUmlPartDecomposition::setClassForProperty()
     _classForProperty[QStringLiteral("refersTo")] = QStringLiteral("QUmlInteractionUse");
     _classForProperty[QStringLiteral("returnValue")] = QStringLiteral("QUmlInteractionUse");
     _classForProperty[QStringLiteral("returnValueRecipient")] = QStringLiteral("QUmlInteractionUse");
+}
+
+void QUmlPartDecomposition::setPropertyData()
+{
 }
 

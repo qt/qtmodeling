@@ -67,6 +67,7 @@ QUmlInteractionConstraint::QUmlInteractionConstraint(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlInteractionConstraintObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -169,6 +170,26 @@ void QUmlInteractionConstraint::setMinint(QUmlValueSpecification *minint)
     }
 }
 
+void QUmlInteractionConstraint::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("constrainedElements")] = QStringLiteral("QUmlConstraint");
+    _classForProperty[QStringLiteral("context")] = QStringLiteral("QUmlConstraint");
+    _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlConstraint");
+    _classForProperty[QStringLiteral("maxint")] = QStringLiteral("QUmlInteractionConstraint");
+    _classForProperty[QStringLiteral("minint")] = QStringLiteral("QUmlInteractionConstraint");
+}
+
 void QUmlInteractionConstraint::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("maxint")][QtModeling::AggregationRole] = QStringLiteral("composite");
@@ -189,25 +210,5 @@ void QUmlInteractionConstraint::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionConstraint")][QStringLiteral("minint")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlInteractionConstraint::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
-    _classForProperty[QStringLiteral("constrainedElements")] = QStringLiteral("QUmlConstraint");
-    _classForProperty[QStringLiteral("context")] = QStringLiteral("QUmlConstraint");
-    _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlConstraint");
-    _classForProperty[QStringLiteral("maxint")] = QStringLiteral("QUmlInteractionConstraint");
-    _classForProperty[QStringLiteral("minint")] = QStringLiteral("QUmlInteractionConstraint");
 }
 

@@ -57,12 +57,12 @@ class Q_UML_EXPORT QUmlCommentObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Comment]
-    Q_PROPERTY(QSet<QObject *> annotatedElement READ annotatedElements)
+    Q_PROPERTY(QSet<QObject *> annotatedElements READ annotatedElements)
     Q_PROPERTY(QString body READ body WRITE setBody)
 
 public:

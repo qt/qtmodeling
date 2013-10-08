@@ -71,6 +71,7 @@ QUmlMessage::QUmlMessage(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlMessageObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -305,16 +306,37 @@ void QUmlMessage::setSignature(QUmlNamedElement *signature)
     }
 }
 
+void QUmlMessage::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("arguments")] = QStringLiteral("QUmlMessage");
+    _classForProperty[QStringLiteral("connector")] = QStringLiteral("QUmlMessage");
+    _classForProperty[QStringLiteral("interaction")] = QStringLiteral("QUmlMessage");
+    _classForProperty[QStringLiteral("messageKind")] = QStringLiteral("QUmlMessage");
+    _classForProperty[QStringLiteral("messageSort")] = QStringLiteral("QUmlMessage");
+    _classForProperty[QStringLiteral("receiveEvent")] = QStringLiteral("QUmlMessage");
+    _classForProperty[QStringLiteral("sendEvent")] = QStringLiteral("QUmlMessage");
+    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlMessage");
+}
+
 void QUmlMessage::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::DocumentationRole] = QStringLiteral("The arguments of the Message");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("argument")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("arguments")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("arguments")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("arguments")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("arguments")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("arguments")][QtModeling::DocumentationRole] = QStringLiteral("The arguments of the Message");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("arguments")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("arguments")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("arguments")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::AggregationRole] = QStringLiteral("none");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("connector")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlMessage");
@@ -379,26 +401,5 @@ void QUmlMessage::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlMessage")][QStringLiteral("signature")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlMessage::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("arguments")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("connector")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("interaction")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("messageKind")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("messageSort")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("receiveEvent")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("sendEvent")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlMessage");
 }
 

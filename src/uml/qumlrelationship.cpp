@@ -52,6 +52,7 @@
  */
 QUmlRelationship::QUmlRelationship()
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -99,24 +100,24 @@ void QUmlRelationship::removeRelatedElement(QUmlElement *relatedElement)
     }
 }
 
-void QUmlRelationship::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElement")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElement")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRelationship");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElement")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElement")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElement")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the elements related by the Relationship.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElement")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElement")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlRelationship::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
     _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
     _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
     _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+}
+
+void QUmlRelationship::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRelationship");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the elements related by the Relationship.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRelationship")][QStringLiteral("relatedElements")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

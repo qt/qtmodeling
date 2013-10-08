@@ -56,6 +56,7 @@
 QUmlTemplateableElement::QUmlTemplateableElement() :
     _ownedTemplateSignature(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -178,6 +179,15 @@ QSet<QUmlParameterableElement *> QUmlTemplateableElement::parameterableElements(
     return QSet<QUmlParameterableElement *> ();
 }
 
+void QUmlTemplateableElement::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedTemplateSignature")] = QStringLiteral("QUmlTemplateableElement");
+    _classForProperty[QStringLiteral("templateBindings")] = QStringLiteral("QUmlTemplateableElement");
+}
+
 void QUmlTemplateableElement::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("ownedTemplateSignature")][QtModeling::AggregationRole] = QStringLiteral("composite");
@@ -189,23 +199,14 @@ void QUmlTemplateableElement::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("ownedTemplateSignature")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("ownedTemplateSignature")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateSignature-template");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBinding")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBinding")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateableElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBinding")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBinding")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBinding")][QtModeling::DocumentationRole] = QStringLiteral("The optional bindings from this element to templates.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBinding")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBinding")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBinding")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateBinding-boundElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBindings")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBindings")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateableElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBindings")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBindings")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBindings")][QtModeling::DocumentationRole] = QStringLiteral("The optional bindings from this element to templates.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBindings")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBindings")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateableElement")][QStringLiteral("templateBindings")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateBinding-boundElement");
 
-}
-
-void QUmlTemplateableElement::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedTemplateSignature")] = QStringLiteral("QUmlTemplateableElement");
-    _classForProperty[QStringLiteral("templateBindings")] = QStringLiteral("QUmlTemplateableElement");
 }
 

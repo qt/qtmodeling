@@ -85,6 +85,7 @@ QUmlCollaboration::QUmlCollaboration(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlCollaborationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -196,19 +197,6 @@ void QUmlCollaboration::removeCollaborationRole(QUmlConnectableElement *collabor
     }
 }
 
-void QUmlCollaboration::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRole")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRole")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCollaboration");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRole")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRole")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRole")][QtModeling::DocumentationRole] = QStringLiteral("References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRole")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRole")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("StructuredClassifier-role");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRole")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlCollaboration::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -256,5 +244,18 @@ void QUmlCollaboration::setClassForProperty()
     _classForProperty[QStringLiteral("interfaceRealizations")] = QStringLiteral("QUmlBehavioredClassifier");
     _classForProperty[QStringLiteral("ownedBehaviors")] = QStringLiteral("QUmlBehavioredClassifier");
     _classForProperty[QStringLiteral("collaborationRoles")] = QStringLiteral("QUmlCollaboration");
+}
+
+void QUmlCollaboration::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRoles")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRoles")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCollaboration");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRoles")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRoles")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRoles")][QtModeling::DocumentationRole] = QStringLiteral("References connectable elements (possibly owned by other classifiers) which represent roles that instances may play in this collaboration.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRoles")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRoles")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("StructuredClassifier-role");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCollaboration")][QStringLiteral("collaborationRoles")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

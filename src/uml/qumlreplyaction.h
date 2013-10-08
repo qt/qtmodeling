@@ -77,8 +77,8 @@ protected:
     QSet<QUmlInputPin *> _replyValues;
     QUmlInputPin *_returnInformation;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

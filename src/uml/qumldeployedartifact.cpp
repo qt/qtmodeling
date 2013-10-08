@@ -57,6 +57,7 @@
  */
 QUmlDeployedArtifact::QUmlDeployedArtifact()
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -78,10 +79,6 @@ QModelingObject *QUmlDeployedArtifact::clone() const
     return c;
 }
 
-void QUmlDeployedArtifact::setPropertyData()
-{
-}
-
 void QUmlDeployedArtifact::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -93,5 +90,9 @@ void QUmlDeployedArtifact::setClassForProperty()
     _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+}
+
+void QUmlDeployedArtifact::setPropertyData()
+{
 }
 

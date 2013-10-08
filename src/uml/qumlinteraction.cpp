@@ -101,6 +101,7 @@ QUmlInteraction::QUmlInteraction(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlInteractionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -437,55 +438,6 @@ void QUmlInteraction::removeMessage(QUmlMessage *message)
     }
 }
 
-void QUmlInteraction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("action")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("action")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("action")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("action")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("action")][QtModeling::DocumentationRole] = QStringLiteral("Actions owned by the Interaction.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("action")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("action")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("action")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGate")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGate")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGate")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGate")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGate")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGate")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGate")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGate")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragment")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragment")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragment")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragment")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragment")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of fragments in the Interaction.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragment")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragment")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragment")][QtModeling::OppositeEndRole] = QStringLiteral("InteractionFragment-enclosingInteraction");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifeline")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifeline")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifeline")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifeline")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifeline")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the participants in this Interaction.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifeline")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifeline")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifeline")][QtModeling::OppositeEndRole] = QStringLiteral("Lifeline-interaction");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("message")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("message")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("message")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("message")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("message")][QtModeling::DocumentationRole] = QStringLiteral("The Messages contained in this Interaction.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("message")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("message")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("message")][QtModeling::OppositeEndRole] = QStringLiteral("Message-interaction");
-
-}
-
 void QUmlInteraction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -555,5 +507,54 @@ void QUmlInteraction::setClassForProperty()
     _classForProperty[QStringLiteral("fragments")] = QStringLiteral("QUmlInteraction");
     _classForProperty[QStringLiteral("lifelines")] = QStringLiteral("QUmlInteraction");
     _classForProperty[QStringLiteral("messages")] = QStringLiteral("QUmlInteraction");
+}
+
+void QUmlInteraction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("actions")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("actions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("actions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("actions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("actions")][QtModeling::DocumentationRole] = QStringLiteral("Actions owned by the Interaction.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("actions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("actions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("actions")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGates")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGates")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGates")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGates")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the gates that form the message interface between this Interaction and any InteractionUses which reference it.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("formalGates")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragments")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragments")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragments")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragments")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragments")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of fragments in the Interaction.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragments")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragments")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("fragments")][QtModeling::OppositeEndRole] = QStringLiteral("InteractionFragment-enclosingInteraction");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifelines")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifelines")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifelines")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifelines")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifelines")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the participants in this Interaction.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifelines")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifelines")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("lifelines")][QtModeling::OppositeEndRole] = QStringLiteral("Lifeline-interaction");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("messages")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("messages")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteraction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("messages")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("messages")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("messages")][QtModeling::DocumentationRole] = QStringLiteral("The Messages contained in this Interaction.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("messages")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("messages")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteraction")][QStringLiteral("messages")][QtModeling::OppositeEndRole] = QStringLiteral("Message-interaction");
+
 }
 

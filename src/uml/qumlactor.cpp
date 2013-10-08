@@ -83,6 +83,7 @@ QUmlActor::QUmlActor(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlActorObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -150,10 +151,6 @@ QModelingObject *QUmlActor::clone() const
     return c;
 }
 
-void QUmlActor::setPropertyData()
-{
-}
-
 void QUmlActor::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -196,5 +193,9 @@ void QUmlActor::setClassForProperty()
     _classForProperty[QStringLiteral("classifierBehavior")] = QStringLiteral("QUmlBehavioredClassifier");
     _classForProperty[QStringLiteral("interfaceRealizations")] = QStringLiteral("QUmlBehavioredClassifier");
     _classForProperty[QStringLiteral("ownedBehaviors")] = QStringLiteral("QUmlBehavioredClassifier");
+}
+
+void QUmlActor::setPropertyData()
+{
 }
 

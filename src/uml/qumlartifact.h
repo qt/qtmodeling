@@ -88,8 +88,8 @@ protected:
     QList<QUmlProperty *> _ownedAttributes;
     QList<QUmlOperation *> _ownedOperations;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

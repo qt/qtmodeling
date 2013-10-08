@@ -68,6 +68,7 @@ QUmlDurationConstraint::QUmlDurationConstraint(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDurationConstraintObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -148,6 +149,25 @@ void QUmlDurationConstraint::setSpecification(QUmlDurationInterval *specificatio
     }
 }
 
+void QUmlDurationConstraint::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("constrainedElements")] = QStringLiteral("QUmlConstraint");
+    _classForProperty[QStringLiteral("context")] = QStringLiteral("QUmlConstraint");
+    _classForProperty[QStringLiteral("firstEvent")] = QStringLiteral("QUmlDurationConstraint");
+    _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlDurationConstraint");
+}
+
 void QUmlDurationConstraint::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("firstEvent")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -168,24 +188,5 @@ void QUmlDurationConstraint::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlDurationConstraint")][QStringLiteral("specification")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlDurationConstraint::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
-    _classForProperty[QStringLiteral("constrainedElements")] = QStringLiteral("QUmlConstraint");
-    _classForProperty[QStringLiteral("context")] = QStringLiteral("QUmlConstraint");
-    _classForProperty[QStringLiteral("firstEvent")] = QStringLiteral("QUmlDurationConstraint");
-    _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlDurationConstraint");
 }
 

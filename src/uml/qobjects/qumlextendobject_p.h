@@ -59,19 +59,19 @@ class Q_UML_EXPORT QUmlExtendObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> source READ sources)
-    Q_PROPERTY(QSet<QObject *> target READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources)
+    Q_PROPERTY(QSet<QObject *> targets READ targets)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -82,7 +82,7 @@ class Q_UML_EXPORT QUmlExtendObject : public QObject
     Q_PROPERTY(QObject * condition READ condition WRITE setCondition)
     Q_PROPERTY(QObject * extendedCase READ extendedCase WRITE setExtendedCase)
     Q_PROPERTY(QObject * extension READ extension WRITE setExtension)
-    Q_PROPERTY(QList<QObject *> extensionLocation READ extensionLocations)
+    Q_PROPERTY(QList<QObject *> extensionLocations READ extensionLocations)
 
 public:
     Q_INVOKABLE explicit QUmlExtendObject(QUmlExtend *qModelingObject);

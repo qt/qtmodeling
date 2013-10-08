@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlControlFlowObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -73,17 +73,17 @@ class Q_UML_EXPORT QUmlControlFlowObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
 
     // Properties [ActivityEdge]
     Q_PROPERTY(QObject * activity READ activity WRITE setActivity)
     Q_PROPERTY(QObject * guard READ guard WRITE setGuard)
-    Q_PROPERTY(QSet<QObject *> inGroup READ inGroups)
-    Q_PROPERTY(QSet<QObject *> inPartition READ inPartitions)
+    Q_PROPERTY(QSet<QObject *> inGroups READ inGroups)
+    Q_PROPERTY(QSet<QObject *> inPartitions READ inPartitions)
     Q_PROPERTY(QObject * inStructuredNode READ inStructuredNode WRITE setInStructuredNode)
     Q_PROPERTY(QObject * interrupts READ interrupts WRITE setInterrupts)
-    Q_PROPERTY(QSet<QObject *> redefinedEdge READ redefinedEdges)
+    Q_PROPERTY(QSet<QObject *> redefinedEdges READ redefinedEdges)
     Q_PROPERTY(QObject * source READ source WRITE setSource)
     Q_PROPERTY(QObject * target READ target WRITE setTarget)
     Q_PROPERTY(QObject * weight READ weight WRITE setWeight)

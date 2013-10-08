@@ -65,6 +65,7 @@ QUmlSignalEvent::QUmlSignalEvent(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlSignalEventObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -120,19 +121,6 @@ void QUmlSignalEvent::setSignal(QUmlSignal *signal)
     }
 }
 
-void QUmlSignalEvent::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSignalEvent");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The specific signal that is associated with this event.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlSignalEvent::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -147,5 +135,18 @@ void QUmlSignalEvent::setClassForProperty()
     _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
     _classForProperty[QStringLiteral("signal")] = QStringLiteral("QUmlSignalEvent");
+}
+
+void QUmlSignalEvent::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlSignalEvent");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The specific signal that is associated with this event.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlSignalEvent")][QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

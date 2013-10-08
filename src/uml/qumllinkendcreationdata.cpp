@@ -62,6 +62,7 @@ QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLinkEndCreationDataObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -134,6 +135,18 @@ void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
     }
 }
 
+void QUmlLinkEndCreationData::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("insertAt")] = QStringLiteral("QUmlLinkEndCreationData");
+    _classForProperty[QStringLiteral("isReplaceAll")] = QStringLiteral("QUmlLinkEndCreationData");
+}
+
 void QUmlLinkEndCreationData::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("insertAt")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -154,17 +167,5 @@ void QUmlLinkEndCreationData::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndCreationData")][QStringLiteral("isReplaceAll")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlLinkEndCreationData::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("insertAt")] = QStringLiteral("QUmlLinkEndCreationData");
-    _classForProperty[QStringLiteral("isReplaceAll")] = QStringLiteral("QUmlLinkEndCreationData");
 }
 

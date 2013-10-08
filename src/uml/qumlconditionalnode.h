@@ -81,8 +81,8 @@ protected:
     bool _isDeterminate;
     QList<QUmlOutputPin *> _results;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

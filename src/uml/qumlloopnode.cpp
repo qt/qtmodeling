@@ -82,6 +82,7 @@ QUmlLoopNode::QUmlLoopNode(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLoopNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -419,91 +420,6 @@ void QUmlLoopNode::removeTest(QUmlExecutableNode *test)
     }
 }
 
-void QUmlLoopNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutput")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutput")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutput")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutput")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutput")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyPart")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyPart")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyPart")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyPart")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyPart")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyPart")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyPart")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyPart")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::DocumentationRole] = QStringLiteral("An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::DocumentationRole] = QStringLiteral("If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariable")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariable")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariable")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariable")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariable")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariable")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInput")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInput")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInput")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInput")][QtModeling::DocumentationRole] = QStringLiteral("A list of values that are moved into the loop variable pins before the first iteration of the loop.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeInput");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInput")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that constitute the data flow output of the entire loop.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeOutput");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupPart")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupPart")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupPart")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupPart")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupPart")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes and edges that initialize values or perform other setup computations for the loop.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupPart")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupPart")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupPart")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("test")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("test")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("test")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("test")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("test")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("test")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("test")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("test")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlLoopNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -556,5 +472,90 @@ void QUmlLoopNode::setClassForProperty()
     _classForProperty[QStringLiteral("results")] = QStringLiteral("QUmlLoopNode");
     _classForProperty[QStringLiteral("setupParts")] = QStringLiteral("QUmlLoopNode");
     _classForProperty[QStringLiteral("tests")] = QStringLiteral("QUmlLoopNode");
+}
+
+void QUmlLoopNode::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins within the body fragment the values of which are moved to the loop variable pins after completion of execution of the body, before the next iteration of the loop begins or before the loop exits.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyOutputs")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes and edges that perform the repetitive computations of the loop. The body section is executed as long as the test section produces a true value.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("bodyParts")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::DocumentationRole] = QStringLiteral("An output pin within the test fragment the value of which is examined after execution of the test to determine whether to execute the loop body.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("decider")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::DocumentationRole] = QStringLiteral("If true, the test is performed before the first execution of the body. If false, the body is executed once before the test is performed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("isTestedFirst")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that hold the values of the loop variables during an execution of the loop. When the test fails, the values are movied to the result pins of the loop.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariables")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::DocumentationRole] = QStringLiteral("A list of values that are moved into the loop variable pins before the first iteration of the loop.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeInput");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("loopVariableInputs")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::DocumentationRole] = QStringLiteral("A list of output pins that constitute the data flow output of the entire loop.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("StructuredActivityNode-structuredNodeOutput");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("results")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes and edges that initialize values or perform other setup computations for the loop.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("setupParts")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLoopNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::DocumentationRole] = QStringLiteral("The set of nodes, edges, and designated value that compute a Boolean value to determine if another execution of the body will be performed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLoopNode")][QStringLiteral("tests")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

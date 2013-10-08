@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlDestructionOccurrenceSpecificationObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -74,12 +74,12 @@ class Q_UML_EXPORT QUmlDestructionOccurrenceSpecificationObject : public QObject
     // Properties [InteractionFragment]
     Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrderings)
+    Q_PROPERTY(QSet<QObject *> generalOrderings READ generalOrderings)
 
     // Properties [OccurrenceSpecification]
     Q_PROPERTY(QObject * covered READ covered WRITE setCovered)
-    Q_PROPERTY(QSet<QObject *> toAfter READ toAfters)
-    Q_PROPERTY(QSet<QObject *> toBefore READ toBefores)
+    Q_PROPERTY(QSet<QObject *> toAfters READ toAfters)
+    Q_PROPERTY(QSet<QObject *> toBefores READ toBefores)
 
     // Properties [MessageEnd]
     Q_PROPERTY(QObject * message READ message WRITE setMessage)

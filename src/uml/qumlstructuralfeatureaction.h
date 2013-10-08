@@ -74,8 +74,8 @@ protected:
     QUmlInputPin *_object;
     QUmlStructuralFeature *_structuralFeature;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

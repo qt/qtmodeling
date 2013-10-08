@@ -64,6 +64,7 @@ QUmlLiteralString::QUmlLiteralString(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlLiteralStringObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -140,19 +141,6 @@ QString QUmlLiteralString::stringValue() const
     return QString ();
 }
 
-void QUmlLiteralString::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralString");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified String value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlLiteralString::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -168,5 +156,18 @@ void QUmlLiteralString::setClassForProperty()
     _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
     _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLiteralString");
+}
+
+void QUmlLiteralString::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralString");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified String value.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralString")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

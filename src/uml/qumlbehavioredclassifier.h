@@ -79,8 +79,8 @@ protected:
     QSet<QUmlInterfaceRealization *> _interfaceRealizations;
     QSet<QUmlBehavior *> _ownedBehaviors;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

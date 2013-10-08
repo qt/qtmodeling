@@ -67,6 +67,7 @@ QUmlDuration::QUmlDuration(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDurationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -165,28 +166,6 @@ void QUmlDuration::removeObservation(QUmlObservation *observation)
     }
 }
 
-void QUmlDuration::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDuration");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::DocumentationRole] = QStringLiteral("The value of the Duration.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDuration");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observation")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the time and duration observations that are involved in expr.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlDuration::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -203,5 +182,27 @@ void QUmlDuration::setClassForProperty()
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
     _classForProperty[QStringLiteral("expr")] = QStringLiteral("QUmlDuration");
     _classForProperty[QStringLiteral("observations")] = QStringLiteral("QUmlDuration");
+}
+
+void QUmlDuration::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDuration");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::DocumentationRole] = QStringLiteral("The value of the Duration.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("expr")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDuration");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::DocumentationRole] = QStringLiteral("Refers to the time and duration observations that are involved in expr.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDuration")][QStringLiteral("observations")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

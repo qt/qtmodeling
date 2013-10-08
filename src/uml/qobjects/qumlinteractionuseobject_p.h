@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlInteractionUseObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -75,11 +75,11 @@ class Q_UML_EXPORT QUmlInteractionUseObject : public QObject
     Q_PROPERTY(QSet<QObject *> covered READ covered)
     Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrderings)
+    Q_PROPERTY(QSet<QObject *> generalOrderings READ generalOrderings)
 
     // Properties [InteractionUse]
-    Q_PROPERTY(QSet<QObject *> actualGate READ actualGates)
-    Q_PROPERTY(QList<QObject *> argument READ arguments)
+    Q_PROPERTY(QSet<QObject *> actualGates READ actualGates)
+    Q_PROPERTY(QList<QObject *> arguments READ arguments)
     Q_PROPERTY(QObject * refersTo READ refersTo WRITE setRefersTo)
     Q_PROPERTY(QObject * returnValue READ returnValue WRITE setReturnValue)
     Q_PROPERTY(QObject * returnValueRecipient READ returnValueRecipient WRITE setReturnValueRecipient)

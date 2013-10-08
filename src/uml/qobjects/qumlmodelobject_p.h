@@ -59,24 +59,24 @@ class Q_UML_EXPORT QUmlModelObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
 
     // Properties [ParameterableElement]
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -87,17 +87,17 @@ class Q_UML_EXPORT QUmlModelObject : public QObject
 
     // Properties [TemplateableElement]
     Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QSet<QObject *> templateBinding READ templateBindings)
+    Q_PROPERTY(QSet<QObject *> templateBindings READ templateBindings)
 
     // Properties [Package]
     Q_PROPERTY(QString URI READ URI WRITE setURI)
-    Q_PROPERTY(QSet<QObject *> nestedPackage READ nestedPackages STORED false)
+    Q_PROPERTY(QSet<QObject *> nestedPackages READ nestedPackages STORED false)
     Q_PROPERTY(QObject * nestingPackage READ nestingPackage WRITE setNestingPackage)
-    Q_PROPERTY(QSet<QObject *> ownedStereotype READ ownedStereotypes STORED false)
-    Q_PROPERTY(QSet<QObject *> ownedType READ ownedTypes STORED false)
-    Q_PROPERTY(QSet<QObject *> packageMerge READ packageMerges)
-    Q_PROPERTY(QSet<QObject *> packagedElement READ packagedElements)
-    Q_PROPERTY(QSet<QObject *> profileApplication READ profileApplications)
+    Q_PROPERTY(QSet<QObject *> ownedStereotypes READ ownedStereotypes STORED false)
+    Q_PROPERTY(QSet<QObject *> ownedTypes READ ownedTypes STORED false)
+    Q_PROPERTY(QSet<QObject *> packageMerges READ packageMerges)
+    Q_PROPERTY(QSet<QObject *> packagedElements READ packagedElements)
+    Q_PROPERTY(QSet<QObject *> profileApplications READ profileApplications)
 
     // Properties [Model]
     Q_PROPERTY(QString viewpoint READ viewpoint WRITE setViewpoint)

@@ -70,7 +70,7 @@ int main ()
         qDebug() << "Cannot write file !";
         return 1;
     }
-    QXmiWriter writer(rootElements.first()->asQObject());
+    QXmiWriter writer(rootElements.first());
     writer.writeFile(&file2);
 }
 

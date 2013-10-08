@@ -57,20 +57,20 @@ class Q_UML_EXPORT QUmlTemplateBindingObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [Relationship]
-    Q_PROPERTY(QSet<QObject *> relatedElement READ relatedElements)
+    Q_PROPERTY(QSet<QObject *> relatedElements READ relatedElements)
 
     // Properties [DirectedRelationship]
-    Q_PROPERTY(QSet<QObject *> source READ sources)
-    Q_PROPERTY(QSet<QObject *> target READ targets)
+    Q_PROPERTY(QSet<QObject *> sources READ sources)
+    Q_PROPERTY(QSet<QObject *> targets READ targets)
 
     // Properties [TemplateBinding]
     Q_PROPERTY(QObject * boundElement READ boundElement WRITE setBoundElement)
-    Q_PROPERTY(QSet<QObject *> parameterSubstitution READ parameterSubstitutions)
+    Q_PROPERTY(QSet<QObject *> parameterSubstitutions READ parameterSubstitutions)
     Q_PROPERTY(QObject * signature READ signature WRITE setSignature)
 
 public:

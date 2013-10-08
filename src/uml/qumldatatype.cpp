@@ -82,6 +82,7 @@ QUmlDataType::QUmlDataType(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlDataTypeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -264,28 +265,6 @@ QSet<QUmlNamedElement *> QUmlDataType::inherit(QSet<QUmlNamedElement *> inhs) co
     return QSet<QUmlNamedElement *> ();
 }
 
-void QUmlDataType::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDataType");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The Attributes owned by the DataType.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttribute")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("Property-datatype");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperation")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDataType");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperation")][QtModeling::DocumentationRole] = QStringLiteral("The Operations owned by the DataType.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperation")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-datatype");
-
-}
-
 void QUmlDataType::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -327,5 +306,27 @@ void QUmlDataType::setClassForProperty()
     _classForProperty[QStringLiteral("useCases")] = QStringLiteral("QUmlClassifier");
     _classForProperty[QStringLiteral("ownedAttributes")] = QStringLiteral("QUmlDataType");
     _classForProperty[QStringLiteral("ownedOperations")] = QStringLiteral("QUmlDataType");
+}
+
+void QUmlDataType::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttributes")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttributes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDataType");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttributes")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttributes")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttributes")][QtModeling::DocumentationRole] = QStringLiteral("The Attributes owned by the DataType.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttributes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttributes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedAttributes")][QtModeling::OppositeEndRole] = QStringLiteral("Property-datatype");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperations")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDataType");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperations")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperations")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperations")][QtModeling::DocumentationRole] = QStringLiteral("The Operations owned by the DataType.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDataType")][QStringLiteral("ownedOperations")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-datatype");
+
 }
 

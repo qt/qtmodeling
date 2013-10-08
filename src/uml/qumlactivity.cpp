@@ -102,6 +102,7 @@ QUmlActivity::QUmlActivity(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlActivityObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -532,82 +533,6 @@ void QUmlActivity::removeVariable(QUmlVariable *variable)
     }
 }
 
-void QUmlActivity::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edge")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edge")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edge")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edge")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edge")][QtModeling::DocumentationRole] = QStringLiteral("Edges expressing flow between nodes of the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edge")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edge")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edge")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-activity");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("group")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("group")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("group")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("group")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("group")][QtModeling::DocumentationRole] = QStringLiteral("Top-level groups in the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("group")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("group")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("group")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-inActivity");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::DocumentationRole] = QStringLiteral("If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::DocumentationRole] = QStringLiteral("If true, all invocations of the activity are handled by the same execution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("node")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("node")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("node")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("node")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("node")][QtModeling::DocumentationRole] = QStringLiteral("Nodes coordinated by the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("node")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("node")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("node")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-activity");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partition")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partition")][QtModeling::DocumentationRole] = QStringLiteral("Top-level partitions in the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Activity-group");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partition")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNode")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNode")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNode")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNode")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNode")][QtModeling::DocumentationRole] = QStringLiteral("Top-level structured nodes in the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNode")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNode")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Activity-group Activity-node");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNode")][QtModeling::OppositeEndRole] = QStringLiteral("StructuredActivityNode-activity");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variable")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variable")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variable")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variable")][QtModeling::DocumentationRole] = QStringLiteral("Top-level variables in the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variable")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variable")][QtModeling::OppositeEndRole] = QStringLiteral("Variable-activityScope");
-
-}
-
 void QUmlActivity::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -676,5 +601,81 @@ void QUmlActivity::setClassForProperty()
     _classForProperty[QStringLiteral("partitions")] = QStringLiteral("QUmlActivity");
     _classForProperty[QStringLiteral("structuredNodes")] = QStringLiteral("QUmlActivity");
     _classForProperty[QStringLiteral("variables")] = QStringLiteral("QUmlActivity");
+}
+
+void QUmlActivity::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::DocumentationRole] = QStringLiteral("Edges expressing flow between nodes of the activity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("edges")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityEdge-activity");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::DocumentationRole] = QStringLiteral("Top-level groups in the activity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("groups")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityGroup-inActivity");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::DocumentationRole] = QStringLiteral("If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not an executable property. It may be used by an execution engine to optimize model execution. If the assertion is violated by the action, then the model is ill-formed.) The default is false (an activity may make nonlocal changes).");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isReadOnly")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::DocumentationRole] = QStringLiteral("If true, all invocations of the activity are handled by the same execution.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("isSingleExecution")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::DocumentationRole] = QStringLiteral("Nodes coordinated by the activity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("nodes")][QtModeling::OppositeEndRole] = QStringLiteral("ActivityNode-activity");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::DocumentationRole] = QStringLiteral("Top-level partitions in the activity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Activity-group");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("partitions")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::DocumentationRole] = QStringLiteral("Top-level structured nodes in the activity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Activity-group Activity-node");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("structuredNodes")][QtModeling::OppositeEndRole] = QStringLiteral("StructuredActivityNode-activity");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActivity");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::DocumentationRole] = QStringLiteral("Top-level variables in the activity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActivity")][QStringLiteral("variables")][QtModeling::OppositeEndRole] = QStringLiteral("Variable-activityScope");
+
 }
 

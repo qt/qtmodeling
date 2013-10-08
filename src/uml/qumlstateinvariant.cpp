@@ -68,6 +68,7 @@ QUmlStateInvariant::QUmlStateInvariant(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlStateInvariantObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -157,6 +158,24 @@ void QUmlStateInvariant::setInvariant(QUmlConstraint *invariant)
     }
 }
 
+void QUmlStateInvariant::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("enclosingInteraction")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("enclosingOperand")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("generalOrderings")] = QStringLiteral("QUmlInteractionFragment");
+    _classForProperty[QStringLiteral("covered")] = QStringLiteral("QUmlStateInvariant");
+    _classForProperty[QStringLiteral("invariant")] = QStringLiteral("QUmlStateInvariant");
+}
+
 void QUmlStateInvariant::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -177,23 +196,5 @@ void QUmlStateInvariant::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlStateInvariant")][QStringLiteral("invariant")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlStateInvariant::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("enclosingInteraction")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("enclosingOperand")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("generalOrderings")] = QStringLiteral("QUmlInteractionFragment");
-    _classForProperty[QStringLiteral("covered")] = QStringLiteral("QUmlStateInvariant");
-    _classForProperty[QStringLiteral("invariant")] = QStringLiteral("QUmlStateInvariant");
 }
 

@@ -67,6 +67,7 @@ QUmlConnectionPointReference::QUmlConnectionPointReference(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlConnectionPointReferenceObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -189,37 +190,6 @@ void QUmlConnectionPointReference::setState(QUmlState *state)
     }
 }
 
-void QUmlConnectionPointReference::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entry")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entry")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entry")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entry")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entry")][QtModeling::DocumentationRole] = QStringLiteral("The entryPoint kind pseudo states corresponding to this connection point.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entry")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entry")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entry")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exit")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exit")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exit")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exit")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exit")][QtModeling::DocumentationRole] = QStringLiteral("The exitPoints kind pseudo states corresponding to this connection point.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exit")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exit")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exit")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::DocumentationRole] = QStringLiteral("The State in which the connection point refreshens are defined.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::OppositeEndRole] = QStringLiteral("State-connection");
-
-}
-
 void QUmlConnectionPointReference::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -237,5 +207,36 @@ void QUmlConnectionPointReference::setClassForProperty()
     _classForProperty[QStringLiteral("entries")] = QStringLiteral("QUmlConnectionPointReference");
     _classForProperty[QStringLiteral("exits")] = QStringLiteral("QUmlConnectionPointReference");
     _classForProperty[QStringLiteral("state")] = QStringLiteral("QUmlConnectionPointReference");
+}
+
+void QUmlConnectionPointReference::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::DocumentationRole] = QStringLiteral("The entryPoint kind pseudo states corresponding to this connection point.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("entries")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::DocumentationRole] = QStringLiteral("The exitPoints kind pseudo states corresponding to this connection point.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("exits")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnectionPointReference");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::DocumentationRole] = QStringLiteral("The State in which the connection point refreshens are defined.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectionPointReference")][QStringLiteral("state")][QtModeling::OppositeEndRole] = QStringLiteral("State-connection");
+
 }
 

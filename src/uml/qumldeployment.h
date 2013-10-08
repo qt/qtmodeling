@@ -79,8 +79,8 @@ protected:
     QSet<QUmlDeployedArtifact *> _deployedArtifacts;
     QUmlDeploymentTarget *_location;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

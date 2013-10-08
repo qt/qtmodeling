@@ -59,6 +59,7 @@
  */
 QUmlMessageEvent::QUmlMessageEvent()
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -84,10 +85,6 @@ QModelingObject *QUmlMessageEvent::clone() const
     return c;
 }
 
-void QUmlMessageEvent::setPropertyData()
-{
-}
-
 void QUmlMessageEvent::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -101,5 +98,9 @@ void QUmlMessageEvent::setClassForProperty()
     _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+}
+
+void QUmlMessageEvent::setPropertyData()
+{
 }
 

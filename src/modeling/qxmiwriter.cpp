@@ -230,10 +230,10 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
     for (int i = propertyCount - 1; i >= 0; --i) {
         QMetaProperty metaProperty = metaObject->property(i);
 
-        QString modifiedPropertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QStringLiteral("_$"))).remove(QRegularExpression(QStringLiteral("s$"))).replace(QRegularExpression(QStringLiteral("ie$")), QStringLiteral("y")).replace(QRegularExpression(QStringLiteral("sse$")), QStringLiteral("ss")).replace(QRegularExpression(QStringLiteral("ice$")), QStringLiteral("ex")).replace(QRegularExpression(QStringLiteral("ce$")), QStringLiteral("x"));
-        if (d->blacklistedOppositeEnds.contains(modifiedPropertyName.remove(QRegularExpression(QStringLiteral("_$")))))
+        if (d->blacklistedOppositeEnds.contains(QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QStringLiteral("_$")))))
             continue;
 
+        QString modifiedPropertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QStringLiteral("_$"))).remove(QRegularExpression(QStringLiteral("s$"))).replace(QRegularExpression(QStringLiteral("ie$")), QStringLiteral("y")).replace(QRegularExpression(QStringLiteral("sse$")), QStringLiteral("ss")).replace(QRegularExpression(QStringLiteral("ice$")), QStringLiteral("ex")).replace(QRegularExpression(QStringLiteral("ce$")), QStringLiteral("x"));
         QString typeName = QString::fromLatin1(metaProperty.typeName());
         QVariant variant = metaProperty.read(qObject);
         QString aggregationRole = QModelingObject::propertyData(modelingObject->classForProperty(metaProperty), metaProperty, QtModeling::AggregationRole).toString();

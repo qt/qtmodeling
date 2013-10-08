@@ -67,6 +67,7 @@ QUmlConnector::QUmlConnector(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlConnectorObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -255,55 +256,6 @@ void QUmlConnector::setType(QUmlAssociation *type)
     }
 }
 
-void QUmlConnector::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contract")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contract")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contract")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contract")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contract")][QtModeling::DocumentationRole] = QStringLiteral("The set of Behaviors that specify the valid interaction patterns across the connector.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contract")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contract")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("end")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("end")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("end")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("end")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("end")][QtModeling::DocumentationRole] = QStringLiteral("A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("end")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("end")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("end")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::DocumentationRole] = QStringLiteral("Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnector")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnector")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnector")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnector")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnector")][QtModeling::DocumentationRole] = QStringLiteral("A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnector")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnector")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnector")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("An optional association that specifies the link corresponding to this connector.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlConnector::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -325,5 +277,54 @@ void QUmlConnector::setClassForProperty()
     _classForProperty[QStringLiteral("kind")] = QStringLiteral("QUmlConnector");
     _classForProperty[QStringLiteral("redefinedConnectors")] = QStringLiteral("QUmlConnector");
     _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlConnector");
+}
+
+void QUmlConnector::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contracts")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contracts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contracts")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contracts")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contracts")][QtModeling::DocumentationRole] = QStringLiteral("The set of Behaviors that specify the valid interaction patterns across the connector.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contracts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contracts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("contracts")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("ends")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("ends")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("ends")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("ends")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("ends")][QtModeling::DocumentationRole] = QStringLiteral("A connector consists of at least two connector ends, each representing the participation of instances of the classifiers typing the connectable elements attached to this end. The set of connector ends is ordered.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("ends")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("ends")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("ends")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::DocumentationRole] = QStringLiteral("Indicates the kind of connector. This is derived: a connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("kind")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnectors")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnectors")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnectors")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnectors")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnectors")][QtModeling::DocumentationRole] = QStringLiteral("A connector may be redefined when its containing classifier is specialized. The redefining connector may have a type that specializes the type of the redefined connector. The types of the connector ends of the redefining connector may specialize the types of the connector ends of the redefined connector. The properties of the connector ends of the redefining connector may be replaced.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnectors")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnectors")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("redefinedConnectors")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlConnector");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("An optional association that specifies the link corresponding to this connector.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlConnector")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

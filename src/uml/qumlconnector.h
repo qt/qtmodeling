@@ -87,8 +87,8 @@ protected:
     QSet<QUmlConnector *> _redefinedConnectors;
     QUmlAssociation *_type;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

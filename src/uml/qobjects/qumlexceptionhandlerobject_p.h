@@ -57,13 +57,13 @@ class Q_UML_EXPORT QUmlExceptionHandlerObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [ExceptionHandler]
     Q_PROPERTY(QObject * exceptionInput READ exceptionInput WRITE setExceptionInput)
-    Q_PROPERTY(QSet<QObject *> exceptionType READ exceptionTypes)
+    Q_PROPERTY(QSet<QObject *> exceptionTypes READ exceptionTypes)
     Q_PROPERTY(QObject * handlerBody READ handlerBody WRITE setHandlerBody)
     Q_PROPERTY(QObject * protectedNode READ protectedNode WRITE setProtectedNode)
 

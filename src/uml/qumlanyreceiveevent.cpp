@@ -63,6 +63,7 @@ QUmlAnyReceiveEvent::QUmlAnyReceiveEvent(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlAnyReceiveEventObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -93,10 +94,6 @@ QModelingObject *QUmlAnyReceiveEvent::clone() const
     return c;
 }
 
-void QUmlAnyReceiveEvent::setPropertyData()
-{
-}
-
 void QUmlAnyReceiveEvent::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -110,5 +107,9 @@ void QUmlAnyReceiveEvent::setClassForProperty()
     _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+}
+
+void QUmlAnyReceiveEvent::setPropertyData()
+{
 }
 

@@ -86,8 +86,8 @@ protected:
     QSet<QUmlProperty *> _navigableOwnedEnds;
     QList<QUmlProperty *> _ownedEnds;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

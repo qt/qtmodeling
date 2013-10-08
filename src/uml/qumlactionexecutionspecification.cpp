@@ -68,6 +68,7 @@ QUmlActionExecutionSpecification::QUmlActionExecutionSpecification(bool createQO
 {
     if (createQObject)
         _qObject = new QUmlActionExecutionSpecificationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -131,19 +132,6 @@ void QUmlActionExecutionSpecification::setAction(QUmlAction *action)
     }
 }
 
-void QUmlActionExecutionSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActionExecutionSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::DocumentationRole] = QStringLiteral("Action whose execution is occurring.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlActionExecutionSpecification::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -162,5 +150,18 @@ void QUmlActionExecutionSpecification::setClassForProperty()
     _classForProperty[QStringLiteral("finish")] = QStringLiteral("QUmlExecutionSpecification");
     _classForProperty[QStringLiteral("start")] = QStringLiteral("QUmlExecutionSpecification");
     _classForProperty[QStringLiteral("action")] = QStringLiteral("QUmlActionExecutionSpecification");
+}
+
+void QUmlActionExecutionSpecification::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlActionExecutionSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::DocumentationRole] = QStringLiteral("Action whose execution is occurring.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlActionExecutionSpecification")][QStringLiteral("action")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

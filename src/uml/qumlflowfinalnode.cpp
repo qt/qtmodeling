@@ -70,6 +70,7 @@ QUmlFlowFinalNode::QUmlFlowFinalNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlFlowFinalNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -111,10 +112,6 @@ QModelingObject *QUmlFlowFinalNode::clone() const
     return c;
 }
 
-void QUmlFlowFinalNode::setPropertyData()
-{
-}
-
 void QUmlFlowFinalNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -137,5 +134,9 @@ void QUmlFlowFinalNode::setClassForProperty()
     _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
+}
+
+void QUmlFlowFinalNode::setPropertyData()
+{
 }
 

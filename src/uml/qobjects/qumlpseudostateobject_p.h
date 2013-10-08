@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlPseudostateObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -73,8 +73,8 @@ class Q_UML_EXPORT QUmlPseudostateObject : public QObject
 
     // Properties [Vertex]
     Q_PROPERTY(QObject * container READ container WRITE setContainer)
-    Q_PROPERTY(QSet<QObject *> incoming READ incomings STORED false)
-    Q_PROPERTY(QSet<QObject *> outgoing READ outgoings STORED false)
+    Q_PROPERTY(QSet<QObject *> incomings READ incomings STORED false)
+    Q_PROPERTY(QSet<QObject *> outgoings READ outgoings STORED false)
 
     // Properties [Pseudostate]
     Q_PROPERTY(QtUml::PseudostateKind kind READ kind WRITE setKind RESET unsetKind)

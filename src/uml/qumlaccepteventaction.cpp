@@ -76,6 +76,7 @@ QUmlAcceptEventAction::QUmlAcceptEventAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlAcceptEventActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -229,37 +230,6 @@ void QUmlAcceptEventAction::removeTrigger(QUmlTrigger *trigger)
     }
 }
 
-void QUmlAcceptEventAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("trigger")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("trigger")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("trigger")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("trigger")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("trigger")][QtModeling::DocumentationRole] = QStringLiteral("The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("trigger")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("trigger")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("trigger")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlAcceptEventAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -292,5 +262,36 @@ void QUmlAcceptEventAction::setClassForProperty()
     _classForProperty[QStringLiteral("isUnmarshall")] = QStringLiteral("QUmlAcceptEventAction");
     _classForProperty[QStringLiteral("results")] = QStringLiteral("QUmlAcceptEventAction");
     _classForProperty[QStringLiteral("triggers")] = QStringLiteral("QUmlAcceptEventAction");
+}
+
+void QUmlAcceptEventAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::DocumentationRole] = QStringLiteral("Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("isUnmarshall")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::DocumentationRole] = QStringLiteral("Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity might not be preserved.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("results")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlAcceptEventAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::DocumentationRole] = QStringLiteral("The type of events accepted by the action, as specified by triggers. For triggers with signal events, a signal of the specified type or any subtype of the specified signal type is accepted.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlAcceptEventAction")][QStringLiteral("triggers")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

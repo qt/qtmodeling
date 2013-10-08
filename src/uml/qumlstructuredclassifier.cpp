@@ -79,6 +79,7 @@
  */
 QUmlStructuredClassifier::QUmlStructuredClassifier()
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -297,46 +298,6 @@ void QUmlStructuredClassifier::removeRole(QUmlConnectableElement *role)
     }
 }
 
-void QUmlStructuredClassifier::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("References the properties owned by the classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttribute")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-attribute Namespace-ownedMember StructuredClassifier-role");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnector")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnector")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnector")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnector")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnector")][QtModeling::DocumentationRole] = QStringLiteral("References the connectors owned by the classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnector")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnector")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnector")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("part")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("part")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("part")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("part")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("part")][QtModeling::DocumentationRole] = QStringLiteral("References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("part")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("part")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("part")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("role")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("role")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("role")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("role")][QtModeling::IsDerivedUnionRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("role")][QtModeling::DocumentationRole] = QStringLiteral("References the roles that instances may play in this classifier.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("role")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("role")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-member");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("role")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlStructuredClassifier::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -380,5 +341,45 @@ void QUmlStructuredClassifier::setClassForProperty()
     _classForProperty[QStringLiteral("ownedConnectors")] = QStringLiteral("QUmlStructuredClassifier");
     _classForProperty[QStringLiteral("parts")] = QStringLiteral("QUmlStructuredClassifier");
     _classForProperty[QStringLiteral("roles")] = QStringLiteral("QUmlStructuredClassifier");
+}
+
+void QUmlStructuredClassifier::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttributes")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttributes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttributes")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttributes")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttributes")][QtModeling::DocumentationRole] = QStringLiteral("References the properties owned by the classifier.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttributes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttributes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-attribute Namespace-ownedMember StructuredClassifier-role");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedAttributes")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnectors")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnectors")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnectors")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnectors")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnectors")][QtModeling::DocumentationRole] = QStringLiteral("References the connectors owned by the classifier.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnectors")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnectors")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("ownedConnectors")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("parts")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("parts")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("parts")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("parts")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("parts")][QtModeling::DocumentationRole] = QStringLiteral("References the properties specifying instances that the classifier owns by composition. This association is derived, selecting those owned properties where isComposite is true.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("parts")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("parts")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("parts")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("roles")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("roles")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuredClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("roles")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("roles")][QtModeling::IsDerivedUnionRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("roles")][QtModeling::DocumentationRole] = QStringLiteral("References the roles that instances may play in this classifier.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("roles")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("roles")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-member");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuredClassifier")][QStringLiteral("roles")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -78,6 +78,7 @@ QUmlReadLinkObjectEndQualifierAction::QUmlReadLinkObjectEndQualifierAction(bool 
 {
     if (createQObject)
         _qObject = new QUmlReadLinkObjectEndQualifierActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -215,37 +216,6 @@ void QUmlReadLinkObjectEndQualifierAction::setResult(QUmlOutputPin *result)
     }
 }
 
-void QUmlReadLinkObjectEndQualifierAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Gives the input pin from which the link object is obtained.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("The attribute representing the qualifier to be read.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Pin where the result value is placed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlReadLinkObjectEndQualifierAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -278,5 +248,36 @@ void QUmlReadLinkObjectEndQualifierAction::setClassForProperty()
     _classForProperty[QStringLiteral("object")] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
     _classForProperty[QStringLiteral("qualifier")] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
     _classForProperty[QStringLiteral("result")] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
+}
+
+void QUmlReadLinkObjectEndQualifierAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Gives the input pin from which the link object is obtained.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("The attribute representing the qualifier to be read.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkObjectEndQualifierAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Pin where the result value is placed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkObjectEndQualifierAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

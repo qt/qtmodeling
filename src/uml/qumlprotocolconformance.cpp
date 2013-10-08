@@ -59,6 +59,7 @@ QUmlProtocolConformance::QUmlProtocolConformance(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlProtocolConformanceObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -144,6 +145,18 @@ void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *speci
     }
 }
 
+void QUmlProtocolConformance::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("generalMachine")] = QStringLiteral("QUmlProtocolConformance");
+    _classForProperty[QStringLiteral("specificMachine")] = QStringLiteral("QUmlProtocolConformance");
+}
+
 void QUmlProtocolConformance::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("generalMachine")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -164,17 +177,5 @@ void QUmlProtocolConformance::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProtocolConformance")][QStringLiteral("specificMachine")][QtModeling::OppositeEndRole] = QStringLiteral("ProtocolStateMachine-conformance");
 
-}
-
-void QUmlProtocolConformance::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("generalMachine")] = QStringLiteral("QUmlProtocolConformance");
-    _classForProperty[QStringLiteral("specificMachine")] = QStringLiteral("QUmlProtocolConformance");
 }
 

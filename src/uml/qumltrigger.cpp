@@ -64,6 +64,7 @@ QUmlTrigger::QUmlTrigger(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlTriggerObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -147,28 +148,6 @@ void QUmlTrigger::removePort(QUmlPort *port)
     }
 }
 
-void QUmlTrigger::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTrigger");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::DocumentationRole] = QStringLiteral("The event that causes the trigger.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("port")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("port")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTrigger");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("port")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("port")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("port")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("port")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("port")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("port")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlTrigger::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -182,5 +161,27 @@ void QUmlTrigger::setClassForProperty()
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("event")] = QStringLiteral("QUmlTrigger");
     _classForProperty[QStringLiteral("ports")] = QStringLiteral("QUmlTrigger");
+}
+
+void QUmlTrigger::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTrigger");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::DocumentationRole] = QStringLiteral("The event that causes the trigger.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("event")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTrigger");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::DocumentationRole] = QStringLiteral("A optional port of the receiver object on which the behavioral feature is invoked.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTrigger")][QStringLiteral("ports")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

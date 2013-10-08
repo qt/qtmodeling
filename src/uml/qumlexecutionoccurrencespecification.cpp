@@ -68,6 +68,7 @@ QUmlExecutionOccurrenceSpecification::QUmlExecutionOccurrenceSpecification(bool 
 {
     if (createQObject)
         _qObject = new QUmlExecutionOccurrenceSpecificationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -131,19 +132,6 @@ void QUmlExecutionOccurrenceSpecification::setExecution(QUmlExecutionSpecificati
     }
 }
 
-void QUmlExecutionOccurrenceSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutionOccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::DocumentationRole] = QStringLiteral("References the execution specification describing the execution that is started or finished at this execution event.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlExecutionOccurrenceSpecification::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -162,5 +150,18 @@ void QUmlExecutionOccurrenceSpecification::setClassForProperty()
     _classForProperty[QStringLiteral("toAfters")] = QStringLiteral("QUmlOccurrenceSpecification");
     _classForProperty[QStringLiteral("toBefores")] = QStringLiteral("QUmlOccurrenceSpecification");
     _classForProperty[QStringLiteral("execution")] = QStringLiteral("QUmlExecutionOccurrenceSpecification");
+}
+
+void QUmlExecutionOccurrenceSpecification::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExecutionOccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::DocumentationRole] = QStringLiteral("References the execution specification describing the execution that is started or finished at this execution event.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExecutionOccurrenceSpecification")][QStringLiteral("execution")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

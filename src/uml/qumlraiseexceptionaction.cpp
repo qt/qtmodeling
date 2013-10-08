@@ -75,6 +75,7 @@ QUmlRaiseExceptionAction::QUmlRaiseExceptionAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlRaiseExceptionActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -157,19 +158,6 @@ void QUmlRaiseExceptionAction::setException(QUmlInputPin *exception)
     }
 }
 
-void QUmlRaiseExceptionAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRaiseExceptionAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::DocumentationRole] = QStringLiteral("An input pin whose value becomes an exception object.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlRaiseExceptionAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -200,5 +188,18 @@ void QUmlRaiseExceptionAction::setClassForProperty()
     _classForProperty[QStringLiteral("localPreconditions")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("exception")] = QStringLiteral("QUmlRaiseExceptionAction");
+}
+
+void QUmlRaiseExceptionAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRaiseExceptionAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::DocumentationRole] = QStringLiteral("An input pin whose value becomes an exception object.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRaiseExceptionAction")][QStringLiteral("exception")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

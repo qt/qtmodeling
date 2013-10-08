@@ -70,6 +70,7 @@ QUmlLifeline::QUmlLifeline(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLifelineObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -246,6 +247,24 @@ void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
     }
 }
 
+void QUmlLifeline::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("coveredBy")] = QStringLiteral("QUmlLifeline");
+    _classForProperty[QStringLiteral("decomposedAs")] = QStringLiteral("QUmlLifeline");
+    _classForProperty[QStringLiteral("interaction")] = QStringLiteral("QUmlLifeline");
+    _classForProperty[QStringLiteral("represents")] = QStringLiteral("QUmlLifeline");
+    _classForProperty[QStringLiteral("selector")] = QStringLiteral("QUmlLifeline");
+}
+
 void QUmlLifeline::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLifeline")][QStringLiteral("coveredBy")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -293,23 +312,5 @@ void QUmlLifeline::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLifeline")][QStringLiteral("selector")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLifeline")][QStringLiteral("selector")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlLifeline::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("coveredBy")] = QStringLiteral("QUmlLifeline");
-    _classForProperty[QStringLiteral("decomposedAs")] = QStringLiteral("QUmlLifeline");
-    _classForProperty[QStringLiteral("interaction")] = QStringLiteral("QUmlLifeline");
-    _classForProperty[QStringLiteral("represents")] = QStringLiteral("QUmlLifeline");
-    _classForProperty[QStringLiteral("selector")] = QStringLiteral("QUmlLifeline");
 }
 

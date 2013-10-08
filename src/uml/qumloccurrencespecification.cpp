@@ -66,6 +66,7 @@ QUmlOccurrenceSpecification::QUmlOccurrenceSpecification(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlOccurrenceSpecificationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -207,37 +208,6 @@ void QUmlOccurrenceSpecification::removeToBefore(QUmlGeneralOrdering *toBefore)
     }
 }
 
-void QUmlOccurrenceSpecification::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::DocumentationRole] = QStringLiteral("References the Lifeline on which the OccurrenceSpecification appears.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InteractionFragment-covered");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfter")][QtModeling::DocumentationRole] = QStringLiteral("References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfter")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralOrdering-before");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefore")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefore")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefore")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefore")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefore")][QtModeling::DocumentationRole] = QStringLiteral("References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefore")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefore")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefore")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralOrdering-after");
-
-}
-
 void QUmlOccurrenceSpecification::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -255,5 +225,36 @@ void QUmlOccurrenceSpecification::setClassForProperty()
     _classForProperty[QStringLiteral("covered")] = QStringLiteral("QUmlOccurrenceSpecification");
     _classForProperty[QStringLiteral("toAfters")] = QStringLiteral("QUmlOccurrenceSpecification");
     _classForProperty[QStringLiteral("toBefores")] = QStringLiteral("QUmlOccurrenceSpecification");
+}
+
+void QUmlOccurrenceSpecification::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::DocumentationRole] = QStringLiteral("References the Lifeline on which the OccurrenceSpecification appears.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("InteractionFragment-covered");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("covered")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::DocumentationRole] = QStringLiteral("References the GeneralOrderings that specify EventOcurrences that must occur after this OccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toAfters")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralOrdering-before");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::DocumentationRole] = QStringLiteral("References the GeneralOrderings that specify EventOcurrences that must occur before this OccurrenceSpecification");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOccurrenceSpecification")][QStringLiteral("toBefores")][QtModeling::OppositeEndRole] = QStringLiteral("GeneralOrdering-after");
+
 }
 

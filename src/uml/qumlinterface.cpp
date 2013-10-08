@@ -85,6 +85,7 @@ QUmlInterface::QUmlInterface(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlInterfaceObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -408,64 +409,6 @@ void QUmlInterface::removeRedefinedInterface(QUmlInterface *redefinedInterface)
     }
 }
 
-void QUmlInterface::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifier")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifier")][QtModeling::DocumentationRole] = QStringLiteral("References all the Classifiers that are defined (nested) within the Class.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttribute")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttribute")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttribute")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttribute")][QtModeling::DocumentationRole] = QStringLiteral("The attributes (i.e. the properties) owned by the class.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttribute")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttribute")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttribute")][QtModeling::OppositeEndRole] = QStringLiteral("Property-interface");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperation")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperation")][QtModeling::DocumentationRole] = QStringLiteral("The operations owned by the class.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperation")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-interface");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReception")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReception")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReception")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReception")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReception")][QtModeling::DocumentationRole] = QStringLiteral("Receptions that objects providing this interface are willing to accept.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReception")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReception")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReception")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::DocumentationRole] = QStringLiteral("References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterface")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterface")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterface")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterface")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterface")][QtModeling::DocumentationRole] = QStringLiteral("References all the Interfaces redefined by this Interface.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterface")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterface")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-redefinedClassifier");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterface")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlInterface::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -511,5 +454,63 @@ void QUmlInterface::setClassForProperty()
     _classForProperty[QStringLiteral("ownedReceptions")] = QStringLiteral("QUmlInterface");
     _classForProperty[QStringLiteral("protocol")] = QStringLiteral("QUmlInterface");
     _classForProperty[QStringLiteral("redefinedInterfaces")] = QStringLiteral("QUmlInterface");
+}
+
+void QUmlInterface::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifiers")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifiers")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifiers")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifiers")][QtModeling::DocumentationRole] = QStringLiteral("References all the Classifiers that are defined (nested) within the Class.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("nestedClassifiers")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttributes")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttributes")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttributes")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttributes")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttributes")][QtModeling::DocumentationRole] = QStringLiteral("The attributes (i.e. the properties) owned by the class.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttributes")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttributes")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember Classifier-attribute");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedAttributes")][QtModeling::OppositeEndRole] = QStringLiteral("Property-interface");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperations")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperations")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperations")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperations")][QtModeling::DocumentationRole] = QStringLiteral("The operations owned by the class.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature A_redefinitionContext_redefinableElement-redefinableElement Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedOperations")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-interface");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReceptions")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReceptions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReceptions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReceptions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReceptions")][QtModeling::DocumentationRole] = QStringLiteral("Receptions that objects providing this interface are willing to accept.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReceptions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReceptions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-feature Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("ownedReceptions")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::DocumentationRole] = QStringLiteral("References a protocol state machine specifying the legal sequences of the invocation of the behavioral features described in the interface.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("protocol")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterfaces")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterfaces")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInterface");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterfaces")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterfaces")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterfaces")][QtModeling::DocumentationRole] = QStringLiteral("References all the Interfaces redefined by this Interface.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterfaces")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterfaces")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Classifier-redefinedClassifier");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInterface")][QStringLiteral("redefinedInterfaces")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

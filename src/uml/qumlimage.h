@@ -73,8 +73,8 @@ protected:
     QString _format;
     QString _location;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

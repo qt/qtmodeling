@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlPortObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -84,11 +84,11 @@ class Q_UML_EXPORT QUmlPortObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
 
     // Properties [Feature]
-    Q_PROPERTY(QSet<QObject *> featuringClassifier READ featuringClassifiers)
+    Q_PROPERTY(QSet<QObject *> featuringClassifiers READ featuringClassifiers)
     Q_PROPERTY(bool isStatic READ isStatic WRITE setStatic RESET unsetStatic)
 
     // Properties [StructuralFeature]
@@ -97,12 +97,12 @@ class Q_UML_EXPORT QUmlPortObject : public QObject
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
 
     // Properties [ConnectableElement]
-    Q_PROPERTY(QList<QObject *> end READ ends STORED false)
+    Q_PROPERTY(QList<QObject *> ends READ ends STORED false)
     Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
 
     // Properties [DeploymentTarget]
-    Q_PROPERTY(QSet<QObject *> deployedElement READ deployedElements STORED false)
-    Q_PROPERTY(QSet<QObject *> deployment READ deployments)
+    Q_PROPERTY(QSet<QObject *> deployedElements READ deployedElements STORED false)
+    Q_PROPERTY(QSet<QObject *> deployments READ deployments)
 
     // Properties [Property]
     Q_PROPERTY(QtUml::AggregationKind aggregation READ aggregation WRITE setAggregation RESET unsetAggregation)
@@ -120,9 +120,9 @@ class Q_UML_EXPORT QUmlPortObject : public QObject
     Q_PROPERTY(bool isReadOnly READ isReadOnly WRITE setReadOnly RESET unsetReadOnly)
     Q_PROPERTY(QObject * opposite READ opposite WRITE setOpposite STORED false)
     Q_PROPERTY(QObject * owningAssociation READ owningAssociation WRITE setOwningAssociation)
-    Q_PROPERTY(QList<QObject *> qualifier READ qualifiers)
-    Q_PROPERTY(QSet<QObject *> redefinedProperty READ redefinedProperties)
-    Q_PROPERTY(QSet<QObject *> subsettedProperty READ subsettedProperties)
+    Q_PROPERTY(QList<QObject *> qualifiers READ qualifiers)
+    Q_PROPERTY(QSet<QObject *> redefinedProperties READ redefinedProperties)
+    Q_PROPERTY(QSet<QObject *> subsettedProperties READ subsettedProperties)
 
     // Properties [Port]
     Q_PROPERTY(bool isBehavior READ isBehavior WRITE setBehavior RESET unsetBehavior)
@@ -130,7 +130,7 @@ class Q_UML_EXPORT QUmlPortObject : public QObject
     Q_PROPERTY(bool isService READ isService WRITE setService RESET unsetService)
     Q_PROPERTY(QObject * protocol READ protocol WRITE setProtocol)
     Q_PROPERTY(QSet<QObject *> provided READ provided STORED false)
-    Q_PROPERTY(QSet<QObject *> redefinedPort READ redefinedPorts)
+    Q_PROPERTY(QSet<QObject *> redefinedPorts READ redefinedPorts)
     Q_PROPERTY(QSet<QObject *> required READ required STORED false)
 
 public:

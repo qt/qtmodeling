@@ -77,6 +77,7 @@ QUmlDestroyLinkAction::QUmlDestroyLinkAction(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlDestroyLinkActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -164,19 +165,6 @@ void QUmlDestroyLinkAction::removeEndData(QUmlLinkEndDestructionData *endData)
     }
 }
 
-void QUmlDestroyLinkAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDestroyLinkAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::DocumentationRole] = QStringLiteral("Specifies ends of association and inputs.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("LinkAction-endData");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlDestroyLinkAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -208,5 +196,18 @@ void QUmlDestroyLinkAction::setClassForProperty()
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("inputValues")] = QStringLiteral("QUmlLinkAction");
     _classForProperty[QStringLiteral("endData")] = QStringLiteral("QUmlDestroyLinkAction");
+}
+
+void QUmlDestroyLinkAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlDestroyLinkAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::DocumentationRole] = QStringLiteral("Specifies ends of association and inputs.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("LinkAction-endData");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlDestroyLinkAction")][QStringLiteral("endData")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

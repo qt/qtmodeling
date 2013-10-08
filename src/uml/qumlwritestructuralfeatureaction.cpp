@@ -73,6 +73,7 @@ QUmlWriteStructuralFeatureAction::QUmlWriteStructuralFeatureAction() :
     _result(0),
     _value(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -186,28 +187,6 @@ void QUmlWriteStructuralFeatureAction::setValue(QUmlInputPin *value)
     }
 }
 
-void QUmlWriteStructuralFeatureAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlWriteStructuralFeatureAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlWriteStructuralFeatureAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Value to be added or removed from the structural feature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlWriteStructuralFeatureAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -241,5 +220,27 @@ void QUmlWriteStructuralFeatureAction::setClassForProperty()
     _classForProperty[QStringLiteral("structuralFeature")] = QStringLiteral("QUmlStructuralFeatureAction");
     _classForProperty[QStringLiteral("result")] = QStringLiteral("QUmlWriteStructuralFeatureAction");
     _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlWriteStructuralFeatureAction");
+}
+
+void QUmlWriteStructuralFeatureAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlWriteStructuralFeatureAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlWriteStructuralFeatureAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Value to be added or removed from the structural feature.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlWriteStructuralFeatureAction")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

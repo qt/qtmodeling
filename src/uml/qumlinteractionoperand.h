@@ -74,8 +74,8 @@ protected:
     QList<QUmlInteractionFragment *> _fragments;
     QUmlInteractionConstraint *_guard;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

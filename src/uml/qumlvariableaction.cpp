@@ -72,6 +72,7 @@
 QUmlVariableAction::QUmlVariableAction() :
     _variable(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -140,19 +141,6 @@ void QUmlVariableAction::setVariable(QUmlVariable *variable)
     }
 }
 
-void QUmlVariableAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVariableAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::DocumentationRole] = QStringLiteral("Variable to be read.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlVariableAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -183,5 +171,18 @@ void QUmlVariableAction::setClassForProperty()
     _classForProperty[QStringLiteral("localPreconditions")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("variable")] = QStringLiteral("QUmlVariableAction");
+}
+
+void QUmlVariableAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlVariableAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::DocumentationRole] = QStringLiteral("Variable to be read.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlVariableAction")][QStringLiteral("variable")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

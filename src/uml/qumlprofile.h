@@ -75,8 +75,8 @@ protected:
     QSet<QUmlElementImport *> _metaclassReferences;
     QSet<QUmlPackageImport *> _metamodelReferences;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

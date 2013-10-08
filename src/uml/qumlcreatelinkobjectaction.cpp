@@ -79,6 +79,7 @@ QUmlCreateLinkObjectAction::QUmlCreateLinkObjectAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCreateLinkObjectActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -165,19 +166,6 @@ void QUmlCreateLinkObjectAction::setResult(QUmlOutputPin *result)
     }
 }
 
-void QUmlCreateLinkObjectAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCreateLinkObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlCreateLinkObjectAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -210,5 +198,18 @@ void QUmlCreateLinkObjectAction::setClassForProperty()
     _classForProperty[QStringLiteral("inputValues")] = QStringLiteral("QUmlLinkAction");
     _classForProperty[QStringLiteral("endData")] = QStringLiteral("QUmlCreateLinkAction");
     _classForProperty[QStringLiteral("result")] = QStringLiteral("QUmlCreateLinkObjectAction");
+}
+
+void QUmlCreateLinkObjectAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCreateLinkObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkObjectAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

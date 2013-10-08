@@ -61,6 +61,7 @@ QUmlConnectableElementTemplateParameter::QUmlConnectableElementTemplateParameter
 {
     if (createQObject)
         _qObject = new QUmlConnectableElementTemplateParameterObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -114,6 +115,18 @@ void QUmlConnectableElementTemplateParameter::setParameteredElement(QUmlConnecta
     }
 }
 
+void QUmlConnectableElementTemplateParameter::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("ownedDefault")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("ownedParameteredElement")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("parameteredElement")] = QStringLiteral("QUmlConnectableElementTemplateParameter");
+}
+
 void QUmlConnectableElementTemplateParameter::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -125,17 +138,5 @@ void QUmlConnectableElementTemplateParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlConnectableElementTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectableElement-templateParameter");
 
-}
-
-void QUmlConnectableElementTemplateParameter::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("ownedDefault")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("ownedParameteredElement")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("parameteredElement")] = QStringLiteral("QUmlConnectableElementTemplateParameter");
 }
 

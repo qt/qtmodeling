@@ -65,6 +65,7 @@ QUmlExtensionPoint::QUmlExtensionPoint(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExtensionPointObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -122,19 +123,6 @@ void QUmlExtensionPoint::setUseCase(QUmlUseCase *useCase)
     }
 }
 
-void QUmlExtensionPoint::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionPoint");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that owns this extension point.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::OppositeEndRole] = QStringLiteral("UseCase-extensionPoint");
-
-}
-
 void QUmlExtensionPoint::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -150,5 +138,18 @@ void QUmlExtensionPoint::setClassForProperty()
     _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
     _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
     _classForProperty[QStringLiteral("useCase")] = QStringLiteral("QUmlExtensionPoint");
+}
+
+void QUmlExtensionPoint::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtensionPoint");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::DocumentationRole] = QStringLiteral("References the use case that owns this extension point.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtensionPoint")][QStringLiteral("useCase")][QtModeling::OppositeEndRole] = QStringLiteral("UseCase-extensionPoint");
+
 }
 

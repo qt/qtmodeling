@@ -66,6 +66,7 @@ QUmlInstanceValue::QUmlInstanceValue(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlInstanceValueObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -123,19 +124,6 @@ void QUmlInstanceValue::setInstance(QUmlInstanceSpecification *instance)
     }
 }
 
-void QUmlInstanceValue::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceValue");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::DocumentationRole] = QStringLiteral("The instance that is the specified value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlInstanceValue::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -151,5 +139,18 @@ void QUmlInstanceValue::setClassForProperty()
     _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
     _classForProperty[QStringLiteral("instance")] = QStringLiteral("QUmlInstanceValue");
+}
+
+void QUmlInstanceValue::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInstanceValue");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::DocumentationRole] = QStringLiteral("The instance that is the specified value.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInstanceValue")][QStringLiteral("instance")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

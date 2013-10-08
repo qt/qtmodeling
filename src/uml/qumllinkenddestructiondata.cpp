@@ -62,6 +62,7 @@ QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLinkEndDestructionDataObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -134,6 +135,18 @@ void QUmlLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
     }
 }
 
+void QUmlLinkEndDestructionData::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("destroyAt")] = QStringLiteral("QUmlLinkEndDestructionData");
+    _classForProperty[QStringLiteral("isDestroyDuplicates")] = QStringLiteral("QUmlLinkEndDestructionData");
+}
+
 void QUmlLinkEndDestructionData::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("destroyAt")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -154,17 +167,5 @@ void QUmlLinkEndDestructionData::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndDestructionData")][QStringLiteral("isDestroyDuplicates")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlLinkEndDestructionData::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("destroyAt")] = QStringLiteral("QUmlLinkEndDestructionData");
-    _classForProperty[QStringLiteral("isDestroyDuplicates")] = QStringLiteral("QUmlLinkEndDestructionData");
 }
 

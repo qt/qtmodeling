@@ -77,6 +77,7 @@ QUmlTestIdentityAction::QUmlTestIdentityAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlTestIdentityActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -223,37 +224,6 @@ void QUmlTestIdentityAction::setSecond(QUmlInputPin *second)
     }
 }
 
-void QUmlTestIdentityAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTestIdentityAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::DocumentationRole] = QStringLiteral("Gives the pin on which an object is placed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTestIdentityAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the two input objects are identical.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTestIdentityAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::DocumentationRole] = QStringLiteral("Gives the pin on which an object is placed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlTestIdentityAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -286,5 +256,36 @@ void QUmlTestIdentityAction::setClassForProperty()
     _classForProperty[QStringLiteral("first")] = QStringLiteral("QUmlTestIdentityAction");
     _classForProperty[QStringLiteral("result")] = QStringLiteral("QUmlTestIdentityAction");
     _classForProperty[QStringLiteral("second")] = QStringLiteral("QUmlTestIdentityAction");
+}
+
+void QUmlTestIdentityAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTestIdentityAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::DocumentationRole] = QStringLiteral("Gives the pin on which an object is placed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("first")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTestIdentityAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the two input objects are identical.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTestIdentityAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::DocumentationRole] = QStringLiteral("Gives the pin on which an object is placed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTestIdentityAction")][QStringLiteral("second")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

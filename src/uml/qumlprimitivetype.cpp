@@ -149,10 +149,6 @@ QModelingObject *QUmlPrimitiveType::clone() const
     return c;
 }
 
-void QUmlPrimitiveType::setPropertyData()
-{
-}
-
 void QUmlPrimitiveType::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -194,5 +190,9 @@ void QUmlPrimitiveType::setClassForProperty()
     _classForProperty[QStringLiteral("useCases")] = QStringLiteral("QUmlClassifier");
     _classForProperty[QStringLiteral("ownedAttributes")] = QStringLiteral("QUmlDataType");
     _classForProperty[QStringLiteral("ownedOperations")] = QStringLiteral("QUmlDataType");
+}
+
+void QUmlPrimitiveType::setPropertyData()
+{
 }
 

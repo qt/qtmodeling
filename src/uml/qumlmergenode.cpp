@@ -70,6 +70,7 @@ QUmlMergeNode::QUmlMergeNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlMergeNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -111,10 +112,6 @@ QModelingObject *QUmlMergeNode::clone() const
     return c;
 }
 
-void QUmlMergeNode::setPropertyData()
-{
-}
-
 void QUmlMergeNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -137,5 +134,9 @@ void QUmlMergeNode::setClassForProperty()
     _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
+}
+
+void QUmlMergeNode::setPropertyData()
+{
 }
 

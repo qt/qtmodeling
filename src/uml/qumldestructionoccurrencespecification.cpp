@@ -67,6 +67,7 @@ QUmlDestructionOccurrenceSpecification::QUmlDestructionOccurrenceSpecification(b
 {
     if (createQObject)
         _qObject = new QUmlDestructionOccurrenceSpecificationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -107,10 +108,6 @@ QModelingObject *QUmlDestructionOccurrenceSpecification::clone() const
     return c;
 }
 
-void QUmlDestructionOccurrenceSpecification::setPropertyData()
-{
-}
-
 void QUmlDestructionOccurrenceSpecification::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -129,5 +126,9 @@ void QUmlDestructionOccurrenceSpecification::setClassForProperty()
     _classForProperty[QStringLiteral("toAfters")] = QStringLiteral("QUmlOccurrenceSpecification");
     _classForProperty[QStringLiteral("toBefores")] = QStringLiteral("QUmlOccurrenceSpecification");
     _classForProperty[QStringLiteral("message")] = QStringLiteral("QUmlMessageEnd");
+}
+
+void QUmlDestructionOccurrenceSpecification::setPropertyData()
+{
 }
 

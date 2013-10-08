@@ -78,8 +78,8 @@ protected:
     QList<QUmlTemplateParameter *> _parameters;
     QUmlTemplateableElement *_template_;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

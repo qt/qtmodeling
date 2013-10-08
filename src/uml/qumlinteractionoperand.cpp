@@ -71,6 +71,7 @@ QUmlInteractionOperand::QUmlInteractionOperand(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlInteractionOperandObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -196,28 +197,6 @@ void QUmlInteractionOperand::setGuard(QUmlInteractionConstraint *guard)
     }
 }
 
-void QUmlInteractionOperand::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragment")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragment")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionOperand");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragment")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragment")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragment")][QtModeling::DocumentationRole] = QStringLiteral("The fragments of the operand.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragment")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragment")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragment")][QtModeling::OppositeEndRole] = QStringLiteral("InteractionFragment-enclosingOperand");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionOperand");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::DocumentationRole] = QStringLiteral("Constraint of the operand.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlInteractionOperand::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -241,5 +220,27 @@ void QUmlInteractionOperand::setClassForProperty()
     _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
     _classForProperty[QStringLiteral("fragments")] = QStringLiteral("QUmlInteractionOperand");
     _classForProperty[QStringLiteral("guard")] = QStringLiteral("QUmlInteractionOperand");
+}
+
+void QUmlInteractionOperand::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragments")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragments")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionOperand");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragments")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragments")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragments")][QtModeling::DocumentationRole] = QStringLiteral("The fragments of the operand.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragments")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragments")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("fragments")][QtModeling::OppositeEndRole] = QStringLiteral("InteractionFragment-enclosingOperand");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlInteractionOperand");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::DocumentationRole] = QStringLiteral("Constraint of the operand.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlInteractionOperand")][QStringLiteral("guard")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlConsiderIgnoreFragmentObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -75,15 +75,15 @@ class Q_UML_EXPORT QUmlConsiderIgnoreFragmentObject : public QObject
     Q_PROPERTY(QSet<QObject *> covered READ covered)
     Q_PROPERTY(QObject * enclosingInteraction READ enclosingInteraction WRITE setEnclosingInteraction)
     Q_PROPERTY(QObject * enclosingOperand READ enclosingOperand WRITE setEnclosingOperand)
-    Q_PROPERTY(QSet<QObject *> generalOrdering READ generalOrderings)
+    Q_PROPERTY(QSet<QObject *> generalOrderings READ generalOrderings)
 
     // Properties [CombinedFragment]
-    Q_PROPERTY(QSet<QObject *> cfragmentGate READ cfragmentGates)
+    Q_PROPERTY(QSet<QObject *> cfragmentGates READ cfragmentGates)
     Q_PROPERTY(QtUml::InteractionOperatorKind interactionOperator READ interactionOperator WRITE setInteractionOperator RESET unsetInteractionOperator)
-    Q_PROPERTY(QList<QObject *> operand READ operands)
+    Q_PROPERTY(QList<QObject *> operands READ operands)
 
     // Properties [ConsiderIgnoreFragment]
-    Q_PROPERTY(QSet<QObject *> message READ messages)
+    Q_PROPERTY(QSet<QObject *> messages READ messages)
 
 public:
     Q_INVOKABLE explicit QUmlConsiderIgnoreFragmentObject(QUmlConsiderIgnoreFragment *qModelingObject);

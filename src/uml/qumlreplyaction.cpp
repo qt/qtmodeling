@@ -77,6 +77,7 @@ QUmlReplyAction::QUmlReplyAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlReplyActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -223,37 +224,6 @@ void QUmlReplyAction::setReturnInformation(QUmlInputPin *returnInformation)
     }
 }
 
-void QUmlReplyAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::DocumentationRole] = QStringLiteral("The trigger specifying the operation whose call is being replied to.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValue")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValue")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValue")][QtModeling::DocumentationRole] = QStringLiteral("A list of pins containing the reply values of the operation. These values are returned to the caller.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::DocumentationRole] = QStringLiteral("A pin containing the return information value produced by an earlier AcceptCallAction.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlReplyAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -286,5 +256,36 @@ void QUmlReplyAction::setClassForProperty()
     _classForProperty[QStringLiteral("replyToCall")] = QStringLiteral("QUmlReplyAction");
     _classForProperty[QStringLiteral("replyValues")] = QStringLiteral("QUmlReplyAction");
     _classForProperty[QStringLiteral("returnInformation")] = QStringLiteral("QUmlReplyAction");
+}
+
+void QUmlReplyAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::DocumentationRole] = QStringLiteral("The trigger specifying the operation whose call is being replied to.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyToCall")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::DocumentationRole] = QStringLiteral("A list of pins containing the reply values of the operation. These values are returned to the caller.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("replyValues")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReplyAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::DocumentationRole] = QStringLiteral("A pin containing the return information value produced by an earlier AcceptCallAction.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReplyAction")][QStringLiteral("returnInformation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

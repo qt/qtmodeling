@@ -59,24 +59,24 @@ class Q_UML_EXPORT QUmlArtifactObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
     Q_PROPERTY(QString qualifiedName READ qualifiedName STORED false)
 
     // Properties [Namespace]
-    Q_PROPERTY(QSet<QObject *> elementImport READ elementImports)
-    Q_PROPERTY(QSet<QObject *> importedMember READ importedMembers STORED false)
-    Q_PROPERTY(QSet<QObject *> member READ members)
-    Q_PROPERTY(QSet<QObject *> ownedMember READ ownedMembers)
-    Q_PROPERTY(QSet<QObject *> ownedRule READ ownedRules)
-    Q_PROPERTY(QSet<QObject *> packageImport READ packageImports)
+    Q_PROPERTY(QSet<QObject *> elementImports READ elementImports)
+    Q_PROPERTY(QSet<QObject *> importedMembers READ importedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> members READ members)
+    Q_PROPERTY(QSet<QObject *> ownedMembers READ ownedMembers)
+    Q_PROPERTY(QSet<QObject *> ownedRules READ ownedRules)
+    Q_PROPERTY(QSet<QObject *> packageImports READ packageImports)
 
     // Properties [ParameterableElement]
     Q_PROPERTY(QObject * owningTemplateParameter READ owningTemplateParameter WRITE setOwningTemplateParameter)
@@ -89,36 +89,36 @@ class Q_UML_EXPORT QUmlArtifactObject : public QObject
 
     // Properties [RedefinableElement]
     Q_PROPERTY(bool isLeaf READ isLeaf WRITE setLeaf RESET unsetLeaf)
-    Q_PROPERTY(QSet<QObject *> redefinedElement READ redefinedElements)
-    Q_PROPERTY(QSet<QObject *> redefinitionContext READ redefinitionContexts)
+    Q_PROPERTY(QSet<QObject *> redefinedElements READ redefinedElements)
+    Q_PROPERTY(QSet<QObject *> redefinitionContexts READ redefinitionContexts)
 
     // Properties [TemplateableElement]
-    Q_PROPERTY(QSet<QObject *> templateBinding READ templateBindings)
+    Q_PROPERTY(QSet<QObject *> templateBindings READ templateBindings)
 
     // Properties [Classifier]
-    Q_PROPERTY(QSet<QObject *> attribute READ attributes)
-    Q_PROPERTY(QSet<QObject *> collaborationUse READ collaborationUses)
-    Q_PROPERTY(QSet<QObject *> feature READ features)
-    Q_PROPERTY(QSet<QObject *> general READ generals STORED false)
-    Q_PROPERTY(QSet<QObject *> generalization READ generalizations)
-    Q_PROPERTY(QSet<QObject *> inheritedMember READ inheritedMembers STORED false)
+    Q_PROPERTY(QSet<QObject *> attributes READ attributes)
+    Q_PROPERTY(QSet<QObject *> collaborationUses READ collaborationUses)
+    Q_PROPERTY(QSet<QObject *> features READ features)
+    Q_PROPERTY(QSet<QObject *> generals READ generals STORED false)
+    Q_PROPERTY(QSet<QObject *> generalizations READ generalizations)
+    Q_PROPERTY(QSet<QObject *> inheritedMembers READ inheritedMembers STORED false)
     Q_PROPERTY(bool isAbstract READ isAbstract WRITE setAbstract RESET unsetAbstract)
     Q_PROPERTY(bool isFinalSpecialization READ isFinalSpecialization WRITE setFinalSpecialization RESET unsetFinalSpecialization)
     Q_PROPERTY(QObject * ownedTemplateSignature READ ownedTemplateSignature WRITE setOwnedTemplateSignature)
-    Q_PROPERTY(QSet<QObject *> ownedUseCase READ ownedUseCases)
-    Q_PROPERTY(QSet<QObject *> powertypeExtent READ powertypeExtents)
-    Q_PROPERTY(QSet<QObject *> redefinedClassifier READ redefinedClassifiers)
+    Q_PROPERTY(QSet<QObject *> ownedUseCases READ ownedUseCases)
+    Q_PROPERTY(QSet<QObject *> powertypeExtents READ powertypeExtents)
+    Q_PROPERTY(QSet<QObject *> redefinedClassifiers READ redefinedClassifiers)
     Q_PROPERTY(QObject * representation READ representation WRITE setRepresentation)
-    Q_PROPERTY(QSet<QObject *> substitution READ substitutions)
+    Q_PROPERTY(QSet<QObject *> substitutions READ substitutions)
     Q_PROPERTY(QObject * templateParameter READ templateParameter WRITE setTemplateParameter)
-    Q_PROPERTY(QSet<QObject *> useCase READ useCases)
+    Q_PROPERTY(QSet<QObject *> useCases READ useCases)
 
     // Properties [Artifact]
     Q_PROPERTY(QString fileName READ fileName WRITE setFileName)
-    Q_PROPERTY(QSet<QObject *> manifestation READ manifestations)
-    Q_PROPERTY(QSet<QObject *> nestedArtifact READ nestedArtifacts)
-    Q_PROPERTY(QList<QObject *> ownedAttribute READ ownedAttributes)
-    Q_PROPERTY(QList<QObject *> ownedOperation READ ownedOperations)
+    Q_PROPERTY(QSet<QObject *> manifestations READ manifestations)
+    Q_PROPERTY(QSet<QObject *> nestedArtifacts READ nestedArtifacts)
+    Q_PROPERTY(QList<QObject *> ownedAttributes READ ownedAttributes)
+    Q_PROPERTY(QList<QObject *> ownedOperations READ ownedOperations)
 
 public:
     Q_INVOKABLE explicit QUmlArtifactObject(QUmlArtifact *qModelingObject);

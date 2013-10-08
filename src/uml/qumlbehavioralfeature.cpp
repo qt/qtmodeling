@@ -69,6 +69,7 @@ QUmlBehavioralFeature::QUmlBehavioralFeature() :
     _concurrency(QtUml::CallConcurrencyKindSequential),
     _isAbstract(false)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -312,64 +313,6 @@ bool QUmlBehavioralFeature::isDistinguishableFrom(QUmlNamedElement *n, QUmlNames
     return bool ();
 }
 
-void QUmlBehavioralFeature::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::DocumentationRole] = QStringLiteral("If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("method")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("method")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("method")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("method")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("method")][QtModeling::DocumentationRole] = QStringLiteral("A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("method")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("method")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("method")][QtModeling::OppositeEndRole] = QStringLiteral("Behavior-specification");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameter")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameter")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the ordered set of formal parameters of this BehavioralFeature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameter")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSet")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSet")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSet")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSet")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSet")][QtModeling::DocumentationRole] = QStringLiteral("The ParameterSets owned by this BehavioralFeature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSet")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSet")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSet")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedException")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedException")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedException")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedException")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedException")][QtModeling::DocumentationRole] = QStringLiteral("References the Types representing exceptions that may be raised during an invocation of this feature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedException")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedException")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedException")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlBehavioralFeature::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -398,5 +341,63 @@ void QUmlBehavioralFeature::setClassForProperty()
     _classForProperty[QStringLiteral("ownedParameters")] = QStringLiteral("QUmlBehavioralFeature");
     _classForProperty[QStringLiteral("ownedParameterSets")] = QStringLiteral("QUmlBehavioralFeature");
     _classForProperty[QStringLiteral("raisedExceptions")] = QStringLiteral("QUmlBehavioralFeature");
+}
+
+void QUmlBehavioralFeature::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the semantics of concurrent calls to the same passive instance (i.e., an instance originating from a class with isActive being false). Active instances control access to their own behavioral features.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("concurrency")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::DocumentationRole] = QStringLiteral("If true, then the behavioral feature does not have an implementation, and one must be supplied by a more specific element. If false, the behavioral feature must have an implementation in the classifier or one must be inherited from a more general element.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("isAbstract")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("methods")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("methods")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("methods")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("methods")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("methods")][QtModeling::DocumentationRole] = QStringLiteral("A behavioral description that implements the behavioral feature. There may be at most one behavior for a particular pairing of a classifier (as owner of the behavior) and a behavioral feature (as specification of the behavior).");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("methods")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("methods")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("methods")][QtModeling::OppositeEndRole] = QStringLiteral("Behavior-specification");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameters")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameters")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the ordered set of formal parameters of this BehavioralFeature.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameters")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSets")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSets")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSets")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSets")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSets")][QtModeling::DocumentationRole] = QStringLiteral("The ParameterSets owned by this BehavioralFeature.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSets")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSets")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("ownedParameterSets")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedExceptions")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedExceptions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlBehavioralFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedExceptions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedExceptions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedExceptions")][QtModeling::DocumentationRole] = QStringLiteral("References the Types representing exceptions that may be raised during an invocation of this feature.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedExceptions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedExceptions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlBehavioralFeature")][QStringLiteral("raisedExceptions")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

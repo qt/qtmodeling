@@ -63,6 +63,7 @@
 QUmlStructuralFeature::QUmlStructuralFeature() :
     _isReadOnly(false)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -117,19 +118,6 @@ void QUmlStructuralFeature::setReadOnly(bool isReadOnly)
     }
 }
 
-void QUmlStructuralFeature::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuralFeature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::DocumentationRole] = QStringLiteral("States whether the feature's value may be modified by a client.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlStructuralFeature::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -154,5 +142,18 @@ void QUmlStructuralFeature::setClassForProperty()
     _classForProperty[QStringLiteral("featuringClassifiers")] = QStringLiteral("QUmlFeature");
     _classForProperty[QStringLiteral("isStatic")] = QStringLiteral("QUmlFeature");
     _classForProperty[QStringLiteral("isReadOnly")] = QStringLiteral("QUmlStructuralFeature");
+}
+
+void QUmlStructuralFeature::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlStructuralFeature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::DocumentationRole] = QStringLiteral("States whether the feature's value may be modified by a client.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlStructuralFeature")][QStringLiteral("isReadOnly")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

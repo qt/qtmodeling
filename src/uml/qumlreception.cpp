@@ -73,6 +73,7 @@ QUmlReception::QUmlReception(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlReceptionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -142,19 +143,6 @@ void QUmlReception::setSignal(QUmlSignal *signal)
     }
 }
 
-void QUmlReception::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReception");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The signal that this reception handles.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlReception::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -184,5 +172,18 @@ void QUmlReception::setClassForProperty()
     _classForProperty[QStringLiteral("ownedParameterSets")] = QStringLiteral("QUmlBehavioralFeature");
     _classForProperty[QStringLiteral("raisedExceptions")] = QStringLiteral("QUmlBehavioralFeature");
     _classForProperty[QStringLiteral("signal")] = QStringLiteral("QUmlReception");
+}
+
+void QUmlReception::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReception");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::DocumentationRole] = QStringLiteral("The signal that this reception handles.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReception")][QStringLiteral("signal")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

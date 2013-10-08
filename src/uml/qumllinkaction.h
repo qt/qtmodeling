@@ -80,8 +80,8 @@ protected:
     QSet<QUmlLinkEndData *> _endData;
     QSet<QUmlInputPin *> _inputValues;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

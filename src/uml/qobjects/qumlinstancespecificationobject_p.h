@@ -59,12 +59,12 @@ class Q_UML_EXPORT QUmlInstanceSpecificationObject : public QObject
     Q_OBJECT
 
     // Properties [Element]
-    Q_PROPERTY(QSet<QObject *> ownedComment READ ownedComments)
-    Q_PROPERTY(QSet<QObject *> ownedElement READ ownedElements)
+    Q_PROPERTY(QSet<QObject *> ownedComments READ ownedComments)
+    Q_PROPERTY(QSet<QObject *> ownedElements READ ownedElements)
     Q_PROPERTY(QObject * owner READ owner)
 
     // Properties [NamedElement]
-    Q_PROPERTY(QSet<QObject *> clientDependency READ clientDependencies)
+    Q_PROPERTY(QSet<QObject *> clientDependencies READ clientDependencies)
     Q_PROPERTY(QString name READ name WRITE setName)
     Q_PROPERTY(QObject * nameExpression READ nameExpression WRITE setNameExpression)
     Q_PROPERTY(QObject * namespace_ READ namespace_)
@@ -78,12 +78,12 @@ class Q_UML_EXPORT QUmlInstanceSpecificationObject : public QObject
     Q_PROPERTY(QtUml::VisibilityKind visibility READ visibility WRITE setVisibility RESET unsetVisibility)
 
     // Properties [DeploymentTarget]
-    Q_PROPERTY(QSet<QObject *> deployedElement READ deployedElements STORED false)
-    Q_PROPERTY(QSet<QObject *> deployment READ deployments)
+    Q_PROPERTY(QSet<QObject *> deployedElements READ deployedElements STORED false)
+    Q_PROPERTY(QSet<QObject *> deployments READ deployments)
 
     // Properties [InstanceSpecification]
-    Q_PROPERTY(QSet<QObject *> classifier READ classifiers)
-    Q_PROPERTY(QSet<QObject *> slot_ READ slots_)
+    Q_PROPERTY(QSet<QObject *> classifiers READ classifiers)
+    Q_PROPERTY(QSet<QObject *> slots_ READ slots_)
     Q_PROPERTY(QObject * specification READ specification WRITE setSpecification)
 
 public:

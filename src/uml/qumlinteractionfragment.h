@@ -84,8 +84,8 @@ protected:
     QUmlInteractionOperand *_enclosingOperand;
     QSet<QUmlGeneralOrdering *> _generalOrderings;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

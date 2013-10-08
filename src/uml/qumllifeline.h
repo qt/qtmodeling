@@ -86,8 +86,8 @@ protected:
     QUmlConnectableElement *_represents;
     QUmlValueSpecification *_selector;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

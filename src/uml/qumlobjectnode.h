@@ -88,8 +88,8 @@ protected:
     QUmlBehavior *_selection;
     QUmlValueSpecification *_upperBound;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

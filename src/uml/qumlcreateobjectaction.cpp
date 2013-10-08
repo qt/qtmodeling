@@ -76,6 +76,7 @@ QUmlCreateObjectAction::QUmlCreateObjectAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCreateObjectActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -181,28 +182,6 @@ void QUmlCreateObjectAction::setResult(QUmlOutputPin *result)
     }
 }
 
-void QUmlCreateObjectAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCreateObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("Classifier to be instantiated.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCreateObjectAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlCreateObjectAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -234,5 +213,27 @@ void QUmlCreateObjectAction::setClassForProperty()
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("classifier")] = QStringLiteral("QUmlCreateObjectAction");
     _classForProperty[QStringLiteral("result")] = QStringLiteral("QUmlCreateObjectAction");
+}
+
+void QUmlCreateObjectAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCreateObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::DocumentationRole] = QStringLiteral("Classifier to be instantiated.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("classifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCreateObjectAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateObjectAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -77,6 +77,7 @@ QUmlCreateLinkAction::QUmlCreateLinkAction(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlCreateLinkActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -164,19 +165,6 @@ void QUmlCreateLinkAction::removeEndData(QUmlLinkEndCreationData *endData)
     }
 }
 
-void QUmlCreateLinkAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCreateLinkAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::DocumentationRole] = QStringLiteral("Specifies ends of association and inputs.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("LinkAction-endData");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlCreateLinkAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -208,5 +196,18 @@ void QUmlCreateLinkAction::setClassForProperty()
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("inputValues")] = QStringLiteral("QUmlLinkAction");
     _classForProperty[QStringLiteral("endData")] = QStringLiteral("QUmlCreateLinkAction");
+}
+
+void QUmlCreateLinkAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCreateLinkAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::DocumentationRole] = QStringLiteral("Specifies ends of association and inputs.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("LinkAction-endData");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCreateLinkAction")][QStringLiteral("endData")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

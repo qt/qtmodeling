@@ -80,8 +80,8 @@ protected:
     bool _isDisjoint;
     QUmlClassifier *_powertype;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

@@ -66,6 +66,7 @@ QUmlContinuation::QUmlContinuation(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlContinuationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -123,19 +124,6 @@ void QUmlContinuation::setSetting(bool setting)
     }
 }
 
-void QUmlContinuation::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlContinuation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::DocumentationRole] = QStringLiteral("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlContinuation::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -152,5 +140,18 @@ void QUmlContinuation::setClassForProperty()
     _classForProperty[QStringLiteral("enclosingOperand")] = QStringLiteral("QUmlInteractionFragment");
     _classForProperty[QStringLiteral("generalOrderings")] = QStringLiteral("QUmlInteractionFragment");
     _classForProperty[QStringLiteral("setting")] = QStringLiteral("QUmlContinuation");
+}
+
+void QUmlContinuation::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlContinuation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::DocumentationRole] = QStringLiteral("True: when the Continuation is at the end of the enclosing InteractionFragment and False when it is in the beginning.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlContinuation")][QStringLiteral("setting")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

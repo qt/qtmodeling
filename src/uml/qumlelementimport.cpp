@@ -61,6 +61,7 @@ QUmlElementImport::QUmlElementImport(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlElementImportObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -199,6 +200,20 @@ QString QUmlElementImport::getName() const
     return QString ();
 }
 
+void QUmlElementImport::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("alias")] = QStringLiteral("QUmlElementImport");
+    _classForProperty[QStringLiteral("importedElement")] = QStringLiteral("QUmlElementImport");
+    _classForProperty[QStringLiteral("importingNamespace")] = QStringLiteral("QUmlElementImport");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlElementImport");
+}
+
 void QUmlElementImport::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("alias")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -237,19 +252,5 @@ void QUmlElementImport::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlElementImport")][QStringLiteral("visibility")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlElementImport::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("alias")] = QStringLiteral("QUmlElementImport");
-    _classForProperty[QStringLiteral("importedElement")] = QStringLiteral("QUmlElementImport");
-    _classForProperty[QStringLiteral("importingNamespace")] = QStringLiteral("QUmlElementImport");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlElementImport");
 }
 

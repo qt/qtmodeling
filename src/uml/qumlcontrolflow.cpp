@@ -71,6 +71,7 @@ QUmlControlFlow::QUmlControlFlow(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlControlFlowObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -116,10 +117,6 @@ QModelingObject *QUmlControlFlow::clone() const
     return c;
 }
 
-void QUmlControlFlow::setPropertyData()
-{
-}
-
 void QUmlControlFlow::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -144,5 +141,9 @@ void QUmlControlFlow::setClassForProperty()
     _classForProperty[QStringLiteral("source")] = QStringLiteral("QUmlActivityEdge");
     _classForProperty[QStringLiteral("target")] = QStringLiteral("QUmlActivityEdge");
     _classForProperty[QStringLiteral("weight")] = QStringLiteral("QUmlActivityEdge");
+}
+
+void QUmlControlFlow::setPropertyData()
+{
 }
 

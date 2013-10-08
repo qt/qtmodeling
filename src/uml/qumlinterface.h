@@ -92,8 +92,8 @@ protected:
     QUmlProtocolStateMachine *_protocol;
     QSet<QUmlInterface *> _redefinedInterfaces;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

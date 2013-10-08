@@ -93,6 +93,7 @@ QUmlDevice::QUmlDevice(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlDeviceObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -175,10 +176,6 @@ QModelingObject *QUmlDevice::clone() const
     return c;
 }
 
-void QUmlDevice::setPropertyData()
-{
-}
-
 void QUmlDevice::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -234,5 +231,9 @@ void QUmlDevice::setClassForProperty()
     _classForProperty[QStringLiteral("deployedElements")] = QStringLiteral("QUmlDeploymentTarget");
     _classForProperty[QStringLiteral("deployments")] = QStringLiteral("QUmlDeploymentTarget");
     _classForProperty[QStringLiteral("nestedNodes")] = QStringLiteral("QUmlNode");
+}
+
+void QUmlDevice::setPropertyData()
+{
 }
 

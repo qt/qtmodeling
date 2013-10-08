@@ -77,6 +77,7 @@ QUmlClearAssociationAction::QUmlClearAssociationAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlClearAssociationActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -182,28 +183,6 @@ void QUmlClearAssociationAction::setObject(QUmlInputPin *object)
     }
 }
 
-void QUmlClearAssociationAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClearAssociationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::DocumentationRole] = QStringLiteral("Association to be cleared.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClearAssociationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Gives the input pin from which is obtained the object whose participation in the association is to be cleared.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlClearAssociationAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -235,5 +214,27 @@ void QUmlClearAssociationAction::setClassForProperty()
     _classForProperty[QStringLiteral("outputs")] = QStringLiteral("QUmlAction");
     _classForProperty[QStringLiteral("association")] = QStringLiteral("QUmlClearAssociationAction");
     _classForProperty[QStringLiteral("object")] = QStringLiteral("QUmlClearAssociationAction");
+}
+
+void QUmlClearAssociationAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClearAssociationAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::DocumentationRole] = QStringLiteral("Association to be cleared.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("association")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClearAssociationAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::DocumentationRole] = QStringLiteral("Gives the input pin from which is obtained the object whose participation in the association is to be cleared.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearAssociationAction")][QStringLiteral("object")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -70,6 +70,7 @@ QUmlInitialNode::QUmlInitialNode(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlInitialNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -111,10 +112,6 @@ QModelingObject *QUmlInitialNode::clone() const
     return c;
 }
 
-void QUmlInitialNode::setPropertyData()
-{
-}
-
 void QUmlInitialNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -137,5 +134,9 @@ void QUmlInitialNode::setClassForProperty()
     _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
+}
+
+void QUmlInitialNode::setPropertyData()
+{
 }
 

@@ -75,6 +75,7 @@ QUmlOutputPin::QUmlOutputPin(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlOutputPinObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -133,10 +134,6 @@ QModelingObject *QUmlOutputPin::clone() const
     return c;
 }
 
-void QUmlOutputPin::setPropertyData()
-{
-}
-
 void QUmlOutputPin::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -172,5 +169,9 @@ void QUmlOutputPin::setClassForProperty()
     _classForProperty[QStringLiteral("selection")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("upperBound")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("isControl")] = QStringLiteral("QUmlPin");
+}
+
+void QUmlOutputPin::setPropertyData()
+{
 }
 

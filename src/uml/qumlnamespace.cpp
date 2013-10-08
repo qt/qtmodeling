@@ -409,6 +409,25 @@ bool QUmlNamespace::membersAreDistinguishable() const
     return bool ();
 }
 
+void QUmlNamespace::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+}
+
 void QUmlNamespace::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("elementImports")][QtModeling::AggregationRole] = QStringLiteral("composite");
@@ -465,24 +484,5 @@ void QUmlNamespace::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("A_source_directedRelationship-directedRelationship Element-ownedElement");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlNamespace")][QStringLiteral("packageImports")][QtModeling::OppositeEndRole] = QStringLiteral("PackageImport-importingNamespace");
 
-}
-
-void QUmlNamespace::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
 }
 

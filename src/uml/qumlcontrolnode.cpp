@@ -66,6 +66,7 @@
  */
 QUmlControlNode::QUmlControlNode()
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -102,10 +103,6 @@ QModelingObject *QUmlControlNode::clone() const
     return c;
 }
 
-void QUmlControlNode::setPropertyData()
-{
-}
-
 void QUmlControlNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -128,5 +125,9 @@ void QUmlControlNode::setClassForProperty()
     _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
     _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
+}
+
+void QUmlControlNode::setPropertyData()
+{
 }
 

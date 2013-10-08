@@ -59,6 +59,7 @@ QUmlTemplateSignature::QUmlTemplateSignature(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlTemplateSignatureObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -194,37 +195,6 @@ void QUmlTemplateSignature::setTemplate(QUmlTemplateableElement *template_)
     }
 }
 
-void QUmlTemplateSignature::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameter")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateSignature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameter")][QtModeling::DocumentationRole] = QStringLiteral("The formal template parameters that are owned by this template signature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("TemplateSignature-parameter Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameter")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateParameter-signature");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateSignature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameter")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of all formal template parameters for this template signature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameter")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateSignature");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template")][QtModeling::DocumentationRole] = QStringLiteral("The element that owns this template signature.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateableElement-ownedTemplateSignature");
-
-}
-
 void QUmlTemplateSignature::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -233,5 +203,36 @@ void QUmlTemplateSignature::setClassForProperty()
     _classForProperty[QStringLiteral("ownedParameters")] = QStringLiteral("QUmlTemplateSignature");
     _classForProperty[QStringLiteral("parameters")] = QStringLiteral("QUmlTemplateSignature");
     _classForProperty[QStringLiteral("template_")] = QStringLiteral("QUmlTemplateSignature");
+}
+
+void QUmlTemplateSignature::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameters")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateSignature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameters")][QtModeling::DocumentationRole] = QStringLiteral("The formal template parameters that are owned by this template signature.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("TemplateSignature-parameter Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("ownedParameters")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateParameter-signature");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameters")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateSignature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameters")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameters")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameters")][QtModeling::DocumentationRole] = QStringLiteral("The ordered set of all formal template parameters for this template signature.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("parameters")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template_")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlTemplateSignature");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template_")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template_")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template_")][QtModeling::DocumentationRole] = QStringLiteral("The element that owns this template signature.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlTemplateSignature")][QStringLiteral("template_")][QtModeling::OppositeEndRole] = QStringLiteral("TemplateableElement-ownedTemplateSignature");
+
 }
 

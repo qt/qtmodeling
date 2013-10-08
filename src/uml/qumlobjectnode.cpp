@@ -74,6 +74,7 @@ QUmlObjectNode::QUmlObjectNode() :
     _selection(0),
     _upperBound(0)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -243,16 +244,46 @@ void QUmlObjectNode::setUpperBound(QUmlValueSpecification *upperBound)
     }
 }
 
+void QUmlObjectNode::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("activity")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("inGroups")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("inInterruptibleRegions")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("inPartitions")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("inStructuredNode")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
+    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlTypedElement");
+    _classForProperty[QStringLiteral("inStates")] = QStringLiteral("QUmlObjectNode");
+    _classForProperty[QStringLiteral("isControlType")] = QStringLiteral("QUmlObjectNode");
+    _classForProperty[QStringLiteral("ordering")] = QStringLiteral("QUmlObjectNode");
+    _classForProperty[QStringLiteral("selection")] = QStringLiteral("QUmlObjectNode");
+    _classForProperty[QStringLiteral("upperBound")] = QStringLiteral("QUmlObjectNode");
+}
+
 void QUmlObjectNode::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inState")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inState")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inState")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inState")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inState")][QtModeling::DocumentationRole] = QStringLiteral("The required states of the object available at this point in the activity.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inState")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inState")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inState")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inStates")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inStates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inStates")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inStates")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inStates")][QtModeling::DocumentationRole] = QStringLiteral("The required states of the object available at this point in the activity.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inStates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inStates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("inStates")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("isControlType")][QtModeling::AggregationRole] = QStringLiteral("none");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("isControlType")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlObjectNode");
@@ -290,35 +321,5 @@ void QUmlObjectNode::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("upperBound")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlObjectNode")][QStringLiteral("upperBound")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlObjectNode::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("activity")] = QStringLiteral("QUmlActivityNode");
-    _classForProperty[QStringLiteral("inGroups")] = QStringLiteral("QUmlActivityNode");
-    _classForProperty[QStringLiteral("inInterruptibleRegions")] = QStringLiteral("QUmlActivityNode");
-    _classForProperty[QStringLiteral("inPartitions")] = QStringLiteral("QUmlActivityNode");
-    _classForProperty[QStringLiteral("inStructuredNode")] = QStringLiteral("QUmlActivityNode");
-    _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlActivityNode");
-    _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlActivityNode");
-    _classForProperty[QStringLiteral("redefinedNodes")] = QStringLiteral("QUmlActivityNode");
-    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlTypedElement");
-    _classForProperty[QStringLiteral("inStates")] = QStringLiteral("QUmlObjectNode");
-    _classForProperty[QStringLiteral("isControlType")] = QStringLiteral("QUmlObjectNode");
-    _classForProperty[QStringLiteral("ordering")] = QStringLiteral("QUmlObjectNode");
-    _classForProperty[QStringLiteral("selection")] = QStringLiteral("QUmlObjectNode");
-    _classForProperty[QStringLiteral("upperBound")] = QStringLiteral("QUmlObjectNode");
 }
 

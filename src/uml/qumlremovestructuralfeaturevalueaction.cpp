@@ -77,6 +77,7 @@ QUmlRemoveStructuralFeatureValueAction::QUmlRemoveStructuralFeatureValueAction(b
 {
     if (createQObject)
         _qObject = new QUmlRemoveStructuralFeatureValueActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -188,28 +189,6 @@ void QUmlRemoveStructuralFeatureValueAction::setRemoveAt(QUmlInputPin *removeAt)
     }
 }
 
-void QUmlRemoveStructuralFeatureValueAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRemoveStructuralFeatureValueAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether to remove duplicates of the value in nonunique structural features.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRemoveStructuralFeatureValueAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the position of an existing value to remove in ordered nonunique structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlRemoveStructuralFeatureValueAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -245,5 +224,27 @@ void QUmlRemoveStructuralFeatureValueAction::setClassForProperty()
     _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlWriteStructuralFeatureAction");
     _classForProperty[QStringLiteral("isRemoveDuplicates")] = QStringLiteral("QUmlRemoveStructuralFeatureValueAction");
     _classForProperty[QStringLiteral("removeAt")] = QStringLiteral("QUmlRemoveStructuralFeatureValueAction");
+}
+
+void QUmlRemoveStructuralFeatureValueAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRemoveStructuralFeatureValueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether to remove duplicates of the value in nonunique structural features.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("isRemoveDuplicates")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlRemoveStructuralFeatureValueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the position of an existing value to remove in ordered nonunique structural features. The type of the pin is UnlimitedNatural, but the value cannot be zero or unlimited.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlRemoveStructuralFeatureValueAction")][QStringLiteral("removeAt")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

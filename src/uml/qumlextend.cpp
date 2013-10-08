@@ -67,6 +67,7 @@ QUmlExtend::QUmlExtend(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExtendObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -222,6 +223,26 @@ void QUmlExtend::removeExtensionLocation(QUmlExtensionPoint *extensionLocation)
     }
 }
 
+void QUmlExtend::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("condition")] = QStringLiteral("QUmlExtend");
+    _classForProperty[QStringLiteral("extendedCase")] = QStringLiteral("QUmlExtend");
+    _classForProperty[QStringLiteral("extension")] = QStringLiteral("QUmlExtend");
+    _classForProperty[QStringLiteral("extensionLocations")] = QStringLiteral("QUmlExtend");
+}
+
 void QUmlExtend::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("condition")][QtModeling::AggregationRole] = QStringLiteral("composite");
@@ -251,34 +272,14 @@ void QUmlExtend::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extension")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("DirectedRelationship-source NamedElement-namespace");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extension")][QtModeling::OppositeEndRole] = QStringLiteral("UseCase-extend");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtend");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocation")][QtModeling::DocumentationRole] = QStringLiteral("An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocations")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExtend");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocations")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocations")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocations")][QtModeling::DocumentationRole] = QStringLiteral("An ordered list of extension points belonging to the extended use case, specifying where the respective behavioral fragments of the extending use case are to be inserted. The first fragment in the extending use case is associated with the first extension point in the list, the second fragment with the second point, and so on. (Note that, in most practical cases, the extending use case has just a single behavior fragment, so that the list of extension points is trivial.)");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExtend")][QStringLiteral("extensionLocations")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlExtend::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("condition")] = QStringLiteral("QUmlExtend");
-    _classForProperty[QStringLiteral("extendedCase")] = QStringLiteral("QUmlExtend");
-    _classForProperty[QStringLiteral("extension")] = QStringLiteral("QUmlExtend");
-    _classForProperty[QStringLiteral("extensionLocations")] = QStringLiteral("QUmlExtend");
 }
 

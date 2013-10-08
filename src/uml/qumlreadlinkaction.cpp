@@ -77,6 +77,7 @@ QUmlReadLinkAction::QUmlReadLinkAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlReadLinkActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -163,19 +164,6 @@ void QUmlReadLinkAction::setResult(QUmlOutputPin *result)
     }
 }
 
-void QUmlReadLinkAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("The pin on which are put the objects participating in the association at the end not specified by the inputs.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlReadLinkAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -208,5 +196,18 @@ void QUmlReadLinkAction::setClassForProperty()
     _classForProperty[QStringLiteral("endData")] = QStringLiteral("QUmlLinkAction");
     _classForProperty[QStringLiteral("inputValues")] = QStringLiteral("QUmlLinkAction");
     _classForProperty[QStringLiteral("result")] = QStringLiteral("QUmlReadLinkAction");
+}
+
+void QUmlReadLinkAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlReadLinkAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("The pin on which are put the objects participating in the association at the end not specified by the inputs.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlReadLinkAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

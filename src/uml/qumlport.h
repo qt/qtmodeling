@@ -89,8 +89,8 @@ protected:
     QUmlProtocolStateMachine *_protocol;
     QSet<QUmlPort *> _redefinedPorts;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

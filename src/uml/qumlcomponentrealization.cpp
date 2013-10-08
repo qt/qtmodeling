@@ -68,6 +68,7 @@ QUmlComponentRealization::QUmlComponentRealization(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlComponentRealizationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -176,28 +177,6 @@ void QUmlComponentRealization::removeRealizingClassifier(QUmlClassifier *realizi
     }
 }
 
-void QUmlComponentRealization::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponentRealization");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::DocumentationRole] = QStringLiteral("The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier Element-owner");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::OppositeEndRole] = QStringLiteral("Component-realization");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifier")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponentRealization");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifier")][QtModeling::DocumentationRole] = QStringLiteral("The classifiers that are involved in the implementation of the Component that owns this Realization.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-client");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlComponentRealization::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -219,5 +198,27 @@ void QUmlComponentRealization::setClassForProperty()
     _classForProperty[QStringLiteral("mapping")] = QStringLiteral("QUmlAbstraction");
     _classForProperty[QStringLiteral("abstraction")] = QStringLiteral("QUmlComponentRealization");
     _classForProperty[QStringLiteral("realizingClassifiers")] = QStringLiteral("QUmlComponentRealization");
+}
+
+void QUmlComponentRealization::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponentRealization");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::DocumentationRole] = QStringLiteral("The Component that owns this ComponentRealization and which is implemented by its realizing classifiers.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-supplier Element-owner");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("abstraction")][QtModeling::OppositeEndRole] = QStringLiteral("Component-realization");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifiers")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlComponentRealization");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifiers")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifiers")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifiers")][QtModeling::DocumentationRole] = QStringLiteral("The classifiers that are involved in the implementation of the Component that owns this Realization.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Dependency-client");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlComponentRealization")][QStringLiteral("realizingClassifiers")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

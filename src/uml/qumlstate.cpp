@@ -80,6 +80,7 @@ QUmlState::QUmlState(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlStateObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -647,34 +648,73 @@ bool QUmlState::isRedefinitionContextValid(QUmlState *redefined) const
     return bool ();
 }
 
+void QUmlState::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
+    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
+    _classForProperty[QStringLiteral("container")] = QStringLiteral("QUmlVertex");
+    _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlVertex");
+    _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlVertex");
+    _classForProperty[QStringLiteral("connections")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("connectionPoints")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("deferrableTriggers")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("doActivity")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("entry")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("exit")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("isComposite")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("isOrthogonal")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("isSimple")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("isSubmachineState")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("redefinedState")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("redefinitionContext")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("regions")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("stateInvariant")] = QStringLiteral("QUmlState");
+    _classForProperty[QStringLiteral("submachine")] = QStringLiteral("QUmlState");
+}
+
 void QUmlState::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connection")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connection")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connection")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connection")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connection")][QtModeling::DocumentationRole] = QStringLiteral("The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connection")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connection")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connection")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectionPointReference-state");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connections")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connections")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connections")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connections")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connections")][QtModeling::DocumentationRole] = QStringLiteral("The entry and exit connection points used in conjunction with this (submachine) state, i.e. as targets and sources, respectively, in the region with the submachine state. A connection point reference references the corresponding definition of a connection point pseudostate in the statemachine referenced by the submachinestate.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connections")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connections")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connections")][QtModeling::OppositeEndRole] = QStringLiteral("ConnectionPointReference-state");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoint")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoint")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoint")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoint")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoint")][QtModeling::DocumentationRole] = QStringLiteral("The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoint")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoint")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoint")][QtModeling::OppositeEndRole] = QStringLiteral("Pseudostate-state");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoints")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoints")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoints")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoints")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoints")][QtModeling::DocumentationRole] = QStringLiteral("The entry and exit pseudostates of a composite state. These can only be entry or exit Pseudostates, and they must have different names. They can only be defined for composite states.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoints")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoints")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("connectionPoints")][QtModeling::OppositeEndRole] = QStringLiteral("Pseudostate-state");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTrigger")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTrigger")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTrigger")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTrigger")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTrigger")][QtModeling::DocumentationRole] = QStringLiteral("A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTrigger")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTrigger")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTrigger")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTriggers")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTriggers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTriggers")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTriggers")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTriggers")][QtModeling::DocumentationRole] = QStringLiteral("A list of triggers that are candidates to be retained by the state machine if they trigger no transitions out of the state (not consumed). A deferred trigger is retained until the state machine reaches a state configuration where it is no longer deferred.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTriggers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTriggers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("deferrableTriggers")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("doActivity")][QtModeling::AggregationRole] = QStringLiteral("composite");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("doActivity")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
@@ -757,14 +797,14 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("redefinitionContext")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("redefinitionContext")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("region")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("region")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("region")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("region")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("region")][QtModeling::DocumentationRole] = QStringLiteral("The regions owned directly by the state.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("region")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("region")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("region")][QtModeling::OppositeEndRole] = QStringLiteral("Region-state");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("regions")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("regions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("regions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("regions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("regions")][QtModeling::DocumentationRole] = QStringLiteral("The regions owned directly by the state.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("regions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("regions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedMember");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("regions")][QtModeling::OppositeEndRole] = QStringLiteral("Region-state");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("stateInvariant")][QtModeling::AggregationRole] = QStringLiteral("composite");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("stateInvariant")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlState");
@@ -784,44 +824,5 @@ void QUmlState::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("submachine")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlState")][QStringLiteral("submachine")][QtModeling::OppositeEndRole] = QStringLiteral("StateMachine-submachineState");
 
-}
-
-void QUmlState::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("elementImports")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("importedMembers")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("members")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("ownedMembers")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("ownedRules")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("packageImports")] = QStringLiteral("QUmlNamespace");
-    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("container")] = QStringLiteral("QUmlVertex");
-    _classForProperty[QStringLiteral("incomings")] = QStringLiteral("QUmlVertex");
-    _classForProperty[QStringLiteral("outgoings")] = QStringLiteral("QUmlVertex");
-    _classForProperty[QStringLiteral("connections")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("connectionPoints")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("deferrableTriggers")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("doActivity")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("entry")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("exit")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("isComposite")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("isOrthogonal")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("isSimple")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("isSubmachineState")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("redefinedState")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("redefinitionContext")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("regions")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("stateInvariant")] = QStringLiteral("QUmlState");
-    _classForProperty[QStringLiteral("submachine")] = QStringLiteral("QUmlState");
 }
 

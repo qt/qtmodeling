@@ -92,6 +92,7 @@ QUmlAssociationClass::QUmlAssociationClass(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlAssociationClassObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -177,10 +178,6 @@ QModelingObject *QUmlAssociationClass::clone() const
     return c;
 }
 
-void QUmlAssociationClass::setPropertyData()
-{
-}
-
 void QUmlAssociationClass::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -239,5 +236,9 @@ void QUmlAssociationClass::setClassForProperty()
     _classForProperty[QStringLiteral("memberEnds")] = QStringLiteral("QUmlAssociation");
     _classForProperty[QStringLiteral("navigableOwnedEnds")] = QStringLiteral("QUmlAssociation");
     _classForProperty[QStringLiteral("ownedEnds")] = QStringLiteral("QUmlAssociation");
+}
+
+void QUmlAssociationClass::setPropertyData()
+{
 }
 

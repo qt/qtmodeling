@@ -107,8 +107,8 @@ protected:
     QSet<QUmlPackageableElement *> _packagedElements;
     QSet<QUmlProfileApplication *> _profileApplications;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

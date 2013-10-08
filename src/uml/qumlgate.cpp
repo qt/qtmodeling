@@ -62,6 +62,7 @@ QUmlGate::QUmlGate(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlGateObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -90,10 +91,6 @@ QModelingObject *QUmlGate::clone() const
     return c;
 }
 
-void QUmlGate::setPropertyData()
-{
-}
-
 void QUmlGate::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -106,5 +103,9 @@ void QUmlGate::setClassForProperty()
     _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
     _classForProperty[QStringLiteral("message")] = QStringLiteral("QUmlMessageEnd");
+}
+
+void QUmlGate::setPropertyData()
+{
 }
 

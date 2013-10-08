@@ -85,6 +85,7 @@ QUmlOperation::QUmlOperation(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlOperationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -657,154 +658,6 @@ QSet<QUmlParameter *> QUmlOperation::returnResult() const
     return QSet<QUmlParameter *> ();
 }
 
-void QUmlOperation::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::DocumentationRole] = QStringLiteral("An optional Constraint on the result values of an invocation of this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class")][QtModeling::DocumentationRole] = QStringLiteral("The class that owns the operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class")][QtModeling::OppositeEndRole] = QStringLiteral("Class-ownedOperation");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::DocumentationRole] = QStringLiteral("The DataType that owns this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::OppositeEndRole] = QStringLiteral("DataType-ownedOperation");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface")][QtModeling::DocumentationRole] = QStringLiteral("The Interface that owns this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface")][QtModeling::OppositeEndRole] = QStringLiteral("Interface-ownedOperation");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies whether the return parameter is ordered or not, if present.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether the return parameter is unique or not, if present.This information is derived from the return result for this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameter")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameter")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("BehavioralFeature-ownedParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameter")][QtModeling::OppositeEndRole] = QStringLiteral("Parameter-operation");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postcondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postcondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postcondition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postcondition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postcondition")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints specifying the state of the system when the Operation is completed.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postcondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postcondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postcondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("precondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("precondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("precondition")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("precondition")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("precondition")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints on the state of the system when the Operation is invoked.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("precondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("precondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("precondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedException")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedException")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedException")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedException")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedException")][QtModeling::DocumentationRole] = QStringLiteral("References the Types representing exceptions that may be raised during an invocation of this operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedException")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("BehavioralFeature-raisedException");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedException")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedException")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperation")][QtModeling::DocumentationRole] = QStringLiteral("References the Operations that are redefined by this Operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The template parameter that exposes this element as a formal parameter.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("OperationTemplateParameter-parameteredElement");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies the return result of the operation, if present.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::IsDerivedRole] = true;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies the upper multiplicity of the return parameter, if present.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlOperation::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -850,5 +703,153 @@ void QUmlOperation::setClassForProperty()
     _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlOperation");
     _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlOperation");
     _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlOperation");
+}
+
+void QUmlOperation::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::DocumentationRole] = QStringLiteral("An optional Constraint on the result values of an invocation of this Operation.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("bodyCondition")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::DocumentationRole] = QStringLiteral("The class that owns the operation.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("class_")][QtModeling::OppositeEndRole] = QStringLiteral("Class-ownedOperation");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::DocumentationRole] = QStringLiteral("The DataType that owns this Operation.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("datatype")][QtModeling::OppositeEndRole] = QStringLiteral("DataType-ownedOperation");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::DocumentationRole] = QStringLiteral("The Interface that owns this Operation.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Feature-featuringClassifier RedefinableElement-redefinitionContext NamedElement-namespace");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("interface_")][QtModeling::OppositeEndRole] = QStringLiteral("Interface-ownedOperation");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies whether the return parameter is ordered or not, if present.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isOrdered")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether an execution of the BehavioralFeature leaves the state of the system unchanged (isQuery=true) or whether side effects may occur (isQuery=false).");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isQuery")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::DocumentationRole] = QStringLiteral("Specifies whether the return parameter is unique or not, if present.This information is derived from the return result for this Operation.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("isUnique")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies the lower multiplicity of the return parameter, if present.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("lower")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the ordered set of formal parameters of this BehavioralFeature.Specifies the parameters owned by this Operation.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("BehavioralFeature-ownedParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("ownedParameters")][QtModeling::OppositeEndRole] = QStringLiteral("Parameter-operation");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints specifying the state of the system when the Operation is completed.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("postconditions")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::DocumentationRole] = QStringLiteral("An optional set of Constraints on the state of the system when the Operation is invoked.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Namespace-ownedRule");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("preconditions")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::DocumentationRole] = QStringLiteral("References the Types representing exceptions that may be raised during an invocation of this operation.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("BehavioralFeature-raisedException");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("raisedExceptions")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::DocumentationRole] = QStringLiteral("References the Operations that are redefined by this Operation.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("RedefinableElement-redefinedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("redefinedOperations")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::DocumentationRole] = QStringLiteral("The template parameter that exposes this element as a formal parameter.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("ParameterableElement-templateParameter");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("templateParameter")][QtModeling::OppositeEndRole] = QStringLiteral("OperationTemplateParameter-parameteredElement");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies the return result of the operation, if present.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("type")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOperation");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::IsDerivedRole] = true;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::DocumentationRole] = QStringLiteral("This information is derived from the return result for this Operation.Specifies the upper multiplicity of the return parameter, if present.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOperation")][QStringLiteral("upper")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

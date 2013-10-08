@@ -65,6 +65,7 @@ QUmlLiteralBoolean::QUmlLiteralBoolean(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLiteralBooleanObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -142,19 +143,6 @@ bool QUmlLiteralBoolean::isComputable() const
     return bool ();
 }
 
-void QUmlLiteralBoolean::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralBoolean");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified Boolean value.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlLiteralBoolean::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -170,5 +158,18 @@ void QUmlLiteralBoolean::setClassForProperty()
     _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
     _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLiteralBoolean");
+}
+
+void QUmlLiteralBoolean::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLiteralBoolean");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("The specified Boolean value.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLiteralBoolean")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

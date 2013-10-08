@@ -68,6 +68,7 @@ QUmlGeneralizationSet::QUmlGeneralizationSet(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlGeneralizationSetObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -207,16 +208,35 @@ void QUmlGeneralizationSet::setPowertype(QUmlClassifier *powertype)
     }
 }
 
+void QUmlGeneralizationSet::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("generalizations")] = QStringLiteral("QUmlGeneralizationSet");
+    _classForProperty[QStringLiteral("isCovering")] = QStringLiteral("QUmlGeneralizationSet");
+    _classForProperty[QStringLiteral("isDisjoint")] = QStringLiteral("QUmlGeneralizationSet");
+    _classForProperty[QStringLiteral("powertype")] = QStringLiteral("QUmlGeneralizationSet");
+}
+
 void QUmlGeneralizationSet::setPropertyData()
 {
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalization")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalization")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralizationSet");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalization")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalization")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalization")][QtModeling::DocumentationRole] = QStringLiteral("Designates the instances of Generalization which are members of a given GeneralizationSet.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalization")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalization")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalization")][QtModeling::OppositeEndRole] = QStringLiteral("Generalization-generalizationSet");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalizations")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalizations")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralizationSet");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalizations")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalizations")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalizations")][QtModeling::DocumentationRole] = QStringLiteral("Designates the instances of Generalization which are members of a given GeneralizationSet.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalizations")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalizations")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("generalizations")][QtModeling::OppositeEndRole] = QStringLiteral("Generalization-generalizationSet");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("isCovering")][QtModeling::AggregationRole] = QStringLiteral("none");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("isCovering")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlGeneralizationSet");
@@ -245,24 +265,5 @@ void QUmlGeneralizationSet::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("powertype")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralizationSet")][QStringLiteral("powertype")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-powertypeExtent");
 
-}
-
-void QUmlGeneralizationSet::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
-    _classForProperty[QStringLiteral("generalizations")] = QStringLiteral("QUmlGeneralizationSet");
-    _classForProperty[QStringLiteral("isCovering")] = QStringLiteral("QUmlGeneralizationSet");
-    _classForProperty[QStringLiteral("isDisjoint")] = QStringLiteral("QUmlGeneralizationSet");
-    _classForProperty[QStringLiteral("powertype")] = QStringLiteral("QUmlGeneralizationSet");
 }
 

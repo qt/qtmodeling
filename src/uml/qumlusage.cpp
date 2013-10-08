@@ -64,6 +64,7 @@ QUmlUsage::QUmlUsage(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlUsageObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -98,10 +99,6 @@ QModelingObject *QUmlUsage::clone() const
     return c;
 }
 
-void QUmlUsage::setPropertyData()
-{
-}
-
 void QUmlUsage::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -120,5 +117,9 @@ void QUmlUsage::setClassForProperty()
     _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
     _classForProperty[QStringLiteral("clients")] = QStringLiteral("QUmlDependency");
     _classForProperty[QStringLiteral("suppliers")] = QStringLiteral("QUmlDependency");
+}
+
+void QUmlUsage::setPropertyData()
+{
 }
 

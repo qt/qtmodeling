@@ -210,6 +210,20 @@ void QUmlGeneralization::setSpecific(QUmlClassifier *specific)
     }
 }
 
+void QUmlGeneralization::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("general")] = QStringLiteral("QUmlGeneralization");
+    _classForProperty[QStringLiteral("generalizationSets")] = QStringLiteral("QUmlGeneralization");
+    _classForProperty[QStringLiteral("isSubstitutable")] = QStringLiteral("QUmlGeneralization");
+    _classForProperty[QStringLiteral("specific")] = QStringLiteral("QUmlGeneralization");
+}
+
 void QUmlGeneralization::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("general")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -248,19 +262,5 @@ void QUmlGeneralization::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("specific")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-owner DirectedRelationship-source");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlGeneralization")][QStringLiteral("specific")][QtModeling::OppositeEndRole] = QStringLiteral("Classifier-generalization");
 
-}
-
-void QUmlGeneralization::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("general")] = QStringLiteral("QUmlGeneralization");
-    _classForProperty[QStringLiteral("generalizationSets")] = QStringLiteral("QUmlGeneralization");
-    _classForProperty[QStringLiteral("isSubstitutable")] = QStringLiteral("QUmlGeneralization");
-    _classForProperty[QStringLiteral("specific")] = QStringLiteral("QUmlGeneralization");
 }
 

@@ -74,6 +74,7 @@ QUmlOpaqueAction::QUmlOpaqueAction(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlOpaqueActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -266,46 +267,6 @@ void QUmlOpaqueAction::removeOutputValue(QUmlOutputPin *outputValue)
     }
 }
 
-void QUmlOpaqueAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("body")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("body")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the action in one or more languages.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("body")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("body")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValue")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValue")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValue")][QtModeling::DocumentationRole] = QStringLiteral("Provides input to the action.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("language")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("language")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("language")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("language")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("language")][QtModeling::DocumentationRole] = QStringLiteral("Languages the body strings use, in the same order as the body strings");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("language")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("language")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("language")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValue")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValue")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValue")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValue")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValue")][QtModeling::DocumentationRole] = QStringLiteral("Takes output from the action.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValue")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValue")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValue")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlOpaqueAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -339,5 +300,45 @@ void QUmlOpaqueAction::setClassForProperty()
     _classForProperty[QStringLiteral("inputValues")] = QStringLiteral("QUmlOpaqueAction");
     _classForProperty[QStringLiteral("languages")] = QStringLiteral("QUmlOpaqueAction");
     _classForProperty[QStringLiteral("outputValues")] = QStringLiteral("QUmlOpaqueAction");
+}
+
+void QUmlOpaqueAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("bodies")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("bodies")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("bodies")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("bodies")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("bodies")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the action in one or more languages.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("bodies")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("bodies")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("bodies")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValues")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValues")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValues")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValues")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValues")][QtModeling::DocumentationRole] = QStringLiteral("Provides input to the action.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValues")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValues")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("inputValues")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("languages")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("languages")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("languages")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("languages")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("languages")][QtModeling::DocumentationRole] = QStringLiteral("Languages the body strings use, in the same order as the body strings");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("languages")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("languages")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("languages")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValues")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValues")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValues")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValues")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValues")][QtModeling::DocumentationRole] = QStringLiteral("Takes output from the action.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValues")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValues")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueAction")][QStringLiteral("outputValues")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

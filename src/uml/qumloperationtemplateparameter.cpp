@@ -61,6 +61,7 @@ QUmlOperationTemplateParameter::QUmlOperationTemplateParameter(bool createQObjec
 {
     if (createQObject)
         _qObject = new QUmlOperationTemplateParameterObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -114,6 +115,18 @@ void QUmlOperationTemplateParameter::setParameteredElement(QUmlOperation *parame
     }
 }
 
+void QUmlOperationTemplateParameter::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("ownedDefault")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("ownedParameteredElement")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlTemplateParameter");
+    _classForProperty[QStringLiteral("parameteredElement")] = QStringLiteral("QUmlOperationTemplateParameter");
+}
+
 void QUmlOperationTemplateParameter::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -125,17 +138,5 @@ void QUmlOperationTemplateParameter::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlOperationTemplateParameter")][QStringLiteral("parameteredElement")][QtModeling::OppositeEndRole] = QStringLiteral("Operation-templateParameter");
 
-}
-
-void QUmlOperationTemplateParameter::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("ownedDefault")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("ownedParameteredElement")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("parameteredElement")] = QStringLiteral("QUmlOperationTemplateParameter");
 }
 

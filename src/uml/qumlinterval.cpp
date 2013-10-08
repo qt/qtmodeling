@@ -67,6 +67,7 @@ QUmlInterval::QUmlInterval(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlIntervalObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -147,6 +148,24 @@ void QUmlInterval::setMin(QUmlValueSpecification *min)
     }
 }
 
+void QUmlInterval::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
+    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlTypedElement");
+    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
+    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+    _classForProperty[QStringLiteral("max")] = QStringLiteral("QUmlInterval");
+    _classForProperty[QStringLiteral("min")] = QStringLiteral("QUmlInterval");
+}
+
 void QUmlInterval::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInterval")][QStringLiteral("max")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -167,23 +186,5 @@ void QUmlInterval::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInterval")][QStringLiteral("min")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlInterval")][QStringLiteral("min")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlInterval::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlTypedElement");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
-    _classForProperty[QStringLiteral("max")] = QStringLiteral("QUmlInterval");
-    _classForProperty[QStringLiteral("min")] = QStringLiteral("QUmlInterval");
 }
 

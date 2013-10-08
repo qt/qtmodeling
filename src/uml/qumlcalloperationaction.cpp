@@ -78,6 +78,7 @@ QUmlCallOperationAction::QUmlCallOperationAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCallOperationActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -190,28 +191,6 @@ void QUmlCallOperationAction::setTarget(QUmlInputPin *target)
     }
 }
 
-void QUmlCallOperationAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallOperationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("The operation to be invoked by the action execution.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallOperationAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("The target object to which the request is sent. The classifier of the target object is used to dynamically determine a behavior to invoke. This object constitutes the context of the execution of the operation.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlCallOperationAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -247,5 +226,27 @@ void QUmlCallOperationAction::setClassForProperty()
     _classForProperty[QStringLiteral("results")] = QStringLiteral("QUmlCallAction");
     _classForProperty[QStringLiteral("operation")] = QStringLiteral("QUmlCallOperationAction");
     _classForProperty[QStringLiteral("target")] = QStringLiteral("QUmlCallOperationAction");
+}
+
+void QUmlCallOperationAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallOperationAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::DocumentationRole] = QStringLiteral("The operation to be invoked by the action execution.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("operation")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallOperationAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::DocumentationRole] = QStringLiteral("The target object to which the request is sent. The classifier of the target object is used to dynamically determine a behavior to invoke. This object constitutes the context of the execution of the operation.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-input");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallOperationAction")][QStringLiteral("target")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

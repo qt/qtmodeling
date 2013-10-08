@@ -100,8 +100,8 @@ protected:
     QSet<QUmlConnector *> _realizingConnectors;
     QSet<QUmlMessage *> _realizingMessages;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

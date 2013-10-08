@@ -95,6 +95,7 @@ QUmlFunctionBehavior::QUmlFunctionBehavior(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlFunctionBehaviorObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -190,10 +191,6 @@ QModelingObject *QUmlFunctionBehavior::clone() const
     return c;
 }
 
-void QUmlFunctionBehavior::setPropertyData()
-{
-}
-
 void QUmlFunctionBehavior::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -256,5 +253,9 @@ void QUmlFunctionBehavior::setClassForProperty()
     _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlBehavior");
     _classForProperty[QStringLiteral("bodies")] = QStringLiteral("QUmlOpaqueBehavior");
     _classForProperty[QStringLiteral("languages")] = QStringLiteral("QUmlOpaqueBehavior");
+}
+
+void QUmlFunctionBehavior::setPropertyData()
+{
 }
 

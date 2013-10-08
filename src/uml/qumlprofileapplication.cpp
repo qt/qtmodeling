@@ -61,6 +61,7 @@ QUmlProfileApplication::QUmlProfileApplication(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlProfileApplicationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -167,6 +168,19 @@ void QUmlProfileApplication::setStrict(bool isStrict)
     }
 }
 
+void QUmlProfileApplication::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
+    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
+    _classForProperty[QStringLiteral("appliedProfile")] = QStringLiteral("QUmlProfileApplication");
+    _classForProperty[QStringLiteral("applyingPackage")] = QStringLiteral("QUmlProfileApplication");
+    _classForProperty[QStringLiteral("isStrict")] = QStringLiteral("QUmlProfileApplication");
+}
+
 void QUmlProfileApplication::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("appliedProfile")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -196,18 +210,5 @@ void QUmlProfileApplication::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlProfileApplication")][QStringLiteral("isStrict")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlProfileApplication::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("appliedProfile")] = QStringLiteral("QUmlProfileApplication");
-    _classForProperty[QStringLiteral("applyingPackage")] = QStringLiteral("QUmlProfileApplication");
-    _classForProperty[QStringLiteral("isStrict")] = QStringLiteral("QUmlProfileApplication");
 }
 

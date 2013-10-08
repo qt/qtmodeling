@@ -77,6 +77,7 @@ QUmlCallBehaviorAction::QUmlCallBehaviorAction(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlCallBehaviorActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -157,19 +158,6 @@ void QUmlCallBehaviorAction::setBehavior(QUmlBehavior *behavior)
     }
 }
 
-void QUmlCallBehaviorAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallBehaviorAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::DocumentationRole] = QStringLiteral("The invoked behavior. It must be capable of accepting and returning control.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlCallBehaviorAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -204,5 +192,18 @@ void QUmlCallBehaviorAction::setClassForProperty()
     _classForProperty[QStringLiteral("isSynchronous")] = QStringLiteral("QUmlCallAction");
     _classForProperty[QStringLiteral("results")] = QStringLiteral("QUmlCallAction");
     _classForProperty[QStringLiteral("behavior")] = QStringLiteral("QUmlCallBehaviorAction");
+}
+
+void QUmlCallBehaviorAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlCallBehaviorAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::DocumentationRole] = QStringLiteral("The invoked behavior. It must be capable of accepting and returning control.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlCallBehaviorAction")][QStringLiteral("behavior")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

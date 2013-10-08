@@ -72,6 +72,7 @@
 QUmlPin::QUmlPin() :
     _isControl(false)
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -147,19 +148,6 @@ void QUmlPin::setControl(bool isControl)
     }
 }
 
-void QUmlPin::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPin");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the pins provide data to the actions, or just controls when it executes it.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlPin::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -195,5 +183,18 @@ void QUmlPin::setClassForProperty()
     _classForProperty[QStringLiteral("selection")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("upperBound")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("isControl")] = QStringLiteral("QUmlPin");
+}
+
+void QUmlPin::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlPin");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::DocumentationRole] = QStringLiteral("Tells whether the pins provide data to the actions, or just controls when it executes it.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlPin")][QStringLiteral("isControl")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

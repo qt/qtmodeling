@@ -93,6 +93,7 @@ QUmlExecutionEnvironment::QUmlExecutionEnvironment(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExecutionEnvironmentObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -175,10 +176,6 @@ QModelingObject *QUmlExecutionEnvironment::clone() const
     return c;
 }
 
-void QUmlExecutionEnvironment::setPropertyData()
-{
-}
-
 void QUmlExecutionEnvironment::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -234,5 +231,9 @@ void QUmlExecutionEnvironment::setClassForProperty()
     _classForProperty[QStringLiteral("deployedElements")] = QStringLiteral("QUmlDeploymentTarget");
     _classForProperty[QStringLiteral("deployments")] = QStringLiteral("QUmlDeploymentTarget");
     _classForProperty[QStringLiteral("nestedNodes")] = QStringLiteral("QUmlNode");
+}
+
+void QUmlExecutionEnvironment::setPropertyData()
+{
 }
 

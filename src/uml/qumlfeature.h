@@ -74,8 +74,8 @@ protected:
     QSet<QUmlClassifier *> _featuringClassifiers;
     bool _isStatic;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

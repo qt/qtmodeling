@@ -103,8 +103,8 @@ protected:
     QList<QUmlOperation *> _ownedOperations;
     QSet<QUmlReception *> _ownedReceptions;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

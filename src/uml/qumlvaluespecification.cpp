@@ -60,6 +60,7 @@
  */
 QUmlValueSpecification::QUmlValueSpecification()
 {
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -170,10 +171,6 @@ int QUmlValueSpecification::unlimitedValue() const
     return int ();
 }
 
-void QUmlValueSpecification::setPropertyData()
-{
-}
-
 void QUmlValueSpecification::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -188,5 +185,9 @@ void QUmlValueSpecification::setClassForProperty()
     _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
     _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
+}
+
+void QUmlValueSpecification::setPropertyData()
+{
 }
 

@@ -61,6 +61,7 @@ QUmlLinkEndData::QUmlLinkEndData(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLinkEndDataObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -170,6 +171,16 @@ void QUmlLinkEndData::setValue(QUmlInputPin *value)
     }
 }
 
+void QUmlLinkEndData::setClassForProperty()
+{
+    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
+    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
+}
+
 void QUmlLinkEndData::setPropertyData()
 {
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("end")][QtModeling::AggregationRole] = QStringLiteral("none");
@@ -181,14 +192,14 @@ void QUmlLinkEndData::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("end")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("end")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifier")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifier")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndData");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifier")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifier")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifier")][QtModeling::DocumentationRole] = QStringLiteral("List of qualifier values");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifier")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifier")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifier")][QtModeling::OppositeEndRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifiers")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifiers")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndData");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifiers")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifiers")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifiers")][QtModeling::DocumentationRole] = QStringLiteral("List of qualifier values");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifiers")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifiers")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("qualifiers")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("none");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlLinkEndData");
@@ -199,15 +210,5 @@ void QUmlLinkEndData::setPropertyData()
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
     QModelingObject::propertyDataHash[QStringLiteral("QUmlLinkEndData")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
 
-}
-
-void QUmlLinkEndData::setClassForProperty()
-{
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
 }
 

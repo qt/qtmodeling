@@ -77,6 +77,7 @@ QUmlExpansionNode::QUmlExpansionNode(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExpansionNodeObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -176,28 +177,6 @@ void QUmlExpansionNode::setRegionAsOutput(QUmlExpansionRegion *regionAsOutput)
     }
 }
 
-void QUmlExpansionNode::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::DocumentationRole] = QStringLiteral("The expansion region for which the node is an input.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionRegion-inputElement");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionNode");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::DocumentationRole] = QStringLiteral("The expansion region for which the node is an output.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionRegion-outputElement");
-
-}
-
 void QUmlExpansionNode::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -228,5 +207,27 @@ void QUmlExpansionNode::setClassForProperty()
     _classForProperty[QStringLiteral("upperBound")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("regionAsInput")] = QStringLiteral("QUmlExpansionNode");
     _classForProperty[QStringLiteral("regionAsOutput")] = QStringLiteral("QUmlExpansionNode");
+}
+
+void QUmlExpansionNode::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::DocumentationRole] = QStringLiteral("The expansion region for which the node is an input.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsInput")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionRegion-inputElement");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlExpansionNode");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::DocumentationRole] = QStringLiteral("The expansion region for which the node is an output.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlExpansionNode")][QStringLiteral("regionAsOutput")][QtModeling::OppositeEndRole] = QStringLiteral("ExpansionRegion-outputElement");
+
 }
 

@@ -94,6 +94,7 @@ QUmlOpaqueBehavior::QUmlOpaqueBehavior(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlOpaqueBehaviorObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -247,28 +248,6 @@ void QUmlOpaqueBehavior::removeLanguage(QString language)
     }
 }
 
-void QUmlOpaqueBehavior::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("body")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("body")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("body")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("body")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("body")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the behavior in one or more languages.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("body")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("body")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("body")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("language")][QtModeling::AggregationRole] = QStringLiteral("none");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("language")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueBehavior");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("language")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("language")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("language")][QtModeling::DocumentationRole] = QStringLiteral("Languages the body strings use in the same order as the body strings.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("language")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("language")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("language")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlOpaqueBehavior::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -331,5 +310,27 @@ void QUmlOpaqueBehavior::setClassForProperty()
     _classForProperty[QStringLiteral("specification")] = QStringLiteral("QUmlBehavior");
     _classForProperty[QStringLiteral("bodies")] = QStringLiteral("QUmlOpaqueBehavior");
     _classForProperty[QStringLiteral("languages")] = QStringLiteral("QUmlOpaqueBehavior");
+}
+
+void QUmlOpaqueBehavior::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("bodies")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("bodies")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("bodies")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("bodies")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("bodies")][QtModeling::DocumentationRole] = QStringLiteral("Specifies the behavior in one or more languages.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("bodies")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("bodies")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("bodies")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("languages")][QtModeling::AggregationRole] = QStringLiteral("none");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("languages")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlOpaqueBehavior");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("languages")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("languages")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("languages")][QtModeling::DocumentationRole] = QStringLiteral("Languages the body strings use in the same order as the body strings.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("languages")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("languages")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlOpaqueBehavior")][QStringLiteral("languages")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

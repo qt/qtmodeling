@@ -77,6 +77,7 @@ QUmlValuePin::QUmlValuePin(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlValuePinObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -169,19 +170,6 @@ void QUmlValuePin::setValue(QUmlValueSpecification *value)
     }
 }
 
-void QUmlValuePin::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlValuePin");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Value that the pin will provide.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlValuePin::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -218,5 +206,18 @@ void QUmlValuePin::setClassForProperty()
     _classForProperty[QStringLiteral("upperBound")] = QStringLiteral("QUmlObjectNode");
     _classForProperty[QStringLiteral("isControl")] = QStringLiteral("QUmlPin");
     _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlValuePin");
+}
+
+void QUmlValuePin::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlValuePin");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::DocumentationRole] = QStringLiteral("Value that the pin will provide.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Element-ownedElement");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlValuePin")][QStringLiteral("value")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

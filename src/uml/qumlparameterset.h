@@ -75,8 +75,8 @@ protected:
     QSet<QUmlConstraint *> _conditions;
     QSet<QUmlParameter *> _parameters;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

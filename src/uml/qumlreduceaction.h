@@ -80,8 +80,8 @@ protected:
     QUmlBehavior *_reducer;
     QUmlOutputPin *_result;
 
-    virtual void setPropertyData();
     virtual void setClassForProperty();
+    virtual void setPropertyData();
 };
 
 QT_END_NAMESPACE

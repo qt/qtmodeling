@@ -76,6 +76,7 @@ QUmlClearStructuralFeatureAction::QUmlClearStructuralFeatureAction(bool createQO
 {
     if (createQObject)
         _qObject = new QUmlClearStructuralFeatureActionObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -162,19 +163,6 @@ void QUmlClearStructuralFeatureAction::setResult(QUmlOutputPin *result)
     }
 }
 
-void QUmlClearStructuralFeatureAction::setPropertyData()
-{
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClearStructuralFeatureAction");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
-    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
-
-}
-
 void QUmlClearStructuralFeatureAction::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -207,5 +195,18 @@ void QUmlClearStructuralFeatureAction::setClassForProperty()
     _classForProperty[QStringLiteral("object")] = QStringLiteral("QUmlStructuralFeatureAction");
     _classForProperty[QStringLiteral("structuralFeature")] = QStringLiteral("QUmlStructuralFeatureAction");
     _classForProperty[QStringLiteral("result")] = QStringLiteral("QUmlClearStructuralFeatureAction");
+}
+
+void QUmlClearStructuralFeatureAction::setPropertyData()
+{
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::AggregationRole] = QStringLiteral("composite");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::PropertyClassRole] = QStringLiteral("QUmlClearStructuralFeatureAction");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::IsDerivedRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::IsDerivedUnionRole] = false;
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::DocumentationRole] = QStringLiteral("Gives the output pin on which the result is put.");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::RedefinedPropertiesRole] = QStringLiteral("");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::SubsettedPropertiesRole] = QStringLiteral("Action-output");
+    QModelingObject::propertyDataHash[QStringLiteral("QUmlClearStructuralFeatureAction")][QStringLiteral("result")][QtModeling::OppositeEndRole] = QStringLiteral("");
+
 }
 

@@ -65,6 +65,7 @@ QUmlRealization::QUmlRealization(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlRealizationObject(this);
+    setClassForProperty();
     setPropertyData();
 }
 
@@ -101,10 +102,6 @@ QModelingObject *QUmlRealization::clone() const
     return c;
 }
 
-void QUmlRealization::setPropertyData()
-{
-}
-
 void QUmlRealization::setClassForProperty()
 {
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
@@ -124,5 +121,9 @@ void QUmlRealization::setClassForProperty()
     _classForProperty[QStringLiteral("clients")] = QStringLiteral("QUmlDependency");
     _classForProperty[QStringLiteral("suppliers")] = QStringLiteral("QUmlDependency");
     _classForProperty[QStringLiteral("mapping")] = QStringLiteral("QUmlAbstraction");
+}
+
+void QUmlRealization::setPropertyData()
+{
 }
 
