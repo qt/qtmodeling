@@ -216,7 +216,7 @@
       <number>0</number>
      </property>
      <item row="0" column="0">
-      <widget class="QWrappedObjectView" name="wrappedObjectView" native="true"/>
+      <widget class="QModelingObjectView" name="modelingObjectView" native="true"/>
      </item>
     </layout>
    </widget>
@@ -240,7 +240,7 @@
       <number>0</number>
      </property>
      <item row="0" column="0">
-      <widget class="QWrappedObjectPropertyEditor" name="propertyEditor" native="true"/>
+      <widget class="QModelingObjectPropertyEditor" name="propertyEditor" native="true"/>
      </item>
     </layout>
    </widget>
@@ -611,15 +611,15 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>QWrappedObjectPropertyEditor</class>
+   <class>QModelingObjectPropertyEditor</class>
    <extends>QWidget</extends>
-   <header>qwrappedobjectpropertyeditor.h</header>
+   <header>qmodelingobjectpropertyeditor.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>QWrappedObjectView</class>
+   <class>QModelingObjectView</class>
    <extends>QWidget</extends>
-   <header>qwrappedobjectview.h</header>
+   <header>qmodelingobjectview.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

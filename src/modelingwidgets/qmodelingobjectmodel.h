@@ -75,7 +75,7 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const;
 
 public Q_SLOTS:
-    void addModelingObject(QObject *modelingObject);
+    void addModelingObject(QObject *qObject);
     void updateIndex(const QModelIndex &index);
     void clear();
 };

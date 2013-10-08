@@ -115,6 +115,9 @@ QList<QModelingObject *> QXmiReader::readFile(QIODevice *device, QString importe
     while (!reader.atEnd()) {
         reader.readNext();
 
+        if (!reader.namespaceUri().toString().isEmpty())
+            currentNamespaceUri = reader.namespaceUri().toString();
+
         if (!importedId.isEmpty() && !importedIdFound && reader.attributes().value(QString::fromLatin1("xmi:id")).toString() != importedId)
             continue;
 
@@ -162,8 +165,6 @@ QList<QModelingObject *> QXmiReader::readFile(QIODevice *device, QString importe
             QString instanceName = reader.attributes().value(QString::fromLatin1("name")).toString();
             if (instanceName.isEmpty())
                 instanceName = reader.attributes().value(QString::fromLatin1("xmi:id")).toString();
-            if (!reader.namespaceUri().toString().isEmpty())
-                currentNamespaceUri = reader.namespaceUri().toString();
             QModelingObject *modelingObject = createInstance(currentNamespaceUri, xmiType, instanceName);
             if (modelingObject) {
                 d->idMap.insert(reader.attributes().value(QString::fromLatin1("xmi:id")).toString(), modelingObject);

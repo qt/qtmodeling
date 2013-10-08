@@ -57,13 +57,13 @@ QModelingObjectModel::QModelingObjectModel(QObject *parent) :
 {
 }
 
-void QModelingObjectModel::addModelingObject(QObject *modelingObject)
+void QModelingObjectModel::addModelingObject(QObject *qObject)
 {
     Q_D(QModelingObjectModel);
 
-    if (modelingObject && !d->modelingObjects.contains(modelingObject)) {
+    if (qObject && !d->modelingObjects.contains(qObject)) {
         beginResetModel();
-        d->modelingObjects.append(modelingObject);
+        d->modelingObjects.append(qObject);
         endResetModel();
     }
 }

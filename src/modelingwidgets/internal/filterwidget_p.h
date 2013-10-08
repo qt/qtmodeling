@@ -41,7 +41,7 @@
 #ifndef FILTERWIDGET_P_H
 #define FILTERWIDGET_P_H
 
-#include "../qtwrappedobjectswidgetsglobal.h"
+#include "../qtmodelingwidgetsglobal.h"
 
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QToolButton>
@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtWrappedObjectsWidgets)
 
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT HintLineEdit : public QLineEdit
+class Q_MODELINGWIDGETS_EXPORT HintLineEdit : public QLineEdit
 {
     Q_OBJECT
 
@@ -75,7 +75,7 @@ private:
 
 // IconButton: This is a simple helper class that represents clickable icons
 
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT IconButton: public QToolButton
+class Q_MODELINGWIDGETS_EXPORT IconButton: public QToolButton
 {
     Q_OBJECT
     Q_PROPERTY(float fader READ fader WRITE setFader)
@@ -93,7 +93,7 @@ private:
 
 // FilterWidget: For filtering item views, with reset button Uses HintLineEdit.
 
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT FilterWidget : public QWidget
+class Q_MODELINGWIDGETS_EXPORT FilterWidget : public QWidget
 {
     Q_OBJECT
 

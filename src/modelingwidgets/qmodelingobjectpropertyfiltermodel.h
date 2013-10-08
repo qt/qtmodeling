@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModelingWidgets)
 
-class Q_MODELINGOBJECTSWIDGETS_EXPORT QModelingObjectPropertyFilterModel : public QSortFilterProxyModel
+class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyFilterModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 public:

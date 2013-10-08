@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 #QT = modelingwidgets script quick quick-private qml duse
-QT = widgets script quick quick-private qml
+QT = widgets modelingwidgets script quick quick-private qml
 
 TARGET = duse-mt
 TEMPLATE = app

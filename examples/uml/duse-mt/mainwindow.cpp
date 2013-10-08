@@ -57,13 +57,13 @@
 
 #include <QtGui/QKeyEvent>
 
-#include <QtWrappedObjects/QXmiWriter>
-#include <QtWrappedObjects/QXmiReader>
-#include <QtWrappedObjects/QWrappedObject>
-#include <QtWrappedObjects/QMetaModelPlugin>
-#include <QtWrappedObjects/QMetaWrappedObject>
-#include <QtWrappedObjectsWidgets/QWrappedObjectModel>
-#include <QtWrappedObjectsWidgets/QWrappedObjectPropertyModel>
+#include <QtModeling/QXmiWriter>
+#include <QtModeling/QXmiReader>
+#include <QtModeling/QModelingObject>
+#include <QtModeling/QMetaModelPlugin>
+//#include <QtWrappedObjects/QMetaWrappedObject>
+#include <QtModelingWidgets/QModelingObjectModel>
+#include <QtModelingWidgets/QModelingObjectPropertyModel>
 
 #include <QtQml/QQmlEngine>
 #include <QtQml/QQmlContext>
@@ -73,14 +73,14 @@
 #include <QtQuick/QQuickItem>
 #include "QtQuick/private/qquickflickable_p.h"
 
-#include <QtDuse/QtDuse>
+//#include <QtDuse/QtDuse>
 
 #include "newdusedesign.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    _wrappedObjectModel(new QWrappedObjectModel(this)),
+    _modelingObjectModel(new QModelingObjectModel(this)),
     _aboutPluginsDialog(new QDialog(this)),
     _aboutPlugins(new Ui::AboutPlugins),
     _aboutDuSEMTDialog(new QDialog(this)),
@@ -99,22 +99,22 @@ MainWindow::MainWindow(QWidget *parent) :
     _codeCompletionView->setParent(ui->txeJavaScript);
     _codeCompletionView->hide();
 
-    ui->wrappedObjectView->setModel(_wrappedObjectModel);
+    ui->modelingObjectView->setModel(_modelingObjectModel);
 
     _newModel->setupUi(_newModelDialog);
     connect(_newModel->cboMetamodel, SIGNAL(currentIndexChanged(QString)), SLOT(metaModelChanged(QString)));
     _aboutPlugins->setupUi(_aboutPluginsDialog);
     _aboutDuSEMT->setupUi(_aboutDuSEMTDialog);
 
-    QWrappedObjectPropertyModel *propertyModel = new QWrappedObjectPropertyModel(_wrappedObjectModel);
-    ui->propertyEditor->setModel(propertyModel);
+    //QModelingObjectPropertyModel *modelingObjectPropertyModel = new QModelingObjectPropertyModel(_modelingObjectModel);
+    //ui->propertyEditor->setModel(modelingObjectPropertyModel);
 
-    connect(ui->wrappedObjectView, &QWrappedObjectView::wrappedObjectChanged,
-            propertyModel, &QWrappedObjectPropertyModel::setWrappedObject);
-    connect(ui->wrappedObjectView, &QWrappedObjectView::addToView, this, &MainWindow::addToView);
-    connect(ui->wrappedObjectView, SIGNAL(wrappedObjectChanged(QWrappedObject*)), SLOT(wrappedObjectChanged(QWrappedObject*)));
-    connect(propertyModel, &QWrappedObjectPropertyModel::indexChanged,
-            _wrappedObjectModel, &QWrappedObjectModel::updateIndex);
+    //connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged,
+    //        modelingObjectPropertyModel, &QModelingObjectPropertyModel::setModelingObject);
+    //connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
+    //connect(ui->modelingObjectView, SIGNAL(modelingObjectChanged(QWrappedObject*)), SLOT(modelingObjectChanged(QWrappedObject*)));
+    //connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
+    //        _modelingObjectModel, &QModelingObjectModel::updateIndex);
 
     loadPlugins();
 
@@ -187,39 +187,39 @@ void MainWindow::readSettings()
 
 void MainWindow::on_actionFileNewModel_triggered()
 {
-    _newModel->lneModel->clear();
-    _newModel->cboMetamodel->clear();
-    int i = 0;
-    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
-    foreach (const PluginData &pair, _loadedPlugins.values()) {
-        _newModel->cboMetamodel->addItem(pair.first->metaObject()->className());
-        ++i;
-    }
-    int type;
-    _newModel->lneModel->setFocus();
-    if (_newModelDialog->exec() == QDialog::Accepted) {
-        foreach (const PluginData &pair, _loadedPlugins.values()) {
-            if (pair.first->metaObject()->className() == _newModel->cboMetamodel->currentText())
-                pair.first->initMetaModel(&_engine);
-        }
-        if ((type = QMetaType::type(_newModel->lstTopLevelContainers->currentItem()->text().append("*").toLatin1())) != QMetaType::UnknownType) {
-            const QMetaObject *metaObject = QMetaType::metaObjectForType(type);
-            if (metaObject) {
-                QWrappedObject *topLevelElement = dynamic_cast<QWrappedObject *>(metaObject->newInstance());
-                if (topLevelElement) {
-                    topLevelElement->setObjectName(_newModel->lneModel->text());
-                    _wrappedObjectModel->clear();
-                    _wrappedObjectModel->addWrappedObject(topLevelElement);
-                    setWindowTitle("DuSE-MT");
-                    ui->txeJavaScript->setText("self");
-                    QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
-                }
-            }
-        }
-    }
+//    _newModel->lneModel->clear();
+//    _newModel->cboMetamodel->clear();
+//    int i = 0;
+//    typedef QPair<QMetaModelPlugin *, QJsonObject> PluginData;
+//    foreach (const PluginData &pair, _loadedPlugins.values()) {
+//        _newModel->cboMetamodel->addItem(pair.first->metaObject()->className());
+//        ++i;
+//    }
+//    int type;
+//    _newModel->lneModel->setFocus();
+//    if (_newModelDialog->exec() == QDialog::Accepted) {
+//        foreach (const PluginData &pair, _loadedPlugins.values()) {
+//            if (pair.first->metaObject()->className() == _newModel->cboMetamodel->currentText())
+//                pair.first->initMetaModel(&_engine);
+//        }
+//        if ((type = QMetaType::type(_newModel->lstTopLevelContainers->currentItem()->text().append("*").toLatin1())) != QMetaType::UnknownType) {
+//            const QMetaObject *metaObject = QMetaType::metaObjectForType(type);
+//            if (metaObject) {
+//                QWrappedObject *topLevelElement = dynamic_cast<QWrappedObject *>(metaObject->newInstance());
+//                if (topLevelElement) {
+//                    topLevelElement->setObjectName(_newModel->lneModel->text());
+//                    _modelingObjectModel->clear();
+//                    _modelingObjectModel->addWrappedObject(topLevelElement);
+//                    setWindowTitle("DuSE-MT");
+//                    ui->txeJavaScript->setText("self");
+//                    QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
+//                }
+//            }
+//        }
+//    }
 }
 
-void MainWindow::saveXmi(QWrappedObject *rootElement)
+void MainWindow::saveXmi(QModelingObject *rootElement)
 {
     QFile file(_currentFileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
@@ -238,41 +238,41 @@ void MainWindow::saveXmi(QWrappedObject *rootElement)
     setCursor(Qt::ArrowCursor);
 }
 
-QList<QWrappedObject *> MainWindow::loadXmi(QString fileName)
+QList<QModelingObject *> MainWindow::loadXmi(QString fileName)
 {
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::critical(this, tr("Open"), tr("Cannot read file !"));
-        return QList<QWrappedObject *>();
+        return QList<QModelingObject *>();
     }
 
     QXmiReader reader(&_engine, true);
     if (fileName.contains("duse-mt"))
         setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
-    QList<QWrappedObject *> wrappedObjectList = reader.readFile(&file);
+    QList<QModelingObject *> modelingObjectList = reader.readFile(&file);
 
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
-    setModelInspector(wrappedObjectList);
+    setModelInspector(modelingObjectList);
 
-    return wrappedObjectList;
+    return modelingObjectList;
 }
 
-void MainWindow::setModelInspector(QList<QWrappedObject *> wrappedObjectList)
+void MainWindow::setModelInspector(QList<QModelingObject *> modelingObjectList)
 {
-    if (!wrappedObjectList.isEmpty()) {
-        _engine.globalObject().setProperty(wrappedObjectList.at(0)->objectName(), _engine.newQObject(wrappedObjectList.at(0)));
+    if (!modelingObjectList.isEmpty()) {
+        _engine.globalObject().setProperty(modelingObjectList.at(0)->asQObject()->objectName(), _engine.newQObject(modelingObjectList.at(0)->asQObject()));
 
         QScriptValue array = _engine.newArray();
-        foreach (QWrappedObject *wrappedObject, wrappedObjectList)
-            array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(wrappedObject));
+        foreach (QModelingObject *modelingObject, modelingObjectList)
+            array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject->asQObject()));
         _engine.globalObject().setProperty("input", array);
 
         ui->txeJavaScript->setText("self");
         QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
     }
-    _wrappedObjectModel->clear();
-    foreach (QWrappedObject *object, wrappedObjectList)
-        _wrappedObjectModel->addWrappedObject(object);
+    _modelingObjectModel->clear();
+    foreach (QModelingObject *object, modelingObjectList)
+        _modelingObjectModel->addModelingObject(object->asQObject());
 }
 
 void MainWindow::on_actionFileOpenModel_triggered()
@@ -308,8 +308,8 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                     return;
                 }
                 QXmiReader reader(&_engine, true);
-                QList<QWrappedObject *> wrappedObjectList = reader.readFile(&file);
-                if (QString::fromLatin1(wrappedObjectList.first()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
+                QList<QModelingObject *> modelingObjectList = reader.readFile(&file);
+                if (QString::fromLatin1(modelingObjectList.first()->asQObject()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
                     QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
                     setCursor(Qt::ArrowCursor);
                     return;
@@ -328,20 +328,20 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                                                        { \
                                                            var length = input[0].profileApplications.length; \
                                                            for (var i = 0; i < length; ++i) \
-                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + wrappedObjectList.first()->objectName() + "Profile') \
+                                                               if (input[0].profileApplications[0].appliedProfile.name == '" + modelingObjectList.first()->asQObject()->objectName() + "Profile') \
                                                                    return true; \
                                                            return false; \
                                                        } \
                                                        checkProfile();");
                 if (!value.toBool()) {
-                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(wrappedObjectList.first()->objectName()));
+                    QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("Input model does not contain the required %1Profile profile application !").arg(modelingObjectList.first()->asQObject()->objectName()));
                     setCursor(Qt::ArrowCursor);
                     return;
                 }
 
-                wrappedObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
+                //modelingObjectList.first()->setQmlContextProperties(_metricsQuickView->engine()->rootContext());
 
-                _engine.globalObject().setProperty("designspace", _engine.newQObject(wrappedObjectList.at(0)));
+                _engine.globalObject().setProperty("designspace", _engine.newQObject(modelingObjectList.at(0)->asQObject()));
                 _engine.evaluate("var dimensionsLength = designspace.designDimensions.length; \
                                  for (var dimensionCounter = 0; dimensionCounter < dimensionsLength; ++dimensionCounter) { \
                                      if (designspace.designDimensions[dimensionCounter].instanceSelectionRule) { \
@@ -357,7 +357,7 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
 
 
                 evaluateQualityMetrics();
-                populateDesignSpaceView(wrappedObjectList.at(0));
+                populateDesignSpaceView(modelingObjectList.at(0));
 
                 setCursor(Qt::ArrowCursor);
             }
@@ -374,26 +374,26 @@ void MainWindow::evaluateQualityMetrics()
                           designspace.qualityMetrics[j].value = Math.random()*60+eval(designspace.qualityMetrics[j].expression)");
 }
 
-void MainWindow::populateDesignSpaceView(QWrappedObject *wrappedObject)
+void MainWindow::populateDesignSpaceView(QModelingObject *modelingObject)
 {
-    QDuseDesignSpace *designSpace = qobject_cast<QDuseDesignSpace *>(wrappedObject);
-    ui->tblDesignSpace->setRowCount(0);
-    int row = 0;
-    foreach (QDuseDesignDimension *dimension, designSpace->designDimensions()) {
-        ui->tblDesignSpace->setRowCount(ui->tblDesignSpace->rowCount() + dimension->designDimensionInstances().count());
-        foreach (QDuseDesignDimensionInstance *instance, dimension->designDimensionInstances()) {
-            ui->tblDesignSpace->setItem(row, 0, new QTableWidgetItem(dimension->name()));
-            ui->tblDesignSpace->setItem(row, 1, new QTableWidgetItem(instance->objectName()));
-            QComboBox *comboBox = new QComboBox;
-            foreach (QDuseVariationPoint *variationPoint, dimension->variationPoints()) {
-                comboBox->addItem(variationPoint->objectName());
-            }
-            ui->tblDesignSpace->setCellWidget(row, 2, comboBox);
-            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(designSpaceChanged()));
-            ++row;
-        }
-    }
-    ui->tblDesignSpace->resizeRowsToContents();
+//    QDuseDesignSpace *designSpace = qobject_cast<QDuseDesignSpace *>(modelingObject);
+//    ui->tblDesignSpace->setRowCount(0);
+//    int row = 0;
+//    foreach (QDuseDesignDimension *dimension, designSpace->designDimensions()) {
+//        ui->tblDesignSpace->setRowCount(ui->tblDesignSpace->rowCount() + dimension->designDimensionInstances().count());
+//        foreach (QDuseDesignDimensionInstance *instance, dimension->designDimensionInstances()) {
+//            ui->tblDesignSpace->setItem(row, 0, new QTableWidgetItem(dimension->name()));
+//            ui->tblDesignSpace->setItem(row, 1, new QTableWidgetItem(instance->objectName()));
+//            QComboBox *comboBox = new QComboBox;
+//            foreach (QDuseVariationPoint *variationPoint, dimension->variationPoints()) {
+//                comboBox->addItem(variationPoint->objectName());
+//            }
+//            ui->tblDesignSpace->setCellWidget(row, 2, comboBox);
+//            connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(designSpaceChanged()));
+//            ++row;
+//        }
+//    }
+//    ui->tblDesignSpace->resizeRowsToContents();
 }
 
 void MainWindow::on_actionFileOpenDuseDesign_triggered()
@@ -405,7 +405,7 @@ void MainWindow::on_actionFileSaveAs_triggered()
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), QDir::currentPath(), "XMI files (*.xmi)");
     if (!fileName.isEmpty()) {
         _currentFileName = fileName;
-        saveXmi(_wrappedObjectModel->wrappedObjects().at(0));
+        saveXmi(qModelingObject(_modelingObjectModel->modelingObjects().at(0)));
     }
 }
 
@@ -414,7 +414,7 @@ void MainWindow::on_actionFileSave_triggered()
     if (_currentFileName.isEmpty())
         on_actionFileSaveAs_triggered();
     else
-        saveXmi(_wrappedObjectModel->wrappedObjects().at(0));
+        saveXmi(qModelingObject(_modelingObjectModel->modelingObjects().at(0)));
 }
 
 void MainWindow::on_actionHelpAboutPlugins_triggered()
@@ -442,7 +442,7 @@ void MainWindow::on_actionHelpAboutDuSEMT_triggered()
 void MainWindow::on_psbJSEvaluate_clicked()
 {
     ui->txeJavaScriptEvaluation->setText(_engine.evaluate(ui->txeJavaScript->toPlainText()).toString());
-    ui->wrappedObjectView->updateSelected();
+    ui->modelingObjectView->updateSelected();
 }
 
 void MainWindow::on_centralWidget_currentChanged(int)
@@ -507,19 +507,19 @@ void MainWindow::metaModelChanged(QString newMetaModel)
     _newModel->lstTopLevelContainers->setCurrentRow(0);
 }
 
-void MainWindow::wrappedObjectChanged(QWrappedObject *wrappedObject)
+void MainWindow::modelingObjectChanged(QModelingObject *modelingObject)
 {
-    _engine.globalObject().setProperty("self", _engine.newQObject(wrappedObject));
+    _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject->asQObject()));
 }
 
-void MainWindow::addToView(QWrappedObject *wrappedObject, QQuickItem *parent)
+void MainWindow::addToView(QModelingObject *modelingObject, QQuickItem *parent)
 {
     QQmlContext *context = new QQmlContext(_modelQuickView->engine()->rootContext());
-    wrappedObject->setQmlContextProperties(context);
+    //modelingObject->setQmlContextProperties(context);
     _qmlComponent = new QQmlComponent(_modelQuickView->engine());
     int x = qrand() % 400;
     int y = qrand() % 400;
-    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
 
     QQuickItem *item = 0;
     if (_qmlComponent->isError()) {
@@ -531,20 +531,20 @@ void MainWindow::addToView(QWrappedObject *wrappedObject, QQuickItem *parent)
         }
     }
 
-    foreach (QObject *child, wrappedObject->children())
-        addToView(qobject_cast<QWrappedObject *>(child));
+    foreach (QObject *child, modelingObject->asQObject()->children())
+        addToView(dynamic_cast<QModelingObject *>(qModelingObject(child)));
 
     _qmlComponent->deleteLater();
 }
 
-void MainWindow::addToDesignSpaceView(QWrappedObject *wrappedObject, QQuickItem *parent)
+void MainWindow::addToDesignSpaceView(QModelingObject *modelingObject, QQuickItem *parent)
 {
     QQmlContext *context = new QQmlContext(_designSpaceQuickView->engine()->rootContext());
-    wrappedObject->setQmlContextProperties(context);
+    //modelingObject->setQmlContextProperties(context);
     _qmlComponent = new QQmlComponent(_designSpaceQuickView->engine());
     int x = qrand() % 400;
     int y = qrand() % 400;
-    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
 
     QQuickItem *item = 0;
     if (_qmlComponent->isError()) {
@@ -556,20 +556,20 @@ void MainWindow::addToDesignSpaceView(QWrappedObject *wrappedObject, QQuickItem 
         }
     }
 
-    foreach (QObject *child, wrappedObject->children())
-        addToDesignSpaceView(qobject_cast<QWrappedObject *>(child));
+    foreach (QObject *child, modelingObject->asQObject()->children())
+        addToDesignSpaceView(dynamic_cast<QModelingObject *>(qModelingObject(child)));
 
     _qmlComponent->deleteLater();
 }
 
-void MainWindow::addToPareto(QWrappedObject *wrappedObject, int pos)
+void MainWindow::addToPareto(QModelingObject *modelingObject, int pos)
 {
     QQmlContext *context = _paretoFrontQuickView->engine()->rootContext();
-    wrappedObject->setQmlContextProperties(context);
+    //modelingObject->setQmlContextProperties(context);
     _qmlComponent = new QQmlComponent(_paretoFrontQuickView->engine());
     int x = qrand() % 400;
     int y = qrand() % 400;
-    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(wrappedObject->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
+    _qmlComponent->setData(QString("import QtQuick 2.0\nimport QtModeling.Uml 1.0\n\n%1 { x: %2; y: %3}").arg(QString(modelingObject->asQObject()->metaObject()->className()).remove(QRegularExpression("^Q"))).arg(x).arg(y).toLatin1(), QUrl());
 
     QQuickItem *item = 0;
     if (_qmlComponent->isError()) {
@@ -581,8 +581,8 @@ void MainWindow::addToPareto(QWrappedObject *wrappedObject, int pos)
         }
     }
 
-    foreach (QObject *child, wrappedObject->children())
-        addToPareto(qobject_cast<QWrappedObject *>(child), pos);
+    foreach (QObject *child, modelingObject->asQObject()->children())
+        addToPareto(dynamic_cast<QModelingObject *>(qModelingObject(child)), pos);
 
     _qmlComponent->deleteLater();
 }
@@ -614,44 +614,44 @@ void MainWindow::designSpaceChanged()
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if (event->type() == QEvent::KeyPress && obj == ui->txeJavaScript) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-        if (keyEvent->key() == 46) {
-            QWrappedObject *wrappedObject = qwrappedobject_cast<QWrappedObject *>(dynamic_cast<QWrappedObject *>(_engine.evaluate(ui->txeJavaScript->toPlainText()).toQObject()));
-            if (wrappedObject) {
-                const QMetaWrappedObject *metaWrappedObject = wrappedObject->metaWrappedObject();
-                int propertyCount = metaWrappedObject->propertyCount();
-                QStringList propertyList;
-                for (int i = 0; i < propertyCount; ++i)
-                    propertyList << metaWrappedObject->property(i).metaProperty.name();
-                _codeCompletionView->setModel(new QStringListModel(propertyList));
-                QFont font;
-                QFontMetrics fm(font);
-                _codeCompletionView->setGeometry(ui->txeJavaScript->cursorRect().x(), ui->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
-                _codeCompletionView->show();
-                _codeCompletionView->setFocus();
-            }
-        }
-        return QObject::eventFilter(obj, event);
-    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
-            ui->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
-            _codeCompletionView->hide();
-            ui->txeJavaScript->setFocus();
-            return true;
-        }
-        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
-            return QObject::eventFilter(obj, event);
-        }
-        else {
-            _codeCompletionView->hide();
-            ui->txeJavaScript->setFocus();
-            return true;
-        }
-    }
-    // standard event processing
-    return QObject::eventFilter(obj, event);
+//    if (event->type() == QEvent::KeyPress && obj == ui->txeJavaScript) {
+//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+//        if (keyEvent->key() == 46) {
+//            QModelingObject *modelingObject = qwrappedobject_cast<QWrappedObject *>(dynamic_cast<QWrappedObject *>(_engine.evaluate(ui->txeJavaScript->toPlainText()).toQObject()));
+//            if (modelingObject) {
+//                const QMetaWrappedObject *metaWrappedObject = modelingObject->metaWrappedObject();
+//                int propertyCount = metaWrappedObject->propertyCount();
+//                QStringList propertyList;
+//                for (int i = 0; i < propertyCount; ++i)
+//                    propertyList << metaWrappedObject->property(i).metaProperty.name();
+//                _codeCompletionView->setModel(new QStringListModel(propertyList));
+//                QFont font;
+//                QFontMetrics fm(font);
+//                _codeCompletionView->setGeometry(ui->txeJavaScript->cursorRect().x(), ui->txeJavaScript->cursorRect().y()+fm.height(), 200, 100);
+//                _codeCompletionView->show();
+//                _codeCompletionView->setFocus();
+//            }
+//        }
+//        return QObject::eventFilter(obj, event);
+//    } else if (event->type() == QEvent::KeyPress && obj == _codeCompletionView) {
+//        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+//         if (keyEvent->key() == 16777220 || keyEvent->key() == 32) { // spacebar or enter
+//            ui->txeJavaScript->insertPlainText(_codeCompletionView->model()->data(_codeCompletionView->selectionModel()->selectedIndexes().first()).toString());
+//            _codeCompletionView->hide();
+//            ui->txeJavaScript->setFocus();
+//            return true;
+//        }
+//        else if (keyEvent->key() == 16777235 || keyEvent->key() == 16777237 || keyEvent->key() == 16777239 || keyEvent->key() == 16777238) { // uparrow and downarrow, pageup, pagedown
+//            return QObject::eventFilter(obj, event);
+//        }
+//        else {
+//            _codeCompletionView->hide();
+//            ui->txeJavaScript->setFocus();
+//            return true;
+//        }
+//    }
+//    // standard event processing
+//    return QObject::eventFilter(obj, event);
 }
 
 void MainWindow::loadPlugins()

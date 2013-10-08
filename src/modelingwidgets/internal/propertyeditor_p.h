@@ -41,7 +41,7 @@
 #ifndef PROPERTYEDITOR_H
 #define PROPERTYEDITOR_H
 
-#include "../qtwrappedobjectswidgetsglobal.h"
+#include "../qtmodelingwidgetsglobal.h"
 
 #include <QtWidgets/QAbstractItemDelegate>
 
@@ -53,7 +53,7 @@ struct QMetaPropertyInfo;
 
 QT_MODULE(QtWrappedObjectsWidgets)
 
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT PropertyEditor : public QWidget
+class Q_MODELINGWIDGETS_EXPORT PropertyEditor : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(int value READ value WRITE setValue USER true)

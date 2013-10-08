@@ -41,7 +41,7 @@
 #ifndef QMODELINGOBJECTPROPERTYEDITOR_P_H
 #define QMODELINGOBJECTPROPERTYEDITOR_P_H
 
-#include "qtwrappedobjectswidgetsglobal.h"
+#include "qtmodelingwidgetsglobal.h"
 #include "private/qwidget_p.h"
 
 #include <QtModeling/QModelingObject>
@@ -61,7 +61,7 @@ class QModelingObjectPropertyModel;
 class QModelingObjectPropertyFilterModel;
 class FilterWidget;
 
-class Q_MODELINGOBJECTSWIDGETS_EXPORT QModelingObjectPropertyEditorPrivate : public QWidgetPrivate
+class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyEditorPrivate : public QWidgetPrivate
 {
     Q_DECLARE_PUBLIC(QModelingObjectPropertyEditor)
 

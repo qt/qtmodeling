@@ -45,32 +45,32 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QCheckBox>
 
-#include <QtWrappedObjects/QMetaPropertyInfo>
-#include <QtWrappedObjects/QWrappedObject>
+//#include <QtWrappedObjects/QMetaPropertyInfo>
+//#include <QtWrappedObjects/QWrappedObject>
 
 QT_BEGIN_NAMESPACE
 
 PropertyEditor::PropertyEditor(QWidget *widget, QMetaPropertyInfo *metaPropertyInfo, QWidget *parent) :
     QWidget(parent), _widget(widget), _metaPropertyInfo(metaPropertyInfo)
 {
-    QHBoxLayout *layout = new QHBoxLayout;
-    layout->setMargin(0);
-    layout->setSpacing(0);
-    layout->addWidget(_widget);
-    if (widget && _metaPropertyInfo->metaProperty.isResettable()) {
-        QToolButton *toolButton = new QToolButton;
-        toolButton->setIcon(QPixmap(QString::fromLatin1(":/icons/resetproperty.png")));
-        toolButton->setMaximumSize(22, 22);
-        toolButton->setEnabled(_metaPropertyInfo->propertyWrappedObject->isPropertyModified(_metaPropertyInfo->metaProperty));
-        connect(toolButton, &QToolButton::clicked, this, &PropertyEditor::resetClicked);
-        layout->addWidget(toolButton);
-    }
-    setLayout(layout);
+//    QHBoxLayout *layout = new QHBoxLayout;
+//    layout->setMargin(0);
+//    layout->setSpacing(0);
+//    layout->addWidget(_widget);
+//    if (widget && _metaPropertyInfo->metaProperty.isResettable()) {
+//        QToolButton *toolButton = new QToolButton;
+//        toolButton->setIcon(QPixmap(QString::fromLatin1(":/icons/resetproperty.png")));
+//        toolButton->setMaximumSize(22, 22);
+//        toolButton->setEnabled(_metaPropertyInfo->propertyWrappedObject->isPropertyModified(_metaPropertyInfo->metaProperty));
+//        connect(toolButton, &QToolButton::clicked, this, &PropertyEditor::resetClicked);
+//        layout->addWidget(toolButton);
+//    }
+//    setLayout(layout);
 
-    if (QComboBox *comboBox = qobject_cast<QComboBox *>(_widget))
-        connect(comboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &PropertyEditor::currentIndexChanged);
-    if (QCheckBox *checkBox = qobject_cast<QCheckBox *>(_widget))
-        connect(checkBox, &QCheckBox::stateChanged, this, &PropertyEditor::currentIndexChanged);
+//    if (QComboBox *comboBox = qobject_cast<QComboBox *>(_widget))
+//        connect(comboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &PropertyEditor::currentIndexChanged);
+//    if (QCheckBox *checkBox = qobject_cast<QCheckBox *>(_widget))
+//        connect(checkBox, &QCheckBox::stateChanged, this, &PropertyEditor::currentIndexChanged);
 }
 
 int PropertyEditor::value() const
@@ -105,8 +105,8 @@ void PropertyEditor::setValue(int value)
 
 void PropertyEditor::resetClicked()
 {
-    _metaPropertyInfo->metaProperty.reset(_metaPropertyInfo->propertyWrappedObject);
-    emit closeEditor(this);
+//    _metaPropertyInfo->metaProperty.reset(_metaPropertyInfo->propertyWrappedObject);
+//    emit closeEditor(this);
 }
 
 void PropertyEditor::currentIndexChanged()

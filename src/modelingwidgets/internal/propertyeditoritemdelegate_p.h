@@ -41,7 +41,7 @@
 #ifndef PROPERTYEDITORITEMDELEGATE_P_H
 #define PROPERTYEDITORITEMDELEGATE_P_H
 
-#include "../qtwrappedobjectswidgetsglobal.h"
+#include "../qtmodelingwidgetsglobal.h"
 
 #include <QtWidgets/QStyledItemDelegate>
 
@@ -54,7 +54,7 @@ QT_MODULE(QtWrappedObjectsWidgets)
 class QComboBox;
 class QWrappedObject;
 
-class Q_WRAPPEDOBJECTSWIDGETS_EXPORT PropertyEditorItemDelegate : public QStyledItemDelegate
+class Q_MODELINGWIDGETS_EXPORT PropertyEditorItemDelegate : public QStyledItemDelegate
 {
     Q_OBJECT
 

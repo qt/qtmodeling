@@ -61,9 +61,9 @@ namespace Ui {
     class NewModel;
 }
 
-class QWrappedObject;
+class QModelingObject;
 class QMetaModelPlugin;
-class QWrappedObjectModel;
+class QModelingObjectModel;
 class QProgressDialog;
 
 class NewDuseDesign;
@@ -93,13 +93,13 @@ private Q_SLOTS:
     void on_centralWidget_currentChanged(int);
     void on_btnOptimize_clicked();
     void evaluateQualityMetrics();
-    void setModelInspector(QList<QWrappedObject *> wrappedObjectList);
+    void setModelInspector(QList<QModelingObject *> modelingObjectList);
 
     void metaModelChanged(QString newMetaModel);
-    void wrappedObjectChanged(QWrappedObject *wrappedObject);
-    void addToView(QWrappedObject *wrappedObject, QQuickItem *parent = 0);
-    void addToDesignSpaceView(QWrappedObject *wrappedObject, QQuickItem *parent = 0);
-    void addToPareto(QWrappedObject *wrappedObject, int pos);
+    void modelingObjectChanged(QModelingObject *modelingObject);
+    void addToView(QModelingObject *modelingObject, QQuickItem *parent = 0);
+    void addToDesignSpaceView(QModelingObject *modelingObject, QQuickItem *parent = 0);
+    void addToPareto(QModelingObject *modelingObject, int pos);
 
     void dckMetricsVisibilityChanged(bool visible);
     void designSpaceChanged();
@@ -109,14 +109,14 @@ protected:
 
 private:
     void loadPlugins();
-    void saveXmi(QWrappedObject *rootElement);
-    QList<QWrappedObject *> loadXmi(QString fileName = 0);
-    void populateDesignSpaceView(QWrappedObject *wrappedObject);
+    void saveXmi(QModelingObject *rootElement);
+    QList<QModelingObject *> loadXmi(QString fileName = 0);
+    void populateDesignSpaceView(QModelingObject *modelingObject);
 
     Ui::MainWindow *ui;
-    QWrappedObjectModel *_wrappedObjectModel;
-    QList<QWrappedObject *> _inputModel;
-    QList<QWrappedObject *> _designSpaceLocation;
+    QModelingObjectModel *_modelingObjectModel;
+    QList<QModelingObject *> _inputModel;
+    QList<QModelingObject *> _designSpaceLocation;
 
     QString _currentFileName;
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _loadedPlugins;
