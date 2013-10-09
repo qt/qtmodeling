@@ -90,7 +90,7 @@ protected:
     QSet<QUmlClause *> _successorClauses;
     QSet<QUmlExecutableNode *> _tests;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

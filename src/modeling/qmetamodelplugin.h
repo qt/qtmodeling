@@ -52,7 +52,7 @@ QT_BEGIN_NAMESPACE
 QT_MODULE(QtModeling)
 
 class QScriptEngine;
-class QModelingObject;
+class QModelingElement;
 
 class Q_MODELING_EXPORT QMetaModelPlugin : public QObject
 {
@@ -62,7 +62,7 @@ public:
     explicit QMetaModelPlugin(QObject *parent = 0);
 
     virtual void initMetaModel(QScriptEngine *scriptEngine = 0) = 0;
-    virtual QModelingObject *createModelingObject(QString type) = 0;
+    virtual QModelingElement *createModelingObject(QString type) = 0;
 };
 
 QT_END_NAMESPACE

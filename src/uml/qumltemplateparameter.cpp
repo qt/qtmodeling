@@ -63,7 +63,7 @@ QUmlTemplateParameter::QUmlTemplateParameter(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlTemplateParameterObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -226,16 +226,18 @@ void QUmlTemplateParameter::setSignature(QUmlTemplateSignature *signature)
     }
 }
 
-void QUmlTemplateParameter::setClassForProperty()
+void QUmlTemplateParameter::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("ownedDefault")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("ownedParameteredElement")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("parameteredElement")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlTemplateParameter");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("default_"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedDefault"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameteredElement"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameteredElement"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signature"))));
 }
 
 void QUmlTemplateParameter::setPropertyData()

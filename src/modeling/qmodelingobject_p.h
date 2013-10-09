@@ -38,30 +38,37 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QMODELINGOBJECT_P_H
-#define QMODELINGOBJECT_P_H
+#ifndef QTMODELING_QMODELINGOBJECT_P_H
+#define QTMODELING_QMODELINGOBJECT_P_H
 
-#include "QtModeling/QModelingObject"
-
-#include <QtCore/QObject>
+#include "qtmodelingglobal.h"
+#include "private/qobject_p.h"
 
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
 
-QT_MODULE(QtUml)
+QT_MODULE(QtModeling)
 
-class Q_MODELING_EXPORT QModelingObjectPrivate
+class QMetaModelPlugin;
+
+class Q_MODELING_EXPORT QModelingObjectPrivate : public QObjectPrivate
 {
+    Q_DECLARE_PUBLIC(QModelingObject)
+
 public:
+    explicit QModelingObjectPrivate();
     virtual ~QModelingObjectPrivate();
 
-    QModelingObject *q_ptr;
-    QObject object;
+    QStringList modifiedResettableProperties;
+    QStringList propertyGroups;
+    QMultiHash<QString, QMetaProperty *> groupProperties;
+    static QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > propertyDataHash;
 };
 
 QT_END_NAMESPACE
 
 QT_END_HEADER
 
-#endif // QMODELINGOBJECT_P_H
+#endif // QTMODELING_QMODELINGOBJECT_P_H
+

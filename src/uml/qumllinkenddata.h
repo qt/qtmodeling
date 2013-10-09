@@ -78,7 +78,7 @@ protected:
     QSet<QUmlQualifierValue *> _qualifiers;
     QUmlInputPin *_value;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

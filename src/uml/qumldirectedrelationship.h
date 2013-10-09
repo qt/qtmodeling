@@ -75,7 +75,7 @@ protected:
     QSet<QUmlElement *> _sources;
     QSet<QUmlElement *> _targets;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

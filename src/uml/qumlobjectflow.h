@@ -78,7 +78,7 @@ protected:
     QUmlBehavior *_selection;
     QUmlBehavior *_transformation;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -61,7 +61,7 @@ QUmlProfileApplication::QUmlProfileApplication(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlProfileApplicationObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -168,17 +168,19 @@ void QUmlProfileApplication::setStrict(bool isStrict)
     }
 }
 
-void QUmlProfileApplication::setClassForProperty()
+void QUmlProfileApplication::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("appliedProfile")] = QStringLiteral("QUmlProfileApplication");
-    _classForProperty[QStringLiteral("applyingPackage")] = QStringLiteral("QUmlProfileApplication");
-    _classForProperty[QStringLiteral("isStrict")] = QStringLiteral("QUmlProfileApplication");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+    _groupProperties.insert(QStringLiteral("QUmlProfileApplication"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("appliedProfile"))));
+    _groupProperties.insert(QStringLiteral("QUmlProfileApplication"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("applyingPackage"))));
+    _groupProperties.insert(QStringLiteral("QUmlProfileApplication"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStrict"))));
 }
 
 void QUmlProfileApplication::setPropertyData()

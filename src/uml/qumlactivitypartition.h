@@ -92,7 +92,7 @@ protected:
     QSet<QUmlActivityPartition *> _subpartitions;
     QUmlActivityPartition *_superPartition;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

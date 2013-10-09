@@ -69,7 +69,7 @@ public:
 protected:
     QUmlParameter *_parameter;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

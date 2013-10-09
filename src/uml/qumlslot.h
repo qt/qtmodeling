@@ -78,7 +78,7 @@ protected:
     QUmlInstanceSpecification *_owningInstance;
     QList<QUmlValueSpecification *> _values;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

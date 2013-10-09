@@ -75,7 +75,7 @@ protected:
 
     QSet<QUmlDeployment *> _deployments;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

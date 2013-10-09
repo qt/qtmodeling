@@ -71,7 +71,7 @@ protected:
 
     QtUml::VisibilityKind _visibility;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

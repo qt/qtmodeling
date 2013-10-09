@@ -69,7 +69,7 @@ public:
 protected:
     QUmlInterval *_specification;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

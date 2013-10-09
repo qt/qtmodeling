@@ -64,7 +64,7 @@ QUmlGeneralOrdering::QUmlGeneralOrdering(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlGeneralOrderingObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -139,19 +139,21 @@ void QUmlGeneralOrdering::setBefore(QUmlOccurrenceSpecification *before)
     }
 }
 
-void QUmlGeneralOrdering::setClassForProperty()
+void QUmlGeneralOrdering::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("after")] = QStringLiteral("QUmlGeneralOrdering");
-    _classForProperty[QStringLiteral("before")] = QStringLiteral("QUmlGeneralOrdering");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+    _groupProperties.insert(QStringLiteral("QUmlGeneralOrdering"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("after"))));
+    _groupProperties.insert(QStringLiteral("QUmlGeneralOrdering"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("before"))));
 }
 
 void QUmlGeneralOrdering::setPropertyData()

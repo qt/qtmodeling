@@ -69,7 +69,7 @@ public:
 protected:
     QUmlValueSpecification *_changeExpression;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

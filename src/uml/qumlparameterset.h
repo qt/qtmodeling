@@ -75,7 +75,7 @@ protected:
     QSet<QUmlConstraint *> _conditions;
     QSet<QUmlParameter *> _parameters;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

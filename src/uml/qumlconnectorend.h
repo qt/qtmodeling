@@ -75,7 +75,7 @@ protected:
     QUmlProperty *_partWithPort;
     QUmlConnectableElement *_role;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

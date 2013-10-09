@@ -74,7 +74,7 @@ protected:
     QUmlComponent *_abstraction;
     QSet<QUmlClassifier *> _realizingClassifiers;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

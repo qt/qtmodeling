@@ -75,7 +75,7 @@ protected:
     QString _deploymentLocation;
     QString _executionLocation;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

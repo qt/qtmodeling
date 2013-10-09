@@ -121,7 +121,7 @@ Q${namespace}${className}::Q${namespace}${className}([%- IF class.findvalue("@is
     if (createQObject)
         _qObject = new Q${namespace}${className}Object(this);
 [%- END %]
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -404,11 +404,14 @@ ${parameter.findvalue("@name")}
 }
 [%- END %]
 
-void Q${namespace}${className}::setClassForProperty()
+void Q${namespace}${className}::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("objectName")] = QStringLiteral("QObject");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _propertyGroups << QStringLiteral("QObject");
+    _groupProperties.insert(QStringLiteral("QObject"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("objectName"))));
 [%- visitedClasses = [] -%]
-[%- SET_CLASS_FOR_PROPERTY(class, visitedClasses, redefinedProperties) %]
+[%- SET_GROUP_PROPERTIES(class, visitedClasses, redefinedProperties) %]
 }
 
 void Q${namespace}${className}::setPropertyData()

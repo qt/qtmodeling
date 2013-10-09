@@ -78,7 +78,7 @@ protected:
     QUmlNamespace *_context;
     QUmlValueSpecification *_specification;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

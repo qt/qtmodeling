@@ -70,7 +70,7 @@ public:
 protected:
     QSet<QUmlProtocolConformance *> _conformance;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

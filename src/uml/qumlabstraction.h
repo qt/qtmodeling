@@ -69,7 +69,7 @@ public:
 protected:
     QUmlOpaqueExpression *_mapping;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -72,7 +72,7 @@ protected:
     QUmlProtocolStateMachine *_generalMachine;
     QUmlProtocolStateMachine *_specificMachine;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

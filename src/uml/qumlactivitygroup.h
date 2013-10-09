@@ -87,7 +87,7 @@ protected:
     QSet<QUmlActivityGroup *> _subgroups;
     QUmlActivityGroup *_superGroup;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

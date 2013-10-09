@@ -78,7 +78,7 @@ protected:
     QUmlActivity *_activityScope;
     QUmlStructuredActivityNode *_scope;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

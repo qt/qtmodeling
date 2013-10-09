@@ -61,7 +61,7 @@ namespace Ui {
     class NewModel;
 }
 
-class QModelingObject;
+class QModelingElement;
 class QMetaModelPlugin;
 class QModelingObjectModel;
 class QProgressDialog;
@@ -93,13 +93,13 @@ private Q_SLOTS:
     void on_centralWidget_currentChanged(int);
     void on_btnOptimize_clicked();
     void evaluateQualityMetrics();
-    void setModelInspector(QList<QModelingObject *> modelingObjectList);
+    void setModelInspector(QList<QModelingElement *> modelingObjectList);
 
     void metaModelChanged(QString newMetaModel);
-    void modelingObjectChanged(QModelingObject *modelingObject);
-    void addToView(QModelingObject *modelingObject, QQuickItem *parent = 0);
-    void addToDesignSpaceView(QModelingObject *modelingObject, QQuickItem *parent = 0);
-    void addToPareto(QModelingObject *modelingObject, int pos);
+    void modelingObjectChanged(QModelingElement *modelingObject);
+    void addToView(QModelingElement *modelingObject, QQuickItem *parent = 0);
+    void addToDesignSpaceView(QModelingElement *modelingObject, QQuickItem *parent = 0);
+    void addToPareto(QModelingElement *modelingObject, int pos);
 
     void dckMetricsVisibilityChanged(bool visible);
     void designSpaceChanged();
@@ -109,14 +109,14 @@ protected:
 
 private:
     void loadPlugins();
-    void saveXmi(QModelingObject *rootElement);
-    QList<QModelingObject *> loadXmi(QString fileName = 0);
-    void populateDesignSpaceView(QModelingObject *modelingObject);
+    void saveXmi(QModelingElement *rootElement);
+    QList<QModelingElement *> loadXmi(QString fileName = 0);
+    void populateDesignSpaceView(QModelingElement *modelingObject);
 
     Ui::MainWindow *ui;
     QModelingObjectModel *_modelingObjectModel;
-    QList<QModelingObject *> _inputModel;
-    QList<QModelingObject *> _designSpaceLocation;
+    QList<QModelingElement *> _inputModel;
+    QList<QModelingElement *> _designSpaceLocation;
 
     QString _currentFileName;
     QHash< QString, QPair<QMetaModelPlugin *, QJsonObject> > _loadedPlugins;

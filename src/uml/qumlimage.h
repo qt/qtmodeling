@@ -73,7 +73,7 @@ protected:
     QString _format;
     QString _location;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -62,7 +62,7 @@ QUmlExceptionHandler::QUmlExceptionHandler(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlExceptionHandlerObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -191,15 +191,17 @@ void QUmlExceptionHandler::setProtectedNode(QUmlExecutableNode *protectedNode)
     }
 }
 
-void QUmlExceptionHandler::setClassForProperty()
+void QUmlExceptionHandler::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("exceptionInput")] = QStringLiteral("QUmlExceptionHandler");
-    _classForProperty[QStringLiteral("exceptionTypes")] = QStringLiteral("QUmlExceptionHandler");
-    _classForProperty[QStringLiteral("handlerBody")] = QStringLiteral("QUmlExceptionHandler");
-    _classForProperty[QStringLiteral("protectedNode")] = QStringLiteral("QUmlExceptionHandler");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlExceptionHandler"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("exceptionInput"))));
+    _groupProperties.insert(QStringLiteral("QUmlExceptionHandler"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("exceptionTypes"))));
+    _groupProperties.insert(QStringLiteral("QUmlExceptionHandler"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("handlerBody"))));
+    _groupProperties.insert(QStringLiteral("QUmlExceptionHandler"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("protectedNode"))));
 }
 
 void QUmlExceptionHandler::setPropertyData()

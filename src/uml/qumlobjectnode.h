@@ -88,7 +88,7 @@ protected:
     QUmlBehavior *_selection;
     QUmlValueSpecification *_upperBound;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

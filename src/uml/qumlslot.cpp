@@ -61,7 +61,7 @@ QUmlSlot::QUmlSlot(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlSlotObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -176,14 +176,16 @@ void QUmlSlot::removeValue(QUmlValueSpecification *value)
     }
 }
 
-void QUmlSlot::setClassForProperty()
+void QUmlSlot::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("definingFeature")] = QStringLiteral("QUmlSlot");
-    _classForProperty[QStringLiteral("owningInstance")] = QStringLiteral("QUmlSlot");
-    _classForProperty[QStringLiteral("values")] = QStringLiteral("QUmlSlot");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlSlot"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("definingFeature"))));
+    _groupProperties.insert(QStringLiteral("QUmlSlot"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningInstance"))));
+    _groupProperties.insert(QStringLiteral("QUmlSlot"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("values"))));
 }
 
 void QUmlSlot::setPropertyData()

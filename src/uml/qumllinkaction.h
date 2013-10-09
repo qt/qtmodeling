@@ -80,7 +80,7 @@ protected:
     QSet<QUmlLinkEndData *> _endData;
     QSet<QUmlInputPin *> _inputValues;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

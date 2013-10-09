@@ -70,7 +70,7 @@ protected:
 
     bool _isReadOnly;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

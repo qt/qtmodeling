@@ -88,7 +88,7 @@ protected:
     QSet<QUmlInclude *> _includes;
     QSet<QUmlClassifier *> _subjects;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

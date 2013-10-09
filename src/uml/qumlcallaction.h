@@ -74,7 +74,7 @@ protected:
     bool _isSynchronous;
     QList<QUmlOutputPin *> _results;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

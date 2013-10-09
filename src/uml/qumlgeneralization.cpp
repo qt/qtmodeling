@@ -61,7 +61,7 @@ QUmlGeneralization::QUmlGeneralization(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlGeneralizationObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -210,18 +210,20 @@ void QUmlGeneralization::setSpecific(QUmlClassifier *specific)
     }
 }
 
-void QUmlGeneralization::setClassForProperty()
+void QUmlGeneralization::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("general")] = QStringLiteral("QUmlGeneralization");
-    _classForProperty[QStringLiteral("generalizationSets")] = QStringLiteral("QUmlGeneralization");
-    _classForProperty[QStringLiteral("isSubstitutable")] = QStringLiteral("QUmlGeneralization");
-    _classForProperty[QStringLiteral("specific")] = QStringLiteral("QUmlGeneralization");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+    _groupProperties.insert(QStringLiteral("QUmlGeneralization"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("general"))));
+    _groupProperties.insert(QStringLiteral("QUmlGeneralization"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalizationSets"))));
+    _groupProperties.insert(QStringLiteral("QUmlGeneralization"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isSubstitutable"))));
+    _groupProperties.insert(QStringLiteral("QUmlGeneralization"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specific"))));
 }
 
 void QUmlGeneralization::setPropertyData()

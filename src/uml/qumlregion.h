@@ -96,7 +96,7 @@ protected:
     QSet<QUmlVertex *> _subvertices;
     QSet<QUmlTransition *> _transitions;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

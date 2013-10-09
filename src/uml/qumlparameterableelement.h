@@ -77,7 +77,7 @@ protected:
     QUmlTemplateParameter *_owningTemplateParameter;
     QUmlTemplateParameter *_templateParameter;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

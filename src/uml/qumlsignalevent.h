@@ -69,7 +69,7 @@ public:
 protected:
     QUmlSignal *_signal;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

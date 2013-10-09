@@ -69,7 +69,7 @@ public:
 protected:
     QUmlOperation *_operation;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

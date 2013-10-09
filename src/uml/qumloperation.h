@@ -127,7 +127,7 @@ protected:
     QSet<QUmlOperation *> _redefinedOperations;
     QUmlOperationTemplateParameter *_templateParameter;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

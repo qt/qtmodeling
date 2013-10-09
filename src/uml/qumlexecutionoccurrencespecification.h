@@ -69,7 +69,7 @@ public:
 protected:
     QUmlExecutionSpecification *_execution;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

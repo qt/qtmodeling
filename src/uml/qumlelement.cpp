@@ -52,7 +52,7 @@
 QUmlElement::QUmlElement() :
     _owner(0)
 {
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -183,11 +183,13 @@ bool QUmlElement::mustBeOwned() const
     return true;
 }
 
-void QUmlElement::setClassForProperty()
+void QUmlElement::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
 }
 
 void QUmlElement::setPropertyData()

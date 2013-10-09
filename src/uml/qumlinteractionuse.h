@@ -86,7 +86,7 @@ protected:
     QUmlValueSpecification *_returnValue;
     QUmlProperty *_returnValueRecipient;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

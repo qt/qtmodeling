@@ -54,8 +54,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QXmiWriterPrivate::QXmiWriterPrivate(QModelingObject *modelingObject)
-    : modelingObject(modelingObject)
+QXmiWriterPrivate::QXmiWriterPrivate(QModelingObject *modelingElement)
+    : modelingObject(modelingElement)
 {
     writer.setAutoFormatting(true);
     writer.setAutoFormattingIndent(2);
@@ -102,7 +102,7 @@ bool QXmiWriter::writeFile(QIODevice *device)
     d->writer.writeStartElement(QStringLiteral("xmi:XMI"));
     d->writer.writeNamespace(QStringLiteral("http://www.omg.org/spec/XMI/20110701"), QStringLiteral("xmi"));
 
-    QString metaModelClassName = QString::fromLatin1(d->modelingObject->asQObject()->metaObject()->className());
+    QString metaModelClassName = QString::fromLatin1(d->modelingObject->metaObject()->className());
     int pos = 2;
     while (metaModelClassName[pos] == metaModelClassName[pos].toLower()) pos++;
     QString metaModelImplementationNamespace = metaModelClassName.left(pos);
@@ -133,48 +133,47 @@ void QXmiWriter::populateIdMap(QModelingObject *modelingObject, int index)
 {
     Q_D(QXmiWriter);
 
-    QObject *qObject = modelingObject->asQObject();
-    if (qObject->metaObject()->indexOfProperty("name") != -1)
-        d->idStack << qObject->property("name").toString();
+    if (modelingObject->metaObject()->indexOfProperty("name") != -1)
+        d->idStack << modelingObject->property("name").toString();
     else
-        d->idStack << QString::fromLatin1(qObject->metaObject()->className()).remove(d->metaModelPrefix) +
+        d->idStack << QString::fromLatin1(modelingObject->metaObject()->className()).remove(d->metaModelPrefix) +
                       QString::fromLatin1((index != -1) ? ".%1":"").arg(index);
-    d->idMap.insert(qObject, d->idStack.join(QStringLiteral("-")));
-    d->visitedObjects.append(qObject);
+    d->idMap.insert(modelingObject, d->idStack.join(QStringLiteral("-")));
+    d->visitedObjects.append(modelingObject);
 
-    const QMetaObject *metaObject = qObject->metaObject();
+    const QMetaObject *metaObject = modelingObject->metaObject();
     int propertyCount = metaObject->propertyCount();
 
     for (int i = 0; i < propertyCount; ++i) {
         QMetaProperty metaProperty = metaObject->property(i);
         QString typeName = QString::fromLatin1(metaProperty.typeName());
-        QVariant variant = metaProperty.read(qObject);
-        QString aggregationRole = QModelingObject::propertyData(modelingObject->classForProperty(metaProperty), metaProperty, QtModeling::AggregationRole).toString();
+        QVariant variant = metaProperty.read(modelingObject);
+        QString aggregationRole = QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::AggregationRole).toString();
 
         if (aggregationRole == QStringLiteral("composite"))
-            if (!QModelingObject::propertyData(modelingObject->classForProperty(metaProperty), metaProperty, QtModeling::OppositeEndRole).toString().isEmpty()) {
-                d->blacklistedOppositeEnds << QModelingObject::propertyData(modelingObject->classForProperty(metaProperty), metaProperty, QtModeling::OppositeEndRole).toString().split('-').last();
+            if (!QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::OppositeEndRole).toString().isEmpty()) {
+                d->blacklistedOppositeEnds << QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::OppositeEndRole).toString().split('-').last();
             }
 
-        if (QModelingObject::propertyData(modelingObject->classForProperty(metaProperty), metaProperty, QtModeling::AggregationRole).toString() != QStringLiteral("composite"))
+        if (QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::AggregationRole).toString() != QStringLiteral("composite"))
             continue;
 
-        if (typeName.endsWith('*') && qvariant_cast<QObject *>(variant))
-            populateIdMap(qModelingObject(qvariant_cast<QObject *>(variant)), 0);
+        if (typeName.endsWith('*') && qvariant_cast<QModelingObject *>(variant))
+            populateIdMap(qvariant_cast<QModelingObject *>(variant), 0);
         else if (typeName.contains(QStringLiteral("QSet")) && variant.isValid()) {
-            QSet<QObject *> elements = *(static_cast<QSet<QObject *> *>(variant.data()));
+            QSet<QModelingObject *> elements = *(static_cast<QSet<QModelingObject *> *>(variant.data()));
             int i = 0;
-            foreach (QObject *objectElement, elements) {
+            foreach (QModelingObject *objectElement, elements) {
                 if (!d->visitedObjects.contains(objectElement))
-                    populateIdMap(qModelingObject(objectElement), i++);
+                    populateIdMap(objectElement, i++);
             }
         }
         else if (typeName.contains(QStringLiteral("QList")) && variant.isValid()) {
-            QList<QObject *> elements = *(static_cast<QList<QObject *> *>(variant.data()));
+            QList<QModelingObject *> elements = *(static_cast<QList<QModelingObject *> *>(variant.data()));
             int i = 0;
-            foreach (QObject *objectElement, elements) {
+            foreach (QModelingObject *objectElement, elements) {
                 if (!d->visitedObjects.contains(objectElement))
-                    populateIdMap(qModelingObject(objectElement), i++);
+                    populateIdMap(objectElement, i++);
             }
         }
     }
@@ -186,26 +185,25 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
 {
     Q_D(QXmiWriter);
 
-    QObject *qObject = modelingObject->asQObject();
-    if (d->visitedObjects.contains(qObject))
+    if (d->visitedObjects.contains(modelingObject))
         return;
 
-    d->visitedObjects.append(qObject);
+    d->visitedObjects.append(modelingObject);
 
-    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->modelingObject->asQObject()->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(QStringLiteral("%1:").arg(d->metaModelXmlNamespace))
+    d->writer.writeStartElement(elementName.isEmpty() ? QString::fromLatin1(d->modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(QStringLiteral("%1:").arg(d->metaModelXmlNamespace))
                                                       :
                                                         elementName);
     if (!elementName.isEmpty())
-        d->writer.writeAttribute(QStringLiteral("xmi:type"), QString::fromLatin1(qObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(d->metaModelXmlNamespace + QStringLiteral(":")));
+        d->writer.writeAttribute(QStringLiteral("xmi:type"), QString::fromLatin1(modelingObject->metaObject()->className()).remove(d->metaModelPrefix).remove(QRegExp(QStringLiteral("Object$"))).prepend(d->metaModelXmlNamespace + QStringLiteral(":")));
 
-    const QMetaObject *metaObject = qObject->metaObject();
+    const QMetaObject *metaObject = modelingObject->metaObject();
     int propertyCount = metaObject->propertyCount();
 
     for (int i = propertyCount - 1; i >= 0; --i) {
         QMetaProperty metaProperty = metaObject->property(i);
-        QVariant variant = metaProperty.read(qObject);
+        QVariant variant = metaProperty.read(modelingObject);
 
-        if (!metaProperty.isStored() || QString::fromLatin1(metaProperty.name()) == QStringLiteral("objectName") || QModelingObject::propertyData(modelingObject->classForProperty(metaProperty), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
+        if (!metaProperty.isStored() || QString::fromLatin1(metaProperty.name()) == QStringLiteral("objectName") || QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
             continue;
 
         if (metaProperty.type() == QVariant::String) {
@@ -214,11 +212,11 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
                 d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), value);
         }
         else if (metaProperty.type() == QVariant::Bool) {
-            if (!metaProperty.isResettable() || (metaProperty.isResettable() && qModelingObject(qObject) && qModelingObject(qObject)->isPropertyModified(metaProperty)))
+            if (!metaProperty.isResettable() || (metaProperty.isResettable() && modelingObject && modelingObject->isPropertyModified(metaProperty)))
                 d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), QString::fromLatin1(variant.toBool() ? "true":"false"));
         }
         else if (metaProperty.isEnumType()) {
-            if (!metaProperty.isResettable() || (metaProperty.isResettable() && qModelingObject(qObject) && qModelingObject(qObject)->isPropertyModified(metaProperty))) {
+            if (!metaProperty.isResettable() || (metaProperty.isResettable() && modelingObject && modelingObject->isPropertyModified(metaProperty))) {
                 QMetaEnum metaEnum = metaProperty.enumerator();
                 if (!QString::fromLatin1(metaEnum.key(variant.toInt())).isEmpty())
                     d->writer.writeAttribute(QString::fromLatin1(metaProperty.name()), QString::fromLatin1(metaEnum.key(variant.toInt())).toLower().remove(QString::fromLatin1(metaProperty.name())));
@@ -226,7 +224,7 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
         }
     }
 
-    d->writer.writeAttribute(QStringLiteral("xmi:id"), d->idMap.value(qObject));
+    d->writer.writeAttribute(QStringLiteral("xmi:id"), d->idMap.value(modelingObject));
     for (int i = propertyCount - 1; i >= 0; --i) {
         QMetaProperty metaProperty = metaObject->property(i);
 
@@ -235,30 +233,30 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
 
         QString modifiedPropertyName = QString::fromLatin1(metaProperty.name()).remove(QRegularExpression(QStringLiteral("_$"))).remove(QRegularExpression(QStringLiteral("s$"))).replace(QRegularExpression(QStringLiteral("ie$")), QStringLiteral("y")).replace(QRegularExpression(QStringLiteral("sse$")), QStringLiteral("ss")).replace(QRegularExpression(QStringLiteral("ice$")), QStringLiteral("ex")).replace(QRegularExpression(QStringLiteral("ce$")), QStringLiteral("x"));
         QString typeName = QString::fromLatin1(metaProperty.typeName());
-        QVariant variant = metaProperty.read(qObject);
-        QString aggregationRole = QModelingObject::propertyData(modelingObject->classForProperty(metaProperty), metaProperty, QtModeling::AggregationRole).toString();
+        QVariant variant = metaProperty.read(modelingObject);
+        QString aggregationRole = QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::AggregationRole).toString();
 
-        if (!metaProperty.isStored() || QModelingObject::propertyData(modelingObject->classForProperty(metaProperty), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
+        if (!metaProperty.isStored() || QModelingObject::propertyData(modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(metaProperty)), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
             continue;
 
-        if (typeName.endsWith('*') && qvariant_cast<QObject *>(variant)) {
+        if (typeName.endsWith('*') && qvariant_cast<QModelingObject *>(variant)) {
             if (aggregationRole == QStringLiteral("composite")) {
-                writeObject(qModelingObject(qvariant_cast<QObject *>(variant)), modifiedPropertyName);
+                writeObject(qvariant_cast<QModelingObject *>(variant), modifiedPropertyName);
             }
             else {
                 d->writer.writeStartElement(modifiedPropertyName);
-                d->writer.writeAttribute(QStringLiteral("xmi:idref"), d->idMap.value(qvariant_cast<QObject *>(variant)));
+                d->writer.writeAttribute(QStringLiteral("xmi:idref"), d->idMap.value(qvariant_cast<QModelingObject *>(variant)));
                 d->writer.writeEndElement();
             }
         }
         else if (typeName.contains(QStringLiteral("QSet")) && variant.isValid()) {
-            QSet<QObject *> elements = *(static_cast<QSet<QObject *> *>(variant.data()));
+            QSet<QModelingObject *> elements = *(static_cast<QSet<QModelingObject *> *>(variant.data()));
             if (aggregationRole == QStringLiteral("composite")) {
-                foreach (QObject *objectElement, elements)
-                    writeObject(qModelingObject(objectElement), modifiedPropertyName);
+                foreach (QModelingObject *objectElement, elements)
+                    writeObject(objectElement, modifiedPropertyName);
             }
             else {
-                foreach (QObject *objectElement, elements) {
+                foreach (QModelingObject *objectElement, elements) {
                     d->writer.writeStartElement(modifiedPropertyName);
                     d->writer.writeAttribute(QStringLiteral("xmi:idref"), d->idMap.value(objectElement));
                     d->writer.writeEndElement();
@@ -266,13 +264,13 @@ void QXmiWriter::writeObject(QModelingObject *modelingObject, QString elementNam
             }
         }
         else if (typeName.contains(QStringLiteral("QList")) && variant.isValid()) {
-            QList<QObject *> elements = *(static_cast<QList<QObject *> *>(variant.data()));
+            QList<QModelingObject *> elements = *(static_cast<QList<QModelingObject *> *>(variant.data()));
             if (aggregationRole == QStringLiteral("composite")) {
-                foreach (QObject *objectElement, elements)
-                    writeObject(qModelingObject(objectElement), modifiedPropertyName);
+                foreach (QModelingObject *objectElement, elements)
+                    writeObject(objectElement, modifiedPropertyName);
             }
             else {
-                foreach (QObject *objectElement, elements) {
+                foreach (QModelingObject *objectElement, elements) {
                     d->writer.writeStartElement(modifiedPropertyName);
                     d->writer.writeAttribute(QStringLiteral("xmi:idref"), d->idMap.value(objectElement));
                     d->writer.writeEndElement();

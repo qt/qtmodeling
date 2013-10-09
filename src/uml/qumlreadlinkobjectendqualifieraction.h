@@ -77,7 +77,7 @@ protected:
     QUmlProperty *_qualifier;
     QUmlOutputPin *_result;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -92,7 +92,7 @@ protected:
     QUmlValueSpecification *_lowerValue;
     QUmlValueSpecification *_upperValue;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -81,7 +81,7 @@ protected:
     QUmlExecutableNode *_handlerBody;
     QUmlExecutableNode *_protectedNode;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

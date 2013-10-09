@@ -81,7 +81,7 @@ protected:
     QSet<QUmlSlot *> _slots_;
     QUmlValueSpecification *_specification;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

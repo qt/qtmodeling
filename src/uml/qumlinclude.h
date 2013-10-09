@@ -73,7 +73,7 @@ protected:
     QUmlUseCase *_addition;
     QUmlUseCase *_includingCase;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

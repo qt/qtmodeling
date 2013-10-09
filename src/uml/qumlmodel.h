@@ -67,7 +67,7 @@ public:
 protected:
     QString _viewpoint;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

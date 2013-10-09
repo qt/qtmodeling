@@ -74,7 +74,7 @@ protected:
     QUmlEvent *_event;
     QSet<QUmlPort *> _ports;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

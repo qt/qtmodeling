@@ -79,7 +79,7 @@ protected:
     QSet<QUmlInterfaceRealization *> _interfaceRealizations;
     QSet<QUmlBehavior *> _ownedBehaviors;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

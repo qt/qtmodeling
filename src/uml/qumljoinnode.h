@@ -72,7 +72,7 @@ protected:
     bool _isCombineDuplicate;
     QUmlValueSpecification *_joinSpec;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

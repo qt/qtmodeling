@@ -59,7 +59,7 @@ QUmlClause::QUmlClause(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlClauseObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -265,17 +265,19 @@ void QUmlClause::removeTest(QUmlExecutableNode *test)
     }
 }
 
-void QUmlClause::setClassForProperty()
+void QUmlClause::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("bodies")] = QStringLiteral("QUmlClause");
-    _classForProperty[QStringLiteral("bodyOutputs")] = QStringLiteral("QUmlClause");
-    _classForProperty[QStringLiteral("decider")] = QStringLiteral("QUmlClause");
-    _classForProperty[QStringLiteral("predecessorClauses")] = QStringLiteral("QUmlClause");
-    _classForProperty[QStringLiteral("successorClauses")] = QStringLiteral("QUmlClause");
-    _classForProperty[QStringLiteral("tests")] = QStringLiteral("QUmlClause");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlClause"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("bodies"))));
+    _groupProperties.insert(QStringLiteral("QUmlClause"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("bodyOutputs"))));
+    _groupProperties.insert(QStringLiteral("QUmlClause"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("decider"))));
+    _groupProperties.insert(QStringLiteral("QUmlClause"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("predecessorClauses"))));
+    _groupProperties.insert(QStringLiteral("QUmlClause"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("successorClauses"))));
+    _groupProperties.insert(QStringLiteral("QUmlClause"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("tests"))));
 }
 
 void QUmlClause::setPropertyData()

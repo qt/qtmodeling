@@ -75,7 +75,7 @@ protected:
     QSet<QUmlActivityEdge *> _interruptingEdges;
     QSet<QUmlActivityNode *> _nodes;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

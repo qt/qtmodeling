@@ -38,17 +38,14 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QMODELINGOBJECT_H
-#define QMODELINGOBJECT_H
+#ifndef QTMODELING_QMODELINGOBJECT_H
+#define QTMODELING_QMODELINGOBJECT_H
 
 #include <QtModeling/QtModelingGlobal>
 #include <QtModeling/QtModelingNamespace>
 
-#include <QtCore/QSet>
-#include <QtCore/QList>
-#include <QtCore/QString>
-#include <QtCore/QPointer>
-#include <QtCore/QMetaType>
+#include <QtCore/QObject>
+
 #include <QtCore/QStringList>
 #include <QtCore/QMetaProperty>
 
@@ -58,65 +55,32 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModeling)
 
-class QObject;
-
-class Q_MODELING_EXPORT QModelingObject
+class QModelingObjectPrivate;
+class Q_MODELING_EXPORT QModelingObject : public QObject
 {
+    Q_OBJECT
+
+    Q_DISABLE_COPY(QModelingObject)
+    Q_DECLARE_PRIVATE(QModelingObject)
+
 public:
-    virtual ~QModelingObject() {}
-    inline QObject *asQObject() { return _qObject; }
+    virtual ~QModelingObject();
 
-    bool deletingFromQObject;
-
-    virtual QModelingObject *clone() const = 0;
-
-    inline bool isPropertyModified(QMetaProperty metaProperty) const
-    {
-        return _modifiedResettableProperties.contains(QString::fromLatin1(metaProperty.name()));
-    }
-
-    static inline QVariant propertyData(QString className, QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role)
-    {
-        return propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
-    }
-
-    inline QString classForProperty(QMetaProperty metaProperty) const
-    {
-        return _classForProperty.value(QString::fromLatin1(metaProperty.name()));
-    }
-
-    inline QStringList &modifiedResettableProperties()
-    {
-        return _modifiedResettableProperties;
-    }
+    bool isPropertyModified(QMetaProperty metaProperty) const;
+    static QVariant propertyData(QString className, QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role);
+    int propertyGroupIndex(QMetaProperty metaProperty) const;
+    const QStringList &propertyGroups() const;
+    const QStringList &modifiedResettableProperties() const;
 
 protected:
-    QModelingObject() : deletingFromQObject(false), _qObject(0) {}
-    QPointer<QObject> _qObject;
-    QStringList _modifiedResettableProperties;
-    static QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > propertyDataHash;
-    QHash<QString, QString> _classForProperty;
+    QModelingObject();
 
+    virtual void setGroupProperties() = 0;
     virtual void setPropertyData() = 0;
-    virtual void setClassForProperty() = 0;
 };
-
-inline QModelingObject *qModelingObject(const QObject *object)
-{
-    return object ? object->property("modelingObject").value<QModelingObject *>():0;
-}
-
-template<class T>
-inline T qmodelingobjectproperty_cast(const QObject *object)
-{
-    return object ? dynamic_cast<T>(qModelingObject(object)):T();
-}
 
 QT_END_NAMESPACE
 
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QModelingObject) *)
-Q_DECLARE_METATYPE(QT_PREPEND_NAMESPACE(QMetaProperty) *)
-
 QT_END_HEADER
 
-#endif // QMODELINGOBJECT_H
+#endif // QTMODELING_QMODELINGOBJECT_H

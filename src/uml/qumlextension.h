@@ -78,7 +78,7 @@ public:
 protected:
     QUmlExtensionEnd *_ownedEnd;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

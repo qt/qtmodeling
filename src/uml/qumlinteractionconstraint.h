@@ -72,7 +72,7 @@ protected:
     QUmlValueSpecification *_maxint;
     QUmlValueSpecification *_minint;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

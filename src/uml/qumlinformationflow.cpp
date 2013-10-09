@@ -68,7 +68,7 @@ QUmlInformationFlow::QUmlInformationFlow(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlInformationFlowObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -337,29 +337,31 @@ void QUmlInformationFlow::removeRealizingMessage(QUmlMessage *realizingMessage)
     }
 }
 
-void QUmlInformationFlow::setClassForProperty()
+void QUmlInformationFlow::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageableElement");
-    _classForProperty[QStringLiteral("conveyed")] = QStringLiteral("QUmlInformationFlow");
-    _classForProperty[QStringLiteral("informationSources")] = QStringLiteral("QUmlInformationFlow");
-    _classForProperty[QStringLiteral("informationTargets")] = QStringLiteral("QUmlInformationFlow");
-    _classForProperty[QStringLiteral("realizations")] = QStringLiteral("QUmlInformationFlow");
-    _classForProperty[QStringLiteral("realizingActivityEdges")] = QStringLiteral("QUmlInformationFlow");
-    _classForProperty[QStringLiteral("realizingConnectors")] = QStringLiteral("QUmlInformationFlow");
-    _classForProperty[QStringLiteral("realizingMessages")] = QStringLiteral("QUmlInformationFlow");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    _groupProperties.insert(QStringLiteral("QUmlPackageableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+    _groupProperties.insert(QStringLiteral("QUmlInformationFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("conveyed"))));
+    _groupProperties.insert(QStringLiteral("QUmlInformationFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("informationSources"))));
+    _groupProperties.insert(QStringLiteral("QUmlInformationFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("informationTargets"))));
+    _groupProperties.insert(QStringLiteral("QUmlInformationFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("realizations"))));
+    _groupProperties.insert(QStringLiteral("QUmlInformationFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("realizingActivityEdges"))));
+    _groupProperties.insert(QStringLiteral("QUmlInformationFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("realizingConnectors"))));
+    _groupProperties.insert(QStringLiteral("QUmlInformationFlow"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("realizingMessages"))));
 }
 
 void QUmlInformationFlow::setPropertyData()

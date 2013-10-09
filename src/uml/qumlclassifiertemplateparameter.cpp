@@ -62,7 +62,7 @@ QUmlClassifierTemplateParameter::QUmlClassifierTemplateParameter(bool createQObj
 {
     if (createQObject)
         _qObject = new QUmlClassifierTemplateParameterObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -169,18 +169,20 @@ void QUmlClassifierTemplateParameter::setParameteredElement(QUmlClassifier *para
     }
 }
 
-void QUmlClassifierTemplateParameter::setClassForProperty()
+void QUmlClassifierTemplateParameter::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("ownedDefault")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("ownedParameteredElement")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlTemplateParameter");
-    _classForProperty[QStringLiteral("allowSubstitutable")] = QStringLiteral("QUmlClassifierTemplateParameter");
-    _classForProperty[QStringLiteral("constrainingClassifiers")] = QStringLiteral("QUmlClassifierTemplateParameter");
-    _classForProperty[QStringLiteral("parameteredElement")] = QStringLiteral("QUmlClassifierTemplateParameter");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("default_"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedDefault"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedParameteredElement"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signature"))));
+    _groupProperties.insert(QStringLiteral("QUmlClassifierTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("allowSubstitutable"))));
+    _groupProperties.insert(QStringLiteral("QUmlClassifierTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("constrainingClassifiers"))));
+    _groupProperties.insert(QStringLiteral("QUmlClassifierTemplateParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameteredElement"))));
 }
 
 void QUmlClassifierTemplateParameter::setPropertyData()

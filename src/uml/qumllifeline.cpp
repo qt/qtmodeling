@@ -70,7 +70,7 @@ QUmlLifeline::QUmlLifeline(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLifelineObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -247,22 +247,24 @@ void QUmlLifeline::setSelector(QUmlValueSpecification *selector)
     }
 }
 
-void QUmlLifeline::setClassForProperty()
+void QUmlLifeline::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("coveredBy")] = QStringLiteral("QUmlLifeline");
-    _classForProperty[QStringLiteral("decomposedAs")] = QStringLiteral("QUmlLifeline");
-    _classForProperty[QStringLiteral("interaction")] = QStringLiteral("QUmlLifeline");
-    _classForProperty[QStringLiteral("represents")] = QStringLiteral("QUmlLifeline");
-    _classForProperty[QStringLiteral("selector")] = QStringLiteral("QUmlLifeline");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+    _groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("coveredBy"))));
+    _groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("decomposedAs"))));
+    _groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interaction"))));
+    _groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("represents"))));
+    _groupProperties.insert(QStringLiteral("QUmlLifeline"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("selector"))));
 }
 
 void QUmlLifeline::setPropertyData()

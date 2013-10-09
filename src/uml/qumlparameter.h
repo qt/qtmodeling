@@ -95,7 +95,7 @@ protected:
     QUmlOperation *_operation;
     QSet<QUmlParameterSet *> _parameterSets;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

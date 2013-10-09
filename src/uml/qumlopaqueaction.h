@@ -83,7 +83,7 @@ protected:
     QList<QString> _languages;
     QSet<QUmlOutputPin *> _outputValues;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

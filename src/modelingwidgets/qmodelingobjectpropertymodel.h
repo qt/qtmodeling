@@ -51,7 +51,7 @@ QT_BEGIN_NAMESPACE
 
 QT_MODULE(QtModelingWidgets)
 
-class QModelingObject;
+class QModelingElement;
 class QModelingObjectPropertyModelPrivate;
 
 class Q_MODELINGWIDGETS_EXPORT QModelingObjectPropertyModel : public QAbstractItemModel
@@ -76,7 +76,7 @@ public:
     QObject *modelingObject() const;
 
 public Q_SLOTS:
-    void setModelingObject(QModelingObject *modelingObject, QModelIndex index);
+    void setModelingObject(QModelingElement *modelingObject, QModelIndex index);
 
 Q_SIGNALS:
     void indexChanged(const QModelIndex &modelingObjectIndex);

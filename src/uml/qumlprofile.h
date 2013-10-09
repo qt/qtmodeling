@@ -75,7 +75,7 @@ protected:
     QSet<QUmlElementImport *> _metaclassReferences;
     QSet<QUmlPackageImport *> _metamodelReferences;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

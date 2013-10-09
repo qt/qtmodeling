@@ -74,7 +74,7 @@ protected:
     QList<QUmlInteractionFragment *> _fragments;
     QUmlInteractionConstraint *_guard;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

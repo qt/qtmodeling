@@ -113,7 +113,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged,
             modelingObjectPropertyModel, &QModelingObjectPropertyModel::setModelingObject);
     //connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
-    connect(ui->modelingObjectView, SIGNAL(modelingObjectChanged(QModelingObject*)), SLOT(modelingObjectChanged(QModelingObject*)));
+    connect(ui->modelingObjectView, SIGNAL(modelingObjectChanged(QModelingElement*)), SLOT(modelingObjectChanged(QModelingElement*)));
     connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
             _modelingObjectModel, &QModelingObjectModel::updateIndex);
 
@@ -220,7 +220,7 @@ void MainWindow::on_actionFileNewModel_triggered()
 //    }
 }
 
-void MainWindow::saveXmi(QModelingObject *rootElement)
+void MainWindow::saveXmi(QModelingElement *rootElement)
 {
     QFile file(_currentFileName);
     if (!file.open(QFile::WriteOnly | QFile::Text)) {
@@ -239,18 +239,18 @@ void MainWindow::saveXmi(QModelingObject *rootElement)
     setCursor(Qt::ArrowCursor);
 }
 
-QList<QModelingObject *> MainWindow::loadXmi(QString fileName)
+QList<QModelingElement *> MainWindow::loadXmi(QString fileName)
 {
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         QMessageBox::critical(this, tr("Open"), tr("Cannot read file !"));
-        return QList<QModelingObject *>();
+        return QList<QModelingElement *>();
     }
 
     QXmiReader reader(&_engine, true);
     if (fileName.contains("duse-mt"))
         setWindowTitle(QFileInfo(file).fileName() + " - DuSE-MT");
-    QList<QModelingObject *> modelingObjectList = reader.readFile(&file);
+    QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
 
     ui->txeIssues->setModel(new QStringListModel(reader.errorStrings()));
     setModelInspector(modelingObjectList);
@@ -258,13 +258,13 @@ QList<QModelingObject *> MainWindow::loadXmi(QString fileName)
     return modelingObjectList;
 }
 
-void MainWindow::setModelInspector(QList<QModelingObject *> modelingObjectList)
+void MainWindow::setModelInspector(QList<QModelingElement *> modelingObjectList)
 {
     if (!modelingObjectList.isEmpty()) {
         _engine.globalObject().setProperty(modelingObjectList.at(0)->asQObject()->objectName(), _engine.newQObject(modelingObjectList.at(0)->asQObject()));
 
         QScriptValue array = _engine.newArray();
-        foreach (QModelingObject *modelingObject, modelingObjectList)
+        foreach (QModelingElement *modelingObject, modelingObjectList)
             array.property(QString::fromLatin1("push")).call(array, QScriptValueList() << _engine.newQObject(modelingObject->asQObject()));
         _engine.globalObject().setProperty("input", array);
 
@@ -272,7 +272,7 @@ void MainWindow::setModelInspector(QList<QModelingObject *> modelingObjectList)
         QTimer::singleShot(0, this, SLOT(on_psbJSEvaluate_clicked()));
     }
     _modelingObjectModel->clear();
-    foreach (QModelingObject *object, modelingObjectList)
+    foreach (QModelingElement *object, modelingObjectList)
         _modelingObjectModel->addModelingObject(object->asQObject());
 }
 
@@ -309,7 +309,7 @@ void MainWindow::on_actionFileNewDuseDesign_triggered()
                     return;
                 }
                 QXmiReader reader(&_engine, true);
-                QList<QModelingObject *> modelingObjectList = reader.readFile(&file);
+                QList<QModelingElement *> modelingObjectList = reader.readFile(&file);
                 if (QString::fromLatin1(modelingObjectList.first()->asQObject()->metaObject()->className()) != QString::fromLatin1("QDuseDesignSpace")) {
                     QMessageBox::critical(this, tr("Create new DuSE design"), QString::fromLatin1("%1 is not a valid DuSE instance !").arg(QFileInfo(file).fileName()));
                     setCursor(Qt::ArrowCursor);
@@ -375,7 +375,7 @@ void MainWindow::evaluateQualityMetrics()
                           designspace.qualityMetrics[j].value = Math.random()*60+eval(designspace.qualityMetrics[j].expression)");
 }
 
-void MainWindow::populateDesignSpaceView(QModelingObject *modelingObject)
+void MainWindow::populateDesignSpaceView(QModelingElement *modelingObject)
 {
 //    QDuseDesignSpace *designSpace = qobject_cast<QDuseDesignSpace *>(modelingObject);
 //    ui->tblDesignSpace->setRowCount(0);
@@ -508,12 +508,12 @@ void MainWindow::metaModelChanged(QString newMetaModel)
     _newModel->lstTopLevelContainers->setCurrentRow(0);
 }
 
-void MainWindow::modelingObjectChanged(QModelingObject *modelingObject)
+void MainWindow::modelingObjectChanged(QModelingElement *modelingObject)
 {
     _engine.globalObject().setProperty("self", _engine.newQObject(modelingObject->asQObject()));
 }
 
-void MainWindow::addToView(QModelingObject *modelingObject, QQuickItem *parent)
+void MainWindow::addToView(QModelingElement *modelingObject, QQuickItem *parent)
 {
     QQmlContext *context = new QQmlContext(_modelQuickView->engine()->rootContext());
     //modelingObject->setQmlContextProperties(context);
@@ -533,12 +533,12 @@ void MainWindow::addToView(QModelingObject *modelingObject, QQuickItem *parent)
     }
 
     foreach (QObject *child, modelingObject->asQObject()->children())
-        addToView(dynamic_cast<QModelingObject *>(qModelingObject(child)));
+        addToView(dynamic_cast<QModelingElement *>(qModelingObject(child)));
 
     _qmlComponent->deleteLater();
 }
 
-void MainWindow::addToDesignSpaceView(QModelingObject *modelingObject, QQuickItem *parent)
+void MainWindow::addToDesignSpaceView(QModelingElement *modelingObject, QQuickItem *parent)
 {
     QQmlContext *context = new QQmlContext(_designSpaceQuickView->engine()->rootContext());
     //modelingObject->setQmlContextProperties(context);
@@ -558,12 +558,12 @@ void MainWindow::addToDesignSpaceView(QModelingObject *modelingObject, QQuickIte
     }
 
     foreach (QObject *child, modelingObject->asQObject()->children())
-        addToDesignSpaceView(dynamic_cast<QModelingObject *>(qModelingObject(child)));
+        addToDesignSpaceView(dynamic_cast<QModelingElement *>(qModelingObject(child)));
 
     _qmlComponent->deleteLater();
 }
 
-void MainWindow::addToPareto(QModelingObject *modelingObject, int pos)
+void MainWindow::addToPareto(QModelingElement *modelingObject, int pos)
 {
     QQmlContext *context = _paretoFrontQuickView->engine()->rootContext();
     //modelingObject->setQmlContextProperties(context);
@@ -583,7 +583,7 @@ void MainWindow::addToPareto(QModelingObject *modelingObject, int pos)
     }
 
     foreach (QObject *child, modelingObject->asQObject()->children())
-        addToPareto(dynamic_cast<QModelingObject *>(qModelingObject(child)), pos);
+        addToPareto(dynamic_cast<QModelingElement *>(qModelingObject(child)), pos);
 
     _qmlComponent->deleteLater();
 }

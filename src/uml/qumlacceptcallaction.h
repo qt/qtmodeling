@@ -69,7 +69,7 @@ public:
 protected:
     QUmlOutputPin *_returnInformation;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

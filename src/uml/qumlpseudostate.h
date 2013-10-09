@@ -78,7 +78,7 @@ protected:
     QUmlState *_state;
     QUmlStateMachine *_stateMachine;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

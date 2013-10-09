@@ -73,7 +73,7 @@ protected:
     QUmlValueSpecification *_expr;
     QSet<QUmlObservation *> _observations;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -71,7 +71,7 @@ QUmlMessage::QUmlMessage(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlMessageObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -306,25 +306,27 @@ void QUmlMessage::setSignature(QUmlNamedElement *signature)
     }
 }
 
-void QUmlMessage::setClassForProperty()
+void QUmlMessage::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("arguments")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("connector")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("interaction")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("messageKind")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("messageSort")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("receiveEvent")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("sendEvent")] = QStringLiteral("QUmlMessage");
-    _classForProperty[QStringLiteral("signature")] = QStringLiteral("QUmlMessage");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+    _groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("arguments"))));
+    _groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("connector"))));
+    _groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interaction"))));
+    _groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("messageKind"))));
+    _groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("messageSort"))));
+    _groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("receiveEvent"))));
+    _groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sendEvent"))));
+    _groupProperties.insert(QStringLiteral("QUmlMessage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("signature"))));
 }
 
 void QUmlMessage::setPropertyData()

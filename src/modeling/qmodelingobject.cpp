@@ -39,10 +39,61 @@
 **
 ****************************************************************************/
 #include "qmodelingobject.h"
+#include "qmodelingobject_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > QModelingObject::propertyDataHash;
+QHash< QString, QHash< QString, QHash<QtModeling::MetaPropertyDataRole, QVariant> > > QModelingObjectPrivate::propertyDataHash;
 
-QT_END_NAMESPACE
+QModelingObjectPrivate::QModelingObjectPrivate()
+{
+}
 
+QModelingObjectPrivate::~QModelingObjectPrivate()
+{
+    qDeleteAll(groupProperties);
+}
+
+QModelingObject::~QModelingObject()
+{
+}
+
+bool QModelingObject::isPropertyModified(QMetaProperty metaProperty) const
+{
+    Q_D(const QModelingObject);
+    return d->modifiedResettableProperties.contains(QString::fromLatin1(metaProperty.name()));
+}
+
+QVariant QModelingObject::propertyData(QString className, QMetaProperty metaProperty, QtModeling::MetaPropertyDataRole role)
+{
+    return QModelingObjectPrivate::propertyDataHash[className][QString::fromLatin1(metaProperty.name())][role];
+}
+
+int QModelingObject::propertyGroupIndex(QMetaProperty metaProperty) const
+{
+    Q_D(const QModelingObject);
+    int groupIndex = 0;
+    foreach (QString group, d->propertyGroups) {
+        foreach (QMetaProperty *metaPropertyPointer, d->groupProperties.values(group))
+            if (metaPropertyPointer->name() == metaProperty.name())
+                return groupIndex;
+        ++groupIndex;
+    }
+    return -1;
+}
+
+const QStringList &QModelingObject::propertyGroups() const
+{
+    Q_D(const QModelingObject);
+    return d->propertyGroups;
+}
+
+const QStringList &QModelingObject::modifiedResettableProperties() const
+{
+    Q_D(const QModelingObject);
+    return d->modifiedResettableProperties;
+}
+
+QModelingObject::QModelingObject()
+{
+}

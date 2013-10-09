@@ -86,7 +86,7 @@ protected:
     QList<QString> _bodies;
     QList<QString> _languages;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

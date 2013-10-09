@@ -107,7 +107,7 @@ protected:
     QSet<QUmlPackageableElement *> _packagedElements;
     QSet<QUmlProfileApplication *> _profileApplications;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

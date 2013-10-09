@@ -59,7 +59,7 @@ QUmlPackageMerge::QUmlPackageMerge(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlPackageMergeObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -145,16 +145,18 @@ void QUmlPackageMerge::setReceivingPackage(QUmlPackage *receivingPackage)
     }
 }
 
-void QUmlPackageMerge::setClassForProperty()
+void QUmlPackageMerge::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("mergedPackage")] = QStringLiteral("QUmlPackageMerge");
-    _classForProperty[QStringLiteral("receivingPackage")] = QStringLiteral("QUmlPackageMerge");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+    _groupProperties.insert(QStringLiteral("QUmlPackageMerge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("mergedPackage"))));
+    _groupProperties.insert(QStringLiteral("QUmlPackageMerge"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("receivingPackage"))));
 }
 
 void QUmlPackageMerge::setPropertyData()

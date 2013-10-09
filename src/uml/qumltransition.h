@@ -106,7 +106,7 @@ protected:
     QUmlVertex *_target;
     QSet<QUmlTrigger *> _triggers;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

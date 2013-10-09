@@ -61,7 +61,7 @@ QUmlPackageImport::QUmlPackageImport(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlPackageImportObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -168,17 +168,19 @@ void QUmlPackageImport::setVisibility(QtUml::VisibilityKind visibility)
     }
 }
 
-void QUmlPackageImport::setClassForProperty()
+void QUmlPackageImport::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("importedPackage")] = QStringLiteral("QUmlPackageImport");
-    _classForProperty[QStringLiteral("importingNamespace")] = QStringLiteral("QUmlPackageImport");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlPackageImport");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+    _groupProperties.insert(QStringLiteral("QUmlPackageImport"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importedPackage"))));
+    _groupProperties.insert(QStringLiteral("QUmlPackageImport"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("importingNamespace"))));
+    _groupProperties.insert(QStringLiteral("QUmlPackageImport"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
 }
 
 void QUmlPackageImport::setPropertyData()

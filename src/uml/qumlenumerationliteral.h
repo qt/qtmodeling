@@ -71,7 +71,7 @@ public:
 protected:
     QUmlEnumeration *_enumeration;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

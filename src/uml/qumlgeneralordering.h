@@ -72,7 +72,7 @@ protected:
     QUmlOccurrenceSpecification *_after;
     QUmlOccurrenceSpecification *_before;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

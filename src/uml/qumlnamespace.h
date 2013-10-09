@@ -99,7 +99,7 @@ protected:
     QSet<QUmlConstraint *> _ownedRules;
     QSet<QUmlPackageImport *> _packageImports;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

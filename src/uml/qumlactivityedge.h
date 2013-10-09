@@ -106,7 +106,7 @@ protected:
     QUmlActivityNode *_target;
     QUmlValueSpecification *_weight;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

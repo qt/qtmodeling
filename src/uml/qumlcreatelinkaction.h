@@ -70,7 +70,7 @@ public:
 protected:
     QSet<QUmlLinkEndCreationData *> _endData;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

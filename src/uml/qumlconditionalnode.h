@@ -81,7 +81,7 @@ protected:
     bool _isDeterminate;
     QList<QUmlOutputPin *> _results;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -124,7 +124,7 @@ protected:
     QUmlConstraint *_stateInvariant;
     QUmlStateMachine *_submachine;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -76,7 +76,7 @@ protected:
     QUmlPackage *_applyingPackage;
     bool _isStrict;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

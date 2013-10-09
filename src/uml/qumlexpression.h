@@ -71,7 +71,7 @@ protected:
     QList<QUmlValueSpecification *> _operands;
     QString _symbol;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

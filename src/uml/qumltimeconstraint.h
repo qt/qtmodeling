@@ -72,7 +72,7 @@ protected:
     bool _firstEvent;
     QUmlTimeInterval *_specification;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

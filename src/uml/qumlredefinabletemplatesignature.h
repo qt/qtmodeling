@@ -81,7 +81,7 @@ protected:
     QUmlClassifier *_classifier;
     QSet<QUmlRedefinableTemplateSignature *> _extendedSignatures;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

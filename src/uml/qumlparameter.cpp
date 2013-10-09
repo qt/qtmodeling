@@ -75,7 +75,7 @@ QUmlParameter::QUmlParameter(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlParameterObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -320,35 +320,37 @@ void QUmlParameter::removeParameterSet(QUmlParameterSet *parameterSet)
     }
 }
 
-void QUmlParameter::setClassForProperty()
+void QUmlParameter::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("isOrdered")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("isUnique")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("lower")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("lowerValue")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("upper")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("upperValue")] = QStringLiteral("QUmlMultiplicityElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlTypedElement");
-    _classForProperty[QStringLiteral("owningTemplateParameter")] = QStringLiteral("QUmlParameterableElement");
-    _classForProperty[QStringLiteral("ends")] = QStringLiteral("QUmlConnectableElement");
-    _classForProperty[QStringLiteral("templateParameter")] = QStringLiteral("QUmlConnectableElement");
-    _classForProperty[QStringLiteral("default_")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("defaultValue")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("direction")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("effect")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("isException")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("isStream")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("operation")] = QStringLiteral("QUmlParameter");
-    _classForProperty[QStringLiteral("parameterSets")] = QStringLiteral("QUmlParameter");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isOrdered"))));
+    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isUnique"))));
+    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lower"))));
+    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("lowerValue"))));
+    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upper"))));
+    _groupProperties.insert(QStringLiteral("QUmlMultiplicityElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("upperValue"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+    _groupProperties.insert(QStringLiteral("QUmlTypedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameterableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owningTemplateParameter"))));
+    _groupProperties.insert(QStringLiteral("QUmlConnectableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ends"))));
+    _groupProperties.insert(QStringLiteral("QUmlConnectableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateParameter"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("default_"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("defaultValue"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("direction"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("effect"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isException"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStream"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("operation"))));
+    _groupProperties.insert(QStringLiteral("QUmlParameter"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("parameterSets"))));
 }
 
 void QUmlParameter::setPropertyData()

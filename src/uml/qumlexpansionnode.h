@@ -72,7 +72,7 @@ protected:
     QUmlExpansionRegion *_regionAsInput;
     QUmlExpansionRegion *_regionAsOutput;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

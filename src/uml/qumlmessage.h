@@ -95,7 +95,7 @@ protected:
     QUmlMessageEnd *_sendEvent;
     QUmlNamedElement *_signature;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

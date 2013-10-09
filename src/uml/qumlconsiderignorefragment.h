@@ -70,7 +70,7 @@ public:
 protected:
     QSet<QUmlNamedElement *> _messages;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

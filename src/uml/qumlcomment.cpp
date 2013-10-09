@@ -55,7 +55,7 @@ QUmlComment::QUmlComment(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlCommentObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -130,13 +130,15 @@ void QUmlComment::setBody(QString body)
     }
 }
 
-void QUmlComment::setClassForProperty()
+void QUmlComment::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("annotatedElements")] = QStringLiteral("QUmlComment");
-    _classForProperty[QStringLiteral("body")] = QStringLiteral("QUmlComment");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlComment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("annotatedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlComment"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("body"))));
 }
 
 void QUmlComment::setPropertyData()

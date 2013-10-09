@@ -60,7 +60,7 @@ QUmlQualifierValue::QUmlQualifierValue(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlQualifierValueObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -129,13 +129,15 @@ void QUmlQualifierValue::setValue(QUmlInputPin *value)
     }
 }
 
-void QUmlQualifierValue::setClassForProperty()
+void QUmlQualifierValue::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("qualifier")] = QStringLiteral("QUmlQualifierValue");
-    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlQualifierValue");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlQualifierValue"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifier"))));
+    _groupProperties.insert(QStringLiteral("QUmlQualifierValue"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
 }
 
 void QUmlQualifierValue::setPropertyData()

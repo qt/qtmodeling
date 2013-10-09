@@ -102,7 +102,7 @@ protected:
     QSet<QUmlExecutableNode *> _setupParts;
     QSet<QUmlExecutableNode *> _tests;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

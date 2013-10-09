@@ -101,7 +101,7 @@ protected:
     QSet<QUmlStructuredActivityNode *> _structuredNodes;
     QSet<QUmlVariable *> _variables;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

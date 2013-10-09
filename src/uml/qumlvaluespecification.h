@@ -77,7 +77,7 @@ protected:
     explicit QUmlValueSpecification();
 
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

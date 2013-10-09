@@ -65,7 +65,7 @@ QUmlInterruptibleActivityRegion::QUmlInterruptibleActivityRegion(bool createQObj
 {
     if (createQObject)
         _qObject = new QUmlInterruptibleActivityRegionObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -186,24 +186,26 @@ void QUmlInterruptibleActivityRegion::removeNode(QUmlActivityNode *node)
     }
 }
 
-void QUmlInterruptibleActivityRegion::setClassForProperty()
+void QUmlInterruptibleActivityRegion::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("containedEdges")] = QStringLiteral("QUmlActivityGroup");
-    _classForProperty[QStringLiteral("containedNodes")] = QStringLiteral("QUmlActivityGroup");
-    _classForProperty[QStringLiteral("inActivity")] = QStringLiteral("QUmlActivityGroup");
-    _classForProperty[QStringLiteral("subgroups")] = QStringLiteral("QUmlActivityGroup");
-    _classForProperty[QStringLiteral("superGroup")] = QStringLiteral("QUmlActivityGroup");
-    _classForProperty[QStringLiteral("interruptingEdges")] = QStringLiteral("QUmlInterruptibleActivityRegion");
-    _classForProperty[QStringLiteral("nodes")] = QStringLiteral("QUmlInterruptibleActivityRegion");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedEdges"))));
+    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("containedNodes"))));
+    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("inActivity"))));
+    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("subgroups"))));
+    _groupProperties.insert(QStringLiteral("QUmlActivityGroup"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("superGroup"))));
+    _groupProperties.insert(QStringLiteral("QUmlInterruptibleActivityRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("interruptingEdges"))));
+    _groupProperties.insert(QStringLiteral("QUmlInterruptibleActivityRegion"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nodes"))));
 }
 
 void QUmlInterruptibleActivityRegion::setPropertyData()

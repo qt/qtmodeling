@@ -78,7 +78,7 @@ protected:
     QSet<QUmlPseudostate *> _exits;
     QUmlState *_state;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

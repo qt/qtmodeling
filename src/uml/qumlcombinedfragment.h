@@ -80,7 +80,7 @@ protected:
     QtUml::InteractionOperatorKind _interactionOperator;
     QList<QUmlInteractionOperand *> _operands;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -61,7 +61,7 @@ QUmlLinkEndData::QUmlLinkEndData(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLinkEndDataObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -171,14 +171,16 @@ void QUmlLinkEndData::setValue(QUmlInputPin *value)
     }
 }
 
-void QUmlLinkEndData::setClassForProperty()
+void QUmlLinkEndData::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("end"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiers"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
 }
 
 void QUmlLinkEndData::setPropertyData()

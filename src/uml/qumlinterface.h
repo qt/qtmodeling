@@ -92,7 +92,7 @@ protected:
     QUmlProtocolStateMachine *_protocol;
     QSet<QUmlInterface *> _redefinedInterfaces;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

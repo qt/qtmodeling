@@ -72,7 +72,7 @@ protected:
     QUmlClassifier *_contract;
     QUmlClassifier *_substitutingClassifier;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

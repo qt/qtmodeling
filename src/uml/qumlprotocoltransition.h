@@ -76,7 +76,7 @@ protected:
     QUmlConstraint *_postCondition;
     QUmlConstraint *_preCondition;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

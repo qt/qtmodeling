@@ -79,7 +79,7 @@ protected:
     QSet<QUmlDeployedArtifact *> _deployedArtifacts;
     QUmlDeploymentTarget *_location;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

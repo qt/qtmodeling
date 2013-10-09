@@ -102,7 +102,7 @@ protected:
     QSet<QUmlActivityEdge *> _outgoings;
     QSet<QUmlActivityNode *> _redefinedNodes;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

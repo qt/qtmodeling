@@ -72,7 +72,7 @@ protected:
     bool _isRelative;
     QUmlTimeExpression *_when;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

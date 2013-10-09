@@ -72,7 +72,7 @@ protected:
     QUmlNamedElement *_event;
     bool _firstEvent;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

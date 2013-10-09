@@ -68,7 +68,7 @@ public:
 protected:
     QSet<QUmlClassifier *> _represented;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

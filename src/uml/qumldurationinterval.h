@@ -72,7 +72,7 @@ protected:
     QUmlDuration *_max;
     QUmlDuration *_min;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

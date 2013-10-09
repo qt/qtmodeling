@@ -99,7 +99,7 @@ protected:
     QSet<QUmlBehavior *> _redefinedBehaviors;
     QUmlBehavioralFeature *_specification;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

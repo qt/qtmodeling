@@ -74,7 +74,7 @@ protected:
     QSet<QUmlDependency *> _roleBindings;
     QUmlCollaboration *_type;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

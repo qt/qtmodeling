@@ -79,7 +79,7 @@ protected:
     QList<QUmlProperty *> _ownedAttributes;
     QList<QUmlOperation *> _ownedOperations;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

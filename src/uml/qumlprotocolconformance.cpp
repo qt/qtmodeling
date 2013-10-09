@@ -59,7 +59,7 @@ QUmlProtocolConformance::QUmlProtocolConformance(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlProtocolConformanceObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -145,16 +145,18 @@ void QUmlProtocolConformance::setSpecificMachine(QUmlProtocolStateMachine *speci
     }
 }
 
-void QUmlProtocolConformance::setClassForProperty()
+void QUmlProtocolConformance::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("relatedElements")] = QStringLiteral("QUmlRelationship");
-    _classForProperty[QStringLiteral("sources")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("targets")] = QStringLiteral("QUmlDirectedRelationship");
-    _classForProperty[QStringLiteral("generalMachine")] = QStringLiteral("QUmlProtocolConformance");
-    _classForProperty[QStringLiteral("specificMachine")] = QStringLiteral("QUmlProtocolConformance");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("relatedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("sources"))));
+    _groupProperties.insert(QStringLiteral("QUmlDirectedRelationship"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("targets"))));
+    _groupProperties.insert(QStringLiteral("QUmlProtocolConformance"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("generalMachine"))));
+    _groupProperties.insert(QStringLiteral("QUmlProtocolConformance"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("specificMachine"))));
 }
 
 void QUmlProtocolConformance::setPropertyData()

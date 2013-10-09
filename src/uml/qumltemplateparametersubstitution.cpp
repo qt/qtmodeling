@@ -63,7 +63,7 @@ QUmlTemplateParameterSubstitution::QUmlTemplateParameterSubstitution(bool create
 {
     if (createQObject)
         _qObject = new QUmlTemplateParameterSubstitutionObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -193,15 +193,17 @@ void QUmlTemplateParameterSubstitution::setTemplateBinding(QUmlTemplateBinding *
     }
 }
 
-void QUmlTemplateParameterSubstitution::setClassForProperty()
+void QUmlTemplateParameterSubstitution::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("actual")] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    _classForProperty[QStringLiteral("formal")] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    _classForProperty[QStringLiteral("ownedActual")] = QStringLiteral("QUmlTemplateParameterSubstitution");
-    _classForProperty[QStringLiteral("templateBinding")] = QStringLiteral("QUmlTemplateParameterSubstitution");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameterSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("actual"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameterSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("formal"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameterSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedActual"))));
+    _groupProperties.insert(QStringLiteral("QUmlTemplateParameterSubstitution"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("templateBinding"))));
 }
 
 void QUmlTemplateParameterSubstitution::setPropertyData()

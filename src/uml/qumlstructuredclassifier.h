@@ -84,7 +84,7 @@ protected:
     QSet<QUmlConnector *> _ownedConnectors;
     QSet<QUmlConnectableElement *> _roles;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

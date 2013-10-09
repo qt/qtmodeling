@@ -99,7 +99,7 @@ protected:
     QSet<QUmlOutputPin *> _structuredNodeOutputs;
     QSet<QUmlVariable *> _variables;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

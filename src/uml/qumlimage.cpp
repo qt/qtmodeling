@@ -56,7 +56,7 @@ QUmlImage::QUmlImage(bool createQObject)
 {
     if (createQObject)
         _qObject = new QUmlImageObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -139,14 +139,16 @@ void QUmlImage::setLocation(QString location)
     }
 }
 
-void QUmlImage::setClassForProperty()
+void QUmlImage::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("content")] = QStringLiteral("QUmlImage");
-    _classForProperty[QStringLiteral("format")] = QStringLiteral("QUmlImage");
-    _classForProperty[QStringLiteral("location")] = QStringLiteral("QUmlImage");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlImage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("content"))));
+    _groupProperties.insert(QStringLiteral("QUmlImage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("format"))));
+    _groupProperties.insert(QStringLiteral("QUmlImage"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("location"))));
 }
 
 void QUmlImage::setPropertyData()

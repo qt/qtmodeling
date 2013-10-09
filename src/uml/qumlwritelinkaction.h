@@ -64,7 +64,7 @@ protected:
     explicit QUmlWriteLinkAction();
 
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

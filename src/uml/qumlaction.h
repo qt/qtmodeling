@@ -91,7 +91,7 @@ protected:
     QSet<QUmlConstraint *> _localPreconditions;
     QList<QUmlOutputPin *> _outputs;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -71,7 +71,7 @@ protected:
     QSet<QUmlElement *> _annotatedElements;
     QString _body;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

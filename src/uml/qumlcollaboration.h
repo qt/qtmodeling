@@ -71,7 +71,7 @@ public:
 protected:
     QSet<QUmlConnectableElement *> _collaborationRoles;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -62,7 +62,7 @@ QUmlLinkEndCreationData::QUmlLinkEndCreationData(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLinkEndCreationDataObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -135,16 +135,18 @@ void QUmlLinkEndCreationData::setReplaceAll(bool isReplaceAll)
     }
 }
 
-void QUmlLinkEndCreationData::setClassForProperty()
+void QUmlLinkEndCreationData::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("insertAt")] = QStringLiteral("QUmlLinkEndCreationData");
-    _classForProperty[QStringLiteral("isReplaceAll")] = QStringLiteral("QUmlLinkEndCreationData");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("end"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiers"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndCreationData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("insertAt"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndCreationData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isReplaceAll"))));
 }
 
 void QUmlLinkEndCreationData::setPropertyData()

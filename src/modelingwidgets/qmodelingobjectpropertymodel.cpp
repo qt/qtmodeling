@@ -62,7 +62,7 @@ QModelingObjectPropertyModel::QModelingObjectPropertyModel(QObject *parent) :
 {
 }
 
-void QModelingObjectPropertyModel::setModelingObject(QModelingObject *modelingObject, QModelIndex index)
+void QModelingObjectPropertyModel::setModelingObject(QModelingElement *modelingObject, QModelIndex index)
 {
     Q_D(QModelingObjectPropertyModel);
 
@@ -73,12 +73,12 @@ void QModelingObjectPropertyModel::setModelingObject(QModelingObject *modelingOb
         d->modelingMetaObject = d->qObject->metaObject();
         d->modelingObjectIndex = index;
         int propertyCount = d->modelingMetaObject->propertyCount();
-        QModelingObject *modelingObject = qModelingObject(qObject);
+        QModelingElement *modelingObject = qModelingObject(qObject);
         qDeleteAll(d->propertiesForGroup);
         d->propertyGroups.clear();
         QString currentGroup;
         for (int i = 0; i < propertyCount; ++i) {
-            QString group = modelingObject->classForProperty(d->modelingMetaObject->property(i));
+            QString group = modelingObject->propertyGroups().at(modelingObject->propertyGroupIndex(d->modelingMetaObject->property(i)));
             if (group != currentGroup) {
                 d->propertyGroups << group;
                 currentGroup = group;
@@ -86,21 +86,24 @@ void QModelingObjectPropertyModel::setModelingObject(QModelingObject *modelingOb
             d->propertiesForGroup.insert(currentGroup, new QString(QString::fromLatin1(d->modelingMetaObject->property(i).name())));
         }
         endResetModel();
+        QMetaProperty *mp = new QMetaProperty;
+        *mp = qObject->metaObject()->property(0);
+        qDebug() << mp->name();
     }
 }
 
 QModelIndex QModelingObjectPropertyModel::index(int row, int column, const QModelIndex &parent) const
 {
-    qDebug() << "::index";
+//    qDebug() << "::index";
     Q_D(const QModelingObjectPropertyModel);
 
     if (!d->modelingMetaObject || row < 0 || column < 0 || column >= 2 || (parent.isValid() && parent.column() != 0))
         return QModelIndex();
     if (parent.isValid()) {
-        qDebug() << "Criando index (" << row << "," << column << ", parent:" << parent;
-        qDebug() << "Grupo da propriedade:" << d->propertyGroups.at(parent.row());
-        qDebug() << "Propriedade:" << *d->propertiesForGroup.values(d->propertyGroups.at(parent.row())).at(row);
-        qDebug() << "Criando index (" << static_cast<void *>(d->propertiesForGroup.values(d->propertyGroups.at(parent.row()))[row]);
+//        qDebug() << "Criando index (" << row << "," << column << ", parent:" << parent;
+//        qDebug() << "Grupo da propriedade:" << d->propertyGroups.at(parent.row());
+//        qDebug() << "Propriedade:" << *d->propertiesForGroup.values(d->propertyGroups.at(parent.row())).at(row);
+//        qDebug() << "Criando index (" << static_cast<void *>(d->propertiesForGroup.values(d->propertyGroups.at(parent.row()))[row]);
         return createIndex(row, column, static_cast<void *>(d->propertiesForGroup.values(d->propertyGroups.at(parent.row()))[row]));
     }
     else
@@ -109,7 +112,7 @@ QModelIndex QModelingObjectPropertyModel::index(int row, int column, const QMode
 
 QModelIndex QModelingObjectPropertyModel::parent(const QModelIndex &child) const
 {
-    qDebug() << "::parent";
+//    qDebug() << "::parent";
     Q_D(const QModelingObjectPropertyModel);
 
     if (!d->modelingMetaObject || !child.isValid())
@@ -119,7 +122,7 @@ QModelIndex QModelingObjectPropertyModel::parent(const QModelIndex &child) const
     if (!property)
         return QModelIndex();
 
-    qDebug() << "Procurando pai de" << *property;
+//    qDebug() << "Procurando pai de" << *property;
     int groupIndex = propertyGroupIndex(property);
     if (groupIndex == -1)
         return QModelIndex();
@@ -127,34 +130,34 @@ QModelIndex QModelingObjectPropertyModel::parent(const QModelIndex &child) const
     QMetaProperty metaProperty = d->modelingMetaObject->property(d->modelingMetaObject->indexOfProperty(
                                                                      d->propertiesForGroup.values(d->propertyGroups.at(groupIndex)).at(child.row())->toLatin1())
                                                                  );
-    return createIndex(d->propertyGroups.indexOf(qModelingObject(d->qObject)->classForProperty(metaProperty)), 0);
+    return createIndex(qModelingObject(d->qObject)->propertyGroupIndex(metaProperty), 0);
 }
 
 int QModelingObjectPropertyModel::rowCount(const QModelIndex &parent) const
 {
-    qDebug() << "::rowCount";
+//    qDebug() << "::rowCount";
     Q_D(const QModelingObjectPropertyModel);
 
     if (!d->modelingMetaObject || (parent.isValid() && parent.column() != 0))
         return 0;
-    qDebug() << "rowCount(" << (static_cast<QString *>(parent.internalPointer()) ?  *(static_cast<QString *>(parent.internalPointer())):"unnamed") << "). Retornando: " << ((parent.row() == -1) ? d->propertyGroups.count():
-                                                                                    (!parent.internalPointer()) ? d->propertiesForGroup.values(d->propertyGroups.at(parent.row())).count():0);
+//    qDebug() << "rowCount(" << (static_cast<QString *>(parent.internalPointer()) ?  *(static_cast<QString *>(parent.internalPointer())):"unnamed") << "). Retornando: " << ((parent.row() == -1) ? d->propertyGroups.count():
+//                                                                                    (!parent.internalPointer()) ? d->propertiesForGroup.values(d->propertyGroups.at(parent.row())).count():0);
     return (parent.row() == -1) ? d->propertyGroups.count():
                                   (!parent.internalPointer()) ? d->propertiesForGroup.values(d->propertyGroups.at(parent.row())).count():0;
 }
 
 int QModelingObjectPropertyModel::columnCount(const QModelIndex &parent) const
 {
-    qDebug() << "::columnCount";
+//    qDebug() << "::columnCount";
     Q_D(const QModelingObjectPropertyModel);
 
-    qDebug() << "columnCount(" << parent << "). Retornando:" << ((!d->modelingMetaObject || (parent.isValid() && parent.column() != 0)) ? 0:2);
+//    qDebug() << "columnCount(" << parent << "). Retornando:" << ((!d->modelingMetaObject || (parent.isValid() && parent.column() != 0)) ? 0:2);
     return (!d->modelingMetaObject || (parent.isValid() && parent.column() != 0)) ? 0:2;
 }
 
 QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) const
 {
-    qDebug() << "::data (" << index << "," << role << ")";
+//    qDebug() << "::data (" << index << "," << role << ")";
     Q_D(const QModelingObjectPropertyModel);
 
     if (!d->modelingMetaObject || d->modelingMetaObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
@@ -259,7 +262,7 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
             if (metaProperty.isValid() && index.column() == 0 && metaProperty.isResettable())
                 font.setBold(qModelingObject(d->qObject)->isPropertyModified(metaProperty));
             if (metaProperty.isValid() && index.column() == 0)
-                font.setItalic(QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::AggregationRole).toString() == QString::fromLatin1("composite"));
+                font.setItalic(QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::AggregationRole).toString() == QString::fromLatin1("composite"));
             return font;
         }
         case Qt::ToolTipRole: {
@@ -275,8 +278,8 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                                                                              d->propertiesForGroup.values(d->propertyGroups.at(groupIndex)).at(index.row())->toLatin1())
                                                                          );
             if (metaProperty.isValid()) {
-                QString toolTip = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::DocumentationRole).toString().remove(QRegularExpression(QString::fromLatin1(".$"))).append(QString::fromLatin1("."));
-                if (QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
+                QString toolTip = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::DocumentationRole).toString().remove(QRegularExpression(QString::fromLatin1(".$"))).append(QString::fromLatin1("."));
+                if (QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::IsDerivedUnionRole).toBool())
                     toolTip += QString::fromLatin1(" This is a derived union property.");
                 else if (!metaProperty.isStored())
                     toolTip += QString::fromLatin1(" This is a derived property.");
@@ -288,16 +291,16 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
                 if (!toolTip.isEmpty())
                     toolTip += QString::fromLatin1("\n\n");
                 toolTip += QString::fromLatin1("Type: %1").arg(QString::fromLatin1(metaProperty.typeName()));
-                QVariant variant = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::AggregationRole);
+                QVariant variant = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::AggregationRole);
                 if (variant.isValid() && variant.toString() != QString::fromLatin1("none"))
                     toolTip += QString::fromLatin1("\nAggregation: %1").arg(variant.toString());
-                QString redefinedProperties = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::RedefinedPropertiesRole).toString();
+                QString redefinedProperties = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::RedefinedPropertiesRole).toString();
                 if (!redefinedProperties.isEmpty())
                     toolTip += QString::fromLatin1("\nRedefines: %1").arg(redefinedProperties);
-                QString subsettedProperties = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::SubsettedPropertiesRole).toString();
+                QString subsettedProperties = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::SubsettedPropertiesRole).toString();
                 if (!subsettedProperties.isEmpty())
                     toolTip += QString::fromLatin1("\nSubsets: %1").arg(subsettedProperties);
-                QString oppositeEnd = QModelingObject::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::OppositeEndRole).toString();
+                QString oppositeEnd = QModelingElement::propertyData(QString::fromLatin1(d->modelingMetaObject->className()), metaProperty, QtModeling::OppositeEndRole).toString();
                 if (!oppositeEnd.isEmpty())
                     toolTip += QString::fromLatin1("\nOpposite end: %1").arg(oppositeEnd);
                 return toolTip;
@@ -315,7 +318,7 @@ QVariant QModelingObjectPropertyModel::data(const QModelIndex &index, int role) 
 
 bool QModelingObjectPropertyModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    qDebug() << "::setData";
+//    qDebug() << "::setData";
     Q_D(QModelingObjectPropertyModel);
 
     if (!d->modelingMetaObject || d->modelingMetaObject->propertyCount() == 0 || index.column() < 0 || index.column() >= 2)
@@ -341,7 +344,7 @@ bool QModelingObjectPropertyModel::setData(const QModelIndex &index, const QVari
 
 QVariant QModelingObjectPropertyModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    qDebug() << "::headerData";
+//    qDebug() << "::headerData";
     if ((section == 0 || section == 1) && orientation == Qt::Horizontal && role == Qt::DisplayRole)
         return QString::fromLatin1(section == 0 ? "Property":"Value");
     return QVariant();
@@ -349,7 +352,7 @@ QVariant QModelingObjectPropertyModel::headerData(int section, Qt::Orientation o
 
 Qt::ItemFlags QModelingObjectPropertyModel::flags(const QModelIndex &index) const
 {
-    qDebug() << "::flags";
+//    qDebug() << "::flags";
     Q_D(const QModelingObjectPropertyModel);
 
     QString *property = static_cast<QString *>(index.internalPointer());

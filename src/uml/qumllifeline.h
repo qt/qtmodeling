@@ -86,7 +86,7 @@ protected:
     QUmlConnectableElement *_represents;
     QUmlValueSpecification *_selector;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

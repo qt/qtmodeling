@@ -81,7 +81,7 @@ protected:
     QUmlInputPin *_object;
     QSet<QUmlClassifier *> _oldClassifiers;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

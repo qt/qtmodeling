@@ -78,7 +78,7 @@ protected:
     QSet<QUmlGeneralOrdering *> _toAfters;
     QSet<QUmlGeneralOrdering *> _toBefores;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

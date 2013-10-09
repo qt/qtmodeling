@@ -72,7 +72,7 @@ protected:
     QUmlInputPin *_request;
     QUmlInputPin *_target;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -75,7 +75,7 @@ protected:
     QList<QUmlInputPin *> _arguments;
     QUmlPort *_onPort;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

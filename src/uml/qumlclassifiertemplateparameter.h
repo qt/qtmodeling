@@ -76,7 +76,7 @@ protected:
     QSet<QUmlClassifier *> _constrainingClassifiers;
     QUmlClassifier *_parameteredElement;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

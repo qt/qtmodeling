@@ -78,7 +78,7 @@ protected:
     QSet<QUmlOutputPin *> _results;
     QSet<QUmlTrigger *> _triggers;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

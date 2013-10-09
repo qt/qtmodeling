@@ -62,7 +62,7 @@ QUmlLinkEndDestructionData::QUmlLinkEndDestructionData(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlLinkEndDestructionDataObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -135,16 +135,18 @@ void QUmlLinkEndDestructionData::setDestroyDuplicates(bool isDestroyDuplicates)
     }
 }
 
-void QUmlLinkEndDestructionData::setClassForProperty()
+void QUmlLinkEndDestructionData::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("end")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("qualifiers")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("value")] = QStringLiteral("QUmlLinkEndData");
-    _classForProperty[QStringLiteral("destroyAt")] = QStringLiteral("QUmlLinkEndDestructionData");
-    _classForProperty[QStringLiteral("isDestroyDuplicates")] = QStringLiteral("QUmlLinkEndDestructionData");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("end"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiers"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("value"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndDestructionData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("destroyAt"))));
+    _groupProperties.insert(QStringLiteral("QUmlLinkEndDestructionData"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isDestroyDuplicates"))));
 }
 
 void QUmlLinkEndDestructionData::setPropertyData()

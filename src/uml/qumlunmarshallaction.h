@@ -78,7 +78,7 @@ protected:
     QSet<QUmlOutputPin *> _results;
     QUmlClassifier *_unmarshallType;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

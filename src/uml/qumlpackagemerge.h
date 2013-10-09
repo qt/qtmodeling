@@ -72,7 +72,7 @@ protected:
     QUmlPackage *_mergedPackage;
     QUmlPackage *_receivingPackage;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

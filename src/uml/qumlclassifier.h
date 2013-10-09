@@ -147,7 +147,7 @@ protected:
     QUmlClassifierTemplateParameter *_templateParameter;
     QSet<QUmlUseCase *> _useCases;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -90,7 +90,7 @@ protected:
     QSet<QUmlPackageableElement *> _packagedElements;
     QSet<QUmlComponentRealization *> _realizations;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

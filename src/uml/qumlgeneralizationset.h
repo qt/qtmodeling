@@ -80,7 +80,7 @@ protected:
     bool _isDisjoint;
     QUmlClassifier *_powertype;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

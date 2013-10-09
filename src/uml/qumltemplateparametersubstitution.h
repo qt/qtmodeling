@@ -80,7 +80,7 @@ protected:
     QUmlParameterableElement *_ownedActual;
     QUmlTemplateBinding *_templateBinding;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

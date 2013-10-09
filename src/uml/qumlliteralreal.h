@@ -71,7 +71,7 @@ public:
 protected:
     double _value;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

@@ -10,17 +10,20 @@ load(qt_module)
 PUBLIC_HEADERS += \
     qtmodelingglobal.h \
     qtmodelingnamespace.h \
+    qmodelingelement.h \
     qmodelingobject.h \
     qmetamodelplugin.h \
     qxmiwriter.h \
     qxmireader.h
 
 PRIVATE_HEADERS += \
+    qmodelingobject_p.h \
     qxmiwriter_p.h \
     qxmireader_p.h
 
 SOURCES += \
     qtmodelingnamespace.cpp \
+    qmodelingelement.cpp \
     qmodelingobject.cpp \
     qmetamodelplugin.cpp \
     qxmiwriter.cpp \

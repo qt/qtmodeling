@@ -74,7 +74,7 @@ protected:
     QUmlInputPin *_object;
     QUmlStructuralFeature *_structuralFeature;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

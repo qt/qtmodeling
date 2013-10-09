@@ -38,8 +38,8 @@
 ** $QT_END_LICENSE$
 **
 ****************************************************************************/
-#ifndef QTMODELINGNAMESPACE_H
-#define QTMODELINGNAMESPACE_H
+#ifndef QTMODELING_QTMODELINGNAMESPACE_H
+#define QTMODELING_QTMODELINGNAMESPACE_H
 
 #include <QtModeling/QtModelingGlobal>
 
@@ -91,5 +91,5 @@ Q_DECLARE_METATYPE (QT_PREPEND_NAMESPACE(QtModeling::ModelingObjectRole))
 
 QT_END_HEADER
 
-#endif // QTMODELINGNAMESPACE_H
+#endif // QTMODELING_QTMODELINGNAMESPACE_H
 

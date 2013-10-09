@@ -73,7 +73,7 @@ protected:
     QUmlInterface *_contract;
     QUmlBehavioredClassifier *_implementingClassifier;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

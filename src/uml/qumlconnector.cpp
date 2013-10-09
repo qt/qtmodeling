@@ -67,7 +67,7 @@ QUmlConnector::QUmlConnector(bool createQObject) :
 {
     if (createQObject)
         _qObject = new QUmlConnectorObject(this);
-    setClassForProperty();
+    setGroupProperties();
     setPropertyData();
 }
 
@@ -256,27 +256,29 @@ void QUmlConnector::setType(QUmlAssociation *type)
     }
 }
 
-void QUmlConnector::setClassForProperty()
+void QUmlConnector::setGroupProperties()
 {
-    _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");
-    _classForProperty[QStringLiteral("clientDependencies")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("name")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("nameExpression")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("namespace_")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("qualifiedName")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("visibility")] = QStringLiteral("QUmlNamedElement");
-    _classForProperty[QStringLiteral("isLeaf")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("redefinedElements")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("redefinitionContexts")] = QStringLiteral("QUmlRedefinableElement");
-    _classForProperty[QStringLiteral("featuringClassifiers")] = QStringLiteral("QUmlFeature");
-    _classForProperty[QStringLiteral("isStatic")] = QStringLiteral("QUmlFeature");
-    _classForProperty[QStringLiteral("contracts")] = QStringLiteral("QUmlConnector");
-    _classForProperty[QStringLiteral("ends")] = QStringLiteral("QUmlConnector");
-    _classForProperty[QStringLiteral("kind")] = QStringLiteral("QUmlConnector");
-    _classForProperty[QStringLiteral("redefinedConnectors")] = QStringLiteral("QUmlConnector");
-    _classForProperty[QStringLiteral("type")] = QStringLiteral("QUmlConnector");
+    const QMetaObject *metaObject = _qObject->metaObject();
+
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedComments"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ownedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("owner"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("clientDependencies"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("name"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("nameExpression"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("namespace_"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("qualifiedName"))));
+    _groupProperties.insert(QStringLiteral("QUmlNamedElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("visibility"))));
+    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isLeaf"))));
+    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedElements"))));
+    _groupProperties.insert(QStringLiteral("QUmlRedefinableElement"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinitionContexts"))));
+    _groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("featuringClassifiers"))));
+    _groupProperties.insert(QStringLiteral("QUmlFeature"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("isStatic"))));
+    _groupProperties.insert(QStringLiteral("QUmlConnector"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("contracts"))));
+    _groupProperties.insert(QStringLiteral("QUmlConnector"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("ends"))));
+    _groupProperties.insert(QStringLiteral("QUmlConnector"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("kind"))));
+    _groupProperties.insert(QStringLiteral("QUmlConnector"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("redefinedConnectors"))));
+    _groupProperties.insert(QStringLiteral("QUmlConnector"), new QMetaProperty(metaObject->property(metaObject->indexOfProperty("type"))));
 }
 
 void QUmlConnector::setPropertyData()

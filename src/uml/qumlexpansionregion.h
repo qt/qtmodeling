@@ -79,7 +79,7 @@ protected:
     QtUml::ExpansionKind _mode;
     QSet<QUmlExpansionNode *> _outputElements;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

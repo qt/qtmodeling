@@ -80,7 +80,7 @@ protected:
     bool _isSubstitutable;
     QUmlClassifier *_specific;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

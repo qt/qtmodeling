@@ -82,7 +82,7 @@ protected:
     QUmlUseCase *_extension;
     QList<QUmlExtensionPoint *> _extensionLocations;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

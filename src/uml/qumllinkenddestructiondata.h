@@ -72,7 +72,7 @@ protected:
     QUmlInputPin *_destroyAt;
     bool _isDestroyDuplicates;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

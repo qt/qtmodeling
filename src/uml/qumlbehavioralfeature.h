@@ -99,7 +99,7 @@ protected:
     QSet<QUmlParameterSet *> _ownedParameterSets;
     QSet<QUmlType *> _raisedExceptions;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

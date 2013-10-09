@@ -82,7 +82,7 @@ protected:
     QUmlParameterableElement *_parameteredElement;
     QUmlTemplateSignature *_signature;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

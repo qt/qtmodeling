@@ -89,7 +89,7 @@ protected:
     QUmlProtocolStateMachine *_protocol;
     QSet<QUmlPort *> _redefinedPorts;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

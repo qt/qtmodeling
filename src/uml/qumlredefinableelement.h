@@ -82,7 +82,7 @@ protected:
     QSet<QUmlRedefinableElement *> _redefinedElements;
     QSet<QUmlClassifier *> _redefinitionContexts;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

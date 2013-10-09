@@ -69,7 +69,7 @@ public:
 protected:
     QUmlPackageableElement *_utilizedElement;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 

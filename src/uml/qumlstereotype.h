@@ -76,7 +76,7 @@ public:
 protected:
     QSet<QUmlImage *> _icons;
 
-    virtual void setClassForProperty();
+    virtual void setGroupProperties();
     virtual void setPropertyData();
 };
 
