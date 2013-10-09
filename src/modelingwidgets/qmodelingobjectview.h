@@ -57,6 +57,7 @@ class QAbstractItemModel;
 class QItemSelection;
 class QQuickItem;
 
+class QModelingObject;
 class QModelingObjectViewPrivate;
 
 class Q_MODELINGWIDGETS_EXPORT QModelingObjectView : public QWidget
@@ -74,7 +75,7 @@ public Q_SLOTS:
     void updateSelected();
 
 Q_SIGNALS:
-    void modelingObjectChanged(QObject *selectedModelingObject, QModelIndex index = QModelIndex());
+    void modelingObjectChanged(QModelingObject *selectedModelingObject, QModelIndex index = QModelIndex());
     void addToView(QObject *selectedModelingObject, QQuickItem *parent = 0);
 
 protected:

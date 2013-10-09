@@ -63,6 +63,7 @@
 #include <QtModeling/QMetaModelPlugin>
 //#include <QtWrappedObjects/QMetaWrappedObject>
 #include <QtModelingWidgets/QModelingObjectModel>
+#include <QtModelingWidgets/QModelingObjectView>
 #include <QtModelingWidgets/QModelingObjectPropertyModel>
 
 #include <QtQml/QQmlEngine>
@@ -106,15 +107,15 @@ MainWindow::MainWindow(QWidget *parent) :
     _aboutPlugins->setupUi(_aboutPluginsDialog);
     _aboutDuSEMT->setupUi(_aboutDuSEMTDialog);
 
-    //QModelingObjectPropertyModel *modelingObjectPropertyModel = new QModelingObjectPropertyModel(_modelingObjectModel);
-    //ui->propertyEditor->setModel(modelingObjectPropertyModel);
+    QModelingObjectPropertyModel *modelingObjectPropertyModel = new QModelingObjectPropertyModel(_modelingObjectModel);
+    ui->propertyEditor->setModel(modelingObjectPropertyModel);
 
-    //connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged,
-    //        modelingObjectPropertyModel, &QModelingObjectPropertyModel::setModelingObject);
+    connect(ui->modelingObjectView, &QModelingObjectView::modelingObjectChanged,
+            modelingObjectPropertyModel, &QModelingObjectPropertyModel::setModelingObject);
     //connect(ui->modelingObjectView, &QModelingObjectView::addToView, this, &MainWindow::addToView);
-    //connect(ui->modelingObjectView, SIGNAL(modelingObjectChanged(QWrappedObject*)), SLOT(modelingObjectChanged(QWrappedObject*)));
-    //connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
-    //        _modelingObjectModel, &QModelingObjectModel::updateIndex);
+    connect(ui->modelingObjectView, SIGNAL(modelingObjectChanged(QModelingObject*)), SLOT(modelingObjectChanged(QModelingObject*)));
+    connect(modelingObjectPropertyModel, &QModelingObjectPropertyModel::indexChanged,
+            _modelingObjectModel, &QModelingObjectModel::updateIndex);
 
     loadPlugins();
 

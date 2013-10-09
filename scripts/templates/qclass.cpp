@@ -406,6 +406,7 @@ ${parameter.findvalue("@name")}
 
 void Q${namespace}${className}::setClassForProperty()
 {
+    _classForProperty[QStringLiteral("objectName")] = QStringLiteral("QObject");
 [%- visitedClasses = [] -%]
 [%- SET_CLASS_FOR_PROPERTY(class, visitedClasses, redefinedProperties) %]
 }

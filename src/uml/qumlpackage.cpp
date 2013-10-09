@@ -482,6 +482,7 @@ QSet<QUmlPackageableElement *> QUmlPackage::visibleMembers() const
 
 void QUmlPackage::setClassForProperty()
 {
+    _classForProperty[QStringLiteral("objectName")] = QStringLiteral("QObject");
     _classForProperty[QStringLiteral("ownedComments")] = QStringLiteral("QUmlElement");
     _classForProperty[QStringLiteral("ownedElements")] = QStringLiteral("QUmlElement");
     _classForProperty[QStringLiteral("owner")] = QStringLiteral("QUmlElement");

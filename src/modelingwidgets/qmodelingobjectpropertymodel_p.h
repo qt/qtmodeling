@@ -44,6 +44,8 @@
 #include "qtmodelingwidgetsglobal.h"
 #include "private/qabstractitemmodel_p.h"
 
+#include <QtCore/QStringList>
+
 QT_BEGIN_HEADER
 
 QT_BEGIN_NAMESPACE
@@ -60,8 +62,10 @@ public:
     explicit QModelingObjectPropertyModelPrivate();
 
     QModelIndex modelingObjectIndex;
-    QObject *modelingObject;
+    QObject *qObject;
     const QMetaObject *modelingMetaObject;
+    QStringList propertyGroups;
+    QMultiHash<QString, QString *> propertiesForGroup;
 };
 
 QT_END_NAMESPACE

@@ -207,7 +207,7 @@ void QModelingObjectView::deleteObject()
         QModelingObjectModel *modelingObjectModel = dynamic_cast<QModelingObjectModel *>(d->treeView->model());
         modelingObjectModel->updateIndex(QModelIndex());
         d->treeView->setCurrentIndex(modelingObjectModel->index(0, 0));
-        emit modelingObjectChanged(qvariant_cast<QObject *>(modelingObjectModel->index(0, 0).data(Qt::UserRole)));
+        emit modelingObjectChanged(qModelingObject(qvariant_cast<QObject *>(modelingObjectModel->index(0, 0).data(Qt::UserRole))));
         d->treeView->expandAll();
         d->treeView->resizeColumnToContents(0);
         d->treeView->resizeColumnToContents(1);
@@ -234,7 +234,7 @@ void QModelingObjectView::rowsInserted(const QModelIndex &parent, int first)
 
 void QModelingObjectView::selectionChanged(const QItemSelection &selected)
 {
-    emit modelingObjectChanged(qvariant_cast<QObject *>(selected.indexes().first().data(Qt::UserRole)), selected.indexes().first());
+    emit modelingObjectChanged(qModelingObject(qvariant_cast<QObject *>(selected.indexes().first().data(Qt::UserRole))), selected.indexes().first());
 }
 
 #include "moc_qmodelingobjectview.cpp"
